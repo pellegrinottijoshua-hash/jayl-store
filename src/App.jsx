@@ -8,8 +8,8 @@ import ShopPage from '@/pages/ShopPage'
 import ProductPage from '@/pages/ProductPage'
 import CheckoutPage from '@/pages/CheckoutPage'
 import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
+import ArtistPage from '@/pages/ArtistPage'
 
-// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
@@ -18,7 +18,6 @@ function ScrollToTop() {
   return null
 }
 
-// Pages that don't want the standard footer
 const NO_FOOTER = ['/checkout']
 
 export default function App() {
@@ -38,7 +37,7 @@ export default function App() {
           <Route path="/product/:slug" element={<ProductPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
-          {/* Catch-all */}
+          <Route path="/artist" element={<ArtistPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -50,11 +49,11 @@ export default function App() {
 
 function NotFound() {
   return (
-    <div className="min-h-screen pt-32 flex flex-col items-center justify-center text-center px-4">
-      <p className="section-label text-text-muted mb-4">404</p>
-      <h1 className="font-display text-5xl text-cream mb-4">Page not found</h1>
-      <p className="text-text-secondary mb-8">The page you're looking for doesn't exist.</p>
-      <a href="/" className="btn-primary">Go Home</a>
+    <div className="min-h-screen bg-white pt-32 flex flex-col items-center justify-center text-center px-4">
+      <p className="section-label-light text-ink-muted mb-4">404</p>
+      <h1 className="font-display text-5xl text-ink mb-4">Page not found</h1>
+      <p className="text-ink-secondary mb-8">The page you're looking for doesn't exist.</p>
+      <a href="/" className="btn-ink">Go Home</a>
     </div>
   )
 }

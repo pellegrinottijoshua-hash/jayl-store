@@ -8,8 +8,8 @@ export function cn(...inputs) {
  * Format cents to a locale currency string
  * e.g. 8900 → "$89.00"
  */
-export function formatPrice(cents, currency = 'usd') {
-  return new Intl.NumberFormat('en-US', {
+export function formatPrice(cents, currency = 'eur') {
+  return new Intl.NumberFormat('en-GB', {
     style: 'currency',
     currency: currency.toUpperCase(),
     minimumFractionDigits: 0,

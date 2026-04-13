@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply bg-off-black text-text-primary font-sans antialiased;
+    @apply bg-white text-ink font-sans antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -37,6 +37,7 @@
 }
 
 @layer components {
+  /* ── Dark-page buttons (Objects, Checkout) ─────────────────────────── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-cream text-black text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-accent hover:scale-[1.02] active:scale-[0.98];
   }
@@ -49,8 +50,26 @@
     @apply inline-flex items-center justify-center w-10 h-10 border border-border text-text-secondary transition-all duration-200 hover:border-cream hover:text-cream;
   }
 
+  /* ── Light-page buttons (Art, Homepage, Artist) ─────────────────────── */
+  .btn-ink {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-ink text-white text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-ink-secondary hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-paper-border text-ink text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:border-ink active:scale-[0.98];
+  }
+
+  .btn-icon-light {
+    @apply inline-flex items-center justify-center w-10 h-10 border border-paper-border text-ink-muted transition-all duration-200 hover:border-ink hover:text-ink;
+  }
+
+  /* ── Shared ─────────────────────────────────────────────────────────── */
   .section-label {
     @apply text-2xs font-mono tracking-ultra text-text-muted uppercase;
+  }
+
+  .section-label-light {
+    @apply text-2xs font-mono tracking-ultra text-ink-muted uppercase;
   }
 
   .card-hover {

@@ -7,6 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ── Light theme ──────────────────────────────────────────────────
+        'ink': '#111111',
+        'ink-secondary': '#444444',
+        'ink-muted': '#888888',
+        'paper': '#f5f0e8',
+        'paper-2': '#ede8df',
+        'paper-border': '#e8e3dc',
+        // ── Dark theme ───────────────────────────────────────────────────
         black: '#000000',
         'off-black': '#0a0a0a',
         'surface': '#111111',

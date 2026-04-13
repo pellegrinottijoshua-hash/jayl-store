@@ -259,7 +259,7 @@ export const products = [
   // ─── STREETWEAR ───────────────────────────────────────────────────────────────
   {
     id: 'sw-001',
-    section: 'streetwear',
+    section: 'objects',
     slug: 'persistence-tee',
     name: 'Persistence Tee',
     subtitle: 'The Persistence of Algorithms',
@@ -299,7 +299,7 @@ export const products = [
   },
   {
     id: 'sw-002',
-    section: 'streetwear',
+    section: 'objects',
     slug: 'cubist-hoodie',
     name: 'Cubist Hoodie',
     subtitle: 'Deconstructed Feed',
@@ -339,7 +339,7 @@ export const products = [
   },
   {
     id: 'sw-003',
-    section: 'streetwear',
+    section: 'objects',
     slug: 'bauhaus-longsleeve',
     name: 'Bauhaus Longsleeve',
     subtitle: 'Form Follows Function',
@@ -379,7 +379,7 @@ export const products = [
   },
   {
     id: 'sw-004',
-    section: 'streetwear',
+    section: 'objects',
     slug: 'mucha-tee',
     name: 'Interface Tee',
     subtitle: 'Art Nouveau UX',
