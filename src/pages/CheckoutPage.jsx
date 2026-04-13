@@ -1,0 +1,382 @@
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { ArrowLeft, Lock, CreditCard } from 'lucide-react'
+import { useCartStore } from '@/store/cartStore'
+import { formatPrice, cn } from '@/lib/utils'
+
+// ─── Stripe integration note ──────────────────────────────────────────────────
+// This uses Stripe Elements loaded from @stripe/stripe-js.
+// For full server-side payment intent flow, you'll need a backend endpoint.
+// The StripeCheckoutForm component below shows the integration structure.
+// Activate by adding your VITE_STRIPE_PUBLISHABLE_KEY to .env.local
+
+function FormSection({ title, children }) {
+  return (
+    <div className="mb-8">
+      <h3 className="text-xs font-semibold tracking-ultra uppercase text-text-muted mb-5 pb-3 border-b border-border">
+        {title}
+      </h3>
+      {children}
+    </div>
+  )
+}
+
+function Field({ label, id, error, className, ...props }) {
+  return (
+    <div className={cn('flex flex-col gap-1.5', className)}>
+      <label htmlFor={id} className="text-xs font-medium tracking-wide text-text-secondary uppercase">
+        {label}
+      </label>
+      <input id={id} className={cn('input-field', error && 'border-error')} {...props} />
+      {error && <p className="text-xs text-error">{error}</p>}
+    </div>
+  )
+}
+
+export default function CheckoutPage() {
+  const { items, clearCart } = useCartStore()
+  const navigate = useNavigate()
+
+  const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0)
+  const shipping = subtotal >= 10000 ? 0 : 799 // free over $100
+  const total = subtotal + shipping
+
+  const [form, setForm] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: 'US',
+    cardNumber: '',
+    cardExpiry: '',
+    cardCvc: '',
+  })
+  const [errors, setErrors] = useState({})
+  const [processing, setProcessing] = useState(false)
+
+  const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
+
+  const validate = () => {
+    const e = {}
+    if (!form.email.includes('@')) e.email = 'Valid email required'
+    if (!form.firstName) e.firstName = 'Required'
+    if (!form.lastName) e.lastName = 'Required'
+    if (!form.address) e.address = 'Required'
+    if (!form.city) e.city = 'Required'
+    if (!form.zip) e.zip = 'Required'
+    return e
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) {
+      setErrors(errs)
+      return
+    }
+    setProcessing(true)
+
+    // TODO: call your backend to create a Stripe PaymentIntent, then confirm with Stripe.js
+    // For now, simulate a successful payment after 1.5s
+    await new Promise((res) => setTimeout(res, 1500))
+
+    const orderId = `JAYL-${Date.now().toString(36).toUpperCase()}`
+    clearCart()
+    navigate(`/order-confirmation/${orderId}`, {
+      state: {
+        order: {
+          id: orderId,
+          items,
+          subtotal,
+          shipping,
+          total,
+          email: form.email,
+        },
+      },
+    })
+  }
+
+  if (items.length === 0) {
+    return (
+      <div className="min-h-screen pt-32 flex flex-col items-center justify-center text-center px-4">
+        <h1 className="font-display text-4xl text-cream mb-4">Your cart is empty</h1>
+        <p className="text-text-secondary mb-8">Add some works before checking out.</p>
+        <Link to="/shop" className="btn-primary">Browse the Shop</Link>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen pt-16 bg-off-black">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-10">
+          <Link
+            to="/shop"
+            className="flex items-center gap-2 text-xs text-text-muted hover:text-text-primary transition-colors tracking-widest uppercase"
+          >
+            <ArrowLeft size={12} />
+            Continue Shopping
+          </Link>
+          <Link to="/" className="font-display text-2xl text-cream tracking-widest">
+            JAYL
+          </Link>
+          <div className="flex items-center gap-1.5 text-xs text-text-muted">
+            <Lock size={12} />
+            Secure checkout
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div className="grid lg:grid-cols-5 gap-12">
+            {/* ── Left: form ── */}
+            <div className="lg:col-span-3">
+              <FormSection title="Contact">
+                <Field
+                  label="Email address"
+                  id="email"
+                  type="email"
+                  value={form.email}
+                  onChange={update('email')}
+                  placeholder="you@example.com"
+                  error={errors.email}
+                  autoComplete="email"
+                />
+              </FormSection>
+
+              <FormSection title="Shipping address">
+                <div className="grid grid-cols-2 gap-4">
+                  <Field
+                    label="First name"
+                    id="firstName"
+                    value={form.firstName}
+                    onChange={update('firstName')}
+                    error={errors.firstName}
+                    autoComplete="given-name"
+                  />
+                  <Field
+                    label="Last name"
+                    id="lastName"
+                    value={form.lastName}
+                    onChange={update('lastName')}
+                    error={errors.lastName}
+                    autoComplete="family-name"
+                  />
+                </div>
+                <div className="mt-4">
+                  <Field
+                    label="Address"
+                    id="address"
+                    value={form.address}
+                    onChange={update('address')}
+                    placeholder="Street address"
+                    error={errors.address}
+                    autoComplete="street-address"
+                  />
+                </div>
+                <div className="grid grid-cols-3 gap-4 mt-4">
+                  <Field
+                    label="City"
+                    id="city"
+                    value={form.city}
+                    onChange={update('city')}
+                    error={errors.city}
+                    autoComplete="address-level2"
+                    className="col-span-1"
+                  />
+                  <Field
+                    label="State / Province"
+                    id="state"
+                    value={form.state}
+                    onChange={update('state')}
+                    autoComplete="address-level1"
+                  />
+                  <Field
+                    label="ZIP / Postal"
+                    id="zip"
+                    value={form.zip}
+                    onChange={update('zip')}
+                    error={errors.zip}
+                    autoComplete="postal-code"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="text-xs font-medium tracking-wide text-text-secondary uppercase block mb-1.5">
+                    Country
+                  </label>
+                  <select
+                    value={form.country}
+                    onChange={update('country')}
+                    className="input-field"
+                  >
+                    <option value="US">United States</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="SE">Sweden</option>
+                    <option value="NO">Norway</option>
+                    <option value="DK">Denmark</option>
+                    <option value="FI">Finland</option>
+                    <option value="IT">Italy</option>
+                    <option value="ES">Spain</option>
+                    <option value="JP">Japan</option>
+                    <option value="SG">Singapore</option>
+                  </select>
+                </div>
+              </FormSection>
+
+              {/* Payment — placeholder for Stripe Elements */}
+              <FormSection title="Payment">
+                <div className="bg-surface-2 border border-border p-4 rounded-sm mb-4">
+                  <div className="flex items-center gap-2 text-xs text-text-muted">
+                    <CreditCard size={14} />
+                    <span>
+                      Stripe Elements will render here once{' '}
+                      <code className="text-text-secondary font-mono">VITE_STRIPE_PUBLISHABLE_KEY</code>{' '}
+                      is set in <code className="text-text-secondary font-mono">.env.local</code>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Temporary card fields (replace with Stripe Elements) */}
+                <div className="space-y-4">
+                  <Field
+                    label="Card number"
+                    id="cardNumber"
+                    value={form.cardNumber}
+                    onChange={update('cardNumber')}
+                    placeholder="1234 5678 9012 3456"
+                    maxLength={19}
+                    autoComplete="cc-number"
+                  />
+                  <div className="grid grid-cols-2 gap-4">
+                    <Field
+                      label="Expiry"
+                      id="cardExpiry"
+                      value={form.cardExpiry}
+                      onChange={update('cardExpiry')}
+                      placeholder="MM / YY"
+                      maxLength={7}
+                      autoComplete="cc-exp"
+                    />
+                    <Field
+                      label="CVC"
+                      id="cardCvc"
+                      value={form.cardCvc}
+                      onChange={update('cardCvc')}
+                      placeholder="123"
+                      maxLength={4}
+                      autoComplete="cc-csc"
+                    />
+                  </div>
+                </div>
+              </FormSection>
+
+              <button
+                type="submit"
+                disabled={processing}
+                className={cn(
+                  'btn-primary w-full py-4 text-sm',
+                  processing && 'opacity-70 cursor-not-allowed'
+                )}
+              >
+                {processing ? 'Processing...' : `Pay ${formatPrice(total)}`}
+              </button>
+
+              <p className="text-xs text-text-muted text-center mt-4">
+                By placing your order you agree to our{' '}
+                <Link to="/terms" className="underline hover:text-text-secondary">Terms</Link>
+                {' '}and{' '}
+                <Link to="/privacy" className="underline hover:text-text-secondary">Privacy Policy</Link>.
+              </p>
+            </div>
+
+            {/* ── Right: order summary ── */}
+            <div className="lg:col-span-2">
+              <div className="sticky top-24 bg-surface border border-border p-6">
+                <h3 className="text-xs font-semibold tracking-ultra uppercase text-text-muted mb-6">
+                  Order Summary
+                </h3>
+
+                {/* Items */}
+                <ul className="space-y-4 mb-6">
+                  {items.map((item) => (
+                    <li key={item.variantKey} className="flex gap-3">
+                      <div className="relative">
+                        <div className="w-14 h-14 bg-surface-2 overflow-hidden flex-shrink-0">
+                          <img
+                            src={item.product.image}
+                            alt={item.product.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-surface-3 text-text-primary text-2xs font-bold rounded-full flex items-center justify-center">
+                          {item.quantity}
+                        </span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-text-primary truncate">
+                          {item.product.name}
+                        </p>
+                        <p className="text-xs text-text-muted mt-0.5">
+                          {item.size && item.product.sizes?.find((s) => s.id === item.size)?.label}
+                          {item.frame && item.frame !== 'none' && ` · ${item.frame} frame`}
+                          {item.color && ` · ${item.color}`}
+                        </p>
+                      </div>
+                      <span className="text-sm font-semibold text-text-primary flex-shrink-0">
+                        {formatPrice(item.unitPrice * item.quantity)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="divider" />
+
+                {/* Totals */}
+                <div className="space-y-3 mt-4">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-text-secondary">Subtotal</span>
+                    <span className="text-text-primary">{formatPrice(subtotal)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-text-secondary">Shipping</span>
+                    <span className="text-text-primary">
+                      {shipping === 0 ? 'Free' : formatPrice(shipping)}
+                    </span>
+                  </div>
+                  {shipping > 0 && (
+                    <p className="text-xs text-text-muted">
+                      Free shipping on orders over $100
+                    </p>
+                  )}
+                  <div className="divider" />
+                  <div className="flex justify-between">
+                    <span className="text-sm font-semibold text-text-primary">Total</span>
+                    <span className="text-lg font-bold text-cream">{formatPrice(total)}</span>
+                  </div>
+                </div>
+
+                {/* Trust signals */}
+                <div className="mt-6 pt-5 border-t border-border space-y-2">
+                  {['Secure payment via Stripe', 'Fulfilled by Gelato worldwide', '100-year archival inks'].map((t) => (
+                    <div key={t} className="flex items-center gap-2 text-xs text-text-muted">
+                      <div className="w-1 h-1 bg-success rounded-full" />
+                      {t}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}

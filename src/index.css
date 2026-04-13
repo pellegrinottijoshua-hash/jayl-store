@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-off-black text-text-primary font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-accent text-black;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-off-black;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-3 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border-light;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-cream text-black text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-accent hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-text-primary text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:border-cream hover:text-cream active:scale-[0.98];
+  }
+
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-10 h-10 border border-border text-text-secondary transition-all duration-200 hover:border-cream hover:text-cream;
+  }
+
+  .section-label {
+    @apply text-2xs font-mono tracking-ultra text-text-muted uppercase;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:border-border-light;
+  }
+
+  .input-field {
+    @apply w-full bg-surface border border-border px-4 py-3 text-text-primary text-sm placeholder:text-text-muted focus:outline-none focus:border-cream transition-colors duration-200;
+  }
+
+  .divider {
+    @apply border-t border-border;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-cream via-accent to-cream-muted bg-clip-text text-transparent;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+}
