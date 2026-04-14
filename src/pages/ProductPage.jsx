@@ -61,7 +61,7 @@ export default function ProductPage() {
       <div className="min-h-screen bg-white pt-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="font-display text-4xl text-ink mb-4">Not Found</h1>
         <p className="text-ink-secondary mb-8">This work doesn't exist (yet).</p>
-        <Link to="/shop" className="btn-ink">Back to Shop</Link>
+        <Link to="/art" className="btn-ink">Back to Shop</Link>
       </div>
     )
   }
@@ -366,7 +366,7 @@ export default function ProductPage() {
             <div className="flex items-center justify-between mb-10">
               <h2 className={cn('font-display text-2xl', t.relatedTitle)}>You May Also Like</h2>
               <Link
-                to={`/shop?section=${product.section}`}
+                to={`/${product.section}`}
                 className={cn(
                   'text-xs tracking-widest uppercase flex items-center gap-2 transition-colors',
                   t.relatedLink

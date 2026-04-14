@@ -1,44 +1,39 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
 import HomePage from '@/pages/HomePage'
-import ShopPage from '@/pages/ShopPage'
+import ArtPage from '@/pages/ArtPage'
+import ObjectsPage from '@/pages/ObjectsPage'
+import ArtistPage from '@/pages/ArtistPage'
 import ProductPage from '@/pages/ProductPage'
 import CheckoutPage from '@/pages/CheckoutPage'
 import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
-import ArtistPage from '@/pages/ArtistPage'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [pathname])
-  return null
-}
-
-const NO_FOOTER = ['/checkout']
+// Full-screen immersive pages — no footer, no scroll-to-top
+const NO_FOOTER = ['/', '/art', '/objects', '/artist', '/checkout']
 
 export default function App() {
   const { pathname } = useLocation()
-  const showFooter = !NO_FOOTER.some((p) => pathname.startsWith(p))
+  const showFooter = !NO_FOOTER.some((p) => pathname === p || pathname.startsWith(p + '/'))
 
   return (
     <>
-      <ScrollToTop />
       <Navbar />
       <CartDrawer />
 
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/product/:slug" element={<ProductPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
-          <Route path="/artist" element={<ArtistPage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/"                               element={<HomePage />} />
+          <Route path="/art"                            element={<ArtPage />} />
+          <Route path="/objects"                        element={<ObjectsPage />} />
+          <Route path="/artist"                         element={<ArtistPage />} />
+          <Route path="/product/:slug"                  element={<ProductPage />} />
+          <Route path="/checkout"                       element={<CheckoutPage />} />
+          <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
+          {/* Legacy shop URLs → redirect */}
+          <Route path="/shop" element={<Navigate to="/art" replace />} />
+          <Route path="*"     element={<NotFound />} />
         </Routes>
       </main>
 

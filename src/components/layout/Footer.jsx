@@ -54,9 +54,8 @@ export default function Footer() {
             <h4 className={cn(t.heading, 'mb-5')}>Shop</h4>
             <ul className="space-y-3">
               {[
-                { to: '/shop', label: 'All Works' },
-                { to: '/shop?section=art', label: 'Art Prints' },
-                { to: '/shop?section=objects', label: 'Objects' },
+                { to: '/art', label: 'Art Prints' },
+                { to: '/objects', label: 'Objects' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link to={to} className={cn('text-sm transition-colors duration-200', t.link)}>
