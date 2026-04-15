@@ -59,8 +59,18 @@ export default function HomePage() {
     setAnimKey((k) => k + 1)
   }, [])
 
+  const prevArt = useCallback(() => {
+    setArtIdx((i) => (i - 1 + artProducts.length) % artProducts.length)
+    setAnimKey((k) => k + 1)
+  }, [])
+
   const nextObjects = useCallback(() => {
     setObjectsIdx((i) => (i + 1) % objectsProducts.length)
+    setAnimKey((k) => k + 1)
+  }, [])
+
+  const prevObjects = useCallback(() => {
+    setObjectsIdx((i) => (i - 1 + objectsProducts.length) % objectsProducts.length)
     setAnimKey((k) => k + 1)
   }, [])
 
@@ -102,9 +112,10 @@ export default function HomePage() {
       if (section === 2) nextObjects()
       if (section === 3) navigate('/objects')
     },
-    // swipe right on section 0 navigates to art page
     onSwipeRight: () => {
       if (section === 0) navigate('/art')
+      if (section === 1) prevArt()
+      if (section === 2) prevObjects()
     },
   })
 
