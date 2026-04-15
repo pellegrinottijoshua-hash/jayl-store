@@ -100,6 +100,7 @@ export default function HomePage() {
       if (section === 0) navigate('/art')
       if (section === 1) nextArt()
       if (section === 2) nextObjects()
+      if (section === 3) navigate('/objects')
     },
     // swipe right on section 0 navigates to art page
     onSwipeRight: () => {
