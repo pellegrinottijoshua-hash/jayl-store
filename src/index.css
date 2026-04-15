@@ -85,6 +85,14 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  /* Force light pages to stay light */
+  .bg-paper, .bg-cream, [data-theme="light"] {
+    background-color: #f5f0e8 !important;
+    color: #111111 !important;
+  }
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-cream via-accent to-cream-muted bg-clip-text text-transparent;

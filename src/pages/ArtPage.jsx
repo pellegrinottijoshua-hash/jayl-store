@@ -73,6 +73,7 @@ export default function ArtPage() {
   return (
     <div
       className="h-screen w-screen bg-paper overflow-hidden relative select-none"
+      style={{ colorScheme: 'light' }}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >

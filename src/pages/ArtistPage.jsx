@@ -28,11 +28,22 @@ export default function ArtistPage() {
     setPageTheme('light')
     setActiveSection('artist')
     document.body.style.overflow = ''
-    return () => { document.body.style.overflow = '' }
+    // Force light colors on body/html regardless of OS dark mode
+    document.documentElement.style.setProperty('color-scheme', 'light')
+    document.body.style.backgroundColor = '#f5f0e8'
+    document.body.style.color = '#111111'
+    return () => {
+      document.documentElement.style.removeProperty('color-scheme')
+      document.body.style.backgroundColor = ''
+      document.body.style.color = ''
+    }
   }, [setPageTheme, setActiveSection])
 
   return (
-    <div className="min-h-screen w-screen bg-paper flex flex-col pt-14">
+    <div
+      className="min-h-screen w-screen bg-paper flex flex-col pt-14"
+      style={{ colorScheme: 'light', backgroundColor: '#f5f0e8', color: '#111111' }}
+    >
       {/* Large heading with falling-s */}
       <div className="px-6 sm:px-10 lg:px-16 pt-10 sm:pt-16 flex-shrink-0">
         <h1
