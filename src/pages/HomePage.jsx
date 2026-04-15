@@ -95,7 +95,7 @@ export default function HomePage() {
   // Touch / swipe
   const { onTouchStart, onTouchEnd } = useSwipe({
     onSwipeUp:   goDown,                              // finger moves up → go to next section below
-    onSwipeDown: () => { if (section < 3) goUp() },  // finger moves down → go to previous section above (blocked on last section)
+    onSwipeDown: goUp,    // finger moves down → go to previous section above
     onSwipeLeft: () => {
       if (section === 0) navigate('/art')
       if (section === 1) nextArt()
@@ -202,7 +202,10 @@ export default function HomePage() {
         </section>
 
         {/* ════ SECTION 4 — cream, artist vision ══════════════════════════ */}
-        <section className="h-screen w-screen bg-paper relative flex items-center justify-center">
+        <section
+          className="h-screen w-screen bg-paper relative flex items-center justify-center cursor-pointer"
+          onClick={() => navigate('/artist')}
+        >
           {/* Section label */}
           <div className="absolute top-16 left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">
