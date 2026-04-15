@@ -38,6 +38,7 @@ export default function HomePage() {
   const { setPageTheme, setActiveSection } = useThemeStore()
   const navigate = useNavigate()
   const wheelLock = useRef(false)
+  const swipedRef  = useRef(false)  // suppresses artist section onClick after a swipe
 
   // Lock body scroll — we control all navigation
   useEffect(() => {
@@ -107,6 +108,7 @@ export default function HomePage() {
     onSwipeUp:   goDown,                              // finger moves up → go to next section below
     onSwipeDown: goUp,    // finger moves down → go to previous section above
     onSwipeLeft: () => {
+      swipedRef.current = true
       if (section === 0) navigate('/art')
       if (section === 1) nextArt()
       if (section === 2) nextObjects()
@@ -216,7 +218,10 @@ export default function HomePage() {
         {/* ════ SECTION 4 — cream, artist vision ══════════════════════════ */}
         <section
           className="h-screen w-screen bg-paper relative flex items-center justify-center cursor-pointer"
-          onClick={() => navigate('/artist')}
+          onClick={() => {
+            if (swipedRef.current) { swipedRef.current = false; return }
+            navigate('/artist')
+          }}
         >
           {/* Section label */}
           <div className="absolute top-16 left-6 sm:left-8 z-10">
