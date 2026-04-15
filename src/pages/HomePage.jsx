@@ -94,8 +94,8 @@ export default function HomePage() {
 
   // Touch / swipe
   const { onTouchStart, onTouchEnd } = useSwipe({
-    onSwipeUp:   goDown,  // finger moves up → go to next section below
-    onSwipeDown: goUp,    // finger moves down → go to previous section above
+    onSwipeUp:   goDown,                              // finger moves up → go to next section below
+    onSwipeDown: () => { if (section < 3) goUp() },  // finger moves down → go to previous section above (blocked on last section)
     onSwipeLeft: () => {
       if (section === 0) navigate('/art')
       if (section === 1) nextArt()
@@ -130,15 +130,6 @@ export default function HomePage() {
           {/* Video placeholder — autoplay, looping black rectangle */}
           <div className="absolute inset-0 bg-black" aria-hidden="true" />
 
-          {/* Vision text — bottom overlay */}
-          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent px-6 sm:px-10 lg:px-16 pt-32 pb-14 lg:pb-20">
-            <p className="font-display text-cream text-lg sm:text-xl lg:text-2xl max-w-3xl leading-[1.5] tracking-[-0.01em]">
-              Every great artist drew the world differently — they saw their world. JAYL takes
-              the greatest visual languages in history and applies them to subjects, emotions, and
-              landscapes they never reached. This is what they would have made. If they had seen
-              what we see.
-            </p>
-          </div>
         </section>
 
         {/* ════ SECTION 2 — cream, art product ═══════════════════════════ */}
