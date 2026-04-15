@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
-import { useSwipe } from '@/hooks/useSwipe'
 
 /** Falling-s: smaller, dropped, slightly rotated clockwise */
 function FallingS({ scale = 1 }) {
@@ -24,35 +23,16 @@ function FallingS({ scale = 1 }) {
 
 export default function ArtistPage() {
   const { setPageTheme, setActiveSection } = useThemeStore()
-  const navigate = useNavigate()
 
   useEffect(() => {
     setPageTheme('light')
     setActiveSection('artist')
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = ''
     return () => { document.body.style.overflow = '' }
   }, [setPageTheme, setActiveSection])
 
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'ArrowDown') navigate('/objects')
-      if (e.key === 'ArrowUp')   navigate('/objects')
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [navigate])
-
-  const { onTouchStart, onTouchEnd } = useSwipe({
-    onSwipeDown: () => navigate('/objects'),
-    onSwipeUp:   () => navigate('/objects'),
-  })
-
   return (
-    <div
-      className="h-screen w-screen bg-paper overflow-hidden relative flex flex-col pt-14"
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
-    >
+    <div className="min-h-screen w-screen bg-paper flex flex-col pt-14">
       {/* Large heading with falling-s */}
       <div className="px-6 sm:px-10 lg:px-16 pt-10 sm:pt-16 flex-shrink-0">
         <h1
@@ -69,7 +49,7 @@ export default function ArtistPage() {
       </div>
 
       {/* Vision text */}
-      <div className="px-6 sm:px-10 lg:px-16 overflow-y-auto">
+      <div className="px-6 sm:px-10 lg:px-16">
         <div className="max-w-2xl">
           <p className="font-display text-xl sm:text-2xl lg:text-3xl text-ink leading-[1.5] italic mb-8">
             "Every great artist drew the world differently — they saw their world. JAYL takes the
@@ -91,6 +71,39 @@ export default function ArtistPage() {
             applied to the subjects those movements never reached.
           </p>
         </div>
+      </div>
+
+      {/* Photo placeholder + tagline + CTA */}
+      <div className="flex flex-col items-center px-6 sm:px-10 lg:px-16 mt-16 mb-20">
+        {/* 3:4 photo placeholder */}
+        <div
+          className="w-full max-w-xs sm:max-w-sm bg-black flex items-center justify-center"
+          style={{ aspectRatio: '3 / 4' }}
+        >
+          <span
+            className="text-white tracking-widest"
+            style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }}
+          >
+            JAYL
+          </span>
+        </div>
+
+        {/* Tagline */}
+        <p
+          className="mt-8 max-w-xs sm:max-w-sm text-center text-ink-secondary leading-relaxed"
+          style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: '0.95rem' }}
+        >
+          Based in Italy. Working across every movement, every era. Using AI as the brush,
+          history as the canvas.
+        </p>
+
+        {/* CTA */}
+        <Link
+          to="/art"
+          className="mt-8 inline-flex items-center gap-2 font-sans text-xs tracking-[0.15em] uppercase text-ink border-b border-ink/30 pb-0.5 hover:border-ink transition-colors duration-300"
+        >
+          Discover the Art →
+        </Link>
       </div>
     </div>
   )
