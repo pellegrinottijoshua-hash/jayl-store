@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
@@ -10,13 +10,7 @@ import ProductPage from '@/pages/ProductPage'
 import CheckoutPage from '@/pages/CheckoutPage'
 import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
 
-// Full-screen immersive pages — no footer, no scroll-to-top
-const NO_FOOTER = ['/', '/art', '/objects', '/artist', '/checkout']
-
 export default function App() {
-  const { pathname } = useLocation()
-  const showFooter = !NO_FOOTER.some((p) => pathname === p || pathname.startsWith(p + '/'))
-
   return (
     <>
       <Navbar />
@@ -37,7 +31,7 @@ export default function App() {
         </Routes>
       </main>
 
-      {showFooter && <Footer />}
+      <Footer />
     </>
   )
 }
