@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
@@ -8,11 +9,11 @@ import { cn } from '@/lib/utils'
 
 const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
+const pokemonProduct  = products.find((p) => p.collection === 'Cool Pokemon')
+const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
 
-// Each section's theme so the navbar colours update as we scroll
-const SECTION_THEMES = ['dark', 'light', 'dark', 'light']
+const SECTION_THEMES = ['dark', 'light', 'dark', 'dark', 'dark', 'light']
 
-/** Falling-s treatment shared with Artist page */
 function FallingS() {
   return (
     <span
@@ -36,32 +37,25 @@ export default function HomePage() {
   const [objectsIdx, setObjectsIdx] = useState(0)
   const [animKey, setAnimKey]       = useState(0)
   const { setPageTheme, setActiveSection } = useThemeStore()
-  const navigate = useNavigate()
-  const wheelLock = useRef(false)
-  const swipedRef  = useRef(false)  // suppresses artist section onClick after a swipe
+  const navigate   = useNavigate()
+  const wheelLock  = useRef(false)
+  const swipedRef  = useRef(false)
 
-  // Lock body scroll — we control all navigation
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
 
-  // Keep nav theme in sync with current section
   useEffect(() => {
     setPageTheme(SECTION_THEMES[section])
     setActiveSection(null)
   }, [section, setPageTheme, setActiveSection])
 
-  const goDown = useCallback(() => setSection((s) => Math.min(s + 1, 3)), [])
+  const goDown = useCallback(() => setSection((s) => Math.min(s + 1, 5)), [])
   const goUp   = useCallback(() => setSection((s) => Math.max(s - 1, 0)), [])
 
   const nextArt = useCallback(() => {
     setArtIdx((i) => (i + 1) % artProducts.length)
-    setAnimKey((k) => k + 1)
-  }, [])
-
-  const prevArt = useCallback(() => {
-    setArtIdx((i) => (i - 1 + artProducts.length) % artProducts.length)
     setAnimKey((k) => k + 1)
   }, [])
 
@@ -70,12 +64,6 @@ export default function HomePage() {
     setAnimKey((k) => k + 1)
   }, [])
 
-  const prevObjects = useCallback(() => {
-    setObjectsIdx((i) => (i - 1 + objectsProducts.length) % objectsProducts.length)
-    setAnimKey((k) => k + 1)
-  }, [])
-
-  // Wheel navigation (desktop)
   useEffect(() => {
     const onWheel = (e) => {
       if (wheelLock.current) return
@@ -88,13 +76,12 @@ export default function HomePage() {
     return () => window.removeEventListener('wheel', onWheel)
   }, [goDown, goUp])
 
-  // Keyboard navigation (desktop)
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'ArrowDown')  { e.preventDefault(); goDown() }
       if (e.key === 'ArrowUp')    { e.preventDefault(); goUp() }
       if (e.key === 'ArrowRight') {
-        if (section === 0) navigate('/art')
+        if (section === 0) navigate(`/product/${featuredArt.slug}`)
         if (section === 1) nextArt()
         if (section === 2) nextObjects()
       }
@@ -103,26 +90,22 @@ export default function HomePage() {
     return () => window.removeEventListener('keydown', onKey)
   }, [section, goDown, goUp, nextArt, nextObjects, navigate])
 
-  // Touch / swipe
   const { onTouchStart, onTouchEnd } = useSwipe({
-    onSwipeUp:   goDown,                              // finger moves up → go to next section below
-    onSwipeDown: goUp,    // finger moves down → go to previous section above
-    onSwipeLeft: () => {
-      swipedRef.current = true
-      if (section === 0) navigate('/art')
+    onSwipeUp:   goDown,
+    onSwipeDown: goUp,
+    onSwipeRight: () => {
+      if (section === 0) navigate(`/product/${featuredArt.slug}`)
       if (section === 1) nextArt()
       if (section === 2) nextObjects()
-      if (section === 3) navigate('/objects')
     },
-    onSwipeRight: () => {
-      if (section === 0) navigate('/art')
-      if (section === 1) prevArt()
-      if (section === 2) prevObjects()
+    onSwipeLeft: () => {
+      if (section === 5) { swipedRef.current = true; navigate('/objects') }
     },
   })
 
   const artProduct     = artProducts[artIdx]
   const objectsProduct = objectsProducts[objectsIdx]
+  const currentTheme   = SECTION_THEMES[section]
 
   return (
     <div
@@ -139,21 +122,21 @@ export default function HomePage() {
         }}
       >
 
-        {/* ════ SECTION 1 — black, video hero ════════════════════════════ */}
+        {/* ════ SECTION 1 — Video (black, fullscreen) ════════════════════ */}
         <section className="h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden">
-          {/* Video placeholder — autoplay, looping black rectangle */}
+          {/* Video placeholder — swap for <video> when asset is ready */}
           <div className="absolute inset-0 bg-black" aria-hidden="true" />
-
+          <div className="relative z-10 select-none pointer-events-none">
+            <p className="font-display text-7xl sm:text-9xl text-cream/10 tracking-widest">JAYL</p>
+          </div>
         </section>
 
-        {/* ════ SECTION 2 — cream, art product ═══════════════════════════ */}
+        {/* ════ SECTION 2 — Art collection (cream) ══════════════════════ */}
         <section className="h-screen w-screen bg-paper relative overflow-hidden">
-          {/* Section label */}
           <div className="absolute top-[88px] left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">art</p>
           </div>
 
-          {/* Product image */}
           <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-52 px-10">
             <img
               key={`art-img-${artIdx}`}
@@ -164,11 +147,7 @@ export default function HomePage() {
             />
           </div>
 
-          {/* Product info */}
-          <div
-            key={`art-info-${animKey}`}
-            className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-14 animate-fade-up"
-          >
+          <div key={`art-info-${animKey}`} className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-14 animate-fade-up">
             <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted mb-1">
               {slugToTitle(artProduct.movement)}
             </p>
@@ -178,19 +157,21 @@ export default function HomePage() {
             <p className="text-sm text-ink-muted">from {formatPrice(artProduct.price)}</p>
           </div>
 
-          {/* Dot indicator */}
-          <ProductDots count={artProducts.length} active={artIdx} onSelect={(i) => { setArtIdx(i); setAnimKey(k => k + 1) }} dark={false} />
+          <ProductDots
+            count={artProducts.length}
+            active={artIdx}
+            onSelect={(i) => { setArtIdx(i); setAnimKey((k) => k + 1) }}
+            dark={false}
+          />
         </section>
 
-        {/* ════ SECTION 3 — black, objects product ════════════════════════ */}
+        {/* ════ SECTION 3 — Objects hero (black) ════════════════════════ */}
         <section className="h-screen w-screen bg-off-black relative overflow-hidden">
-          {/* Section label */}
           <div className="absolute top-[88px] left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
           </div>
 
-          {/* Product image */}
-          <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-52 px-10">
+          <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-56 px-8 sm:px-16">
             <img
               key={`obj-img-${objectsIdx}`}
               src={objectsProduct.image}
@@ -200,22 +181,102 @@ export default function HomePage() {
             />
           </div>
 
-          {/* Product info */}
-          <div
-            key={`obj-info-${animKey}`}
-            className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-14 animate-fade-up"
-          >
+          <div key={`obj-info-${animKey}`} className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-14 animate-fade-up">
             <h2 className="font-display text-2xl sm:text-3xl text-cream leading-tight mb-1">
               {objectsProduct.name}
             </h2>
-            <p className="text-sm text-text-muted">from {formatPrice(objectsProduct.price)}</p>
+            <p className="text-sm text-text-muted mb-6">from {formatPrice(objectsProduct.price)}</p>
+            <Link
+              to={`/product/${objectsProduct.slug}`}
+              className="btn-primary inline-flex items-center gap-2 text-xs"
+            >
+              Shop Now <ArrowRight size={12} />
+            </Link>
           </div>
 
-          {/* Dot indicator */}
-          <ProductDots count={objectsProducts.length} active={objectsIdx} onSelect={(i) => { setObjectsIdx(i); setAnimKey(k => k + 1) }} dark />
+          <ProductDots
+            count={objectsProducts.length}
+            active={objectsIdx}
+            onSelect={(i) => { setObjectsIdx(i); setAnimKey((k) => k + 1) }}
+            dark
+          />
         </section>
 
-        {/* ════ SECTION 4 — cream, artist vision ══════════════════════════ */}
+        {/* ════ SECTION 4 — Objects pop mockup (black) ══════════════════ */}
+        <section
+          className="h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden cursor-pointer"
+          onClick={() => navigate('/objects/pokemon-logos')}
+        >
+          <div className="absolute top-[88px] left-6 sm:left-8 z-10">
+            <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">cool pokemon</p>
+          </div>
+
+          <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-32 px-10">
+            {pokemonProduct ? (
+              <img
+                src={pokemonProduct.image}
+                alt="Cool Pokemon Collection"
+                className="max-h-full max-w-full object-contain"
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+            ) : (
+              <div className="w-full max-w-xs aspect-square bg-stone-900" />
+            )}
+          </div>
+
+          <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-14">
+            <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted mb-2">
+              New Collection
+            </p>
+            <h2 className="font-display text-2xl sm:text-3xl text-cream leading-tight mb-2">
+              Cool Pokemon
+            </h2>
+            <p className="text-sm text-text-muted inline-flex items-center gap-1.5">
+              Explore <ArrowRight size={12} />
+            </p>
+          </div>
+        </section>
+
+        {/* ════ SECTION 5 — Objects horizontal scroll ═══════════════════ */}
+        <section className="h-screen w-screen bg-off-black relative overflow-hidden">
+          <div className="absolute top-[88px] left-6 sm:left-8 z-10">
+            <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
+          </div>
+
+          <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
+            <div
+              className="flex gap-5 overflow-x-auto px-6 sm:px-8 pb-2"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+            >
+              {objectsProducts.map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/product/${product.slug}`}
+                  className="flex-shrink-0 w-48 sm:w-60 group"
+                  draggable={false}
+                >
+                  <div className="w-full aspect-square bg-stone-900 overflow-hidden mb-3">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      draggable={false}
+                      onError={(e) => { e.currentTarget.style.display = 'none' }}
+                    />
+                  </div>
+                  <h3 className="font-display text-sm text-cream leading-tight truncate">
+                    {product.name}
+                  </h3>
+                  <p className="text-xs text-text-muted mt-0.5">
+                    from {formatPrice(product.price)}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════ SECTION 6 — Artist's (cream) ════════════════════════════ */}
         <section
           className="h-screen w-screen bg-paper relative flex items-center justify-center cursor-pointer"
           onClick={() => {
@@ -223,7 +284,6 @@ export default function HomePage() {
             navigate('/artist')
           }}
         >
-          {/* Section label */}
           <div className="absolute top-[88px] left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">
               artist'<FallingS />
@@ -243,15 +303,15 @@ export default function HomePage() {
 
       {/* ── Section progress indicator (right edge) ───────────────────── */}
       <div className="fixed right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2">
-        {[0, 1, 2, 3].map((i) => (
+        {SECTION_THEMES.map((_, i) => (
           <button
             key={i}
             onClick={() => setSection(i)}
             className={cn(
               'w-1 rounded-full transition-all duration-400',
               section === i
-                ? (SECTION_THEMES[i] === 'dark' ? 'h-6 bg-cream/70' : 'h-6 bg-ink/50')
-                : (SECTION_THEMES[i] === 'dark' ? 'h-1.5 bg-cream/20' : 'h-1.5 bg-ink/15')
+                ? (currentTheme === 'dark' ? 'h-6 bg-cream/70' : 'h-6 bg-ink/50')
+                : (currentTheme === 'dark' ? 'h-1.5 bg-cream/20' : 'h-1.5 bg-ink/15')
             )}
             aria-label={`Go to section ${i + 1}`}
           />
@@ -261,7 +321,6 @@ export default function HomePage() {
   )
 }
 
-/** Small pill dots showing product position within a section */
 function ProductDots({ count, active, onSelect, dark }) {
   if (count <= 1) return null
   return (
