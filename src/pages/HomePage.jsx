@@ -149,12 +149,12 @@ export default function HomePage() {
         {/* ════ SECTION 2 — cream, art product ═══════════════════════════ */}
         <section className="h-screen w-screen bg-paper relative overflow-hidden">
           {/* Section label */}
-          <div className="absolute top-16 left-6 sm:left-8 z-10">
+          <div className="absolute top-[88px] left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">art</p>
           </div>
 
           {/* Product image */}
-          <div className="absolute inset-0 flex items-center justify-center pt-14 pb-52 px-10">
+          <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-52 px-10">
             <img
               key={`art-img-${artIdx}`}
               src={artProduct.image}
@@ -185,12 +185,12 @@ export default function HomePage() {
         {/* ════ SECTION 3 — black, objects product ════════════════════════ */}
         <section className="h-screen w-screen bg-off-black relative overflow-hidden">
           {/* Section label */}
-          <div className="absolute top-16 left-6 sm:left-8 z-10">
+          <div className="absolute top-[88px] left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
           </div>
 
           {/* Product image */}
-          <div className="absolute inset-0 flex items-center justify-center pt-14 pb-52 px-10">
+          <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-52 px-10">
             <img
               key={`obj-img-${objectsIdx}`}
               src={objectsProduct.image}
@@ -224,7 +224,7 @@ export default function HomePage() {
           }}
         >
           {/* Section label */}
-          <div className="absolute top-16 left-6 sm:left-8 z-10">
+          <div className="absolute top-[88px] left-6 sm:left-8 z-10">
             <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">
               artist'<FallingS />
             </p>

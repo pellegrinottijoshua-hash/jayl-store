@@ -133,7 +133,7 @@ export default function ProductPage() {
       }
 
   return (
-    <div className={cn('min-h-screen pt-16', t.page)}>
+    <div className={cn('min-h-screen pt-24', t.page)}>
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <button

@@ -74,7 +74,7 @@ export default function ObjectsPage() {
       onTouchEnd={onTouchEnd}
     >
       {/* Full-screen product image */}
-      <div className="absolute inset-0 flex items-center justify-center pt-14 pb-56 px-8 sm:px-16 lg:px-24">
+      <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-56 px-8 sm:px-16 lg:px-24">
         <img
           key={`img-${idx}`}
           src={product.image}

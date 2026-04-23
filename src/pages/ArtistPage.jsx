@@ -41,7 +41,7 @@ export default function ArtistPage() {
 
   return (
     <div
-      className="min-h-screen w-screen bg-paper flex flex-col pt-14"
+      className="min-h-screen w-screen bg-paper flex flex-col pt-[84px]"
       style={{ colorScheme: 'light', backgroundColor: '#f5f0e8', color: '#111111' }}
     >
       {/* Large heading with falling-s */}

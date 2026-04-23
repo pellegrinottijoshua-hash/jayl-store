@@ -9,7 +9,7 @@ export default function OrderConfirmationPage() {
   const order = state?.order
 
   return (
-    <div className="min-h-screen pt-16 flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen pt-24 flex flex-col items-center justify-center px-4">
       <div className="max-w-xl w-full text-center">
         {/* Icon */}
         <div className="flex justify-center mb-6">
