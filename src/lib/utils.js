@@ -30,6 +30,7 @@ export function capitalize(str) {
  * e.g. "art-nouveau" → "Art Nouveau"
  */
 export function slugToTitle(slug) {
+  if (!slug) return ''
   return slug
     .split('-')
     .map(capitalize)
