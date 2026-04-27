@@ -39,37 +39,31 @@ export default function HomePage() {
   const [animKey, setAnimKey]       = useState(0)
   const { setPageTheme, setActiveSection } = useThemeStore()
   const navigate   = useNavigate()
-  const scrollRef  = useRef(null)
-  const sectionRef = useRef(0)   // always-current section for event handlers
+  const sectionRef = useRef(0)
   const swipedRef  = useRef(false)
-
-  // Keep body non-scrollable; our inner container scrolls
-  useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
-  }, [])
 
   useEffect(() => {
     setPageTheme(SECTION_THEMES[section])
     setActiveSection(null)
   }, [section, setPageTheme, setActiveSection])
 
-  // Scroll the snap container to a section index
   const scrollToSection = useCallback((idx) => {
-    if (!scrollRef.current) return
     const clamped = Math.max(0, Math.min(idx, SECTION_COUNT - 1))
-    scrollRef.current.scrollTo({ top: clamped * window.innerHeight, behavior: 'smooth' })
+    window.scrollTo({ top: clamped * window.innerHeight, behavior: 'smooth' })
   }, [])
 
-  // Update active section as user drags (fires continuously during scroll)
   const handleScroll = useCallback(() => {
-    if (!scrollRef.current) return
-    const idx = Math.round(scrollRef.current.scrollTop / window.innerHeight)
+    const idx = Math.round(window.scrollY / window.innerHeight)
     if (idx !== sectionRef.current) {
       sectionRef.current = idx
       setSection(idx)
     }
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
 
   const nextArt = useCallback(() => {
     setArtIdx((i) => (i + 1) % artProducts.length)
@@ -81,12 +75,9 @@ export default function HomePage() {
     setAnimKey((k) => k + 1)
   }, [])
 
-  // Keyboard navigation
   useEffect(() => {
     const onKey = (e) => {
       const cur = sectionRef.current
-      if (e.key === 'ArrowDown')  { e.preventDefault(); scrollToSection(cur + 1) }
-      if (e.key === 'ArrowUp')    { e.preventDefault(); scrollToSection(cur - 1) }
       if (e.key === 'ArrowRight') {
         if (cur === 0) navigate(`/product/${featuredArt.slug}`)
         if (cur === 1) nextArt()
@@ -95,9 +86,8 @@ export default function HomePage() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [scrollToSection, nextArt, nextObjects, navigate])
+  }, [nextArt, nextObjects, navigate])
 
-  // Horizontal-only swipe callbacks — vertical is handled by native CSS scroll-snap
   const { onTouchStart, onTouchEnd } = useSwipe({
     onSwipeRight: () => {
       const cur = sectionRef.current
@@ -116,16 +106,13 @@ export default function HomePage() {
 
   return (
     <div
-      ref={scrollRef}
-      className="h-screen w-screen overflow-y-scroll snap-y snap-mandatory"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      onScroll={handleScroll}
+      className="w-full"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
 
       {/* ════ SECTION 1 — Video (black, fullscreen) ════════════════════ */}
-      <section className="snap-start snap-always h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden flex-shrink-0">
+      <section className="h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black" aria-hidden="true" />
         <div className="relative z-10 select-none pointer-events-none">
           <p className="font-display text-7xl sm:text-9xl text-cream/10 tracking-widest">JAYL</p>
@@ -133,7 +120,7 @@ export default function HomePage() {
       </section>
 
       {/* ════ SECTION 2 — Art collection (cream) ══════════════════════ */}
-      <section className="snap-start snap-always h-screen w-screen bg-paper relative overflow-hidden flex-shrink-0">
+      <section className="h-screen w-screen bg-paper relative overflow-hidden">
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
           <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">art</p>
         </div>
@@ -167,7 +154,7 @@ export default function HomePage() {
       </section>
 
       {/* ════ SECTION 3 — Objects hero (black) ════════════════════════ */}
-      <section className="snap-start snap-always h-screen w-screen bg-off-black relative overflow-hidden flex-shrink-0">
+      <section className="h-screen w-screen bg-off-black relative overflow-hidden">
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
           <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
         </div>
@@ -205,7 +192,7 @@ export default function HomePage() {
 
       {/* ════ SECTION 4 — Objects pop mockup (black) ══════════════════ */}
       <section
-        className="snap-start snap-always h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden flex-shrink-0 cursor-pointer"
+        className="h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden cursor-pointer"
         onClick={() => navigate('/objects/pokemon-logos')}
       >
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
@@ -235,7 +222,7 @@ export default function HomePage() {
       </section>
 
       {/* ════ SECTION 5 — Objects horizontal scroll ═══════════════════ */}
-      <section className="snap-start snap-always h-screen w-screen bg-off-black relative overflow-hidden flex-shrink-0">
+      <section className="h-screen w-screen bg-off-black relative overflow-hidden">
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
           <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
         </div>
@@ -271,7 +258,7 @@ export default function HomePage() {
 
       {/* ════ SECTION 6 — Artist's (cream) ════════════════════════════ */}
       <section
-        className="snap-start snap-always h-screen w-screen bg-paper relative flex items-center justify-center flex-shrink-0 cursor-pointer"
+        className="h-screen w-screen bg-paper relative flex items-center justify-center cursor-pointer"
         onClick={() => {
           if (swipedRef.current) { swipedRef.current = false; return }
           navigate('/artist')

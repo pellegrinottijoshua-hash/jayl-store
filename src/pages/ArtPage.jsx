@@ -1,10 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
-import { useSwipe } from '@/hooks/useSwipe'
 import { cn } from '@/lib/utils'
 
 const artProducts = products.filter((p) => p.section === 'art')
@@ -12,16 +11,12 @@ const artProducts = products.filter((p) => p.section === 'art')
 export default function ArtPage() {
   const [idx, setIdx] = useState(0)
   const { setPageTheme, setActiveSection } = useThemeStore()
-  const navigate     = useNavigate()
   const carouselRef  = useRef(null)
   const idxRef       = useRef(0)
-  const wheelLock    = useRef(false)
 
   useEffect(() => {
     setPageTheme('light')
     setActiveSection('art')
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
   }, [setPageTheme, setActiveSection])
 
   const scrollToProduct = useCallback((i) => {
@@ -39,45 +34,20 @@ export default function ArtPage() {
     }
   }, [])
 
-  // Vertical-only swipe → route navigation; horizontal handled by CSS snap
-  const { onTouchStart, onTouchEnd } = useSwipe({
-    onSwipeUp:   () => navigate('/objects'),
-    onSwipeDown: () => navigate('/'),
-  })
-
-  // Mouse wheel scrolls through products on desktop
-  useEffect(() => {
-    const onWheel = (e) => {
-      if (wheelLock.current) return
-      if (Math.abs(e.deltaY) < 20) return
-      wheelLock.current = true
-      e.deltaY > 0
-        ? scrollToProduct(idxRef.current + 1)
-        : scrollToProduct(idxRef.current - 1)
-      setTimeout(() => { wheelLock.current = false }, 700)
-    }
-    window.addEventListener('wheel', onWheel, { passive: true })
-    return () => window.removeEventListener('wheel', onWheel)
-  }, [scrollToProduct])
-
   useEffect(() => {
     const onKey = (e) => {
       const cur = idxRef.current
       if (e.key === 'ArrowRight') scrollToProduct(cur + 1)
       if (e.key === 'ArrowLeft')  scrollToProduct(cur - 1)
-      if (e.key === 'ArrowDown')  navigate('/objects')
-      if (e.key === 'ArrowUp')    navigate('/')
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [scrollToProduct, navigate])
+  }, [scrollToProduct])
 
   return (
     <div
       className="h-screen w-screen overflow-hidden relative select-none"
       style={{ colorScheme: 'light' }}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
     >
       {/* Horizontal snap carousel — drag freely, snaps on release */}
       <div
