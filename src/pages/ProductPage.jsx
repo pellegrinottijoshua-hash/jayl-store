@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-react'
-import { getProductBySlug, products } from '@/data/products'
+import { getProductById, products } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
 import { formatPrice, slugToTitle, cn } from '@/lib/utils'
 import ProductCard from '@/components/product/ProductCard'
@@ -33,9 +33,9 @@ function Accordion({ title, children, light }) {
 }
 
 export default function ProductPage() {
-  const { slug } = useParams()
+  const { id } = useParams()
   const navigate = useNavigate()
-  const product = getProductBySlug(slug)
+  const product = getProductById(id)
   const { addItem, openCart } = useCartStore()
   const { setPageTheme } = useThemeStore()
 

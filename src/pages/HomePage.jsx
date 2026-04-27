@@ -7,7 +7,7 @@ import { useThemeStore } from '@/store/themeStore'
 
 const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
-const pokemonProduct  = products.find((p) => p.collection === 'Cool Pokemon')
+const pokemonProduct  = products.find((p) => p.id === 'cool-pokemon-tee')
 const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
 const featuredObject  = objectsProducts[0]
 
@@ -71,7 +71,7 @@ export default function HomePage() {
           </h1>
           <p className="text-sm text-white/60 mb-6">{featuredArt.subtitle}</p>
           <Link
-            to={`/product/${featuredArt.slug}`}
+            to={`/product/${featuredArt.id}`}
             className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
           >
             Shop Now <ArrowRight size={12} />
@@ -82,7 +82,7 @@ export default function HomePage() {
       {/* ════ SECTION 2 — Art fullscreen hero ══════════════════════════ */}
       <section
         className="h-screen w-screen relative overflow-hidden cursor-pointer"
-        onClick={() => navigate(`/product/${featuredArt.slug}`)}
+        onClick={() => navigate(`/product/${featuredArt.id}`)}
       >
         <img
           src={featuredArt.image}
@@ -100,7 +100,7 @@ export default function HomePage() {
           </h2>
           <p className="text-sm text-white/70 mb-6">from {formatPrice(featuredArt.price)}</p>
           <Link
-            to={`/product/${featuredArt.slug}`}
+            to={`/product/${featuredArt.id}`}
             className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
           >
             Shop Now <ArrowRight size={12} />
@@ -111,7 +111,7 @@ export default function HomePage() {
       {/* ════ SECTION 3 — Objects fullscreen hero ══════════════════════ */}
       <section
         className="h-screen w-screen relative overflow-hidden cursor-pointer"
-        onClick={() => navigate(`/product/${featuredObject.slug}`)}
+        onClick={() => navigate(`/product/${featuredObject.id}`)}
       >
         <img
           src={featuredObject.image}
@@ -127,7 +127,7 @@ export default function HomePage() {
           </h2>
           <p className="text-sm text-white/70 mb-6">from {formatPrice(featuredObject.price)}</p>
           <Link
-            to={`/product/${featuredObject.slug}`}
+            to={`/product/${featuredObject.id}`}
             className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
           >
             Shop Now <ArrowRight size={12} />
@@ -138,7 +138,7 @@ export default function HomePage() {
       {/* ════ SECTION 4 — Objects pop mockup (black) ══════════════════ */}
       <section
         className="h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden cursor-pointer"
-        onClick={() => navigate('/objects/pokemon-logos')}
+        onClick={() => navigate('/objects')}
       >
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
           <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">cool pokemon</p>
@@ -180,7 +180,7 @@ export default function HomePage() {
             {objectsProducts.map((product) => (
               <Link
                 key={product.id}
-                to={`/product/${product.slug}`}
+                to={`/product/${product.id}`}
                 className="flex-shrink-0 w-48 sm:w-60 group"
                 draggable={false}
               >

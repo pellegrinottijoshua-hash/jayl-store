@@ -1,5 +1,4 @@
 // Product catalog for JAYL store
-// Images reference placeholder art — replace with actual Gelato product images
 
 export const MOVEMENTS = [
   'impressionism',
@@ -22,16 +21,15 @@ export const SUBJECTS = [
 export const products = [
   // ─── ART PRINTS ───────────────────────────────────────────────────────────────
   {
-    id: 'ap-001',
+    id: 'silicon-valley-after-monet',
     section: 'art',
     collection: 'Expressionist Landscapes',
-    slug: 'silicon-valley-monet',
     name: 'Silicon Valley, After Monet',
     subtitle: 'Impressionist Data Centers',
     movement: 'impressionism',
     subject: 'technology',
-    price: 8900, // cents
-    currency: 'usd',
+    price: 8900,
+    currency: 'eur',
     description:
       'Monet spent his final years painting haystacks at different hours of light. What if he\'d painted server farms instead — those cathedrals of heat and electricity? This piece imagines it: blurred brushwork catching steam vents, the hazy glow of LED status lights, infinite rows dissolving into California morning haze.',
     details: [
@@ -62,16 +60,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'ap-002',
+    id: 'the-persistence-of-algorithms',
     section: 'art',
     collection: 'Expressionist Landscapes',
-    slug: 'persistence-of-algorithms',
     name: 'The Persistence of Algorithms',
     subtitle: 'Surrealist Machine Dreams',
     movement: 'surrealism',
     subject: 'ai',
     price: 9900,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'Dalí\'s melting clocks questioned the rigidity of time. This work applies that same visual language to machine learning — training curves that droop and warp, neural network diagrams pooling on desert floors, the uncanny dreamscape of a mind that has never actually dreamed.',
     details: [
@@ -102,16 +99,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'ap-003',
+    id: 'deconstructed-feed',
     section: 'art',
     collection: 'Expressionist Landscapes',
-    slug: 'deconstructed-feed',
     name: 'Deconstructed Feed',
     subtitle: 'Cubist Social Media',
     movement: 'cubism',
     subject: 'social-media',
     price: 8900,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'Picasso and Braque shattered single perspective — the same face seen simultaneously from multiple angles. Apply that logic to a social media feed: the same moment, infinite simultaneous framings, every algorithm a different Cubist facet. The portrait of the present tense.',
     details: [
@@ -142,16 +138,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'ap-004',
+    id: 'urban-expressionist-no-1',
     section: 'art',
     collection: 'Urban Movements',
-    slug: 'urban-expressionist-no1',
     name: 'Urban Expressionist No. 1',
     subtitle: 'Kirchner\'s Lost City',
     movement: 'expressionism',
     subject: 'urban-life',
     price: 9900,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'Ernst Ludwig Kirchner\'s Berlin Street Scenes captured the nervous energy of early 20th century modernity. This work reimagines that anxious expressionist street — angular figures, clashing colors, distorted space — in a contemporary megacity. The anxiety is the same. Only the phones have changed.',
     details: [
@@ -182,16 +177,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'ap-005',
+    id: 'interface-after-mucha',
     section: 'art',
     collection: 'Urban Movements',
-    slug: 'art-nouveau-interface',
     name: 'Interface, After Mucha',
     subtitle: 'Art Nouveau UX',
     movement: 'art-nouveau',
     subject: 'digital-culture',
     price: 11900,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'Alphonse Mucha wrapped his figures in flowing organic ornament — hair becoming vine, border becoming blossom. Here the same treatment is applied to a user interface: dropdowns blooming into flowers, notification badges nested in leaves, the mobile OS rendered as sacred decorative program.',
     details: [
@@ -222,16 +216,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'ap-006',
+    id: 'bauhaus-late-capitalism',
     section: 'art',
     collection: 'Urban Movements',
-    slug: 'bauhaus-late-capitalism',
     name: 'Bauhaus Late Capitalism',
     subtitle: 'Form Follows Function Fails',
     movement: 'bauhaus',
     subject: 'late-capitalism',
     price: 8900,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'The Bauhaus believed design could make a better world — pure geometric form, honest materials, function without ornament. This work applies that aesthetic to the infrastructure of contemporary capitalism: logistics warehouses, fulfillment centers, gig economy apps — stripped to pure Bauhaus geometry and colored in flat Bauhaus primaries.',
     details: [
@@ -264,16 +257,15 @@ export const products = [
 
   // ─── STREETWEAR ───────────────────────────────────────────────────────────────
   {
-    id: 'sw-001',
+    id: 'persistence-tee',
     section: 'objects',
     collection: 'Wearables',
-    slug: 'persistence-tee',
     name: 'Persistence Tee',
     subtitle: 'The Persistence of Algorithms',
     movement: 'surrealism',
     subject: 'ai',
     price: 5500,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'The Persistence of Algorithms motif on a heavyweight 100% organic cotton tee. Oversized fit, dropped shoulders, screen printed on garment-dyed black stock. Limited run — once it\'s gone, it\'s gone.',
     details: [
@@ -305,16 +297,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'sw-002',
+    id: 'cubist-hoodie',
     section: 'objects',
     collection: 'Wearables',
-    slug: 'cubist-hoodie',
     name: 'Cubist Hoodie',
     subtitle: 'Deconstructed Feed',
     movement: 'cubism',
     subject: 'social-media',
     price: 11500,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'The Deconstructed Feed artwork wrapped around a heavyweight French terry hoodie. Oversized fit, kangaroo pocket, ribbed cuffs and hem. Screen printed in three colors on garment-dyed stock.',
     details: [
@@ -346,16 +337,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'sw-003',
+    id: 'bauhaus-longsleeve',
     section: 'objects',
     collection: 'Wearables',
-    slug: 'bauhaus-longsleeve',
     name: 'Bauhaus Longsleeve',
     subtitle: 'Form Follows Function',
     movement: 'bauhaus',
     subject: 'late-capitalism',
     price: 7500,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'Clean Bauhaus geometry printed large across the back of a 100% organic cotton heavyweight longsleeve. Relaxed fit, ribbed cuffs. Minimal front chest print. The most wearable ideology.',
     details: [
@@ -387,16 +377,15 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'sw-004',
+    id: 'interface-tee',
     section: 'objects',
     collection: 'Wearables',
-    slug: 'mucha-tee',
     name: 'Interface Tee',
     subtitle: 'Art Nouveau UX',
     movement: 'art-nouveau',
     subject: 'digital-culture',
     price: 5500,
-    currency: 'usd',
+    currency: 'eur',
     description:
       'The Interface, After Mucha motif reduced to a bold chest graphic on a heavyweight organic cotton tee. The organic curves of Art Nouveau meet the hard edges of a mobile interface. Oversized cut, dropped shoulders.',
     details: [
@@ -429,10 +418,9 @@ export const products = [
 
   // ─── COOL POKEMON ─────────────────────────────────────────────────────────────
   {
-    id: 'cp-001',
+    id: 'cool-pokemon-tee',
     section: 'objects',
     collection: 'Wearables',
-    slug: 'cool-pokemon-tee',
     name: 'Cool Pokemon Tee',
     subtitle: 'Cool Pokemon Collection',
     price: 2299,
@@ -460,10 +448,9 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'cp-002',
+    id: 'cool-pokemon-hoodie',
     section: 'objects',
     collection: 'Wearables',
-    slug: 'cool-pokemon-hoodie',
     name: 'Cool Pokemon Hoodie',
     subtitle: 'Cool Pokemon Collection',
     price: 3499,
@@ -491,10 +478,9 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'cp-003',
+    id: 'cool-pokemon-bag',
     section: 'objects',
     collection: 'Living Objects',
-    slug: 'cool-pokemon-bag',
     name: 'Cool Pokemon Bag',
     subtitle: 'Cool Pokemon Collection',
     price: 2299,
@@ -503,6 +489,9 @@ export const products = [
     details: [
       'Durable canvas construction',
       'Printed and fulfilled via Gelato',
+    ],
+    sizes: [
+      { id: 'one-size', label: 'One Size', price: 2299 },
     ],
     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Crect width='800' height='800' fill='%231a1a1a'/%3E%3C/svg%3E",
     images: [
@@ -513,10 +502,9 @@ export const products = [
     gelatoProductId: null,
   },
   {
-    id: 'cp-004',
+    id: 'cool-pokemon-mug',
     section: 'objects',
     collection: 'Living Objects',
-    slug: 'cool-pokemon-mug',
     name: 'Cool Pokemon Mug',
     subtitle: 'Cool Pokemon Collection',
     price: 1699,
@@ -526,6 +514,9 @@ export const products = [
       '11oz ceramic mug',
       'Dishwasher safe',
       'Printed and fulfilled via Gelato',
+    ],
+    sizes: [
+      { id: 'one-size', label: 'One Size', price: 1699 },
     ],
     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Crect width='800' height='800' fill='%231a1a1a'/%3E%3C/svg%3E",
     images: [
@@ -537,7 +528,6 @@ export const products = [
   },
 ]
 
-export const getFeaturedProducts = () => products.filter((p) => p.featured)
+export const getFeaturedProducts  = () => products.filter((p) => p.featured)
 export const getProductsBySection = (section) => products.filter((p) => p.section === section)
-export const getProductBySlug = (slug) => products.find((p) => p.slug === slug)
-export const getProductById = (id) => products.find((p) => p.id === id)
+export const getProductById       = (id) => products.find((p) => p.id === id)

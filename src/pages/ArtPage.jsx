@@ -52,7 +52,7 @@ export default function ArtPage() {
             {items.map((product, i) => (
               <Link
                 key={product.id}
-                to={`/product/${product.slug}`}
+                to={`/product/${product.id}`}
                 className={[
                   'flex-shrink-0 group',
                   i === 0

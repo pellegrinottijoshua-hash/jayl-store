@@ -11,7 +11,7 @@ export default function ProductCard({ product, className, light = false }) {
 
   return (
     <Link
-      to={`/product/${product.slug}`}
+      to={`/product/${product.id}`}
       className={cn(
         'group block relative overflow-hidden transition-all duration-500',
         light
