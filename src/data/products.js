@@ -24,6 +24,7 @@ export const products = [
   {
     id: 'ap-001',
     section: 'art',
+    collection: 'Expressionist Landscapes',
     slug: 'silicon-valley-monet',
     name: 'Silicon Valley, After Monet',
     subtitle: 'Impressionist Data Centers',
@@ -58,11 +59,12 @@ export const products = [
     ],
     tags: ['impressionism', 'technology', 'best-seller'],
     featured: true,
-    gelatoProductId: null, // Set when product is created in Gelato
+    gelatoProductId: null,
   },
   {
     id: 'ap-002',
     section: 'art',
+    collection: 'Expressionist Landscapes',
     slug: 'persistence-of-algorithms',
     name: 'The Persistence of Algorithms',
     subtitle: 'Surrealist Machine Dreams',
@@ -102,6 +104,7 @@ export const products = [
   {
     id: 'ap-003',
     section: 'art',
+    collection: 'Expressionist Landscapes',
     slug: 'deconstructed-feed',
     name: 'Deconstructed Feed',
     subtitle: 'Cubist Social Media',
@@ -141,6 +144,7 @@ export const products = [
   {
     id: 'ap-004',
     section: 'art',
+    collection: 'Urban Movements',
     slug: 'urban-expressionist-no1',
     name: 'Urban Expressionist No. 1',
     subtitle: 'Kirchner\'s Lost City',
@@ -180,6 +184,7 @@ export const products = [
   {
     id: 'ap-005',
     section: 'art',
+    collection: 'Urban Movements',
     slug: 'art-nouveau-interface',
     name: 'Interface, After Mucha',
     subtitle: 'Art Nouveau UX',
@@ -219,6 +224,7 @@ export const products = [
   {
     id: 'ap-006',
     section: 'art',
+    collection: 'Urban Movements',
     slug: 'bauhaus-late-capitalism',
     name: 'Bauhaus Late Capitalism',
     subtitle: 'Form Follows Function Fails',
@@ -260,6 +266,7 @@ export const products = [
   {
     id: 'sw-001',
     section: 'objects',
+    collection: 'Wearables',
     slug: 'persistence-tee',
     name: 'Persistence Tee',
     subtitle: 'The Persistence of Algorithms',
@@ -300,6 +307,7 @@ export const products = [
   {
     id: 'sw-002',
     section: 'objects',
+    collection: 'Wearables',
     slug: 'cubist-hoodie',
     name: 'Cubist Hoodie',
     subtitle: 'Deconstructed Feed',
@@ -340,6 +348,7 @@ export const products = [
   {
     id: 'sw-003',
     section: 'objects',
+    collection: 'Wearables',
     slug: 'bauhaus-longsleeve',
     name: 'Bauhaus Longsleeve',
     subtitle: 'Form Follows Function',
@@ -380,6 +389,7 @@ export const products = [
   {
     id: 'sw-004',
     section: 'objects',
+    collection: 'Wearables',
     slug: 'mucha-tee',
     name: 'Interface Tee',
     subtitle: 'Art Nouveau UX',
@@ -421,7 +431,7 @@ export const products = [
   {
     id: 'cp-001',
     section: 'objects',
-    collection: 'Cool Pokemon',
+    collection: 'Wearables',
     slug: 'cool-pokemon-tee',
     name: 'Cool Pokemon Tee',
     subtitle: 'Cool Pokemon Collection',
@@ -452,7 +462,7 @@ export const products = [
   {
     id: 'cp-002',
     section: 'objects',
-    collection: 'Cool Pokemon',
+    collection: 'Wearables',
     slug: 'cool-pokemon-hoodie',
     name: 'Cool Pokemon Hoodie',
     subtitle: 'Cool Pokemon Collection',
@@ -483,7 +493,7 @@ export const products = [
   {
     id: 'cp-003',
     section: 'objects',
-    collection: 'Cool Pokemon',
+    collection: 'Living Objects',
     slug: 'cool-pokemon-bag',
     name: 'Cool Pokemon Bag',
     subtitle: 'Cool Pokemon Collection',
@@ -505,7 +515,7 @@ export const products = [
   {
     id: 'cp-004',
     section: 'objects',
-    collection: 'Cool Pokemon',
+    collection: 'Living Objects',
     slug: 'cool-pokemon-mug',
     name: 'Cool Pokemon Mug',
     subtitle: 'Cool Pokemon Collection',
