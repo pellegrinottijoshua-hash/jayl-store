@@ -9,6 +9,12 @@ import ArtistPage from '@/pages/ArtistPage'
 import ProductPage from '@/pages/ProductPage'
 import CheckoutPage from '@/pages/CheckoutPage'
 import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
+import ContactPage from '@/pages/ContactPage'
+import ShippingPage from '@/pages/ShippingPage'
+import ReturnsPage from '@/pages/ReturnsPage'
+import TermsPage from '@/pages/TermsPage'
+import PrivacyPage from '@/pages/PrivacyPage'
+import CookiesPage from '@/pages/CookiesPage'
 
 export default function App() {
   return (
@@ -25,6 +31,12 @@ export default function App() {
           <Route path="/product/:slug"                  element={<ProductPage />} />
           <Route path="/checkout"                       element={<CheckoutPage />} />
           <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
+          <Route path="/contact"  element={<ContactPage />} />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/returns"  element={<ReturnsPage />} />
+          <Route path="/terms"    element={<TermsPage />} />
+          <Route path="/privacy"  element={<PrivacyPage />} />
+          <Route path="/cookies"  element={<CookiesPage />} />
           {/* Legacy shop URLs → redirect */}
           <Route path="/shop" element={<Navigate to="/art" replace />} />
           <Route path="*"     element={<NotFound />} />

@@ -47,7 +47,7 @@ export default function Footer() {
             <h4 className={cn(t.heading, 'mb-5')}>Support</h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@jayl.store" className={cn('text-sm', t.link)}>Contact Us</a>
+                  <Link to="/contact" className={cn('text-sm', t.link)}>Contact Us</Link>
               </li>
               <li>
                 <Link to="/shipping" className={cn('text-sm', t.link)}>Shipping Info</Link>
