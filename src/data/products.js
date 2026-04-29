@@ -527,6 +527,37 @@ export const products = [
     gelatoProductId: 'd6141173-1369-401b-ab16-46269bc104c8',
     movement: 'Pokemon Cool Logos',
   },
+  {
+    id: 'tote-bag-snorlax',
+    section: 'objects',
+    collection: 'pokemon-logos',
+    name: 'Snorlax Tote Bag',
+    subtitle: 'Pokemon Cool Logos',
+    price: 2000,
+    currency: 'eur',
+    description: 'Snorlax tote bag from the Pokemon Cool Logos collection.',
+    details: [
+      'Heavy-duty canvas tote',
+      'Available in Black, Natural and Navy',
+      'Printed and fulfilled via Gelato',
+    ],
+    sizes: [
+      { id: 'one-size', label: 'One Size', price: 2000 },
+    ],
+    image: 'https://i.etsystatic.com/64639655/r/il/950fac/7940634400/il_1588xN.7940634400_i1em.jpg',
+    images: [
+      'https://i.etsystatic.com/64639655/r/il/950fac/7940634400/il_1588xN.7940634400_i1em.jpg',
+    ],
+    tags: ['tote', 'pokemon-logos', 'snorlax'],
+    featured: false,
+    gelatoProductId: 'd510ac9b-8788-4299-be2a-236ec1667136',
+    movement: 'Pokemon Cool Logos',
+    variants: [
+      { id: 'tote-black',   color: 'Black',   gelatoVariantId: 'd510ac9b-8788-4299-be2a-236ec1667136_black' },
+      { id: 'tote-natural', color: 'Natural', gelatoVariantId: 'd510ac9b-8788-4299-be2a-236ec1667136_natural' },
+      { id: 'tote-navy',    color: 'Navy',    gelatoVariantId: 'd510ac9b-8788-4299-be2a-236ec1667136_navy' },
+    ],
+  },
 ]
 
 export const getFeaturedProducts  = () => products.filter((p) => p.featured)
