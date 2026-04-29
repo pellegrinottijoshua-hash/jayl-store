@@ -165,8 +165,8 @@ export default function CartDrawer() {
               <span className="text-text-secondary">Subtotal</span>
               <span className="font-semibold text-text-primary">{formatPrice(subtotal)}</span>
             </div>
-            <p className="text-xs text-text-muted">
-              Shipping and taxes calculated at checkout.
+            <p className="text-xs text-success">
+              Free shipping worldwide.
             </p>
             <Link
               to="/checkout"

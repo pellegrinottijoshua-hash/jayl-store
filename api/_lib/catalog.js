@@ -8,8 +8,8 @@ const productMap = new Map(products.map((p) => [p.id, p]))
 const MAX_QUANTITY      = 99
 const MAX_ITEMS_IN_CART = 50
 export const CURRENCY   = 'eur'
-export const FREE_SHIPPING_THRESHOLD = 10000  // cents
-export const STANDARD_SHIPPING       = 799    // cents
+export const FREE_SHIPPING_THRESHOLD = 0  // always free
+export const STANDARD_SHIPPING       = 0  // always free
 
 /** Resolve and price a single client item. Returns either { ok: true, item } or { ok: false, error }. */
 export function priceItem(raw) {

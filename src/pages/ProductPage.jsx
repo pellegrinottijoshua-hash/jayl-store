@@ -351,7 +351,7 @@ export default function ProductPage() {
                     Orders are printed and shipped from the facility nearest to you, minimising
                     transit time and carbon footprint. Typical production time is 2–4 business days.
                   </p>
-                  <p>Shipping times vary by location. Free shipping on orders over €100.</p>
+                  <p>Shipping is always free, worldwide.</p>
                 </div>
               </Accordion>
             </div>

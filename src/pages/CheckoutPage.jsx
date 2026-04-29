@@ -53,8 +53,8 @@ function CheckoutForm() {
   const elements = useElements()
 
   const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0)
-  const shipping = subtotal >= 10000 ? 0 : 799
-  const total = subtotal + shipping
+  const shipping = 0
+  const total = subtotal
 
   const [form, setForm] = useState({
     email: '',
@@ -384,15 +384,8 @@ function CheckoutForm() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-text-secondary">Shipping</span>
-                <span className="text-text-primary">
-                  {shipping === 0 ? 'Free' : formatPrice(shipping)}
-                </span>
+                <span className="text-success font-medium">Free</span>
               </div>
-              {shipping > 0 && (
-                <p className="text-xs text-text-muted">
-                  Free shipping on orders over €100
-                </p>
-              )}
               <div className="divider" />
               <div className="flex justify-between">
                 <span className="text-sm font-semibold text-text-primary">Total</span>
