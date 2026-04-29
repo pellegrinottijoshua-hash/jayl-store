@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
+import { useLayoutEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
@@ -16,9 +17,29 @@ import TermsPage from '@/pages/TermsPage'
 import PrivacyPage from '@/pages/PrivacyPage'
 import CookiesPage from '@/pages/CookiesPage'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useLayoutEffect(() => {
+    // Prevent the browser from restoring the previous scroll position.
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    // Override smooth-scroll so the jump is instant, not animated.
+    const html = document.documentElement
+    html.style.scrollBehavior = 'auto'
+    window.scrollTo(0, 0)
+    // Restore smooth-scroll after the browser has painted.
+    requestAnimationFrame(() => {
+      html.style.scrollBehavior = ''
+    })
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <CartDrawer />
 
@@ -54,7 +75,7 @@ function NotFound() {
       <p className="section-label-light text-ink-muted mb-4">404</p>
       <h1 className="font-display text-5xl text-ink mb-4">Page not found</h1>
       <p className="text-ink-secondary mb-8">The page you're looking for doesn't exist.</p>
-      <a href="/" className="btn-ink">Go Home</a>
+      <Link to="/" className="btn-ink">Go Home</Link>
     </div>
   )
 }
