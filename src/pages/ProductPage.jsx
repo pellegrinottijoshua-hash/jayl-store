@@ -162,7 +162,7 @@ export default function ProductPage() {
               />
             </div>
             {product.images && product.images.length > 1 && (
-              <div className="flex gap-3">
+              <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
