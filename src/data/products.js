@@ -544,9 +544,11 @@ export const products = [
     sizes: [
       { id: 'one-size', label: 'One Size', price: 2000 },
     ],
-    image: 'https://i.etsystatic.com/64639655/r/il/950fac/7940634400/il_1588xN.7940634400_i1em.jpg',
+    image: '/images/tote-bag-snorlax/editor_front.jpeg',
     images: [
-      'https://i.etsystatic.com/64639655/r/il/950fac/7940634400/il_1588xN.7940634400_i1em.jpg',
+      '/images/tote-bag-snorlax/editor_front.jpeg',
+      '/images/tote-bag-snorlax/editor_front-copia.jpeg',
+      '/images/tote-bag-snorlax/editor_front-copia-2.jpeg',
     ],
     tags: ['tote', 'pokemon-logos', 'snorlax'],
     featured: false,
