@@ -43,16 +43,26 @@ export function priceItem(raw) {
     if (!colorObj) return { ok: false, error: `Invalid color for ${productId}` }
   }
 
+  // Products with variants (e.g. tote bags) require a color selection —
+  // validate against the variants array when colors[] is absent.
+  let variantObj = null
+  if (product.variants?.length) {
+    if (!raw.color) return { ok: false, error: `Color is required for ${productId}` }
+    variantObj = product.variants.find((v) => v.id === raw.color)
+    if (!variantObj) return { ok: false, error: `Invalid color variant for ${productId}` }
+  }
+
   const unitPrice = (sizeObj?.price ?? product.price) + (frameObj?.price ?? 0)
 
   return {
     ok: true,
     item: {
       productId,
-      size:   sizeObj?.id   ?? null,
-      frame:  frameObj?.id  ?? 'none',
-      color:  colorObj?.id  ?? null,
-      quantity: quantityNum,
+      size:      sizeObj?.id   ?? null,
+      frame:     frameObj?.id  ?? 'none',
+      color:     colorObj?.id  ?? variantObj?.id ?? null,
+      variantObj,  // null for non-variant products; used by create-order to resolve gelatoVariantId
+      quantity:  quantityNum,
       unitPrice,
       product,  // attached for server-side use; never serialise this whole thing back to clients
     },

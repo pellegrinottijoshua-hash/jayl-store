@@ -554,6 +554,12 @@ export const products = [
     featured: false,
     gelatoProductId: 'd510ac9b-8788-4299-be2a-236ec1667136',
     movement: 'Pokemon Cool Logos',
+    // colors drives the UI selector (id must match variants[].id for Gelato mapping)
+    colors: [
+      { id: 'tote-black',   label: 'Black',   hex: '#1a1a1a' },
+      { id: 'tote-natural', label: 'Natural', hex: '#d4c5a9' },
+      { id: 'tote-navy',    label: 'Navy',    hex: '#1f2d5c' },
+    ],
     variants: [
       { id: 'tote-black',   color: 'Black',   gelatoVariantId: 'd510ac9b-8788-4299-be2a-236ec1667136_black' },
       { id: 'tote-natural', color: 'Natural', gelatoVariantId: 'd510ac9b-8788-4299-be2a-236ec1667136_natural' },

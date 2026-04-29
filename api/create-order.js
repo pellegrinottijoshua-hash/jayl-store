@@ -14,12 +14,18 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     orderReferenceId:    `jayl-${paymentIntent.id}`,   // natural idempotency key
     customerReferenceId: email || 'unknown',
     currency: CURRENCY.toUpperCase(),
-    items: items.map((item) => ({
-      itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
-      productUid:      item.product.gelatoProductId,
-      quantity:        item.quantity,
-      files: [{ type: 'default', url: item.product.image }],
-    })),
+    items: items.map((item) => {
+      // For products with color variants (e.g. tote bags) use the variant-level
+      // gelatoVariantId; for everything else fall back to the product-level id.
+      const gelatoVariant = item.product.variants?.find((v) => v.id === item.color)
+      const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+      return {
+        itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
+        productUid,
+        quantity: item.quantity,
+        files: [{ type: 'default', url: item.product.image }],
+      }
+    }),
     shippingAddress: {
       firstName:    shippingAddress.firstName,
       lastName:     shippingAddress.lastName,
