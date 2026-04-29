@@ -16,6 +16,7 @@ import ReturnsPage from '@/pages/ReturnsPage'
 import TermsPage from '@/pages/TermsPage'
 import PrivacyPage from '@/pages/PrivacyPage'
 import CookiesPage from '@/pages/CookiesPage'
+import AdminPage from '@/pages/AdminPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -37,34 +38,45 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+  const isAdmin = pathname.startsWith('/admin')
+
   return (
     <>
       <ScrollToTop />
-      <Navbar />
-      <CartDrawer />
+      {!isAdmin && <Navbar />}
+      {!isAdmin && <CartDrawer />}
 
-      <main>
-        <Routes>
-          <Route path="/"                               element={<HomePage />} />
-          <Route path="/art"                            element={<ArtPage />} />
-          <Route path="/objects"                        element={<ObjectsPage />} />
-          <Route path="/artist"                         element={<ArtistPage />} />
-          <Route path="/product/:id"                    element={<ProductPage />} />
-          <Route path="/checkout"                       element={<CheckoutPage />} />
-          <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
-          <Route path="/contact"  element={<ContactPage />} />
-          <Route path="/shipping" element={<ShippingPage />} />
-          <Route path="/returns"  element={<ReturnsPage />} />
-          <Route path="/terms"    element={<TermsPage />} />
-          <Route path="/privacy"  element={<PrivacyPage />} />
-          <Route path="/cookies"  element={<CookiesPage />} />
-          {/* Legacy shop URLs → redirect */}
-          <Route path="/shop" element={<Navigate to="/art" replace />} />
-          <Route path="*"     element={<NotFound />} />
-        </Routes>
-      </main>
+      <Routes>
+        {/* ── Admin (standalone, no Navbar/Footer) ─────── */}
+        <Route path="/admin" element={<AdminPage />} />
 
-      <Footer />
+        {/* ── Public site ──────────────────────────────── */}
+        <Route path="*" element={
+          <main>
+            <Routes>
+              <Route path="/"                               element={<HomePage />} />
+              <Route path="/art"                            element={<ArtPage />} />
+              <Route path="/objects"                        element={<ObjectsPage />} />
+              <Route path="/artist"                         element={<ArtistPage />} />
+              <Route path="/product/:id"                    element={<ProductPage />} />
+              <Route path="/checkout"                       element={<CheckoutPage />} />
+              <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
+              <Route path="/contact"  element={<ContactPage />} />
+              <Route path="/shipping" element={<ShippingPage />} />
+              <Route path="/returns"  element={<ReturnsPage />} />
+              <Route path="/terms"    element={<TermsPage />} />
+              <Route path="/privacy"  element={<PrivacyPage />} />
+              <Route path="/cookies"  element={<CookiesPage />} />
+              {/* Legacy shop URLs → redirect */}
+              <Route path="/shop" element={<Navigate to="/art" replace />} />
+              <Route path="*"     element={<NotFound />} />
+            </Routes>
+          </main>
+        } />
+      </Routes>
+
+      {!isAdmin && <Footer />}
     </>
   )
 }

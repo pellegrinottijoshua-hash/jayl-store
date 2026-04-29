@@ -1,4 +1,5 @@
 // Product catalog for JAYL store
+import { adminProducts } from './admin-products.js'
 
 export const MOVEMENTS = [
   'impressionism',
@@ -697,6 +698,7 @@ export const products = [
       { id: '78c524d7-4e00-4fee-ac90-22d25ae7cf89', size: 'L', color: 'Black', gelatoVariantId: 'apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_softstyle_gsi_l_gco_black_gpr_4-0_gildan_sf500', price: 5000 },
     ],
   },
+  ...adminProducts,
 ]
 
 export const getFeaturedProducts  = () => products.filter((p) => p.featured)
