@@ -41,8 +41,9 @@ export default function CartDrawer() {
         ref={drawerRef}
         className={cn(
           'fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-surface border-l border-border flex flex-col transition-transform duration-400 ease-smooth',
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+          isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
         )}
+        aria-hidden={!isOpen}
         aria-label="Shopping cart"
       >
         {/* Header */}

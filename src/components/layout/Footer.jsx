@@ -10,14 +10,14 @@ export default function Footer() {
     ? {
         bg: 'bg-paper border-t border-paper-border',
         heading: 'section-label-light',
-        link: 'text-ink-secondary hover:text-ink transition-colors duration-200',
+        link: 'inline-block py-2 -my-1 text-ink-secondary hover:text-ink transition-colors duration-200',
         muted: 'text-ink-muted',
         divider: 'border-t border-paper-border',
       }
     : {
         bg: 'bg-off-black border-t border-border',
         heading: 'section-label',
-        link: 'text-text-secondary hover:text-text-primary transition-colors duration-200',
+        link: 'inline-block py-2 -my-1 text-text-secondary hover:text-text-primary transition-colors duration-200',
         muted: 'text-text-muted',
         divider: 'border-t border-border',
       }

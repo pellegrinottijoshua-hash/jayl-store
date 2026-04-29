@@ -67,6 +67,7 @@ export default function ArtPage() {
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     draggable={false}
                     onError={(e) => { e.currentTarget.style.display = 'none' }}

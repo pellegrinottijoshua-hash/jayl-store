@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ShoppingBag, Menu, X } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
@@ -58,6 +58,20 @@ export default function Navbar() {
 
   const itemCount = items.reduce((s, i) => s + i.quantity, 0)
   const isLight   = pageTheme === 'light'
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const prev = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => { document.body.style.overflow = prev }
+    }
+  }, [mobileMenuOpen])
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setMobileMenuOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   // Text colours adapt to whatever page is behind the transparent nav
   const textBase  = isLight ? 'text-ink'       : 'text-cream'

@@ -100,14 +100,18 @@ function CheckoutForm() {
     setErrors({})
 
     try {
-      // 1. Create a payment intent on the server
+      // 1. Create a payment intent on the server.
+      // Send only product identifiers — the server looks up real prices from
+      // the catalog. Never send unitPrice / total here; they would be ignored.
       const piRes = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: items.map((i) => ({
-            variantKey: i.variantKey,
-            unitPrice: i.unitPrice,
+            productId: i.product.id,
+            size:     i.size  || null,
+            frame:    i.frame || 'none',
+            color:    i.color || null,
             quantity: i.quantity,
           })),
           shippingAddress: {
@@ -155,16 +159,13 @@ function CheckoutForm() {
         return
       }
 
-      // 3. Create the Gelato order once payment is confirmed
+      // 3. Create the Gelato order once payment is confirmed.
+      // The server reads canonical items + address from PI metadata and ignores
+      // anything else we'd send here, so just pass the paymentIntentId.
       const orderRes = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items,
-          shippingAddress: form,
-          email: form.email,
-          paymentIntentId: paymentIntent.id,
-        }),
+        body: JSON.stringify({ paymentIntentId: paymentIntent.id }),
       })
 
       const orderData = orderRes.ok ? await orderRes.json() : {}
@@ -423,7 +424,7 @@ export default function CheckoutPage() {
       <div className="min-h-screen pt-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="font-display text-4xl text-cream mb-4">Your cart is empty</h1>
         <p className="text-text-secondary mb-8">Add some works before checking out.</p>
-        <Link to="/shop" className="btn-primary">Browse the Shop</Link>
+        <Link to="/art" className="btn-primary">Browse the Shop</Link>
       </div>
     )
   }
@@ -434,7 +435,7 @@ export default function CheckoutPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <Link
-            to="/shop"
+            to="/art"
             className="flex items-center gap-2 text-xs text-text-muted hover:text-text-primary transition-colors tracking-widest uppercase"
           >
             <ArrowLeft size={12} />

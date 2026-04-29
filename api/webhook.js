@@ -1,99 +1,98 @@
 import Stripe from 'stripe'
+import { decodeItemsFromMetadata, CURRENCY } from './_lib/catalog.js'
 
 // Disable Vercel's default body parser — Stripe needs the raw body to verify the signature
 export const config = { api: { bodyParser: false } }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
 const GELATO_API_URL = 'https://order.gelatoapis.com/v4/orders'
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
     const chunks = []
     req.on('data', (chunk) => chunks.push(chunk))
-    req.on('end', () => resolve(Buffer.concat(chunks)))
+    req.on('end',   () => resolve(Buffer.concat(chunks)))
     req.on('error', reject)
   })
 }
 
-async function createGelatoOrderFromIntent(paymentIntent) {
-  const { metadata } = paymentIntent
-
-  let shippingAddress
-  try {
-    shippingAddress = metadata.shippingAddress ? JSON.parse(metadata.shippingAddress) : null
-  } catch {
-    shippingAddress = null
-  }
-
-  if (!shippingAddress) {
-    console.warn('[webhook] No shipping address in payment intent metadata — skipping Gelato order')
+async function fulfillIfNeeded(paymentIntent) {
+  // Idempotency: skip if already fulfilled by /api/create-order or a previous webhook.
+  if (paymentIntent.metadata?.gelatoOrderId) {
+    console.log('[webhook] PI', paymentIntent.id, 'already fulfilled — skipping')
     return
   }
 
-  // Reconstruct minimal items list from the compact summary stored in metadata.
-  // Format: "variantKey:quantity:unitPrice,variantKey:quantity:unitPrice,..."
-  // This is a best-effort reconstruction; the frontend call to /api/create-order
-  // is the primary path. The webhook is a safety net.
-  const items = (metadata.itemsSummary || '')
-    .split(',')
-    .filter(Boolean)
-    .map((part) => {
-      const [variantKey, quantity, unitPrice] = part.split(':')
-      return {
-        variantKey,
-        quantity: parseInt(quantity, 10) || 1,
-        product: {
-          gelatoProductId: null, // cannot recover without DB; Gelato will reject productUid
-          image: '',
-        },
-      }
-    })
-
+  const items = decodeItemsFromMetadata(paymentIntent.metadata?.items)
   if (!items.length) {
-    console.warn('[webhook] Could not reconstruct items — skipping Gelato order')
+    console.warn('[webhook] No items in PI metadata — skipping')
+    return
+  }
+
+  const missing = items.find((it) => !it.product?.gelatoProductId)
+  if (missing) {
+    console.error('[webhook] Missing gelatoProductId for', missing.productId, '— skipping')
+    return
+  }
+
+  let shippingAddress
+  try { shippingAddress = JSON.parse(paymentIntent.metadata?.shippingAddress || '{}') }
+  catch { console.warn('[webhook] Bad shipping address — skipping'); return }
+  if (!shippingAddress.firstName) {
+    console.warn('[webhook] Empty shipping address — skipping')
+    return
+  }
+
+  const apiKey = process.env.GELATO_API_KEY || process.env.VITE_GELATO_API_KEY
+  if (!apiKey) {
+    console.error('[webhook] GELATO_API_KEY is not configured — skipping')
     return
   }
 
   const orderPayload = {
-    orderReferenceId: `jayl-${paymentIntent.id}`,
-    customerReferenceId: metadata.email || 'unknown',
-    currency: 'USD',
+    orderReferenceId:    `jayl-${paymentIntent.id}`,
+    customerReferenceId: paymentIntent.metadata?.email || 'unknown',
+    currency: CURRENCY.toUpperCase(),
     items: items.map((item) => ({
-      itemReferenceId: item.variantKey,
-      productUid: item.product.gelatoProductId || 'photobook_softcover_portrait_a4',
-      quantity: item.quantity,
-      files: [],
+      itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
+      productUid:      item.product.gelatoProductId,
+      quantity:        item.quantity,
+      files: [{ type: 'default', url: item.product.image }],
     })),
     shippingAddress: {
-      firstName: shippingAddress.firstName || '',
-      lastName: shippingAddress.lastName || '',
-      addressLine1: shippingAddress.address || '',
-      city: shippingAddress.city || '',
-      state: shippingAddress.state || '',
-      postCode: shippingAddress.zip || '',
-      country: shippingAddress.country || 'US',
-      email: metadata.email || '',
-      phone: '',
+      firstName:    shippingAddress.firstName || '',
+      lastName:     shippingAddress.lastName  || '',
+      addressLine1: shippingAddress.address   || '',
+      city:         shippingAddress.city      || '',
+      state:        shippingAddress.state     || '',
+      postCode:     shippingAddress.zip       || '',
+      country:      shippingAddress.country   || 'US',
+      email:        paymentIntent.metadata?.email || '',
+      phone:        shippingAddress.phone || '',
     },
   }
 
   const gelatoRes = await fetch(GELATO_API_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-KEY': process.env.VITE_GELATO_API_KEY,
-    },
-    body: JSON.stringify(orderPayload),
+    headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
+    body:    JSON.stringify(orderPayload),
   })
-
   if (!gelatoRes.ok) {
-    const text = await gelatoRes.text()
+    const text = await gelatoRes.text().catch(() => '')
     console.error('[webhook] Gelato order failed:', gelatoRes.status, text)
     return
   }
 
   const order = await gelatoRes.json()
-  console.log('[webhook] Gelato order created:', order.id)
+  console.log('[webhook] Gelato order created from webhook fallback:', order.id)
+
+  try {
+    await stripe.paymentIntents.update(paymentIntent.id, {
+      metadata: { ...paymentIntent.metadata, gelatoOrderId: order.id || '' },
+    })
+  } catch (e) {
+    console.error('[webhook] Failed to write gelatoOrderId back:', e.message)
+  }
 }
 
 export default async function handler(req, res) {
@@ -106,11 +105,7 @@ export default async function handler(req, res) {
 
   let event
   try {
-    event = stripe.webhooks.constructEvent(
-      rawBody,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET
-    )
+    event = stripe.webhooks.constructEvent(rawBody, sig, process.env.STRIPE_WEBHOOK_SECRET)
   } catch (err) {
     console.error('[webhook] Signature verification failed:', err.message)
     return res.status(400).send(`Webhook Error: ${err.message}`)
@@ -118,13 +113,16 @@ export default async function handler(req, res) {
 
   switch (event.type) {
     case 'payment_intent.succeeded': {
-      const paymentIntent = event.data.object
-      console.log('[webhook] payment_intent.succeeded:', paymentIntent.id)
-      // Best-effort: create Gelato order from metadata. The primary path is the
-      // frontend calling /api/create-order immediately after payment confirmation.
-      createGelatoOrderFromIntent(paymentIntent).catch((err) =>
-        console.error('[webhook] createGelatoOrderFromIntent failed:', err)
-      )
+      const pi = event.data.object
+      console.log('[webhook] payment_intent.succeeded:', pi.id)
+      // Re-fetch in case the PI metadata was just updated by /api/create-order
+      // racing the webhook delivery.
+      try {
+        const fresh = await stripe.paymentIntents.retrieve(pi.id)
+        await fulfillIfNeeded(fresh)
+      } catch (err) {
+        console.error('[webhook] fulfillIfNeeded failed:', err.message)
+      }
       break
     }
 
@@ -135,7 +133,6 @@ export default async function handler(req, res) {
     }
 
     default:
-      // Unhandled event type — acknowledge receipt
       break
   }
 

@@ -41,7 +41,7 @@ export default function ObjectsPage() {
             {items.map((product, i) => (
               <Link
                 key={product.id}
-                to={`/product/${product.slug}`}
+                to={`/product/${product.id}`}
                 className={[
                   'flex-shrink-0 group',
                   i === 0
@@ -56,6 +56,7 @@ export default function ObjectsPage() {
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     draggable={false}
                     onError={(e) => { e.currentTarget.style.display = 'none' }}

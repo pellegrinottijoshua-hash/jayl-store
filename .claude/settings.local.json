@@ -5,7 +5,26 @@
       "Bash(git add:*)",
       "Bash(git commit -m ':*)",
       "Bash(npm install:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(grep -E '\\\\.\\(tsx|jsx|ts|js\\)$')",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(grep -n \"getProductById\\\\|export const products\\\\|^  {$\\\\|^    id:\" /Users/jpelle/jayl-store/src/data/products.js)",
+      "WebFetch(domain:dashboard.gelato.com)",
+      "WebFetch(domain:docs.gelato.com)",
+      "WebFetch(domain:api.gelato.com)",
+      "Bash(npx eslint *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/ -I)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(git -C /Users/jpelle/jayl-store add src/App.jsx)",
+      "Bash(git -C /Users/jpelle/jayl-store commit -m \"fix: scroll to top on every navigation\")",
+      "Bash(git -C /Users/jpelle/jayl-store push)",
+      "Bash(git -C /Users/jpelle/jayl-store status)",
+      "Bash(git -C /Users/jpelle/jayl-store add .)",
+      "Bash(git -C /Users/jpelle/jayl-store commit -m \"variants endpoint\")"
     ]
   }
 }

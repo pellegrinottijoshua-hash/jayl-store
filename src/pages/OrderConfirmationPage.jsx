@@ -113,7 +113,7 @@ export default function OrderConfirmationPage() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/shop" className="btn-primary">
+          <Link to="/art" className="btn-primary">
             Continue Shopping
             <ArrowRight size={16} />
           </Link>

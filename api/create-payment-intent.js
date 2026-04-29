@@ -1,66 +1,64 @@
 import Stripe from 'stripe'
+import {
+  priceItems,
+  computeTotals,
+  validateAddress,
+  encodeItemsForMetadata,
+  CURRENCY,
+} from './_lib/catalog.js'
+import { applyCors } from './_lib/cors.js'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
 
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-}
+const METADATA_VALUE_LIMIT = 500
 
 export default async function handler(req, res) {
-  Object.entries(CORS).forEach(([k, v]) => res.setHeader(k, v))
-
-  if (req.method === 'OPTIONS') return res.status(200).end()
+  const allowed = applyCors(req, res)
+  if (req.method === 'OPTIONS') return res.status(allowed ? 200 : 403).end()
+  if (!allowed) return res.status(403).json({ error: 'Forbidden' })
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
   try {
-    const { items, shippingAddress } = req.body
+    const { items: rawItems, shippingAddress } = req.body || {}
 
-    if (!Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ error: 'Cart items are required' })
-    }
+    // Server-side price lookup — never trust client-supplied unitPrice/total.
+    const priced = priceItems(rawItems)
+    if (!priced.ok) return res.status(400).json({ error: priced.error })
 
-    // Recalculate total server-side — never trust client totals
-    const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0)
-    const shipping = subtotal >= 10000 ? 0 : 799
-    const total = subtotal + shipping
+    const addrCheck = validateAddress(shippingAddress)
+    if (!addrCheck.ok) return res.status(400).json({ error: addrCheck.error })
+    const addr = addrCheck.address
 
-    if (total < 50) {
-      return res.status(400).json({ error: 'Order total is too low' })
-    }
+    const { total } = computeTotals(priced.items)
+    if (total < 50) return res.status(400).json({ error: 'Order total is too low' })
 
-    // Store a compact order snapshot in metadata for the webhook fallback
-    const itemsSummary = items
-      .map((i) => `${i.variantKey}:${i.quantity}:${i.unitPrice}`)
-      .join(',')
-      .slice(0, 500)
+    const itemsEncoded     = encodeItemsForMetadata(priced.items)
+    const shippingEncoded  = JSON.stringify({
+      firstName: addr.firstName, lastName: addr.lastName, address: addr.address,
+      city: addr.city, state: addr.state, zip: addr.zip, country: addr.country,
+    })
+
+    if (itemsEncoded.length    > METADATA_VALUE_LIMIT) return res.status(400).json({ error: 'Cart too large' })
+    if (shippingEncoded.length > METADATA_VALUE_LIMIT) return res.status(400).json({ error: 'Address too long' })
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: total,
-      currency: 'usd',
+      amount:   total,
+      currency: CURRENCY,
       automatic_payment_methods: { enabled: true },
+      receipt_email: addr.email,
       metadata: {
-        email: shippingAddress?.email || '',
-        customerName: shippingAddress
-          ? `${shippingAddress.firstName} ${shippingAddress.lastName}`
-          : '',
-        shippingAddress: JSON.stringify({
-          firstName: shippingAddress?.firstName,
-          lastName: shippingAddress?.lastName,
-          address: shippingAddress?.address,
-          city: shippingAddress?.city,
-          state: shippingAddress?.state,
-          zip: shippingAddress?.zip,
-          country: shippingAddress?.country || 'US',
-        }).slice(0, 500),
-        itemsSummary,
+        email:           addr.email,
+        customerName:    `${addr.firstName} ${addr.lastName}`.slice(0, 200),
+        shippingAddress: shippingEncoded,
+        items:           itemsEncoded,
+        total:           String(total),
+        currency:        CURRENCY,
       },
     })
 
     return res.status(200).json({ clientSecret: paymentIntent.client_secret })
   } catch (err) {
     console.error('[create-payment-intent]', err)
-    return res.status(500).json({ error: err.message || 'Internal server error' })
+    return res.status(500).json({ error: 'Could not initialize payment' })
   }
 }

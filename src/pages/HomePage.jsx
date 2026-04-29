@@ -135,34 +135,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════ SECTION 4 — Objects pop mockup (black) ══════════════════ */}
+      {/* ════ SECTION 4 — Cool Pokemon fullscreen hero ════════════════ */}
       <section
-        className="h-screen w-screen bg-black relative flex items-center justify-center overflow-hidden cursor-pointer"
-        onClick={() => navigate('/objects')}
+        className="h-screen w-screen bg-black relative overflow-hidden cursor-pointer"
+        onClick={() => pokemonProduct && navigate(`/product/${pokemonProduct.id}`)}
       >
-        <div className="absolute top-[88px] left-6 sm:left-8 z-10">
-          <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">cool pokemon</p>
-        </div>
-
-        <div className="absolute inset-0 flex items-center justify-center pt-[84px] pb-32 px-10">
-          {pokemonProduct ? (
-            <img
-              src={pokemonProduct.image}
-              alt="Cool Pokemon Collection"
-              className="max-h-full max-w-full object-contain"
-              onError={(e) => { e.currentTarget.style.display = 'none' }}
-            />
-          ) : (
-            <div className="w-full max-w-xs aspect-square bg-stone-900" />
+        {pokemonProduct && (
+          <img
+            src={pokemonProduct.image}
+            alt={pokemonProduct.name}
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+        )}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
+          <p className="text-xs font-mono tracking-wider uppercase text-white/60 mb-3">New Collection</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-1">
+            Cool Pokemon
+          </h2>
+          {pokemonProduct && (
+            <p className="text-sm text-white/70 mb-6">from {formatPrice(pokemonProduct.price)}</p>
           )}
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-14">
-          <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted mb-2">New Collection</p>
-          <h2 className="font-display text-2xl sm:text-3xl text-cream leading-tight mb-2">Cool Pokemon</h2>
-          <p className="text-sm text-text-muted inline-flex items-center gap-1.5">
-            Explore <ArrowRight size={12} />
-          </p>
+          {pokemonProduct && (
+            <Link
+              to={`/product/${pokemonProduct.id}`}
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
+            >
+              Shop Now <ArrowRight size={12} />
+            </Link>
+          )}
         </div>
       </section>
 
@@ -188,6 +191,7 @@ export default function HomePage() {
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     draggable={false}
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
