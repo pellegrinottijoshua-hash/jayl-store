@@ -4,11 +4,11 @@ export const adminProducts = [
     "id": "zapdos-pok-mon-t-shirt-premium-quality-artwear-for-fans",
     "section": "objects",
     "collection": "pokemon-logos",
-    "name": "Zapdos Pokémon T-Shirt - Premium Quality Artwear for Fans",
+    "name": "Zapdos Pokémon T-Shirt",
     "subtitle": "pokemon-logos",
     "price": 1999,
     "currency": "eur",
-    "description": "Unleash your inner Pokémon Trainer with our Zapdos Pokémon T-Shirt. Crafted from high-quality, breathable cotton, this tee features the iconic Zapdos logo rendered in vibrant Gelato print quality, ensuring a sharp, eye-catching design that won't fade. The art style captures the essence of the beloved Electric-type Pokémon, making it a must-have for fans and collectors alike. Whether you're battling in the arena or lounging with friends, this t-shirt offers comfort and style that stands out. Celebrate your passion for Pokémon with this unique wearable art piece, perfect for everyday adventures or as a thoughtful gift for fellow enthusiasts.",
+    "description": "Unleash your inner Pokémon Trainer with our Zapdos Pokémon T-Shirt. This tee features the iconic Zapdos logo rendered in vibrant print quality, ensuring a sharp, eye-catching design that won't fade. The art style captures the essence of the beloved Electric-type Pokémon, making it a must-have for fans and collectors alike. Whether you're battling in the arena or lounging with friends, this t-shirt offers comfort and style that stands out. Celebrate your passion for Pokémon with this unique wearable art piece, perfect for everyday adventures or as a thoughtful gift for fellow enthusiasts.",
     "altText": "Zapdos Pokémon T-Shirt displaying a vibrant Zapdos logo in striking colors.",
     "details": [
       "Printed and fulfilled via Gelato"
