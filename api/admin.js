@@ -1,9 +1,10 @@
 import { applyCors } from './_lib/cors.js'
 
-const GITHUB_OWNER  = 'pellegrinottijoshua-hash'
-const GITHUB_REPO   = 'jayl-store'
-const GITHUB_BRANCH = 'main'
-const ADMIN_PRODUCTS_PATH = 'src/data/admin-products.js'
+const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
+const GITHUB_REPO        = 'jayl-store'
+const GITHUB_BRANCH      = 'main'
+const ADMIN_PRODUCTS_PATH    = 'src/data/admin-products.js'
+const ADMIN_COLLECTIONS_PATH = 'src/data/admin-collections.js'
 const ADMIN_PASSWORD = 'jaylpelle'
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
@@ -80,6 +81,25 @@ async function readAdminProducts(token) {
 async function writeAdminProducts(products, sha, message, token) {
   const content = `// This file is managed by the JAYL admin panel. Do not edit manually.\nexport const adminProducts = ${JSON.stringify(products, null, 2)}\n`
   return ghPut(ADMIN_PRODUCTS_PATH, content, sha, message, token)
+}
+
+// ── Admin collections helpers ─────────────────────────────────────────────────
+
+async function readAdminCollections(token) {
+  try {
+    const file = await ghGet(ADMIN_COLLECTIONS_PATH, token)
+    const content = Buffer.from(file.content, 'base64').toString('utf8')
+    const match = content.match(/export const adminCollections = (\[[\s\S]*\])/)
+    if (!match) return { collections: [], sha: file.sha }
+    return { collections: JSON.parse(match[1]), sha: file.sha }
+  } catch (e) {
+    return { collections: [], sha: null }
+  }
+}
+
+async function writeAdminCollections(collections, sha, message, token) {
+  const content = `// This file is managed by the JAYL admin panel. Do not edit manually.\nexport const adminCollections = ${JSON.stringify(collections, null, 2)}\n`
+  return ghPut(ADMIN_COLLECTIONS_PATH, content, sha, message, token)
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
@@ -197,6 +217,50 @@ export default async function handler(req, res) {
       const { path: filePath, sha } = data
       if (!filePath || !sha) return res.status(400).json({ error: 'path and sha required' })
       await ghDelete(filePath, sha, `admin: delete image ${filePath}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── list-collections ──────────────────────────────────────────────────────
+    if (action === 'list-collections') {
+      const { collections } = await readAdminCollections(githubToken)
+      return res.status(200).json({ collections })
+    }
+
+    // ── save-collection ───────────────────────────────────────────────────────
+    if (action === 'save-collection') {
+      const { collection } = data
+      if (!collection?.id) return res.status(400).json({ error: 'collection.id required' })
+
+      const { collections, sha } = await readAdminCollections(githubToken)
+      const idx = collections.findIndex(c => c.id === collection.id)
+      if (idx >= 0) collections[idx] = collection
+      else collections.push(collection)
+
+      await writeAdminCollections(collections, sha, `admin: ${idx >= 0 ? 'update' : 'add'} collection ${collection.id}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── delete-collection ─────────────────────────────────────────────────────
+    if (action === 'delete-collection') {
+      const { collectionId } = data
+      if (!collectionId) return res.status(400).json({ error: 'collectionId required' })
+
+      const { collections, sha } = await readAdminCollections(githubToken)
+      const filtered = collections.filter(c => c.id !== collectionId)
+      if (filtered.length === collections.length) {
+        return res.status(404).json({ error: 'Collection not found' })
+      }
+      await writeAdminCollections(filtered, sha, `admin: delete collection ${collectionId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── reorder-collections ───────────────────────────────────────────────────
+    if (action === 'reorder-collections') {
+      const { collections } = data
+      if (!Array.isArray(collections)) return res.status(400).json({ error: 'collections array required' })
+
+      const { sha } = await readAdminCollections(githubToken)
+      await writeAdminCollections(collections, sha, 'admin: reorder collections', githubToken)
       return res.status(200).json({ ok: true })
     }
 

@@ -7,6 +7,16 @@ import { formatPrice, slugToTitle, cn } from '@/lib/utils'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
 
+function parseVideoUrl(url) {
+  if (!url) return null
+  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/\s]+)/)
+  if (ytMatch) return { type: 'youtube', id: ytMatch[1] }
+  const vmMatch = url.match(/vimeo\.com\/(\d+)/)
+  if (vmMatch) return { type: 'vimeo', id: vmMatch[1] }
+  if (/\.mp4$/i.test(url)) return { type: 'mp4', src: url }
+  return null
+}
+
 function Accordion({ title, children, light }) {
   const [open, setOpen] = useState(false)
   return (
@@ -50,10 +60,13 @@ export default function ProductPage() {
   const defaultColor = product?.colors?.[0]?.id
   const defaultFrame = 'none'
 
+  const videoInfo = parseVideoUrl(product?.videoUrl)
+
   const [selectedSize, setSelectedSize] = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
   const [selectedFrame, setSelectedFrame] = useState(defaultFrame)
-  const [activeImage, setActiveImage] = useState(0)
+  // -1 = show video hero (when videoUrl exists)
+  const [activeImage, setActiveImage] = useState(videoInfo ? -1 : 0)
   const [added, setAdded] = useState(false)
 
   if (!product) {
@@ -151,19 +164,69 @@ export default function ProductPage() {
       {/* Main layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* ── Images ── */}
+          {/* ── Images / Video ── */}
           <div className="space-y-3">
-            <div className={cn('aspect-[4/5] overflow-hidden', t.imgBg)}>
-              <img
-                src={product.images?.[activeImage] ?? product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
-              />
-            </div>
-            {product.images && product.images.length > 1 && (
+            {/* Hero slot */}
+            {activeImage === -1 && videoInfo ? (
+              <div className="aspect-[4/5] overflow-hidden bg-black">
+                {videoInfo.type === 'mp4' ? (
+                  <video
+                    src={videoInfo.src}
+                    controls
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <iframe
+                    src={
+                      videoInfo.type === 'youtube'
+                        ? `https://www.youtube.com/embed/${videoInfo.id}?autoplay=0&rel=0`
+                        : `https://player.vimeo.com/video/${videoInfo.id}`
+                    }
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={product.name}
+                  />
+                )}
+              </div>
+            ) : (
+              <div className={cn('aspect-[4/5] overflow-hidden', t.imgBg)}>
+                <img
+                  src={product.images?.[Math.max(0, activeImage)] ?? product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              </div>
+            )}
+
+            {/* Thumbnail strip: show if there's a video OR more than 1 image */}
+            {(videoInfo || (product.images && product.images.length > 1)) && (
               <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
-                {product.images.map((img, i) => (
+                {/* Video thumbnail (first slot) */}
+                {videoInfo && (
+                  <button
+                    onClick={() => setActiveImage(-1)}
+                    className={cn(
+                      'w-20 h-20 overflow-hidden border-2 transition-all duration-200 flex-shrink-0 bg-black relative',
+                      activeImage === -1 ? t.thumbnailActive : t.thumbnailInactive
+                    )}
+                  >
+                    {videoInfo.type === 'youtube' ? (
+                      <img
+                        src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`}
+                        alt="Video"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : null}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                      <span className="text-white text-xl leading-none">▶</span>
+                    </div>
+                  </button>
+                )}
+
+                {/* Image thumbnails */}
+                {product.images?.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveImage(i)}

@@ -9,6 +9,16 @@ const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/
 const fmt = cents => `€${(cents / 100).toFixed(2)}`
 const sanitizeFilename = name => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
 
+export function parseVideoUrl(url) {
+  if (!url) return null
+  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/\s]+)/)
+  if (ytMatch) return { type: 'youtube', id: ytMatch[1] }
+  const vmMatch = url.match(/vimeo\.com\/(\d+)/)
+  if (vmMatch) return { type: 'vimeo', id: vmMatch[1] }
+  if (/\.mp4$/i.test(url)) return { type: 'mp4', src: url }
+  return null
+}
+
 async function api(action, data) {
   const res = await fetch('/api/admin', {
     method: 'POST',
@@ -51,6 +61,34 @@ function Card({ title, children }) {
     <div className="bg-gray-900 border border-gray-800 p-5 space-y-4">
       {title && <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">{title}</h3>}
       {children}
+    </div>
+  )
+}
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
+
+function Modal({ open, onClose, children }) {
+  useEffect(() => {
+    if (open) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  if (!open) return null
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 overflow-y-auto py-8 px-4"
+      onMouseDown={e => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div className="bg-gray-950 border border-gray-700 w-full max-w-3xl relative">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-200 w-7 h-7 flex items-center justify-center text-lg leading-none z-10"
+        >
+          ×
+        </button>
+        <div className="p-6">{children}</div>
+      </div>
     </div>
   )
 }
@@ -120,6 +158,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [tags, setTags]             = useState(
     Array.isArray(editingProduct?.tags) ? editingProduct.tags.join(', ') : (editingProduct?.tags || '')
   )
+  const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
 
   const [generating, setGenerating] = useState(false)
   const [genErr, setGenErr]         = useState('')
@@ -131,6 +170,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
   const productId = isEdit ? editingProduct.id : slugify(title)
   const finalCollection = newColl.trim() || collection
+
+  const videoInfo = parseVideoUrl(videoUrl)
 
   const generateWithAI = async () => {
     if (!title.trim()) return setGenErr('Enter a product title first')
@@ -221,6 +262,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         gelatoProductId: gelatoUid.trim() || null,
         movement: movement.trim() || finalCollection,
         adminManaged: true,
+        ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : {}),
         ...(variants.length > 0 ? { variants } : {}),
       }
 
@@ -236,11 +278,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   }
 
   return (
-    <div className="space-y-5 max-w-3xl">
+    <div className="space-y-5">
       {isEdit && (
         <div className="flex items-center justify-between bg-indigo-900/30 border border-indigo-800 px-4 py-2">
           <span className="text-indigo-300 text-sm">Editing: <span className="font-mono">{editingProduct.id}</span></span>
-          <button onClick={onCancel} className={btnGhost}>Cancel</button>
+          {onCancel && <button onClick={onCancel} className={btnGhost}>Cancel</button>}
         </div>
       )}
 
@@ -331,7 +373,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               placeholder="new-collection-slug" className={inputCls} />
           </Field>
 
-          <Field label="Movement" >
+          <Field label="Movement">
             <input value={movement} onChange={e => setMovement(e.target.value)}
               placeholder="Pokemon Cool Logos" className={inputCls} />
           </Field>
@@ -363,6 +405,44 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             </Field>
           </div>
         </div>
+      </Card>
+
+      {/* Video */}
+      <Card title="Video (optional)">
+        <Field label="Video URL" hint="Accepts YouTube, Vimeo, or direct .mp4 URL. Shown as hero on the product page.">
+          <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
+            placeholder="https://www.youtube.com/watch?v=… or https://vimeo.com/…"
+            className={inputCls} />
+        </Field>
+        {videoInfo && (
+          <div className="mt-2">
+            {videoInfo.type === 'youtube' && (
+              <div className="relative w-48">
+                <img
+                  src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`}
+                  alt="Video thumbnail"
+                  className="w-full border border-gray-700"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                  <span className="text-white text-3xl">▶</span>
+                </div>
+                <p className="text-gray-500 text-xs mt-1">YouTube · {videoInfo.id}</p>
+              </div>
+            )}
+            {videoInfo.type === 'vimeo' && (
+              <div className="flex items-center gap-3 bg-gray-800 border border-gray-700 px-3 py-2 w-48">
+                <span className="text-white text-2xl">▶</span>
+                <p className="text-gray-400 text-xs">Vimeo · {videoInfo.id}</p>
+              </div>
+            )}
+            {videoInfo.type === 'mp4' && (
+              <p className="text-gray-400 text-xs bg-gray-800 border border-gray-700 px-3 py-2 inline-block">MP4 video linked</p>
+            )}
+          </div>
+        )}
+        {videoUrl && !videoInfo && (
+          <p className="text-yellow-500 text-xs mt-1">⚠ URL not recognised as YouTube, Vimeo, or .mp4</p>
+        )}
       </Card>
 
       {/* Images */}
@@ -426,7 +506,7 @@ function ProductsTab({ onEdit }) {
         <table className="w-full text-sm text-left">
           <thead>
             <tr className="border-b border-gray-800 text-gray-500 text-xs font-mono uppercase tracking-wider">
-              {['ID', 'Name', 'Price', 'Section', 'Collection', 'Images', ''].map(h => (
+              {['ID', 'Name', 'Price', 'Section', 'Collection', 'Video', 'Images', ''].map(h => (
                 <th key={h} className="px-4 py-3 whitespace-nowrap">{h}</th>
               ))}
             </tr>
@@ -439,6 +519,9 @@ function ProductsTab({ onEdit }) {
                 <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{fmt(p.price)}</td>
                 <td className="px-4 py-3 text-gray-400">{p.section}</td>
                 <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{p.collection}</td>
+                <td className="px-4 py-3 text-gray-500 text-xs">
+                  {p.videoUrl ? <span className="text-indigo-400">▶</span> : '—'}
+                </td>
                 <td className="px-4 py-3 text-gray-500 text-xs">{p.images?.length || 0}</td>
                 <td className="px-4 py-3">
                   {p.adminManaged ? (
@@ -458,6 +541,224 @@ function ProductsTab({ onEdit }) {
         </table>
       </div>
       <p className="text-gray-600 text-xs">{visible.length} products · admin-managed products can be edited/deleted</p>
+    </div>
+  )
+}
+
+// ── Collections Tab ───────────────────────────────────────────────────────────
+
+function CollectionsTab() {
+  const [collections, setCollections] = useState([])
+  const [loading, setLoading]         = useState(true)
+  const [error, setError]             = useState('')
+  const [saving, setSaving]           = useState(false)
+
+  const [newName, setNewName]   = useState('')
+  const [newColor, setNewColor] = useState('#6366f1')
+
+  // Edit-in-place
+  const [editingId, setEditingId]   = useState(null)
+  const [editName, setEditName]     = useState('')
+  const [editColor, setEditColor]   = useState('')
+
+  // Drag-and-drop
+  const dragIdx = useRef(null)
+  const [draggingOver, setDraggingOver] = useState(null)
+
+  const load = async () => {
+    setLoading(true); setError('')
+    try {
+      const data = await api('list-collections', {})
+      setCollections((data.collections || []).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)))
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => { load() }, [])
+
+  const handleCreate = async () => {
+    if (!newName.trim()) return
+    setSaving(true); setError('')
+    const coll = {
+      id: slugify(newName),
+      name: newName.trim(),
+      color: newColor,
+      coverImage: '',
+      order: collections.length,
+    }
+    try {
+      await api('save-collection', { collection: coll })
+      setCollections(prev => [...prev, coll])
+      setNewName('')
+      setNewColor('#6366f1')
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const handleDelete = async coll => {
+    if (!confirm(`Delete collection "${coll.name}"?`)) return
+    setError('')
+    try {
+      await api('delete-collection', { collectionId: coll.id })
+      setCollections(prev => prev.filter(c => c.id !== coll.id))
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  const startEdit = coll => {
+    setEditingId(coll.id)
+    setEditName(coll.name)
+    setEditColor(coll.color || '#6366f1')
+  }
+
+  const handleSaveEdit = async coll => {
+    const updated = { ...coll, name: editName.trim() || coll.name, color: editColor }
+    setError('')
+    try {
+      await api('save-collection', { collection: updated })
+      setCollections(prev => prev.map(c => c.id === coll.id ? updated : c))
+      setEditingId(null)
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  // Drag handlers
+  const handleDragStart = idx => { dragIdx.current = idx }
+
+  const handleDragOver = (e, idx) => {
+    e.preventDefault()
+    setDraggingOver(idx)
+    if (dragIdx.current === null || dragIdx.current === idx) return
+    const reordered = [...collections]
+    const [moved] = reordered.splice(dragIdx.current, 1)
+    reordered.splice(idx, 0, moved)
+    dragIdx.current = idx
+    setCollections(reordered)
+  }
+
+  const handleDragEnd = async () => {
+    setDraggingOver(null)
+    dragIdx.current = null
+    const reordered = collections.map((c, i) => ({ ...c, order: i }))
+    setCollections(reordered)
+    try {
+      await api('reorder-collections', { collections: reordered })
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  return (
+    <div className="space-y-5 max-w-2xl">
+      {error && (
+        <div className="bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>
+      )}
+
+      {/* Create */}
+      <Card title="Create Collection">
+        <div className="flex gap-3 items-end">
+          <div className="flex-1">
+            <Field label="Name">
+              <input
+                value={newName}
+                onChange={e => setNewName(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleCreate()}
+                placeholder="Pokemon Cool Logos"
+                className={inputCls}
+              />
+            </Field>
+          </div>
+          <div className="flex-shrink-0 pb-0.5">
+            <label className="block text-gray-500 text-xs mb-1">Color</label>
+            <input
+              type="color"
+              value={newColor}
+              onChange={e => setNewColor(e.target.value)}
+              className="w-10 h-9 cursor-pointer bg-gray-800 border border-gray-700 p-0.5 block"
+            />
+          </div>
+          <button
+            onClick={handleCreate}
+            disabled={saving || !newName.trim()}
+            className={btnPrimary + ' flex-shrink-0 pb-0.5'}
+          >
+            {saving ? 'Saving…' : 'Create'}
+          </button>
+        </div>
+        {newName && (
+          <p className="text-gray-600 text-xs">id will be: <span className="font-mono">{slugify(newName)}</span></p>
+        )}
+      </Card>
+
+      {/* List */}
+      <Card title="Collections — drag to reorder">
+        {loading ? (
+          <p className="text-gray-500 text-sm">Loading from GitHub…</p>
+        ) : collections.length === 0 ? (
+          <p className="text-gray-600 text-sm">No collections yet. Create one above.</p>
+        ) : (
+          <div className="space-y-1.5">
+            {collections.map((coll, i) => (
+              <div
+                key={coll.id}
+                draggable
+                onDragStart={() => handleDragStart(i)}
+                onDragOver={e => handleDragOver(e, i)}
+                onDragEnd={handleDragEnd}
+                className={`flex items-center gap-3 border px-3 py-2.5 transition-colors ${
+                  draggingOver === i ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 bg-gray-800/50'
+                }`}
+              >
+                {/* Drag handle */}
+                <span className="text-gray-600 text-sm select-none cursor-grab active:cursor-grabbing flex-shrink-0">⠿</span>
+
+                {/* Color swatch */}
+                <div
+                  className="w-4 h-4 rounded-full flex-shrink-0 border border-gray-600"
+                  style={{ backgroundColor: coll.color || '#888' }}
+                />
+
+                {editingId === coll.id ? (
+                  <>
+                    <input
+                      value={editName}
+                      onChange={e => setEditName(e.target.value)}
+                      className="flex-1 bg-gray-700 border border-gray-600 text-white px-2 py-1 text-sm focus:outline-none focus:border-indigo-500"
+                      autoFocus
+                    />
+                    <input
+                      type="color"
+                      value={editColor}
+                      onChange={e => setEditColor(e.target.value)}
+                      className="w-7 h-7 cursor-pointer bg-transparent border border-gray-600 p-0 rounded flex-shrink-0"
+                    />
+                    <button onClick={() => handleSaveEdit(coll)} className={btnPrimary + ' py-1 text-xs'}>Save</button>
+                    <button onClick={() => setEditingId(null)} className={btnGhost}>Cancel</button>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-gray-200 text-sm flex-1 min-w-0 truncate">{coll.name}</span>
+                    <span className="text-gray-600 text-xs font-mono hidden sm:block flex-shrink-0">{coll.id}</span>
+                    <button onClick={() => startEdit(coll)} className={btnGhost}>Rename</button>
+                    <button onClick={() => handleDelete(coll)} className={btnDanger}>Delete</button>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+        {collections.length > 0 && (
+          <p className="text-gray-600 text-xs">{collections.length} collection{collections.length !== 1 ? 's' : ''} · changes save to GitHub automatically</p>
+        )}
+      </Card>
     </div>
   )
 }
@@ -603,60 +904,69 @@ function LoginScreen({ onLogin }) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function AdminPage() {
-  const [authed, setAuthed]             = useState(() => sessionStorage.getItem('adminAuth') === '1')
-  const [tab, setTab]                   = useState('products')
-  const [editingProduct, setEditingProduct] = useState(null)
+  const [authed, setAuthed]           = useState(() => sessionStorage.getItem('adminAuth') === '1')
+  const [tab, setTab]                 = useState('products')
+  const [editingProduct, setEditingProduct] = useState(null)   // modal state
 
   if (!authed) return <LoginScreen onLogin={() => setAuthed(true)} />
 
-  const handleEdit = product => { setEditingProduct(product); setTab('add') }
-  const handleSaved = () => { setEditingProduct(null); setTab('products') }
-  const handleCancelEdit = () => { setEditingProduct(null); setTab('products') }
-  const logout = () => { sessionStorage.removeItem('adminAuth'); setAuthed(false) }
+  const handleEdit   = product => setEditingProduct(product)
+  const handleSaved  = ()      => setEditingProduct(null)
+  const handleCancel = ()      => setEditingProduct(null)
+  const logout       = ()      => { sessionStorage.removeItem('adminAuth'); setAuthed(false) }
 
   const tabs = [
-    { id: 'products', label: 'Products' },
-    { id: 'add',      label: editingProduct ? `Edit: ${editingProduct.id}` : 'Add Product' },
-    { id: 'images',   label: 'Images' },
+    { id: 'products',     label: 'Products' },
+    { id: 'add',          label: 'Add Product' },
+    { id: 'collections',  label: 'Collections' },
+    { id: 'images',       label: 'Images' },
   ]
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Header */}
-      <header className="border-b border-gray-800 bg-gray-900 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
-          <div className="flex items-center gap-5">
-            <span className="text-white font-semibold text-sm tracking-wide">JAYL Admin</span>
-            <nav className="flex gap-0.5">
-              {tabs.map(t => (
-                <button key={t.id}
-                  onClick={() => { setTab(t.id); if (t.id !== 'add') setEditingProduct(null) }}
-                  className={`px-3 py-1.5 text-xs font-medium rounded transition-colors whitespace-nowrap ${
-                    tab === t.id ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-gray-300'
-                  }`}>
-                  {t.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-          <button onClick={logout} className="text-gray-600 hover:text-gray-400 text-xs transition-colors">
-            Logout
-          </button>
-        </div>
-      </header>
-
-      {/* Body */}
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        {tab === 'products' && <ProductsTab onEdit={handleEdit} />}
-        {tab === 'add' && (
+    <>
+      {/* ── Edit modal (floats over any tab) ── */}
+      <Modal open={!!editingProduct} onClose={handleCancel}>
+        {editingProduct && (
           <AddProductTab
             editingProduct={editingProduct}
             onSaved={handleSaved}
-            onCancel={handleCancelEdit}
+            onCancel={handleCancel}
           />
         )}
-        {tab === 'images' && <ImagesTab />}
-      </main>
-    </div>
+      </Modal>
+
+      <div className="min-h-screen bg-gray-950 text-white">
+        {/* Header */}
+        <header className="border-b border-gray-800 bg-gray-900 sticky top-0 z-40">
+          <div className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
+            <div className="flex items-center gap-5">
+              <span className="text-white font-semibold text-sm tracking-wide">JAYL Admin</span>
+              <nav className="flex gap-0.5">
+                {tabs.map(t => (
+                  <button key={t.id}
+                    onClick={() => setTab(t.id)}
+                    className={`px-3 py-1.5 text-xs font-medium rounded transition-colors whitespace-nowrap ${
+                      tab === t.id ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-gray-300'
+                    }`}>
+                    {t.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
+            <button onClick={logout} className="text-gray-600 hover:text-gray-400 text-xs transition-colors">
+              Logout
+            </button>
+          </div>
+        </header>
+
+        {/* Body */}
+        <main className="max-w-6xl mx-auto px-6 py-8">
+          {tab === 'products'    && <ProductsTab onEdit={handleEdit} />}
+          {tab === 'add'         && <AddProductTab onSaved={() => setTab('products')} />}
+          {tab === 'collections' && <CollectionsTab />}
+          {tab === 'images'      && <ImagesTab />}
+        </main>
+      </div>
+    </>
   )
 }
