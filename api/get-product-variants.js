@@ -57,16 +57,55 @@ export default async function handler(req, res) {
       // Try all known wrapper shapes.
       const rawBody = body?.product ?? body?.data ?? body ?? {}
 
+      // Build a variantId → options lookup from productVariantOptions if available
+      // Gelato ecommerce API: productVariantOptions = [{ id, name, values: [{ id, label }] }]
+      // and each variant may have optionValueIds: [id, id]
+      const variantOptionsList = rawBody.productVariantOptions ?? []
+
       // Normalize variants
       const rawVariants = rawBody.variants ?? rawBody.productVariants ?? body?.variants ?? []
       const variants = rawVariants.map(v => {
+        // Try embedded options first
         const opts = v.options ?? v.variantOptions ?? []
         const get  = name => opts.find(o => o.name?.toLowerCase() === name.toLowerCase())?.value ?? null
+
+        let color = get('color')
+        let size  = get('size')
+
+        // Fallback: resolve from productVariantOptions using optionValueIds
+        if ((!color || !size) && variantOptionsList.length > 0 && v.optionValueIds?.length > 0) {
+          for (const opt of variantOptionsList) {
+            const matched = opt.values?.find(val => v.optionValueIds.includes(val.id))
+            if (matched) {
+              const nameLower = opt.name?.toLowerCase() ?? ''
+              if (nameLower === 'color' || nameLower === 'colour') color = color ?? matched.label ?? matched.title ?? null
+              if (nameLower === 'size')  size  = size  ?? matched.label ?? matched.title ?? null
+            }
+          }
+        }
+
+        // Fallback: parse from variant title like "Black / M" or "Black - Large"
+        if (!color && v.title) {
+          const parts = v.title.split(/\s*[\/\-]\s*/)
+          if (parts.length >= 2) {
+            // Heuristic: sizes tend to be short (S, M, L, XL, XXL, etc.)
+            const sizeKeywords = /^(xs|s|m|l|xl|xxl|2xl|3xl|4xl|one.size|\d+)$/i
+            const last = parts[parts.length - 1].trim()
+            const first = parts[0].trim()
+            if (sizeKeywords.test(last)) {
+              color = color ?? first
+              size  = size  ?? last
+            } else {
+              color = color ?? first
+            }
+          }
+        }
+
         return {
           uid:             v.id ?? null,
           gelatoVariantId: v.productUid ?? null,
-          color:           get('color'),
-          size:            get('size'),
+          color,
+          size,
           price:           v.price != null ? (v.price / 100) : null,
           currency:        v.currency ?? rawBody.currency ?? null,
         }
@@ -154,15 +193,18 @@ export default async function handler(req, res) {
         variantCount:      rawVariants.length,
         imagesFound:       images.length,
         firstVariantKeys:  Object.keys(firstVariant),
+        firstVariantTitle: firstVariant.title ?? null,
         firstVariantPreviewFields: {
           previewUrl:    firstVariant.previewUrl   ?? null,
           mockupUrl:     firstVariant.mockupUrl    ?? null,
           imageSrc:      firstVariant.imageSrc     ?? null,
           thumbnailUrl:  firstVariant.thumbnailUrl ?? null,
         },
-        firstImageEntry:   Object.keys(firstImgEntry),
-        firstImageFileUrl: firstImgEntry.fileUrl ?? firstImgEntry.src ?? firstImgEntry.url ?? null,
-        firstImageVariantIds: firstImgEntry.productVariantIds ?? firstImgEntry.variantIds ?? [],
+        firstImageEntry:       Object.keys(firstImgEntry),
+        firstImageFileUrl:     firstImgEntry.fileUrl ?? firstImgEntry.src ?? firstImgEntry.url ?? null,
+        firstImageVariantIds:  firstImgEntry.productVariantIds ?? firstImgEntry.variantIds ?? [],
+        productVariantOptions: variantOptionsList.map(o => ({ name: o.name, valueCount: o.values?.length })),
+        sampleVariantResolved: variants[0] ?? null,
       }
       console.log('[get-product-variants] debug:', JSON.stringify(debug))
 

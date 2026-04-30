@@ -407,6 +407,21 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             {fetchDebug.firstImageEntry?.length > 0 && (
               <p><span className="text-gray-500">first image keys:</span> <span className="text-green-300">{fetchDebug.firstImageEntry.join(', ')}</span></p>
             )}
+            {fetchDebug.firstImageFileUrl && (
+              <p><span className="text-gray-500">first image URL:</span> <span className="text-cyan-300 break-all">{fetchDebug.firstImageFileUrl}</span></p>
+            )}
+            {fetchDebug.firstImageVariantIds?.length > 0 && (
+              <p><span className="text-gray-500">first image variantIds:</span> <span className="text-cyan-300">{fetchDebug.firstImageVariantIds.join(', ')}</span></p>
+            )}
+            {fetchDebug.productVariantOptions?.length > 0 && (
+              <p><span className="text-gray-500">productVariantOptions:</span> <span className="text-yellow-200">{fetchDebug.productVariantOptions.map(o => `${o.name}(${o.valueCount})`).join(', ')}</span></p>
+            )}
+            {fetchDebug.sampleVariantResolved && (
+              <p><span className="text-gray-500">sample variant resolved:</span> <span className="text-green-300">{JSON.stringify(fetchDebug.sampleVariantResolved)}</span></p>
+            )}
+            {fetchDebug.firstVariantTitle && (
+              <p><span className="text-gray-500">first variant title:</span> <span className="text-purple-300">{fetchDebug.firstVariantTitle}</span></p>
+            )}
           </div>
         )}
 
