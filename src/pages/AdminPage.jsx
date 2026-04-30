@@ -116,6 +116,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [newColl, setNewColl]       = useState('')
   const [movement, setMovement]     = useState(editingProduct?.movement || '')
   const [description, setDescription] = useState(editingProduct?.description || '')
+  const [altText, setAltText]       = useState(editingProduct?.altText || '')
+  const [tags, setTags]             = useState(
+    Array.isArray(editingProduct?.tags) ? editingProduct.tags.join(', ') : (editingProduct?.tags || '')
+  )
+
+  const [generating, setGenerating] = useState(false)
+  const [genErr, setGenErr]         = useState('')
 
   const [images, setImages]         = useState([])
   const [saving, setSaving]         = useState(false)
@@ -124,6 +131,33 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
   const productId = isEdit ? editingProduct.id : slugify(title)
   const finalCollection = newColl.trim() || collection
+
+  const generateWithAI = async () => {
+    if (!title.trim()) return setGenErr('Enter a product title first')
+    setGenerating(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productTitle: title.trim(),
+          section,
+          collection: newColl.trim() || collection,
+          movement: movement.trim(),
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Generation failed')
+      if (data.seoTitle)    setTitle(data.seoTitle)
+      if (data.description) setDescription(data.description)
+      if (data.altText)     setAltText(data.altText)
+      if (data.tags?.length) setTags(data.tags.join(', '))
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGenerating(false)
+    }
+  }
 
   const fetchVariants = async () => {
     if (!gelatoUid.trim()) return
@@ -175,11 +209,14 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         price: priceCents,
         currency: 'eur',
         description: description.trim() || `${title.trim()} from the ${finalCollection} collection.`,
+        altText: altText.trim() || '',
         details: ['Printed and fulfilled via Gelato'],
         sizes,
         image: uploadedPaths[0] || '',
         images: uploadedPaths,
-        tags: [slugify(title), slugify(finalCollection)].filter(Boolean),
+        tags: tags.trim()
+          ? tags.split(',').map(t => t.trim()).filter(Boolean)
+          : [slugify(title), slugify(finalCollection)].filter(Boolean),
         featured: false,
         gelatoProductId: gelatoUid.trim() || null,
         movement: movement.trim() || finalCollection,
@@ -247,11 +284,27 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       {/* Info */}
       <Card title="Product Info">
         <div className="grid grid-cols-2 gap-4">
-          <Field label="Title" hint={title ? `id: ${slugify(title)}` : ''} >
-            <input value={title} onChange={e => setTitle(e.target.value)}
-              placeholder="Snorlax T-Shirt" className={`${inputCls} col-span-2`} />
-          </Field>
-          <div className="col-span-2" />
+          <div className="col-span-2">
+            <Field label="Title" hint={title ? `id: ${slugify(title)}` : ''}>
+              <input value={title} onChange={e => setTitle(e.target.value)}
+                placeholder="Snorlax T-Shirt" className={inputCls} />
+            </Field>
+            <div className="mt-2 flex items-center gap-3">
+              <button
+                onClick={generateWithAI}
+                disabled={generating || !title.trim()}
+                className="flex items-center gap-1.5 bg-violet-700 hover:bg-violet-600 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                {generating ? (
+                  <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" />Generating…</>
+                ) : (
+                  <><span>✨</span>Generate with AI</>
+                )}
+              </button>
+              {genErr && <span className="text-red-400 text-xs">{genErr}</span>}
+              {!genErr && !generating && altText && <span className="text-violet-400 text-xs">✓ AI content applied</span>}
+            </div>
+          </div>
 
           <Field label="Price (€)">
             <input type="number" min="0" step="0.01" value={price} onChange={e => setPrice(e.target.value)}
@@ -286,7 +339,26 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           <div className="col-span-2">
             <Field label="Description">
               <textarea value={description} onChange={e => setDescription(e.target.value)}
-                rows={3} placeholder="Product description…"
+                rows={4} placeholder="Product description (~150 words)…"
+                className={`${inputCls} resize-none`} />
+            </Field>
+          </div>
+
+          <div className="col-span-2">
+            <Field label="Alt Text (image accessibility)" hint="Used for SEO and screen readers">
+              <input value={altText} onChange={e => setAltText(e.target.value)}
+                placeholder="Snorlax fan art t-shirt on white background…"
+                className={inputCls} />
+            </Field>
+          </div>
+
+          <div className="col-span-2">
+            <Field
+              label="Tags"
+              hint={`${tags.split(',').filter(t => t.trim()).length}/13 tags · comma-separated`}
+            >
+              <textarea value={tags} onChange={e => setTags(e.target.value)}
+                rows={2} placeholder="snorlax shirt, pokemon gift, anime tee, …"
                 className={`${inputCls} resize-none`} />
             </Field>
           </div>
