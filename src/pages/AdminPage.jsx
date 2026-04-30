@@ -468,8 +468,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             )}
           </div>
 
-          {/* Images grouped by color */}
-          {gelatoImages.length > 0 && (
+          {/* Images grouped by color — show imported paths (GitHub) not S3 URLs */}
+          {importedPaths.length > 0 && (
             Object.keys(imagesByColor).length > 0 ? (
               <div className="space-y-4">
                 {Object.entries(imagesByColor).map(([color, srcs]) => (
@@ -480,14 +480,18 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                     <div className="flex flex-wrap gap-2">
                       {srcs.map((src, i) => {
                         const idx = gelatoImages.findIndex(g => g.src === src)
-                        const imported = !!importedPaths[idx]
+                        const path = importedPaths[idx] ?? null
                         return (
-                          <div key={i} className="relative flex-shrink-0">
-                            <img src={src} alt=""
-                              className={`w-20 h-20 object-cover border ${imported ? 'border-green-600' : 'border-gray-700'}`}
-                              onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                            {imported && (
-                              <span className="absolute bottom-0.5 right-0.5 bg-green-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center leading-none">✓</span>
+                          <div key={i} className="relative flex-shrink-0 w-20">
+                            {path ? (
+                              <div className="w-20 h-20 border border-green-600 bg-gray-800 flex flex-col items-center justify-center gap-1 p-1">
+                                <span className="text-green-400 text-base">✓</span>
+                                <span className="text-gray-400 text-xs text-center break-all leading-tight">{path.split('/').pop()}</span>
+                              </div>
+                            ) : (
+                              <div className="w-20 h-20 border border-gray-700 bg-gray-800 flex items-center justify-center">
+                                <span className="text-gray-600 text-xs">—</span>
+                              </div>
                             )}
                           </div>
                         )
@@ -498,18 +502,17 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               </div>
             ) : (
               <div className="flex flex-wrap gap-2">
-                {gelatoImages.map((img, i) => (
-                  <div key={i} className="relative flex-shrink-0">
-                    <img src={img.src} alt=""
-                      className={`w-20 h-20 object-cover border ${importedPaths[i] ? 'border-green-600' : 'border-gray-700'}`}
-                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                    {importedPaths[i] && (
-                      <span className="absolute bottom-0.5 right-0.5 bg-green-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center leading-none">✓</span>
-                    )}
+                {importedPaths.map((path, i) => (
+                  <div key={i} className="w-20 h-20 border border-green-600 bg-gray-800 flex flex-col items-center justify-center gap-1 p-1">
+                    <span className="text-green-400 text-base">✓</span>
+                    <span className="text-gray-400 text-xs text-center break-all leading-tight">{path.split('/').pop()}</span>
                   </div>
                 ))}
               </div>
             )
+          )}
+          {importedPaths.length > 0 && (
+            <p className="text-gray-600 text-xs">Le immagini saranno visibili sul sito dopo il deploy Vercel (~2 min).</p>
           )}
         </Card>
       )}
