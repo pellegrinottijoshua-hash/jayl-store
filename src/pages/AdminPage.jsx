@@ -290,9 +290,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       {/* Gelato */}
       <Card title="Gelato Variants">
         <div className="flex gap-2">
-          <input value={gelatoUid} onChange={e => setGelatoUid(e.target.value)}
+          <input
+            value={gelatoUid}
+            onChange={e => setGelatoUid(e.target.value.replace(/[^\x20-\x7E]/g, '').trim())}
             placeholder="Gelato Product UID or store product UUID"
-            className={inputCls + ' font-mono text-xs'} />
+            className={inputCls + ' font-mono text-xs'}
+          />
           <button onClick={fetchVariants} disabled={fetching || !gelatoUid.trim()} className={btnPrimary + ' whitespace-nowrap'}>
             {fetching ? 'Fetching…' : 'Fetch Variants'}
           </button>

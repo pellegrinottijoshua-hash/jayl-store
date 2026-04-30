@@ -19,12 +19,17 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
 
-  const { productId } = req.query
-  if (!productId || typeof productId !== 'string' || !/^[a-zA-Z0-9_-]+$/.test(productId)) {
-    return res.status(400).json({ error: 'Missing or invalid productId' })
+  // Strip any non-printable / non-ASCII characters that can sneak in via copy-paste
+  // (e.g. U+2028 LINE SEPARATOR, U+FEFF BOM, smart quotes, etc.)
+  const rawId = typeof req.query.productId === 'string' ? req.query.productId : ''
+  const productId = rawId.replace(/[^\x20-\x7E]/g, '').trim()
+
+  if (!productId || !/^[a-zA-Z0-9_.:-]+$/.test(productId)) {
+    return res.status(400).json({ error: 'Missing or invalid productId — only ASCII alphanumerics, hyphens, underscores, dots and colons are allowed' })
   }
 
-  const apiKey = process.env.GELATO_API_KEY
+  // Sanitize the API key as well (guards against env vars saved with a trailing newline)
+  const apiKey = (process.env.GELATO_API_KEY || '').replace(/[^\x20-\x7E]/g, '').trim()
   if (!apiKey) {
     console.error('[get-product-variants] GELATO_API_KEY is not set')
     return res.status(500).json({ error: 'Server misconfiguration' })

@@ -652,7 +652,7 @@ export default function AdminProductPage() {
               <Field label="Gelato Product UID" hint="Used to route orders to the correct Gelato product">
                 <input
                   value={gelatoUid}
-                  onChange={e => setGelatoUid(e.target.value)}
+                  onChange={e => setGelatoUid(e.target.value.replace(/[^\x20-\x7E]/g, '').trim())}
                   disabled={!isEditable}
                   className={`${inputCls} font-mono text-xs${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
                 />
