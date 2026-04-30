@@ -73,11 +73,35 @@ export default async function handler(req, res) {
         }
       })
 
+      // Normalize images — Gelato returns product-level images with variantIds,
+      // OR per-variant previewUrls if no top-level images array.
+      const rawImages = body?.images ?? body?.productImages ?? []
+      let images = rawImages
+        .map(img => ({
+          src:        img.src ?? img.url ?? img.imageSrc ?? null,
+          position:   img.position ?? 0,
+          variantIds: img.variantIds ?? img.variant_ids ?? [],
+        }))
+        .filter(img => img.src)
+
+      // Fallback: build image list from variant previewUrls if no top-level images
+      if (images.length === 0) {
+        const seen = new Set()
+        for (const v of rawVariants) {
+          const src = v.previewUrl ?? v.imageSrc ?? null
+          if (src && !seen.has(src)) {
+            seen.add(src)
+            images.push({ src, position: images.length, variantIds: [v.id].filter(Boolean) })
+          }
+        }
+      }
+
       return res.status(200).json({
         productId,
         source: 'ecommerce',
-        title: body?.title ?? '',
+        title:  body?.title ?? '',
         variants,
+        images,   // [{ src, position, variantIds }]
       })
     }
 

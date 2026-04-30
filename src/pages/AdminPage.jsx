@@ -164,6 +164,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [generating, setGenerating] = useState(false)
   const [genErr, setGenErr]         = useState('')
 
+  // Gelato mockup images (returned from fetch-variants)
+  const [gelatoImages, setGelatoImages]   = useState([])   // [{ src, position, variantIds }]
+  const [importing, setImporting]         = useState(false)
+  const [importedPaths, setImportedPaths] = useState([])   // GitHub paths after import
+  const [importMsg, setImportMsg]         = useState('')
+
   const [images, setImages]         = useState([])
   const [saving, setSaving]         = useState(false)
   const [saveErr, setSaveErr]       = useState('')
@@ -173,6 +179,21 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const finalCollection = newColl.trim() || collection
 
   const videoInfo = parseVideoUrl(videoUrl)
+
+  // Map variantId → color label for grouping images
+  const variantColorMap = Object.fromEntries(
+    variants.filter(v => v.uid && v.color).map(v => [v.uid, v.color])
+  )
+  // Group Gelato images by color
+  const imagesByColor = gelatoImages.reduce((acc, img) => {
+    const colors = [...new Set((img.variantIds || []).map(id => variantColorMap[id]).filter(Boolean))]
+    const keys = colors.length > 0 ? colors : ['__all__']
+    for (const key of keys) {
+      if (!acc[key]) acc[key] = []
+      acc[key].push(img.src)
+    }
+    return acc
+  }, {})
 
   const generateWithAI = async () => {
     if (!title.trim()) return setGenErr('Enter a product title first')
@@ -204,15 +225,35 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const fetchVariants = async () => {
     if (!gelatoUid.trim()) return
     setFetching(true); setFetchErr('')
+    setGelatoImages([]); setImportedPaths([]); setImportMsg('')
     try {
       const res = await fetch(`/api/get-product-variants?productId=${encodeURIComponent(gelatoUid.trim())}`)
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Fetch failed')
       setVariants(data.variants || [])
+      setGelatoImages(data.images || [])
+      // Auto-fill title from Gelato if the field is still empty
+      if (data.title && !title.trim()) setTitle(data.title)
     } catch (e) {
       setFetchErr(e.message)
     } finally {
       setFetching(false)
+    }
+  }
+
+  const handleImportMockups = async () => {
+    if (!productId) return setImportMsg('⚠ Enter a product title first to generate the product ID')
+    const urls = gelatoImages.map(img => img.src).filter(Boolean)
+    if (!urls.length) return
+    setImporting(true); setImportMsg('')
+    try {
+      const data = await api('import-gelato-images', { productId, imageUrls: urls })
+      setImportedPaths(data.paths || [])
+      setImportMsg(`✓ ${data.paths?.length || 0} images imported to GitHub`)
+    } catch (e) {
+      setImportMsg(`✗ ${e.message}`)
+    } finally {
+      setImporting(false)
     }
   }
 
@@ -224,9 +265,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
     setSaving(true); setSaveErr(''); setSavedMsg('')
     try {
-      // 1. Upload new images
+      // 1. Start with imported Gelato paths + existing (edit mode)
       const existingImages = isEdit ? (editingProduct.images || []) : []
-      const uploadedPaths  = [...existingImages]
+      const uploadedPaths  = [...existingImages, ...importedPaths]
+
+      // 2. Upload any manually-added files
       for (const file of images) {
         const dataUrl  = await fileToBase64(file)
         const filename = sanitizeFilename(file.name)
@@ -234,14 +277,30 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         uploadedPaths.push(result.path)
       }
 
-      // 2. Derive sizes from variants or use default
+      // 3. Derive sizes from variants or use default
       const uniqueSizes = [...new Set(variants.map(v => v.size).filter(Boolean))]
       const priceCents  = Math.round(parseFloat(price) * 100)
       const sizes = uniqueSizes.length > 0
         ? uniqueSizes.map(s => ({ id: s, label: s, price: priceCents }))
         : [{ id: 'one-size', label: 'One Size', price: priceCents }]
 
-      // 3. Build product object
+      // 4. Build colors array from unique variant colors, with per-color image if available
+      // imagesByColor: { colorLabel → [gelatoSrc, ...] }
+      // importedPaths are named gelato-01.jpg etc in the same order as gelatoImages
+      const gelatoSrcToPath = Object.fromEntries(
+        gelatoImages.map((img, i) => [img.src, importedPaths[i] ?? null])
+      )
+      const uniqueColors = [...new Set(variants.map(v => v.color).filter(Boolean))]
+      const colorsArray = uniqueColors.length > 0
+        ? uniqueColors.map(color => {
+            const colorId  = color.toLowerCase().replace(/\s+/g, '-')
+            const firstSrc = imagesByColor[color]?.[0] ?? imagesByColor['__all__']?.[0] ?? null
+            const img      = firstSrc ? (gelatoSrcToPath[firstSrc] ?? null) : null
+            return { id: colorId, label: color, hex: '#888888', ...(img ? { image: img } : {}) }
+          })
+        : null
+
+      // 5. Build product object
       const product = {
         id: productId,
         section,
@@ -265,6 +324,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         adminManaged: true,
         ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : {}),
         ...(variants.length > 0 ? { variants } : {}),
+        ...(colorsArray ? { colors: colorsArray } : {}),
       }
 
       await api('save-product', { product })
@@ -326,6 +386,71 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </div>
         )}
       </Card>
+
+      {/* Gelato Mockup Images */}
+      {gelatoImages.length > 0 && (
+        <Card title={`Gelato Mockups — ${gelatoImages.length} images found`}>
+          {/* Grouped by color */}
+          {Object.keys(imagesByColor).length > 0 ? (
+            <div className="space-y-4">
+              {Object.entries(imagesByColor).map(([color, srcs]) => (
+                <div key={color}>
+                  {color !== '__all__' && (
+                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">{color}</p>
+                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {srcs.map((src, i) => (
+                      <div key={i} className="relative flex-shrink-0">
+                        <img
+                          src={src}
+                          alt=""
+                          className="w-20 h-20 object-cover border border-gray-700"
+                          onError={e => { e.currentTarget.style.opacity = '0.3' }}
+                        />
+                        {/* Show imported checkmark if this image has been committed */}
+                        {importedPaths[gelatoImages.findIndex(g => g.src === src)] && (
+                          <span className="absolute bottom-0.5 right-0.5 bg-green-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center leading-none">✓</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              {gelatoImages.map((img, i) => (
+                <img key={i} src={img.src} alt=""
+                  className="w-20 h-20 object-cover border border-gray-700"
+                  onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+              ))}
+            </div>
+          )}
+
+          <div className="flex items-center gap-3 pt-1">
+            {importedPaths.length === 0 ? (
+              <button
+                onClick={handleImportMockups}
+                disabled={importing || !productId}
+                className={btnPrimary}
+              >
+                {importing
+                  ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full mr-1.5" />Importing…</>
+                  : `↓ Import ${gelatoImages.length} images into product`
+                }
+              </button>
+            ) : (
+              <span className="text-green-400 text-sm">✓ {importedPaths.length} images imported</span>
+            )}
+            {importMsg && !importedPaths.length && (
+              <span className={`text-xs ${importMsg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{importMsg}</span>
+            )}
+            {!productId && (
+              <span className="text-yellow-500 text-xs">Enter a title first to set the product ID</span>
+            )}
+          </div>
+        </Card>
+      )}
 
       {/* Info */}
       <Card title="Product Info">

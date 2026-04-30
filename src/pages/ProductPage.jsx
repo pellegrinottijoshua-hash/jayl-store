@@ -69,6 +69,15 @@ export default function ProductPage() {
   const [activeImage, setActiveImage] = useState(videoInfo ? -1 : 0)
   const [added, setAdded] = useState(false)
 
+  // When a color is selected, jump to that color's dedicated image if one exists
+  useEffect(() => {
+    if (!selectedColor || !product?.colors) return
+    const colorObj = product.colors.find(c => c.id === selectedColor)
+    if (!colorObj?.image) return
+    const idx = product.images?.findIndex(img => img === colorObj.image) ?? -1
+    if (idx >= 0) setActiveImage(idx)
+  }, [selectedColor])
+
   if (!product) {
     return (
       <div className="min-h-screen bg-white pt-32 flex flex-col items-center justify-center text-center px-4">

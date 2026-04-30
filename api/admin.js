@@ -212,6 +212,65 @@ export default async function handler(req, res) {
       }
     }
 
+    // ── import-gelato-images ──────────────────────────────────────────────────
+    // Downloads images from Gelato CDN URLs and commits them to GitHub.
+    if (action === 'import-gelato-images') {
+      const { productId, imageUrls } = data
+      if (!productId || !Array.isArray(imageUrls) || imageUrls.length === 0) {
+        return res.status(400).json({ error: 'productId and imageUrls[] required' })
+      }
+      if (!/^[a-zA-Z0-9_-]+$/.test(productId)) {
+        return res.status(400).json({ error: 'Invalid productId' })
+      }
+
+      const paths = []
+      for (let i = 0; i < imageUrls.length; i++) {
+        const srcUrl = imageUrls[i]
+        try {
+          const imgRes = await fetch(srcUrl)
+          if (!imgRes.ok) {
+            console.warn(`[admin] skip image ${i + 1} — HTTP ${imgRes.status}`)
+            continue
+          }
+          const arrayBuffer = await imgRes.arrayBuffer()
+          const base64      = Buffer.from(arrayBuffer).toString('base64')
+          const ct  = imgRes.headers.get('content-type') || 'image/jpeg'
+          const ext = ct.split('/')[1]?.split(';')[0]?.replace('jpeg', 'jpg') || 'jpg'
+          const filename = `gelato-${String(i + 1).padStart(2, '0')}.${ext}`
+          const filePath = `public/images/${productId}/${filename}`
+
+          let existingSha = null
+          try { const ex = await ghGet(filePath, githubToken); existingSha = ex.sha } catch {}
+
+          const ghUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
+          const ghRes = await fetch(ghUrl, {
+            method: 'PUT',
+            headers: {
+              Authorization: `Bearer ${githubToken}`,
+              Accept: 'application/vnd.github+json',
+              'Content-Type': 'application/json',
+              'X-GitHub-Api-Version': '2022-11-28',
+            },
+            body: JSON.stringify({
+              message: `admin: import gelato mockup ${filename} for ${productId}`,
+              content: base64,
+              branch: GITHUB_BRANCH,
+              ...(existingSha ? { sha: existingSha } : {}),
+            }),
+          })
+          if (!ghRes.ok) {
+            const err = await ghRes.json().catch(() => ({}))
+            console.warn(`[admin] upload failed ${filename}: ${ghRes.status} ${JSON.stringify(err.message || '')}`)
+            continue
+          }
+          paths.push(`/images/${productId}/${filename}`)
+        } catch (e) {
+          console.warn(`[admin] error importing image ${i + 1}: ${e.message}`)
+        }
+      }
+      return res.status(200).json({ ok: true, paths })
+    }
+
     // ── delete-image ──────────────────────────────────────────────────────────
     if (action === 'delete-image') {
       const { path: filePath, sha } = data
