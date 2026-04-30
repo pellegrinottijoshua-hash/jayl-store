@@ -17,6 +17,7 @@ import TermsPage from '@/pages/TermsPage'
 import PrivacyPage from '@/pages/PrivacyPage'
 import CookiesPage from '@/pages/CookiesPage'
 import AdminPage from '@/pages/AdminPage'
+import AdminProductPage from '@/pages/AdminProductPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -50,6 +51,7 @@ export default function App() {
       <Routes>
         {/* ── Admin (standalone, no Navbar/Footer) ─────── */}
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/product/:id" element={<AdminProductPage />} />
 
         {/* ── Public site ──────────────────────────────── */}
         <Route path="*" element={

@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { products as allProducts } from '@/data/products'
 
 const ADMIN_PASSWORD = 'jaylpelle'
@@ -477,6 +478,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 // ── Product List Tab ──────────────────────────────────────────────────────────
 
 function ProductsTab({ onEdit }) {
+  const navigate = useNavigate()
   const [deletingId, setDeletingId] = useState(null)
   const [error, setError]           = useState('')
   const [hidden, setHidden]         = useState([])
@@ -513,9 +515,13 @@ function ProductsTab({ onEdit }) {
           </thead>
           <tbody>
             {visible.map(p => (
-              <tr key={p.id} className="border-b border-gray-800/40 hover:bg-gray-800/30 transition-colors">
+              <tr
+                key={p.id}
+                onClick={() => navigate(`/admin/product/${p.id}`)}
+                className="border-b border-gray-800/40 hover:bg-gray-800/50 transition-colors cursor-pointer"
+              >
                 <td className="px-4 py-3 font-mono text-xs text-gray-500 whitespace-nowrap">{p.id}</td>
-                <td className="px-4 py-3 text-gray-100 whitespace-nowrap">{p.name}</td>
+                <td className="px-4 py-3 text-gray-100 whitespace-nowrap font-medium">{p.name}</td>
                 <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{fmt(p.price)}</td>
                 <td className="px-4 py-3 text-gray-400">{p.section}</td>
                 <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{p.collection}</td>
@@ -523,16 +529,16 @@ function ProductsTab({ onEdit }) {
                   {p.videoUrl ? <span className="text-indigo-400">▶</span> : '—'}
                 </td>
                 <td className="px-4 py-3 text-gray-500 text-xs">{p.images?.length || 0}</td>
-                <td className="px-4 py-3">
+                <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
                   {p.adminManaged ? (
                     <div className="flex gap-2">
-                      <button onClick={() => onEdit(p)} className={btnGhost}>Edit</button>
+                      <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>Edit</button>
                       <button onClick={() => handleDelete(p)} disabled={deletingId === p.id} className={btnDanger}>
                         {deletingId === p.id ? '…' : 'Delete'}
                       </button>
                     </div>
                   ) : (
-                    <span className="text-gray-700 text-xs">hardcoded</span>
+                    <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>View</button>
                   )}
                 </td>
               </tr>
@@ -540,7 +546,7 @@ function ProductsTab({ onEdit }) {
           </tbody>
         </table>
       </div>
-      <p className="text-gray-600 text-xs">{visible.length} products · admin-managed products can be edited/deleted</p>
+      <p className="text-gray-600 text-xs">{visible.length} products · click any row to open the product editor</p>
     </div>
   )
 }

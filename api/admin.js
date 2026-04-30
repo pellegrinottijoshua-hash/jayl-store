@@ -220,6 +220,16 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true })
     }
 
+    // ── read-product ─────────────────────────────────────────────────────────
+    if (action === 'read-product') {
+      const { productId } = data
+      if (!productId) return res.status(400).json({ error: 'productId required' })
+      const { products } = await readAdminProducts(githubToken)
+      const product = products.find(p => p.id === productId)
+      if (!product) return res.status(404).json({ error: 'Product not found in admin products' })
+      return res.status(200).json({ product })
+    }
+
     // ── list-collections ──────────────────────────────────────────────────────
     if (action === 'list-collections') {
       const { collections } = await readAdminCollections(githubToken)
