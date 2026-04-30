@@ -1,76 +1,112 @@
 import { applyCors } from './_lib/cors.js'
 
-const GELATO_PRODUCTS_URL = 'https://product.gelatoapis.com/v3/products'
+const GELATO_CATALOG_URL   = 'https://product.gelatoapis.com/v3/products'
+const GELATO_ECOMMERCE_URL = 'https://ecommerce.gelatoapis.com/v1/stores'
+
+// UUID v4 pattern — identifies a Gelato *store* product (ecommerce API)
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 export default async function handler(req, res) {
-  // Apply CORS — override the Allow-Methods header for this GET-only endpoint.
+  // CORS — this is a GET-only endpoint
   const origin = req.headers.origin
   res.setHeader('Vary', 'Origin')
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   if (origin) {
-    // Re-use the same origin check from applyCors by calling it, then
-    // overwriting the methods header it set.
     const allowed = applyCors(req, res)
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
     if (!allowed) return res.status(403).json({ error: 'Forbidden' })
   }
-
   if (req.method === 'OPTIONS') return res.status(200).end()
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
+  if (req.method !== 'GET')    return res.status(405).json({ error: 'Method not allowed' })
 
-  // Strip any non-printable / non-ASCII characters that can sneak in via copy-paste
-  // (e.g. U+2028 LINE SEPARATOR, U+FEFF BOM, smart quotes, etc.)
-  const rawId = typeof req.query.productId === 'string' ? req.query.productId : ''
+  // Sanitize: strip invisible/non-ASCII chars that sneak in via copy-paste
+  const rawId    = typeof req.query.productId === 'string' ? req.query.productId : ''
   const productId = rawId.replace(/[^\x20-\x7E]/g, '').trim()
-
   if (!productId || !/^[a-zA-Z0-9_.:-]+$/.test(productId)) {
-    return res.status(400).json({ error: 'Missing or invalid productId — only ASCII alphanumerics, hyphens, underscores, dots and colons are allowed' })
+    return res.status(400).json({ error: 'Missing or invalid productId' })
   }
 
-  // Sanitize the API key as well (guards against env vars saved with a trailing newline)
   const apiKey = (process.env.GELATO_API_KEY || '').replace(/[^\x20-\x7E]/g, '').trim()
-  if (!apiKey) {
-    console.error('[get-product-variants] GELATO_API_KEY is not set')
-    return res.status(500).json({ error: 'Server misconfiguration' })
-  }
+  if (!apiKey) return res.status(500).json({ error: 'GELATO_API_KEY not configured' })
 
   try {
-    const gelatoRes = await fetch(`${GELATO_PRODUCTS_URL}/${encodeURIComponent(productId)}`, {
-      method: 'GET',
-      headers: {
-        'X-API-KEY': apiKey,
-        'Content-Type': 'application/json',
-      },
-    })
+    // ── UUID → Gelato ecommerce store product ─────────────────────────────────
+    if (UUID_RE.test(productId)) {
+      const storeId = (process.env.GELATO_STORE_ID || '').replace(/[^\x20-\x7E]/g, '').trim()
+      if (!storeId) {
+        return res.status(500).json({
+          error: 'GELATO_STORE_ID is not configured. Add it to your Vercel environment variables.',
+        })
+      }
 
-    const body = await gelatoRes.json().catch(() => null)
+      const url = `${GELATO_ECOMMERCE_URL}/${encodeURIComponent(storeId)}/products/${encodeURIComponent(productId)}`
+      const gelatoRes = await fetch(url, {
+        headers: { 'X-API-KEY': apiKey, 'Content-Type': 'application/json' },
+      })
+      const body = await gelatoRes.json().catch(() => null)
 
-    if (!gelatoRes.ok) {
-      console.error('[get-product-variants] Gelato error', gelatoRes.status, body)
-      return res.status(gelatoRes.status).json({
-        error: body?.message || 'Failed to fetch product from Gelato',
+      if (!gelatoRes.ok) {
+        console.error('[get-product-variants] ecommerce error', gelatoRes.status, body)
+        return res.status(gelatoRes.status).json({
+          error: body?.message || `Gelato ecommerce API error ${gelatoRes.status}`,
+        })
+      }
+
+      // Normalize ecommerce variants
+      // Each variant has:
+      //   v.id          → store variant UUID
+      //   v.productUid  → Gelato catalog UID (used when placing orders via create-order)
+      //   v.options     → [{ name: 'Color', value: 'Black' }, { name: 'Size', value: 'S' }]
+      //   v.price       → price in smallest currency unit (cents)
+      const rawVariants = body?.variants ?? []
+      const variants = rawVariants.map(v => {
+        const opts  = v.options ?? v.variantOptions ?? []
+        const get   = name => opts.find(o => o.name?.toLowerCase() === name.toLowerCase())?.value ?? null
+        return {
+          uid:             v.id ?? null,
+          gelatoVariantId: v.productUid ?? null,   // catalog UID → used in orders
+          color:           get('color'),
+          size:            get('size'),
+          price:           v.price != null ? (v.price / 100) : null,
+          currency:        v.currency ?? body?.currency ?? null,
+        }
+      })
+
+      return res.status(200).json({
+        productId,
+        source: 'ecommerce',
+        title: body?.title ?? '',
+        variants,
       })
     }
 
-    // Normalise the variants array into a clean, frontend-friendly shape.
-    const rawVariants = body?.variants ?? body?.productVariants ?? []
+    // ── Non-UUID → Gelato catalog product ────────────────────────────────────
+    const gelatoRes = await fetch(`${GELATO_CATALOG_URL}/${encodeURIComponent(productId)}`, {
+      headers: { 'X-API-KEY': apiKey, 'Content-Type': 'application/json' },
+    })
+    const body = await gelatoRes.json().catch(() => null)
 
-    const variants = rawVariants.map((v) => ({
-      uid:   v.id ?? v.uid ?? v.productUid ?? null,
-      size:  v.attributes?.find((a) => a.name?.toLowerCase() === 'size')?.value
-          ?? v.size
-          ?? null,
-      color: v.attributes?.find((a) => a.name?.toLowerCase() === 'color')?.value
-          ?? v.color
-          ?? null,
-      price: v.price ?? v.retailPrice ?? null,
+    if (!gelatoRes.ok) {
+      console.error('[get-product-variants] catalog error', gelatoRes.status, body)
+      return res.status(gelatoRes.status).json({
+        error: body?.message || `Gelato catalog API error ${gelatoRes.status}`,
+      })
+    }
+
+    const rawVariants = body?.variants ?? body?.productVariants ?? []
+    const variants = rawVariants.map(v => ({
+      uid:      v.id ?? v.uid ?? v.productUid ?? null,
+      size:     v.attributes?.find(a => a.name?.toLowerCase() === 'size')?.value ?? v.size ?? null,
+      color:    v.attributes?.find(a => a.name?.toLowerCase() === 'color')?.value ?? v.color ?? null,
+      price:    v.price ?? v.retailPrice ?? null,
       currency: v.currency ?? body?.currency ?? null,
     }))
 
-    return res.status(200).json({ productId, variants })
+    return res.status(200).json({ productId, source: 'catalog', variants })
+
   } catch (err) {
     console.error('[get-product-variants]', err.message)
-    return res.status(500).json({ error: 'Internal server error' })
+    return res.status(500).json({ error: err.message })
   }
 }
