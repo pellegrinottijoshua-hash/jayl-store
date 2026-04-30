@@ -85,8 +85,8 @@ export default async function handler(req, res) {
 
       // 1. Top-level images / productImages array (with variantIds)
       for (const img of (rawBody.images ?? rawBody.productImages ?? rawBody.media ?? [])) {
-        const src = img.src ?? img.url ?? img.imageSrc ?? null
-        push(src, img.variantIds ?? img.variant_ids ?? [])
+        const src = img.fileUrl ?? img.src ?? img.url ?? img.imageSrc ?? null
+        push(src, img.productVariantIds ?? img.variantIds ?? img.variant_ids ?? [])
       }
 
       // 2. Per-variant preview / mockup URLs
@@ -110,8 +110,8 @@ export default async function handler(req, res) {
             const list = imgsBody?.images ?? imgsBody?.productImages
                       ?? (Array.isArray(imgsBody) ? imgsBody : [])
             for (const img of list) {
-              const src = img.src ?? img.url ?? img.imageSrc ?? null
-              push(src, img.variantIds ?? img.variant_ids ?? [])
+              const src = img.fileUrl ?? img.src ?? img.url ?? img.imageSrc ?? null
+              push(src, img.productVariantIds ?? img.variantIds ?? img.variant_ids ?? [])
             }
           }
         } catch (e) {
@@ -161,6 +161,8 @@ export default async function handler(req, res) {
           thumbnailUrl:  firstVariant.thumbnailUrl ?? null,
         },
         firstImageEntry:   Object.keys(firstImgEntry),
+        firstImageFileUrl: firstImgEntry.fileUrl ?? firstImgEntry.src ?? firstImgEntry.url ?? null,
+        firstImageVariantIds: firstImgEntry.productVariantIds ?? firstImgEntry.variantIds ?? [],
       }
       console.log('[get-product-variants] debug:', JSON.stringify(debug))
 
