@@ -147,6 +147,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [variants, setVariants]     = useState(editingProduct?.variants || [])
   const [fetching, setFetching]     = useState(false)
   const [fetchErr, setFetchErr]     = useState('')
+  const [fetchDebug, setFetchDebug] = useState(null)
 
   const [title, setTitle]           = useState(editingProduct?.name || '')
   const [price, setPrice]           = useState(editingProduct ? (editingProduct.price / 100).toString() : '')
@@ -225,7 +226,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const fetchVariants = async () => {
     if (!gelatoUid.trim()) return
     setFetching(true); setFetchErr('')
-    setGelatoImages([]); setImportedPaths([]); setImportMsg('')
+    setGelatoImages([]); setImportedPaths([]); setImportMsg(''); setFetchDebug(null)
     try {
       const res = await fetch(`/api/get-product-variants?productId=${encodeURIComponent(gelatoUid.trim())}`)
       const data = await res.json()
@@ -233,6 +234,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
       const fetchedVariants = data.variants || []
       const fetchedImages   = data.images   || []
+      setFetchDebug(data._debug ?? null)
       setVariants(fetchedVariants)
       setGelatoImages(fetchedImages)
 
@@ -389,6 +391,25 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </button>
         </div>
         {fetchErr && <p className="text-red-400 text-xs">{fetchErr}</p>}
+
+        {/* Debug panel — shows what Gelato actually returned */}
+        {fetchDebug && (
+          <div className="bg-gray-800 border border-gray-700 p-3 text-xs font-mono space-y-1">
+            <p className="text-gray-400 uppercase tracking-wider text-xs mb-2">Gelato API debug</p>
+            <p><span className="text-gray-500">top-level keys:</span> <span className="text-yellow-300">{fetchDebug.topLevelKeys?.join(', ') || '—'}</span></p>
+            <p><span className="text-gray-500">rawBody keys:</span> <span className="text-yellow-300">{fetchDebug.rawBodyKeys?.join(', ') || '—'}</span></p>
+            <p><span className="text-gray-500">variants:</span> <span className={fetchDebug.variantCount > 0 ? 'text-green-400' : 'text-red-400'}>{fetchDebug.variantCount}</span></p>
+            <p><span className="text-gray-500">images found:</span> <span className={fetchDebug.imagesFound > 0 ? 'text-green-400' : 'text-red-400'}>{fetchDebug.imagesFound}</span></p>
+            <p><span className="text-gray-500">variant fields:</span> <span className="text-blue-300">{fetchDebug.firstVariantKeys?.join(', ') || '—'}</span></p>
+            {fetchDebug.firstVariantPreviewFields && (
+              <p><span className="text-gray-500">variant preview fields:</span> <span className="text-blue-300">{JSON.stringify(fetchDebug.firstVariantPreviewFields)}</span></p>
+            )}
+            {fetchDebug.firstImageEntry?.length > 0 && (
+              <p><span className="text-gray-500">first image keys:</span> <span className="text-green-300">{fetchDebug.firstImageEntry.join(', ')}</span></p>
+            )}
+          </div>
+        )}
+
         {variants.length > 0 && (
           <div className="overflow-x-auto scrollbar-hide">
             <table className="w-full text-xs text-left border-collapse">

@@ -97,19 +97,34 @@ export default async function handler(req, res) {
       // 3. Top-level single preview URL
       push(rawBody.previewUrl ?? rawBody.mockupUrl ?? null)
 
-      // Log for debugging (Vercel function logs)
-      if (images.length === 0) {
-        console.warn('[get-product-variants] No images found. Top-level keys:', Object.keys(rawBody).join(', '))
-      }
-
       const title = rawBody.title ?? rawBody.name ?? body?.title ?? ''
+
+      // ── Debug info (always returned so admin UI can diagnose issues) ────────
+      const firstVariant  = rawVariants[0] ?? {}
+      const firstImgEntry = (rawBody.images ?? rawBody.productImages ?? rawBody.media ?? [])[0] ?? {}
+      const debug = {
+        topLevelKeys:      Object.keys(body ?? {}),
+        rawBodyKeys:       Object.keys(rawBody),
+        variantCount:      rawVariants.length,
+        imagesFound:       images.length,
+        firstVariantKeys:  Object.keys(firstVariant),
+        firstVariantPreviewFields: {
+          previewUrl:    firstVariant.previewUrl   ?? null,
+          mockupUrl:     firstVariant.mockupUrl    ?? null,
+          imageSrc:      firstVariant.imageSrc     ?? null,
+          thumbnailUrl:  firstVariant.thumbnailUrl ?? null,
+        },
+        firstImageEntry:   Object.keys(firstImgEntry),
+      }
+      console.log('[get-product-variants] debug:', JSON.stringify(debug))
 
       return res.status(200).json({
         productId,
         source: 'ecommerce',
         title,
         variants,
-        images,   // [{ src, position, variantIds }]
+        images,
+        _debug: debug,
       })
     }
 
