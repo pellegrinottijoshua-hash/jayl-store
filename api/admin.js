@@ -235,11 +235,16 @@ export default async function handler(req, res) {
       const colorCounters = {}
       const paths = []
 
+      const gelatoApiKey = (process.env.GELATO_API_KEY || '').replace(/[^\x20-\x7E]/g, '').trim()
+
       for (let i = 0; i < imageList.length; i++) {
         const { src: srcUrl, color } = imageList[i]
         if (!srcUrl) continue
         try {
-          const imgRes = await fetch(srcUrl)
+          const isGelatoUrl = /gelato/i.test(srcUrl)
+          const imgRes = await fetch(srcUrl, isGelatoUrl && gelatoApiKey
+            ? { headers: { 'X-API-KEY': gelatoApiKey } }
+            : {})
           if (!imgRes.ok) {
             console.warn(`[admin] skip image ${i + 1} — HTTP ${imgRes.status}`)
             continue

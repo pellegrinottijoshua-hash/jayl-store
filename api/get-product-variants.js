@@ -73,6 +73,7 @@ export default async function handler(req, res) {
       })
 
       // ── Collect images from every possible location ────────────────────────
+      const hdrs    = { 'X-API-KEY': apiKey, 'Content-Type': 'application/json' }
       const seenSrcs = new Set()
       const images   = []
 
@@ -82,20 +83,65 @@ export default async function handler(req, res) {
         images.push({ src, position: images.length, variantIds })
       }
 
-      // 1. Top-level images array (most structured — includes variantIds)
+      // 1. Top-level images / productImages array (with variantIds)
       for (const img of (rawBody.images ?? rawBody.productImages ?? rawBody.media ?? [])) {
         const src = img.src ?? img.url ?? img.imageSrc ?? null
         push(src, img.variantIds ?? img.variant_ids ?? [])
       }
 
-      // 2. Per-variant preview / mockup URLs (common fallback)
+      // 2. Per-variant preview / mockup URLs
       for (const v of rawVariants) {
-        const src = v.previewUrl ?? v.mockupUrl ?? v.imageSrc ?? v.thumbnailUrl ?? null
+        const src = v.previewUrl ?? v.mockupUrl ?? v.imageSrc
+              ?? v.thumbnailUrl ?? v.coverImageUrl ?? null
         push(src, [v.id].filter(Boolean))
       }
 
-      // 3. Top-level single preview URL
-      push(rawBody.previewUrl ?? rawBody.mockupUrl ?? null)
+      // 3. Top-level cover / preview URL
+      push(rawBody.previewUrl ?? rawBody.mockupUrl
+           ?? rawBody.coverImageUrl ?? rawBody.coverUrl ?? null)
+
+      // 4. Dedicated /images sub-endpoint (if product-level images are empty)
+      if (images.length <= 1) {
+        try {
+          const imgsUrl = `${GELATO_ECOMMERCE_URL}/${encodeURIComponent(storeId)}/products/${encodeURIComponent(productId)}/images`
+          const imgsRes = await fetch(imgsUrl, { headers: hdrs })
+          if (imgsRes.ok) {
+            const imgsBody = await imgsRes.json().catch(() => null)
+            const list = imgsBody?.images ?? imgsBody?.productImages
+                      ?? (Array.isArray(imgsBody) ? imgsBody : [])
+            for (const img of list) {
+              const src = img.src ?? img.url ?? img.imageSrc ?? null
+              push(src, img.variantIds ?? img.variant_ids ?? [])
+            }
+          }
+        } catch (e) {
+          console.warn('[get-product-variants] /images sub-endpoint failed:', e.message)
+        }
+      }
+
+      // 5. Individual variant detail pages (last resort — may expose previewUrl)
+      if (images.length <= 1 && rawVariants.length > 0) {
+        // Only fetch a few to avoid timeout; de-dupe by color
+        const seen = new Set()
+        for (const v of rawVariants.slice(0, 20)) {
+          const opts  = v.options ?? v.variantOptions ?? []
+          const color = opts.find(o => o.name?.toLowerCase() === 'color')?.value ?? null
+          const key   = color ?? v.id
+          if (seen.has(key)) continue
+          seen.add(key)
+          try {
+            const vUrl = `${GELATO_ECOMMERCE_URL}/${encodeURIComponent(storeId)}/products/${encodeURIComponent(productId)}/variants/${encodeURIComponent(v.id)}`
+            const vRes = await fetch(vUrl, { headers: hdrs })
+            if (vRes.ok) {
+              const vBody = await vRes.json().catch(() => null)
+              const vRaw  = vBody?.variant ?? vBody ?? {}
+              const src   = vRaw.previewUrl ?? vRaw.mockupUrl ?? vRaw.imageSrc
+                         ?? vRaw.thumbnailUrl ?? vRaw.coverImageUrl ?? null
+              push(src, [v.id].filter(Boolean))
+            }
+          } catch {}
+        }
+      }
 
       const title = rawBody.title ?? rawBody.name ?? body?.title ?? ''
 
