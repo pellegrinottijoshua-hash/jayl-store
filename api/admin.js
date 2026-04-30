@@ -241,8 +241,9 @@ export default async function handler(req, res) {
         const { src: srcUrl, color } = imageList[i]
         if (!srcUrl) continue
         try {
-          const isGelatoUrl = /gelato/i.test(srcUrl)
-          const imgRes = await fetch(srcUrl, isGelatoUrl && gelatoApiKey
+          // Only add Gelato API key for actual Gelato API endpoints (not S3 presigned URLs)
+          const isGelatoApi = /gelatoapis\.com/i.test(srcUrl)
+          const imgRes = await fetch(srcUrl, isGelatoApi && gelatoApiKey
             ? { headers: { 'X-API-KEY': gelatoApiKey } }
             : {})
           if (!imgRes.ok) {

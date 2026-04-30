@@ -84,19 +84,18 @@ export default async function handler(req, res) {
           }
         }
 
-        // Fallback: parse from variant title like "Black / M" or "Black - Large"
-        if (!color && v.title) {
-          const parts = v.title.split(/\s*[\/\-]\s*/)
+        // Fallback: parse from variant title like "Black / M" or "Red - XL - DTG (Direct-to-garment)"
+        if ((!color || !size) && v.title) {
+          const parts = v.title.split(/\s*[\/\-]\s*/).map(p => p.trim()).filter(Boolean)
           if (parts.length >= 2) {
-            // Heuristic: sizes tend to be short (S, M, L, XL, XXL, etc.)
-            const sizeKeywords = /^(xs|s|m|l|xl|xxl|2xl|3xl|4xl|one.size|\d+)$/i
-            const last = parts[parts.length - 1].trim()
-            const first = parts[0].trim()
-            if (sizeKeywords.test(last)) {
-              color = color ?? first
-              size  = size  ?? last
-            } else {
-              color = color ?? first
+            const sizeKeywords = /^(xs|s|m|l|xl|2xl|3xl|4xl|xxl|one.?size|\d+(\.\d+)?(cm|in|oz|g)?)$/i
+            // First part is almost always the color
+            color = color ?? parts[0]
+            // Scan remaining parts for a size keyword
+            if (!size) {
+              for (let pi = 1; pi < parts.length; pi++) {
+                if (sizeKeywords.test(parts[pi])) { size = parts[pi]; break }
+              }
             }
           }
         }
