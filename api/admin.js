@@ -213,19 +213,31 @@ export default async function handler(req, res) {
     }
 
     // ── import-gelato-images ──────────────────────────────────────────────────
-    // Downloads images from Gelato CDN URLs and commits them to GitHub.
+    // Downloads images from Gelato CDN and commits them with SEO filenames.
+    // Payload: { productId, productTitle, images: [{ src, color }] }
     if (action === 'import-gelato-images') {
-      const { productId, imageUrls } = data
-      if (!productId || !Array.isArray(imageUrls) || imageUrls.length === 0) {
-        return res.status(400).json({ error: 'productId and imageUrls[] required' })
+      const { productId, productTitle, images: imageList } = data
+      if (!productId || !Array.isArray(imageList) || imageList.length === 0) {
+        return res.status(400).json({ error: 'productId and images[] required' })
       }
       if (!/^[a-zA-Z0-9_-]+$/.test(productId)) {
         return res.status(400).json({ error: 'Invalid productId' })
       }
 
+      // Build a base slug from the product title for SEO filenames
+      const titleSlug = (productTitle || productId)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '')
+        .slice(0, 45)
+
+      // Per-color counter so we get: product-name-black-01.jpg, product-name-black-02.jpg…
+      const colorCounters = {}
       const paths = []
-      for (let i = 0; i < imageUrls.length; i++) {
-        const srcUrl = imageUrls[i]
+
+      for (let i = 0; i < imageList.length; i++) {
+        const { src: srcUrl, color } = imageList[i]
+        if (!srcUrl) continue
         try {
           const imgRes = await fetch(srcUrl)
           if (!imgRes.ok) {
@@ -236,7 +248,14 @@ export default async function handler(req, res) {
           const base64      = Buffer.from(arrayBuffer).toString('base64')
           const ct  = imgRes.headers.get('content-type') || 'image/jpeg'
           const ext = ct.split('/')[1]?.split(';')[0]?.replace('jpeg', 'jpg') || 'jpg'
-          const filename = `gelato-${String(i + 1).padStart(2, '0')}.${ext}`
+
+          // SEO filename: {product-title}-{color}-01.jpg (or -mockup-01 if no color)
+          const colorSlug = color
+            ? color.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+            : 'mockup'
+          colorCounters[colorSlug] = (colorCounters[colorSlug] || 0) + 1
+          const n        = String(colorCounters[colorSlug]).padStart(2, '0')
+          const filename = `${titleSlug}-${colorSlug}-${n}.${ext}`
           const filePath = `public/images/${productId}/${filename}`
 
           let existingSha = null

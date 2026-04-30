@@ -53,53 +53,61 @@ export default async function handler(req, res) {
         })
       }
 
-      // Normalize ecommerce variants
-      // Each variant has:
-      //   v.id          → store variant UUID
-      //   v.productUid  → Gelato catalog UID (used when placing orders via create-order)
-      //   v.options     → [{ name: 'Color', value: 'Black' }, { name: 'Size', value: 'S' }]
-      //   v.price       → price in smallest currency unit (cents)
-      const rawVariants = body?.variants ?? []
+      // Gelato can wrap the product under a "product" key or return it directly.
+      // Try all known wrapper shapes.
+      const rawBody = body?.product ?? body?.data ?? body ?? {}
+
+      // Normalize variants
+      const rawVariants = rawBody.variants ?? rawBody.productVariants ?? body?.variants ?? []
       const variants = rawVariants.map(v => {
-        const opts  = v.options ?? v.variantOptions ?? []
-        const get   = name => opts.find(o => o.name?.toLowerCase() === name.toLowerCase())?.value ?? null
+        const opts = v.options ?? v.variantOptions ?? []
+        const get  = name => opts.find(o => o.name?.toLowerCase() === name.toLowerCase())?.value ?? null
         return {
           uid:             v.id ?? null,
-          gelatoVariantId: v.productUid ?? null,   // catalog UID → used in orders
+          gelatoVariantId: v.productUid ?? null,
           color:           get('color'),
           size:            get('size'),
           price:           v.price != null ? (v.price / 100) : null,
-          currency:        v.currency ?? body?.currency ?? null,
+          currency:        v.currency ?? rawBody.currency ?? null,
         }
       })
 
-      // Normalize images — Gelato returns product-level images with variantIds,
-      // OR per-variant previewUrls if no top-level images array.
-      const rawImages = body?.images ?? body?.productImages ?? []
-      let images = rawImages
-        .map(img => ({
-          src:        img.src ?? img.url ?? img.imageSrc ?? null,
-          position:   img.position ?? 0,
-          variantIds: img.variantIds ?? img.variant_ids ?? [],
-        }))
-        .filter(img => img.src)
+      // ── Collect images from every possible location ────────────────────────
+      const seenSrcs = new Set()
+      const images   = []
 
-      // Fallback: build image list from variant previewUrls if no top-level images
-      if (images.length === 0) {
-        const seen = new Set()
-        for (const v of rawVariants) {
-          const src = v.previewUrl ?? v.imageSrc ?? null
-          if (src && !seen.has(src)) {
-            seen.add(src)
-            images.push({ src, position: images.length, variantIds: [v.id].filter(Boolean) })
-          }
-        }
+      const push = (src, variantIds = []) => {
+        if (!src || seenSrcs.has(src)) return
+        seenSrcs.add(src)
+        images.push({ src, position: images.length, variantIds })
       }
+
+      // 1. Top-level images array (most structured — includes variantIds)
+      for (const img of (rawBody.images ?? rawBody.productImages ?? rawBody.media ?? [])) {
+        const src = img.src ?? img.url ?? img.imageSrc ?? null
+        push(src, img.variantIds ?? img.variant_ids ?? [])
+      }
+
+      // 2. Per-variant preview / mockup URLs (common fallback)
+      for (const v of rawVariants) {
+        const src = v.previewUrl ?? v.mockupUrl ?? v.imageSrc ?? v.thumbnailUrl ?? null
+        push(src, [v.id].filter(Boolean))
+      }
+
+      // 3. Top-level single preview URL
+      push(rawBody.previewUrl ?? rawBody.mockupUrl ?? null)
+
+      // Log for debugging (Vercel function logs)
+      if (images.length === 0) {
+        console.warn('[get-product-variants] No images found. Top-level keys:', Object.keys(rawBody).join(', '))
+      }
+
+      const title = rawBody.title ?? rawBody.name ?? body?.title ?? ''
 
       return res.status(200).json({
         productId,
         source: 'ecommerce',
-        title:  body?.title ?? '',
+        title,
         variants,
         images,   // [{ src, position, variantIds }]
       })
