@@ -171,6 +171,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [importedPaths, setImportedPaths] = useState([])   // GitHub paths after import
   const [importMsg, setImportMsg]         = useState('')
 
+  // Existing uploaded images (edit mode) — [{ src, alt }]
+  const [existingImages, setExistingImages] = useState(() => {
+    const srcs  = editingProduct?.images || []
+    const alts  = editingProduct?.imageAlts || {}
+    return srcs.map(src => ({ src, alt: alts[src] ?? editingProduct?.altText ?? '' }))
+  })
+
   const [images, setImages]         = useState([])
   const [saving, setSaving]         = useState(false)
   const [saveErr, setSaveErr]       = useState('')
@@ -295,9 +302,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
     setSaving(true); setSaveErr(''); setSavedMsg('')
     try {
-      // 1. Start with imported Gelato paths + existing (edit mode)
-      const existingImages = isEdit ? (editingProduct.images || []) : []
-      const uploadedPaths  = [...existingImages, ...importedPaths]
+      // 1. Start with kept existing images + newly imported Gelato paths
+      const keptPaths    = existingImages.map(img => img.src)
+      const uploadedPaths = [...keptPaths, ...importedPaths]
 
       // 2. Upload any manually-added files
       for (const file of images) {
@@ -345,6 +352,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         sizes,
         image: uploadedPaths[0] || '',
         images: uploadedPaths,
+        // Per-image alt texts: merge existing + newly imported (use global altText as fallback)
+        imageAlts: Object.fromEntries([
+          ...existingImages.map(img => [img.src, img.alt]),
+          ...importedPaths.map(p => [p, altText.trim() || '']),
+        ].filter(([src, alt]) => src && alt)),
         tags: tags.trim()
           ? tags.split(',').map(t => t.trim()).filter(Boolean)
           : [slugify(title), slugify(finalCollection)].filter(Boolean),
@@ -641,19 +653,56 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
       {/* Images */}
       <Card title="Images">
-        {isEdit && editingProduct.images?.length > 0 && (
-          <div>
-            <p className="text-gray-500 text-xs mb-2">Current images ({editingProduct.images.length})</p>
-            <div className="flex flex-wrap gap-2 mb-3">
-              {editingProduct.images.map((src, i) => (
-                <img key={i} src={src} alt="" className="w-20 h-20 object-cover border border-gray-700"
-                  onError={e => { e.target.style.display = 'none' }} />
+        {/* Existing uploaded images — editable */}
+        {existingImages.length > 0 && (
+          <div className="space-y-3">
+            <p className="text-gray-500 text-xs">{existingImages.length} image{existingImages.length !== 1 ? 's' : ''} — click × to remove, edit alt text below each</p>
+            <div className="space-y-2">
+              {existingImages.map((img, i) => (
+                <div key={img.src} className="flex gap-3 items-start bg-gray-800/50 border border-gray-800 p-2">
+                  {/* Thumbnail */}
+                  <div className="relative flex-shrink-0">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-20 h-20 object-cover border border-gray-700"
+                      onError={e => {
+                        e.currentTarget.style.display = 'none'
+                        e.currentTarget.nextSibling.style.display = 'flex'
+                      }}
+                    />
+                    <div className="w-20 h-20 border border-gray-700 bg-gray-800 hidden items-center justify-center text-gray-600 text-xs text-center p-1">
+                      {img.src.split('/').pop()}
+                    </div>
+                    <button
+                      onClick={() => setExistingImages(prev => prev.filter((_, j) => j !== i))}
+                      className="absolute -top-1.5 -right-1.5 bg-red-600 hover:bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs leading-none shadow"
+                      title="Remove image"
+                    >×</button>
+                    <span className="absolute bottom-0.5 left-0.5 bg-black/60 text-gray-400 text-xs px-1 leading-4">{i + 1}</span>
+                  </div>
+                  {/* Alt text */}
+                  <div className="flex-1 min-w-0">
+                    <label className="block text-gray-600 text-xs mb-1">Alt text</label>
+                    <input
+                      value={img.alt}
+                      onChange={e => setExistingImages(prev => prev.map((item, j) => j === i ? { ...item, alt: e.target.value } : item))}
+                      placeholder="Describe this image for SEO and accessibility…"
+                      className={inputCls + ' text-xs'}
+                    />
+                    <p className="text-gray-700 text-xs mt-1 truncate">{img.src}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         )}
-        <p className="text-gray-500 text-xs">{isEdit ? 'Append more images:' : 'Upload images:'}</p>
-        <ImageUploader files={images} onChange={setImages} />
+
+        {/* Upload new images */}
+        <div>
+          <p className="text-gray-500 text-xs mb-2">{existingImages.length > 0 ? 'Aggiungi altre immagini:' : 'Carica immagini:'}</p>
+          <ImageUploader files={images} onChange={setImages} />
+        </div>
       </Card>
 
       {/* Actions */}
