@@ -5,6 +5,7 @@ const GITHUB_REPO        = 'jayl-store'
 const GITHUB_BRANCH      = 'main'
 const ADMIN_PRODUCTS_PATH    = 'src/data/admin-products.js'
 const ADMIN_COLLECTIONS_PATH = 'src/data/admin-collections.js'
+const GENERATE_PROMPTS_PATH  = 'src/data/generate-prompts.js'
 const ADMIN_PASSWORD = 'jaylpelle'
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
@@ -356,6 +357,85 @@ export default async function handler(req, res) {
       const { sha } = await readAdminCollections(githubToken)
       await writeAdminCollections(collections, sha, 'admin: reorder collections', githubToken)
       return res.status(200).json({ ok: true })
+    }
+
+    // ── read-prompts ──────────────────────────────────────────────────────────
+    if (action === 'read-prompts') {
+      try {
+        const file    = await ghGet(GENERATE_PROMPTS_PATH, githubToken)
+        const content = Buffer.from(file.content, 'base64').toString('utf8')
+        const match   = content.match(/export const generatePrompts = (\{[\s\S]*\})/)
+        if (!match) return res.status(200).json({ prompts: null, sha: file.sha })
+        return res.status(200).json({ prompts: JSON.parse(match[1]), sha: file.sha })
+      } catch {
+        return res.status(200).json({ prompts: null, sha: null })
+      }
+    }
+
+    // ── save-prompts ──────────────────────────────────────────────────────────
+    if (action === 'save-prompts') {
+      const { prompts } = data
+      if (!prompts) return res.status(400).json({ error: 'prompts required' })
+      const content = `// This file is managed by the JAYL admin panel. Do not edit manually.\nexport const generatePrompts = ${JSON.stringify(prompts, null, 2)}\n`
+      let sha = null
+      try { const f = await ghGet(GENERATE_PROMPTS_PATH, githubToken); sha = f.sha } catch {}
+      await ghPut(GENERATE_PROMPTS_PATH, content, sha, 'admin: update generate prompts', githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── import-generated-asset ────────────────────────────────────────────────
+    // Downloads a generated image/video URL and commits it to GitHub.
+    // Payload: { productId, assetUrl, assetType: 'image'|'video' }
+    if (action === 'import-generated-asset') {
+      const { productId, assetUrl, assetType = 'image' } = data
+      if (!productId || !assetUrl) {
+        return res.status(400).json({ error: 'productId and assetUrl required' })
+      }
+      if (!/^[a-zA-Z0-9_-]+$/.test(productId)) {
+        return res.status(400).json({ error: 'Invalid productId' })
+      }
+
+      const assetRes = await fetch(assetUrl)
+      if (!assetRes.ok) {
+        return res.status(502).json({ error: `Could not download asset: HTTP ${assetRes.status}` })
+      }
+
+      const arrayBuffer = await assetRes.arrayBuffer()
+      const base64      = Buffer.from(arrayBuffer).toString('base64')
+      const ct  = assetRes.headers.get('content-type') || (assetType === 'video' ? 'video/mp4' : 'image/jpeg')
+      const ext = ct.split('/')[1]?.split(';')[0]?.replace('jpeg', 'jpg') || (assetType === 'video' ? 'mp4' : 'jpg')
+
+      const timestamp = Date.now()
+      const filename  = `generated-${assetType === 'video' ? 'video' : 'img'}-${timestamp}.${ext}`
+      const filePath  = `public/images/${productId}/generated/${filename}`
+
+      let existingSha = null
+      try { const ex = await ghGet(filePath, githubToken); existingSha = ex.sha } catch {}
+
+      const ghUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
+      const ghRes = await fetch(ghUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+          'X-GitHub-Api-Version': '2022-11-28',
+        },
+        body: JSON.stringify({
+          message: `admin: save generated ${assetType} for ${productId}`,
+          content: base64,
+          branch: GITHUB_BRANCH,
+          ...(existingSha ? { sha: existingSha } : {}),
+        }),
+      })
+
+      if (!ghRes.ok) {
+        const err = await ghRes.json().catch(() => ({}))
+        throw new Error(`GitHub upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
+      }
+
+      const publicPath = `/images/${productId}/generated/${filename}`
+      return res.status(200).json({ ok: true, path: publicPath })
     }
 
     return res.status(400).json({ error: `Unknown action: ${action}` })
