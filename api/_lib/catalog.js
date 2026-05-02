@@ -5,6 +5,10 @@ import { products } from '../../src/data/products.js'
 
 const productMap = new Map(products.map((p) => [p.id, p]))
 
+/** Normalise a color label or id to a slug: "Light Blue" → "light-blue", "DAISY" → "daisy" */
+export const colorToSlug = (c) =>
+  (c ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
 const MAX_QUANTITY      = 99
 const MAX_ITEMS_IN_CART = 50
 export const CURRENCY   = 'eur'
@@ -43,12 +47,23 @@ export function priceItem(raw) {
     if (!colorObj) return { ok: false, error: `Invalid color for ${productId}` }
   }
 
-  // Products with variants (e.g. tote bags) require a color selection —
-  // validate against the variants array when colors[] is absent.
+  // Products with variants (e.g. Gelato apparel) need color+size → Gelato variant UID.
+  // Admin-saved variants use { uid, gelatoVariantId, color: "Daisy", size: "S" }.
+  // Legacy hardcoded variants may use { id, gelatoVariantId }.
+  // raw.color is a slug like "daisy"; raw.size is like "S".
   let variantObj = null
   if (product.variants?.length) {
     if (!raw.color) return { ok: false, error: `Color is required for ${productId}` }
-    variantObj = product.variants.find((v) => v.id === raw.color)
+    variantObj = product.variants.find((v) => {
+      const colorMatch =
+        (v.uid ?? v.id) === raw.color ||                     // legacy direct-id match
+        colorToSlug(v.color) === colorToSlug(raw.color)      // admin slug match: "Daisy" → "daisy"
+      const sizeMatch =
+        !raw.size ||
+        v.size === raw.size ||
+        v.size?.toUpperCase() === raw.size?.toUpperCase()
+      return colorMatch && sizeMatch
+    })
     if (!variantObj) return { ok: false, error: `Invalid color variant for ${productId}` }
   }
 

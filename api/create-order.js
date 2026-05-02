@@ -1,5 +1,5 @@
 import Stripe from 'stripe'
-import { decodeItemsFromMetadata, CURRENCY } from './_lib/catalog.js'
+import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
 import { applyCors } from './_lib/cors.js'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
@@ -15,9 +15,18 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     customerReferenceId: email || 'unknown',
     currency: CURRENCY.toUpperCase(),
     items: items.map((item) => {
-      // For products with color variants (e.g. tote bags) use the variant-level
-      // gelatoVariantId; for everything else fall back to the product-level id.
-      const gelatoVariant = item.product.variants?.find((v) => v.id === item.color)
+      // Resolve the Gelato variant UID for this specific color+size combination.
+      // Admin variants use { uid, color: "Daisy", size: "S" }; item.color is a slug "daisy".
+      const gelatoVariant = item.product.variants?.find((v) => {
+        const colorMatch =
+          (v.uid ?? v.id) === item.color ||
+          colorToSlug(v.color) === colorToSlug(item.color)
+        const sizeMatch =
+          !item.size ||
+          v.size === item.size ||
+          v.size?.toUpperCase() === item.size?.toUpperCase()
+        return colorMatch && sizeMatch
+      })
       const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
       return {
         itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,

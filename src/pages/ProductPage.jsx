@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { getProductById, products } from '@/data/products'
@@ -6,6 +6,9 @@ import { useCartStore } from '@/store/cartStore'
 import { formatPrice, slugToTitle, cn } from '@/lib/utils'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
+import { useSwipe } from '@/hooks/useSwipe'
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
 function parseVideoUrl(url) {
   if (!url) return null
@@ -17,8 +20,12 @@ function parseVideoUrl(url) {
   return null
 }
 
-function Accordion({ title, children, light }) {
-  const [open, setOpen] = useState(false)
+/** Normalise a color label/id to a slug — mirrors catalog.js */
+const colorToSlug = (c) =>
+  (c ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+function Accordion({ title, children, light, defaultOpen = false }) {
+  const [open, setOpen] = useState(defaultOpen)
   return (
     <div className={cn('border-t', light ? 'border-paper-border' : 'border-border')}>
       <button
@@ -42,6 +49,8 @@ function Accordion({ title, children, light }) {
   )
 }
 
+// ── Main Component ────────────────────────────────────────────────────────────
+
 export default function ProductPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -50,26 +59,27 @@ export default function ProductPage() {
   const { setPageTheme } = useThemeStore()
 
   const isArt = product?.section === 'art'
-  const isLight = isArt // Art = light theme, Objects = dark
+  const isLight = isArt
 
   useEffect(() => {
     setPageTheme(isLight ? 'light' : 'dark')
   }, [isLight, setPageTheme])
 
-  const defaultSize = product?.sizes?.[isArt ? 1 : 2]?.id
+  const defaultSize  = product?.sizes?.[isArt ? 1 : 0]?.id
   const defaultColor = product?.colors?.[0]?.id
-  const defaultFrame = 'none'
+  const videoInfo    = parseVideoUrl(product?.videoUrl)
 
-  const videoInfo = parseVideoUrl(product?.videoUrl)
-
-  const [selectedSize, setSelectedSize] = useState(defaultSize)
+  const [selectedSize,  setSelectedSize]  = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
-  const [selectedFrame, setSelectedFrame] = useState(defaultFrame)
-  // -1 = show video hero (when videoUrl exists)
-  const [activeImage, setActiveImage] = useState(videoInfo ? -1 : 0)
-  const [added, setAdded] = useState(false)
+  const [selectedFrame, setSelectedFrame] = useState('none')
+  const [activeImage,   setActiveImage]   = useState(videoInfo ? -1 : 0)
+  const [added,         setAdded]         = useState(false)
+  const [showStickyBar, setShowStickyBar] = useState(false)
 
-  // When a color is selected, jump to that color's dedicated image if one exists
+  // Ref on the in-flow "Add to Cart" button — sticky bar shows when it leaves viewport
+  const addToCartBtnRef = useRef(null)
+
+  // Jump to color image when color changes
   useEffect(() => {
     if (!selectedColor || !product?.colors) return
     const colorObj = product.colors.find(c => c.id === selectedColor)
@@ -77,6 +87,18 @@ export default function ProductPage() {
     const idx = product.images?.findIndex(img => img === colorObj.image) ?? -1
     if (idx >= 0) setActiveImage(idx)
   }, [selectedColor])
+
+  // Sticky CTA: appears when native add-to-cart button is out of view
+  useEffect(() => {
+    const el = addToCartBtnRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => setShowStickyBar(!entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [product])
 
   if (!product) {
     return (
@@ -88,16 +110,49 @@ export default function ProductPage() {
     )
   }
 
-  const sizeObj = product.sizes?.find((s) => s.id === selectedSize)
-  const frameObj = product.frames?.find((f) => f.id === selectedFrame)
+  // ── Computed values ──────────────────────────────────────────────────────────
+
+  const sizeObj   = product.sizes?.find((s) => s.id === selectedSize)
+  const frameObj  = product.frames?.find((f) => f.id === selectedFrame)
   const totalPrice = (sizeObj?.price ?? product.price) + (frameObj?.price ?? 0)
 
+  // Normalise image list (fallback to product.image)
+  const productImages = product.images?.length > 0
+    ? product.images
+    : (product.image ? [product.image] : [])
+
+  // Mobile gallery: video slot (index -1) + images (0..n-1)
+  const minSlide = videoInfo ? -1 : 0
+  const maxSlide = productImages.length - 1
+  // Map activeImage to a 0-based mobile index
+  const mobileSlideIdx   = videoInfo ? activeImage + 1 : activeImage
+  const totalMobileSlides = (videoInfo ? 1 : 0) + productImages.length
+
+  // Which sizes are available for the selected color (when variants exist)
+  const availableSizesForColor = (product.variants?.length && selectedColor)
+    ? new Set(
+        product.variants
+          .filter(v => colorToSlug(v.color) === colorToSlug(selectedColor))
+          .map(v => v.size)
+      )
+    : null
+
+  const canAddToCart = !!selectedSize || !product.sizes?.length
+
+  // ── Event handlers ───────────────────────────────────────────────────────────
+
   const handleAddToCart = () => {
+    if (!canAddToCart) return
     addItem(product, { size: selectedSize, color: selectedColor, frame: selectedFrame })
     setAdded(true)
     openCart()
     setTimeout(() => setAdded(false), 2000)
   }
+
+  const swipeHandlers = useSwipe({
+    onSwipeLeft:  () => setActiveImage(i => Math.min(i + 1, maxSlide)),
+    onSwipeRight: () => setActiveImage(i => Math.max(i - 1, minSlide)),
+  })
 
   const related = products
     .filter((p) => p.section === product.section && p.id !== product.id)
@@ -105,7 +160,8 @@ export default function ProductPage() {
 
   const sectionLabel = isArt ? 'Fine Art Print' : 'Object'
 
-  // Theme tokens
+  // ── Theme tokens ─────────────────────────────────────────────────────────────
+
   const t = isLight
     ? {
         page: 'bg-white',
@@ -116,19 +172,30 @@ export default function ProductPage() {
         subtitle: 'text-ink-secondary',
         price: 'text-ink',
         priceSub: 'text-ink-muted',
+        badge: 'text-ink-muted',
         selectorLabel: 'text-ink',
         selectorSub: 'text-ink-muted',
-        btnActive: 'border-ink text-ink bg-ink/5',
-        btnInactive: 'border-paper-border text-ink-muted hover:border-ink-muted',
+        btnActive: 'border-ink text-white bg-ink',
+        btnInactive: 'border-paper-border text-ink hover:border-ink',
+        btnDisabled: 'border-paper-border text-ink/25 cursor-not-allowed',
+        colorActive: 'border-ink ring-1 ring-ink',
+        colorInactive: 'border-paper-border hover:border-ink-muted',
+        pillActive: 'border-ink bg-ink text-white',
+        pillInactive: 'border-paper-border text-ink',
         addBtn: added
           ? 'bg-success text-white'
           : 'bg-ink text-white hover:bg-ink-secondary hover:scale-[1.01] active:scale-[0.99]',
+        stickyBg: 'bg-paper border-paper-border',
+        stickyBtn: 'bg-ink text-white',
+        stickyBtnDisabled: 'bg-gray-200 text-gray-400',
         relatedBorder: 'border-t border-paper-border',
         relatedTitle: 'text-ink',
         relatedLink: 'text-ink-muted hover:text-ink',
         thumbnailActive: 'border-ink',
         thumbnailInactive: 'border-paper-border hover:border-ink-muted',
         imgBg: 'bg-paper',
+        divider: 'border-paper-border',
+        accordionText: 'text-ink-secondary',
       }
     : {
         page: 'bg-off-black text-text-primary',
@@ -139,51 +206,57 @@ export default function ProductPage() {
         subtitle: 'text-text-secondary',
         price: 'text-text-primary',
         priceSub: 'text-text-muted',
+        badge: 'text-accent',
         selectorLabel: 'text-text-primary',
         selectorSub: 'text-text-muted',
-        btnActive: 'border-cream text-cream bg-cream/5',
+        btnActive: 'border-cream text-black bg-cream',
         btnInactive: 'border-border text-text-secondary hover:border-border-light',
+        btnDisabled: 'border-border text-text-muted/30 cursor-not-allowed',
+        colorActive: 'border-cream ring-1 ring-cream',
+        colorInactive: 'border-border hover:border-border-light',
+        pillActive: 'border-cream bg-cream text-black',
+        pillInactive: 'border-border text-text-secondary',
         addBtn: added
           ? 'bg-success text-white'
           : 'bg-cream text-black hover:bg-accent hover:scale-[1.01] active:scale-[0.99]',
+        stickyBg: 'bg-surface border-border',
+        stickyBtn: 'bg-cream text-black',
+        stickyBtnDisabled: 'bg-surface-3 text-text-muted',
         relatedBorder: 'border-t border-border',
         relatedTitle: 'text-cream',
         relatedLink: 'text-text-secondary hover:text-cream',
         thumbnailActive: 'border-cream',
         thumbnailInactive: 'border-border hover:border-border-light',
         imgBg: 'bg-surface-2',
+        divider: 'border-border',
+        accordionText: 'text-text-secondary',
       }
 
-  return (
-    <div className={cn('min-h-screen pt-24', t.page)}>
-      {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
-        <button
-          onClick={() => navigate(-1)}
-          className={cn(
-            'flex items-center gap-2 text-xs tracking-widest uppercase transition-colors',
-            t.backBtn
-          )}
-        >
-          <ArrowLeft size={12} />
-          Back
-        </button>
-      </div>
+  // ── Render ────────────────────────────────────────────────────────────────────
 
-      {/* Main layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* ── Images / Video ── */}
-          <div className="space-y-3">
-            {/* Hero slot */}
-            {activeImage === -1 && videoInfo ? (
-              <div className="aspect-[4/5] overflow-hidden bg-black">
+  return (
+    <div className={cn('min-h-screen', t.page)}>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          MOBILE LAYOUT  (hidden on md+)
+      ══════════════════════════════════════════════════════════════════════ */}
+      <div className="md:hidden pt-16">
+
+        {/* ── Swipe Gallery ─────────────────────────────────────────────── */}
+        <div
+          className={cn('relative w-full aspect-square overflow-hidden', t.imgBg)}
+          {...swipeHandlers}
+        >
+          {/* Sliding strip */}
+          <div
+            className="flex h-full transition-transform duration-300 ease-out will-change-transform"
+            style={{ transform: `translateX(-${mobileSlideIdx * 100}%)` }}
+          >
+            {/* Video slide */}
+            {videoInfo && (
+              <div className="w-full h-full flex-shrink-0 bg-black">
                 {videoInfo.type === 'mp4' ? (
-                  <video
-                    src={videoInfo.src}
-                    controls
-                    className="w-full h-full object-contain"
-                  />
+                  <video src={videoInfo.src} controls className="w-full h-full object-contain" />
                 ) : (
                   <iframe
                     src={
@@ -198,240 +271,549 @@ export default function ProductPage() {
                   />
                 )}
               </div>
-            ) : (
-              <div className={cn('aspect-[4/5] overflow-hidden', t.imgBg)}>
+            )}
+            {/* Image slides */}
+            {productImages.map((src, i) => (
+              <div key={i} className={cn('w-full h-full flex-shrink-0', t.imgBg)}>
                 <img
-                  src={product.images?.[Math.max(0, activeImage)] ?? product.image}
+                  src={src}
                   alt={product.name}
                   className="w-full h-full object-cover"
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  onError={e => { e.currentTarget.style.display = 'none' }}
                 />
               </div>
-            )}
+            ))}
+          </div>
 
-            {/* Thumbnail strip: show if there's a video OR more than 1 image */}
-            {(videoInfo || (product.images && product.images.length > 1)) && (
-              <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
-                {/* Video thumbnail (first slot) */}
-                {videoInfo && (
-                  <button
-                    onClick={() => setActiveImage(-1)}
-                    className={cn(
-                      'w-20 h-20 overflow-hidden border-2 transition-all duration-200 flex-shrink-0 bg-black relative',
-                      activeImage === -1 ? t.thumbnailActive : t.thumbnailInactive
-                    )}
-                  >
-                    {videoInfo.type === 'youtube' ? (
-                      <img
-                        src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`}
-                        alt="Video"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : null}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                      <span className="text-white text-xl leading-none">▶</span>
-                    </div>
-                  </button>
+          {/* Back button overlay */}
+          <button
+            onClick={() => navigate(-1)}
+            className="absolute top-3 left-3 z-10 w-8 h-8 flex items-center justify-center bg-black/30 backdrop-blur-sm rounded-full"
+          >
+            <ArrowLeft size={16} className="text-white" />
+          </button>
+        </div>
+
+        {/* Dot pagination */}
+        {totalMobileSlides > 1 && (
+          <div className="flex justify-center gap-1.5 py-3">
+            {Array.from({ length: totalMobileSlides }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImage(videoInfo ? i - 1 : i)}
+                className={cn(
+                  'rounded-full transition-all duration-200',
+                  i === mobileSlideIdx
+                    ? cn('w-4 h-1.5', isLight ? 'bg-ink' : 'bg-cream')
+                    : cn('w-1.5 h-1.5', isLight ? 'bg-ink/25' : 'bg-cream/25')
                 )}
+              />
+            ))}
+          </div>
+        )}
 
-                {/* Image thumbnails */}
-                {product.images?.map((img, i) => (
+        {/* ── Product info ───────────────────────────────────────────────── */}
+        <div className="px-4 pt-2 pb-4">
+          {/* Badge row */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.badge)}>
+              {slugToTitle(product.movement)}
+            </span>
+            <span className={cn('text-2xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
+            <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.sectionTag)}>
+              {sectionLabel}
+            </span>
+          </div>
+
+          <h1 className={cn('font-display text-2xl leading-tight mb-1', t.title)}>
+            {product.name}
+          </h1>
+          {product.subtitle && (
+            <p className={cn('text-sm italic font-display mb-3', t.subtitle)}>
+              {product.subtitle}
+            </p>
+          )}
+
+          <p className={cn('text-xl font-semibold', t.price)}>
+            {formatPrice(totalPrice)}
+          </p>
+        </div>
+
+        <div className={cn('border-t mx-4', t.divider)} />
+
+        {/* ── Variant Selectors ──────────────────────────────────────────── */}
+        <div className="px-4 pt-4 space-y-5">
+
+          {/* Color pills */}
+          {product.colors && (
+            <div>
+              <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', t.selectorLabel)}>
+                Color
+                {selectedColor && (
+                  <span className={cn('ml-2 font-normal normal-case tracking-normal', t.selectorSub)}>
+                    — {product.colors.find(c => c.id === selectedColor)?.label}
+                  </span>
+                )}
+              </p>
+              {/* Horizontally scrollable, no scrollbar */}
+              <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
+                <div className="flex gap-2 pb-1 w-max">
+                  {product.colors.map(c => (
+                    <button
+                      key={c.id}
+                      onClick={() => setSelectedColor(c.id)}
+                      className={cn(
+                        'flex items-center gap-1.5 pl-2 pr-3 py-1.5 border text-xs font-medium rounded-full whitespace-nowrap transition-all duration-150',
+                        selectedColor === c.id ? t.pillActive : t.pillInactive
+                      )}
+                    >
+                      <span
+                        className="w-3.5 h-3.5 rounded-full border flex-shrink-0"
+                        style={{
+                          backgroundColor: c.hex && c.hex !== '#888888' ? c.hex : undefined,
+                          borderColor: selectedColor === c.id ? 'currentColor' : '#ccc',
+                          background: (!c.hex || c.hex === '#888888')
+                            ? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'
+                            : c.hex,
+                        }}
+                      />
+                      {c.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Size grid */}
+          {product.sizes && (
+            <div>
+              <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', t.selectorLabel)}>
+                Size
+              </p>
+              <div className="grid grid-cols-4 gap-2">
+                {product.sizes.map(s => {
+                  const available = !availableSizesForColor || availableSizesForColor.has(s.id)
+                  const isSelected = selectedSize === s.id
+                  return (
+                    <button
+                      key={s.id}
+                      onClick={() => available && setSelectedSize(s.id)}
+                      className={cn(
+                        'py-2.5 text-sm font-medium border transition-all duration-150',
+                        isSelected
+                          ? t.btnActive
+                          : available
+                          ? t.btnInactive
+                          : t.btnDisabled
+                      )}
+                    >
+                      {s.label}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Frame selector (art prints) */}
+          {product.frames && (
+            <div>
+              <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', t.selectorLabel)}>
+                Frame
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {product.frames.map(f => (
                   <button
-                    key={i}
-                    onClick={() => setActiveImage(i)}
+                    key={f.id}
+                    onClick={() => setSelectedFrame(f.id)}
                     className={cn(
-                      'w-20 h-20 overflow-hidden border-2 transition-all duration-200 flex-shrink-0',
-                      i === activeImage ? t.thumbnailActive : t.thumbnailInactive
+                      'py-2.5 text-xs font-medium border transition-all duration-150',
+                      selectedFrame === f.id ? t.btnActive : t.btnInactive
                     )}
                   >
-                    <img
-                      src={img}
-                      alt=""
-                      className="w-full h-full object-cover"
-                      onError={(e) => { e.currentTarget.style.display = 'none' }}
-                    />
+                    {f.label}{f.price > 0 && ` +${formatPrice(f.price)}`}
                   </button>
                 ))}
               </div>
+            </div>
+          )}
+        </div>
+
+        <div className={cn('border-t mx-4 mt-5', t.divider)} />
+
+        {/* ── In-flow Add to Cart (anchor for IntersectionObserver) ─────── */}
+        <div className="px-4 pt-4 pb-2">
+          <button
+            ref={addToCartBtnRef}
+            onClick={handleAddToCart}
+            disabled={!canAddToCart}
+            className={cn(
+              'w-full flex items-center justify-center gap-3 py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300',
+              t.addBtn,
+              !canAddToCart && 'opacity-50 cursor-not-allowed'
+            )}
+          >
+            {added ? (
+              <><Check size={16} />Added to Cart</>
+            ) : (
+              <>Add to Cart · {formatPrice(totalPrice)}</>
+            )}
+          </button>
+        </div>
+
+        {/* ── Accordions ────────────────────────────────────────────────── */}
+        <div className="px-4 pb-32">
+          <Accordion title="About this work" light={isLight}>
+            <p>{product.description}</p>
+          </Accordion>
+          <Accordion title="Details & Materials" light={isLight}>
+            <ul className="space-y-2">
+              {product.details?.map((d, i) => (
+                <li key={i} className="flex gap-2">
+                  <span className={cn('flex-shrink-0 mt-0.5', isLight ? 'text-ink-muted' : 'text-accent')}>—</span>
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
+          </Accordion>
+          <Accordion title="Shipping & Fulfillment" light={isLight}>
+            <div className="space-y-3">
+              <p>
+                Fulfilled by <span className={isLight ? 'text-ink' : 'text-text-primary'}>Gelato</span> —
+                the world's largest print-on-demand network with 130+ local print partners worldwide.
+              </p>
+              <p>
+                Orders are printed and shipped from the facility nearest to you, minimising transit
+                time and carbon footprint. Typical production time is 2–4 business days.
+              </p>
+              <p>Shipping is always free, worldwide.</p>
+            </div>
+          </Accordion>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          STICKY BOTTOM CTA  (mobile only)
+      ══════════════════════════════════════════════════════════════════════ */}
+      <div
+        className={cn(
+          'md:hidden fixed bottom-0 left-0 right-0 z-40 border-t transition-transform duration-300',
+          t.stickyBg,
+          showStickyBar ? 'translate-y-0' : 'translate-y-full'
+        )}
+      >
+        <div className="flex items-center justify-between gap-3 px-4 py-3 pb-safe">
+          {/* Selection summary */}
+          <div className="min-w-0">
+            {(selectedColor || selectedSize) ? (
+              <>
+                {selectedColor && (
+                  <p className={cn('text-xs font-medium capitalize truncate', isLight ? 'text-ink' : 'text-cream')}>
+                    {product.colors?.find(c => c.id === selectedColor)?.label ?? selectedColor}
+                  </p>
+                )}
+                {selectedSize && (
+                  <p className={cn('text-xs truncate', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                    Size {selectedSize}
+                  </p>
+                )}
+              </>
+            ) : (
+              <p className={cn('text-xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                Select options
+              </p>
             )}
           </div>
 
-          {/* ── Info ── */}
-          <div className="lg:pt-4">
-            <div className="flex items-center gap-3 mb-4">
-              <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.movement)}>
-                {slugToTitle(product.movement)}
-              </span>
-              <span className={cn('text-ink-muted', isLight ? '' : 'text-text-muted')}>·</span>
-              <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.sectionTag)}>
-                {sectionLabel}
-              </span>
-            </div>
-
-            <h1 className={cn('font-display text-3xl lg:text-5xl leading-tight mb-2', t.title)}>
-              {product.name}
-            </h1>
-            {product.subtitle && (
-              <p className={cn('text-lg italic font-display mb-6', t.subtitle)}>
-                {product.subtitle}
-              </p>
+          {/* CTA button */}
+          <button
+            onClick={canAddToCart ? handleAddToCart : undefined}
+            className={cn(
+              'flex-shrink-0 px-5 py-3 text-sm font-semibold tracking-wider uppercase transition-all duration-200',
+              canAddToCart ? t.stickyBtn : t.stickyBtnDisabled,
+              !canAddToCart && 'cursor-not-allowed'
             )}
+          >
+            {added
+              ? '✓ Added'
+              : canAddToCart
+              ? `Add · ${formatPrice(totalPrice)}`
+              : 'Select Size'}
+          </button>
+        </div>
+      </div>
 
-            <p className={cn('text-2xl font-semibold mb-8', t.price)}>
-              {formatPrice(totalPrice)}
-              {selectedFrame && selectedFrame !== 'none' && (
-                <span className={cn('text-sm font-normal ml-2', t.priceSub)}>
-                  (incl. frame)
-                </span>
-              )}
-            </p>
+      {/* ══════════════════════════════════════════════════════════════════════
+          DESKTOP LAYOUT  (hidden on mobile)
+      ══════════════════════════════════════════════════════════════════════ */}
+      <div className="hidden md:block pt-24">
+        {/* Breadcrumb */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+          <button
+            onClick={() => navigate(-1)}
+            className={cn(
+              'flex items-center gap-2 text-xs tracking-widest uppercase transition-colors',
+              t.backBtn
+            )}
+          >
+            <ArrowLeft size={12} />
+            Back
+          </button>
+        </div>
 
-            {/* Variant selectors */}
-            <div className="space-y-6 mb-8">
-              {/* Size */}
-              {product.sizes && (
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>
-                      Size
-                    </p>
-                    {sizeObj && (
-                      <p className={cn('text-xs', t.selectorSub)}>
-                        {sizeObj.label} · {formatPrice(sizeObj.price)}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {product.sizes.map((s) => (
-                      <button
-                        key={s.id}
-                        onClick={() => setSelectedSize(s.id)}
-                        className={cn(
-                          'px-4 py-2.5 text-xs font-medium tracking-widest uppercase border transition-all duration-200',
-                          selectedSize === s.id ? t.btnActive : t.btnInactive
-                        )}
-                      >
-                        {s.label}
-                      </button>
-                    ))}
-                  </div>
+        {/* Main grid */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+            {/* ── Images / Video ── */}
+            <div className="space-y-3">
+              {activeImage === -1 && videoInfo ? (
+                <div className="aspect-[4/5] overflow-hidden bg-black">
+                  {videoInfo.type === 'mp4' ? (
+                    <video src={videoInfo.src} controls className="w-full h-full object-contain" />
+                  ) : (
+                    <iframe
+                      src={
+                        videoInfo.type === 'youtube'
+                          ? `https://www.youtube.com/embed/${videoInfo.id}?autoplay=0&rel=0`
+                          : `https://player.vimeo.com/video/${videoInfo.id}`
+                      }
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={product.name}
+                    />
+                  )}
+                </div>
+              ) : (
+                <div className={cn('aspect-[4/5] overflow-hidden', t.imgBg)}>
+                  <img
+                    src={productImages[Math.max(0, activeImage)] ?? product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                    onError={e => { e.currentTarget.style.display = 'none' }}
+                  />
                 </div>
               )}
 
-              {/* Color (Objects) */}
-              {product.colors && (
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>
-                      Color
-                    </p>
-                    {selectedColor && (
-                      <p className={cn('text-xs capitalize', t.selectorSub)}>
-                        {product.colors.find((c) => c.id === selectedColor)?.label}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex gap-3">
-                    {product.colors.map((c) => (
-                      <button
-                        key={c.id}
-                        onClick={() => setSelectedColor(c.id)}
-                        title={c.label}
-                        className={cn(
-                          'w-8 h-8 rounded-full border-2 transition-all duration-200',
-                          selectedColor === c.id
-                            ? isLight ? 'border-ink scale-110' : 'border-cream scale-110'
-                            : isLight ? 'border-paper-border hover:border-ink-muted' : 'border-border hover:border-border-light'
-                        )}
-                        style={{ backgroundColor: c.hex }}
+              {/* Thumbnail strip */}
+              {(videoInfo || productImages.length > 1) && (
+                <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
+                  {videoInfo && (
+                    <button
+                      onClick={() => setActiveImage(-1)}
+                      className={cn(
+                        'w-20 h-20 overflow-hidden border-2 transition-all duration-200 flex-shrink-0 bg-black relative',
+                        activeImage === -1 ? t.thumbnailActive : t.thumbnailInactive
+                      )}
+                    >
+                      {videoInfo.type === 'youtube' ? (
+                        <img
+                          src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`}
+                          alt="Video"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : null}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                        <span className="text-white text-xl leading-none">▶</span>
+                      </div>
+                    </button>
+                  )}
+                  {productImages.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveImage(i)}
+                      className={cn(
+                        'w-20 h-20 overflow-hidden border-2 transition-all duration-200 flex-shrink-0',
+                        i === activeImage ? t.thumbnailActive : t.thumbnailInactive
+                      )}
+                    >
+                      <img
+                        src={img}
+                        alt=""
+                        className="w-full h-full object-cover"
+                        onError={e => { e.currentTarget.style.display = 'none' }}
                       />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Frame (Art prints) */}
-              {product.frames && (
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>
-                      Frame
-                    </p>
-                    {frameObj && frameObj.price > 0 && (
-                      <p className={cn('text-xs', t.selectorSub)}>+{formatPrice(frameObj.price)}</p>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {product.frames.map((f) => (
-                      <button
-                        key={f.id}
-                        onClick={() => setSelectedFrame(f.id)}
-                        className={cn(
-                          'px-4 py-2.5 text-xs font-medium tracking-widest uppercase border transition-all duration-200',
-                          selectedFrame === f.id ? t.btnActive : t.btnInactive
-                        )}
-                      >
-                        {f.label}
-                        {f.price > 0 && ` +${formatPrice(f.price)}`}
-                      </button>
-                    ))}
-                  </div>
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
 
-            {/* Add to cart */}
-            <button
-              onClick={handleAddToCart}
-              disabled={!selectedSize}
-              className={cn(
-                'w-full flex items-center justify-center gap-3 py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300',
-                t.addBtn,
-                !selectedSize && 'opacity-50 cursor-not-allowed'
-              )}
-            >
-              {added ? (
-                <><Check size={16} />Added to Cart</>
-              ) : (
-                <>Add to Cart · {formatPrice(totalPrice)}</>
-              )}
-            </button>
+            {/* ── Info ── */}
+            <div className="lg:pt-4">
+              <div className="flex items-center gap-3 mb-4">
+                <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.movement)}>
+                  {slugToTitle(product.movement)}
+                </span>
+                <span className={cn(isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
+                <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.sectionTag)}>
+                  {sectionLabel}
+                </span>
+              </div>
 
-            {/* Accordions */}
-            <div className="mt-8">
-              <Accordion title="About this work" light={isLight}>
-                <p>{product.description}</p>
-              </Accordion>
-              <Accordion title="Details & Materials" light={isLight}>
-                <ul className="space-y-2">
-                  {product.details?.map((d, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className={cn('flex-shrink-0 mt-0.5', isLight ? 'text-ink-muted' : 'text-accent')}>—</span>
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Accordion>
-              <Accordion title="Shipping & Fulfillment" light={isLight}>
-                <div className="space-y-3">
-                  <p>
-                    Fulfilled by{' '}
-                    <span className={isLight ? 'text-ink' : 'text-text-primary'}>Gelato</span>{' '}
-                    — the world's largest print-on-demand network with 130+ local print partners worldwide.
-                  </p>
-                  <p>
-                    Orders are printed and shipped from the facility nearest to you, minimising
-                    transit time and carbon footprint. Typical production time is 2–4 business days.
-                  </p>
-                  <p>Shipping is always free, worldwide.</p>
-                </div>
-              </Accordion>
+              <h1 className={cn('font-display text-3xl lg:text-5xl leading-tight mb-2', t.title)}>
+                {product.name}
+              </h1>
+              {product.subtitle && (
+                <p className={cn('text-lg italic font-display mb-6', t.subtitle)}>
+                  {product.subtitle}
+                </p>
+              )}
+
+              <p className={cn('text-2xl font-semibold mb-8', t.price)}>
+                {formatPrice(totalPrice)}
+                {selectedFrame && selectedFrame !== 'none' && (
+                  <span className={cn('text-sm font-normal ml-2', t.priceSub)}>(incl. frame)</span>
+                )}
+              </p>
+
+              {/* Variant selectors */}
+              <div className="space-y-6 mb-8">
+                {product.sizes && (
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Size</p>
+                      {sizeObj && (
+                        <p className={cn('text-xs', t.selectorSub)}>
+                          {sizeObj.label} · {formatPrice(sizeObj.price)}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {product.sizes.map(s => {
+                        const available = !availableSizesForColor || availableSizesForColor.has(s.id)
+                        return (
+                          <button
+                            key={s.id}
+                            onClick={() => available && setSelectedSize(s.id)}
+                            className={cn(
+                              'px-4 py-2.5 text-xs font-medium tracking-widest uppercase border transition-all duration-200',
+                              selectedSize === s.id
+                                ? t.btnActive
+                                : available
+                                ? t.btnInactive
+                                : t.btnDisabled
+                            )}
+                          >
+                            {s.label}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {product.colors && (
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Color</p>
+                      {selectedColor && (
+                        <p className={cn('text-xs capitalize', t.selectorSub)}>
+                          {product.colors.find(c => c.id === selectedColor)?.label}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex gap-3 flex-wrap">
+                      {product.colors.map(c => (
+                        <button
+                          key={c.id}
+                          onClick={() => setSelectedColor(c.id)}
+                          title={c.label}
+                          className={cn(
+                            'w-8 h-8 rounded-full border-2 transition-all duration-200',
+                            selectedColor === c.id ? t.colorActive : t.colorInactive
+                          )}
+                          style={{
+                            background: (!c.hex || c.hex === '#888888')
+                              ? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'
+                              : c.hex,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {product.frames && (
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Frame</p>
+                      {frameObj?.price > 0 && (
+                        <p className={cn('text-xs', t.selectorSub)}>+{formatPrice(frameObj.price)}</p>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {product.frames.map(f => (
+                        <button
+                          key={f.id}
+                          onClick={() => setSelectedFrame(f.id)}
+                          className={cn(
+                            'px-4 py-2.5 text-xs font-medium tracking-widest uppercase border transition-all duration-200',
+                            selectedFrame === f.id ? t.btnActive : t.btnInactive
+                          )}
+                        >
+                          {f.label}{f.price > 0 && ` +${formatPrice(f.price)}`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Add to cart */}
+              <button
+                onClick={handleAddToCart}
+                disabled={!canAddToCart}
+                className={cn(
+                  'w-full flex items-center justify-center gap-3 py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300',
+                  t.addBtn,
+                  !canAddToCart && 'opacity-50 cursor-not-allowed'
+                )}
+              >
+                {added ? (
+                  <><Check size={16} />Added to Cart</>
+                ) : (
+                  <>Add to Cart · {formatPrice(totalPrice)}</>
+                )}
+              </button>
+
+              {/* Accordions */}
+              <div className="mt-8">
+                <Accordion title="About this work" light={isLight}>
+                  <p>{product.description}</p>
+                </Accordion>
+                <Accordion title="Details & Materials" light={isLight}>
+                  <ul className="space-y-2">
+                    {product.details?.map((d, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className={cn('flex-shrink-0 mt-0.5', isLight ? 'text-ink-muted' : 'text-accent')}>—</span>
+                        <span>{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Accordion>
+                <Accordion title="Shipping & Fulfillment" light={isLight}>
+                  <div className="space-y-3">
+                    <p>
+                      Fulfilled by <span className={isLight ? 'text-ink' : 'text-text-primary'}>Gelato</span> —
+                      the world's largest print-on-demand network with 130+ local print partners worldwide.
+                    </p>
+                    <p>
+                      Orders are printed and shipped from the facility nearest to you, minimising
+                      transit time and carbon footprint. Typical production time is 2–4 business days.
+                    </p>
+                    <p>Shipping is always free, worldwide.</p>
+                  </div>
+                </Accordion>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Related products */}
+      {/* ── Related products (shared) ───────────────────────────────────────── */}
       {related.length > 0 && (
         <div className={t.relatedBorder}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -448,7 +830,7 @@ export default function ProductPage() {
               </Link>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {related.map((p) => (
+              {related.map(p => (
                 <ProductCard key={p.id} product={p} light={isLight} />
               ))}
             </div>
