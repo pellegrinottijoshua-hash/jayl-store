@@ -161,6 +161,112 @@ const subVars = (tmpl, { name, type, color, collection }) =>
     .replace(/\{COLOR\}/g,         color      || 'default color')
     .replace(/\{COLLECTION\}/g,    collection || '')
 
+// ── PromptCard (module-level — must NOT be defined inside another component) ──
+
+function PromptCard({ template, isVideo, promptText, onPromptChange, result, onGenerate, onSave, onRegenerate }) {
+  const r    = result || {}
+  const busy = r.status === 'generating' || r.status === 'submitting' || r.status === 'processing'
+
+  return (
+    <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+      <p className="text-gray-300 text-xs font-semibold uppercase tracking-wider">{template.name}</p>
+
+      {/* Editable prompt textarea */}
+      <textarea
+        value={promptText ?? ''}
+        onChange={e => onPromptChange(e.target.value)}
+        rows={3}
+        className="w-full bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-2 resize-none focus:outline-none focus:border-indigo-500 transition-colors font-mono"
+      />
+
+      {/* Generate button */}
+      <button
+        onClick={onGenerate}
+        disabled={busy}
+        className={`${btnPrimary} text-xs py-1.5 flex items-center gap-2`}
+      >
+        {busy ? (
+          <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full flex-shrink-0" />
+          {r.status === 'processing' ? `Processing… ${r.progress ?? 0}%` : r.status === 'submitting' ? 'Submitting…' : 'Generating…'}</>
+        ) : (
+          isVideo ? '🎬 Generate Video' : '🖼 Generate Image'
+        )}
+      </button>
+
+      {/* Progress bar — video only */}
+      {isVideo && (r.status === 'submitting' || r.status === 'processing') && (
+        <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-indigo-500 transition-all duration-500 ease-out"
+            style={{ width: `${r.progress ?? 5}%` }}
+          />
+        </div>
+      )}
+
+      {/* Error */}
+      {r.status === 'error' && r.error && (
+        <p className="text-red-400 text-xs">⚠ {r.error}</p>
+      )}
+
+      {/* Image result */}
+      {!isVideo && r.imageUrl && (
+        <div className="space-y-2">
+          <img
+            src={r.imageUrl}
+            alt="Generated"
+            className="w-full border border-gray-700 object-cover"
+            style={{ maxHeight: 320, objectFit: 'cover' }}
+          />
+          <div className="flex gap-2 flex-wrap">
+            <button
+              onClick={() => onSave(r.imageUrl, 'image')}
+              disabled={r.saving || r.saved}
+              className={`${btnPrimary} text-xs py-1 px-3`}
+            >
+              {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : 'Save to Product'}
+            </button>
+            <button onClick={onRegenerate} className={`${btnGhost} text-xs py-1`}>
+              ↻ Regenerate
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Video result */}
+      {isVideo && r.videoUrl && (
+        <div className="space-y-2">
+          <video
+            src={r.videoUrl}
+            controls
+            className="w-full border border-gray-700"
+            style={{ maxHeight: 240 }}
+          />
+          <div className="flex gap-2 flex-wrap items-center">
+            <button
+              onClick={() => onSave(r.videoUrl, 'video')}
+              disabled={r.saving || r.saved}
+              className={`${btnPrimary} text-xs py-1 px-3`}
+            >
+              {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : 'Save to Product'}
+            </button>
+            <button onClick={onRegenerate} className={`${btnGhost} text-xs py-1`}>
+              ↻ Regenerate
+            </button>
+            <a
+              href={r.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-400 hover:text-indigo-300 text-xs underline"
+            >
+              Open URL ↗
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Generate Assets Tab ───────────────────────────────────────────────────────
 
 function GenerateAssetsTab({ productId, productName, productType, primaryColor, collection, onAssetSaved }) {
@@ -330,118 +436,6 @@ function GenerateAssetsTab({ productId, productName, productType, primaryColor, 
   const prompts = rawPrompts || defaultPromptsStatic
   const currentTemplates = activeTab === 'mockup' ? (prompts.mockup || []) : (prompts.video || [])
 
-  // ── PromptCard sub-component ───────────────────────────────────────────────
-
-  const PromptCard = ({ template, isVideo }) => {
-    const r   = results[template.id] || {}
-    const busy = r.status === 'generating' || r.status === 'submitting' || r.status === 'processing'
-
-    return (
-      <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
-        <p className="text-gray-300 text-xs font-semibold uppercase tracking-wider">{template.name}</p>
-
-        {/* Editable prompt textarea */}
-        <textarea
-          value={localPrompts[template.id] ?? ''}
-          onChange={e => setLocalPrompts(prev => ({ ...prev, [template.id]: e.target.value }))}
-          rows={3}
-          className="w-full bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-2 resize-none focus:outline-none focus:border-indigo-500 transition-colors font-mono"
-        />
-
-        {/* Generate button */}
-        <button
-          onClick={() => isVideo ? handleGenerateVideo(template.id) : handleGenerateImage(template.id)}
-          disabled={busy}
-          className={`${btnPrimary} text-xs py-1.5 flex items-center gap-2`}
-        >
-          {busy ? (
-            <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full flex-shrink-0" />
-            {r.status === 'processing' ? `Processing… ${r.progress ?? 0}%` : r.status === 'submitting' ? 'Submitting…' : 'Generating…'}</>
-          ) : (
-            isVideo ? '🎬 Generate Video' : '🖼 Generate Image'
-          )}
-        </button>
-
-        {/* Progress bar — video only */}
-        {isVideo && (r.status === 'submitting' || r.status === 'processing') && (
-          <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-indigo-500 transition-all duration-500 ease-out"
-              style={{ width: `${r.progress ?? 5}%` }}
-            />
-          </div>
-        )}
-
-        {/* Error */}
-        {r.status === 'error' && r.error && (
-          <p className="text-red-400 text-xs">⚠ {r.error}</p>
-        )}
-
-        {/* Image result */}
-        {!isVideo && r.imageUrl && (
-          <div className="space-y-2">
-            <img
-              src={r.imageUrl}
-              alt="Generated"
-              className="w-full border border-gray-700 object-cover"
-              style={{ maxHeight: 320, objectFit: 'cover' }}
-            />
-            <div className="flex gap-2 flex-wrap">
-              <button
-                onClick={() => handleSaveAsset(template.id, r.imageUrl, 'image')}
-                disabled={r.saving || r.saved}
-                className={`${btnPrimary} text-xs py-1 px-3`}
-              >
-                {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : 'Save to Product'}
-              </button>
-              <button
-                onClick={() => handleGenerateImage(template.id)}
-                className={`${btnGhost} text-xs py-1`}
-              >
-                ↻ Regenerate
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Video result */}
-        {isVideo && r.videoUrl && (
-          <div className="space-y-2">
-            <video
-              src={r.videoUrl}
-              controls
-              className="w-full border border-gray-700"
-              style={{ maxHeight: 240 }}
-            />
-            <div className="flex gap-2 flex-wrap items-center">
-              <button
-                onClick={() => handleSaveAsset(template.id, r.videoUrl, 'video')}
-                disabled={r.saving || r.saved}
-                className={`${btnPrimary} text-xs py-1 px-3`}
-              >
-                {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : 'Save to Product'}
-              </button>
-              <button
-                onClick={() => handleGenerateVideo(template.id)}
-                className={`${btnGhost} text-xs py-1`}
-              >
-                ↻ Regenerate
-              </button>
-              <a
-                href={r.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 text-xs underline"
-              >
-                Open URL ↗
-              </a>
-            </div>
-          </div>
-        )}
-      </div>
-    )
-  }
-
   // ── Render ─────────────────────────────────────────────────────────────────
 
   return (
@@ -519,7 +513,17 @@ function GenerateAssetsTab({ productId, productName, productType, primaryColor, 
             {/* Prompt templates */}
             <div className="space-y-4">
               {currentTemplates.map(t => (
-                <PromptCard key={t.id} template={t} isVideo={activeTab === 'video'} />
+                <PromptCard
+                  key={t.id}
+                  template={t}
+                  isVideo={activeTab === 'video'}
+                  promptText={localPrompts[t.id] ?? ''}
+                  onPromptChange={val => setLocalPrompts(prev => ({ ...prev, [t.id]: val }))}
+                  result={results[t.id]}
+                  onGenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
+                  onSave={(url, type) => handleSaveAsset(t.id, url, type)}
+                  onRegenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
+                />
               ))}
             </div>
           </>
