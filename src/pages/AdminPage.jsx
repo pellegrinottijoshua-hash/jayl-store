@@ -1113,10 +1113,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         {saveErr && <span className="text-red-400 text-sm">{saveErr}</span>}
       </div>
 
-      {/* Generate Assets — visible after first save (add mode) or always (edit mode) */}
-      {savedProductId && (
+      {/* Generate Assets — visible as soon as title is entered */}
+      {title.trim().length > 2 && (
         <GenerateAssetsTab
-          productId={savedProductId}
+          productId={productId}
           productName={title.trim()}
           productType={section === 'art' ? 'art print' : 'apparel/object'}
           primaryColor={variants[0]?.color || (editingProduct?.colors?.[0]?.label) || ''}
