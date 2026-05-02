@@ -13,8 +13,8 @@ export default async function handler(req, res) {
   if (!allowed)                 return res.status(403).json({ error: 'Forbidden' })
   if (req.method !== 'POST')    return res.status(405).json({ error: 'Method not allowed' })
 
-  const apiKey = (process.env.FALAI_API_KEY || '').trim()
-  if (!apiKey) return res.status(500).json({ error: 'FALAI_API_KEY not configured' })
+  const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
+  if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
 
   const { action, modelId, prompt, requestId } = req.body || {}
   if (!VIDEO_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown video model: ${modelId}` })
