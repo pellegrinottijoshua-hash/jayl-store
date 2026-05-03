@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { products as allProducts } from '@/data/products'
-import { generatePrompts as defaultPromptsStatic } from '@/data/generate-prompts'
+import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 
 const ADMIN_PASSWORD = 'jaylpelle'
 
@@ -200,311 +200,20 @@ function ImageGallery({ productId, readOnly }) {
   )
 }
 
-// ── Generate Assets ───────────────────────────────────────────────────────────
+// ── Collapsible ───────────────────────────────────────────────────────────────
 
-const IMAGE_MODELS = [
-  { id: 'fal-ai/flux-pro',      label: 'Flux Pro',       cost: '$0.05/img' },
-  { id: 'fal-ai/flux/dev',      label: 'Flux Dev',       cost: '$0.025/img' },
-  { id: 'fal-ai/ideogram/v3',   label: 'Ideogram V3',    cost: '$0.03–0.09/img' },
-  { id: 'fal-ai/recraft-v3',    label: 'Recraft V3',     cost: '$0.04/img' },
-  { id: 'fal-ai/nano-banana-2', label: 'Nano Banana 2',  cost: '$0.08/img' },
-]
-
-const VIDEO_MODELS = [
-  { id: 'fal-ai/kling-video/v1.6/standard/text-to-video',   label: 'Kling 1.6 Standard', secRate: 0.084 },
-  { id: 'fal-ai/kling-video/v3/pro/text-to-video',          label: 'Kling 3.0 Pro',      secRate: 0.224 },
-  { id: 'fal-ai/bytedance/seedance/v1.5/pro/text-to-video', label: 'Seedance 1.5 Pro',   secRate: 0.052 },
-  { id: 'fal-ai/wan/v2.2/t2v',                              label: 'Wan 2.2',            secRate: 0.05  },
-]
-
-const subVars = (tmpl, { name, type, color, collection }) =>
-  (tmpl || '')
-    .replace(/\{PRODUCT_NAME\}/g,  name       || 'this product')
-    .replace(/\{PRODUCT_TYPE\}/g,  type       || 'product')
-    .replace(/\{COLOR\}/g,         color      || 'default color')
-    .replace(/\{COLLECTION\}/g,    collection || '')
-
-function PromptCard({ template, isVideo, promptText, onPromptChange, result, onGenerate, onSave, onRegenerate }) {
-  const r    = result || {}
-  const busy = r.status === 'generating' || r.status === 'submitting' || r.status === 'processing'
-
+function Collapsible({ label, defaultOpen = false, children }) {
+  const [open, setOpen] = useState(defaultOpen)
   return (
-    <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
-      <p className="text-gray-300 text-xs font-semibold uppercase tracking-wider">{template.name}</p>
-
-      <textarea
-        value={promptText ?? ''}
-        onChange={e => onPromptChange(e.target.value)}
-        rows={3}
-        className="w-full bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-2 resize-none focus:outline-none focus:border-indigo-500 transition-colors font-mono"
-      />
-
+    <div>
       <button
-        onClick={onGenerate}
-        disabled={busy}
-        className={`${btnPrimary} text-xs py-1.5 flex items-center gap-2`}
+        onClick={() => setOpen(o => !o)}
+        className="flex items-center gap-2 text-xs text-gray-500 hover:text-gray-300 transition-colors py-1 w-full text-left"
       >
-        {busy ? (
-          <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full flex-shrink-0" />
-          {r.status === 'processing' ? `Processing… ${r.progress ?? 0}%` : r.status === 'submitting' ? 'Submitting…' : 'Generating…'}</>
-        ) : (
-          isVideo ? '🎬 Generate Video' : '🖼 Generate Image'
-        )}
+        <span className={`transition-transform duration-150 ${open ? 'rotate-90' : ''}`}>▶</span>
+        {label}
       </button>
-
-      {isVideo && (r.status === 'submitting' || r.status === 'processing') && (
-        <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-indigo-500 transition-all duration-500 ease-out" style={{ width: `${r.progress ?? 5}%` }} />
-        </div>
-      )}
-
-      {r.status === 'error' && r.error && (
-        <p className="text-red-400 text-xs">⚠ {r.error}</p>
-      )}
-
-      {!isVideo && r.imageUrl && (
-        <div className="space-y-2">
-          <img src={r.imageUrl} alt="Generated" className="w-full border border-gray-700 object-cover" style={{ maxHeight: 320, objectFit: 'cover' }} />
-          <div className="flex gap-2 flex-wrap">
-            <button onClick={() => onSave(r.imageUrl, 'image')} disabled={r.saving || r.saved} className={`${btnPrimary} text-xs py-1 px-3`}>
-              {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : 'Save to Product'}
-            </button>
-            <button onClick={onRegenerate} className={`${btnGhost} text-xs py-1`}>↻ Regenerate</button>
-          </div>
-        </div>
-      )}
-
-      {isVideo && r.videoUrl && (
-        <div className="space-y-2">
-          <video src={r.videoUrl} controls className="w-full border border-gray-700" style={{ maxHeight: 240 }} />
-          <div className="flex gap-2 flex-wrap items-center">
-            <button onClick={() => onSave(r.videoUrl, 'video')} disabled={r.saving || r.saved} className={`${btnPrimary} text-xs py-1 px-3`}>
-              {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : 'Save to Product'}
-            </button>
-            <button onClick={onRegenerate} className={`${btnGhost} text-xs py-1`}>↻ Regenerate</button>
-            <a href={r.videoUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 text-xs underline">Open URL ↗</a>
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-
-function GenerateAssetsTab({ productId, productName, productType, primaryColor, collection, onAssetSaved }) {
-  const [activeTab,       setActiveTab]       = useState('mockup')
-  const [rawPrompts,      setRawPrompts]      = useState(null)
-  const [localPrompts,    setLocalPrompts]    = useState({})
-  const [imageModel,      setImageModel]      = useState(IMAGE_MODELS[0].id)
-  const [videoModel,      setVideoModel]      = useState(VIDEO_MODELS[0].id)
-  const [results,         setResults]         = useState({})
-  const [promptsSaving,   setPromptsSaving]   = useState(false)
-  const [promptsSavedMsg, setPromptsSavedMsg] = useState('')
-  const pollTimers = useRef({})
-
-  const vars = { name: productName, type: productType, color: primaryColor, collection }
-
-  const initPrompts = (p) => {
-    setRawPrompts(p)
-    const local = {}
-    for (const t of [...(p.mockup || []), ...(p.video || [])]) {
-      local[t.id] = subVars(t.prompt, vars)
-    }
-    setLocalPrompts(local)
-  }
-
-  useEffect(() => {
-    api('read-prompts', {})
-      .then(data => initPrompts(data.prompts || defaultPromptsStatic))
-      .catch(() => initPrompts(defaultPromptsStatic))
-  }, [productId])
-
-  useEffect(() => () => { Object.values(pollTimers.current).forEach(clearInterval) }, [])
-
-  const patchResult = (id, patch) =>
-    setResults(prev => ({ ...prev, [id]: { ...(prev[id] || {}), ...patch } }))
-
-  const handleGenerateImage = async (templateId) => {
-    const prompt = localPrompts[templateId]
-    if (!prompt?.trim()) return
-    patchResult(templateId, { status: 'generating', error: null, imageUrl: null, saved: false })
-    try {
-      const res  = await fetch('/api/generate-mockup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelId: imageModel, prompt: prompt.trim() }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Generation failed')
-      patchResult(templateId, { status: 'done', imageUrl: data.imageUrl })
-    } catch (e) {
-      patchResult(templateId, { status: 'error', error: e.message })
-    }
-  }
-
-  const handleGenerateVideo = async (templateId) => {
-    const prompt = localPrompts[templateId]
-    if (!prompt?.trim()) return
-    patchResult(templateId, { status: 'submitting', error: null, videoUrl: null, requestId: null, progress: 0, saved: false })
-    try {
-      const submitRes  = await fetch('/api/generate-video', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'submit', modelId: videoModel, prompt: prompt.trim() }),
-      })
-      const submitData = await submitRes.json()
-      if (!submitRes.ok) throw new Error(submitData.error || 'Submit failed')
-      const requestId  = submitData.requestId
-      if (!requestId) throw new Error('No requestId in response')
-      patchResult(templateId, { status: 'processing', requestId, progress: 10 })
-
-      const poll = async () => {
-        try {
-          const sRes  = await fetch('/api/generate-video', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'status', modelId: videoModel, requestId }),
-          })
-          const sData = await sRes.json()
-          const st    = sData.status
-          if (st === 'COMPLETED') {
-            clearInterval(pollTimers.current[requestId])
-            delete pollTimers.current[requestId]
-            const rRes  = await fetch('/api/generate-video', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ action: 'result', modelId: videoModel, requestId }),
-            })
-            const rData = await rRes.json()
-            if (!rRes.ok) throw new Error(rData.error)
-            patchResult(templateId, { status: 'done', videoUrl: rData.videoUrl, progress: 100 })
-          } else if (st === 'FAILED') {
-            clearInterval(pollTimers.current[requestId])
-            delete pollTimers.current[requestId]
-            patchResult(templateId, { status: 'error', error: 'Generation failed on fal.ai server' })
-          } else {
-            patchResult(templateId, { progress: st === 'IN_PROGRESS' ? 60 : 20 })
-          }
-        } catch (e) {
-          console.warn('[video-poll]', e.message)
-        }
-      }
-      pollTimers.current[requestId] = setInterval(poll, 3000)
-    } catch (e) {
-      patchResult(templateId, { status: 'error', error: e.message })
-    }
-  }
-
-  const handleSaveAsset = async (templateId, assetUrl, assetType) => {
-    if (!productId || !assetUrl) return
-    patchResult(templateId, { saving: true, error: null })
-    try {
-      const data = await api('import-generated-asset', { productId, assetUrl, assetType })
-      patchResult(templateId, { saving: false, saved: true })
-      if (assetType === 'image') onAssetSaved?.(data.path)
-    } catch (e) {
-      patchResult(templateId, { saving: false, error: e.message })
-    }
-  }
-
-  const handleSavePrompts = async () => {
-    if (!rawPrompts) return
-    const updated = {
-      mockup: (rawPrompts.mockup || []).map(t => ({ ...t, prompt: localPrompts[t.id] ?? t.prompt })),
-      video:  (rawPrompts.video  || []).map(t => ({ ...t, prompt: localPrompts[t.id] ?? t.prompt })),
-    }
-    setPromptsSaving(true); setPromptsSavedMsg('')
-    try {
-      await api('save-prompts', { prompts: updated })
-      setRawPrompts(updated)
-      setPromptsSavedMsg('✓ Saved')
-      setTimeout(() => setPromptsSavedMsg(''), 3000)
-    } catch (e) {
-      setPromptsSavedMsg(`⚠ ${e.message}`)
-    } finally {
-      setPromptsSaving(false)
-    }
-  }
-
-  const selectedImageModel = IMAGE_MODELS.find(m => m.id === imageModel)
-  const selectedVideoModel = VIDEO_MODELS.find(m => m.id === videoModel)
-  const prompts = rawPrompts || defaultPromptsStatic
-  const currentTemplates = activeTab === 'mockup' ? (prompts.mockup || []) : (prompts.video || [])
-
-  return (
-    <div className="border border-indigo-900/50 bg-gray-950 space-y-0">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-gray-800">
-        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest">✨ Generate Assets</h3>
-        <div className="flex items-center gap-3">
-          {promptsSavedMsg && (
-            <span className={`text-xs ${promptsSavedMsg.startsWith('✓') ? 'text-green-400' : 'text-yellow-400'}`}>{promptsSavedMsg}</span>
-          )}
-          <button onClick={handleSavePrompts} disabled={promptsSaving} className={`${btnGhost} text-xs py-1`}>
-            {promptsSaving ? 'Saving…' : '💾 Save Prompts'}
-          </button>
-        </div>
-      </div>
-
-      <div className="flex border-b border-gray-800">
-        {[
-          { id: 'mockup',  label: '🖼  Mockup' },
-          { id: 'video',   label: '🎬 Video'   },
-          { id: 'publish', label: '📱 Publish', disabled: true },
-        ].map(t => (
-          <button
-            key={t.id}
-            onClick={() => !t.disabled && setActiveTab(t.id)}
-            disabled={t.disabled}
-            className={`px-4 py-2.5 text-xs font-medium border-b-2 transition-colors whitespace-nowrap ${
-              t.disabled
-                ? 'border-transparent text-gray-600 cursor-not-allowed'
-                : activeTab === t.id
-                ? 'border-indigo-500 text-indigo-300'
-                : 'border-transparent text-gray-500 hover:text-gray-300'
-            }`}
-          >
-            {t.label}
-            {t.disabled && <span className="ml-1 text-gray-600 text-2xs">Coming Soon</span>}
-          </button>
-        ))}
-      </div>
-
-      <div className="p-5 space-y-4">
-        <div className="flex items-center gap-3 flex-wrap">
-          <label className="text-gray-500 text-xs whitespace-nowrap">Model:</label>
-          <select
-            value={activeTab === 'mockup' ? imageModel : videoModel}
-            onChange={e => activeTab === 'mockup' ? setImageModel(e.target.value) : setVideoModel(e.target.value)}
-            className="bg-gray-800 border border-gray-700 text-white text-xs px-3 py-1.5 focus:outline-none focus:border-indigo-500 flex-1 min-w-0"
-          >
-            {(activeTab === 'mockup' ? IMAGE_MODELS : VIDEO_MODELS).map(m => (
-              <option key={m.id} value={m.id}>
-                {m.label} — {activeTab === 'mockup' ? m.cost : `$${(m.secRate * 5).toFixed(2)}/5s`}
-              </option>
-            ))}
-          </select>
-          <span className="text-gray-600 text-xs whitespace-nowrap">
-            {activeTab === 'mockup'
-              ? `Est. ${selectedImageModel?.cost ?? '—'}`
-              : `Est. $${((selectedVideoModel?.secRate ?? 0) * 5).toFixed(2)} for 5s`}
-          </span>
-        </div>
-
-        <div className="space-y-4">
-          {currentTemplates.map(t => (
-            <PromptCard
-              key={t.id}
-              template={t}
-              isVideo={activeTab === 'video'}
-              promptText={localPrompts[t.id] ?? ''}
-              onPromptChange={val => setLocalPrompts(prev => ({ ...prev, [t.id]: val }))}
-              result={results[t.id]}
-              onGenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
-              onSave={(url, type) => handleSaveAsset(t.id, url, type)}
-              onRegenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
-            />
-          ))}
-        </div>
-      </div>
+      {open && <div className="mt-2">{children}</div>}
     </div>
   )
 }
@@ -984,10 +693,7 @@ export default function AdminProductPage() {
 
               {/* Variants read-only */}
               {product.variants?.length > 0 && (
-                <div>
-                  <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">
-                    Variants ({product.variants.length})
-                  </p>
+                <Collapsible label={`${product.variants.length} variant${product.variants.length !== 1 ? 's' : ''}`} defaultOpen={false}>
                   <div className="overflow-x-auto scrollbar-hide max-h-48 overflow-y-auto">
                     <table className="w-full text-xs text-left">
                       <thead>
@@ -1010,7 +716,7 @@ export default function AdminProductPage() {
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </Collapsible>
               )}
             </Section>
 

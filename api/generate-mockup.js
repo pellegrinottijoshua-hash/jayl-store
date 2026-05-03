@@ -1,11 +1,13 @@
 import { applyCors } from './_lib/cors.js'
 
 const IMAGE_MODELS = new Set([
-  'fal-ai/flux-pro',
-  'fal-ai/flux/dev',
+  'fal-ai/flux/schnell',
+  'fal-ai/flux-pro/v1.1',
+  'fal-ai/flux-pro',        // legacy fallback
+  'fal-ai/flux/dev',        // legacy fallback
   'fal-ai/ideogram/v3',
-  'fal-ai/recraft-v3',
   'fal-ai/nano-banana-2',
+  'fal-ai/recraft-v3',
 ])
 
 export default async function handler(req, res) {
@@ -17,7 +19,7 @@ export default async function handler(req, res) {
   const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
   if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
 
-  const { modelId, prompt } = req.body || {}
+  const { modelId, prompt, imageSize } = req.body || {}
   if (!prompt?.trim())            return res.status(400).json({ error: 'prompt is required' })
   if (!IMAGE_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown model: ${modelId}` })
 
@@ -29,9 +31,9 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: prompt.trim(),
-        image_size:  'square_hd',
-        num_images:  1,
+        prompt:                prompt.trim(),
+        image_size:            imageSize || 'square_hd',
+        num_images:            1,
         enable_safety_checker: false,
       }),
     })
@@ -45,7 +47,6 @@ export default async function handler(req, res) {
       })
     }
 
-    // fal.ai image response: { images: [{ url, width, height, content_type }], ... }
     const imageUrl = body?.images?.[0]?.url ?? body?.image?.url ?? null
     if (!imageUrl) {
       console.error('[generate-mockup] unexpected response', JSON.stringify(body).slice(0, 300))
