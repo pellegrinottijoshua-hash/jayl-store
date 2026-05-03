@@ -506,48 +506,31 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             )}
           </div>
 
-          {/* Images grouped by color — show imported paths (GitHub) not S3 URLs */}
-          {importedPaths.length > 0 && (
-            Object.keys(imagesByColor).length > 0 ? (
-              <div className="space-y-4">
-                {Object.entries(imagesByColor).map(([color, srcs]) => (
-                  <div key={color}>
-                    {color !== '__all__' && (
-                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">{color}</p>
+          {/* Gelato mockup images — horizontal scrollable strip with actual thumbnails */}
+          {gelatoImages.length > 0 && (
+            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'thin' }}>
+              {gelatoImages.map((img, i) => {
+                const imported = i < importedPaths.length && !!importedPaths[i]
+                return (
+                  <div
+                    key={i}
+                    className={`flex-shrink-0 relative border ${imported ? 'border-green-600' : 'border-gray-700'}`}
+                    style={{ height: 80 }}
+                  >
+                    <img
+                      src={img.src}
+                      alt={`Mockup ${i + 1}`}
+                      className="h-full w-auto"
+                      style={{ display: 'block', minWidth: 48, maxWidth: 120, objectFit: 'cover' }}
+                      onError={e => { e.currentTarget.style.opacity = '0.3' }}
+                    />
+                    {imported && (
+                      <span className="absolute top-0 right-0 bg-green-900/90 text-green-400 text-xs px-1 leading-5">✓</span>
                     )}
-                    <div className="flex flex-wrap gap-2">
-                      {srcs.map((src, i) => {
-                        const idx = gelatoImages.findIndex(g => g.src === src)
-                        const path = importedPaths[idx] ?? null
-                        return (
-                          <div key={i} className="relative flex-shrink-0 w-20">
-                            {path ? (
-                              <div className="w-20 h-20 border border-green-600 bg-gray-800 flex flex-col items-center justify-center gap-1 p-1">
-                                <span className="text-green-400 text-base">✓</span>
-                                <span className="text-gray-400 text-xs text-center break-all leading-tight">{path.split('/').pop()}</span>
-                              </div>
-                            ) : (
-                              <div className="w-20 h-20 border border-gray-700 bg-gray-800 flex items-center justify-center">
-                                <span className="text-gray-600 text-xs">—</span>
-                              </div>
-                            )}
-                          </div>
-                        )
-                      })}
-                    </div>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-wrap gap-2">
-                {importedPaths.map((path, i) => (
-                  <div key={i} className="w-20 h-20 border border-green-600 bg-gray-800 flex flex-col items-center justify-center gap-1 p-1">
-                    <span className="text-green-400 text-base">✓</span>
-                    <span className="text-gray-400 text-xs text-center break-all leading-tight">{path.split('/').pop()}</span>
-                  </div>
-                ))}
-              </div>
-            )
+                )
+              })}
+            </div>
           )}
           {importedPaths.length > 0 && (
             <p className="text-gray-600 text-xs">Le immagini saranno visibili sul sito dopo il deploy Vercel (~2 min).</p>
@@ -750,6 +733,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           primaryColor={variants[0]?.color || (editingProduct?.colors?.[0]?.label) || ''}
           collection={finalCollection}
           onAssetSaved={path => setExistingImages(prev => [...prev, { src: path, alt: '' }])}
+          preloadedImages={gelatoImages.map((img, i) => ({ url: img.src, name: img.src.split('/').pop() || `mockup-${i + 1}` }))}
         />
       )}
     </div>

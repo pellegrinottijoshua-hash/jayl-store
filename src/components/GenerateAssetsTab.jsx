@@ -61,7 +61,7 @@ const subVars = (tmpl, vars) =>
     .replace(/\{COLOR\}/g,         vars.color      || 'default color')
     .replace(/\{COLLECTION\}/g,    vars.collection || '')
 
-// Convert relative /images/... path to absolute URL for fal.ai
+// Convert relative /images/... path to absolute URL for fal.ai (passes through if already absolute)
 const toAbsoluteUrl = (url) => {
   if (!url) return null
   if (url.startsWith('http')) return url
@@ -86,13 +86,21 @@ async function downloadAsset(url, filename) {
 }
 
 // ── PromptCard (module-level — never define inside another component) ─────────
+// images: [{ url, name }] — all available reference images (absolute or relative)
+// selectedImage: { url, name } | null
+// onSelectImage: (img) => void
 
-function PromptCard({ template, isVideo, promptText, onPromptChange, result, onGenerate, onSave, onSavePrompt, savingPrompt, savedPromptMsg }) {
+function PromptCard({
+  template, isVideo, promptText, onPromptChange,
+  result, onGenerate, onSave, onSavePrompt, savingPrompt, savedPromptMsg,
+  images, selectedImage, onSelectImage,
+}) {
   const r    = result || {}
   const busy = r.status === 'generating' || r.status === 'submitting' || r.status === 'processing'
 
   return (
     <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+
       {/* Header row */}
       <div className="flex items-center justify-between gap-3">
         <p className="text-gray-300 text-xs font-semibold uppercase tracking-wider">{template.name}</p>
@@ -102,6 +110,36 @@ function PromptCard({ template, isVideo, promptText, onPromptChange, result, onG
           </span>
         )}
       </div>
+
+      {/* Per-prompt image selector (compact horizontal strip) */}
+      {images.length > 0 && (
+        <div className="flex gap-1.5 overflow-x-auto pb-0.5" style={{ scrollbarWidth: 'thin' }}>
+          {images.map((img, i) => {
+            const isSelected = selectedImage
+              ? selectedImage.url === img.url
+              : i === 0   // first image is default
+            return (
+              <button
+                key={img.url || i}
+                onClick={() => onSelectImage(img)}
+                title={img.name}
+                className={`flex-shrink-0 w-12 h-12 border-2 overflow-hidden transition-all ${
+                  isSelected
+                    ? 'border-indigo-500 ring-1 ring-indigo-500/40'
+                    : 'border-gray-700 hover:border-gray-500'
+                }`}
+              >
+                <img
+                  src={toAbsoluteUrl(img.url)}
+                  alt={img.name}
+                  className="w-full h-full object-cover"
+                  onError={e => { e.currentTarget.style.opacity = '0.3' }}
+                />
+              </button>
+            )
+          })}
+        </div>
+      )}
 
       {/* Editable textarea */}
       <textarea
@@ -204,8 +242,10 @@ function PromptCard({ template, isVideo, promptText, onPromptChange, result, onG
 }
 
 // ── GenerateAssetsTab ─────────────────────────────────────────────────────────
+// preloadedImages: [{ url, name }] — Gelato CDN images passed from parent (for Add Product flow)
+//                                    Used when productImages haven't been fetched yet (e.g. new product)
 
-export default function GenerateAssetsTab({ productId, productName, productType, primaryColor, collection, onAssetSaved }) {
+export default function GenerateAssetsTab({ productId, productName, productType, primaryColor, collection, onAssetSaved, preloadedImages }) {
   const [activeTab,       setActiveTab]       = useState('mockup')
   const [rawPrompts,      setRawPrompts]      = useState(null)
   const [localPrompts,    setLocalPrompts]    = useState({})
@@ -217,11 +257,22 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const [savingPrompts,   setSavingPrompts]   = useState({})
   const [savedPromptMsgs, setSavedPromptMsgs] = useState({})
 
-  // ── Image selector (img-to-img / img-to-video) ─────────────────────────────
-  const [productImages,  setProductImages]  = useState([])   // [{ name, path, sha, url }]
-  const [selectedImage,  setSelectedImage]  = useState(null) // { url } | null = text-only
+  // ── Image sources ──────────────────────────────────────────────────────────
+  // productImages: fetched from GitHub (saved images for this product)
+  // allImages: productImages if available, otherwise preloadedImages (Gelato CDN)
+  const [productImages, setProductImages] = useState([])  // [{ name, path, sha, url }]
+
+  // Per-template image selection: { [templateId]: { url, name } }
+  const [selectedImages, setSelectedImages] = useState({})
 
   const pollTimers = useRef({})
+
+  // Merge sources: prefer fetched product images, fall back to Gelato preloads
+  const normalizedPreloaded = (preloadedImages || []).map(img => ({
+    url:  img.url,
+    name: img.name || img.url.split('/').pop() || 'image',
+  }))
+  const allImages = productImages.length > 0 ? productImages : normalizedPreloaded
 
   // ── Load product images on mount ───────────────────────────────────────────
 
@@ -231,7 +282,6 @@ export default function GenerateAssetsTab({ productId, productName, productType,
       .then(data => {
         const imgs = (data.images || []).filter(i => !/generated\//.test(i.path))
         setProductImages(imgs)
-        if (imgs.length > 0) setSelectedImage(imgs[0])
       })
       .catch(() => {})
   }, [productId])
@@ -259,14 +309,20 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const patchResult = (id, patch) =>
     setResults(prev => ({ ...prev, [id]: { ...(prev[id] || {}), ...patch } }))
 
-  // ── Image generation (img-to-img when image selected) ─────────────────────
+  // ── Helper: get selected image for a template (defaults to first image) ────
+
+  const getSelectedImage = (templateId) =>
+    selectedImages[templateId] ?? allImages[0] ?? null
+
+  // ── Image generation (img-to-img) ─────────────────────────────────────────
 
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
+    const imgObj  = getSelectedImage(templateId)
+    const imageUrl = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
     patchResult(templateId, { status: 'generating', error: null, imageUrl: null, saved: false })
     try {
-      const imageUrl = selectedImage ? toAbsoluteUrl(selectedImage.url) : undefined
       const res = await fetch('/api/generate-mockup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -280,17 +336,18 @@ export default function GenerateAssetsTab({ productId, productName, productType,
     }
   }
 
-  // ── Video generation (img-to-video when image selected) ────────────────────
+  // ── Video generation (img-to-video) ───────────────────────────────────────
 
   const handleGenerateVideo = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
+    const imgObj  = getSelectedImage(templateId)
+    const imageUrl = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
+    // Always use image-to-video model variant when an image is available
+    const effectiveModelId = (imageUrl && T2V_TO_I2V[videoModel]) ? T2V_TO_I2V[videoModel] : videoModel
+
     patchResult(templateId, { status: 'submitting', error: null, videoUrl: null, requestId: null, progress: 0, saved: false })
     try {
-      const imageUrl = selectedImage ? toAbsoluteUrl(selectedImage.url) : undefined
-      // When an image is selected, use image-to-video model variant
-      const effectiveModelId = (imageUrl && T2V_TO_I2V[videoModel]) ? T2V_TO_I2V[videoModel] : videoModel
-
       const submitRes = await fetch('/api/generate-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -380,13 +437,9 @@ export default function GenerateAssetsTab({ productId, productName, productType,
 
   // ── Render ───────────────────────────────────────────────────────────────────
 
-  const prompts            = rawPrompts || defaultPromptsStatic
-  const currentTemplates   = activeTab === 'mockup' ? (prompts.mockup || []) : (prompts.video || [])
+  const prompts          = rawPrompts || defaultPromptsStatic
+  const currentTemplates = activeTab === 'mockup' ? (prompts.mockup || []) : (prompts.video || [])
   const selectedVideoModel = VIDEO_MODELS.find(m => m.id === videoModel)
-  const hasImage           = !!selectedImage
-  const modeLabel          = hasImage
-    ? (activeTab === 'video' ? 'img-to-video' : 'img-to-img')
-    : (activeTab === 'video' ? 'text-to-video' : 'text-to-image')
 
   return (
     <div className="border border-indigo-900/50 bg-gray-950">
@@ -421,63 +474,6 @@ export default function GenerateAssetsTab({ productId, productName, productType,
         ))}
       </div>
 
-      {/* ── Reference image strip ─────────────────────────────────────────────── */}
-      <div className="border-b border-gray-800 px-4 py-3 space-y-2">
-        <div className="flex items-center justify-between">
-          <span className="text-gray-500 text-xs">Reference image</span>
-          <span className={`text-xs px-2 py-0.5 border ${hasImage ? 'border-indigo-700 text-indigo-300 bg-indigo-900/20' : 'border-gray-700 text-gray-500'}`}>
-            {modeLabel}
-          </span>
-        </div>
-
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          {/* Text-only pill */}
-          <button
-            onClick={() => setSelectedImage(null)}
-            className={`flex-shrink-0 w-16 h-16 border-2 transition-all flex flex-col items-center justify-center gap-0.5 text-xs ${
-              !selectedImage
-                ? 'border-indigo-500 text-indigo-300 bg-indigo-900/10'
-                : 'border-gray-700 text-gray-600 hover:border-gray-500'
-            }`}
-          >
-            <span className="text-base leading-none">T</span>
-            <span className="text-gray-500 text-xs">text</span>
-          </button>
-
-          {/* Product image thumbnails */}
-          {productImages.length === 0 && (
-            <div className="flex items-center text-gray-700 text-xs italic pl-1">
-              No images yet — save product first
-            </div>
-          )}
-          {productImages.map((img, i) => (
-            <button
-              key={img.sha || i}
-              onClick={() => setSelectedImage(img)}
-              title={img.name}
-              className={`flex-shrink-0 w-16 h-16 border-2 overflow-hidden transition-all ${
-                selectedImage?.url === img.url
-                  ? 'border-indigo-500 ring-1 ring-indigo-500/40'
-                  : 'border-gray-700 hover:border-gray-500'
-              }`}
-            >
-              <img
-                src={img.url}
-                alt={img.name}
-                className="w-full h-full object-cover"
-                onError={e => { e.currentTarget.style.opacity = '0.3' }}
-              />
-            </button>
-          ))}
-        </div>
-
-        {selectedImage && (
-          <p className="text-gray-700 text-xs truncate">
-            Using: {selectedImage.name}
-          </p>
-        )}
-      </div>
-
       <div className="p-5 space-y-4">
 
         {/* Settings bar */}
@@ -485,7 +481,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
 
           {/* Model selector */}
           <div className="flex items-center gap-3">
-            <label className="text-gray-500 text-xs w-14 flex-shrink-0">Model</label>
+            <label className="text-gray-500 text-xs w-16 flex-shrink-0">Model</label>
             <select
               value={activeTab === 'mockup' ? imageModel : videoModel}
               onChange={e => activeTab === 'mockup' ? setImageModel(e.target.value) : setVideoModel(e.target.value)}
@@ -504,7 +500,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           {/* Image size pills */}
           {activeTab === 'mockup' && (
             <div className="flex items-center gap-3">
-              <label className="text-gray-500 text-xs w-14 flex-shrink-0">Size</label>
+              <label className="text-gray-500 text-xs w-16 flex-shrink-0">Size</label>
               <div className="flex gap-1 flex-wrap items-center">
                 {IMAGE_SIZES.map(s => (
                   <button
@@ -530,7 +526,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           {/* Video duration */}
           {activeTab === 'video' && (
             <div className="flex items-center gap-3">
-              <label className="text-gray-500 text-xs w-14 flex-shrink-0">Duration</label>
+              <label className="text-gray-500 text-xs w-16 flex-shrink-0">Duration</label>
               <div className="flex gap-1 items-center">
                 {['5', '10'].map(d => (
                   <button
@@ -552,7 +548,24 @@ export default function GenerateAssetsTab({ productId, productName, productType,
             </div>
           )}
 
+          {/* Mode indicator */}
+          {allImages.length > 0 && (
+            <div className="flex items-center gap-3">
+              <span className="text-gray-500 text-xs w-16 flex-shrink-0">Mode</span>
+              <span className="text-xs px-2 py-0.5 border border-indigo-700 text-indigo-300 bg-indigo-900/20">
+                {activeTab === 'video' ? 'img-to-video' : 'img-to-img'}
+              </span>
+              <span className="text-gray-600 text-xs">Select reference per prompt below</span>
+            </div>
+          )}
         </div>
+
+        {/* No images warning */}
+        {allImages.length === 0 && (
+          <div className="bg-yellow-900/20 border border-yellow-800/50 px-4 py-3 text-yellow-400 text-xs">
+            ⚠ No reference images available. Fetch &amp; import Gelato mockups first, or save the product to enable image generation.
+          </div>
+        )}
 
         {/* Prompt cards */}
         <div className="space-y-4">
@@ -569,6 +582,9 @@ export default function GenerateAssetsTab({ productId, productName, productType,
               onSavePrompt={() => handleSavePrompt(t.id, activeTab === 'video')}
               savingPrompt={savingPrompts[t.id]}
               savedPromptMsg={savedPromptMsgs[t.id]}
+              images={allImages}
+              selectedImage={selectedImages[t.id] ?? null}
+              onSelectImage={img => setSelectedImages(prev => ({ ...prev, [t.id]: img }))}
             />
           ))}
         </div>
