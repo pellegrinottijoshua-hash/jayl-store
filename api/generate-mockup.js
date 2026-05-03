@@ -1,10 +1,11 @@
 import { applyCors } from './_lib/cors.js'
 
 const IMAGE_MODELS = new Set([
+  // text-to-image
   'fal-ai/flux/schnell',
   'fal-ai/flux-pro/v1.1',
-  'fal-ai/flux-pro',        // legacy fallback
-  'fal-ai/flux/dev',        // legacy fallback
+  'fal-ai/flux-pro',        // legacy
+  'fal-ai/flux/dev',        // legacy
   'fal-ai/ideogram/v3',
   'fal-ai/nano-banana-2',
   'fal-ai/recraft-v3',
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
   const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
   if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
 
-  const { modelId, prompt, imageSize } = req.body || {}
+  const { modelId, prompt, imageSize, imageUrl } = req.body || {}
   if (!prompt?.trim())            return res.status(400).json({ error: 'prompt is required' })
   if (!IMAGE_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown model: ${modelId}` })
 
@@ -35,6 +36,8 @@ export default async function handler(req, res) {
         image_size:            imageSize || 'square_hd',
         num_images:            1,
         enable_safety_checker: false,
+        // img-to-img: pass reference image when provided
+        ...(imageUrl ? { image_url: imageUrl, strength: 0.85 } : {}),
       }),
     })
 
@@ -47,13 +50,13 @@ export default async function handler(req, res) {
       })
     }
 
-    const imageUrl = body?.images?.[0]?.url ?? body?.image?.url ?? null
-    if (!imageUrl) {
+    const imageUrlOut = body?.images?.[0]?.url ?? body?.image?.url ?? null
+    if (!imageUrlOut) {
       console.error('[generate-mockup] unexpected response', JSON.stringify(body).slice(0, 300))
       return res.status(500).json({ error: 'No image URL in fal.ai response' })
     }
 
-    return res.status(200).json({ imageUrl })
+    return res.status(200).json({ imageUrl: imageUrlOut })
   } catch (err) {
     console.error('[generate-mockup]', err.message)
     return res.status(500).json({ error: err.message })

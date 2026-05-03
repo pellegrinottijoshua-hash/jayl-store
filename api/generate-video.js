@@ -1,11 +1,19 @@
 import { applyCors } from './_lib/cors.js'
 
+// All allowed model IDs — both text-to-video and image-to-video variants
 const VIDEO_MODELS = new Set([
+  // text-to-video
   'fal-ai/ltx-video',
   'fal-ai/wan/v2.2/t2v',
   'fal-ai/bytedance/seedance/v1.5/pro/text-to-video',
   'fal-ai/kling-video/v1.6/standard/text-to-video',
   'fal-ai/kling-video/v3/pro/text-to-video',
+  // image-to-video (switched automatically by frontend when image selected)
+  'fal-ai/ltx-video/image-to-video',
+  'fal-ai/wan/v2.2/i2v',
+  'fal-ai/bytedance/seedance/v1.5/pro/image-to-video',
+  'fal-ai/kling-video/v1.6/standard/image-to-video',
+  'fal-ai/kling-video/v3/pro/image-to-video',
 ])
 
 export default async function handler(req, res) {
@@ -17,7 +25,7 @@ export default async function handler(req, res) {
   const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
   if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
 
-  const { action, modelId, prompt, requestId, duration } = req.body || {}
+  const { action, modelId, prompt, requestId, duration, imageUrl } = req.body || {}
   if (!VIDEO_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown video model: ${modelId}` })
 
   const baseUrl = `https://queue.fal.run/${modelId}`
@@ -29,19 +37,26 @@ export default async function handler(req, res) {
     if (action === 'submit') {
       if (!prompt?.trim()) return res.status(400).json({ error: 'prompt is required' })
 
+      const body = {
+        prompt:   prompt.trim(),
+        duration: dur,
+        // img-to-video: include reference image when provided
+        ...(imageUrl ? { image_url: imageUrl } : {}),
+      }
+
       const falRes = await fetch(baseUrl, {
         method: 'POST',
         headers: hdrs,
-        body: JSON.stringify({ prompt: prompt.trim(), duration: dur }),
+        body: JSON.stringify(body),
       })
-      const body = await falRes.json().catch(() => null)
+      const data = await falRes.json().catch(() => null)
       if (!falRes.ok) {
-        console.error('[generate-video] submit error', falRes.status, body)
+        console.error('[generate-video] submit error', falRes.status, data)
         return res.status(falRes.status).json({
-          error: body?.detail || body?.message || `fal.ai queue error ${falRes.status}`,
+          error: data?.detail || data?.message || `fal.ai queue error ${falRes.status}`,
         })
       }
-      return res.status(200).json({ requestId: body.request_id ?? body.requestId })
+      return res.status(200).json({ requestId: data.request_id ?? data.requestId })
     }
 
     // ── status ────────────────────────────────────────────────────────────────

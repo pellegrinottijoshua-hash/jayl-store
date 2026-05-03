@@ -35,6 +35,15 @@ export const VIDEO_MODELS = [
   { id: 'fal-ai/kling-video/v3/pro/text-to-video',          label: 'Kling 3.0 Pro',   secRate: 0.224 },
 ]
 
+// Map text-to-video IDs → image-to-video IDs for fal.ai
+const T2V_TO_I2V = {
+  'fal-ai/ltx-video':                                 'fal-ai/ltx-video/image-to-video',
+  'fal-ai/wan/v2.2/t2v':                              'fal-ai/wan/v2.2/i2v',
+  'fal-ai/bytedance/seedance/v1.5/pro/text-to-video': 'fal-ai/bytedance/seedance/v1.5/pro/image-to-video',
+  'fal-ai/kling-video/v1.6/standard/text-to-video':   'fal-ai/kling-video/v1.6/standard/image-to-video',
+  'fal-ai/kling-video/v3/pro/text-to-video':          'fal-ai/kling-video/v3/pro/image-to-video',
+}
+
 const IMAGE_SIZES = [
   { id: 'square_hd',      label: '1:1',  desc: '1024×1024' },
   { id: 'portrait_16_9',  label: '9:16', desc: '576×1024'  },
@@ -51,6 +60,13 @@ const subVars = (tmpl, vars) =>
     .replace(/\{PRODUCT_TYPE\}/g,  vars.type       || 'product')
     .replace(/\{COLOR\}/g,         vars.color      || 'default color')
     .replace(/\{COLLECTION\}/g,    vars.collection || '')
+
+// Convert relative /images/... path to absolute URL for fal.ai
+const toAbsoluteUrl = (url) => {
+  if (!url) return null
+  if (url.startsWith('http')) return url
+  return `${window.location.origin}${url}`
+}
 
 async function downloadAsset(url, filename) {
   try {
@@ -95,7 +111,7 @@ function PromptCard({ template, isVideo, promptText, onPromptChange, result, onG
         className="w-full bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-2 resize-none focus:outline-none focus:border-indigo-500 transition-colors font-mono"
       />
 
-      {/* Action buttons */}
+      {/* Buttons */}
       <div className="flex items-center gap-2 flex-wrap">
         <button
           onClick={onGenerate}
@@ -153,15 +169,10 @@ function PromptCard({ template, isVideo, promptText, onPromptChange, result, onG
             >
               {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : '💾 Save to Product'}
             </button>
-            <button
-              onClick={() => downloadAsset(r.imageUrl, `${template.id}.jpg`)}
-              className={`${btnGhost} text-xs py-1`}
-            >
+            <button onClick={() => downloadAsset(r.imageUrl, `${template.id}.jpg`)} className={`${btnGhost} text-xs py-1`}>
               ⬇ Download
             </button>
-            <button onClick={onGenerate} disabled={busy} className={`${btnGhost} text-xs py-1`}>
-              ↻ Regen
-            </button>
+            <button onClick={onGenerate} disabled={busy} className={`${btnGhost} text-xs py-1`}>↻ Regen</button>
           </div>
         </div>
       )}
@@ -178,21 +189,11 @@ function PromptCard({ template, isVideo, promptText, onPromptChange, result, onG
             >
               {r.saving ? 'Saving…' : r.saved ? '✓ Saved' : '💾 Save to Product'}
             </button>
-            <button
-              onClick={() => downloadAsset(r.videoUrl, `${template.id}.mp4`)}
-              className={`${btnGhost} text-xs py-1`}
-            >
+            <button onClick={() => downloadAsset(r.videoUrl, `${template.id}.mp4`)} className={`${btnGhost} text-xs py-1`}>
               ⬇ Download
             </button>
-            <button onClick={onGenerate} disabled={busy} className={`${btnGhost} text-xs py-1`}>
-              ↻ Regen
-            </button>
-            <a
-              href={r.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-400 hover:text-indigo-300 text-xs underline"
-            >
+            <button onClick={onGenerate} disabled={busy} className={`${btnGhost} text-xs py-1`}>↻ Regen</button>
+            <a href={r.videoUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 text-xs underline">
               Open ↗
             </a>
           </div>
@@ -215,9 +216,27 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const [results,         setResults]         = useState({})
   const [savingPrompts,   setSavingPrompts]   = useState({})
   const [savedPromptMsgs, setSavedPromptMsgs] = useState({})
+
+  // ── Image selector (img-to-img / img-to-video) ─────────────────────────────
+  const [productImages,  setProductImages]  = useState([])   // [{ name, path, sha, url }]
+  const [selectedImage,  setSelectedImage]  = useState(null) // { url } | null = text-only
+
   const pollTimers = useRef({})
 
-  const vars = { name: productName, type: productType, color: primaryColor, collection }
+  // ── Load product images on mount ───────────────────────────────────────────
+
+  useEffect(() => {
+    if (!productId) return
+    api('list-images', { productId })
+      .then(data => {
+        const imgs = (data.images || []).filter(i => !/generated\//.test(i.path))
+        setProductImages(imgs)
+        if (imgs.length > 0) setSelectedImage(imgs[0])
+      })
+      .catch(() => {})
+  }, [productId])
+
+  // ── Prompts ────────────────────────────────────────────────────────────────
 
   const initPrompts = useCallback((p) => {
     const v = { name: productName, type: productType, color: primaryColor, collection }
@@ -240,17 +259,18 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const patchResult = (id, patch) =>
     setResults(prev => ({ ...prev, [id]: { ...(prev[id] || {}), ...patch } }))
 
-  // ── Image generation ────────────────────────────────────────────────────────
+  // ── Image generation (img-to-img when image selected) ─────────────────────
 
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
     patchResult(templateId, { status: 'generating', error: null, imageUrl: null, saved: false })
     try {
-      const res  = await fetch('/api/generate-mockup', {
+      const imageUrl = selectedImage ? toAbsoluteUrl(selectedImage.url) : undefined
+      const res = await fetch('/api/generate-mockup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelId: imageModel, prompt: prompt.trim(), imageSize }),
+        body: JSON.stringify({ modelId: imageModel, prompt: prompt.trim(), imageSize, imageUrl }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
@@ -260,17 +280,21 @@ export default function GenerateAssetsTab({ productId, productName, productType,
     }
   }
 
-  // ── Video generation (submit → poll → result) ────────────────────────────────
+  // ── Video generation (img-to-video when image selected) ────────────────────
 
   const handleGenerateVideo = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
     patchResult(templateId, { status: 'submitting', error: null, videoUrl: null, requestId: null, progress: 0, saved: false })
     try {
-      const submitRes  = await fetch('/api/generate-video', {
+      const imageUrl = selectedImage ? toAbsoluteUrl(selectedImage.url) : undefined
+      // When an image is selected, use image-to-video model variant
+      const effectiveModelId = (imageUrl && T2V_TO_I2V[videoModel]) ? T2V_TO_I2V[videoModel] : videoModel
+
+      const submitRes = await fetch('/api/generate-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'submit', modelId: videoModel, prompt: prompt.trim(), duration: videoDuration }),
+        body: JSON.stringify({ action: 'submit', modelId: effectiveModelId, prompt: prompt.trim(), duration: videoDuration, imageUrl }),
       })
       const submitData = await submitRes.json()
       if (!submitRes.ok) throw new Error(submitData.error || 'Submit failed')
@@ -283,7 +307,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           const sRes  = await fetch('/api/generate-video', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'status', modelId: videoModel, requestId }),
+            body: JSON.stringify({ action: 'status', modelId: effectiveModelId, requestId }),
           })
           const sData = await sRes.json()
           const st    = sData.status
@@ -293,7 +317,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
             const rRes  = await fetch('/api/generate-video', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ action: 'result', modelId: videoModel, requestId }),
+              body: JSON.stringify({ action: 'result', modelId: effectiveModelId, requestId }),
             })
             const rData = await rRes.json()
             if (!rRes.ok) throw new Error(rData.error)
@@ -359,6 +383,10 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const prompts            = rawPrompts || defaultPromptsStatic
   const currentTemplates   = activeTab === 'mockup' ? (prompts.mockup || []) : (prompts.video || [])
   const selectedVideoModel = VIDEO_MODELS.find(m => m.id === videoModel)
+  const hasImage           = !!selectedImage
+  const modeLabel          = hasImage
+    ? (activeTab === 'video' ? 'img-to-video' : 'img-to-img')
+    : (activeTab === 'video' ? 'text-to-video' : 'text-to-image')
 
   return (
     <div className="border border-indigo-900/50 bg-gray-950">
@@ -391,6 +419,63 @@ export default function GenerateAssetsTab({ productId, productName, productType,
             {t.disabled && <span className="ml-1 text-gray-600 text-xs">(soon)</span>}
           </button>
         ))}
+      </div>
+
+      {/* ── Reference image strip ─────────────────────────────────────────────── */}
+      <div className="border-b border-gray-800 px-4 py-3 space-y-2">
+        <div className="flex items-center justify-between">
+          <span className="text-gray-500 text-xs">Reference image</span>
+          <span className={`text-xs px-2 py-0.5 border ${hasImage ? 'border-indigo-700 text-indigo-300 bg-indigo-900/20' : 'border-gray-700 text-gray-500'}`}>
+            {modeLabel}
+          </span>
+        </div>
+
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {/* Text-only pill */}
+          <button
+            onClick={() => setSelectedImage(null)}
+            className={`flex-shrink-0 w-16 h-16 border-2 transition-all flex flex-col items-center justify-center gap-0.5 text-xs ${
+              !selectedImage
+                ? 'border-indigo-500 text-indigo-300 bg-indigo-900/10'
+                : 'border-gray-700 text-gray-600 hover:border-gray-500'
+            }`}
+          >
+            <span className="text-base leading-none">T</span>
+            <span className="text-gray-500 text-xs">text</span>
+          </button>
+
+          {/* Product image thumbnails */}
+          {productImages.length === 0 && (
+            <div className="flex items-center text-gray-700 text-xs italic pl-1">
+              No images yet — save product first
+            </div>
+          )}
+          {productImages.map((img, i) => (
+            <button
+              key={img.sha || i}
+              onClick={() => setSelectedImage(img)}
+              title={img.name}
+              className={`flex-shrink-0 w-16 h-16 border-2 overflow-hidden transition-all ${
+                selectedImage?.url === img.url
+                  ? 'border-indigo-500 ring-1 ring-indigo-500/40'
+                  : 'border-gray-700 hover:border-gray-500'
+              }`}
+            >
+              <img
+                src={img.url}
+                alt={img.name}
+                className="w-full h-full object-cover"
+                onError={e => { e.currentTarget.style.opacity = '0.3' }}
+              />
+            </button>
+          ))}
+        </div>
+
+        {selectedImage && (
+          <p className="text-gray-700 text-xs truncate">
+            Using: {selectedImage.name}
+          </p>
+        )}
       </div>
 
       <div className="p-5 space-y-4">
