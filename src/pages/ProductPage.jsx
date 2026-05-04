@@ -141,6 +141,9 @@ export default function ProductPage() {
   const [showStickyBar, setShowStickyBar] = useState(false)
   const [viewerCount,   setViewerCount]   = useState(null)
   const [copied,        setCopied]        = useState(false)
+  const [lightboxOpen,  setLightboxOpen]  = useState(false)
+  const [lightboxSrc,   setLightboxSrc]   = useState(null)
+  const [recentlyViewed, setRecentlyViewed] = useState([])
 
   // Viewer count — random on mount, drifts slightly every 30s for "live" feel
   useEffect(() => {
@@ -150,6 +153,26 @@ export default function ProductPage() {
       setViewerCount(n => Math.max(2, n + (Math.random() > 0.5 ? 1 : -1)))
     }, 30_000)
     return () => clearInterval(id)
+  }, [])
+
+  // Recently viewed — save current product; load others from localStorage
+  useEffect(() => {
+    if (!product?.id) return
+    try {
+      const KEY  = 'jayl-recently-viewed'
+      const prev = JSON.parse(localStorage.getItem(KEY) || '[]')
+      const next = [product.id, ...prev.filter(i => i !== product.id)].slice(0, 12)
+      localStorage.setItem(KEY, JSON.stringify(next))
+      const others = next.slice(1).map(i => getProductById(i)).filter(Boolean).slice(0, 4)
+      setRecentlyViewed(others)
+    } catch {}
+  }, [product?.id])
+
+  // Close lightbox on Escape
+  useEffect(() => {
+    const fn = e => { if (e.key === 'Escape') setLightboxOpen(false) }
+    window.addEventListener('keydown', fn)
+    return () => window.removeEventListener('keydown', fn)
   }, [])
 
   // Ref on the in-flow "Add to Cart" button — sticky bar shows when it leaves viewport
@@ -229,6 +252,8 @@ export default function ProductPage() {
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
+
+  const openLightbox = (src) => { setLightboxSrc(src); setLightboxOpen(true) }
 
   const swipeHandlers = useSwipe({
     onSwipeLeft:  () => setActiveImage(i => Math.min(i + 1, maxSlide)),
@@ -359,7 +384,8 @@ export default function ProductPage() {
                 <img
                   src={src}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-zoom-in"
+                  onClick={() => openLightbox(src)}
                   onError={e => { e.currentTarget.style.display = 'none' }}
                 />
               </div>
@@ -681,7 +707,14 @@ export default function ProductPage() {
                   )}
                 </div>
               ) : (
-                <div className={cn('aspect-[4/5] overflow-hidden', t.imgBg)}>
+                <div
+                  className={cn('aspect-[4/5] overflow-hidden cursor-zoom-in', t.imgBg)}
+                  onClick={() => {
+                    const src = productImages[Math.max(0, activeImage)] ?? product.image
+                    if (src) openLightbox(src)
+                  }}
+                  title="Click to zoom"
+                >
                   <img
                     src={productImages[Math.max(0, activeImage)] ?? product.image}
                     alt={product.name}
@@ -942,6 +975,46 @@ export default function ProductPage() {
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ── Recently Viewed ──────────────────────────────────────────────────── */}
+      {recentlyViewed.length > 0 && (
+        <div className={t.relatedBorder}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <h2 className={cn('font-display text-2xl mb-10', t.relatedTitle)}>Recently Viewed</h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {recentlyViewed.map(p => (
+                <ProductCard key={p.id} product={p} light={isLight} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Lightbox ─────────────────────────────────────────────────────────── */}
+      {lightboxOpen && lightboxSrc && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center cursor-zoom-out"
+          onClick={() => setLightboxOpen(false)}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-5 text-white/60 hover:text-white text-4xl leading-none transition-colors z-10 select-none"
+            onClick={() => setLightboxOpen(false)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+          {/* Image — click on image itself doesn't close */}
+          <img
+            src={lightboxSrc}
+            alt=""
+            className="object-contain select-none"
+            style={{ maxWidth: '90vw', maxHeight: '90vh' }}
+            onClick={e => e.stopPropagation()}
+            draggable={false}
+          />
         </div>
       )}
     </div>
