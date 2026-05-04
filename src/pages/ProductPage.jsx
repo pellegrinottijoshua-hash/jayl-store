@@ -49,6 +49,70 @@ function Accordion({ title, children, light, defaultOpen = false }) {
   )
 }
 
+// ── Share row ─────────────────────────────────────────────────────────────────
+
+function ShareRow({ title, isLight, onCopy, copied }) {
+  const url   = typeof window !== 'undefined' ? window.location.href : ''
+  const text  = `Check this out: "${title}"`
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try { await navigator.share({ title, text, url }) } catch {}
+    } else {
+      await navigator.clipboard.writeText(url).catch(() => {})
+      onCopy()
+    }
+  }
+
+  const muted   = isLight ? 'text-ink-muted hover:text-ink' : 'text-text-muted hover:text-cream'
+  const label   = isLight ? 'text-ink-muted' : 'text-text-muted'
+
+  return (
+    <div className="flex items-center gap-4 mt-3">
+      <span className={cn('text-2xs tracking-widest uppercase', label)}>Share</span>
+
+      {/* WhatsApp */}
+      <a
+        href={`https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`}
+        target="_blank" rel="noopener noreferrer"
+        title="WhatsApp"
+        className={cn('text-xs font-medium transition-colors', muted)}
+      >
+        WA
+      </a>
+
+      {/* X / Twitter */}
+      <a
+        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`}
+        target="_blank" rel="noopener noreferrer"
+        title="X (Twitter)"
+        className={cn('text-xs font-medium transition-colors', muted)}
+      >
+        𝕏
+      </a>
+
+      {/* Pinterest */}
+      <a
+        href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(text)}`}
+        target="_blank" rel="noopener noreferrer"
+        title="Pinterest"
+        className={cn('text-xs font-medium transition-colors', muted)}
+      >
+        Pin
+      </a>
+
+      {/* Copy link / Native share */}
+      <button
+        onClick={handleShare}
+        className={cn('text-xs font-medium transition-colors', copied ? 'text-green-500' : muted)}
+        title="Copy link"
+      >
+        {copied ? '✓ Copied' : '🔗 Copy'}
+      </button>
+    </div>
+  )
+}
+
 // ── Main Component ────────────────────────────────────────────────────────────
 
 export default function ProductPage() {
@@ -75,6 +139,18 @@ export default function ProductPage() {
   const [activeImage,   setActiveImage]   = useState(videoInfo ? -1 : 0)
   const [added,         setAdded]         = useState(false)
   const [showStickyBar, setShowStickyBar] = useState(false)
+  const [viewerCount,   setViewerCount]   = useState(null)
+  const [copied,        setCopied]        = useState(false)
+
+  // Viewer count — random on mount, drifts slightly every 30s for "live" feel
+  useEffect(() => {
+    const base = 4 + Math.floor(Math.random() * 14) // 4-17
+    setViewerCount(base)
+    const id = setInterval(() => {
+      setViewerCount(n => Math.max(2, n + (Math.random() > 0.5 ? 1 : -1)))
+    }, 30_000)
+    return () => clearInterval(id)
+  }, [])
 
   // Ref on the in-flow "Add to Cart" button — sticky bar shows when it leaves viewport
   const addToCartBtnRef = useRef(null)
@@ -147,6 +223,11 @@ export default function ProductPage() {
     setAdded(true)
     openCart()
     setTimeout(() => setAdded(false), 2000)
+  }
+
+  const handleCopy = () => {
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   const swipeHandlers = useSwipe({
@@ -337,6 +418,14 @@ export default function ProductPage() {
           <p className={cn('text-xl font-semibold', t.price)}>
             {formatPrice(totalPrice)}
           </p>
+
+          {/* Social proof */}
+          {viewerCount && (
+            <p className={cn('flex items-center gap-1.5 text-xs mt-2', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+              {viewerCount} people viewing right now
+            </p>
+          )}
         </div>
 
         <div className={cn('border-t mx-4', t.divider)} />
@@ -460,6 +549,11 @@ export default function ProductPage() {
               <>Add to Cart · {formatPrice(totalPrice)}</>
             )}
           </button>
+        </div>
+
+        {/* ── Share ─────────────────────────────────────────────────────── */}
+        <div className="px-4 pb-2">
+          <ShareRow title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
         </div>
 
         {/* ── Accordions ────────────────────────────────────────────────── */}
@@ -662,12 +756,22 @@ export default function ProductPage() {
                 </p>
               )}
 
-              <p className={cn('text-2xl font-semibold mb-8', t.price)}>
+              <p className={cn('text-2xl font-semibold', t.price)}>
                 {formatPrice(totalPrice)}
                 {selectedFrame && selectedFrame !== 'none' && (
                   <span className={cn('text-sm font-normal ml-2', t.priceSub)}>(incl. frame)</span>
                 )}
               </p>
+
+              {/* Social proof */}
+              <div className="mb-8">
+                {viewerCount && (
+                  <p className={cn('flex items-center gap-1.5 text-xs mt-2', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+                    {viewerCount} people viewing right now
+                  </p>
+                )}
+              </div>
 
               {/* Variant selectors */}
               <div className="space-y-6 mb-8">
@@ -778,6 +882,9 @@ export default function ProductPage() {
                   <>Add to Cart · {formatPrice(totalPrice)}</>
                 )}
               </button>
+
+              {/* Share */}
+              <ShareRow title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
 
               {/* Accordions */}
               <div className="mt-8">
