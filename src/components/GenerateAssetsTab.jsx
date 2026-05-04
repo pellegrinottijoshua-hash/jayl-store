@@ -256,6 +256,8 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const [results,         setResults]         = useState({})
   const [savingPrompts,   setSavingPrompts]   = useState({})
   const [savedPromptMsgs, setSavedPromptMsgs] = useState({})
+  const [generatingAll,   setGeneratingAll]   = useState(false)
+  const [allProgress,     setAllProgress]     = useState({ done: 0, total: 0 })
 
   // ── Image sources ──────────────────────────────────────────────────────────
   // productImages: fetched from GitHub (saved images for this product)
@@ -394,6 +396,25 @@ export default function GenerateAssetsTab({ productId, productName, productType,
     } catch (e) {
       patchResult(templateId, { status: 'error', error: e.message })
     }
+  }
+
+  // ── Generate All — runs every template in sequence ───────────────────────────
+
+  const handleGenerateAll = async (templates, isVideo) => {
+    if (generatingAll || templates.length === 0) return
+    setGeneratingAll(true)
+    setAllProgress({ done: 0, total: templates.length })
+    for (let i = 0; i < templates.length; i++) {
+      const t   = templates[i]
+      const r   = results[t.id]
+      const busy = r?.status === 'generating' || r?.status === 'submitting' || r?.status === 'processing'
+      if (!busy) {
+        if (isVideo) await handleGenerateVideo(t.id)
+        else         await handleGenerateImage(t.id)
+      }
+      setAllProgress({ done: i + 1, total: templates.length })
+    }
+    setGeneratingAll(false)
   }
 
   // ── Save asset to product ────────────────────────────────────────────────────
@@ -565,6 +586,28 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           <div className="bg-yellow-900/20 border border-yellow-800/50 px-4 py-3 text-yellow-400 text-xs">
             ⚠ No reference images available. Fetch &amp; import Gelato mockups first, or save the product to enable image generation.
           </div>
+        )}
+
+        {/* Generate All */}
+        {currentTemplates.length > 1 && allImages.length > 0 && (
+          <button
+            onClick={() => handleGenerateAll(currentTemplates, activeTab === 'video')}
+            disabled={generatingAll}
+            className={`w-full flex items-center justify-center gap-2 py-2.5 text-xs font-semibold tracking-wider uppercase border transition-colors ${
+              generatingAll
+                ? 'border-indigo-800 text-indigo-600 cursor-not-allowed'
+                : 'border-indigo-600 text-indigo-300 hover:bg-indigo-900/30 hover:border-indigo-400'
+            }`}
+          >
+            {generatingAll ? (
+              <>
+                <span className="animate-spin inline-block w-3 h-3 border border-indigo-400 border-t-transparent rounded-full flex-shrink-0" />
+                Generating {allProgress.done} / {allProgress.total}…
+              </>
+            ) : (
+              <>{activeTab === 'video' ? '🎬' : '🖼'} Generate All ({currentTemplates.length})</>
+            )}
+          </button>
         )}
 
         {/* Prompt cards */}
