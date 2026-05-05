@@ -23,9 +23,12 @@ export const IMAGE_MODELS = [
   { id: 'fal-ai/flux/schnell',  label: 'Flux Schnell',  cost: '$0.003/img', badge: '⚡ Free-tier' },
   { id: 'fal-ai/flux-pro/v1.1', label: 'Flux Pro 1.1',  cost: '$0.04/img'  },
   { id: 'fal-ai/ideogram/v3',   label: 'Ideogram V3',   cost: '$0.08/img',  badge: '✏ Best text' },
-  { id: 'fal-ai/nano-banana-2', label: 'Nano Banana 2', cost: '$0.08/img'  },
-  { id: 'fal-ai/recraft-v3',    label: 'Recraft V3',    cost: '$0.04/img',  badge: '🎨 Design'   },
+  { id: 'fal-ai/nano-banana-2', label: 'Nano Banana 2', cost: '$0.08/img',  noI2I: true },
+  { id: 'fal-ai/recraft-v3',    label: 'Recraft V3',    cost: '$0.04/img',  badge: '🎨 Design', noI2I: true },
 ]
+
+// Models that cannot use a reference image (text-to-image only)
+const T2I_ONLY_IDS = new Set(['fal-ai/nano-banana-2', 'fal-ai/recraft-v3'])
 
 export const VIDEO_MODELS = [
   { id: 'fal-ai/ltx-video',                                 label: 'LTX Video',        secRate: 0.002, badge: '⚡ Free-tier' },
@@ -651,22 +654,33 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           {allImages.length > 0 && (
             <div className="flex items-center gap-3 flex-wrap">
               <span className="text-gray-500 text-xs w-16 flex-shrink-0">Mode</span>
-              <span className="text-xs px-2 py-0.5 border border-indigo-700 text-indigo-300 bg-indigo-900/20">
-                {activeTab === 'video' ? 'img-to-video' : 'img-to-img'}
-              </span>
-              {activeTab === 'mockup' && (() => {
-                // Show which img2img variant will be used for Flux models
-                const reduxMap = {
-                  'fal-ai/flux/schnell':  'schnell-redux',
-                  'fal-ai/flux-pro/v1.1': 'flux-pro-redux',
-                  'fal-ai/flux/dev':      'flux-dev-redux',
-                }
-                const variant = reduxMap[imageModel]
-                return variant
-                  ? <span className="text-indigo-400/60 text-xs">→ {variant}</span>
-                  : <span className="text-indigo-400/60 text-xs">native</span>
-              })()}
-              <span className="text-gray-600 text-xs">Select reference per prompt below</span>
+              {activeTab === 'mockup' && T2I_ONLY_IDS.has(imageModel) ? (
+                <>
+                  <span className="text-xs px-2 py-0.5 border border-yellow-800 text-yellow-500 bg-yellow-900/20">
+                    text-to-image only
+                  </span>
+                  <span className="text-yellow-700 text-xs">Reference image ignored — {imageModel.split('/').pop()} doesn't support img2img</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-xs px-2 py-0.5 border border-indigo-700 text-indigo-300 bg-indigo-900/20">
+                    {activeTab === 'video' ? 'img-to-video' : 'img-to-img'}
+                  </span>
+                  {activeTab === 'mockup' && (() => {
+                    const variantMap = {
+                      'fal-ai/flux/schnell':  'schnell-redux',
+                      'fal-ai/flux-pro/v1.1': 'flux-pro-redux',
+                      'fal-ai/flux/dev':      'flux-dev-redux',
+                      'fal-ai/ideogram/v3':   'ideogram-remix',
+                    }
+                    const variant = variantMap[imageModel]
+                    return variant
+                      ? <span className="text-indigo-400/60 text-xs">→ {variant}</span>
+                      : null
+                  })()}
+                  <span className="text-gray-600 text-xs">Select reference per prompt below</span>
+                </>
+              )}
             </div>
           )}
         </div>}
