@@ -20,17 +20,19 @@ const btnGhost   = 'border border-gray-700 hover:border-gray-500 text-gray-400 h
 // ── Model lists ───────────────────────────────────────────────────────────────
 
 export const IMAGE_MODELS = [
-  { id: 'fal-ai/flux-pro/kontext',     label: 'Kontext Pro',    cost: '$0.08/img',  badge: '★ Best img2img', i2iMode: 'edit'  },
-  { id: 'fal-ai/flux-pro/kontext/max', label: 'Kontext Max',    cost: '$0.16/img',  badge: '★ HQ img2img',  i2iMode: 'edit'  },
-  { id: 'fal-ai/flux/schnell',         label: 'Flux Schnell',   cost: '$0.003/img', badge: '⚡ Free-tier',  i2iMode: 'redux' },
-  { id: 'fal-ai/flux-pro/v1.1',        label: 'Flux Pro 1.1',   cost: '$0.04/img',                          i2iMode: 'redux' },
-  { id: 'fal-ai/ideogram/v3',          label: 'Ideogram V3',    cost: '$0.08/img',  badge: '✏ Best text',  i2iMode: 'remix' },
-  { id: 'fal-ai/nano-banana-2',        label: 'Nano Banana 2',  cost: '$0.08/img',                          noI2I: true      },
-  { id: 'fal-ai/recraft-v3',           label: 'Recraft V3',     cost: '$0.04/img',  badge: '🎨 Design',    noI2I: true      },
+  { id: 'fal-ai/gpt-image-1/text-to-image', label: 'GPT Image 1',    cost: '$0.04/img',  badge: '★ Best img2img', i2iMode: 'edit'  },
+  { id: 'fal-ai/flux-pro/kontext',          label: 'Kontext Pro',    cost: '$0.08/img',  badge: '✦ Faithful',    i2iMode: 'edit'  },
+  { id: 'fal-ai/flux-pro/kontext/max',      label: 'Kontext Max',    cost: '$0.16/img',  badge: '✦ HQ',          i2iMode: 'edit'  },
+  { id: 'fal-ai/flux/schnell',              label: 'Flux Schnell',   cost: '$0.003/img', badge: '⚡ Free',       i2iMode: 'redux' },
+  { id: 'fal-ai/flux-pro/v1.1',             label: 'Flux Pro 1.1',   cost: '$0.04/img',                          i2iMode: 'redux' },
+  { id: 'fal-ai/ideogram/v3',               label: 'Ideogram V3',    cost: '$0.08/img',  badge: '✏ Best text',  i2iMode: 'remix' },
+  { id: 'fal-ai/nano-banana-pro',           label: 'Nano Banana Pro',cost: '$0.12/img',                          noI2I: true      },
+  { id: 'fal-ai/nano-banana-2',             label: 'Nano Banana 2',  cost: '$0.08/img',                          noI2I: true      },
+  { id: 'fal-ai/recraft-v3',                label: 'Recraft V3',     cost: '$0.04/img',  badge: '🎨 Design',    noI2I: true      },
 ]
 
 // Models that cannot use a reference image (text-to-image only)
-const T2I_ONLY_IDS = new Set(['fal-ai/nano-banana-2', 'fal-ai/recraft-v3'])
+const T2I_ONLY_IDS = new Set(['fal-ai/nano-banana-2', 'fal-ai/nano-banana-pro', 'fal-ai/recraft-v3'])
 
 export const VIDEO_MODELS = [
   { id: 'fal-ai/ltx-video',                                 label: 'LTX Video',        secRate: 0.002, badge: '⚡ Free-tier' },
@@ -673,7 +675,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
               ) : (() => {
                 const model = IMAGE_MODELS.find(m => m.id === imageModel)
                 const modeLabels = {
-                  edit:  { badge: 'img2img — edit',  color: 'border-green-700 text-green-400 bg-green-900/20', hint: 'Kontext preserves your product faithfully and places it in a new scene' },
+                  edit:  { badge: 'img2img — edit',  color: 'border-green-700 text-green-400 bg-green-900/20', hint: 'Preserves product faithfully — reference image used as direct visual input' },
                   redux: { badge: 'img2img — style',  color: 'border-indigo-700 text-indigo-300 bg-indigo-900/20', hint: 'Style-conditioned — output resembles reference in style/color, not exact product' },
                   remix: { badge: 'img2img — remix',  color: 'border-purple-700 text-purple-300 bg-purple-900/20', hint: 'Remix: reference influences composition and content' },
                 }

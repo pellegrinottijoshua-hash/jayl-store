@@ -108,23 +108,33 @@ Return ONLY the JSON object, no markdown, no extra text.`
 // ── generate-mockup ───────────────────────────────────────────────────────────
 
 const IMAGE_MODELS = new Set([
+  // Flux family
   'fal-ai/flux/schnell',
   'fal-ai/flux-pro/v1.1',
   'fal-ai/flux-pro',
   'fal-ai/flux/dev',
   'fal-ai/flux-pro/kontext',
   'fal-ai/flux-pro/kontext/max',
+  // Ideogram
   'fal-ai/ideogram/v3',
+  // Nano Banana
   'fal-ai/nano-banana-2',
+  'fal-ai/nano-banana-pro',
+  // Recraft
   'fal-ai/recraft-v3',
+  // GPT Image 1 (OpenAI via fal.ai) — user selects t2i; backend auto-switches to edit when image provided
+  'fal-ai/gpt-image-1/text-to-image',
 ])
 
+// When a reference image is provided, switch to the model's img2img variant
 const T2I_TO_I2I_IMG = {
-  'fal-ai/flux/schnell':  'fal-ai/flux/schnell-redux',
-  'fal-ai/flux-pro/v1.1': 'fal-ai/flux-pro/v1.1-redux',
-  'fal-ai/flux-pro':      'fal-ai/flux-pro/v1.1-redux',
-  'fal-ai/flux/dev':      'fal-ai/flux/dev-redux',
-  'fal-ai/ideogram/v3':   'fal-ai/ideogram/v3/remix',
+  'fal-ai/flux/schnell':              'fal-ai/flux/schnell-redux',
+  'fal-ai/flux-pro/v1.1':             'fal-ai/flux-pro/v1.1-redux',
+  'fal-ai/flux-pro':                  'fal-ai/flux-pro/v1.1-redux',
+  'fal-ai/flux/dev':                  'fal-ai/flux/dev-redux',
+  'fal-ai/ideogram/v3':               'fal-ai/ideogram/v3/remix',
+  // GPT Image 1: text-to-image → edit-image (true img2img via image_urls array)
+  'fal-ai/gpt-image-1/text-to-image': 'fal-ai/gpt-image-1/edit-image',
 }
 
 const REDUX_MODELS = new Set([
@@ -138,8 +148,15 @@ const KONTEXT_MODELS = new Set([
   'fal-ai/flux-pro/kontext/max',
 ])
 
+const GPT_IMAGE_MODELS = new Set([
+  'fal-ai/gpt-image-1/text-to-image',
+  'fal-ai/gpt-image-1/edit-image',
+])
+
+// Strictly text-to-image — no img2img endpoint exists for these
 const T2I_ONLY = new Set([
   'fal-ai/nano-banana-2',
+  'fal-ai/nano-banana-pro',
   'fal-ai/recraft-v3',
 ])
 
@@ -152,17 +169,62 @@ const IMAGE_SIZE_TO_ASPECT = {
   landscape_4_3:  '4:3',
 }
 
+// GPT Image 1 uses pixel dimensions, not fal aspect_ratio strings
+const IMAGE_SIZE_TO_GPT = {
+  square_hd:      '1024x1024',
+  square:         '1024x1024',
+  portrait_16_9:  '1024x1536',
+  landscape_16_9: '1536x1024',
+  portrait_4_3:   '1024x1536',
+  landscape_4_3:  '1536x1024',
+}
+
+const NANO_MODELS = new Set(['fal-ai/nano-banana-2', 'fal-ai/nano-banana-pro'])
+
 function buildMockupBody(effectiveModelId, { prompt, imageSize, falImageUrl }) {
-  const aspect = IMAGE_SIZE_TO_ASPECT[imageSize] || '1:1'
+  const aspect   = IMAGE_SIZE_TO_ASPECT[imageSize] || '1:1'
+  const gptSize  = IMAGE_SIZE_TO_GPT[imageSize]    || '1024x1024'
+
+  // GPT Image 1 — edit (img2img): requires image_urls array
+  if (effectiveModelId === 'fal-ai/gpt-image-1/edit-image') {
+    return {
+      prompt,
+      image_urls:     falImageUrl ? [falImageUrl] : [],
+      image_size:     gptSize,
+      input_fidelity: 'high',
+      quality:        'auto',
+      num_images:     1,
+      output_format:  'png',
+    }
+  }
+
+  // GPT Image 1 — text-to-image (no reference)
+  if (effectiveModelId === 'fal-ai/gpt-image-1/text-to-image') {
+    return {
+      prompt,
+      image_size:    gptSize,
+      quality:       'auto',
+      num_images:    1,
+      output_format: 'png',
+    }
+  }
+
+  // Kontext: instruction-based editing
   if (KONTEXT_MODELS.has(effectiveModelId)) {
     return { prompt, ...(falImageUrl ? { image_url: falImageUrl } : {}), aspect_ratio: aspect, num_images: 1, safety_tolerance: '4', guidance_scale: 3.5 }
   }
-  if (effectiveModelId === 'fal-ai/nano-banana-2') {
+
+  // Nano Banana family: t2i only, uses aspect_ratio + safety_tolerance
+  if (NANO_MODELS.has(effectiveModelId)) {
     return { prompt, aspect_ratio: aspect, num_images: 1, safety_tolerance: '4' }
   }
+
+  // Flux redux (img2img via style conditioning): image_url only, no strength
   if (REDUX_MODELS.has(effectiveModelId)) {
     return { prompt, ...(falImageUrl ? { image_url: falImageUrl } : {}), image_size: imageSize || 'square_hd', num_images: 1, enable_safety_checker: false }
   }
+
+  // Default (Flux t2i, Recraft, Ideogram remix)
   return { prompt, ...(falImageUrl ? { image_url: falImageUrl, strength: 0.85 } : {}), image_size: imageSize || 'square_hd', num_images: 1, enable_safety_checker: false }
 }
 
