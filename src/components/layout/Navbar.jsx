@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ShoppingBag, Menu, X } from 'lucide-react'
+import { ShoppingBag, Menu, X, Heart } from 'lucide-react'
+import { useWishlistStore } from '@/store/wishlistStore'
 import { useCartStore } from '@/store/cartStore'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
@@ -88,8 +89,9 @@ export default function Navbar() {
   const [hoveredNav, setHoveredNav]         = useState(null)
   const closeTimer = useRef(null)
 
-  const itemCount = items.reduce((s, i) => s + i.quantity, 0)
-  const isLight   = pageTheme === 'light'
+  const itemCount    = items.reduce((s, i) => s + i.quantity, 0)
+  const wishlistIds  = useWishlistStore(s => s.ids)
+  const isLight      = pageTheme === 'light'
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -269,6 +271,20 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* Wishlist icon — desktop */}
+            <Link
+              to="/wishlist"
+              className={cn('relative transition-colors duration-500 hidden sm:block', textBase)}
+              aria-label={`Wishlist — ${wishlistIds.length} item${wishlistIds.length !== 1 ? 's' : ''}`}
+            >
+              <Heart size={17} strokeWidth={1.5} fill={wishlistIds.length > 0 ? 'currentColor' : 'none'} />
+              {wishlistIds.length > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-red-500 text-white text-2xs font-bold rounded-full flex items-center justify-center leading-none">
+                  {wishlistIds.length > 9 ? '9+' : wishlistIds.length}
+                </span>
+              )}
+            </Link>
+
             <button
               onClick={toggleCart}
               className={cn(
@@ -351,6 +367,22 @@ export default function Navbar() {
               {id === 'artist' ? <>artist'<FallingS /></> : label}
             </Link>
           ))}
+
+          {/* Wishlist link */}
+          <Link
+            to="/wishlist"
+            onClick={() => setMobileMenuOpen(false)}
+            className={cn(
+              'flex items-center gap-3 font-display text-2xl font-light tracking-wide transition-opacity hover:opacity-60',
+              isLight ? 'text-ink' : 'text-cream'
+            )}
+          >
+            <Heart size={20} fill={wishlistIds.length > 0 ? 'currentColor' : 'none'} className={wishlistIds.length > 0 ? 'text-red-400' : ''} />
+            Wishlist
+            {wishlistIds.length > 0 && (
+              <span className="text-sm text-red-400">({wishlistIds.length})</span>
+            )}
+          </Link>
         </nav>
 
         {/* Social icons — mobile menu footer */}

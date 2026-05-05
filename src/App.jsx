@@ -18,6 +18,7 @@ import PrivacyPage from '@/pages/PrivacyPage'
 import CookiesPage from '@/pages/CookiesPage'
 import AdminPage from '@/pages/AdminPage'
 import AdminProductPage from '@/pages/AdminProductPage'
+import WishlistPage from '@/pages/WishlistPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -64,6 +65,7 @@ export default function App() {
               <Route path="/product/:id"                    element={<ProductPage />} />
               <Route path="/checkout"                       element={<CheckoutPage />} />
               <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
+              <Route path="/wishlist"  element={<WishlistPage />} />
               <Route path="/contact"  element={<ContactPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/returns"  element={<ReturnsPage />} />

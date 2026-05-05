@@ -181,7 +181,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     Array.isArray(editingProduct?.tags) ? editingProduct.tags.join(', ') : (editingProduct?.tags || '')
   )
   const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
-  const [urgency,  setUrgency]      = useState(editingProduct?.urgency  || '')
+  const [urgency,          setUrgency]          = useState(editingProduct?.urgency          || '')
+  const [relatedProducts,  setRelatedProducts]  = useState(
+    Array.isArray(editingProduct?.relatedProducts)
+      ? editingProduct.relatedProducts.join(', ')
+      : (editingProduct?.relatedProducts || '')
+  )
 
   const [generating, setGenerating] = useState(false)
   const [genErr, setGenErr]         = useState('')
@@ -388,6 +393,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         adminManaged: true,
         ...(videoUrl.trim()  ? { videoUrl: videoUrl.trim() }   : {}),
         ...(urgency.trim()   ? { urgency:  urgency.trim() }    : {}),
+        ...(relatedProducts.trim() ? {
+          relatedProducts: relatedProducts.split(',').map(s => s.trim()).filter(Boolean)
+        } : {}),
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
       }
@@ -622,6 +630,26 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </div>
 
           <div className="col-span-2">
+            <Field label="🛒 Related products (upsell)" hint="Product IDs, comma-separated. Shown as «Complete the look» on the product page.">
+              <input value={relatedProducts} onChange={e => setRelatedProducts(e.target.value)}
+                placeholder="snorlax-tshirt, snorlax-hoodie, snorlax-tote"
+                className={inputCls} />
+              {relatedProducts.trim() && (
+                <div className="flex gap-2 flex-wrap mt-2">
+                  {relatedProducts.split(',').map(s => s.trim()).filter(Boolean).map(rid => {
+                    const found = allProducts.find(p => p.id === rid)
+                    return (
+                      <span key={rid} className={`text-xs px-2 py-0.5 border ${found ? 'border-green-700 text-green-400' : 'border-red-800 text-red-400'}`}>
+                        {rid}{found ? '' : ' ✗ not found'}
+                      </span>
+                    )
+                  })}
+                </div>
+              )}
+            </Field>
+          </div>
+
+          <div className="col-span-2">
             <Field
               label="Tags"
               hint={`${tags.split(',').filter(t => t.trim()).length}/13 tags · comma-separated`}
@@ -727,10 +755,20 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       </Card>
 
       {/* Actions */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 flex-wrap">
         <button onClick={handleSave} disabled={saving} className="bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white px-6 py-2.5 text-sm font-semibold transition-colors">
           {saving ? 'Saving…' : isEdit ? 'Update Product' : 'Add to Site'}
         </button>
+        {(savedProductId || isEdit) && (
+          <a
+            href={`/product/${productId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={btnGhost}
+          >
+            🌐 Preview
+          </a>
+        )}
         {savedMsg && <span className="text-green-400 text-sm">{savedMsg}</span>}
         {saveErr && <span className="text-red-400 text-sm">{saveErr}</span>}
       </div>
@@ -755,11 +793,25 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
 function ProductsTab({ onEdit }) {
   const navigate = useNavigate()
-  const [deletingId, setDeletingId] = useState(null)
-  const [error, setError]           = useState('')
-  const [hidden, setHidden]         = useState([])
+  const [deletingId,   setDeletingId]   = useState(null)
+  const [bulkDeleting, setBulkDeleting] = useState(false)
+  const [error,        setError]        = useState('')
+  const [hidden,       setHidden]       = useState([])
+  const [selectedIds,  setSelectedIds]  = useState(new Set())
 
-  const visible = allProducts.filter(p => !hidden.includes(p.id))
+  const visible     = allProducts.filter(p => !hidden.includes(p.id))
+  const allSelected = visible.length > 0 && selectedIds.size === visible.length
+
+  const toggleSelect = (id, e) => {
+    e.stopPropagation()
+    setSelectedIds(prev => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
+  }
+  const toggleAll = () =>
+    setSelectedIds(allSelected ? new Set() : new Set(visible.map(p => p.id)))
 
   const handleDelete = async product => {
     if (!product.adminManaged) return
@@ -775,54 +827,136 @@ function ProductsTab({ onEdit }) {
     }
   }
 
+  const handleBulkDelete = async () => {
+    const targets = visible.filter(p => selectedIds.has(p.id) && p.adminManaged)
+    if (!targets.length) return setError('No admin-managed products selected.')
+    if (!confirm(`Delete ${targets.length} product${targets.length !== 1 ? 's' : ''}? This will commit to GitHub.`)) return
+    setBulkDeleting(true); setError('')
+    const failed = []
+    for (const p of targets) {
+      try {
+        await api('delete-product', { productId: p.id })
+        setHidden(prev => [...prev, p.id])
+        setSelectedIds(prev => { const n = new Set(prev); n.delete(p.id); return n })
+      } catch (e) {
+        failed.push(p.id)
+      }
+    }
+    setBulkDeleting(false)
+    if (failed.length) setError(`Failed to delete: ${failed.join(', ')}`)
+  }
+
+  const handleExportCSV = () => {
+    const targets = selectedIds.size > 0
+      ? visible.filter(p => selectedIds.has(p.id))
+      : visible
+    const header = ['id','name','price','section','collection','movement','tags']
+    const rows   = targets.map(p => [
+      p.id, p.name, (p.price / 100).toFixed(2),
+      p.section, p.collection, p.movement,
+      (p.tags || []).join(';'),
+    ])
+    const csv = [header, ...rows].map(r => r.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n')
+    const blob = new Blob([csv], { type: 'text/csv' })
+    const a    = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'jayl-products.csv' })
+    document.body.appendChild(a); a.click(); document.body.removeChild(a)
+  }
+
   return (
     <div className="space-y-3">
       {error && (
         <div className="bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>
       )}
+
+      {/* Bulk action bar */}
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <p className="text-gray-600 text-xs">
+          {selectedIds.size > 0
+            ? <span className="text-indigo-300">{selectedIds.size} selected</span>
+            : <span>{visible.length} products</span>}
+          {' · click any row to open the product editor'}
+        </p>
+        <div className="flex items-center gap-2">
+          {selectedIds.size > 0 && (
+            <button
+              onClick={handleBulkDelete}
+              disabled={bulkDeleting}
+              className="bg-red-700 hover:bg-red-600 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors"
+            >
+              {bulkDeleting ? 'Deleting…' : `🗑 Delete ${selectedIds.size}`}
+            </button>
+          )}
+          <button
+            onClick={handleExportCSV}
+            className="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-gray-200 px-3 py-1.5 text-xs transition-colors"
+          >
+            ⬇ Export CSV{selectedIds.size > 0 ? ` (${selectedIds.size})` : ''}
+          </button>
+        </div>
+      </div>
+
       <div className="bg-gray-900 border border-gray-800 overflow-x-auto">
         <table className="w-full text-sm text-left">
           <thead>
             <tr className="border-b border-gray-800 text-gray-500 text-xs font-mono uppercase tracking-wider">
+              <th className="px-3 py-3">
+                <input
+                  type="checkbox"
+                  checked={allSelected}
+                  onChange={toggleAll}
+                  className="accent-indigo-500 cursor-pointer"
+                  title="Select all"
+                />
+              </th>
               {['ID', 'Name', 'Price', 'Section', 'Collection', 'Video', 'Images', ''].map(h => (
                 <th key={h} className="px-4 py-3 whitespace-nowrap">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {visible.map(p => (
-              <tr
-                key={p.id}
-                onClick={() => navigate(`/admin/product/${p.id}`)}
-                className="border-b border-gray-800/40 hover:bg-gray-800/50 transition-colors cursor-pointer"
-              >
-                <td className="px-4 py-3 font-mono text-xs text-gray-500 whitespace-nowrap">{p.id}</td>
-                <td className="px-4 py-3 text-gray-100 whitespace-nowrap font-medium">{p.name}</td>
-                <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{fmt(p.price)}</td>
-                <td className="px-4 py-3 text-gray-400">{p.section}</td>
-                <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{p.collection}</td>
-                <td className="px-4 py-3 text-gray-500 text-xs">
-                  {p.videoUrl ? <span className="text-indigo-400">▶</span> : '—'}
-                </td>
-                <td className="px-4 py-3 text-gray-500 text-xs">{p.images?.length || 0}</td>
-                <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
-                  {p.adminManaged ? (
-                    <div className="flex gap-2">
-                      <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>Edit</button>
-                      <button onClick={() => handleDelete(p)} disabled={deletingId === p.id} className={btnDanger}>
-                        {deletingId === p.id ? '…' : 'Delete'}
-                      </button>
-                    </div>
-                  ) : (
-                    <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>View</button>
-                  )}
-                </td>
-              </tr>
-            ))}
+            {visible.map(p => {
+              const isSelected = selectedIds.has(p.id)
+              return (
+                <tr
+                  key={p.id}
+                  onClick={() => navigate(`/admin/product/${p.id}`)}
+                  className={`border-b border-gray-800/40 hover:bg-gray-800/50 transition-colors cursor-pointer ${isSelected ? 'bg-indigo-900/10' : ''}`}
+                >
+                  <td className="px-3 py-3" onClick={e => toggleSelect(p.id, e)}>
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => {}}
+                      className="accent-indigo-500 cursor-pointer"
+                    />
+                  </td>
+                  <td className="px-4 py-3 font-mono text-xs text-gray-500 whitespace-nowrap">{p.id}</td>
+                  <td className="px-4 py-3 text-gray-100 whitespace-nowrap font-medium">{p.name}</td>
+                  <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{fmt(p.price)}</td>
+                  <td className="px-4 py-3 text-gray-400">{p.section}</td>
+                  <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{p.collection}</td>
+                  <td className="px-4 py-3 text-gray-500 text-xs">
+                    {p.videoUrl ? <span className="text-indigo-400">▶</span> : '—'}
+                  </td>
+                  <td className="px-4 py-3 text-gray-500 text-xs">{p.images?.length || 0}</td>
+                  <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
+                    {p.adminManaged ? (
+                      <div className="flex gap-2">
+                        <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>Edit</button>
+                        <button onClick={() => handleDelete(p)} disabled={deletingId === p.id} className={btnDanger}>
+                          {deletingId === p.id ? '…' : 'Del'}
+                        </button>
+                      </div>
+                    ) : (
+                      <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>View</button>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
-      <p className="text-gray-600 text-xs">{visible.length} products · click any row to open the product editor</p>
     </div>
   )
 }

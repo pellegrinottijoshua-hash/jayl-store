@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Plus } from 'lucide-react'
+import { Plus, Heart } from 'lucide-react'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { cn } from '@/lib/utils'
+import { useWishlistStore } from '@/store/wishlistStore'
 
 export default function ProductCard({ product, className, light = false }) {
+  const { toggle, isWishlisted } = useWishlistStore()
+  const wishlisted = isWishlisted(product.id)
   const defaultSize = product.sizes?.[Math.floor(product.sizes.length / 2)]
   const displayPrice = defaultSize?.price ?? product.price
 
@@ -39,6 +42,20 @@ export default function ProductCard({ product, className, light = false }) {
 
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
+
+        {/* Wishlist heart */}
+        <button
+          onClick={e => { e.preventDefault(); toggle(product.id) }}
+          aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+          className={cn(
+            'absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200',
+            wishlisted
+              ? 'bg-white/90 text-red-500 opacity-100'
+              : 'bg-black/30 text-white/70 opacity-0 group-hover:opacity-100'
+          )}
+        >
+          <Heart size={14} fill={wishlisted ? 'currentColor' : 'none'} strokeWidth={2} />
+        </button>
 
         {/* Quick-view hint */}
         <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">

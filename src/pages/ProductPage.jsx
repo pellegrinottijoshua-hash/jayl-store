@@ -1065,6 +1065,26 @@ export default function ProductPage() {
         </div>
       </div>
 
+      {/* ── Complete the look (curated upsell) ─────────────────────────────── */}
+      {(() => {
+        const upsell = (product.relatedProducts || [])
+          .map(id => products.find(p => p.id === id))
+          .filter(Boolean)
+        if (!upsell.length) return null
+        return (
+          <div className={t.relatedBorder}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+              <h2 className={cn('font-display text-2xl mb-10', t.relatedTitle)}>Complete the Look</h2>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {upsell.map(p => (
+                  <ProductCard key={p.id} product={p} light={isLight} />
+                ))}
+              </div>
+            </div>
+          </div>
+        )
+      })()}
+
       {/* ── Related products (shared) ───────────────────────────────────────── */}
       {related.length > 0 && (
         <div className={t.relatedBorder}>
