@@ -10,6 +10,7 @@
  */
 
 const store = new Map() // ip → { count, resetAt }
+let callCount = 0
 
 /**
  * @param {Request} req - Node/Vercel request object
@@ -23,6 +24,14 @@ export function rateLimit(req, { max = 30, windowMs = 60_000 } = {}) {
     'unknown'
 
   const now = Date.now()
+
+  // Inline pruning every 50 calls — no setInterval (unsafe in serverless)
+  if (++callCount % 50 === 0) {
+    for (const [k, v] of store) {
+      if (now > v.resetAt) store.delete(k)
+    }
+  }
+
   const entry = store.get(ip)
 
   if (!entry || now > entry.resetAt) {
@@ -35,11 +44,3 @@ export function rateLimit(req, { max = 30, windowMs = 60_000 } = {}) {
 
   return false
 }
-
-// Periodically prune expired entries to prevent memory leak
-setInterval(() => {
-  const now = Date.now()
-  for (const [ip, entry] of store) {
-    if (now > entry.resetAt) store.delete(ip)
-  }
-}, 5 * 60_000) // every 5 minutes
