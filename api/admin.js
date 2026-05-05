@@ -455,6 +455,58 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true })
     }
 
+    // ── reviews: list-reviews ─────────────────────────────────────────────────
+    if (action === 'list-reviews') {
+      const REVIEWS_PATH = 'src/data/reviews.json'
+      let reviews = []
+      try {
+        const file = await ghGet(REVIEWS_PATH, githubToken)
+        reviews = JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8'))
+      } catch {}
+      return res.status(200).json({ reviews })
+    }
+
+    // ── reviews: moderate (approve / reject / delete) ─────────────────────────
+    if (action === 'moderate-review') {
+      const { reviewId, decision } = data // decision: 'approve' | 'reject' | 'delete'
+      if (!reviewId || !decision) return res.status(400).json({ error: 'reviewId and decision required' })
+      const REVIEWS_PATH = 'src/data/reviews.json'
+      let reviews = []; let sha = null
+      try {
+        const file = await ghGet(REVIEWS_PATH, githubToken)
+        sha = file.sha
+        reviews = JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8'))
+      } catch {}
+
+      if (decision === 'delete') {
+        reviews = reviews.filter(r => r.id !== reviewId)
+      } else {
+        const idx = reviews.findIndex(r => r.id === reviewId)
+        if (idx === -1) return res.status(404).json({ error: 'Review not found' })
+        reviews[idx].status = decision === 'approve' ? 'approved' : 'rejected'
+      }
+
+      await ghPut(
+        REVIEWS_PATH,
+        JSON.stringify(reviews, null, 2) + '\n',
+        sha,
+        `admin: ${decision} review ${reviewId}`,
+        githubToken
+      )
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── emails: list-emails ───────────────────────────────────────────────────
+    if (action === 'list-emails') {
+      const EMAILS_PATH = 'src/data/emails.json'
+      let emails = []
+      try {
+        const file = await ghGet(EMAILS_PATH, githubToken)
+        emails = JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8'))
+      } catch {}
+      return res.status(200).json({ emails })
+    }
+
     return res.status(400).json({ error: `Unknown action: ${action}` })
 
   } catch (err) {

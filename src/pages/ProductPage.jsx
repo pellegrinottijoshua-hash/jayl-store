@@ -208,6 +208,30 @@ function SizeGuideModal({ open, onClose, section, isLight }) {
   )
 }
 
+// ── Reviews ───────────────────────────────────────────────────────────────────
+
+function StarRating({ value, onChange, isLight }) {
+  const [hover, setHover] = useState(null)
+  return (
+    <div className="flex gap-1">
+      {[1,2,3,4,5].map(n => (
+        <button
+          key={n}
+          type="button"
+          onClick={() => onChange?.(n)}
+          onMouseEnter={() => onChange && setHover(n)}
+          onMouseLeave={() => onChange && setHover(null)}
+          className={`text-xl leading-none transition-colors ${
+            n <= (hover ?? value)
+              ? 'text-yellow-400'
+              : isLight ? 'text-ink-muted/30' : 'text-white/20'
+          } ${onChange ? 'cursor-pointer' : 'cursor-default'}`}
+        >★</button>
+      ))}
+    </div>
+  )
+}
+
 // ── Main Component ────────────────────────────────────────────────────────────
 
 export default function ProductPage() {
@@ -240,6 +264,16 @@ export default function ProductPage() {
   const [lightboxSrc,    setLightboxSrc]    = useState(null)
   const [recentlyViewed, setRecentlyViewed] = useState([])
   const [sizeGuideOpen,  setSizeGuideOpen]  = useState(false)
+  // Reviews
+  const [reviews,        setReviews]        = useState([])
+  const [reviewsLoaded,  setReviewsLoaded]  = useState(false)
+  const [showReviewForm, setShowReviewForm] = useState(false)
+  const [reviewAuthor,   setReviewAuthor]   = useState('')
+  const [reviewRating,   setReviewRating]   = useState(5)
+  const [reviewBody,     setReviewBody]     = useState('')
+  const [reviewSubmitting, setReviewSubmitting] = useState(false)
+  const [reviewSubmitted,  setReviewSubmitted]  = useState(false)
+  const [reviewError,    setReviewError]    = useState('')
 
   // Viewer count — random on mount, drifts slightly every 30s for "live" feel
   useEffect(() => {
@@ -262,6 +296,15 @@ export default function ProductPage() {
       const others = next.slice(1).map(i => getProductById(i)).filter(Boolean).slice(0, 4)
       setRecentlyViewed(others)
     } catch {}
+  }, [product?.id])
+
+  // Load approved reviews for this product
+  useEffect(() => {
+    if (!product?.id) return
+    fetch(`/api/reviews?productId=${encodeURIComponent(product.id)}`)
+      .then(r => r.json())
+      .then(data => { setReviews(data.reviews || []); setReviewsLoaded(true) })
+      .catch(() => setReviewsLoaded(true))
   }, [product?.id])
 
   // Close lightbox on Escape
@@ -335,6 +378,27 @@ export default function ProductPage() {
   const canAddToCart = !!selectedSize || !product.sizes?.length
 
   // ── Event handlers ───────────────────────────────────────────────────────────
+
+  const handleReviewSubmit = async e => {
+    e.preventDefault()
+    if (!reviewAuthor.trim() || !reviewBody.trim()) return
+    setReviewSubmitting(true); setReviewError('')
+    try {
+      const res = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: product.id, author: reviewAuthor, rating: reviewRating, body: reviewBody }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Submission failed')
+      setReviewSubmitted(true)
+      setShowReviewForm(false)
+    } catch (e) {
+      setReviewError(e.message)
+    } finally {
+      setReviewSubmitting(false)
+    }
+  }
 
   const handleAddToCart = () => {
     if (!canAddToCart) return
@@ -1104,6 +1168,118 @@ export default function ProductPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {related.map(p => (
                 <ProductCard key={p.id} product={p} light={isLight} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Reviews ─────────────────────────────────────────────────────────── */}
+      {reviewsLoaded && (
+        <div className={cn('border-t', t.divider)}>
+          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            {/* Header row */}
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className={cn('font-display text-2xl mb-1', t.relatedTitle)}>Reviews</h2>
+                {reviews.length > 0 && (
+                  <div className="flex items-center gap-2">
+                    <StarRating
+                      value={Math.round(reviews.reduce((s, r) => s + r.rating, 0) / reviews.length)}
+                      isLight={isLight}
+                    />
+                    <span className={cn('text-xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                      {(reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1)} · {reviews.length} review{reviews.length !== 1 ? 's' : ''}
+                    </span>
+                  </div>
+                )}
+              </div>
+              {!reviewSubmitted && (
+                <button
+                  onClick={() => setShowReviewForm(v => !v)}
+                  className={cn(
+                    'text-xs tracking-widest uppercase transition-colors',
+                    isLight ? 'text-ink-muted hover:text-ink border border-paper-border px-4 py-2' : 'text-text-muted hover:text-cream border border-border px-4 py-2'
+                  )}
+                >
+                  {showReviewForm ? 'Cancel' : '+ Write a review'}
+                </button>
+              )}
+            </div>
+
+            {/* Submitted confirmation */}
+            {reviewSubmitted && (
+              <div className={cn('text-sm px-4 py-3 mb-6 border', isLight ? 'text-green-700 border-green-200 bg-green-50' : 'text-green-400 border-green-900/50 bg-green-900/10')}>
+                ✓ Thank you! Your review is pending approval and will appear shortly.
+              </div>
+            )}
+
+            {/* Review form */}
+            {showReviewForm && !reviewSubmitted && (
+              <form onSubmit={handleReviewSubmit} className={cn('mb-8 p-5 border space-y-4', isLight ? 'border-paper-border bg-paper' : 'border-border bg-gray-900/40')}>
+                <div className="space-y-3">
+                  <div>
+                    <label className={cn('block text-xs mb-1.5', isLight ? 'text-ink-muted' : 'text-text-muted')}>Your rating</label>
+                    <StarRating value={reviewRating} onChange={setReviewRating} isLight={isLight} />
+                  </div>
+                  <div>
+                    <label className={cn('block text-xs mb-1.5', isLight ? 'text-ink-muted' : 'text-text-muted')}>Name</label>
+                    <input
+                      value={reviewAuthor}
+                      onChange={e => setReviewAuthor(e.target.value)}
+                      placeholder="Jane D."
+                      required
+                      maxLength={80}
+                      className={cn('w-full px-3 py-2 text-sm focus:outline-none transition-colors', isLight ? 'bg-white border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
+                    />
+                  </div>
+                  <div>
+                    <label className={cn('block text-xs mb-1.5', isLight ? 'text-ink-muted' : 'text-text-muted')}>Review</label>
+                    <textarea
+                      value={reviewBody}
+                      onChange={e => setReviewBody(e.target.value)}
+                      placeholder="Share your experience with this product…"
+                      required
+                      maxLength={1000}
+                      rows={4}
+                      className={cn('w-full px-3 py-2 text-sm resize-none focus:outline-none transition-colors', isLight ? 'bg-white border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
+                    />
+                  </div>
+                </div>
+                {reviewError && <p className="text-red-500 text-xs">{reviewError}</p>}
+                <button
+                  type="submit"
+                  disabled={reviewSubmitting}
+                  className={cn('px-6 py-2.5 text-xs font-semibold tracking-widest uppercase transition-opacity disabled:opacity-40', isLight ? 'bg-ink text-cream hover:opacity-80' : 'bg-cream text-off-black hover:opacity-90')}
+                >
+                  {reviewSubmitting ? 'Submitting…' : 'Submit review'}
+                </button>
+              </form>
+            )}
+
+            {/* Review list */}
+            {reviews.length === 0 && !showReviewForm && (
+              <p className={cn('text-sm', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                No reviews yet. Be the first to share your thoughts.
+              </p>
+            )}
+
+            <div className="space-y-6">
+              {reviews.map(r => (
+                <div key={r.id} className={cn('pb-6 border-b last:border-0', isLight ? 'border-paper-border' : 'border-border')}>
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <p className={cn('text-sm font-medium', isLight ? 'text-ink' : 'text-cream')}>{r.author}</p>
+                      <StarRating value={r.rating} isLight={isLight} />
+                    </div>
+                    <time className={cn('text-xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                      {new Date(r.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                    </time>
+                  </div>
+                  <p className={cn('text-sm leading-relaxed mt-2', isLight ? 'text-ink-secondary' : 'text-text-secondary')}>
+                    {r.body}
+                  </p>
+                </div>
               ))}
             </div>
           </div>

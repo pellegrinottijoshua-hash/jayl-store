@@ -117,6 +117,9 @@ export default function OrderConfirmationPage() {
             Continue Shopping
             <ArrowRight size={16} />
           </Link>
+          <Link to={`/track?id=${orderId}`} className="btn-ghost">
+            Track Order
+          </Link>
           <Link to="/" className="btn-ghost">
             Back to Home
           </Link>

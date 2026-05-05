@@ -55,6 +55,9 @@ export default function Footer() {
               <li>
                 <Link to="/returns" className={cn('text-sm', t.link)}>Returns</Link>
               </li>
+              <li>
+                <Link to="/track" className={cn('text-sm', t.link)}>Track Order</Link>
+              </li>
             </ul>
           </div>
 

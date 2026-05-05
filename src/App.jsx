@@ -19,6 +19,8 @@ import CookiesPage from '@/pages/CookiesPage'
 import AdminPage from '@/pages/AdminPage'
 import AdminProductPage from '@/pages/AdminProductPage'
 import WishlistPage from '@/pages/WishlistPage'
+import TrackPage from '@/pages/TrackPage'
+import EmailCapturePopup from '@/components/EmailCapturePopup'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -48,6 +50,7 @@ export default function App() {
       <ScrollToTop />
       {!isAdmin && <Navbar />}
       {!isAdmin && <CartDrawer />}
+      {!isAdmin && <EmailCapturePopup />}
 
       <Routes>
         {/* ── Admin (standalone, no Navbar/Footer) ─────── */}
@@ -66,6 +69,7 @@ export default function App() {
               <Route path="/checkout"                       element={<CheckoutPage />} />
               <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
               <Route path="/wishlist"  element={<WishlistPage />} />
+              <Route path="/track"    element={<TrackPage />} />
               <Route path="/contact"  element={<ContactPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/returns"  element={<ReturnsPage />} />
