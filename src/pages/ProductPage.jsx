@@ -7,6 +7,7 @@ import { formatPrice, slugToTitle, cn } from '@/lib/utils'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
 import { useSwipe } from '@/hooks/useSwipe'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -247,6 +248,20 @@ export default function ProductPage() {
   useEffect(() => {
     setPageTheme(isLight ? 'light' : 'dark')
   }, [isLight, setPageTheme])
+
+  // Dynamic SEO meta tags per product
+  const productImage = product
+    ? `${typeof window !== 'undefined' ? window.location.origin : ''}${product.image || (product.images?.[0] ?? '')}`
+    : undefined
+  usePageMeta(product ? {
+    title:       product.name,
+    description: product.description
+      ? product.description.slice(0, 160)
+      : `${product.name} — ${product.collection || 'JAYL'}. Premium print-on-demand. Free shipping worldwide.`,
+    image:       productImage || undefined,
+    url:         typeof window !== 'undefined' ? window.location.href : undefined,
+    type:        'product',
+  } : {})
 
   const defaultSize  = product?.sizes?.[isArt ? 1 : 0]?.id
   const defaultColor = product?.colors?.[0]?.id

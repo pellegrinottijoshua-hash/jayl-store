@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
@@ -33,6 +34,11 @@ function FallingS() {
 export default function HomePage() {
   const [section, setSection] = useState(0)
   const { setPageTheme, setActiveSection } = useThemeStore()
+
+  usePageMeta({
+    title:       'JAYL — Art & Wearable Art',
+    description: 'Premium print-on-demand art and streetwear. AI-reinterpreted art movements meet contemporary culture. Free worldwide shipping.',
+  })
   const navigate   = useNavigate()
   const sectionRef = useRef(0)
 

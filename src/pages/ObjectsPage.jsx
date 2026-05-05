@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
 import { formatPrice } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
 
@@ -16,6 +17,11 @@ const collections = objectsProducts.reduce((acc, p) => {
 
 export default function ObjectsPage() {
   const { setPageTheme, setActiveSection } = useThemeStore()
+
+  usePageMeta({
+    title:       'Objects',
+    description: 'Wearable art and objects — anime tees, hoodies, totes. Premium print quality, contemporary culture.',
+  })
 
   useEffect(() => {
     setPageTheme('dark')

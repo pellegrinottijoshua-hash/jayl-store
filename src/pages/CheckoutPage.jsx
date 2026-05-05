@@ -54,7 +54,40 @@ function CheckoutForm() {
 
   const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0)
   const shipping = 0
-  const total = subtotal
+
+  // Discount state
+  const [discountInput,   setDiscountInput]   = useState('')
+  const [appliedCode,     setAppliedCode]     = useState(null)  // { code, amount, label }
+  const [discountError,   setDiscountError]   = useState('')
+  const [discountLoading, setDiscountLoading] = useState(false)
+
+  const discountAmount = appliedCode?.amount ?? 0
+  const total          = Math.max(subtotal - discountAmount, 0)
+
+  const handleApplyCode = async () => {
+    const code = discountInput.trim().toUpperCase()
+    if (!code) return
+    setDiscountLoading(true); setDiscountError('')
+    try {
+      const res  = await fetch('/api/validate-discount', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, subtotal }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Invalid code')
+      setAppliedCode({ code: data.code, amount: data.discountAmount, label: data.discountLabel })
+      setDiscountInput('')
+    } catch (e) {
+      setDiscountError(e.message)
+    } finally {
+      setDiscountLoading(false)
+    }
+  }
+
+  const handleRemoveCode = () => {
+    setAppliedCode(null); setDiscountError(''); setDiscountInput('')
+  }
 
   const [form, setForm] = useState({
     email: '',
@@ -124,6 +157,7 @@ function CheckoutForm() {
             zip: form.zip,
             country: form.country,
           },
+          ...(appliedCode ? { discountCode: appliedCode.code } : {}),
         }),
       })
 
@@ -325,7 +359,7 @@ function CheckoutForm() {
               (processing || !stripe) && 'opacity-70 cursor-not-allowed'
             )}
           >
-            {processing ? 'Processing...' : `Pay ${formatPrice(total)}`}
+            {processing ? 'Processing…' : `Pay ${formatPrice(total)}`}
           </button>
 
           <p className="text-xs text-text-muted text-center mt-4">
@@ -377,11 +411,56 @@ function CheckoutForm() {
 
             <div className="divider" />
 
+            {/* Discount code input */}
+            <div className="mt-4 mb-2">
+              {!appliedCode ? (
+                <div className="space-y-1.5">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={discountInput}
+                      onChange={e => { setDiscountInput(e.target.value.toUpperCase()); setDiscountError('') }}
+                      onKeyDown={e => e.key === 'Enter' && handleApplyCode()}
+                      placeholder="Discount code"
+                      className="input-field flex-1 text-sm py-2 placeholder:uppercase placeholder:tracking-wide"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleApplyCode}
+                      disabled={discountLoading || !discountInput.trim()}
+                      className="px-4 py-2 border border-border hover:border-border-light text-text-secondary hover:text-cream text-xs font-medium tracking-widest uppercase transition-colors disabled:opacity-40"
+                    >
+                      {discountLoading ? '…' : 'Apply'}
+                    </button>
+                  </div>
+                  {discountError && <p className="text-xs text-error">{discountError}</p>}
+                </div>
+              ) : (
+                <div className="flex items-center justify-between bg-success/10 border border-success/30 px-3 py-2">
+                  <div>
+                    <span className="text-success text-xs font-semibold tracking-widest">{appliedCode.code}</span>
+                    <span className="text-success/70 text-xs ml-2">— {appliedCode.label}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleRemoveCode}
+                    className="text-text-muted hover:text-text-primary text-sm leading-none transition-colors"
+                  >×</button>
+                </div>
+              )}
+            </div>
+
             <div className="space-y-3 mt-4">
               <div className="flex justify-between text-sm">
                 <span className="text-text-secondary">Subtotal</span>
                 <span className="text-text-primary">{formatPrice(subtotal)}</span>
               </div>
+              {appliedCode && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-success">Discount ({appliedCode.code})</span>
+                  <span className="text-success font-medium">−{formatPrice(appliedCode.amount)}</span>
+                </div>
+              )}
               <div className="flex justify-between text-sm">
                 <span className="text-text-secondary">Shipping</span>
                 <span className="text-success font-medium">Free</span>
@@ -389,7 +468,12 @@ function CheckoutForm() {
               <div className="divider" />
               <div className="flex justify-between">
                 <span className="text-sm font-semibold text-text-primary">Total</span>
-                <span className="text-lg font-bold text-cream">{formatPrice(total)}</span>
+                <div className="text-right">
+                  {appliedCode && (
+                    <span className="text-text-muted text-sm line-through mr-2">{formatPrice(subtotal)}</span>
+                  )}
+                  <span className="text-lg font-bold text-cream">{formatPrice(total)}</span>
+                </div>
               </div>
             </div>
 

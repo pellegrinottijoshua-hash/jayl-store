@@ -4,6 +4,7 @@ import {
   computeTotals,
   validateAddress,
   encodeItemsForMetadata,
+  applyDiscount,
   CURRENCY,
 } from './_lib/catalog.js'
 import { applyCors } from './_lib/cors.js'
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
   try {
-    const { items: rawItems, shippingAddress } = req.body || {}
+    const { items: rawItems, shippingAddress, discountCode } = req.body || {}
 
     // Server-side price lookup — never trust client-supplied unitPrice/total.
     const priced = priceItems(rawItems)
@@ -29,7 +30,19 @@ export default async function handler(req, res) {
     if (!addrCheck.ok) return res.status(400).json({ error: addrCheck.error })
     const addr = addrCheck.address
 
-    const { total } = computeTotals(priced.items)
+    const { subtotal, shipping, total: rawTotal } = computeTotals(priced.items)
+
+    // Apply discount code if provided
+    let discountAmount = 0
+    let discountLabel  = null
+    if (discountCode?.trim()) {
+      const disc = applyDiscount(subtotal, discountCode)
+      if (!disc.ok) return res.status(400).json({ error: disc.error })
+      discountAmount = disc.amount
+      discountLabel  = disc.label
+    }
+
+    const total = Math.max(rawTotal - discountAmount, 50) // minimum 50 cents
     if (total < 50) return res.status(400).json({ error: 'Order total is too low' })
 
     const itemsEncoded     = encodeItemsForMetadata(priced.items)
@@ -53,10 +66,20 @@ export default async function handler(req, res) {
         items:           itemsEncoded,
         total:           String(total),
         currency:        CURRENCY,
+        ...(discountLabel ? {
+          discountCode:   String(discountCode).trim().toUpperCase(),
+          discountAmount: String(discountAmount),
+          discountLabel,
+        } : {}),
       },
     })
 
-    return res.status(200).json({ clientSecret: paymentIntent.client_secret })
+    return res.status(200).json({
+      clientSecret:   paymentIntent.client_secret,
+      total,
+      discountAmount,
+      discountLabel,
+    })
   } catch (err) {
     console.error('[create-payment-intent]', err)
     return res.status(500).json({ error: 'Could not initialize payment' })

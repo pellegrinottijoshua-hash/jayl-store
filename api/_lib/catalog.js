@@ -140,6 +140,30 @@ export function validateAddress(addr) {
   }
 }
 
+// ── Discount codes ────────────────────────────────────────────────────────────
+
+const DISCOUNT_CODES = {
+  'JAYL10': { type: 'percent', value: 10, label: '10% off' },
+}
+
+/**
+ * Validate a discount code and compute the discount amount.
+ * Returns { ok: true, amount, label } or { ok: false, error }.
+ * amount is in cents, always ≥ 0.
+ */
+export function applyDiscount(subtotal, code) {
+  if (!code) return { ok: false, error: 'No discount code provided' }
+  const entry = DISCOUNT_CODES[String(code).trim().toUpperCase()]
+  if (!entry) return { ok: false, error: 'Invalid discount code' }
+  if (entry.type === 'percent') {
+    return { ok: true, amount: Math.round(subtotal * entry.value / 100), label: entry.label }
+  }
+  if (entry.type === 'fixed') {
+    return { ok: true, amount: Math.min(entry.value, subtotal), label: entry.label }
+  }
+  return { ok: false, error: 'Invalid discount type' }
+}
+
 /** Encode the canonical, server-priced item list for storage in Stripe metadata. */
 export function encodeItemsForMetadata(items) {
   // Compact form: pid|size|frame|color|qty|unitPrice

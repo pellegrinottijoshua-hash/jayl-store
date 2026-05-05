@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const artProducts = products.filter((p) => p.section === 'art')
 
@@ -16,6 +17,11 @@ const collections = artProducts.reduce((acc, p) => {
 
 export default function ArtPage() {
   const { setPageTheme, setActiveSection } = useThemeStore()
+
+  usePageMeta({
+    title:       'Art Prints',
+    description: 'Premium art prints — AI-reinterpreted movements meet contemporary culture. Archival quality, worldwide shipping.',
+  })
 
   useEffect(() => {
     setPageTheme('light')
