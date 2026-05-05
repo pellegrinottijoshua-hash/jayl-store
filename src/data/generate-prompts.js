@@ -4,7 +4,7 @@ export const generatePrompts = {
     {
       "id": "lifestyle-wall",
       "name": "Lifestyle Wall",
-      "prompt": "A {PRODUCT_TYPE} with the design '{PRODUCT_NAME}' hanging on a clean white gallery wall, soft natural light from the left, minimalist Scandinavian interior, 85mm lens, photorealistic"
+      "prompt": "Photorealistic iPhone close-up flatlay of a black cotton tee \nlaid on rough urban concrete, tight crop on the left chest \ncircular logo patch, the logo shows [POKEMON_NAME] wearing \n[GLASSES_STYLE] sunglasses in a cool illustrated style, \nnatural daylight shadows, slight fabric wrinkles and grain, \nhandheld micro-tilt, mild sensor grain, no extra text, \nno brands, no AI artifacts, shot on iPhone 15 Pro"
     },
     {
       "id": "flat-lay",
