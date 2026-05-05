@@ -25,6 +25,30 @@ function parseVideoUrl(url) {
 const colorToSlug = (c) =>
   (c ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
+/** Common apparel/art color names → hex. Used to resolve swatches when .hex is missing or generic */
+const APPAREL_COLOR_HEX = {
+  'black': '#1a1a1a', 'washed black': '#1a1a1a', 'solid-black-triblend': '#1a1a1a', 'solid black triblend': '#1a1a1a', 'triblend black heather': '#2d2d2d', 'triblend-black-heather': '#2d2d2d',
+  'white': '#f5f5f5', 'off white': '#f0ece4', 'solid-white-triblend': '#f0f0f0', 'solid white triblend': '#f0f0f0',
+  'red': '#cc2200', 'maroon': '#800000',
+  'blue': '#1a3c8c', 'navy': '#1f2d5c', 'triblend navy': '#3a5280', 'triblend-navy': '#3a5280', 'heather royal': '#4169E1', 'heather-royal': '#4169E1', 'blue triblend': '#5272b0', 'blue-triblend': '#5272b0', 'light blue': '#6ba4d4', 'light-blue': '#6ba4d4', 'royal blue': '#4169E1',
+  'green': '#228B22', 'forest green': '#228B22', 'forest-green': '#228B22', 'olive': '#6b7c2c', 'sage': '#8faf79',
+  'yellow': '#e8c41a', 'daisy': '#f5d842', 'gold': '#c8a42c',
+  'pink': '#f5a0c0', 'hot pink': '#e82a8a',
+  'purple': '#6b2d8b', 'lavender': '#c084fc',
+  'orange': '#cc5500', 'rust': '#b54a22',
+  'gray': '#888888', 'grey': '#888888', 'charcoal': '#3d3d3d', 'heather gray': '#aaaaaa', 'heather-gray': '#aaaaaa',
+  'natural': '#d4c5a9', 'cream': '#f0ece4', 'bone': '#d4cdc0', 'sand': '#c8b89a', 'tan': '#c4a882',
+  'slate': '#3a3f4a', 'steel blue': '#4682B4',
+  'brown': '#795548', 'chocolate': '#5d3c1e',
+}
+
+/** Resolve best hex for a color object — falls back to label name lookup, then null */
+function resolveSwatchHex(c) {
+  if (c.hex && c.hex !== '#888888') return c.hex
+  const key = (c.label || c.id || '').toLowerCase().trim()
+  return APPAREL_COLOR_HEX[key] ?? APPAREL_COLOR_HEX[key.replace(/-/g, ' ')] ?? null
+}
+
 function Accordion({ title, children, light, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen)
   return (
@@ -50,66 +74,109 @@ function Accordion({ title, children, light, defaultOpen = false }) {
   )
 }
 
-// ── Share row ─────────────────────────────────────────────────────────────────
+// ── Share button (dropdown) ───────────────────────────────────────────────────
 
-function ShareRow({ title, isLight, onCopy, copied }) {
-  const url   = typeof window !== 'undefined' ? window.location.href : ''
-  const text  = `Check this out: "${title}"`
+function ShareButton({ title, isLight, onCopy, copied }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+  const url  = typeof window !== 'undefined' ? window.location.href : ''
+  const text = `Check this out: "${title}"`
 
-  const handleShare = async () => {
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [open])
+
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(url).catch(() => {})
+    onCopy(); setOpen(false)
+  }
+
+  const nativeShare = async () => {
     if (navigator.share) {
       try { await navigator.share({ title, text, url }) } catch {}
+      setOpen(false)
     } else {
-      await navigator.clipboard.writeText(url).catch(() => {})
-      onCopy()
+      copyLink()
     }
   }
 
-  const muted   = isLight ? 'text-ink-muted hover:text-ink' : 'text-text-muted hover:text-cream'
-  const label   = isLight ? 'text-ink-muted' : 'text-text-muted'
+  const btnCls  = isLight
+    ? 'border-paper-border text-ink-muted hover:border-ink hover:text-ink'
+    : 'border-border text-text-muted hover:border-border-light hover:text-cream'
+  const menuCls = isLight
+    ? 'bg-paper border-paper-border text-ink'
+    : 'bg-surface border-border text-cream'
+  const itemCls = isLight
+    ? 'hover:bg-paper-2 text-ink-secondary hover:text-ink'
+    : 'hover:bg-surface-2 text-text-secondary hover:text-cream'
+
+  const SHARE_ITEMS = [
+    { label: 'WhatsApp',   href: `https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`, icon: '💬' },
+    { label: 'Facebook',   href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, icon: '𝒇' },
+    { label: 'Instagram',  href: `https://www.instagram.com/`, icon: '◎', hint: 'Opens Instagram — paste link in story/bio' },
+    { label: 'X',          href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, icon: '𝕏' },
+    { label: 'Pinterest',  href: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(text)}`, icon: '𝓟' },
+  ]
 
   return (
-    <div className="flex items-center gap-4 mt-3">
-      <span className={cn('text-2xs tracking-widest uppercase', label)}>Share</span>
-
-      {/* WhatsApp */}
-      <a
-        href={`https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`}
-        target="_blank" rel="noopener noreferrer"
-        title="WhatsApp"
-        className={cn('text-xs font-medium transition-colors', muted)}
-      >
-        WA
-      </a>
-
-      {/* X / Twitter */}
-      <a
-        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`}
-        target="_blank" rel="noopener noreferrer"
-        title="X (Twitter)"
-        className={cn('text-xs font-medium transition-colors', muted)}
-      >
-        𝕏
-      </a>
-
-      {/* Pinterest */}
-      <a
-        href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(text)}`}
-        target="_blank" rel="noopener noreferrer"
-        title="Pinterest"
-        className={cn('text-xs font-medium transition-colors', muted)}
-      >
-        Pin
-      </a>
-
-      {/* Copy link / Native share */}
+    <div className="relative mt-3" ref={ref}>
       <button
-        onClick={handleShare}
-        className={cn('text-xs font-medium transition-colors', copied ? 'text-green-500' : muted)}
-        title="Copy link"
+        onClick={() => setOpen((o) => !o)}
+        className={cn(
+          'flex items-center gap-2 px-4 py-2 border text-xs font-mono tracking-widest uppercase transition-all duration-150',
+          btnCls,
+          copied && 'text-green-500 border-green-500'
+        )}
       >
-        {copied ? '✓ Copied' : '🔗 Copy'}
+        {copied ? '✓ Copied' : 'Share'}
+        <ChevronDown size={10} className={open ? 'rotate-180 transition-transform' : 'transition-transform'} />
       </button>
+
+      {open && (
+        <div className={cn('absolute bottom-full left-0 mb-2 min-w-[180px] border shadow-lg z-30', menuCls)}>
+          {/* Copy link row */}
+          <button
+            onClick={copyLink}
+            className={cn('w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors text-left', itemCls)}
+          >
+            <span className="text-base leading-none">🔗</span>
+            <span>Copy link</span>
+          </button>
+
+          {/* Native share (mobile) */}
+          {typeof navigator !== 'undefined' && navigator.share && (
+            <button
+              onClick={nativeShare}
+              className={cn('w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors text-left', itemCls)}
+            >
+              <span className="text-base leading-none">⬆</span>
+              <span>Share via…</span>
+            </button>
+          )}
+
+          <div className={cn('h-px', isLight ? 'bg-paper-border' : 'bg-border')} />
+
+          {SHARE_ITEMS.map(({ label, href, icon, hint }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={hint}
+              onClick={() => setOpen(false)}
+              className={cn('flex items-center gap-3 px-4 py-3 text-sm transition-colors', itemCls)}
+            >
+              <span className="text-base leading-none w-5 text-center">{icon}</span>
+              <span>{label}</span>
+              {hint && <span className="text-xs opacity-50 ml-auto">↗</span>}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -662,9 +729,8 @@ export default function ProductPage() {
                         style={{
                           backgroundColor: c.hex && c.hex !== '#888888' ? c.hex : undefined,
                           borderColor: selectedColor === c.id ? 'currentColor' : '#ccc',
-                          background: (!c.hex || c.hex === '#888888')
-                            ? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'
-                            : c.hex,
+                          background: resolveSwatchHex(c)
+                            ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
                         }}
                       />
                       {c.label}
@@ -761,7 +827,7 @@ export default function ProductPage() {
 
         {/* ── Share ─────────────────────────────────────────────────────── */}
         <div className="px-4 pb-2">
-          <ShareRow title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
+          <ShareButton title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
         </div>
 
         {/* ── Accordions ────────────────────────────────────────────────── */}
@@ -1108,7 +1174,7 @@ export default function ProductPage() {
               <UrgencyBadge text={product.urgency} isLight={isLight} />
 
               {/* Share */}
-              <ShareRow title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
+              <ShareButton title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
 
               {/* Accordions */}
               <div className="mt-8">

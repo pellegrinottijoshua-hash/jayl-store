@@ -94,9 +94,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className={cn('mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2', t.divider)}>
+        <div className={cn('mt-14 pt-6 flex items-center justify-center', t.divider)}>
           <p className={cn('text-xs', t.muted)}>© 2026 JAYL. All rights reserved.</p>
-          <p className={cn('text-xs', t.muted)}>Fulfilled by Gelato</p>
         </div>
       </div>
     </footer>

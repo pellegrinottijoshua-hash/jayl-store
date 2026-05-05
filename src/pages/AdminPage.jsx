@@ -613,19 +613,27 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </Field>
 
           <Field label="Collection">
-            <select value={collection} onChange={e => { setCollection(e.target.value); setNewColl('') }}
-              className={inputCls}>
+            <select
+              value={newColl.trim() ? '__new__' : collection}
+              onChange={e => {
+                if (e.target.value === '__new__') return
+                setCollection(e.target.value); setNewColl('')
+              }}
+              className={inputCls}
+            >
               <option value="">Select…</option>
               {knownCollections.map(c => <option key={c} value={c}>{c}</option>)}
+              <option value="__new__" disabled>── or type new below ──</option>
             </select>
+            <input
+              value={newColl}
+              onChange={e => { setNewColl(e.target.value); if (e.target.value) setCollection('') }}
+              placeholder="New collection name…"
+              className={inputCls + ' mt-1.5 text-xs'}
+            />
           </Field>
 
-          <Field label="New Collection (overrides above)">
-            <input value={newColl} onChange={e => setNewColl(e.target.value)}
-              placeholder="new-collection-slug" className={inputCls} />
-          </Field>
-
-          <Field label="Movement">
+          <Field label="Movement / Style">
             <input value={movement} onChange={e => setMovement(e.target.value)}
               placeholder="Pokemon Cool Logos" className={inputCls} />
           </Field>
@@ -647,37 +655,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </div>
 
           <div className="col-span-2">
-            <Field label="⚡ Urgency badge" hint="Shown near Add to Cart — leave empty to hide. e.g. «Only 3 left!» or «Limited edition»">
-              <input value={urgency} onChange={e => setUrgency(e.target.value)}
-                placeholder="Only 3 left in this colorway!"
-                className={inputCls} />
-            </Field>
-          </div>
-
-          <div className="col-span-2">
-            <Field label="🛒 Related products (upsell)" hint="Product IDs, comma-separated. Shown as «Complete the look» on the product page.">
-              <input value={relatedProducts} onChange={e => setRelatedProducts(e.target.value)}
-                placeholder="snorlax-tshirt, snorlax-hoodie, snorlax-tote"
-                className={inputCls} />
-              {relatedProducts.trim() && (
-                <div className="flex gap-2 flex-wrap mt-2">
-                  {relatedProducts.split(',').map(s => s.trim()).filter(Boolean).map(rid => {
-                    const found = allProducts.find(p => p.id === rid)
-                    return (
-                      <span key={rid} className={`text-xs px-2 py-0.5 border ${found ? 'border-green-700 text-green-400' : 'border-red-800 text-red-400'}`}>
-                        {rid}{found ? '' : ' ✗ not found'}
-                      </span>
-                    )
-                  })}
-                </div>
-              )}
-            </Field>
-          </div>
-
-          <div className="col-span-2">
             <Field
               label="Tags"
-              hint={`${tags.split(',').filter(t => t.trim()).length}/13 tags · comma-separated`}
+              hint={`${tags.split(',').filter(t => t.trim()).length}/13 · comma-separated`}
             >
               <textarea value={tags} onChange={e => setTags(e.target.value)}
                 rows={2} placeholder="snorlax shirt, pokemon gift, anime tee, …"
@@ -687,8 +667,37 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         </div>
       </Card>
 
+      {/* Advanced — urgency + related */}
+      <Collapsible label="⚡ Advanced (urgency, upsell)" defaultOpen={false}>
+      <Card title="Advanced">
+        <div className="space-y-4">
+          <Field label="Urgency badge" hint="Shown near Add to Cart. Leave empty to hide.">
+            <input value={urgency} onChange={e => setUrgency(e.target.value)}
+              placeholder="Only 3 left in this colorway!" className={inputCls} />
+          </Field>
+          <Field label="Related products (upsell)" hint="Product IDs comma-separated. Shown as «Complete the look».">
+            <input value={relatedProducts} onChange={e => setRelatedProducts(e.target.value)}
+              placeholder="snorlax-tshirt, snorlax-hoodie" className={inputCls} />
+            {relatedProducts.trim() && (
+              <div className="flex gap-2 flex-wrap mt-2">
+                {relatedProducts.split(',').map(s => s.trim()).filter(Boolean).map(rid => {
+                  const found = allProducts.find(p => p.id === rid)
+                  return (
+                    <span key={rid} className={`text-xs px-2 py-0.5 border ${found ? 'border-green-700 text-green-400' : 'border-red-800 text-red-400'}`}>
+                      {rid}{found ? '' : ' ✗'}
+                    </span>
+                  )
+                })}
+              </div>
+            )}
+          </Field>
+        </div>
+      </Card>
+      </Collapsible>
+
       {/* SEO & Social Keywords */}
-      <Card title="🔍 SEO & Social (keyword research)">
+      <Collapsible label="🔍 SEO & Social" defaultOpen={false}>
+      <Card title="SEO & Social (keyword research)">
         <p className="text-gray-500 text-xs mb-4">Generated by AI. Saved to product data — use for copy-pasting to Etsy, IG, Pinterest.</p>
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
@@ -741,8 +750,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </Field>
         </div>
       </Card>
+      </Collapsible>
 
       {/* Video */}
+      <Collapsible label="🎬 Video" defaultOpen={false}>
       <Card title="Video (optional)">
         <Field label="Video URL" hint="Accepts YouTube, Vimeo, or direct .mp4 URL. Shown as hero on the product page.">
           <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
@@ -779,8 +790,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           <p className="text-yellow-500 text-xs mt-1">⚠ URL not recognised as YouTube, Vimeo, or .mp4</p>
         )}
       </Card>
+      </Collapsible>
 
       {/* Images */}
+      <Collapsible
+        label={`🖼 Images${existingImages.length > 0 ? ` (${existingImages.length} uploaded)` : ''}`}
+        defaultOpen={existingImages.length > 0}
+      >
       <Card title="Images">
         {/* Existing uploaded images — editable */}
         {existingImages.length > 0 && (
@@ -833,6 +849,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           <ImageUploader files={images} onChange={setImages} />
         </div>
       </Card>
+      </Collapsible>
 
       {/* Actions */}
       <div className="flex items-center gap-3 flex-wrap">
@@ -2089,7 +2106,6 @@ export default function AdminPage() {
     { id: 'products',     label: 'Products' },
     { id: 'add',          label: 'Add Product' },
     { id: 'collections',  label: 'Collections' },
-    { id: 'images',       label: 'Images' },
     { id: 'personas',     label: '🎭 Personas' },
     { id: 'reviews',      label: '⭐ Reviews' },
     { id: 'orders',       label: '📦 Orders' },
@@ -2138,7 +2154,7 @@ export default function AdminPage() {
           {tab === 'products'    && <ProductsTab onEdit={handleEdit} />}
           {tab === 'add'         && <AddProductTab onSaved={() => setTab('products')} />}
           {tab === 'collections' && <CollectionsTab />}
-          {tab === 'images'      && <ImagesTab />}
+
           {tab === 'personas'    && <PersonasTab />}
           {tab === 'reviews'     && <ReviewsTab />}
           {tab === 'orders'      && <OrdersTab />}
