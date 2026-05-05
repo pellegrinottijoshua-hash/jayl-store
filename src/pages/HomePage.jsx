@@ -11,8 +11,9 @@ const objectsProducts = products.filter((p) => p.section === 'objects')
 const pokemonProduct  = products.find((p) => p.id === 'cool-pokemon-tee')
 const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
 const featuredObject  = objectsProducts[0]
+const newInProducts   = [...products].reverse().slice(0, 6)
 
-const SECTION_THEMES = ['dark', 'dark', 'dark', 'dark', 'dark', 'light']
+const SECTION_THEMES = ['dark', 'dark', 'dark', 'dark', 'dark', 'dark', 'light']
 
 function FallingS() {
   return (
@@ -175,7 +176,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════ SECTION 5 — Objects horizontal scroll ═══════════════════ */}
+      {/* ════ SECTION 5 — New In ══════════════════════════════════════ */}
+      <section className="h-screen w-screen bg-black relative overflow-hidden">
+        <div className="absolute top-[88px] left-6 sm:left-8 z-10 flex items-center gap-3">
+          <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">New In</p>
+          <div className="h-px w-8 bg-white/20" />
+        </div>
+
+        <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
+          <div
+            className="flex gap-4 overflow-x-auto px-6 sm:px-8 pb-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          >
+            {newInProducts.map((product) => (
+              <Link
+                key={product.id}
+                to={`/product/${product.id}`}
+                className="flex-shrink-0 w-44 sm:w-56 group"
+                draggable={false}
+              >
+                <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    draggable={false}
+                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  />
+                </div>
+                <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted mb-0.5">
+                  {product.collection || product.section}
+                </p>
+                <h3 className="font-display text-sm text-cream leading-tight truncate">{product.name}</h3>
+                <p className="text-xs text-text-muted mt-0.5">from {formatPrice(product.price)}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════ SECTION 6 — Objects horizontal scroll ═══════════════════ */}
       <section className="h-screen w-screen bg-off-black relative overflow-hidden">
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
           <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
