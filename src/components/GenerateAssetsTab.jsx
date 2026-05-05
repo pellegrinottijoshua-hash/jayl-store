@@ -245,7 +245,7 @@ function PromptCard({
 // preloadedImages: [{ url, name }] — Gelato CDN images passed from parent (for Add Product flow)
 //                                    Used when productImages haven't been fetched yet (e.g. new product)
 
-export default function GenerateAssetsTab({ productId, productName, productType, primaryColor, collection, onAssetSaved, preloadedImages }) {
+export default function GenerateAssetsTab({ productId, productName, productType, primaryColor, collection, onAssetSaved, preloadedImages, personas, instagramCaption, pinterestCaption, hashtags }) {
   const [activeTab,       setActiveTab]       = useState('mockup')
   const [rawPrompts,      setRawPrompts]      = useState(null)
   const [localPrompts,    setLocalPrompts]    = useState({})
@@ -258,6 +258,9 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const [savedPromptMsgs, setSavedPromptMsgs] = useState({})
   const [generatingAll,   setGeneratingAll]   = useState(false)
   const [allProgress,     setAllProgress]     = useState({ done: 0, total: 0 })
+  const [selectedPersonaId, setSelectedPersonaId] = useState('')
+  const [publishCaption,    setPublishCaption]    = useState('')
+  const [publishCopied,     setPublishCopied]     = useState('')
 
   // ── Image sources ──────────────────────────────────────────────────────────
   // productImages: fetched from GitHub (saved images for this product)
@@ -275,6 +278,23 @@ export default function GenerateAssetsTab({ productId, productName, productType,
     name: img.name || img.url.split('/').pop() || 'image',
   }))
   const allImages = productImages.length > 0 ? productImages : normalizedPreloaded
+
+  // ── Selected persona context ───────────────────────────────────────────────
+  const selectedPersona = (personas || []).find(p => p.id === selectedPersonaId) ?? null
+  const personaImages   = selectedPersona
+    ? (selectedPersona.referenceImages || []).map((url, i) => ({
+        url,
+        name: `${selectedPersona.name} ref ${i + 1}`,
+        _isPersonaRef: true,
+      }))
+    : []
+
+  // Sync default publish caption when persona or product captions change
+  useEffect(() => {
+    if (!selectedPersona) return
+    const base = instagramCaption || `Just dropped: ${productName}. 🖤 Grab it now. ${hashtags ? '\n' + hashtags : ''}`
+    setPublishCaption(base)
+  }, [selectedPersonaId, instagramCaption]) // eslint-disable-line
 
   // ── Load product images on mount ───────────────────────────────────────────
 
@@ -318,6 +338,12 @@ export default function GenerateAssetsTab({ productId, productName, productType,
 
   // ── Image generation (img-to-img) ─────────────────────────────────────────
 
+  const buildPrompt = (basePrompt) => {
+    if (!selectedPersona) return basePrompt.trim()
+    const ctx = selectedPersona.promptContext || selectedPersona.aesthetic || ''
+    return ctx ? `${basePrompt.trim()} — ${ctx}` : basePrompt.trim()
+  }
+
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
@@ -328,7 +354,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
       const res = await fetch('/api/generate-mockup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelId: imageModel, prompt: prompt.trim(), imageSize, imageUrl }),
+        body: JSON.stringify({ modelId: imageModel, prompt: buildPrompt(prompt), imageSize, imageUrl }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
@@ -353,7 +379,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
       const submitRes = await fetch('/api/generate-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'submit', modelId: effectiveModelId, prompt: prompt.trim(), duration: videoDuration, imageUrl }),
+        body: JSON.stringify({ action: 'submit', modelId: effectiveModelId, prompt: buildPrompt(prompt), duration: videoDuration, imageUrl }),
       })
       const submitData = await submitRes.json()
       if (!submitRes.ok) throw new Error(submitData.error || 'Submit failed')
@@ -475,30 +501,82 @@ export default function GenerateAssetsTab({ productId, productName, productType,
         {[
           { id: 'mockup',  label: '🖼 Mockup' },
           { id: 'video',   label: '🎬 Video'  },
-          { id: 'publish', label: '📱 Publish', disabled: true },
+          { id: 'publish', label: '📱 Publish' },
         ].map(t => (
           <button
             key={t.id}
-            onClick={() => !t.disabled && setActiveTab(t.id)}
-            disabled={t.disabled}
+            onClick={() => setActiveTab(t.id)}
             className={`px-4 py-2.5 text-xs font-medium border-b-2 transition-colors whitespace-nowrap ${
-              t.disabled
-                ? 'border-transparent text-gray-600 cursor-not-allowed'
-                : activeTab === t.id
+              activeTab === t.id
                 ? 'border-indigo-500 text-indigo-300'
                 : 'border-transparent text-gray-500 hover:text-gray-300'
             }`}
           >
             {t.label}
-            {t.disabled && <span className="ml-1 text-gray-600 text-xs">(soon)</span>}
           </button>
         ))}
       </div>
 
       <div className="p-5 space-y-4">
 
-        {/* Settings bar */}
-        <div className="bg-gray-900 border border-gray-800 p-3 space-y-3">
+        {/* Persona selector */}
+        {personas?.length > 0 && (
+          <div className="bg-indigo-950/40 border border-indigo-900/50 p-3 space-y-2">
+            <div className="flex items-center gap-3">
+              <label className="text-indigo-400 text-xs w-16 flex-shrink-0 font-medium">Persona</label>
+              <select
+                value={selectedPersonaId}
+                onChange={e => setSelectedPersonaId(e.target.value)}
+                className="bg-gray-800 border border-gray-700 text-white text-xs px-3 py-1.5 focus:outline-none focus:border-indigo-500 flex-1 min-w-0"
+              >
+                <option value="">— None (generic) —</option>
+                {personas.map(p => (
+                  <option key={p.id} value={p.id}>{p.name} {p.handle}</option>
+                ))}
+              </select>
+            </div>
+            {selectedPersona && (
+              <div className="flex items-start gap-3 pt-1">
+                {selectedPersona.referenceImages?.[0] && (
+                  <img src={selectedPersona.referenceImages[0]} alt={selectedPersona.name}
+                    className="w-8 h-8 rounded-full object-cover border border-indigo-800 flex-shrink-0" />
+                )}
+                <div className="min-w-0">
+                  <p className="text-indigo-200 text-xs font-medium">{selectedPersona.name} · {selectedPersona.handle}</p>
+                  <p className="text-indigo-400/70 text-xs line-clamp-1 mt-0.5">{selectedPersona.promptContext || selectedPersona.aesthetic}</p>
+                </div>
+              </div>
+            )}
+            {selectedPersona && personaImages.length > 0 && (
+              <div>
+                <p className="text-indigo-400/60 text-xs mb-1.5">Persona references (select as img2img source below):</p>
+                <div className="flex gap-1.5 overflow-x-auto pb-0.5" style={{ scrollbarWidth: 'thin' }}>
+                  {personaImages.map((img, i) => (
+                    <button
+                      key={img.url}
+                      onClick={() => {
+                        const currentTemplates2 = activeTab === 'mockup'
+                          ? (rawPrompts || defaultPromptsStatic).mockup || []
+                          : (rawPrompts || defaultPromptsStatic).video  || []
+                        const newSel = {}
+                        for (const t of currentTemplates2) newSel[t.id] = img
+                        setSelectedImages(prev => ({ ...prev, ...newSel }))
+                      }}
+                      title={`Set ${img.name} as reference for all prompts`}
+                      className="flex-shrink-0 w-12 h-12 border-2 overflow-hidden transition-all border-indigo-700 hover:border-indigo-400"
+                    >
+                      <img src={toAbsoluteUrl(img.url)} alt={img.name} className="w-full h-full object-cover"
+                        onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+      {/* Settings bar — hidden on Publish tab */}
+        {activeTab !== 'publish' && <div className="bg-gray-900 border border-gray-800 p-3 space-y-3">
 
           {/* Model selector */}
           <div className="flex items-center gap-3">
@@ -579,17 +657,17 @@ export default function GenerateAssetsTab({ productId, productName, productType,
               <span className="text-gray-600 text-xs">Select reference per prompt below</span>
             </div>
           )}
-        </div>
+        </div>}
 
-        {/* No images warning */}
-        {allImages.length === 0 && (
+        {/* No images warning — hidden on Publish tab */}
+        {activeTab !== 'publish' && allImages.length === 0 && (
           <div className="bg-yellow-900/20 border border-yellow-800/50 px-4 py-3 text-yellow-400 text-xs">
             ⚠ No reference images available. Fetch &amp; import Gelato mockups first, or save the product to enable image generation.
           </div>
         )}
 
-        {/* Generate All */}
-        {currentTemplates.length > 1 && allImages.length > 0 && (
+        {/* Generate All — hidden on Publish tab */}
+        {activeTab !== 'publish' && currentTemplates.length > 1 && allImages.length > 0 && (
           <button
             onClick={() => handleGenerateAll(currentTemplates, activeTab === 'video')}
             disabled={generatingAll}
@@ -610,29 +688,262 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           </button>
         )}
 
-        {/* Prompt cards */}
-        <div className="space-y-4">
-          {currentTemplates.map(t => (
-            <PromptCard
-              key={t.id}
-              template={t}
-              isVideo={activeTab === 'video'}
-              promptText={localPrompts[t.id] ?? ''}
-              onPromptChange={val => setLocalPrompts(prev => ({ ...prev, [t.id]: val }))}
-              result={results[t.id]}
-              onGenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
-              onSave={(url, type) => handleSaveAsset(t.id, url, type)}
-              onSavePrompt={() => handleSavePrompt(t.id, activeTab === 'video')}
-              savingPrompt={savingPrompts[t.id]}
-              savedPromptMsg={savedPromptMsgs[t.id]}
-              images={allImages}
-              selectedImage={selectedImages[t.id] ?? null}
-              onSelectImage={img => setSelectedImages(prev => ({ ...prev, [t.id]: img }))}
+        {/* Prompt cards — hidden on Publish tab */}
+        {activeTab !== 'publish' && (
+          <div className="space-y-4">
+            {currentTemplates.map(t => (
+              <PromptCard
+                key={t.id}
+                template={t}
+                isVideo={activeTab === 'video'}
+                promptText={localPrompts[t.id] ?? ''}
+                onPromptChange={val => setLocalPrompts(prev => ({ ...prev, [t.id]: val }))}
+                result={results[t.id]}
+                onGenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
+                onSave={(url, type) => handleSaveAsset(t.id, url, type)}
+                onSavePrompt={() => handleSavePrompt(t.id, activeTab === 'video')}
+                savingPrompt={savingPrompts[t.id]}
+                savedPromptMsg={savedPromptMsgs[t.id]}
+                images={allImages}
+                selectedImage={selectedImages[t.id] ?? null}
+                onSelectImage={img => setSelectedImages(prev => ({ ...prev, [t.id]: img }))}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* ── Publish tab ──────────────────────────────────────────────────── */}
+        {activeTab === 'publish' && (
+          <PublishPanel
+            personas={personas || []}
+            selectedPersonaId={selectedPersonaId}
+            onSelectPersona={setSelectedPersonaId}
+            results={results}
+            productName={productName}
+            instagramCaption={instagramCaption}
+            pinterestCaption={pinterestCaption}
+            hashtags={hashtags}
+          />
+        )}
+
+      </div>
+    </div>
+  )
+}
+
+// ── Publish Panel (module-level) ─────────────────────────────────────────────
+
+const PLATFORM_COPY = {
+  instagram: {
+    label: 'Instagram',
+    color: 'text-pink-400',
+    border: 'border-pink-900/50 hover:border-pink-700',
+    icon: '📸',
+    url: 'https://www.instagram.com',
+    hint: 'Opens Instagram — paste caption + upload media manually',
+  },
+  tiktok: {
+    label: 'TikTok',
+    color: 'text-gray-300',
+    border: 'border-gray-700 hover:border-gray-500',
+    icon: '🎵',
+    url: 'https://www.tiktok.com/upload',
+    hint: 'Opens TikTok upload — paste caption + upload video manually',
+  },
+  youtube: {
+    label: 'YouTube Studio',
+    color: 'text-red-400',
+    border: 'border-red-900/50 hover:border-red-700',
+    icon: '▶',
+    url: 'https://studio.youtube.com',
+    hint: 'Opens YouTube Studio — upload video manually',
+  },
+  pinterest: {
+    label: 'Pinterest',
+    color: 'text-red-300',
+    border: 'border-red-800/40 hover:border-red-600',
+    icon: '📌',
+    url: 'https://www.pinterest.com/pin-builder/',
+    hint: 'Opens Pinterest Pin builder — paste description + upload image',
+  },
+}
+
+function PlatformButton({ platform, persona, caption, onCopy }) {
+  const cfg    = PLATFORM_COPY[platform]
+  const handle = persona?.[platform]
+  if (!handle && !cfg) return null
+
+  const handleClick = async () => {
+    // Copy caption to clipboard then open platform
+    try { await navigator.clipboard.writeText(caption || '') } catch {}
+    onCopy(platform)
+    window.open(handle || cfg.url, '_blank', 'noopener noreferrer')
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      title={cfg.hint}
+      className={`flex items-center gap-2 px-4 py-2.5 border text-xs font-medium transition-colors ${cfg.border}`}
+    >
+      <span>{cfg.icon}</span>
+      <span className={cfg.color}>{cfg.label}</span>
+      {handle && <span className="text-gray-600 text-xs truncate max-w-32">{handle.replace(/^https?:\/\/(www\.)?[^/]+\//, '@')}</span>}
+    </button>
+  )
+}
+
+function PublishPanel({ personas, selectedPersonaId, onSelectPersona, results, productName, instagramCaption, pinterestCaption, hashtags }) {
+  const persona = personas.find(p => p.id === selectedPersonaId) ?? null
+  const [caption, setCaption]   = useState(instagramCaption || '')
+  const [copied,  setCopied]    = useState('')
+
+  useEffect(() => {
+    const base = instagramCaption
+      || (productName ? `Just dropped: ${productName} 🖤 Link in bio.` : '')
+    setCaption(base + (hashtags ? '\n\n' + hashtags : ''))
+  }, [instagramCaption, hashtags, productName])
+
+  const handleCopy = (platform) => {
+    setCopied(platform)
+    setTimeout(() => setCopied(''), 2500)
+  }
+
+  const handleCopyCaption = async () => {
+    try { await navigator.clipboard.writeText(caption) } catch {}
+    setCopied('caption')
+    setTimeout(() => setCopied(''), 2000)
+  }
+
+  // Collect all generated media
+  const allResults = Object.entries(results).map(([id, r]) => ({ id, ...r }))
+  const images = allResults.filter(r => r.imageUrl && r.status === 'done')
+  const videos = allResults.filter(r => r.videoUrl && r.status === 'done')
+
+  return (
+    <div className="space-y-5">
+      {/* Persona picker */}
+      {personas.length > 0 && (
+        <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Publishing as…</p>
+          <div className="flex gap-2 flex-wrap">
+            {personas.map(p => (
+              <button
+                key={p.id}
+                onClick={() => onSelectPersona(p.id === selectedPersonaId ? '' : p.id)}
+                className={`flex items-center gap-2 px-3 py-2 border text-xs transition-colors ${
+                  p.id === selectedPersonaId
+                    ? 'border-indigo-500 bg-indigo-900/30 text-indigo-300'
+                    : 'border-gray-700 hover:border-gray-600 text-gray-400'
+                }`}
+              >
+                {p.referenceImages?.[0] && (
+                  <img src={p.referenceImages[0]} alt={p.name} className="w-6 h-6 rounded-full object-cover" />
+                )}
+                {p.name}
+                <span className="text-gray-600">{p.handle}</span>
+              </button>
+            ))}
+          </div>
+
+          {persona && (
+            <div className="flex gap-3 pt-1">
+              {['instagram', 'tiktok', 'youtube'].filter(k => persona[k]).map(k => (
+                <a key={k} href={persona[k]} target="_blank" rel="noopener noreferrer"
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors underline underline-offset-2">
+                  {k.charAt(0).toUpperCase() + k.slice(1)}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Caption editor */}
+      <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Caption</p>
+          <button
+            onClick={handleCopyCaption}
+            className={`text-xs transition-colors ${copied === 'caption' ? 'text-green-400' : 'text-gray-500 hover:text-gray-300'}`}
+          >
+            {copied === 'caption' ? '✓ Copied!' : '📋 Copy all'}
+          </button>
+        </div>
+        <textarea
+          value={caption}
+          onChange={e => setCaption(e.target.value)}
+          rows={6}
+          placeholder="Your caption will appear here after generating listing content (✨ Generate with AI on the product)…"
+          className="w-full bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-2 resize-none focus:outline-none focus:border-indigo-500 transition-colors"
+        />
+        {pinterestCaption && (
+          <div className="pt-1">
+            <p className="text-gray-600 text-xs mb-1.5">Pinterest caption:</p>
+            <p className="text-gray-400 text-xs leading-relaxed">{pinterestCaption}</p>
+            <button
+              onClick={async () => { await navigator.clipboard.writeText(pinterestCaption).catch(() => {}); handleCopy('pinterest-text') }}
+              className={`mt-1 text-xs transition-colors ${copied === 'pinterest-text' ? 'text-green-400' : 'text-gray-600 hover:text-gray-400'}`}
+            >
+              {copied === 'pinterest-text' ? '✓ Copied' : '📋 Copy Pinterest caption'}
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Platform buttons */}
+      <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+        <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Post to channel</p>
+        <p className="text-gray-600 text-xs">Clicking copies your caption, then opens the platform. Upload your media manually.</p>
+        <div className="flex gap-2 flex-wrap">
+          {['instagram', 'tiktok', 'youtube', 'pinterest'].map(platform => (
+            <PlatformButton
+              key={platform}
+              platform={platform}
+              persona={persona}
+              caption={platform === 'pinterest' ? (pinterestCaption || caption) : caption}
+              onCopy={handleCopy}
             />
           ))}
         </div>
-
+        {copied && copied !== 'caption' && copied !== 'pinterest-text' && (
+          <p className="text-green-400 text-xs">✓ Caption copied — now paste it on {copied}!</p>
+        )}
       </div>
+
+      {/* Generated media to post */}
+      {(images.length > 0 || videos.length > 0) && (
+        <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Your generated media</p>
+          <div className="flex gap-3 flex-wrap">
+            {images.map(r => (
+              <div key={r.id} className="space-y-1">
+                <img src={r.imageUrl} alt="" className="w-28 h-28 object-cover border border-gray-700" />
+                <a
+                  href={r.imageUrl}
+                  download={`${r.id}.jpg`}
+                  className="block text-center text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                >⬇ Download</a>
+              </div>
+            ))}
+            {videos.map(r => (
+              <div key={r.id} className="space-y-1">
+                <video src={r.videoUrl} className="w-28 h-28 object-cover border border-gray-700" />
+                <a
+                  href={r.videoUrl}
+                  download={`${r.id}.mp4`}
+                  className="block text-center text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                >⬇ Download</a>
+              </div>
+            ))}
+          </div>
+          <p className="text-gray-600 text-xs">Download media → upload manually on the platform after copying the caption above.</p>
+        </div>
+      )}
+
+      {images.length === 0 && videos.length === 0 && (
+        <p className="text-gray-600 text-xs text-center py-4">Generate images or videos first (Mockup/Video tabs) to see them here for download.</p>
+      )}
     </div>
   )
 }

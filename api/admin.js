@@ -6,6 +6,7 @@ const GITHUB_BRANCH      = 'main'
 const ADMIN_PRODUCTS_PATH    = 'src/data/admin-products.js'
 const ADMIN_COLLECTIONS_PATH = 'src/data/admin-collections.js'
 const GENERATE_PROMPTS_PATH  = 'src/data/generate-prompts.js'
+const PERSONAS_PATH          = 'src/data/personas.json'
 const ADMIN_PASSWORD = 'jaylpelle'
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
@@ -101,6 +102,21 @@ async function readAdminCollections(token) {
 async function writeAdminCollections(collections, sha, message, token) {
   const content = `// This file is managed by the JAYL admin panel. Do not edit manually.\nexport const adminCollections = ${JSON.stringify(collections, null, 2)}\n`
   return ghPut(ADMIN_COLLECTIONS_PATH, content, sha, message, token)
+}
+
+// ── Personas helpers ──────────────────────────────────────────────────────────
+
+async function readPersonas(token) {
+  try {
+    const file = await ghGet(PERSONAS_PATH, token)
+    return { personas: JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8')), sha: file.sha }
+  } catch {
+    return { personas: [], sha: null }
+  }
+}
+
+async function writePersonas(personas, sha, message, token) {
+  return ghPut(PERSONAS_PATH, JSON.stringify(personas, null, 2) + '\n', sha, message, token)
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
@@ -453,6 +469,72 @@ export default async function handler(req, res) {
       try { const f = await ghGet(SOCIAL_PATH, githubToken); sha = f.sha } catch {}
       await ghPut(SOCIAL_PATH, content, sha, 'admin: update social links', githubToken)
       return res.status(200).json({ ok: true })
+    }
+
+    // ── personas: list ───────────────────────────────────────────────────────
+    if (action === 'list-personas') {
+      const { personas } = await readPersonas(githubToken)
+      return res.status(200).json({ personas })
+    }
+
+    // ── personas: save (create or update) ────────────────────────────────────
+    if (action === 'save-persona') {
+      const { persona } = data
+      if (!persona?.id || !persona?.name) return res.status(400).json({ error: 'persona.id and persona.name required' })
+      const { personas, sha } = await readPersonas(githubToken)
+      const idx = personas.findIndex(p => p.id === persona.id)
+      const safe = {
+        id:             String(persona.id),
+        name:           String(persona.name || ''),
+        handle:         String(persona.handle || ''),
+        bio:            String(persona.bio || ''),
+        personality:    String(persona.personality || ''),
+        aesthetic:      String(persona.aesthetic || ''),
+        contentStyle:   String(persona.contentStyle || ''),
+        targetAudience: String(persona.targetAudience || ''),
+        promptContext:  String(persona.promptContext || ''),
+        instagram:      String(persona.instagram || ''),
+        tiktok:         String(persona.tiktok || ''),
+        youtube:        String(persona.youtube || ''),
+        referenceImages: Array.isArray(persona.referenceImages) ? persona.referenceImages : [],
+        createdAt:      persona.createdAt || new Date().toISOString(),
+        updatedAt:      new Date().toISOString(),
+      }
+      if (idx >= 0) personas[idx] = safe
+      else personas.push(safe)
+      await writePersonas(personas, sha, `admin: ${idx >= 0 ? 'update' : 'create'} persona ${safe.id}`, githubToken)
+      return res.status(200).json({ ok: true, persona: safe })
+    }
+
+    // ── personas: delete ─────────────────────────────────────────────────────
+    if (action === 'delete-persona') {
+      const { personaId } = data
+      if (!personaId) return res.status(400).json({ error: 'personaId required' })
+      const { personas, sha } = await readPersonas(githubToken)
+      const filtered = personas.filter(p => p.id !== personaId)
+      await writePersonas(filtered, sha, `admin: delete persona ${personaId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── personas: upload reference image ─────────────────────────────────────
+    if (action === 'upload-persona-image') {
+      const { personaId, filename, dataUrl } = data
+      if (!personaId || !filename || !dataUrl) return res.status(400).json({ error: 'personaId, filename, dataUrl required' })
+      const base64   = dataUrl.replace(/^data:[^;]+;base64,/, '')
+      const filePath = `public/personas/${personaId}/${filename}`
+      let existingSha = null
+      try { existingSha = (await ghGet(filePath, githubToken)).sha } catch {}
+      const putUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
+      const putRes = await fetch(putUrl, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${githubToken}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', 'X-GitHub-Api-Version': '2022-11-28' },
+        body: JSON.stringify({ message: `admin: upload persona ref image for ${personaId}`, content: base64, branch: GITHUB_BRANCH, ...(existingSha ? { sha: existingSha } : {}) }),
+      })
+      if (!putRes.ok) {
+        const err = await putRes.json().catch(() => ({}))
+        throw new Error(`GitHub PUT persona image: ${putRes.status} — ${err.message || ''}`)
+      }
+      return res.status(200).json({ ok: true, path: `/personas/${personaId}/${filename}` })
     }
 
     // ── reviews: list-reviews ─────────────────────────────────────────────────

@@ -190,6 +190,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
   const [generating, setGenerating] = useState(false)
   const [genErr, setGenErr]         = useState('')
+  const [personas,   setPersonas]   = useState([])
+
+  // Load personas for asset generation context
+  useEffect(() => {
+    api('list-personas', {}).then(d => setPersonas(d.personas || [])).catch(() => {})
+  }, [])
   const [primaryKeywords,  setPrimaryKeywords]  = useState(
     Array.isArray(editingProduct?.primaryKeywords)  ? editingProduct.primaryKeywords.join(', ')  : (editingProduct?.primaryKeywords || '')
   )
@@ -857,6 +863,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           collection={finalCollection}
           onAssetSaved={path => setExistingImages(prev => [...prev, { src: path, alt: '' }])}
           preloadedImages={gelatoImages.map((img, i) => ({ url: img.src, name: img.src.split('/').pop() || `mockup-${i + 1}` }))}
+          personas={personas}
+          instagramCaption={instagramCaption}
+          pinterestCaption={pinterestCaption}
+          hashtags={hashtags}
         />
       )}
     </div>
@@ -1393,6 +1403,363 @@ function LoginScreen({ onLogin }) {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
+// ── Personas Tab ─────────────────────────────────────────────────────────────
+
+const slugifyId = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+function PersonaForm({ initial, onSave, onCancel }) {
+  const isNew = !initial?.id
+  const [name,           setName]           = useState(initial?.name           || '')
+  const [handle,         setHandle]         = useState(initial?.handle         || '')
+  const [bio,            setBio]            = useState(initial?.bio            || '')
+  const [personality,    setPersonality]    = useState(initial?.personality    || '')
+  const [aesthetic,      setAesthetic]      = useState(initial?.aesthetic      || '')
+  const [contentStyle,   setContentStyle]   = useState(initial?.contentStyle   || '')
+  const [targetAudience, setTargetAudience] = useState(initial?.targetAudience || '')
+  const [promptContext,  setPromptContext]  = useState(initial?.promptContext  || '')
+  const [instagram,      setInstagram]      = useState(initial?.instagram      || '')
+  const [tiktok,         setTikTok]         = useState(initial?.tiktok         || '')
+  const [youtube,        setYoutube]        = useState(initial?.youtube        || '')
+  const [refImages,      setRefImages]      = useState(initial?.referenceImages || [])
+
+  const [seed,       setSeed]       = useState('')
+  const [generating, setGenerating] = useState(false)
+  const [genErr,     setGenErr]     = useState('')
+  const [saving,     setSaving]     = useState(false)
+  const [saveErr,    setSaveErr]    = useState('')
+  const [uploadingImg, setUploadingImg] = useState(false)
+  const refInputRef = useRef()
+
+  const personaId = initial?.id || slugifyId(name)
+
+  const handleGenerate = async () => {
+    if (!seed.trim() && !name.trim()) return setGenErr('Enter a name or seed description')
+    setGenerating(true); setGenErr('')
+    try {
+      const res  = await fetch('/api/generate-persona', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ seed: seed.trim() || name.trim() }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Generation failed')
+      if (data.name)           setName(data.name)
+      if (data.handle)         setHandle(data.handle)
+      if (data.bio)            setBio(data.bio)
+      if (data.personality)    setPersonality(data.personality)
+      if (data.aesthetic)      setAesthetic(data.aesthetic)
+      if (data.contentStyle)   setContentStyle(data.contentStyle)
+      if (data.targetAudience) setTargetAudience(data.targetAudience)
+      if (data.promptContext)  setPromptContext(data.promptContext)
+    } catch (e) { setGenErr(e.message) }
+    finally { setGenerating(false) }
+  }
+
+  const handleRefUpload = async (file) => {
+    if (!personaId) return
+    setUploadingImg(true)
+    try {
+      const dataUrl  = await fileToBase64(file)
+      const filename = file.name.replace(/[^a-z0-9._-]/gi, '-').toLowerCase()
+      const result   = await api('upload-persona-image', { personaId, filename, dataUrl })
+      setRefImages(prev => [...prev, result.path])
+    } catch (e) { setSaveErr(e.message) }
+    finally { setUploadingImg(false) }
+  }
+
+  const handleSave = async () => {
+    if (!name.trim()) return setSaveErr('Name is required')
+    setSaving(true); setSaveErr('')
+    try {
+      const persona = {
+        id: personaId,
+        name: name.trim(), handle: handle.trim(), bio: bio.trim(),
+        personality: personality.trim(), aesthetic: aesthetic.trim(),
+        contentStyle: contentStyle.trim(), targetAudience: targetAudience.trim(),
+        promptContext: promptContext.trim(),
+        instagram: instagram.trim(), tiktok: tiktok.trim(), youtube: youtube.trim(),
+        referenceImages: refImages,
+        ...(initial?.createdAt ? { createdAt: initial.createdAt } : {}),
+      }
+      await api('save-persona', { persona })
+      onSave(persona)
+    } catch (e) { setSaveErr(e.message) }
+    finally { setSaving(false) }
+  }
+
+  return (
+    <div className="space-y-5">
+      <div className="flex items-center justify-between">
+        <h3 className="text-white text-sm font-semibold">{isNew ? 'New Persona' : `Edit: ${initial.name}`}</h3>
+        <button onClick={onCancel} className={btnGhost}>← Back</button>
+      </div>
+
+      {/* AI seed */}
+      <Card title="✨ Generate with AI">
+        <p className="text-gray-500 text-xs mb-3">Describe the influencer vibe — GPT will generate the full identity.</p>
+        <div className="flex gap-2">
+          <input
+            value={seed}
+            onChange={e => setSeed(e.target.value)}
+            placeholder="e.g. dark aesthetic anime girl from Tokyo, loves streetwear and art prints"
+            className={inputCls + ' flex-1'}
+          />
+          <button
+            onClick={handleGenerate}
+            disabled={generating}
+            className="bg-violet-700 hover:bg-violet-600 disabled:opacity-40 text-white px-4 py-2 text-xs font-medium whitespace-nowrap transition-colors"
+          >
+            {generating ? (
+              <span className="flex items-center gap-1.5">
+                <span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" />
+                Generating…
+              </span>
+            ) : '✨ Generate'}
+          </button>
+        </div>
+        {genErr && <p className="text-red-400 text-xs mt-2">{genErr}</p>}
+      </Card>
+
+      {/* Identity */}
+      <Card title="Identity">
+        <div className="grid grid-cols-2 gap-3">
+          <Field label="Name" hint={name ? `id: ${personaId}` : ''}>
+            <input value={name} onChange={e => setName(e.target.value)} placeholder="Luna" className={inputCls} />
+          </Field>
+          <Field label="Handle">
+            <input value={handle} onChange={e => setHandle(e.target.value)} placeholder="@luna.aesthetic" className={inputCls} />
+          </Field>
+          <div className="col-span-2">
+            <Field label="Bio" hint="Max 150 chars — shown as Instagram bio style">
+              <input value={bio} onChange={e => setBio(e.target.value)} maxLength={150} placeholder="Digital art lover 🖤 Anime × streetwear" className={inputCls} />
+              <p className="text-gray-600 text-xs mt-1">{bio.length}/150</p>
+            </Field>
+          </div>
+          <div className="col-span-2">
+            <Field label="Personality">
+              <textarea value={personality} onChange={e => setPersonality(e.target.value)} rows={2}
+                placeholder="Edgy, minimalist, never hypes products directly…" className={`${inputCls} resize-none`} />
+            </Field>
+          </div>
+          <div className="col-span-2">
+            <Field label="Visual aesthetic">
+              <textarea value={aesthetic} onChange={e => setAesthetic(e.target.value)} rows={2}
+                placeholder="Dark moody tones, high contrast, neon accents…" className={`${inputCls} resize-none`} />
+            </Field>
+          </div>
+          <div className="col-span-2">
+            <Field label="Content style">
+              <textarea value={contentStyle} onChange={e => setContentStyle(e.target.value)} rows={2}
+                placeholder="Short punchy captions, outfit fits, reels with lo-fi music…" className={`${inputCls} resize-none`} />
+            </Field>
+          </div>
+          <div className="col-span-2">
+            <Field label="Target audience">
+              <input value={targetAudience} onChange={e => setTargetAudience(e.target.value)}
+                placeholder="Gen-Z anime fans, 17-26, streetwear community" className={inputCls} />
+            </Field>
+          </div>
+          <div className="col-span-2">
+            <Field label="AI prompt context" hint="Compact style descriptor injected into image generation prompts">
+              <input value={promptContext} onChange={e => setPromptContext(e.target.value)}
+                placeholder="dark moody aesthetic, high contrast, urban, cinematic" className={inputCls} />
+            </Field>
+          </div>
+        </div>
+      </Card>
+
+      {/* Social */}
+      <Card title="Social Channels">
+        <div className="space-y-3">
+          <Field label="Instagram URL">
+            <input value={instagram} onChange={e => setInstagram(e.target.value)}
+              placeholder="https://instagram.com/luna.aesthetic" className={inputCls} />
+          </Field>
+          <Field label="TikTok URL">
+            <input value={tiktok} onChange={e => setTikTok(e.target.value)}
+              placeholder="https://tiktok.com/@luna.aesthetic" className={inputCls} />
+          </Field>
+          <Field label="YouTube URL">
+            <input value={youtube} onChange={e => setYoutube(e.target.value)}
+              placeholder="https://youtube.com/@lunaesthetic" className={inputCls} />
+          </Field>
+        </div>
+      </Card>
+
+      {/* Reference images */}
+      <Card title="Reference Images">
+        <p className="text-gray-500 text-xs mb-3">Upload 2–5 photos that define this persona's look. Used as visual context in the Generate Assets tab.</p>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {refImages.map((src, i) => (
+            <div key={src} className="relative group">
+              <img src={src} alt={`ref-${i + 1}`} className="w-20 h-20 object-cover border border-gray-700" />
+              <button
+                onClick={() => setRefImages(prev => prev.filter((_, j) => j !== i))}
+                className="absolute -top-1.5 -right-1.5 bg-red-600 hover:bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs leading-none shadow opacity-0 group-hover:opacity-100 transition-opacity"
+              >×</button>
+            </div>
+          ))}
+          {uploadingImg && (
+            <div className="w-20 h-20 border border-gray-700 flex items-center justify-center">
+              <span className="animate-spin w-4 h-4 border border-indigo-400 border-t-transparent rounded-full" />
+            </div>
+          )}
+        </div>
+        <div>
+          <input
+            ref={refInputRef}
+            type="file"
+            accept="image/*"
+            multiple
+            className="hidden"
+            onChange={e => Array.from(e.target.files).forEach(handleRefUpload)}
+          />
+          {!personaId ? (
+            <p className="text-yellow-400 text-xs">Enter a name first to enable image upload.</p>
+          ) : (
+            <button
+              onClick={() => refInputRef.current?.click()}
+              disabled={uploadingImg}
+              className={btnGhost}
+            >
+              {uploadingImg ? 'Uploading…' : '+ Add reference images'}
+            </button>
+          )}
+        </div>
+      </Card>
+
+      {/* Save */}
+      <div className="flex items-center gap-3">
+        <button onClick={handleSave} disabled={saving} className="bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white px-6 py-2.5 text-sm font-semibold transition-colors">
+          {saving ? 'Saving…' : isNew ? 'Create Persona' : 'Update Persona'}
+        </button>
+        <button onClick={onCancel} className={btnGhost}>Cancel</button>
+        {saveErr && <span className="text-red-400 text-sm">{saveErr}</span>}
+      </div>
+    </div>
+  )
+}
+
+function PersonasTab() {
+  const [personas, setPersonas] = useState([])
+  const [loading,  setLoading]  = useState(true)
+  const [editing,  setEditing]  = useState(null) // null = list, {} = new, {persona} = edit
+  const [deleting, setDeleting] = useState(null)
+  const [error,    setError]    = useState('')
+
+  const load = async () => {
+    setLoading(true)
+    try {
+      const data = await api('list-personas', {})
+      setPersonas(data.personas || [])
+    } catch (e) { setError(e.message) }
+    finally { setLoading(false) }
+  }
+
+  useEffect(() => { load() }, [])
+
+  const handleDelete = async (id) => {
+    if (!confirm('Delete this persona permanently?')) return
+    setDeleting(id)
+    try {
+      await api('delete-persona', { personaId: id })
+      setPersonas(prev => prev.filter(p => p.id !== id))
+    } catch (e) { setError(e.message) }
+    finally { setDeleting(null) }
+  }
+
+  const handleSaved = (persona) => {
+    setPersonas(prev => {
+      const idx = prev.findIndex(p => p.id === persona.id)
+      if (idx >= 0) { const next = [...prev]; next[idx] = persona; return next }
+      return [...prev, persona]
+    })
+    setEditing(null)
+  }
+
+  if (editing !== null) {
+    return (
+      <PersonaForm
+        initial={editing.id ? editing : undefined}
+        onSave={handleSaved}
+        onCancel={() => setEditing(null)}
+      />
+    )
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-white text-sm font-semibold">Influencer Personas</h2>
+          <p className="text-gray-500 text-xs mt-0.5">AI-generated virtual influencers. Used in asset generation and publishing.</p>
+        </div>
+        <button onClick={() => setEditing({})} className={btnPrimary + ' text-xs py-1.5'}>+ New Persona</button>
+      </div>
+
+      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {loading && <p className="text-gray-500 text-sm">Loading personas…</p>}
+
+      {!loading && personas.length === 0 && (
+        <div className="bg-gray-900 border border-gray-800 p-10 text-center space-y-3">
+          <p className="text-gray-500 text-sm">No personas yet.</p>
+          <p className="text-gray-600 text-xs">Create your first AI-generated influencer persona to use in content creation.</p>
+          <button onClick={() => setEditing({})} className={btnPrimary + ' mx-auto block text-xs py-1.5 mt-2'}>
+            Create first persona
+          </button>
+        </div>
+      )}
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {personas.map(p => (
+          <div key={p.id} className="bg-gray-900 border border-gray-800 p-4 space-y-3">
+            {/* Header */}
+            <div className="flex items-start gap-3">
+              {p.referenceImages?.[0] ? (
+                <img src={p.referenceImages[0]} alt={p.name} className="w-14 h-14 rounded-full object-cover border-2 border-gray-700 flex-shrink-0" />
+              ) : (
+                <div className="w-14 h-14 rounded-full bg-gray-800 border-2 border-gray-700 flex items-center justify-center text-2xl flex-shrink-0">
+                  {p.name.charAt(0)}
+                </div>
+              )}
+              <div className="min-w-0">
+                <p className="text-white font-semibold text-sm">{p.name}</p>
+                <p className="text-gray-500 text-xs">{p.handle}</p>
+                <p className="text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">{p.bio}</p>
+              </div>
+            </div>
+
+            {/* Reference images strip */}
+            {p.referenceImages?.length > 1 && (
+              <div className="flex gap-1 overflow-x-auto pb-0.5" style={{ scrollbarWidth: 'none' }}>
+                {p.referenceImages.slice(1).map((src, i) => (
+                  <img key={i} src={src} alt="" className="w-10 h-10 object-cover border border-gray-800 flex-shrink-0" />
+                ))}
+              </div>
+            )}
+
+            {/* Social icons */}
+            <div className="flex gap-2 flex-wrap">
+              {p.instagram && <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="text-xs px-2 py-0.5 border border-pink-900/60 text-pink-400 hover:border-pink-700 transition-colors">IG</a>}
+              {p.tiktok    && <a href={p.tiktok}    target="_blank" rel="noopener noreferrer" className="text-xs px-2 py-0.5 border border-gray-700 text-gray-400 hover:border-gray-500 transition-colors">TT</a>}
+              {p.youtube   && <a href={p.youtube}   target="_blank" rel="noopener noreferrer" className="text-xs px-2 py-0.5 border border-red-900/60 text-red-400 hover:border-red-700 transition-colors">YT</a>}
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-2 pt-1">
+              <button onClick={() => setEditing(p)} className={btnGhost + ' flex-1 text-center'}>Edit</button>
+              <button
+                onClick={() => handleDelete(p.id)}
+                disabled={deleting === p.id}
+                className={btnDanger}
+              >{deleting === p.id ? '…' : '🗑'}</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ── Settings Tab ─────────────────────────────────────────────────────────────
 
 // ── Reviews Tab ───────────────────────────────────────────────────────────────
@@ -1723,6 +2090,7 @@ export default function AdminPage() {
     { id: 'add',          label: 'Add Product' },
     { id: 'collections',  label: 'Collections' },
     { id: 'images',       label: 'Images' },
+    { id: 'personas',     label: '🎭 Personas' },
     { id: 'reviews',      label: '⭐ Reviews' },
     { id: 'orders',       label: '📦 Orders' },
     { id: 'settings',     label: '⚙ Settings' },
@@ -1771,6 +2139,7 @@ export default function AdminPage() {
           {tab === 'add'         && <AddProductTab onSaved={() => setTab('products')} />}
           {tab === 'collections' && <CollectionsTab />}
           {tab === 'images'      && <ImagesTab />}
+          {tab === 'personas'    && <PersonasTab />}
           {tab === 'reviews'     && <ReviewsTab />}
           {tab === 'orders'      && <OrdersTab />}
           {tab === 'settings'    && <SettingsTab />}
