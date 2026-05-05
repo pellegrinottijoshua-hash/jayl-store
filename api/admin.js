@@ -7,7 +7,7 @@ const ADMIN_PRODUCTS_PATH    = 'src/data/admin-products.js'
 const ADMIN_COLLECTIONS_PATH = 'src/data/admin-collections.js'
 const GENERATE_PROMPTS_PATH  = 'src/data/generate-prompts.js'
 const PERSONAS_PATH          = 'src/data/personas.json'
-const ADMIN_PASSWORD = 'jaylpelle'
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'jaylpelle'
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
 
@@ -146,8 +146,15 @@ export default async function handler(req, res) {
 
       const { products, sha } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === product.id)
-      if (idx >= 0) products[idx] = product
-      else products.push(product)
+      // Preserve createdAt on update; stamp it on first save
+      const existing = idx >= 0 ? products[idx] : null
+      const productWithMeta = {
+        ...product,
+        createdAt: existing?.createdAt || new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      }
+      if (idx >= 0) products[idx] = productWithMeta
+      else products.push(productWithMeta)
 
       await writeAdminProducts(products, sha, `admin: ${idx >= 0 ? 'update' : 'add'} ${product.id}`, githubToken)
       return res.status(200).json({ ok: true })

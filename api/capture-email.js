@@ -1,4 +1,5 @@
 import { applyCors } from './_lib/cors.js'
+import { rateLimit } from './_lib/rateLimit.js'
 
 const GITHUB_OWNER  = 'pellegrinottijoshua-hash'
 const GITHUB_REPO   = 'jayl-store'
@@ -52,14 +53,18 @@ export default async function handler(req, res) {
   const { email } = req.body || {}
   if (!email?.trim()) return res.status(400).json({ error: 'email required' })
 
+  if (rateLimit(req, { max: 10, windowMs: 60_000 })) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' })
+  }
+
   // Basic validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email.trim())) return res.status(400).json({ error: 'Invalid email' })
 
   const githubToken = process.env.GITHUB_TOKEN
   if (!githubToken) {
-    // No token — accept silently
-    return res.status(200).json({ ok: true })
+    console.error('[capture-email] GITHUB_TOKEN not configured — email not stored')
+    return res.status(503).json({ error: 'Email capture not available. Please try again later.' })
   }
 
   try {

@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { products } from '@/data/products'
-import { formatPrice, slugToTitle } from '@/lib/utils'
+import { formatPrice, slugToTitle, isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
@@ -109,7 +109,12 @@ export default function CollectionPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
           {sorted.map((product) => (
             <Link key={product.id} to={`/product/${product.id}`} className="group">
-              <div className={`w-full overflow-hidden ${cardBg} mb-3`} style={{ aspectRatio: imgAspect }}>
+              <div className={`relative w-full overflow-hidden ${cardBg} mb-3`} style={{ aspectRatio: imgAspect }}>
+                {isNewProduct(product) && (
+                  <span className={`absolute top-2 left-2 z-10 text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 ${isDark ? 'bg-cream text-black' : 'bg-ink text-paper'}`}>
+                    New
+                  </span>
+                )}
                 <img
                   src={product.image}
                   alt={product.name}

@@ -24,7 +24,9 @@
       "Bash(git -C /Users/jpelle/jayl-store push)",
       "Bash(git -C /Users/jpelle/jayl-store status)",
       "Bash(git -C /Users/jpelle/jayl-store add .)",
-      "Bash(git -C /Users/jpelle/jayl-store commit -m \"variants endpoint\")"
+      "Bash(git -C /Users/jpelle/jayl-store commit -m \"variants endpoint\")",
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }

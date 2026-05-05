@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
-import { formatPrice } from '@/lib/utils'
+import { formatPrice, isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
@@ -95,9 +95,14 @@ export default function ObjectsPage() {
             {filteredProducts.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`} className="group">
                 <div
-                  className="w-full overflow-hidden bg-surface mb-3"
+                  className="relative w-full overflow-hidden bg-surface mb-3"
                   style={{ aspectRatio: '1 / 1' }}
                 >
+                  {isNewProduct(product) && (
+                    <span className="absolute top-2 left-2 z-10 text-[9px] font-mono tracking-widest uppercase bg-cream text-black px-2 py-0.5">
+                      New
+                    </span>
+                  )}
                   <img
                     src={product.image}
                     alt={product.name}

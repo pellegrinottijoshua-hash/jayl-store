@@ -25,15 +25,33 @@ export default function Footer() {
   return (
     <footer className={t.bg}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Navigation */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+
+          {/* Shop */}
           <div>
-            <h4 className={cn(t.heading, 'mb-5')}>Navigation</h4>
+            <h4 className={cn(t.heading, 'mb-5')}>Shop</h4>
             <ul className="space-y-3">
               {[
-                { to: '/art', label: 'Art' },
+                { to: '/art',     label: 'Art Prints' },
                 { to: '/objects', label: 'Objects' },
-                { to: '/artist', label: "Artist's" },
+                { to: '/collection/expressionist-landscapes', label: 'Expressionist Landscapes' },
+                { to: '/collection/urban-movements',          label: 'Urban Movements' },
+                { to: '/collection/wearables',                label: 'Wearables' },
+              ].map(({ to, label }) => (
+                <li key={to}>
+                  <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Discover */}
+          <div>
+            <h4 className={cn(t.heading, 'mb-5')}>Discover</h4>
+            <ul className="space-y-3">
+              {[
+                { to: '/artist',   label: "Artist's" },
+                { to: '/wishlist', label: 'Wishlist' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
@@ -46,18 +64,16 @@ export default function Footer() {
           <div>
             <h4 className={cn(t.heading, 'mb-5')}>Support</h4>
             <ul className="space-y-3">
-              <li>
-                  <Link to="/contact" className={cn('text-sm', t.link)}>Contact Us</Link>
-              </li>
-              <li>
-                <Link to="/shipping" className={cn('text-sm', t.link)}>Shipping Info</Link>
-              </li>
-              <li>
-                <Link to="/returns" className={cn('text-sm', t.link)}>Returns</Link>
-              </li>
-              <li>
-                <Link to="/track" className={cn('text-sm', t.link)}>Track Order</Link>
-              </li>
+              {[
+                { to: '/contact',  label: 'Contact Us' },
+                { to: '/shipping', label: 'Shipping Info' },
+                { to: '/returns',  label: 'Returns' },
+                { to: '/track',    label: 'Track Order' },
+              ].map(({ to, label }) => (
+                <li key={to}>
+                  <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -66,7 +82,7 @@ export default function Footer() {
             <h4 className={cn(t.heading, 'mb-5')}>Legal</h4>
             <ul className="space-y-3">
               {[
-                { to: '/terms', label: 'Terms of Use' },
+                { to: '/terms',   label: 'Terms of Use' },
                 { to: '/privacy', label: 'Privacy Policy' },
                 { to: '/cookies', label: 'Cookie Policy' },
               ].map(({ to, label }) => (

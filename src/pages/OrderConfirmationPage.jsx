@@ -1,12 +1,15 @@
 import { useLocation, useParams, Link } from 'react-router-dom'
-import { CheckCircle, ArrowRight, Package } from 'lucide-react'
+import { CheckCircle, ArrowRight, Package, MailOpen } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 export default function OrderConfirmationPage() {
   const { orderId } = useParams()
   const { state } = useLocation()
 
-  const order = state?.order
+  const order = state?.order  // null if user refreshed — show graceful fallback
+
+  usePageMeta({ title: 'Order Confirmed' })
 
   return (
     <div className="min-h-screen pt-24 flex flex-col items-center justify-center px-4">
@@ -27,8 +30,8 @@ export default function OrderConfirmationPage() {
           <span className="font-mono text-text-secondary">{orderId}</span>
         </p>
 
-        {/* Order summary */}
-        {order && (
+        {/* Order summary — only when state survives (first load, not refresh) */}
+        {order ? (
           <div className="bg-surface border border-border p-6 text-left mb-8">
             <h3 className="section-label mb-4">Order Summary</h3>
 
@@ -75,6 +78,17 @@ export default function OrderConfirmationPage() {
               </div>
             </div>
           </div>
+        ) : (
+          /* Fallback when page is refreshed and state is lost */
+          <div className="bg-surface border border-border p-6 text-left mb-8 flex gap-4 items-start">
+            <MailOpen size={20} className="text-text-muted flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+            <div>
+              <p className="text-sm font-medium text-text-primary mb-1">Check your inbox</p>
+              <p className="text-xs text-text-muted leading-relaxed">
+                A receipt was sent to your email address. It includes your order details and a tracking link once your order ships.
+              </p>
+            </div>
+          </div>
         )}
 
         {/* What happens next */}
@@ -118,7 +132,7 @@ export default function OrderConfirmationPage() {
             <ArrowRight size={16} />
           </Link>
           <Link to={`/track?id=${orderId}`} className="btn-ghost">
-            Track Order
+            <Package size={15} /> Track Order
           </Link>
           <Link to="/" className="btn-ghost">
             Back to Home

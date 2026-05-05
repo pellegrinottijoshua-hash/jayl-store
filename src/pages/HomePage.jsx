@@ -11,7 +11,15 @@ const objectsProducts = products.filter((p) => p.section === 'objects')
 const pokemonProduct  = products.find((p) => p.id === 'cool-pokemon-tee')
 const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
 const featuredObject  = objectsProducts[0]
-const newInProducts   = [...products].reverse().slice(0, 6)
+// Sort: products with createdAt first (newest → oldest), then the rest in original order
+const newInProducts = [...products]
+  .sort((a, b) => {
+    if (a.createdAt && b.createdAt) return new Date(b.createdAt) - new Date(a.createdAt)
+    if (a.createdAt) return -1
+    if (b.createdAt) return 1
+    return 0
+  })
+  .slice(0, 6)
 
 // light = cream sections, dark = dark sections
 const SECTION_THEMES = ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light']
@@ -191,9 +199,17 @@ export default function HomePage() {
         className="h-screen w-screen relative overflow-hidden"
         style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
       >
-        <div className="absolute top-[88px] left-6 sm:left-8 z-10 flex items-center gap-3">
+        <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
           <p className="text-2xs font-mono tracking-ultra uppercase" style={{ color: 'rgba(17,17,17,0.45)' }}>New In</p>
-          <div className="h-px w-8" style={{ backgroundColor: 'rgba(17,17,17,0.15)' }} />
+          <div className="h-px w-8 flex-shrink-0" style={{ backgroundColor: 'rgba(17,17,17,0.15)' }} />
+          <div className="flex-1" />
+          <Link
+            to="/art"
+            className="inline-flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase transition-opacity hover:opacity-60"
+            style={{ color: 'rgba(17,17,17,0.55)' }}
+          >
+            See all <ArrowRight size={10} />
+          </Link>
         </div>
 
         <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
@@ -238,8 +254,15 @@ export default function HomePage() {
 
       {/* ════ SECTION 6 — Objects horizontal scroll ═══════════════════ */}
       <section className="h-screen w-screen bg-off-black relative overflow-hidden">
-        <div className="absolute top-[88px] left-6 sm:left-8 z-10">
+        <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
           <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
+          <div className="flex-1" />
+          <Link
+            to="/objects"
+            className="inline-flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase text-text-muted hover:text-cream transition-colors"
+          >
+            Shop all <ArrowRight size={10} />
+          </Link>
         </div>
 
         <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">

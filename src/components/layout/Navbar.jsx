@@ -64,19 +64,16 @@ const NAV_ITEMS = [
 ]
 
 const ART_DROPDOWN = [
-  { label: 'Impressionism', to: '/art?movement=impressionism' },
-  { label: 'Surrealism',    to: '/art?movement=surrealism' },
-  { label: 'Cubism',        to: '/art?movement=cubism' },
-  { label: 'Expressionism', to: '/art?movement=expressionism' },
-  { label: 'Art Nouveau',   to: '/art?movement=art-nouveau' },
-  { label: 'Bauhaus',       to: '/art?movement=bauhaus' },
+  { label: 'All Art Prints',           to: '/art',                                    divider: true },
+  { label: 'Expressionist Landscapes', to: '/collection/expressionist-landscapes' },
+  { label: 'Urban Movements',          to: '/collection/urban-movements' },
 ]
 
 const OBJECTS_DROPDOWN = [
-  { label: 'T-Shirts',  to: '/objects?type=tee' },
-  { label: 'Hoodies',   to: '/objects?type=hoodie' },
-  { label: 'Mugs',      to: '/objects?type=mug' },
-  { label: 'Tote Bags', to: '/objects?type=tote' },
+  { label: 'All Objects',  to: '/objects',                divider: true },
+  { label: 'Wearables',   to: '/collection/wearables' },
+  { label: 'Living Objects', to: '/collection/living-objects' },
+  { label: 'Pokemon Logos',  to: '/collection/pokemon-logos' },
 ]
 
 export default function Navbar() {
@@ -228,12 +225,16 @@ export default function Navbar() {
                         {dropLabel}
                       </p>
                       <ul className="space-y-2.5">
-                        {dropItems.map((d) => (
+                        {dropItems.map((d, idx) => (
                           <li key={d.to}>
+                            {idx > 0 && dropItems[idx - 1].divider && (
+                              <div className={cn('h-px mb-2.5', isLight ? 'bg-paper-border' : 'bg-border')} />
+                            )}
                             <Link
                               to={d.to}
                               className={cn(
-                                'block text-sm font-light tracking-wide transition-opacity duration-150 hover:opacity-60',
+                                'block text-sm tracking-wide transition-opacity duration-150 hover:opacity-60',
+                                d.divider ? 'font-medium' : 'font-light',
                                 dropText
                               )}
                               onClick={() => setHoveredNav(null)}

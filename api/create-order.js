@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-
 const GELATO_API_URL = 'https://order.gelatoapis.com/v4/orders'
 
 async function createGelatoOrder({ paymentIntent, items, shippingAddress, email }) {
-  const apiKey = process.env.GELATO_API_KEY || process.env.VITE_GELATO_API_KEY
+  const apiKey = process.env.GELATO_API_KEY
   if (!apiKey) throw new Error('GELATO_API_KEY is not configured')
 
   const orderPayload = {

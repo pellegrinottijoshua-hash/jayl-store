@@ -1,11 +1,16 @@
 import { applyCors } from './_lib/cors.js'
 import { applyDiscount } from './_lib/catalog.js'
+import { rateLimit } from './_lib/rateLimit.js'
 
 export default async function handler(req, res) {
   const allowed = applyCors(req, res)
   if (req.method === 'OPTIONS') return res.status(allowed ? 200 : 403).end()
   if (!allowed) return res.status(403).json({ error: 'Forbidden' })
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+
+  if (rateLimit(req, { max: 15, windowMs: 60_000 })) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' })
+  }
 
   const { code, subtotal } = req.body || {}
   if (!code?.trim()) return res.status(400).json({ error: 'code required' })
