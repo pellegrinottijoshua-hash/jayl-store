@@ -20,11 +20,13 @@ const btnGhost   = 'border border-gray-700 hover:border-gray-500 text-gray-400 h
 // ── Model lists ───────────────────────────────────────────────────────────────
 
 export const IMAGE_MODELS = [
-  { id: 'fal-ai/flux/schnell',  label: 'Flux Schnell',  cost: '$0.003/img', badge: '⚡ Free-tier' },
-  { id: 'fal-ai/flux-pro/v1.1', label: 'Flux Pro 1.1',  cost: '$0.04/img'  },
-  { id: 'fal-ai/ideogram/v3',   label: 'Ideogram V3',   cost: '$0.08/img',  badge: '✏ Best text' },
-  { id: 'fal-ai/nano-banana-2', label: 'Nano Banana 2', cost: '$0.08/img',  noI2I: true },
-  { id: 'fal-ai/recraft-v3',    label: 'Recraft V3',    cost: '$0.04/img',  badge: '🎨 Design', noI2I: true },
+  { id: 'fal-ai/flux-pro/kontext',     label: 'Kontext Pro',    cost: '$0.08/img',  badge: '★ Best img2img', i2iMode: 'edit'  },
+  { id: 'fal-ai/flux-pro/kontext/max', label: 'Kontext Max',    cost: '$0.16/img',  badge: '★ HQ img2img',  i2iMode: 'edit'  },
+  { id: 'fal-ai/flux/schnell',         label: 'Flux Schnell',   cost: '$0.003/img', badge: '⚡ Free-tier',  i2iMode: 'redux' },
+  { id: 'fal-ai/flux-pro/v1.1',        label: 'Flux Pro 1.1',   cost: '$0.04/img',                          i2iMode: 'redux' },
+  { id: 'fal-ai/ideogram/v3',          label: 'Ideogram V3',    cost: '$0.08/img',  badge: '✏ Best text',  i2iMode: 'remix' },
+  { id: 'fal-ai/nano-banana-2',        label: 'Nano Banana 2',  cost: '$0.08/img',                          noI2I: true      },
+  { id: 'fal-ai/recraft-v3',           label: 'Recraft V3',     cost: '$0.04/img',  badge: '🎨 Design',    noI2I: true      },
 ]
 
 // Models that cannot use a reference image (text-to-image only)
@@ -659,28 +661,30 @@ export default function GenerateAssetsTab({ productId, productName, productType,
                   <span className="text-xs px-2 py-0.5 border border-yellow-800 text-yellow-500 bg-yellow-900/20">
                     text-to-image only
                   </span>
-                  <span className="text-yellow-700 text-xs">Reference image ignored — {imageModel.split('/').pop()} doesn't support img2img</span>
+                  <span className="text-yellow-700 text-xs">Reference image ignored — model doesn't support img2img</span>
                 </>
-              ) : (
+              ) : activeTab === 'video' ? (
                 <>
                   <span className="text-xs px-2 py-0.5 border border-indigo-700 text-indigo-300 bg-indigo-900/20">
-                    {activeTab === 'video' ? 'img-to-video' : 'img-to-img'}
+                    img-to-video
                   </span>
-                  {activeTab === 'mockup' && (() => {
-                    const variantMap = {
-                      'fal-ai/flux/schnell':  'schnell-redux',
-                      'fal-ai/flux-pro/v1.1': 'flux-pro-redux',
-                      'fal-ai/flux/dev':      'flux-dev-redux',
-                      'fal-ai/ideogram/v3':   'ideogram-remix',
-                    }
-                    const variant = variantMap[imageModel]
-                    return variant
-                      ? <span className="text-indigo-400/60 text-xs">→ {variant}</span>
-                      : null
-                  })()}
                   <span className="text-gray-600 text-xs">Select reference per prompt below</span>
                 </>
-              )}
+              ) : (() => {
+                const model = IMAGE_MODELS.find(m => m.id === imageModel)
+                const modeLabels = {
+                  edit:  { badge: 'img2img — edit',  color: 'border-green-700 text-green-400 bg-green-900/20', hint: 'Kontext preserves your product faithfully and places it in a new scene' },
+                  redux: { badge: 'img2img — style',  color: 'border-indigo-700 text-indigo-300 bg-indigo-900/20', hint: 'Style-conditioned — output resembles reference in style/color, not exact product' },
+                  remix: { badge: 'img2img — remix',  color: 'border-purple-700 text-purple-300 bg-purple-900/20', hint: 'Remix: reference influences composition and content' },
+                }
+                const info = modeLabels[model?.i2iMode] || modeLabels.redux
+                return (
+                  <>
+                    <span className={`text-xs px-2 py-0.5 border ${info.color}`}>{info.badge}</span>
+                    <span className="text-gray-600 text-xs">{info.hint}</span>
+                  </>
+                )
+              })()}
             </div>
           )}
         </div>}

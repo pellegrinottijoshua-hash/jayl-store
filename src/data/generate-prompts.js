@@ -2,6 +2,21 @@
 export const generatePrompts = {
   "mockup": [
     {
+      "id": "kontext-street",
+      "name": "Kontext — Street Lifestyle",
+      "prompt": "Keep the exact t-shirt design and color unchanged. Show the same t-shirt worn by a confident young person walking through a sunlit Tokyo side street, golden hour, shallow depth of field, Fujifilm grain, fashion editorial quality"
+    },
+    {
+      "id": "kontext-studio",
+      "name": "Kontext — Studio Editorial",
+      "prompt": "Keep the exact t-shirt design and color unchanged. Show the same t-shirt worn by a model in a clean minimal studio, dramatic side lighting, white cyclorama background, fashion campaign quality, sharp on garment"
+    },
+    {
+      "id": "kontext-flatlay",
+      "name": "Kontext — Flat Lay",
+      "prompt": "Keep the exact t-shirt design and color unchanged. Show the same t-shirt laid flat on rough urban concrete from directly above, natural daylight, slight fabric wrinkles, iPhone editorial flatlay style, no extra objects"
+    },
+    {
       "id": "lifestyle-wall",
       "name": "Lifestyle Wall",
       "prompt": "Photorealistic iPhone close-up flatlay of a black cotton tee \nlaid on rough urban concrete, tight crop on the left chest \ncircular logo patch, the logo shows [POKEMON_NAME] wearing \n[GLASSES_STYLE] sunglasses in a cool illustrated style, \nnatural daylight shadows, slight fabric wrinkles and grain, \nhandheld micro-tilt, mild sensor grain, no extra text, \nno brands, no AI artifacts, shot on iPhone 15 Pro"
