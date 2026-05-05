@@ -3,8 +3,15 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)",     "destination": "/index.html" }
+    { "source": "/api/generate-listing",  "destination": "/api/ai?handler=listing"      },
+    { "source": "/api/generate-mockup",   "destination": "/api/ai?handler=mockup"       },
+    { "source": "/api/generate-video",    "destination": "/api/ai?handler=video"        },
+    { "source": "/api/generate-persona",  "destination": "/api/ai?handler=persona"      },
+    { "source": "/api/get-orders",        "destination": "/api/orders?handler=get-orders"   },
+    { "source": "/api/create-order",      "destination": "/api/orders?handler=create-order" },
+    { "source": "/api/track-order",       "destination": "/api/orders?handler=track-order"  },
+    { "source": "/api/(.*)",              "destination": "/api/$1"                      },
+    { "source": "/(.*)",                  "destination": "/index.html"                  }
   ],
   "headers": [
     {
