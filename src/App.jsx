@@ -20,6 +20,8 @@ import AdminPage from '@/pages/AdminPage'
 import AdminProductPage from '@/pages/AdminProductPage'
 import WishlistPage from '@/pages/WishlistPage'
 import TrackPage from '@/pages/TrackPage'
+import CollectionPage from '@/pages/CollectionPage'
+import AmbassadorPage from '@/pages/AmbassadorPage'
 import EmailCapturePopup from '@/components/EmailCapturePopup'
 
 function ScrollToTop() {
@@ -69,7 +71,9 @@ export default function App() {
               <Route path="/checkout"                       element={<CheckoutPage />} />
               <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
               <Route path="/wishlist"  element={<WishlistPage />} />
-              <Route path="/track"    element={<TrackPage />} />
+              <Route path="/track"              element={<TrackPage />} />
+              <Route path="/collection/:slug"  element={<CollectionPage />} />
+              <Route path="/ambassador/:id"    element={<AmbassadorPage />} />
               <Route path="/contact"  element={<ContactPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/returns"  element={<ReturnsPage />} />

@@ -9,6 +9,9 @@ const objectsProducts = products.filter((p) => p.section === 'objects')
 
 const collectionNames = [...new Set(objectsProducts.map((p) => p.collection || 'Other'))]
 
+const collectionSlug = (name) =>
+  (name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
 const collectionsByName = collectionNames.reduce((acc, name) => {
   acc[name] = objectsProducts.filter((p) => (p.collection || 'Other') === name)
   return acc
@@ -115,7 +118,12 @@ export default function ObjectsPage() {
         collectionNames.map((name) => (
           <section key={name} className="mb-4 last:mb-0">
             <div className="px-6 sm:px-10 pt-10 pb-4">
-              <p className="section-label">{name}</p>
+              <Link
+                to={`/collection/${collectionSlug(name)}`}
+                className="section-label hover:opacity-70 transition-opacity"
+              >
+                {name}
+              </Link>
               <div className="mt-3 h-px bg-border" />
             </div>
             <div

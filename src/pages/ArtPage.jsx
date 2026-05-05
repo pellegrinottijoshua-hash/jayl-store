@@ -9,6 +9,9 @@ const artProducts = products.filter((p) => p.section === 'art')
 
 const collectionNames = [...new Set(artProducts.map((p) => p.collection || 'Other'))]
 
+const collectionSlug = (name) =>
+  (name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
 const collectionsByName = collectionNames.reduce((acc, name) => {
   acc[name] = artProducts.filter((p) => (p.collection || 'Other') === name)
   return acc
@@ -131,7 +134,12 @@ export default function ArtPage() {
         collectionNames.map((name) => (
           <section key={name} className="mb-4 last:mb-0">
             <div className="px-6 sm:px-10 pt-10 pb-4">
-              <p className="section-label-light">{name}</p>
+              <Link
+                to={`/collection/${collectionSlug(name)}`}
+                className="section-label-light hover:opacity-70 transition-opacity"
+              >
+                {name}
+              </Link>
               <div className="mt-3 h-px bg-paper-border" />
             </div>
             <div

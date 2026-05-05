@@ -13,7 +13,8 @@ const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
 const featuredObject  = objectsProducts[0]
 const newInProducts   = [...products].reverse().slice(0, 6)
 
-const SECTION_THEMES = ['dark', 'dark', 'dark', 'dark', 'dark', 'dark', 'light']
+// light = cream sections, dark = dark sections
+const SECTION_THEMES = ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light']
 
 function FallingS() {
   return (
@@ -44,7 +45,7 @@ export default function HomePage() {
   const sectionRef = useRef(0)
 
   useEffect(() => {
-    setPageTheme(SECTION_THEMES[section])
+    setPageTheme(SECTION_THEMES[section] ?? 'dark')
     setActiveSection(null)
   }, [section, setPageTheme, setActiveSection])
 
@@ -64,22 +65,31 @@ export default function HomePage() {
   return (
     <div className="w-full">
 
-      {/* ════ SECTION 1 — Hero (black, video placeholder) ══════════════ */}
-      <section className="h-screen w-screen bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-black" aria-hidden="true" />
-        <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
-          <p className="font-display text-7xl sm:text-9xl text-cream/10 tracking-widest">JAYL</p>
+      {/* ════ SECTION 1 — Hero (cream) ══════════════════════════════════ */}
+      <section
+        className="h-screen w-screen relative overflow-hidden"
+        style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
+      >
+        <div
+          className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
+          style={{ backgroundColor: '#f5f0e8' }}
+        >
+          <p className="font-display text-7xl sm:text-9xl tracking-widest" style={{ color: 'rgba(17,17,17,0.07)' }}>JAYL</p>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, rgba(245,240,232,0.85) 0%, transparent 100%)' }}
+        />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-mono tracking-wider uppercase text-white/50 mb-3">Art</p>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-2">
+          <p className="text-xs font-mono tracking-wider uppercase mb-3" style={{ color: 'rgba(17,17,17,0.45)' }}>Art</p>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight mb-2" style={{ color: '#111111' }}>
             {featuredArt.name}
           </h1>
-          <p className="text-sm text-white/60 mb-6">{featuredArt.subtitle}</p>
+          <p className="text-sm mb-6" style={{ color: 'rgba(17,17,17,0.55)' }}>{featuredArt.subtitle}</p>
           <Link
             to={`/product/${featuredArt.id}`}
-            className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase px-5 py-3 transition-colors"
+            style={{ backgroundColor: '#111111', color: '#f5f0e8' }}
           >
             Shop Now <ArrowRight size={12} />
           </Link>
@@ -176,11 +186,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════ SECTION 5 — New In ══════════════════════════════════════ */}
-      <section className="h-screen w-screen bg-black relative overflow-hidden">
+      {/* ════ SECTION 5 — New In (cream) ══════════════════════════════ */}
+      <section
+        className="h-screen w-screen relative overflow-hidden"
+        style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
+      >
         <div className="absolute top-[88px] left-6 sm:left-8 z-10 flex items-center gap-3">
-          <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">New In</p>
-          <div className="h-px w-8 bg-white/20" />
+          <p className="text-2xs font-mono tracking-ultra uppercase" style={{ color: 'rgba(17,17,17,0.45)' }}>New In</p>
+          <div className="h-px w-8" style={{ backgroundColor: 'rgba(17,17,17,0.15)' }} />
         </div>
 
         <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
@@ -195,7 +208,10 @@ export default function HomePage() {
                 className="flex-shrink-0 w-44 sm:w-56 group"
                 draggable={false}
               >
-                <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3">
+                <div
+                  className="w-full aspect-[3/4] overflow-hidden mb-3"
+                  style={{ backgroundColor: '#ece7df' }}
+                >
                   <img
                     src={product.image}
                     alt={product.name}
@@ -205,11 +221,15 @@ export default function HomePage() {
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 </div>
-                <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted mb-0.5">
+                <p className="text-2xs font-mono tracking-ultra uppercase mb-0.5" style={{ color: 'rgba(17,17,17,0.45)' }}>
                   {product.collection || product.section}
                 </p>
-                <h3 className="font-display text-sm text-cream leading-tight truncate">{product.name}</h3>
-                <p className="text-xs text-text-muted mt-0.5">from {formatPrice(product.price)}</p>
+                <h3 className="font-display text-sm leading-tight truncate" style={{ color: '#111111' }}>
+                  {product.name}
+                </h3>
+                <p className="text-xs mt-0.5" style={{ color: 'rgba(17,17,17,0.55)' }}>
+                  from {formatPrice(product.price)}
+                </p>
               </Link>
             ))}
           </div>
@@ -252,7 +272,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════ SECTION 6 — Artist's (cream) ════════════════════════════ */}
+      {/* ════ SECTION 7 — Artist's (cream) ════════════════════════════ */}
       <section
         className="h-screen w-screen bg-paper relative flex items-center justify-center cursor-pointer"
         onClick={() => navigate('/artist')}
