@@ -14,7 +14,7 @@ export const generatePrompts = {
     {
       "id": "urban-model",
       "name": "Urban Model",
-      "prompt": "A {PRODUCT_TYPE} with '{PRODUCT_NAME}' print worn by a young urban model, street photography, Tokyo backstreet, golden hour, Fujifilm grain, candid"
+      "prompt": "4-panel editorial collage on white background, same black \ngraphic tee with [POKEMON_NAME] circular chest logo worn \n4 different ways: top-left full body front, top-right \nclose-up chest logo detail, bottom-left side profile \nthree-quarter view, bottom-right back detail. \nConsistent soft studio lighting, fashion archive aesthetic,\nno text overlays, streetwear editorial quality"
     },
     {
       "id": "dark-studio",
