@@ -649,11 +649,23 @@ export default function GenerateAssetsTab({ productId, productName, productType,
 
           {/* Mode indicator */}
           {allImages.length > 0 && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="text-gray-500 text-xs w-16 flex-shrink-0">Mode</span>
               <span className="text-xs px-2 py-0.5 border border-indigo-700 text-indigo-300 bg-indigo-900/20">
                 {activeTab === 'video' ? 'img-to-video' : 'img-to-img'}
               </span>
+              {activeTab === 'mockup' && (() => {
+                // Show which img2img variant will be used for Flux models
+                const reduxMap = {
+                  'fal-ai/flux/schnell':  'schnell-redux',
+                  'fal-ai/flux-pro/v1.1': 'flux-pro-redux',
+                  'fal-ai/flux/dev':      'flux-dev-redux',
+                }
+                const variant = reduxMap[imageModel]
+                return variant
+                  ? <span className="text-indigo-400/60 text-xs">→ {variant}</span>
+                  : <span className="text-indigo-400/60 text-xs">native</span>
+              })()}
               <span className="text-gray-600 text-xs">Select reference per prompt below</span>
             </div>
           )}
