@@ -4,6 +4,38 @@ import { ShoppingBag, Menu, X } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
+import { SOCIAL_LINKS } from '@/data/social-links'
+
+// ── Social icons (inline SVG, 16×16 viewBox) ─────────────────────────────────
+function InstagramIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4.5"/>
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+    </svg>
+  )
+}
+function TikTokIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.74a4.85 4.85 0 01-1.01-.05z"/>
+    </svg>
+  )
+}
+function PinterestIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.43 7.63 11.18-.1-.95-.2-2.4.04-3.44.22-.92 1.46-6.18 1.46-6.18s-.37-.75-.37-1.85c0-1.74 1.01-3.03 2.26-3.03 1.07 0 1.58.8 1.58 1.76 0 1.07-.68 2.67-1.04 4.16-.3 1.24.62 2.25 1.84 2.25 2.2 0 3.9-2.32 3.9-5.67 0-2.96-2.13-5.03-5.17-5.03-3.52 0-5.59 2.64-5.59 5.37 0 1.06.41 2.2.92 2.82a.37.37 0 01.09.35c-.09.39-.3 1.24-.34 1.41-.05.23-.18.27-.4.16-1.5-.7-2.43-2.88-2.43-4.64 0-3.77 2.74-7.24 7.9-7.24 4.15 0 7.37 2.96 7.37 6.9 0 4.12-2.6 7.43-6.2 7.43-1.21 0-2.35-.63-2.74-1.37l-.75 2.79c-.27 1.04-1 2.35-1.49 3.15.93.28 1.9.44 2.92.44 6.63 0 12-5.37 12-12S18.63 0 12 0z"/>
+    </svg>
+  )
+}
+
+const SOCIAL_ICONS = [
+  { key: 'instagram', Icon: InstagramIcon, label: 'Instagram' },
+  { key: 'tiktok',    Icon: TikTokIcon,    label: 'TikTok'    },
+  { key: 'pinterest', Icon: PinterestIcon, label: 'Pinterest' },
+]
 
 /** The 's' in "artist's" — smaller, dropped, slightly rotated clockwise */
 function FallingS() {
@@ -216,8 +248,27 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* ── Right: cart + hamburger ───────────────────────────────── */}
+          {/* ── Right: social icons (desktop) + cart + hamburger ────────── */}
           <div className="w-14 sm:w-20 flex justify-end items-center gap-4 pointer-events-auto">
+
+            {/* Social icons — hidden on mobile, shown on sm+ only if link is set */}
+            <div className="hidden sm:flex items-center gap-3">
+              {SOCIAL_ICONS.map(({ key, Icon, label }) =>
+                SOCIAL_LINKS[key] ? (
+                  <a
+                    key={key}
+                    href={SOCIAL_LINKS[key]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className={cn('transition-opacity duration-200 hover:opacity-60', textMuted)}
+                  >
+                    <Icon size={15} />
+                  </a>
+                ) : null
+              )}
+            </div>
+
             <button
               onClick={toggleCart}
               className={cn(
@@ -282,6 +333,7 @@ export default function Navbar() {
 
         {/* Large serif links */}
         <nav className="flex-1 flex flex-col items-start justify-center px-8 gap-8">
+
           {[
             { id: 'art',    label: 'art',     to: '/art' },
             { id: 'objects',label: 'objects',  to: '/objects' },
@@ -300,6 +352,27 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
+
+        {/* Social icons — mobile menu footer */}
+        {SOCIAL_ICONS.some(({ key }) => SOCIAL_LINKS[key]) && (
+          <div className="flex items-center gap-6 px-8 pb-10">
+            {SOCIAL_ICONS.map(({ key, Icon, label }) =>
+              SOCIAL_LINKS[key] ? (
+                <a
+                  key={key}
+                  href={SOCIAL_LINKS[key]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn('transition-opacity hover:opacity-60', isLight ? 'text-ink-muted' : 'text-cream/50')}
+                >
+                  <Icon size={20} />
+                </a>
+              ) : null
+            )}
+          </div>
+        )}
       </div>
     </>
   )

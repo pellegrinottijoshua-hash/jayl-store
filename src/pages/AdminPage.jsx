@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
+import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 
 const ADMIN_PASSWORD = 'jaylpelle'
 
@@ -180,6 +181,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     Array.isArray(editingProduct?.tags) ? editingProduct.tags.join(', ') : (editingProduct?.tags || '')
   )
   const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
+  const [urgency,  setUrgency]      = useState(editingProduct?.urgency  || '')
 
   const [generating, setGenerating] = useState(false)
   const [genErr, setGenErr]         = useState('')
@@ -384,7 +386,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         gelatoProductId: gelatoUid.trim() || null,
         movement: movement.trim() || finalCollection,
         adminManaged: true,
-        ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : {}),
+        ...(videoUrl.trim()  ? { videoUrl: videoUrl.trim() }   : {}),
+        ...(urgency.trim()   ? { urgency:  urgency.trim() }    : {}),
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
       }
@@ -606,6 +609,14 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             <Field label="Alt Text (image accessibility)" hint="Used for SEO and screen readers">
               <input value={altText} onChange={e => setAltText(e.target.value)}
                 placeholder="Snorlax fan art t-shirt on white background…"
+                className={inputCls} />
+            </Field>
+          </div>
+
+          <div className="col-span-2">
+            <Field label="⚡ Urgency badge" hint="Shown near Add to Cart — leave empty to hide. e.g. «Only 3 left!» or «Limited edition»">
+              <input value={urgency} onChange={e => setUrgency(e.target.value)}
+                placeholder="Only 3 left in this colorway!"
                 className={inputCls} />
             </Field>
           </div>
@@ -1174,6 +1185,63 @@ function LoginScreen({ onLogin }) {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
+// ── Settings Tab ─────────────────────────────────────────────────────────────
+
+function SettingsTab() {
+  const [instagram, setInstagram] = useState(SOCIAL_LINKS_DEFAULT?.instagram || '')
+  const [tiktok,    setTikTok]    = useState(SOCIAL_LINKS_DEFAULT?.tiktok    || '')
+  const [pinterest, setPinterest] = useState(SOCIAL_LINKS_DEFAULT?.pinterest || '')
+  const [saving,    setSaving]    = useState(false)
+  const [msg,       setMsg]       = useState('')
+
+  const handleSave = async () => {
+    setSaving(true); setMsg('')
+    try {
+      await api('save-social-links', { links: { instagram, tiktok, pinterest } })
+      setMsg('✓ Saved — Vercel will deploy in ~2 min')
+    } catch (e) {
+      setMsg(`⚠ ${e.message}`)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  return (
+    <div className="space-y-6 max-w-xl">
+      <Card title="Social Links">
+        <p className="text-gray-500 text-xs mb-4">
+          These links appear as icons in the top navbar (desktop) and mobile menu.
+          Saving commits the file to GitHub and triggers a Vercel deploy (~2 min).
+        </p>
+        <div className="space-y-3">
+          <Field label="Instagram">
+            <input value={instagram} onChange={e => setInstagram(e.target.value)}
+              placeholder="https://instagram.com/yourhandle" className={inputCls} />
+          </Field>
+          <Field label="TikTok">
+            <input value={tiktok} onChange={e => setTikTok(e.target.value)}
+              placeholder="https://tiktok.com/@yourhandle" className={inputCls} />
+          </Field>
+          <Field label="Pinterest">
+            <input value={pinterest} onChange={e => setPinterest(e.target.value)}
+              placeholder="https://pinterest.com/yourhandle" className={inputCls} />
+          </Field>
+        </div>
+        <div className="flex items-center gap-3 mt-4">
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white px-5 py-2 text-xs font-semibold tracking-wide transition-colors"
+          >
+            {saving ? 'Saving…' : 'Save Social Links'}
+          </button>
+          {msg && <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-yellow-400'}`}>{msg}</span>}
+        </div>
+      </Card>
+    </div>
+  )
+}
+
 export default function AdminPage() {
   const [authed, setAuthed]           = useState(() => sessionStorage.getItem('adminAuth') === '1')
   const [tab, setTab]                 = useState('products')
@@ -1191,6 +1259,7 @@ export default function AdminPage() {
     { id: 'add',          label: 'Add Product' },
     { id: 'collections',  label: 'Collections' },
     { id: 'images',       label: 'Images' },
+    { id: 'settings',     label: '⚙ Settings' },
   ]
 
   return (
@@ -1236,6 +1305,7 @@ export default function AdminPage() {
           {tab === 'add'         && <AddProductTab onSaved={() => setTab('products')} />}
           {tab === 'collections' && <CollectionsTab />}
           {tab === 'images'      && <ImagesTab />}
+          {tab === 'settings'    && <SettingsTab />}
         </main>
       </div>
     </>

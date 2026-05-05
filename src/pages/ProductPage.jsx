@@ -113,6 +113,101 @@ function ShareRow({ title, isLight, onCopy, copied }) {
   )
 }
 
+// ── Urgency badge ─────────────────────────────────────────────────────────────
+
+function UrgencyBadge({ text, isLight }) {
+  if (!text) return null
+  return (
+    <p className={`flex items-center gap-1.5 text-xs font-medium mt-3 ${isLight ? 'text-amber-600' : 'text-amber-400'}`}>
+      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse flex-shrink-0" />
+      {text}
+    </p>
+  )
+}
+
+// ── Size guide modal ───────────────────────────────────────────────────────────
+
+const SIZE_GUIDE = {
+  art: {
+    title: 'Print Sizes',
+    cols: ['Size', 'Width', 'Height'],
+    rows: [
+      ['8×10"',   '20 cm', '25 cm'],
+      ['12×16"',  '30 cm', '40 cm'],
+      ['18×24"',  '46 cm', '61 cm'],
+      ['24×36"',  '61 cm', '91 cm'],
+    ],
+    note: 'All prints include a 5 mm white border. Frames add ~2 cm to each side.',
+  },
+  objects: {
+    title: 'Apparel Size Guide',
+    cols: ['Size', 'Chest', 'Body length'],
+    rows: [
+      ['XS', '86–91 cm',   '66 cm'],
+      ['S',  '91–96 cm',   '69 cm'],
+      ['M',  '99–104 cm',  '72 cm'],
+      ['L',  '107–112 cm', '74 cm'],
+      ['XL', '117–122 cm', '77 cm'],
+      ['2XL','127–132 cm', '79 cm'],
+      ['3XL','137–142 cm', '81 cm'],
+    ],
+    note: 'Measurements are of the garment, not the body. Oversized styles run large — size down if unsure.',
+  },
+}
+
+function SizeGuideModal({ open, onClose, section, isLight }) {
+  useEffect(() => {
+    const fn = e => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', fn)
+    return () => window.removeEventListener('keydown', fn)
+  }, [onClose])
+
+  if (!open) return null
+  const guide = SIZE_GUIDE[section] || SIZE_GUIDE.objects
+
+  return (
+    <div
+      className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-black/70"
+      onClick={onClose}
+    >
+      <div
+        className={`w-full max-w-md mx-4 mb-0 sm:mb-0 rounded-t-2xl sm:rounded-2xl p-6 shadow-2xl ${isLight ? 'bg-paper text-ink' : 'bg-gray-900 text-cream'}`}
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-5">
+          <h2 className={`text-base font-semibold ${isLight ? 'text-ink' : 'text-cream'}`}>{guide.title}</h2>
+          <button onClick={onClose} className={`text-xl leading-none transition-opacity hover:opacity-60 ${isLight ? 'text-ink-muted' : 'text-cream/50'}`}>×</button>
+        </div>
+
+        <table className="w-full text-sm">
+          <thead>
+            <tr className={`text-xs uppercase tracking-wider ${isLight ? 'text-ink-muted' : 'text-cream/40'}`}>
+              {guide.cols.map(c => (
+                <th key={c} className="text-left pb-2 font-medium pr-4">{c}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className={`divide-y ${isLight ? 'divide-paper-border' : 'divide-white/10'}`}>
+            {guide.rows.map(row => (
+              <tr key={row[0]}>
+                {row.map((cell, i) => (
+                  <td key={i} className={`py-2 pr-4 ${i === 0 ? 'font-semibold' : ''} ${isLight ? 'text-ink' : 'text-cream/80'}`}>
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {guide.note && (
+          <p className={`mt-4 text-xs leading-relaxed ${isLight ? 'text-ink-muted' : 'text-cream/40'}`}>{guide.note}</p>
+        )}
+      </div>
+    </div>
+  )
+}
+
 // ── Main Component ────────────────────────────────────────────────────────────
 
 export default function ProductPage() {
@@ -141,9 +236,10 @@ export default function ProductPage() {
   const [showStickyBar, setShowStickyBar] = useState(false)
   const [viewerCount,   setViewerCount]   = useState(null)
   const [copied,        setCopied]        = useState(false)
-  const [lightboxOpen,  setLightboxOpen]  = useState(false)
-  const [lightboxSrc,   setLightboxSrc]   = useState(null)
+  const [lightboxOpen,   setLightboxOpen]   = useState(false)
+  const [lightboxSrc,    setLightboxSrc]    = useState(null)
   const [recentlyViewed, setRecentlyViewed] = useState([])
+  const [sizeGuideOpen,  setSizeGuideOpen]  = useState(false)
 
   // Viewer count — random on mount, drifts slightly every 30s for "live" feel
   useEffect(() => {
@@ -503,9 +599,15 @@ export default function ProductPage() {
           {/* Size grid */}
           {product.sizes && (
             <div>
-              <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', t.selectorLabel)}>
-                Size
-              </p>
+              <div className="flex items-center justify-between mb-3">
+                <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Size</p>
+                <button
+                  onClick={() => setSizeGuideOpen(true)}
+                  className={cn('text-xs underline underline-offset-2 transition-opacity hover:opacity-60', isLight ? 'text-ink-muted' : 'text-text-muted')}
+                >
+                  Size guide
+                </button>
+              </div>
               <div className="grid grid-cols-4 gap-2">
                 {product.sizes.map(s => {
                   const available = !availableSizesForColor || availableSizesForColor.has(s.id)
@@ -575,6 +677,7 @@ export default function ProductPage() {
               <>Add to Cart · {formatPrice(totalPrice)}</>
             )}
           </button>
+          <UrgencyBadge text={product.urgency} isLight={isLight} />
         </div>
 
         {/* ── Share ─────────────────────────────────────────────────────── */}
@@ -812,11 +915,19 @@ export default function ProductPage() {
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Size</p>
-                      {sizeObj && (
-                        <p className={cn('text-xs', t.selectorSub)}>
-                          {sizeObj.label} · {formatPrice(sizeObj.price)}
-                        </p>
-                      )}
+                      <div className="flex items-center gap-3">
+                        {sizeObj && (
+                          <p className={cn('text-xs', t.selectorSub)}>
+                            {sizeObj.label} · {formatPrice(sizeObj.price)}
+                          </p>
+                        )}
+                        <button
+                          onClick={() => setSizeGuideOpen(true)}
+                          className={cn('text-xs underline underline-offset-2 transition-opacity hover:opacity-60', isLight ? 'text-ink-muted' : 'text-text-muted')}
+                        >
+                          Size guide
+                        </button>
+                      </div>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {product.sizes.map(s => {
@@ -915,6 +1026,7 @@ export default function ProductPage() {
                   <>Add to Cart · {formatPrice(totalPrice)}</>
                 )}
               </button>
+              <UrgencyBadge text={product.urgency} isLight={isLight} />
 
               {/* Share */}
               <ShareRow title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
@@ -991,6 +1103,14 @@ export default function ProductPage() {
           </div>
         </div>
       )}
+
+      {/* ── Size Guide Modal ─────────────────────────────────────────────────── */}
+      <SizeGuideModal
+        open={sizeGuideOpen}
+        onClose={() => setSizeGuideOpen(false)}
+        section={product.section}
+        isLight={isLight}
+      />
 
       {/* ── Lightbox ─────────────────────────────────────────────────────────── */}
       {lightboxOpen && lightboxSrc && (

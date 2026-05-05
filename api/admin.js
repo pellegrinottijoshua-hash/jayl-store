@@ -438,6 +438,23 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, path: publicPath })
     }
 
+    // ── save-social-links ─────────────────────────────────────────────────────
+    if (action === 'save-social-links') {
+      const { links } = data
+      if (!links || typeof links !== 'object') return res.status(400).json({ error: 'links object required' })
+      const safe = {
+        instagram:  String(links.instagram  || '').trim(),
+        tiktok:     String(links.tiktok     || '').trim(),
+        pinterest:  String(links.pinterest  || '').trim(),
+      }
+      const SOCIAL_PATH = 'src/data/social-links.js'
+      const content = `// Social channel links — edit via Admin → Settings → Social Links\n// Saved from the admin panel; takes effect after Vercel deploy (~2 min).\nexport const SOCIAL_LINKS = ${JSON.stringify(safe, null, 2)}\n`
+      let sha = null
+      try { const f = await ghGet(SOCIAL_PATH, githubToken); sha = f.sha } catch {}
+      await ghPut(SOCIAL_PATH, content, sha, 'admin: update social links', githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
     return res.status(400).json({ error: `Unknown action: ${action}` })
 
   } catch (err) {
