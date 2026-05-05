@@ -24,7 +24,7 @@ export const generatePrompts = {
     {
       "id": "hero-poster",
       "name": "Hero Poster",
-      "prompt": "Cinematic hero: {PRODUCT_TYPE} '{PRODUCT_NAME}' floating in dark void, dramatic atmospheric lighting, smoke particles, editorial magazine cover, ultra-detailed"
+      "prompt": "Extreme close-up macro shot of circular embroidered-style \nchest logo on black cotton fabric, [POKEMON_NAME] wearing \n[GLASSES_STYLE] sunglasses, fabric texture visible, \nrazor sharp on logo center, edges slightly soft, \ndramatic side lighting creating depth on fabric weave,\nproduct photography, no background distractions"
     }
   ],
   "video": [
