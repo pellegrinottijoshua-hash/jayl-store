@@ -47,7 +47,7 @@ export const generatePrompts = {
       "id": "hero-poster",
       "name": "Hero Poster",
       "destination": "site",
-      "prompt": "Extreme close-up macro shot of circular embroidered-style \nchest logo on black cotton fabric, [POKEMON_NAME] wearing \n[GLASSES_STYLE] sunglasses, fabric texture visible, \nrazor sharp on logo center, edges slightly soft, \ndramatic side lighting creating depth on fabric weave,\nproduct photography, no background distractions"
+      "prompt": "Extreme close-up macro shot of circular embroidered-style \nchest logo on black cotton fabric, POKEMON wearing \n sunglasses, fabric texture visible, \nrazor sharp on logo center, edges slightly soft, \ndramatic side lighting creating depth on fabric weave,\nproduct photography, no background distractions"
     }
   ],
   "video": [
