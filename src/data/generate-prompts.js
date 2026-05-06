@@ -17,7 +17,7 @@ export const generatePrompts = {
       "id": "kontext-flatlay",
       "name": "Kontext — Flat Lay",
       "destination": "instagram",
-      "prompt": "Keep the exact t-shirt design and color unchanged. Show the same t-shirt laid flat on rough urban concrete from directly above, natural daylight, slight fabric wrinkles, iPhone editorial flatlay style, no extra objects"
+      "prompt": "Keep the exact t-shirt design, print, and colors \npixel-perfect unchanged. Overhead flatlay, \ncamera pointing straight down at 90 degrees, \nt-shirt laid flat on rough weathered urban concrete, \nthe circular chest logo positioned at exact \nupper-left third of frame, always fully visible \nand in sharp focus, logo minimum 30% of frame width. \nNatural daylight only, subtle wrinkles in fabric, \nslight concrete texture visible around garment, \niPhone 15 Pro editorial style, no props, \nno hands, no extra objects, tight crop \nshowing collar to mid-chest area only."
     },
     {
       "id": "lifestyle-wall",
