@@ -41,7 +41,7 @@ export const generatePrompts = {
       "id": "dark-studio",
       "name": "Dark Studio",
       "destination": "instagram",
-      "prompt": "Dark cinematic studio portrait, person, wearing  tee with pokemon  \nchest logo, the person embodies the pokemon physical characteristics, mood and wears the same sunglasses in a similar pose.\n\n single dramatic key light from upper left, \ndeep shadows, high contrast, slight color grade warm shadows \ncool highlights, medium format aesthetic Hasselblad feel,\nserious cool expression, text overlay bottom-left in elegant \nserif: \"COOL POKÉMON / JAYL\" — fashion campaign quality\n\nno pokemon/person mixed traits"
+      "prompt": "Keep the exact t-shirt design, print, and colors \npixel-perfect unchanged. Dark cinematic studio \nportrait. A real human person wearing this black tee \nwith circular Pokémon chest logo on left chest. \nThe person's appearance, palette and attitude \nmirror the Pokémon in the logo translated into \nhuman form — same energy, same color palette, \npurely human. They wear sunglasses matching \nthe Pokémon's exactly in style and tint. \nSingle dramatic key light from upper-left, \ndeep shadows filling right side of face, \nhigh contrast, warm shadows cool highlights \ncolor grade, medium format Hasselblad aesthetic, \nserious cool expression, slight upward chin tilt, \nchest logo always visible and lit. \nNO text overlay, NO animal features, \nNO cartoon elements, purely human subject. \nNO mixed anatomy."
     },
     {
       "id": "hero-poster",
