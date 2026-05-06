@@ -504,6 +504,7 @@ export default async function handler(req, res) {
         tiktok:         String(persona.tiktok || ''),
         youtube:        String(persona.youtube || ''),
         referenceImages: Array.isArray(persona.referenceImages) ? persona.referenceImages : [],
+        prompts: (persona.prompts && typeof persona.prompts === 'object') ? persona.prompts : (personas[idx]?.prompts || { mockup: [], video: [] }),
         createdAt:      persona.createdAt || new Date().toISOString(),
         updatedAt:      new Date().toISOString(),
       }
@@ -520,6 +521,19 @@ export default async function handler(req, res) {
       const { personas, sha } = await readPersonas(githubToken)
       const filtered = personas.filter(p => p.id !== personaId)
       await writePersonas(filtered, sha, `admin: delete persona ${personaId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── personas: save prompts ────────────────────────────────────────────────
+    if (action === 'save-persona-prompts') {
+      const { personaId, prompts } = data
+      if (!personaId) return res.status(400).json({ error: 'personaId required' })
+      if (!prompts || typeof prompts !== 'object') return res.status(400).json({ error: 'prompts object required' })
+      const { personas, sha } = await readPersonas(githubToken)
+      const idx = personas.findIndex(p => p.id === personaId)
+      if (idx === -1) return res.status(404).json({ error: 'Persona not found' })
+      personas[idx] = { ...personas[idx], prompts, updatedAt: new Date().toISOString() }
+      await writePersonas(personas, sha, `admin: update prompts for persona ${personaId}`, githubToken)
       return res.status(200).json({ ok: true })
     }
 
