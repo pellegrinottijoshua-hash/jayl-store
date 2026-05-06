@@ -11,7 +11,7 @@ export const generatePrompts = {
       "id": "kontext-studio",
       "name": "Kontext — Studio Editorial",
       "destination": "site",
-      "prompt": "Keep the exact design and color unchanged. Show the same object worn by a model in a clean minimal studio, dramatic side lighting, white cyclorama background, fashion campaign quality, sharp on garment"
+      "prompt": "Keep the exact  design, print, and colors \npixel-perfect unchanged. A young model, \nmid-20s, neutral confident expression, looking \ndirectly at camera, stands facing forward in \nclean minimal studio. White cyclorama background, \nsingle dramatic side key light from left, deep \nshadow on right side, sharp focus on chest logo, \nfull torso visible from hips to top of head, \narms relaxed at sides. Fashion campaign quality, \nno cropping of face, no text, Hasselblad medium \nformat aesthetic."
     },
     {
       "id": "kontext-flatlay",
