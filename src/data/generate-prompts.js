@@ -23,7 +23,7 @@ export const generatePrompts = {
       "id": "lifestyle-wall",
       "name": "Lifestyle Wall",
       "destination": "instagram",
-      "prompt": "Photorealistic iPhone close-up flatlay of a black cotton tee \nlaid on rough urban concrete, tight crop on the left chest \ncircular logo patch, the logo shows a POKEMON wearing \n sunglasses in a cool illustrated style, \nnatural daylight shadows, slight fabric wrinkles and grain, \nhandheld micro-tilt, mild sensor grain, no extra text, \nno brands, no AI artifacts, shot on iPhone 15 Pro"
+      "prompt": "."
     },
     {
       "id": "flat-lay",
