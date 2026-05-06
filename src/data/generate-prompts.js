@@ -5,7 +5,7 @@ export const generatePrompts = {
       "id": "kontext-street",
       "name": "Kontext — Street Lifestyle",
       "destination": "instagram",
-      "prompt": "Keep the exact t-shirt design and color unchanged. Show the same t-shirt worn by a confident young person walking through a sunlit Tokyo side street, golden hour, shallow depth of field, Fujifilm grain, fashion editorial quality"
+      "prompt": "Keep the exact design and color unchanged. Show the same object worn by a confident young person walking through a sunlit Tokyo side street, golden hour, shallow depth of field, Fujifilm grain, fashion editorial quality"
     },
     {
       "id": "kontext-studio",
