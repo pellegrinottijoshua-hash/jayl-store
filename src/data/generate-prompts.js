@@ -23,7 +23,7 @@ export const generatePrompts = {
       "id": "lifestyle-wall",
       "name": "Lifestyle Wall",
       "destination": "instagram",
-      "prompt": "."
+      "prompt": "Keep the exact t-shirt design, print, and colors \npixel-perfect unchanged. Vertical 9:16 format. \nClose-up of chest logo from directly in front, \nslightly tilted handheld camera, model moving \nslightly creating natural motion blur on background, \nsharp on logo, urban street environment, \ngolden hour, Fujifilm grain, \nInstagram Reels aesthetic, \nno text, chest logo dominates upper third of frame."
     },
     {
       "id": "flat-lay",
