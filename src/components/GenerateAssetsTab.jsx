@@ -26,13 +26,13 @@ export const IMAGE_MODELS = [
   { id: 'fal-ai/flux/schnell',              label: 'Flux Schnell',   cost: '$0.003/img', badge: '⚡ Free',       i2iMode: 'redux' },
   { id: 'fal-ai/flux-pro/v1.1',             label: 'Flux Pro 1.1',   cost: '$0.04/img',                          i2iMode: 'redux' },
   { id: 'fal-ai/ideogram/v3',               label: 'Ideogram V3',    cost: '$0.08/img',  badge: '✏ Best text',  i2iMode: 'remix' },
-  { id: 'fal-ai/nano-banana-pro',           label: 'Nano Banana Pro',cost: '$0.12/img',                          noI2I: true      },
+  { id: 'fal-ai/nano-banana-pro',           label: 'Nano Banana Pro',cost: '$0.12/img',  badge: '🍌 img2img',  i2iMode: 'edit'  },
   { id: 'fal-ai/nano-banana-2',             label: 'Nano Banana 2',  cost: '$0.08/img',                          noI2I: true      },
   { id: 'fal-ai/recraft-v3',                label: 'Recraft V3',     cost: '$0.04/img',  badge: '🎨 Design',    noI2I: true      },
 ]
 
 // Models that cannot use a reference image (text-to-image only)
-const T2I_ONLY_IDS = new Set(['fal-ai/nano-banana-2', 'fal-ai/nano-banana-pro', 'fal-ai/recraft-v3'])
+const T2I_ONLY_IDS = new Set(['fal-ai/nano-banana-2', 'fal-ai/recraft-v3'])
 
 export const VIDEO_MODELS = [
   { id: 'fal-ai/ltx-video',                                 label: 'LTX Video',        secRate: 0.002, badge: '⚡ Free-tier' },

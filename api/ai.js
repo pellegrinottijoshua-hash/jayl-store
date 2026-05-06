@@ -107,7 +107,76 @@ Return ONLY the JSON object, no markdown, no extra text.`
 
 // ── generate-mockup ───────────────────────────────────────────────────────────
 
+// ── OpenAI direct image edit ──────────────────────────────────────────────────
+// Bypasses fal.ai entirely. Fetches reference image as bytes → multipart POST
+// to OpenAI's /v1/images/edits. Returns base64 data URL (no external CDN needed).
+
+const GPT_OPENAI_SIZE = {
+  square_hd:      '1024x1024',
+  square:         '1024x1024',
+  landscape_16_9: '1536x1024',
+  landscape_4_3:  '1536x1024',
+  portrait_16_9:  '1024x1536',
+  portrait_4_3:   '1024x1536',
+}
+
+async function callOpenAIImageEdit({ prompt, imageUrl, imageSize, openAIKey }) {
+  const size = GPT_OPENAI_SIZE[imageSize] || '1024x1024'
+
+  // Build multipart form
+  const form = new FormData()
+  form.append('model', 'gpt-image-1')
+  form.append('prompt', prompt)
+  form.append('n', '1')
+  form.append('size', size)
+  form.append('quality', 'auto')
+
+  if (imageUrl && !imageUrl.includes('localhost')) {
+    // Fetch reference image bytes from the public URL (Gelato CDN, GitHub, Vercel, etc.)
+    const imgRes = await fetch(imageUrl, { signal: AbortSignal.timeout(20_000) })
+    if (!imgRes.ok) throw new Error(`Cannot fetch reference image (HTTP ${imgRes.status})`)
+    const imgBuffer  = await imgRes.arrayBuffer()
+    const mimeType   = imgRes.headers.get('content-type') || 'image/png'
+    const ext        = mimeType.includes('jpeg') || mimeType.includes('jpg') ? 'jpg' : 'png'
+    // OpenAI requires PNG for edit endpoint — convert JPEG label to png
+    form.append('image[]', new Blob([imgBuffer], { type: 'image/png' }), `mockup.${ext}`)
+  }
+
+  const res = await fetch('https://api.openai.com/v1/images/edits', {
+    method:  'POST',
+    headers: { Authorization: `Bearer ${openAIKey}` },
+    body:    form,
+    signal:  AbortSignal.timeout(120_000),
+  })
+
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(`OpenAI error ${res.status}: ${data.error?.message || JSON.stringify(data)}`)
+
+  const b64 = data.data?.[0]?.b64_json
+  if (!b64) throw new Error('No image in OpenAI response')
+
+  // Return as data URL — browser can display it; save flow handles base64 decoding
+  return `data:image/png;base64,${b64}`
+}
+
+async function callOpenAIImageT2I({ prompt, imageSize, openAIKey }) {
+  const size = GPT_OPENAI_SIZE[imageSize] || '1024x1024'
+  const res = await fetch('https://api.openai.com/v1/images/generations', {
+    method:  'POST',
+    headers: { Authorization: `Bearer ${openAIKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'gpt-image-1', prompt, n: 1, size, quality: 'auto' }),
+    signal: AbortSignal.timeout(120_000),
+  })
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(`OpenAI error ${res.status}: ${data.error?.message || JSON.stringify(data)}`)
+  const b64 = data.data?.[0]?.b64_json
+  if (!b64) throw new Error('No image in OpenAI response')
+  return `data:image/png;base64,${b64}`
+}
+
 const IMAGE_MODELS = new Set([
+  // OpenAI direct (no fal.ai)
+  'openai/gpt-image-1',
   // Flux family
   'fal-ai/flux/schnell',
   'fal-ai/flux-pro/v1.1',
@@ -135,6 +204,8 @@ const T2I_TO_I2I_IMG = {
   'fal-ai/ideogram/v3':               'fal-ai/ideogram/v3/remix',
   // GPT Image 1: text-to-image → edit-image (true img2img via image_urls array)
   'fal-ai/gpt-image-1/text-to-image': 'fal-ai/gpt-image-1/edit-image',
+  // Nano Banana Pro: t2i base → /edit endpoint (image_urls array, true img2img)
+  'fal-ai/nano-banana-pro':           'fal-ai/nano-banana-pro/edit',
 }
 
 const REDUX_MODELS = new Set([
@@ -156,7 +227,7 @@ const GPT_IMAGE_MODELS = new Set([
 // Strictly text-to-image — no img2img endpoint exists for these
 const T2I_ONLY = new Set([
   'fal-ai/nano-banana-2',
-  'fal-ai/nano-banana-pro',
+  // nano-banana-pro uses /edit endpoint when image provided — NOT in this set
   'fal-ai/recraft-v3',
 ])
 
@@ -214,7 +285,18 @@ function buildMockupBody(effectiveModelId, { prompt, imageSize, falImageUrl }) {
     return { prompt, ...(falImageUrl ? { image_url: falImageUrl } : {}), aspect_ratio: aspect, num_images: 1, safety_tolerance: '4', guidance_scale: 3.5 }
   }
 
-  // Nano Banana family: t2i only, uses aspect_ratio + safety_tolerance
+  // Nano Banana Pro /edit — true img2img via image_urls array
+  if (effectiveModelId === 'fal-ai/nano-banana-pro/edit') {
+    return {
+      prompt,
+      image_urls:      falImageUrl ? [falImageUrl] : [],
+      aspect_ratio:    aspect,
+      num_images:      1,
+      safety_tolerance: '4',
+    }
+  }
+
+  // Nano Banana family (t2i): aspect_ratio + safety_tolerance, no image fields
   if (NANO_MODELS.has(effectiveModelId)) {
     return { prompt, aspect_ratio: aspect, num_images: 1, safety_tolerance: '4' }
   }
