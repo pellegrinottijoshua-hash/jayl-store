@@ -5,7 +5,7 @@ export const generatePrompts = {
       "id": "kontext-street",
       "name": "Kontext — Street Lifestyle",
       "destination": "instagram",
-      "prompt": "Keep the exact design and color unchanged. Show the same object worn by a confident young person walking through a sunlit Tokyo side street, golden hour, shallow depth of field, Fujifilm grain, fashion editorial quality"
+      "prompt": "Keep the exact design, print, and colors \npixel-perfect unchanged. A young person (male or female) wearing \nthis object walks through a famous city street, motion energy, \ngenuine emotion [ROTATE: quiet confidence / \nplayful smirk / calm focus / effortless cool], \n28mm lens slight wide angle, golden hour \nback-rim lighting, bokeh background, \nFujifilm Superia 400 grain, fashion editorial, \nchest logo clearly visible, 4:5 vertical format."
     },
     {
       "id": "kontext-studio",
