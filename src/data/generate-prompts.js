@@ -29,7 +29,7 @@ export const generatePrompts = {
       "id": "flat-lay",
       "name": "Flat Lay",
       "destination": "site",
-      "prompt": "Editorial fashion portrait of a person, wearing the object with a circular \nchest logo of a pokemon in cool illustrated style.\nThe person physically embodies the POKEMON characteristics and character, physical traits and mood: [PHYSICAL_TRAITS].\nThey wear MATCHING sunglasses identical to the \nPokemon in the logo. Cool confident expression, slightly \nlooking away from camera. Shot from slightly below eye level,\n85mm f/1.8, shallow depth of field, urban background softly \nblurred, golden hour rim lighting, Fujifilm Superia grain,\nfashion editorial quality, no AI artifacts\n\nno mixed traits pokemon/person"
+      "prompt": "Keep the exact t-shirt design, print, and colors \npixel-perfect unchanged. Editorial fashion portrait. \nA real human person wearing this black tee with \na circular Pokémon chest logo. The person's \nphysical appearance, body type, hair color, skin tone, \nfacial energy and attitude are directly inspired by \nthe Pokémon character in the logo — same color palette, \nsame personality, same energy translated into human form. \nThe person wears sunglasses that match exactly \nthe style and color of those worn by the Pokémon \nin the logo. Three-quarter body shot, slightly \nbelow eye level, 85mm f/1.8, golden hour \nrim light from behind, shallow depth of field, \nurban background softly blurred, \nFujifilm Superia grain, chest logo always fully visible. \nNO animal features on human, NO cartoon elements, \nNO mixing of human and Pokémon anatomy, \npurely human model, fashion editorial quality."
     },
     {
       "id": "urban-model",
