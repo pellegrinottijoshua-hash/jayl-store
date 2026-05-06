@@ -11,7 +11,7 @@ export const generatePrompts = {
       "id": "kontext-studio",
       "name": "Kontext — Studio Editorial",
       "destination": "site",
-      "prompt": "Keep the exact t-shirt design and color unchanged. Show the same t-shirt worn by a model in a clean minimal studio, dramatic side lighting, white cyclorama background, fashion campaign quality, sharp on garment"
+      "prompt": "Keep the exact design and color unchanged. Show the same object worn by a model in a clean minimal studio, dramatic side lighting, white cyclorama background, fashion campaign quality, sharp on garment"
     },
     {
       "id": "kontext-flatlay",
