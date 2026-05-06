@@ -120,12 +120,12 @@ const GPT_OPENAI_SIZE = {
   portrait_4_3:   '1024x1536',
 }
 
-async function callOpenAIImageEdit({ prompt, imageUrl, imageSize, openAIKey }) {
+async function callOpenAIImageEdit({ prompt, imageUrl, imageSize, openAIKey, model = 'gpt-image-1' }) {
   const size = GPT_OPENAI_SIZE[imageSize] || '1024x1024'
 
   // Build multipart form
   const form = new FormData()
-  form.append('model', 'gpt-image-1')
+  form.append('model', model || 'gpt-image-1')
   form.append('prompt', prompt)
   form.append('n', '1')
   form.append('size', size)
@@ -159,12 +159,12 @@ async function callOpenAIImageEdit({ prompt, imageUrl, imageSize, openAIKey }) {
   return `data:image/png;base64,${b64}`
 }
 
-async function callOpenAIImageT2I({ prompt, imageSize, openAIKey }) {
+async function callOpenAIImageT2I({ prompt, imageSize, openAIKey, model = 'gpt-image-1' }) {
   const size = GPT_OPENAI_SIZE[imageSize] || '1024x1024'
   const res = await fetch('https://api.openai.com/v1/images/generations', {
     method:  'POST',
     headers: { Authorization: `Bearer ${openAIKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: 'gpt-image-1', prompt, n: 1, size, quality: 'auto' }),
+    body: JSON.stringify({ model, prompt, n: 1, size, quality: 'auto' }),
     signal: AbortSignal.timeout(120_000),
   })
   const data = await res.json().catch(() => ({}))
@@ -177,6 +177,7 @@ async function callOpenAIImageT2I({ prompt, imageSize, openAIKey }) {
 const IMAGE_MODELS = new Set([
   // OpenAI direct (no fal.ai)
   'openai/gpt-image-1',
+  'openai/gpt-image-2/edit',
   // Flux family
   'fal-ai/flux/schnell',
   'fal-ai/flux-pro/v1.1',
@@ -188,6 +189,7 @@ const IMAGE_MODELS = new Set([
   'fal-ai/ideogram/v3',
   // Nano Banana
   'fal-ai/nano-banana-2',
+  'fal-ai/nano-banana-2/edit',
   'fal-ai/nano-banana-pro',
   // Recraft
   'fal-ai/recraft-v3',
@@ -206,6 +208,7 @@ const T2I_TO_I2I_IMG = {
   'fal-ai/gpt-image-1/text-to-image': 'fal-ai/gpt-image-1/edit-image',
   // Nano Banana Pro: t2i base → /edit endpoint (image_urls array, true img2img)
   'fal-ai/nano-banana-pro':           'fal-ai/nano-banana-pro/edit',
+  'fal-ai/nano-banana-2':             'fal-ai/nano-banana-2/edit',
 }
 
 const REDUX_MODELS = new Set([
@@ -226,8 +229,6 @@ const GPT_IMAGE_MODELS = new Set([
 
 // Strictly text-to-image — no img2img endpoint exists for these
 const T2I_ONLY = new Set([
-  'fal-ai/nano-banana-2',
-  // nano-banana-pro uses /edit endpoint when image provided — NOT in this set
   'fal-ai/recraft-v3',
 ])
 
@@ -296,6 +297,17 @@ function buildMockupBody(effectiveModelId, { prompt, imageSize, falImageUrl }) {
     }
   }
 
+  // Nano Banana 2 /edit — true img2img via image_urls array
+  if (effectiveModelId === 'fal-ai/nano-banana-2/edit') {
+    return {
+      prompt,
+      image_urls:       falImageUrl ? [falImageUrl] : [],
+      aspect_ratio:     aspect,
+      num_images:       1,
+      safety_tolerance: '4',
+    }
+  }
+
   // Nano Banana family (t2i): aspect_ratio + safety_tolerance, no image fields
   if (NANO_MODELS.has(effectiveModelId)) {
     return { prompt, aspect_ratio: aspect, num_images: 1, safety_tolerance: '4' }
@@ -319,6 +331,22 @@ async function handleMockup(req, res) {
   const { modelId, prompt, imageSize, imageUrl } = req.body || {}
   if (!prompt?.trim())            return res.status(400).json({ error: 'prompt is required' })
   if (!IMAGE_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown model: ${modelId}` })
+
+  // ── Direct OpenAI path (bypass fal.ai entirely) ────────────────────────────
+  if (modelId === 'openai/gpt-image-1' || modelId === 'openai/gpt-image-2/edit') {
+    const openAIKey = process.env.OPENAI_API_KEY
+    if (!openAIKey) return res.status(500).json({ error: 'OPENAI_API_KEY not configured' })
+    const openAIModel = modelId === 'openai/gpt-image-2/edit' ? 'gpt-image-2' : 'gpt-image-1'
+    try {
+      const dataUrl = imageUrl
+        ? await callOpenAIImageEdit({ prompt: prompt.trim(), imageUrl, imageSize, openAIKey, model: openAIModel })
+        : await callOpenAIImageT2I({ prompt: prompt.trim(), imageSize, openAIKey, model: openAIModel })
+      return res.status(200).json({ imageUrl: dataUrl })
+    } catch (err) {
+      console.error('[openai-direct]', err.message)
+      return res.status(500).json({ error: err.message })
+    }
+  }
 
   const canI2I = !T2I_ONLY.has(modelId)
   const effectiveModelId = (imageUrl && canI2I && T2I_TO_I2I_IMG[modelId]) ? T2I_TO_I2I_IMG[modelId] : modelId
@@ -358,16 +386,10 @@ async function handleMockup(req, res) {
 // ── generate-video ────────────────────────────────────────────────────────────
 
 const VIDEO_MODELS = new Set([
-  'fal-ai/ltx-video',
-  'fal-ai/wan/v2.2/t2v',
-  'fal-ai/bytedance/seedance/v1.5/pro/text-to-video',
-  'fal-ai/kling-video/v1.6/standard/text-to-video',
-  'fal-ai/kling-video/v3/pro/text-to-video',
   'fal-ai/ltx-video/image-to-video',
-  'fal-ai/wan/v2.2/i2v',
-  'fal-ai/bytedance/seedance/v1.5/pro/image-to-video',
-  'fal-ai/kling-video/v1.6/standard/image-to-video',
+  'fal-ai/bytedance/seedance-2.0/image-to-video',
   'fal-ai/kling-video/v3/pro/image-to-video',
+  'fal-ai/wan/v2.7/reference-to-video',
 ])
 
 async function handleVideo(req, res) {

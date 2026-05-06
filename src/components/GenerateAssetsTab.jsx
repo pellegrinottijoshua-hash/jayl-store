@@ -20,36 +20,23 @@ const btnGhost   = 'border border-gray-700 hover:border-gray-500 text-gray-400 h
 // ── Model lists ───────────────────────────────────────────────────────────────
 
 export const IMAGE_MODELS = [
-  { id: 'fal-ai/gpt-image-1/text-to-image', label: 'GPT Image 1',    cost: '$0.04/img',  badge: '★ Best img2img', i2iMode: 'edit'  },
-  { id: 'fal-ai/flux-pro/kontext',          label: 'Kontext Pro',    cost: '$0.08/img',  badge: '✦ Faithful',    i2iMode: 'edit'  },
-  { id: 'fal-ai/flux-pro/kontext/max',      label: 'Kontext Max',    cost: '$0.16/img',  badge: '✦ HQ',          i2iMode: 'edit'  },
-  { id: 'fal-ai/flux/schnell',              label: 'Flux Schnell',   cost: '$0.003/img', badge: '⚡ Free',       i2iMode: 'redux' },
-  { id: 'fal-ai/flux-pro/v1.1',             label: 'Flux Pro 1.1',   cost: '$0.04/img',                          i2iMode: 'redux' },
-  { id: 'fal-ai/ideogram/v3',               label: 'Ideogram V3',    cost: '$0.08/img',  badge: '✏ Best text',  i2iMode: 'remix' },
-  { id: 'fal-ai/nano-banana-pro',           label: 'Nano Banana Pro',cost: '$0.12/img',  badge: '🍌 img2img',  i2iMode: 'edit'  },
-  { id: 'fal-ai/nano-banana-2',             label: 'Nano Banana 2',  cost: '$0.08/img',                          noI2I: true      },
-  { id: 'fal-ai/recraft-v3',                label: 'Recraft V3',     cost: '$0.04/img',  badge: '🎨 Design',    noI2I: true      },
+  { id: 'fal-ai/nano-banana-pro',           label: 'Nano Banana Pro', cost: '$0.12/img', badge: '🍌 #1',   i2iMode: 'edit'  },
+  { id: 'fal-ai/nano-banana-2',             label: 'Nano Banana 2',   cost: '$0.08/img', badge: '🍌',       i2iMode: 'edit'  },
+  { id: 'openai/gpt-image-1',               label: 'GPT Image 1',     cost: '$0.04/img', badge: '★',        i2iMode: 'edit'  },
+  { id: 'openai/gpt-image-2/edit',          label: 'GPT Image 2',     cost: '$0.08/img', badge: '★ New',    i2iMode: 'edit'  },
+  { id: 'fal-ai/flux-pro/kontext',          label: 'Kontext Pro',     cost: '$0.08/img', badge: '✦',        i2iMode: 'edit'  },
+  { id: 'fal-ai/flux-pro/kontext/max',      label: 'Kontext Max',     cost: '$0.16/img', badge: '✦ HQ',     i2iMode: 'edit'  },
+  { id: 'fal-ai/ideogram/v3',               label: 'Ideogram V3',     cost: '$0.08/img', badge: '✏ Text',  i2iMode: 'remix' },
+  { id: 'fal-ai/flux/schnell',              label: 'Flux Schnell',    cost: '$0.003/img', badge: '⚡ Fast', i2iMode: 'redux' },
+  { id: 'fal-ai/flux-pro/v1.1',             label: 'Flux Pro 1.1',    cost: '$0.04/img',                    i2iMode: 'redux' },
 ]
-
-// Models that cannot use a reference image (text-to-image only)
-const T2I_ONLY_IDS = new Set(['fal-ai/nano-banana-2', 'fal-ai/recraft-v3'])
 
 export const VIDEO_MODELS = [
-  { id: 'fal-ai/ltx-video',                                 label: 'LTX Video',        secRate: 0.002, badge: '⚡ Free-tier' },
-  { id: 'fal-ai/wan/v2.2/t2v',                              label: 'Wan 2.2',          secRate: 0.05  },
-  { id: 'fal-ai/bytedance/seedance/v1.5/pro/text-to-video', label: 'Seedance 1.5 Pro', secRate: 0.052 },
-  { id: 'fal-ai/kling-video/v1.6/standard/text-to-video',   label: 'Kling 1.6 Std',   secRate: 0.084 },
-  { id: 'fal-ai/kling-video/v3/pro/text-to-video',          label: 'Kling 3.0 Pro',   secRate: 0.224 },
+  { id: 'fal-ai/ltx-video/image-to-video',                  label: 'LTX Video',      secRate: 0.002, badge: '⚡ Free-tier' },
+  { id: 'fal-ai/bytedance/seedance-2.0/image-to-video',     label: 'Seedance 2.0',   secRate: 0.07  },
+  { id: 'fal-ai/kling-video/v3/pro/image-to-video',         label: 'Kling 3.0 Pro',  secRate: 0.224 },
+  { id: 'fal-ai/wan/v2.7/reference-to-video',               label: 'Wan 2.7 Ref',    secRate: 0.06  },
 ]
-
-// Map text-to-video IDs → image-to-video IDs for fal.ai
-const T2V_TO_I2V = {
-  'fal-ai/ltx-video':                                 'fal-ai/ltx-video/image-to-video',
-  'fal-ai/wan/v2.2/t2v':                              'fal-ai/wan/v2.2/i2v',
-  'fal-ai/bytedance/seedance/v1.5/pro/text-to-video': 'fal-ai/bytedance/seedance/v1.5/pro/image-to-video',
-  'fal-ai/kling-video/v1.6/standard/text-to-video':   'fal-ai/kling-video/v1.6/standard/image-to-video',
-  'fal-ai/kling-video/v3/pro/text-to-video':          'fal-ai/kling-video/v3/pro/image-to-video',
-}
 
 const IMAGE_SIZES = [
   { id: 'square_hd',      label: '1:1',  desc: '1024×1024' },
@@ -101,9 +88,12 @@ function PromptCard({
   template, isVideo, promptText, onPromptChange,
   result, onGenerate, onSave, onSavePrompt, savingPrompt, savedPromptMsg,
   images, selectedImage, onSelectImage,
+  activeModel, activeSize, onModelChange, onSizeChange,
+  models, imageSizes,
 }) {
   const r    = result || {}
   const busy = r.status === 'generating' || r.status === 'submitting' || r.status === 'processing'
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
     <div className="bg-gray-900 border border-gray-800 p-4 space-y-3">
@@ -117,6 +107,83 @@ function PromptCard({
           </span>
         )}
       </div>
+
+      {/* Per-prompt settings toggle */}
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => setSettingsOpen(o => !o)}
+          className="text-gray-600 hover:text-gray-400 text-xs flex items-center gap-1 transition-colors"
+        >
+          ⚙ <span>{settingsOpen ? 'Hide settings' : 'Settings'}</span>
+          {(activeModel || activeSize) && <span className="text-indigo-500">●</span>}
+        </button>
+        {activeModel && (
+          <span className="text-indigo-400/60 text-xs truncate max-w-40">
+            {models.find(m => m.id === activeModel)?.label}
+          </span>
+        )}
+      </div>
+
+      {/* Per-prompt settings panel */}
+      {settingsOpen && (
+        <div className="bg-gray-950 border border-gray-700/50 p-3 space-y-2.5">
+          {/* Model */}
+          <div className="flex items-center gap-2">
+            <span className="text-gray-600 text-xs w-12 flex-shrink-0">Model</span>
+            <select
+              value={activeModel || ''}
+              onChange={e => onModelChange(e.target.value || null)}
+              className="bg-gray-800 border border-gray-700 text-white text-xs px-2 py-1 flex-1 focus:outline-none focus:border-indigo-500"
+            >
+              <option value="">— Global default —</option>
+              {models.map(m => (
+                <option key={m.id} value={m.id}>
+                  {m.badge ? `${m.badge} ` : ''}{m.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Size (image only) */}
+          {!isVideo && imageSizes && (
+            <div className="flex items-center gap-2">
+              <span className="text-gray-600 text-xs w-12 flex-shrink-0">Size</span>
+              <div className="flex gap-1 flex-wrap">
+                <button
+                  onClick={() => onSizeChange(null)}
+                  className={`px-2 py-0.5 text-xs border transition-colors ${
+                    !activeSize ? 'border-indigo-500 text-indigo-300 bg-indigo-900/30' : 'border-gray-700 text-gray-600 hover:border-gray-500'
+                  }`}
+                >
+                  default
+                </button>
+                {imageSizes.map(s => (
+                  <button
+                    key={s.id}
+                    onClick={() => onSizeChange(s.id)}
+                    title={s.desc}
+                    className={`px-2 py-0.5 text-xs border transition-colors ${
+                      activeSize === s.id
+                        ? 'border-indigo-500 text-indigo-300 bg-indigo-900/30'
+                        : 'border-gray-700 text-gray-500 hover:border-gray-500'
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+                {activeSize && (
+                  <span className="text-gray-600 text-xs self-center ml-1">
+                    {imageSizes.find(s => s.id === activeSize)?.desc}
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+          {/* Reference pin info */}
+          <p className="text-gray-700 text-xs">
+            💾 Select a reference image below, then <strong className="text-gray-500">Save prompt</strong> to pin it to this preset.
+          </p>
+        </div>
+      )}
 
       {/* Per-prompt image selector (compact horizontal strip) */}
       {images.length > 0 && (
@@ -277,6 +344,9 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   // Per-template image selection: { [templateId]: { url, name } }
   const [selectedImages, setSelectedImages] = useState({})
 
+  // Per-prompt overrides: { [templateId]: { modelId?, imageSize?, referenceUrl? } }
+  const [promptSettings, setPromptSettings] = useState({})
+
   const pollTimers = useRef({})
 
   // Merge sources: prefer fetched product images, fall back to Gelato preloads
@@ -320,11 +390,20 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const initPrompts = useCallback((p) => {
     const v = { name: productName, type: productType, color: primaryColor, collection }
     setRawPrompts(p)
-    const local = {}
+    const local    = {}
+    const settings = {}
     for (const t of [...(p.mockup || []), ...(p.video || [])]) {
       local[t.id] = subVars(t.prompt, v)
+      if (t.modelId || t.videoModelId || t.imageSize || t.referenceUrl) {
+        settings[t.id] = {
+          modelId:      t.modelId || t.videoModelId || null,
+          imageSize:    t.imageSize    || null,
+          referenceUrl: t.referenceUrl || null,
+        }
+      }
     }
     setLocalPrompts(local)
+    setPromptSettings(settings)
   }, [productName, productType, primaryColor, collection]) // eslint-disable-line
 
   useEffect(() => {
@@ -340,8 +419,12 @@ export default function GenerateAssetsTab({ productId, productName, productType,
 
   // ── Helper: get selected image for a template (defaults to first image) ────
 
-  const getSelectedImage = (templateId) =>
-    selectedImages[templateId] ?? allImages[0] ?? null
+  const getSelectedImage = (templateId) => {
+    if (selectedImages[templateId]) return selectedImages[templateId]
+    const savedRef = promptSettings[templateId]?.referenceUrl
+    if (savedRef) return { url: savedRef, name: 'Pinned reference', _isPinned: true }
+    return allImages[0] ?? null
+  }
 
   // ── Image generation (img-to-img) ─────────────────────────────────────────
 
@@ -354,14 +437,17 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
-    const imgObj  = getSelectedImage(templateId)
-    const imageUrl = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
+    const ps        = promptSettings[templateId] || {}
+    const modelToUse = ps.modelId  || imageModel
+    const sizeToUse  = ps.imageSize || imageSize
+    const imgObj     = getSelectedImage(templateId)
+    const imageUrl   = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
     patchResult(templateId, { status: 'generating', error: null, imageUrl: null, saved: false })
     try {
       const res = await fetch('/api/generate-mockup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelId: imageModel, prompt: buildPrompt(prompt), imageSize, imageUrl }),
+        body: JSON.stringify({ modelId: modelToUse, prompt: buildPrompt(prompt), imageSize: sizeToUse, imageUrl }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
@@ -376,17 +462,17 @@ export default function GenerateAssetsTab({ productId, productName, productType,
   const handleGenerateVideo = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
-    const imgObj  = getSelectedImage(templateId)
-    const imageUrl = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
-    // Always use image-to-video model variant when an image is available
-    const effectiveModelId = (imageUrl && T2V_TO_I2V[videoModel]) ? T2V_TO_I2V[videoModel] : videoModel
+    const ps           = promptSettings[templateId] || {}
+    const modelToUse   = ps.modelId || videoModel
+    const imgObj       = getSelectedImage(templateId)
+    const imageUrl     = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
 
     patchResult(templateId, { status: 'submitting', error: null, videoUrl: null, requestId: null, progress: 0, saved: false })
     try {
       const submitRes = await fetch('/api/generate-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'submit', modelId: effectiveModelId, prompt: buildPrompt(prompt), duration: videoDuration, imageUrl }),
+        body: JSON.stringify({ action: 'submit', modelId: modelToUse, prompt: buildPrompt(prompt), duration: videoDuration, imageUrl }),
       })
       const submitData = await submitRes.json()
       if (!submitRes.ok) throw new Error(submitData.error || 'Submit failed')
@@ -399,7 +485,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
           const sRes  = await fetch('/api/generate-video', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'status', modelId: effectiveModelId, requestId }),
+            body: JSON.stringify({ action: 'status', modelId: modelToUse, requestId }),
           })
           const sData = await sRes.json()
           const st    = sData.status
@@ -409,7 +495,7 @@ export default function GenerateAssetsTab({ productId, productName, productType,
             const rRes  = await fetch('/api/generate-video', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ action: 'result', modelId: effectiveModelId, requestId }),
+              body: JSON.stringify({ action: 'result', modelId: modelToUse, requestId }),
             })
             const rData = await rRes.json()
             if (!rRes.ok) throw new Error(rData.error)
@@ -471,17 +557,34 @@ export default function GenerateAssetsTab({ productId, productName, productType,
     setSavingPrompts(prev => ({ ...prev, [templateId]: true }))
     setSavedPromptMsgs(prev => ({ ...prev, [templateId]: '' }))
     try {
-      const category = isVideoPrompt ? 'video' : 'mockup'
+      const category   = isVideoPrompt ? 'video' : 'mockup'
+      const ps         = promptSettings[templateId] || {}
+      const selImg     = selectedImages[templateId] || null
       const updated = {
         ...rawPrompts,
-        [category]: (rawPrompts[category] || []).map(t =>
-          t.id === templateId ? { ...t, prompt: localPrompts[templateId] ?? t.prompt } : t
-        ),
+        [category]: (rawPrompts[category] || []).map(t => {
+          if (t.id !== templateId) return t
+          const extra = {}
+          if (ps.modelId)            extra[isVideoPrompt ? 'videoModelId' : 'modelId'] = ps.modelId
+          if (ps.imageSize && !isVideoPrompt) extra.imageSize = ps.imageSize
+          if (selImg?.url)           extra.referenceUrl = selImg.url
+          return { ...t, prompt: localPrompts[templateId] ?? t.prompt, ...extra }
+        }),
       }
       await api('save-prompts', { prompts: updated })
       setRawPrompts(updated)
+      // Sync promptSettings with what we just saved
+      setPromptSettings(prev => ({
+        ...prev,
+        [templateId]: {
+          ...(prev[templateId] || {}),
+          ...(ps.modelId ? { modelId: ps.modelId } : {}),
+          ...(ps.imageSize ? { imageSize: ps.imageSize } : {}),
+          ...(selImg?.url ? { referenceUrl: selImg.url } : {}),
+        },
+      }))
       setSavedPromptMsgs(prev => ({ ...prev, [templateId]: '✓ Saved' }))
-      setTimeout(() => setSavedPromptMsgs(prev => ({ ...prev, [templateId]: '' })), 2000)
+      setTimeout(() => setSavedPromptMsgs(prev => ({ ...prev, [templateId]: '' })), 2500)
     } catch (e) {
       setSavedPromptMsgs(prev => ({ ...prev, [templateId]: '⚠ Error' }))
     } finally {
@@ -654,41 +757,6 @@ export default function GenerateAssetsTab({ productId, productName, productType,
             </div>
           )}
 
-          {/* Mode indicator */}
-          {allImages.length > 0 && (
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-gray-500 text-xs w-16 flex-shrink-0">Mode</span>
-              {activeTab === 'mockup' && T2I_ONLY_IDS.has(imageModel) ? (
-                <>
-                  <span className="text-xs px-2 py-0.5 border border-yellow-800 text-yellow-500 bg-yellow-900/20">
-                    text-to-image only
-                  </span>
-                  <span className="text-yellow-700 text-xs">Reference image ignored — model doesn't support img2img</span>
-                </>
-              ) : activeTab === 'video' ? (
-                <>
-                  <span className="text-xs px-2 py-0.5 border border-indigo-700 text-indigo-300 bg-indigo-900/20">
-                    img-to-video
-                  </span>
-                  <span className="text-gray-600 text-xs">Select reference per prompt below</span>
-                </>
-              ) : (() => {
-                const model = IMAGE_MODELS.find(m => m.id === imageModel)
-                const modeLabels = {
-                  edit:  { badge: 'img2img — edit',  color: 'border-green-700 text-green-400 bg-green-900/20', hint: 'Preserves product faithfully — reference image used as direct visual input' },
-                  redux: { badge: 'img2img — style',  color: 'border-indigo-700 text-indigo-300 bg-indigo-900/20', hint: 'Style-conditioned — output resembles reference in style/color, not exact product' },
-                  remix: { badge: 'img2img — remix',  color: 'border-purple-700 text-purple-300 bg-purple-900/20', hint: 'Remix: reference influences composition and content' },
-                }
-                const info = modeLabels[model?.i2iMode] || modeLabels.redux
-                return (
-                  <>
-                    <span className={`text-xs px-2 py-0.5 border ${info.color}`}>{info.badge}</span>
-                    <span className="text-gray-600 text-xs">{info.hint}</span>
-                  </>
-                )
-              })()}
-            </div>
-          )}
         </div>}
 
         {/* No images warning — hidden on Publish tab */}
@@ -737,8 +805,14 @@ export default function GenerateAssetsTab({ productId, productName, productType,
                 savingPrompt={savingPrompts[t.id]}
                 savedPromptMsg={savedPromptMsgs[t.id]}
                 images={allImages}
-                selectedImage={selectedImages[t.id] ?? null}
+                selectedImage={getSelectedImage(t.id)}
                 onSelectImage={img => setSelectedImages(prev => ({ ...prev, [t.id]: img }))}
+                activeModel={promptSettings[t.id]?.modelId || null}
+                activeSize={promptSettings[t.id]?.imageSize || null}
+                onModelChange={val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), modelId: val } }))}
+                onSizeChange={val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), imageSize: val } }))}
+                models={activeTab === 'mockup' ? IMAGE_MODELS : VIDEO_MODELS}
+                imageSizes={IMAGE_SIZES}
               />
             ))}
           </div>
