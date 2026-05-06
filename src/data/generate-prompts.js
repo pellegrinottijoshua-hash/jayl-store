@@ -29,7 +29,7 @@ export const generatePrompts = {
       "id": "flat-lay",
       "name": "Flat Lay",
       "destination": "site",
-      "prompt": "Editorial fashion portrait of a [HUMAN_DESCRIPTION] person, \n[AGE] years old, wearing a black graphic tee with a circular \nchest logo of [POKEMON_NAME] in cool illustrated style.\nThe person physically embodies [POKEMON_NAME]: [PHYSICAL_TRAITS].\nThey wear [MATCHING_GLASSES] sunglasses identical to the \nPokemon in the logo. Cool confident expression, slightly \nlooking away from camera. Shot from slightly below eye level,\n85mm f/1.8, shallow depth of field, urban background softly \nblurred, golden hour rim lighting, Fujifilm Superia grain,\nfashion editorial quality, no AI artifacts"
+      "prompt": "Editorial fashion portrait of a person, wearing the object with a circular \nchest logo of a pokemon in cool illustrated style.\nThe person physically embodies the POKEMON characteristics and character, physical traits and mood: [PHYSICAL_TRAITS].\nThey wear MATCHING sunglasses identical to the \nPokemon in the logo. Cool confident expression, slightly \nlooking away from camera. Shot from slightly below eye level,\n85mm f/1.8, shallow depth of field, urban background softly \nblurred, golden hour rim lighting, Fujifilm Superia grain,\nfashion editorial quality, no AI artifacts\n\nno mixed traits pokemon/person"
     },
     {
       "id": "urban-model",
