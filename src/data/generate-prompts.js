@@ -47,7 +47,7 @@ export const generatePrompts = {
       "id": "hero-poster",
       "name": "Hero Poster",
       "destination": "site",
-      "prompt": "Primo piano macro estremo di un logo circolare stampato sul petto di un Pokémon in tessuto di cotone.\nLa trama del tessuto è visibile.\nIl centro del logo è nitidissimo, i bordi sono leggermente sfumati.\nL'illuminazione laterale crea profondità sulla trama del tessuto.\nFotografia di prodotto, senza elementi di disturbo sullo sfondo."
+      "prompt": "Keep the exact circular logo design, colors and \nillustration pixel-perfect unchanged. \nExtreme close-up macro shot of the circular \nPokémon logo printed on black cotton fabric. \nCamera positioned at slight angle, \nlogo centered in frame, fills 70% of image. \nRazor sharp focus on the center of the logo, \nedges of circle slightly soft. \nCotton fabric weave texture clearly visible \naround and beneath the print. \nSingle dramatic side light from left creating \ndepth and shadow in fabric texture. \nDeep black background, no distractions, \nno hands, no body visible. \nProduct photography quality, \nmedium format macro lens aesthetic."
     }
   ],
   "video": [
