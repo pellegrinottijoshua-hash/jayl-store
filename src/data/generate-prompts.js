@@ -35,7 +35,7 @@ export const generatePrompts = {
       "id": "urban-model",
       "name": "Urban Model",
       "destination": "instagram",
-      "prompt": "4-panel editorial collage on white background, same\ngraphic tee with a POKEMON circular chest logo worn \n4 different ways: top-left full body front, top-right \nclose-up chest logo detail, bottom-left side profile \nthree-quarter view, bottom-right back detail. \nConsistent soft studio lighting, fashion archive aesthetic,\nno text overlays, streetwear editorial quality"
+      "prompt": "Keep the exact t-shirt design, print, and colors \npixel-perfect unchanged. A single square image \ndivided into exactly 4 equal panels in a 2x2 grid, \nthin white dividing lines between panels, \nwhite background throughout. \nTOP-LEFT: full body front view, head to toe, \nmodel standing, arms at sides. \nTOP-RIGHT: extreme close-up of circular chest logo \nonly, fabric texture visible, logo fills 80% of panel. \nBOTTOM-LEFT: three-quarter side profile, \ntorso and face visible. \nBOTTOM-RIGHT: full back view of t-shirt, \nno logo visible. \nSame male model throughout all 4 panels, \nconsistent soft studio lighting, \nno text overlays, streetwear archive aesthetic, \nfashion lookbook quality."
     },
     {
       "id": "dark-studio",
