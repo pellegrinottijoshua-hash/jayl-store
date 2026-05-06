@@ -41,7 +41,7 @@ export const generatePrompts = {
       "id": "dark-studio",
       "name": "Dark Studio",
       "destination": "instagram",
-      "prompt": "Lifestyle street photography, [HUMAN_DESCRIPTION] wearing \nblack tee with [POKEMON_NAME] circular chest logo, walking \nthrough sunlit urban alley, motion blur on background, \nsharp on subject, golden hour side light, film grain \nKodak Portra 400, loose casual energy, candid not posed,\nvertical 4:5 format for Instagram, no brand text"
+      "prompt": "Lifestyle street photography, human wearing \n tee with POKEMON circular chest logo, walking \nthrough sunlit urban alley, motion blur on background, \nsharp on subject, golden hour side light, film grain \nKodak Portra 400, loose casual energy, candid not posed,\nvertical 4:5 format for Instagram, no brand text"
     },
     {
       "id": "hero-poster",
