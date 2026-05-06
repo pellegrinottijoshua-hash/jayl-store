@@ -47,7 +47,7 @@ export const generatePrompts = {
       "id": "hero-poster",
       "name": "Hero Poster",
       "destination": "site",
-      "prompt": "Extreme close-up macro shot of circular embroidered-style \nchest logo on black cotton fabric, POKEMON wearing \n sunglasses, fabric texture visible, \nrazor sharp on logo center, edges slightly soft, \ndramatic side lighting creating depth on fabric weave,\nproduct photography, no background distractions"
+      "prompt": "Primo piano macro estremo di un logo circolare stampato sul petto di un Pokémon in tessuto di cotone.\nLa trama del tessuto è visibile.\nIl centro del logo è nitidissimo, i bordi sono leggermente sfumati.\nL'illuminazione laterale crea profondità sulla trama del tessuto.\nFotografia di prodotto, senza elementi di disturbo sullo sfondo."
     }
   ],
   "video": [
