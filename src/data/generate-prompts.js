@@ -41,7 +41,7 @@ export const generatePrompts = {
       "id": "dark-studio",
       "name": "Dark Studio",
       "destination": "instagram",
-      "prompt": "Lifestyle street photography, human wearing \n tee with POKEMON circular chest logo, walking \nthrough sunlit urban alley, motion blur on background, \nsharp on subject, golden hour side light, film grain \nKodak Portra 400, loose casual energy, candid not posed,\nvertical 4:5 format for Instagram, no brand text"
+      "prompt": "Dark cinematic studio portrait, person, wearing  tee with pokemon  \nchest logo, the person embodies the pokemon physical characteristics, mood and wears the same sunglasses in a similar pose.\n\n single dramatic key light from upper left, \ndeep shadows, high contrast, slight color grade warm shadows \ncool highlights, medium format aesthetic Hasselblad feel,\nserious cool expression, text overlay bottom-left in elegant \nserif: \"COOL POKÉMON / JAYL\" — fashion campaign quality\n\nno pokemon/person mixed traits"
     },
     {
       "id": "hero-poster",
