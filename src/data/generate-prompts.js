@@ -13,7 +13,13 @@ export const generatePrompts = {
         "prompt": "."
       }
     ],
-    "hero": [],
+    "hero": [
+      {
+        "id": "site-hero-custom-1778182599503",
+        "name": "New Prompt",
+        "prompt": ""
+      }
+    ],
     "video": [
       {
         "id": "site-video-custom-1778182588087",
