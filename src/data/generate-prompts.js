@@ -5,7 +5,7 @@ export const generatePrompts = {
       {
         "id": "site-image-custom-1778182502522",
         "name": "New Prompt",
-        "prompt": ""
+        "prompt": "."
       }
     ],
     "hero": [],
