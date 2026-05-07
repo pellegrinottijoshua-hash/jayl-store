@@ -610,6 +610,132 @@ export default async function handler(req, res) {
       return res.status(200).json({ emails })
     }
 
+    // ── remove-background ─────────────────────────────────────────────────────
+    if (action === 'remove-background') {
+      const { imageUrl, imageData } = data
+      const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
+      if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
+
+      const FAL_REST = 'https://rest.alpha.fal.ai'
+
+      let falUrl = imageUrl
+
+      // If a base64 data URL was provided, upload it to fal storage first
+      if (!falUrl && imageData) {
+        const [header, b64] = imageData.split(',')
+        const contentType   = header.match(/:(.*?);/)?.[1] || 'image/jpeg'
+        const ext           = contentType.includes('png') ? 'png' : 'jpg'
+        const imageBytes    = Buffer.from(b64, 'base64')
+
+        const initRes = await fetch(
+          `${FAL_REST}/storage/upload/initiate?storage_type=fal-cdn-v3`,
+          {
+            method:  'POST',
+            headers: { Authorization: `Key ${apiKey}`, 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ content_type: contentType, file_name: `rmbg-upload.${ext}` }),
+          }
+        )
+        if (!initRes.ok) {
+          const err = await initRes.json().catch(() => ({}))
+          return res.status(500).json({ error: `fal storage initiate failed: ${err.message || initRes.status}` })
+        }
+        const { upload_url, file_url } = await initRes.json()
+        const putRes = await fetch(upload_url, {
+          method: 'PUT',
+          headers: { 'Content-Type': contentType },
+          body: imageBytes,
+        })
+        if (!putRes.ok) return res.status(500).json({ error: `fal storage PUT failed: ${putRes.status}` })
+        falUrl = file_url
+      }
+
+      if (!falUrl) return res.status(400).json({ error: 'imageUrl or imageData required' })
+
+      const falRes = await fetch('https://fal.run/fal-ai/birefnet', {
+        method:  'POST',
+        headers: { Authorization: `Key ${apiKey}`, 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ image_url: falUrl }),
+      })
+      const responseBody = await falRes.json().catch(() => null)
+      if (!falRes.ok) {
+        return res.status(falRes.status).json({
+          error: responseBody?.detail || responseBody?.message || `birefnet error ${falRes.status}`,
+        })
+      }
+      const resultUrl = responseBody?.image?.url ?? responseBody?.images?.[0]?.url ?? null
+      if (!resultUrl) return res.status(500).json({ error: 'No image URL in birefnet response' })
+      return res.status(200).json({ imageUrl: resultUrl })
+    }
+
+    // ── generate-copy ─────────────────────────────────────────────────────────
+    if (action === 'generate-copy') {
+      const { productName, productType, collection, social, selectedAssets } = data
+      const anthropicKey = (process.env.ANTHROPIC_API_KEY || '').trim()
+      if (!anthropicKey) return res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' })
+
+      const socialLabels = {
+        tiktok: 'TikTok', instagram: 'Instagram', pinterest: 'Pinterest',
+        facebook: 'Facebook', site: 'Website/Etsy', youtube: 'YouTube',
+      }
+      const productLabels = {
+        tshirt: 'T-Shirt', mug: 'Mug', art: 'Art Print', tote: 'Tote Bag',
+      }
+      const socialLabel   = socialLabels[social]   || social
+      const productLabel  = productLabels[productType] || productType
+      const assetsCount   = Array.isArray(selectedAssets) ? selectedAssets.length : 0
+
+      const systemPrompt = `You are a creative copywriter for JAYL, a print-on-demand lifestyle brand.
+Write compelling, platform-appropriate copy for social media and e-commerce.
+Always respond with valid JSON only, no markdown, no explanation.`
+
+      const userPrompt = `Write copy for this product:
+- Product: "${productName}"
+- Type: ${productLabel}
+- Collection: ${collection || 'General'}
+- Platform: ${socialLabel}
+- Number of selected assets: ${assetsCount}
+
+Return a JSON object with these exact keys:
+{
+  "caption": "engaging platform-native caption (1-3 sentences, natural voice for ${socialLabel})",
+  "hashtags": "10-15 relevant hashtags as a single string",
+  "altText": "descriptive alt text for accessibility (1 sentence)",
+  "seoTitle": "SEO-optimized product title (under 60 chars)",
+  "seoDescription": "SEO meta description (under 160 chars)",
+  "etsyTitle": "Etsy listing title (under 140 chars, include key terms)",
+  "etsyTags": "13 comma-separated Etsy tags"
+}`
+
+      const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': anthropicKey,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5',
+          max_tokens: 1024,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }],
+        }),
+      })
+      const anthropicData = await anthropicRes.json()
+      if (!anthropicRes.ok) {
+        return res.status(500).json({ error: anthropicData.error?.message || 'Claude API error' })
+      }
+      const raw = anthropicData.content?.[0]?.text || '{}'
+      let copy
+      try {
+        copy = JSON.parse(raw)
+      } catch {
+        // Try to extract JSON from response
+        const match = raw.match(/\{[\s\S]*\}/)
+        copy = match ? JSON.parse(match[0]) : {}
+      }
+      return res.status(200).json({ copy })
+    }
+
     return res.status(400).json({ error: `Unknown action: ${action}` })
 
   } catch (err) {

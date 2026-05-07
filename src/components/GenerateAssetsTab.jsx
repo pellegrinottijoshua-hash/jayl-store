@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import SitoPanel       from './generate-assets/SitoPanel'
+import SocialPanel     from './generate-assets/SocialPanel'
 import InfluencerPanel from './generate-assets/InfluencerPanel'
 import { api } from './generate-assets/constants'
 
@@ -8,10 +9,9 @@ export { IMAGE_MODELS, VIDEO_MODELS } from './generate-assets/constants'
 export default function GenerateAssetsTab({
   productId, productName, productType, primaryColor, collection,
   onAssetSaved, preloadedImages, personas,
-  instagramCaption, pinterestCaption, hashtags,
 }) {
-  const [mobileTab,     setMobileTab]     = useState('sito')
-  const [productImages, setProductImages] = useState([])
+  const [mobileSection,  setMobileSection]  = useState('sito')
+  const [productImages,  setProductImages]  = useState([])
 
   useEffect(() => {
     if (!productId) return
@@ -29,22 +29,32 @@ export default function GenerateAssetsTab({
   }))
   const allImages = productImages.length > 0 ? productImages : normalizedPreloaded
 
+  // ── Mobile section tabs ──────────────────────────────────────────────────
+  const mobileTabs = [
+    { id: 'sito',       label: '🌐 Sito'       },
+    { id: 'social',     label: '📣 Social'     },
+    { id: 'influencer', label: '👤 Influencer' },
+  ]
+
   return (
-    <div className="border border-indigo-900/50 bg-gray-950">
-      {/* Header */}
-      <div className="px-5 py-3 border-b border-gray-800 flex items-center justify-between">
-        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest">✨ Generate Assets</h3>
+    <div className="bg-gray-950 border border-indigo-900/40 space-y-0">
+
+      {/* ── Header ─────────────────────────────────────────────────────── */}
+      <div className="px-5 py-3 border-b border-gray-800 flex items-center gap-3">
+        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest font-semibold">
+          ✨ Generate Assets
+        </h3>
+        {allImages.length > 0 && (
+          <span className="text-gray-600 text-xs">{allImages.length} reference image{allImages.length !== 1 ? 's' : ''}</span>
+        )}
       </div>
 
-      {/* Mobile tab toggle */}
+      {/* ── Mobile section toggle ───────────────────────────────────────── */}
       <div className="flex lg:hidden border-b border-gray-800">
-        {[
-          { id: 'sito',       label: '🌐 Sito'       },
-          { id: 'influencer', label: '👤 Influencer' },
-        ].map(t => (
-          <button key={t.id} onClick={() => setMobileTab(t.id)}
+        {mobileTabs.map(t => (
+          <button key={t.id} onClick={() => setMobileSection(t.id)}
             className={`flex-1 py-2.5 text-xs font-medium border-b-2 transition-colors ${
-              mobileTab === t.id
+              mobileSection === t.id
                 ? 'border-indigo-500 text-indigo-300'
                 : 'border-transparent text-gray-500 hover:text-gray-300'
             }`}>
@@ -53,11 +63,38 @@ export default function GenerateAssetsTab({
         ))}
       </div>
 
-      {/* Two-column layout */}
-      <div className="flex flex-col lg:flex-row min-h-0">
-        {/* SITO column */}
-        <div className={`flex-1 min-w-0 lg:border-r border-gray-800 ${mobileTab !== 'sito' ? 'hidden lg:flex lg:flex-col' : 'flex flex-col'}`}>
-          <SitoPanel
+      {/* ══════════════════════════════════════════════════════════════════
+          SECTION 1 — SITO (full width)
+          Image mockups, hero images and video for the website
+      ═══════════════════════════════════════════════════════════════════ */}
+      <div className={mobileSection !== 'sito' ? 'hidden lg:block' : ''}>
+        <div className="px-5 py-2 border-b border-gray-800 bg-gray-900/40">
+          <span className="text-blue-400 text-xs font-mono uppercase tracking-widest font-semibold">🌐 Sito</span>
+          <span className="text-gray-600 text-xs ml-3">Mockup · Hero · Video per il sito</span>
+        </div>
+        <SitoPanel
+          productId={productId}
+          productName={productName}
+          productType={productType}
+          primaryColor={primaryColor}
+          collection={collection}
+          allImages={allImages}
+          onAssetSaved={onAssetSaved}
+        />
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════════
+          SECTION 2+3 — SOCIAL + INFLUENCER (two columns)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <div className="flex flex-col lg:flex-row border-t border-gray-800">
+
+        {/* SOCIAL column */}
+        <div className={`flex-1 min-w-0 lg:border-r border-gray-800 ${mobileSection !== 'social' ? 'hidden lg:block' : ''}`}>
+          <div className="px-5 py-2 border-b border-gray-800 bg-gray-900/40">
+            <span className="text-pink-400 text-xs font-mono uppercase tracking-widest font-semibold">📣 Social JAYL</span>
+            <span className="text-gray-600 text-xs ml-3">Prompt per ogni piattaforma</span>
+          </div>
+          <SocialPanel
             productId={productId}
             productName={productName}
             productType={productType}
@@ -69,7 +106,10 @@ export default function GenerateAssetsTab({
         </div>
 
         {/* INFLUENCER column */}
-        <div className={`flex-1 min-w-0 ${mobileTab !== 'influencer' ? 'hidden lg:block' : ''}`}>
+        <div className={`flex-1 min-w-0 ${mobileSection !== 'influencer' ? 'hidden lg:block' : ''}`}>
+          <div className="px-5 py-2 border-b border-gray-800 bg-gray-900/40">
+            <span className="text-purple-400 text-xs font-mono uppercase tracking-widest font-semibold">👤 Influencer</span>
+          </div>
           <InfluencerPanel
             personas={personas || []}
             productId={productId}
@@ -78,6 +118,7 @@ export default function GenerateAssetsTab({
             onAssetSaved={onAssetSaved}
           />
         </div>
+
       </div>
     </div>
   )

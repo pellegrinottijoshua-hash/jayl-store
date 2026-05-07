@@ -200,6 +200,327 @@ function ImageGallery({ productId, readOnly }) {
   )
 }
 
+// ── Asset Library ─────────────────────────────────────────────────────────────
+
+function AssetLibrary({ productId, product, onHeroSaved }) {
+  const [images,   setImages]   = useState([])
+  const [selected, setSelected] = useState(() => new Set(product?.heroImages || []))
+  const [loading,  setLoading]  = useState(true)
+  const [saving,   setSaving]   = useState(false)
+  const [msg,      setMsg]      = useState('')
+  const [copied,   setCopied]   = useState(false)
+
+  useEffect(() => {
+    if (!productId) return
+    setLoading(true)
+    api('list-images', { productId })
+      .then(data => { setImages(data.images || []); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [productId])
+
+  // Keep selection in sync when product.heroImages changes from outside
+  useEffect(() => {
+    setSelected(new Set(product?.heroImages || []))
+  }, [(product?.heroImages || []).join(',')])
+
+  const toggle = url =>
+    setSelected(prev => {
+      const next = new Set(prev)
+      next.has(url) ? next.delete(url) : next.add(url)
+      return next
+    })
+
+  const saveHero = async (heroImages) => {
+    if (!product) return
+    setSaving(true); setMsg('')
+    try {
+      await api('save-product', { product: { ...product, heroImages } })
+      onHeroSaved?.(heroImages)
+      setMsg(`✓ ${heroImages.length} hero image${heroImages.length !== 1 ? 's' : ''} saved`)
+      setTimeout(() => setMsg(''), 3000)
+    } catch (e) {
+      setMsg('Error: ' + e.message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const setAsHero  = () => saveHero([...selected])
+  const clearHero  = () => { setSelected(new Set()); saveHero([]) }
+
+  const copyUrls = () => {
+    navigator.clipboard.writeText((product?.heroImages || []).join('\n'))
+    setCopied(true); setTimeout(() => setCopied(false), 2000)
+  }
+
+  const currentHero = product?.heroImages || []
+
+  return (
+    <div className="border border-indigo-900/50 bg-gray-950">
+      {/* Header */}
+      <div className="px-5 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
+        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest">🖼 Asset Library</h3>
+        <div className="flex items-center gap-2">
+          {currentHero.length > 0 && (
+            <button onClick={clearHero} disabled={saving} className={btnGhost + ' text-red-400 border-red-900'}>
+              Clear hero
+            </button>
+          )}
+          <button
+            onClick={setAsHero}
+            disabled={saving || selected.size === 0}
+            className={btnPrimary}
+          >
+            {saving ? 'Saving…' : `Set ${selected.size} as Hero`}
+          </button>
+        </div>
+      </div>
+
+      <div className="p-4 space-y-4">
+        {/* Status line */}
+        <div className="flex items-center gap-3 text-xs">
+          <span className="text-gray-500">{selected.size} selected</span>
+          {currentHero.length > 0 && (
+            <span className="text-green-400">· {currentHero.length} currently hero</span>
+          )}
+          {msg && (
+            <span className={msg.startsWith('Error') ? 'text-red-400' : 'text-green-400'}>{msg}</span>
+          )}
+        </div>
+
+        {/* Image grid */}
+        {loading ? (
+          <p className="text-gray-600 text-xs py-4">Loading images…</p>
+        ) : images.length === 0 ? (
+          <p className="text-gray-600 text-xs py-4">No images yet — upload or generate images above.</p>
+        ) : (
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 xl:grid-cols-8 gap-2">
+            {images.map(img => {
+              const isSelected = selected.has(img.url)
+              const isHero     = currentHero.includes(img.url)
+              const isVideo    = /\.mp4$/i.test(img.url)
+              return (
+                <button
+                  key={img.url}
+                  onClick={() => toggle(img.url)}
+                  title={img.name}
+                  className={`relative aspect-square overflow-hidden border-2 transition-all ${
+                    isSelected
+                      ? 'border-indigo-500 ring-1 ring-indigo-400'
+                      : 'border-gray-700 hover:border-gray-500'
+                  }`}
+                >
+                  {isVideo ? (
+                    <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                      <span className="text-white text-xl">▶</span>
+                    </div>
+                  ) : (
+                    <img src={img.url} alt={img.name} className="w-full h-full object-cover"
+                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                  )}
+                  {/* Selected checkmark */}
+                  {isSelected && (
+                    <div className="absolute inset-0 bg-indigo-500/20 flex items-end justify-end p-1 pointer-events-none">
+                      <span className="bg-indigo-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center leading-none">✓</span>
+                    </div>
+                  )}
+                  {/* Hero badge */}
+                  {isHero && (
+                    <div className="absolute top-1 left-1 pointer-events-none">
+                      <span className="bg-green-600/90 text-white text-[9px] px-1 py-0.5 leading-none">hero</span>
+                    </div>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Social publish — shown when hero images exist */}
+        {currentHero.length > 0 && (
+          <div className="border border-gray-800 p-4 space-y-3">
+            <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Publish</p>
+            <div className="flex flex-wrap gap-2">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className={btnGhost}>
+                📸 Instagram
+              </a>
+              <a
+                href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentHero[0])}&description=${encodeURIComponent(product?.name || '')}`}
+                target="_blank" rel="noopener noreferrer" className={btnGhost}
+              >
+                📌 Pinterest
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentHero[0])}&text=${encodeURIComponent(product?.name || '')}`}
+                target="_blank" rel="noopener noreferrer" className={btnGhost}
+              >
+                𝕏 Twitter
+              </a>
+              <a
+                href={`https://wa.me/?text=${encodeURIComponent((product?.name || '') + '\n' + currentHero[0])}`}
+                target="_blank" rel="noopener noreferrer" className={btnGhost}
+              >
+                💬 WhatsApp
+              </a>
+              <button onClick={copyUrls} className={btnGhost}>
+                {copied ? '✓ Copied' : '🔗 Copy URLs'}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── Remove Background ─────────────────────────────────────────────────────────
+
+function RemoveBackground() {
+  const [previewUrl,  setPreviewUrl]  = useState(null)  // source image preview
+  const [inputUrl,    setInputUrl]    = useState('')
+  const [useUrl,      setUseUrl]      = useState(false)
+  const [processing,  setProcessing]  = useState(false)
+  const [result,      setResult]      = useState(null)
+  const [error,       setError]       = useState('')
+  const [dragging,    setDragging]    = useState(false)
+  const [downloaded,  setDownloaded]  = useState(false)
+  const inputRef = useRef()
+  const imageDataRef = useRef(null) // holds base64 data URL
+
+  const loadFile = (file) => {
+    if (!file || !file.type.startsWith('image/')) return
+    const reader = new FileReader()
+    reader.onload = e => {
+      imageDataRef.current = e.target.result
+      setPreviewUrl(e.target.result)
+      setResult(null); setError('')
+    }
+    reader.readAsDataURL(file)
+  }
+
+  const handleDrop = e => {
+    e.preventDefault(); setDragging(false)
+    loadFile(e.dataTransfer.files?.[0])
+  }
+
+  const handleProcess = async () => {
+    setProcessing(true); setError(''); setResult(null); setDownloaded(false)
+    try {
+      const payload = useUrl
+        ? { imageUrl: inputUrl.trim() }
+        : { imageData: imageDataRef.current }
+      const data = await api('remove-background', payload)
+      setResult(data.imageUrl)
+      if (useUrl) setPreviewUrl(inputUrl.trim())
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setProcessing(false)
+    }
+  }
+
+  const handleDownload = () => {
+    if (!result) return
+    const a = document.createElement('a')
+    a.href = result
+    a.download = 'no-background.png'
+    document.body.appendChild(a); a.click(); document.body.removeChild(a)
+    setDownloaded(true); setTimeout(() => setDownloaded(false), 2500)
+  }
+
+  const canProcess = !processing && (useUrl ? inputUrl.trim().length > 0 : !!previewUrl)
+
+  return (
+    <div className="border border-purple-900/50 bg-gray-950">
+      <div className="px-5 py-3 border-b border-gray-800 flex items-center gap-2">
+        <h3 className="text-purple-400 text-xs font-mono uppercase tracking-widest">✂ Remove Background</h3>
+      </div>
+
+      <div className="p-4 space-y-4">
+        {/* Source toggle */}
+        <div className="flex gap-1">
+          {[{ id: false, label: '📁 File' }, { id: true, label: '🔗 URL' }].map(opt => (
+            <button key={String(opt.id)} onClick={() => { setUseUrl(opt.id); setError('') }}
+              className={`px-3 py-1 text-xs border transition-colors ${
+                useUrl === opt.id
+                  ? 'border-purple-600 text-purple-300 bg-purple-900/20'
+                  : 'border-gray-700 text-gray-500 hover:border-gray-500'
+              }`}>{opt.label}</button>
+          ))}
+        </div>
+
+        {useUrl ? (
+          <input
+            value={inputUrl}
+            onChange={e => { setInputUrl(e.target.value); setResult(null); setError('') }}
+            placeholder="https://…"
+            className="w-full bg-gray-800 border border-gray-700 text-white text-xs px-3 py-2 focus:outline-none focus:border-purple-500 font-mono"
+          />
+        ) : (
+          <div
+            onDragOver={e => { e.preventDefault(); setDragging(true) }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={handleDrop}
+            onClick={() => inputRef.current?.click()}
+            className={`border-2 border-dashed p-4 text-center cursor-pointer transition-colors ${
+              dragging ? 'border-purple-500 bg-purple-900/20' : 'border-gray-700 hover:border-gray-600'
+            }`}
+          >
+            <p className="text-gray-600 text-xs">Drop image or click to upload</p>
+            <input ref={inputRef} type="file" accept="image/*" className="hidden"
+              onChange={e => loadFile(e.target.files?.[0])} />
+          </div>
+        )}
+
+        {/* Preview row: original + result */}
+        {(previewUrl || result) && (
+          <div className="grid grid-cols-2 gap-3">
+            {previewUrl && (
+              <div className="space-y-1">
+                <p className="text-gray-600 text-xs text-center">Original</p>
+                <div className="aspect-square bg-gray-900 border border-gray-800 overflow-hidden flex items-center justify-center">
+                  <img src={previewUrl} alt="Original" className="max-w-full max-h-full object-contain"
+                    onError={e => { e.currentTarget.style.display = 'none' }} />
+                </div>
+              </div>
+            )}
+            {result && (
+              <div className="space-y-1">
+                <p className="text-gray-600 text-xs text-center">Result</p>
+                {/* Checkerboard bg to show transparency */}
+                <div className="aspect-square border border-gray-800 overflow-hidden flex items-center justify-center"
+                  style={{ background: 'repeating-conic-gradient(#2a2a2a 0% 25%, #1a1a1a 0% 50%) 0 0 / 16px 16px' }}
+                >
+                  <img src={result} alt="No background" className="max-w-full max-h-full object-contain" />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {error && <p className="text-red-400 text-xs">⚠ {error}</p>}
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleProcess}
+            disabled={!canProcess}
+            className={`${btnPrimary} ${!canProcess ? 'opacity-40 cursor-not-allowed' : ''} flex items-center gap-2`}
+          >
+            {processing ? (
+              <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" />Processing…</>
+            ) : '✂ Remove BG'}
+          </button>
+          {result && (
+            <button onClick={handleDownload} className={btnGhost}>
+              {downloaded ? '✓ Downloaded' : '⬇ Download PNG'}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Collapsible ───────────────────────────────────────────────────────────────
 
 function Collapsible({ label, defaultOpen = false, children }) {
@@ -751,6 +1072,11 @@ export default function AdminProductPage() {
               collection={collection}
               onAssetSaved={() => {}}
             />
+
+            {/* AssetLibrary rimossa — le immagini sono reference nei prompt */}
+
+            {/* ── Remove Background ── */}
+            <RemoveBackground />
 
           </div>
         </div>

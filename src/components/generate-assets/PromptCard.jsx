@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { btnPrimary, btnGhost, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, DESTINATION_META, toAbsoluteUrl, downloadAsset } from './constants'
 
 // PromptCard — usato sia da SitoPanel che da InfluencerPanel
@@ -14,6 +14,9 @@ export default function PromptCard({
   savingPrompt,
   savedPromptMsg,
   images,
+  extraRefs,       // [{ url, name }] — external reference images per-prompt
+  onAddExtraRef,   // (ref: { url, name }) => void
+  onRemoveExtraRef,// (url: string) => void
   selectedImage,
   onSelectImage,
   activeModel,
@@ -28,8 +31,25 @@ export default function PromptCard({
 }) {
   const r    = result || {}
   const busy = r.status === 'generating' || r.status === 'submitting' || r.status === 'processing'
-  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [settingsOpen,  setSettingsOpen]  = useState(false)
   const [publishCopied, setPublishCopied] = useState('')
+  const [addingRef,     setAddingRef]     = useState(false)
+  const [refInput,      setRefInput]      = useState('')
+  const refInputRef = useRef(null)
+
+  const allRefs = [
+    ...(images || []),
+    ...(extraRefs || []).map(r => ({ ...r, _isExternal: true })),
+  ]
+
+  const commitRef = () => {
+    const url = refInput.trim()
+    if (!url) { setAddingRef(false); return }
+    const name = url.split('/').pop()?.split('?')[0] || 'External'
+    onAddExtraRef?.({ url, name })
+    setRefInput('')
+    setAddingRef(false)
+  }
 
   const destination = template.destination
   const destMeta    = destination ? DESTINATION_META[destination] : null
@@ -135,23 +155,65 @@ export default function PromptCard({
         </div>
       )}
 
-      {/* Reference image strip */}
-      {images && images.length > 0 && (
-        <div className="flex gap-1.5 overflow-x-auto pb-0.5" style={{ scrollbarWidth: 'thin' }}>
-          {images.map((img, i) => {
-            const isSel = selectedImage ? selectedImage.url === img.url : i === 0
-            return (
-              <button key={img.url || i} onClick={() => onSelectImage(img)} title={img.name}
-                className={`flex-shrink-0 w-12 h-12 border-2 overflow-hidden transition-all ${
-                  isSel ? 'border-indigo-500 ring-1 ring-indigo-500/40' : 'border-gray-700 hover:border-gray-500'
-                } ${img._isPinned ? 'ring-1 ring-yellow-600/40 border-yellow-700' : ''}`}
-              >
-                <img src={toAbsoluteUrl(img.url)} alt={img.name}
-                  className="w-full h-full object-cover"
-                  onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-              </button>
-            )
-          })}
+      {/* Reference image strip — product images + external refs */}
+      {(allRefs.length > 0 || onAddExtraRef) && (
+        <div className="space-y-1.5">
+          <div className="flex gap-1.5 overflow-x-auto pb-0.5 items-center" style={{ scrollbarWidth: 'thin' }}>
+            {allRefs.map((img, i) => {
+              const isSel = selectedImage ? selectedImage.url === img.url : i === 0
+              return (
+                <div key={img.url || i} className="flex-shrink-0 relative group">
+                  <button onClick={() => onSelectImage(img)} title={img.name}
+                    className={`w-12 h-12 border-2 overflow-hidden transition-all block ${
+                      isSel ? 'border-indigo-500 ring-1 ring-indigo-500/40' : 'border-gray-700 hover:border-gray-500'
+                    } ${img._isPinned ? 'border-yellow-700 ring-1 ring-yellow-600/40' : ''}`}
+                  >
+                    <img src={toAbsoluteUrl(img.url)} alt={img.name}
+                      className="w-full h-full object-cover"
+                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                  </button>
+                  {/* External badge + remove */}
+                  {img._isExternal && (
+                    <button
+                      onClick={() => onRemoveExtraRef?.(img.url)}
+                      title="Remove external ref"
+                      className="absolute -top-1 -right-1 w-4 h-4 bg-gray-800 border border-gray-600 rounded-full text-gray-400 hover:text-red-400 hover:border-red-700 text-[9px] flex items-center justify-center leading-none opacity-0 group-hover:opacity-100 transition-opacity"
+                    >✕</button>
+                  )}
+                  {img._isExternal && (
+                    <span className="absolute bottom-0 left-0 right-0 bg-black/60 text-[8px] text-gray-400 text-center leading-tight py-0.5 pointer-events-none">
+                      ext
+                    </span>
+                  )}
+                </div>
+              )
+            })}
+
+            {/* Add external ref button */}
+            {onAddExtraRef && !addingRef && (
+              <button
+                onClick={() => { setAddingRef(true); setTimeout(() => refInputRef.current?.focus(), 50) }}
+                className="flex-shrink-0 w-12 h-12 border-2 border-dashed border-gray-700 hover:border-indigo-600 text-gray-600 hover:text-indigo-400 flex items-center justify-center text-lg transition-colors"
+                title="Add external reference URL"
+              >+</button>
+            )}
+          </div>
+
+          {/* Inline URL input */}
+          {addingRef && (
+            <div className="flex gap-1.5 items-center">
+              <input
+                ref={refInputRef}
+                value={refInput}
+                onChange={e => setRefInput(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') commitRef(); if (e.key === 'Escape') { setAddingRef(false); setRefInput('') } }}
+                placeholder="https://… paste image URL"
+                className="flex-1 bg-gray-800 border border-indigo-700 text-white text-xs px-2 py-1.5 focus:outline-none focus:border-indigo-500 font-mono min-w-0"
+              />
+              <button onClick={commitRef} className="bg-indigo-700 hover:bg-indigo-600 text-white text-xs px-2 py-1.5 transition-colors flex-shrink-0">Add</button>
+              <button onClick={() => { setAddingRef(false); setRefInput('') }} className="text-gray-600 hover:text-gray-400 text-xs px-1 transition-colors flex-shrink-0">✕</button>
+            </div>
+          )}
         </div>
       )}
 

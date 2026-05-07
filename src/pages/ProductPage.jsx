@@ -399,9 +399,10 @@ export default function ProductPage() {
   // Ref on the in-flow "Add to Cart" button — sticky bar shows when it leaves viewport
   const addToCartBtnRef = useRef(null)
 
-  // Jump to color image when color changes
+  // Jump to color image when color changes (only when not in hero-image mode)
   useEffect(() => {
     if (!selectedColor || !product?.colors) return
+    if (product.heroImages?.length > 0) return // hero gallery is editorial — don't jump
     const colorObj = product.colors.find(c => c.id === selectedColor)
     if (!colorObj?.image) return
     const idx = product.images?.findIndex(img => img === colorObj.image) ?? -1
@@ -441,12 +442,17 @@ export default function ProductPage() {
     ? product.images
     : (product.image ? [product.image] : [])
 
+  // Hero mode: admin-selected editorial images override the default gallery
+  const heroImages    = product.heroImages?.length > 0 ? product.heroImages : null
+  // displayImages is what the main carousel shows
+  const displayImages = heroImages ?? productImages
+
   // Mobile gallery: video slot (index -1) + images (0..n-1)
   const minSlide = videoInfo ? -1 : 0
-  const maxSlide = productImages.length - 1
+  const maxSlide = displayImages.length - 1
   // Map activeImage to a 0-based mobile index
-  const mobileSlideIdx   = videoInfo ? activeImage + 1 : activeImage
-  const totalMobileSlides = (videoInfo ? 1 : 0) + productImages.length
+  const mobileSlideIdx    = videoInfo ? activeImage + 1 : activeImage
+  const totalMobileSlides = (videoInfo ? 1 : 0) + displayImages.length
 
   // Which sizes are available for the selected color (when variants exist)
   const availableSizesForColor = (product.variants?.length && selectedColor)
@@ -621,7 +627,7 @@ export default function ProductPage() {
               </div>
             )}
             {/* Image slides */}
-            {productImages.map((src, i) => (
+            {displayImages.map((src, i) => (
               <div key={i} className={cn('w-full h-full flex-shrink-0', t.imgBg)}>
                 <img
                   src={src}
@@ -701,7 +707,7 @@ export default function ProductPage() {
         {/* ── Variant Selectors ──────────────────────────────────────────── */}
         <div className="px-4 pt-4 space-y-5">
 
-          {/* Color pills */}
+          {/* Color pills / thumbnails */}
           {product.colors && (
             <div>
               <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', t.selectorLabel)}>
@@ -712,32 +718,67 @@ export default function ProductPage() {
                   </span>
                 )}
               </p>
-              {/* Horizontally scrollable, no scrollbar */}
-              <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
-                <div className="flex gap-2 pb-1 w-max">
-                  {product.colors.map(c => (
-                    <button
-                      key={c.id}
-                      onClick={() => setSelectedColor(c.id)}
-                      className={cn(
-                        'flex items-center gap-1.5 pl-2 pr-3 py-1.5 border text-xs font-medium rounded-full whitespace-nowrap transition-all duration-150',
-                        selectedColor === c.id ? t.pillActive : t.pillInactive
-                      )}
-                    >
-                      <span
-                        className="w-3.5 h-3.5 rounded-full border flex-shrink-0"
-                        style={{
-                          backgroundColor: c.hex && c.hex !== '#888888' ? c.hex : undefined,
-                          borderColor: selectedColor === c.id ? 'currentColor' : '#ccc',
-                          background: resolveSwatchHex(c)
-                            ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
-                        }}
-                      />
-                      {c.label}
-                    </button>
-                  ))}
+              {/* In hero mode: square image thumbnails; otherwise: pill buttons */}
+              {heroImages ? (
+                <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
+                  <div className="flex gap-3 pb-1 w-max">
+                    {product.colors.map(c => (
+                      <button
+                        key={c.id}
+                        onClick={() => setSelectedColor(c.id)}
+                        className={cn(
+                          'flex flex-col items-center gap-1 transition-all duration-150',
+                          selectedColor === c.id ? 'opacity-100' : 'opacity-55 hover:opacity-85'
+                        )}
+                      >
+                        <span className={cn(
+                          'block w-14 h-14 overflow-hidden border-2 transition-all',
+                          selectedColor === c.id ? t.thumbnailActive : t.thumbnailInactive
+                        )}>
+                          {c.image ? (
+                            <img src={c.image} alt={c.label} className="w-full h-full object-cover"
+                              onError={e => { e.currentTarget.style.display = 'none' }} />
+                          ) : (
+                            <span className="w-full h-full block" style={{
+                              background: resolveSwatchHex(c)
+                                ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
+                            }} />
+                          )}
+                        </span>
+                        <span className={cn('text-[10px] leading-none', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                          {c.label}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
+                  <div className="flex gap-2 pb-1 w-max">
+                    {product.colors.map(c => (
+                      <button
+                        key={c.id}
+                        onClick={() => setSelectedColor(c.id)}
+                        className={cn(
+                          'flex items-center gap-1.5 pl-2 pr-3 py-1.5 border text-xs font-medium rounded-full whitespace-nowrap transition-all duration-150',
+                          selectedColor === c.id ? t.pillActive : t.pillInactive
+                        )}
+                      >
+                        <span
+                          className="w-3.5 h-3.5 rounded-full border flex-shrink-0"
+                          style={{
+                            backgroundColor: c.hex && c.hex !== '#888888' ? c.hex : undefined,
+                            borderColor: selectedColor === c.id ? 'currentColor' : '#ccc',
+                            background: resolveSwatchHex(c)
+                              ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
+                          }}
+                        />
+                        {c.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -958,13 +999,13 @@ export default function ProductPage() {
                 <div
                   className={cn('aspect-[4/5] overflow-hidden cursor-zoom-in', t.imgBg)}
                   onClick={() => {
-                    const src = productImages[Math.max(0, activeImage)] ?? product.image
+                    const src = displayImages[Math.max(0, activeImage)] ?? product.image
                     if (src) openLightbox(src)
                   }}
                   title="Click to zoom"
                 >
                   <img
-                    src={productImages[Math.max(0, activeImage)] ?? product.image}
+                    src={displayImages[Math.max(0, activeImage)] ?? product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
                     onError={e => { e.currentTarget.style.display = 'none' }}
@@ -973,7 +1014,7 @@ export default function ProductPage() {
               )}
 
               {/* Thumbnail strip */}
-              {(videoInfo || productImages.length > 1) && (
+              {(videoInfo || displayImages.length > 1) && (
                 <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
                   {videoInfo && (
                     <button
@@ -995,7 +1036,7 @@ export default function ProductPage() {
                       </div>
                     </button>
                   )}
-                  {productImages.map((img, i) => (
+                  {displayImages.map((img, i) => (
                     <button
                       key={i}
                       onClick={() => setActiveImage(i)}
@@ -1108,24 +1149,59 @@ export default function ProductPage() {
                         </p>
                       )}
                     </div>
-                    <div className="flex gap-3 flex-wrap">
-                      {product.colors.map(c => (
-                        <button
-                          key={c.id}
-                          onClick={() => setSelectedColor(c.id)}
-                          title={c.label}
-                          className={cn(
-                            'w-8 h-8 rounded-full border-2 transition-all duration-200',
-                            selectedColor === c.id ? t.colorActive : t.colorInactive
-                          )}
-                          style={{
-                            background: (!c.hex || c.hex === '#888888')
-                              ? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'
-                              : c.hex,
-                          }}
-                        />
-                      ))}
-                    </div>
+                    {/* In hero mode: show Gelato variant thumbnails; otherwise: color circles */}
+                    {heroImages ? (
+                      <div className="flex gap-2 flex-wrap">
+                        {product.colors.map(c => (
+                          <button
+                            key={c.id}
+                            onClick={() => setSelectedColor(c.id)}
+                            title={c.label}
+                            className={cn(
+                              'flex flex-col items-center gap-1 transition-all duration-200',
+                              selectedColor === c.id ? 'opacity-100' : 'opacity-60 hover:opacity-90'
+                            )}
+                          >
+                            <span className={cn(
+                              'block w-14 h-14 overflow-hidden border-2 transition-all',
+                              selectedColor === c.id ? t.thumbnailActive : t.thumbnailInactive
+                            )}>
+                              {c.image ? (
+                                <img src={c.image} alt={c.label} className="w-full h-full object-cover"
+                                  onError={e => { e.currentTarget.style.display = 'none' }} />
+                              ) : (
+                                <span className="w-full h-full block" style={{
+                                  background: resolveSwatchHex(c)
+                                    ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
+                                }} />
+                              )}
+                            </span>
+                            <span className={cn('text-[10px] leading-none', isLight ? 'text-ink-muted' : 'text-text-muted')}>
+                              {c.label}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex gap-3 flex-wrap">
+                        {product.colors.map(c => (
+                          <button
+                            key={c.id}
+                            onClick={() => setSelectedColor(c.id)}
+                            title={c.label}
+                            className={cn(
+                              'w-8 h-8 rounded-full border-2 transition-all duration-200',
+                              selectedColor === c.id ? t.colorActive : t.colorInactive
+                            )}
+                            style={{
+                              background: (!c.hex || c.hex === '#888888')
+                                ? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'
+                                : c.hex,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
 

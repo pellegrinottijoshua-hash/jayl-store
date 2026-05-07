@@ -67,11 +67,12 @@ function InfluencerWorkspace({
     const settings = {}
     for (const t of [...(prompts.mockup || []), ...(prompts.video || [])]) {
       local[t.id] = t.prompt || ''
-      if (t.modelId || t.videoModelId || t.imageSize || t.referenceUrl) {
+      if (t.modelId || t.videoModelId || t.imageSize || t.referenceUrl || t.extraRefs) {
         settings[t.id] = {
           modelId:      t.modelId || t.videoModelId || null,
           imageSize:    t.imageSize    || null,
           referenceUrl: t.referenceUrl || null,
+          extraRefs:    Array.isArray(t.extraRefs) ? t.extraRefs : [],
         }
       }
     }
@@ -191,6 +192,22 @@ function InfluencerWorkspace({
     await api('save-persona-prompts', { personaId: persona.id, prompts })
   }
 
+  const handleAddExtraRef = (templateId, ref) => {
+    setPromptSettings(prev => {
+      const ps   = prev[templateId] || {}
+      const refs = ps.extraRefs || []
+      if (refs.some(r => r.url === ref.url)) return prev
+      return { ...prev, [templateId]: { ...ps, extraRefs: [...refs, ref] } }
+    })
+  }
+
+  const handleRemoveExtraRef = (templateId, url) => {
+    setPromptSettings(prev => {
+      const ps = prev[templateId] || {}
+      return { ...prev, [templateId]: { ...ps, extraRefs: (ps.extraRefs || []).filter(r => r.url !== url) } }
+    })
+  }
+
   const handleSavePrompt = async (templateId, isVideoPrompt) => {
     setSavingPrompts(prev => ({ ...prev, [templateId]: true }))
     setSavedMsgs(prev => ({ ...prev, [templateId]: '' }))
@@ -206,6 +223,7 @@ function InfluencerWorkspace({
           if (ps.modelId) extra[isVideoPrompt ? 'videoModelId' : 'modelId'] = ps.modelId
           if (ps.imageSize && !isVideoPrompt) extra.imageSize = ps.imageSize
           if (selImg?.url) extra.referenceUrl = selImg.url
+          if (ps.extraRefs?.length) extra.extraRefs = ps.extraRefs
           return { ...t, prompt: localPrompts[templateId] ?? t.prompt, ...extra }
         }),
       }
@@ -375,6 +393,9 @@ function InfluencerWorkspace({
               savingPrompt={savingPrompts[t.id]}
               savedPromptMsg={savedMsgs[t.id]}
               images={combinedImages}
+              extraRefs={promptSettings[t.id]?.extraRefs || []}
+              onAddExtraRef={ref => handleAddExtraRef(t.id, ref)}
+              onRemoveExtraRef={url => handleRemoveExtraRef(t.id, url)}
               selectedImage={getSelectedImage(t.id)}
               onSelectImage={img => setSelectedImages(prev => ({ ...prev, [t.id]: img }))}
               activeModel={promptSettings[t.id]?.modelId || null}

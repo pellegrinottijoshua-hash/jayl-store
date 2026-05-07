@@ -2,6 +2,24 @@
 
 export const ADMIN_PASSWORD = 'jaylpelle'
 
+// ── Social platform metadata ────────────────────────────────────────────────
+export const SOCIAL_META = {
+  tiktok:    { icon: '🎵', label: 'TikTok',    color: 'text-pink-400',   activeBg: 'bg-pink-900/30',    activeBorder: 'border-pink-600',    videoCount: 3 },
+  instagram: { icon: '📸', label: 'Instagram',  color: 'text-purple-400', activeBg: 'bg-purple-900/30',  activeBorder: 'border-purple-600',  videoCount: 2 },
+  pinterest: { icon: '📌', label: 'Pinterest',  color: 'text-red-400',    activeBg: 'bg-red-900/30',     activeBorder: 'border-red-600',     videoCount: 0 },
+  facebook:  { icon: '👥', label: 'Facebook',   color: 'text-blue-400',   activeBg: 'bg-blue-900/30',    activeBorder: 'border-blue-600',    videoCount: 2 },
+  site:      { icon: '🌐', label: 'Site',       color: 'text-indigo-400', activeBg: 'bg-indigo-900/30',  activeBorder: 'border-indigo-600',  videoCount: 2 },
+  youtube:   { icon: '▶',  label: 'YouTube',    color: 'text-red-500',    activeBg: 'bg-red-900/20',     activeBorder: 'border-red-700',     videoCount: 3 },
+}
+
+// ── Product type metadata ────────────────────────────────────────────────────
+export const PRODUCT_TYPE_META = {
+  tshirt: { icon: '👕', label: 'T-Shirt'   },
+  mug:    { icon: '☕', label: 'Mug'       },
+  art:    { icon: '🖼️', label: 'Art Print' },
+  tote:   { icon: '👜', label: 'Tote Bag'  },
+}
+
 export async function api(action, data) {
   const res = await fetch('/api/admin', {
     method: 'POST',
@@ -65,18 +83,32 @@ export const toAbsoluteUrl = (url) => {
 }
 
 export async function downloadAsset(url, filename) {
-  try {
-    const res  = await fetch(url)
-    const blob = await res.blob()
-    const href = URL.createObjectURL(blob)
-    const a    = document.createElement('a')
-    a.href     = href
-    a.download = filename
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    setTimeout(() => URL.revokeObjectURL(href), 1000)
-  } catch {
-    window.open(url, '_blank')
+  let href
+
+  if (url.startsWith('data:')) {
+    // Base64 data URL — decode directly (no fetch needed)
+    const [header, b64] = url.split(',')
+    const mime  = header.match(/:(.*?);/)?.[1] ?? 'application/octet-stream'
+    const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0))
+    href = URL.createObjectURL(new Blob([bytes], { type: mime }))
+  } else if (url.startsWith('http://') || url.startsWith('https://')) {
+    // External URL — route through server proxy to avoid CORS issues
+    href = `/api/download-proxy?url=${encodeURIComponent(url)}&filename=${encodeURIComponent(filename)}`
+  } else {
+    // Relative / same-origin — fetch directly
+    try {
+      const blob = await fetch(url).then(r => r.blob())
+      href = URL.createObjectURL(blob)
+    } catch {
+      href = url
+    }
   }
+
+  const a = document.createElement('a')
+  a.href     = href
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  if (href.startsWith('blob:')) setTimeout(() => URL.revokeObjectURL(href), 1000)
 }
