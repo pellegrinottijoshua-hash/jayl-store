@@ -18,7 +18,7 @@ export const generatePrompts = {
       {
         "id": "site-video-custom-1778182588087",
         "name": "New Prompt",
-        "prompt": ""
+        "prompt": "."
       }
     ]
   }
