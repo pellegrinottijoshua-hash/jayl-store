@@ -17,7 +17,7 @@ export const generatePrompts = {
       {
         "id": "site-hero-custom-1778182599503",
         "name": "New Prompt",
-        "prompt": ""
+        "prompt": "."
       }
     ],
     "video": [
