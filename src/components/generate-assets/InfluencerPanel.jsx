@@ -387,6 +387,7 @@ function InfluencerWorkspace({ persona, productId, productName, allImages, onAss
 
       const payload = {
         password:    ADMIN_PASSWORD,
+        platform,
         imageUrl:    best?.imageUrl || null,
         videoUrl:    best?.videoUrl || null,
         caption:     copy.caption       || `${persona.name} × JAYL`,
@@ -396,7 +397,7 @@ function InfluencerWorkspace({ persona, productId, productName, allImages, onAss
         description: copy.seoDescription || '',
       }
 
-      const res  = await fetch(`/api/publish-${platform}`, {
+      const res  = await fetch('/api/publish-social', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(payload),

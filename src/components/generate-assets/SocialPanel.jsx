@@ -242,6 +242,7 @@ export default function SocialPanel({
 
       const payload = {
         password:    'jaylpelle',
+        platform,
         imageUrl:    best?.imageUrl || null,
         videoUrl:    best?.videoUrl || null,
         caption:     copy.caption       || '',
@@ -251,7 +252,7 @@ export default function SocialPanel({
         description: copy.seoDescription || '',
       }
 
-      const res  = await fetch(`/api/publish-${platform}`, {
+      const res  = await fetch('/api/publish-social', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(payload),
