@@ -29,7 +29,7 @@ export const generatePrompts = {
       {
         "id": "site-video-custom-1778253810439",
         "name": "New Prompt",
-        "prompt": ""
+        "prompt": "Lifestyle fashion hero video, 8 seconds, 16:9 format.\nA person wearing a black graphic tee with a circular \nchest logo moves through a real environment —\nthe environment reacts to their presence: \nwind moves hair and fabric slightly, \ngolden hour light shifts as they walk,\nbackground softly blurred in continuous motion.\nCamera: handheld feel, slight natural shake, \nfollows the subject from slightly behind \nthen moves to side profile, \nchest logo always visible and sharp.\nThe subject's energy matches the logo's character —\nAI interprets mood and physicality freely \nfrom the chest graphic.\nNo cuts. Continuous motion. \nFilm grain: Kodak Portra 400 simulation.\nColor grade: warm shadows, lifted blacks, \nslight highlight roll-off.\nSound design: ambient only, no music needed.\nDuration feels longer than it is — \nevery frame has something to hold attention."
       }
     ]
   }
