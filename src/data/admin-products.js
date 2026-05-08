@@ -4,11 +4,11 @@ export const adminProducts = [
     "id": "mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Mewtwo Pokémon T-Shirt | Retro 90s Style Anime Gift",
+    "name": "Mewtwo Pokémon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
-    "description": "Unleash your inner Pokémon Master with our Mewtwo T-Shirt, a perfect blend of retro 90s style and cool anime fan art. Crafted from high-quality, soft cotton, this shirt features vibrant Gelato print quality that brings the iconic Mewtwo design to life. Ideal for casual outings or as a statement piece, it makes a funny and thoughtful gift for any Pokémon lover. Whether you're battling in the Pokémon arena or just hanging out with friends, this tee is a must-have for fans who appreciate unique art and nostalgia.",
+    "description": "Unleash your inner Pokémon Master with our Mewtwo T-Shirt, a perfect blend of retro 90s style and cool anime fan art. This shirt features vibrant print quality that brings the iconic Mewtwo design to life. Ideal for casual outings or as a statement piece, it makes a funny and thoughtful gift for any Pokémon lover. Whether you're battling in the Pokémon arena or just hanging out with friends, this tee is a must-have for fans who appreciate unique art and nostalgia.",
     "altText": "Mewtwo graphic t-shirt featuring retro 90s anime art style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -289,6 +289,6 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-08T15:47:10.772Z"
+    "updatedAt": "2026-05-08T16:14:51.250Z"
   }
 ]
