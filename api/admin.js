@@ -667,6 +667,75 @@ export default async function handler(req, res) {
       return res.status(200).json({ imageUrl: resultUrl })
     }
 
+    // ── publish-social-asset ──────────────────────────────────────────────────
+    // Atomic: save assets to product gallery + set hero + update SEO + store social copy
+    // Payload: { productId, platform, assets: [{id, imageUrl, videoUrl}], copy: {...} }
+    if (action === 'publish-social-asset') {
+      const { productId, platform, assets = [], copy = {} } = data
+      if (!productId) return res.status(400).json({ error: 'productId required' })
+      if (!Array.isArray(assets) || assets.length === 0) return res.status(400).json({ error: 'assets array required' })
+
+      // 1. Download & commit each asset to GitHub
+      const savedPaths = []
+      for (const asset of assets) {
+        const url = asset.imageUrl || asset.videoUrl
+        if (!url) continue
+        const isVideo = !!asset.videoUrl
+        const ext     = isVideo ? 'mp4' : 'jpg'
+        const filename = `${platform}-${asset.id}-${Date.now()}.${ext}`
+        const imagePath = `public/images/${productId}/generated/${filename}`
+
+        let buffer
+        try {
+          const fetched = await fetch(url, { headers: { 'User-Agent': 'JAYL-Store/1.0' }, signal: AbortSignal.timeout(30_000) })
+          if (!fetched.ok) continue
+          buffer = Buffer.from(await fetched.arrayBuffer())
+        } catch { continue }
+
+        let sha = null
+        try { const f = await ghGet(imagePath, githubToken); sha = f.sha } catch {}
+        await ghPut(imagePath, buffer.toString('base64'), sha, `admin: publish ${platform} asset for ${productId}`, githubToken)
+        savedPaths.push({ path: `/images/${productId}/generated/${filename}`, isVideo })
+      }
+
+      if (savedPaths.length === 0) return res.status(500).json({ error: 'No assets could be saved' })
+
+      // 2. Update product: heroImages + SEO + socialCopy
+      const { products, sha: prodSha } = await readAdminProducts(githubToken)
+      const idx = products.findIndex(p => p.id === productId)
+      if (idx < 0) return res.status(404).json({ error: 'Product not found' })
+
+      const existing = products[idx]
+      const newImages  = savedPaths.filter(p => !p.isVideo).map(p => p.path)
+      const newVideos  = savedPaths.filter(p => p.isVideo).map(p => p.path)
+      const heroImages = [...new Set([...(existing.heroImages || []), ...newImages])].slice(0, 6)
+
+      const updated = {
+        ...existing,
+        heroImages,
+        ...(newVideos.length > 0 ? { heroVideo: newVideos[0] } : {}),
+        // SEO fields from copy (only overwrite if provided)
+        ...(copy.seoTitle        ? { seoTitle:       copy.seoTitle        } : {}),
+        ...(copy.seoDescription  ? { seoDescription: copy.seoDescription  } : {}),
+        ...(copy.altText         ? { altText:         copy.altText         } : {}),
+        // Per-platform copy
+        socialCopy: {
+          ...(existing.socialCopy || {}),
+          [platform]: {
+            caption:   copy.caption   || '',
+            hashtags:  copy.hashtags  || '',
+            altText:   copy.altText   || '',
+            updatedAt: new Date().toISOString(),
+          },
+        },
+        updatedAt: new Date().toISOString(),
+      }
+      products[idx] = updated
+      await writeAdminProducts(products, prodSha, `admin: publish ${platform} assets for ${productId}`, githubToken)
+
+      return res.status(200).json({ ok: true, savedPaths, heroImages, updatedProduct: updated })
+    }
+
     // ── generate-copy ─────────────────────────────────────────────────────────
     if (action === 'generate-copy') {
       const { productName, productType, collection, social, selectedAssets } = data
