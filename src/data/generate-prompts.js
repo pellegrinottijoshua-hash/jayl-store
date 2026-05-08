@@ -34,7 +34,7 @@ export const generatePrompts = {
       {
         "id": "site-video-custom-1778253830305",
         "name": "New Prompt",
-        "prompt": ""
+        "prompt": "Detail-driven product hero video, 6-8 seconds, 16:9 format.\nThree-beat structure, no hard cuts — \neach transition is a slow dissolve or camera slide:\n\nBEAT 1 (0-2s): Macro close-up of chest logo, \nfabric texture in full detail, logo fills 80% of frame,\ncamera breathes very slightly — alive, not static.\n\nBEAT 2 (2-5s): Camera slides left revealing \nthe full chest area, logo in context on black fabric,\na hand enters frame from below — \ntouches the fabric lightly, feels the material,\nexits frame. Human without identity.\n\nBEAT 3 (5-8s): Wide pull back to full torso,\nlogo perfectly positioned left chest,\nsubject turns slightly from front to \nthree-quarter profile, stops.\nFreeze on final frame — logo sharp, posture cool.\n\nLighting: consistent dramatic side light throughout,\nno flicker, no shifts.\nColor: pure black fabric, logo colors faithful \nto original print, no color grading that \nalters the chest graphic.\nMood: editorial fashion film, museum quality motion.\nFabric physics: logo print absolutely never warps."
       }
     ]
   }
