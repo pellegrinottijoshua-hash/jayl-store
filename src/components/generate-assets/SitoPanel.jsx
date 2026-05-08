@@ -269,6 +269,9 @@ export default function SitoPanel({
       const requestId = submitData.requestId
       if (!requestId) throw new Error('No requestId')
       patchResult(templateId, { status: 'processing', requestId, progress: 10 })
+
+      const stopPoll = (id) => { clearInterval(pollTimers.current[id]); delete pollTimers.current[id] }
+
       const poll = async () => {
         try {
           const sRes  = await fetch('/api/generate-video', {
@@ -276,27 +279,41 @@ export default function SitoPanel({
             body: JSON.stringify({ action: 'status', modelId: modelToUse, requestId }),
           })
           const sData = await sRes.json()
+
+          // ── If the status endpoint itself returned an error, surface it ──────
+          if (!sRes.ok || sData.error) {
+            stopPoll(requestId)
+            patchResult(templateId, { status: 'error', error: sData.error || `Status check failed (HTTP ${sRes.status})` })
+            return
+          }
+
           const st = sData.status
           if (st === 'COMPLETED') {
-            clearInterval(pollTimers.current[requestId])
-            delete pollTimers.current[requestId]
+            stopPoll(requestId)
             const rRes  = await fetch('/api/generate-video', {
               method: 'POST', headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'result', modelId: modelToUse, requestId }),
             })
             const rData = await rRes.json()
-            if (!rRes.ok) throw new Error(rData.error)
+            if (!rRes.ok) throw new Error(rData.error || 'Result fetch failed')
+            if (!rData.videoUrl) throw new Error('No video URL in response')
             patchResult(templateId, { status: 'done', videoUrl: rData.videoUrl, progress: 100 })
           } else if (st === 'FAILED') {
-            clearInterval(pollTimers.current[requestId])
-            delete pollTimers.current[requestId]
-            patchResult(templateId, { status: 'error', error: 'Generation failed' })
+            stopPoll(requestId)
+            // Try to get error detail from logs
+            const detail = sData.logs?.find(l => l.level === 'error')?.message || 'Generation failed on fal.ai'
+            patchResult(templateId, { status: 'error', error: detail })
           } else {
-            patchResult(templateId, { progress: st === 'IN_PROGRESS' ? 60 : 20 })
+            // IN_QUEUE → 20%, IN_PROGRESS → 60%, anything else stays at current
+            const nextProgress = st === 'IN_PROGRESS' ? 60 : st === 'IN_QUEUE' ? 20 : null
+            if (nextProgress !== null) patchResult(templateId, { progress: nextProgress })
           }
-        } catch (e) { console.warn('[sito-video-poll]', e.message) }
+        } catch (e) {
+          console.warn('[sito-video-poll]', e.message)
+          // Don't stop the poll on transient network errors — it'll retry
+        }
       }
-      pollTimers.current[requestId] = setInterval(poll, 3000)
+      pollTimers.current[requestId] = setInterval(poll, 4000)
     } catch (e) {
       patchResult(templateId, { status: 'error', error: e.message })
     }

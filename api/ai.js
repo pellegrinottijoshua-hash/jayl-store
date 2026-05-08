@@ -407,10 +407,29 @@ async function handleVideo(req, res) {
   try {
     if (action === 'submit') {
       if (!prompt?.trim()) return res.status(400).json({ error: 'prompt is required' })
+
+      // Proxy reference image to fal CDN so it's reachable from fal.ai model servers
+      let falImageUrl = null
+      if (imageUrl) {
+        try {
+          falImageUrl = await proxyImageToFal(imageUrl, apiKey)
+        } catch (proxyErr) {
+          console.warn('[generate-video] image proxy failed, trying direct URL:', proxyErr.message)
+          falImageUrl = imageUrl // fallback: pass URL directly, may or may not work
+        }
+      }
+
+      // duration must be an integer (fal.ai models reject strings)
+      const durationInt = Math.max(3, Math.min(10, parseInt(duration, 10) || 5))
+
       const falRes = await fetch(baseUrl, {
         method: 'POST',
         headers: hdrs,
-        body: JSON.stringify({ prompt: prompt.trim(), duration: duration || '5', ...(imageUrl ? { image_url: imageUrl } : {}) }),
+        body: JSON.stringify({
+          prompt:   prompt.trim(),
+          duration: durationInt,
+          ...(falImageUrl ? { image_url: falImageUrl } : {}),
+        }),
       })
       const data = await falRes.json().catch(() => null)
       if (!falRes.ok) return res.status(falRes.status).json({ error: data?.detail || data?.message || `fal.ai queue error ${falRes.status}` })
