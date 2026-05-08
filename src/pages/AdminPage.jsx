@@ -181,6 +181,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     Array.isArray(editingProduct?.tags) ? editingProduct.tags.join(', ') : (editingProduct?.tags || '')
   )
   const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
+  const [printCost,        setPrintCost]        = useState(editingProduct?.printCost ? (editingProduct.printCost / 100).toString() : '')
   const [urgency,          setUrgency]          = useState(editingProduct?.urgency          || '')
   const [relatedProducts,  setRelatedProducts]  = useState(
     Array.isArray(editingProduct?.relatedProducts)
@@ -423,6 +424,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(pinterestCaption.trim() ? { pinterestCaption: pinterestCaption.trim() } : {}),
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
+        ...(printCost.trim() ? { printCost: Math.round(parseFloat(printCost) * 100) } : {}),
       }
 
       await api('save-product', { product })
@@ -603,6 +605,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           <Field label="Price (€)">
             <input type="number" min="0" step="0.01" value={price} onChange={e => setPrice(e.target.value)}
               placeholder="30" className={inputCls} />
+          </Field>
+
+          <Field label="Print Cost (€)" hint="Gelato cost per unit — used for margin analytics">
+            <input type="number" min="0" step="0.01" value={printCost} onChange={e => setPrintCost(e.target.value)}
+              placeholder="8.50" className={inputCls} />
           </Field>
 
           <Field label="Section">
@@ -890,15 +897,100 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   )
 }
 
+// ── Product status helper ─────────────────────────────────────────────────────
+
+function getProductStatus(p) {
+  const hasImage = (p.heroImages?.length > 0) || (p.images?.length > 0)
+  const hasSeo   = !!(p.seoTitle?.trim() && p.seoDescription?.trim())
+  if (!hasImage) return { code: 'no-image', label: 'No image', dot: 'bg-red-500',    text: 'text-red-400'     }
+  if (!hasSeo)   return { code: 'no-seo',   label: 'No SEO',   dot: 'bg-yellow-500', text: 'text-yellow-400'  }
+  return               { code: 'ok',        label: 'OK',        dot: 'bg-emerald-500',text: 'text-emerald-400' }
+}
+
+// ── Bottom Sheet ──────────────────────────────────────────────────────────────
+
+function BottomSheet({ open, onClose, title, children, fullHeight = false }) {
+  useEffect(() => {
+    if (open) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+  if (!open) return null
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col justify-end">
+      <div className="absolute inset-0 bg-black/70" onClick={onClose} />
+      <div className={`relative bg-gray-950 border-t border-gray-700 ${fullHeight ? 'h-[92vh]' : 'max-h-[90vh]'} flex flex-col`}>
+        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800 flex-shrink-0">
+          <h3 className="text-white text-sm font-medium truncate pr-4">{title}</h3>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-300 text-xl leading-none w-8 h-8 flex items-center justify-center flex-shrink-0">×</button>
+        </div>
+        <div className="overflow-y-auto flex-1">{children}</div>
+      </div>
+    </div>
+  )
+}
+
+// ── Product Admin Card ────────────────────────────────────────────────────────
+
+function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deleting }) {
+  const navigate = useNavigate()
+  const status   = getProductStatus(p)
+  const thumb    = p.heroImages?.[0] || p.images?.[0]?.url || (typeof p.images?.[0] === 'string' ? p.images[0] : null)
+  return (
+    <div
+      className="flex items-center gap-3 px-4 py-3 border-b border-gray-800/50 active:bg-gray-800/40 cursor-pointer transition-colors"
+      onClick={() => navigate(`/admin/product/${p.id}`)}
+    >
+      {/* Thumbnail */}
+      <div className="w-11 h-11 flex-shrink-0 bg-gray-800 overflow-hidden">
+        {thumb ? (
+          <img src={thumb} alt="" className="w-full h-full object-cover"
+            onError={e => { e.currentTarget.style.display = 'none' }} />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-700 text-lg">
+            {p.section === 'art' ? '🖼' : '👕'}
+          </div>
+        )}
+      </div>
+      {/* Info */}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <p className="text-white text-sm font-medium truncate leading-tight">{p.name}</p>
+          <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dot}`} title={status.label} />
+        </div>
+        <p className="text-gray-500 text-xs truncate">
+          {p.section}{p.collection ? ` · ${p.collection}` : ''} · {fmt(p.price)}
+        </p>
+      </div>
+      {/* Actions */}
+      <div className="flex items-center flex-shrink-0" onClick={e => e.stopPropagation()}>
+        <button onClick={() => onGallery(p)}
+          className="w-9 h-10 flex items-center justify-center text-gray-500 hover:text-purple-400 hover:bg-purple-900/20 transition-colors text-sm"
+          title="Asset Gallery">🖼</button>
+        <button onClick={() => onGenerate(p)}
+          className="w-9 h-10 flex items-center justify-center text-indigo-400 hover:bg-indigo-900/30 transition-colors text-base"
+          title="Quick Generate">✦</button>
+        {p.adminManaged && (
+          <button onClick={() => { if (confirm(`Delete "${p.name}"?`)) onDelete(p) }} disabled={deleting}
+            className="w-9 h-10 flex items-center justify-center text-gray-600 hover:text-red-400 hover:bg-red-900/20 transition-colors"
+            title="Delete">{deleting ? '…' : '🗑'}</button>
+        )}
+        <span className="text-gray-600 text-xl ml-0.5">›</span>
+      </div>
+    </div>
+  )
+}
+
 // ── Product List Tab ──────────────────────────────────────────────────────────
 
-function ProductsTab({ onEdit }) {
+function ProductsTab({ onEdit, onGenerate, onGallery }) {
   const navigate = useNavigate()
   const [deletingId,   setDeletingId]   = useState(null)
   const [bulkDeleting, setBulkDeleting] = useState(false)
   const [error,        setError]        = useState('')
   const [hidden,       setHidden]       = useState([])
   const [selectedIds,  setSelectedIds]  = useState(new Set())
+  const [search,       setSearch]       = useState('')
 
   const visible     = allProducts.filter(p => !hidden.includes(p.id))
   const allSelected = visible.length > 0 && selectedIds.size === visible.length
@@ -963,100 +1055,60 @@ function ProductsTab({ onEdit }) {
     document.body.appendChild(a); a.click(); document.body.removeChild(a)
   }
 
+  const filtered = visible.filter(p =>
+    !search || p.name.toLowerCase().includes(search.toLowerCase()) || p.id.includes(search.toLowerCase())
+  )
+
   return (
-    <div className="space-y-3">
+    <div>
       {error && (
-        <div className="bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>
+        <div className="bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm mb-3">{error}</div>
       )}
 
-      {/* Bulk action bar */}
-      <div className="flex items-center justify-between gap-3 flex-wrap">
-        <p className="text-gray-600 text-xs">
-          {selectedIds.size > 0
-            ? <span className="text-indigo-300">{selectedIds.size} selected</span>
-            : <span>{visible.length} products</span>}
-          {' · click any row to open the product editor'}
-        </p>
-        <div className="flex items-center gap-2">
-          {selectedIds.size > 0 && (
-            <button
-              onClick={handleBulkDelete}
-              disabled={bulkDeleting}
-              className="bg-red-700 hover:bg-red-600 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors"
-            >
-              {bulkDeleting ? 'Deleting…' : `🗑 Delete ${selectedIds.size}`}
-            </button>
-          )}
+      {/* Toolbar */}
+      <div className="flex items-center gap-2 mb-3">
+        <input
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="Search products…"
+          className="flex-1 bg-gray-900 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors min-w-0"
+        />
+        <button
+          onClick={handleExportCSV}
+          className="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-gray-200 px-3 py-2 text-xs transition-colors flex-shrink-0"
+          title="Export CSV"
+        >⬇</button>
+        {selectedIds.size > 0 && (
           <button
-            onClick={handleExportCSV}
-            className="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-gray-200 px-3 py-1.5 text-xs transition-colors"
+            onClick={handleBulkDelete}
+            disabled={bulkDeleting}
+            className="bg-red-700 hover:bg-red-600 disabled:opacity-40 text-white px-3 py-2 text-xs transition-colors flex-shrink-0"
           >
-            ⬇ Export CSV{selectedIds.size > 0 ? ` (${selectedIds.size})` : ''}
+            {bulkDeleting ? '…' : `🗑 ${selectedIds.size}`}
           </button>
-        </div>
+        )}
       </div>
 
-      <div className="bg-gray-900 border border-gray-800 overflow-x-auto">
-        <table className="w-full text-sm text-left">
-          <thead>
-            <tr className="border-b border-gray-800 text-gray-500 text-xs font-mono uppercase tracking-wider">
-              <th className="px-3 py-3">
-                <input
-                  type="checkbox"
-                  checked={allSelected}
-                  onChange={toggleAll}
-                  className="accent-indigo-500 cursor-pointer"
-                  title="Select all"
-                />
-              </th>
-              {['ID', 'Name', 'Price', 'Section', 'Collection', 'Video', 'Images', ''].map(h => (
-                <th key={h} className="px-4 py-3 whitespace-nowrap">{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {visible.map(p => {
-              const isSelected = selectedIds.has(p.id)
-              return (
-                <tr
-                  key={p.id}
-                  onClick={() => navigate(`/admin/product/${p.id}`)}
-                  className={`border-b border-gray-800/40 hover:bg-gray-800/50 transition-colors cursor-pointer ${isSelected ? 'bg-indigo-900/10' : ''}`}
-                >
-                  <td className="px-3 py-3" onClick={e => toggleSelect(p.id, e)}>
-                    <input
-                      type="checkbox"
-                      checked={isSelected}
-                      onChange={() => {}}
-                      className="accent-indigo-500 cursor-pointer"
-                    />
-                  </td>
-                  <td className="px-4 py-3 font-mono text-xs text-gray-500 whitespace-nowrap">{p.id}</td>
-                  <td className="px-4 py-3 text-gray-100 whitespace-nowrap font-medium">{p.name}</td>
-                  <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{fmt(p.price)}</td>
-                  <td className="px-4 py-3 text-gray-400">{p.section}</td>
-                  <td className="px-4 py-3 text-gray-400 whitespace-nowrap">{p.collection}</td>
-                  <td className="px-4 py-3 text-gray-500 text-xs">
-                    {p.videoUrl ? <span className="text-indigo-400">▶</span> : '—'}
-                  </td>
-                  <td className="px-4 py-3 text-gray-500 text-xs">{p.images?.length || 0}</td>
-                  <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
-                    {p.adminManaged ? (
-                      <div className="flex gap-2">
-                        <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>Edit</button>
-                        <button onClick={() => handleDelete(p)} disabled={deletingId === p.id} className={btnDanger}>
-                          {deletingId === p.id ? '…' : 'Del'}
-                        </button>
-                      </div>
-                    ) : (
-                      <button onClick={() => navigate(`/admin/product/${p.id}`)} className={btnGhost}>View</button>
-                    )}
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      <p className="text-gray-600 text-xs mb-2 px-1">
+        {filtered.length} product{filtered.length !== 1 ? 's' : ''}
+        {search ? ` matching "${search}"` : ''}
+      </p>
+
+      {/* Card list */}
+      <div className="bg-gray-900 border border-gray-800 divide-y divide-gray-800/50">
+        {filtered.length === 0 && (
+          <p className="text-gray-600 text-sm text-center py-10">No products found.</p>
+        )}
+        {filtered.map(p => (
+          <ProductAdminCard
+            key={p.id}
+            product={p}
+            onGenerate={onGenerate}
+            onGallery={onGallery}
+            onDelete={handleDelete}
+            deleting={deletingId === p.id}
+          />
+        ))}
       </div>
     </div>
   )
@@ -2090,31 +2142,1389 @@ function SettingsTab() {
   )
 }
 
-export default function AdminPage() {
-  const [authed, setAuthed]           = useState(() => sessionStorage.getItem('adminAuth') === '1')
-  const [tab, setTab]                 = useState('products')
-  const [editingProduct, setEditingProduct] = useState(null)   // modal state
+// ── Home Tab ──────────────────────────────────────────────────────────────────
 
-  if (!authed) return <LoginScreen onLogin={() => setAuthed(true)} />
+function HomeTab({ onNavigate, onGenerate }) {
+  const [reviews,       setReviews]       = useState([])
+  const [reviewsLoaded, setReviewsLoaded] = useState(false)
+  const [acting,        setActing]        = useState(null)
+  const [error,         setError]         = useState('')
+
+  const totalProducts = allProducts.length
+  const noImage       = allProducts.filter(p => !(p.heroImages?.length > 0) && !(p.images?.length > 0)).length
+  const noSeo         = allProducts.filter(p => {
+    const hasImage = (p.heroImages?.length > 0) || (p.images?.length > 0)
+    return hasImage && !(p.seoTitle?.trim() && p.seoDescription?.trim())
+  }).length
+
+  useEffect(() => {
+    api('list-reviews', {})
+      .then(d => { setReviews(d.reviews || []); setReviewsLoaded(true) })
+      .catch(() => setReviewsLoaded(true))
+  }, [])
+
+  const pendingReviews = reviews.filter(r => r.status === 'pending')
+
+  const moderate = async (reviewId, decision) => {
+    setActing(reviewId + decision); setError('')
+    try {
+      await api('moderate-review', { reviewId, decision })
+      setReviews(prev => prev.map(r => r.id === reviewId ? { ...r, status: decision === 'approve' ? 'approved' : 'rejected' } : r))
+    } catch (e) { setError(e.message) }
+    finally { setActing(null) }
+  }
+
+  return (
+    <div className="p-4 pb-6 space-y-5">
+      {/* Stats row */}
+      <div className="grid grid-cols-3 gap-3">
+        {[
+          { label: 'Products', value: totalProducts, color: 'text-white', onClick: () => onNavigate('products') },
+          { label: 'No SEO',   value: noSeo,  color: noSeo > 0  ? 'text-yellow-400' : 'text-emerald-400', onClick: () => onNavigate('products') },
+          { label: 'No image', value: noImage, color: noImage > 0 ? 'text-red-400'    : 'text-emerald-400', onClick: () => onNavigate('products') },
+        ].map(s => (
+          <button
+            key={s.label}
+            onClick={s.onClick}
+            className="bg-gray-900 border border-gray-800 active:bg-gray-800 p-4 text-center transition-colors"
+          >
+            <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
+            <p className="text-gray-500 text-xs mt-0.5 tracking-wide uppercase font-mono">{s.label}</p>
+          </button>
+        ))}
+      </div>
+
+      {/* Quick actions */}
+      <div className="grid grid-cols-2 gap-3">
+        <button
+          onClick={() => onNavigate('generate')}
+          className="bg-indigo-900/40 border border-indigo-700/50 hover:bg-indigo-900/60 active:bg-indigo-900/80 text-indigo-300 p-4 text-left transition-colors"
+        >
+          <p className="text-lg mb-1">✦</p>
+          <p className="text-sm font-medium">Quick Generate</p>
+          <p className="text-indigo-400/70 text-xs mt-0.5">AI assets for any product</p>
+        </button>
+        <button
+          onClick={() => onNavigate('add')}
+          className="bg-gray-900 border border-gray-800 hover:bg-gray-800 active:bg-gray-700 text-gray-300 p-4 text-left transition-colors"
+        >
+          <p className="text-lg mb-1">＋</p>
+          <p className="text-sm font-medium">Add Product</p>
+          <p className="text-gray-500 text-xs mt-0.5">Create new listing</p>
+        </button>
+      </div>
+
+      {/* Pending reviews */}
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">Pending Reviews</h3>
+          {pendingReviews.length > 0 && (
+            <button onClick={() => onNavigate('reviews')} className="text-indigo-400 text-xs">See all →</button>
+          )}
+        </div>
+        {error && <p className="text-red-400 text-xs mb-2">{error}</p>}
+        {!reviewsLoaded && <p className="text-gray-600 text-sm py-4 text-center">Loading…</p>}
+        {reviewsLoaded && pendingReviews.length === 0 && (
+          <div className="bg-gray-900 border border-gray-800 px-4 py-6 text-center">
+            <p className="text-emerald-400 text-sm">✓ All reviews moderated</p>
+          </div>
+        )}
+        {reviewsLoaded && pendingReviews.slice(0, 3).map(r => (
+          <div key={r.id} className="bg-gray-900 border border-yellow-800/40 p-4 mb-2">
+            <div className="flex items-start gap-2 mb-3">
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-medium truncate">{r.author}</p>
+                <p className="text-gray-500 text-xs">{r.productId} · {'★'.repeat(r.rating)}</p>
+                <p className="text-gray-300 text-sm mt-1 leading-relaxed line-clamp-2">{r.body}</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => moderate(r.id, 'approve')}
+                disabled={!!acting}
+                className="flex-1 bg-emerald-800 hover:bg-emerald-700 disabled:opacity-40 text-white py-2.5 text-sm font-medium transition-colors"
+              >{acting === r.id + 'approve' ? '…' : '✓ Approve'}</button>
+              <button
+                onClick={() => moderate(r.id, 'reject')}
+                disabled={!!acting}
+                className="flex-1 bg-gray-700 hover:bg-gray-600 disabled:opacity-40 text-white py-2.5 text-sm font-medium transition-colors"
+              >{acting === r.id + 'reject' ? '…' : '✗ Reject'}</button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Product audit sneak peek */}
+      {(noImage > 0 || noSeo > 0) && (
+        <div>
+          <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-2">Product Audit</h3>
+          <div className="bg-gray-900 border border-gray-800 divide-y divide-gray-800/60">
+            {allProducts.filter(p => {
+              const s = getProductStatus(p)
+              return s.code !== 'ok'
+            }).slice(0, 5).map(p => {
+              const s = getProductStatus(p)
+              return (
+                <div key={p.id} className="flex items-center gap-3 px-4 py-3">
+                  <span className={`w-2 h-2 rounded-full flex-shrink-0 ${s.dot}`} />
+                  <p className="text-white text-sm flex-1 truncate">{p.name}</p>
+                  <span className={`text-xs ${s.text}`}>{s.label}</span>
+                  <button
+                    onClick={() => onGenerate(p)}
+                    className="text-indigo-400 text-xs ml-2 hover:text-indigo-300"
+                  >✦</button>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Quick Generate Sheet ──────────────────────────────────────────────────────
+
+function QuickGenerateSheet({ product, open, onClose }) {
+  const [platforms,    setPlatforms]    = useState({ instagram: true, tiktok: true, pinterest: false, facebook: false })
+  const [autoPublish,  setAutoPublish]  = useState(false)
+  const [dryRun,       setDryRun]       = useState(true)
+  const [running,      setRunning]      = useState(false)
+  const [result,       setResult]       = useState(null)
+  const [error,        setError]        = useState('')
+
+  // Reset when product changes
+  useEffect(() => { setResult(null); setError('') }, [product])
+
+  const selectedPlatforms = Object.entries(platforms).filter(([, v]) => v).map(([k]) => k)
+
+  const handleLaunch = async () => {
+    if (!product || selectedPlatforms.length === 0) return
+    setRunning(true); setResult(null); setError('')
+    try {
+      const res = await fetch('/api/agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey:      ADMIN_PASSWORD,
+          task:        'generate-social',
+          productId:   product.id,
+          productName: product.name,
+          productType: product.section,
+          platforms:   selectedPlatforms,
+          autoPublish,
+          dryRun,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Agent failed')
+      setResult(data)
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setRunning(false)
+    }
+  }
+
+  if (!product) return null
+
+  return (
+    <BottomSheet open={open} onClose={onClose} title={`✦ Generate — ${product.name}`}>
+      <div className="p-4 space-y-5">
+        {/* Platforms */}
+        <div>
+          <p className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-3">Platforms</p>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { id: 'instagram', label: 'Instagram', icon: '📸' },
+              { id: 'tiktok',    label: 'TikTok',    icon: '🎵' },
+              { id: 'pinterest', label: 'Pinterest',  icon: '📌' },
+              { id: 'facebook',  label: 'Facebook',   icon: '👤' },
+            ].map(pl => (
+              <button
+                key={pl.id}
+                onClick={() => setPlatforms(prev => ({ ...prev, [pl.id]: !prev[pl.id] }))}
+                className={`flex items-center gap-2 px-4 py-3 border text-sm transition-colors ${
+                  platforms[pl.id]
+                    ? 'bg-indigo-900/40 border-indigo-600 text-indigo-200'
+                    : 'bg-gray-900 border-gray-700 text-gray-500'
+                }`}
+              >
+                <span>{pl.icon}</span>
+                <span className="font-medium">{pl.label}</span>
+                {platforms[pl.id] && <span className="ml-auto text-indigo-400 text-xs">✓</span>}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Options */}
+        <div className="space-y-3">
+          <p className="text-gray-400 text-xs font-mono uppercase tracking-widest">Options</p>
+          {[
+            { label: 'Dry run (preview only)', sub: 'Generate copy without publishing', key: 'dryRun', val: dryRun, set: setDryRun },
+            { label: 'Auto-publish', sub: 'Send directly to connected platforms', key: 'autoPublish', val: autoPublish, set: setAutoPublish },
+          ].map(opt => (
+            <button
+              key={opt.key}
+              onClick={() => opt.set(v => !v)}
+              className="w-full flex items-center gap-3 bg-gray-900 border border-gray-800 px-4 py-3 text-left transition-colors"
+            >
+              <div className={`w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors ${opt.val ? 'bg-indigo-600 border-indigo-600' : 'border-gray-600'}`}>
+                {opt.val && <span className="text-white text-xs leading-none">✓</span>}
+              </div>
+              <div>
+                <p className="text-white text-sm">{opt.label}</p>
+                <p className="text-gray-500 text-xs">{opt.sub}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Result / Error */}
+        {error && (
+          <div className="bg-red-900/20 border border-red-800 px-4 py-3 text-red-400 text-sm">{error}</div>
+        )}
+        {result && (
+          <div className="bg-emerald-900/20 border border-emerald-800 px-4 py-3 text-emerald-400 text-sm">
+            ✓ Agent launched successfully
+            {result.jobId && <span className="block text-emerald-600 text-xs mt-1">Job: {result.jobId}</span>}
+          </div>
+        )}
+
+        {/* Launch button */}
+        <button
+          onClick={handleLaunch}
+          disabled={running || selectedPlatforms.length === 0}
+          className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white py-4 text-sm font-semibold tracking-wide transition-colors"
+        >
+          {running ? '⟳ Generating…' : `✦ Launch Agent (${selectedPlatforms.length} platform${selectedPlatforms.length !== 1 ? 's' : ''})`}
+        </button>
+      </div>
+    </BottomSheet>
+  )
+}
+
+// ── Generate Tab ──────────────────────────────────────────────────────────────
+
+function GenerateTab({ onGenerate, onGallery }) {
+  const [search, setSearch] = useState('')
+  const filtered = allProducts.filter(p =>
+    !search || p.name.toLowerCase().includes(search.toLowerCase())
+  )
+  return (
+    <div>
+      <div className="px-4 pt-4 pb-3">
+        <p className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-3">Select a product to generate AI assets</p>
+        <input
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="Search products…"
+          className="w-full bg-gray-900 border border-gray-700 text-white px-3 py-2.5 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
+        />
+      </div>
+      <div className="divide-y divide-gray-800/50">
+        {filtered.map(p => {
+          const status = getProductStatus(p)
+          const thumb  = p.heroImages?.[0] || p.images?.[0]?.url || (typeof p.images?.[0] === 'string' ? p.images[0] : null)
+          return (
+            <div key={p.id} className="flex items-center gap-3 px-4 py-3 active:bg-gray-800/40 cursor-pointer transition-colors">
+              <div className="w-10 h-10 flex-shrink-0 bg-gray-800 overflow-hidden">
+                {thumb
+                  ? <img src={thumb} alt="" className="w-full h-full object-cover" onError={e => { e.currentTarget.style.display = 'none' }} />
+                  : <div className="w-full h-full flex items-center justify-center text-gray-600 text-base">{p.section === 'art' ? '🖼' : '👕'}</div>
+                }
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-medium truncate">{p.name}</p>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className={`w-1.5 h-1.5 rounded-full ${status.dot}`} />
+                  <p className="text-gray-500 text-xs truncate">{p.section} · {fmt(p.price)}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                {onGallery && (
+                  <button
+                    onClick={() => onGallery(p)}
+                    className="bg-gray-800 hover:bg-gray-700 text-gray-400 px-3 py-2.5 text-sm transition-colors"
+                    title="Asset Gallery"
+                  >🖼</button>
+                )}
+                <button
+                  onClick={() => onGenerate(p)}
+                  className="bg-indigo-700 hover:bg-indigo-600 active:bg-indigo-800 text-white px-4 py-2.5 text-sm font-semibold transition-colors"
+                >✦ Go</button>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// ── Batch Agent Tab ───────────────────────────────────────────────────────────
+
+const BATCH_PLATFORMS = ['instagram', 'tiktok', 'pinterest', 'facebook']
+
+function BatchAgentTab() {
+  // Filters
+  const collections  = [...new Set(allProducts.map(p => p.collection).filter(Boolean))]
+  const [collFilter, setCollFilter] = useState('all')
+  const [selected,   setSelected]  = useState(new Set())
+  const [platforms,  setPlatforms] = useState({ instagram: true, tiktok: true, pinterest: false, facebook: false })
+  const [autoPublish, setAutoPublish] = useState(false)
+  const [dryRun,      setDryRun]      = useState(true)
+
+  // Batch run state
+  const [running,   setRunning]   = useState(false)
+  const [progress,  setProgress]  = useState(null) // { current, total, productName }
+  const [summary,   setSummary]   = useState(null) // final { processed, assets, queued, failed }
+  const [error,     setError]     = useState('')
+
+  const visible = allProducts.filter(p =>
+    collFilter === 'all' || p.collection === collFilter
+  )
+
+  const allSelected = visible.length > 0 && visible.every(p => selected.has(p.id))
+  const toggleAll   = () => setSelected(allSelected ? new Set() : new Set(visible.map(p => p.id)))
+  const toggleOne   = id => setSelected(prev => {
+    const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n
+  })
+
+  const selectedPlatforms = Object.entries(platforms).filter(([, v]) => v).map(([k]) => k)
+  const targets = visible.filter(p => selected.has(p.id))
+
+  const handleLaunch = async () => {
+    if (!targets.length || !selectedPlatforms.length) return
+    setRunning(true); setSummary(null); setError('')
+    let totalAssets = 0, totalQueued = 0, failed = 0
+
+    for (let i = 0; i < targets.length; i++) {
+      const p = targets[i]
+      setProgress({ current: i + 1, total: targets.length, productName: p.name })
+      try {
+        const res = await fetch('/api/agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            apiKey:      ADMIN_PASSWORD,
+            task:        'generate_social_content',
+            productId:   p.id,
+            productName: p.name,
+            productType: p.section,
+            collection:  p.collection,
+            platforms:   selectedPlatforms,
+            autoPublish,
+            dryRun,
+          }),
+        })
+        const data = await res.json()
+        if (!res.ok || !data.ok) { failed++; continue }
+
+        // Save each asset to Gallery
+        for (const asset of (data.assets || [])) {
+          if (!asset.imageUrl && !asset.videoUrl) continue
+          const assetUrl = asset.imageUrl || asset.videoUrl
+          const platform = asset.platform || selectedPlatforms[0]
+          const copy     = data.copy?.[platform] || {}
+          try {
+            await api('save-asset', {
+              assetUrl, productId: p.id,
+              type:     asset.videoUrl ? 'video' : 'image',
+              platform,
+              caption:  copy.caption  || '',
+              hashtags: copy.hashtags || '',
+            })
+            totalAssets++
+          } catch {}
+        }
+
+        // Add to Content Queue (one item per platform with generated copy)
+        const scheduledBase = new Date()
+        for (let pi = 0; pi < selectedPlatforms.length; pi++) {
+          const pl   = selectedPlatforms[pi]
+          const copy = data.copy?.[pl] || {}
+          const imgAsset = (data.assets || []).find(a => (a.platform === pl || !a.platform) && a.imageUrl)
+          try {
+            const scheduled = new Date(scheduledBase)
+            scheduled.setDate(scheduled.getDate() + i + pi) // spread by day
+            await api('save-queue-item', {
+              item: {
+                platform:    pl,
+                productId:   p.id,
+                imageUrl:    imgAsset?.imageUrl || '',
+                caption:     copy.caption  || '',
+                hashtags:    copy.hashtags || '',
+                scheduledAt: scheduled.toISOString(),
+              },
+            })
+            totalQueued++
+          } catch {}
+        }
+
+        totalAssets += (data.assets || []).length
+      } catch { failed++ }
+    }
+
+    setRunning(false)
+    setProgress(null)
+    setSummary({ processed: targets.length - failed, assets: totalAssets, queued: totalQueued, failed })
+  }
+
+  return (
+    <div className="p-4 space-y-5">
+      {/* Collection filter */}
+      <div>
+        <p className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-2">Filter by Collection</p>
+        <div className="flex gap-2 flex-wrap">
+          {['all', ...collections].map(c => (
+            <button key={c} onClick={() => { setCollFilter(c); setSelected(new Set()) }}
+              className={`px-3 py-1.5 text-xs rounded transition-colors capitalize ${collFilter === c ? 'bg-gray-700 text-white' : 'bg-gray-900 text-gray-500 hover:text-gray-300 border border-gray-800'}`}
+            >{c}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* Product list with checkboxes */}
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-gray-400 text-xs font-mono uppercase tracking-widest">Select Products</p>
+          <button onClick={toggleAll} className="text-indigo-400 text-xs hover:text-indigo-300">
+            {allSelected ? 'Deselect all' : `Select all (${visible.length})`}
+          </button>
+        </div>
+        <div className="bg-gray-900 border border-gray-800 divide-y divide-gray-800/50 max-h-64 overflow-y-auto">
+          {visible.map(p => {
+            const status = getProductStatus(p)
+            return (
+              <label key={p.id} className="flex items-center gap-3 px-4 py-3 cursor-pointer active:bg-gray-800/40">
+                <input type="checkbox" checked={selected.has(p.id)} onChange={() => toggleOne(p.id)}
+                  className="accent-indigo-500 w-4 h-4 flex-shrink-0" />
+                <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dot}`} />
+                <span className="text-white text-sm flex-1 truncate">{p.name}</span>
+                <span className="text-gray-600 text-xs flex-shrink-0">{p.collection}</span>
+              </label>
+            )
+          })}
+        </div>
+        {selected.size > 0 && (
+          <p className="text-indigo-300 text-xs mt-1.5">{selected.size} product{selected.size !== 1 ? 's' : ''} selected</p>
+        )}
+      </div>
+
+      {/* Platforms */}
+      <div>
+        <p className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-2">Platforms</p>
+        <div className="grid grid-cols-2 gap-2">
+          {BATCH_PLATFORMS.map(pl => (
+            <button key={pl} onClick={() => setPlatforms(prev => ({ ...prev, [pl]: !prev[pl] }))}
+              className={`flex items-center gap-2 px-3 py-2.5 border text-sm transition-colors capitalize ${platforms[pl] ? 'bg-indigo-900/40 border-indigo-600 text-indigo-200' : 'bg-gray-900 border-gray-700 text-gray-500'}`}
+            >
+              <span>{pl === 'instagram' ? '📸' : pl === 'tiktok' ? '🎵' : pl === 'pinterest' ? '📌' : '👤'}</span>
+              {pl}
+              {platforms[pl] && <span className="ml-auto text-indigo-400 text-xs">✓</span>}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Options */}
+      <div className="flex gap-3">
+        {[
+          { label: 'Dry Run', key: 'dryRun', val: dryRun, set: setDryRun },
+          { label: 'Auto-Publish', key: 'ap', val: autoPublish, set: setAutoPublish },
+        ].map(opt => (
+          <button key={opt.key} onClick={() => opt.set(v => !v)}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 border text-sm transition-colors ${opt.val ? 'bg-indigo-900/30 border-indigo-700 text-indigo-300' : 'bg-gray-900 border-gray-700 text-gray-500'}`}
+          >
+            <span className={`w-4 h-4 border-2 flex items-center justify-center text-xs ${opt.val ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-gray-600'}`}>{opt.val ? '✓' : ''}</span>
+            {opt.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Progress */}
+      {running && progress && (
+        <div className="bg-indigo-900/20 border border-indigo-800 px-4 py-3">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-indigo-300 text-sm font-medium">Running batch…</p>
+            <p className="text-indigo-400 text-xs">{progress.current}/{progress.total}</p>
+          </div>
+          <div className="w-full bg-gray-800 h-1.5 rounded-full">
+            <div className="bg-indigo-500 h-1.5 rounded-full transition-all duration-500"
+              style={{ width: `${(progress.current / progress.total) * 100}%` }} />
+          </div>
+          <p className="text-indigo-400/70 text-xs mt-1.5 truncate">⟳ {progress.productName}</p>
+        </div>
+      )}
+
+      {/* Summary */}
+      {summary && (
+        <div className={`border px-4 py-4 ${summary.failed > 0 ? 'bg-yellow-900/20 border-yellow-800' : 'bg-emerald-900/20 border-emerald-800'}`}>
+          <p className={`text-sm font-semibold mb-3 ${summary.failed > 0 ? 'text-yellow-400' : 'text-emerald-400'}`}>
+            {summary.failed > 0 ? `⚠ Batch complete with ${summary.failed} error${summary.failed !== 1 ? 's' : ''}` : '✓ Batch complete!'}
+          </p>
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { label: 'Processed', value: summary.processed },
+              { label: 'Assets saved', value: summary.assets },
+              { label: 'In Queue', value: summary.queued },
+            ].map(s => (
+              <div key={s.label} className="text-center">
+                <p className="text-white text-xl font-bold">{s.value}</p>
+                <p className="text-gray-500 text-xs mt-0.5">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {error && <div className="bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>}
+
+      {/* Launch */}
+      <button
+        onClick={handleLaunch}
+        disabled={running || targets.length === 0 || selectedPlatforms.length === 0}
+        className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white py-4 text-sm font-semibold tracking-wide transition-colors"
+      >
+        {running
+          ? `⟳ Processing ${progress?.current || 0}/${targets.length}…`
+          : `⚡ Launch Batch — ${targets.length} product${targets.length !== 1 ? 's' : ''} × ${selectedPlatforms.length} platform${selectedPlatforms.length !== 1 ? 's' : ''}`
+        }
+      </button>
+    </div>
+  )
+}
+
+// ── Revenue Tab ───────────────────────────────────────────────────────────────
+
+const fmtRevenue = cents => `€${(cents / 100).toFixed(2)}`
+const fmtK       = cents => cents >= 100000 ? `€${(cents / 100000).toFixed(1)}k` : fmtRevenue(cents)
+
+function RevenueBar({ value, max, color = 'bg-indigo-500' }) {
+  const pct = max > 0 ? Math.max(4, Math.round((value / max) * 100)) : 0
+  return (
+    <div className="flex-1 bg-gray-800 h-2 rounded-full overflow-hidden">
+      <div className={`${color} h-2 rounded-full transition-all duration-700`} style={{ width: `${pct}%` }} />
+    </div>
+  )
+}
+
+function RevenueTab() {
+  const [stats,   setStats]   = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error,   setError]   = useState('')
+
+  const load = async () => {
+    setLoading(true); setError('')
+    try {
+      const d = await api('revenue-stats', {})
+      setStats(d)
+    } catch (e) { setError(e.message) }
+    finally { setLoading(false) }
+  }
+
+  useEffect(() => { load() }, [])
+
+  if (loading) return <p className="text-gray-600 text-sm py-12 text-center">Loading revenue data…</p>
+  if (error)   return (
+    <div className="p-4">
+      <div className="bg-red-900/20 border border-red-800 px-4 py-3 text-red-400 text-sm">{error}</div>
+      <button onClick={load} className="mt-3 text-indigo-400 text-sm">↻ Retry</button>
+    </div>
+  )
+  if (!stats)  return null
+
+  const maxMonthRev  = Math.max(...stats.monthlyTrend.map(m => m.revenue), 1)
+  const maxProdRev   = Math.max(...stats.topProducts.map(p => p.revenue), 1)
+  const maxCollRev   = Math.max(...stats.topCollections.map(c => c.revenue), 1)
+
+  return (
+    <div className="p-4 space-y-6">
+      {/* KPI cards */}
+      <div className="grid grid-cols-3 gap-3">
+        {[
+          { label: 'Revenue',   value: fmtK(stats.totalRevenue), sub: 'lifetime' },
+          { label: 'Orders',    value: stats.totalOrders,         sub: 'total' },
+          { label: 'Avg Order', value: fmtRevenue(stats.aov),     sub: 'AOV' },
+        ].map(s => (
+          <div key={s.label} className="bg-gray-900 border border-gray-800 p-4 text-center">
+            <p className="text-white text-xl font-bold">{s.value}</p>
+            <p className="text-gray-500 text-xs mt-0.5 uppercase tracking-wide font-mono">{s.label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Monthly trend */}
+      <div>
+        <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-3">Monthly Revenue (last 6 months)</h3>
+        {stats.monthlyTrend.every(m => m.revenue === 0) ? (
+          <p className="text-gray-600 text-sm text-center py-4">No data yet</p>
+        ) : (
+          <div className="flex items-end gap-2 h-24">
+            {stats.monthlyTrend.map(m => {
+              const pct = maxMonthRev > 0 ? Math.max(4, Math.round((m.revenue / maxMonthRev) * 100)) : 4
+              return (
+                <div key={m.month} className="flex-1 flex flex-col items-center gap-1">
+                  <span className="text-gray-600 text-[9px] font-mono">{m.revenue > 0 ? fmtK(m.revenue) : ''}</span>
+                  <div className="w-full bg-indigo-600/80 rounded-t transition-all duration-700" style={{ height: `${pct}%`, minHeight: m.revenue > 0 ? '4px' : '0' }} />
+                  <span className="text-gray-600 text-[9px] font-mono">{m.month.slice(5)}</span>
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Top products */}
+      {stats.topProducts.length > 0 && (
+        <div>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">Top Products</h3>
+            <button onClick={load} className="text-gray-600 hover:text-gray-400 text-xs">↻</button>
+          </div>
+          <div className="space-y-3">
+            {stats.topProducts.map((p, i) => (
+              <div key={p.productId}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-gray-600 text-xs w-4 text-right flex-shrink-0">{i + 1}</span>
+                  <span className="text-white text-sm flex-1 truncate">{p.name || p.productId}</span>
+                  <span className="text-white text-sm font-semibold flex-shrink-0">{fmtRevenue(p.revenue)}</span>
+                </div>
+                <div className="flex items-center gap-2 pl-6">
+                  <RevenueBar value={p.revenue} max={maxProdRev} />
+                  <div className="flex items-center gap-2 text-xs flex-shrink-0">
+                    <span className="text-gray-500">{p.orders} orders</span>
+                    {p.marginPct !== null && (
+                      <span className={`font-mono ${p.marginPct >= 50 ? 'text-emerald-400' : p.marginPct >= 30 ? 'text-yellow-400' : 'text-red-400'}`}>
+                        {p.marginPct}%
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Revenue by collection */}
+      {stats.topCollections.length > 0 && (
+        <div>
+          <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest mb-3">By Collection</h3>
+          <div className="space-y-3">
+            {stats.topCollections.map(c => (
+              <div key={c.collection}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-white text-sm flex-1 capitalize truncate">{c.collection || 'General'}</span>
+                  <span className="text-white text-sm font-semibold">{fmtRevenue(c.revenue)}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <RevenueBar value={c.revenue} max={maxCollRev} color="bg-purple-500" />
+                  <span className="text-gray-500 text-xs flex-shrink-0">{c.orders} orders</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── SEO Audit Tab ─────────────────────────────────────────────────────────────
+
+function SeoAuditTab() {
+  const [expandedId, setExpandedId]   = useState(null)
+  const [generating,  setGenerating]  = useState(null)   // productId
+  const [suggestions, setSuggestions] = useState({})     // { [productId]: seo }
+  const [saving,      setSaving]      = useState(null)   // productId
+  const [saved,       setSaved]       = useState({})     // { [productId]: bool }
+  const [error,       setError]       = useState('')
+
+  // Editable drafts per product
+  const [drafts, setDrafts] = useState({})
+
+  const setDraft = (productId, key, value) =>
+    setDrafts(prev => ({ ...prev, [productId]: { ...(prev[productId] || {}), [key]: value } }))
+
+  const getDraft = (productId, key, fallback = '') =>
+    drafts[productId]?.[key] ?? suggestions[productId]?.[key] ?? fallback
+
+  const handleGenerate = async (p) => {
+    setGenerating(p.id); setError('')
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'generate-seo', password: ADMIN_PASSWORD,
+          productId: p.id, productName: p.name,
+          productType: p.section, collection: p.collection,
+          description: p.seoDescription, tags: p.tags,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'SEO generation failed')
+      setSuggestions(prev => ({ ...prev, [p.id]: data.seo }))
+      setDrafts(prev => ({ ...prev, [p.id]: {} }))
+      setExpandedId(p.id)
+    } catch (e) { setError(e.message) }
+    finally { setGenerating(null) }
+  }
+
+  const handleApply = async (p) => {
+    setSaving(p.id); setError('')
+    const seo = {
+      etsyTitle:       getDraft(p.id, 'etsyTitle'),
+      etsyDescription: getDraft(p.id, 'etsyDescription'),
+      etsyTags:        getDraft(p.id, 'etsyTags'),
+      seoTitle:        getDraft(p.id, 'seoTitle'),
+      seoDescription:  getDraft(p.id, 'seoDescription'),
+      altText:         getDraft(p.id, 'altText'),
+    }
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'save-product', password: ADMIN_PASSWORD,
+          product: { ...p, ...seo, tags: Array.isArray(seo.etsyTags) ? seo.etsyTags : (seo.etsyTags || '').split(',').map(t => t.trim()).filter(Boolean) },
+        }),
+      })
+      const d = await res.json()
+      if (!res.ok) throw new Error(d.error || 'Save failed')
+      setSaved(prev => ({ ...prev, [p.id]: true }))
+      setTimeout(() => setSaved(prev => ({ ...prev, [p.id]: false })), 3000)
+    } catch (e) { setError(e.message) }
+    finally { setSaving(null) }
+  }
+
+  const scoreColor = (val, max, warn, ok) => {
+    if (!val) return 'text-red-400'
+    const len = typeof val === 'string' ? val.length : (Array.isArray(val) ? val.length : 0)
+    if (len >= ok)   return 'text-emerald-400'
+    if (len >= warn) return 'text-yellow-400'
+    return 'text-red-400'
+  }
+
+  return (
+    <div>
+      {error && <div className="mx-4 mb-3 bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>}
+      <p className="px-4 py-3 text-gray-500 text-xs">
+        {allProducts.length} products · tap ✦ to generate Etsy SEO with AI
+      </p>
+
+      <div className="divide-y divide-gray-800/50">
+        {allProducts.map(p => {
+          const status = getProductStatus(p)
+          const seoOk  = !!(p.seoTitle?.trim() && p.seoDescription?.trim())
+          const hasSug = !!suggestions[p.id]
+          const isOpen = expandedId === p.id
+
+          return (
+            <div key={p.id} className="bg-gray-950">
+              {/* Row */}
+              <div className="flex items-center gap-3 px-4 py-3" onClick={() => setExpandedId(isOpen ? null : p.id)}>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white text-sm font-medium truncate">{p.name}</p>
+                  <div className="flex items-center gap-3 mt-0.5 text-xs">
+                    <span className={seoOk ? 'text-emerald-400' : 'text-red-400'}>
+                      {seoOk ? '✓ SEO' : '✗ SEO'}
+                    </span>
+                    <span className={p.etsyTitle ? 'text-emerald-400' : 'text-gray-600'}>
+                      {p.etsyTitle ? '✓ Etsy' : '✗ Etsy'}
+                    </span>
+                    {p.tags?.length > 0 && <span className="text-gray-500">{p.tags.length} tags</span>}
+                  </div>
+                </div>
+                <button
+                  onClick={e => { e.stopPropagation(); handleGenerate(p) }}
+                  disabled={generating === p.id}
+                  className="flex-shrink-0 bg-indigo-700 hover:bg-indigo-600 disabled:opacity-50 text-white px-3 py-1.5 text-xs font-semibold transition-colors"
+                >
+                  {generating === p.id ? '⟳' : '✦ Gen'}
+                </button>
+                <span className="text-gray-600 text-lg flex-shrink-0">{isOpen ? '▾' : '›'}</span>
+              </div>
+
+              {/* Expanded SEO editor */}
+              {isOpen && (
+                <div className="px-4 pb-4 pt-1 space-y-3 border-t border-gray-800/50 bg-gray-900/30">
+                  {!hasSug && (
+                    <p className="text-gray-500 text-xs py-2 text-center">
+                      Tap ✦ Gen to generate AI suggestions, then edit and apply.
+                    </p>
+                  )}
+                  {hasSug && (
+                    <>
+                      {[
+                        { key: 'etsyTitle',       label: 'Etsy Title',       max: 140, hint: 'chars · max 140' },
+                        { key: 'etsyDescription', label: 'Etsy Description', max: 400, hint: 'chars · 200-400 ideal', textarea: true },
+                        { key: 'seoTitle',        label: 'SEO Title',        max: 60,  hint: 'chars · max 60' },
+                        { key: 'seoDescription',  label: 'SEO Description',  max: 160, hint: 'chars · max 160', textarea: true },
+                        { key: 'altText',         label: 'Alt Text',         max: 125, hint: 'chars · max 125' },
+                      ].map(field => {
+                        const val = getDraft(p.id, field.key)
+                        const len = val.length
+                        const over = len > field.max
+                        return (
+                          <div key={field.key}>
+                            <div className="flex items-center justify-between mb-1">
+                              <label className="text-gray-500 text-xs">{field.label}</label>
+                              <span className={`text-xs ${over ? 'text-red-400' : len > field.max * 0.85 ? 'text-yellow-400' : 'text-gray-600'}`}>
+                                {len}/{field.max}
+                              </span>
+                            </div>
+                            {field.textarea ? (
+                              <textarea
+                                value={val}
+                                onChange={e => setDraft(p.id, field.key, e.target.value)}
+                                rows={3}
+                                className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 resize-none transition-colors"
+                              />
+                            ) : (
+                              <input
+                                value={val}
+                                onChange={e => setDraft(p.id, field.key, e.target.value)}
+                                className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
+                              />
+                            )}
+                          </div>
+                        )
+                      })}
+
+                      {/* Etsy Tags */}
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="text-gray-500 text-xs">Etsy Tags</label>
+                          <span className="text-gray-600 text-xs">
+                            {(Array.isArray(getDraft(p.id, 'etsyTags'))
+                              ? getDraft(p.id, 'etsyTags')
+                              : (getDraft(p.id, 'etsyTags') || '').split(',').filter(Boolean)
+                            ).length}/13
+                          </span>
+                        </div>
+                        <input
+                          value={Array.isArray(getDraft(p.id, 'etsyTags')) ? getDraft(p.id, 'etsyTags').join(', ') : getDraft(p.id, 'etsyTags')}
+                          onChange={e => setDraft(p.id, 'etsyTags', e.target.value)}
+                          placeholder="tag1, tag2, tag3…"
+                          className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
+                        />
+                        <p className="text-gray-600 text-xs mt-1">Comma-separated · max 20 chars each · max 13</p>
+                      </div>
+
+                      <button
+                        onClick={() => handleApply(p)}
+                        disabled={saving === p.id}
+                        className="w-full bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 text-white py-3 text-sm font-semibold transition-colors"
+                      >
+                        {saving === p.id ? 'Saving…' : saved[p.id] ? '✓ Saved!' : '✓ Apply & Save to GitHub'}
+                      </button>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// ── Content Queue Tab ─────────────────────────────────────────────────────────
+
+const QUEUE_PLATFORMS = ['instagram', 'tiktok', 'pinterest', 'facebook']
+
+function ContentQueueTab() {
+  const [items,      setItems]      = useState([])
+  const [loading,    setLoading]    = useState(true)
+  const [error,      setError]      = useState('')
+  const [filter,     setFilter]     = useState('pending') // 'all'|'pending'|'published'|'failed'
+  const [addOpen,    setAddOpen]    = useState(false)
+  const [publishing, setPublishing] = useState(null)
+
+  const load = async () => {
+    setLoading(true); setError('')
+    try {
+      const d = await api('list-queue', {})
+      setItems((d.items || []).sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt)))
+    } catch (e) { setError(e.message) }
+    finally { setLoading(false) }
+  }
+
+  useEffect(() => { load() }, [])
+
+  const handleDelete = async id => {
+    if (!confirm('Delete this queue item?')) return
+    try { await api('delete-queue-item', { itemId: id }); setItems(prev => prev.filter(i => i.id !== id)) }
+    catch (e) { setError(e.message) }
+  }
+
+  const handlePublishNow = async id => {
+    setPublishing(id); setError('')
+    try {
+      await api('publish-queue-item', { itemId: id })
+      await load()
+    } catch (e) { setError(e.message) }
+    finally { setPublishing(null) }
+  }
+
+  const visible = items.filter(i => filter === 'all' || i.status === filter)
+  const pendingCount = items.filter(i => i.status === 'pending').length
+
+  const statusBadge = s =>
+    s === 'published' ? 'bg-emerald-900/60 text-emerald-400'
+    : s === 'failed'  ? 'bg-red-900/60 text-red-400'
+    : 'bg-yellow-900/60 text-yellow-400'
+
+  const platformIcon = p =>
+    p === 'instagram' ? '📸' : p === 'tiktok' ? '🎵' : p === 'pinterest' ? '📌' : '👤'
+
+  return (
+    <div>
+      {/* Add Item Sheet */}
+      <QueueItemForm open={addOpen} onClose={() => setAddOpen(false)} onSaved={() => { setAddOpen(false); load() }} />
+
+      {error && <div className="mx-4 mb-3 bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>}
+
+      {/* Header toolbar */}
+      <div className="flex items-center gap-2 px-4 pt-4 pb-3">
+        <div className="flex gap-1 flex-1 overflow-x-auto">
+          {[['pending', pendingCount], ['published', null], ['failed', null], ['all', null]].map(([f, cnt]) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`px-3 py-1.5 text-xs font-medium rounded whitespace-nowrap transition-colors ${filter === f ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-gray-300'}`}
+            >
+              {f.charAt(0).toUpperCase() + f.slice(1)}
+              {cnt > 0 && <span className="ml-1 bg-yellow-500 text-black text-[9px] w-4 h-4 rounded-full inline-flex items-center justify-center font-bold">{cnt}</span>}
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={() => setAddOpen(true)}
+          className="flex-shrink-0 bg-indigo-700 hover:bg-indigo-600 text-white px-3 py-1.5 text-xs font-semibold transition-colors"
+        >+ Schedule</button>
+        <button onClick={load} className="flex-shrink-0 text-gray-500 hover:text-gray-300 text-sm px-2 py-1.5 border border-gray-700">↻</button>
+      </div>
+
+      {loading && <p className="text-gray-600 text-sm py-8 text-center">Loading…</p>}
+
+      {!loading && visible.length === 0 && (
+        <p className="text-gray-600 text-sm py-8 text-center">
+          {filter === 'pending' ? 'No scheduled posts. Tap + Schedule to add one.' : `No ${filter} posts.`}
+        </p>
+      )}
+
+      <div className="divide-y divide-gray-800/50">
+        {visible.map(item => (
+          <div key={item.id} className="px-4 py-4">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl flex-shrink-0 mt-0.5">{platformIcon(item.platform)}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-white text-xs font-semibold capitalize">{item.platform}</span>
+                  <span className={`text-xs px-1.5 py-0.5 rounded ${statusBadge(item.status)}`}>{item.status}</span>
+                </div>
+                {item.productId && <p className="text-gray-500 text-xs mb-1">📦 {item.productId}</p>}
+                {item.caption && <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 mb-1">{item.caption}</p>}
+                <p className="text-gray-500 text-xs">
+                  🕐 {new Date(item.scheduledAt).toLocaleString('it-IT', { dateStyle: 'short', timeStyle: 'short' })}
+                </p>
+                {item.error && <p className="text-red-400 text-xs mt-1">⚠ {item.error}</p>}
+              </div>
+              {item.imageUrl && (
+                <img src={item.imageUrl} alt="" className="w-12 h-12 object-cover flex-shrink-0 bg-gray-800" onError={e => { e.currentTarget.style.display = 'none' }} />
+              )}
+            </div>
+
+            {/* Actions */}
+            {item.status === 'pending' && (
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={() => handlePublishNow(item.id)}
+                  disabled={publishing === item.id}
+                  className="flex-1 bg-emerald-800 hover:bg-emerald-700 disabled:opacity-40 text-white py-2.5 text-xs font-semibold transition-colors"
+                >
+                  {publishing === item.id ? '⟳ Publishing…' : '▶ Publish now'}
+                </button>
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className="bg-gray-800 hover:bg-gray-700 text-gray-400 px-4 py-2.5 text-xs transition-colors"
+                >🗑</button>
+              </div>
+            )}
+            {item.status !== 'pending' && (
+              <button onClick={() => handleDelete(item.id)} className="mt-2 text-gray-600 hover:text-red-400 text-xs transition-colors">Remove</button>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ── Queue Item Form ───────────────────────────────────────────────────────────
+
+function QueueItemForm({ open, onClose, onSaved }) {
+  const [platform,    setPlatform]    = useState('instagram')
+  const [productId,   setProductId]   = useState('')
+  const [imageUrl,    setImageUrl]    = useState('')
+  const [caption,     setCaption]     = useState('')
+  const [hashtags,    setHashtags]    = useState('')
+  const [scheduledAt, setScheduledAt] = useState('')
+  const [saving,      setSaving]      = useState(false)
+  const [error,       setError]       = useState('')
+
+  const handleSave = async () => {
+    if (!scheduledAt) return setError('Select a date/time')
+    setSaving(true); setError('')
+    try {
+      await api('save-queue-item', {
+        item: { platform, productId, imageUrl, caption, hashtags, scheduledAt: new Date(scheduledAt).toISOString() },
+      })
+      onSaved()
+    } catch (e) { setError(e.message) }
+    finally { setSaving(false) }
+  }
+
+  return (
+    <BottomSheet open={open} onClose={onClose} title="Schedule a Post" fullHeight>
+      <div className="p-4 space-y-4">
+        {error && <div className="bg-red-900/20 border border-red-800 px-3 py-2 text-red-400 text-sm">{error}</div>}
+
+        {/* Platform */}
+        <div>
+          <label className="block text-gray-500 text-xs mb-2">Platform</label>
+          <div className="grid grid-cols-2 gap-2">
+            {QUEUE_PLATFORMS.map(pl => (
+              <button key={pl} onClick={() => setPlatform(pl)}
+                className={`py-2.5 text-sm font-medium capitalize transition-colors ${platform === pl ? 'bg-indigo-700 text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}
+              >{pl}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Product */}
+        <div>
+          <label className="block text-gray-500 text-xs mb-1">Product (optional)</label>
+          <select value={productId} onChange={e => setProductId(e.target.value)}
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+            <option value="">— None —</option>
+            {allProducts.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+          </select>
+        </div>
+
+        {/* Image URL */}
+        <div>
+          <label className="block text-gray-500 text-xs mb-1">Image URL</label>
+          <input value={imageUrl} onChange={e => setImageUrl(e.target.value)}
+            placeholder="https://…"
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" />
+        </div>
+
+        {/* Caption */}
+        <div>
+          <label className="block text-gray-500 text-xs mb-1">Caption</label>
+          <textarea value={caption} onChange={e => setCaption(e.target.value)}
+            rows={3} placeholder="Write your caption…"
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 resize-none" />
+        </div>
+
+        {/* Hashtags */}
+        <div>
+          <label className="block text-gray-500 text-xs mb-1">Hashtags</label>
+          <input value={hashtags} onChange={e => setHashtags(e.target.value)}
+            placeholder="#art #print #jayl"
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" />
+        </div>
+
+        {/* Schedule date/time */}
+        <div>
+          <label className="block text-gray-500 text-xs mb-1">Schedule date & time</label>
+          <input type="datetime-local" value={scheduledAt} onChange={e => setScheduledAt(e.target.value)}
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" />
+          <p className="text-gray-600 text-xs mt-1">Cron runs daily at 08:00 UTC — or use ▶ Publish now for immediate.</p>
+        </div>
+
+        <button onClick={handleSave} disabled={saving}
+          className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white py-4 text-sm font-semibold transition-colors"
+        >{saving ? 'Saving…' : '✓ Add to Queue'}</button>
+      </div>
+    </BottomSheet>
+  )
+}
+
+// ── Asset Gallery Sheet ───────────────────────────────────────────────────────
+
+function AssetGallerySheet({ product, open, onClose }) {
+  const [assets,   setAssets]   = useState([])
+  const [loading,  setLoading]  = useState(false)
+  const [deleting, setDeleting] = useState(null)
+  const [copied,   setCopied]   = useState(null)
+  const [error,    setError]    = useState('')
+
+  const load = async () => {
+    if (!product) return
+    setLoading(true); setError('')
+    try {
+      const d = await api('list-assets', { productId: product.id })
+      setAssets(d.assets || [])
+    } catch (e) { setError(e.message) }
+    finally { setLoading(false) }
+  }
+
+  useEffect(() => { if (open && product) load() }, [open, product?.id])
+
+  const handleDelete = async id => {
+    if (!confirm('Delete this asset permanently?')) return
+    setDeleting(id); setError('')
+    try {
+      await api('delete-asset', { assetId: id })
+      setAssets(prev => prev.filter(a => a.id !== id))
+    } catch (e) { setError(e.message) }
+    finally { setDeleting(null) }
+  }
+
+  const handleCopy = async url => {
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(url)
+      setTimeout(() => setCopied(null), 2000)
+    } catch { /* fallback */ }
+  }
+
+  const handleSetMainImage = async asset => {
+    if (!confirm('Set this as the main product image?')) return
+    try {
+      await api('save-product', {
+        product: { ...product, heroImages: [asset.blobUrl, ...(product.heroImages || []).filter(u => u !== asset.blobUrl)] }
+      })
+      alert('✓ Set as main image — deploy in ~2 min')
+    } catch (e) { setError(e.message) }
+  }
+
+  const handlePublish = async asset => {
+    const platform = prompt('Platform to publish to (instagram/tiktok/pinterest/facebook):')
+    if (!platform || !['instagram', 'tiktok', 'pinterest', 'facebook'].includes(platform)) return
+    try {
+      const res = await fetch('/api/publish-social', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: ADMIN_PASSWORD, platform,
+          imageUrl: asset.type !== 'video' ? asset.blobUrl : undefined,
+          videoUrl: asset.type === 'video' ? asset.blobUrl : undefined,
+          caption: asset.caption, hashtags: asset.hashtags,
+        }),
+      })
+      const data = await res.json()
+      if (data.ok) alert(`✓ Published to ${platform}!`)
+      else alert(`✗ ${data.message || data.error}`)
+    } catch (e) { setError(e.message) }
+  }
+
+  if (!product) return null
+
+  return (
+    <BottomSheet open={open} onClose={onClose} title={`Gallery — ${product.name}`} fullHeight>
+      {error && <div className="mx-4 mt-3 bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>}
+
+      {loading && <p className="text-gray-600 text-sm py-8 text-center">Loading assets…</p>}
+
+      {!loading && assets.length === 0 && (
+        <div className="text-center py-12 px-6">
+          <p className="text-gray-500 text-sm mb-2">No saved assets yet</p>
+          <p className="text-gray-600 text-xs">Generate assets for this product and tap "Save to Gallery"</p>
+        </div>
+      )}
+
+      {/* Asset grid */}
+      {assets.length > 0 && (
+        <div className="p-3 space-y-3">
+          {assets.map(asset => (
+            <div key={asset.id} className="bg-gray-900 border border-gray-800 overflow-hidden">
+              {/* Media */}
+              {asset.type === 'video' ? (
+                <video src={asset.blobUrl} controls className="w-full aspect-video bg-black" />
+              ) : (
+                <img src={asset.blobUrl} alt="" className="w-full aspect-square object-cover bg-gray-800"
+                  onError={e => { e.currentTarget.style.display = 'none' }} />
+              )}
+
+              {/* Meta */}
+              <div className="p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  {asset.platform && (
+                    <span className="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded-full capitalize">{asset.platform}</span>
+                  )}
+                  <span className="text-gray-600 text-xs">{new Date(asset.createdAt).toLocaleDateString('it-IT')}</span>
+                </div>
+                {asset.caption && <p className="text-gray-400 text-xs line-clamp-2 mb-3">{asset.caption}</p>}
+
+                {/* Actions */}
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href={asset.blobUrl}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 py-2 text-xs font-medium transition-colors"
+                  >⬇ Download</a>
+                  <button
+                    onClick={() => handleCopy(asset.blobUrl)}
+                    className="flex items-center justify-center gap-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 py-2 text-xs font-medium transition-colors"
+                  >{copied === asset.blobUrl ? '✓ Copied!' : '📋 Copy URL'}</button>
+                  {asset.type !== 'video' && (
+                    <button
+                      onClick={() => handleSetMainImage(asset)}
+                      className="flex items-center justify-center gap-1.5 bg-indigo-900/50 hover:bg-indigo-900/80 text-indigo-300 py-2 text-xs font-medium transition-colors"
+                    >🖼 Set Main</button>
+                  )}
+                  <button
+                    onClick={() => handlePublish(asset)}
+                    className="flex items-center justify-center gap-1.5 bg-emerald-900/50 hover:bg-emerald-900/80 text-emerald-300 py-2 text-xs font-medium transition-colors"
+                  >▶ Publish</button>
+                  <button
+                    onClick={() => handleDelete(asset.id)}
+                    disabled={deleting === asset.id}
+                    className="col-span-2 flex items-center justify-center gap-1.5 bg-red-900/30 hover:bg-red-900/60 text-red-400 py-2 text-xs font-medium transition-colors disabled:opacity-40"
+                  >{deleting === asset.id ? '…' : '🗑 Delete'}</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </BottomSheet>
+  )
+}
+
+// ── Bottom Navigation ─────────────────────────────────────────────────────────
+
+function BottomNav({ active, onNavigate, pendingCount }) {
+  const items = [
+    { id: 'home',     icon: '⌂',  label: 'Home'     },
+    { id: 'products', icon: '▦',  label: 'Products'  },
+    { id: 'generate', icon: '✦',  label: 'Generate'  },
+    { id: 'reviews',  icon: '★',  label: 'Reviews', badge: pendingCount },
+    { id: 'more',     icon: '⋯',  label: 'More'     },
+  ]
+  return (
+    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-gray-950 border-t border-gray-800 flex items-stretch">
+      {items.map(item => (
+        <button
+          key={item.id}
+          onClick={() => onNavigate(item.id)}
+          className={`flex-1 flex flex-col items-center justify-center py-2.5 gap-0.5 relative transition-colors ${
+            active === item.id ? 'text-indigo-400' : 'text-gray-600 active:text-gray-300'
+          }`}
+        >
+          {item.id === 'generate' ? (
+            <span className={`text-xl leading-none transition-colors ${active === 'generate' ? 'text-indigo-400' : 'text-gray-500'}`}>{item.icon}</span>
+          ) : (
+            <span className="text-base leading-none">{item.icon}</span>
+          )}
+          <span className="text-[10px] tracking-wide font-mono">{item.label}</span>
+          {item.badge > 0 && (
+            <span className="absolute top-1.5 right-1/4 bg-yellow-500 text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+              {item.badge > 9 ? '9+' : item.badge}
+            </span>
+          )}
+        </button>
+      ))}
+    </nav>
+  )
+}
+
+// ── More Drawer ───────────────────────────────────────────────────────────────
+
+function MoreDrawer({ open, onClose, onNavigate, onLogout }) {
+  const nav = (id) => { onClose(); onNavigate(id) }
+  const items = [
+    { id: 'revenue',     icon: '📊', label: 'Revenue',       sub: 'Sales analytics & margins' },
+    { id: 'batch',       icon: '⚡', label: 'Batch Agent',   sub: 'Generate assets for a collection' },
+    { id: 'seo-audit',   icon: '🔍', label: 'SEO Audit',     sub: 'AI-powered Etsy SEO fixes' },
+    { id: 'queue',       icon: '📅', label: 'Content Queue',  sub: 'Scheduled social posts' },
+    { id: 'add',         icon: '＋', label: 'Add Product',    sub: 'Create a new listing' },
+    { id: 'collections', icon: '▤',  label: 'Collections',   sub: 'Manage product groups' },
+    { id: 'personas',    icon: '🎭', label: 'Personas',      sub: 'Influencer personas' },
+    { id: 'orders',      icon: '📦', label: 'Orders',        sub: 'Customer order history' },
+    { id: 'settings',    icon: '⚙',  label: 'Settings',      sub: 'Social links & subscribers' },
+  ]
+  return (
+    <BottomSheet open={open} onClose={onClose} title="More">
+      <div className="divide-y divide-gray-800/60">
+        {items.map(item => (
+          <button
+            key={item.id}
+            onClick={() => nav(item.id)}
+            className="w-full flex items-center gap-4 px-5 py-4 text-left active:bg-gray-800/50 transition-colors"
+          >
+            <span className="text-xl w-7 text-center flex-shrink-0">{item.icon}</span>
+            <div>
+              <p className="text-white text-sm font-medium">{item.label}</p>
+              <p className="text-gray-500 text-xs">{item.sub}</p>
+            </div>
+            <span className="ml-auto text-gray-700 text-lg">›</span>
+          </button>
+        ))}
+        <button
+          onClick={() => { onClose(); onLogout() }}
+          className="w-full flex items-center gap-4 px-5 py-4 text-left active:bg-gray-800/50 transition-colors"
+        >
+          <span className="text-xl w-7 text-center flex-shrink-0">⏻</span>
+          <div>
+            <p className="text-red-400 text-sm font-medium">Logout</p>
+            <p className="text-gray-500 text-xs">End admin session</p>
+          </div>
+        </button>
+      </div>
+    </BottomSheet>
+  )
+}
+
+export default function AdminPage() {
+  const [authed, setAuthed]             = useState(() => sessionStorage.getItem('adminAuth') === '1')
+  const [tab,    setTab]                = useState('home')
+  const [editingProduct, setEditingProduct]   = useState(null)
+  const [generateProduct, setGenerateProduct] = useState(null)
+  const [galleryProduct,  setGalleryProduct]  = useState(null)
+  const [moreOpen, setMoreOpen]         = useState(false)
+  const [pendingCount, setPendingCount] = useState(0)
+
+  // Load pending review count on mount
+  useEffect(() => {
+    if (!authed) return
+    api('list-reviews', {})
+      .then(d => setPendingCount((d.reviews || []).filter(r => r.status === 'pending').length))
+      .catch(() => {})
+  }, [authed])
+
+  if (!authed) return <LoginScreen onLogin={() => { setAuthed(true) }} />
 
   const handleEdit   = product => setEditingProduct(product)
   const handleSaved  = ()      => setEditingProduct(null)
   const handleCancel = ()      => setEditingProduct(null)
   const logout       = ()      => { sessionStorage.removeItem('adminAuth'); setAuthed(false) }
 
-  const tabs = [
-    { id: 'products',     label: 'Products' },
-    { id: 'add',          label: 'Add Product' },
-    { id: 'collections',  label: 'Collections' },
-    { id: 'personas',     label: '🎭 Personas' },
-    { id: 'reviews',      label: '⭐ Reviews' },
-    { id: 'orders',       label: '📦 Orders' },
-    { id: 'settings',     label: '⚙ Settings' },
-  ]
+  const handleGenerate = product => setGenerateProduct(product)
+  const handleGallery  = product => setGalleryProduct(product)
+
+  const navigate = id => {
+    if (id === 'more') { setMoreOpen(true); return }
+    setTab(id)
+  }
+
+  // Secondary tabs shown via MoreDrawer
+  const isSecondaryTab = ['add', 'collections', 'personas', 'orders', 'settings'].includes(tab)
 
   return (
     <>
-      {/* ── Edit modal (floats over any tab) ── */}
+      {/* ── Edit modal ── */}
       <Modal open={!!editingProduct} onClose={handleCancel}>
         {editingProduct && (
           <AddProductTab
@@ -2125,41 +3535,140 @@ export default function AdminPage() {
         )}
       </Modal>
 
+      {/* ── Quick Generate sheet ── */}
+      <QuickGenerateSheet
+        product={generateProduct}
+        open={!!generateProduct}
+        onClose={() => setGenerateProduct(null)}
+      />
+
+      {/* ── Asset Gallery sheet ── */}
+      <AssetGallerySheet
+        product={galleryProduct}
+        open={!!galleryProduct}
+        onClose={() => setGalleryProduct(null)}
+      />
+
+      {/* ── More drawer ── */}
+      <MoreDrawer
+        open={moreOpen}
+        onClose={() => setMoreOpen(false)}
+        onNavigate={id => { setMoreOpen(false); setTab(id) }}
+        onLogout={logout}
+      />
+
       <div className="min-h-screen bg-gray-950 text-white">
-        {/* Header */}
-        <header className="border-b border-gray-800 bg-gray-900 sticky top-0 z-40">
-          <div className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
-            <div className="flex items-center gap-5">
-              <span className="text-white font-semibold text-sm tracking-wide">JAYL Admin</span>
-              <nav className="flex gap-0.5">
-                {tabs.map(t => (
-                  <button key={t.id}
-                    onClick={() => setTab(t.id)}
-                    className={`px-3 py-1.5 text-xs font-medium rounded transition-colors whitespace-nowrap ${
-                      tab === t.id ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-gray-300'
-                    }`}>
-                    {t.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
-            <button onClick={logout} className="text-gray-600 hover:text-gray-400 text-xs transition-colors">
+        {/* ── Header ── */}
+        <header className="border-b border-gray-800 bg-gray-950 sticky top-0 z-40">
+          <div className="px-4 h-12 flex items-center justify-between">
+            <span className="text-white font-mono text-sm tracking-widest uppercase">JAYL Admin</span>
+            {/* Desktop nav (hidden on mobile) */}
+            <nav className="hidden md:flex gap-0.5">
+              {[
+                { id: 'home',      label: 'Home' },
+                { id: 'products',  label: 'Products' },
+                { id: 'generate',  label: '✦ Generate' },
+                { id: 'reviews',   label: `Reviews${pendingCount > 0 ? ` (${pendingCount})` : ''}` },
+                { id: 'revenue',   label: '📊 Revenue' },
+                { id: 'batch',     label: '⚡ Batch' },
+                { id: 'seo-audit', label: '🔍 SEO' },
+                { id: 'queue',     label: '📅 Queue' },
+                { id: 'add',       label: 'Add' },
+                { id: 'collections', label: 'Collections' },
+                { id: 'personas',  label: 'Personas' },
+                { id: 'orders',    label: 'Orders' },
+                { id: 'settings',  label: 'Settings' },
+              ].map(t => (
+                <button key={t.id}
+                  onClick={() => setTab(t.id)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded transition-colors whitespace-nowrap ${
+                    tab === t.id ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-gray-300'
+                  }`}>
+                  {t.label}
+                </button>
+              ))}
+            </nav>
+            <button onClick={logout} className="hidden md:block text-gray-600 hover:text-gray-400 text-xs transition-colors">
               Logout
             </button>
           </div>
         </header>
 
-        {/* Body */}
-        <main className="max-w-6xl mx-auto px-6 py-8">
-          {tab === 'products'    && <ProductsTab onEdit={handleEdit} />}
-          {tab === 'add'         && <AddProductTab onSaved={() => setTab('products')} />}
-          {tab === 'collections' && <CollectionsTab />}
+        {/* ── Body ── */}
+        <main className="pb-20 md:pb-8 md:max-w-6xl md:mx-auto md:px-6 md:py-8">
+          {/* Tab title for non-home screens */}
+          {tab !== 'home' && (
+            <div className="px-4 py-3 border-b border-gray-800/60 flex items-center gap-3 md:hidden">
+              <button onClick={() => setTab('home')} className="text-gray-500 text-lg leading-none">‹</button>
+              <h2 className="text-white text-sm font-medium capitalize">
+                {tab === 'generate'    ? '✦ Quick Generate'
+                 : tab === 'products'  ? 'Products'
+                 : tab === 'reviews'   ? 'Reviews'
+                 : tab === 'revenue'   ? '📊 Revenue'
+                 : tab === 'batch'     ? '⚡ Batch Agent'
+                 : tab === 'seo-audit' ? '🔍 SEO Audit'
+                 : tab === 'queue'     ? '📅 Content Queue'
+                 : tab === 'add'       ? 'Add Product'
+                 : tab === 'collections' ? 'Collections'
+                 : tab === 'personas'  ? 'Personas'
+                 : tab === 'orders'    ? 'Orders'
+                 : tab === 'settings'  ? 'Settings'
+                 : tab}
+              </h2>
+            </div>
+          )}
 
-          {tab === 'personas'    && <PersonasTab />}
-          {tab === 'reviews'     && <ReviewsTab />}
-          {tab === 'orders'      && <OrdersTab />}
-          {tab === 'settings'    && <SettingsTab />}
+          {tab === 'home'        && <HomeTab onNavigate={navigate} onGenerate={handleGenerate} />}
+          {tab === 'products'    && (
+            <div className="px-4 pt-4">
+              <ProductsTab onEdit={handleEdit} onGenerate={handleGenerate} onGallery={handleGallery} />
+            </div>
+          )}
+          {tab === 'generate'    && <GenerateTab onGenerate={handleGenerate} onGallery={handleGallery} />}
+          {tab === 'revenue'     && <RevenueTab />}
+          {tab === 'batch'       && <BatchAgentTab />}
+          {tab === 'seo-audit'   && <SeoAuditTab />}
+          {tab === 'queue'       && <ContentQueueTab />}
+          {tab === 'reviews'     && (
+            <div className="px-4 pt-4">
+              <ReviewsTab />
+            </div>
+          )}
+          {tab === 'add'         && (
+            <div className="px-4 pt-4">
+              <AddProductTab onSaved={() => setTab('products')} />
+            </div>
+          )}
+          {tab === 'collections' && (
+            <div className="px-4 pt-4">
+              <CollectionsTab />
+            </div>
+          )}
+          {tab === 'personas'    && (
+            <div className="px-4 pt-4">
+              <PersonasTab />
+            </div>
+          )}
+          {tab === 'orders'      && (
+            <div className="px-4 pt-4">
+              <OrdersTab />
+            </div>
+          )}
+          {tab === 'settings'    && (
+            <div className="px-4 pt-4">
+              <SettingsTab />
+            </div>
+          )}
         </main>
+
+        {/* ── Mobile bottom nav ── */}
+        <div className="md:hidden">
+          <BottomNav
+            active={tab}
+            onNavigate={navigate}
+            pendingCount={pendingCount}
+          />
+        </div>
       </div>
     </>
   )

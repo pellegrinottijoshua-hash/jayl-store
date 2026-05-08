@@ -1,4 +1,6 @@
 import { applyCors } from './_lib/cors.js'
+import { put, del as blobDel } from '@vercel/blob'
+import { decodeItemsFromMetadata } from './_lib/catalog.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -7,6 +9,8 @@ const ADMIN_PRODUCTS_PATH    = 'src/data/admin-products.js'
 const ADMIN_COLLECTIONS_PATH = 'src/data/admin-collections.js'
 const GENERATE_PROMPTS_PATH  = 'src/data/generate-prompts.js'
 const PERSONAS_PATH          = 'src/data/personas.json'
+const CONTENT_QUEUE_PATH     = 'src/data/content-queue.json'
+const ASSETS_PATH            = 'src/data/assets.json'
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'jaylpelle'
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
@@ -119,12 +123,95 @@ async function writePersonas(personas, sha, message, token) {
   return ghPut(PERSONAS_PATH, JSON.stringify(personas, null, 2) + '\n', sha, message, token)
 }
 
+// ── Content Queue helpers ─────────────────────────────────────────────────────
+
+async function readQueue(token) {
+  try {
+    const file = await ghGet(CONTENT_QUEUE_PATH, token)
+    return { items: JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8')), sha: file.sha }
+  } catch {
+    return { items: [], sha: null }
+  }
+}
+
+async function writeQueue(items, sha, message, token) {
+  return ghPut(CONTENT_QUEUE_PATH, JSON.stringify(items, null, 2) + '\n', sha, message, token)
+}
+
+// ── Asset Gallery helpers ─────────────────────────────────────────────────────
+
+async function readAssets(token) {
+  try {
+    const file = await ghGet(ASSETS_PATH, token)
+    return { assets: JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8')), sha: file.sha }
+  } catch {
+    return { assets: [], sha: null }
+  }
+}
+
+async function writeAssets(assets, sha, message, token) {
+  return ghPut(ASSETS_PATH, JSON.stringify(assets, null, 2) + '\n', sha, message, token)
+}
+
 // ── Handler ───────────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
   const allowed = applyCors(req, res)
   if (req.method === 'OPTIONS') return res.status(allowed ? 200 : 403).end()
   if (!allowed) return res.status(403).json({ error: 'Forbidden' })
+
+  // ── Cron GET: process due queue items ───────────────────────────────────────
+  if (req.method === 'GET') {
+    const cronSecret = process.env.CRON_SECRET
+    const authHeader = req.headers['authorization'] || ''
+    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+      return res.status(401).json({ error: 'Unauthorized' })
+    }
+    const githubToken = process.env.GITHUB_TOKEN
+    if (!githubToken) return res.status(500).json({ error: 'GITHUB_TOKEN not configured' })
+
+    const now = new Date()
+    const { items, sha } = await readQueue(githubToken)
+    const due = items.filter(it => it.status === 'pending' && new Date(it.scheduledAt) <= now)
+    if (!due.length) return res.status(200).json({ processed: 0, message: 'No items due' })
+
+    let processed = 0
+    for (const item of due) {
+      try {
+        const result = await fetch(
+          `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/publish-social`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              password: ADMIN_PASSWORD,
+              platform: item.platform,
+              imageUrl: item.imageUrl,
+              videoUrl: item.videoUrl,
+              caption:  item.caption,
+              hashtags: item.hashtags,
+              altText:  item.altText,
+              title:    item.title,
+              description: item.description,
+              link:     item.link,
+            }),
+          }
+        ).then(r => r.json())
+
+        item.status      = result.ok ? 'published' : 'failed'
+        item.publishedAt = result.ok ? new Date().toISOString() : null
+        item.error       = result.ok ? null : (result.error || 'Unknown error')
+        if (result.ok) processed++
+      } catch (e) {
+        item.status = 'failed'
+        item.error  = e.message
+      }
+    }
+
+    await writeQueue(items, sha, `[cron] Process ${processed} queue items`, githubToken)
+    return res.status(200).json({ processed, total: due.length })
+  }
+
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
   const { action, password, ...data } = req.body || {}
@@ -803,6 +890,303 @@ Return a JSON object with these exact keys:
         copy = match ? JSON.parse(match[0]) : {}
       }
       return res.status(200).json({ copy })
+    }
+
+    // ── revenue-stats ─────────────────────────────────────────────────────────
+    if (action === 'revenue-stats') {
+      const stripeKey = process.env.STRIPE_SECRET_KEY
+      if (!stripeKey) return res.status(500).json({ error: 'STRIPE_SECRET_KEY not configured' })
+
+      // Fetch up to 300 succeeded PaymentIntents (3 pages of 100)
+      let allPIs = []
+      let startingAfter = null
+      for (let page = 0; page < 3; page++) {
+        const params = new URLSearchParams({ limit: '100', 'expand[]': 'data.metadata' })
+        if (startingAfter) params.set('starting_after', startingAfter)
+        const r = await fetch(`https://api.stripe.com/v1/payment_intents?${params}`, {
+          headers: { Authorization: `Bearer ${stripeKey}` },
+        })
+        const d = await r.json()
+        if (!r.ok) throw new Error(`Stripe: ${d.error?.message || r.status}`)
+        const succeeded = (d.data || []).filter(pi => pi.status === 'succeeded')
+        allPIs = allPIs.concat(succeeded)
+        if (!d.has_more) break
+        startingAfter = d.data[d.data.length - 1]?.id
+      }
+
+      // Import all products from GitHub for printCost + collection lookup
+      const { products: adminProds } = await readAdminProducts(githubToken).catch(() => ({ products: [] }))
+      const productMap = {}
+      adminProds.forEach(p => { productMap[p.id] = p })
+
+      // Also import static products for collection/name fallback
+      // (we can't import frontend data server-side, so use metadata product name)
+
+      const now  = new Date()
+      const byProduct    = {}
+      const byCollection = {}
+      const byMonth      = {}
+      let totalRevenue = 0
+      let totalOrders  = 0
+
+      for (const pi of allPIs) {
+        if (!pi.amount) continue
+        const amount    = pi.amount            // cents
+        const createdAt = new Date(pi.created * 1000)
+        const monthKey  = `${createdAt.getFullYear()}-${String(createdAt.getMonth() + 1).padStart(2, '0')}`
+
+        totalRevenue += amount
+        totalOrders  += 1
+
+        // Monthly trend
+        byMonth[monthKey] = (byMonth[monthKey] || { revenue: 0, orders: 0 })
+        byMonth[monthKey].revenue += amount
+        byMonth[monthKey].orders  += 1
+
+        // Per-product aggregation
+        let items = []
+        try { items = decodeItemsFromMetadata(pi.metadata?.items) } catch {}
+        if (!items.length) {
+          // Fallback: attribute to unknown
+          const key = '__unknown__'
+          byProduct[key] = byProduct[key] || { productId: key, name: 'Other / Unknown', collection: '', revenue: 0, orders: 0, printCost: 0 }
+          byProduct[key].revenue += amount
+          byProduct[key].orders  += 1
+        } else {
+          for (const item of items) {
+            const pid   = item.productId || '__unknown__'
+            const pdata = productMap[pid] || {}
+            if (!byProduct[pid]) {
+              byProduct[pid] = {
+                productId:  pid,
+                name:       item.product?.name || pdata.name || pid,
+                collection: pdata.collection  || item.product?.collection || '',
+                revenue:    0,
+                orders:     0,
+                printCost:  pdata.printCost   || 0,
+              }
+            }
+            // Attribute full PI amount to first item if multi-item (approximation)
+            byProduct[pid].revenue += Math.round(amount / items.length)
+            byProduct[pid].orders  += item.quantity || 1
+          }
+
+          // Collections
+          for (const item of items) {
+            const pid  = item.productId || '__unknown__'
+            const coll = productMap[pid]?.collection || 'General'
+            byCollection[coll] = byCollection[coll] || { collection: coll, revenue: 0, orders: 0 }
+            byCollection[coll].revenue += Math.round(amount / items.length)
+            byCollection[coll].orders  += 1
+          }
+        }
+      }
+
+      // Sort top products
+      const topProducts = Object.values(byProduct)
+        .sort((a, b) => b.revenue - a.revenue)
+        .slice(0, 10)
+        .map(p => ({
+          ...p,
+          margin:       p.printCost > 0 ? p.revenue - (p.printCost * p.orders) : null,
+          marginPct:    p.printCost > 0 ? Math.round(((p.revenue - p.printCost * p.orders) / p.revenue) * 100) : null,
+        }))
+
+      const topCollections = Object.values(byCollection)
+        .sort((a, b) => b.revenue - a.revenue)
+
+      // Monthly trend: last 6 months
+      const months = []
+      for (let i = 5; i >= 0; i--) {
+        const d   = new Date(now.getFullYear(), now.getMonth() - i, 1)
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+        months.push({ month: key, ...(byMonth[key] || { revenue: 0, orders: 0 }) })
+      }
+
+      return res.status(200).json({
+        totalRevenue,
+        totalOrders,
+        aov:            totalOrders > 0 ? Math.round(totalRevenue / totalOrders) : 0,
+        topProducts,
+        topCollections,
+        monthlyTrend:  months,
+      })
+    }
+
+    // ── generate-seo ─────────────────────────────────────────────────────────
+    if (action === 'generate-seo') {
+      const { productId, productName, productType, collection, description, tags } = data
+      const anthropicKey = (process.env.ANTHROPIC_API_KEY || '').trim()
+      if (!anthropicKey) return res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' })
+
+      const systemPrompt = `You are an Etsy SEO expert for JAYL, a premium print-on-demand art & lifestyle brand.
+Your goal is to maximise organic search traffic on Etsy by crafting highly optimised titles, descriptions, and tags.
+Rules:
+- Etsy title: max 140 characters, start with the most searched keyword, include artistic style and product type.
+- Etsy description: conversational, keyword-rich first paragraph, include materials/dimensions/use, 200-400 chars.
+- Etsy tags: exactly 13 tags, each max 20 characters, no repeating words across tags, highly specific long-tail phrases.
+- SEO title: max 60 characters, for web/Google.
+- SEO description: max 160 characters, compelling meta description for web.
+Always respond with valid JSON only, no markdown.`
+
+      const userPrompt = `Generate complete Etsy + web SEO for this product:
+- Name: "${productName}"
+- Type: ${productType || 'art print'}
+- Collection: ${collection || 'General'}
+- Current description: ${description || 'N/A'}
+- Current tags: ${(tags || []).join(', ') || 'N/A'}
+
+Return JSON with these exact keys:
+{
+  "etsyTitle": "...",
+  "etsyDescription": "...",
+  "etsyTags": ["tag1","tag2",...],
+  "seoTitle": "...",
+  "seoDescription": "...",
+  "altText": "..."
+}`
+
+      const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'x-api-key': anthropicKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5',
+          max_tokens: 1024,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }],
+        }),
+      })
+      const anthropicData = await anthropicRes.json()
+      if (!anthropicRes.ok) return res.status(500).json({ error: anthropicData.error?.message || 'Claude API error' })
+      const raw = anthropicData.content?.[0]?.text || '{}'
+      let seo
+      try { seo = JSON.parse(raw) }
+      catch { const m = raw.match(/\{[\s\S]*\}/); seo = m ? JSON.parse(m[0]) : {} }
+      return res.status(200).json({ seo })
+    }
+
+    // ── list-queue ────────────────────────────────────────────────────────────
+    if (action === 'list-queue') {
+      const { items } = await readQueue(githubToken)
+      return res.status(200).json({ items })
+    }
+
+    // ── save-queue-item ───────────────────────────────────────────────────────
+    if (action === 'save-queue-item') {
+      const { item } = data
+      if (!item?.platform || !item?.scheduledAt) return res.status(400).json({ error: 'item.platform + item.scheduledAt required' })
+      const { items, sha } = await readQueue(githubToken)
+      const idx = items.findIndex(i => i.id === item.id)
+      const now = new Date().toISOString()
+      if (idx >= 0) {
+        items[idx] = { ...items[idx], ...item, updatedAt: now }
+      } else {
+        items.push({ ...item, id: `queue-${Date.now()}`, status: 'pending', createdAt: now })
+      }
+      await writeQueue(items, sha, `[queue] Save item for ${item.platform}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── delete-queue-item ─────────────────────────────────────────────────────
+    if (action === 'delete-queue-item') {
+      const { itemId } = data
+      const { items, sha } = await readQueue(githubToken)
+      const filtered = items.filter(i => i.id !== itemId)
+      await writeQueue(filtered, sha, `[queue] Delete item ${itemId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── publish-queue-item ────────────────────────────────────────────────────
+    if (action === 'publish-queue-item') {
+      const { itemId } = data
+      const { items, sha } = await readQueue(githubToken)
+      const item = items.find(i => i.id === itemId)
+      if (!item) return res.status(404).json({ error: 'Queue item not found' })
+
+      const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'
+      const result = await fetch(`${baseUrl}/api/publish-social`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: ADMIN_PASSWORD, platform: item.platform,
+          imageUrl: item.imageUrl, videoUrl: item.videoUrl,
+          caption: item.caption, hashtags: item.hashtags,
+          altText: item.altText, title: item.title,
+          description: item.description, link: item.link,
+        }),
+      }).then(r => r.json())
+
+      const idx = items.findIndex(i => i.id === itemId)
+      items[idx] = {
+        ...item,
+        status:      result.ok ? 'published' : 'failed',
+        publishedAt: result.ok ? new Date().toISOString() : null,
+        error:       result.ok ? null : (result.error || 'Unknown error'),
+      }
+      await writeQueue(items, sha, `[queue] Publish item ${itemId}`, githubToken)
+      return res.status(200).json(result)
+    }
+
+    // ── list-assets ───────────────────────────────────────────────────────────
+    if (action === 'list-assets') {
+      const { productId } = data
+      const { assets } = await readAssets(githubToken)
+      const filtered = productId ? assets.filter(a => a.productId === productId) : assets
+      return res.status(200).json({ assets: filtered })
+    }
+
+    // ── save-asset ────────────────────────────────────────────────────────────
+    if (action === 'save-asset') {
+      const { assetUrl, productId, type = 'image', platform = '', caption = '', hashtags = '' } = data
+      if (!assetUrl || !productId) return res.status(400).json({ error: 'assetUrl + productId required' })
+
+      const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+      let finalUrl = assetUrl
+
+      if (blobToken) {
+        // Fetch and re-upload to Vercel Blob for permanent storage
+        const assetRes = await fetch(assetUrl)
+        if (!assetRes.ok) throw new Error(`Cannot fetch asset: ${assetRes.status}`)
+        const buffer      = Buffer.from(await assetRes.arrayBuffer())
+        const contentType = assetRes.headers.get('content-type') || (type === 'video' ? 'video/mp4' : 'image/jpeg')
+        const ext         = type === 'video' ? 'mp4' : contentType.includes('png') ? 'png' : 'jpg'
+        const filename    = `assets/${productId}/${Date.now()}.${ext}`
+        const { url } = await put(filename, buffer, { access: 'public', token: blobToken, contentType })
+        finalUrl = url
+      }
+
+      const { assets, sha } = await readAssets(githubToken)
+      const asset = {
+        id:        `asset-${Date.now()}`,
+        productId,
+        type,
+        platform,
+        blobUrl:   finalUrl,
+        caption,
+        hashtags,
+        createdAt: new Date().toISOString(),
+      }
+      assets.unshift(asset)
+      await writeAssets(assets, sha, `[assets] Save ${type} for ${productId}`, githubToken)
+      return res.status(200).json({ ok: true, asset })
+    }
+
+    // ── delete-asset ──────────────────────────────────────────────────────────
+    if (action === 'delete-asset') {
+      const { assetId } = data
+      const { assets, sha } = await readAssets(githubToken)
+      const target = assets.find(a => a.id === assetId)
+      if (!target) return res.status(404).json({ error: 'Asset not found' })
+
+      // Delete from Vercel Blob if it was stored there
+      const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+      if (blobToken && target.blobUrl?.includes('blob.vercel-storage.com')) {
+        await blobDel(target.blobUrl, { token: blobToken }).catch(() => {})
+      }
+
+      const filtered = assets.filter(a => a.id !== assetId)
+      await writeAssets(filtered, sha, `[assets] Delete asset ${assetId}`, githubToken)
+      return res.status(200).json({ ok: true })
     }
 
     return res.status(400).json({ error: `Unknown action: ${action}` })

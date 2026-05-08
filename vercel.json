@@ -2,6 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "crons": [
+    { "path": "/api/admin", "schedule": "0 8 * * *" }
+  ],
   "rewrites": [
     { "source": "/api/generate-listing",  "destination": "/api/ai?handler=listing"      },
     { "source": "/api/generate-mockup",   "destination": "/api/ai?handler=mockup"       },
@@ -22,7 +25,7 @@
         { "key": "X-Frame-Options",             "value": "DENY" },
         { "key": "Referrer-Policy",             "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy",          "value": "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")" },
-        { "key": "Content-Security-Policy",     "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://m.stripe.network; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://*.stripe.com https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.gelato.com https://*.gelatoapis.com https://*.cloudfront.net https://*.amazonaws.com; connect-src 'self' https://api.stripe.com https://m.stripe.network https://q.stripe.com; frame-src https://js.stripe.com https://hooks.stripe.com; media-src 'self' blob: https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run; object-src 'none'; base-uri 'self'; form-action 'self'" }
+        { "key": "Content-Security-Policy",     "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://m.stripe.network; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://*.stripe.com https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.gelato.com https://*.gelatoapis.com https://*.cloudfront.net https://*.amazonaws.com https://*.public.blob.vercel-storage.com; connect-src 'self' https://api.stripe.com https://m.stripe.network https://q.stripe.com https://*.public.blob.vercel-storage.com; frame-src https://js.stripe.com https://hooks.stripe.com; media-src 'self' blob: https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.public.blob.vercel-storage.com; object-src 'none'; base-uri 'self'; form-action 'self'" }
       ]
     }
   ]
