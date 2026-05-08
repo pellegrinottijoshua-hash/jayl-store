@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { generatePrompts as staticPrompts } from '@/data/generate-prompts'
 import PromptCard from './PromptCard'
 import {
@@ -25,6 +25,16 @@ function ReviewPanel({ results, productName, collection }) {
   const doneEntries = Object.entries(results).filter(
     ([, r]) => r?.status === 'done' && (r.imageUrl || r.videoUrl)
   )
+
+  // Auto-select all generated assets as they appear
+  useEffect(() => {
+    if (doneEntries.length === 0) return
+    setSelected(prev => {
+      const next = new Set(prev)
+      doneEntries.forEach(([id]) => next.add(id))
+      return next
+    })
+  }, [doneEntries.length]) // eslint-disable-line
 
   const toggleSelect = (id) =>
     setSelected(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
@@ -470,6 +480,7 @@ export default function SitoPanel({
                     <PromptCard
                       key={t.id}
                       template={t}
+                      productId={productId}
                       isVideo={section.isVideo}
                       promptText={localPrompts[t.id] ?? ''}
                       onPromptChange={val => setLocalPrompts(prev => ({ ...prev, [t.id]: val }))}

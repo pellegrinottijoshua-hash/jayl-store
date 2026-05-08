@@ -1065,6 +1065,39 @@ Return JSON with these exact keys:
       return res.status(200).json({ seo })
     }
 
+    // ── upload-reference ──────────────────────────────────────────────────────
+    if (action === 'upload-reference') {
+      const { filename, dataUrl } = data
+      if (!filename || !dataUrl) return res.status(400).json({ error: 'filename + dataUrl required' })
+
+      const safeFilename = filename.replace(/[^a-zA-Z0-9_\-. ]/g, '').replace(/\s+/g, '-').slice(0, 80)
+      const base64       = dataUrl.replace(/^data:[^;]+;base64,/, '')
+      const blobToken    = process.env.BLOB_READ_WRITE_TOKEN
+
+      if (blobToken) {
+        // Upload to Vercel Blob for instant public URL
+        const contentType = dataUrl.match(/^data:([^;]+);/)?.[1] || 'image/jpeg'
+        const buffer      = Buffer.from(base64, 'base64')
+        const { url } = await put(`references/${Date.now()}-${safeFilename}`, buffer, {
+          access: 'public', token: blobToken, contentType,
+        })
+        return res.status(200).json({ ok: true, url, name: safeFilename })
+      }
+
+      // Fallback: commit to GitHub under public/images/_refs/
+      const filePath = `public/images/_refs/${safeFilename}`
+      let existingSha = null
+      try { const e = await ghGet(filePath, githubToken); existingSha = e.sha } catch {}
+      const ghRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${githubToken}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', 'X-GitHub-Api-Version': '2022-11-28' },
+        body: JSON.stringify({ message: `refs: upload ${safeFilename}`, content: base64, branch: GITHUB_BRANCH, ...(existingSha ? { sha: existingSha } : {}) }),
+      })
+      if (!ghRes.ok) throw new Error(`GitHub upload failed: ${ghRes.status}`)
+      const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
+      return res.status(200).json({ ok: true, url: rawUrl, name: safeFilename })
+    }
+
     // ── list-queue ────────────────────────────────────────────────────────────
     if (action === 'list-queue') {
       const { items } = await readQueue(githubToken)
