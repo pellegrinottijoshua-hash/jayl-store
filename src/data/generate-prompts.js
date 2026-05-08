@@ -25,6 +25,11 @@ export const generatePrompts = {
         "id": "site-video-custom-1778182588087",
         "name": "New Prompt",
         "prompt": "Cinematic product hero video, 8 seconds, 16:9 format.\nOpening frame: extreme close-up of the circular chest logo \nprinted on black cotton fabric, razor sharp, fabric texture \nvisible, dramatic single light source from upper left.\nCamera moves: slow deliberate pull-back revealing the full \nt-shirt worn by a person, identity not visible — \nonly torso, chest logo stays perfectly in frame and lit \nthroughout the entire movement.\nFinal frame: logo centered, full garment visible, \nperson standing still, confident posture.\nLighting: high contrast, deep shadows, warm key light —\nHasselblad medium format aesthetic.\nColor grade: deep blacks, slight warm highlights.\nNo text, no cuts, one continuous camera movement.\nFabric physics: natural subtle movement, \nlogo print never warps or distorts.\nMood: luxury streetwear, silent confidence."
+      },
+      {
+        "id": "site-video-custom-1778253810439",
+        "name": "New Prompt",
+        "prompt": ""
       }
     ]
   }
