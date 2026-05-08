@@ -213,26 +213,66 @@ export default function SocialPanel({
     }
   }
 
-  // ── Publish for a platform (atomic: save + hero + SEO) ───────────────────
+  // needsConnect: { platform: { message, instructions } }
+  const [needsConnect, setNeedsConnect] = useState({})
+
+  // ── Publish for a platform (posts to actual social platform) ─────────────
   const handlePublish = async (platform) => {
     if (!productId) return
     setPublishing(prev => ({ ...prev, [platform]: true }))
     setPublishMsgs(prev => ({ ...prev, [platform]: '' }))
+    setNeedsConnect(prev => ({ ...prev, [platform]: null }))
     try {
       const { image, video } = getTemplates(platform)
       const doneAssets = [...image, ...video]
         .map(t => ({ id: t.id, ...results[t.id] }))
         .filter(r => r.status === 'done' && (r.imageUrl || r.videoUrl))
-        .map(({ id, imageUrl, videoUrl }) => ({ id, imageUrl: imageUrl || null, videoUrl: videoUrl || null }))
 
       if (doneAssets.length === 0) throw new Error('Nessun asset generato da pubblicare')
 
-      await api('publish-social-asset', {
-        productId,
-        platform,
-        assets:  doneAssets,
-        copy:    platformCopy[platform] || {},
+      const copy = platformCopy[platform] || {}
+
+      // Pick the best asset to publish: prefer video for TikTok/YouTube, image otherwise
+      const preferVideo = platform === 'tiktok' || platform === 'youtube'
+      const videoAsset  = doneAssets.find(a => a.videoUrl)
+      const imageAsset  = doneAssets.find(a => a.imageUrl)
+      const best        = preferVideo
+        ? (videoAsset || imageAsset)
+        : (imageAsset || videoAsset)
+
+      const payload = {
+        password:    'jaylpelle',
+        imageUrl:    best?.imageUrl || null,
+        videoUrl:    best?.videoUrl || null,
+        caption:     copy.caption       || '',
+        hashtags:    copy.hashtags      || '',
+        altText:     copy.altText       || '',
+        title:       copy.seoTitle      || productName,
+        description: copy.seoDescription || '',
+      }
+
+      const res  = await fetch(`/api/publish-${platform}`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
       })
+      const data = await res.json()
+
+      if (data.needsConnect) {
+        setNeedsConnect(prev => ({ ...prev, [platform]: data }))
+        setPublishMsgs(prev => ({ ...prev, [platform]: '🔗 Connetti' }))
+        setTimeout(() => setPublishMsgs(prev => ({ ...prev, [platform]: '' })), 5000)
+        return
+      }
+
+      if (!data.ok) throw new Error(data.error || 'Publish failed')
+
+      // Also save to website (hero + SEO) in background
+      api('publish-social-asset', {
+        productId, platform,
+        assets: doneAssets.map(({ id, imageUrl, videoUrl }) => ({ id, imageUrl: imageUrl || null, videoUrl: videoUrl || null })),
+        copy,
+      }).catch(() => {})
 
       setPublishMsgs(prev => ({ ...prev, [platform]: '✓ Pubblicato' }))
       setTimeout(() => setPublishMsgs(prev => ({ ...prev, [platform]: '' })), 3000)
@@ -392,6 +432,8 @@ export default function SocialPanel({
           const hasCopy    = !!platformCopy[platform]
           const isPublishing = publishing[platform]
 
+          const connectInfo = needsConnect[platform]
+
           return (
             <div key={platform} className="border-b border-gray-800">
 
@@ -499,6 +541,25 @@ export default function SocialPanel({
                       className={`w-full py-2 text-xs border border-dashed transition-colors ${meta.activeBorder} ${meta.color} hover:${meta.activeBg}`}>
                       {generatingCopy[platform] ? 'Generando copy…' : '✨ Genera caption, hashtag e SEO'}
                     </button>
+                  )}
+
+                  {/* Connect instructions */}
+                  {connectInfo && (
+                    <div className="bg-gray-900 border border-yellow-800/60 p-3 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-yellow-400 text-xs font-semibold">🔗 Connetti {meta.label}</span>
+                        <button onClick={() => setNeedsConnect(prev => ({ ...prev, [platform]: null }))}
+                          className="ml-auto text-gray-600 hover:text-gray-400 text-xs">✕</button>
+                      </div>
+                      <p className="text-gray-400 text-xs">{connectInfo.message}</p>
+                      {connectInfo.instructions && (
+                        <ol className="space-y-1">
+                          {connectInfo.instructions.map((step, i) => (
+                            <li key={i} className="text-gray-500 text-xs">{step}</li>
+                          ))}
+                        </ol>
+                      )}
+                    </div>
                   )}
                 </div>
               )}

@@ -1,83 +1,160 @@
 import { useState, useEffect, useRef } from 'react'
 import PromptCard from './PromptCard'
 import {
-  api, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES,
-  toAbsoluteUrl, btnPrimary, btnGhost,
+  api, ADMIN_PASSWORD, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES,
+  SOCIAL_META, toAbsoluteUrl, subVars,
 } from './constants'
 
-// Default empty prompts for a new influencer
+// ── Platforms available in influencer workspace ───────────────────────────────
+const INFLUENCER_PLATFORMS = ['instagram', 'tiktok', 'pinterest', 'facebook']
+
+// ── Default prompts grouped by platform ──────────────────────────────────────
 function defaultInfluencerPrompts(persona) {
   const ctx = persona.promptContext || persona.aesthetic || ''
   return {
-    mockup: [
-      {
-        id: `${persona.id}-img-1`,
-        name: 'Street Shot',
-        prompt: ctx ? `${ctx} — wearing the product, editorial street photography` : 'Editorial street photography wearing the product',
-        destination: 'instagram',
-      },
-      {
-        id: `${persona.id}-img-2`,
-        name: 'Studio Clean',
-        prompt: ctx ? `${ctx} — clean studio portrait with product, minimal background` : 'Clean studio portrait with product',
-        destination: 'site',
-      },
-    ],
-    video: [
-      {
-        id: `${persona.id}-vid-1`,
-        name: 'Lifestyle Reel',
-        prompt: ctx ? `${ctx} — lifestyle video wearing the product, energetic movement` : 'Lifestyle video wearing the product',
-        destination: 'instagram',
-      },
-    ],
+    instagram: {
+      image: [
+        { id: `${persona.id}-ig-img-1`, name: 'Street Shot',    prompt: ctx ? `${ctx} — wearing the product, editorial street photography, warm tones` : 'Editorial street photography wearing the product' },
+        { id: `${persona.id}-ig-img-2`, name: 'Studio Clean',   prompt: ctx ? `${ctx} — clean studio portrait with product, minimal background` : 'Clean studio portrait with product' },
+      ],
+      video: [
+        { id: `${persona.id}-ig-vid-1`, name: 'Lifestyle Reel', prompt: ctx ? `${ctx} — lifestyle reel wearing the product, energetic movement, good vibes` : 'Lifestyle reel wearing the product' },
+      ],
+    },
+    tiktok: {
+      image: [
+        { id: `${persona.id}-tt-img-1`, name: 'GRWM Shot',      prompt: ctx ? `${ctx} — get ready with me style, casual, authentic, TikTok aesthetic` : 'Casual authentic shot for TikTok' },
+      ],
+      video: [
+        { id: `${persona.id}-tt-vid-1`, name: 'Unboxing',       prompt: ctx ? `${ctx} — unboxing reaction video, excited energy, fast cuts` : 'Unboxing reaction video' },
+        { id: `${persona.id}-tt-vid-2`, name: 'POV Trend',      prompt: ctx ? `${ctx} — POV trend video wearing product, trending audio context` : 'POV trend video with product' },
+      ],
+    },
+    pinterest: {
+      image: [
+        { id: `${persona.id}-pin-img-1`, name: 'Moodboard',     prompt: ctx ? `${ctx} — aesthetic flat lay with product, soft lighting, Pinterest worthy` : 'Aesthetic flat lay with product' },
+        { id: `${persona.id}-pin-img-2`, name: 'Lifestyle',     prompt: ctx ? `${ctx} — aspirational lifestyle shot with product, magazine quality` : 'Aspirational lifestyle shot with product' },
+      ],
+      video: [],
+    },
+    facebook: {
+      image: [
+        { id: `${persona.id}-fb-img-1`, name: 'Community',      prompt: ctx ? `${ctx} — relatable everyday moment with product, community vibe` : 'Relatable everyday moment with product' },
+      ],
+      video: [
+        { id: `${persona.id}-fb-vid-1`, name: 'Story Time',     prompt: ctx ? `${ctx} — storytelling style video with product, speaking to camera` : 'Storytelling video with product' },
+      ],
+    },
   }
 }
 
-function InfluencerWorkspace({
-  persona, productId, productName, allImages, onAssetSaved,
-}) {
-  const [activeTab,      setActiveTab]      = useState('mockup')
-  const [localPrompts,   setLocalPrompts]   = useState({})
-  const [imageModel,     setImageModel]     = useState(IMAGE_MODELS[0].id)
-  const [videoModel,     setVideoModel]     = useState(VIDEO_MODELS[0].id)
-  const [imageSize,      setImageSize]      = useState('square_hd')
-  const [videoDuration,  setVideoDuration]  = useState('5')
-  const [results,        setResults]        = useState({})
-  const [savingPrompts,  setSavingPrompts]  = useState({})
-  const [savedMsgs,      setSavedMsgs]      = useState({})
-  const [promptSettings, setPromptSettings] = useState({})
-  const [selectedImages, setSelectedImages] = useState({})
+// ── PlatformCopyPanel ─────────────────────────────────────────────────────────
+function InfluencerCopyPanel({ copy, platform, onRegenerate, generating }) {
+  const [copied, setCopied] = useState(null)
+  const meta = SOCIAL_META[platform]
+
+  const copyText = (text, key) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(key)
+      setTimeout(() => setCopied(null), 1500)
+    })
+  }
+
+  const FIELDS = [
+    { key: 'caption',        label: 'Caption',  multi: true  },
+    { key: 'hashtags',       label: 'Hashtags', multi: false },
+    { key: 'altText',        label: 'Alt Text', multi: false },
+  ]
+
+  return (
+    <div className={`border ${meta.activeBorder} ${meta.activeBg} p-3 space-y-2`}>
+      <div className="flex items-center justify-between mb-1">
+        <span className={`text-xs font-semibold ${meta.color}`}>✨ Copy</span>
+        <button onClick={onRegenerate} disabled={generating}
+          className={`text-xs transition-colors ${generating ? 'text-gray-600' : `${meta.color} hover:opacity-70`}`}>
+          {generating ? '…' : '↺ Rigenera'}
+        </button>
+      </div>
+      {FIELDS.map(({ key, label, multi }) => copy[key] ? (
+        <div key={key} className="flex items-start gap-2">
+          <span className="text-gray-600 text-[10px] w-14 flex-shrink-0 pt-0.5 uppercase tracking-wider">{label}</span>
+          <p className={`text-gray-300 text-xs flex-1 leading-relaxed ${multi ? '' : 'truncate'}`}>{copy[key]}</p>
+          <button onClick={() => copyText(copy[key], key)}
+            className="text-gray-600 hover:text-gray-300 text-[10px] flex-shrink-0 transition-colors">
+            {copied === key ? '✓' : 'Copy'}
+          </button>
+        </div>
+      ) : null)}
+    </div>
+  )
+}
+
+// ── Connect instructions ──────────────────────────────────────────────────────
+function ConnectBanner({ platform, info, onDismiss }) {
+  const meta = SOCIAL_META[platform]
+  return (
+    <div className="bg-gray-900 border border-yellow-800/60 p-3 space-y-2">
+      <div className="flex items-center gap-2">
+        <span className="text-yellow-400 text-xs font-semibold">🔗 Connetti {meta.label}</span>
+        <button onClick={onDismiss} className="ml-auto text-gray-600 hover:text-gray-400 text-xs">✕</button>
+      </div>
+      <p className="text-gray-400 text-xs">{info.message}</p>
+      {info.instructions && (
+        <ol className="space-y-1">
+          {info.instructions.map((step, i) => (
+            <li key={i} className="text-gray-500 text-xs">{step}</li>
+          ))}
+        </ol>
+      )}
+    </div>
+  )
+}
+
+// ── InfluencerWorkspace ───────────────────────────────────────────────────────
+function InfluencerWorkspace({ persona, productId, productName, allImages, onAssetSaved }) {
+  const [activePlatform,  setActivePlatform]  = useState('instagram')
+  const [imageModel,      setImageModel]      = useState(IMAGE_MODELS[0].id)
+  const [videoModel,      setVideoModel]      = useState(VIDEO_MODELS[0].id)
+  const [imageSize,       setImageSize]       = useState('square_hd')
+  const [videoDuration,   setVideoDuration]   = useState('5')
+
+  // All per-prompt state
+  const [localPrompts,    setLocalPrompts]    = useState({})
+  const [promptSettings,  setPromptSettings]  = useState({})
+  const [selectedImages,  setSelectedImages]  = useState({})
+  const [results,         setResults]         = useState({})
+  const [savingPrompts,   setSavingPrompts]   = useState({})
+  const [savedMsgs,       setSavedMsgs]       = useState({})
+
+  // Per-platform copy + publish state
+  const [platformCopy,    setPlatformCopy]    = useState({})
+  const [generatingCopy,  setGeneratingCopy]  = useState({})
+  const [publishing,      setPublishing]      = useState({})
+  const [publishMsgs,     setPublishMsgs]     = useState({})
+  const [connectInfo,     setConnectInfo]     = useState({})
+
   const pollTimers = useRef({})
 
-  // Prompts stored in persona.prompts or use defaults
+  // Prompts stored per platform in persona.prompts or use defaults
   const [personaPrompts, setPersonaPrompts] = useState(
-    persona.prompts && (persona.prompts.mockup?.length || persona.prompts.video?.length)
+    persona.prompts && typeof persona.prompts === 'object' && !Array.isArray(persona.prompts.mockup)
       ? persona.prompts
       : defaultInfluencerPrompts(persona)
   )
 
   useEffect(() => {
-    // Reset when persona changes
-    const prompts = persona.prompts && (persona.prompts.mockup?.length || persona.prompts.video?.length)
+    const prompts = persona.prompts && typeof persona.prompts === 'object' && !Array.isArray(persona.prompts.mockup)
       ? persona.prompts
       : defaultInfluencerPrompts(persona)
     setPersonaPrompts(prompts)
-    const local    = {}
-    const settings = {}
-    for (const t of [...(prompts.mockup || []), ...(prompts.video || [])]) {
-      local[t.id] = t.prompt || ''
-      if (t.modelId || t.videoModelId || t.imageSize || t.referenceUrl || t.extraRefs) {
-        settings[t.id] = {
-          modelId:      t.modelId || t.videoModelId || null,
-          imageSize:    t.imageSize    || null,
-          referenceUrl: t.referenceUrl || null,
-          extraRefs:    Array.isArray(t.extraRefs) ? t.extraRefs : [],
-        }
+
+    const local = {}
+    for (const plat of INFLUENCER_PLATFORMS) {
+      for (const t of [...(prompts[plat]?.image || []), ...(prompts[plat]?.video || [])]) {
+        local[t.id] = t.prompt || ''
       }
     }
     setLocalPrompts(local)
-    setPromptSettings(settings)
     setResults({})
     setSelectedImages({})
   }, [persona.id]) // eslint-disable-line
@@ -89,9 +166,7 @@ function InfluencerWorkspace({
 
   // Reference images: influencer's own refs first, then product images
   const influencerRefs = (persona.referenceImages || []).map((url, i) => ({
-    url,
-    name: `${persona.name} ref ${i + 1}`,
-    _isPersonaRef: true,
+    url, name: `${persona.name} ref ${i + 1}`, _isPersonaRef: true,
   }))
   const combinedImages = [...influencerRefs, ...allImages]
 
@@ -99,10 +174,10 @@ function InfluencerWorkspace({
     if (selectedImages[templateId]) return selectedImages[templateId]
     const savedRef = promptSettings[templateId]?.referenceUrl
     if (savedRef) return { url: savedRef, name: 'Pinned', _isPinned: true }
-    // Default to influencer's first ref if available, else product image
     return influencerRefs[0] ?? allImages[0] ?? null
   }
 
+  // ── Image generation ────────────────────────────────────────────────────────
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
@@ -125,6 +200,7 @@ function InfluencerWorkspace({
     }
   }
 
+  // ── Video generation ────────────────────────────────────────────────────────
   const handleGenerateVideo = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
@@ -154,7 +230,7 @@ function InfluencerWorkspace({
           if (st === 'COMPLETED') {
             clearInterval(pollTimers.current[requestId])
             delete pollTimers.current[requestId]
-            const rRes = await fetch('/api/generate-video', {
+            const rRes  = await fetch('/api/generate-video', {
               method: 'POST', headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'result', modelId: modelToUse, requestId }),
             })
@@ -176,6 +252,7 @@ function InfluencerWorkspace({
     }
   }
 
+  // ── Save asset to website ───────────────────────────────────────────────────
   const handleSaveAsset = async (templateId, assetUrl, assetType) => {
     if (!productId || !assetUrl) return
     patchResult(templateId, { saving: true })
@@ -188,8 +265,69 @@ function InfluencerWorkspace({
     }
   }
 
+  // ── Save prompt to persona ──────────────────────────────────────────────────
   const savePersonaPrompts = async (prompts) => {
     await api('save-persona-prompts', { personaId: persona.id, prompts })
+  }
+
+  const handleSavePrompt = async (templateId, platform, isVideo) => {
+    setSavingPrompts(prev => ({ ...prev, [templateId]: true }))
+    setSavedMsgs(prev => ({ ...prev, [templateId]: '' }))
+    try {
+      const category = isVideo ? 'video' : 'image'
+      const ps       = promptSettings[templateId] || {}
+      const selImg   = selectedImages[templateId] || null
+      const updatedPrompts = {
+        ...personaPrompts,
+        [platform]: {
+          ...personaPrompts[platform],
+          [category]: (personaPrompts[platform]?.[category] || []).map(t => {
+            if (t.id !== templateId) return t
+            const extra = {}
+            if (ps.modelId) extra[isVideo ? 'videoModelId' : 'modelId'] = ps.modelId
+            if (ps.imageSize && !isVideo) extra.imageSize = ps.imageSize
+            if (selImg?.url) extra.referenceUrl = selImg.url
+            if (ps.extraRefs?.length) extra.extraRefs = ps.extraRefs
+            return { ...t, prompt: localPrompts[templateId] ?? t.prompt, ...extra }
+          }),
+        },
+      }
+      await savePersonaPrompts(updatedPrompts)
+      setPersonaPrompts(updatedPrompts)
+      setSavedMsgs(prev => ({ ...prev, [templateId]: '✓' }))
+      setTimeout(() => setSavedMsgs(prev => ({ ...prev, [templateId]: '' })), 2500)
+    } catch {
+      setSavedMsgs(prev => ({ ...prev, [templateId]: '⚠' }))
+    } finally {
+      setSavingPrompts(prev => ({ ...prev, [templateId]: false }))
+    }
+  }
+
+  const handleAddPrompt = (platform, isVideo) => {
+    const id       = `${persona.id}-${platform}-${isVideo ? 'vid' : 'img'}-${Date.now()}`
+    const category = isVideo ? 'video' : 'image'
+    const newPrompt = { id, name: 'New prompt', prompt: '' }
+    setPersonaPrompts(prev => ({
+      ...prev,
+      [platform]: {
+        ...prev[platform],
+        [category]: [...(prev[platform]?.[category] || []), newPrompt],
+      },
+    }))
+    setLocalPrompts(prev => ({ ...prev, [id]: '' }))
+  }
+
+  const handleDeletePrompt = async (templateId, platform, isVideo) => {
+    const category = isVideo ? 'video' : 'image'
+    const updatedPrompts = {
+      ...personaPrompts,
+      [platform]: {
+        ...personaPrompts[platform],
+        [category]: (personaPrompts[platform]?.[category] || []).filter(t => t.id !== templateId),
+      },
+    }
+    setPersonaPrompts(updatedPrompts)
+    await savePersonaPrompts(updatedPrompts).catch(() => {})
   }
 
   const handleAddExtraRef = (templateId, ref) => {
@@ -208,77 +346,123 @@ function InfluencerWorkspace({
     })
   }
 
-  const handleSavePrompt = async (templateId, isVideoPrompt) => {
-    setSavingPrompts(prev => ({ ...prev, [templateId]: true }))
-    setSavedMsgs(prev => ({ ...prev, [templateId]: '' }))
+  // ── Generate copy for a platform ────────────────────────────────────────────
+  const handleGenerateCopy = async (platform) => {
+    setGeneratingCopy(prev => ({ ...prev, [platform]: true }))
     try {
-      const category = isVideoPrompt ? 'video' : 'mockup'
-      const ps       = promptSettings[templateId] || {}
-      const selImg   = selectedImages[templateId] || null
-      const updatedPrompts = {
-        ...personaPrompts,
-        [category]: (personaPrompts[category] || []).map(t => {
-          if (t.id !== templateId) return t
-          const extra = {}
-          if (ps.modelId) extra[isVideoPrompt ? 'videoModelId' : 'modelId'] = ps.modelId
-          if (ps.imageSize && !isVideoPrompt) extra.imageSize = ps.imageSize
-          if (selImg?.url) extra.referenceUrl = selImg.url
-          if (ps.extraRefs?.length) extra.extraRefs = ps.extraRefs
-          return { ...t, prompt: localPrompts[templateId] ?? t.prompt, ...extra }
-        }),
-      }
-      await savePersonaPrompts(updatedPrompts)
-      setPersonaPrompts(updatedPrompts)
-      setSavedMsgs(prev => ({ ...prev, [templateId]: '✓ Saved' }))
-      setTimeout(() => setSavedMsgs(prev => ({ ...prev, [templateId]: '' })), 2500)
+      const data = await api('generate-copy', {
+        productName, productType: 'tshirt',
+        social: platform,
+        selectedAssets: Object.entries(results)
+          .filter(([, r]) => r?.status === 'done')
+          .map(([id]) => id),
+      })
+      setPlatformCopy(prev => ({ ...prev, [platform]: data.copy }))
     } catch (e) {
-      setSavedMsgs(prev => ({ ...prev, [templateId]: '⚠ Error' }))
+      console.warn('generate-copy failed', e.message)
     } finally {
-      setSavingPrompts(prev => ({ ...prev, [templateId]: false }))
+      setGeneratingCopy(prev => ({ ...prev, [platform]: false }))
     }
   }
 
-  const handleAddPrompt = (isVideo) => {
-    const id       = `${persona.id}-${isVideo ? 'vid' : 'img'}-${Date.now()}`
-    const category = isVideo ? 'video' : 'mockup'
-    const newPrompt = { id, name: 'New prompt', prompt: '', destination: 'instagram' }
-    setPersonaPrompts(prev => ({
-      ...prev,
-      [category]: [...(prev[category] || []), newPrompt],
-    }))
-    setLocalPrompts(prev => ({ ...prev, [id]: '' }))
-  }
-
-  const handleDeletePrompt = async (templateId, isVideo) => {
-    const category = isVideo ? 'video' : 'mockup'
-    const updatedPrompts = {
-      ...personaPrompts,
-      [category]: (personaPrompts[category] || []).filter(t => t.id !== templateId),
-    }
+  // ── Publish to social platform ───────────────────────────────────────────────
+  const handlePublish = async (platform) => {
+    setPublishing(prev => ({ ...prev, [platform]: true }))
+    setPublishMsgs(prev => ({ ...prev, [platform]: '' }))
+    setConnectInfo(prev => ({ ...prev, [platform]: null }))
     try {
-      await savePersonaPrompts(updatedPrompts)
-      setPersonaPrompts(updatedPrompts)
-    } catch {
-      // Optimistic: update local even if save fails
-      setPersonaPrompts(updatedPrompts)
+      const plat = personaPrompts[platform] || {}
+      const doneAssets = [...(plat.image || []), ...(plat.video || [])]
+        .map(t => ({ id: t.id, ...results[t.id] }))
+        .filter(r => r.status === 'done' && (r.imageUrl || r.videoUrl))
+
+      if (doneAssets.length === 0) throw new Error('Nessun asset pronto — genera prima')
+
+      const copy = platformCopy[platform] || {}
+
+      const preferVideo = platform === 'tiktok' || platform === 'youtube'
+      const videoAsset  = doneAssets.find(a => a.videoUrl)
+      const imageAsset  = doneAssets.find(a => a.imageUrl)
+      const best        = preferVideo ? (videoAsset || imageAsset) : (imageAsset || videoAsset)
+
+      const payload = {
+        password:    ADMIN_PASSWORD,
+        imageUrl:    best?.imageUrl || null,
+        videoUrl:    best?.videoUrl || null,
+        caption:     copy.caption       || `${persona.name} × JAYL`,
+        hashtags:    copy.hashtags      || '#JAYL #style',
+        altText:     copy.altText       || '',
+        title:       copy.seoTitle      || productName,
+        description: copy.seoDescription || '',
+      }
+
+      const res  = await fetch(`/api/publish-${platform}`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      })
+      const data = await res.json()
+
+      if (data.needsConnect) {
+        setConnectInfo(prev => ({ ...prev, [platform]: data }))
+        setPublishMsgs(prev => ({ ...prev, [platform]: '🔗' }))
+        setTimeout(() => setPublishMsgs(prev => ({ ...prev, [platform]: '' })), 5000)
+        return
+      }
+
+      if (!data.ok) throw new Error(data.error || 'Publish failed')
+
+      setPublishMsgs(prev => ({ ...prev, [platform]: '✓' }))
+      setTimeout(() => setPublishMsgs(prev => ({ ...prev, [platform]: '' })), 3000)
+    } catch (e) {
+      setPublishMsgs(prev => ({ ...prev, [platform]: `⚠ ${e.message.slice(0, 40)}` }))
+      setTimeout(() => setPublishMsgs(prev => ({ ...prev, [platform]: '' })), 4000)
+    } finally {
+      setPublishing(prev => ({ ...prev, [platform]: false }))
     }
   }
 
-  const currentTemplates = activeTab === 'mockup'
-    ? (personaPrompts.mockup || [])
-    : (personaPrompts.video  || [])
+  // ── PromptCard shared props ─────────────────────────────────────────────────
+  const promptCardProps = (t, platform, isVideo) => ({
+    template:         t,
+    isVideo,
+    promptText:       localPrompts[t.id] ?? t.prompt ?? '',
+    onPromptChange:   val => setLocalPrompts(prev => ({ ...prev, [t.id]: val })),
+    result:           results[t.id],
+    onGenerate:       () => isVideo ? handleGenerateVideo(t.id) : handleGenerateImage(t.id),
+    onSave:           (url, type) => handleSaveAsset(t.id, url, type),
+    onSavePrompt:     () => handleSavePrompt(t.id, platform, isVideo),
+    savingPrompt:     savingPrompts[t.id],
+    savedPromptMsg:   savedMsgs[t.id],
+    images:           combinedImages,
+    extraRefs:        promptSettings[t.id]?.extraRefs || [],
+    onAddExtraRef:    ref => handleAddExtraRef(t.id, ref),
+    onRemoveExtraRef: url => handleRemoveExtraRef(t.id, url),
+    selectedImage:    getSelectedImage(t.id),
+    onSelectImage:    img => setSelectedImages(prev => ({ ...prev, [t.id]: img })),
+    activeModel:      promptSettings[t.id]?.modelId || null,
+    activeSize:       promptSettings[t.id]?.imageSize || null,
+    onModelChange:    val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), modelId: val } })),
+    onSizeChange:     val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), imageSize: val } })),
+    models:           isVideo ? VIDEO_MODELS : IMAGE_MODELS,
+    imageSizes:       IMAGE_SIZES,
+    onDelete:         () => handleDeletePrompt(t.id, platform, isVideo),
+  })
 
   const selectedVideoModel = VIDEO_MODELS.find(m => m.id === videoModel)
+  const platData = personaPrompts[activePlatform] || { image: [], video: [] }
+  const platMeta = SOCIAL_META[activePlatform]
 
-  const publishLinks = {
-    instagram: persona.instagram || null,
-    tiktok:    persona.tiktok    || null,
-    youtube:   persona.youtube   || null,
+  const getDoneCount = (platform) => {
+    const plat = personaPrompts[platform] || {}
+    return [...(plat.image || []), ...(plat.video || [])]
+      .filter(t => results[t.id]?.status === 'done').length
   }
 
   return (
     <div className="border-t border-indigo-900/40 bg-gray-950/40">
-      {/* Influencer info header */}
+
+      {/* Persona info header */}
       <div className="px-4 py-3 flex items-center gap-3 border-b border-gray-800">
         {persona.referenceImages?.[0] ? (
           <img src={toAbsoluteUrl(persona.referenceImages[0])} alt={persona.name}
@@ -296,150 +480,196 @@ function InfluencerWorkspace({
             <p className="text-gray-600 text-xs truncate">{persona.promptContext}</p>
           )}
         </div>
-      </div>
-
-      {/* Reference images strip */}
-      {combinedImages.length > 0 && (
-        <div className="px-4 py-2 border-b border-gray-800">
-          <p className="text-gray-600 text-xs mb-1.5">References</p>
-          <div className="flex gap-1.5 overflow-x-auto pb-0.5" style={{ scrollbarWidth: 'thin' }}>
-            {combinedImages.map((img, i) => (
+        {/* Reference images strip */}
+        {combinedImages.length > 0 && (
+          <div className="ml-auto flex gap-1 overflow-hidden">
+            {combinedImages.slice(0, 5).map((img, i) => (
               <div key={img.url || i}
-                className={`flex-shrink-0 w-10 h-10 border overflow-hidden ${
-                  img._isPersonaRef ? 'border-indigo-700' : 'border-gray-700'
-                }`}
-                title={img.name}
-              >
+                className={`flex-shrink-0 w-7 h-7 border overflow-hidden ${img._isPersonaRef ? 'border-indigo-700' : 'border-gray-700'}`}
+                title={img.name}>
                 <img src={toAbsoluteUrl(img.url)} alt={img.name}
                   className="w-full h-full object-cover"
                   onError={e => { e.currentTarget.style.opacity = '0.3' }} />
               </div>
             ))}
+            {combinedImages.length > 5 && (
+              <span className="text-gray-600 text-[10px] self-center ml-0.5">+{combinedImages.length - 5}</span>
+            )}
           </div>
-        </div>
-      )}
-
-      {/* Tabs */}
-      <div className="flex border-b border-gray-800">
-        {[{ id: 'mockup', label: '🖼 Mockup' }, { id: 'video', label: '🎬 Video' }].map(t => (
-          <button key={t.id} onClick={() => setActiveTab(t.id)}
-            className={`px-4 py-2 text-xs font-medium border-b-2 transition-colors ${
-              activeTab === t.id ? 'border-indigo-500 text-indigo-300' : 'border-transparent text-gray-500 hover:text-gray-300'
-            }`}>{t.label}</button>
-        ))}
+        )}
       </div>
 
-      <div className="p-4 space-y-3">
+      {/* ── Platform tabs ────────────────────────────────────────────────────── */}
+      <div className="flex border-b border-gray-800 overflow-x-auto">
+        {INFLUENCER_PLATFORMS.map(plat => {
+          const meta     = SOCIAL_META[plat]
+          const doneCount = getDoneCount(plat)
+          const isActive = activePlatform === plat
+          return (
+            <button key={plat} onClick={() => setActivePlatform(plat)}
+              className={`flex items-center gap-1.5 px-3 py-2.5 text-xs font-medium border-b-2 transition-colors whitespace-nowrap flex-shrink-0 ${
+                isActive
+                  ? `border-current ${meta.color}`
+                  : 'border-transparent text-gray-500 hover:text-gray-300'
+              }`}>
+              <span>{meta.icon}</span>
+              <span className="hidden sm:inline">{meta.label}</span>
+              {doneCount > 0 && (
+                <span className="text-emerald-400 text-[9px] font-bold">{doneCount}✓</span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* ── Platform workspace ───────────────────────────────────────────────── */}
+      <div className="p-4 space-y-4">
+
         {/* Settings bar */}
         <div className="bg-gray-900 border border-gray-800 p-3 space-y-2">
-          <div className="flex items-center gap-2">
-            <label className="text-gray-600 text-xs w-14 flex-shrink-0">Model</label>
-            <select
-              value={activeTab === 'mockup' ? imageModel : videoModel}
-              onChange={e => activeTab === 'mockup' ? setImageModel(e.target.value) : setVideoModel(e.target.value)}
-              className="bg-gray-800 border border-gray-700 text-white text-xs px-2 py-1 focus:outline-none focus:border-indigo-500 flex-1 min-w-0"
-            >
-              {(activeTab === 'mockup' ? IMAGE_MODELS : VIDEO_MODELS).map(m => (
-                <option key={m.id} value={m.id}>
-                  {m.badge ? `${m.badge} ` : ''}{m.label}
-                </option>
+          <div className="flex flex-wrap items-center gap-2">
+            <label className="text-gray-600 text-xs w-14 flex-shrink-0">📸 Model</label>
+            <select value={imageModel} onChange={e => setImageModel(e.target.value)}
+              className="bg-gray-800 border border-gray-700 text-white text-xs px-2 py-1 focus:outline-none flex-1 min-w-0">
+              {IMAGE_MODELS.map(m => (
+                <option key={m.id} value={m.id}>{m.badge ? `${m.badge} ` : ''}{m.label}</option>
               ))}
             </select>
+            <div className="flex gap-1">
+              {IMAGE_SIZES.slice(0, 4).map(s => (
+                <button key={s.id} onClick={() => setImageSize(s.id)} title={s.desc}
+                  className={`px-1.5 py-0.5 text-[10px] border transition-colors ${
+                    imageSize === s.id ? 'border-indigo-500 text-indigo-300' : 'border-gray-700 text-gray-600 hover:border-gray-500'
+                  }`}>{s.label}</button>
+              ))}
+            </div>
           </div>
-          {activeTab === 'mockup' && (
-            <div className="flex items-center gap-2">
-              <label className="text-gray-600 text-xs w-14 flex-shrink-0">Size</label>
-              <div className="flex gap-1 flex-wrap">
-                {IMAGE_SIZES.map(s => (
-                  <button key={s.id} onClick={() => setImageSize(s.id)} title={s.desc}
-                    className={`px-2 py-0.5 text-xs border transition-colors ${
-                      imageSize === s.id ? 'border-indigo-500 text-indigo-300 bg-indigo-900/20' : 'border-gray-700 text-gray-500 hover:border-gray-500'
-                    }`}>{s.label}</button>
-                ))}
-              </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <label className="text-gray-600 text-xs w-14 flex-shrink-0">🎬 Model</label>
+            <select value={videoModel} onChange={e => setVideoModel(e.target.value)}
+              className="bg-gray-800 border border-gray-700 text-white text-xs px-2 py-1 focus:outline-none flex-1 min-w-0">
+              {VIDEO_MODELS.map(m => (
+                <option key={m.id} value={m.id}>{m.badge ? `${m.badge} ` : ''}{m.label}</option>
+              ))}
+            </select>
+            <div className="flex gap-1 items-center">
+              {['5', '10'].map(d => (
+                <button key={d} onClick={() => setVideoDuration(d)}
+                  className={`px-2 py-0.5 text-xs border transition-colors ${
+                    videoDuration === d ? 'border-indigo-500 text-indigo-300' : 'border-gray-700 text-gray-600 hover:border-gray-500'
+                  }`}>{d}s</button>
+              ))}
+              <span className="text-gray-600 text-[10px]">
+                ≈${((selectedVideoModel?.secRate ?? 0) * parseFloat(videoDuration)).toFixed(3)}
+              </span>
             </div>
-          )}
-          {activeTab === 'video' && (
-            <div className="flex items-center gap-2">
-              <label className="text-gray-600 text-xs w-14 flex-shrink-0">Duration</label>
-              <div className="flex gap-1 items-center">
-                {['5', '10'].map(d => (
-                  <button key={d} onClick={() => setVideoDuration(d)}
-                    className={`px-3 py-0.5 text-xs border transition-colors ${
-                      videoDuration === d ? 'border-indigo-500 text-indigo-300 bg-indigo-900/20' : 'border-gray-700 text-gray-500 hover:border-gray-500'
-                    }`}>{d}s</button>
-                ))}
-                <span className="text-gray-600 text-xs ml-2">
-                  ≈ ${((selectedVideoModel?.secRate ?? 0) * parseFloat(videoDuration)).toFixed(3)}
-                </span>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
 
-        {/* Prompt cards */}
-        <div className="space-y-4">
-          {currentTemplates.map(t => (
-            <PromptCard
-              key={t.id}
-              template={t}
-              isVideo={activeTab === 'video'}
-              promptText={localPrompts[t.id] ?? t.prompt ?? ''}
-              onPromptChange={val => setLocalPrompts(prev => ({ ...prev, [t.id]: val }))}
-              result={results[t.id]}
-              onGenerate={() => activeTab === 'video' ? handleGenerateVideo(t.id) : handleGenerateImage(t.id)}
-              onSave={(url, type) => handleSaveAsset(t.id, url, type)}
-              onSavePrompt={() => handleSavePrompt(t.id, activeTab === 'video')}
-              savingPrompt={savingPrompts[t.id]}
-              savedPromptMsg={savedMsgs[t.id]}
-              images={combinedImages}
-              extraRefs={promptSettings[t.id]?.extraRefs || []}
-              onAddExtraRef={ref => handleAddExtraRef(t.id, ref)}
-              onRemoveExtraRef={url => handleRemoveExtraRef(t.id, url)}
-              selectedImage={getSelectedImage(t.id)}
-              onSelectImage={img => setSelectedImages(prev => ({ ...prev, [t.id]: img }))}
-              activeModel={promptSettings[t.id]?.modelId || null}
-              activeSize={promptSettings[t.id]?.imageSize || null}
-              onModelChange={val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), modelId: val } }))}
-              onSizeChange={val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), imageSize: val } }))}
-              models={activeTab === 'mockup' ? IMAGE_MODELS : VIDEO_MODELS}
-              imageSizes={IMAGE_SIZES}
-              onDelete={() => handleDeletePrompt(t.id, activeTab === 'video')}
-              showPublish
-              publishLinks={publishLinks}
-            />
-          ))}
+        {/* Image prompts */}
+        {platData.image.length > 0 && (
+          <div className="space-y-3">
+            <p className={`text-xs font-semibold ${platMeta.color}`}>📸 Immagini</p>
+            {platData.image.map(t => (
+              <PromptCard key={t.id} {...promptCardProps(t, activePlatform, false)} />
+            ))}
+          </div>
+        )}
+
+        {/* Video prompts */}
+        {platData.video.length > 0 && (
+          <div className="space-y-3">
+            <p className={`text-xs font-semibold ${platMeta.color}`}>🎬 Video</p>
+            {platData.video.map(t => (
+              <PromptCard key={t.id} {...promptCardProps(t, activePlatform, true)} />
+            ))}
+          </div>
+        )}
+
+        {/* Add prompt buttons */}
+        <div className="flex gap-2">
+          <button onClick={() => handleAddPrompt(activePlatform, false)}
+            className={`flex-1 py-1.5 text-xs border border-dashed transition-colors ${platMeta.activeBorder} ${platMeta.color} opacity-60 hover:opacity-100`}>
+            + Immagine
+          </button>
+          <button onClick={() => handleAddPrompt(activePlatform, true)}
+            className={`flex-1 py-1.5 text-xs border border-dashed transition-colors ${platMeta.activeBorder} ${platMeta.color} opacity-60 hover:opacity-100`}>
+            + Video
+          </button>
         </div>
 
-        {/* Add prompt button */}
+        {/* Copy panel */}
+        {platformCopy[activePlatform] ? (
+          <InfluencerCopyPanel
+            copy={platformCopy[activePlatform]}
+            platform={activePlatform}
+            generating={generatingCopy[activePlatform]}
+            onRegenerate={() => handleGenerateCopy(activePlatform)}
+          />
+        ) : (
+          <button onClick={() => handleGenerateCopy(activePlatform)}
+            disabled={generatingCopy[activePlatform] || getDoneCount(activePlatform) === 0}
+            className={`w-full py-2 text-xs border border-dashed transition-colors ${
+              generatingCopy[activePlatform] || getDoneCount(activePlatform) === 0
+                ? 'border-gray-800 text-gray-700 cursor-not-allowed'
+                : `${platMeta.activeBorder} ${platMeta.color} hover:${platMeta.activeBg}`
+            }`}>
+            {generatingCopy[activePlatform] ? 'Generando copy…' : '✨ Genera caption e hashtag'}
+          </button>
+        )}
+
+        {/* Connect info if needed */}
+        {connectInfo[activePlatform] && (
+          <ConnectBanner
+            platform={activePlatform}
+            info={connectInfo[activePlatform]}
+            onDismiss={() => setConnectInfo(prev => ({ ...prev, [activePlatform]: null }))}
+          />
+        )}
+
+        {/* Publish button */}
+        {/* Static Tailwind classes for each platform */}
+        {/* instagram=purple tiktok=pink pinterest=red facebook=blue */}
         <button
-          onClick={() => handleAddPrompt(activeTab === 'video')}
-          className="w-full py-2 text-xs border border-dashed border-indigo-800 text-indigo-600 hover:text-indigo-400 hover:border-indigo-600 transition-colors"
-        >
-          + Add {activeTab === 'video' ? 'video' : 'image'} prompt
+          onClick={() => handlePublish(activePlatform)}
+          disabled={publishing[activePlatform] || getDoneCount(activePlatform) === 0}
+          className={`w-full py-2.5 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
+            publishing[activePlatform] || getDoneCount(activePlatform) === 0
+              ? 'bg-gray-800 text-gray-600 cursor-not-allowed'
+              : activePlatform === 'instagram' ? 'bg-purple-700 hover:bg-purple-600 text-white cursor-pointer'
+              : activePlatform === 'tiktok'    ? 'bg-pink-700 hover:bg-pink-600 text-white cursor-pointer'
+              : activePlatform === 'pinterest' ? 'bg-red-700 hover:bg-red-600 text-white cursor-pointer'
+              : 'bg-blue-700 hover:bg-blue-600 text-white cursor-pointer'
+          }`}>
+          {publishing[activePlatform]
+            ? <span className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
+            : publishMsgs[activePlatform]
+              ? <span>{publishMsgs[activePlatform]}</span>
+              : <><span>{platMeta.icon}</span><span>Pubblica su {platMeta.label}</span></>
+          }
         </button>
+
       </div>
     </div>
   )
 }
 
 // ── Main InfluencerPanel ──────────────────────────────────────────────────────
-
 export default function InfluencerPanel({ personas, productId, productName, allImages, onAssetSaved }) {
   const [selectedId, setSelectedId] = useState(null)
   const selectedPersona = personas.find(p => p.id === selectedId) ?? null
 
   if (!personas.length) {
     return (
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col">
         <div className="px-4 py-2.5 border-b border-gray-800 bg-gray-950/60 flex items-center gap-2">
           <span className="text-indigo-400 text-xs">👤</span>
           <span className="text-indigo-300 text-xs font-mono uppercase tracking-widest font-semibold">Influencer</span>
         </div>
         <div className="flex-1 flex items-center justify-center p-8">
           <div className="text-center space-y-2">
-            <p className="text-gray-600 text-sm">No influencers yet</p>
-            <p className="text-gray-700 text-xs">Create personas in the Personas tab first</p>
+            <p className="text-gray-600 text-sm">Nessun influencer</p>
+            <p className="text-gray-700 text-xs">Crea personas nel tab Personas</p>
           </div>
         </div>
       </div>
@@ -448,6 +678,7 @@ export default function InfluencerPanel({ personas, productId, productName, allI
 
   return (
     <div className="flex flex-col">
+
       {/* Panel header */}
       <div className="px-4 py-2.5 border-b border-gray-800 bg-gray-950/60 flex items-center gap-2">
         <span className="text-indigo-400 text-xs">👤</span>
@@ -465,9 +696,8 @@ export default function InfluencerPanel({ personas, productId, productName, allI
                 key={p.id}
                 onClick={() => setSelectedId(isSelected ? null : p.id)}
                 className="flex flex-col items-center gap-1.5 group"
-                title={`${p.name} ${p.handle}`}
+                title={`${p.name} ${p.handle || ''}`}
               >
-                {/* Circle avatar */}
                 <div className={`relative w-16 h-16 rounded-full overflow-hidden border-2 transition-all ${
                   isSelected
                     ? 'border-indigo-400 ring-2 ring-indigo-500/40 shadow-lg shadow-indigo-900/40'
@@ -485,11 +715,8 @@ export default function InfluencerPanel({ personas, productId, productName, allI
                       {p.name[0]}
                     </div>
                   )}
-                  {isSelected && (
-                    <div className="absolute inset-0 bg-indigo-500/10" />
-                  )}
+                  {isSelected && <div className="absolute inset-0 bg-indigo-500/10" />}
                 </div>
-                {/* Name */}
                 <span className={`text-xs font-medium transition-colors max-w-16 text-center leading-tight ${
                   isSelected ? 'text-indigo-300' : 'text-gray-500 group-hover:text-gray-300'
                 }`}>
@@ -515,9 +742,10 @@ export default function InfluencerPanel({ personas, productId, productName, allI
 
       {!selectedPersona && (
         <div className="px-4 py-6 text-center text-gray-700 text-xs">
-          Click an influencer to open their workspace
+          Clicca su un influencer per aprire il workspace
         </div>
       )}
+
     </div>
   )
 }
