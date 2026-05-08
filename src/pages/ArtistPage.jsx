@@ -54,9 +54,9 @@ export default function ArtistPage() {
         </h1>
       </div>
 
-      {/* Rule */}
+      {/* Gold rule */}
       <div className="px-6 sm:px-10 lg:px-16 mt-8 mb-10 flex-shrink-0">
-        <div className="w-full h-px bg-paper-border" />
+        <div className="w-full" style={{ height: '1px', backgroundColor: '#C4A35A', opacity: 0.35 }} />
       </div>
 
       {/* Vision text */}
@@ -77,9 +77,14 @@ export default function ArtistPage() {
             feed.
           </p>
 
-          <p className="text-ink-secondary leading-relaxed text-base sm:text-lg">
+          <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-8">
             JAYL is the answer — a body of work that continues what history left unfinished,
             applied to the subjects those movements never reached.
+          </p>
+
+          {/* Payoff */}
+          <p className="font-display italic font-light text-lg sm:text-xl" style={{ color: '#C4A35A' }}>
+            Art finds a way.
           </p>
         </div>
       </div>

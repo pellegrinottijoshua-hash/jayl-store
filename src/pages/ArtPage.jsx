@@ -64,7 +64,7 @@ export default function ArtPage() {
         <button
           onClick={() => setActiveCollection(null)}
           className={[
-            'flex-shrink-0 text-2xs font-mono tracking-wider uppercase px-3 py-1.5 border transition-colors',
+            'flex-shrink-0 text-2xs font-sans tracking-label uppercase px-3 py-1.5 border transition-colors',
             activeCollection === null
               ? 'bg-ink text-paper border-ink'
               : 'bg-transparent text-ink-muted border-paper-border hover:border-ink hover:text-ink',
@@ -77,7 +77,7 @@ export default function ArtPage() {
             key={name}
             onClick={() => setActiveCollection(activeCollection === name ? null : name)}
             className={[
-              'flex-shrink-0 text-2xs font-mono tracking-wider uppercase px-3 py-1.5 border transition-colors',
+              'flex-shrink-0 text-2xs font-sans tracking-label uppercase px-3 py-1.5 border transition-colors',
               activeCollection === name
                 ? 'bg-ink text-paper border-ink'
                 : 'bg-transparent text-ink-muted border-paper-border hover:border-ink hover:text-ink',
@@ -92,7 +92,7 @@ export default function ArtPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="text-2xs font-mono tracking-wider uppercase bg-transparent text-ink-muted border border-paper-border px-2 py-1.5 cursor-pointer focus:outline-none focus:border-ink"
+            className="text-2xs font-sans tracking-label uppercase bg-transparent text-ink-muted border border-paper-border px-2 py-1.5 cursor-pointer focus:outline-none focus:border-ink"
           >
             <option value="default">Sort</option>
             <option value="price-asc">Price ↑</option>
@@ -112,7 +112,7 @@ export default function ArtPage() {
                   style={{ aspectRatio: '3 / 4' }}
                 >
                   {isNewProduct(product) && (
-                    <span className="absolute top-2 left-2 z-10 text-[9px] font-mono tracking-widest uppercase bg-ink text-paper px-2 py-0.5">
+                    <span className="absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase bg-ink text-paper px-2 py-0.5">
                       New
                     </span>
                   )}
@@ -125,7 +125,7 @@ export default function ArtPage() {
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 </div>
-                <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted mb-1">
+                <p className="text-2xs font-sans tracking-label-xl uppercase text-ink-muted mb-1">
                   {slugToTitle(product.movement)}
                 </p>
                 <h3 className="font-display text-base text-ink leading-tight mb-1">{product.name}</h3>
@@ -176,7 +176,7 @@ export default function ArtPage() {
                     />
                   </div>
                   <div className="mt-3">
-                    <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted mb-1">
+                    <p className="text-2xs font-sans tracking-label-xl uppercase text-ink-muted mb-1">
                       {slugToTitle(product.movement)}
                     </p>
                     <h3 className="font-display text-base sm:text-lg text-ink leading-tight mb-1">

@@ -2,7 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   JAYL Brand System
+   Display / Nav / Labels  → Space Grotesk  (font-sans)
+   Body / Editorial        → Cormorant Garamond (font-display)
+   Payoff                  → Cormorant Garamond italic, always lowercase after "Art"
+   Gold                    → #C4A35A — accent only (separators, hovers, details)
+───────────────────────────────────────────────────────────────────────────── */
+
 @layer base {
+  :root {
+    /* JAYL brand tokens */
+    --jayl-black:  #111111;
+    --jayl-cream:  #F5F0E8;
+    --jayl-gray:   #8A8A85;
+    --jayl-gold:   #C4A35A;
+    --jayl-white:  #FFFFFF;
+
+    /* Letter-spacing */
+    --ls-display: 0.08em;
+    --ls-label:   0.15em;
+    --ls-label-xl:0.20em;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -13,100 +35,240 @@
 
   body {
     @apply bg-white text-ink font-sans antialiased;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Selection */
   ::selection {
-    @apply bg-accent text-black;
+    background-color: var(--jayl-gold);
+    color: var(--jayl-black);
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-off-black;
-  }
+  /* Scrollbar — minimal, gold thumb on hover */
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    @apply bg-surface-3 rounded-full;
+    background: #2a2a2a;
+    border-radius: 0;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-border-light;
+    background: var(--jayl-gold);
+  }
+
+  /* Headings default to Space Grotesk (font-sans) at brand weights */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+    font-weight: 300;
+    letter-spacing: var(--ls-display);
+  }
+
+  /* Paragraphs can use editorial (opt-in via .editorial or font-display) */
+  p {
+    font-weight: 300;
   }
 }
 
+/* ─── Component layer ──────────────────────────────────────────────────────── */
 @layer components {
-  /* ── Dark-page buttons (Objects, Checkout) ─────────────────────────── */
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-cream text-black text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-accent hover:scale-[1.02] active:scale-[0.98];
+
+  /* ── JAYL Payoff ─────────────────────────────────────────────────────────── */
+  .payoff {
+    @apply font-display italic;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+  /* "Art finds a way." — use with: <span class="payoff">Art finds a way.</span> */
+
+  /* ── Gold separator line ─────────────────────────────────────────────────── */
+  .jayl-separator {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--jayl-gold);
+    opacity: 0.35;
+  }
+  .jayl-separator-v {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: var(--jayl-gold);
+    opacity: 0.35;
+  }
+  /* Thicker at 1.5px for strong rule moments */
+  .jayl-separator-thick {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--jayl-gold);
+    opacity: 0.45;
   }
 
+  /* ── Section labels ──────────────────────────────────────────────────────── */
+  /* Dark-page label */
+  .section-label {
+    @apply font-sans text-[10px] tracking-label uppercase text-text-muted;
+    font-weight: 400;
+  }
+  /* Light-page label */
+  .section-label-light {
+    @apply font-sans text-[10px] tracking-label uppercase text-ink-muted;
+    font-weight: 400;
+  }
+  /* Gold accent label (use sparingly) */
+  .section-label-gold {
+    @apply font-sans text-[10px] tracking-label-xl uppercase;
+    font-weight: 400;
+    color: var(--jayl-gold);
+  }
+
+  /* ── Buttons — dark page (Objects, Cart, Admin) ──────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           bg-cream text-black text-xs font-sans font-medium tracking-label uppercase
+           transition-all duration-300 hover:bg-accent active:scale-[0.98];
+    letter-spacing: var(--ls-label);
+  }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-text-primary text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:border-cream hover:text-cream active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           border border-border text-text-primary text-xs font-sans font-medium tracking-label uppercase
+           transition-all duration-300
+           active:scale-[0.98];
+    letter-spacing: var(--ls-label);
+  }
+  .btn-ghost:hover {
+    border-color: var(--jayl-gold);
+    color: var(--jayl-cream);
   }
 
   .btn-icon {
-    @apply inline-flex items-center justify-center w-10 h-10 border border-border text-text-secondary transition-all duration-200 hover:border-cream hover:text-cream;
+    @apply inline-flex items-center justify-center w-10 h-10
+           border border-border text-text-secondary
+           transition-all duration-200;
+  }
+  .btn-icon:hover {
+    border-color: var(--jayl-gold);
+    color: var(--jayl-cream);
   }
 
-  /* ── Light-page buttons (Art, Homepage, Artist) ─────────────────────── */
+  /* ── Buttons — light page (Art, Home, Artist) ────────────────────────────── */
   .btn-ink {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-ink text-white text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-ink-secondary hover:scale-[1.02] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           bg-ink text-white text-xs font-sans font-medium uppercase
+           transition-all duration-300 hover:bg-ink-secondary active:scale-[0.98];
+    letter-spacing: var(--ls-label);
   }
-
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-paper-border text-ink text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:border-ink active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           border border-paper-border text-ink text-xs font-sans font-medium uppercase
+           transition-all duration-300 active:scale-[0.98];
+    letter-spacing: var(--ls-label);
+  }
+  .btn-ghost-light:hover {
+    border-color: var(--jayl-gold);
   }
 
   .btn-icon-light {
-    @apply inline-flex items-center justify-center w-10 h-10 border border-paper-border text-ink-muted transition-all duration-200 hover:border-ink hover:text-ink;
+    @apply inline-flex items-center justify-center w-10 h-10
+           border border-paper-border text-ink-muted
+           transition-all duration-200;
+  }
+  .btn-icon-light:hover {
+    border-color: var(--jayl-gold);
+    color: var(--jayl-black);
   }
 
-  /* ── Shared ─────────────────────────────────────────────────────────── */
-  .section-label {
-    @apply text-2xs font-mono tracking-ultra text-text-muted uppercase;
-  }
-
-  .section-label-light {
-    @apply text-2xs font-mono tracking-ultra text-ink-muted uppercase;
-  }
-
+  /* ── Card hover ──────────────────────────────────────────────────────────── */
   .card-hover {
-    @apply transition-all duration-500 hover:border-border-light;
+    @apply transition-all duration-500;
+  }
+  .card-hover:hover {
+    border-color: var(--jayl-gold) !important;
+    opacity: 0.9;
   }
 
+  /* ── Input fields ────────────────────────────────────────────────────────── */
   .input-field {
-    @apply w-full bg-surface border border-border px-4 py-3 text-text-primary text-sm placeholder:text-text-muted focus:outline-none focus:border-cream transition-colors duration-200;
+    @apply w-full bg-surface border border-border px-4 py-3
+           text-text-primary text-sm font-sans font-light
+           placeholder:text-text-muted
+           focus:outline-none
+           transition-colors duration-200;
+  }
+  .input-field:focus {
+    border-color: var(--jayl-gold);
   }
 
-  .divider {
-    @apply border-t border-border;
+  /* Light variant */
+  .input-field-light {
+    @apply w-full bg-transparent border border-paper-border px-4 py-3
+           text-ink text-sm font-sans font-light
+           placeholder:text-ink-muted
+           focus:outline-none
+           transition-colors duration-200;
+  }
+  .input-field-light:focus {
+    border-color: var(--jayl-gold);
+  }
+
+  /* ── Dividers ────────────────────────────────────────────────────────────── */
+  .divider       { @apply border-t border-border; }
+  .divider-light { @apply border-t border-paper-border; }
+  /* Gold divider */
+  .divider-gold {
+    border: none;
+    height: 1px;
+    background-color: var(--jayl-gold);
+    opacity: 0.3;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  /* Force light pages to stay light */
-  .bg-paper, .bg-cream, [data-theme="light"] {
-    background-color: #f5f0e8 !important;
-    color: #111111 !important;
-  }
-}
-
+/* ─── Utility layer ────────────────────────────────────────────────────────── */
 @layer utilities {
+
+  /* Scrollbar hide */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
 
+  /* Gold hover utility */
+  .hover-gold:hover { color: var(--jayl-gold) !important; }
+  .hover-border-gold:hover { border-color: var(--jayl-gold) !important; }
+
+  /* Text gradient (gold) */
   .text-gradient {
-    @apply bg-gradient-to-r from-cream via-accent to-cream-muted bg-clip-text text-transparent;
+    background: linear-gradient(135deg, var(--jayl-gold), #D4B878, var(--jayl-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
+  /* Brand letter-spacing utilities (override Tailwind defaults for precision) */
+  .tracking-display { letter-spacing: var(--ls-display); }
+  .tracking-label   { letter-spacing: var(--ls-label); }
+  .tracking-label-xl{ letter-spacing: var(--ls-label-xl); }
+
+  /* Noise texture overlay */
   .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* Cormorant editorial helper */
+  .editorial {
+    @apply font-display;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* Light-page force (stays cream regardless of OS dark mode) */
+  @media (prefers-color-scheme: dark) {
+    .bg-paper, .bg-cream, [data-theme="light"] {
+      background-color: var(--jayl-cream) !important;
+      color: var(--jayl-black) !important;
+    }
   }
 }

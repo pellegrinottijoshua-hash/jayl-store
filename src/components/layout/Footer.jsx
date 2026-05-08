@@ -8,28 +8,32 @@ export default function Footer() {
 
   const t = isLight
     ? {
-        bg: 'bg-paper border-t border-paper-border',
-        heading: 'section-label-light',
-        link: 'inline-block py-2 -my-1 text-ink-secondary hover:text-ink transition-colors duration-200',
-        muted: 'text-ink-muted',
-        divider: 'border-t border-paper-border',
+        bg:      'bg-paper border-t border-paper-border',
+        heading: 'font-sans font-light text-[9px] uppercase text-ink-muted',
+        link:    'block font-sans font-light text-sm text-ink-secondary transition-colors duration-200',
+        muted:   'font-sans font-light text-xs text-ink-muted',
+        dividerClass: 'border-paper-border',
       }
     : {
-        bg: 'bg-off-black border-t border-border',
-        heading: 'section-label',
-        link: 'inline-block py-2 -my-1 text-text-secondary hover:text-text-primary transition-colors duration-200',
-        muted: 'text-text-muted',
-        divider: 'border-t border-border',
+        bg:      'bg-off-black border-t border-border',
+        heading: 'font-sans font-light text-[9px] uppercase text-text-muted',
+        link:    'block font-sans font-light text-sm text-text-secondary transition-colors duration-200',
+        muted:   'font-sans font-light text-xs text-text-muted',
+        dividerClass: 'border-border',
       }
 
   return (
     <footer className={t.bg}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        {/* Gold top rule */}
+        <div className="mb-14" style={{ height: '1px', background: 'var(--jayl-gold)', opacity: 0.25 }} />
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
 
           {/* Shop */}
           <div>
-            <h4 className={cn(t.heading, 'mb-5')}>Shop</h4>
+            <h4 className={cn(t.heading, 'mb-5')} style={{ letterSpacing: '0.18em' }}>Shop</h4>
             <ul className="space-y-3">
               {[
                 { to: '/art',     label: 'Art Prints' },
@@ -39,7 +43,14 @@ export default function Footer() {
                 { to: '/collection/wearables',                label: 'Wearables' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
+                  <Link
+                    to={to}
+                    className={t.link}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = '' }}
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -47,14 +58,21 @@ export default function Footer() {
 
           {/* Discover */}
           <div>
-            <h4 className={cn(t.heading, 'mb-5')}>Discover</h4>
+            <h4 className={cn(t.heading, 'mb-5')} style={{ letterSpacing: '0.18em' }}>Discover</h4>
             <ul className="space-y-3">
               {[
                 { to: '/artist',   label: "Artist's" },
                 { to: '/wishlist', label: 'Wishlist' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
+                  <Link
+                    to={to}
+                    className={t.link}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = '' }}
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -62,7 +80,7 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h4 className={cn(t.heading, 'mb-5')}>Support</h4>
+            <h4 className={cn(t.heading, 'mb-5')} style={{ letterSpacing: '0.18em' }}>Support</h4>
             <ul className="space-y-3">
               {[
                 { to: '/contact',  label: 'Contact Us' },
@@ -71,7 +89,14 @@ export default function Footer() {
                 { to: '/track',    label: 'Track Order' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
+                  <Link
+                    to={to}
+                    className={t.link}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = '' }}
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -79,7 +104,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className={cn(t.heading, 'mb-5')}>Legal</h4>
+            <h4 className={cn(t.heading, 'mb-5')} style={{ letterSpacing: '0.18em' }}>Legal</h4>
             <ul className="space-y-3">
               {[
                 { to: '/terms',   label: 'Terms of Use' },
@@ -87,16 +112,31 @@ export default function Footer() {
                 { to: '/cookies', label: 'Cookie Policy' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className={cn('text-sm', t.link)}>{label}</Link>
+                  <Link
+                    to={to}
+                    className={t.link}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = '' }}
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className={cn('mt-14 pt-6 flex items-center justify-center', t.divider)}>
-          <p className={cn('text-xs', t.muted)}>© 2026 JAYL. All rights reserved.</p>
+        {/* Gold bottom separator + copyright + payoff */}
+        <div className="mt-14">
+          <div style={{ height: '1px', background: 'var(--jayl-gold)', opacity: 0.25 }} />
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className={t.muted}>© 2026 JAYL. All rights reserved.</p>
+            <p className="font-display italic font-light text-sm" style={{ color: 'var(--jayl-gold)', opacity: 0.7 }}>
+              Art finds a way.
+            </p>
+          </div>
         </div>
+
       </div>
     </footer>
   )

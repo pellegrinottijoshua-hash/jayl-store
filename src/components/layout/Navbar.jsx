@@ -140,7 +140,7 @@ export default function Navbar() {
               : 'bg-surface text-cream-muted'
           )}
         >
-          <p className="text-[10px] tracking-[0.18em] font-sans uppercase select-none">
+          <p className="font-sans font-light text-[9px] uppercase select-none" style={{ letterSpacing: '0.20em' }}>
             Free worldwide shipping on all orders
           </p>
         </div>
@@ -153,9 +153,10 @@ export default function Navbar() {
             <Link
               to="/"
               className={cn(
-                'font-display text-xl font-bold tracking-widest transition-colors duration-500',
+                'font-sans font-light transition-colors duration-500',
                 textBase
               )}
+              style={{ fontSize: '1.1rem', letterSpacing: '0.22em' }}
             >
               JAYL
             </Link>
@@ -192,11 +193,17 @@ export default function Navbar() {
                   <Link
                     to={item.to}
                     className={cn(
-                      'font-sans tracking-wide transition-all duration-400 leading-none',
+                      'font-sans transition-all duration-300 leading-none',
                       active
-                        ? cn('font-semibold text-sm sm:text-base', textBase)
-                        : cn('font-light text-xs sm:text-xs', textMuted, 'hover:opacity-80')
+                        ? cn('font-normal text-xs sm:text-sm', textBase)
+                        : cn('font-light text-xs sm:text-xs', textMuted)
                     )}
+                    style={{
+                      letterSpacing: '0.12em',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={e => { if (!active) e.currentTarget.style.color = 'var(--jayl-gold)' }}
+                    onMouseLeave={e => { if (!active) e.currentTarget.style.color = '' }}
                   >
                     {item.id === 'artist' ? (
                       <>artist'<FallingS /></>
@@ -221,22 +228,27 @@ export default function Navbar() {
                       onMouseEnter={cancelClose}
                       onMouseLeave={scheduleClose}
                     >
-                      <p className={cn('text-[9px] tracking-[0.22em] uppercase font-medium mb-3', dropMuted)}>
+                      <p className={cn('font-sans font-light text-[9px] uppercase mb-4', dropMuted)} style={{ letterSpacing: '0.20em' }}>
                         {dropLabel}
                       </p>
-                      <ul className="space-y-2.5">
+                      {/* Gold separator under label */}
+                      <div className="h-px mb-4" style={{ background: 'var(--jayl-gold)', opacity: 0.3 }} />
+                      <ul className="space-y-3">
                         {dropItems.map((d, idx) => (
                           <li key={d.to}>
                             {idx > 0 && dropItems[idx - 1].divider && (
-                              <div className={cn('h-px mb-2.5', isLight ? 'bg-paper-border' : 'bg-border')} />
+                              <div className={cn('h-px mb-3', isLight ? 'bg-paper-border' : 'bg-border')} />
                             )}
                             <Link
                               to={d.to}
                               className={cn(
-                                'block text-sm tracking-wide transition-opacity duration-150 hover:opacity-60',
-                                d.divider ? 'font-medium' : 'font-light',
+                                'block font-sans text-xs transition-colors duration-150',
+                                d.divider ? 'font-normal' : 'font-light',
                                 dropText
                               )}
+                              style={{ letterSpacing: '0.06em' }}
+                              onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
+                              onMouseLeave={e => { e.currentTarget.style.color = '' }}
                               onClick={() => setHoveredNav(null)}
                             >
                               {d.label}
@@ -296,7 +308,7 @@ export default function Navbar() {
             >
               <ShoppingBag size={18} strokeWidth={1.5} />
               {itemCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-accent text-black text-2xs font-bold rounded-full flex items-center justify-center leading-none">
+                <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 text-black text-2xs font-bold rounded-full flex items-center justify-center leading-none" style={{ backgroundColor: 'var(--jayl-gold)' }}>
                   {itemCount > 9 ? '9+' : itemCount}
                 </span>
               )}
@@ -329,10 +341,8 @@ export default function Navbar() {
         {/* Close row */}
         <div className="flex items-center justify-between px-5 pt-5 h-14">
           <span
-            className={cn(
-              'font-display text-xl font-bold tracking-widest',
-              isLight ? 'text-ink' : 'text-cream'
-            )}
+            className={cn('font-sans font-light', isLight ? 'text-ink' : 'text-cream')}
+            style={{ fontSize: '1.1rem', letterSpacing: '0.22em' }}
           >
             JAYL
           </span>
@@ -361,9 +371,12 @@ export default function Navbar() {
               to={to}
               onClick={() => setMobileMenuOpen(false)}
               className={cn(
-                'font-display text-5xl font-light tracking-wide transition-opacity hover:opacity-60',
+                'font-display font-light tracking-wide transition-colors',
                 isLight ? 'text-ink' : 'text-cream'
               )}
+              style={{ fontSize: 'clamp(2.5rem, 10vw, 4rem)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '' }}
             >
               {id === 'artist' ? <>artist'<FallingS /></> : label}
             </Link>

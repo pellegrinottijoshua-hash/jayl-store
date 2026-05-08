@@ -82,21 +82,21 @@ export default function HomePage() {
           className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
           style={{ backgroundColor: '#f5f0e8' }}
         >
-          <p className="font-display text-7xl sm:text-9xl tracking-widest" style={{ color: 'rgba(17,17,17,0.07)' }}>JAYL</p>
+          <p className="font-sans font-light" style={{ fontSize: 'clamp(5rem, 20vw, 14rem)', letterSpacing: '0.22em', color: 'rgba(17,17,17,0.05)' }}>JAYL</p>
         </div>
         <div
           className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
           style={{ background: 'linear-gradient(to top, rgba(245,240,232,0.85) 0%, transparent 100%)' }}
         />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-mono tracking-wider uppercase mb-3" style={{ color: 'rgba(17,17,17,0.45)' }}>Art</p>
+          <p className="text-xs font-sans tracking-label uppercase mb-3" style={{ color: 'rgba(17,17,17,0.45)' }}>Art</p>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight mb-2" style={{ color: '#111111' }}>
             {featuredArt.name}
           </h1>
           <p className="text-sm mb-6" style={{ color: 'rgba(17,17,17,0.55)' }}>{featuredArt.subtitle}</p>
           <Link
             to={`/product/${featuredArt.id}`}
-            className="inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase px-5 py-3 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-sans tracking-label uppercase px-5 py-3 transition-colors"
             style={{ backgroundColor: '#111111', color: '#f5f0e8' }}
           >
             Shop Now <ArrowRight size={12} />
@@ -117,7 +117,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-mono tracking-wider uppercase text-white/60 mb-3">
+          <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">
             {slugToTitle(featuredArt.movement)}
           </p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-1">
@@ -126,7 +126,7 @@ export default function HomePage() {
           <p className="text-sm text-white/70 mb-6">from {formatPrice(featuredArt.price)}</p>
           <Link
             to={`/product/${featuredArt.id}`}
-            className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-black text-xs font-sans tracking-label uppercase px-5 py-3 hover:bg-white/90 transition-colors"
           >
             Shop Now <ArrowRight size={12} />
           </Link>
@@ -146,14 +146,14 @@ export default function HomePage() {
         />
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-mono tracking-wider uppercase text-white/60 mb-3">Objects</p>
+          <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">Objects</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-1">
             {featuredObject.name}
           </h2>
           <p className="text-sm text-white/70 mb-6">from {formatPrice(featuredObject.price)}</p>
           <Link
             to={`/product/${featuredObject.id}`}
-            className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-black text-xs font-sans tracking-label uppercase px-5 py-3 hover:bg-white/90 transition-colors"
           >
             Shop Now <ArrowRight size={12} />
           </Link>
@@ -175,7 +175,7 @@ export default function HomePage() {
         )}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-mono tracking-wider uppercase text-white/60 mb-3">New Collection</p>
+          <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">New Collection</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-1">
             Cool Pokemon
           </h2>
@@ -186,7 +186,7 @@ export default function HomePage() {
             <Link
               to={`/product/${pokemonProduct.id}`}
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 bg-white text-black text-xs font-mono tracking-wider uppercase px-5 py-3 hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-2 bg-white text-black text-xs font-sans tracking-label uppercase px-5 py-3 hover:bg-white/90 transition-colors"
             >
               Shop Now <ArrowRight size={12} />
             </Link>
@@ -200,12 +200,12 @@ export default function HomePage() {
         style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
       >
         <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
-          <p className="text-2xs font-mono tracking-ultra uppercase" style={{ color: 'rgba(17,17,17,0.45)' }}>New In</p>
+          <p className="text-2xs font-sans tracking-label-xl uppercase" style={{ color: 'rgba(17,17,17,0.45)' }}>New In</p>
           <div className="h-px w-8 flex-shrink-0" style={{ backgroundColor: 'rgba(17,17,17,0.15)' }} />
           <div className="flex-1" />
           <Link
             to="/art"
-            className="inline-flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase transition-opacity hover:opacity-60"
+            className="inline-flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase transition-opacity hover:opacity-60"
             style={{ color: 'rgba(17,17,17,0.55)' }}
           >
             See all <ArrowRight size={10} />
@@ -237,7 +237,7 @@ export default function HomePage() {
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 </div>
-                <p className="text-2xs font-mono tracking-ultra uppercase mb-0.5" style={{ color: 'rgba(17,17,17,0.45)' }}>
+                <p className="text-2xs font-sans tracking-label-xl uppercase mb-0.5" style={{ color: 'rgba(17,17,17,0.45)' }}>
                   {product.collection || product.section}
                 </p>
                 <h3 className="font-display text-sm leading-tight truncate" style={{ color: '#111111' }}>
@@ -255,11 +255,11 @@ export default function HomePage() {
       {/* ════ SECTION 6 — Objects horizontal scroll ═══════════════════ */}
       <section className="h-screen w-screen bg-off-black relative overflow-hidden">
         <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
-          <p className="text-2xs font-mono tracking-ultra uppercase text-text-muted">objects</p>
+          <p className="text-2xs font-sans tracking-label-xl uppercase text-text-muted">objects</p>
           <div className="flex-1" />
           <Link
             to="/objects"
-            className="inline-flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase text-text-muted hover:text-cream transition-colors"
+            className="inline-flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-text-muted hover:text-cream transition-colors"
           >
             Shop all <ArrowRight size={10} />
           </Link>
@@ -301,7 +301,7 @@ export default function HomePage() {
         onClick={() => navigate('/artist')}
       >
         <div className="absolute top-[88px] left-6 sm:left-8 z-10">
-          <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted">
+          <p className="text-2xs font-sans tracking-label-xl uppercase text-ink-muted">
             artist'<FallingS />
           </p>
         </div>

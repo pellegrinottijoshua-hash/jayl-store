@@ -80,7 +80,7 @@ export default function CollectionPage() {
       <div className="px-6 sm:px-10 pt-10 pb-6">
         <Link
           to={isDark ? '/objects' : '/art'}
-          className={`inline-flex items-center gap-2 text-2xs font-mono tracking-wider uppercase ${mutedCls} hover:${textCls} transition-colors mb-6`}
+          className={`inline-flex items-center gap-2 text-2xs font-sans tracking-label uppercase ${mutedCls} hover:${textCls} transition-colors mb-6`}
         >
           <ArrowLeft size={12} /> {isDark ? 'Objects' : 'Art'}
         </Link>
@@ -92,11 +92,11 @@ export default function CollectionPage() {
 
       {/* ── Sort bar ─────────────────────────────────────── */}
       <div className={`sticky top-[84px] z-20 ${bgCls}/95 backdrop-blur-sm border-b ${borderCls} px-6 sm:px-10 py-3 flex items-center justify-between`}>
-        <p className={`text-2xs font-mono tracking-ultra uppercase ${mutedCls}`}>{collectionName}</p>
+        <p className={`text-2xs font-sans tracking-label-xl uppercase ${mutedCls}`}>{collectionName}</p>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className={`text-2xs font-mono tracking-wider uppercase bg-transparent ${mutedCls} border ${borderCls} px-2 py-1.5 cursor-pointer focus:outline-none`}
+          className={`text-2xs font-sans tracking-label uppercase bg-transparent ${mutedCls} border ${borderCls} px-2 py-1.5 cursor-pointer focus:outline-none`}
         >
           <option value="default">Sort</option>
           <option value="price-asc">Price ↑</option>
@@ -111,7 +111,7 @@ export default function CollectionPage() {
             <Link key={product.id} to={`/product/${product.id}`} className="group">
               <div className={`relative w-full overflow-hidden ${cardBg} mb-3`} style={{ aspectRatio: imgAspect }}>
                 {isNewProduct(product) && (
-                  <span className={`absolute top-2 left-2 z-10 text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 ${isDark ? 'bg-cream text-black' : 'bg-ink text-paper'}`}>
+                  <span className={`absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase px-2 py-0.5 ${isDark ? 'bg-cream text-black' : 'bg-ink text-paper'}`}>
                     New
                   </span>
                 )}
@@ -125,7 +125,7 @@ export default function CollectionPage() {
                 />
               </div>
               {product.movement && (
-                <p className={`text-2xs font-mono tracking-ultra uppercase ${mutedCls} mb-1`}>
+                <p className={`text-2xs font-sans tracking-label-xl uppercase ${mutedCls} mb-1`}>
                   {slugToTitle(product.movement)}
                 </p>
               )}

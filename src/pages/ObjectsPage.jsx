@@ -52,7 +52,7 @@ export default function ObjectsPage() {
         <button
           onClick={() => setActiveCollection(null)}
           className={[
-            'flex-shrink-0 text-2xs font-mono tracking-wider uppercase px-3 py-1.5 border transition-colors',
+            'flex-shrink-0 text-2xs font-sans tracking-label uppercase px-3 py-1.5 border transition-colors',
             activeCollection === null
               ? 'bg-cream text-black border-cream'
               : 'bg-transparent text-text-muted border-border hover:border-cream/60 hover:text-cream',
@@ -65,7 +65,7 @@ export default function ObjectsPage() {
             key={name}
             onClick={() => setActiveCollection(activeCollection === name ? null : name)}
             className={[
-              'flex-shrink-0 text-2xs font-mono tracking-wider uppercase px-3 py-1.5 border transition-colors',
+              'flex-shrink-0 text-2xs font-sans tracking-label uppercase px-3 py-1.5 border transition-colors',
               activeCollection === name
                 ? 'bg-cream text-black border-cream'
                 : 'bg-transparent text-text-muted border-border hover:border-cream/60 hover:text-cream',
@@ -79,7 +79,7 @@ export default function ObjectsPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="text-2xs font-mono tracking-wider uppercase bg-transparent text-text-muted border border-border px-2 py-1.5 cursor-pointer focus:outline-none focus:border-cream/60"
+            className="text-2xs font-sans tracking-label uppercase bg-transparent text-text-muted border border-border px-2 py-1.5 cursor-pointer focus:outline-none focus:border-cream/60"
           >
             <option value="default">Sort</option>
             <option value="price-asc">Price ↑</option>
@@ -99,7 +99,7 @@ export default function ObjectsPage() {
                   style={{ aspectRatio: '1 / 1' }}
                 >
                   {isNewProduct(product) && (
-                    <span className="absolute top-2 left-2 z-10 text-[9px] font-mono tracking-widest uppercase bg-cream text-black px-2 py-0.5">
+                    <span className="absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase bg-cream text-black px-2 py-0.5">
                       New
                     </span>
                   )}

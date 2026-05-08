@@ -76,7 +76,7 @@ export default function EmailCapturePopup() {
                 Welcome to JAYL. Here's your exclusive discount code:
               </p>
               <div className="bg-gray-900 border border-border-light rounded-lg px-6 py-4 my-4">
-                <p className="font-mono text-2xl text-cream tracking-widest font-bold">
+                <p className="font-sans font-light text-2xl text-cream">
                   {DISCOUNT_CODE}
                 </p>
                 <p className="text-text-muted text-xs mt-1">10% off your first order</p>

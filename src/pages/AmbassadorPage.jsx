@@ -72,7 +72,7 @@ export default function AmbassadorPage() {
         <div className="absolute top-[84px] left-6 sm:left-10 z-10">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-2xs font-mono tracking-wider uppercase text-ink-muted hover:text-ink transition-colors"
+            className="inline-flex items-center gap-2 text-2xs font-sans tracking-label uppercase text-ink-muted hover:text-ink transition-colors"
           >
             <ArrowLeft size={12} /> Home
           </Link>
@@ -99,7 +99,7 @@ export default function AmbassadorPage() {
             <div>
               <h1 className="font-display text-3xl sm:text-4xl text-ink leading-tight">{persona.name}</h1>
               {persona.handle && (
-                <p className="text-sm font-mono text-ink-muted mt-1">@{persona.handle}</p>
+                <p className="text-sm font-sans font-light text-ink-muted mt-1">@{persona.handle}</p>
               )}
             </div>
 
@@ -110,7 +110,7 @@ export default function AmbassadorPage() {
                   href={`https://instagram.com/${persona.instagram.replace('@', '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase text-ink-muted border border-paper-border px-3 py-1.5 hover:border-ink hover:text-ink transition-colors"
+                  className="flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-ink-muted border border-paper-border px-3 py-1.5 hover:border-ink hover:text-ink transition-colors"
                 >
                   <Instagram size={11} /> Instagram
                 </a>
@@ -120,7 +120,7 @@ export default function AmbassadorPage() {
                   href={`https://tiktok.com/@${persona.tiktok.replace('@', '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase text-ink-muted border border-paper-border px-3 py-1.5 hover:border-ink hover:text-ink transition-colors"
+                  className="flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-ink-muted border border-paper-border px-3 py-1.5 hover:border-ink hover:text-ink transition-colors"
                 >
                   <TikTokIcon size={11} /> TikTok
                 </a>
@@ -130,7 +130,7 @@ export default function AmbassadorPage() {
                   href={`https://youtube.com/@${persona.youtube.replace('@', '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-2xs font-mono tracking-wider uppercase text-ink-muted border border-paper-border px-3 py-1.5 hover:border-ink hover:text-ink transition-colors"
+                  className="flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-ink-muted border border-paper-border px-3 py-1.5 hover:border-ink hover:text-ink transition-colors"
                 >
                   <Youtube size={11} /> YouTube
                 </a>
@@ -145,17 +145,17 @@ export default function AmbassadorPage() {
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {persona.aesthetic && (
-              <span className="text-2xs font-mono tracking-wider uppercase text-ink-muted border border-paper-border px-2.5 py-1">
+              <span className="text-2xs font-sans tracking-label uppercase text-ink-muted border border-paper-border px-2.5 py-1">
                 {persona.aesthetic}
               </span>
             )}
             {persona.contentStyle && (
-              <span className="text-2xs font-mono tracking-wider uppercase text-ink-muted border border-paper-border px-2.5 py-1">
+              <span className="text-2xs font-sans tracking-label uppercase text-ink-muted border border-paper-border px-2.5 py-1">
                 {persona.contentStyle}
               </span>
             )}
             {persona.targetAudience && (
-              <span className="text-2xs font-mono tracking-wider uppercase text-ink-muted border border-paper-border px-2.5 py-1">
+              <span className="text-2xs font-sans tracking-label uppercase text-ink-muted border border-paper-border px-2.5 py-1">
                 {persona.targetAudience}
               </span>
             )}
@@ -167,7 +167,7 @@ export default function AmbassadorPage() {
       {persona.referenceImages?.length > 1 && (
         <div className="px-6 sm:px-10 lg:px-16 pb-16">
           <div className="h-px bg-paper-border mb-8" />
-          <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted mb-4">Visual identity</p>
+          <p className="text-2xs font-sans tracking-label-xl uppercase text-ink-muted mb-4">Visual identity</p>
           <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
             {persona.referenceImages.map((url, i) => (
               <div
@@ -189,7 +189,7 @@ export default function AmbassadorPage() {
       {/* ── Shop the look ─────────────────────────────────── */}
       <div className="px-6 sm:px-10 lg:px-16 pb-16">
         <div className="h-px bg-paper-border mb-8" />
-        <p className="text-2xs font-mono tracking-ultra uppercase text-ink-muted mb-6">Shop the look</p>
+        <p className="text-2xs font-sans tracking-label-xl uppercase text-ink-muted mb-6">Shop the look</p>
 
         <div
           className="flex gap-4 overflow-x-auto pb-2"

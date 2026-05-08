@@ -74,7 +74,7 @@ export default function ProductCard({ product, className, light = false }) {
         <div className="absolute top-3 left-3">
           <span
             className={cn(
-              'text-2xs font-mono tracking-ultra uppercase px-2 py-1',
+              'text-2xs font-sans font-normal tracking-label uppercase px-2 py-1',
               light
                 ? 'bg-white/80 text-ink-muted'
                 : 'bg-black/60 backdrop-blur-sm text-text-muted'
@@ -91,7 +91,7 @@ export default function ProductCard({ product, className, light = false }) {
           <div className="min-w-0">
             <p
               className={cn(
-                'text-xs mb-1 tracking-widest uppercase font-mono',
+                'text-xs mb-1 tracking-label uppercase font-sans font-light',
                 light ? 'text-ink-muted' : 'text-text-muted'
               )}
             >
@@ -99,7 +99,7 @@ export default function ProductCard({ product, className, light = false }) {
             </p>
             <h3
               className={cn(
-                'text-sm font-semibold leading-snug transition-colors duration-200',
+                'font-display text-sm font-light leading-snug transition-colors duration-200',
                 light
                   ? 'text-ink group-hover:text-ink-secondary'
                   : 'text-text-primary group-hover:text-cream'

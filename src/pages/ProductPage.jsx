@@ -127,7 +127,7 @@ function ShareButton({ title, isLight, onCopy, copied }) {
       <button
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          'flex items-center gap-2 px-4 py-2 border text-xs font-mono tracking-widest uppercase transition-all duration-150',
+          'flex items-center gap-2 px-4 py-2 border text-xs font-sans tracking-label uppercase transition-all duration-150',
           btnCls,
           copied && 'text-green-500 border-green-500'
         )}
@@ -671,11 +671,11 @@ export default function ProductPage() {
         <div className="px-4 pt-2 pb-4">
           {/* Badge row */}
           <div className="flex items-center gap-2 mb-2">
-            <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.badge)}>
+            <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.badge)}>
               {slugToTitle(product.movement)}
             </span>
             <span className={cn('text-2xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
-            <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.sectionTag)}>
+            <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.sectionTag)}>
               {sectionLabel}
             </span>
           </div>
@@ -1060,11 +1060,11 @@ export default function ProductPage() {
             {/* ── Info ── */}
             <div className="lg:pt-4">
               <div className="flex items-center gap-3 mb-4">
-                <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.movement)}>
+                <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.movement)}>
                   {slugToTitle(product.movement)}
                 </span>
                 <span className={cn(isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
-                <span className={cn('text-2xs font-mono tracking-ultra uppercase', t.sectionTag)}>
+                <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.sectionTag)}>
                   {sectionLabel}
                 </span>
               </div>
