@@ -586,5 +586,296 @@ export const adminProducts = [
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
     "updatedAt": "2026-05-09T15:58:25.116Z"
+  },
+  {
+    "id": "zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Zapdos Pokémon T-Shirt | Retro 90s Style Fan Art Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 1999,
+    "currency": "eur",
+    "description": "Unleash your inner Pokémon trainer with our Zapdos T-Shirt, crafted from premium Gildan 9400 cotton for ultimate comfort. This retro 90s style tee features vibrant, high-quality Gelato print technology that ensures your favorite Pokémon pops with color and detail. Perfect for fans of anime and retro aesthetics, this shirt makes a funny and unique gift for Pokémon lovers. Wear it to conventions, casual outings, or just lounging at home. Let your personality shine with this eye-catching artwork that pays homage to classic Pokémon fandom.",
+    "altText": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 1999
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 1999
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 1999
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 1999
+      }
+    ],
+    "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
+    "images": [
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg"
+    ],
+    "imageAlts": {
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style."
+    },
+    "tags": [
+      "zapdos shirt",
+      "pokemon fan art",
+      "anime gift",
+      "retro 90s tee",
+      "funny gift",
+      "gildan t-shirt",
+      "pokemon lover",
+      "anime style",
+      "geek apparel",
+      "pop culture",
+      "fan merchandise",
+      "gift for him",
+      "gift for her"
+    ],
+    "featured": false,
+    "gelatoProductId": "dec76803-3d9d-4291-b077-f469d8d49a1b",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "zapdos shirt",
+      "pokemon t-shirt",
+      "90s retro shirt",
+      "anime fan art",
+      "gildan t-shirt"
+    ],
+    "longTailKeywords": [
+      "zapdos pokemon t-shirt",
+      "retro 90s style shirt",
+      "funny pokemon lover gift",
+      "anime fan art gift",
+      "gildan cotton t-shirt",
+      "unique pokemon apparel",
+      "cool anime fan gifts",
+      "vibrant pokemon shirt",
+      "high quality gelato print",
+      "pokemon themed clothing"
+    ],
+    "hashtags": "#zapdos #pokemontshirt #retro90s #animefanart #funnygift #gildan9400 #coolapparel #geekwear #fanmerch #artclothing #snorlaxfan #collectibles #animetee #pokemongifts #vintageanime #geekfashion #popculture #artprints #fashion #nerdlife #illustration #graphictee #animecommunity #cosplay #artlover #creative #style #giftideas #pokemonfan #nostalgicstyle #fandomfashion",
+    "instagramCaption": "Elevate your wardrobe with our Zapdos T-Shirt! Perfect for any Pokémon lover ready to showcase their fandom. Get yours today! #zapdos #pokemontshirt #animefanart",
+    "pinterestCaption": "Discover the perfect blend of nostalgia and style with our Zapdos Pokémon T-Shirt. Made from premium Gildan cotton and featuring vibrant Gelato print, this shirt is a must-have for any anime fan. Add this unique piece to your collection or gift it to a fellow Pokémon enthusiast today!",
+    "variants": [
+      {
+        "uid": "e2aa7dc7-622e-45ac-8273-18977d3446a2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "298e6553-b108-4816-9d13-ea89d9efc157",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f94f3255-71e8-44a0-9705-88ef7563d001",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "70de4381-b225-45c1-87e2-10e52daa0ffa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "33ddf6fa-37e8-43a3-a914-4b4bd89dd1f6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9a6a442a-8fc6-46b4-b034-9d9d52329750",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e190c127-fc75-40bc-ade5-477fdf71ca95",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "464b1b65-997d-48c2-a29e-303f1aed9ecc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c602adc0-c729-422a-b1a0-ed385e78ac2c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "75c36e47-a8a1-4f0b-9a27-cf321c70d768",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9656baf7-9f6c-4b5e-b5db-aab4c3917816",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2ece35b6-4ec6-4bee-ad09-dc482d1b891d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6f7e3bda-8385-429e-9c99-1eb67e09822f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fea36b09-bdeb-4021-9927-018cfd808011",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "452ea174-59c8-4e51-adb4-054b3b8e24b0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "141c130c-7f20-4279-a722-60d1d44e531e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "38c8b9f4-8a92-4d81-b8a5-876975e372cf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c74e8dfb-e599-4e82-afa4-ce9653f9aa67",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4c879478-36f4-48bb-9068-164adab74799",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3f538639-ead9-4956-b1ab-fbe508effb9b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg"
+      }
+    ],
+    "printCost": 705,
+    "createdAt": "2026-05-09T16:02:13.381Z",
+    "updatedAt": "2026-05-09T16:02:13.381Z"
   }
 ]
