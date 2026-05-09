@@ -295,7 +295,7 @@ export const adminProducts = [
     "id": "dragonite-pok-mon-t-shirt-retro-90s-style-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Dragonite Pokémon T-Shirt | Retro 90s Style Gift",
+    "name": "Dragonite Pokémon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -585,7 +585,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-09T15:58:25.116Z"
+    "updatedAt": "2026-05-09T16:21:01.822Z"
   },
   {
     "id": "zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift",
