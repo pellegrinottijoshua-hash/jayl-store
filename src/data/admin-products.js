@@ -877,5 +877,298 @@ export const adminProducts = [
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
     "updatedAt": "2026-05-09T16:02:13.381Z"
+  },
+  {
+    "id": "charizard-pok-mon-t-shirt-retro-90s-style-anime-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Charizard Pokémon T-Shirt | Retro 90s Style Anime Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 1999,
+    "currency": "eur",
+    "description": "Unleash your inner Pokémon master with our Charizard T-Shirt, crafted from premium Gildan 9400 fabric for unmatched comfort. Featuring a vibrant Gelato print of iconic 90s anime art, this tee captures the spirit of fun and nostalgia, making it the perfect gift for any Pokémon lover. Its retro style and eye-catching design ensure you'll stand out in any crowd, whether you're at a convention or enjoying a casual day out. Embrace your fandom with this unique piece that celebrates beloved characters and timeless art.",
+    "altText": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 1999
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 1999
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 1999
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 1999
+      }
+    ],
+    "image": "/images/charizard-pok-mon-t-shirt-retro-90s-style-anime-gift/generated/generated-img-1778343577410.png",
+    "images": [
+      "/images/charizard-pok-mon-t-shirt-retro-90s-style-anime-gift/generated/generated-img-1778343577410.png",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg"
+    ],
+    "imageAlts": {
+      "/images/charizard-pok-mon-t-shirt-retro-90s-style-anime-gift/generated/generated-img-1778343577410.png": "charizard cool pokemon red fire type with sunglasses",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design."
+    },
+    "tags": [
+      "charizard shirt",
+      "pokemon gift",
+      "anime fan art",
+      "retro t-shirt",
+      "90s style tee",
+      "gildan 9400",
+      "funny pokemon",
+      "anime apparel",
+      "cool fan gift",
+      "pokemon lover",
+      "vintage anime",
+      "graphic tee",
+      "anime merchandise"
+    ],
+    "featured": false,
+    "gelatoProductId": "6088cc0d-4c75-4194-abf4-ac5a472c1d32",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "charizard t-shirt",
+      "pokemon shirt",
+      "anime t-shirt",
+      "retro t-shirt",
+      "funny pokemon gift"
+    ],
+    "longTailKeywords": [
+      "charizard pokemon t-shirt gift",
+      "retro 90s anime fan shirt",
+      "funny pokemon lover apparel",
+      "gildan 9400 charizard tee",
+      "unique pokemon fan gift",
+      "anime graphic t-shirt for adults",
+      "vibrant charizard shirt design",
+      "90s style pokemon merchandise",
+      "comfortable anime fan clothing",
+      "best gift for pokemon fans"
+    ],
+    "hashtags": "#charizard #pokemon #anime #tshirt #retrovintage #90s #gildan9400 #funny #fanart #giftideas #animefan #graphictee #coolmerch #nerdlife #fandom #geekculture #animeart #pokemongifts #collectibles #vintagefashion #streetwear #wearableart #artlovers #shoplocal #artistic #uniquegifts #fashion #trendy #stylish #popculture",
+    "instagramCaption": "Ignite your passion for Pokémon with our Charizard T-Shirt! Perfect for fans who appreciate the retro vibes of the 90s. Grab yours now! #charizard #anime #pokemon",
+    "pinterestCaption": "Discover our Charizard Pokémon T-Shirt, a must-have for any anime enthusiast! This retro 90s style tee features vibrant Gelato print art, perfect for showcasing your fandom. Elevate your wardrobe with this unique piece today.",
+    "variants": [
+      {
+        "uid": "4276d569-47cb-4a49-80d3-7eef40a5d9fe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "370dd7fc-a846-4bb0-9c1c-ca2bd9539c9f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d4e6936a-2861-4e8b-80eb-9fa6a9bc52c2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6e1e12b4-fb77-4d94-8183-7b666be19f12",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a27d471f-8fb8-45a1-a880-0b040e37df52",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "52a6031a-6586-4b13-9bce-f7e94ef3c9c2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1d661605-6606-42bc-8fd0-409702b47cde",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d40a625b-abea-473d-838a-278de07452cd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "04485ca2-3590-4974-a072-b58ed978b2aa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4225bb24-9c18-4c40-b34e-78464d34eeda",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "08ddc51c-859a-428f-be49-1aac79c32289",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a8b239ac-3185-41c7-a232-2c74fa75b512",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "beb54016-ca03-44d8-92ae-b052973871fc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bf623647-81b9-4793-8919-f6ff1518deb2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4a3873d7-7def-4260-b98f-985d3e3d9505",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "905bed67-76c9-49eb-9b4b-b1c97eab5b4f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b38c4d28-86ce-484f-abc7-aed0d37370d0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6cf0a625-b876-4037-a581-f1e275883d35",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4f473d31-7467-45d0-bd20-73087d1d535f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4917e5f6-91d0-4e61-91e1-67b703aa2a82",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "cardinal-red",
+        "label": "Cardinal Red",
+        "hex": "#888888",
+        "image": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg"
+      }
+    ],
+    "printCost": 700,
+    "createdAt": "2026-05-09T16:20:27.978Z",
+    "updatedAt": "2026-05-09T16:20:27.978Z"
   }
 ]
