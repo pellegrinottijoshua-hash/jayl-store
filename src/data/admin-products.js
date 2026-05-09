@@ -1459,5 +1459,296 @@ export const adminProducts = [
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
     "updatedAt": "2026-05-09T16:32:03.324Z"
+  },
+  {
+    "id": "psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Psyduck Pokémon T-Shirt | Retro 90s Style Anime Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 1999,
+    "currency": "eur",
+    "description": "Unleash your nostalgia with our Psyduck Pokémon T-Shirt, perfect for anime lovers and collectors. Crafted from high-quality Gildan cotton, this tee features a vibrant Gelato print that captures the playful essence of Psyduck in a retro 90s art style. Whether you're out with friends or lounging at home, this shirt guarantees comfort and style. It makes an ideal gift for Pokémon fans and a fun addition to any wardrobe. Wear your love for Pokémon proudly!",
+    "altText": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 1999
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 1999
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 1999
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 1999
+      }
+    ],
+    "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
+    "images": [
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/screenshot-2026-05-09-alle-18.38.44.png"
+    ],
+    "imageAlts": {
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style."
+    },
+    "tags": [
+      "pokemon shirt",
+      "anime gift",
+      "90s style",
+      "funny t-shirt",
+      "gildan tee",
+      "psyduck fan",
+      "anime apparel",
+      "cool t-shirt",
+      "gift for him",
+      "retro anime",
+      "geeky clothing",
+      "pop culture gift",
+      "anime fashion"
+    ],
+    "featured": false,
+    "gelatoProductId": "5cb5bc0e-b1ad-4c59-88be-1fc1fb8a7dc5",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "pokemon shirt",
+      "anime t-shirt",
+      "psyduck merchandise",
+      "90s style t-shirt",
+      "funny pokemon gift"
+    ],
+    "longTailKeywords": [
+      "psyduck pokemon t-shirt",
+      "retro anime fan gift",
+      "funny pokemon lover shirt",
+      "90s style anime apparel",
+      "gildan cotton t-shirt",
+      "vibrant gelato print tee",
+      "unique anime gift ideas",
+      "cool t-shirt for fans",
+      "psyduck art style shirt",
+      "anime clothing for adults"
+    ],
+    "hashtags": "#animefan #pokemon #gildan #retrostyle #90sfashion #animeart #snorlaxfan #geekclothing #funnytshirt #artprint #cooltees #giftideas #animefanart #nerdyshirts #pokemonlover #artlover #fashion #streetwear #vintage #style #graphictee #fashionista #ootd #trendy #cosplay #animecollection #merch #fandom #characterdesign #popculture",
+    "instagramCaption": "Channel your inner Pokémon master with our Psyduck T-Shirt! Perfect for retro vibes and anime lovers alike. Grab yours now and wear your fandom with pride! #animefan #pokemon #gildan",
+    "pinterestCaption": "Discover our Psyduck Pokémon T-Shirt, a must-have for any anime enthusiast. This retro 90s style tee features a high-quality Gelato print, making it a fun addition to your wardrobe or a perfect gift for a Pokémon fan. Check it out for your next favorite shirt!",
+    "variants": [
+      {
+        "uid": "c56ffa26-9fca-4289-abdb-e371b6affa22",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "01927320-9e33-4794-a7a3-a1653c6df27a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c167580b-6f3b-4bd1-8d24-bbd09324242e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f6e9ef02-0d75-41f4-b16a-639ae7c5bb6d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "422ef4d4-c07f-4201-8404-74bff4c6575c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c49d2c89-4b2f-4e2b-b783-9fb5c8e8b7d9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c507063f-b32a-4e03-b3e3-2ca8f51b3b69",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bdc6c637-e032-4287-8b0d-40fdf43619a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "28c4c841-175b-49c3-99dd-12d9a97698c1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5f4d651-6dd0-47cd-974f-5c694f6bb1ff",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dfb9adf7-83ab-404b-bdf5-12bff5a48535",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dd2d7330-feec-404f-a31e-f8dab9a89a93",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "347b639d-0a0f-4858-877c-49c9219262e1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "25e2da79-9531-4c1b-8291-96deea23cc13",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fb096530-f54b-4e6b-b142-c276dfcd3910",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d16f7646-4633-41c2-9ec5-af162ad58360",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3ed61d15-0be0-4042-8edc-9366df99bb73",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "09c176e5-d321-40ec-9192-e6885a215f39",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d09f57d0-414b-4b6d-bd4d-f6c14a11df04",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7cf7f37a-ca79-4257-a6f3-e30c7ba7c853",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg"
+      },
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
+      },
+      {
+        "id": "carolina-blue",
+        "label": "Carolina Blue",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg"
+      }
+    ],
+    "createdAt": "2026-05-09T16:39:15.748Z",
+    "updatedAt": "2026-05-09T16:39:15.748Z"
   }
 ]
