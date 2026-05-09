@@ -882,7 +882,7 @@ export const adminProducts = [
     "id": "charizard-pok-mon-t-shirt-retro-90s-style-anime-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Charizard Pokémon T-Shirt | Retro 90s Style Anime Gift",
+    "name": "Charizard Pokémon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -1169,7 +1169,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T16:20:27.978Z",
-    "updatedAt": "2026-05-09T16:20:27.978Z"
+    "updatedAt": "2026-05-09T16:44:00.643Z"
   },
   {
     "id": "snorlax-pok-mon-t-shirt",
