@@ -290,5 +290,301 @@ export const adminProducts = [
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
     "updatedAt": "2026-05-08T16:14:51.250Z"
+  },
+  {
+    "id": "dragonite-pok-mon-t-shirt-retro-90s-style-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Dragonite Pokémon T-Shirt | Retro 90s Style Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 1999,
+    "currency": "eur",
+    "description": "Embrace your inner Pokémon fan with our Dragonite T-Shirt, a perfect blend of nostalgia and humor. Crafted from premium Gildan 9400 fabric, this tee offers exceptional comfort and durability. Featuring vibrant  print quality, the retro 90s style artwork pops with color, making it an eye-catching addition to any anime lover's wardrobe. This shirt isn't just a fashion statement; it's a fun gift for Pokémon enthusiasts who appreciate unique fan art. Whether you're at a convention or just hanging out with friends, this T-Shirt lets you showcase your passion for the beloved Dragonite.",
+    "altText": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 1999
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 1999
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 1999
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 1999
+      }
+    ],
+    "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
+    "images": [
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-02.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--natural-01.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-03.jpg",
+      "/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/site-hero-custom-1778182599503.jpg"
+    ],
+    "imageAlts": {
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-02.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--natural-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-03.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style."
+    },
+    "tags": [
+      "dragonite shirt",
+      "pokemon t-shirt",
+      "anime fan art",
+      "retro 90s tee",
+      "funny gift",
+      "gildan t-shirt",
+      "pokemon lover",
+      "anime gift",
+      "fan merchandise",
+      "unique apparel",
+      "geek culture",
+      "collectible art",
+      "gift for him"
+    ],
+    "featured": false,
+    "gelatoProductId": "02469b43-f6f2-4c2b-9d73-b1a6b56e923d",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "dragonite t-shirt",
+      "pokemon shirt",
+      "anime t-shirt",
+      "retro tee",
+      "funny pokemon gift"
+    ],
+    "longTailKeywords": [
+      "dragonite pokemon t-shirt",
+      "retro 90s anime shirt",
+      "funny pokemon lover gift",
+      "gildan 9400 dragonite tee",
+      "anime fan art apparel",
+      "unique gifts for pokemon fans",
+      "colorful dragonite shirt",
+      "90s style pokemon t-shirt",
+      "comfortable anime t-shirt",
+      "vibrant gelato print shirt"
+    ],
+    "hashtags": "#dragonite #pokemon #animetee #retrostyle #giftsforhim #geekfashion #fanart #90snostalgia #funnyshirts #artlovers #anime #nerdwear #collectibles #tshirtdesign #gildan9400 #pokemongifts #artapparel #uniqueclothing #fashion #animefans #snorlaxfan #cooltees #vintage #graphictee #cartoonart #wearableart #giftideas #pokemonlover #artisticdesign #tshirtcollection #styleinspo",
+    "instagramCaption": "Level up your wardrobe with our retro Dragonite T-shirt! Perfect for any Pokémon lover ready to flaunt their fandom. Grab yours now! #dragonite #pokemon #animetee",
+    "pinterestCaption": "Show off your love for Pokémon with our Dragonite T-shirt, designed in a nostalgic 90s style. Made from premium Gildan fabric, this tee combines comfort and vibrant Gelato print quality for a standout look. A perfect gift for any anime enthusiast - explore our collection today!",
+    "variants": [
+      {
+        "uid": "e69a077b-6f80-4811-b000-2dc985c1dd63",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "405c15cc-cba8-4151-96a2-e8ffc08e6a1f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2a7c18fe-f0b2-446f-af39-204acd135aeb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "88009346-a84c-4ef3-a06a-90d77acbbf75",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1894a7fa-67a7-4e53-8781-7ccb3ed5e615",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_4-0_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f846d2b7-68e6-4ab5-8ef1-1ffb784f9b3c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a0b28b92-a79f-41fb-a145-03888e0c9875",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "50816c2f-37b6-4afd-bfb4-07c6e941979b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8b309417-0417-493b-9af9-783fe6295b9a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "036adc78-346c-47b3-ae1b-1ff6f343a497",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c1ac3193-c538-4112-a53e-69b8cb3b5168",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f2f0cc35-4801-4c69-9124-dc24ce596708",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d644da17-7580-4efe-b56c-8fa354a777bf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c9857e2a-ddaf-456e-88b4-1f6f1076c109",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_4-0_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d2941610-4da9-4dad-92ea-b64bb53d62ec",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_4-0_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4663964a-7478-4347-bf63-03402eb9a939",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0e0881a5-e418-48ad-9d10-c3b47e967cbd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45d940fc-bc95-4898-bf2e-bf01e15af187",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_4-0_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d3b19758-e29e-4bb2-b62a-72cf621530e1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2ed618f0-424c-4ab2-b273-7c0c0ad0a3d4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--natural-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg"
+      }
+    ],
+    "printCost": 700,
+    "createdAt": "2026-05-09T15:58:25.116Z",
+    "updatedAt": "2026-05-09T15:58:25.116Z"
   }
 ]
