@@ -1170,5 +1170,294 @@ export const adminProducts = [
     "printCost": 700,
     "createdAt": "2026-05-09T16:20:27.978Z",
     "updatedAt": "2026-05-09T16:20:27.978Z"
+  },
+  {
+    "id": "snorlax-pok-mon-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Snorlax Pokémon T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 1999,
+    "currency": "eur",
+    "description": "Embrace your love for Pokémon with our Snorlax T-Shirt, designed for true fans. Crafted from soft, breathable cotton, this tee features a vibrant Gelato print that captures the charm of retro 90s anime art. The playful design showcases Snorlax in a whimsical style, making it a perfect gift for Pokémon lovers. Whether you're lounging at home or out with friends, this comfortable shirt is sure to turn heads and spark conversations. Ideal for casual wear or as a memorable gift for birthdays, holidays, or any special occasion. Wear your fandom proudly!",
+    "altText": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 1999
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 1999
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 1999
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 1999
+      }
+    ],
+    "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
+    "images": [
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg",
+      "/images/snorlax-pok-mon-t-shirt/screenshot-2026-05-09-alle-18.31.42.png"
+    ],
+    "imageAlts": {
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style."
+    },
+    "tags": [
+      "snorlax t-shirt",
+      "pokemon gift",
+      "anime fan art",
+      "90s style shirt",
+      "funny pokemon tee",
+      "gildan t-shirt",
+      "retro anime",
+      "cool t-shirt",
+      "anime apparel",
+      "geeky gift",
+      "casual wear",
+      "fan merchandise",
+      "gift for him"
+    ],
+    "featured": false,
+    "gelatoProductId": "6b8f79fc-b20c-463a-93be-5fc41b9ca362",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "snorlax shirt",
+      "pokemon t-shirt",
+      "anime apparel",
+      "retro t-shirt",
+      "funny gifts"
+    ],
+    "longTailKeywords": [
+      "funny snorlax t-shirt gift",
+      "retro pokemon anime shirt",
+      "cool pokemon lover gift",
+      "90s style snorlax tee",
+      "gildan pokemon fan shirt",
+      "unique anime t-shirt gift",
+      "snorlax graphic tee for fans",
+      "comfortable anime fan apparel",
+      "best gifts for pokemon lovers",
+      "vintage style pokemon shirt"
+    ],
+    "hashtags": "#snorlaxfan #animetee #pokemonmerch #retrostyle #90sfashion #fandomfashion #geekyapparel #funnyshirt #animefan #giftsforher #giftsforhim #pokemonlover #animelover #tshirtstyle #artprint #snorlax #popculture #geekfashion #giftideas #cooltees #fanart #vintagevibes #snorlaxlife #cottontee #coolgift #animeart #retrogamer #tshirtdesign #casualwear #pokemonart #gildan",
+    "variants": [
+      {
+        "uid": "99781cc8-fd56-43f3-be76-4c5c3f375654",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "de8cb32b-95d9-4e7c-bf7e-b430d0377f6f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2fbfd4cb-e542-4a86-ba3f-af3124f54a7c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2f0ac2e8-3a59-4487-bccf-09289a3c3460",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fbd694f5-f87e-4a15-a3d7-3737588a4bbf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7073ffed-7b3f-40c2-ab2a-dfe8809958de",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ad97cc40-5a2a-4957-9dea-c236b992b072",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9c296b30-5c43-4856-a180-ffff858b1987",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_4-0_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6e6ab706-3d5a-4a0f-b9c7-488f13128e55",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8d6bd6e4-673c-4940-98c9-62fc015788a3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9a9bffa4-9a7a-4969-8476-1b0f4667ed9a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b92cbdc1-f3db-4262-b1f6-9fae4c2fdd63",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6110ea88-1c53-400c-ad0f-d266a97d91d1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4da6ae07-7458-431c-abe9-7ab993f0c11e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_4-0_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "852d85f2-50f9-4629-9b88-bf334da639b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_4-0_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "309f122c-8c12-482e-bcf2-358c587033c6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b6cbbb69-52f4-4543-bfb8-7144fb9a2982",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6034c6c2-d34f-4cfa-84a4-401aa182c3cb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "03ba544c-2fc8-422f-9893-a904a8c237b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_4-0_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "65aa13fc-f83f-4e28-9b29-5f7e07775a3f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_4-0_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
+      },
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg"
+      }
+    ],
+    "createdAt": "2026-05-09T16:32:03.324Z",
+    "updatedAt": "2026-05-09T16:32:03.324Z"
   }
 ]
