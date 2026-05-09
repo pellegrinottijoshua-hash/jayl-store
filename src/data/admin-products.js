@@ -591,7 +591,7 @@ export const adminProducts = [
     "id": "zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Zapdos Pokémon T-Shirt | Retro 90s Style Fan Art Gift",
+    "name": "Zapdos Pokémon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -876,7 +876,7 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-05-09T16:02:13.381Z"
+    "updatedAt": "2026-05-09T16:21:45.697Z"
   },
   {
     "id": "charizard-pok-mon-t-shirt-retro-90s-style-anime-gift",
