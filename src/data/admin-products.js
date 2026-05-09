@@ -1464,7 +1464,7 @@ export const adminProducts = [
     "id": "psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Psyduck Pokémon T-Shirt | Retro 90s Style Anime Gift",
+    "name": "Psyduck Pokémon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -1749,6 +1749,6 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-09T16:39:15.748Z"
+    "updatedAt": "2026-05-09T16:43:35.866Z"
   }
 ]
