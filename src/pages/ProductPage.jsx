@@ -1271,9 +1271,8 @@ export default function ProductPage() {
                               selectedColor === c.id ? t.colorActive : t.colorInactive
                             )}
                             style={{
-                              background: (!c.hex || c.hex === '#888888')
-                                ? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'
-                                : c.hex,
+                              background: resolveSwatchHex(c)
+                                ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
                             }}
                           />
                         ))}

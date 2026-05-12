@@ -24,8 +24,9 @@ const newInProducts = [...objectsProducts]
   .slice(0, 6)
 
 // light = cream sections, dark = dark sections
-// HIDDEN - re-enable for Art launch: ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light']
-const SECTION_THEMES = ['dark', 'dark', 'light', 'dark', 'light']
+// Art launch: ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light'] (7 sections)
+// Current (no art, no new-in): Objects hero | Product 2 | Objects grid | Artist's
+const SECTION_THEMES = ['dark', 'dark', 'dark', 'light']
 
 function FallingS() {
   return (
@@ -149,8 +150,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════ SECTION 5 — New In (cream) ══════════════════════════════ */}
+      {/* ════ SECTION 5 — New In (cream) — HIDDEN with <6 products ══════
       <section
+        className="h-screen w-screen relative overflow-hidden"
+        style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
+      > */}
+      {false && <section
         className="h-screen w-screen relative overflow-hidden"
         style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
       >
@@ -205,7 +210,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
+      {/* ════ END SECTION 5 hidden ══════════════════════════════════════ */}
 
       {/* ════ SECTION 6 — Objects horizontal scroll ═══════════════════ */}
       <section className="h-screen w-screen bg-off-black relative overflow-hidden">

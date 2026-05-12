@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 function JaylLogoPng({ isLight, height = 12, style }) {
-  const src = isLight ? '/logo-light.png' : '/logo-dark.png'
+  const src = isLight ? '/logo-light.svg' : '/logo-dark.svg'
   return (
     <img src={src} alt="JAYL" height={height}
       style={{ height, width: 'auto', display: 'block', ...style }}

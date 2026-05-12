@@ -6,10 +6,10 @@ import { useCartStore } from '@/store/cartStore'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
-// Logo: uses PNG files /public/logo-light.png (dark logo, light bg) and /public/logo-dark.png (light logo, dark bg)
+// Logo: uses PNG files /public/logo-light.svg (dark logo, light bg) and /public/logo-dark.svg (light logo, dark bg)
 // Place your logo PNG files in /public/ with those names.
 function JaylLogoPng({ isLight, height = 16 }) {
-  const src = isLight ? '/logo-light.png' : '/logo-dark.png'
+  const src = isLight ? '/logo-light.svg' : '/logo-dark.svg'
   return (
     <img
       src={src}
