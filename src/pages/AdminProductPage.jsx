@@ -755,6 +755,7 @@ export default function AdminProductPage() {
   // AI generation
   const [generating, setGenerating] = useState(false)
   const [genErr, setGenErr]         = useState('')
+  const [aiProvider, setAiProvider] = useState('openai')
 
   // Load product
   useEffect(() => {
@@ -800,7 +801,7 @@ export default function AdminProductPage() {
       const res = await fetch('/api/generate-listing', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productTitle: name.trim(), section, collection, movement }),
+        body: JSON.stringify({ productTitle: name.trim(), section, collection, movement, provider: aiProvider }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
@@ -1004,7 +1005,7 @@ export default function AdminProductPage() {
                 />
               </Field>
               {isEditable && (
-                <div className="flex items-center gap-3 mt-2">
+                <div className="flex items-center gap-3 mt-2 flex-wrap">
                   <button
                     onClick={generateWithAI}
                     disabled={generating || !name.trim()}
@@ -1016,6 +1017,17 @@ export default function AdminProductPage() {
                       <>✨ Regenerate with AI</>
                     )}
                   </button>
+                  <select
+                    value={aiProvider}
+                    onChange={e => setAiProvider(e.target.value)}
+                    disabled={generating}
+                    className="bg-gray-800 border border-gray-700 text-gray-300 text-xs px-2 py-1.5 focus:outline-none focus:border-violet-500 transition-colors cursor-pointer disabled:opacity-40"
+                    title="AI text provider"
+                  >
+                    <option value="openai">GPT-4o mini</option>
+                    <option value="longcat-flash">Longcat Flash</option>
+                    <option value="longcat-thinking">Longcat Thinking</option>
+                  </select>
                   {genErr && <span className="text-red-400 text-xs">{genErr}</span>}
                   {!genErr && !generating && altText && description && (
                     <span className="text-violet-400 text-xs">✓ AI content applied</span>

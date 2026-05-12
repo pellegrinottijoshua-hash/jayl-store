@@ -15,6 +15,41 @@ import { proxyImageToFal } from './_lib/falStorage.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
+// ── AI text provider config ───────────────────────────────────────────────────
+// provider = 'openai' | 'longcat-flash' | 'longcat-thinking'
+// Longcat uses OpenAI-compatible endpoint at https://api.longcat.chat/openai
+const AI_PROVIDERS = {
+  'openai':            { baseUrl: 'https://api.openai.com',              model: 'gpt-4o-mini',               keyEnv: 'OPENAI_API_KEY' },
+  'longcat-flash':     { baseUrl: 'https://api.longcat.chat/openai',     model: 'LongCat-Flash-Chat',        keyEnv: 'LONGCAT_API_KEY' },
+  'longcat-thinking':  { baseUrl: 'https://api.longcat.chat/openai',     model: 'LongCat-Flash-Thinking',    keyEnv: 'LONGCAT_API_KEY' },
+}
+
+async function callTextAI(prompt, { provider = 'openai', maxTokens = 1400, temperature = 0.7, jsonMode = true } = {}) {
+  const cfg = AI_PROVIDERS[provider] ?? AI_PROVIDERS['openai']
+  const apiKey = (process.env[cfg.keyEnv] || '').trim()
+  if (!apiKey) throw new Error(`${cfg.keyEnv} not configured`)
+
+  const body = {
+    model:       cfg.model,
+    messages:    [{ role: 'user', content: prompt }],
+    temperature,
+    max_tokens:  maxTokens,
+    ...(jsonMode ? { response_format: { type: 'json_object' } } : {}),
+  }
+
+  const res = await fetch(`${cfg.baseUrl}/v1/chat/completions`, {
+    method:  'POST',
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body:    JSON.stringify(body),
+  })
+
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(`${provider} error ${res.status}: ${data.error?.message || JSON.stringify(data)}`)
+  const content = data.choices?.[0]?.message?.content
+  if (!content) throw new Error(`Empty response from ${provider}`)
+  return { content, model: data.model, usage: data.usage }
+}
+
 function cors(req, res) {
   const allowed = applyCors(req, res)
   if (req.method === 'OPTIONS') { res.status(allowed ? 200 : 403).end(); return false }
@@ -27,10 +62,7 @@ function cors(req, res) {
 async function handleListing(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
-  const apiKey = process.env.OPENAI_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'OPENAI_API_KEY not configured' })
-
-  const { productTitle, section, collection, movement } = req.body || {}
+  const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
   if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
 
   const prompt = `You are a copywriter and SEO strategist for JAYL, a premium art and objects store.
@@ -59,27 +91,7 @@ Return a JSON object with these exact keys:
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model:           'gpt-4o-mini',
-        messages:        [{ role: 'user', content: prompt }],
-        response_format: { type: 'json_object' },
-        temperature:     0.7,
-        max_tokens:      1400,
-      }),
-    })
-
-    if (!openaiRes.ok) {
-      const err = await openaiRes.json().catch(() => ({}))
-      throw new Error(`OpenAI error ${openaiRes.status}: ${err.error?.message || 'Unknown'}`)
-    }
-
-    const data    = await openaiRes.json()
-    const content = data.choices?.[0]?.message?.content
-    if (!content) throw new Error('Empty response from OpenAI')
-
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 1400, temperature: 0.7 })
     const parsed = JSON.parse(content)
 
     const tags = Array.isArray(parsed.tags)
@@ -96,8 +108,8 @@ Return ONLY the JSON object, no markdown, no extra text.`
       hashtags:         parsed.hashtags         || '',
       instagramCaption: parsed.instagramCaption || '',
       pinterestCaption: parsed.pinterestCaption || '',
-      model: data.model,
-      usage: data.usage,
+      model,
+      usage,
     })
   } catch (err) {
     console.error('[generate-listing]', err.message)
@@ -575,10 +587,7 @@ async function handleVideo(req, res) {
 async function handlePersona(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
-  const apiKey = process.env.OPENAI_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'OPENAI_API_KEY not configured' })
-
-  const { seed } = req.body || {}
+  const { seed, provider = 'openai' } = req.body || {}
   if (!seed?.trim()) return res.status(400).json({ error: 'seed description required' })
 
   const prompt = `You are creating a fictional social media influencer persona for JAYL, a premium art and objects store.
@@ -600,27 +609,7 @@ Create a fully fleshed-out influencer persona. Return a JSON object with these e
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model:           'gpt-4o-mini',
-        messages:        [{ role: 'user', content: prompt }],
-        response_format: { type: 'json_object' },
-        temperature:     0.9,
-        max_tokens:      700,
-      }),
-    })
-
-    if (!openaiRes.ok) {
-      const err = await openaiRes.json().catch(() => ({}))
-      throw new Error(`OpenAI error ${openaiRes.status}: ${err.error?.message || 'Unknown'}`)
-    }
-
-    const data    = await openaiRes.json()
-    const content = data.choices?.[0]?.message?.content
-    if (!content) throw new Error('Empty response from OpenAI')
-
+    const { content } = await callTextAI(prompt, { provider, maxTokens: 700, temperature: 0.9 })
     return res.status(200).json(JSON.parse(content))
   } catch (err) {
     console.error('[generate-persona]', err.message)
