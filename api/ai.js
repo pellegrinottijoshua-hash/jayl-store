@@ -433,8 +433,12 @@ async function handleVideo(req, res) {
   const { action, modelId, prompt, requestId, duration, imageUrl } = req.body || {}
   if (!VIDEO_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown video model: ${modelId}` })
 
-  const baseUrl = `https://queue.fal.run/${modelId}`
-  const hdrs    = { Authorization: `Key ${apiKey}`, 'Content-Type': 'application/json' }
+  const baseUrl   = `https://queue.fal.run/${modelId}`
+  // POST requests need Content-Type; GET requests (status/result) must NOT send it —
+  // some fal.ai endpoints return 405 if Content-Type appears on a GET with no body.
+  const postHdrs  = { Authorization: `Key ${apiKey}`, 'Content-Type': 'application/json' }
+  const getHdrs   = { Authorization: `Key ${apiKey}` }
+  const hdrs      = postHdrs   // legacy alias used in submit block
 
   try {
     if (action === 'submit') {
@@ -470,17 +474,18 @@ async function handleVideo(req, res) {
 
     if (action === 'status') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
-      const falRes = await fetch(`${baseUrl}/requests/${requestId}/status`, { headers: hdrs })
+      // Use GET with no Content-Type; ?logs=1 returns progress logs required by some models
+      const falRes = await fetch(`${baseUrl}/requests/${requestId}/status?logs=1`, { headers: getHdrs })
       const body   = await falRes.json().catch(() => null)
-      if (!falRes.ok) return res.status(falRes.status).json({ error: body?.detail || `Status check failed ${falRes.status}` })
+      if (!falRes.ok) return res.status(falRes.status).json({ error: body?.detail || body?.message || `Status check failed (HTTP ${falRes.status})` })
       return res.status(200).json({ status: body.status, logs: body.logs ?? [] })
     }
 
     if (action === 'result') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
-      const falRes = await fetch(`${baseUrl}/requests/${requestId}`, { headers: hdrs })
+      const falRes = await fetch(`${baseUrl}/requests/${requestId}`, { headers: getHdrs })
       const body   = await falRes.json().catch(() => null)
-      if (!falRes.ok) return res.status(falRes.status).json({ error: body?.detail || `Result fetch failed ${falRes.status}` })
+      if (!falRes.ok) return res.status(falRes.status).json({ error: body?.detail || body?.message || `Result fetch failed (HTTP ${falRes.status})` })
       const videoUrl = body?.video?.url ?? body?.videos?.[0]?.url ?? null
       if (!videoUrl) return res.status(500).json({ error: 'No video URL in fal.ai response' })
       return res.status(200).json({ videoUrl })

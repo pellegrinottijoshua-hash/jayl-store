@@ -1096,13 +1096,18 @@ Return JSON with these exact keys:
       const blobToken    = process.env.BLOB_READ_WRITE_TOKEN
 
       if (blobToken) {
-        // Upload to Vercel Blob for instant public URL
-        const contentType = dataUrl.match(/^data:([^;]+);/)?.[1] || 'image/jpeg'
-        const buffer      = Buffer.from(base64, 'base64')
-        const { url } = await put(`references/${Date.now()}-${safeFilename}`, buffer, {
-          access: 'public', token: blobToken, contentType,
-        })
-        return res.status(200).json({ ok: true, url, name: safeFilename })
+        // Try Vercel Blob — falls through to GitHub if the store is private (access: 'public' fails)
+        try {
+          const contentType = dataUrl.match(/^data:([^;]+);/)?.[1] || 'image/jpeg'
+          const buffer      = Buffer.from(base64, 'base64')
+          const { url } = await put(`references/${Date.now()}-${safeFilename}`, buffer, {
+            access: 'public', token: blobToken, contentType,
+          })
+          return res.status(200).json({ ok: true, url, name: safeFilename })
+        } catch (blobErr) {
+          // Private Blob store or any other Blob error → fall through to GitHub
+          console.warn('[upload-reference] Vercel Blob failed, using GitHub fallback:', blobErr.message)
+        }
       }
 
       // Fallback: commit to GitHub under public/images/_refs/

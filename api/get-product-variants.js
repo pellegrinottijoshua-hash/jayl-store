@@ -136,10 +136,15 @@ export default async function handler(req, res) {
       }
 
       // 2. Per-variant preview / mockup URLs
-      for (const v of rawVariants) {
-        const src = v.previewUrl ?? v.mockupUrl ?? v.imageSrc
-              ?? v.thumbnailUrl ?? v.coverImageUrl ?? null
-        push(src, [v.id].filter(Boolean))
+      // Only run if step 1 produced nothing — Gelato often returns the same images via BOTH
+      // productImages (step 1) AND variant previewUrls (step 2), causing duplication.
+      // If we already have images, variant previews would add nothing new.
+      if (images.length === 0) {
+        for (const v of rawVariants) {
+          const src = v.previewUrl ?? v.mockupUrl ?? v.imageSrc
+                ?? v.thumbnailUrl ?? v.coverImageUrl ?? null
+          push(src, [v.id].filter(Boolean))
+        }
       }
 
       // 3. Top-level cover / preview URL

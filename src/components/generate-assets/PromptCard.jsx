@@ -224,7 +224,10 @@ export default function PromptCard({
         </div>
       )}
 
-      {/* Reference image strip — product images + uploaded refs */}
+      {/* Reference image strip — ordered slot selection ─────────────────────
+          Click any unselected image → becomes the next slot (ref 1, 2, 3…)
+          Click a selected image → removes it from the ordered selection
+          Numbered gold badges show the current slot for each selected image   */}
       {(allRefs.length > 0 || onAddExtraRef) && (
         <div className="space-y-1.5">
           {/* Hidden file input */}
@@ -238,33 +241,71 @@ export default function PromptCard({
 
           <div className="flex gap-1.5 overflow-x-auto pb-0.5 items-end" style={{ scrollbarWidth: 'thin' }}>
             {allRefs.map((img, i) => {
-              const isSel   = selectedImage ? selectedImage.url === img.url : i === 0
-              const refNum  = i + 1
+              // Build ordered selection: [selectedImage, ...extraRefs]
+              const orderedSel = [selectedImage, ...(extraRefs || [])].filter(Boolean)
+              const slot       = orderedSel.findIndex(r => r.url === img.url) + 1 // 1-based, 0 = not selected
+              const isSelected = slot > 0
+
+              const handleRefClick = () => {
+                const isPrimary  = selectedImage?.url === img.url
+                const extraIdx   = (extraRefs || []).findIndex(r => r.url === img.url)
+                const isExtraRef = extraIdx !== -1
+
+                if (isPrimary) {
+                  // Was primary → promote first extra to primary, or just deselect
+                  if ((extraRefs || []).length > 0) {
+                    onSelectImage?.(extraRefs[0])
+                    onRemoveExtraRef?.(extraRefs[0].url)
+                  }
+                  // (if no extras, keep primary — can't have 0 refs when images are available)
+                } else if (isExtraRef) {
+                  // Was an extra ref → remove from selection
+                  onRemoveExtraRef?.(img.url)
+                } else {
+                  // Not selected → add as next slot
+                  if (!selectedImage) {
+                    onSelectImage?.(img)          // becomes primary (slot 1)
+                  } else {
+                    onAddExtraRef?.(img)          // becomes slot 2, 3, 4…
+                  }
+                }
+              }
+
               return (
                 <div key={img.url || i} className="flex-shrink-0 relative group flex flex-col items-center gap-0.5">
-                  <button onClick={() => onSelectImage(img)} title={img.name}
-                    className={`w-12 h-12 border-2 overflow-hidden transition-all block ${
-                      isSel ? 'border-indigo-500 ring-1 ring-indigo-500/40' : 'border-gray-700 hover:border-gray-500'
-                    } ${img._isPinned ? 'border-yellow-700 ring-1 ring-yellow-600/40' : ''}`}
-                  >
-                    <img src={toAbsoluteUrl(img.url)} alt={img.name}
-                      className="w-full h-full object-cover"
-                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                  </button>
-                  {/* Ref number label */}
-                  <span className={`text-[9px] font-mono leading-none ${
-                    img._isExternal ? 'text-indigo-400' : 'text-gray-600'
-                  }`}>
-                    {img._isExternal ? `ref ${refNum}` : `${refNum}`}
+                  <div className="relative">
+                    <button onClick={handleRefClick} title={img.name}
+                      className={`w-12 h-12 border-2 overflow-hidden transition-all block ${
+                        isSelected
+                          ? 'border-indigo-500 ring-1 ring-indigo-500/40'
+                          : img._isPinned
+                            ? 'border-yellow-700 ring-1 ring-yellow-600/40'
+                            : 'border-gray-700 hover:border-gray-500'
+                      }`}
+                    >
+                      <img src={toAbsoluteUrl(img.url)} alt={img.name}
+                        className="w-full h-full object-cover"
+                        onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                    </button>
+                    {/* Slot number badge — shown on all selected images */}
+                    {isSelected && (
+                      <span className="absolute -top-1.5 -left-1.5 w-4 h-4 bg-indigo-600 text-white text-[9px] font-bold flex items-center justify-center leading-none rounded-sm shadow">
+                        {slot}
+                      </span>
+                    )}
+                    {/* Remove button for external refs */}
+                    {img._isExternal && (
+                      <button
+                        onClick={e => { e.stopPropagation(); onRemoveExtraRef?.(img.url) }}
+                        title="Remove from pool"
+                        className="absolute -top-1 -right-1 w-4 h-4 bg-gray-800 border border-gray-600 rounded-full text-gray-400 hover:text-red-400 hover:border-red-700 text-[9px] flex items-center justify-center leading-none opacity-0 group-hover:opacity-100 transition-opacity"
+                      >✕</button>
+                    )}
+                  </div>
+                  {/* Position label */}
+                  <span className="text-[9px] font-mono text-gray-600 leading-none">
+                    {isSelected ? '' : i + 1}
                   </span>
-                  {/* Remove button for uploaded refs */}
-                  {img._isExternal && (
-                    <button
-                      onClick={() => onRemoveExtraRef?.(img.url)}
-                      title="Remove reference"
-                      className="absolute -top-1 -right-1 w-4 h-4 bg-gray-800 border border-gray-600 rounded-full text-gray-400 hover:text-red-400 hover:border-red-700 text-[9px] flex items-center justify-center leading-none opacity-0 group-hover:opacity-100 transition-opacity"
-                    >✕</button>
-                  )}
                 </div>
               )
             })}
@@ -331,12 +372,6 @@ export default function PromptCard({
             </div>
           )}
 
-          {/* Hint for numbered refs */}
-          {(extraRefs || []).length > 0 && (
-            <p className="text-gray-700 text-[10px]">
-              💡 Usa "ref {(images || []).length + 1}" nel prompt per citare la reference caricata
-            </p>
-          )}
         </div>
       )}
 

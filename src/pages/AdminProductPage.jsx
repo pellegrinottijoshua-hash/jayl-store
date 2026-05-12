@@ -1188,6 +1188,10 @@ export default function AdminProductPage() {
               primaryColor={product?.variants?.[0]?.color || ''}
               collection={collection}
               onAssetSaved={() => {}}
+              preloadedImages={(product?.images || (product?.image ? [product.image] : [])).map(url => ({
+                url,
+                name: url.split('/').pop().split('?')[0] || 'image',
+              }))}
             />
 
             {/* ── Image Order + Hero ── */}

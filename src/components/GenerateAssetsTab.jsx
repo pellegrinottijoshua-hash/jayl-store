@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import SitoPanel       from './generate-assets/SitoPanel'
 import SocialPanel     from './generate-assets/SocialPanel'
 import InfluencerPanel from './generate-assets/InfluencerPanel'
@@ -27,7 +27,20 @@ export default function GenerateAssetsTab({
     url:  img.url,
     name: img.name || img.url.split('/').pop() || 'image',
   }))
-  const allImages = productImages.length > 0 ? productImages : normalizedPreloaded
+
+  // Merge GitHub images + preloaded images, deduplicating by URL.
+  // This ensures edit-page products show their Gelato mockups even if list-images
+  // returns a different set than what's stored in product.images.
+  const allImages = useMemo(() => {
+    const seen = new Set()
+    const out  = []
+    for (const img of [...productImages, ...normalizedPreloaded]) {
+      if (!img.url || seen.has(img.url)) continue
+      seen.add(img.url)
+      out.push(img)
+    }
+    return out
+  }, [productImages, normalizedPreloaded.map(i => i.url).join(',')]) // eslint-disable-line
 
   // ── Mobile section tabs ──────────────────────────────────────────────────
   const mobileTabs = [
