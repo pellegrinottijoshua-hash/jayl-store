@@ -44,11 +44,8 @@ export default function Footer() {
             <h4 className={cn(t.heading, 'mb-5')} style={{ letterSpacing: '0.18em' }}>Shop</h4>
             <ul className="space-y-3">
               {[
-                { to: '/art',     label: 'Art Prints' },
-                { to: '/objects', label: 'Objects' },
-                { to: '/collection/expressionist-landscapes', label: 'Expressionist Landscapes' },
-                { to: '/collection/urban-movements',          label: 'Urban Movements' },
-                { to: '/collection/wearables',                label: 'Wearables' },
+                { to: '/objects',                   label: 'Objects' },
+                { to: '/collection/cool-pok-mon',   label: 'Cool Pokémon' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
@@ -141,7 +138,7 @@ export default function Footer() {
             {/* Left: logo + copyright */}
             <div className="flex items-center gap-4">
               <Link to="/" aria-label="JAYL — Home">
-                <JaylLogoPng isLight={isLight} height={12} style={{ opacity: 0.65 }} />
+                <JaylLogoPng isLight={isLight} height={20} style={{ opacity: 0.75 }} />
               </Link>
               <span className={cn(t.muted, 'text-xs')}>© 2026 JAYL. All rights reserved.</span>
             </div>

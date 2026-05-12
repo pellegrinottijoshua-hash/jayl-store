@@ -85,10 +85,8 @@ const ART_DROPDOWN = [
 ]
 
 const OBJECTS_DROPDOWN = [
-  { label: 'All Objects',  to: '/objects',                divider: true },
-  { label: 'Wearables',   to: '/collection/wearables' },
-  { label: 'Living Objects', to: '/collection/living-objects' },
-  { label: 'Pokemon Logos',  to: '/collection/pokemon-logos' },
+  { label: 'All Objects',   to: '/objects',                 divider: true },
+  { label: 'Cool Pokémon',  to: '/collection/cool-pok-mon' },
 ]
 
 export default function Navbar() {
@@ -164,9 +162,9 @@ export default function Navbar() {
         <div className="h-14 flex items-center justify-between px-5 sm:px-8">
 
           {/* ── Left: JAYL logo ───────────────────────────────────────── */}
-          <div className="w-14 sm:w-20 pointer-events-auto">
+          <div className="w-16 sm:w-24 pointer-events-auto">
             <Link to="/" aria-label="JAYL — Home">
-              <JaylLogoPng isLight={isLight} height={14} />
+              <JaylLogoPng isLight={isLight} height={22} />
             </Link>
           </div>
 
