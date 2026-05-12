@@ -74,12 +74,19 @@ export default function PromptCard({
   const refInputRef  = useRef(null)
   const fileInputRef = useRef(null)
 
-  // Images from `images[]` that are already in `extraRefs` should NOT appear again
-  // as external entries — the slot badge on the original position is enough, and
-  // the ✕ on the duplicate would silently deselect the ref.
-  const imageUrlSet = new Set((images || []).map(i => i.url))
+  // Build allRefs: deduplicate images[] by URL first (some Gelato variants share the
+  // same image), then append any truly-external extra refs (uploaded file / pasted URL
+  // not already in images[]) so they show once with a ✕ button.
+  const imageUrlSet = new Set()
+  const dedupedImages = []
+  for (const img of (images || [])) {
+    if (!imageUrlSet.has(img.url)) {
+      imageUrlSet.add(img.url)
+      dedupedImages.push(img)
+    }
+  }
   const allRefs = [
-    ...(images || []),
+    ...dedupedImages,
     ...(extraRefs || [])
       .filter(r => !imageUrlSet.has(r.url))   // only truly external refs get appended
       .map(r => ({ ...r, _isExternal: true })),
@@ -257,12 +264,13 @@ export default function PromptCard({
                 const isExtraRef = extraIdx !== -1
 
                 if (isPrimary) {
-                  // Was primary → promote first extra to primary, or just deselect
+                  // Was primary → promote first extra to primary, or clear selection
                   if ((extraRefs || []).length > 0) {
                     onSelectImage?.(extraRefs[0])
                     onRemoveExtraRef?.(extraRefs[0].url)
+                  } else {
+                    onSelectImage?.(null)  // clear — no selection, generation falls back to allImages[0]
                   }
-                  // (if no extras, keep primary — can't have 0 refs when images are available)
                 } else if (isExtraRef) {
                   // Was an extra ref → remove from selection
                   onRemoveExtraRef?.(img.url)
@@ -285,11 +293,14 @@ export default function PromptCard({
                           ? 'border-indigo-500 ring-1 ring-indigo-500/40'
                           : img._isPinned
                             ? 'border-yellow-700 ring-1 ring-yellow-600/40'
-                            : 'border-gray-700 hover:border-gray-500'
+                            : img._isExternal
+                              ? 'border-green-800 hover:border-green-600'
+                              : 'border-gray-700 hover:border-gray-500'
                       }`}
                     >
+                      {/* External refs use object-contain + dark bg so any image type renders cleanly */}
                       <img src={toAbsoluteUrl(img.url)} alt={img.name}
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full ${img._isExternal ? 'object-contain bg-gray-900' : 'object-cover'}`}
                         onError={e => { e.currentTarget.style.opacity = '0.3' }} />
                     </button>
                     {/* Slot number badge — shown on all selected images */}
@@ -307,9 +318,12 @@ export default function PromptCard({
                       >✕</button>
                     )}
                   </div>
-                  {/* Position label */}
-                  <span className="text-[9px] font-mono text-gray-600 leading-none">
-                    {isSelected ? '' : i + 1}
+                  {/* Position label (non-selected) or filename for external refs */}
+                  <span className="text-[9px] font-mono leading-none max-w-[48px] truncate text-center"
+                    style={{ color: img._isExternal ? '#4ade80' : '#4b5563' }}>
+                    {img._isExternal
+                      ? (img.name || '').replace(/\.[^.]+$/, '').slice(0, 8)
+                      : isSelected ? '' : i + 1}
                   </span>
                 </div>
               )

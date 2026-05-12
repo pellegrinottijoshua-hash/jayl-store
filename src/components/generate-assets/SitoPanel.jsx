@@ -318,10 +318,11 @@ export default function SitoPanel({
     setResults(prev => ({ ...prev, [id]: { ...(prev[id] || {}), ...patch } }))
 
   const getSelectedImage = (templateId) => {
-    if (selectedImages[templateId]) return selectedImages[templateId]
+    // Check for explicit user selection (null means "cleared" — fall through)
+    if (selectedImages[templateId] !== undefined) return selectedImages[templateId] ?? null
     const savedRef = promptSettings[templateId]?.referenceUrl
     if (savedRef) return { url: savedRef, name: 'Pinned', _isPinned: true }
-    return allImages[0] ?? null
+    return null  // no auto-select; generation falls back to allImages[0]
   }
 
   // ── Generation (multi-reference) ────────────────────────────────────────
@@ -331,8 +332,9 @@ export default function SitoPanel({
     const ps         = promptSettings[templateId] || {}
     const modelToUse = ps.modelId   || imageModel
     const sizeToUse  = ps.imageSize || imageSize
-    // Build multi-ref array: primary selected image + any extra refs
-    const primary   = getSelectedImage(templateId)
+    // Build multi-ref array: primary selected image + any extra refs.
+    // If nothing is explicitly selected, fall back to the first product image.
+    const primary   = getSelectedImage(templateId) ?? allImages[0] ?? null
     const extraRefs = ps.extraRefs || []
     const imageUrls = [primary, ...extraRefs]
       .filter(Boolean)
@@ -358,7 +360,7 @@ export default function SitoPanel({
     if (!prompt?.trim()) return
     const ps         = promptSettings[templateId] || {}
     const modelToUse = ps.modelId || videoModel
-    const imgObj     = getSelectedImage(templateId)
+    const imgObj     = getSelectedImage(templateId) ?? allImages[0] ?? null
     const imageUrl   = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
     patchResult(templateId, { status: 'submitting', error: null, videoUrl: null, requestId: null, progress: 0, saved: false })
     try {
