@@ -475,38 +475,42 @@ async function handleVideo(req, res) {
         return res.status(falRes.status).json({ error: data?.detail || data?.message || `fal.ai queue error ${falRes.status}`, _debug: { submitUrl: baseUrl, falStatus: falRes.status, body: data } })
       }
       const resolvedRequestId = data.request_id ?? data.requestId ?? null
-      console.log('[generate-video] submit ok, requestId:', resolvedRequestId, '| raw keys:', Object.keys(data || {}))
-      return res.status(200).json({ requestId: resolvedRequestId, _debug: { rawKeys: Object.keys(data || {}), rawData: data } })
+      // fal.ai returns authoritative URLs — use them directly instead of constructing
+      const statusUrl   = data.status_url   ?? data.statusUrl   ?? null
+      const responseUrl = data.response_url ?? data.responseUrl ?? null
+      const cancelUrl   = data.cancel_url   ?? data.cancelUrl   ?? null
+      console.log('[generate-video] submit ok, requestId:', resolvedRequestId, '| status_url:', statusUrl, '| raw keys:', Object.keys(data || {}))
+      return res.status(200).json({ requestId: resolvedRequestId, statusUrl, responseUrl, cancelUrl })
     }
 
     if (action === 'status') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
 
-      // fal.ai queue status URL candidates — try in order until one succeeds:
-      // 1. Full model path prefix (standard docs)
-      // 2. Global /queue/ prefix (used by some fal.ai model variants)
-      // 3. Root prefix (simplest)
-      const statusUrls = [
-        `${baseUrl}/requests/${requestId}/status`,
-        `https://queue.fal.run/queue/requests/${requestId}/status`,
-        `https://queue.fal.run/requests/${requestId}/status`,
-      ]
+      const { statusUrl: providedStatusUrl } = req.body || {}
+
+      // Use the URL fal.ai gave us at submit time (most reliable).
+      // Fall back to constructed candidates if not provided.
+      const statusUrls = providedStatusUrl
+        ? [providedStatusUrl]
+        : [
+            `${baseUrl}/requests/${requestId}/status`,
+            `https://queue.fal.run/queue/requests/${requestId}/status`,
+            `https://queue.fal.run/requests/${requestId}/status`,
+          ]
 
       let lastStatus = 0
       let lastBody   = null
-      for (const statusUrl of statusUrls) {
-        const falRes = await fetch(statusUrl, { headers: getHdrs })
+      for (const url of statusUrls) {
+        const falRes = await fetch(url, { headers: getHdrs })
         const body   = await falRes.json().catch(() => null)
         lastStatus   = falRes.status
         lastBody     = body
         if (falRes.ok) {
-          console.log('[generate-video] status ok via', statusUrl)
           return res.status(200).json({ status: body.status, logs: body.logs ?? [] })
         }
-        console.warn(`[generate-video] status ${falRes.status} on ${statusUrl}`)
+        console.warn(`[generate-video] status ${falRes.status} on ${url}`)
       }
 
-      // All candidates failed
       const _debug = { triedUrls: statusUrls, lastStatus, lastBody, modelId, requestId }
       console.error('[generate-video] status all failed:', JSON.stringify(_debug))
       return res.status(lastStatus || 502).json({
@@ -518,26 +522,29 @@ async function handleVideo(req, res) {
     if (action === 'result') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
 
-      const resultUrls = [
-        `${baseUrl}/requests/${requestId}`,
-        `https://queue.fal.run/queue/requests/${requestId}`,
-        `https://queue.fal.run/requests/${requestId}`,
-      ]
+      const { responseUrl: providedResponseUrl } = req.body || {}
+
+      const resultUrls = providedResponseUrl
+        ? [providedResponseUrl]
+        : [
+            `${baseUrl}/requests/${requestId}`,
+            `https://queue.fal.run/queue/requests/${requestId}`,
+            `https://queue.fal.run/requests/${requestId}`,
+          ]
 
       let lastStatus = 0
       let lastBody   = null
-      for (const resultUrl of resultUrls) {
-        const falRes = await fetch(resultUrl, { headers: getHdrs })
+      for (const url of resultUrls) {
+        const falRes = await fetch(url, { headers: getHdrs })
         const body   = await falRes.json().catch(() => null)
         lastStatus   = falRes.status
         lastBody     = body
         if (falRes.ok) {
-          console.log('[generate-video] result ok via', resultUrl)
           const videoUrl = body?.video?.url ?? body?.videos?.[0]?.url ?? null
           if (!videoUrl) return res.status(500).json({ error: 'No video URL in fal.ai response', _debug: { body } })
           return res.status(200).json({ videoUrl })
         }
-        console.warn(`[generate-video] result ${falRes.status} on ${resultUrl}`)
+        console.warn(`[generate-video] result ${falRes.status} on ${url}`)
       }
 
       return res.status(lastStatus || 502).json({

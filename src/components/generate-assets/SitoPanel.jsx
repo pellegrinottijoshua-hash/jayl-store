@@ -368,7 +368,9 @@ export default function SitoPanel({
       })
       const submitData = await submitRes.json()
       if (!submitRes.ok) throw new Error(submitData.error || 'Submit failed')
-      const requestId = submitData.requestId
+      const requestId   = submitData.requestId
+      const statusUrl   = submitData.statusUrl   || null  // authoritative URL from fal.ai
+      const responseUrl = submitData.responseUrl || null
       if (!requestId) throw new Error('No requestId')
       patchResult(templateId, { status: 'processing', requestId, progress: 10 })
 
@@ -378,7 +380,7 @@ export default function SitoPanel({
         try {
           const sRes  = await fetch('/api/generate-video', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'status', modelId: modelToUse, requestId }),
+            body: JSON.stringify({ action: 'status', modelId: modelToUse, requestId, statusUrl }),
           })
           const sData = await sRes.json()
 
@@ -394,7 +396,7 @@ export default function SitoPanel({
             stopPoll(requestId)
             const rRes  = await fetch('/api/generate-video', {
               method: 'POST', headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ action: 'result', modelId: modelToUse, requestId }),
+              body: JSON.stringify({ action: 'result', modelId: modelToUse, requestId, responseUrl }),
             })
             const rData = await rRes.json()
             if (!rRes.ok) throw new Error(rData.error || 'Result fetch failed')
