@@ -162,9 +162,9 @@ export default function Navbar() {
         <div className="h-14 flex items-center justify-between px-5 sm:px-8">
 
           {/* ── Left: JAYL logo ───────────────────────────────────────── */}
-          <div className="w-16 sm:w-24 pointer-events-auto">
+          <div className="w-24 sm:w-36 pointer-events-auto">
             <Link to="/" aria-label="JAYL — Home">
-              <JaylLogoPng isLight={isLight} height={22} />
+              <JaylLogoPng isLight={isLight} height={40} />
             </Link>
           </div>
 
@@ -270,7 +270,7 @@ export default function Navbar() {
           </nav>
 
           {/* ── Right: social icons (desktop) + cart + hamburger ────────── */}
-          <div className="w-14 sm:w-20 flex justify-end items-center gap-4 pointer-events-auto">
+          <div className="w-24 sm:w-36 flex justify-end items-center gap-4 pointer-events-auto">
 
             {/* Social icons — hidden on mobile, shown on sm+ only if link is set */}
             <div className="hidden sm:flex items-center gap-3">
@@ -347,7 +347,7 @@ export default function Navbar() {
         {/* Close row */}
         <div className="flex items-center justify-between px-5 pt-5 h-14">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} aria-label="JAYL — Home">
-            <JaylLogoPng isLight={isLight} height={14} />
+            <JaylLogoPng isLight={isLight} height={32} />
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}

@@ -74,9 +74,15 @@ export default function PromptCard({
   const refInputRef  = useRef(null)
   const fileInputRef = useRef(null)
 
+  // Images from `images[]` that are already in `extraRefs` should NOT appear again
+  // as external entries — the slot badge on the original position is enough, and
+  // the ✕ on the duplicate would silently deselect the ref.
+  const imageUrlSet = new Set((images || []).map(i => i.url))
   const allRefs = [
     ...(images || []),
-    ...(extraRefs || []).map(r => ({ ...r, _isExternal: true })),
+    ...(extraRefs || [])
+      .filter(r => !imageUrlSet.has(r.url))   // only truly external refs get appended
+      .map(r => ({ ...r, _isExternal: true })),
   ]
 
   // ── Add ref via URL ──────────────────────────────────────────────────────
@@ -162,14 +168,35 @@ export default function PromptCard({
         </div>
       </div>
 
-      {/* Per-prompt settings toggle */}
+      {/* ── Inline size selector (image prompts only) ─────────────────────── */}
+      {!isVideo && (
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-gray-700 text-[10px] uppercase tracking-wider flex-shrink-0">Size</span>
+          {(imageSizes || IMAGE_SIZES).map(s => (
+            <button key={s.id} onClick={() => onSizeChange(s.id === activeSize ? null : s.id)} title={s.desc}
+              className={`px-2 py-0.5 text-xs border transition-colors ${
+                activeSize === s.id
+                  ? 'border-indigo-500 text-indigo-300 bg-indigo-900/30'
+                  : 'border-gray-700 text-gray-500 hover:border-gray-400 hover:text-gray-300'
+              }`}
+            >{s.label}</button>
+          ))}
+          {activeSize && (
+            <span className="text-gray-600 text-[10px]">
+              {(imageSizes || IMAGE_SIZES).find(s => s.id === activeSize)?.desc}
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Per-prompt model settings toggle */}
       <div className="flex items-center gap-2">
         <button
           onClick={() => setSettingsOpen(o => !o)}
           className="text-gray-600 hover:text-gray-400 text-xs flex items-center gap-1 transition-colors"
         >
-          ⚙ <span>{settingsOpen ? 'Hide' : 'Settings'}</span>
-          {(activeModel || activeSize) && <span className="text-indigo-500 ml-0.5">●</span>}
+          ⚙ <span>{settingsOpen ? 'Hide model' : 'Model'}</span>
+          {activeModel && <span className="text-indigo-500 ml-0.5">●</span>}
         </button>
         {activeModel && (
           <span className="text-indigo-400/60 text-xs truncate max-w-32">
@@ -178,7 +205,7 @@ export default function PromptCard({
         )}
       </div>
 
-      {/* Per-prompt settings panel */}
+      {/* Per-prompt model settings panel */}
       {settingsOpen && (
         <div className="bg-gray-950 border border-gray-700/50 p-3 space-y-2.5">
           <div className="flex items-center gap-2">
@@ -196,28 +223,6 @@ export default function PromptCard({
               ))}
             </select>
           </div>
-          {!isVideo && (
-            <div className="flex items-center gap-2">
-              <span className="text-gray-600 text-xs w-12 flex-shrink-0">Size</span>
-              <div className="flex gap-1 flex-wrap">
-                <button
-                  onClick={() => onSizeChange(null)}
-                  className={`px-2 py-0.5 text-xs border transition-colors ${
-                    !activeSize ? 'border-indigo-500 text-indigo-300 bg-indigo-900/30' : 'border-gray-700 text-gray-600 hover:border-gray-500'
-                  }`}
-                >default</button>
-                {(imageSizes || IMAGE_SIZES).map(s => (
-                  <button key={s.id} onClick={() => onSizeChange(s.id)} title={s.desc}
-                    className={`px-2 py-0.5 text-xs border transition-colors ${
-                      activeSize === s.id
-                        ? 'border-indigo-500 text-indigo-300 bg-indigo-900/30'
-                        : 'border-gray-700 text-gray-500 hover:border-gray-500'
-                    }`}
-                  >{s.label}</button>
-                ))}
-              </div>
-            </div>
-          )}
           <p className="text-gray-700 text-xs">
             💾 Select a reference below, then <strong className="text-gray-500">Save prompt</strong> to pin it.
           </p>

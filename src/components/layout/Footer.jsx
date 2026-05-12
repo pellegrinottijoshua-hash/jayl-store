@@ -200,7 +200,7 @@ export default function Footer() {
             {/* Left: logo + copyright */}
             <div className="flex items-center gap-4">
               <Link to="/" aria-label="JAYL — Home">
-                <JaylLogoPng isLight={isLight} height={20} style={{ opacity: 0.75 }} />
+                <JaylLogoPng isLight={isLight} height={36} style={{ opacity: 0.85 }} />
               </Link>
               <span className={cn(t.muted, 'text-xs')}>© 2026 JAYL. All rights reserved.</span>
             </div>
