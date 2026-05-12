@@ -458,26 +458,47 @@ async function handleVideo(req, res) {
       // duration must be an integer (fal.ai models reject strings); user range 3-15s
       const durationInt = Math.max(3, Math.min(15, parseInt(duration, 10) || 5))
 
+      const submitBody = {
+        prompt:   prompt.trim(),
+        duration: durationInt,
+        ...(falImageUrl ? { image_url: falImageUrl } : {}),
+      }
+      console.log('[generate-video] submit →', baseUrl, JSON.stringify({ ...submitBody, prompt: submitBody.prompt.slice(0, 80) }))
       const falRes = await fetch(baseUrl, {
         method: 'POST',
         headers: hdrs,
-        body: JSON.stringify({
-          prompt:   prompt.trim(),
-          duration: durationInt,
-          ...(falImageUrl ? { image_url: falImageUrl } : {}),
-        }),
+        body: JSON.stringify(submitBody),
       })
       const data = await falRes.json().catch(() => null)
-      if (!falRes.ok) return res.status(falRes.status).json({ error: data?.detail || data?.message || `fal.ai queue error ${falRes.status}` })
-      return res.status(200).json({ requestId: data.request_id ?? data.requestId })
+      if (!falRes.ok) {
+        console.error('[generate-video] submit error', falRes.status, JSON.stringify(data))
+        return res.status(falRes.status).json({ error: data?.detail || data?.message || `fal.ai queue error ${falRes.status}`, _debug: { submitUrl: baseUrl, falStatus: falRes.status, body: data } })
+      }
+      const resolvedRequestId = data.request_id ?? data.requestId ?? null
+      console.log('[generate-video] submit ok, requestId:', resolvedRequestId, '| raw keys:', Object.keys(data || {}))
+      return res.status(200).json({ requestId: resolvedRequestId, _debug: { rawKeys: Object.keys(data || {}), rawData: data } })
     }
 
     if (action === 'status') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
-      // Use GET with no Content-Type; ?logs=1 returns progress logs required by some models
-      const falRes = await fetch(`${baseUrl}/requests/${requestId}/status?logs=1`, { headers: getHdrs })
+      // Use GET with no Content-Type; ?logs=1 returns progress logs (drop it if unsupported)
+      const statusUrl = `${baseUrl}/requests/${requestId}/status`
+      const falRes = await fetch(statusUrl, { headers: getHdrs })
       const body   = await falRes.json().catch(() => null)
-      if (!falRes.ok) return res.status(falRes.status).json({ error: body?.detail || body?.message || `Status check failed (HTTP ${falRes.status})` })
+      if (!falRes.ok) {
+        const _debug = {
+          statusUrl,
+          falHttpStatus: falRes.status,
+          falBody:       body,
+          modelId,
+          requestId,
+        }
+        console.error('[generate-video] status 405 debug:', JSON.stringify(_debug))
+        return res.status(falRes.status).json({
+          error: body?.detail || body?.message || `Status check failed (HTTP ${falRes.status})`,
+          _debug,
+        })
+      }
       return res.status(200).json({ status: body.status, logs: body.logs ?? [] })
     }
 
