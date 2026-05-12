@@ -253,6 +253,26 @@ const IMAGE_SIZE_TO_GPT = {
 
 const NANO_MODELS = new Set(['fal-ai/nano-banana-2', 'fal-ai/nano-banana-pro'])
 
+// Multi-ref wrapper: passes falImageUrls array to models that support it,
+// falls back to single falImageUrl for the rest.
+function buildMockupBodyMulti(effectiveModelId, { prompt, imageSize, falImageUrl, falImageUrls = [] }) {
+  // Nano Banana /edit and GPT Image 1 edit natively support image_urls array → use all refs
+  if (
+    effectiveModelId === 'fal-ai/nano-banana-pro/edit' ||
+    effectiveModelId === 'fal-ai/nano-banana-2/edit'   ||
+    effectiveModelId === 'fal-ai/gpt-image-1/edit-image'
+  ) {
+    const aspect  = IMAGE_SIZE_TO_ASPECT[imageSize] || '1:1'
+    const gptSize = IMAGE_SIZE_TO_GPT[imageSize]    || '1024x1024'
+    if (effectiveModelId === 'fal-ai/gpt-image-1/edit-image') {
+      return { prompt, image_urls: falImageUrls, image_size: gptSize, input_fidelity: 'high', quality: 'auto', num_images: 1, output_format: 'png' }
+    }
+    return { prompt, image_urls: falImageUrls, aspect_ratio: aspect, num_images: 1, safety_tolerance: '4' }
+  }
+  // All other models: delegate to single-ref builder
+  return buildMockupBody(effectiveModelId, { prompt, imageSize, falImageUrl })
+}
+
 function buildMockupBody(effectiveModelId, { prompt, imageSize, falImageUrl }) {
   const aspect   = IMAGE_SIZE_TO_ASPECT[imageSize] || '1:1'
   const gptSize  = IMAGE_SIZE_TO_GPT[imageSize]    || '1024x1024'
@@ -328,9 +348,16 @@ async function handleMockup(req, res) {
   const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
   if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
 
-  const { modelId, prompt, imageSize, imageUrl } = req.body || {}
+  // imageUrls is the multi-reference array; imageUrl is legacy single-ref fallback
+  const { modelId, prompt, imageSize, imageUrl, imageUrls } = req.body || {}
   if (!prompt?.trim())            return res.status(400).json({ error: 'prompt is required' })
   if (!IMAGE_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown model: ${modelId}` })
+
+  // Resolve ordered list of reference URLs (multi-ref: up to 4)
+  const refUrls = Array.isArray(imageUrls) && imageUrls.length > 0
+    ? imageUrls.slice(0, 4)
+    : (imageUrl ? [imageUrl] : [])
+  const primaryImageUrl = refUrls[0] || null
 
   // ── Direct OpenAI path (bypass fal.ai entirely) ────────────────────────────
   if (modelId === 'openai/gpt-image-1' || modelId === 'openai/gpt-image-2/edit') {
@@ -338,8 +365,8 @@ async function handleMockup(req, res) {
     if (!openAIKey) return res.status(500).json({ error: 'OPENAI_API_KEY not configured' })
     const openAIModel = modelId === 'openai/gpt-image-2/edit' ? 'gpt-image-2' : 'gpt-image-1'
     try {
-      const dataUrl = imageUrl
-        ? await callOpenAIImageEdit({ prompt: prompt.trim(), imageUrl, imageSize, openAIKey, model: openAIModel })
+      const dataUrl = primaryImageUrl
+        ? await callOpenAIImageEdit({ prompt: prompt.trim(), imageUrl: primaryImageUrl, imageSize, openAIKey, model: openAIModel })
         : await callOpenAIImageT2I({ prompt: prompt.trim(), imageSize, openAIKey, model: openAIModel })
       return res.status(200).json({ imageUrl: dataUrl })
     } catch (err) {
@@ -349,19 +376,24 @@ async function handleMockup(req, res) {
   }
 
   const canI2I = !T2I_ONLY.has(modelId)
-  const effectiveModelId = (imageUrl && canI2I && T2I_TO_I2I_IMG[modelId]) ? T2I_TO_I2I_IMG[modelId] : modelId
+  const effectiveModelId = (primaryImageUrl && canI2I && T2I_TO_I2I_IMG[modelId]) ? T2I_TO_I2I_IMG[modelId] : modelId
 
-  let falImageUrl
-  if (imageUrl && canI2I) {
-    try {
-      falImageUrl = await proxyImageToFal(imageUrl, apiKey)
-    } catch (e) {
-      console.warn('[generate-mockup] proxy failed, using direct URL:', e.message)
-      falImageUrl = imageUrl
+  // Proxy all reference images to fal CDN (supports multi-ref for Nano Banana/GPT Image)
+  const falImageUrls = []
+  if (canI2I && refUrls.length > 0) {
+    for (const u of refUrls) {
+      try {
+        falImageUrls.push(await proxyImageToFal(u, apiKey))
+      } catch (e) {
+        console.warn('[generate-mockup] proxy failed, using direct URL:', e.message)
+        falImageUrls.push(u)
+      }
     }
   }
+  const falImageUrl = falImageUrls[0] || null
 
-  const body = buildMockupBody(effectiveModelId, { prompt: prompt.trim(), imageSize, falImageUrl })
+  // For models that accept image_urls array, pass all refs; others get only the first
+  const body = buildMockupBodyMulti(effectiveModelId, { prompt: prompt.trim(), imageSize, falImageUrl, falImageUrls })
 
   try {
     const falRes = await fetch(`https://fal.run/${effectiveModelId}`, {
@@ -419,8 +451,8 @@ async function handleVideo(req, res) {
         }
       }
 
-      // duration must be an integer (fal.ai models reject strings)
-      const durationInt = Math.max(3, Math.min(10, parseInt(duration, 10) || 5))
+      // duration must be an integer (fal.ai models reject strings); user range 3-15s
+      const durationInt = Math.max(3, Math.min(15, parseInt(duration, 10) || 5))
 
       const falRes = await fetch(baseUrl, {
         method: 'POST',

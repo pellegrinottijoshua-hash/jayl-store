@@ -119,20 +119,26 @@ export default function SocialPanel({
     return [...image, ...video].filter(t => results[t.id]?.status === 'done').length
   }
 
-  // ── Image generation ─────────────────────────────────────────────────────
+  // ── Image generation (multi-reference) ──────────────────────────────────
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
     const ps         = promptSettings[templateId] || {}
     const modelToUse = ps.modelId   || imageModel
     const sizeToUse  = ps.imageSize || imageSize
-    const imgObj     = getSelectedImage(templateId)
-    const imageUrl   = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
+    // Multi-ref: primary selected + extraRefs
+    const primary    = getSelectedImage(templateId)
+    const extraRefs  = ps.extraRefs || []
+    const imageUrls  = [primary, ...extraRefs]
+      .filter(Boolean)
+      .map(img => toAbsoluteUrl(img.url))
+      .filter(Boolean)
     patchResult(templateId, { status: 'generating', error: null, imageUrl: null, saved: false })
     try {
       const res  = await fetch('/api/generate-mockup', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelId: modelToUse, prompt: prompt.trim(), imageSize: sizeToUse, imageUrl }),
+        body: JSON.stringify({ modelId: modelToUse, prompt: prompt.trim(), imageSize: sizeToUse,
+          imageUrl: imageUrls[0] || undefined, imageUrls: imageUrls.length > 0 ? imageUrls : undefined }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
@@ -161,6 +167,9 @@ export default function SocialPanel({
       const requestId = submitData.requestId
       if (!requestId) throw new Error('No requestId')
       patchResult(templateId, { status: 'processing', requestId, progress: 10 })
+
+      const stopPoll = (id) => { clearInterval(pollTimers.current[id]); delete pollTimers.current[id] }
+
       const poll = async () => {
         try {
           const sRes  = await fetch('/api/generate-video', {
@@ -168,27 +177,35 @@ export default function SocialPanel({
             body: JSON.stringify({ action: 'status', modelId: modelToUse, requestId }),
           })
           const sData = await sRes.json()
+
+          if (!sRes.ok || sData.error) {
+            stopPoll(requestId)
+            patchResult(templateId, { status: 'error', error: sData.error || `Status check failed (HTTP ${sRes.status})` })
+            return
+          }
+
           const st = sData.status
           if (st === 'COMPLETED') {
-            clearInterval(pollTimers.current[requestId])
-            delete pollTimers.current[requestId]
+            stopPoll(requestId)
             const rRes  = await fetch('/api/generate-video', {
               method: 'POST', headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'result', modelId: modelToUse, requestId }),
             })
             const rData = await rRes.json()
-            if (!rRes.ok) throw new Error(rData.error)
+            if (!rRes.ok) throw new Error(rData.error || 'Result fetch failed')
+            if (!rData.videoUrl) throw new Error('No video URL in response')
             patchResult(templateId, { status: 'done', videoUrl: rData.videoUrl, progress: 100 })
           } else if (st === 'FAILED') {
-            clearInterval(pollTimers.current[requestId])
-            delete pollTimers.current[requestId]
-            patchResult(templateId, { status: 'error', error: 'Generation failed' })
+            stopPoll(requestId)
+            const detail = sData.logs?.find(l => l.level === 'error')?.message || 'Generation failed on fal.ai'
+            patchResult(templateId, { status: 'error', error: detail })
           } else {
-            patchResult(templateId, { progress: st === 'IN_PROGRESS' ? 60 : 20 })
+            const nextProgress = st === 'IN_PROGRESS' ? 60 : st === 'IN_QUEUE' ? 20 : null
+            if (nextProgress !== null) patchResult(templateId, { progress: nextProgress })
           }
         } catch (e) { console.warn('[social-video-poll]', e.message) }
       }
-      pollTimers.current[requestId] = setInterval(poll, 3000)
+      pollTimers.current[requestId] = setInterval(poll, 4000)
     } catch (e) {
       patchResult(templateId, { status: 'error', error: e.message })
     }
@@ -385,13 +402,12 @@ export default function SocialPanel({
           ))}
         </select>
 
-        <div className="flex items-center gap-1">
-          {['5','10'].map(d => (
-            <button key={d} onClick={() => setVideoDuration(d)}
-              className={`px-2 py-0.5 text-xs border transition-colors ${
-                videoDuration === d ? 'border-blue-500 text-blue-300' : 'border-gray-700 text-gray-600 hover:border-gray-500'
-              }`}>{d}s</button>
-          ))}
+        <div className="flex items-center gap-2">
+          <input type="range" min={3} max={15} step={1}
+            value={parseInt(videoDuration, 10) || 5}
+            onChange={e => setVideoDuration(e.target.value)}
+            className="w-20 accent-blue-500 cursor-pointer" />
+          <span className="text-blue-300 text-xs font-mono w-8">{videoDuration}s</span>
           <span className="text-gray-600 text-xs">≈${((selectedVideoModel?.secRate ?? 0) * parseFloat(videoDuration)).toFixed(3)}</span>
         </div>
 

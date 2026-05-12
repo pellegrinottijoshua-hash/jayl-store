@@ -27,19 +27,96 @@ const colorToSlug = (c) =>
 
 /** Common apparel/art color names → hex. Used to resolve swatches when .hex is missing or generic */
 const APPAREL_COLOR_HEX = {
-  'black': '#1a1a1a', 'washed black': '#1a1a1a', 'solid-black-triblend': '#1a1a1a', 'solid black triblend': '#1a1a1a', 'triblend black heather': '#2d2d2d', 'triblend-black-heather': '#2d2d2d',
-  'white': '#f5f5f5', 'off white': '#f0ece4', 'solid-white-triblend': '#f0f0f0', 'solid white triblend': '#f0f0f0',
-  'red': '#cc2200', 'maroon': '#800000',
-  'blue': '#1a3c8c', 'navy': '#1f2d5c', 'triblend navy': '#3a5280', 'triblend-navy': '#3a5280', 'heather royal': '#4169E1', 'heather-royal': '#4169E1', 'blue triblend': '#5272b0', 'blue-triblend': '#5272b0', 'light blue': '#6ba4d4', 'light-blue': '#6ba4d4', 'royal blue': '#4169E1',
-  'green': '#228B22', 'forest green': '#228B22', 'forest-green': '#228B22', 'olive': '#6b7c2c', 'sage': '#8faf79',
-  'yellow': '#e8c41a', 'daisy': '#f5d842', 'gold': '#c8a42c',
-  'pink': '#f5a0c0', 'hot pink': '#e82a8a',
-  'purple': '#6b2d8b', 'lavender': '#c084fc',
-  'orange': '#cc5500', 'rust': '#b54a22',
-  'gray': '#888888', 'grey': '#888888', 'charcoal': '#3d3d3d', 'heather gray': '#aaaaaa', 'heather-gray': '#aaaaaa',
-  'natural': '#d4c5a9', 'cream': '#f0ece4', 'bone': '#d4cdc0', 'sand': '#c8b89a', 'tan': '#c4a882',
-  'slate': '#3a3f4a', 'steel blue': '#4682B4',
-  'brown': '#795548', 'chocolate': '#5d3c1e',
+  // ── Blacks & near-blacks ──────────────────────────────────────────────────
+  'black': '#1a1a1a', 'washed black': '#1a1a1a', 'jet black': '#111111',
+  'solid black triblend': '#1a1a1a', 'solid-black-triblend': '#1a1a1a',
+  'triblend black heather': '#2d2d2d', 'triblend-black-heather': '#2d2d2d',
+  'black heather': '#2d2d2d', 'black-heather': '#2d2d2d',
+  'vintage black': '#2a2a2a', 'faded black': '#333333',
+
+  // ── Whites & off-whites ───────────────────────────────────────────────────
+  'white': '#f5f5f5', 'off white': '#f0ece4', 'off-white': '#f0ece4',
+  'solid white triblend': '#f0f0f0', 'solid-white-triblend': '#f0f0f0',
+  'white heather': '#f2f2f2', 'natural white': '#f8f4ee',
+  'ivory': '#fffff0', 'snow': '#fffafa',
+
+  // ── Grays & charcoals ─────────────────────────────────────────────────────
+  'gray': '#888888', 'grey': '#888888', 'light gray': '#c8c8c8', 'light grey': '#c8c8c8',
+  'heather gray': '#aaaaaa', 'heather-gray': '#aaaaaa', 'heather grey': '#aaaaaa',
+  'sport grey': '#a0a0a0', 'sport gray': '#a0a0a0',
+  'charcoal': '#3d3d3d', 'dark heather': '#4a4a4a', 'graphite': '#555555',
+  'smoke': '#707070', 'ash': '#b8b8b8', 'silver': '#c0c0c0',
+  'carbon': '#3b3b3b', 'slate gray': '#708090', 'slate grey': '#708090',
+  'deep heather': '#585858', 'tri blend charcoal': '#4a4a4a',
+
+  // ── Reds & pinks ──────────────────────────────────────────────────────────
+  'red': '#cc2200', 'true red': '#cc2200', 'fire red': '#bf0a0a',
+  'cardinal': '#c41230', 'crimson': '#dc143c', 'cherry red': '#de3163',
+  'maroon': '#800000', 'burgundy': '#6e0a1e', 'wine': '#722f37',
+  'pink': '#f5a0c0', 'hot pink': '#e82a8a', 'light pink': '#ffb6c1',
+  'neon pink': '#ff6eb4', 'coral': '#ff6b6b', 'salmon': '#fa8072',
+  'dusty rose': '#dcb0b0', 'mauve': '#c5a0b0',
+  'raspberry': '#e30b5c', 'rose': '#ff007f',
+
+  // ── Blues & navys ─────────────────────────────────────────────────────────
+  'blue': '#1a3c8c', 'navy': '#1f2d5c', 'navy blue': '#1f2d5c', 'dark navy': '#0f1a3a',
+  'royal blue': '#4169e1', 'heather royal': '#4169e1', 'heather-royal': '#4169e1',
+  'triblend navy': '#3a5280', 'triblend-navy': '#3a5280',
+  'blue triblend': '#5272b0', 'blue-triblend': '#5272b0',
+  'light blue': '#6ba4d4', 'light-blue': '#6ba4d4', 'sky blue': '#87ceeb',
+  'carolina blue': '#56a0d3', 'columbia blue': '#9ecee1',
+  'cobalt': '#0047ab', 'indigo': '#3f00ff', 'denim': '#1560bd',
+  'steel blue': '#4682b4', 'slate': '#3a3f4a', 'slate blue': '#6a5acd',
+  'midnight': '#191970', 'midnight navy': '#0a0f3c', 'ocean blue': '#006994',
+  'teal': '#008080', 'dark teal': '#005f60', 'heather blue': '#4f7bbb',
+  'heather navy': '#2a3a6a', 'heather-navy': '#2a3a6a',
+
+  // ── Greens ────────────────────────────────────────────────────────────────
+  'green': '#228b22', 'forest green': '#228b22', 'forest-green': '#228b22',
+  'dark green': '#165a16', 'hunter green': '#355e3b',
+  'kelly green': '#4cbb17', 'lime green': '#32cd32', 'lime': '#00ff00',
+  'olive': '#6b7c2c', 'army green': '#4b5320', 'military green': '#4a5240',
+  'sage': '#8faf79', 'mint': '#98ff98', 'mint green': '#98ff98',
+  'emerald': '#50c878', 'seafoam': '#70e4b4',
+  'moss': '#8a9a5b', 'fern': '#4f7942', 'camo green': '#78866b',
+  'heather green': '#5a8a60', 'military olive': '#5a5a28',
+
+  // ── Yellows & golds ───────────────────────────────────────────────────────
+  'yellow': '#e8c41a', 'bright yellow': '#ffe135', 'daisy': '#f5d842',
+  'gold': '#c8a42c', 'antique gold': '#c9ae5d', 'metallic gold': '#d4af37',
+  'mustard': '#e1ad01', 'sunflower': '#ffb300',
+
+  // ── Oranges & earthy tones ────────────────────────────────────────────────
+  'orange': '#cc5500', 'burnt orange': '#cc5500', 'deep orange': '#b84200',
+  'neon orange': '#ff6600', 'tangerine': '#f28500',
+  'rust': '#b54a22', 'terracotta': '#c16a4e', 'copper': '#b87333',
+  'pumpkin': '#ff7518', 'amber': '#ffbf00',
+
+  // ── Purples & violets ─────────────────────────────────────────────────────
+  'purple': '#6b2d8b', 'dark purple': '#4b0082', 'violet': '#7f00ff',
+  'lavender': '#c084fc', 'light lavender': '#d8b4fe',
+  'heather purple': '#9b59b6', 'plum': '#8e4585', 'grape': '#6f2da8',
+  'lilac': '#c8a2c8', 'orchid': '#da70d6',
+
+  // ── Browns & naturals ─────────────────────────────────────────────────────
+  'brown': '#795548', 'chocolate': '#5d3c1e', 'dark chocolate': '#3d1c02',
+  'natural': '#d4c5a9', 'cream': '#f0ece4', 'bone': '#d4cdc0',
+  'sand': '#c8b89a', 'tan': '#c4a882', 'khaki': '#c3b091',
+  'beige': '#d9c9a3', 'camel': '#c19a6b', 'linen': '#faf0e6',
+  'stone': '#b0a090', 'hemp': '#c7b08b',
+
+  // ── Special Gelato / print-on-demand colors ───────────────────────────────
+  'dtg white': '#f5f5f5', 'dtg black': '#1a1a1a',
+  'heather ice blue': '#c5dce8', 'heather mint': '#b5e0d0',
+  'heather peach': '#f5c6a0', 'heather red': '#c05050',
+  'heather forest': '#4a7a50', 'heather midnight navy': '#2a3a6a',
+  'heather true royal': '#4169e1', 'heather cardinal': '#9b2335',
+  'heather maroon': '#6e2233', 'heather dark chocolate': '#5a3020',
+  'heather sport dark navy': '#1a2a4a',
+  'athletic heather': '#b0b0b8', 'heather athletic': '#b0b0b8',
+  'sport dark navy': '#1a2a4a', 'sport dark green': '#1e4d2b',
+  'vintage heather navy': '#3a4a6a', 'vintage heather black': '#3a3a3a',
+  'dark heather gray': '#585858', 'dark heather grey': '#585858',
 }
 
 /** Resolve best hex for a color object — falls back to label name lookup, then null */

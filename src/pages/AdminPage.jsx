@@ -350,9 +350,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
     setSaving(true); setSaveErr(''); setSavedMsg('')
     try {
-      // 1. Start with kept existing images + newly imported Gelato paths
+      // 1. Start with kept existing images + newly imported Gelato paths (deduplicated)
       const keptPaths    = existingImages.map(img => img.src)
-      const uploadedPaths = [...keptPaths, ...importedPaths]
+      const uploadedPaths = [...new Set([...keptPaths, ...importedPaths])]
 
       // 2. Upload any manually-added files
       for (const file of images) {

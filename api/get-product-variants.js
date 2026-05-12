@@ -115,9 +115,17 @@ export default async function handler(req, res) {
       const seenSrcs = new Set()
       const images   = []
 
+      // Normalize URL: strip query-string so the same image served with different params
+      // (e.g. Gelato CDN presigned params vs bare URL) doesn't appear twice.
+      const normalizeUrl = (url) => {
+        try { const u = new URL(url); return u.origin + u.pathname } catch { return url }
+      }
+
       const push = (src, variantIds = []) => {
-        if (!src || seenSrcs.has(src)) return
-        seenSrcs.add(src)
+        if (!src) return
+        const key = normalizeUrl(src)
+        if (seenSrcs.has(key)) return
+        seenSrcs.add(key)
         images.push({ src, position: images.length, variantIds })
       }
 

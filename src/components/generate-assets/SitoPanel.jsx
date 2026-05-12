@@ -14,19 +14,30 @@ const SITO_SECTIONS = [
 ]
 
 // ── Review panel (right side) ─────────────────────────────────────────────────
-function ReviewPanel({ results, productName, collection }) {
+function ReviewPanel({ results, productName, collection, productId, allImages }) {
   const [selected,       setSelected]       = useState(new Set())
   const [copy,           setCopy]           = useState(null)
   const [generatingCopy, setGeneratingCopy] = useState(false)
   const [copyError,      setCopyError]      = useState(null)
   const [copiedField,    setCopiedField]    = useState(null)
-  const [reviewTab,      setReviewTab]      = useState('review')
+  const [reviewTab,      setReviewTab]      = useState('order')
 
+  // ── Publish order state ──────────────────────────────────────────────────
+  const [publishMsg,     setPublishMsg]     = useState('')
+  const [publishing,     setPublishing]     = useState(false)
+
+  // Build ordered list: Gelato defaults first, then generated images
   const doneEntries = Object.entries(results).filter(
     ([, r]) => r?.status === 'done' && (r.imageUrl || r.videoUrl)
   )
 
-  // Auto-select all generated assets as they appear
+  // Initial publish order: Gelato defaults + generated (no duplication)
+  const gelatoUrls = (allImages || []).map(img => ({ url: img.url || img.src, name: img.name || img.url?.split('/').pop(), _isGelato: true }))
+  const generatedItems = doneEntries.map(([id, r]) => ({ url: r.imageUrl || r.videoUrl, name: id, _isVideo: !!r.videoUrl, _isGenerated: true }))
+
+  const [order, setOrder] = useState(null) // null = auto-computed from current state
+
+  // Auto-include newly generated items
   useEffect(() => {
     if (doneEntries.length === 0) return
     setSelected(prev => {
@@ -35,6 +46,14 @@ function ReviewPanel({ results, productName, collection }) {
       return next
     })
   }, [doneEntries.length]) // eslint-disable-line
+
+  // Compute effective order
+  const effectiveOrder = order ?? [...gelatoUrls, ...generatedItems]
+
+  const moveUp   = (i) => { if (i === 0) return; const o = [...effectiveOrder]; [o[i-1],o[i]] = [o[i],o[i-1]]; setOrder(o) }
+  const moveDown = (i) => { if (i === effectiveOrder.length-1) return; const o = [...effectiveOrder]; [o[i],o[i+1]] = [o[i+1],o[i]]; setOrder(o) }
+  const setAsHero = (i) => { if (i === 0) return; const o = [...effectiveOrder]; const [item] = o.splice(i,1); o.unshift(item); setOrder(o) }
+  const removeItem = (i) => { const o = [...effectiveOrder]; o.splice(i,1); setOrder(o) }
 
   const toggleSelect = (id) =>
     setSelected(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
@@ -59,12 +78,32 @@ function ReviewPanel({ results, productName, collection }) {
     })
   }
 
+  const handlePublish = async () => {
+    if (!productId || effectiveOrder.length === 0) return
+    setPublishing(true); setPublishMsg('')
+    try {
+      const orderedUrls = effectiveOrder.map(item => item.url).filter(Boolean)
+      await api('update-product-images', {
+        productId,
+        images:    orderedUrls,
+        heroImage: orderedUrls[0] ?? null,
+      })
+      setPublishMsg('✓ Pubblicato su jayl.store')
+      setTimeout(() => setPublishMsg(''), 4000)
+    } catch (e) {
+      setPublishMsg(`⚠ ${e.message}`)
+      setTimeout(() => setPublishMsg(''), 5000)
+    } finally {
+      setPublishing(false)
+    }
+  }
+
   return (
     <div className="w-64 flex-shrink-0 border-l border-gray-800 sticky top-4 self-start">
 
       {/* tabs */}
       <div className="flex border-b border-gray-800">
-        {[{ id: 'review', label: '✨ Review' }, { id: 'publish', label: '🚀 Publish' }].map(t => (
+        {[{ id: 'order', label: '🗂 Ordine' }, { id: 'copy', label: '✨ Copy' }].map(t => (
           <button key={t.id} onClick={() => setReviewTab(t.id)}
             className={`flex-1 py-2 text-xs font-medium border-b-2 transition-colors ${
               reviewTab === t.id ? 'border-indigo-500 text-indigo-300' : 'border-transparent text-gray-500 hover:text-gray-300'
@@ -73,10 +112,85 @@ function ReviewPanel({ results, productName, collection }) {
       </div>
 
       <div className="p-3 space-y-3">
-        {reviewTab === 'review' && (
+
+        {/* ── ORDER TAB ── */}
+        {reviewTab === 'order' && (
+          <>
+            <div className="flex items-center justify-between">
+              <p className="text-gray-500 text-[10px] uppercase tracking-wider">Disposizione · pos 1 = Hero</p>
+              {effectiveOrder.length > 0 && (
+                <button onClick={() => setOrder(null)} className="text-gray-700 hover:text-gray-400 text-[10px] transition-colors">Reset</button>
+              )}
+            </div>
+
+            {effectiveOrder.length === 0 ? (
+              <p className="text-gray-600 text-xs text-center py-6">Genera asset o importa mockup Gelato</p>
+            ) : (
+              <div className="space-y-1 max-h-96 overflow-y-auto pr-0.5" style={{ scrollbarWidth: 'thin' }}>
+                {effectiveOrder.map((item, i) => (
+                  <div key={item.url || i} className={`flex items-center gap-1.5 bg-gray-900 border p-1.5 ${i === 0 ? 'border-yellow-700/60' : 'border-gray-800'}`}>
+                    {/* Position badge */}
+                    <span className={`w-5 h-5 flex-shrink-0 flex items-center justify-center text-[10px] font-bold rounded-sm ${
+                      i === 0 ? 'bg-yellow-600 text-black' : 'bg-gray-800 text-gray-400'
+                    }`}>{i + 1}</span>
+
+                    {/* Thumbnail */}
+                    {item._isVideo
+                      ? <div className="w-8 h-8 flex-shrink-0 bg-gray-800 flex items-center justify-center text-sm">🎬</div>
+                      : <img src={item.url} alt="" className="w-8 h-8 flex-shrink-0 object-cover border border-gray-700"
+                          onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                    }
+
+                    {/* Label */}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-gray-400 text-[9px] truncate leading-tight">
+                        {item._isGelato ? '🎨 Gelato' : item._isVideo ? '🎬 Video' : '✨ Gen'}
+                      </p>
+                      {i === 0 && <p className="text-yellow-500 text-[9px] font-semibold leading-tight">HERO</p>}
+                    </div>
+
+                    {/* Controls */}
+                    <div className="flex flex-col gap-0.5 flex-shrink-0">
+                      {i > 0 && (
+                        <button onClick={() => setAsHero(i)} title="Set as Hero"
+                          className="text-yellow-600 hover:text-yellow-400 text-[10px] px-1 leading-none transition-colors">★</button>
+                      )}
+                      <button onClick={() => moveUp(i)} disabled={i === 0}
+                        className="text-gray-600 hover:text-gray-300 text-[10px] px-1 leading-none disabled:opacity-20 transition-colors">↑</button>
+                      <button onClick={() => moveDown(i)} disabled={i === effectiveOrder.length - 1}
+                        className="text-gray-600 hover:text-gray-300 text-[10px] px-1 leading-none disabled:opacity-20 transition-colors">↓</button>
+                    </div>
+                    <button onClick={() => removeItem(i)} title="Rimuovi da lista"
+                      className="text-gray-700 hover:text-red-400 text-[10px] leading-none transition-colors flex-shrink-0 px-0.5">✕</button>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Pubblica su jayl.store */}
+            <button onClick={handlePublish}
+              disabled={publishing || effectiveOrder.length === 0 || !productId}
+              className={`w-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
+                publishing || effectiveOrder.length === 0 || !productId
+                  ? 'bg-gray-800 text-gray-600 cursor-not-allowed'
+                  : 'bg-emerald-700 hover:bg-emerald-600 text-white cursor-pointer'
+              }`}>
+              {publishing
+                ? <><span className="animate-spin w-3 h-3 border border-emerald-300 border-t-transparent rounded-full inline-block" /> Pubblicando…</>
+                : '🌐 Pubblica su jayl.store'
+              }
+            </button>
+            {publishMsg && (
+              <p className={`text-xs text-center ${publishMsg.startsWith('✓') ? 'text-emerald-400' : 'text-red-400'}`}>{publishMsg}</p>
+            )}
+          </>
+        )}
+
+        {/* ── COPY TAB ── */}
+        {reviewTab === 'copy' && (
           <>
             {doneEntries.length === 0 ? (
-              <p className="text-gray-600 text-xs text-center py-6">Genera asset per vederli qui</p>
+              <p className="text-gray-600 text-xs text-center py-6">Genera asset per la copy</p>
             ) : (
               <>
                 <p className="text-gray-500 text-[10px] uppercase tracking-wider">Seleziona per copy:</p>
@@ -138,24 +252,6 @@ function ReviewPanel({ results, productName, collection }) {
               </>
             )}
           </>
-        )}
-
-        {reviewTab === 'publish' && (
-          <div className="space-y-2">
-            <p className="text-gray-500 text-[10px] uppercase tracking-wider">Pubblica sul sito:</p>
-            {[
-              { label: 'Etsy', icon: '🛍', href: 'https://www.etsy.com/your/listings' },
-              { label: 'Shopify', icon: '🛒', href: null },
-            ].map(({ label, icon, href }) => (
-              <div key={label} className="flex items-center justify-between bg-gray-900 border border-gray-800 px-3 py-2">
-                <span className="text-xs text-gray-400">{icon} {label}</span>
-                {href
-                  ? <a href={href} target="_blank" rel="noreferrer" className="text-xs text-gray-500 hover:text-gray-200 border border-gray-700 hover:border-gray-500 px-2 py-0.5 transition-colors">Open ↗</a>
-                  : <span className="text-gray-700 text-xs">—</span>
-                }
-              </div>
-            ))}
-          </div>
         )}
       </div>
     </div>
@@ -228,20 +324,26 @@ export default function SitoPanel({
     return allImages[0] ?? null
   }
 
-  // ── Generation ───────────────────────────────────────────────────────────
+  // ── Generation (multi-reference) ────────────────────────────────────────
   const handleGenerateImage = async (templateId) => {
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
     const ps         = promptSettings[templateId] || {}
     const modelToUse = ps.modelId   || imageModel
     const sizeToUse  = ps.imageSize || imageSize
-    const imgObj     = getSelectedImage(templateId)
-    const imageUrl   = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
+    // Build multi-ref array: primary selected image + any extra refs
+    const primary   = getSelectedImage(templateId)
+    const extraRefs = ps.extraRefs || []
+    const imageUrls = [primary, ...extraRefs]
+      .filter(Boolean)
+      .map(img => toAbsoluteUrl(img.url))
+      .filter(Boolean)
     patchResult(templateId, { status: 'generating', error: null, imageUrl: null, saved: false })
     try {
       const res  = await fetch('/api/generate-mockup', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelId: modelToUse, prompt: prompt.trim(), imageSize: sizeToUse, imageUrl }),
+        body: JSON.stringify({ modelId: modelToUse, prompt: prompt.trim(), imageSize: sizeToUse,
+          imageUrl: imageUrls[0] || undefined, imageUrls: imageUrls.length > 0 ? imageUrls : undefined }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
@@ -449,14 +551,13 @@ export default function SitoPanel({
               ))}
             </select>
           </div>
-          <div className="flex items-center gap-1">
-            {['5', '10'].map(d => (
-              <button key={d} onClick={() => setVideoDuration(d)}
-                className={`px-2 py-0.5 text-xs border transition-colors ${
-                  videoDuration === d ? 'border-blue-500 text-blue-300' : 'border-gray-700 text-gray-600 hover:border-gray-500'
-                }`}>{d}s</button>
-            ))}
-            <span className="text-gray-600 text-xs ml-1">
+          <div className="flex items-center gap-2">
+            <input type="range" min={3} max={15} step={1}
+              value={parseInt(videoDuration, 10) || 5}
+              onChange={e => setVideoDuration(e.target.value)}
+              className="w-20 accent-blue-500 cursor-pointer" />
+            <span className="text-blue-300 text-xs font-mono w-8">{videoDuration}s</span>
+            <span className="text-gray-600 text-xs">
               ≈${((selectedVideoModel?.secRate ?? 0) * parseFloat(videoDuration)).toFixed(3)}
             </span>
           </div>
@@ -540,6 +641,8 @@ export default function SitoPanel({
         results={results}
         productName={productName}
         collection={collection}
+        productId={productId}
+        allImages={allImages}
       />
 
     </div>

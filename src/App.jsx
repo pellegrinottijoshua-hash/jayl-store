@@ -23,6 +23,7 @@ import TrackPage from '@/pages/TrackPage'
 import CollectionPage from '@/pages/CollectionPage'
 import AmbassadorPage from '@/pages/AmbassadorPage'
 import EmailCapturePopup from '@/components/EmailCapturePopup'
+import CookieBanner from '@/components/CookieBanner'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -89,6 +90,7 @@ export default function App() {
       </Routes>
 
       {!isAdmin && <Footer />}
+      {!isAdmin && <CookieBanner />}
     </>
   )
 }

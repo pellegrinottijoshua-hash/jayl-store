@@ -247,6 +247,27 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true })
     }
 
+    // ── update-product-images ─────────────────────────────────────────────────
+    // Lightweight action: updates only the images/image fields of an existing product.
+    // Used by the Review panel "Pubblica su jayl.store" without requiring the full product object.
+    if (action === 'update-product-images') {
+      const { productId, images: newImages, heroImage } = data
+      if (!productId || !Array.isArray(newImages)) {
+        return res.status(400).json({ error: 'productId and images[] required' })
+      }
+      const { products, sha } = await readAdminProducts(githubToken)
+      const idx = products.findIndex(p => p.id === productId)
+      if (idx < 0) return res.status(404).json({ error: 'Product not found' })
+      products[idx] = {
+        ...products[idx],
+        images: newImages,
+        image: heroImage ?? newImages[0] ?? products[idx].image,
+        updatedAt: new Date().toISOString(),
+      }
+      await writeAdminProducts(products, sha, `admin: update images order for ${productId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
     // ── delete-product ────────────────────────────────────────────────────────
     if (action === 'delete-product') {
       const { productId } = data

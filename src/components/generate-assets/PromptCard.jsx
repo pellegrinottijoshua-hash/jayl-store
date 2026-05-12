@@ -1,4 +1,37 @@
 import { useState, useRef } from 'react'
+
+// ── Compress/resize images before upload to avoid Vercel 4.5MB body limit ────
+async function compressImageIfNeeded(file) {
+  // Pass through non-images and small files unchanged
+  if (!file.type.startsWith('image/') || file.size < 2 * 1024 * 1024) {
+    return new Promise((resolve, reject) => {
+      const r = new FileReader()
+      r.onload = () => resolve(r.result)
+      r.onerror = reject
+      r.readAsDataURL(file)
+    })
+  }
+  // Resize to max 1400px on the longest side, JPEG quality 0.85
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    const blobUrl = URL.createObjectURL(file)
+    img.onload = () => {
+      URL.revokeObjectURL(blobUrl)
+      const MAX = 1400
+      let w = img.naturalWidth, h = img.naturalHeight
+      if (w > MAX || h > MAX) {
+        if (w >= h) { h = Math.round(h * MAX / w); w = MAX }
+        else        { w = Math.round(w * MAX / h); h = MAX }
+      }
+      const canvas = document.createElement('canvas')
+      canvas.width = w; canvas.height = h
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h)
+      resolve(canvas.toDataURL('image/jpeg', 0.85))
+    }
+    img.onerror = reject
+    img.src = blobUrl
+  })
+}
 import { btnPrimary, btnGhost, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, DESTINATION_META, toAbsoluteUrl, downloadAsset, api } from './constants'
 
 // PromptCard — usato sia da SitoPanel che da InfluencerPanel
@@ -62,13 +95,8 @@ export default function PromptCard({
     if (!file) return
     setUploading(true); setUploadError(''); setAddMode(null)
     try {
-      // Read as base64
-      const dataUrl = await new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = reject
-        reader.readAsDataURL(file)
-      })
+      // Compress large images to stay under Vercel's 4.5MB body limit
+      const dataUrl = await compressImageIfNeeded(file)
       // Upload to server → permanent URL (Blob or GitHub)
       const res  = await fetch('/api/admin', {
         method: 'POST',

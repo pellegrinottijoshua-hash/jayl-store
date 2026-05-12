@@ -200,6 +200,123 @@ function ImageGallery({ productId, readOnly }) {
   )
 }
 
+// ── Image Order Panel ─────────────────────────────────────────────────────────
+// Shows all product images (Gelato defaults + generated) with drag/reorder + hero
+
+function ImageOrderPanel({ productId, product, onSaved }) {
+  const [images,    setImages]    = useState([])
+  const [order,     setOrder]     = useState(null) // null = loaded order
+  const [loading,   setLoading]   = useState(true)
+  const [saving,    setSaving]    = useState(false)
+  const [msg,       setMsg]       = useState('')
+
+  useEffect(() => {
+    if (!productId) return
+    setLoading(true)
+    api('list-images', { productId })
+      .then(data => {
+        const imgs = (data.images || []).map(img => ({ url: img.url, name: img.name }))
+        setImages(imgs)
+        // Respect the saved order in product.images if available
+        if (product?.images?.length > 0) {
+          const savedOrder = product.images
+            .map(savedUrl => imgs.find(img => img.url === savedUrl))
+            .filter(Boolean)
+          // Append any images not yet in saved order
+          const savedSet = new Set(product.images)
+          const extra = imgs.filter(img => !savedSet.has(img.url))
+          setOrder([...savedOrder, ...extra])
+        } else {
+          setOrder(imgs)
+        }
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [productId]) // eslint-disable-line
+
+  const effective = order ?? images
+
+  const moveUp   = (i) => { if (i === 0) return; const o = [...effective]; [o[i-1],o[i]] = [o[i],o[i-1]]; setOrder(o) }
+  const moveDown = (i) => { if (i === effective.length-1) return; const o = [...effective]; [o[i],o[i+1]] = [o[i+1],o[i]]; setOrder(o) }
+  const setHero  = (i) => { if (i === 0) return; const o = [...effective]; const [item] = o.splice(i,1); o.unshift(item); setOrder(o) }
+
+  const handleSave = async () => {
+    if (!productId || !effective.length) return
+    setSaving(true); setMsg('')
+    try {
+      const orderedUrls = effective.map(img => img.url)
+      await api('update-product-images', { productId, images: orderedUrls, heroImage: orderedUrls[0] })
+      onSaved?.(orderedUrls)
+      setMsg('✓ Ordine salvato')
+      setTimeout(() => setMsg(''), 3000)
+    } catch (e) {
+      setMsg(`⚠ ${e.message}`)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  return (
+    <div className="border border-indigo-900/50 bg-gray-950">
+      <div className="px-5 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
+        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest">🗂 Ordine Immagini · pos 1 = Hero</h3>
+        <div className="flex items-center gap-2">
+          {msg && <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{msg}</span>}
+          <button onClick={handleSave} disabled={saving || !effective.length}
+            className={`${btnPrimary} text-xs py-1`}>
+            {saving ? 'Salvataggio…' : '💾 Salva ordine'}
+          </button>
+        </div>
+      </div>
+
+      <div className="p-4">
+        {loading ? (
+          <p className="text-gray-600 text-xs py-4">Caricamento immagini…</p>
+        ) : effective.length === 0 ? (
+          <p className="text-gray-600 text-xs py-4">Nessuna immagine — carica o genera asset sopra.</p>
+        ) : (
+          <div className="space-y-1 max-h-80 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+            {effective.map((img, i) => (
+              <div key={img.url} className={`flex items-center gap-2 px-2 py-1.5 border ${i === 0 ? 'border-yellow-700/60 bg-yellow-900/10' : 'border-gray-800'}`}>
+                {/* Position */}
+                <span className={`w-5 h-5 flex-shrink-0 flex items-center justify-center text-[10px] font-bold rounded-sm ${
+                  i === 0 ? 'bg-yellow-600 text-black' : 'bg-gray-800 text-gray-400'
+                }`}>{i + 1}</span>
+
+                {/* Thumbnail */}
+                {/\.mp4$/i.test(img.url)
+                  ? <div className="w-10 h-10 flex-shrink-0 bg-gray-800 flex items-center justify-center text-sm border border-gray-700">🎬</div>
+                  : <img src={img.url} alt={img.name} className="w-10 h-10 flex-shrink-0 object-cover border border-gray-700"
+                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                }
+
+                {/* Name */}
+                <span className="flex-1 text-gray-500 text-xs truncate min-w-0">
+                  {img.name}
+                  {i === 0 && <span className="ml-2 text-yellow-500 font-semibold text-[10px]">HERO</span>}
+                </span>
+
+                {/* Controls */}
+                <div className="flex items-center gap-1 flex-shrink-0">
+                  {i > 0 && (
+                    <button onClick={() => setHero(i)} title="Imposta come Hero"
+                      className={`${btnGhost} text-[10px] py-0.5 px-1.5 text-yellow-600 border-yellow-800 hover:border-yellow-600`}>★ Hero</button>
+                  )}
+                  <button onClick={() => moveUp(i)} disabled={i === 0}
+                    className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↑</button>
+                  <button onClick={() => moveDown(i)} disabled={i === effective.length - 1}
+                    className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↓</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <p className="text-gray-700 text-xs mt-2">★ Hero = prima immagine visibile sulla pagina prodotto e homepage</p>
+      </div>
+    </div>
+  )
+}
+
 // ── Asset Library ─────────────────────────────────────────────────────────────
 
 function AssetLibrary({ productId, product, onHeroSaved }) {
@@ -1073,7 +1190,12 @@ export default function AdminProductPage() {
               onAssetSaved={() => {}}
             />
 
-            {/* AssetLibrary rimossa — le immagini sono reference nei prompt */}
+            {/* ── Image Order + Hero ── */}
+            <ImageOrderPanel
+              productId={id}
+              product={product}
+              onSaved={(urls) => setProduct(prev => prev ? { ...prev, images: urls, image: urls[0] } : prev)}
+            />
 
             {/* ── Remove Background ── */}
             <RemoveBackground />
