@@ -481,35 +481,68 @@ async function handleVideo(req, res) {
 
     if (action === 'status') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
-      // Use GET with no Content-Type; ?logs=1 returns progress logs (drop it if unsupported)
-      const statusUrl = `${baseUrl}/requests/${requestId}/status`
-      const falRes = await fetch(statusUrl, { headers: getHdrs })
-      const body   = await falRes.json().catch(() => null)
-      if (!falRes.ok) {
-        const _debug = {
-          statusUrl,
-          falHttpStatus: falRes.status,
-          falBody:       body,
-          modelId,
-          requestId,
+
+      // fal.ai queue status URL candidates — try in order until one succeeds:
+      // 1. Full model path prefix (standard docs)
+      // 2. Global /queue/ prefix (used by some fal.ai model variants)
+      // 3. Root prefix (simplest)
+      const statusUrls = [
+        `${baseUrl}/requests/${requestId}/status`,
+        `https://queue.fal.run/queue/requests/${requestId}/status`,
+        `https://queue.fal.run/requests/${requestId}/status`,
+      ]
+
+      let lastStatus = 0
+      let lastBody   = null
+      for (const statusUrl of statusUrls) {
+        const falRes = await fetch(statusUrl, { headers: getHdrs })
+        const body   = await falRes.json().catch(() => null)
+        lastStatus   = falRes.status
+        lastBody     = body
+        if (falRes.ok) {
+          console.log('[generate-video] status ok via', statusUrl)
+          return res.status(200).json({ status: body.status, logs: body.logs ?? [] })
         }
-        console.error('[generate-video] status 405 debug:', JSON.stringify(_debug))
-        return res.status(falRes.status).json({
-          error: body?.detail || body?.message || `Status check failed (HTTP ${falRes.status})`,
-          _debug,
-        })
+        console.warn(`[generate-video] status ${falRes.status} on ${statusUrl}`)
       }
-      return res.status(200).json({ status: body.status, logs: body.logs ?? [] })
+
+      // All candidates failed
+      const _debug = { triedUrls: statusUrls, lastStatus, lastBody, modelId, requestId }
+      console.error('[generate-video] status all failed:', JSON.stringify(_debug))
+      return res.status(lastStatus || 502).json({
+        error: lastBody?.detail || lastBody?.message || `Status check failed (HTTP ${lastStatus})`,
+        _debug,
+      })
     }
 
     if (action === 'result') {
       if (!requestId) return res.status(400).json({ error: 'requestId required' })
-      const falRes = await fetch(`${baseUrl}/requests/${requestId}`, { headers: getHdrs })
-      const body   = await falRes.json().catch(() => null)
-      if (!falRes.ok) return res.status(falRes.status).json({ error: body?.detail || body?.message || `Result fetch failed (HTTP ${falRes.status})` })
-      const videoUrl = body?.video?.url ?? body?.videos?.[0]?.url ?? null
-      if (!videoUrl) return res.status(500).json({ error: 'No video URL in fal.ai response' })
-      return res.status(200).json({ videoUrl })
+
+      const resultUrls = [
+        `${baseUrl}/requests/${requestId}`,
+        `https://queue.fal.run/queue/requests/${requestId}`,
+        `https://queue.fal.run/requests/${requestId}`,
+      ]
+
+      let lastStatus = 0
+      let lastBody   = null
+      for (const resultUrl of resultUrls) {
+        const falRes = await fetch(resultUrl, { headers: getHdrs })
+        const body   = await falRes.json().catch(() => null)
+        lastStatus   = falRes.status
+        lastBody     = body
+        if (falRes.ok) {
+          console.log('[generate-video] result ok via', resultUrl)
+          const videoUrl = body?.video?.url ?? body?.videos?.[0]?.url ?? null
+          if (!videoUrl) return res.status(500).json({ error: 'No video URL in fal.ai response', _debug: { body } })
+          return res.status(200).json({ videoUrl })
+        }
+        console.warn(`[generate-video] result ${falRes.status} on ${resultUrl}`)
+      }
+
+      return res.status(lastStatus || 502).json({
+        error: lastBody?.detail || lastBody?.message || `Result fetch failed (HTTP ${lastStatus})`,
+      })
     }
 
     return res.status(400).json({ error: `Unknown action: ${action}` })
