@@ -45,7 +45,13 @@ export const generatePrompts = {
           {
             "id": "social-instagram-tshirt-image-default-1",
             "name": "Studio Portrait",
-            "prompt": "Editorial studio portrait: model wearing the {name} ({color} tshirt). Warm dramatic key light from upper-left, deep shadows, Hasselblad medium format aesthetic. Print sharp and correctly lit. Confident pose, identity partially obscured. No text overlay. Square 1:1 crop for Instagram feed."
+            "prompt": "Editorial studio portrait: model wearing the {name} ({color} tshirt). Warm dramatic key light from upper-left, deep shadows, Hasselblad medium format aesthetic. Print sharp and correctly lit. Confident pose, identity partially obscured. No text overlay. Square 1:1 crop for Instagram feed.",
+            "extraRefs": [
+              {
+                "url": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/_refs/Screenshot-2026-05-06-alle-16.52.53.png",
+                "name": "Screenshot-2026-05-06-alle-16.52.53.png"
+              }
+            ]
           },
           {
             "id": "social-instagram-tshirt-image-default-2",
