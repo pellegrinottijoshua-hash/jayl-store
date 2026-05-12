@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
@@ -7,6 +8,64 @@ function JaylLogoPng({ isLight, height = 12, style }) {
     <img src={src} alt="JAYL" height={height}
       style={{ height, width: 'auto', display: 'block', ...style }}
       onError={e => { e.currentTarget.style.display = 'none' }} />
+  )
+}
+
+function NewsletterForm({ t, isLight }) {
+  const [email,  setEmail]  = useState('')
+  const [status, setStatus] = useState('idle') // idle | sending | done | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!email.trim()) return
+    setStatus('sending')
+    try {
+      const res  = await fetch('/api/capture-email', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email: email.trim() }),
+      })
+      const data = await res.json()
+      if (!res.ok && !data.ok) throw new Error(data.error || 'Error')
+      setStatus('done')
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const inputBorder = isLight ? 'border-ink/20 text-ink placeholder:text-ink-muted/50 focus:border-ink/50' : 'border-white/15 text-cream placeholder:text-white/25 focus:border-white/40'
+
+  return (
+    <div className="mb-14">
+      <h4 className={cn(t.heading, 'mb-4')} style={{ letterSpacing: '0.18em' }}>Stay in the loop</h4>
+      {status === 'done' ? (
+        <p className={cn(t.muted, 'text-xs')} style={{ color: 'var(--jayl-gold)' }}>✓ You're on the list.</p>
+      ) : (
+        <form onSubmit={handleSubmit} className="flex gap-0 max-w-xs">
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="your@email.com"
+            required
+            disabled={status === 'sending'}
+            className={`flex-1 bg-transparent border-b text-xs py-2 focus:outline-none transition-colors ${inputBorder}`}
+          />
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            className="ml-3 text-xs font-sans uppercase tracking-widest disabled:opacity-40 transition-opacity hover:opacity-70 whitespace-nowrap"
+            style={{ color: 'var(--jayl-gold)' }}
+          >
+            {status === 'sending' ? '…' : 'Join'}
+          </button>
+        </form>
+      )}
+      {status === 'error' && (
+        <p className={cn(t.muted, 'text-xs mt-1')}>Something went wrong — try again.</p>
+      )}
+    </div>
   )
 }
 
@@ -36,6 +95,9 @@ export default function Footer() {
 
         {/* Gold top rule */}
         <div className="mb-14" style={{ height: '1px', background: 'var(--jayl-gold)', opacity: 0.25 }} />
+
+        {/* Newsletter */}
+        <NewsletterForm t={t} isLight={isLight} />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
 

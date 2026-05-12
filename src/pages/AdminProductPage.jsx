@@ -697,6 +697,30 @@ function RemoveBackground() {
 
 // ── Collapsible ───────────────────────────────────────────────────────────────
 
+function CopyBlock({ label, value, rows = 2 }) {
+  const [copied, setCopied] = useState(false)
+  const copy = () => {
+    navigator.clipboard.writeText(value)
+    setCopied(true); setTimeout(() => setCopied(false), 2000)
+  }
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-1">
+        <p className="text-gray-500 text-xs uppercase tracking-wider">{label}</p>
+        <button onClick={copy} className={`${btnGhost} text-[10px] py-0.5 px-2`}>
+          {copied ? '✓ Copied' : '⎘ Copy'}
+        </button>
+      </div>
+      <textarea
+        readOnly
+        value={value}
+        rows={rows}
+        className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-none focus:outline-none font-mono leading-relaxed"
+      />
+    </div>
+  )
+}
+
 function Collapsible({ label, defaultOpen = false, children }) {
   const [open, setOpen] = useState(defaultOpen)
   return (
@@ -753,9 +777,15 @@ export default function AdminProductPage() {
   const [deleting, setDeleting]     = useState(false)
 
   // AI generation
-  const [generating, setGenerating] = useState(false)
-  const [genErr, setGenErr]         = useState('')
-  const [aiProvider, setAiProvider] = useState('openai')
+  const [generating, setGenerating]             = useState(false)
+  const [genErr, setGenErr]                     = useState('')
+  const [aiProvider, setAiProvider]             = useState('openai')
+  // AI social/SEO output
+  const [instagramCaption, setInstagramCaption] = useState('')
+  const [pinterestCaption, setPinterestCaption] = useState('')
+  const [hashtags, setHashtags]                 = useState('')
+  const [primaryKeywords, setPrimaryKeywords]   = useState([])
+  const [longTailKeywords, setLongTailKeywords] = useState([])
 
   // Load product
   useEffect(() => {
@@ -809,6 +839,11 @@ export default function AdminProductPage() {
       if (data.description) setDescription(data.description)
       if (data.altText)     setAltText(data.altText)
       if (data.tags?.length) setTags(data.tags.join(', '))
+      if (data.instagramCaption) setInstagramCaption(data.instagramCaption)
+      if (data.pinterestCaption) setPinterestCaption(data.pinterestCaption)
+      if (data.hashtags)         setHashtags(data.hashtags)
+      if (data.primaryKeywords?.length)  setPrimaryKeywords(data.primaryKeywords)
+      if (data.longTailKeywords?.length) setLongTailKeywords(data.longTailKeywords)
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -1133,6 +1168,44 @@ export default function AdminProductPage() {
                 />
               </Field>
             </Section>
+
+            {/* ── Social & SEO ── */}
+            {(instagramCaption || pinterestCaption || hashtags || primaryKeywords.length > 0) && (
+              <Section title="Social & SEO">
+                <div className="space-y-5">
+
+                  {instagramCaption && (
+                    <CopyBlock label="Instagram caption" value={instagramCaption} rows={3} />
+                  )}
+                  {pinterestCaption && (
+                    <CopyBlock label="Pinterest caption" value={pinterestCaption} rows={3} />
+                  )}
+                  {hashtags && (
+                    <CopyBlock label="Hashtags (30)" value={hashtags} rows={2} />
+                  )}
+                  {primaryKeywords.length > 0 && (
+                    <div>
+                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Primary keywords</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {primaryKeywords.map(kw => (
+                          <span key={kw} className="border border-gray-700 text-gray-400 text-xs px-2 py-0.5">{kw}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {longTailKeywords.length > 0 && (
+                    <Collapsible label={`${longTailKeywords.length} long-tail keywords`}>
+                      <div className="flex flex-wrap gap-1.5 mt-2">
+                        {longTailKeywords.map(kw => (
+                          <span key={kw} className="border border-gray-800 text-gray-500 text-xs px-2 py-0.5">{kw}</span>
+                        ))}
+                      </div>
+                    </Collapsible>
+                  )}
+
+                </div>
+              </Section>
+            )}
 
             {/* ── Video ── */}
             <Section title="Video">

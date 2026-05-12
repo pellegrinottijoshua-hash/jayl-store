@@ -1940,6 +1940,73 @@ function ReviewsTab() {
   )
 }
 
+// ── Order Row (with review request) ──────────────────────────────────────────
+
+function OrderRow({ o, STATUS_COLOR }) {
+  const [reviewSent,    setReviewSent]    = useState(false)
+  const [reviewSending, setReviewSending] = useState(false)
+
+  const handleReview = async () => {
+    const email = o.shippingAddress?.email || o.customerReferenceId
+    if (!email?.includes('@')) { alert('No customer email for this order'); return }
+    setReviewSending(true)
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action:      'send-review-request',
+          password:    'jaylpelle',
+          orderId:     o.id,
+          email,
+          customerName: [o.shippingAddress?.firstName, o.shippingAddress?.lastName].filter(Boolean).join(' '),
+          productNames: (o.items || []).map(it => it.title || it.productTitle || it.sku).filter(Boolean),
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+      setReviewSent(true)
+    } catch (e) {
+      alert('Error: ' + e.message)
+    } finally {
+      setReviewSending(false)
+    }
+  }
+
+  return (
+    <tr className="hover:bg-gray-900/50 transition-colors">
+      <td className="py-2.5 pr-4 font-mono text-xs text-gray-400">{o.id?.slice(0, 12)}…</td>
+      <td className="py-2.5 pr-4 text-gray-400 text-xs whitespace-nowrap">
+        {o.createdAt ? new Date(o.createdAt).toLocaleDateString('it-IT') : '—'}
+      </td>
+      <td className="py-2.5 pr-4 text-gray-300 text-xs">
+        {o.shippingAddress?.firstName} {o.shippingAddress?.lastName}
+        {o.shippingAddress?.country && <span className="text-gray-600 ml-1">· {o.shippingAddress.country}</span>}
+      </td>
+      <td className={`py-2.5 pr-4 text-xs font-medium capitalize ${STATUS_COLOR[o.status] || 'text-gray-400'}`}>
+        {o.status || '—'}
+      </td>
+      <td className="py-2.5 pr-4 text-gray-400 text-xs">{o.items?.length ?? '—'}</td>
+      <td className="py-2.5 pr-4 text-right text-gray-300 text-xs tabular-nums">
+        {o.totalPrice != null ? `€${(o.totalPrice / 100).toFixed(2)}` : '—'}
+      </td>
+      <td className="py-2.5 text-right">
+        {o.status === 'delivered' || o.status === 'shipped' ? (
+          <button
+            onClick={handleReview}
+            disabled={reviewSending || reviewSent}
+            className="border border-gray-700 hover:border-yellow-700 text-gray-500 hover:text-yellow-400 text-[10px] px-2 py-0.5 transition-colors disabled:opacity-40"
+          >
+            {reviewSent ? '✓ Sent' : reviewSending ? '…' : '⭐ Review'}
+          </button>
+        ) : (
+          <span className="text-gray-800 text-[10px]">—</span>
+        )}
+      </td>
+    </tr>
+  )
+}
+
 // ── Orders Tab ────────────────────────────────────────────────────────────────
 
 function OrdersTab() {
@@ -1998,28 +2065,13 @@ function OrdersTab() {
                 <th className="text-left py-2 pr-4 font-medium">Customer</th>
                 <th className="text-left py-2 pr-4 font-medium">Status</th>
                 <th className="text-left py-2 pr-4 font-medium">Items</th>
-                <th className="text-right py-2 font-medium">Total</th>
+                <th className="text-right py-2 pr-4 font-medium">Total</th>
+                <th className="text-right py-2 font-medium">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-800/50">
               {orders.map(o => (
-                <tr key={o.id} className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-2.5 pr-4 font-mono text-xs text-gray-400">{o.id?.slice(0, 12)}…</td>
-                  <td className="py-2.5 pr-4 text-gray-400 text-xs whitespace-nowrap">
-                    {o.createdAt ? new Date(o.createdAt).toLocaleDateString('it-IT') : '—'}
-                  </td>
-                  <td className="py-2.5 pr-4 text-gray-300 text-xs">
-                    {o.shippingAddress?.firstName} {o.shippingAddress?.lastName}
-                    {o.shippingAddress?.country && <span className="text-gray-600 ml-1">· {o.shippingAddress.country}</span>}
-                  </td>
-                  <td className={`py-2.5 pr-4 text-xs font-medium capitalize ${STATUS_COLOR[o.status] || 'text-gray-400'}`}>
-                    {o.status || '—'}
-                  </td>
-                  <td className="py-2.5 pr-4 text-gray-400 text-xs">{o.items?.length ?? '—'}</td>
-                  <td className="py-2.5 text-right text-gray-300 text-xs tabular-nums">
-                    {o.totalPrice != null ? `€${(o.totalPrice / 100).toFixed(2)}` : '—'}
-                  </td>
-                </tr>
+                <OrderRow key={o.id} o={o} STATUS_COLOR={STATUS_COLOR} />
               ))}
             </tbody>
           </table>

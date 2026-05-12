@@ -1,6 +1,7 @@
 import { applyCors } from './_lib/cors.js'
 import { put, del as blobDel } from '@vercel/blob'
 import { decodeItemsFromMetadata } from './_lib/catalog.js'
+import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -209,7 +210,60 @@ export default async function handler(req, res) {
     }
 
     await writeQueue(items, sha, `[cron] Process ${processed} queue items`, githubToken)
-    return res.status(200).json({ processed, total: due.length })
+
+    // ── Abandoned cart emails ───────────────────────────────────────────────
+    let cartsSent = 0
+    try {
+      const CARTS_PATH  = 'src/data/abandoned-carts.json'
+      const CART_WINDOW = 30 * 60 * 1000 // 30 minutes minimum age before sending
+      let cartFile, cartSha, carts = []
+      try {
+        cartFile = await ghGet(CARTS_PATH, githubToken)
+        cartSha  = cartFile.sha
+        carts    = JSON.parse(Buffer.from(cartFile.content, 'base64').toString('utf-8'))
+      } catch { /* file may not exist yet */ }
+
+      const eligible = carts.filter(c =>
+        !c.sent &&
+        !c.converted &&
+        (now - new Date(c.capturedAt)) > CART_WINDOW
+      )
+
+      for (const cart of eligible) {
+        const { subject, html } = buildAbandonedCartEmail({
+          email:     cart.email,
+          cartItems: cart.cartItems || [],
+        })
+        const result = await sendEmail({ to: cart.email, subject, html })
+        cart.sent   = true
+        cart.sentAt = new Date().toISOString()
+        if (!result.ok) cart.sendError = result.error
+        else cartsSent++
+      }
+
+      if (eligible.length > 0) {
+        const putUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(CARTS_PATH)}`
+        await fetch(putUrl, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${githubToken}`,
+            Accept: 'application/vnd.github+json',
+            'Content-Type': 'application/json',
+            'X-GitHub-Api-Version': '2022-11-28',
+          },
+          body: JSON.stringify({
+            message: `[cron] Abandoned cart emails sent: ${cartsSent}`,
+            content: Buffer.from(JSON.stringify(carts, null, 2) + '\n').toString('base64'),
+            branch:  GITHUB_BRANCH,
+            ...(cartSha ? { sha: cartSha } : {}),
+          }),
+        })
+      }
+    } catch (e) {
+      console.error('[cron] abandoned cart error:', e.message)
+    }
+
+    return res.status(200).json({ processed, total: due.length, cartsSent })
   }
 
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
@@ -1247,6 +1301,23 @@ Return JSON with these exact keys:
 
       const filtered = assets.filter(a => a.id !== assetId)
       await writeAssets(filtered, sha, `[assets] Delete asset ${assetId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── send-review-request ─────────────────────────────────────────────────
+    if (action === 'send-review-request') {
+      const { orderId, email: customerEmail, customerName, productNames } = data
+      if (!orderId?.trim() || !customerEmail?.trim()) {
+        return res.status(400).json({ error: 'orderId and email are required' })
+      }
+      const { buildReviewRequestEmail } = await import('./_lib/email.js')
+      const { subject, html } = buildReviewRequestEmail({
+        customerName: customerName || '',
+        orderId:      orderId.trim(),
+        productNames: Array.isArray(productNames) ? productNames : [],
+      })
+      const result = await sendEmail({ to: customerEmail.trim(), subject, html })
+      if (!result.ok) return res.status(500).json({ error: result.error })
       return res.status(200).json({ ok: true })
     }
 

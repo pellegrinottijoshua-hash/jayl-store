@@ -174,6 +174,15 @@ async function handleCreateOrder(req, res) {
       console.error('[create-order] Failed to update PI metadata', e.message)
     }
 
+    // Mark abandoned cart as converted — fire-and-forget
+    if (customerEmail) {
+      fetch(`${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/capture-email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'cart-converted', email: customerEmail }),
+      }).catch(e => console.warn('[create-order] cart-converted failed:', e.message))
+    }
+
     // Send order confirmation email — non-blocking, never throws
     const customerEmail = pi.metadata?.email || pi.receipt_email
     if (customerEmail) {

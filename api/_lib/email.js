@@ -259,4 +259,111 @@ export async function sendEmail({ to, subject, html, replyTo }) {
   }
 }
 
+// ── Template: abandoned cart ──────────────────────────────────────────────────
+
+export function buildAbandonedCartEmail({ email, cartItems = [] }) {
+  const itemsHtml = cartItems.length > 0 ? `
+    <tr><td style="padding:20px 0 16px">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${cartItems.map(item => `
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #1a1a1a">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="48" style="padding-right:14px;vertical-align:middle">
+                  ${item.image
+                    ? `<img src="${item.image}" width="48" height="48" style="display:block;width:48px;height:48px;object-fit:cover;border:1px solid #242424" alt="">`
+                    : `<div style="width:48px;height:48px;background:#1a1a1a;border:1px solid #242424"></div>`}
+                </td>
+                <td style="vertical-align:middle">
+                  <p style="margin:0;font-size:14px;color:#e8e0d0">${item.name || 'Item'}</p>
+                  ${item.color || item.size ? `<p style="margin:2px 0 0;font-size:12px;color:#7a7268">${[item.color, item.size].filter(Boolean).join(' · ')}</p>` : ''}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>`).join('')}
+      </table>
+    </td></tr>` : ''
+
+  const body = `
+    <tr><td style="padding:28px 0 8px">
+      <h1 style="margin:0;font-weight:400;font-size:28px;color:#e8e0d0">You left something behind.</h1>
+    </td></tr>
+    <tr><td style="padding:0 0 24px">
+      <p style="margin:0;font-size:15px;color:#9a9587;line-height:1.75">
+        Your cart is still waiting — and so are your items.
+      </p>
+    </td></tr>
+    ${itemsHtml}
+    <tr><td style="padding:20px 0 28px">
+      <a href="${SITE_URL}/cart"
+         style="display:inline-block;background:#b8974a;color:#0c0c0c;font-size:11px;font-weight:bold;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;padding:13px 28px">
+        Complete your order
+      </a>
+    </td></tr>
+    <tr><td style="padding:0 0 28px">
+      <p style="margin:0;font-size:12px;color:#4a4a4a;line-height:1.7">
+        Free worldwide shipping on all orders. Print-on-demand, produced by Gelato.
+      </p>
+    </td></tr>`
+
+  return {
+    subject: 'Your JAYL cart is waiting',
+    html:    htmlWrapper(body),
+  }
+}
+
+// ── Template: review request ──────────────────────────────────────────────────
+
+export function buildReviewRequestEmail({ customerName, orderId, productNames = [] }) {
+  const productsLine = productNames.length > 0
+    ? productNames.join(', ')
+    : 'your recent order'
+
+  const body = `
+    <tr><td style="padding:28px 0 8px">
+      <h1 style="margin:0;font-weight:400;font-size:26px;color:#e8e0d0">How was it?</h1>
+    </td></tr>
+    <tr><td style="padding:0 0 24px">
+      <p style="margin:0;font-size:15px;color:#9a9587;line-height:1.75">
+        Hi ${customerName || 'there'},<br><br>
+        We hope you're enjoying <strong style="color:#e8e0d0">${productsLine}</strong>. Your feedback means a lot — it only takes 30 seconds.
+      </p>
+    </td></tr>
+    <!-- Star rating CTA -->
+    <tr><td style="padding:0 0 24px">
+      <table role="presentation" cellpadding="0" cellspacing="0">
+        <tr>
+          ${[5,4,3,2,1].map(n => `
+          <td style="padding-right:6px">
+            <a href="mailto:thejaylstore@gmail.com?subject=Review%20for%20${encodeURIComponent(orderId)}&body=${encodeURIComponent(`${n} stars — `)}"
+               style="display:inline-block;width:36px;height:36px;background:#1a1a1a;border:1px solid #2a2a2a;text-align:center;line-height:36px;text-decoration:none;font-size:18px">⭐</a>
+          </td>`).join('')}
+        </tr>
+        <tr>
+          <td colspan="5" style="padding-top:6px">
+            <p style="margin:0;font-size:10px;color:#4a4a4a;letter-spacing:0.1em">5 ★ → 1 ★  (click to send)</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 28px">
+      <a href="mailto:thejaylstore@gmail.com?subject=Review%20for%20${encodeURIComponent(orderId)}"
+         style="display:inline-block;background:transparent;border:1px solid #b8974a;color:#b8974a;font-size:11px;font-weight:bold;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;padding:11px 24px">
+        Write a review
+      </a>
+    </td></tr>
+    <tr><td style="padding:0 0 28px">
+      <p style="margin:0;font-size:12px;color:#4a4a4a;line-height:1.7">
+        Order reference: <span style="font-family:monospace;color:#7a7268">${orderId}</span>
+      </p>
+    </td></tr>`
+
+  return {
+    subject: `How was your JAYL order? — ${orderId}`,
+    html:    htmlWrapper(body),
+  }
+}
+
 export const STORE_EMAIL_ADDRESS = STORE_EMAIL

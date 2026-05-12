@@ -243,6 +243,25 @@ function CheckoutForm() {
               placeholder="you@example.com"
               error={errors.email}
               autoComplete="email"
+              onBlur={() => {
+                const em = form.email.trim()
+                if (!em.includes('@') || !items.length) return
+                fetch('/api/capture-email', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    action:    'cart',
+                    email:     em,
+                    cartItems: items.map(it => ({
+                      name:  it.product?.name  || it.productId,
+                      image: it.product?.image || null,
+                      color: it.color || null,
+                      size:  it.size  || null,
+                      quantity: it.quantity,
+                    })),
+                  }),
+                }).catch(() => {}) // fire-and-forget, never block checkout
+              }}
             />
           </FormSection>
 
