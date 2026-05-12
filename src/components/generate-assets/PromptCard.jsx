@@ -74,9 +74,11 @@ export default function PromptCard({
   const refInputRef  = useRef(null)
   const fileInputRef = useRef(null)
 
-  // Build allRefs: deduplicate images[] by URL first (some Gelato variants share the
-  // same image), then append any truly-external extra refs (uploaded file / pasted URL
-  // not already in images[]) so they show once with a ✕ button.
+  // Build allRefs:
+  //  1. Deduplicate images[] by URL (Gelato colour variants can share a mockup URL)
+  //  2. Collect external refs: items whose URL is NOT in images[].
+  //     This includes both extraRefs AND selectedImage (when it's an external upload that
+  //     has become the primary slot — if we don't include it here it vanishes from the strip).
   const imageUrlSet = new Set()
   const dedupedImages = []
   for (const img of (images || [])) {
@@ -85,12 +87,17 @@ export default function PromptCard({
       dedupedImages.push(img)
     }
   }
-  const allRefs = [
-    ...dedupedImages,
-    ...(extraRefs || [])
-      .filter(r => !imageUrlSet.has(r.url))   // only truly external refs get appended
-      .map(r => ({ ...r, _isExternal: true })),
-  ]
+  // Use a Map to deduplicate externals by URL while preserving insertion order
+  const externalMap = new Map()
+  if (selectedImage && !imageUrlSet.has(selectedImage.url)) {
+    externalMap.set(selectedImage.url, { ...selectedImage, _isExternal: true })
+  }
+  for (const r of (extraRefs || [])) {
+    if (!imageUrlSet.has(r.url) && !externalMap.has(r.url)) {
+      externalMap.set(r.url, { ...r, _isExternal: true })
+    }
+  }
+  const allRefs = [...dedupedImages, ...externalMap.values()]
 
   // ── Add ref via URL ──────────────────────────────────────────────────────
   const commitUrl = () => {
@@ -298,9 +305,8 @@ export default function PromptCard({
                               : 'border-gray-700 hover:border-gray-500'
                       }`}
                     >
-                      {/* External refs use object-contain + dark bg so any image type renders cleanly */}
                       <img src={toAbsoluteUrl(img.url)} alt={img.name}
-                        className={`w-full h-full ${img._isExternal ? 'object-contain bg-gray-900' : 'object-cover'}`}
+                        className="w-full h-full object-cover"
                         onError={e => { e.currentTarget.style.opacity = '0.3' }} />
                     </button>
                     {/* Slot number badge — shown on all selected images */}
@@ -318,13 +324,12 @@ export default function PromptCard({
                       >✕</button>
                     )}
                   </div>
-                  {/* Position label (non-selected) or filename for external refs */}
-                  <span className="text-[9px] font-mono leading-none max-w-[48px] truncate text-center"
-                    style={{ color: img._isExternal ? '#4ade80' : '#4b5563' }}>
-                    {img._isExternal
-                      ? (img.name || '').replace(/\.[^.]+$/, '').slice(0, 8)
-                      : isSelected ? '' : i + 1}
-                  </span>
+                  {/* Position number for non-selected product images */}
+                  {!img._isExternal && !isSelected && (
+                    <span className="text-[9px] font-mono leading-none text-center" style={{ color: '#4b5563' }}>
+                      {i + 1}
+                    </span>
+                  )}
                 </div>
               )
             })}

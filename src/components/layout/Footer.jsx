@@ -4,10 +4,21 @@ import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 function JaylLogoPng({ isLight, height = 12, style }) {
   const src = isLight ? '/logo-light.svg' : '/logo-dark.svg'
+  const [failed, setFailed] = useState(false)
+  if (failed) {
+    return (
+      <span
+        className="font-display tracking-widest select-none"
+        style={{ fontSize: height * 0.7, lineHeight: 1, color: isLight ? '#1a1a1a' : '#f5f0e8', ...style }}
+      >
+        JAYL
+      </span>
+    )
+  }
   return (
-    <img src={src} alt="JAYL" height={height}
+    <img src={src} alt="JAYL"
       style={{ height, width: 'auto', display: 'block', ...style }}
-      onError={e => { e.currentTarget.style.display = 'none' }} />
+      onError={() => setFailed(true)} />
   )
 }
 

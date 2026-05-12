@@ -537,8 +537,8 @@ export default function CheckoutPage() {
             <ArrowLeft size={12} />
             Continue Shopping
           </Link>
-          <Link to="/" className="font-display text-2xl text-cream tracking-widest">
-            JAYL
+          <Link to="/" aria-label="JAYL — Home">
+            <img src="/logo-dark.svg" alt="JAYL" style={{ height: 40, width: 'auto', display: 'block', opacity: 0.9 }} />
           </Link>
           <div className="flex items-center gap-1.5 text-xs text-text-muted">
             <Lock size={12} />
