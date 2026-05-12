@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
-import JaylLogo from '@/components/JaylLogo'
-import { logoColor } from '@/data/brand'
+function JaylLogoPng({ isLight, height = 12, style }) {
+  const src = isLight ? '/logo-light.png' : '/logo-dark.png'
+  return (
+    <img src={src} alt="JAYL" height={height}
+      style={{ height, width: 'auto', display: 'block', ...style }}
+      onError={e => { e.currentTarget.style.display = 'none' }} />
+  )
+}
 
 export default function Footer() {
   const { pageTheme } = useThemeStore()
@@ -135,7 +141,7 @@ export default function Footer() {
             {/* Left: logo + copyright */}
             <div className="flex items-center gap-4">
               <Link to="/" aria-label="JAYL — Home">
-                <JaylLogo color={logoColor(isLight)} height={12} style={{ opacity: 0.65 }} />
+                <JaylLogoPng isLight={isLight} height={12} style={{ opacity: 0.65 }} />
               </Link>
               <span className={cn(t.muted, 'text-xs')}>© 2026 JAYL. All rights reserved.</span>
             </div>

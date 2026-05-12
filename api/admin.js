@@ -251,7 +251,7 @@ export default async function handler(req, res) {
     // Lightweight action: updates only the images/image fields of an existing product.
     // Used by the Review panel "Pubblica su jayl.store" without requiring the full product object.
     if (action === 'update-product-images') {
-      const { productId, images: newImages, heroImage } = data
+      const { productId, images: newImages, heroImage, image: explicitImage } = data
       if (!productId || !Array.isArray(newImages)) {
         return res.status(400).json({ error: 'productId and images[] required' })
       }
@@ -260,8 +260,10 @@ export default async function handler(req, res) {
       if (idx < 0) return res.status(404).json({ error: 'Product not found' })
       products[idx] = {
         ...products[idx],
-        images: newImages,
-        image: heroImage ?? newImages[0] ?? products[idx].image,
+        images:    newImages,
+        // explicitImage = 16:9 desktop hero set by admin; heroImage = 9:16 mobile hero
+        image:     explicitImage ?? heroImage ?? newImages[0] ?? products[idx].image,
+        heroImage: heroImage     ?? newImages[0] ?? products[idx].heroImage,
         updatedAt: new Date().toISOString(),
       }
       await writeAdminProducts(products, sha, `admin: update images order for ${productId}`, githubToken)

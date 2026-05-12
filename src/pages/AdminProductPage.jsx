@@ -204,11 +204,14 @@ function ImageGallery({ productId, readOnly }) {
 // Shows all product images (Gelato defaults + generated) with drag/reorder + hero
 
 function ImageOrderPanel({ productId, product, onSaved }) {
-  const [images,    setImages]    = useState([])
-  const [order,     setOrder]     = useState(null) // null = loaded order
-  const [loading,   setLoading]   = useState(true)
-  const [saving,    setSaving]    = useState(false)
-  const [msg,       setMsg]       = useState('')
+  const [images,      setImages]      = useState([])
+  const [order,       setOrder]       = useState(null) // null = loaded order
+  const [loading,     setLoading]     = useState(true)
+  const [saving,      setSaving]      = useState(false)
+  const [msg,         setMsg]         = useState('')
+  // Explicit hero designations (independent from image order)
+  const [desktopHero, setDesktopHero] = useState(product?.image     || null) // 16:9
+  const [mobileHero,  setMobileHero]  = useState(product?.heroImage || null) // 9:16
 
   useEffect(() => {
     if (!productId) return
@@ -245,9 +248,17 @@ function ImageOrderPanel({ productId, product, onSaved }) {
     setSaving(true); setMsg('')
     try {
       const orderedUrls = effective.map(img => img.url)
-      await api('update-product-images', { productId, images: orderedUrls, heroImage: orderedUrls[0] })
+      // Use explicit hero selections if set, otherwise fall back to pos 1
+      const heroImg    = mobileHero  || orderedUrls[0]
+      const desktopImg = desktopHero || orderedUrls[0]
+      await api('update-product-images', {
+        productId,
+        images:    orderedUrls,
+        heroImage: heroImg,   // product.heroImage → 9:16 mobile hero
+        image:     desktopImg // product.image    → 16:9 desktop hero
+      })
       onSaved?.(orderedUrls)
-      setMsg('✓ Ordine salvato')
+      setMsg('✓ Salvato')
       setTimeout(() => setMsg(''), 3000)
     } catch (e) {
       setMsg(`⚠ ${e.message}`)
@@ -269,6 +280,26 @@ function ImageOrderPanel({ productId, product, onSaved }) {
         </div>
       </div>
 
+      {/* Hero designations summary */}
+      <div className="px-4 pt-3 pb-1 flex gap-3 flex-wrap border-b border-gray-800/60">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[10px] font-mono text-blue-500 uppercase">🖥 Desktop 16:9</span>
+          {desktopHero
+            ? <img src={desktopHero} alt="" className="w-8 h-5 object-cover border border-blue-700/50 flex-shrink-0"
+                onError={e => { e.currentTarget.style.display = 'none' }} />
+            : <span className="text-gray-700 text-[10px]">non impostata</span>
+          }
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="text-[10px] font-mono text-purple-400 uppercase">📱 Mobile 9:16</span>
+          {mobileHero
+            ? <img src={mobileHero} alt="" className="w-5 h-8 object-cover border border-purple-700/50 flex-shrink-0"
+                onError={e => { e.currentTarget.style.display = 'none' }} />
+            : <span className="text-gray-700 text-[10px]">non impostata</span>
+          }
+        </div>
+      </div>
+
       <div className="p-4">
         {loading ? (
           <p className="text-gray-600 text-xs py-4">Caricamento immagini…</p>
@@ -276,42 +307,68 @@ function ImageOrderPanel({ productId, product, onSaved }) {
           <p className="text-gray-600 text-xs py-4">Nessuna immagine — carica o genera asset sopra.</p>
         ) : (
           <div className="space-y-1 max-h-80 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
-            {effective.map((img, i) => (
-              <div key={img.url} className={`flex items-center gap-2 px-2 py-1.5 border ${i === 0 ? 'border-yellow-700/60 bg-yellow-900/10' : 'border-gray-800'}`}>
-                {/* Position */}
-                <span className={`w-5 h-5 flex-shrink-0 flex items-center justify-center text-[10px] font-bold rounded-sm ${
-                  i === 0 ? 'bg-yellow-600 text-black' : 'bg-gray-800 text-gray-400'
-                }`}>{i + 1}</span>
+            {effective.map((img, i) => {
+              const isDesktop = desktopHero === img.url
+              const isMobile  = mobileHero  === img.url
+              const isVideo   = /\.mp4$/i.test(img.url)
+              return (
+                <div key={img.url} className={`flex items-center gap-2 px-2 py-1.5 border ${
+                  isDesktop || isMobile ? 'border-blue-700/40 bg-blue-900/5' : i === 0 ? 'border-gray-700/60' : 'border-gray-800'
+                }`}>
+                  {/* Position */}
+                  <span className={`w-5 h-5 flex-shrink-0 flex items-center justify-center text-[10px] font-bold rounded-sm ${
+                    i === 0 ? 'bg-gray-600 text-white' : 'bg-gray-800 text-gray-400'
+                  }`}>{i + 1}</span>
 
-                {/* Thumbnail */}
-                {/\.mp4$/i.test(img.url)
-                  ? <div className="w-10 h-10 flex-shrink-0 bg-gray-800 flex items-center justify-center text-sm border border-gray-700">🎬</div>
-                  : <img src={img.url} alt={img.name} className="w-10 h-10 flex-shrink-0 object-cover border border-gray-700"
-                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                }
+                  {/* Thumbnail */}
+                  {isVideo
+                    ? <div className="w-10 h-10 flex-shrink-0 bg-gray-800 flex items-center justify-center text-sm border border-gray-700">🎬</div>
+                    : <img src={img.url} alt={img.name} className="w-10 h-10 flex-shrink-0 object-cover border border-gray-700"
+                        onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                  }
 
-                {/* Name */}
-                <span className="flex-1 text-gray-500 text-xs truncate min-w-0">
-                  {img.name}
-                  {i === 0 && <span className="ml-2 text-yellow-500 font-semibold text-[10px]">HERO</span>}
-                </span>
+                  {/* Name + badges */}
+                  <span className="flex-1 text-gray-500 text-xs truncate min-w-0">
+                    {img.name}
+                    {isDesktop && <span className="ml-1.5 text-blue-400 font-semibold text-[9px]">🖥 16:9</span>}
+                    {isMobile  && <span className="ml-1.5 text-purple-400 font-semibold text-[9px]">📱 9:16</span>}
+                  </span>
 
-                {/* Controls */}
-                <div className="flex items-center gap-1 flex-shrink-0">
-                  {i > 0 && (
-                    <button onClick={() => setHero(i)} title="Imposta come Hero"
-                      className={`${btnGhost} text-[10px] py-0.5 px-1.5 text-yellow-600 border-yellow-800 hover:border-yellow-600`}>★ Hero</button>
+                  {/* Controls */}
+                  {!isVideo && (
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <button
+                        onClick={() => setDesktopHero(isDesktop ? null : img.url)}
+                        title="Imposta come hero Desktop (16:9)"
+                        className={`text-[9px] py-0.5 px-1.5 border transition-colors ${
+                          isDesktop
+                            ? 'bg-blue-700 border-blue-600 text-white'
+                            : 'bg-transparent border-gray-700 text-gray-500 hover:border-blue-700 hover:text-blue-400'
+                        }`}>
+                        🖥
+                      </button>
+                      <button
+                        onClick={() => setMobileHero(isMobile ? null : img.url)}
+                        title="Imposta come hero Mobile (9:16)"
+                        className={`text-[9px] py-0.5 px-1.5 border transition-colors ${
+                          isMobile
+                            ? 'bg-purple-700 border-purple-600 text-white'
+                            : 'bg-transparent border-gray-700 text-gray-500 hover:border-purple-700 hover:text-purple-400'
+                        }`}>
+                        📱
+                      </button>
+                      <button onClick={() => moveUp(i)} disabled={i === 0}
+                        className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↑</button>
+                      <button onClick={() => moveDown(i)} disabled={i === effective.length - 1}
+                        className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↓</button>
+                    </div>
                   )}
-                  <button onClick={() => moveUp(i)} disabled={i === 0}
-                    className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↑</button>
-                  <button onClick={() => moveDown(i)} disabled={i === effective.length - 1}
-                    className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↓</button>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
-        <p className="text-gray-700 text-xs mt-2">★ Hero = prima immagine visibile sulla pagina prodotto e homepage</p>
+        <p className="text-gray-700 text-[10px] mt-2">🖥 Desktop 16:9 = homepage hero | 📱 Mobile 9:16 = hero verticale · Salva per applicare</p>
       </div>
     </div>
   )

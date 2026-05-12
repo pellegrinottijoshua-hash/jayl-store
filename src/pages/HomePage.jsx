@@ -8,11 +8,13 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 
 const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
-const pokemonProduct  = products.find((p) => p.id === 'cool-pokemon-tee')
-const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
-const featuredObject  = objectsProducts[0]
+// HIDDEN - re-enable for Art launch
+// const pokemonProduct  = products.find((p) => p.id === 'cool-pokemon-tee')
+// const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
+const featuredObject  = objectsProducts[0]  || null
+const featuredObject2 = objectsProducts[1]  || objectsProducts[0] || null
 // Sort: products with createdAt first (newest → oldest), then the rest in original order
-const newInProducts = [...products]
+const newInProducts = [...objectsProducts]
   .sort((a, b) => {
     if (a.createdAt && b.createdAt) return new Date(b.createdAt) - new Date(a.createdAt)
     if (a.createdAt) return -1
@@ -22,7 +24,8 @@ const newInProducts = [...products]
   .slice(0, 6)
 
 // light = cream sections, dark = dark sections
-const SECTION_THEMES = ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light']
+// HIDDEN - re-enable for Art launch: ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light']
+const SECTION_THEMES = ['dark', 'dark', 'light', 'dark', 'light']
 
 function FallingS() {
   return (
@@ -73,65 +76,15 @@ export default function HomePage() {
   return (
     <div className="w-full">
 
-      {/* ════ SECTION 1 — Hero (cream) ══════════════════════════════════ */}
-      <section
-        className="h-screen w-screen relative overflow-hidden"
-        style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
-      >
-        <div
-          className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
-          style={{ backgroundColor: '#f5f0e8' }}
-        >
-          <p className="font-sans font-light" style={{ fontSize: 'clamp(5rem, 20vw, 14rem)', letterSpacing: '0.22em', color: 'rgba(17,17,17,0.05)' }}>JAYL</p>
-        </div>
-        <div
-          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
-          style={{ background: 'linear-gradient(to top, rgba(245,240,232,0.85) 0%, transparent 100%)' }}
-        />
-        <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-sans tracking-label uppercase mb-3" style={{ color: 'rgba(17,17,17,0.45)' }}>Art</p>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight mb-2" style={{ color: '#111111' }}>
-            {featuredArt.name}
-          </h1>
-          <p className="text-sm mb-6" style={{ color: 'rgba(17,17,17,0.55)' }}>{featuredArt.subtitle}</p>
-          <Link
-            to={`/product/${featuredArt.id}`}
-            className="inline-flex items-center gap-2 text-xs font-sans tracking-label uppercase px-5 py-3 transition-colors"
-            style={{ backgroundColor: '#111111', color: '#f5f0e8' }}
-          >
-            Shop Now <ArrowRight size={12} />
-          </Link>
-        </div>
+      {/* ════ SECTION 1 — Art Hero (cream) — HIDDEN - re-enable for Art launch ════
+      <section className="h-screen w-screen relative overflow-hidden" style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}>
+        ...art hero content...
       </section>
-
-      {/* ════ SECTION 2 — Art fullscreen hero ══════════════════════════ */}
-      <section
-        className="h-screen w-screen relative overflow-hidden cursor-pointer"
-        onClick={() => navigate(`/product/${featuredArt.id}`)}
-      >
-        <img
-          src={featuredArt.heroImage ?? featuredArt.image}
-          alt={featuredArt.name}
-          className="absolute inset-0 w-full h-full object-cover"
-          onError={(e) => { e.currentTarget.style.display = 'none' }}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">
-            {slugToTitle(featuredArt.movement)}
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-1">
-            {featuredArt.name}
-          </h2>
-          <p className="text-sm text-white/70 mb-6">from {formatPrice(featuredArt.price)}</p>
-          <Link
-            to={`/product/${featuredArt.id}`}
-            className="inline-flex items-center gap-2 bg-white text-black text-xs font-sans tracking-label uppercase px-5 py-3 hover:bg-white/90 transition-colors"
-          >
-            Shop Now <ArrowRight size={12} />
-          </Link>
-        </div>
+      ════ SECTION 2 — Art fullscreen — HIDDEN - re-enable for Art launch ════
+      <section className="h-screen w-screen relative overflow-hidden cursor-pointer" onClick={() => navigate(`/product/${featuredArt?.id}`)}>
+        ...art fullscreen content...
       </section>
+      ════════════════════════════════════════════════════════════════════════ */}
 
       {/* ════ SECTION 3 — Objects fullscreen hero ══════════════════════ */}
       <section
@@ -160,31 +113,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════ SECTION 4 — Cool Pokemon fullscreen hero ════════════════ */}
+      {/* ════ SECTION 4 — Second featured product ════════════════════ */}
       <section
         className="h-screen w-screen bg-black relative overflow-hidden cursor-pointer"
-        onClick={() => pokemonProduct && navigate(`/product/${pokemonProduct.id}`)}
+        onClick={() => featuredObject2 && navigate(`/product/${featuredObject2.id}`)}
       >
-        {pokemonProduct && (
+        {featuredObject2 && (
           <img
-            src={pokemonProduct.heroImage ?? pokemonProduct.image}
-            alt={pokemonProduct.name}
+            src={featuredObject2.heroImage ?? featuredObject2.image}
+            alt={featuredObject2.name}
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => { e.currentTarget.style.display = 'none' }}
           />
         )}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
-          <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">New Collection</p>
+          <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">
+            {featuredObject2?.collection || 'New Collection'}
+          </p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-1">
-            Cool Pokemon
+            {featuredObject2?.name || ''}
           </h2>
-          {pokemonProduct && (
-            <p className="text-sm text-white/70 mb-6">from {formatPrice(pokemonProduct.price)}</p>
+          {featuredObject2 && (
+            <p className="text-sm text-white/70 mb-6">from {formatPrice(featuredObject2.price)}</p>
           )}
-          {pokemonProduct && (
+          {featuredObject2 && (
             <Link
-              to={`/product/${pokemonProduct.id}`}
+              to={`/product/${featuredObject2.id}`}
               onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center gap-2 bg-white text-black text-xs font-sans tracking-label uppercase px-5 py-3 hover:bg-white/90 transition-colors"
             >
@@ -204,7 +159,7 @@ export default function HomePage() {
           <div className="h-px w-8 flex-shrink-0" style={{ backgroundColor: 'rgba(17,17,17,0.15)' }} />
           <div className="flex-1" />
           <Link
-            to="/art"
+            to="/objects"
             className="inline-flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase transition-opacity hover:opacity-60"
             style={{ color: 'rgba(17,17,17,0.55)' }}
           >

@@ -455,12 +455,23 @@ async function handleVideo(req, res) {
         }
       }
 
-      // duration must be an integer (fal.ai models reject strings); user range 3-15s
-      const durationInt = Math.max(3, Math.min(15, parseInt(duration, 10) || 5))
+      // Kling and most fal.ai video models require duration as a string enum ("5" | "10")
+      // Clamp user input to 5 or 10 — nearest valid value
+      const rawDur = parseInt(duration, 10) || 5
+      const durationStr = rawDur <= 7 ? '5' : '10'
+
+      // For models that need aspect_ratio, derive from imageSize if provided
+      const aspectRatio = (() => {
+        const s = (req.body?.imageSize || '')
+        if (s.includes('portrait') || s === '9:16') return '9:16'
+        if (s.includes('landscape') || s === '16:9') return '16:9'
+        return '16:9' // default for video
+      })()
 
       const submitBody = {
-        prompt:   prompt.trim(),
-        duration: durationInt,
+        prompt:       prompt.trim(),
+        duration:     durationStr,
+        aspect_ratio: aspectRatio,
         ...(falImageUrl ? { image_url: falImageUrl } : {}),
       }
       console.log('[generate-video] submit →', baseUrl, JSON.stringify({ ...submitBody, prompt: submitBody.prompt.slice(0, 80) }))

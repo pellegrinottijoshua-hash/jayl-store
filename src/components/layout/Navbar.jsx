@@ -6,8 +6,20 @@ import { useCartStore } from '@/store/cartStore'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
-import JaylLogo from '@/components/JaylLogo'
-import { logoColor } from '@/data/brand'
+// Logo: uses PNG files /public/logo-light.png (dark logo, light bg) and /public/logo-dark.png (light logo, dark bg)
+// Place your logo PNG files in /public/ with those names.
+function JaylLogoPng({ isLight, height = 16 }) {
+  const src = isLight ? '/logo-light.png' : '/logo-dark.png'
+  return (
+    <img
+      src={src}
+      alt="JAYL"
+      height={height}
+      style={{ height, width: 'auto', display: 'block' }}
+      onError={e => { e.currentTarget.style.display = 'none' }}
+    />
+  )
+}
 
 // ── Social icons (inline SVG, 16×16 viewBox) ─────────────────────────────────
 function InstagramIcon({ size = 16 }) {
@@ -60,7 +72,8 @@ function FallingS() {
 }
 
 const NAV_ITEMS = [
-  { id: 'art',    label: 'art',    to: '/art' },
+  // HIDDEN - re-enable for Art launch
+  // { id: 'art',    label: 'art',    to: '/art' },
   { id: 'objects',label: 'objects',to: '/objects' },
   { id: 'artist', label: null,     to: '/artist' },  // uses FallingS render
 ]
@@ -153,11 +166,7 @@ export default function Navbar() {
           {/* ── Left: JAYL logo ───────────────────────────────────────── */}
           <div className="w-14 sm:w-20 pointer-events-auto">
             <Link to="/" aria-label="JAYL — Home">
-              <JaylLogo
-                color={logoColor(isLight)}
-                height={14}
-                style={{ transition: 'color 0.5s' }}
-              />
+              <JaylLogoPng isLight={isLight} height={14} />
             </Link>
           </div>
 
@@ -340,7 +349,7 @@ export default function Navbar() {
         {/* Close row */}
         <div className="flex items-center justify-between px-5 pt-5 h-14">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} aria-label="JAYL — Home">
-            <JaylLogo color={logoColor(isLight)} height={14} />
+            <JaylLogoPng isLight={isLight} height={14} />
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
@@ -358,7 +367,8 @@ export default function Navbar() {
         <nav className="flex-1 flex flex-col items-start justify-center px-8 gap-8">
 
           {[
-            { id: 'art',    label: 'art',     to: '/art' },
+            // HIDDEN - re-enable for Art launch
+            // { id: 'art',    label: 'art',     to: '/art' },
             { id: 'objects',label: 'objects',  to: '/objects' },
             { id: 'artist', label: null,       to: '/artist' },
           ].map(({ id, label, to }) => (
