@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
-import { generatePrompts as staticPrompts } from '@/data/generate-prompts'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import PromptCard from './PromptCard'
 import {
   api, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, SOCIAL_META, PRODUCT_TYPE_META,
@@ -65,10 +64,13 @@ export default function SocialPanel({
   const [videoDuration,    setVideoDuration]    = useState('5')
 
   // Per-prompt state (keyed by template id)
+  const [rawPrompts,     setRawPrompts]     = useState(null)
   const [localPrompts,   setLocalPrompts]   = useState({})
   const [promptSettings, setPromptSettings] = useState({})
   const [selectedImages, setSelectedImages] = useState({})
   const [results,        setResults]        = useState({})
+  const [savingPrompts,  setSavingPrompts]  = useState({})
+  const [savedMsgs,      setSavedMsgs]      = useState({})
 
   // Per-platform state
   const [platformCopy,   setPlatformCopy]   = useState({})
@@ -82,21 +84,38 @@ export default function SocialPanel({
 
   const pollTimers = useRef({})
 
-  // ── Init local prompts from static data ──────────────────────────────────
-  useEffect(() => {
+  // ── Load prompts from API (same pattern as SitoPanel) ────────────────────
+  const initPrompts = useCallback((prompts) => {
+    setRawPrompts(prompts)
     const v = { name: productName, type: productType, color: primaryColor, collection }
-    const social = staticPrompts.social || {}
+    const social = prompts?.social || {}
     const local = {}
+    const settings = {}
     for (const platform of Object.keys(social)) {
       for (const pType of Object.keys(social[platform])) {
         const { image = [], video = [] } = social[platform][pType]
         for (const t of [...image, ...video]) {
           local[t.id] = subVars(t.prompt, v)
+          if (t.modelId || t.videoModelId || t.imageSize || t.referenceUrl || t.extraRefs) {
+            settings[t.id] = {
+              modelId:      t.modelId || t.videoModelId || null,
+              imageSize:    t.imageSize    || null,
+              referenceUrl: t.referenceUrl || null,
+              extraRefs:    Array.isArray(t.extraRefs) ? t.extraRefs : [],
+            }
+          }
         }
       }
     }
     setLocalPrompts(local)
-  }, [productName, productType, primaryColor, collection])
+    setPromptSettings(settings)
+  }, [productName, productType, primaryColor, collection]) // eslint-disable-line
+
+  useEffect(() => {
+    api('read-prompts', {})
+      .then(data => initPrompts(data.prompts || {}))
+      .catch(() => initPrompts({}))
+  }, [productId, initPrompts])
 
   useEffect(() => () => { Object.values(pollTimers.current).forEach(clearInterval) }, [])
 
@@ -112,10 +131,71 @@ export default function SocialPanel({
   }
 
   const getTemplates = (platform) =>
-    staticPrompts.social?.[platform]?.[activeProduct] || { image: [], video: [] }
+    rawPrompts?.social?.[platform]?.[activeProduct] || { image: [], video: [] }
+
+  // ── Prompt CRUD ──────────────────────────────────────────────────────────
+  const handleAddPrompt = async (platform, imageType) => {
+    const id = `social-${platform}-${activeProduct}-${imageType}-custom-${Date.now()}`
+    const updated = JSON.parse(JSON.stringify(rawPrompts || {}))
+    if (!updated.social)                                      updated.social = {}
+    if (!updated.social[platform])                            updated.social[platform] = {}
+    if (!updated.social[platform][activeProduct])             updated.social[platform][activeProduct] = { image: [], video: [] }
+    if (!updated.social[platform][activeProduct][imageType])  updated.social[platform][activeProduct][imageType] = []
+    updated.social[platform][activeProduct][imageType].push({ id, name: 'New Prompt', prompt: '' })
+    try {
+      await api('save-prompts', { prompts: updated })
+      setRawPrompts(updated)
+      setLocalPrompts(prev => ({ ...prev, [id]: '' }))
+    } catch (e) { console.warn('add social prompt failed', e.message) }
+  }
+
+  const handleDeletePrompt = async (templateId, platform, imageType) => {
+    const updated = JSON.parse(JSON.stringify(rawPrompts || {}))
+    const arr = updated.social?.[platform]?.[activeProduct]?.[imageType]
+    if (arr) {
+      const idx = arr.findIndex(t => t.id === templateId)
+      if (idx >= 0) arr.splice(idx, 1)
+    }
+    try {
+      await api('save-prompts', { prompts: updated })
+      setRawPrompts(updated)
+    } catch (e) { console.warn('delete social prompt failed', e.message) }
+  }
+
+  const handleSavePrompt = async (templateId, platform, imageType) => {
+    if (!rawPrompts) return
+    setSavingPrompts(prev => ({ ...prev, [templateId]: true }))
+    setSavedMsgs(prev => ({ ...prev, [templateId]: '' }))
+    try {
+      const ps     = promptSettings[templateId] || {}
+      const selImg = selectedImages[templateId] || null
+      const updated = JSON.parse(JSON.stringify(rawPrompts))
+      const arr = updated.social?.[platform]?.[activeProduct]?.[imageType]
+      if (arr) {
+        const idx = arr.findIndex(t => t.id === templateId)
+        if (idx >= 0) {
+          const isVid = imageType === 'video'
+          const extra = {}
+          if (ps.modelId) extra[isVid ? 'videoModelId' : 'modelId'] = ps.modelId
+          if (ps.imageSize && !isVid) extra.imageSize = ps.imageSize
+          if (selImg?.url) extra.referenceUrl = selImg.url
+          if (ps.extraRefs?.length) extra.extraRefs = ps.extraRefs
+          arr[idx] = { ...arr[idx], prompt: localPrompts[templateId] ?? arr[idx].prompt, ...extra }
+        }
+      }
+      await api('save-prompts', { prompts: updated })
+      setRawPrompts(updated)
+      setSavedMsgs(prev => ({ ...prev, [templateId]: '✓' }))
+      setTimeout(() => setSavedMsgs(prev => ({ ...prev, [templateId]: '' })), 2000)
+    } catch {
+      setSavedMsgs(prev => ({ ...prev, [templateId]: '⚠' }))
+    } finally {
+      setSavingPrompts(prev => ({ ...prev, [templateId]: false }))
+    }
+  }
 
   const getDoneCount = (platform) => {
-    const { image, video } = getTemplates(platform)
+    const { image = [], video = [] } = getTemplates(platform)
     return [...image, ...video].filter(t => results[t.id]?.status === 'done').length
   }
 
@@ -240,7 +320,7 @@ export default function SocialPanel({
     setPublishMsgs(prev => ({ ...prev, [platform]: '' }))
     setNeedsConnect(prev => ({ ...prev, [platform]: null }))
     try {
-      const { image, video } = getTemplates(platform)
+      const { image = [], video = [] } = getTemplates(platform)
       const doneAssets = [...image, ...video]
         .map(t => ({ id: t.id, ...results[t.id] }))
         .filter(r => r.status === 'done' && (r.imageUrl || r.videoUrl))
@@ -309,7 +389,7 @@ export default function SocialPanel({
 
     const allTasks = []
     for (const platform of PLATFORMS) {
-      const { image } = getTemplates(platform)
+      const { image = [] } = getTemplates(platform)
       for (const t of image) {
         if (results[t.id]?.status !== 'done') allTasks.push({ id: t.id, type: 'image', platform })
       }
@@ -330,21 +410,25 @@ export default function SocialPanel({
   }
 
   // ── PromptCard shared props builder ─────────────────────────────────────
-  const promptCardProps = (t, isVideo) => ({
-    template:        t,
+  const promptCardProps = (t, isVideo, platform, imageType) => ({
+    template:         t,
     isVideo,
-    promptText:      localPrompts[t.id] ?? '',
-    onPromptChange:  val => setLocalPrompts(prev => ({ ...prev, [t.id]: val })),
-    result:          results[t.id],
-    onGenerate:      () => isVideo ? handleGenerateVideo(t.id) : handleGenerateImage(t.id),
-    onSave:          (url, type) => {
+    promptText:       localPrompts[t.id] ?? '',
+    onPromptChange:   val => setLocalPrompts(prev => ({ ...prev, [t.id]: val })),
+    result:           results[t.id],
+    onGenerate:       () => isVideo ? handleGenerateVideo(t.id) : handleGenerateImage(t.id),
+    onSave:           (url, type) => {
       api('import-generated-asset', { productId, assetUrl: url, assetType: type })
         .then(data => { if (type === 'image') onAssetSaved?.(data.path) })
         .catch(() => {})
     },
-    images:          allImages,
-    extraRefs:       promptSettings[t.id]?.extraRefs || [],
-    onAddExtraRef:   ref => setPromptSettings(prev => {
+    onSavePrompt:     () => handleSavePrompt(t.id, platform, imageType),
+    onDelete:         () => handleDeletePrompt(t.id, platform, imageType),
+    savingPrompt:     savingPrompts[t.id],
+    savedPromptMsg:   savedMsgs[t.id],
+    images:           allImages,
+    extraRefs:        promptSettings[t.id]?.extraRefs || [],
+    onAddExtraRef:    ref => setPromptSettings(prev => {
       const ps = prev[t.id] || {}; const refs = ps.extraRefs || []
       if (refs.some(r => r.url === ref.url)) return prev
       return { ...prev, [t.id]: { ...ps, extraRefs: [...refs, ref] } }
@@ -353,14 +437,14 @@ export default function SocialPanel({
       const ps = prev[t.id] || {}
       return { ...prev, [t.id]: { ...ps, extraRefs: (ps.extraRefs || []).filter(r => r.url !== url) } }
     }),
-    selectedImage:   getSelectedImage(t.id),
-    onSelectImage:   img => setSelectedImages(prev => ({ ...prev, [t.id]: img })),
-    activeModel:     promptSettings[t.id]?.modelId || null,
-    activeSize:      promptSettings[t.id]?.imageSize || null,
-    onModelChange:   val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), modelId: val } })),
-    onSizeChange:    val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), imageSize: val } })),
-    models:          isVideo ? VIDEO_MODELS : IMAGE_MODELS,
-    imageSizes:      IMAGE_SIZES,
+    selectedImage:    getSelectedImage(t.id),
+    onSelectImage:    img => setSelectedImages(prev => ({ ...prev, [t.id]: img })),
+    activeModel:      promptSettings[t.id]?.modelId || null,
+    activeSize:       promptSettings[t.id]?.imageSize || null,
+    onModelChange:    val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), modelId: val } })),
+    onSizeChange:     val => setPromptSettings(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), imageSize: val } })),
+    models:           isVideo ? VIDEO_MODELS : IMAGE_MODELS,
+    imageSizes:       IMAGE_SIZES,
   })
 
   const selectedVideoModel = VIDEO_MODELS.find(m => m.id === videoModel)
@@ -443,7 +527,7 @@ export default function SocialPanel({
         {PLATFORMS.map(platform => {
           const meta       = SOCIAL_META[platform]
           const templates  = getTemplates(platform)
-          const allTpls    = [...templates.image, ...templates.video]
+          const allTpls    = [...(templates.image || []), ...(templates.video || [])]
           const doneCount  = getDoneCount(platform)
           const isExpanded = expandedPlatform === platform
           const hasCopy    = !!platformCopy[platform]
@@ -517,30 +601,40 @@ export default function SocialPanel({
                 <div className="px-4 pb-5 pt-2 space-y-5 border-t border-gray-800/50">
 
                   {/* Image prompts */}
-                  {templates.image.length > 0 && (
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <span className={`text-xs font-semibold ${meta.color}`}>📸 Immagini</span>
-                        <span className="text-gray-600 text-xs">{templates.image.length}</span>
-                      </div>
-                      {templates.image.map(t => (
-                        <PromptCard key={t.id} {...promptCardProps(t, false)} />
-                      ))}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs font-semibold ${meta.color}`}>📸 Immagini</span>
+                      <span className="text-gray-600 text-xs">{templates.image.length}</span>
                     </div>
-                  )}
+                    {templates.image.length === 0 && (
+                      <p className="text-gray-600 text-xs py-1">Nessun prompt. Clicca + per aggiungerne uno.</p>
+                    )}
+                    {templates.image.map(t => (
+                      <PromptCard key={t.id} {...promptCardProps(t, false, platform, 'image')} />
+                    ))}
+                    <button onClick={() => handleAddPrompt(platform, 'image')}
+                      className={`w-full py-1.5 text-xs border border-dashed transition-colors ${meta.activeBorder} text-gray-500 hover:text-gray-300 flex items-center justify-center gap-1`}>
+                      + Aggiungi prompt immagine
+                    </button>
+                  </div>
 
                   {/* Video prompts */}
-                  {templates.video.length > 0 && (
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <span className={`text-xs font-semibold ${meta.color}`}>🎬 Video</span>
-                        <span className="text-gray-600 text-xs">{templates.video.length}</span>
-                      </div>
-                      {templates.video.map(t => (
-                        <PromptCard key={t.id} {...promptCardProps(t, true)} />
-                      ))}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs font-semibold ${meta.color}`}>🎬 Video</span>
+                      <span className="text-gray-600 text-xs">{templates.video.length}</span>
                     </div>
-                  )}
+                    {templates.video.length === 0 && (
+                      <p className="text-gray-600 text-xs py-1">Nessun prompt video.</p>
+                    )}
+                    {templates.video.map(t => (
+                      <PromptCard key={t.id} {...promptCardProps(t, true, platform, 'video')} />
+                    ))}
+                    <button onClick={() => handleAddPrompt(platform, 'video')}
+                      className={`w-full py-1.5 text-xs border border-dashed transition-colors ${meta.activeBorder} text-gray-500 hover:text-gray-300 flex items-center justify-center gap-1`}>
+                      + Aggiungi prompt video
+                    </button>
+                  </div>
 
                   {/* Copy panel */}
                   {hasCopy && (

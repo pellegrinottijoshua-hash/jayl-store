@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
+import JaylLogo from '@/components/JaylLogo'
+import { logoColor } from '@/data/brand'
 
 export default function Footer() {
   const { pageTheme } = useThemeStore()
@@ -126,11 +128,18 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Gold bottom separator + copyright + payoff */}
+        {/* Gold bottom separator + logo + copyright + payoff */}
         <div className="mt-14">
           <div style={{ height: '1px', background: 'var(--jayl-gold)', opacity: 0.25 }} />
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className={t.muted}>© 2026 JAYL. All rights reserved.</p>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Left: logo + copyright */}
+            <div className="flex items-center gap-4">
+              <Link to="/" aria-label="JAYL — Home">
+                <JaylLogo color={logoColor(isLight)} height={12} style={{ opacity: 0.65 }} />
+              </Link>
+              <span className={cn(t.muted, 'text-xs')}>© 2026 JAYL. All rights reserved.</span>
+            </div>
+            {/* Right: tagline */}
             <p className="font-display italic font-light text-sm" style={{ color: 'var(--jayl-gold)', opacity: 0.7 }}>
               Art finds a way.
             </p>

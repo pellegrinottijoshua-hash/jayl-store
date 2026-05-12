@@ -110,7 +110,7 @@ export default function HomePage() {
         onClick={() => navigate(`/product/${featuredArt.id}`)}
       >
         <img
-          src={featuredArt.image}
+          src={featuredArt.heroImage ?? featuredArt.image}
           alt={featuredArt.name}
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => { e.currentTarget.style.display = 'none' }}
@@ -139,7 +139,7 @@ export default function HomePage() {
         onClick={() => navigate(`/product/${featuredObject.id}`)}
       >
         <img
-          src={featuredObject.image}
+          src={featuredObject.heroImage ?? featuredObject.image}
           alt={featuredObject.name}
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => { e.currentTarget.style.display = 'none' }}
@@ -167,7 +167,7 @@ export default function HomePage() {
       >
         {pokemonProduct && (
           <img
-            src={pokemonProduct.image}
+            src={pokemonProduct.heroImage ?? pokemonProduct.image}
             alt={pokemonProduct.name}
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => { e.currentTarget.style.display = 'none' }}

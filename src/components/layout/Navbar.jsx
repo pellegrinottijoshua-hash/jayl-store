@@ -6,6 +6,8 @@ import { useCartStore } from '@/store/cartStore'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
+import JaylLogo from '@/components/JaylLogo'
+import { logoColor } from '@/data/brand'
 
 // ── Social icons (inline SVG, 16×16 viewBox) ─────────────────────────────────
 function InstagramIcon({ size = 16 }) {
@@ -150,15 +152,12 @@ export default function Navbar() {
 
           {/* ── Left: JAYL logo ───────────────────────────────────────── */}
           <div className="w-14 sm:w-20 pointer-events-auto">
-            <Link
-              to="/"
-              className={cn(
-                'font-sans font-light transition-colors duration-500',
-                textBase
-              )}
-              style={{ fontSize: '1.1rem', letterSpacing: '0.22em' }}
-            >
-              JAYL
+            <Link to="/" aria-label="JAYL — Home">
+              <JaylLogo
+                color={logoColor(isLight)}
+                height={14}
+                style={{ transition: 'color 0.5s' }}
+              />
             </Link>
           </div>
 
@@ -340,12 +339,9 @@ export default function Navbar() {
       >
         {/* Close row */}
         <div className="flex items-center justify-between px-5 pt-5 h-14">
-          <span
-            className={cn('font-sans font-light', isLight ? 'text-ink' : 'text-cream')}
-            style={{ fontSize: '1.1rem', letterSpacing: '0.22em' }}
-          >
-            JAYL
-          </span>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)} aria-label="JAYL — Home">
+            <JaylLogo color={logoColor(isLight)} height={14} />
+          </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
             className={cn(
