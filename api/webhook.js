@@ -1,5 +1,6 @@
 import Stripe from 'stripe'
 import { decodeItemsFromMetadata, CURRENCY } from './_lib/catalog.js'
+import { sendEmail, buildOrderConfirmationEmail } from './_lib/email.js'
 
 // Disable Vercel's default body parser — Stripe needs the raw body to verify the signature
 export const config = { api: { bodyParser: false } }
@@ -92,6 +93,26 @@ async function fulfillIfNeeded(paymentIntent) {
     })
   } catch (e) {
     console.error('[webhook] Failed to write gelatoOrderId back:', e.message)
+  }
+
+  // Send order confirmation email to customer
+  const customerEmail = paymentIntent.metadata?.email || paymentIntent.receipt_email
+  if (customerEmail) {
+    const { subject, html } = buildOrderConfirmationEmail({
+      orderId:         order.id || `jayl-${paymentIntent.id}`,
+      items:           items.map(it => ({
+        name:      it.product?.name      || it.productId,
+        image:     it.product?.image     || null,
+        color:     it.color              || null,
+        size:      it.size               || null,
+        quantity:  it.quantity,
+        unitPrice: it.unitPrice,
+      })),
+      total:           parseInt(paymentIntent.metadata?.total  || '0', 10),
+      shipping:        0,
+      shippingAddress: shippingAddress,
+    })
+    await sendEmail({ to: customerEmail, subject, html })
   }
 }
 

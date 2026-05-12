@@ -12,6 +12,13 @@ import Stripe from 'stripe'
 import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
 import { applyCors } from './_lib/cors.js'
 import { rateLimit } from './_lib/rateLimit.js'
+import {
+  sendEmail,
+  buildOrderConfirmationEmail,
+  buildContactNotificationEmail,
+  buildContactAutoReplyEmail,
+  STORE_EMAIL_ADDRESS,
+} from './_lib/email.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -167,6 +174,28 @@ async function handleCreateOrder(req, res) {
       console.error('[create-order] Failed to update PI metadata', e.message)
     }
 
+    // Send order confirmation email — non-blocking, never throws
+    const customerEmail = pi.metadata?.email || pi.receipt_email
+    if (customerEmail) {
+      let shippingAddrForEmail = {}
+      try { shippingAddrForEmail = JSON.parse(pi.metadata?.shippingAddress || '{}') } catch {}
+      const { subject, html } = buildOrderConfirmationEmail({
+        orderId:         gelatoOrder.id || `jayl-${pi.id}`,
+        items:           items.map(it => ({
+          name:      it.product?.name  || it.productId,
+          image:     it.product?.image || null,
+          color:     it.color          || null,
+          size:      it.size           || null,
+          quantity:  it.quantity,
+          unitPrice: it.unitPrice,
+        })),
+        total:           parseInt(pi.metadata?.total || '0', 10),
+        shipping:        0,
+        shippingAddress: shippingAddrForEmail,
+      })
+      sendEmail({ to: customerEmail, subject, html }) // fire-and-forget
+    }
+
     return res.status(200).json({
       orderId:          gelatoOrder.id,
       orderReferenceId: gelatoOrder.orderReferenceId,
@@ -212,6 +241,41 @@ async function handleTrackOrder(req, res) {
   }
 }
 
+// ── contact ───────────────────────────────────────────────────────────────────
+
+async function handleContact(req, res) {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+
+  const { name, email, subject, message } = req.body || {}
+
+  if (!name?.trim())    return res.status(400).json({ error: 'Name is required' })
+  if (!email?.trim())   return res.status(400).json({ error: 'Email is required' })
+  if (!message?.trim()) return res.status(400).json({ error: 'Message is required' })
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(email.trim())) return res.status(400).json({ error: 'Invalid email address' })
+
+  try {
+    // Notify store owner
+    const notification = buildContactNotificationEmail({
+      name:    name.trim(),
+      email:   email.trim(),
+      subject: subject?.trim() || '',
+      message: message.trim(),
+    })
+    await sendEmail({ to: STORE_EMAIL_ADDRESS, ...notification, replyTo: email.trim() })
+
+    // Auto-reply to customer
+    const autoReply = buildContactAutoReplyEmail({ name: name.trim() })
+    await sendEmail({ to: email.trim(), ...autoReply })
+
+    return res.status(200).json({ ok: true })
+  } catch (err) {
+    console.error('[contact]', err.message)
+    return res.status(500).json({ error: 'Could not send message. Please try again.' })
+  }
+}
+
 // ── Main router ───────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
@@ -227,6 +291,7 @@ export default async function handler(req, res) {
 
   if (h === 'get-orders')   return handleGetOrders(req, res)
   if (h === 'create-order') return handleCreateOrder(req, res)
+  if (h === 'contact')      return handleContact(req, res)
 
   return res.status(404).json({ error: `Unknown orders handler: ${h}` })
 }

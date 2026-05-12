@@ -13,6 +13,7 @@
     { "source": "/api/get-orders",        "destination": "/api/orders?handler=get-orders"   },
     { "source": "/api/create-order",      "destination": "/api/orders?handler=create-order" },
     { "source": "/api/track-order",       "destination": "/api/orders?handler=track-order"  },
+    { "source": "/api/contact",           "destination": "/api/orders?handler=contact"       },
     { "source": "/api/(.*)",              "destination": "/api/$1"                      },
     { "source": "/(.*)",                  "destination": "/index.html"                  }
   ],
