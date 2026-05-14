@@ -200,18 +200,19 @@ function ImageGallery({ productId, readOnly }) {
   )
 }
 
-// ── Image Order Panel ─────────────────────────────────────────────────────────
-// Shows all product images (Gelato defaults + generated) with drag/reorder + hero
+// ── Media Panel — Hero + Sequenza ────────────────────────────────────────────
+// HERO: two visual click-to-assign slots (Desktop 16:9, Mobile 9:16).
+// SEQUENZA: horizontal strip of all images, reorderable with ‹ › arrows.
+// Clicking a hero slot activates "pick mode" — then click any thumbnail to assign.
 
-function ImageOrderPanel({ productId, product, onSaved }) {
-  const [images,      setImages]      = useState([])
-  const [order,       setOrder]       = useState(null) // null = loaded order
+function MediaPanel({ productId, product, onSaved }) {
+  const [sequence,    setSequence]    = useState([])      // [{ url, name }] ordered
   const [loading,     setLoading]     = useState(true)
   const [saving,      setSaving]      = useState(false)
   const [msg,         setMsg]         = useState('')
-  // Explicit hero designations (independent from image order)
-  const [desktopHero, setDesktopHero] = useState(product?.image     || null) // 16:9
-  const [mobileHero,  setMobileHero]  = useState(product?.heroImage || null) // 9:16
+  const [desktopHero, setDesktopHero] = useState(product?.image     || null)
+  const [mobileHero,  setMobileHero]  = useState(product?.heroImage || null)
+  const [picking,     setPicking]     = useState(null)    // null | 'desktop' | 'mobile'
 
   useEffect(() => {
     if (!productId) return
@@ -219,329 +220,229 @@ function ImageOrderPanel({ productId, product, onSaved }) {
     api('list-images', { productId })
       .then(data => {
         const imgs = (data.images || []).map(img => ({ url: img.url, name: img.name }))
-        setImages(imgs)
-        // Respect the saved order in product.images if available
         if (product?.images?.length > 0) {
-          const savedOrder = product.images
-            .map(savedUrl => imgs.find(img => img.url === savedUrl))
+          const saved = product.images
+            .map(url => imgs.find(i => i.url === url))
             .filter(Boolean)
-          // Append any images not yet in saved order
-          const savedSet = new Set(product.images)
-          const extra = imgs.filter(img => !savedSet.has(img.url))
-          setOrder([...savedOrder, ...extra])
+          const extra = imgs.filter(i => !product.images.includes(i.url))
+          setSequence([...saved, ...extra])
         } else {
-          setOrder(imgs)
+          setSequence(imgs)
         }
         setLoading(false)
       })
       .catch(() => setLoading(false))
   }, [productId]) // eslint-disable-line
 
-  const effective = order ?? images
+  const moveLeft  = i => { if (i === 0) return; const s = [...sequence]; [s[i-1],s[i]]=[s[i],s[i-1]]; setSequence(s) }
+  const moveRight = i => { if (i === sequence.length-1) return; const s = [...sequence]; [s[i],s[i+1]]=[s[i+1],s[i]]; setSequence(s) }
 
-  const moveUp   = (i) => { if (i === 0) return; const o = [...effective]; [o[i-1],o[i]] = [o[i],o[i-1]]; setOrder(o) }
-  const moveDown = (i) => { if (i === effective.length-1) return; const o = [...effective]; [o[i],o[i+1]] = [o[i+1],o[i]]; setOrder(o) }
-  const setHero  = (i) => { if (i === 0) return; const o = [...effective]; const [item] = o.splice(i,1); o.unshift(item); setOrder(o) }
+  const handlePickSlot = (slot) => {
+    // Toggle: clicking the active slot cancels pick mode
+    setPicking(prev => prev === slot ? null : slot)
+  }
+
+  const handlePickImage = (url) => {
+    if (picking === 'desktop') setDesktopHero(prev => prev === url ? null : url)
+    if (picking === 'mobile')  setMobileHero(prev  => prev === url ? null : url)
+    setPicking(null)
+  }
 
   const handleSave = async () => {
-    if (!productId || !effective.length) return
+    if (!productId) return
     setSaving(true); setMsg('')
     try {
-      const orderedUrls = effective.map(img => img.url)
-      // Use explicit hero selections if set, otherwise fall back to pos 1
-      const heroImg    = mobileHero  || orderedUrls[0]
-      const desktopImg = desktopHero || orderedUrls[0]
+      const orderedUrls = sequence.map(i => i.url)
       await api('update-product-images', {
         productId,
         images:    orderedUrls,
-        heroImage: heroImg,   // product.heroImage → 9:16 mobile hero
-        image:     desktopImg // product.image    → 16:9 desktop hero
+        heroImage: mobileHero  || null,
+        image:     desktopHero || orderedUrls[0] || null,
       })
-      onSaved?.(orderedUrls)
+      onSaved?.(orderedUrls, desktopHero, mobileHero)
       setMsg('✓ Salvato')
       setTimeout(() => setMsg(''), 3000)
     } catch (e) {
-      setMsg(`⚠ ${e.message}`)
+      setMsg('⚠ ' + e.message)
     } finally {
       setSaving(false)
     }
   }
 
-  return (
-    <div className="border border-indigo-900/50 bg-gray-950">
-      <div className="px-5 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
-        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest">🗂 Ordine Immagini · pos 1 = Hero</h3>
-        <div className="flex items-center gap-2">
-          {msg && <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{msg}</span>}
-          <button onClick={handleSave} disabled={saving || !effective.length}
-            className={`${btnPrimary} text-xs py-1`}>
-            {saving ? 'Salvataggio…' : '💾 Salva ordine'}
-          </button>
-        </div>
-      </div>
-
-      {/* Hero designations summary */}
-      <div className="px-4 pt-3 pb-1 flex gap-3 flex-wrap border-b border-gray-800/60">
-        <div className="flex items-center gap-1.5">
-          <span className="text-[10px] font-mono text-blue-500 uppercase">🖥 Desktop 16:9</span>
-          {desktopHero
-            ? <img src={desktopHero} alt="" className="w-8 h-5 object-cover border border-blue-700/50 flex-shrink-0"
-                onError={e => { e.currentTarget.style.display = 'none' }} />
-            : <span className="text-gray-700 text-[10px]">non impostata</span>
-          }
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-[10px] font-mono text-purple-400 uppercase">📱 Mobile 9:16</span>
-          {mobileHero
-            ? <img src={mobileHero} alt="" className="w-5 h-8 object-cover border border-purple-700/50 flex-shrink-0"
-                onError={e => { e.currentTarget.style.display = 'none' }} />
-            : <span className="text-gray-700 text-[10px]">non impostata</span>
-          }
-        </div>
-      </div>
-
-      <div className="p-4">
-        {loading ? (
-          <p className="text-gray-600 text-xs py-4">Caricamento immagini…</p>
-        ) : effective.length === 0 ? (
-          <p className="text-gray-600 text-xs py-4">Nessuna immagine — carica o genera asset sopra.</p>
-        ) : (
-          <div className="space-y-1 max-h-80 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
-            {effective.map((img, i) => {
-              const isDesktop = desktopHero === img.url
-              const isMobile  = mobileHero  === img.url
-              const isVideo   = /\.mp4$/i.test(img.url)
-              return (
-                <div key={img.url} className={`flex items-center gap-2 px-2 py-1.5 border ${
-                  isDesktop || isMobile ? 'border-blue-700/40 bg-blue-900/5' : i === 0 ? 'border-gray-700/60' : 'border-gray-800'
-                }`}>
-                  {/* Position */}
-                  <span className={`w-5 h-5 flex-shrink-0 flex items-center justify-center text-[10px] font-bold rounded-sm ${
-                    i === 0 ? 'bg-gray-600 text-white' : 'bg-gray-800 text-gray-400'
-                  }`}>{i + 1}</span>
-
-                  {/* Thumbnail */}
-                  {isVideo
-                    ? <div className="w-10 h-10 flex-shrink-0 bg-gray-800 flex items-center justify-center text-sm border border-gray-700">🎬</div>
-                    : <img src={img.url} alt={img.name} className="w-10 h-10 flex-shrink-0 object-cover border border-gray-700"
-                        onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                  }
-
-                  {/* Name + badges */}
-                  <span className="flex-1 text-gray-500 text-xs truncate min-w-0">
-                    {img.name}
-                    {isDesktop && <span className="ml-1.5 text-blue-400 font-semibold text-[9px]">🖥 16:9</span>}
-                    {isMobile  && <span className="ml-1.5 text-purple-400 font-semibold text-[9px]">📱 9:16</span>}
-                  </span>
-
-                  {/* Controls */}
-                  {!isVideo && (
-                    <div className="flex items-center gap-1 flex-shrink-0">
-                      <button
-                        onClick={() => setDesktopHero(isDesktop ? null : img.url)}
-                        title="Imposta come hero Desktop (16:9)"
-                        className={`text-[9px] py-0.5 px-1.5 border transition-colors ${
-                          isDesktop
-                            ? 'bg-blue-700 border-blue-600 text-white'
-                            : 'bg-transparent border-gray-700 text-gray-500 hover:border-blue-700 hover:text-blue-400'
-                        }`}>
-                        🖥
-                      </button>
-                      <button
-                        onClick={() => setMobileHero(isMobile ? null : img.url)}
-                        title="Imposta come hero Mobile (9:16)"
-                        className={`text-[9px] py-0.5 px-1.5 border transition-colors ${
-                          isMobile
-                            ? 'bg-purple-700 border-purple-600 text-white'
-                            : 'bg-transparent border-gray-700 text-gray-500 hover:border-purple-700 hover:text-purple-400'
-                        }`}>
-                        📱
-                      </button>
-                      <button onClick={() => moveUp(i)} disabled={i === 0}
-                        className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↑</button>
-                      <button onClick={() => moveDown(i)} disabled={i === effective.length - 1}
-                        className={`${btnGhost} text-[10px] py-0.5 px-1.5 disabled:opacity-20`}>↓</button>
-                    </div>
-                  )}
+  const SlotBox = ({ slot, url, label, aspect, color }) => {
+    const active  = picking === slot
+    const isVideo = url && /\.mp4$/i.test(url)
+    return (
+      <div>
+        <p className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${color}`}>{label}</p>
+        <button
+          onClick={() => handlePickSlot(slot)}
+          title={active ? 'Annulla selezione' : url ? 'Cambia' : 'Clicca per assegnare'}
+          className={`w-full overflow-hidden flex items-center justify-center border-2 transition-all ${aspect} ${
+            active
+              ? 'border-yellow-400 ring-1 ring-yellow-400/40 bg-yellow-900/10'
+              : url
+                ? `${color === 'text-blue-400' ? 'border-blue-700 hover:border-blue-500' : 'border-purple-700 hover:border-purple-500'}`
+                : 'border-dashed border-gray-700 hover:border-gray-500'
+          }`}
+        >
+          {url ? (
+            isVideo
+              ? <div className="w-full h-full bg-gray-900 flex flex-col items-center justify-center gap-1 text-gray-400">
+                  <span className="text-2xl">🎬</span>
+                  <span className="text-[10px]">video</span>
                 </div>
-              )
-            })}
-          </div>
+              : <img src={url} alt="" className="w-full h-full object-cover"
+                  onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+          ) : (
+            <span className="text-gray-600 text-xs px-2 text-center">
+              {active ? '↓ clicca una thumbnail' : '+ Assegna'}
+            </span>
+          )}
+        </button>
+        {url && !active && (
+          <button
+            onClick={() => { slot === 'desktop' ? setDesktopHero(null) : setMobileHero(null) }}
+            className="text-[10px] text-gray-600 hover:text-red-400 mt-1 transition-colors"
+          >
+            rimuovi
+          </button>
         )}
-        <p className="text-gray-700 text-[10px] mt-2">🖥 Desktop 16:9 = homepage hero | 📱 Mobile 9:16 = hero verticale · Salva per applicare</p>
+        {active && (
+          <button onClick={() => setPicking(null)} className="text-[10px] text-yellow-600 hover:text-yellow-400 mt-1 transition-colors">
+            annulla
+          </button>
+        )}
       </div>
-    </div>
-  )
-}
-
-// ── Asset Library ─────────────────────────────────────────────────────────────
-
-function AssetLibrary({ productId, product, onHeroSaved }) {
-  const [images,   setImages]   = useState([])
-  const [selected, setSelected] = useState(() => new Set(product?.heroImages || []))
-  const [loading,  setLoading]  = useState(true)
-  const [saving,   setSaving]   = useState(false)
-  const [msg,      setMsg]      = useState('')
-  const [copied,   setCopied]   = useState(false)
-
-  useEffect(() => {
-    if (!productId) return
-    setLoading(true)
-    api('list-images', { productId })
-      .then(data => { setImages(data.images || []); setLoading(false) })
-      .catch(() => setLoading(false))
-  }, [productId])
-
-  // Keep selection in sync when product.heroImages changes from outside
-  useEffect(() => {
-    setSelected(new Set(product?.heroImages || []))
-  }, [(product?.heroImages || []).join(',')])
-
-  const toggle = url =>
-    setSelected(prev => {
-      const next = new Set(prev)
-      next.has(url) ? next.delete(url) : next.add(url)
-      return next
-    })
-
-  const saveHero = async (heroImages) => {
-    if (!product) return
-    setSaving(true); setMsg('')
-    try {
-      await api('save-product', { product: { ...product, heroImages } })
-      onHeroSaved?.(heroImages)
-      setMsg(`✓ ${heroImages.length} hero image${heroImages.length !== 1 ? 's' : ''} saved`)
-      setTimeout(() => setMsg(''), 3000)
-    } catch (e) {
-      setMsg('Error: ' + e.message)
-    } finally {
-      setSaving(false)
-    }
+    )
   }
-
-  const setAsHero  = () => saveHero([...selected])
-  const clearHero  = () => { setSelected(new Set()); saveHero([]) }
-
-  const copyUrls = () => {
-    navigator.clipboard.writeText((product?.heroImages || []).join('\n'))
-    setCopied(true); setTimeout(() => setCopied(false), 2000)
-  }
-
-  const currentHero = product?.heroImages || []
 
   return (
-    <div className="border border-indigo-900/50 bg-gray-950">
+    <div className="border border-gray-800 bg-gray-950">
+
       {/* Header */}
-      <div className="px-5 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
-        <h3 className="text-indigo-400 text-xs font-mono uppercase tracking-widest">🖼 Asset Library</h3>
-        <div className="flex items-center gap-2">
-          {currentHero.length > 0 && (
-            <button onClick={clearHero} disabled={saving} className={btnGhost + ' text-red-400 border-red-900'}>
-              Clear hero
-            </button>
+      <div className="px-4 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
+        <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">🎬 Hero & Sequenza</h3>
+        <div className="flex items-center gap-3">
+          {picking && (
+            <span className="text-yellow-400 text-xs animate-pulse">
+              → seleziona {picking === 'desktop' ? 'Desktop 16:9' : 'Mobile 9:16'}
+            </span>
           )}
-          <button
-            onClick={setAsHero}
-            disabled={saving || selected.size === 0}
-            className={btnPrimary}
-          >
-            {saving ? 'Saving…' : `Set ${selected.size} as Hero`}
+          {msg && !picking && (
+            <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{msg}</span>
+          )}
+          <button onClick={handleSave} disabled={saving}
+            className={`${btnPrimary} text-xs py-1`}>
+            {saving ? 'Salvataggio…' : '💾 Salva'}
           </button>
         </div>
       </div>
 
-      <div className="p-4 space-y-4">
-        {/* Status line */}
-        <div className="flex items-center gap-3 text-xs">
-          <span className="text-gray-500">{selected.size} selected</span>
-          {currentHero.length > 0 && (
-            <span className="text-green-400">· {currentHero.length} currently hero</span>
+      <div className="p-4 space-y-6">
+
+        {/* ── HERO ── */}
+        <div>
+          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">Hero</p>
+          <div className="grid grid-cols-2 gap-4">
+            <SlotBox
+              slot="desktop"
+              url={desktopHero}
+              label="🖥 Desktop · 16:9"
+              aspect="aspect-video"
+              color="text-blue-400"
+            />
+            <SlotBox
+              slot="mobile"
+              url={mobileHero}
+              label="📱 Mobile · 9:16"
+              aspect="aspect-[9/16] max-h-48"
+              color="text-purple-400"
+            />
+          </div>
+        </div>
+
+        {/* ── SEQUENZA ── */}
+        <div>
+          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">
+            Sequenza{sequence.length > 0 ? ` · ${sequence.length} immagini` : ''}
+          </p>
+          {loading ? (
+            <p className="text-gray-600 text-xs py-2">Caricamento…</p>
+          ) : sequence.length === 0 ? (
+            <p className="text-gray-600 text-xs py-2">Nessuna immagine — carica o genera asset sopra.</p>
+          ) : (
+            <div className="flex gap-2 overflow-x-auto pb-2" style={{ scrollbarWidth: 'thin' }}>
+              {sequence.map((img, i) => {
+                const isDesktop = desktopHero === img.url
+                const isMobile  = mobileHero  === img.url
+                const isVideo   = /\.mp4$/i.test(img.url)
+                const isPick    = !!picking
+                return (
+                  <div
+                    key={img.url}
+                    onClick={() => isPick && handlePickImage(img.url)}
+                    className={`flex-shrink-0 relative group ${isPick ? 'cursor-pointer' : ''}`}
+                  >
+                    {/* Thumbnail */}
+                    <div className={`w-20 h-20 border-2 overflow-hidden transition-all ${
+                      isPick
+                        ? 'hover:border-yellow-400 hover:ring-1 hover:ring-yellow-400/40 border-gray-600'
+                        : isDesktop && isMobile
+                          ? 'border-indigo-500'
+                          : isDesktop
+                            ? 'border-blue-600'
+                            : isMobile
+                              ? 'border-purple-600'
+                              : 'border-gray-700'
+                    }`}>
+                      {isVideo
+                        ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
+                        : <img src={img.url} alt={img.name} className="w-full h-full object-cover"
+                            onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                      }
+                    </div>
+
+                    {/* Position badge */}
+                    <div className={`absolute -top-1.5 -left-1.5 w-4 h-4 flex items-center justify-center text-[9px] font-bold rounded-sm ${
+                      i === 0 ? 'bg-gray-500 text-white' : 'bg-gray-800 text-gray-400'
+                    }`}>{i + 1}</div>
+
+                    {/* Hero badges */}
+                    {!isPick && isDesktop && (
+                      <div className="absolute top-0.5 right-0.5 bg-blue-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">🖥</div>
+                    )}
+                    {!isPick && isMobile && (
+                      <div className="absolute bottom-0.5 right-0.5 bg-purple-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">📱</div>
+                    )}
+
+                    {/* Reorder controls — shown on hover, hidden in pick mode */}
+                    {!isPick && (
+                      <div className="absolute bottom-0 inset-x-0 flex opacity-0 group-hover:opacity-100 transition-opacity bg-black/70">
+                        <button
+                          onClick={e => { e.stopPropagation(); moveLeft(i) }}
+                          disabled={i === 0}
+                          className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors"
+                          title="Sposta a sinistra"
+                        >‹</button>
+                        <button
+                          onClick={e => { e.stopPropagation(); moveRight(i) }}
+                          disabled={i === sequence.length - 1}
+                          className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors"
+                          title="Sposta a destra"
+                        >›</button>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
           )}
-          {msg && (
-            <span className={msg.startsWith('Error') ? 'text-red-400' : 'text-green-400'}>{msg}</span>
+          {sequence.length > 0 && (
+            <p className="text-gray-700 text-[10px] mt-2">Hover su una thumbnail per riordinare · 🖥 = hero desktop · 📱 = hero mobile</p>
           )}
         </div>
 
-        {/* Image grid */}
-        {loading ? (
-          <p className="text-gray-600 text-xs py-4">Loading images…</p>
-        ) : images.length === 0 ? (
-          <p className="text-gray-600 text-xs py-4">No images yet — upload or generate images above.</p>
-        ) : (
-          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 xl:grid-cols-8 gap-2">
-            {images.map(img => {
-              const isSelected = selected.has(img.url)
-              const isHero     = currentHero.includes(img.url)
-              const isVideo    = /\.mp4$/i.test(img.url)
-              return (
-                <button
-                  key={img.url}
-                  onClick={() => toggle(img.url)}
-                  title={img.name}
-                  className={`relative aspect-square overflow-hidden border-2 transition-all ${
-                    isSelected
-                      ? 'border-indigo-500 ring-1 ring-indigo-400'
-                      : 'border-gray-700 hover:border-gray-500'
-                  }`}
-                >
-                  {isVideo ? (
-                    <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                      <span className="text-white text-xl">▶</span>
-                    </div>
-                  ) : (
-                    <img src={img.url} alt={img.name} className="w-full h-full object-cover"
-                      onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                  )}
-                  {/* Selected checkmark */}
-                  {isSelected && (
-                    <div className="absolute inset-0 bg-indigo-500/20 flex items-end justify-end p-1 pointer-events-none">
-                      <span className="bg-indigo-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center leading-none">✓</span>
-                    </div>
-                  )}
-                  {/* Hero badge */}
-                  {isHero && (
-                    <div className="absolute top-1 left-1 pointer-events-none">
-                      <span className="bg-green-600/90 text-white text-[9px] px-1 py-0.5 leading-none">hero</span>
-                    </div>
-                  )}
-                </button>
-              )
-            })}
-          </div>
-        )}
-
-        {/* Social publish — shown when hero images exist */}
-        {currentHero.length > 0 && (
-          <div className="border border-gray-800 p-4 space-y-3">
-            <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Publish</p>
-            <div className="flex flex-wrap gap-2">
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className={btnGhost}>
-                📸 Instagram
-              </a>
-              <a
-                href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentHero[0])}&description=${encodeURIComponent(product?.name || '')}`}
-                target="_blank" rel="noopener noreferrer" className={btnGhost}
-              >
-                📌 Pinterest
-              </a>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentHero[0])}&text=${encodeURIComponent(product?.name || '')}`}
-                target="_blank" rel="noopener noreferrer" className={btnGhost}
-              >
-                𝕏 Twitter
-              </a>
-              <a
-                href={`https://wa.me/?text=${encodeURIComponent((product?.name || '') + '\n' + currentHero[0])}`}
-                target="_blank" rel="noopener noreferrer" className={btnGhost}
-              >
-                💬 WhatsApp
-              </a>
-              <button onClick={copyUrls} className={btnGhost}>
-                {copied ? '✓ Copied' : '🔗 Copy URLs'}
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   )
@@ -1336,11 +1237,16 @@ export default function AdminProductPage() {
               }))}
             />
 
-            {/* ── Image Order + Hero ── */}
-            <ImageOrderPanel
+            {/* ── Hero + Sequenza ── */}
+            <MediaPanel
               productId={id}
               product={product}
-              onSaved={(urls) => setProduct(prev => prev ? { ...prev, images: urls, image: urls[0] } : prev)}
+              onSaved={(urls, desktop, mobile) => setProduct(prev => prev ? {
+                ...prev,
+                images:    urls,
+                image:     desktop || urls[0] || prev.image,
+                heroImage: mobile  || prev.heroImage,
+              } : prev)}
             />
 
             {/* ── Remove Background ── */}
