@@ -22,16 +22,17 @@ function parseVideoUrl(url) {
   return null
 }
 
-async function api(action, data) {
+async function api(action, data, signal) {
   const res = await fetch('/api/admin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action, password: ADMIN_PASSWORD, ...data }),
+    ...(signal ? { signal } : {}),
   })
   let json
   try { json = await res.json() }
   catch { throw new Error(`Errore server (${res.status}) — verifica che GITHUB_TOKEN sia configurato su Vercel`) }
-  if (!res.ok) throw new Error(json.error || 'Request failed')
+  if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`)
   return json
 }
 
@@ -132,6 +133,10 @@ function ImagePool({
 
   const doUpload = useCallback(async files => {
     setUploading(true); setUploadErr('')
+    // Hard timeout: if anything hangs (network, GitHub API, Vercel Blob retries),
+    // abort after 90 s so the user always gets feedback.
+    const ctrl  = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>90s)')), 90_000)
     try {
       for (const file of Array.from(files)) {
         const filename = sanitizeFilename(file.name)
@@ -144,18 +149,25 @@ function ImagePool({
           const blob = await blobUpload(`${productId}/${filename}`, file, {
             access:          'public',
             handleUploadUrl: '/api/admin',
+            abortSignal:     ctrl.signal,
           })
-          await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo })
+          await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo }, ctrl.signal)
         } else {
           // Small images: fast base64 path — no Vercel Blob token needed
           const dataUrl = await fileToBase64(file)
-          await api('upload-image', { productId, filename, dataUrl })
+          await api('upload-image', { productId, filename, dataUrl }, ctrl.signal)
         }
       }
       onUploaded?.()
     } catch (e) {
-      setUploadErr(e.message)
+      console.error('[ImagePool] upload error:', e)
+      // ctrl.signal.reason is set when we call ctrl.abort(new Error(...))
+      const msg = ctrl.signal.aborted
+        ? (ctrl.signal.reason?.message || 'Timeout upload')
+        : (e.message || String(e) || 'Errore upload sconosciuto')
+      setUploadErr(msg)
     } finally {
+      clearTimeout(timer)
       setUploading(false)
       if (fileRef.current) fileRef.current.value = ''
     }
@@ -190,8 +202,9 @@ function ImagePool({
             dragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-500'
           }`}
         >
-          {uploading ? <p className="text-indigo-400 text-xs">Caricamento…</p>
-            : <p className="text-gray-500 text-xs">+ Importa immagine</p>}
+          {uploading
+            ? <p className="text-indigo-400 text-xs animate-pulse">⏫ Caricamento…</p>
+            : <p className="text-gray-500 text-xs">+ Importa immagine / video</p>}
         </div>
         {uploadErr && <p className="text-red-400 text-xs mt-1">⚠ {uploadErr}</p>}
       </div>

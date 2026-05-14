@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { upload as blobUpload } from '@vercel/blob/client'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
@@ -22,14 +23,17 @@ export function parseVideoUrl(url) {
   return null
 }
 
-async function api(action, data) {
+async function api(action, data, signal) {
   const res = await fetch('/api/admin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action, password: ADMIN_PASSWORD, ...data }),
+    ...(signal ? { signal } : {}),
   })
-  const json = await res.json()
-  if (!res.ok) throw new Error(json.error || 'Request failed')
+  let json
+  try { json = await res.json() }
+  catch { throw new Error(`Errore server (${res.status})`) }
+  if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`)
   return json
 }
 
@@ -138,6 +142,47 @@ function ImageUploader({ files, onChange }) {
   )
 }
 
+// ── Pool Thumbnail (for MediaPool) ───────────────────────────────────────────
+
+function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, onSetMobileHero, onToggleSequenza }) {
+  const url   = img.url
+  const isDesk = desktopHero === url
+  const isMob  = mobileHero  === url
+  const seqIdx = sequenza.indexOf(url)
+  const inSeq  = seqIdx !== -1
+  const isVid  = /\.(mp4|mov|webm)$/i.test(url)
+  return (
+    <div className="relative group flex-shrink-0 w-16 h-16">
+      <div className={`w-full h-full border-2 overflow-hidden transition-all ${
+        isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
+      }`}>
+        {isVid
+          ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
+          : <img src={url} alt={img.name} className="w-full h-full object-cover"
+              onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+        }
+      </div>
+      {isDesk && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
+      {isMob  && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
+      {inSeq  && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
+      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-0.5 z-20">
+        <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
+          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
+            isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
+          }`}>🖥</button>
+        <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
+          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
+            isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
+          }`}>📱</button>
+        <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
+          className={`w-6 h-6 text-[10px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
+            inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
+          }`}>{inSeq ? '✓' : '+'}</button>
+      </div>
+    </div>
+  )
+}
+
 // ── Collapsible ───────────────────────────────────────────────────────────────
 
 function Collapsible({ label, defaultOpen = false, children }) {
@@ -226,6 +271,18 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [savedMsg, setSavedMsg]     = useState('')
   const [savedProductId, setSavedProductId] = useState(isEdit ? editingProduct.id : null)
 
+  // ── Media pool (hero + sequenza) ─────────────────────────────────────────────
+  const [desktopHero,    setDesktopHero]    = useState(isEdit ? (editingProduct?.image     || null) : null)
+  const [mobileHero,     setMobileHero]     = useState(isEdit ? (editingProduct?.heroImage || null) : null)
+  const [sequenza,       setSequenza]       = useState(isEdit ? (editingProduct?.images    || [])   : [])
+  const [poolImages,     setPoolImages]     = useState([])   // { url, name } loaded from GitHub
+  const [poolLoading,    setPoolLoading]    = useState(false)
+  const [poolRefreshKey, setPoolRefreshKey] = useState(0)
+  const [poolUploading,  setPoolUploading]  = useState(false)
+  const [poolUploadErr,  setPoolUploadErr]  = useState('')
+  const [poolDragging,   setPoolDragging]   = useState(false)
+  const poolFileRef = useRef()
+
   const productId = isEdit ? editingProduct.id : slugify(title)
   const finalCollection = newColl.trim() || collection
 
@@ -278,6 +335,55 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     }
   }
 
+  // ── Pool image loading ───────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!productId) return
+    setPoolLoading(true)
+    api('list-images', { productId })
+      .then(d => setPoolImages(d.images || []))
+      .catch(() => {})
+      .finally(() => setPoolLoading(false))
+  }, [productId, poolRefreshKey]) // eslint-disable-line
+
+  // ── Pool image upload (immediate, same hybrid logic as AdminProductPage) ─────
+  const doPoolUpload = useCallback(async files => {
+    if (!productId) return
+    setPoolUploading(true); setPoolUploadErr('')
+    const ctrl  = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>90s)')), 90_000)
+    try {
+      for (const file of Array.from(files)) {
+        const filename = sanitizeFilename(file.name)
+        const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
+        const useBlob  = isVideo || file.size >= 3.5 * 1024 * 1024
+        if (useBlob) {
+          const blob = await blobUpload(`${productId}/${filename}`, file, {
+            access: 'public', handleUploadUrl: '/api/admin', abortSignal: ctrl.signal,
+          })
+          await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo }, ctrl.signal)
+        } else {
+          const dataUrl = await fileToBase64(file)
+          await api('upload-image', { productId, filename, dataUrl }, ctrl.signal)
+        }
+      }
+      setPoolRefreshKey(k => k + 1)
+    } catch (e) {
+      console.error('[MediaPool] upload error:', e)
+      const msg = ctrl.signal.aborted
+        ? (ctrl.signal.reason?.message || 'Timeout upload')
+        : (e.message || String(e) || 'Errore upload sconosciuto')
+      setPoolUploadErr(msg)
+    } finally {
+      clearTimeout(timer)
+      setPoolUploading(false)
+      if (poolFileRef.current) poolFileRef.current.value = ''
+    }
+  }, [productId]) // eslint-disable-line
+
+  const toggleSequenza = useCallback(url => {
+    setSequenza(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url])
+  }, [])
+
   const fetchVariants = async () => {
     if (!gelatoUid.trim()) return
     setFetching(true); setFetchErr('')
@@ -326,6 +432,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             const paths = importData.paths || []
             setImportedPaths(paths)
             setImportMsg(`✓ ${paths.length} mockup${paths.length !== 1 ? 's' : ''} imported`)
+            // Refresh pool so new images appear immediately
+            setPoolRefreshKey(k => k + 1)
           } catch (e) {
             setImportMsg(`⚠ Import failed: ${e.message}`)
           } finally {
@@ -350,11 +458,18 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
     setSaving(true); setSaveErr(''); setSavedMsg('')
     try {
+      // Util: convert raw GitHub URLs → site-relative paths that match product.images format
+      const toRelPath = url => {
+        if (!url) return url
+        const m = url.match(/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public(.+)/)
+        return m ? m[1] : url
+      }
+
       // 1. Start with kept existing images + newly imported Gelato paths (deduplicated)
       const keptPaths    = existingImages.map(img => img.src)
       const uploadedPaths = [...new Set([...keptPaths, ...importedPaths])]
 
-      // 2. Upload any manually-added files
+      // 2. Upload any manually-added files via the old ImageUploader (legacy path)
       for (const file of images) {
         const dataUrl  = await fileToBase64(file)
         const filename = sanitizeFilename(file.name)
@@ -362,14 +477,21 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         uploadedPaths.push(result.path)
       }
 
-      // 3. Derive sizes from variants or use default
+      // 3. Resolve hero + sequenza — prefer explicit user selections from the media pool
+      const heroDesktopPath = desktopHero ? toRelPath(desktopHero) : (uploadedPaths[0] || '')
+      const heroMobilePath  = mobileHero  ? toRelPath(mobileHero)  : null
+      const finalImages     = sequenza.length > 0
+        ? [...new Set(sequenza.map(toRelPath))]
+        : uploadedPaths
+
+      // 4. Derive sizes from variants or use default
       const uniqueSizes = [...new Set(variants.map(v => v.size).filter(Boolean))]
       const priceCents  = Math.round(parseFloat(price) * 100)
       const sizes = uniqueSizes.length > 0
         ? uniqueSizes.map(s => ({ id: s, label: s, price: priceCents }))
         : [{ id: 'one-size', label: 'One Size', price: priceCents }]
 
-      // 4. Build colors array from unique variant colors, with per-color image if available
+      // 5. Build colors array from unique variant colors, with per-color image if available
       // imagesByColor: { colorLabel → [gelatoSrc, ...] }
       // importedPaths are named gelato-01.jpg etc in the same order as gelatoImages
       const gelatoSrcToPath = Object.fromEntries(
@@ -385,7 +507,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           })
         : null
 
-      // 5. Build product object
+      // 6. Build product object
       const product = {
         id: productId,
         section,
@@ -398,8 +520,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         altText: altText.trim() || '',
         details: ['Printed and fulfilled via Gelato'],
         sizes,
-        image: uploadedPaths[0] || '',
-        images: uploadedPaths,
+        image:     heroDesktopPath || finalImages[0] || '',
+        heroImage: heroMobilePath  || null,
+        images:    finalImages,
         // Per-image alt texts: merge existing + newly imported (use global altText as fallback)
         imageAlts: Object.fromEntries([
           ...existingImages.map(img => [img.src, img.alt]),
@@ -799,62 +922,110 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       </Card>
       </Collapsible>
 
-      {/* Images */}
+      {/* ── Media Pool · Hero & Sequenza ────────────────────────────────────── */}
       <Collapsible
-        label={`🖼 Images${existingImages.length > 0 ? ` (${existingImages.length} uploaded)` : ''}`}
-        defaultOpen={existingImages.length > 0}
+        label={`🖼 Media${poolImages.length > 0 ? ` (${poolImages.length} immagini)` : existingImages.length > 0 ? ` (${existingImages.length} upload)` : ''}`}
+        defaultOpen={poolImages.length > 0 || existingImages.length > 0}
       >
-      <Card title="Images">
-        {/* Existing uploaded images — editable */}
-        {existingImages.length > 0 && (
-          <div className="space-y-3">
-            <p className="text-gray-500 text-xs">{existingImages.length} image{existingImages.length !== 1 ? 's' : ''} — click × to remove, edit alt text below each</p>
-            <div className="space-y-2">
-              {existingImages.map((img, i) => (
-                <div key={img.src} className="flex gap-3 items-start bg-gray-800/50 border border-gray-800 p-2">
-                  {/* Thumbnail */}
-                  <div className="relative flex-shrink-0">
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-20 h-20 object-cover border border-gray-700"
-                      onError={e => {
-                        e.currentTarget.style.display = 'none'
-                        e.currentTarget.nextSibling.style.display = 'flex'
-                      }}
-                    />
-                    <div className="w-20 h-20 border border-gray-700 bg-gray-800 hidden items-center justify-center text-gray-600 text-xs text-center p-1">
-                      {img.src.split('/').pop()}
-                    </div>
-                    <button
-                      onClick={() => setExistingImages(prev => prev.filter((_, j) => j !== i))}
-                      className="absolute -top-1.5 -right-1.5 bg-red-600 hover:bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs leading-none shadow"
-                      title="Remove image"
-                    >×</button>
-                    <span className="absolute bottom-0.5 left-0.5 bg-black/60 text-gray-400 text-xs px-1 leading-4">{i + 1}</span>
-                  </div>
-                  {/* Alt text */}
-                  <div className="flex-1 min-w-0">
-                    <label className="block text-gray-600 text-xs mb-1">Alt text</label>
-                    <input
-                      value={img.alt}
-                      onChange={e => setExistingImages(prev => prev.map((item, j) => j === i ? { ...item, alt: e.target.value } : item))}
-                      placeholder="Describe this image for SEO and accessibility…"
-                      className={inputCls + ' text-xs'}
-                    />
-                    <p className="text-gray-700 text-xs mt-1 truncate">{img.src}</p>
-                  </div>
-                </div>
+      <Card title="Media · Hero & Sequenza">
+        {/* Legend */}
+        <div className="flex gap-3 text-[10px] text-gray-600 pb-1">
+          <span><span className="inline-block w-2 h-2 bg-blue-500 rounded-sm mr-1" />🖥 Hero Desktop</span>
+          <span><span className="inline-block w-2 h-2 bg-purple-500 rounded-sm mr-1" />📱 Hero Mobile</span>
+          <span><span className="inline-block w-2 h-2 bg-emerald-700 rounded-sm mr-1" />+ Sequenza (ordine galleria)</span>
+        </div>
+
+        {/* Selections summary */}
+        {(desktopHero || mobileHero || sequenza.length > 0) && (
+          <div className="bg-gray-800/50 border border-gray-700 p-2 rounded-sm text-xs space-y-1">
+            {desktopHero && (
+              <div className="flex items-center gap-2">
+                <span className="text-blue-400 w-24 flex-shrink-0">🖥 Desktop:</span>
+                <span className="text-gray-300 truncate font-mono text-[10px]">{desktopHero.split('/').pop()}</span>
+                <button onClick={() => setDesktopHero(null)} className="text-gray-600 hover:text-red-400 ml-auto text-xs">×</button>
+              </div>
+            )}
+            {mobileHero && (
+              <div className="flex items-center gap-2">
+                <span className="text-purple-400 w-24 flex-shrink-0">📱 Mobile:</span>
+                <span className="text-gray-300 truncate font-mono text-[10px]">{mobileHero.split('/').pop()}</span>
+                <button onClick={() => setMobileHero(null)} className="text-gray-600 hover:text-red-400 ml-auto text-xs">×</button>
+              </div>
+            )}
+            {sequenza.length > 0 && (
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400 w-24 flex-shrink-0">Sequenza:</span>
+                <span className="text-gray-400 text-[10px]">{sequenza.length} immagini</span>
+                <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto text-xs">reset</button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Upload zone (immediate upload to GitHub) */}
+        {!productId ? (
+          <p className="text-gray-600 text-xs italic">Inserisci un titolo per attivare l'upload immagini.</p>
+        ) : (
+          <div>
+            <input ref={poolFileRef} type="file" accept="image/*,video/mp4,video/quicktime,video/webm" multiple className="hidden"
+              onChange={e => doPoolUpload(e.target.files)} />
+            <div
+              onDragOver={e => { e.preventDefault(); setPoolDragging(true) }}
+              onDragLeave={() => setPoolDragging(false)}
+              onDrop={e => { e.preventDefault(); setPoolDragging(false); doPoolUpload(e.dataTransfer.files) }}
+              onClick={() => poolFileRef.current?.click()}
+              className={`border-2 border-dashed py-3 px-2 text-center cursor-pointer transition-colors ${
+                poolDragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-500'
+              }`}
+            >
+              {poolUploading
+                ? <p className="text-indigo-400 text-xs animate-pulse">⏫ Caricamento…</p>
+                : <p className="text-gray-500 text-xs">+ Importa immagine / video (max 500 MB)</p>}
+            </div>
+            {poolUploadErr && <p className="text-red-400 text-xs mt-1">⚠ {poolUploadErr}</p>}
+          </div>
+        )}
+
+        {/* Pool images */}
+        {poolLoading && <p className="text-gray-600 text-xs">Caricamento immagini…</p>}
+        {poolImages.length > 0 && (
+          <div>
+            <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono mb-1.5">Immagini · hover per assegnare</p>
+            <div className="flex flex-wrap gap-1.5">
+              {poolImages.map(img => (
+                <PoolThumb key={img.url} img={img}
+                  desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza}
+                  onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza}
+                />
               ))}
             </div>
           </div>
         )}
 
-        {/* Upload new images */}
-        <div>
-          <p className="text-gray-500 text-xs mb-2">{existingImages.length > 0 ? 'Aggiungi altre immagini:' : 'Carica immagini:'}</p>
-          <ImageUploader files={images} onChange={setImages} />
-        </div>
+        {/* Legacy: existing images for edit mode */}
+        {existingImages.length > 0 && (
+          <Collapsible label={`${existingImages.length} immagini esistenti (modifica alt text)`} defaultOpen={false}>
+          <div className="space-y-2">
+            {existingImages.map((img, i) => (
+              <div key={img.src} className="flex gap-3 items-start bg-gray-800/50 border border-gray-800 p-2">
+                <div className="relative flex-shrink-0">
+                  <img src={img.src} alt={img.alt} className="w-16 h-16 object-cover border border-gray-700"
+                    onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+                  <button onClick={() => setExistingImages(prev => prev.filter((_, j) => j !== i))}
+                    className="absolute -top-1 -right-1 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-xs leading-none"
+                  >×</button>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <input value={img.alt}
+                    onChange={e => setExistingImages(prev => prev.map((item, j) => j === i ? { ...item, alt: e.target.value } : item))}
+                    placeholder="Alt text…" className={inputCls + ' text-xs'} />
+                  <p className="text-gray-700 text-[10px] mt-0.5 truncate">{img.src}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          </Collapsible>
+        )}
       </Card>
       </Collapsible>
 
@@ -885,8 +1056,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           productType={section === 'art' ? 'art print' : 'apparel/object'}
           primaryColor={variants[0]?.color || (editingProduct?.colors?.[0]?.label) || ''}
           collection={finalCollection}
-          onAssetSaved={path => setExistingImages(prev => [...prev, { src: path, alt: '' }])}
-          preloadedImages={gelatoImages.map((img, i) => ({ url: img.src, name: img.src.split('/').pop() || `mockup-${i + 1}` }))}
+          onAssetSaved={() => setPoolRefreshKey(k => k + 1)}
+          preloadedImages={
+            poolImages.length > 0
+              ? poolImages
+              : gelatoImages.map((img, i) => ({ url: img.src, name: img.src.split('/').pop() || `mockup-${i + 1}` }))
+          }
           personas={personas}
           instagramCaption={instagramCaption}
           pinterestCaption={pinterestCaption}
