@@ -17,7 +17,7 @@ export const generatePrompts = {
       {
         "id": "site-hero-custom-1778763471911",
         "name": "New Prompt",
-        "prompt": ""
+        "prompt": "Modello, aspetto realistico, età apparente 20-26 anni. Indossa una t-shirt nera — i colori dominanti della grafica del logo determinano l'intera palette del look: il resto dei capi (giacca o felpa aperta sopra, pantaloni, sneakers, accessori) segue cromaticamente la t-shirt in modo coerente e naturale, senza effetti costume. La t-shirt è ben visibile, grafica frontale leggibile. Posa naturale e statica: seduto su una superficie urbana bassa, schiena appoggiata a una parete, braccia rilassate, sguardo laterale fuori campo. Location: esterno urbano industriale, materiali grezzi, luce naturale diffusa con ombre lunghe, giorno nuvoloso. Atmosfera: quiete urbana, presenza silenziosa. Full body, grandangolo leggermente dal basso. Fotografia analogica, grana visibile, colori leggermente desaturati. Qualità editoriale commerciale, 16:9 orizzontale."
       }
     ],
     "video": [
