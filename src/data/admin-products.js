@@ -1499,8 +1499,7 @@ export const adminProducts = [
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg",
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg",
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg"
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
     ],
     "imageAlts": {
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
@@ -1746,6 +1745,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-05-14T15:23:15.292Z"
+    "updatedAt": "2026-05-14T16:26:13.181Z",
+    "heroImage": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg"
   }
 ]
