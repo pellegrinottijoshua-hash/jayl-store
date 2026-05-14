@@ -914,15 +914,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/charizard-pok-mon-t-shirt-retro-90s-style-anime-gift/generated/generated-img-1778343577410.png",
-    "images": [
-      "/images/charizard-pok-mon-t-shirt-retro-90s-style-anime-gift/generated/generated-img-1778343577410.png",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg"
-    ],
+    "images": [],
     "imageAlts": {
       "/images/charizard-pok-mon-t-shirt-retro-90s-style-anime-gift/generated/generated-img-1778343577410.png": "charizard cool pokemon red fire type with sunglasses",
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Charizard Pokémon T-Shirt with vibrant retro 90s anime design.",
@@ -1169,7 +1161,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T16:20:27.978Z",
-    "updatedAt": "2026-05-09T16:44:00.643Z"
+    "updatedAt": "2026-05-14T12:59:47.473Z"
   },
   {
     "id": "snorlax-pok-mon-t-shirt",
