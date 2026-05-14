@@ -1,5 +1,6 @@
 import { applyCors } from './_lib/cors.js'
 import { put, del as blobDel } from '@vercel/blob'
+import { handleUpload } from '@vercel/blob/client'
 import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 
@@ -68,6 +69,35 @@ async function ghDelete(path, sha, message, token) {
   })
   if (!res.ok) throw new Error(`GitHub DELETE ${path}: ${res.status}`)
   return res.json()
+}
+
+// ── Video manifest helpers ────────────────────────────────────────────────────
+// Blob-stored videos can't be listed from the GitHub directory tree.
+// We maintain a small JSON file per product: public/images/{id}/_videos.json
+// each entry: { url, name, path, isVideo: true }
+
+const VIDEOS_MANIFEST_FILENAME = '_videos.json'
+
+async function readVideosManifest(productId, token) {
+  const path = `public/images/${productId}/${VIDEOS_MANIFEST_FILENAME}`
+  try {
+    const file = await ghGet(path, token)
+    const content = Buffer.from(file.content, 'base64').toString('utf-8')
+    return { entries: JSON.parse(content), sha: file.sha }
+  } catch {
+    return { entries: [], sha: null }
+  }
+}
+
+async function writeVideosManifest(productId, entries, sha, token) {
+  const path = `public/images/${productId}/${VIDEOS_MANIFEST_FILENAME}`
+  await ghPut(path, JSON.stringify(entries, null, 2), sha, `admin: update videos manifest for ${productId}`, token)
+}
+
+async function addToVideosManifest(productId, asset, token) {
+  const { entries, sha } = await readVideosManifest(productId, token)
+  if (!entries.find(e => e.url === asset.url)) entries.push(asset)
+  await writeVideosManifest(productId, entries, sha, token)
 }
 
 // ── Admin products helpers ────────────────────────────────────────────────────
@@ -268,6 +298,40 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
+  // ── Vercel Blob client-upload token exchange (bypasses 4.5 MB body limit) ──
+  // The @vercel/blob/client `upload()` calls this endpoint twice:
+  // 1. blob.generate-client-token  → we return a one-time upload token
+  // 2. blob.upload-completed        → we acknowledge (client then calls upload-image)
+  const rawBody = req.body || {}
+  if (rawBody.type === 'blob.generate-client-token' || rawBody.type === 'blob.upload-completed') {
+    const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+    if (!blobToken) return res.status(500).json({ error: 'BLOB_READ_WRITE_TOKEN not configured' })
+    try {
+      // Adapt Express req headers to the Headers-like interface handleUpload expects
+      const headerMap = {}
+      for (const [k, v] of Object.entries(req.headers)) {
+        headerMap[k] = Array.isArray(v) ? v[0] : v
+      }
+      const jsonResponse = await handleUpload({
+        body:    rawBody,
+        request: { headers: { get: (n) => headerMap[n.toLowerCase()] ?? null } },
+        token:   blobToken,
+        onBeforeGenerateToken: async () => ({
+          allowedContentTypes: [
+            'image/jpeg', 'image/jpg', 'image/png', 'image/webp',
+            'image/gif', 'image/avif',
+            'video/mp4', 'video/quicktime', 'video/webm',
+          ],
+          maximumSizeInBytes: 500 * 1024 * 1024, // 500 MB
+        }),
+        onUploadCompleted: async () => { /* client calls upload-image next */ },
+      })
+      return res.status(200).json(jsonResponse)
+    } catch (e) {
+      return res.status(400).json({ error: e.message })
+    }
+  }
+
   const { action, password, ...data } = req.body || {}
 
   if (password !== ADMIN_PASSWORD) {
@@ -339,28 +403,58 @@ export default async function handler(req, res) {
     }
 
     // ── upload-image ──────────────────────────────────────────────────────────
+    // Accepts either a Vercel Blob URL (`blobUrl`) or a legacy base64 `dataUrl`.
+    // Videos are kept in Vercel Blob and registered in _videos.json; images are
+    // downloaded from the blob (if applicable) and pushed to GitHub.
     if (action === 'upload-image') {
-      const { productId, filename, dataUrl } = data
-      if (!productId || !filename || !dataUrl) {
-        return res.status(400).json({ error: 'productId, filename and dataUrl required' })
+      const { productId, filename, dataUrl, blobUrl, isVideo } = data
+      if (!productId || !filename) {
+        return res.status(400).json({ error: 'productId and filename required' })
+      }
+      if (!dataUrl && !blobUrl) {
+        return res.status(400).json({ error: 'blobUrl or dataUrl required' })
       }
       if (!/^[a-zA-Z0-9_\-./]+$/.test(productId) || !/^[a-zA-Z0-9_\-.]+$/.test(filename)) {
         return res.status(400).json({ error: 'Invalid productId or filename' })
       }
 
-      // Strip data-URL prefix to get raw base64
-      const base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
-      const filePath = `public/images/${productId}/${filename}`
+      // Videos: keep in Vercel Blob, register URL in per-product manifest
+      if (isVideo || /\.(mp4|mov|webm)$/i.test(filename)) {
+        const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+        const finalUrl = blobUrl || dataUrl  // dataUrl is unlikely for videos but safe
+        await addToVideosManifest(productId, {
+          url:     finalUrl,
+          name:    filename,
+          path:    `blob/${filename}`,
+          isVideo: true,
+        }, githubToken)
+        return res.status(200).json({ ok: true, url: finalUrl })
+      }
 
-      // Get sha if file already exists (for update)
+      // Images: get base64 content (from blob download or from data URL)
+      let base64
+      if (blobUrl) {
+        const blobRes = await fetch(blobUrl)
+        if (!blobRes.ok) throw new Error(`Failed to download uploaded file: ${blobRes.status}`)
+        const buffer = await blobRes.arrayBuffer()
+        base64 = Buffer.from(buffer).toString('base64')
+        // Clean up the temporary blob now that we've copied it to GitHub
+        const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+        if (blobToken) blobDel(blobUrl, { token: blobToken }).catch(() => {})
+      } else {
+        // Legacy path: base64 data URL (still works for small files)
+        base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
+      }
+
+      const filePath = `public/images/${productId}/${filename}`
       let existingSha = null
       try {
         const existing = await ghGet(filePath, githubToken)
         existingSha = existing.sha
       } catch {}
 
-      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
-      const ghRes = await fetch(url, {
+      const ghUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
+      const ghRes = await fetch(ghUrl, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${githubToken}`,
@@ -379,7 +473,9 @@ export default async function handler(req, res) {
         const err = await ghRes.json().catch(() => ({}))
         throw new Error(`Image upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
       }
-      return res.status(200).json({ ok: true, path: `/images/${productId}/${filename}` })
+      // Return a raw GitHub CDN URL so the thumbnail shows immediately
+      const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
+      return res.status(200).json({ ok: true, path: `/${filePath.replace(/^public/, 'images')}`, url: rawUrl })
     }
 
     // ── list-images ───────────────────────────────────────────────────────────
@@ -391,10 +487,23 @@ export default async function handler(req, res) {
         const files = await ghGet(`public/images/${productId}`, githubToken)
         const images = Array.isArray(files)
           ? files
-              .filter(f => /\.(jpe?g|png|webp|gif|avif)$/i.test(f.name))
-              .map(f => ({ name: f.name, path: f.path, sha: f.sha, url: `/images/${productId}/${f.name}` }))
+              // include images AND GitHub-stored videos; skip internal manifest files
+              .filter(f => /\.(jpe?g|png|webp|gif|avif|mp4|mov)$/i.test(f.name))
+              .map(f => ({
+                name:    f.name,
+                path:    f.path,
+                sha:     f.sha,
+                // Use raw.githubusercontent.com so thumbnails show immediately
+                // (no need to wait for a Vercel redeploy)
+                url: `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/public/images/${productId}/${f.name}`,
+                isVideo: /\.(mp4|mov)$/i.test(f.name),
+              }))
           : []
-        return res.status(200).json({ images })
+
+        // Merge in blob-stored videos from the per-product manifest
+        const { entries: blobAssets } = await readVideosManifest(productId, githubToken)
+
+        return res.status(200).json({ images: [...images, ...blobAssets] })
       } catch {
         return res.status(200).json({ images: [] })
       }

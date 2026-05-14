@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import { upload as blobUpload } from '@vercel/blob/client'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 
@@ -34,14 +35,6 @@ async function api(action, data) {
   return json
 }
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader()
-    r.onload = () => resolve(r.result)
-    r.onerror = reject
-    r.readAsDataURL(file)
-  })
-}
 
 // ── Shared UI ─────────────────────────────────────────────────────────────────
 
@@ -83,7 +76,7 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, o
   const isMob  = mobileHero  === url
   const seqIdx = sequenza.indexOf(url)
   const inSeq  = seqIdx !== -1
-  const isVid  = /\.mp4$/i.test(url)
+  const isVid  = /\.(mp4|mov|webm)$/i.test(url)
   return (
     <div className="relative group flex-shrink-0 w-16 h-16">
       <div className={`w-full h-full border-2 overflow-hidden transition-all ${
@@ -133,9 +126,18 @@ function ImagePool({
     setUploading(true); setUploadErr('')
     try {
       for (const file of Array.from(files)) {
-        const dataUrl  = await fileToBase64(file)
         const filename = sanitizeFilename(file.name)
-        await api('upload-image', { productId, filename, dataUrl })
+        const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
+
+        // Upload directly to Vercel Blob from the browser — no 4.5 MB body limit.
+        // The /api/admin endpoint handles the token exchange (handleUpload).
+        const blob = await blobUpload(`${productId}/${filename}`, file, {
+          access:          'public',
+          handleUploadUrl: '/api/admin',
+        })
+
+        // Register the asset: images → copy to GitHub; videos → keep in Blob
+        await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo })
       }
       onUploaded?.()
     } catch (e) {
@@ -164,7 +166,7 @@ function ImagePool({
     <div className="space-y-4">
       {/* Upload zone */}
       <div>
-        <input ref={fileRef} type="file" accept="image/*,video/mp4,video/quicktime" multiple className="hidden"
+        <input ref={fileRef} type="file" accept="image/*,video/mp4,video/quicktime,video/webm" multiple className="hidden"
           onChange={e => doUpload(e.target.files)} />
         <div
           onDragOver={e => { e.preventDefault(); setDragging(true) }}
@@ -209,7 +211,7 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, allImages, onSetDesktop
   const getImg    = url => allImages?.find(i => i.url === url) || { url, name: url.split('/').pop().split('?')[0] || 'image' }
 
   const HeroSlot = ({ url, label, aspect, color, onClear }) => {
-    const isVideo = url && /\.mp4$/i.test(url)
+    const isVideo = url && /\.(mp4|mov|webm)$/i.test(url)
     return (
       <div>
         <p className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${color}`}>{label}</p>
@@ -276,7 +278,7 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, allImages, onSetDesktop
                 const img       = getImg(url)
                 const isDesktop = desktopHero === url
                 const isMobile  = mobileHero  === url
-                const isVideo   = /\.mp4$/i.test(url)
+                const isVideo   = /\.(mp4|mov|webm)$/i.test(url)
                 return (
                   <div key={url} className="flex-shrink-0 relative group">
                     <div className={`w-20 h-20 border-2 overflow-hidden transition-all ${
