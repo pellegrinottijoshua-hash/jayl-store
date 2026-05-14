@@ -46,6 +46,42 @@ function fileToBase64(file) {
   })
 }
 
+// Compress images > 3.2 MB in the browser (Canvas → JPEG) so they always fit
+// in the base64 JSON path. Videos are returned unchanged.
+function compressImage(file, maxMB = 3.2) {
+  if (!file.type.startsWith('image/')) return Promise.resolve(file)
+  if (file.size <= maxMB * 1024 * 1024) return Promise.resolve(file)
+  return new Promise(resolve => {
+    const img = new Image()
+    const url = URL.createObjectURL(file)
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      const { width, height } = img
+      const canvas = document.createElement('canvas')
+      const tryCompress = (quality, scale) => {
+        canvas.width  = Math.round(width  * scale)
+        canvas.height = Math.round(height * scale)
+        const ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        canvas.toBlob(blob => {
+          if (!blob) { resolve(file); return }
+          if (blob.size <= maxMB * 1024 * 1024 || quality <= 0.25) {
+            const baseName = file.name.replace(/\.[^.]+$/, '')
+            resolve(new File([blob], baseName + '.jpg', { type: 'image/jpeg' }))
+          } else if (quality > 0.45) {
+            tryCompress(quality - 0.15, scale)
+          } else {
+            tryCompress(quality - 0.1, scale * 0.8)
+          }
+        }, 'image/jpeg', quality)
+      }
+      tryCompress(0.85, 1)
+    }
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
+    img.src = url
+  })
+}
+
 // ── Shared components ─────────────────────────────────────────────────────────
 
 function Field({ label, children, hint }) {
@@ -352,10 +388,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     const ctrl  = new AbortController()
     const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>90s)')), 90_000)
     try {
-      for (const file of Array.from(files)) {
+      for (const raw of Array.from(files)) {
+        // Compress images > 3.2 MB in the browser → always fits in base64 path.
+        const file     = await compressImage(raw)
         const filename = sanitizeFilename(file.name)
         const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
-        const useBlob  = isVideo || file.size >= 3.5 * 1024 * 1024
+        // Only videos still go through Vercel Blob.
+        const useBlob  = isVideo
         if (useBlob) {
           const blob = await blobUpload(`${productId}/${filename}`, file, {
             access: 'public', handleUploadUrl: '/api/admin', abortSignal: ctrl.signal,
@@ -882,87 +921,14 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       </Card>
       </Collapsible>
 
-      {/* Video */}
-      <Collapsible label="🎬 Video" defaultOpen={false}>
-      <Card title="Video (optional)">
-        <Field label="Video URL" hint="Accepts YouTube, Vimeo, or direct .mp4 URL. Shown as hero on the product page.">
-          <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
-            placeholder="https://www.youtube.com/watch?v=… or https://vimeo.com/…"
-            className={inputCls} />
-        </Field>
-        {videoInfo && (
-          <div className="mt-2">
-            {videoInfo.type === 'youtube' && (
-              <div className="relative w-48">
-                <img
-                  src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`}
-                  alt="Video thumbnail"
-                  className="w-full border border-gray-700"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <span className="text-white text-3xl">▶</span>
-                </div>
-                <p className="text-gray-500 text-xs mt-1">YouTube · {videoInfo.id}</p>
-              </div>
-            )}
-            {videoInfo.type === 'vimeo' && (
-              <div className="flex items-center gap-3 bg-gray-800 border border-gray-700 px-3 py-2 w-48">
-                <span className="text-white text-2xl">▶</span>
-                <p className="text-gray-400 text-xs">Vimeo · {videoInfo.id}</p>
-              </div>
-            )}
-            {videoInfo.type === 'mp4' && (
-              <p className="text-gray-400 text-xs bg-gray-800 border border-gray-700 px-3 py-2 inline-block">MP4 video linked</p>
-            )}
-          </div>
-        )}
-        {videoUrl && !videoInfo && (
-          <p className="text-yellow-500 text-xs mt-1">⚠ URL not recognised as YouTube, Vimeo, or .mp4</p>
-        )}
-      </Card>
-      </Collapsible>
-
-      {/* ── Media Pool · Hero & Sequenza ────────────────────────────────────── */}
+      {/* ── Media · Immagini + Video + Hero & Sequenza (sezione unificata) ───── */}
       <Collapsible
         label={`🖼 Media${poolImages.length > 0 ? ` (${poolImages.length} immagini)` : existingImages.length > 0 ? ` (${existingImages.length} upload)` : ''}`}
         defaultOpen={poolImages.length > 0 || existingImages.length > 0}
       >
-      <Card title="Media · Hero & Sequenza">
-        {/* Legend */}
-        <div className="flex gap-3 text-[10px] text-gray-600 pb-1">
-          <span><span className="inline-block w-2 h-2 bg-blue-500 rounded-sm mr-1" />🖥 Hero Desktop</span>
-          <span><span className="inline-block w-2 h-2 bg-purple-500 rounded-sm mr-1" />📱 Hero Mobile</span>
-          <span><span className="inline-block w-2 h-2 bg-emerald-700 rounded-sm mr-1" />+ Sequenza (ordine galleria)</span>
-        </div>
+      <Card title="Media · Immagini & Video">
 
-        {/* Selections summary */}
-        {(desktopHero || mobileHero || sequenza.length > 0) && (
-          <div className="bg-gray-800/50 border border-gray-700 p-2 rounded-sm text-xs space-y-1">
-            {desktopHero && (
-              <div className="flex items-center gap-2">
-                <span className="text-blue-400 w-24 flex-shrink-0">🖥 Desktop:</span>
-                <span className="text-gray-300 truncate font-mono text-[10px]">{desktopHero.split('/').pop()}</span>
-                <button onClick={() => setDesktopHero(null)} className="text-gray-600 hover:text-red-400 ml-auto text-xs">×</button>
-              </div>
-            )}
-            {mobileHero && (
-              <div className="flex items-center gap-2">
-                <span className="text-purple-400 w-24 flex-shrink-0">📱 Mobile:</span>
-                <span className="text-gray-300 truncate font-mono text-[10px]">{mobileHero.split('/').pop()}</span>
-                <button onClick={() => setMobileHero(null)} className="text-gray-600 hover:text-red-400 ml-auto text-xs">×</button>
-              </div>
-            )}
-            {sequenza.length > 0 && (
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400 w-24 flex-shrink-0">Sequenza:</span>
-                <span className="text-gray-400 text-[10px]">{sequenza.length} immagini</span>
-                <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto text-xs">reset</button>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Upload zone (immediate upload to GitHub) */}
+        {/* ── Upload immagini / video ─────────────────────────────────────── */}
         {!productId ? (
           <p className="text-gray-600 text-xs italic">Inserisci un titolo per attivare l'upload immagini.</p>
         ) : (
@@ -979,18 +945,85 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               }`}
             >
               {poolUploading
-                ? <p className="text-indigo-400 text-xs animate-pulse">⏫ Caricamento…</p>
-                : <p className="text-gray-500 text-xs">+ Importa immagine / video (max 500 MB)</p>}
+                ? <p className="text-indigo-400 text-xs animate-pulse">⏫ Caricamento… (immagini grandi vengono compresse automaticamente)</p>
+                : <p className="text-gray-500 text-xs">+ Importa immagine / video — drag & drop o click</p>}
             </div>
             {poolUploadErr && <p className="text-red-400 text-xs mt-1">⚠ {poolUploadErr}</p>}
           </div>
         )}
 
-        {/* Pool images */}
-        {poolLoading && <p className="text-gray-600 text-xs">Caricamento immagini…</p>}
+        {/* ── Video URL embed ─────────────────────────────────────────────── */}
+        <div className="border-t border-gray-800 pt-3">
+          <Field label="🎬 Video URL (YouTube / Vimeo / .mp4)" hint="Mostrato come hero sulla pagina prodotto. Alternativa all'upload diretto.">
+            <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
+              placeholder="https://www.youtube.com/watch?v=… oppure https://vimeo.com/…"
+              className={inputCls} />
+          </Field>
+          {videoInfo && (
+            <div className="mt-2">
+              {videoInfo.type === 'youtube' && (
+                <div className="relative w-36">
+                  <img src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`} alt="Video thumbnail"
+                    className="w-full border border-gray-700" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                    <span className="text-white text-2xl">▶</span>
+                  </div>
+                  <p className="text-gray-500 text-xs mt-1">YouTube · {videoInfo.id}</p>
+                </div>
+              )}
+              {videoInfo.type === 'vimeo' && (
+                <div className="flex items-center gap-2 bg-gray-800 border border-gray-700 px-3 py-2 w-36">
+                  <span className="text-white text-xl">▶</span>
+                  <p className="text-gray-400 text-xs">Vimeo · {videoInfo.id}</p>
+                </div>
+              )}
+              {videoInfo.type === 'mp4' && (
+                <p className="text-gray-400 text-xs bg-gray-800 border border-gray-700 px-3 py-2 inline-block">MP4 · {videoUrl.split('/').pop()}</p>
+              )}
+            </div>
+          )}
+          {videoUrl && !videoInfo && (
+            <p className="text-yellow-500 text-xs mt-1">⚠ URL non riconosciuto (YouTube, Vimeo o .mp4)</p>
+          )}
+        </div>
+
+        {/* ── Hero & Sequenza ─────────────────────────────────────────────── */}
         {poolImages.length > 0 && (
-          <div>
-            <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono mb-1.5">Immagini · hover per assegnare</p>
+          <div className="border-t border-gray-800 pt-3 space-y-3">
+            <div className="flex gap-3 text-[10px] text-gray-600">
+              <span><span className="inline-block w-2 h-2 bg-blue-500 rounded-sm mr-1" />🖥 Hero Desktop</span>
+              <span><span className="inline-block w-2 h-2 bg-purple-500 rounded-sm mr-1" />📱 Hero Mobile</span>
+              <span><span className="inline-block w-2 h-2 bg-emerald-700 rounded-sm mr-1" />+ Sequenza</span>
+            </div>
+
+            {(desktopHero || mobileHero || sequenza.length > 0) && (
+              <div className="bg-gray-800/50 border border-gray-700 p-2 text-xs space-y-1">
+                {desktopHero && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-blue-400 w-24 flex-shrink-0">🖥 Desktop:</span>
+                    <span className="text-gray-300 truncate font-mono text-[10px]">{desktopHero.split('/').pop()}</span>
+                    <button onClick={() => setDesktopHero(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+                  </div>
+                )}
+                {mobileHero && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-purple-400 w-24 flex-shrink-0">📱 Mobile:</span>
+                    <span className="text-gray-300 truncate font-mono text-[10px]">{mobileHero.split('/').pop()}</span>
+                    <button onClick={() => setMobileHero(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+                  </div>
+                )}
+                {sequenza.length > 0 && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-emerald-400 w-24 flex-shrink-0">Sequenza:</span>
+                    <span className="text-gray-400 text-[10px]">{sequenza.length} immagini</span>
+                    <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {poolLoading && <p className="text-gray-600 text-xs">Aggiornamento…</p>}
+            <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono">Hover per assegnare</p>
             <div className="flex flex-wrap gap-1.5">
               {poolImages.map(img => (
                 <PoolThumb key={img.url} img={img}
@@ -1001,11 +1034,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             </div>
           </div>
         )}
+        {!poolImages.length && poolLoading && <p className="text-gray-600 text-xs">Caricamento immagini…</p>}
 
         {/* Legacy: existing images for edit mode */}
         {existingImages.length > 0 && (
           <Collapsible label={`${existingImages.length} immagini esistenti (modifica alt text)`} defaultOpen={false}>
-          <div className="space-y-2">
+          <div className="space-y-2 mt-2">
             {existingImages.map((img, i) => (
               <div key={img.src} className="flex gap-3 items-start bg-gray-800/50 border border-gray-800 p-2">
                 <div className="relative flex-shrink-0">

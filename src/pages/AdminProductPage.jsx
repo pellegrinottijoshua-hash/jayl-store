@@ -45,6 +45,43 @@ function fileToBase64(file) {
   })
 }
 
+// Compress an image file so it fits inside the 3.5 MB base64 limit.
+// Videos are returned unchanged (can't compress in the browser).
+// Falls back to the original file on any error.
+function compressImage(file, maxMB = 3.2) {
+  if (!file.type.startsWith('image/')) return Promise.resolve(file)
+  if (file.size <= maxMB * 1024 * 1024) return Promise.resolve(file)
+  return new Promise(resolve => {
+    const img = new Image()
+    const url = URL.createObjectURL(file)
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      const { width, height } = img
+      const canvas = document.createElement('canvas')
+      const tryCompress = (quality, scale) => {
+        canvas.width  = Math.round(width  * scale)
+        canvas.height = Math.round(height * scale)
+        const ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        canvas.toBlob(blob => {
+          if (!blob) { resolve(file); return }
+          if (blob.size <= maxMB * 1024 * 1024 || quality <= 0.25) {
+            const baseName = file.name.replace(/\.[^.]+$/, '')
+            resolve(new File([blob], baseName + '.jpg', { type: 'image/jpeg' }))
+          } else if (quality > 0.45) {
+            tryCompress(quality - 0.15, scale)
+          } else {
+            tryCompress(quality - 0.1, scale * 0.8)
+          }
+        }, 'image/jpeg', quality)
+      }
+      tryCompress(0.85, 1)
+    }
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
+    img.src = url
+  })
+}
+
 // ── Shared UI ─────────────────────────────────────────────────────────────────
 
 const inputCls = 'w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors'
@@ -138,12 +175,14 @@ function ImagePool({
     const ctrl  = new AbortController()
     const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>90s)')), 90_000)
     try {
-      for (const file of Array.from(files)) {
+      for (const raw of Array.from(files)) {
+        // Compress images > 3.2 MB in the browser so they fit in base64 JSON.
+        // Videos cannot be compressed client-side → still use Vercel Blob.
+        const file     = await compressImage(raw)
         const filename = sanitizeFilename(file.name)
         const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
-        // Base64-in-JSON has a ~4.5 MB Vercel body limit.
-        // Files ≥ 3.5 MB (or any video) upload directly to Vercel Blob to bypass it.
-        const useBlob  = isVideo || file.size >= 3.5 * 1024 * 1024
+        // Only videos need Vercel Blob now; all images go via base64.
+        const useBlob  = isVideo
 
         if (useBlob) {
           const blob = await blobUpload(`${productId}/${filename}`, file, {
@@ -153,7 +192,6 @@ function ImagePool({
           })
           await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo }, ctrl.signal)
         } else {
-          // Small images: fast base64 path — no Vercel Blob token needed
           const dataUrl = await fileToBase64(file)
           await api('upload-image', { productId, filename, dataUrl }, ctrl.signal)
         }
