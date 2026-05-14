@@ -1,46 +1,27 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import SitoPanel       from './generate-assets/SitoPanel'
 import SocialPanel     from './generate-assets/SocialPanel'
 import InfluencerPanel from './generate-assets/InfluencerPanel'
-import { api } from './generate-assets/constants'
-
 export { IMAGE_MODELS, VIDEO_MODELS } from './generate-assets/constants'
 
 export default function GenerateAssetsTab({
   productId, productName, productType, primaryColor, collection,
   onAssetSaved, preloadedImages, personas,
 }) {
-  const [mobileSection,  setMobileSection]  = useState('sito')
-  const [productImages,  setProductImages]  = useState([])
+  const [mobileSection, setMobileSection] = useState('sito')
 
-  useEffect(() => {
-    if (!productId) return
-    api('list-images', { productId })
-      .then(data => {
-        const imgs = (data.images || []).filter(i => !/generated\//.test(i.path))
-        setProductImages(imgs)
-      })
-      .catch(() => {})
-  }, [productId])
-
-  const normalizedPreloaded = (preloadedImages || []).map(img => ({
-    url:  img.url,
-    name: img.name || img.url.split('/').pop() || 'image',
-  }))
-
-  // Merge GitHub images + preloaded images, deduplicating by URL.
-  // This ensures edit-page products show their Gelato mockups even if list-images
-  // returns a different set than what's stored in product.images.
+  // allImages comes directly from the parent (AdminProductPage) which already
+  // merges Gelato defaults + uploaded + generated from GitHub.
   const allImages = useMemo(() => {
     const seen = new Set()
     const out  = []
-    for (const img of [...productImages, ...normalizedPreloaded]) {
+    for (const img of (preloadedImages || [])) {
       if (!img.url || seen.has(img.url)) continue
       seen.add(img.url)
-      out.push(img)
+      out.push({ url: img.url, name: img.name || img.url.split('/').pop() || 'image' })
     }
     return out
-  }, [productImages, normalizedPreloaded.map(i => i.url).join(',')]) // eslint-disable-line
+  }, [(preloadedImages || []).map(i => i.url).join(',')]) // eslint-disable-line
 
   // ── Mobile section tabs ──────────────────────────────────────────────────
   const mobileTabs = [

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -27,7 +27,9 @@ async function api(action, data) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action, password: ADMIN_PASSWORD, ...data }),
   })
-  const json = await res.json()
+  let json
+  try { json = await res.json() }
+  catch { throw new Error(`Errore server (${res.status}) — verifica che GITHUB_TOKEN sia configurato su Vercel`) }
   if (!res.ok) throw new Error(json.error || 'Request failed')
   return json
 }
@@ -71,247 +73,164 @@ function Section({ title, children }) {
   )
 }
 
-// ── Image Gallery (left column) ───────────────────────────────────────────────
+// ── Image Pool — left column ───────────────────────────────────────────────────
+// Shows ALL image sources: Gelato defaults, uploaded externals, AI-generated.
+// Hover each thumbnail to assign it as Hero Desktop/Mobile or add to Sequenza.
 
-function ImageGallery({ productId, readOnly }) {
-  const [images, setImages]     = useState([])
-  const [active, setActive]     = useState(0)
-  const [loading, setLoading]   = useState(true)
-  const [uploading, setUploading] = useState(false)
-  const [error, setError]       = useState('')
-  const [dragging, setDragging] = useState(false)
-  const inputRef = useRef()
+function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, onSetMobileHero, onToggleSequenza }) {
+  const url    = img.url
+  const isDesk = desktopHero === url
+  const isMob  = mobileHero  === url
+  const seqIdx = sequenza.indexOf(url)
+  const inSeq  = seqIdx !== -1
+  const isVid  = /\.mp4$/i.test(url)
+  return (
+    <div className="relative group flex-shrink-0 w-16 h-16">
+      <div className={`w-full h-full border-2 overflow-hidden transition-all ${
+        isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
+      }`}>
+        {isVid
+          ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
+          : <img src={url} alt={img.name} className="w-full h-full object-cover"
+              onError={e => { e.currentTarget.style.opacity = '0.3' }} />
+        }
+      </div>
+      {/* Role badges */}
+      {isDesk && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
+      {isMob  && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
+      {inSeq  && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
+      {/* Hover action overlay */}
+      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-0.5 z-20">
+        <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
+          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
+            isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
+          }`}>🖥</button>
+        <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
+          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
+            isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
+          }`}>📱</button>
+        <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
+          className={`w-6 h-6 text-[10px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
+            inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
+          }`}>{inSeq ? '✓' : '+'}</button>
+      </div>
+    </div>
+  )
+}
 
-  const load = async () => {
-    setLoading(true)
-    try {
-      const data = await api('list-images', { productId })
-      const imgs = data.images || []
-      setImages(imgs)
-      setActive(0)
-    } catch (e) {
-      // silently fail — product may have no images folder yet
-    } finally {
-      setLoading(false)
-    }
-  }
+function ImagePool({
+  gelatoImages, uploadedImages, generatedImages,
+  desktopHero, mobileHero, sequenza,
+  onSetDesktopHero, onSetMobileHero, onToggleSequenza,
+  productId, onUploaded, loading,
+}) {
+  const [uploading,   setUploading]   = useState(false)
+  const [uploadErr,   setUploadErr]   = useState('')
+  const [dragging,    setDragging]    = useState(false)
+  const fileRef = useRef()
 
-  useEffect(() => { load() }, [productId])
-
-  const addFiles = useCallback(async files => {
-    if (readOnly) return
-    setUploading(true); setError('')
+  const doUpload = useCallback(async files => {
+    setUploading(true); setUploadErr('')
     try {
       for (const file of Array.from(files)) {
         const dataUrl  = await fileToBase64(file)
         const filename = sanitizeFilename(file.name)
         await api('upload-image', { productId, filename, dataUrl })
       }
-      await load()
+      onUploaded?.()
     } catch (e) {
-      setError(e.message)
+      setUploadErr(e.message)
     } finally {
       setUploading(false)
+      if (fileRef.current) fileRef.current.value = ''
     }
-  }, [productId, readOnly])
+  }, [productId, onUploaded])
 
-  const handleDelete = async img => {
-    if (!confirm(`Delete ${img.name}?`)) return
-    setError('')
-    try {
-      await api('delete-image', { path: img.path, sha: img.sha })
-      setImages(prev => {
-        const next = prev.filter(i => i.sha !== img.sha)
-        setActive(a => Math.min(a, next.length - 1))
-        return next
-      })
-    } catch (e) {
-      setError(e.message)
-    }
+  const thumbProps = { desktopHero, mobileHero, sequenza, onSetDesktopHero, onSetMobileHero, onToggleSequenza }
+
+  const PoolSection = ({ label, images, emptyMsg }) => {
+    if (!images?.length) return emptyMsg ? <p className="text-gray-700 text-[10px] italic">{emptyMsg}</p> : null
+    return (
+      <div>
+        <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono mb-1.5">{label}</p>
+        <div className="flex flex-wrap gap-1.5">
+          {images.map(img => <PoolThumb key={img.url} img={img} {...thumbProps} />)}
+        </div>
+      </div>
+    )
   }
 
-  const current = images[active]
-
   return (
-    <div className="space-y-3">
-      {/* Main image */}
-      <div className="aspect-[4/5] bg-gray-900 border border-gray-800 overflow-hidden flex items-center justify-center relative group">
-        {loading ? (
-          <p className="text-gray-600 text-sm">Loading…</p>
-        ) : current ? (
-          <>
-            <img src={current.url} alt={current.name} className="w-full h-full object-cover" />
-            {!readOnly && (
-              <button
-                onClick={() => handleDelete(current)}
-                className="absolute top-2 right-2 bg-red-700 hover:bg-red-600 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                Delete image
-              </button>
-            )}
-          </>
-        ) : (
-          <p className="text-gray-700 text-sm">No images yet</p>
-        )}
+    <div className="space-y-4">
+      {/* Upload zone */}
+      <div>
+        <input ref={fileRef} type="file" accept="image/*,video/mp4,video/quicktime" multiple className="hidden"
+          onChange={e => doUpload(e.target.files)} />
+        <div
+          onDragOver={e => { e.preventDefault(); setDragging(true) }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={e => { e.preventDefault(); setDragging(false); doUpload(e.dataTransfer.files) }}
+          onClick={() => fileRef.current?.click()}
+          className={`border-2 border-dashed py-3 px-2 text-center cursor-pointer transition-colors ${
+            dragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-500'
+          }`}
+        >
+          {uploading ? <p className="text-indigo-400 text-xs">Caricamento…</p>
+            : <p className="text-gray-500 text-xs">+ Importa immagine</p>}
+        </div>
+        {uploadErr && <p className="text-red-400 text-xs mt-1">⚠ {uploadErr}</p>}
       </div>
 
-      {/* Thumbnail strip */}
-      {images.length > 0 && (
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-          {images.map((img, i) => (
-            <button
-              key={img.sha}
-              onClick={() => setActive(i)}
-              className={`w-16 h-16 flex-shrink-0 border-2 overflow-hidden transition-all ${
-                i === active ? 'border-indigo-500' : 'border-gray-700 hover:border-gray-600'
-              }`}
-            >
-              <img src={img.url} alt="" className="w-full h-full object-cover"
-                onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-            </button>
-          ))}
-        </div>
+      {loading && <p className="text-gray-600 text-xs">Caricamento…</p>}
+
+      <PoolSection label="Gelato · Default" images={gelatoImages} />
+      <PoolSection label="Importate" images={uploadedImages} emptyMsg="Nessuna importata ancora" />
+      <PoolSection label="Generate" images={generatedImages} emptyMsg="Nessuna generata ancora" />
+
+      {!loading && !gelatoImages?.length && !uploadedImages?.length && !generatedImages?.length && (
+        <p className="text-gray-600 text-xs">Nessuna immagine ancora.</p>
       )}
 
-      {/* Upload zone */}
-      {!readOnly && (
-        <>
-          {error && <p className="text-red-400 text-xs">{error}</p>}
-          <div
-            onDragOver={e => { e.preventDefault(); setDragging(true) }}
-            onDragLeave={() => setDragging(false)}
-            onDrop={e => { e.preventDefault(); setDragging(false); addFiles(e.dataTransfer.files) }}
-            onClick={() => inputRef.current?.click()}
-            className={`border-2 border-dashed p-5 text-center cursor-pointer transition-colors ${
-              dragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-600'
-            }`}
-          >
-            {uploading
-              ? <p className="text-indigo-400 text-xs">Uploading to GitHub…</p>
-              : <p className="text-gray-600 text-xs">Drop images or click to upload</p>
-            }
-            <input ref={inputRef} type="file" accept="image/*" multiple className="hidden"
-              onChange={e => addFiles(e.target.files)} />
-          </div>
-          <p className="text-gray-700 text-xs">{images.length} image{images.length !== 1 ? 's' : ''} in GitHub</p>
-        </>
-      )}
+      <p className="text-[9px] text-gray-700 leading-relaxed border-t border-gray-800 pt-2">
+        Hover → 🖥 Hero Desktop &nbsp;·&nbsp; 📱 Hero Mobile &nbsp;·&nbsp; + Sequenza
+      </p>
     </div>
   )
 }
 
-// ── Media Panel — Hero + Sequenza ────────────────────────────────────────────
-// HERO: two visual click-to-assign slots (Desktop 16:9, Mobile 9:16).
-// SEQUENZA: horizontal strip of all images, reorderable with ‹ › arrows.
-// Clicking a hero slot activates "pick mode" — then click any thumbnail to assign.
+// ── Media Panel — Hero + Sequenza (controlled) ───────────────────────────────
+// Purely display: all state lives in AdminProductPage.
+// Assignment happens from PoolThumb hover buttons; this panel shows the result
+// and lets the user reorder the sequenza with ‹ › arrows.
 
-function MediaPanel({ productId, product, onSaved }) {
-  const [sequence,    setSequence]    = useState([])      // [{ url, name }] ordered
-  const [loading,     setLoading]     = useState(true)
-  const [saving,      setSaving]      = useState(false)
-  const [msg,         setMsg]         = useState('')
-  const [desktopHero, setDesktopHero] = useState(product?.image     || null)
-  const [mobileHero,  setMobileHero]  = useState(product?.heroImage || null)
-  const [picking,     setPicking]     = useState(null)    // null | 'desktop' | 'mobile'
+function MediaPanel({ desktopHero, mobileHero, sequenza, allImages, onSetDesktopHero, onSetMobileHero, onReorderSequenza, onSave, saving, msg }) {
+  const moveLeft  = i => { if (i === 0) return; const s = [...sequenza]; [s[i-1],s[i]]=[s[i],s[i-1]]; onReorderSequenza(s) }
+  const moveRight = i => { if (i === sequenza.length-1) return; const s = [...sequenza]; [s[i],s[i+1]]=[s[i+1],s[i]]; onReorderSequenza(s) }
+  const getImg    = url => allImages?.find(i => i.url === url) || { url, name: url.split('/').pop().split('?')[0] || 'image' }
 
-  useEffect(() => {
-    if (!productId) return
-    setLoading(true)
-    api('list-images', { productId })
-      .then(data => {
-        const imgs = (data.images || []).map(img => ({ url: img.url, name: img.name }))
-        if (product?.images?.length > 0) {
-          const saved = product.images
-            .map(url => imgs.find(i => i.url === url))
-            .filter(Boolean)
-          const extra = imgs.filter(i => !product.images.includes(i.url))
-          setSequence([...saved, ...extra])
-        } else {
-          setSequence(imgs)
-        }
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
-  }, [productId]) // eslint-disable-line
-
-  const moveLeft  = i => { if (i === 0) return; const s = [...sequence]; [s[i-1],s[i]]=[s[i],s[i-1]]; setSequence(s) }
-  const moveRight = i => { if (i === sequence.length-1) return; const s = [...sequence]; [s[i],s[i+1]]=[s[i+1],s[i]]; setSequence(s) }
-
-  const handlePickSlot = (slot) => {
-    // Toggle: clicking the active slot cancels pick mode
-    setPicking(prev => prev === slot ? null : slot)
-  }
-
-  const handlePickImage = (url) => {
-    if (picking === 'desktop') setDesktopHero(prev => prev === url ? null : url)
-    if (picking === 'mobile')  setMobileHero(prev  => prev === url ? null : url)
-    setPicking(null)
-  }
-
-  const handleSave = async () => {
-    if (!productId) return
-    setSaving(true); setMsg('')
-    try {
-      const orderedUrls = sequence.map(i => i.url)
-      await api('update-product-images', {
-        productId,
-        images:    orderedUrls,
-        heroImage: mobileHero  || null,
-        image:     desktopHero || orderedUrls[0] || null,
-      })
-      onSaved?.(orderedUrls, desktopHero, mobileHero)
-      setMsg('✓ Salvato')
-      setTimeout(() => setMsg(''), 3000)
-    } catch (e) {
-      setMsg('⚠ ' + e.message)
-    } finally {
-      setSaving(false)
-    }
-  }
-
-  const SlotBox = ({ slot, url, label, aspect, color }) => {
-    const active  = picking === slot
+  const HeroSlot = ({ url, label, aspect, color, onClear }) => {
     const isVideo = url && /\.mp4$/i.test(url)
     return (
       <div>
         <p className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${color}`}>{label}</p>
-        <button
-          onClick={() => handlePickSlot(slot)}
-          title={active ? 'Annulla selezione' : url ? 'Cambia' : 'Clicca per assegnare'}
-          className={`w-full overflow-hidden flex items-center justify-center border-2 transition-all ${aspect} ${
-            active
-              ? 'border-yellow-400 ring-1 ring-yellow-400/40 bg-yellow-900/10'
-              : url
-                ? `${color === 'text-blue-400' ? 'border-blue-700 hover:border-blue-500' : 'border-purple-700 hover:border-purple-500'}`
-                : 'border-dashed border-gray-700 hover:border-gray-500'
-          }`}
-        >
+        <div className={`w-full overflow-hidden border-2 flex items-center justify-center ${aspect} ${
+          url
+            ? (color === 'text-blue-400' ? 'border-blue-700' : 'border-purple-700')
+            : 'border-dashed border-gray-700'
+        }`}>
           {url ? (
             isVideo
               ? <div className="w-full h-full bg-gray-900 flex flex-col items-center justify-center gap-1 text-gray-400">
-                  <span className="text-2xl">🎬</span>
-                  <span className="text-[10px]">video</span>
+                  <span className="text-2xl">🎬</span><span className="text-[10px]">video</span>
                 </div>
               : <img src={url} alt="" className="w-full h-full object-cover"
                   onError={e => { e.currentTarget.style.opacity = '0.3' }} />
           ) : (
-            <span className="text-gray-600 text-xs px-2 text-center">
-              {active ? '↓ clicca una thumbnail' : '+ Assegna'}
-            </span>
+            <span className="text-gray-600 text-xs">— non assegnato —</span>
           )}
-        </button>
-        {url && !active && (
-          <button
-            onClick={() => { slot === 'desktop' ? setDesktopHero(null) : setMobileHero(null) }}
-            className="text-[10px] text-gray-600 hover:text-red-400 mt-1 transition-colors"
-          >
-            rimuovi
-          </button>
-        )}
-        {active && (
-          <button onClick={() => setPicking(null)} className="text-[10px] text-yellow-600 hover:text-yellow-400 mt-1 transition-colors">
-            annulla
-          </button>
+        </div>
+        {url && (
+          <button onClick={onClear} className="text-[10px] text-gray-600 hover:text-red-400 mt-1 transition-colors">rimuovi</button>
         )}
       </div>
     )
@@ -324,16 +243,8 @@ function MediaPanel({ productId, product, onSaved }) {
       <div className="px-4 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
         <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">🎬 Hero & Sequenza</h3>
         <div className="flex items-center gap-3">
-          {picking && (
-            <span className="text-yellow-400 text-xs animate-pulse">
-              → seleziona {picking === 'desktop' ? 'Desktop 16:9' : 'Mobile 9:16'}
-            </span>
-          )}
-          {msg && !picking && (
-            <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{msg}</span>
-          )}
-          <button onClick={handleSave} disabled={saving}
-            className={`${btnPrimary} text-xs py-1`}>
+          {msg && <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{msg}</span>}
+          <button onClick={onSave} disabled={saving} className={`${btnPrimary} text-xs py-1`}>
             {saving ? 'Salvataggio…' : '💾 Salva'}
           </button>
         </div>
@@ -345,101 +256,62 @@ function MediaPanel({ productId, product, onSaved }) {
         <div>
           <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">Hero</p>
           <div className="grid grid-cols-2 gap-4">
-            <SlotBox
-              slot="desktop"
-              url={desktopHero}
-              label="🖥 Desktop · 16:9"
-              aspect="aspect-video"
-              color="text-blue-400"
-            />
-            <SlotBox
-              slot="mobile"
-              url={mobileHero}
-              label="📱 Mobile · 9:16"
-              aspect="aspect-[9/16] max-h-48"
-              color="text-purple-400"
-            />
+            <HeroSlot url={desktopHero} label="🖥 Desktop · 16:9" aspect="aspect-video" color="text-blue-400"
+              onClear={() => onSetDesktopHero(null)} />
+            <HeroSlot url={mobileHero} label="📱 Mobile · 9:16" aspect="aspect-[9/16] max-h-48" color="text-purple-400"
+              onClear={() => onSetMobileHero(null)} />
           </div>
         </div>
 
         {/* ── SEQUENZA ── */}
         <div>
           <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">
-            Sequenza{sequence.length > 0 ? ` · ${sequence.length} immagini` : ''}
+            Sequenza{sequenza.length > 0 ? ` · ${sequenza.length} immagini` : ''}
           </p>
-          {loading ? (
-            <p className="text-gray-600 text-xs py-2">Caricamento…</p>
-          ) : sequence.length === 0 ? (
-            <p className="text-gray-600 text-xs py-2">Nessuna immagine — carica o genera asset sopra.</p>
+          {sequenza.length === 0 ? (
+            <p className="text-gray-600 text-xs py-2">Nessuna immagine — usa + nel pool per aggiungere.</p>
           ) : (
             <div className="flex gap-2 overflow-x-auto pb-2" style={{ scrollbarWidth: 'thin' }}>
-              {sequence.map((img, i) => {
-                const isDesktop = desktopHero === img.url
-                const isMobile  = mobileHero  === img.url
-                const isVideo   = /\.mp4$/i.test(img.url)
-                const isPick    = !!picking
+              {sequenza.map((url, i) => {
+                const img       = getImg(url)
+                const isDesktop = desktopHero === url
+                const isMobile  = mobileHero  === url
+                const isVideo   = /\.mp4$/i.test(url)
                 return (
-                  <div
-                    key={img.url}
-                    onClick={() => isPick && handlePickImage(img.url)}
-                    className={`flex-shrink-0 relative group ${isPick ? 'cursor-pointer' : ''}`}
-                  >
-                    {/* Thumbnail */}
+                  <div key={url} className="flex-shrink-0 relative group">
                     <div className={`w-20 h-20 border-2 overflow-hidden transition-all ${
-                      isPick
-                        ? 'hover:border-yellow-400 hover:ring-1 hover:ring-yellow-400/40 border-gray-600'
-                        : isDesktop && isMobile
-                          ? 'border-indigo-500'
-                          : isDesktop
-                            ? 'border-blue-600'
-                            : isMobile
-                              ? 'border-purple-600'
-                              : 'border-gray-700'
+                      isDesktop && isMobile ? 'border-indigo-500'
+                        : isDesktop ? 'border-blue-600'
+                        : isMobile  ? 'border-purple-600'
+                        : 'border-gray-700'
                     }`}>
                       {isVideo
                         ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
-                        : <img src={img.url} alt={img.name} className="w-full h-full object-cover"
+                        : <img src={url} alt={img.name} className="w-full h-full object-cover"
                             onError={e => { e.currentTarget.style.opacity = '0.3' }} />
                       }
                     </div>
-
                     {/* Position badge */}
                     <div className={`absolute -top-1.5 -left-1.5 w-4 h-4 flex items-center justify-center text-[9px] font-bold rounded-sm ${
                       i === 0 ? 'bg-gray-500 text-white' : 'bg-gray-800 text-gray-400'
                     }`}>{i + 1}</div>
-
                     {/* Hero badges */}
-                    {!isPick && isDesktop && (
-                      <div className="absolute top-0.5 right-0.5 bg-blue-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">🖥</div>
-                    )}
-                    {!isPick && isMobile && (
-                      <div className="absolute bottom-0.5 right-0.5 bg-purple-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">📱</div>
-                    )}
-
-                    {/* Reorder controls — shown on hover, hidden in pick mode */}
-                    {!isPick && (
-                      <div className="absolute bottom-0 inset-x-0 flex opacity-0 group-hover:opacity-100 transition-opacity bg-black/70">
-                        <button
-                          onClick={e => { e.stopPropagation(); moveLeft(i) }}
-                          disabled={i === 0}
-                          className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors"
-                          title="Sposta a sinistra"
-                        >‹</button>
-                        <button
-                          onClick={e => { e.stopPropagation(); moveRight(i) }}
-                          disabled={i === sequence.length - 1}
-                          className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors"
-                          title="Sposta a destra"
-                        >›</button>
-                      </div>
-                    )}
+                    {isDesktop && <div className="absolute top-0.5 right-0.5 bg-blue-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">🖥</div>}
+                    {isMobile  && <div className="absolute bottom-0.5 right-0.5 bg-purple-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">📱</div>}
+                    {/* Reorder controls */}
+                    <div className="absolute bottom-0 inset-x-0 flex opacity-0 group-hover:opacity-100 transition-opacity bg-black/70">
+                      <button onClick={() => moveLeft(i)} disabled={i === 0}
+                        className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a sinistra">‹</button>
+                      <button onClick={() => moveRight(i)} disabled={i === sequenza.length - 1}
+                        className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a destra">›</button>
+                    </div>
                   </div>
                 )
               })}
             </div>
           )}
-          {sequence.length > 0 && (
-            <p className="text-gray-700 text-[10px] mt-2">Hover su una thumbnail per riordinare · 🖥 = hero desktop · 📱 = hero mobile</p>
+          {sequenza.length > 0 && (
+            <p className="text-gray-700 text-[10px] mt-2">Hover → ‹ › riordina · 🖥 hero desktop · 📱 hero mobile</p>
           )}
         </div>
 
@@ -688,6 +560,16 @@ export default function AdminProductPage() {
   const [primaryKeywords, setPrimaryKeywords]   = useState([])
   const [longTailKeywords, setLongTailKeywords] = useState([])
 
+  // ── Lifted media state ────────────────────────────────────────────────────────
+  const [desktopHero,    setDesktopHero]    = useState(null)
+  const [mobileHero,     setMobileHero]     = useState(null)
+  const [sequenza,       setSequenza]       = useState([])   // ordered array of URLs
+  const [githubImages,   setGithubImages]   = useState([])   // [{ url, name, path }]
+  const [loadingPool,    setLoadingPool]    = useState(false)
+  const [poolRefreshKey, setPoolRefreshKey] = useState(0)
+  const [savingMedia,    setSavingMedia]    = useState(false)
+  const [mediaMsg,       setMediaMsg]       = useState('')
+
   // Load product
   useEffect(() => {
     const staticP = allProducts.find(p => p.id === id)
@@ -705,6 +587,10 @@ export default function AdminProductPage() {
       setVideoUrl(p.videoUrl || '')
       setGelatoUid(p.gelatoProductId || '')
       setFeatured(!!p.featured)
+      // media
+      setDesktopHero(p.image     || null)
+      setMobileHero(p.heroImage  || null)
+      setSequenza(Array.isArray(p.images) ? p.images : [])
     }
 
     if (staticP?.adminManaged) {
@@ -722,6 +608,60 @@ export default function AdminProductPage() {
         .catch(() => { setNotFound(true); setLoading(false) })
     }
   }, [id])
+
+  // ── Load GitHub images (re-runs when pool needs refresh) ────────────────────
+  useEffect(() => {
+    if (!id) return
+    setLoadingPool(true)
+    api('list-images', { productId: id })
+      .then(data => setGithubImages(data.images || []))
+      .catch(() => setGithubImages([]))
+      .finally(() => setLoadingPool(false))
+  }, [id, poolRefreshKey])
+
+  // ── Computed image categories ─────────────────────────────────────────────
+  const gelatoImages = useMemo(() => {
+    const urls = new Set()
+    const add  = u => u && !urls.has(u) && urls.add(u)
+    ;(product?.images || []).forEach(u => { if (u && !u.includes('raw.githubusercontent.com')) add(u) })
+    if (product?.image     && !product.image.includes('raw.githubusercontent.com'))     add(product.image)
+    if (product?.heroImage && !product.heroImage.includes('raw.githubusercontent.com')) add(product.heroImage)
+    return [...urls].map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
+  }, [product])
+
+  const uploadedImages  = useMemo(() => githubImages.filter(img => !img.path?.includes('/generated/')), [githubImages])
+  const generatedImages = useMemo(() => githubImages.filter(img =>  img.path?.includes('/generated/')), [githubImages])
+  const allPoolImages   = useMemo(() => [...gelatoImages, ...uploadedImages, ...generatedImages], [gelatoImages, uploadedImages, generatedImages])
+
+  // ── Media handlers ────────────────────────────────────────────────────────
+  const toggleSequenza = useCallback(url => {
+    setSequenza(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url])
+  }, [])
+
+  const handleSaveMedia = useCallback(async () => {
+    if (!id) return
+    setSavingMedia(true); setMediaMsg('')
+    try {
+      await api('update-product-images', {
+        productId: id,
+        images:    sequenza,
+        heroImage: mobileHero  || null,
+        image:     desktopHero || sequenza[0] || null,
+      })
+      setProduct(prev => prev ? {
+        ...prev,
+        images:    sequenza,
+        image:     desktopHero || sequenza[0] || prev.image,
+        heroImage: mobileHero  || prev.heroImage,
+      } : prev)
+      setMediaMsg('✓ Salvato')
+      setTimeout(() => setMediaMsg(''), 3000)
+    } catch (e) {
+      setMediaMsg('⚠ ' + e.message)
+    } finally {
+      setSavingMedia(false)
+    }
+  }, [id, sequenza, desktopHero, mobileHero])
 
   const videoInfo = parseVideoUrl(videoUrl)
 
@@ -896,7 +836,20 @@ export default function AdminProductPage() {
 
           {/* ── Left: image gallery ── */}
           <div className="lg:sticky lg:top-24 space-y-4">
-            <ImageGallery productId={id} readOnly={!isEditable} />
+            <ImagePool
+              gelatoImages={gelatoImages}
+              uploadedImages={uploadedImages}
+              generatedImages={generatedImages}
+              desktopHero={desktopHero}
+              mobileHero={mobileHero}
+              sequenza={sequenza}
+              onSetDesktopHero={setDesktopHero}
+              onSetMobileHero={setMobileHero}
+              onToggleSequenza={toggleSequenza}
+              productId={id}
+              onUploaded={() => setPoolRefreshKey(k => k + 1)}
+              loading={loadingPool}
+            />
 
             {/* Quick stats */}
             <div className="bg-gray-900 border border-gray-800 px-4 py-3 space-y-2 text-xs text-gray-500">
@@ -929,6 +882,22 @@ export default function AdminProductPage() {
 
           {/* ── Right: edit form ── */}
           <div className="space-y-8">
+
+            {/* ── Hero & Sequenza ── */}
+            {isEditable && (
+              <MediaPanel
+                desktopHero={desktopHero}
+                mobileHero={mobileHero}
+                sequenza={sequenza}
+                allImages={allPoolImages}
+                onSetDesktopHero={setDesktopHero}
+                onSetMobileHero={setMobileHero}
+                onReorderSequenza={setSequenza}
+                onSave={handleSaveMedia}
+                saving={savingMedia}
+                msg={mediaMsg}
+              />
+            )}
 
             {/* ── Name + AI ── */}
             <Section title="Title">
@@ -1230,23 +1199,8 @@ export default function AdminProductPage() {
               productType={section === 'art' ? 'art print' : 'apparel/object'}
               primaryColor={product?.variants?.[0]?.color || ''}
               collection={collection}
-              onAssetSaved={() => {}}
-              preloadedImages={(product?.images || (product?.image ? [product.image] : [])).map(url => ({
-                url,
-                name: url.split('/').pop().split('?')[0] || 'image',
-              }))}
-            />
-
-            {/* ── Hero + Sequenza ── */}
-            <MediaPanel
-              productId={id}
-              product={product}
-              onSaved={(urls, desktop, mobile) => setProduct(prev => prev ? {
-                ...prev,
-                images:    urls,
-                image:     desktop || urls[0] || prev.image,
-                heroImage: mobile  || prev.heroImage,
-              } : prev)}
+              onAssetSaved={() => setPoolRefreshKey(k => k + 1)}
+              preloadedImages={allPoolImages}
             />
 
             {/* ── Remove Background ── */}
