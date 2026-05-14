@@ -312,9 +312,18 @@ export default async function handler(req, res) {
       for (const [k, v] of Object.entries(req.headers)) {
         headerMap[k] = Array.isArray(v) ? v[0] : v
       }
+      // Reconstruct a request-like object that handleUpload understands.
+      // We deliberately omit onUploadCompleted — the client registers the asset
+      // itself by calling upload-image after the blob upload completes.
+      const host   = headerMap['host'] || 'jayl.store'
+      const proto  = headerMap['x-forwarded-proto'] || 'https'
+      const fakeUrl = `${proto}://${host}/api/admin`
       const jsonResponse = await handleUpload({
         body:    rawBody,
-        request: { headers: { get: (n) => headerMap[n.toLowerCase()] ?? null } },
+        request: {
+          url:     fakeUrl,
+          headers: { get: (n) => headerMap[n.toLowerCase()] ?? null },
+        },
         token:   blobToken,
         onBeforeGenerateToken: async () => ({
           allowedContentTypes: [
@@ -324,7 +333,7 @@ export default async function handler(req, res) {
           ],
           maximumSizeInBytes: 500 * 1024 * 1024, // 500 MB
         }),
-        onUploadCompleted: async () => { /* client calls upload-image next */ },
+        // No onUploadCompleted — skips the server callback entirely
       })
       return res.status(200).json(jsonResponse)
     } catch (e) {

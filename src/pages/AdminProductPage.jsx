@@ -35,6 +35,14 @@ async function api(action, data) {
   return json
 }
 
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader()
+    r.onload  = () => resolve(r.result)
+    r.onerror = reject
+    r.readAsDataURL(file)
+  })
+}
 
 // ── Shared UI ─────────────────────────────────────────────────────────────────
 
@@ -128,16 +136,21 @@ function ImagePool({
       for (const file of Array.from(files)) {
         const filename = sanitizeFilename(file.name)
         const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
+        // Base64-in-JSON has a ~4.5 MB Vercel body limit.
+        // Files ≥ 3.5 MB (or any video) upload directly to Vercel Blob to bypass it.
+        const useBlob  = isVideo || file.size >= 3.5 * 1024 * 1024
 
-        // Upload directly to Vercel Blob from the browser — no 4.5 MB body limit.
-        // The /api/admin endpoint handles the token exchange (handleUpload).
-        const blob = await blobUpload(`${productId}/${filename}`, file, {
-          access:          'public',
-          handleUploadUrl: '/api/admin',
-        })
-
-        // Register the asset: images → copy to GitHub; videos → keep in Blob
-        await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo })
+        if (useBlob) {
+          const blob = await blobUpload(`${productId}/${filename}`, file, {
+            access:          'public',
+            handleUploadUrl: '/api/admin',
+          })
+          await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo })
+        } else {
+          // Small images: fast base64 path — no Vercel Blob token needed
+          const dataUrl = await fileToBase64(file)
+          await api('upload-image', { productId, filename, dataUrl })
+        }
       }
       onUploaded?.()
     } catch (e) {
