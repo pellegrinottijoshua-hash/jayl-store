@@ -945,7 +945,7 @@ export const adminProducts = [
       "fan merchandise",
       "gift for him"
     ],
-    "featured": false,
+    "featured": 1,
     "gelatoProductId": "6b8f79fc-b20c-463a-93be-5fc41b9ca362",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -1164,7 +1164,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-18T19:26:10.743Z",
+    "updatedAt": "2026-05-18T19:29:36.352Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": []
   },
