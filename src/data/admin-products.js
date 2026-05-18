@@ -1164,7 +1164,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-18T19:26:08.110Z",
+    "updatedAt": "2026-05-18T19:26:10.743Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": []
   },
