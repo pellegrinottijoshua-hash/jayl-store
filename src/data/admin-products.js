@@ -288,8 +288,9 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-18T18:45:43.128Z",
-    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg"
+    "updatedAt": "2026-05-18T18:46:31.451Z",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg",
+    "relatedProducts": []
   },
   {
     "id": "dragonite-pok-mon-t-shirt-retro-90s-style-gift",
