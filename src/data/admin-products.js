@@ -1206,6 +1206,7 @@ export const adminProducts = [
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_192416_2dc0c732-f0fc-412e-b4ca-f07c0ae7bd67.jpg",
     "images": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_172823_ee813e19-9e39-425b-b888-114bd4cb13e5.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg",
@@ -1456,7 +1457,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-18T19:29:49.741Z",
+    "updatedAt": "2026-05-18T19:48:14.707Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": []
   },
