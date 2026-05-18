@@ -1462,7 +1462,7 @@ export const adminProducts = [
     "id": "charizard-pok-mon-t-shirt-gildan-9400-premium-artwear",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Charizard Pokémon T-Shirt Gildan 9400 - Premium Artwear",
+    "name": "Charizard Pokémon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -1745,7 +1745,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-05-14T16:26:13.181Z",
+    "updatedAt": "2026-05-18T12:18:07.813Z",
     "heroImage": "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg"
   }
 ]
