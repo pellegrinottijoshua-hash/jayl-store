@@ -919,7 +919,6 @@ export const adminProducts = [
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg",
-      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg"
     ],
     "imageAlts": {
@@ -1164,7 +1163,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-18T18:54:13.454Z",
+    "updatedAt": "2026-05-18T18:54:18.659Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg"
   },
   {
