@@ -885,7 +885,7 @@ export const adminProducts = [
     "id": "snorlax-pok-mon-t-shirt",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Snorlax Pokémon T-Shirt",
+    "name": "Cool Snorlax T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -1167,7 +1167,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-18T20:12:32.673Z",
+    "updatedAt": "2026-05-18T20:19:15.071Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": []
   },
