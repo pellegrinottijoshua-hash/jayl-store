@@ -4,7 +4,7 @@ export const adminProducts = [
     "id": "mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Mewtwo Pokémon T-Shirt",
+    "name": "Cool Mewtwo T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -289,7 +289,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-18T19:45:02.099Z",
+    "updatedAt": "2026-05-18T20:18:11.485Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg",
     "relatedProducts": []
   },
