@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { upload as blobUpload } from '@vercel/blob/client'
+import { FFmpeg } from '@ffmpeg/ffmpeg'
+import { fetchFile, toBlobURL } from '@ffmpeg/util'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 
@@ -82,19 +84,91 @@ function compressImage(file, maxMB = 3.2) {
   })
 }
 
+// ── Video compression (ffmpeg.wasm single-threaded, no COOP/COEP needed) ─────
+// Lazily loads the WASM core from CDN on first use.
+let _ffmpeg = null
+let _ffmpegLoading = false
+let _ffmpegCallbacks = []
+
+async function ensureFFmpeg(onLog) {
+  if (_ffmpeg) return _ffmpeg
+  if (_ffmpegLoading) {
+    return new Promise((resolve, reject) => {
+      _ffmpegCallbacks.push({ resolve, reject })
+    })
+  }
+  _ffmpegLoading = true
+  try {
+    const ff = new FFmpeg()
+    if (onLog) ff.on('log', ({ message }) => onLog(message))
+    const baseURL = 'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/esm'
+    await ff.load({
+      coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`,   'text/javascript'),
+      wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+    })
+    _ffmpeg = ff
+    _ffmpegCallbacks.forEach(cb => cb.resolve(ff))
+    return ff
+  } catch (err) {
+    _ffmpegCallbacks.forEach(cb => cb.reject(err))
+    throw err
+  } finally {
+    _ffmpegLoading = false
+    _ffmpegCallbacks = []
+  }
+}
+
+async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
+  if (!/\.(mp4|mov|webm|avi|mkv|m4v)$/i.test(file.name)) return file
+  if (file.size <= maxMB * 1024 * 1024) return file
+
+  onStatus?.('Caricamento codec video…')
+  const ff = await ensureFFmpeg()
+
+  const ext   = file.name.match(/\.[^.]+$/)?.[0] ?? '.mp4'
+  const inFile  = `input${ext}`
+  const outFile = 'output.mp4'
+
+  ff.on('progress', ({ progress }) => onProgress?.(Math.round(progress * 100)))
+
+  onStatus?.('Compressione video…')
+  await ff.writeFile(inFile, await fetchFile(file))
+  await ff.exec([
+    '-i', inFile,
+    '-vf', 'scale=w=1280:h=720:force_original_aspect_ratio=decrease,pad=ceil(iw/2)*2:ceil(ih/2)*2',
+    '-c:v', 'libx264', '-preset', 'fast', '-crf', '30',
+    '-c:a', 'aac', '-b:a', '96k',
+    '-movflags', '+faststart',
+    '-y', outFile,
+  ])
+
+  const data = await ff.readFile(outFile)
+  await ff.deleteFile(inFile).catch(() => {})
+  await ff.deleteFile(outFile).catch(() => {})
+  ff.off('progress')
+
+  const blob = new Blob([data.buffer], { type: 'video/mp4' })
+  const baseName = file.name.replace(/\.[^.]+$/, '')
+  const result   = new File([blob], `${baseName}.mp4`, { type: 'video/mp4' })
+
+  onStatus?.(`Compresso: ${(result.size / 1024 / 1024).toFixed(1)} MB`)
+  // Return compressed only if smaller
+  return result.size < file.size ? result : file
+}
+
 // ── Shared UI ─────────────────────────────────────────────────────────────────
 
-const inputCls = 'w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors'
-const btnPrimary = 'bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white px-4 py-2 text-sm font-medium transition-colors cursor-pointer'
-const btnDanger  = 'bg-red-700 hover:bg-red-600 disabled:opacity-40 text-white px-4 py-2 text-sm font-medium transition-colors cursor-pointer'
-const btnGhost   = 'border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-gray-200 px-3 py-1.5 text-xs transition-colors cursor-pointer'
+const inputCls = 'w-full bg-[#111] border border-[#1e1e1e] text-[#e8dcc8] px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors placeholder:text-[#555]'
+const btnPrimary = 'bg-[#e8dcc8] hover:bg-white disabled:opacity-40 text-black px-4 py-2 text-sm font-semibold transition-colors cursor-pointer'
+const btnDanger  = 'bg-red-900/70 hover:bg-red-800 disabled:opacity-40 text-white px-4 py-2 text-sm font-medium transition-colors cursor-pointer'
+const btnGhost   = 'border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-3 py-1.5 text-xs transition-colors cursor-pointer'
 
 function Field({ label, hint, children }) {
   return (
     <div>
-      <label className="block text-gray-500 text-xs mb-1 uppercase tracking-wider">{label}</label>
+      <label className="block text-[#888] text-xs mb-1 uppercase tracking-wider">{label}</label>
       {children}
-      {hint && <p className="text-gray-600 text-xs mt-1">{hint}</p>}
+      {hint && <p className="text-[#666] text-xs mt-1">{hint}</p>}
     </div>
   )
 }
@@ -103,7 +177,7 @@ function Section({ title, children }) {
   return (
     <div className="space-y-4">
       {title && (
-        <p className="text-gray-600 text-xs font-mono uppercase tracking-widest border-b border-gray-800 pb-2">
+        <p className="text-[#666] text-xs font-mono uppercase tracking-widest border-b border-[#1a1a1a] pb-2">
           {title}
         </p>
       )}
@@ -168,45 +242,45 @@ function ImagePool({
   const [dragging,    setDragging]    = useState(false)
   const fileRef = useRef()
 
+  const [videoProgress, setVideoProgress] = useState(0)
+  const [videoStatus,   setVideoStatus]   = useState('')
+
   const doUpload = useCallback(async files => {
-    setUploading(true); setUploadErr('')
-    // Hard timeout: if anything hangs (network, GitHub API, Vercel Blob retries),
-    // abort after 90 s so the user always gets feedback.
+    setUploading(true); setUploadErr(''); setVideoProgress(0); setVideoStatus('')
     const ctrl  = new AbortController()
-    const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>90s)')), 90_000)
+    const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>120s)')), 120_000)
     try {
       for (const raw of Array.from(files)) {
-        // Compress images > 3.2 MB in the browser so they fit in base64 JSON.
-        // Videos cannot be compressed client-side → still use Vercel Blob.
-        const file     = await compressImage(raw)
+        const isRawVideo = /\.(mp4|mov|webm|avi|mkv|m4v)$/i.test(raw.name)
+        let file
+
+        if (isRawVideo) {
+          // Compress video with ffmpeg.wasm if > 2.5 MB → store on GitHub via base64
+          file = await compressVideo(
+            raw, 2.5,
+            pct => setVideoProgress(pct),
+            msg => setVideoStatus(msg),
+          )
+        } else {
+          file = await compressImage(raw)
+        }
+        setVideoProgress(0); setVideoStatus('')
+
         const filename = sanitizeFilename(file.name)
         const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
-        // Only videos need Vercel Blob now; all images go via base64.
-        const useBlob  = isVideo
-
-        if (useBlob) {
-          const blob = await blobUpload(`${productId}/${filename}`, file, {
-            access:          'public',
-            handleUploadUrl: '/api/admin',
-            abortSignal:     ctrl.signal,
-          })
-          await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo }, ctrl.signal)
-        } else {
-          const dataUrl = await fileToBase64(file)
-          await api('upload-image', { productId, filename, dataUrl }, ctrl.signal)
-        }
+        const dataUrl  = await fileToBase64(file)
+        await api('upload-image', { productId, filename, dataUrl, isVideo }, ctrl.signal)
       }
       onUploaded?.()
     } catch (e) {
       console.error('[ImagePool] upload error:', e)
-      // ctrl.signal.reason is set when we call ctrl.abort(new Error(...))
       const msg = ctrl.signal.aborted
         ? (ctrl.signal.reason?.message || 'Timeout upload')
         : (e.message || String(e) || 'Errore upload sconosciuto')
       setUploadErr(msg)
     } finally {
       clearTimeout(timer)
-      setUploading(false)
+      setUploading(false); setVideoProgress(0); setVideoStatus('')
       if (fileRef.current) fileRef.current.value = ''
     }
   }, [productId, onUploaded])
@@ -237,12 +311,23 @@ function ImagePool({
           onDrop={e => { e.preventDefault(); setDragging(false); doUpload(e.dataTransfer.files) }}
           onClick={() => fileRef.current?.click()}
           className={`border-2 border-dashed py-3 px-2 text-center cursor-pointer transition-colors ${
-            dragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-500'
+            dragging ? 'border-indigo-500 bg-[#1a1a0f]/30' : 'border-gray-700 hover:border-gray-500'
           }`}
         >
-          {uploading
-            ? <p className="text-indigo-400 text-xs animate-pulse">⏫ Caricamento…</p>
-            : <p className="text-gray-500 text-xs">+ Importa immagine / video</p>}
+          {uploading ? (
+            <div className="space-y-1">
+              <p className="text-amber-400 text-xs animate-pulse">
+                {videoStatus || '⏫ Caricamento…'}
+              </p>
+              {videoProgress > 0 && (
+                <div className="w-full bg-gray-700 h-1 rounded">
+                  <div className="bg-amber-500 h-1 rounded transition-all" style={{ width: `${videoProgress}%` }} />
+                </div>
+              )}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-xs">+ Importa immagine / video</p>
+          )}
         </div>
         {uploadErr && <p className="text-red-400 text-xs mt-1">⚠ {uploadErr}</p>}
       </div>
@@ -303,7 +388,7 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, allImages, onSetDesktop
   }
 
   return (
-    <div className="border border-gray-800 bg-gray-950">
+    <div className="border border-gray-800 bg-[#0a0a0a]">
 
       {/* Header */}
       <div className="px-4 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
@@ -444,7 +529,7 @@ function RemoveBackground() {
   const canProcess = !processing && (useUrl ? inputUrl.trim().length > 0 : !!previewUrl)
 
   return (
-    <div className="border border-purple-900/50 bg-gray-950">
+    <div className="border border-purple-900/50 bg-[#0a0a0a]">
       <div className="px-5 py-3 border-b border-gray-800 flex items-center gap-2">
         <h3 className="text-purple-400 text-xs font-mono uppercase tracking-widest">✂ Remove Background</h3>
       </div>
@@ -608,6 +693,7 @@ export default function AdminProductPage() {
   const [videoUrl, setVideoUrl]     = useState('')
   const [gelatoUid, setGelatoUid]   = useState('')
   const [featured, setFeatured]     = useState(false)
+  const [featuringNow, setFeaturingNow] = useState(false)
 
   // Status
   const [saving, setSaving]         = useState(false)
@@ -796,6 +882,21 @@ export default function AdminProductPage() {
     }
   }
 
+  const handleToggleFeatured = async () => {
+    const next = !featured
+    setFeaturingNow(true)
+    try {
+      await api('set-featured', { productId: id, featured: next })
+      setFeatured(next)
+      setSaveMsg(next ? '⭐ Prodotto impostato in primo piano — deploy in corso.' : '○ Rimosso dalla prima pagina.')
+      setTimeout(() => setSaveMsg(''), 4000)
+    } catch (e) {
+      setSaveErr(e.message)
+    } finally {
+      setFeaturingNow(false)
+    }
+  }
+
   const handleDelete = async () => {
     if (!confirm(`Delete "${product.name}"? This cannot be undone.`)) return
     setDeleting(true)
@@ -814,7 +915,7 @@ export default function AdminProductPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <p className="text-gray-500 text-sm">Loading product…</p>
       </div>
     )
@@ -822,7 +923,7 @@ export default function AdminProductPage() {
 
   if (notFound) {
     return (
-      <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center gap-4">
+      <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center gap-4">
         <p className="text-gray-400">Product <span className="font-mono text-white">{id}</span> not found.</p>
         <Link to="/admin" className={btnGhost}>← Back to Products</Link>
       </div>
@@ -830,7 +931,7 @@ export default function AdminProductPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
 
       {/* ── Sticky header ── */}
       <header className="border-b border-gray-800 bg-gray-900 sticky top-0 z-40">
@@ -845,7 +946,7 @@ export default function AdminProductPage() {
             <span className="text-gray-700 flex-shrink-0">·</span>
             <span className="font-mono text-xs text-gray-400 truncate">{id}</span>
             {isEditable
-              ? <span className="bg-indigo-900/50 border border-indigo-800 text-indigo-300 text-xs px-2 py-0.5 flex-shrink-0">admin-managed</span>
+              ? <span className="bg-[#1a1a0f] border border-indigo-800 text-indigo-300 text-xs px-2 py-0.5 flex-shrink-0">admin-managed</span>
               : <span className="bg-gray-800 text-gray-500 text-xs px-2 py-0.5 flex-shrink-0">hardcoded</span>
             }
           </div>
@@ -863,6 +964,19 @@ export default function AdminProductPage() {
 
             {isEditable && (
               <>
+                {/* Featured toggle */}
+                <button
+                  onClick={handleToggleFeatured}
+                  disabled={featuringNow}
+                  title={featured ? 'Rimuovi dalla prima pagina' : 'Metti in primo piano'}
+                  className={`flex items-center gap-1.5 px-3 py-2 text-xs font-semibold border transition-colors cursor-pointer disabled:opacity-40 ${
+                    featured
+                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 hover:bg-amber-500/10'
+                      : 'border-gray-700 text-gray-500 hover:border-amber-500/60 hover:text-amber-400'
+                  }`}
+                >
+                  {featuringNow ? '…' : featured ? '⭐ In Primo Piano' : '☆ Prima Pagina'}
+                </button>
                 <button
                   onClick={handleDelete}
                   disabled={deleting}
@@ -1061,7 +1175,7 @@ export default function AdminProductPage() {
                     type="checkbox"
                     checked={featured}
                     onChange={e => setFeatured(e.target.checked)}
-                    className="accent-indigo-500"
+                    className="accent-[#c8b89a]"
                   />
                   <span className="text-gray-400 text-sm">Featured product (shown on homepage)</span>
                 </label>

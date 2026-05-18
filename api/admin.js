@@ -374,6 +374,22 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true })
     }
 
+    // ── set-featured ──────────────────────────────────────────────────────────
+    // Toggles featured flag for a single product without requiring full save.
+    // Up to 2 products can be featured simultaneously.
+    if (action === 'set-featured') {
+      const { productId, featured } = data
+      if (!productId) return res.status(400).json({ error: 'productId required' })
+
+      const { products, sha } = await readAdminProducts(githubToken)
+      const idx = products.findIndex(p => p.id === productId)
+      if (idx < 0) return res.status(404).json({ error: 'Product not found' })
+
+      products[idx] = { ...products[idx], featured: !!featured, updatedAt: new Date().toISOString() }
+      await writeAdminProducts(products, sha, `admin: ${featured ? 'feature' : 'unfeature'} ${productId}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
     // ── update-product-images ─────────────────────────────────────────────────
     // Lightweight action: updates only the images/image fields of an existing product.
     // Used by the Review panel "Pubblica su jayl.store" without requiring the full product object.
@@ -427,10 +443,39 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid productId or filename' })
       }
 
-      // Videos: keep in Vercel Blob, register URL in per-product manifest
+      // Videos: store on GitHub via base64 (compressed client-side) or Vercel Blob as fallback
       if (isVideo || /\.(mp4|mov|webm)$/i.test(filename)) {
-        const blobToken = process.env.BLOB_READ_WRITE_TOKEN
-        const finalUrl = blobUrl || dataUrl  // dataUrl is unlikely for videos but safe
+        if (dataUrl) {
+          // Client compressed video → push directly to GitHub
+          const base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
+          const filePath = `public/images/${productId}/${filename}`
+          let existingSha = null
+          try { const ex = await ghGet(filePath, githubToken); existingSha = ex.sha } catch {}
+          const ghRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`, {
+            method: 'PUT',
+            headers: {
+              Authorization: `Bearer ${githubToken}`,
+              Accept: 'application/vnd.github+json',
+              'Content-Type': 'application/json',
+              'X-GitHub-Api-Version': '2022-11-28',
+            },
+            body: JSON.stringify({
+              message: `admin: upload video ${filename} for ${productId}`,
+              content: base64,
+              branch: GITHUB_BRANCH,
+              ...(existingSha ? { sha: existingSha } : {}),
+            }),
+          })
+          if (!ghRes.ok) {
+            const err = await ghRes.json().catch(() => ({}))
+            throw new Error(`Video upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
+          }
+          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
+          await addToVideosManifest(productId, { url: rawUrl, name: filename, path: filePath, isVideo: true }, githubToken)
+          return res.status(200).json({ ok: true, url: rawUrl })
+        }
+        // Fallback: Blob (if blobUrl provided)
+        const finalUrl = blobUrl || dataUrl
         await addToVideosManifest(productId, {
           url:     finalUrl,
           name:    filename,

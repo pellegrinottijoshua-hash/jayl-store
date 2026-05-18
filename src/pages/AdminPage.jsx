@@ -94,15 +94,15 @@ function Field({ label, children, hint }) {
   )
 }
 
-const inputCls = 'w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors'
-const btnPrimary = 'bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white px-4 py-2 text-sm font-medium transition-colors'
-const btnDanger = 'bg-red-700 hover:bg-red-600 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors'
-const btnGhost = 'border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-gray-200 px-3 py-1.5 text-xs transition-colors'
+const inputCls = 'w-full bg-[#111] border border-[#1e1e1e] text-[#e8dcc8] px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors placeholder:text-[#555]'
+const btnPrimary = 'bg-[#e8dcc8] hover:bg-white disabled:opacity-40 text-black px-4 py-2 text-sm font-semibold transition-colors'
+const btnDanger = 'bg-red-900/70 hover:bg-red-800 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors'
+const btnGhost = 'border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-3 py-1.5 text-xs transition-colors'
 
 function Card({ title, children }) {
   return (
-    <div className="bg-gray-900 border border-gray-800 p-5 space-y-4">
-      {title && <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">{title}</h3>}
+    <div className="bg-[#0d0d0d] border border-[#1a1a1a] p-5 space-y-4">
+      {title && <h3 className="text-[#888] text-xs font-mono uppercase tracking-widest">{title}</h3>}
       {children}
     </div>
   )
@@ -123,7 +123,7 @@ function Modal({ open, onClose, children }) {
       className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 overflow-y-auto py-8 px-4"
       onMouseDown={e => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="bg-gray-950 border border-gray-700 w-full max-w-3xl relative">
+      <div className="bg-[#0a0a0a] border border-[#252525] w-full max-w-3xl relative">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-200 w-7 h-7 flex items-center justify-center text-lg leading-none z-10"
@@ -153,7 +153,7 @@ function ImageUploader({ files, onChange }) {
         onDragLeave={() => setDragging(false)}
         onDrop={e => { e.preventDefault(); setDragging(false); addFiles(e.dataTransfer.files) }}
         onClick={() => inputRef.current?.click()}
-        className={`border-2 border-dashed p-8 text-center cursor-pointer transition-colors ${dragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-600'}`}
+        className={`border-2 border-dashed p-8 text-center cursor-pointer transition-colors ${dragging ? 'border-indigo-500 bg-[#1a1a0f]/30' : 'border-gray-700 hover:border-gray-600'}`}
       >
         <p className="text-gray-500 text-sm">Drag & drop images here, or click to browse</p>
         <input ref={inputRef} type="file" accept="image/*" multiple className="hidden"
@@ -941,7 +941,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               onDrop={e => { e.preventDefault(); setPoolDragging(false); doPoolUpload(e.dataTransfer.files) }}
               onClick={() => poolFileRef.current?.click()}
               className={`border-2 border-dashed py-3 px-2 text-center cursor-pointer transition-colors ${
-                poolDragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 hover:border-gray-500'
+                poolDragging ? 'border-indigo-500 bg-[#1a1a0f]/30' : 'border-gray-700 hover:border-gray-500'
               }`}
             >
               {poolUploading
@@ -997,7 +997,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             </div>
 
             {(desktopHero || mobileHero || sequenza.length > 0) && (
-              <div className="bg-gray-800/50 border border-gray-700 p-2 text-xs space-y-1">
+              <div className="bg-[#111]/50 border border-gray-700 p-2 text-xs space-y-1">
                 {desktopHero && (
                   <div className="flex items-center gap-2">
                     <span className="text-blue-400 w-24 flex-shrink-0">🖥 Desktop:</span>
@@ -1041,7 +1041,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           <Collapsible label={`${existingImages.length} immagini esistenti (modifica alt text)`} defaultOpen={false}>
           <div className="space-y-2 mt-2">
             {existingImages.map((img, i) => (
-              <div key={img.src} className="flex gap-3 items-start bg-gray-800/50 border border-gray-800 p-2">
+              <div key={img.src} className="flex gap-3 items-start bg-[#111]/50 border border-gray-800 p-2">
                 <div className="relative flex-shrink-0">
                   <img src={img.src} alt={img.alt} className="w-16 h-16 object-cover border border-gray-700"
                     onError={e => { e.currentTarget.style.opacity = '0.3' }} />
@@ -1128,7 +1128,7 @@ function BottomSheet({ open, onClose, title, children, fullHeight = false }) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col justify-end">
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
-      <div className={`relative bg-gray-950 border-t border-gray-700 ${fullHeight ? 'h-[92vh]' : 'max-h-[90vh]'} flex flex-col`}>
+      <div className={`relative bg-[#0a0a0a] border-t border-gray-700 ${fullHeight ? 'h-[92vh]' : 'max-h-[90vh]'} flex flex-col`}>
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800 flex-shrink-0">
           <h3 className="text-white text-sm font-medium truncate pr-4">{title}</h3>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-300 text-xl leading-none w-8 h-8 flex items-center justify-center flex-shrink-0">×</button>
@@ -1280,7 +1280,7 @@ function ProductsTab({ onEdit, onGenerate, onGallery }) {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="Search products…"
-          className="flex-1 bg-gray-900 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors min-w-0"
+          className="flex-1 bg-gray-900 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors min-w-0"
         />
         <button
           onClick={handleExportCSV}
@@ -1408,6 +1408,23 @@ function CollectionsTab() {
     }
   }
 
+  const handleToggleCarousel = async coll => {
+    const next = !coll.carousel
+    // Only one collection can be the carousel at a time
+    const updated = collections.map(c => ({
+      ...c,
+      carousel: c.id === coll.id ? next : false,
+    }))
+    setError('')
+    try {
+      // Save all — reorder-collections sends the full array, preserving carousel flags
+      await api('reorder-collections', { collections: updated })
+      setCollections(updated)
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
   // Drag handlers
   const handleDragStart = idx => { dragIdx.current = idx }
 
@@ -1492,7 +1509,7 @@ function CollectionsTab() {
                 onDragOver={e => handleDragOver(e, i)}
                 onDragEnd={handleDragEnd}
                 className={`flex items-center gap-3 border px-3 py-2.5 transition-colors ${
-                  draggingOver === i ? 'border-indigo-500 bg-indigo-900/20' : 'border-gray-700 bg-gray-800/50'
+                  draggingOver === i ? 'border-indigo-500 bg-[#1a1a0f]/30' : 'border-gray-700 bg-[#111]/50'
                 }`}
               >
                 {/* Drag handle */}
@@ -1509,7 +1526,7 @@ function CollectionsTab() {
                     <input
                       value={editName}
                       onChange={e => setEditName(e.target.value)}
-                      className="flex-1 bg-gray-700 border border-gray-600 text-white px-2 py-1 text-sm focus:outline-none focus:border-indigo-500"
+                      className="flex-1 bg-gray-700 border border-gray-600 text-white px-2 py-1 text-sm focus:outline-none focus:border-[#c8b89a]"
                       autoFocus
                     />
                     <input
@@ -1525,6 +1542,18 @@ function CollectionsTab() {
                   <>
                     <span className="text-gray-200 text-sm flex-1 min-w-0 truncate">{coll.name}</span>
                     <span className="text-gray-600 text-xs font-mono hidden sm:block flex-shrink-0">{coll.id}</span>
+                    {/* Carousel toggle */}
+                    <button
+                      onClick={() => handleToggleCarousel(coll)}
+                      title={coll.carousel ? 'Rimuovi dal carosello homepage' : 'Imposta come carosello homepage'}
+                      className={`px-2 py-1 text-xs border transition-colors flex-shrink-0 ${
+                        coll.carousel
+                          ? 'border-amber-500/60 bg-amber-500/10 text-amber-400'
+                          : 'border-gray-700 text-gray-600 hover:border-gray-500 hover:text-gray-400'
+                      }`}
+                    >
+                      🎠
+                    </button>
                     <button onClick={() => startEdit(coll)} className={btnGhost}>Rename</button>
                     <button onClick={() => handleDelete(coll)} className={btnDanger}>Delete</button>
                   </>
@@ -1663,7 +1692,7 @@ function LoginScreen({ onLogin }) {
     else setErr('Incorrect password')
   }
   return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
       <form onSubmit={submit} className="bg-gray-900 border border-gray-800 p-8 w-80 space-y-4">
         <div>
           <p className="text-gray-500 text-xs font-mono tracking-widest uppercase mb-1">JAYL</p>
@@ -2681,7 +2710,7 @@ function GenerateTab({ onGenerate, onGallery }) {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="Search products…"
-          className="w-full bg-gray-900 border border-gray-700 text-white px-3 py-2.5 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
+          className="w-full bg-gray-900 border border-gray-700 text-white px-3 py-2.5 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors"
         />
       </div>
       <div className="divide-y divide-gray-800/50">
@@ -2861,7 +2890,7 @@ function BatchAgentTab() {
             return (
               <label key={p.id} className="flex items-center gap-3 px-4 py-3 cursor-pointer active:bg-gray-800/40">
                 <input type="checkbox" checked={selected.has(p.id)} onChange={() => toggleOne(p.id)}
-                  className="accent-indigo-500 w-4 h-4 flex-shrink-0" />
+                  className="accent-[#c8b89a] w-4 h-4 flex-shrink-0" />
                 <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dot}`} />
                 <span className="text-white text-sm flex-1 truncate">{p.name}</span>
                 <span className="text-gray-600 text-xs flex-shrink-0">{p.collection}</span>
@@ -2907,7 +2936,7 @@ function BatchAgentTab() {
 
       {/* Progress */}
       {running && progress && (
-        <div className="bg-indigo-900/20 border border-indigo-800 px-4 py-3">
+        <div className="bg-[#1a1a0f]/30 border border-indigo-800 px-4 py-3">
           <div className="flex items-center justify-between mb-2">
             <p className="text-indigo-300 text-sm font-medium">Running batch…</p>
             <p className="text-indigo-400 text-xs">{progress.current}/{progress.total}</p>
@@ -3185,7 +3214,7 @@ function SeoAuditTab() {
           const isOpen = expandedId === p.id
 
           return (
-            <div key={p.id} className="bg-gray-950">
+            <div key={p.id} className="bg-[#0a0a0a]">
               {/* Row */}
               <div className="flex items-center gap-3 px-4 py-3" onClick={() => setExpandedId(isOpen ? null : p.id)}>
                 <div className="flex-1 min-w-0">
@@ -3243,13 +3272,13 @@ function SeoAuditTab() {
                                 value={val}
                                 onChange={e => setDraft(p.id, field.key, e.target.value)}
                                 rows={3}
-                                className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 resize-none transition-colors"
+                                className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] resize-none transition-colors"
                               />
                             ) : (
                               <input
                                 value={val}
                                 onChange={e => setDraft(p.id, field.key, e.target.value)}
-                                className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
+                                className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors"
                               />
                             )}
                           </div>
@@ -3271,7 +3300,7 @@ function SeoAuditTab() {
                           value={Array.isArray(getDraft(p.id, 'etsyTags')) ? getDraft(p.id, 'etsyTags').join(', ') : getDraft(p.id, 'etsyTags')}
                           onChange={e => setDraft(p.id, 'etsyTags', e.target.value)}
                           placeholder="tag1, tag2, tag3…"
-                          className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
+                          className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors"
                         />
                         <p className="text-gray-600 text-xs mt-1">Comma-separated · max 20 chars each · max 13</p>
                       </div>
@@ -3473,7 +3502,7 @@ function QueueItemForm({ open, onClose, onSaved }) {
         <div>
           <label className="block text-gray-500 text-xs mb-1">Product (optional)</label>
           <select value={productId} onChange={e => setProductId(e.target.value)}
-            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a]">
             <option value="">— None —</option>
             {allProducts.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
           </select>
@@ -3484,7 +3513,7 @@ function QueueItemForm({ open, onClose, onSaved }) {
           <label className="block text-gray-500 text-xs mb-1">Image URL</label>
           <input value={imageUrl} onChange={e => setImageUrl(e.target.value)}
             placeholder="https://…"
-            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" />
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a]" />
         </div>
 
         {/* Caption */}
@@ -3492,7 +3521,7 @@ function QueueItemForm({ open, onClose, onSaved }) {
           <label className="block text-gray-500 text-xs mb-1">Caption</label>
           <textarea value={caption} onChange={e => setCaption(e.target.value)}
             rows={3} placeholder="Write your caption…"
-            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 resize-none" />
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] resize-none" />
         </div>
 
         {/* Hashtags */}
@@ -3500,14 +3529,14 @@ function QueueItemForm({ open, onClose, onSaved }) {
           <label className="block text-gray-500 text-xs mb-1">Hashtags</label>
           <input value={hashtags} onChange={e => setHashtags(e.target.value)}
             placeholder="#art #print #jayl"
-            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" />
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a]" />
         </div>
 
         {/* Schedule date/time */}
         <div>
           <label className="block text-gray-500 text-xs mb-1">Schedule date & time</label>
           <input type="datetime-local" value={scheduledAt} onChange={e => setScheduledAt(e.target.value)}
-            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" />
+            className="w-full bg-gray-800 border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a]" />
           <p className="text-gray-600 text-xs mt-1">Cron runs daily at 08:00 UTC — or use ▶ Publish now for immediate.</p>
         </div>
 
@@ -3642,7 +3671,7 @@ function AssetGallerySheet({ product, open, onClose }) {
                   {asset.type !== 'video' && (
                     <button
                       onClick={() => handleSetMainImage(asset)}
-                      className="flex items-center justify-center gap-1.5 bg-indigo-900/50 hover:bg-indigo-900/80 text-indigo-300 py-2 text-xs font-medium transition-colors"
+                      className="flex items-center justify-center gap-1.5 bg-[#1a1a0f] hover:bg-indigo-900/80 text-indigo-300 py-2 text-xs font-medium transition-colors"
                     >🖼 Set Main</button>
                   )}
                   <button
@@ -3675,7 +3704,7 @@ function BottomNav({ active, onNavigate, pendingCount }) {
     { id: 'more',     icon: '⋯',  label: 'More'     },
   ]
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-gray-950 border-t border-gray-800 flex items-stretch">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-[#0a0a0a] border-t border-gray-800 flex items-stretch">
       {items.map(item => (
         <button
           key={item.id}
@@ -3723,7 +3752,7 @@ function MoreDrawer({ open, onClose, onNavigate, onLogout }) {
           <button
             key={item.id}
             onClick={() => nav(item.id)}
-            className="w-full flex items-center gap-4 px-5 py-4 text-left active:bg-gray-800/50 transition-colors"
+            className="w-full flex items-center gap-4 px-5 py-4 text-left active:bg-[#111]/50 transition-colors"
           >
             <span className="text-xl w-7 text-center flex-shrink-0">{item.icon}</span>
             <div>
@@ -3735,7 +3764,7 @@ function MoreDrawer({ open, onClose, onNavigate, onLogout }) {
         ))}
         <button
           onClick={() => { onClose(); onLogout() }}
-          className="w-full flex items-center gap-4 px-5 py-4 text-left active:bg-gray-800/50 transition-colors"
+          className="w-full flex items-center gap-4 px-5 py-4 text-left active:bg-[#111]/50 transition-colors"
         >
           <span className="text-xl w-7 text-center flex-shrink-0">⏻</span>
           <div>
@@ -3818,9 +3847,9 @@ export default function AdminPage() {
         onLogout={logout}
       />
 
-      <div className="min-h-screen bg-gray-950 text-white">
+      <div className="min-h-screen bg-[#0a0a0a] text-white">
         {/* ── Header ── */}
-        <header className="border-b border-gray-800 bg-gray-950 sticky top-0 z-40">
+        <header className="border-b border-gray-800 bg-[#0a0a0a] sticky top-0 z-40">
           <div className="px-4 h-12 flex items-center justify-between">
             <span className="text-white font-mono text-sm tracking-widest uppercase">JAYL Admin</span>
             {/* Desktop nav (hidden on mobile) */}

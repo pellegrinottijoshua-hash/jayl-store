@@ -2,17 +2,25 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
+import { adminCollections } from '@/data/admin-collections'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
-// HIDDEN - re-enable for Art launch
-// const pokemonProduct  = products.find((p) => p.id === 'cool-pokemon-tee')
-// const featuredArt     = artProducts.find((p) => p.featured) || artProducts[0]
-const featuredObject  = objectsProducts[0]  || null
-const featuredObject2 = objectsProducts[1]  || objectsProducts[0] || null
+
+// Featured products for sections 3 + 4 — set via admin "⭐ Prima Pagina" toggle
+const featuredObjects = objectsProducts.filter(p => p.featured)
+const featuredObject  = featuredObjects[0] ?? objectsProducts[0] ?? null
+const featuredObject2 = featuredObjects[1] ?? featuredObjects[0] ?? objectsProducts[1] ?? objectsProducts[0] ?? null
+
+// Carousel collection — set via admin "🎠 Carosello" toggle on a collection
+const carouselColl    = adminCollections.find(c => c.carousel)
+const carouselProducts = carouselColl
+  ? objectsProducts.filter(p => p.collection?.toLowerCase() === carouselColl.name?.toLowerCase())
+  : objectsProducts
+
 // Sort: products with createdAt first (newest → oldest), then the rest in original order
 const newInProducts = [...objectsProducts]
   .sort((a, b) => {
@@ -213,32 +221,56 @@ export default function HomePage() {
       </section>}
       {/* ════ END SECTION 5 hidden ══════════════════════════════════════ */}
 
-      {/* ════ SECTION 6 — Objects horizontal scroll ═══════════════════ */}
+      {/* ════ SECTION 6 — Collection carousel (auto-scroll) ══════════ */}
       <section className="h-screen w-screen bg-off-black relative overflow-hidden">
         <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
-          <p className="text-2xs font-sans tracking-label-xl uppercase text-text-muted">objects</p>
+          <p className="text-2xs font-sans tracking-label-xl uppercase text-text-muted">
+            {carouselColl ? carouselColl.name : 'objects'}
+          </p>
           <div className="flex-1" />
           <Link
-            to="/objects"
+            to={carouselColl ? `/collection/${carouselColl.id}` : '/objects'}
             className="inline-flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-text-muted hover:text-cream transition-colors"
           >
-            Shop all <ArrowRight size={10} />
+            View all <ArrowRight size={10} />
           </Link>
         </div>
 
-        <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
+        {/* Auto-scrolling track — duplicated for seamless loop */}
+        <div
+          className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10 overflow-hidden"
+          style={{ cursor: 'grab' }}
+          onMouseEnter={e => {
+            const track = e.currentTarget.querySelector('[data-carousel-track]')
+            if (track) track.style.animationPlayState = 'paused'
+          }}
+          onMouseLeave={e => {
+            const track = e.currentTarget.querySelector('[data-carousel-track]')
+            if (track) track.style.animationPlayState = 'running'
+          }}
+        >
           <div
-            className="flex gap-5 overflow-x-auto px-6 sm:px-8 pb-2"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+            data-carousel-track
+            className="flex gap-5 will-change-transform"
+            style={{
+              animation: `jayl-carousel-scroll ${carouselProducts.length * 4}s linear infinite`,
+              width: 'max-content',
+              paddingLeft: '1.5rem',
+            }}
           >
-            {objectsProducts.map((product) => (
+            {/* Render the list twice for infinite loop */}
+            {[...carouselProducts, ...carouselProducts].map((product, idx) => (
               <Link
-                key={product.id}
+                key={`${product.id}-${idx}`}
                 to={`/product/${product.id}`}
                 className="flex-shrink-0 w-48 sm:w-60 group"
                 draggable={false}
+                onClick={e => {
+                  // prevent navigation during drag
+                  if (Math.abs(e.movementX) > 5) e.preventDefault()
+                }}
               >
-                <div className="w-full aspect-square bg-stone-900 overflow-hidden mb-3">
+                <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3">
                   <img
                     src={product.image}
                     alt={product.name}

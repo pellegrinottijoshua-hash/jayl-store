@@ -70,19 +70,6 @@ export default function ProductCard({ product, className, light = false }) {
           </span>
         </div>
 
-        {/* Section badge */}
-        <div className="absolute top-3 left-3">
-          <span
-            className={cn(
-              'text-2xs font-sans font-normal tracking-label uppercase px-2 py-1',
-              light
-                ? 'bg-white/80 text-ink-muted'
-                : 'bg-black/60 backdrop-blur-sm text-text-muted'
-            )}
-          >
-            {sectionLabel}
-          </span>
-        </div>
       </div>
 
       {/* Info */}
