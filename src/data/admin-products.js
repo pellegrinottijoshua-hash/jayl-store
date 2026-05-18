@@ -1467,7 +1467,7 @@ export const adminProducts = [
     "id": "charizard-pok-mon-t-shirt-gildan-9400-premium-artwear",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Charizard Pokémon T-Shirt",
+    "name": "Cool Charizard T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -1751,7 +1751,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-05-18T20:13:14.811Z",
+    "updatedAt": "2026-05-18T20:19:57.311Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg",
     "relatedProducts": []
   }
