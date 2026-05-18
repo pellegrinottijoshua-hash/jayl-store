@@ -288,7 +288,7 @@ export default function HomePage() {
               >
                 <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3">
                   <img
-                    src={product.image}
+                    src={product.images?.[0] ?? product.image}
                     alt={product.name}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
