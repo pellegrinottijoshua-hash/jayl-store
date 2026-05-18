@@ -361,7 +361,7 @@ export const adminProducts = [
       "collectible art",
       "gift for him"
     ],
-    "featured": 1,
+    "featured": 2,
     "gelatoProductId": "02469b43-f6f2-4c2b-9d73-b1a6b56e923d",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -583,7 +583,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-18T19:03:14.548Z",
+    "updatedAt": "2026-05-18T19:03:19.675Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg",
     "relatedProducts": []
   },
