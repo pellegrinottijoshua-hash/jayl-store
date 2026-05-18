@@ -1527,7 +1527,7 @@ export const adminProducts = [
       "anime fan gear",
       "casual wear"
     ],
-    "featured": true,
+    "featured": false,
     "gelatoProductId": "6088cc0d-4c75-4194-abf4-ac5a472c1d32",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -1748,7 +1748,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-05-18T19:01:28.251Z",
+    "updatedAt": "2026-05-18T19:47:47.289Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg",
     "relatedProducts": []
   }
