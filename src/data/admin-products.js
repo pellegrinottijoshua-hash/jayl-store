@@ -361,7 +361,7 @@ export const adminProducts = [
       "collectible art",
       "gift for him"
     ],
-    "featured": 2,
+    "featured": false,
     "gelatoProductId": "02469b43-f6f2-4c2b-9d73-b1a6b56e923d",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -1234,7 +1234,7 @@ export const adminProducts = [
       "pop culture gift",
       "anime fashion"
     ],
-    "featured": false,
+    "featured": 2,
     "gelatoProductId": "5cb5bc0e-b1ad-4c59-88be-1fc1fb8a7dc5",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -1455,7 +1455,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-18T19:28:46.822Z",
+    "updatedAt": "2026-05-18T19:29:49.741Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": []
   },
