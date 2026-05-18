@@ -692,7 +692,7 @@ export default function AdminProductPage() {
   const [tags, setTags]             = useState('')
   const [videoUrl, setVideoUrl]     = useState('')
   const [gelatoUid, setGelatoUid]   = useState('')
-  const [featured, setFeatured]     = useState(false)
+  const [featured, setFeatured]     = useState(false)  // 1 | 2 | false
   const [featuringNow, setFeaturingNow] = useState(false)
   const [relatedProducts, setRelatedProducts] = useState([])
 
@@ -885,13 +885,18 @@ export default function AdminProductPage() {
     }
   }
 
-  const handleToggleFeatured = async () => {
-    const next = !featured
+  const handleSetSlot = async (slot) => {
+    // slot = 1 | 2 — click on active slot removes it (false)
+    const next = featured === slot ? false : slot
     setFeaturingNow(true)
     try {
       await api('set-featured', { productId: id, featured: next })
       setFeatured(next)
-      setSaveMsg(next ? '⭐ Prodotto impostato in primo piano — deploy in corso.' : '○ Rimosso dalla prima pagina.')
+      setSaveMsg(
+        next === 1 ? '① Impostato come Prima Pagina 1 — deploy in corso.'
+        : next === 2 ? '② Impostato come Prima Pagina 2 — deploy in corso.'
+        : '○ Rimosso dalla prima pagina.'
+      )
       setTimeout(() => setSaveMsg(''), 4000)
     } catch (e) {
       setSaveErr(e.message)
@@ -967,19 +972,63 @@ export default function AdminProductPage() {
 
             {isEditable && (
               <>
-                {/* Featured toggle */}
-                <button
-                  onClick={handleToggleFeatured}
-                  disabled={featuringNow}
-                  title={featured ? 'Rimuovi dalla prima pagina' : 'Metti in primo piano'}
-                  className={`flex items-center gap-1.5 px-3 py-2 text-xs font-semibold border transition-colors cursor-pointer disabled:opacity-40 ${
-                    featured
-                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 hover:bg-amber-500/10'
-                      : 'border-gray-700 text-gray-500 hover:border-amber-500/60 hover:text-amber-400'
-                  }`}
-                >
-                  {featuringNow ? '…' : featured ? '⭐ In Primo Piano' : '☆ Prima Pagina'}
-                </button>
+                {/* ── Hero previews + slot buttons ── */}
+                <div className="flex items-center gap-2 flex-shrink-0">
+
+                  {/* Slot 1 — desktop hero preview */}
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="relative w-20 h-11 bg-[#111] border border-[#252525] overflow-hidden flex-shrink-0">
+                      {desktopHero ? (
+                        /\.(mp4|mov|webm)$/i.test(desktopHero)
+                          ? <div className="w-full h-full flex items-center justify-center text-lg">🎬</div>
+                          : <img src={desktopHero} alt="desktop hero" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-[10px] text-[#444]">🖥 no img</div>
+                      )}
+                      <div className="absolute top-0 left-0 bg-black/60 text-[#888] text-[8px] px-1 py-px leading-none">🖥 16:9</div>
+                    </div>
+                    <button
+                      onClick={() => handleSetSlot(1)}
+                      disabled={featuringNow}
+                      title="Prima pagina slot 1 (prima sezione)"
+                      className={`px-2 py-0.5 text-[10px] font-bold border transition-colors cursor-pointer disabled:opacity-40 w-full text-center ${
+                        featured === 1
+                          ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                          : 'border-[#252525] text-[#555] hover:border-amber-500/40 hover:text-amber-500'
+                      }`}
+                    >
+                      {featuringNow && featured !== 2 ? '…' : featured === 1 ? '① attivo' : '① P.P.1'}
+                    </button>
+                  </div>
+
+                  {/* Slot 2 — mobile hero preview */}
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="relative w-[26px] h-11 bg-[#111] border border-[#252525] overflow-hidden flex-shrink-0">
+                      {mobileHero ? (
+                        /\.(mp4|mov|webm)$/i.test(mobileHero)
+                          ? <div className="w-full h-full flex items-center justify-center text-sm">🎬</div>
+                          : <img src={mobileHero} alt="mobile hero" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-[8px] text-[#444]">📱</div>
+                      )}
+                      <div className="absolute top-0 left-0 bg-black/60 text-[#888] text-[7px] px-0.5 py-px leading-none">📱</div>
+                    </div>
+                    <button
+                      onClick={() => handleSetSlot(2)}
+                      disabled={featuringNow}
+                      title="Prima pagina slot 2 (seconda sezione, scroll)"
+                      className={`px-2 py-0.5 text-[10px] font-bold border transition-colors cursor-pointer disabled:opacity-40 w-full text-center ${
+                        featured === 2
+                          ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                          : 'border-[#252525] text-[#555] hover:border-amber-500/40 hover:text-amber-500'
+                      }`}
+                    >
+                      {featuringNow && featured !== 1 ? '…' : featured === 2 ? '② attivo' : '② P.P.2'}
+                    </button>
+                  </div>
+
+                </div>
+
                 <button
                   onClick={handleDelete}
                   disabled={deleting}
@@ -1172,16 +1221,11 @@ export default function AdminProductPage() {
                 </Field>
               </div>
 
-              {isEditable && (
-                <label className="flex items-center gap-2 cursor-pointer mt-1">
-                  <input
-                    type="checkbox"
-                    checked={featured}
-                    onChange={e => setFeatured(e.target.checked)}
-                    className="accent-[#c8b89a]"
-                  />
-                  <span className="text-[#c8b89a] text-sm">Featured product (shown on homepage)</span>
-                </label>
+              {isEditable && featured && (
+                <p className="text-amber-400/80 text-xs mt-1">
+                  {featured === 1 ? '① In Prima Pagina — Slot 1 (prima sezione)' : '② In Prima Pagina — Slot 2 (seconda sezione)'}
+                  {' '}<button onClick={() => handleSetSlot(featured)} className="underline opacity-60 hover:opacity-100">rimuovi</button>
+                </p>
               )}
 
               {/* ── Related / Upsell products ── */}

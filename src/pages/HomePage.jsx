@@ -10,10 +10,15 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
 
-// Featured products for sections 3 + 4 — set via admin "⭐ Prima Pagina" toggle
-const featuredObjects = objectsProducts.filter(p => p.featured)
-const featuredObject  = featuredObjects[0] ?? objectsProducts[0] ?? null
-const featuredObject2 = featuredObjects[1] ?? featuredObjects[0] ?? objectsProducts[1] ?? objectsProducts[0] ?? null
+// Featured products for sections 3 + 4 — set via admin slot buttons (① ②)
+// featured = 1 → slot 1 (first fullscreen, visible immediately)
+// featured = 2 → slot 2 (second fullscreen, visible on scroll)
+const featuredObject  = objectsProducts.find(p => p.featured === 1)
+  ?? objectsProducts.find(p => p.featured === true)
+  ?? objectsProducts[0] ?? null
+const featuredObject2 = objectsProducts.find(p => p.featured === 2)
+  ?? objectsProducts.find(p => p.featured === true && p.id !== featuredObject?.id)
+  ?? objectsProducts[1] ?? objectsProducts[0] ?? null
 
 // Carousel collection — set via admin "🎠 Carosello" toggle on a collection
 const carouselColl    = adminCollections.find(c => c.carousel)
@@ -100,12 +105,18 @@ export default function HomePage() {
         className="h-screen w-screen relative overflow-hidden cursor-pointer"
         onClick={() => navigate(`/product/${featuredObject.id}`)}
       >
-        <img
-          src={featuredObject.heroImage ?? featuredObject.image}
-          alt={featuredObject.name}
-          className="absolute inset-0 w-full h-full object-cover"
-          onError={(e) => { e.currentTarget.style.display = 'none' }}
-        />
+        {/* Desktop: 16:9 hero image; Mobile: 9:16 portrait hero */}
+        <picture className="absolute inset-0 w-full h-full">
+          {featuredObject.image && (
+            <source media="(min-width: 1024px)" srcSet={featuredObject.image} />
+          )}
+          <img
+            src={featuredObject.heroImage ?? featuredObject.image}
+            alt={featuredObject.name}
+            className="w-full h-full object-cover"
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+        </picture>
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">
           <p className="text-xs font-sans tracking-label uppercase text-white/60 mb-3">Objects</p>
@@ -128,12 +139,17 @@ export default function HomePage() {
         onClick={() => featuredObject2 && navigate(`/product/${featuredObject2.id}`)}
       >
         {featuredObject2 && (
-          <img
-            src={featuredObject2.heroImage ?? featuredObject2.image}
-            alt={featuredObject2.name}
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={(e) => { e.currentTarget.style.display = 'none' }}
-          />
+          <picture className="absolute inset-0 w-full h-full">
+            {featuredObject2.image && (
+              <source media="(min-width: 1024px)" srcSet={featuredObject2.image} />
+            )}
+            <img
+              src={featuredObject2.heroImage ?? featuredObject2.image}
+              alt={featuredObject2.name}
+              className="w-full h-full object-cover"
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          </picture>
         )}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-14 z-10">

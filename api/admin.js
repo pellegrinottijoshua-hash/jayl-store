@@ -375,18 +375,31 @@ export default async function handler(req, res) {
     }
 
     // ── set-featured ──────────────────────────────────────────────────────────
-    // Toggles featured flag for a single product without requiring full save.
-    // Up to 2 products can be featured simultaneously.
+    // Sets featured slot for a product: featured = 1 | 2 | false
+    // Slot 1 → section 3 (first visible on homepage)
+    // Slot 2 → section 4 (second fullscreen)
+    // Assigning a slot removes that slot from any other product first.
     if (action === 'set-featured') {
-      const { productId, featured } = data
+      const { productId, featured } = data   // featured = 1 | 2 | false
       if (!productId) return res.status(400).json({ error: 'productId required' })
 
       const { products, sha } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === productId)
       if (idx < 0) return res.status(404).json({ error: 'Product not found' })
 
-      products[idx] = { ...products[idx], featured: !!featured, updatedAt: new Date().toISOString() }
-      await writeAdminProducts(products, sha, `admin: ${featured ? 'feature' : 'unfeature'} ${productId}`, githubToken)
+      // Clear this slot from whoever currently holds it
+      if (featured === 1 || featured === 2) {
+        for (let i = 0; i < products.length; i++) {
+          if (i !== idx && products[i].featured === featured) {
+            products[i] = { ...products[i], featured: false }
+          }
+        }
+      }
+
+      const slot = featured === 1 ? 1 : featured === 2 ? 2 : false
+      products[idx] = { ...products[idx], featured: slot, updatedAt: new Date().toISOString() }
+      await writeAdminProducts(products, sha,
+        `admin: ${slot ? `set slot ${slot}` : 'unfeature'} ${productId}`, githubToken)
       return res.status(200).json({ ok: true })
     }
 
