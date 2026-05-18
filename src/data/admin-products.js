@@ -914,7 +914,7 @@ export const adminProducts = [
         "price": 1999
       }
     ],
-    "image": "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
     "images": [
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
@@ -1164,7 +1164,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-18T18:54:20.758Z",
+    "updatedAt": "2026-05-18T19:26:08.110Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": []
   },
