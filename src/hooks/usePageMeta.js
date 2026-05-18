@@ -3,7 +3,18 @@ import { useEffect } from 'react'
 const SITE_NAME  = 'JAYL'
 const BASE_TITLE = 'JAYL — Premium Art & Wearable Art'
 const BASE_DESC  = 'Premium print-on-demand art and streetwear. AI-reinterpreted art movements, contemporary subjects.'
-const BASE_IMAGE = 'https://jayl-store.vercel.app/og-default.jpg'  // fallback og image
+const OG_BASE    = 'https://jayl.store/api/og'
+
+/** Build an absolute og:image URL. If the raw image is relative or a raw GitHub URL,
+ *  pass it through the /api/og generator for a branded frame. */
+function resolveOgImage(image, title, subtitle) {
+  if (!image && !title) return OG_BASE
+  const params = new URLSearchParams()
+  if (title)    params.set('title',    title)
+  if (subtitle) params.set('subtitle', subtitle)
+  if (image)    params.set('image',    image)
+  return `${OG_BASE}?${params.toString()}`
+}
 
 function setMeta(name, content, isProp = false) {
   if (!content) return
@@ -23,17 +34,18 @@ function setMeta(name, content, isProp = false) {
  * @param {Object} opts
  * @param {string}  opts.title       — Full page title (no suffix needed)
  * @param {string}  opts.description — Page description
- * @param {string}  [opts.image]     — Absolute URL of og:image
+ * @param {string}  [opts.image]     — Product image URL (passed to /api/og for framing)
+ * @param {string}  [opts.subtitle]  — Secondary line (collection/section) for OG image
  * @param {string}  [opts.url]       — Canonical URL (defaults to window.location.href)
  * @param {string}  [opts.type]      — og:type (default: 'website')
  */
-export function usePageMeta({ title, description, image, url, type = 'website' } = {}) {
+export function usePageMeta({ title, description, image, subtitle, url, type = 'website' } = {}) {
   useEffect(() => {
     const prevTitle = document.title
 
     const resolvedTitle = title       || BASE_TITLE
     const resolvedDesc  = description || BASE_DESC
-    const resolvedImg   = image       || BASE_IMAGE
+    const resolvedImg   = resolveOgImage(image, title, subtitle)
     const resolvedUrl   = url         || window.location.href
     const fullTitle     = title ? `${title} — ${SITE_NAME}` : BASE_TITLE
 
@@ -59,5 +71,5 @@ export function usePageMeta({ title, description, image, url, type = 'website' }
     return () => {
       document.title = prevTitle
     }
-  }, [title, description, image, url, type])
+  }, [title, description, image, subtitle, url, type])
 }

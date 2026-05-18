@@ -366,4 +366,50 @@ export function buildReviewRequestEmail({ customerName, orderId, productNames = 
   }
 }
 
+// ── Template: shipping notification ──────────────────────────────────────────
+
+export function buildShippingEmail({ orderId, customerName, trackingCode, trackingUrl, shipmentMethod }) {
+  const body = `
+    <tr><td style="padding:28px 0 8px">
+      <h1 style="margin:0;font-weight:400;font-size:26px;color:#e8e0d0">Your order is on its way!</h1>
+    </td></tr>
+    <tr><td style="padding:0 0 24px">
+      <p style="margin:0;font-size:15px;color:#9a9587;line-height:1.75">
+        Hi ${customerName || 'there'},<br><br>
+        Great news — your JAYL order has been shipped${shipmentMethod ? ` via <strong style="color:#e8e0d0">${shipmentMethod}</strong>` : ''}.
+        You can track it below.
+      </p>
+    </td></tr>
+    ${trackingCode ? `
+    <tr><td style="padding:0 0 24px">
+      <table role="presentation" cellpadding="0" cellspacing="0" style="background:#111;border:1px solid #1e1e1e;width:100%;border-radius:2px">
+        <tr>
+          <td style="padding:16px 20px">
+            <p style="margin:0 0 4px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#555">Tracking number</p>
+            <p style="margin:0;font-family:monospace;font-size:18px;color:#e8dcc8;letter-spacing:0.08em">${trackingCode}</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>` : ''}
+    ${trackingUrl ? `
+    <tr><td style="padding:0 0 28px">
+      <a href="${trackingUrl}" target="_blank"
+         style="display:inline-block;background:#e8dcc8;color:#000;font-size:11px;font-weight:bold;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;padding:12px 28px">
+        Track your order →
+      </a>
+    </td></tr>` : ''}
+    <tr><td style="padding:0 0 28px">
+      <p style="margin:0;font-size:12px;color:#4a4a4a;line-height:1.7">
+        Order reference: <span style="font-family:monospace;color:#7a7268">${orderId}</span><br>
+        Questions? Reply to this email or contact us at
+        <a href="mailto:${STORE_EMAIL}" style="color:#b8974a;text-decoration:none">${STORE_EMAIL}</a>
+      </p>
+    </td></tr>`
+
+  return {
+    subject: `Your JAYL order has shipped${trackingCode ? ` · ${trackingCode}` : ''}`,
+    html:    htmlWrapper(body),
+  }
+}
+
 export const STORE_EMAIL_ADDRESS = STORE_EMAIL

@@ -431,6 +431,7 @@ export default function ProductPage() {
     : undefined
   usePageMeta(product ? {
     title:       product.name,
+    subtitle:    product.collection || undefined,
     description: product.description
       ? product.description.slice(0, 160)
       : `${product.name} — ${product.collection || 'JAYL'}. Premium print-on-demand. Free shipping worldwide.`,

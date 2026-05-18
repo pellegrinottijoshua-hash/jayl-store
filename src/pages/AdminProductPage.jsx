@@ -694,6 +694,7 @@ export default function AdminProductPage() {
   const [gelatoUid, setGelatoUid]   = useState('')
   const [featured, setFeatured]     = useState(false)
   const [featuringNow, setFeaturingNow] = useState(false)
+  const [relatedProducts, setRelatedProducts] = useState([])
 
   // Status
   const [saving, setSaving]         = useState(false)
@@ -739,6 +740,7 @@ export default function AdminProductPage() {
       setVideoUrl(p.videoUrl || '')
       setGelatoUid(p.gelatoProductId || '')
       setFeatured(!!p.featured)
+      setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
       // media
       setDesktopHero(p.image     || null)
       setMobileHero(p.heroImage  || null)
@@ -864,6 +866,7 @@ export default function AdminProductPage() {
           ? tags.split(',').map(t => t.trim()).filter(Boolean)
           : product.tags || [],
         featured,
+        relatedProducts: relatedProducts.filter(Boolean),
         gelatoProductId: gelatoUid.trim() || null,
         adminManaged: true,
         ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : { videoUrl: undefined }),
@@ -1177,8 +1180,39 @@ export default function AdminProductPage() {
                     onChange={e => setFeatured(e.target.checked)}
                     className="accent-[#c8b89a]"
                   />
-                  <span className="text-gray-400 text-sm">Featured product (shown on homepage)</span>
+                  <span className="text-[#c8b89a] text-sm">Featured product (shown on homepage)</span>
                 </label>
+              )}
+
+              {/* ── Related / Upsell products ── */}
+              {isEditable && (
+                <Field label="Complete the Look — Related Products" hint="Up to 4 products shown as upsell at the bottom of this product page">
+                  <div className="space-y-1.5">
+                    {[0, 1, 2, 3].map(i => (
+                      <select
+                        key={i}
+                        value={relatedProducts[i] || ''}
+                        onChange={e => {
+                          const next = [...relatedProducts]
+                          if (e.target.value) {
+                            next[i] = e.target.value
+                          } else {
+                            next.splice(i, 1)
+                          }
+                          setRelatedProducts(next.filter(Boolean).slice(0, 4))
+                        }}
+                        className={inputCls + ' text-xs'}
+                      >
+                        <option value="">— None —</option>
+                        {allProducts
+                          .filter(p => p.id !== id)
+                          .map(p => (
+                            <option key={p.id} value={p.id}>{p.name}</option>
+                          ))}
+                      </select>
+                    ))}
+                  </div>
+                </Field>
               )}
             </Section>
 
