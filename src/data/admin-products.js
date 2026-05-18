@@ -328,15 +328,12 @@ export const adminProducts = [
     ],
     "image": "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
     "images": [
+      "/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/site-hero-custom-1778182599503.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-02.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--natural-01.jpg",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-03.jpg",
-      "/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/site-hero-custom-1778182599503.jpg"
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
     ],
     "imageAlts": {
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
@@ -585,7 +582,8 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-09T16:21:01.822Z"
+    "updatedAt": "2026-05-18T14:14:34.638Z",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg"
   },
   {
     "id": "zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift",
