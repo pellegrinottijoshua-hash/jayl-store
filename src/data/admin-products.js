@@ -1205,12 +1205,10 @@ export const adminProducts = [
     "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
     "images": [
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/screenshot-2026-05-09-alle-18.38.44.png"
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
     ],
     "imageAlts": {
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
@@ -1456,7 +1454,8 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-09T16:43:35.866Z"
+    "updatedAt": "2026-05-18T14:11:06.869Z",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg"
   },
   {
     "id": "charizard-pok-mon-t-shirt-gildan-9400-premium-artwear",
