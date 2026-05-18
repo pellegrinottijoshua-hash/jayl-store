@@ -583,8 +583,9 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-18T14:14:39.179Z",
-    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg"
+    "updatedAt": "2026-05-18T19:03:01.108Z",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg",
+    "relatedProducts": []
   },
   {
     "id": "zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift",
