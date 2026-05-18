@@ -739,7 +739,7 @@ export default function AdminProductPage() {
       setTags(Array.isArray(p.tags) ? p.tags.join(', ') : (p.tags || ''))
       setVideoUrl(p.videoUrl || '')
       setGelatoUid(p.gelatoProductId || '')
-      setFeatured(!!p.featured)
+      setFeatured(p.featured === 1 ? 1 : p.featured === 2 ? 2 : false)
       setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
       // media
       setDesktopHero(p.image     || null)
@@ -972,61 +972,63 @@ export default function AdminProductPage() {
 
             {isEditable && (
               <>
-                {/* ── Hero previews + slot buttons ── */}
-                <div className="flex items-center gap-2 flex-shrink-0">
-
-                  {/* Slot 1 — desktop hero preview */}
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="relative w-20 h-11 bg-[#111] border border-[#252525] overflow-hidden flex-shrink-0">
+                {/* ── Hero previews + Prima Pagina slot buttons ──
+                    Both thumbnails are previews of THIS product's heroes.
+                    The two buttons assign the product to homepage slot 1 or 2 (independent of desktop/mobile). */}
+                <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                  {/* Hero previews row — desktop 16:9 + mobile 9:16 */}
+                  <div className="flex items-end gap-1">
+                    {/* Desktop 16:9 */}
+                    <div className="relative w-[68px] h-[38px] bg-[#111] border border-[#252525] overflow-hidden">
                       {desktopHero ? (
                         /\.(mp4|mov|webm)$/i.test(desktopHero)
-                          ? <div className="w-full h-full flex items-center justify-center text-lg">🎬</div>
-                          : <img src={desktopHero} alt="desktop hero" className="w-full h-full object-cover" />
+                          ? <div className="w-full h-full flex items-center justify-center text-base">🎬</div>
+                          : <img src={desktopHero} alt="desktop" className="w-full h-full object-cover" />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-[10px] text-[#444]">🖥 no img</div>
+                        <div className="w-full h-full flex items-center justify-center text-[9px] text-[#444]">no img</div>
                       )}
-                      <div className="absolute top-0 left-0 bg-black/60 text-[#888] text-[8px] px-1 py-px leading-none">🖥 16:9</div>
+                      <div className="absolute top-0 left-0 bg-black/60 text-[#666] text-[7px] px-0.5 py-px leading-none">🖥</div>
                     </div>
+                    {/* Mobile 9:16 */}
+                    <div className="relative w-[22px] h-[38px] bg-[#111] border border-[#252525] overflow-hidden">
+                      {mobileHero ? (
+                        /\.(mp4|mov|webm)$/i.test(mobileHero)
+                          ? <div className="w-full h-full flex items-center justify-center text-[10px]">🎬</div>
+                          : <img src={mobileHero} alt="mobile" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-[8px] text-[#444]">📱</div>
+                      )}
+                      <div className="absolute top-0 left-0 bg-black/60 text-[#666] text-[6px] px-0.5 py-px leading-none">📱</div>
+                    </div>
+                  </div>
+
+                  {/* Slot buttons — assign this product (desktop+mobile heroes) to P.P. 1 or 2 */}
+                  <div className="flex gap-1 w-full">
                     <button
                       onClick={() => handleSetSlot(1)}
                       disabled={featuringNow}
-                      title="Prima pagina slot 1 (prima sezione)"
-                      className={`px-2 py-0.5 text-[10px] font-bold border transition-colors cursor-pointer disabled:opacity-40 w-full text-center ${
+                      title="Imposta come Prima Pagina 1 (prima sezione homepage)"
+                      className={`flex-1 py-0.5 text-[10px] font-bold border transition-colors cursor-pointer disabled:opacity-40 text-center ${
                         featured === 1
                           ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                           : 'border-[#252525] text-[#555] hover:border-amber-500/40 hover:text-amber-500'
                       }`}
                     >
-                      {featuringNow && featured !== 2 ? '…' : featured === 1 ? '① attivo' : '① P.P.1'}
+                      {featuringNow && featured !== 2 ? '…' : featured === 1 ? '① on' : '① P.P.1'}
                     </button>
-                  </div>
-
-                  {/* Slot 2 — mobile hero preview */}
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="relative w-[26px] h-11 bg-[#111] border border-[#252525] overflow-hidden flex-shrink-0">
-                      {mobileHero ? (
-                        /\.(mp4|mov|webm)$/i.test(mobileHero)
-                          ? <div className="w-full h-full flex items-center justify-center text-sm">🎬</div>
-                          : <img src={mobileHero} alt="mobile hero" className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-[8px] text-[#444]">📱</div>
-                      )}
-                      <div className="absolute top-0 left-0 bg-black/60 text-[#888] text-[7px] px-0.5 py-px leading-none">📱</div>
-                    </div>
                     <button
                       onClick={() => handleSetSlot(2)}
                       disabled={featuringNow}
-                      title="Prima pagina slot 2 (seconda sezione, scroll)"
-                      className={`px-2 py-0.5 text-[10px] font-bold border transition-colors cursor-pointer disabled:opacity-40 w-full text-center ${
+                      title="Imposta come Prima Pagina 2 (seconda sezione homepage)"
+                      className={`flex-1 py-0.5 text-[10px] font-bold border transition-colors cursor-pointer disabled:opacity-40 text-center ${
                         featured === 2
                           ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                           : 'border-[#252525] text-[#555] hover:border-amber-500/40 hover:text-amber-500'
                       }`}
                     >
-                      {featuringNow && featured !== 1 ? '…' : featured === 2 ? '② attivo' : '② P.P.2'}
+                      {featuringNow && featured !== 1 ? '…' : featured === 2 ? '② on' : '② P.P.2'}
                     </button>
                   </div>
-
                 </div>
 
                 <button
