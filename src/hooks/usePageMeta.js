@@ -28,8 +28,37 @@ function setMeta(name, content, isProp = false) {
   el.setAttribute('content', content)
 }
 
+function setCanonical(href) {
+  let el = document.querySelector('link[rel="canonical"]')
+  if (!el) {
+    el = document.createElement('link')
+    el.setAttribute('rel', 'canonical')
+    document.head.appendChild(el)
+  }
+  el.setAttribute('href', href)
+}
+
+function removeCanonical() {
+  document.querySelector('link[rel="canonical"]')?.remove()
+}
+
+function setJsonLd(data, id = 'page-jsonld') {
+  let el = document.getElementById(id)
+  if (!el) {
+    el = document.createElement('script')
+    el.id   = id
+    el.type = 'application/ld+json'
+    document.head.appendChild(el)
+  }
+  el.textContent = JSON.stringify(data)
+}
+
+function removeJsonLd(id = 'page-jsonld') {
+  document.getElementById(id)?.remove()
+}
+
 /**
- * usePageMeta — updates <title> and social meta tags.
+ * usePageMeta — updates <title>, social meta tags, canonical link, and JSON-LD.
  *
  * @param {Object} opts
  * @param {string}  opts.title       — Full page title (no suffix needed)
@@ -38,12 +67,12 @@ function setMeta(name, content, isProp = false) {
  * @param {string}  [opts.subtitle]  — Secondary line (collection/section) for OG image
  * @param {string}  [opts.url]       — Canonical URL (defaults to window.location.href)
  * @param {string}  [opts.type]      — og:type (default: 'website')
+ * @param {Object}  [opts.jsonLd]    — JSON-LD structured data object
  */
-export function usePageMeta({ title, description, image, subtitle, url, type = 'website' } = {}) {
+export function usePageMeta({ title, description, image, subtitle, url, type = 'website', jsonLd } = {}) {
   useEffect(() => {
     const prevTitle = document.title
 
-    const resolvedTitle = title       || BASE_TITLE
     const resolvedDesc  = description || BASE_DESC
     const resolvedImg   = resolveOgImage(image, title, subtitle)
     const resolvedUrl   = url         || window.location.href
@@ -53,6 +82,9 @@ export function usePageMeta({ title, description, image, subtitle, url, type = '
 
     // Standard
     setMeta('description', resolvedDesc)
+
+    // Canonical
+    setCanonical(resolvedUrl)
 
     // Open Graph
     setMeta('og:site_name',   SITE_NAME, true)
@@ -68,8 +100,14 @@ export function usePageMeta({ title, description, image, subtitle, url, type = '
     setMeta('twitter:description', resolvedDesc)
     setMeta('twitter:image',       resolvedImg)
 
+    // JSON-LD structured data
+    if (jsonLd) setJsonLd(jsonLd)
+    else        removeJsonLd()
+
     return () => {
       document.title = prevTitle
+      removeCanonical()
+      removeJsonLd()
     }
-  }, [title, description, image, subtitle, url, type])
+  }, [title, description, image, subtitle, url, type, jsonLd])
 }

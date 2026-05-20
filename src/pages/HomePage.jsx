@@ -87,6 +87,56 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
+  // ── Carousel: rAF auto-scroll + mouse drag + native touch ─────────────────
+  const carouselRef  = useRef(null)
+  const carouselDrag = useRef({ active: false, hovered: false, startX: 0, startScroll: 0, moved: false })
+
+  useEffect(() => {
+    const el = carouselRef.current
+    if (!el) return
+    const SPEED = 36 // px / second
+    let last = null
+    let raf
+
+    function tick(now) {
+      const d = carouselDrag.current
+      if (!d.active && !d.hovered) {
+        const dt = last !== null ? now - last : 0
+        el.scrollLeft += (SPEED / 1000) * dt
+        // Seamless infinite reset — content is duplicated so half = one full set
+        if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft -= el.scrollWidth / 2
+      }
+      last = now
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  function onCarouselMouseEnter() { carouselDrag.current.hovered = true }
+  function onCarouselMouseLeave() {
+    carouselDrag.current.hovered = false
+    carouselDrag.current.active  = false
+    if (carouselRef.current) carouselRef.current.style.cursor = 'grab'
+  }
+  function onCarouselMouseDown(e) {
+    if (!carouselRef.current) return
+    carouselDrag.current = { active: true, hovered: true, startX: e.clientX, startScroll: carouselRef.current.scrollLeft, moved: false }
+    carouselRef.current.style.cursor = 'grabbing'
+    e.preventDefault()
+  }
+  function onCarouselMouseMove(e) {
+    const d = carouselDrag.current
+    if (!d.active || !carouselRef.current) return
+    const dx = e.clientX - d.startX
+    if (Math.abs(dx) > 3) d.moved = true
+    carouselRef.current.scrollLeft = d.startScroll - dx
+  }
+  function onCarouselMouseUp() {
+    carouselDrag.current.active = false
+    if (carouselRef.current) carouselRef.current.style.cursor = 'grab'
+  }
+
   return (
     <div className="w-full">
 
@@ -252,29 +302,26 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Auto-scrolling track — duplicated for seamless loop */}
-        <div
-          className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10 overflow-hidden"
-          style={{ cursor: 'grab' }}
-          onMouseEnter={e => {
-            const track = e.currentTarget.querySelector('[data-carousel-track]')
-            if (track) track.style.animationPlayState = 'paused'
-          }}
-          onMouseLeave={e => {
-            const track = e.currentTarget.querySelector('[data-carousel-track]')
-            if (track) track.style.animationPlayState = 'running'
-          }}
-        >
+        {/* Scrollable track — rAF auto-scroll, mouse drag, native touch */}
+        <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
           <div
-            data-carousel-track
-            className="flex gap-5 will-change-transform"
+            ref={carouselRef}
+            className="flex gap-5 overflow-x-scroll will-change-transform select-none"
             style={{
-              animation: `jayl-carousel-scroll ${carouselProducts.length * 4}s linear infinite`,
-              width: 'max-content',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
+              cursor: 'grab',
               paddingLeft: '1.5rem',
+              paddingRight: '1.5rem',
             }}
+            onMouseEnter={onCarouselMouseEnter}
+            onMouseLeave={onCarouselMouseLeave}
+            onMouseDown={onCarouselMouseDown}
+            onMouseMove={onCarouselMouseMove}
+            onMouseUp={onCarouselMouseUp}
           >
-            {/* Render the list twice for infinite loop */}
+            {/* Render the list twice for seamless infinite loop */}
             {[...carouselProducts, ...carouselProducts].map((product, idx) => (
               <Link
                 key={`${product.id}-${idx}`}
@@ -282,11 +329,11 @@ export default function HomePage() {
                 className="flex-shrink-0 w-48 sm:w-60 group"
                 draggable={false}
                 onClick={e => {
-                  // prevent navigation during drag
-                  if (Math.abs(e.movementX) > 5) e.preventDefault()
+                  // block navigation if user was dragging
+                  if (carouselDrag.current.moved) e.preventDefault()
                 }}
               >
-                <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3">
+                <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3 pointer-events-none">
                   <img
                     src={product.images?.[0] ?? product.image}
                     alt={product.name}
@@ -296,8 +343,8 @@ export default function HomePage() {
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 </div>
-                <h3 className="font-display text-sm text-cream leading-tight truncate">{product.name}</h3>
-                <p className="text-xs text-text-muted mt-0.5">from {formatPrice(product.price)}</p>
+                <h3 className="font-display text-sm text-cream leading-tight truncate pointer-events-none">{product.name}</h3>
+                <p className="text-xs text-text-muted mt-0.5 pointer-events-none">from {formatPrice(product.price)}</p>
               </Link>
             ))}
           </div>

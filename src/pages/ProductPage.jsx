@@ -425,19 +425,38 @@ export default function ProductPage() {
     setPageTheme(isLight ? 'light' : 'dark')
   }, [isLight, setPageTheme])
 
-  // Dynamic SEO meta tags per product
+  // Dynamic SEO meta tags + JSON-LD Product schema
   const productImage = product
     ? `${typeof window !== 'undefined' ? window.location.origin : ''}${product.image || (product.images?.[0] ?? '')}`
     : undefined
+  const productDesc = product
+    ? (product.description?.slice(0, 160) || `${product.name} — ${product.collection || 'JAYL'}. Premium print-on-demand. Free shipping worldwide.`)
+    : undefined
+  const productJsonLd = product ? {
+    '@context':   'https://schema.org',
+    '@type':      'Product',
+    name:         product.name,
+    description:  productDesc,
+    image:        productImage ? [productImage] : undefined,
+    brand: { '@type': 'Brand', name: 'JAYL' },
+    ...(product.collection ? { category: product.collection } : {}),
+    offers: {
+      '@type':        'Offer',
+      priceCurrency:  'EUR',
+      price:          ((product.price ?? 0) / 100).toFixed(2),
+      availability:   'https://schema.org/InStock',
+      url:            typeof window !== 'undefined' ? window.location.href : `https://jayl.store/product/${product.id}`,
+      seller: { '@type': 'Organization', name: 'JAYL' },
+    },
+  } : undefined
   usePageMeta(product ? {
     title:       product.name,
     subtitle:    product.collection || undefined,
-    description: product.description
-      ? product.description.slice(0, 160)
-      : `${product.name} — ${product.collection || 'JAYL'}. Premium print-on-demand. Free shipping worldwide.`,
+    description: productDesc,
     image:       productImage || undefined,
     url:         typeof window !== 'undefined' ? window.location.href : undefined,
     type:        'product',
+    jsonLd:      productJsonLd,
   } : {})
 
   const defaultSize  = product?.sizes?.[isArt ? 1 : 0]?.id

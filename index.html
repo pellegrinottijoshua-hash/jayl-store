@@ -16,6 +16,34 @@
     <meta name="twitter:description" content="Premium print-on-demand art and streetwear." />
     <meta name="twitter:image" content="https://jayl.store/api/og" />
     <title>JAYL</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://jayl.store/#organization",
+          "name": "JAYL",
+          "url": "https://jayl.store",
+          "logo": { "@type": "ImageObject", "url": "https://jayl.store/favicon.svg" },
+          "description": "Premium print-on-demand art and wearable art. AI-reinterpreted art movements meet contemporary culture.",
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jayl.store/#website",
+          "url": "https://jayl.store",
+          "name": "JAYL",
+          "publisher": { "@id": "https://jayl.store/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://jayl.store/objects?q={search_term_string}" },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- JAYL Brand Fonts -->

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
 
 /** Falling-s: smaller, dropped, slightly rotated clockwise */
@@ -89,38 +88,8 @@ export default function ArtistPage() {
         </div>
       </div>
 
-      {/* Photo placeholder + tagline + CTA */}
-      <div className="flex flex-col items-center px-6 sm:px-10 lg:px-16 mt-16 mb-20">
-        {/* 3:4 photo placeholder */}
-        <div
-          className="w-full max-w-xs sm:max-w-sm bg-black flex items-center justify-center"
-          style={{ aspectRatio: '3 / 4' }}
-        >
-          <span
-            className="text-white tracking-widest"
-            style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }}
-          >
-            JAYL
-          </span>
-        </div>
-
-        {/* Tagline */}
-        <p
-          className="mt-8 max-w-xs sm:max-w-sm text-center text-ink-secondary leading-relaxed"
-          style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: '0.95rem' }}
-        >
-          Based in Italy. Working across every movement, every era. Using AI as the brush,
-          history as the canvas.
-        </p>
-
-        {/* CTA */}
-        <Link
-          to="/art"
-          className="mt-8 inline-flex items-center gap-2 font-sans text-xs tracking-[0.15em] uppercase text-ink border-b border-ink/30 pb-0.5 hover:border-ink transition-colors duration-300"
-        >
-          Discover the Art →
-        </Link>
-      </div>
+      {/* Bottom padding */}
+      <div className="pb-20" />
     </div>
   )
 }
