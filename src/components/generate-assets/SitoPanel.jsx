@@ -117,14 +117,33 @@ export default function SitoPanel({
     const prompt = localPrompts[templateId]
     if (!prompt?.trim()) return
     const ps         = promptSettings[templateId] || {}
-    const modelToUse = ps.modelId || videoModel
-    const imgObj     = getSelectedImage(templateId) ?? allImages[0] ?? null
-    const imageUrl   = imgObj ? toAbsoluteUrl(imgObj.url) : undefined
+    const modelToUse = ps.videoModelId || ps.modelId || videoModel
+    const sizeToUse  = ps.imageSize || imageSize
+
+    // Build ref array identical to image generation — primary + extra refs
+    const primary   = getSelectedImage(templateId) ?? allImages[0] ?? null
+    const extraRefs = ps.extraRefs || []
+    const imageUrls = [primary, ...extraRefs]
+      .filter(Boolean)
+      .map(img => toAbsoluteUrl(img.url))
+      .filter(Boolean)
+
+    const imageUrl = imageUrls[0] || undefined  // primary (required by Kling / Seedance)
+
     patchResult(templateId, { status: 'submitting', error: null, videoUrl: null, requestId: null, progress: 0, saved: false })
     try {
       const submitRes  = await fetch('/api/generate-video', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'submit', modelId: modelToUse, prompt: prompt.trim(), duration: videoDuration, imageUrl }),
+        body: JSON.stringify({
+          action:    'submit',
+          modelId:   modelToUse,
+          prompt:    prompt.trim(),
+          duration:  videoDuration,
+          imageUrl,
+          // Pass full array for models that support multi-reference (e.g. Wan 2.7 Ref)
+          imageUrls: imageUrls.length > 1 ? imageUrls : undefined,
+          imageSize: sizeToUse,
+        }),
       })
       const submitData = await submitRes.json()
       if (!submitRes.ok) throw new Error(submitData.error || 'Submit failed')

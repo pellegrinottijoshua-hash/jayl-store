@@ -442,8 +442,9 @@ async function handleVideo(req, res) {
   const apiKey = (process.env.FAL_KEY || process.env.FALAI_API_KEY || '').trim()
   if (!apiKey) return res.status(500).json({ error: 'FAL_KEY not configured' })
 
-  const { action, modelId, prompt, requestId, duration, imageUrl } = req.body || {}
+  const { action, modelId, prompt, requestId, duration, imageUrl, imageUrls } = req.body || {}
   if (!VIDEO_MODELS.has(modelId)) return res.status(400).json({ error: `Unknown video model: ${modelId}` })
+  const isWanRef = modelId === 'fal-ai/wan/v2.7/reference-to-video'
 
   const baseUrl   = `https://queue.fal.run/${modelId}`
   // POST requests need Content-Type; GET requests (status/result) must NOT send it —
@@ -456,35 +457,53 @@ async function handleVideo(req, res) {
     if (action === 'submit') {
       if (!prompt?.trim()) return res.status(400).json({ error: 'prompt is required' })
 
-      // Proxy reference image to fal CDN so it's reachable from fal.ai model servers
+      // Proxy reference images to fal CDN so they're reachable from fal.ai model servers
+      async function proxyOrFallback(url) {
+        try { return await proxyImageToFal(url, apiKey) }
+        catch { return url }
+      }
+
       let falImageUrl = null
-      if (imageUrl) {
-        try {
-          falImageUrl = await proxyImageToFal(imageUrl, apiKey)
-        } catch (proxyErr) {
-          console.warn('[generate-video] image proxy failed, trying direct URL:', proxyErr.message)
-          falImageUrl = imageUrl // fallback: pass URL directly, may or may not work
-        }
+      if (imageUrl) falImageUrl = await proxyOrFallback(imageUrl)
+
+      // For Wan 2.7 reference-to-video: proxy all refs in parallel
+      let falImageUrls = []
+      if (isWanRef && Array.isArray(imageUrls) && imageUrls.length > 0) {
+        falImageUrls = await Promise.all(imageUrls.map(proxyOrFallback))
+      } else if (falImageUrl) {
+        falImageUrls = [falImageUrl]
       }
 
       // Kling and most fal.ai video models require duration as a string enum ("5" | "10")
-      // Clamp user input to 5 or 10 — nearest valid value
-      const rawDur = parseInt(duration, 10) || 5
+      const rawDur      = parseInt(duration, 10) || 5
       const durationStr = rawDur <= 7 ? '5' : '10'
 
-      // For models that need aspect_ratio, derive from imageSize if provided
+      // Derive aspect_ratio from imageSize param sent by client
       const aspectRatio = (() => {
         const s = (req.body?.imageSize || '')
         if (s.includes('portrait') || s === '9:16') return '9:16'
         if (s.includes('landscape') || s === '16:9') return '16:9'
-        return '16:9' // default for video
+        return '16:9'
       })()
 
-      const submitBody = {
-        prompt:       prompt.trim(),
-        duration:     durationStr,
-        aspect_ratio: aspectRatio,
-        ...(falImageUrl ? { image_url: falImageUrl } : {}),
+      // Build model-specific payload
+      let submitBody
+      if (isWanRef) {
+        // Wan 2.7 reference-to-video: accepts reference_images array for multi-ref style control
+        submitBody = {
+          prompt:           prompt.trim(),
+          aspect_ratio:     aspectRatio,
+          duration:         durationStr,
+          reference_images: falImageUrls.map(url => ({ url })),
+        }
+      } else {
+        // Kling Pro, Seedance, LTX: single start-frame image_url
+        submitBody = {
+          prompt:       prompt.trim(),
+          duration:     durationStr,
+          aspect_ratio: aspectRatio,
+          ...(falImageUrl ? { image_url: falImageUrl } : {}),
+        }
       }
       console.log('[generate-video] submit →', baseUrl, JSON.stringify({ ...submitBody, prompt: submitBody.prompt.slice(0, 80) }))
       const falRes = await fetch(baseUrl, {

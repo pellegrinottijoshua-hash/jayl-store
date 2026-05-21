@@ -576,6 +576,13 @@ export default function ProductPage() {
   // displayImages is what the main carousel shows
   const displayImages = heroImages ?? productImages
 
+  // Random starting image — shuffle on every product open (not on re-render)
+  useEffect(() => {
+    if (!product || videoInfo) return
+    const count = displayImages.length
+    if (count > 1) setActiveImage(Math.floor(Math.random() * count))
+  }, [product?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // Mobile gallery: video slot (index -1) + images (0..n-1)
   const minSlide = videoInfo ? -1 : 0
   const maxSlide = displayImages.length - 1

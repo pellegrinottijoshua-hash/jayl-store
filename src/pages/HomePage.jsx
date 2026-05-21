@@ -41,6 +41,17 @@ const newInProducts = [...objectsProducts]
 // Current (no art, no new-in): Objects hero | Product 2 | Objects grid | Artist's
 const SECTION_THEMES = ['dark', 'dark', 'dark', 'light']
 
+// Stable per-session random choice between images[0] and images[1] per product.
+// Computed once at module load: each product always shows the same image within a session,
+// but rotates randomly between sessions (e.g. man → woman → man → ...).
+const carouselImagePick = new Map(
+  objectsProducts.map(p => {
+    const imgs = p.images || []
+    const pick = Math.random() < 0.5 ? (imgs[0] ?? p.image) : (imgs[1] ?? imgs[0] ?? p.image)
+    return [p.id, pick]
+  })
+)
+
 function FallingS() {
   return (
     <span
@@ -335,7 +346,7 @@ export default function HomePage() {
               >
                 <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3 pointer-events-none">
                   <img
-                    src={product.images?.[0] ?? product.image}
+                    src={carouselImagePick.get(product.id) ?? product.image}
                     alt={product.name}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
