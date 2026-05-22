@@ -312,7 +312,7 @@ function ImagePool({
       if (mobileHero  === img.url)  onSetMobileHero(null)
       if (detailImage === img.url)  onSetDetailImage(null)
       if (sequenza.includes(img.url)) onToggleSequenza(img.url)
-      await api('delete-image', { filePath: img.path })
+      await api('delete-image', { path: img.path, sha: img.sha })
       onUploaded() // refresh pool
     } catch (e) {
       alert('Errore eliminazione: ' + e.message)
