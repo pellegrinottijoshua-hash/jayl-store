@@ -4,14 +4,14 @@
     "email": "pellegrinottijoshua@gmail.com",
     "cartItems": [
       {
-        "name": "Cool Mewtwo T-Shirt",
-        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
-        "color": "black",
+        "name": "Cool Snorlax T-Shirt",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
+        "color": "military-green",
         "size": "M",
         "quantity": 1
       }
     ],
-    "capturedAt": "2026-05-22T01:59:07.135Z",
+    "capturedAt": "2026-05-22T14:08:42.569Z",
     "sent": false,
     "converted": false
   }
