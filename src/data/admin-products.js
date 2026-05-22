@@ -950,12 +950,18 @@ export const adminProducts = [
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg"
     ],
     "imageAlts": {
-      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
-      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
-      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
-      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Mockup of the Snorlax T-shirt featuring a playful Pokémon design, perfect for anime fans.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg": "Military green Snorlax T-shirt displaying cool Pokémon art, ideal for casual wear.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg": "A crisp white Snorlax T-shirt featuring vibrant Pokémon graphics, perfect for any fan.",
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg": "Sand-colored Snorlax T-shirt with a charming Pokémon design, ideal for a laid-back style.",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
-      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style."
+      "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-rs-sport-grey-01.jpg": "Sport grey Snorlax T-shirt showcasing cool Pokémon art, perfect for casual outings.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg": "A vibrant Snorlax T-shirt displayed against a minimalist background, showcasing cool Pokémon art.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg": "Close-up of a Snorlax T-shirt, featuring playful Pokémon design in a dynamic mobile view.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg": "Detailed texture shot of the Snorlax T-shirt, highlighting the quality of the fabric and print.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260509_165315_d47b49f3-14fb-40c6-84a5-32550463b110.jpg": "A stylish Snorlax T-shirt shown from an angle, emphasizing the cool Pokémon graphic design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260521_172235_6d19c307-bc02-4329-9d47-46a2c1a266b6.jpg": "Another view of the Snorlax T-shirt, showcasing its unique cool Pokémon artwork.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/screenshot-2026-05-09-alle-18.31.42.png": "A lifestyle shot featuring the Snorlax T-shirt, capturing its cool Pokémon style in everyday wear."
     },
     "tags": [
       "snorlax t-shirt",
@@ -1191,7 +1197,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-22T01:28:09.878Z",
+    "updatedAt": "2026-05-22T13:49:05.193Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg"
