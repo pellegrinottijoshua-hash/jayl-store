@@ -29,24 +29,35 @@ async function callTextAI(prompt, { provider = 'openai', maxTokens = 1400, tempe
   const apiKey = (process.env[cfg.keyEnv] || '').trim()
   if (!apiKey) throw new Error(`${cfg.keyEnv} not configured`)
 
+  // Longcat and other OpenAI-compatible providers may not support response_format
+  const isOpenAI   = provider === 'openai'
+  const useJsonMode = jsonMode && isOpenAI
+
   const body = {
     model:       cfg.model,
     messages:    [{ role: 'user', content: prompt }],
     temperature,
     max_tokens:  maxTokens,
-    ...(jsonMode ? { response_format: { type: 'json_object' } } : {}),
+    ...(useJsonMode ? { response_format: { type: 'json_object' } } : {}),
   }
 
   const res = await fetch(`${cfg.baseUrl}/v1/chat/completions`, {
     method:  'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body:    JSON.stringify(body),
+    signal:  AbortSignal.timeout(60_000),
   })
 
   const data = await res.json().catch(() => ({}))
   if (!res.ok) throw new Error(`${provider} error ${res.status}: ${data.error?.message || JSON.stringify(data)}`)
-  const content = data.choices?.[0]?.message?.content
+  let content = data.choices?.[0]?.message?.content
   if (!content) throw new Error(`Empty response from ${provider}`)
+
+  // Strip markdown code fences if present (Longcat / non-JSON-mode responses)
+  if (!useJsonMode) {
+    content = content.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim()
+  }
+
   return { content, model: data.model, usage: data.usage }
 }
 
@@ -610,8 +621,19 @@ async function handleAlts(req, res) {
   if (!productTitle)    return res.status(400).json({ error: 'productTitle is required' })
   if (!images.length)   return res.status(400).json({ error: 'images array is empty' })
 
+  // Extract any colour/size hints from the URL itself (Gelato URLs often embed these)
+  const extractHint = url => {
+    const lower = url.toLowerCase()
+    const colours = ['black','white','navy','grey','gray','red','blue','green','purple','pink','yellow','brown','beige','cream','orange','teal','maroon','charcoal','heather']
+    const found = colours.filter(c => lower.includes(c))
+    return found.length ? `(appears to show: ${found.join(', ')})` : ''
+  }
+
   const imageList = images
-    .map((img, i) => `${i + 1}. role="${img.role || 'gallery'}"  url="${img.url}"`)
+    .map((img, i) => {
+      const hint = extractHint(img.url)
+      return `${i + 1}. role="${img.role || 'gallery'}"  ${hint}  url="${img.url}"`
+    })
     .join('\n')
 
   const prompt = `You are an SEO and accessibility expert for JAYL, a premium art and objects store.
@@ -620,27 +642,43 @@ Product: "${productTitle}"
 Art movement/style: "${movement || 'contemporary art'}"
 Collection: "${collection || ''}"
 
-Write descriptive alt text for each image listed below.
-Rules:
-- 1 concise sentence, under 125 characters
-- Describe what is VISUALLY shown (composition, subject, colours, mood, style)
-- Reference the art movement/style naturally when relevant
-- Useful for screen readers AND for Google image search
-- Do NOT start every sentence with "A photo of" — vary the opener
+Write a UNIQUE, DISTINCT alt text for EACH image listed below.
+Rules — strictly follow all of them:
+- Each alt text is 1 sentence, under 120 characters
+- EVERY alt text must be DIFFERENT from the others — no copy-pasting
+- Use colour hints in the "appears to show" field when present (e.g. "black version", "navy colourway")
+- Vary the role: hero images → describe the whole scene/composition; gallery → describe angle/detail; detail → describe close-up texture/quality
+- Reference the art movement/style naturally where relevant
+- Vary sentence openers: avoid starting multiple descriptions with the same word
+- Useful for screen readers AND Google image search
+- Do NOT write "A photo of" at the start
 
-Images:
+Images to describe:
 ${imageList}
 
-Return a JSON object with key "alts" — an array of objects, one per image, each with "url" (exact copy from input) and "altText" fields.
-Return ONLY the JSON object, no markdown, no extra text.`
+Return ONLY a JSON object with key "alts" — array of objects each with "url" (exact copy from input) and "altText".
+No markdown, no code fences, no explanation. Pure JSON only.`
 
   try {
-    const { content } = await callTextAI(prompt, { provider, maxTokens: 800, temperature: 0.5 })
-    const parsed = JSON.parse(content)
+    const { content } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.6 })
+
+    // Robust JSON extraction — handles partial responses and stray text
+    let parsed
+    try {
+      parsed = JSON.parse(content)
+    } catch {
+      // Try extracting JSON from within the string (e.g. Longcat adds leading text)
+      const match = content.match(/\{[\s\S]*\}/)
+      if (!match) throw new Error('No JSON found in response')
+      parsed = JSON.parse(match[0])
+    }
+
     const altsMap = {}
     ;(parsed.alts || []).forEach(item => {
-      if (item.url && item.altText) altsMap[item.url] = item.altText
+      if (item.url && item.altText) altsMap[item.url] = String(item.altText).slice(0, 200)
     })
+    const count = Object.keys(altsMap).length
+    if (count === 0) throw new Error('AI returned 0 valid alt texts — try again')
     return res.status(200).json({ alts: altsMap })
   } catch (err) {
     console.error('[generate-alts]', err.message)

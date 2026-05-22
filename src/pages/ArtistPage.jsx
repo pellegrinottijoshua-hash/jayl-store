@@ -69,16 +69,16 @@ export default function ArtistPage() {
           </p>
 
           <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-5">
-            JAYL is a singular creative premise: that the great art movements of history weren't
-            finished. They were cut short by mortality, by the limits of what their world
-            contained. Impressionism never saw a server farm. Surrealism never witnessed machine
-            learning. Cubism never faced the infinite simultaneous perspectives of a social media
-            feed.
+            The great movements of art history were not conclusions — they were openings.
+            Each one established a new way of seeing: a grammar, a gaze, a set of obsessions
+            that defined how a generation understood beauty, tension, and truth.
+            Then time ran out. The artists died. The movements calcified into museums.
           </p>
 
           <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-8">
-            JAYL is the answer — a body of work that continues what history left unfinished,
-            applied to the subjects those movements never reached.
+            JAYL continues from where they stopped. The same visual languages, applied to the
+            world those artists never lived to paint — its textures, its figures, its quiet
+            and loud moments. Not as tribute. As continuation.
           </p>
 
           {/* Payoff */}

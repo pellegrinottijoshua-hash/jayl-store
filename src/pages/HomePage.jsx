@@ -37,9 +37,8 @@ const newInProducts = [...objectsProducts]
   .slice(0, 6)
 
 // light = cream sections, dark = dark sections
-// Art launch: ['light', 'dark', 'dark', 'dark', 'light', 'dark', 'light'] (7 sections)
-// Current (no art, no new-in): Objects hero | Product 2 | Objects grid | Artist's
-const SECTION_THEMES = ['dark', 'dark', 'dark', 'light']
+// Current: Objects hero | Value prop strip | Product 2 | Objects grid | Artist's
+const SECTION_THEMES = ['dark', 'dark', 'dark', 'dark', 'light']
 
 // Stable per-session random choice between images[0] and images[1] per product.
 // Computed once at module load: each product always shows the same image within a session,
@@ -191,6 +190,34 @@ export default function HomePage() {
           >
             Shop Now <ArrowRight size={12} />
           </Link>
+        </div>
+      </section>
+
+      {/* ════ VALUE PROP STRIP — between hero sections ══════════════ */}
+      <section className="w-screen bg-[#0a0a0a] border-t border-white/5 py-14 sm:py-20 px-6 sm:px-12 flex items-center justify-center">
+        <div className="max-w-4xl w-full flex flex-col sm:flex-row sm:items-start gap-10 sm:gap-16">
+          {/* Left: statement */}
+          <div className="flex-1">
+            <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-white leading-[1.3]" style={{ letterSpacing: '-0.01em' }}>
+              The visual languages of history,<br className="hidden sm:block" />
+              applied to the world they never saw.
+            </p>
+          </div>
+          {/* Right: pillars */}
+          <div className="flex flex-col gap-5 sm:w-56 flex-shrink-0">
+            <div>
+              <p className="text-[11px] tracking-widest uppercase mb-1" style={{ color: '#C4A35A' }}>Print quality</p>
+              <p className="text-sm text-white/50 leading-relaxed">Produced by Gelato — museum-grade materials, worldwide.</p>
+            </div>
+            <div>
+              <p className="text-[11px] tracking-widest uppercase mb-1" style={{ color: '#C4A35A' }}>Free shipping</p>
+              <p className="text-sm text-white/50 leading-relaxed">Every order ships free, everywhere.</p>
+            </div>
+            <div>
+              <p className="text-[11px] tracking-widest uppercase mb-1" style={{ color: '#C4A35A' }}>Original concept</p>
+              <p className="text-sm text-white/50 leading-relaxed">Each piece is a continuation, not a reproduction.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -375,9 +402,8 @@ export default function HomePage() {
 
         <div className="px-6 sm:px-12 lg:px-20 max-w-3xl text-center">
           <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-ink leading-[1.45]">
-            Every great artist drew the world differently — they saw their world. JAYL takes the
-            greatest visual languages in history and applies them to subjects, emotions, and
-            landscapes they never reached.
+            The great movements of art history were not conclusions — they were openings.
+            JAYL continues from where they stopped.
           </p>
         </div>
       </section>
