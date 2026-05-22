@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "cart_1779415147135",
+    "email": "pellegrinottijoshua@gmail.com",
+    "cartItems": [
+      {
+        "name": "Cool Mewtwo T-Shirt",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
+        "color": "black",
+        "size": "M",
+        "quantity": 1
+      }
+    ],
+    "capturedAt": "2026-05-22T01:59:07.135Z",
+    "sent": false,
+    "converted": false
+  }
+]
