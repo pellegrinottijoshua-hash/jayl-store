@@ -46,12 +46,17 @@ export const adminProducts = [
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg"
     ],
     "imageAlts": {
-      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Mewtwo graphic t-shirt featuring retro 90s anime art style.",
+      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Mockup of the Cool Mewtwo T-shirt featuring an eye-catching Pokémon design against a plain backdrop.",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg": "Mewtwo graphic t-shirt featuring retro 90s anime art style.",
-      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-navy-01.jpg": "Mewtwo graphic t-shirt featuring retro 90s anime art style.",
-      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-heather-navy-01.jpg": "Mewtwo graphic t-shirt featuring retro 90s anime art style.",
-      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-purple-01.jpg": "Mewtwo graphic t-shirt featuring retro 90s anime art style.",
-      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg": "Mewtwo graphic t-shirt featuring retro 90s anime art style."
+      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-navy-01.jpg": "Navy version of the Cool Mewtwo T-shirt, showcasing its stylish Pokémon art in a darker color palette.",
+      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-heather-navy-01.jpg": "Heather navy variant of the Cool Mewtwo T-shirt, blending classic Pokémon art with a trendy color scheme.",
+      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-purple-01.jpg": "Purple version of the Cool Mewtwo T-shirt, featuring playful Pokémon graphics perfect for anime enthusiasts.",
+      "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg": "A clean white Cool Mewtwo T-shirt showcasing vibrant Pokémon art, ideal for casual wear.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg": "A vibrant Mewtwo T-shirt featuring retro 90s Pokémon art, showcased on a mannequin.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg": "The Cool Mewtwo T-shirt displayed on a model against a colorful background, perfect for Pokémon fans.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg": "Close-up view of the Cool Mewtwo T-shirt's soft fabric and vibrant print, highlighting its quality.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_171150_003a1a1d-422c-4ba3-8c83-fe6c0aa46318.jpg": "Side angle of the Cool Mewtwo T-shirt, emphasizing its unique design inspired by cool Pokémon art.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154757_0d8efbc0-13e5-4001-8beb-6f302fa3158d.jpg": "The Cool Mewtwo T-shirt displayed flat, showcasing the detailed Pokémon graphic and vibrant colors."
     },
     "tags": [
       "mewtwo t-shirt",
@@ -290,7 +295,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-22T01:19:51.824Z",
+    "updatedAt": "2026-05-22T13:37:20.542Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg"
