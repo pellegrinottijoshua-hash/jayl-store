@@ -4,14 +4,14 @@
     "email": "pellegrinottijoshua@gmail.com",
     "cartItems": [
       {
-        "name": "Cool Charizard T-Shirt",
-        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_154107_28fd7343-c224-4650-84b7-07a7d8aa9380-1.jpg",
-        "color": "cardinal-red",
-        "size": "XL",
+        "name": "Cool Snorlax T-Shirt",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
+        "color": "black",
+        "size": "M",
         "quantity": 1
       }
     ],
-    "capturedAt": "2026-05-22T16:03:40.949Z",
+    "capturedAt": "2026-05-22T16:17:08.532Z",
     "sent": false,
     "converted": false
   }
