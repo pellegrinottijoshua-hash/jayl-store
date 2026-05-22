@@ -38,6 +38,7 @@ export const adminProducts = [
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
     "images": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_171150_003a1a1d-422c-4ba3-8c83-fe6c0aa46318.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154757_0d8efbc0-13e5-4001-8beb-6f302fa3158d.jpg",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-navy-01.jpg",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-heather-navy-01.jpg",
@@ -289,7 +290,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-22T01:17:31.165Z",
+    "updatedAt": "2026-05-22T01:19:51.824Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg"
