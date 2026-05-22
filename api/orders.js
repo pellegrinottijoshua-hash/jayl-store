@@ -422,7 +422,7 @@ async function handleCaptureEmail(req, res) {
       if (idx >= 0) carts[idx] = entry; else carts.push(entry)
       carts.sort((a, b) => new Date(b.capturedAt) - new Date(a.capturedAt))
       carts.splice(500)
-      await writeCarts(carts, sha, `[cart] capture ${normalised}`, githubToken)
+      await writeCarts(carts, sha, `[cart] capture ${normalised} [skip ci]`, githubToken)
     } catch (e) {
       console.warn('[capture-email] cart capture error:', e.message)
     }
@@ -439,7 +439,7 @@ async function handleCaptureEmail(req, res) {
         const idx = carts.findIndex(c => c.email === normalised)
         if (idx >= 0 && !carts[idx].converted) {
           carts[idx].converted = true
-          await writeCarts(carts, sha, `[cart] converted ${normalised}`, githubToken)
+          await writeCarts(carts, sha, `[cart] converted ${normalised} [skip ci]`, githubToken)
         }
       } catch (e) {
         console.warn('[capture-email] cart-converted error:', e.message)
