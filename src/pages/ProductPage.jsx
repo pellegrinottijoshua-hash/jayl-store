@@ -827,14 +827,16 @@ export default function ProductPage() {
                 transition: 'border-color 0.12s, background-color 0.12s, color 0.12s',
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
+                WebkitTouchCallout: 'none',
                 touchAction: 'none',
                 zIndex: 10,
               }}
+              onContextMenu={e => e.preventDefault()}
               onMouseDown={() => setShowDetail(true)}
               onMouseUp={() => setShowDetail(false)}
               onMouseLeave={() => setShowDetail(false)}
               onTouchStart={e => { e.preventDefault(); setShowDetail(true) }}
-              onTouchEnd={() => setShowDetail(false)}
+              onTouchEnd={e => { e.preventDefault(); setShowDetail(false) }}
               onTouchCancel={() => setShowDetail(false)}
             >
               <span style={{ fontSize: 11, letterSpacing: '0.04em', lineHeight: 1 }}>✦</span>
@@ -1683,6 +1685,7 @@ export default function ProductPage() {
             src={product.detailImage}
             alt="product detail"
             draggable={false}
+            onContextMenu={e => e.preventDefault()}
             style={{
               position: 'absolute',
               top: 0,
@@ -1693,31 +1696,23 @@ export default function ProductPage() {
               maxWidth: '100vw',
               objectFit: 'cover',
               display: 'block',
+              WebkitUserSelect: 'none',
+              userSelect: 'none',
+              WebkitTouchCallout: 'none',
+              pointerEvents: 'none',
             }}
           />
 
-          {/* Left gold gradient */}
-          <div style={{
-            position: 'absolute', top: 0, left: 0, width: '22%', height: '100%',
-            background: 'linear-gradient(to right, rgba(180,130,40,0.55) 0%, rgba(180,130,40,0.08) 60%, transparent 100%)',
-            pointerEvents: 'none',
-          }} />
-          {/* Right gold gradient */}
-          <div style={{
-            position: 'absolute', top: 0, right: 0, width: '22%', height: '100%',
-            background: 'linear-gradient(to left, rgba(180,130,40,0.55) 0%, rgba(180,130,40,0.08) 60%, transparent 100%)',
-            pointerEvents: 'none',
-          }} />
           {/* Top fade */}
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0, height: '12%',
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent)',
             pointerEvents: 'none',
           }} />
           {/* Bottom fade + label */}
           <div style={{
-            position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.75), transparent)',
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: '16%',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.65), transparent)',
             pointerEvents: 'none',
           }} />
           <p style={{
