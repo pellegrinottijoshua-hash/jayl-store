@@ -69,32 +69,45 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-
 const GELATO_ORDER_URL = 'https://order.gelatoapis.com/v4/orders'
 
 async function createGelatoOrder({ paymentIntent, items, shippingAddress, email }) {
-  const apiKey = process.env.GELATO_API_KEY
-  if (!apiKey) throw new Error('GELATO_API_KEY is not configured')
+  const apiKey  = process.env.GELATO_API_KEY
+  const storeId = process.env.GELATO_STORE_ID
+  if (!apiKey)  throw new Error('GELATO_API_KEY is not configured')
+  if (!storeId) throw new Error('GELATO_STORE_ID is not configured')
+
+  const mappedItems = items.map((item) => {
+    // Try to find the exact variant by color + size
+    const gelatoVariant = item.product.variants?.find((v) => {
+      const colorMatch =
+        (v.uid ?? v.id) === item.color ||
+        colorToSlug(v.color) === colorToSlug(item.color)
+      const sizeMatch =
+        !item.size ||
+        v.size === item.size ||
+        v.size?.toUpperCase() === item.size?.toUpperCase()
+      return colorMatch && sizeMatch
+    })
+    const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+
+    // Log variant resolution for debugging
+    console.log('[create-order] item', item.productId,
+      'color:', item.color, 'size:', item.size,
+      '→ variant found:', !!gelatoVariant,
+      '→ productUid:', productUid?.slice(0, 60))
+
+    return {
+      itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
+      productUid,
+      quantity: item.quantity,
+      files: [{ type: 'default', url: item.product.image }],
+    }
+  })
 
   const orderPayload = {
     orderReferenceId:    `jayl-${paymentIntent.id}`,
     customerReferenceId: email || 'unknown',
     currency: CURRENCY.toUpperCase(),
-    items: items.map((item) => {
-      const gelatoVariant = item.product.variants?.find((v) => {
-        const colorMatch =
-          (v.uid ?? v.id) === item.color ||
-          colorToSlug(v.color) === colorToSlug(item.color)
-        const sizeMatch =
-          !item.size ||
-          v.size === item.size ||
-          v.size?.toUpperCase() === item.size?.toUpperCase()
-        return colorMatch && sizeMatch
-      })
-      const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-      return {
-        itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
-        productUid,
-        quantity: item.quantity,
-        files: [{ type: 'default', url: item.product.image }],
-      }
-    }),
+    storeId,
+    items: mappedItems,
     shippingAddress: {
       firstName:    shippingAddress.firstName,
       lastName:     shippingAddress.lastName,
@@ -108,6 +121,11 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     },
   }
 
+  console.log('[create-order] sending to Gelato →', JSON.stringify({
+    ...orderPayload,
+    items: orderPayload.items.map(i => ({ ...i, files: '[omitted]' }))
+  }))
+
   const gelatoRes = await fetch(GELATO_ORDER_URL, {
     method:  'POST',
     headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
@@ -115,7 +133,7 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
   })
   const body = await gelatoRes.json().catch(() => ({}))
   if (!gelatoRes.ok) {
-    const err = new Error('Gelato order failed')
+    const err = new Error(`Gelato ${gelatoRes.status}: ${body.message || body.error || JSON.stringify(body)}`)
     err.status = gelatoRes.status
     err.body   = body
     throw err
@@ -212,8 +230,12 @@ async function handleCreateOrder(req, res) {
       trackingInfo:     gelatoOrder.shipment || null,
     })
   } catch (err) {
-    console.error('[create-order]', err.status || '', err.message, err.body || '')
-    return res.status(500).json({ error: 'Could not create order' })
+    console.error('[create-order] FAILED', err.status || '', err.message, JSON.stringify(err.body || {}))
+    // Return the real Gelato error message so it's visible in logs + client
+    return res.status(500).json({
+      error: err.message || 'Could not create order',
+      _gelatoBody: err.body || null,
+    })
   }
 }
 
