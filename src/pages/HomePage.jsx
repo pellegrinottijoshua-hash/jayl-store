@@ -194,10 +194,36 @@ export default function HomePage() {
       </section>
 
       {/* ════ VALUE PROP STRIP — between hero sections ══════════════ */}
-      <section className="w-screen bg-[#0a0a0a] border-t border-white/5 py-14 sm:py-20 px-6 sm:px-12 flex items-center justify-center">
-        <div className="max-w-3xl w-full">
-          <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-white leading-[1.3]" style={{ letterSpacing: '-0.01em' }}>
-            The visual languages of history,<br className="hidden sm:block" />
+      <section className="w-screen relative overflow-hidden py-24 sm:py-36 px-6 sm:px-12 lg:px-20 flex items-center"
+        style={{ background: 'linear-gradient(160deg, #0c0c0c 0%, #0f0e0c 60%, #111008 100%)' }}
+      >
+        {/* Faint decorative large letter */}
+        <span
+          aria-hidden="true"
+          className="absolute right-[-0.05em] top-1/2 -translate-y-1/2 font-display leading-none select-none pointer-events-none"
+          style={{ fontSize: 'clamp(12rem, 28vw, 26rem)', color: '#C4A35A', opacity: 0.04, letterSpacing: '-0.05em' }}
+        >J</span>
+
+        <div className="relative max-w-4xl">
+          {/* Label */}
+          <p className="text-[10px] font-sans tracking-[0.25em] uppercase mb-6 sm:mb-8" style={{ color: '#C4A35A', opacity: 0.7 }}>
+            The premise
+          </p>
+
+          {/* Gold rule */}
+          <div className="mb-7 sm:mb-9" style={{ width: '2.5rem', height: '1px', backgroundColor: '#C4A35A', opacity: 0.45 }} />
+
+          {/* Statement — two tiers */}
+          <p
+            className="font-display text-white leading-[1.1] mb-3"
+            style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', letterSpacing: '-0.02em' }}
+          >
+            The visual languages of history,
+          </p>
+          <p
+            className="font-display leading-[1.1]"
+            style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', letterSpacing: '-0.02em', color: '#C4A35A', opacity: 0.75 }}
+          >
             applied to the world they never saw.
           </p>
         </div>
