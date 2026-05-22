@@ -19,6 +19,10 @@ export default async function handler(req, res) {
   if (!allowed) return res.status(403).json({ error: 'Forbidden' })
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
+  // Key sanity check — logged on every call so we can confirm which mode is active
+  const keyPrefix = (process.env.STRIPE_SECRET_KEY || '').slice(0, 12)
+  console.log('[create-payment-intent] called — key prefix:', keyPrefix)
+
   try {
     const { items: rawItems, shippingAddress, discountCode } = req.body || {}
 
@@ -81,7 +85,7 @@ export default async function handler(req, res) {
       discountLabel,
     })
   } catch (err) {
-    console.error('[create-payment-intent]', err)
-    return res.status(500).json({ error: 'Could not initialize payment' })
+    console.error('[create-payment-intent] ERROR:', err.message, err.type, err.code)
+    return res.status(500).json({ error: err.message || 'Could not initialize payment' })
   }
 }
