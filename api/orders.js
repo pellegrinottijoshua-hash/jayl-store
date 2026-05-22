@@ -70,9 +70,8 @@ const GELATO_ORDER_URL = 'https://order.gelatoapis.com/v4/orders'
 
 async function createGelatoOrder({ paymentIntent, items, shippingAddress, email }) {
   const apiKey  = process.env.GELATO_API_KEY
-  const storeId = process.env.GELATO_STORE_ID
-  if (!apiKey)  throw new Error('GELATO_API_KEY is not configured')
-  if (!storeId) throw new Error('GELATO_STORE_ID is not configured')
+  const storeId = (process.env.GELATO_STORE_ID || '').trim()
+  if (!apiKey) throw new Error('GELATO_API_KEY is not configured')
 
   const mappedItems = items.map((item) => {
     // Try to find the exact variant by color + size
@@ -106,7 +105,7 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     orderReferenceId:    `jayl-${paymentIntent.id}`,
     customerReferenceId: email || 'unknown',
     currency: CURRENCY.toUpperCase(),
-    storeId,
+    ...(storeId ? { storeId } : {}),
     items: mappedItems,
     shippingAddress: {
       firstName:    shippingAddress.firstName,
