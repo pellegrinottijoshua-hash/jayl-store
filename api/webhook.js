@@ -1,5 +1,5 @@
 import Stripe from 'stripe'
-import { decodeItemsFromMetadata, CURRENCY } from './_lib/catalog.js'
+import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
 import { sendEmail, buildOrderConfirmationEmail } from './_lib/email.js'
 
 // Disable Vercel's default body parser — Stripe needs the raw body to verify the signature
@@ -44,22 +44,62 @@ async function fulfillIfNeeded(paymentIntent) {
     return
   }
 
-  const apiKey = process.env.GELATO_API_KEY || process.env.VITE_GELATO_API_KEY
+  const apiKey  = (process.env.GELATO_API_KEY  || '').trim()
+  const storeId = (process.env.GELATO_STORE_ID || '').trim()
   if (!apiKey) {
     console.error('[webhook] GELATO_API_KEY is not configured — skipping')
     return
   }
 
+  // UUID v4 pattern — identifies a Gelato *store* product vs a catalog product UID
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+  const mappedItems = items.map((item) => {
+    const gelatoVariant = item.product.variants?.find((v) => {
+      const colorMatch =
+        colorToSlug(v.color) === colorToSlug(item.color) ||
+        (v.uid ?? v.id) === item.color
+      const sizeMatch =
+        !item.size ||
+        v.size === item.size ||
+        v.size?.toUpperCase() === item.size?.toUpperCase()
+      return colorMatch && sizeMatch
+    })
+
+    const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
+    const isStoreProduct = UUID_RE.test(item.product.gelatoProductId ?? '')
+
+    if (isStoreProduct && gelatoVariant?.uid) {
+      console.log('[webhook] item', item.productId,
+        'color:', item.color, 'size:', item.size,
+        '→ storeProductId:', item.product.gelatoProductId,
+        '→ storeProductVariantId:', gelatoVariant.uid)
+      return {
+        itemReferenceId:       itemRef,
+        storeProductId:        item.product.gelatoProductId,
+        storeProductVariantId: gelatoVariant.uid,
+        quantity:              item.quantity,
+      }
+    }
+
+    const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+    console.log('[webhook] item', item.productId,
+      'color:', item.color, 'size:', item.size,
+      '→ catalog productUid:', productUid?.slice(0, 60))
+    return {
+      itemReferenceId: itemRef,
+      productUid,
+      quantity:        item.quantity,
+      files: [{ type: 'default', url: item.product.printFileUrl || item.product.image }],
+    }
+  })
+
   const orderPayload = {
     orderReferenceId:    `jayl-${paymentIntent.id}`,
     customerReferenceId: paymentIntent.metadata?.email || 'unknown',
     currency: CURRENCY.toUpperCase(),
-    items: items.map((item) => ({
-      itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
-      productUid:      item.product.gelatoProductId,
-      quantity:        item.quantity,
-      files: [{ type: 'default', url: item.product.image }],
-    })),
+    ...(storeId ? { storeId } : {}),
+    items: mappedItems,
     shippingAddress: {
       firstName:    shippingAddress.firstName || '',
       lastName:     shippingAddress.lastName  || '',
@@ -95,24 +135,28 @@ async function fulfillIfNeeded(paymentIntent) {
     console.error('[webhook] Failed to write gelatoOrderId back:', e.message)
   }
 
-  // Send order confirmation email to customer
+  // Send order confirmation email to customer — non-blocking, never throws
   const customerEmail = paymentIntent.metadata?.email || paymentIntent.receipt_email
   if (customerEmail) {
-    const { subject, html } = buildOrderConfirmationEmail({
-      orderId:         order.id || `jayl-${paymentIntent.id}`,
-      items:           items.map(it => ({
-        name:      it.product?.name      || it.productId,
-        image:     it.product?.image     || null,
-        color:     it.color              || null,
-        size:      it.size               || null,
-        quantity:  it.quantity,
-        unitPrice: it.unitPrice,
-      })),
-      total:           parseInt(paymentIntent.metadata?.total  || '0', 10),
-      shipping:        0,
-      shippingAddress: shippingAddress,
-    })
-    await sendEmail({ to: customerEmail, subject, html })
+    try {
+      const { subject, html } = buildOrderConfirmationEmail({
+        orderId:         order.id || `jayl-${paymentIntent.id}`,
+        items:           items.map(it => ({
+          name:      it.product?.name      || it.productId,
+          image:     it.product?.image     || null,
+          color:     it.color              || null,
+          size:      it.size               || null,
+          quantity:  it.quantity,
+          unitPrice: it.unitPrice,
+        })),
+        total:           parseInt(paymentIntent.metadata?.total  || '0', 10),
+        shipping:        0,
+        shippingAddress: shippingAddress,
+      })
+      await sendEmail({ to: customerEmail, subject, html })
+    } catch (e) {
+      console.error('[webhook] sendEmail failed:', e.message)
+    }
   }
 }
 
