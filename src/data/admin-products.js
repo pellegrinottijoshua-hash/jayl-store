@@ -877,7 +877,7 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-05-21T22:27:19.640Z",
+    "updatedAt": "2026-05-22T01:11:07.851Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg",
     "relatedProducts": []
   },
