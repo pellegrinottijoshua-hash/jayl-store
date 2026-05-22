@@ -1547,12 +1547,19 @@ export const adminProducts = [
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
     ],
     "imageAlts": {
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
-      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric."
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "A mockup of the Charizard t-shirt, capturing the cool anime art style and vibrant colors.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg": "The Charizard t-shirt in a striking red colorway, showcasing its cool Pokémon graphic.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg": "A cardinal red version of the Charizard t-shirt featuring the iconic cool Pokémon design.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg": "A light blue Charizard t-shirt showcasing a playful cool Pokémon art style.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg": "The Charizard t-shirt in white, featuring a bright and fun cool Pokémon illustration.",
+      "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_154107_28fd7343-c224-4650-84b7-07a7d8aa9380-1.jpg": "A vibrant Charizard t-shirt displayed on a model, showcasing the cool Pokémon art style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg": "A close-up view of a model wearing a Charizard t-shirt, emphasizing the cool Pokémon design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg": "An intricate detail of the Charizard t-shirt fabric, highlighting its premium quality and texture.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260509_172850_28d257b2-9461-4aa6-9fa9-a4d9ae7b8363.jpg": "The Charizard t-shirt laid flat, showcasing the bold artwork inspired by cool Pokémon.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_154450_1c4848b8-ee7c-4944-a19a-e603d331730f.jpg": "A dynamic angle of the Charizard t-shirt highlighting its vivid colors and cool Pokémon theme.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260509_172823_ee813e19-9e39-425b-b888-114bd4cb13e5.jpg": "A stylish display of the Charizard t-shirt draped elegantly to emphasize its cool Pokémon design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/screenshot-2026-04-23-alle-12.17.32.png": "A casual layout of the Charizard t-shirt, showcasing its cool Pokémon artwork in a relaxed setting."
     },
     "tags": [
       "charizard shirt",
@@ -1790,7 +1797,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-05-22T01:28:29.396Z",
+    "updatedAt": "2026-05-22T13:53:47.144Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg"
