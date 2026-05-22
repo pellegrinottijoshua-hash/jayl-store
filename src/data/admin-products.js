@@ -1248,12 +1248,17 @@ export const adminProducts = [
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
     ],
     "imageAlts": {
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Mockup of the Psyduck t-shirt, illustrating its eye-catching design rooted in cool anime aesthetics.",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg": "Psyduck Pokémon t-shirt featuring retro 90s anime art style."
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg": "Psyduck t-shirt laid out flat, showcasing its artistic design and quality fabric in a sand color.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg": "Carolina blue Psyduck t-shirt displayed, reflecting the playful vibe of cool Pokémon art.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg": "Daisy-colored Psyduck t-shirt featuring a whimsical design inspired by cool Pokémon themes.",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg": "Crisp white Psyduck t-shirt highlighted, showcasing its fun retro Pokémon illustration.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_192416_2dc0c732-f0fc-412e-b4ca-f07c0ae7bd67.jpg": "Brightly colored Psyduck t-shirt showcased against a vibrant backdrop, embodying cool Pokémon art.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg": "Psyduck t-shirt displayed on a model, capturing the essence of retro cool Pokémon style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg": "Close-up of the Psyduck t-shirt fabric, highlighting its soft texture and vibrant print.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_172823_ee813e19-9e39-425b-b888-114bd4cb13e5.jpg": "Dynamic angle of the Psyduck t-shirt, showcasing its playful design inspired by cool Pokémon.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154543_1d6c53f7-b82f-411d-a7c1-8d6c1f763c52.jpg": "Psyduck t-shirt featured against a neutral background, emphasizing its unique retro Pokémon art."
     },
     "tags": [
       "pokemon shirt",
@@ -1491,7 +1496,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-22T01:38:52.291Z",
+    "updatedAt": "2026-05-22T13:52:23.916Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg"
