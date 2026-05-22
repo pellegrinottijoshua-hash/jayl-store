@@ -333,6 +333,7 @@ export const adminProducts = [
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_185843_37ef0c52-7862-4b3f-9847-46b3148da810.jpg",
     "images": [
       "/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/site-hero-custom-1778182599503.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260521_154629_c0320683-56d9-4c63-ab47-5ff05b9f2871.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg",
@@ -586,7 +587,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-22T01:16:52.981Z",
+    "updatedAt": "2026-05-22T01:27:36.406Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_011258_bcb9ca3c-f47c-4eb2-a191-55e61a906e5c.jpg"
