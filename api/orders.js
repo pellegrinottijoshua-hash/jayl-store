@@ -97,7 +97,14 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
       itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
       productUid,
       quantity: item.quantity,
-      files: [{ type: 'default', url: item.product.image }],
+      files: [
+        // Use dedicated print file if set, otherwise fall back to product image
+        { type: 'default', url: item.product.printFileUrl || item.product.image },
+        // Include inner neck label if the product has one configured
+        ...(item.product.neckLabelUrl
+          ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
+          : []),
+      ],
     }
   })
 

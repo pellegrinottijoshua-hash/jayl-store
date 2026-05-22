@@ -743,7 +743,9 @@ export default function AdminProductPage() {
   const [altText, setAltText]       = useState('')
   const [tags, setTags]             = useState('')
   const [videoUrl, setVideoUrl]     = useState('')
-  const [gelatoUid, setGelatoUid]   = useState('')
+  const [gelatoUid, setGelatoUid]         = useState('')
+  const [printFileUrl, setPrintFileUrl]   = useState('')
+  const [neckLabelUrl, setNeckLabelUrl]   = useState('')
   const [featured, setFeatured]     = useState(false)  // 1 | 2 | false
   const [featuringNow, setFeaturingNow] = useState(false)
   const [relatedProducts, setRelatedProducts] = useState([])
@@ -796,6 +798,8 @@ export default function AdminProductPage() {
       setTags(Array.isArray(p.tags) ? p.tags.join(', ') : (p.tags || ''))
       setVideoUrl(p.videoUrl || '')
       setGelatoUid(p.gelatoProductId || '')
+      setPrintFileUrl(p.printFileUrl || '')
+      setNeckLabelUrl(p.neckLabelUrl || '')
       setFeatured(p.featured === 1 ? 1 : p.featured === 2 ? 2 : false)
       setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
       // media
@@ -961,6 +965,8 @@ export default function AdminProductPage() {
         featured,
         relatedProducts: relatedProducts.filter(Boolean),
         gelatoProductId: gelatoUid.trim() || null,
+        ...(printFileUrl.trim() ? { printFileUrl: printFileUrl.trim() } : {}),
+        ...(neckLabelUrl.trim() ? { neckLabelUrl: neckLabelUrl.trim() } : {}),
         adminManaged: true,
         // ── media (unified save — no need to press a separate button) ──
         images:      sequenza,
@@ -1515,6 +1521,35 @@ export default function AdminProductPage() {
                   disabled={!isEditable}
                   className={`${inputCls} font-mono text-xs${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
                 />
+              </Field>
+
+              <Field label="Print File URL" hint="URL del file di design da mandare a Gelato per la stampa (PNG/PDF, non il mockup)">
+                <input
+                  value={printFileUrl}
+                  onChange={e => setPrintFileUrl(e.target.value.trim())}
+                  placeholder="https://... (file design effettivo, non il mockup)"
+                  disabled={!isEditable}
+                  className={`${inputCls} font-mono text-xs${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
+                />
+                {printFileUrl && (
+                  <p className="text-green-400 text-xs mt-1">✓ Print file configurato</p>
+                )}
+                {!printFileUrl && gelatoUid && (
+                  <p className="text-yellow-500 text-xs mt-1">⚠ Nessun print file — verrà usata l'immagine hero (solitamente un mockup, non ideale)</p>
+                )}
+              </Field>
+
+              <Field label="Neck Label URL" hint="File inner neck label (neck-inner). Richiesto se il prodotto Gelato ha inner label abilitato">
+                <input
+                  value={neckLabelUrl}
+                  onChange={e => setNeckLabelUrl(e.target.value.trim())}
+                  placeholder="https://... (opzionale, solo se il prodotto ha inner label)"
+                  disabled={!isEditable}
+                  className={`${inputCls} font-mono text-xs${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
+                />
+                {neckLabelUrl && (
+                  <p className="text-green-400 text-xs mt-1">✓ Neck label configurato — verrà incluso nell'ordine</p>
+                )}
               </Field>
 
               {/* Sizes read-only */}
