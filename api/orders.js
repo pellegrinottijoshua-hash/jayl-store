@@ -73,34 +73,51 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
   const storeId = (process.env.GELATO_STORE_ID || '').trim()
   if (!apiKey) throw new Error('GELATO_API_KEY is not configured')
 
+  // UUID v4 pattern — identifies a Gelato *store* product vs a catalog product UID
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
   const mappedItems = items.map((item) => {
     // Try to find the exact variant by color + size
     const gelatoVariant = item.product.variants?.find((v) => {
       const colorMatch =
-        (v.uid ?? v.id) === item.color ||
-        colorToSlug(v.color) === colorToSlug(item.color)
+        colorToSlug(v.color) === colorToSlug(item.color) ||
+        (v.uid ?? v.id) === item.color
       const sizeMatch =
         !item.size ||
         v.size === item.size ||
         v.size?.toUpperCase() === item.size?.toUpperCase()
       return colorMatch && sizeMatch
     })
-    const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
 
-    // Log variant resolution for debugging
+    const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
+
+    // ── Store product approach (UUID gelatoProductId) ──────────────────────────
+    // Products created via Gelato's store already have their design saved.
+    // Use storeProductVariantId (variant.uid) — no files needed.
+    const isStoreProduct = UUID_RE.test(item.product.gelatoProductId ?? '')
+    if (isStoreProduct && gelatoVariant?.uid) {
+      console.log('[create-order] item', item.productId,
+        'color:', item.color, 'size:', item.size,
+        '→ store variant uid:', gelatoVariant.uid)
+      return {
+        itemReferenceId:       itemRef,
+        storeProductVariantId: gelatoVariant.uid,
+        quantity:              item.quantity,
+      }
+    }
+
+    // ── Catalog product approach (productUid + files) ─────────────────────────
+    const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
     console.log('[create-order] item', item.productId,
       'color:', item.color, 'size:', item.size,
-      '→ variant found:', !!gelatoVariant,
-      '→ productUid:', productUid?.slice(0, 60))
+      '→ catalog productUid:', productUid?.slice(0, 60))
 
     return {
-      itemReferenceId: `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`,
+      itemReferenceId: itemRef,
       productUid,
       quantity: item.quantity,
       files: [
-        // Use dedicated print file if set, otherwise fall back to product image
         { type: 'default', url: item.product.printFileUrl || item.product.image },
-        // Include inner neck label if the product has one configured
         ...(item.product.neckLabelUrl
           ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
           : []),
