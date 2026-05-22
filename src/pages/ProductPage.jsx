@@ -805,7 +805,43 @@ export default function ProductPage() {
         )}
 
         {/* ── Product info ───────────────────────────────────────────────── */}
-        <div className="px-4 pt-2 pb-4">
+        <div className="px-4 pt-2 pb-4 relative">
+          {/* ── Hold to reveal — square button, absolute top-right ─── */}
+          {product.detailImage && (
+            <button
+              style={{
+                position: 'absolute',
+                top: 8,
+                right: 16,
+                width: 56,
+                height: 56,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 3,
+                border: `1px solid ${showDetail ? '#d4a853' : 'rgba(212,168,83,0.45)'}`,
+                backgroundColor: showDetail ? 'rgba(212,168,83,0.1)' : 'transparent',
+                color: showDetail ? '#d4a853' : 'rgba(212,168,83,0.7)',
+                cursor: 'pointer',
+                transition: 'border-color 0.12s, background-color 0.12s, color 0.12s',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+                touchAction: 'none',
+                zIndex: 10,
+              }}
+              onMouseDown={() => setShowDetail(true)}
+              onMouseUp={() => setShowDetail(false)}
+              onMouseLeave={() => setShowDetail(false)}
+              onTouchStart={e => { e.preventDefault(); setShowDetail(true) }}
+              onTouchEnd={() => setShowDetail(false)}
+              onTouchCancel={() => setShowDetail(false)}
+            >
+              <span style={{ fontSize: 11, letterSpacing: '0.04em', lineHeight: 1 }}>✦</span>
+              <span style={{ fontSize: 8, letterSpacing: '0.14em', textTransform: 'uppercase', lineHeight: 1, textAlign: 'center' }}>HOLD</span>
+            </button>
+          )}
+
           {/* Badge row */}
           <div className="flex items-center gap-2 mb-2">
             <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.badge)}>
@@ -838,40 +874,6 @@ export default function ProductPage() {
             </p>
           )}
 
-          {/* ── Hold to reveal detail ─────────────────────────────────── */}
-          {product.detailImage && (
-            <button
-              className="mt-4 self-start select-none touch-none"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                border: '1px solid',
-                borderColor: showDetail ? '#d4a853' : 'rgba(212,168,83,0.5)',
-                color: showDetail ? '#d4a853' : 'rgba(212,168,83,0.75)',
-                backgroundColor: showDetail ? 'rgba(212,168,83,0.08)' : 'transparent',
-                padding: '7px 14px',
-                fontSize: '10px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                fontFamily: 'inherit',
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-                WebkitUserSelect: 'none',
-                userSelect: 'none',
-              }}
-              onMouseDown={() => setShowDetail(true)}
-              onMouseUp={() => setShowDetail(false)}
-              onMouseLeave={() => setShowDetail(false)}
-              onTouchStart={e => { e.preventDefault(); setShowDetail(true) }}
-              onTouchEnd={() => setShowDetail(false)}
-              onTouchCancel={() => setShowDetail(false)}
-            >
-              <span style={{ opacity: 0.6, fontSize: '12px' }}>✦</span>
-              HOLD TO REVEAL
-              <span style={{ opacity: 0.6, fontSize: '12px' }}>✦</span>
-            </button>
-          )}
         </div>
 
         <div className={cn('border-t mx-4', t.divider)} />
@@ -1669,40 +1671,61 @@ export default function ProductPage() {
             position: 'fixed',
             inset: 0,
             zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'rgba(0,0,0,0.92)',
+            backgroundColor: '#000',
             opacity: showDetail ? 1 : 0,
             pointerEvents: showDetail ? 'auto' : 'none',
             transition: 'opacity 0.12s ease',
+            overflow: 'hidden',
           }}
         >
-          {/* Gold corner accents */}
-          {[['top','left'],['top','right'],['bottom','left'],['bottom','right']].map(([v,h]) => (
-            <div key={v+h} style={{
-              position: 'absolute', [v]: 24, [h]: 24, width: 32, height: 32,
-              [`border${v.charAt(0).toUpperCase()+v.slice(1)}`]: '1px solid rgba(212,168,83,0.45)',
-              [`border${h.charAt(0).toUpperCase()+h.slice(1)}`]: '1px solid rgba(212,168,83,0.45)',
-            }} />
-          ))}
+          {/* Image — 9:16, full screen height */}
           <img
             src={product.detailImage}
             alt="product detail"
             draggable={false}
             style={{
-              maxWidth: 'min(92vw, 620px)',
-              maxHeight: '80vh',
-              objectFit: 'contain',
+              position: 'absolute',
+              top: 0,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              height: '100%',
+              width: 'auto',
+              maxWidth: '100vw',
+              objectFit: 'cover',
               display: 'block',
             }}
           />
+
+          {/* Left gold gradient */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, width: '22%', height: '100%',
+            background: 'linear-gradient(to right, rgba(180,130,40,0.55) 0%, rgba(180,130,40,0.08) 60%, transparent 100%)',
+            pointerEvents: 'none',
+          }} />
+          {/* Right gold gradient */}
+          <div style={{
+            position: 'absolute', top: 0, right: 0, width: '22%', height: '100%',
+            background: 'linear-gradient(to left, rgba(180,130,40,0.55) 0%, rgba(180,130,40,0.08) 60%, transparent 100%)',
+            pointerEvents: 'none',
+          }} />
+          {/* Top fade */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: '12%',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',
+            pointerEvents: 'none',
+          }} />
+          {/* Bottom fade + label */}
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.75), transparent)',
+            pointerEvents: 'none',
+          }} />
           <p style={{
-            position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
-            color: 'rgba(212,168,83,0.5)', fontSize: '9px',
-            letterSpacing: '0.22em', textTransform: 'uppercase',
-            fontFamily: 'inherit', whiteSpace: 'nowrap',
-          }}>✦ Detail ✦</p>
+            position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
+            color: 'rgba(212,168,83,0.6)', fontSize: '9px',
+            letterSpacing: '0.28em', textTransform: 'uppercase',
+            fontFamily: 'inherit', whiteSpace: 'nowrap', pointerEvents: 'none',
+          }}>✦ &nbsp; DETAIL &nbsp; ✦</p>
         </div>
       )}
     </div>

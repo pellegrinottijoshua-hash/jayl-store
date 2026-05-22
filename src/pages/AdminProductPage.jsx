@@ -190,7 +190,7 @@ function Section({ title, children }) {
 // Shows ALL image sources: Gelato defaults, uploaded externals, AI-generated.
 // Hover each thumbnail to assign it as Hero Desktop/Mobile or add to Sequenza.
 
-function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage }) {
+function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage }) {
   const url      = img.url
   const isDesk   = desktopHero  === url
   const isMob    = mobileHero   === url
@@ -198,6 +198,7 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetD
   const seqIdx   = sequenza.indexOf(url)
   const inSeq    = seqIdx !== -1
   const isVid    = /\.(mp4|mov|webm)$/i.test(url)
+  const canDel   = !!img.path  // only GitHub-stored images (uploaded/generated) can be deleted
   return (
     <div className="relative group flex-shrink-0 w-16 h-16">
       <div className={`w-full h-full border-2 overflow-hidden transition-all ${
@@ -214,24 +215,35 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetD
       {isMob    && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
       {isDetail && <div className="absolute bottom-0 right-0 bg-amber-500 text-black text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🔍</div>}
       {inSeq    && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
-      {/* Hover action overlay */}
-      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-0.5 z-20">
-        <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
-          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
-            isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
-          }`}>🖥</button>
-        <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
-          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
-            isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
-          }`}>📱</button>
-        <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
-          className={`w-6 h-6 text-[10px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
-            inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
-          }`}>{inSeq ? '✓' : '+'}</button>
-        <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio (Hold to reveal)"
-          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
-            isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
-          }`}>🔍</button>
+      {/* Hover action overlay — 2 rows: top (assign) + bottom (delete) */}
+      <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-between py-1 z-20">
+        {/* Row 1: assign buttons */}
+        <div className="flex items-center gap-0.5">
+          <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
+            className={`w-6 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+              isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
+            }`}>🖥</button>
+          <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
+            className={`w-6 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+              isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
+            }`}>📱</button>
+          <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
+            className={`w-6 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
+              inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
+            }`}>{inSeq ? '✓' : '+'}</button>
+          <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio (Hold to reveal)"
+            className={`w-6 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+              isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
+            }`}>🔍</button>
+        </div>
+        {/* Row 2: delete (only for GitHub images) */}
+        {canDel && (
+          <button
+            onClick={() => onDeleteImage(img)}
+            title="Elimina immagine"
+            className="w-full text-[9px] font-bold text-red-400 hover:bg-red-900/40 transition-colors py-0.5 text-center border-t border-gray-700/50"
+          >✕ elimina</button>
+        )}
       </div>
     </div>
   )
@@ -291,7 +303,23 @@ function ImagePool({
     }
   }, [productId, onUploaded])
 
-  const thumbProps = { desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage }
+  const handleDeleteImage = useCallback(async (img) => {
+    if (!img.path) return
+    if (!window.confirm(`Eliminare "${img.name}"? L'azione è irreversibile.`)) return
+    try {
+      // Unassign from all roles before deleting
+      if (desktopHero === img.url)  onSetDesktopHero(null)
+      if (mobileHero  === img.url)  onSetMobileHero(null)
+      if (detailImage === img.url)  onSetDetailImage(null)
+      if (sequenza.includes(img.url)) onToggleSequenza(img.url)
+      await api('delete-image', { filePath: img.path })
+      onUploaded() // refresh pool
+    } catch (e) {
+      alert('Errore eliminazione: ' + e.message)
+    }
+  }, [desktopHero, mobileHero, detailImage, sequenza, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded])
+
+  const thumbProps = { desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
 
   const PoolSection = ({ label, images, emptyMsg }) => {
     if (!images?.length) return emptyMsg ? <p className="text-gray-700 text-[10px] italic">{emptyMsg}</p> : null
@@ -897,14 +925,19 @@ export default function AdminProductPage() {
         relatedProducts: relatedProducts.filter(Boolean),
         gelatoProductId: gelatoUid.trim() || null,
         adminManaged: true,
+        // ── media (unified save — no need to press a separate button) ──
+        images:      sequenza,
+        image:       desktopHero  || sequenza[0] || product.image  || null,
+        heroImage:   mobileHero   || product.heroImage || null,
+        detailImage: detailImage  || null,
         ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : { videoUrl: undefined }),
       }
-      // Clean undefined keys
+      // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
 
       await api('save-product', { product: updated })
       setProduct(updated)
-      setSaveMsg('✓ Saved — Vercel will redeploy automatically.')
+      setSaveMsg('✓ Salvato — Vercel rebuilderà automaticamente.')
       setTimeout(() => setSaveMsg(''), 4000)
     } catch (e) {
       setSaveErr(e.message)
