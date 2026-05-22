@@ -98,9 +98,11 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     if (isStoreProduct && gelatoVariant?.uid) {
       console.log('[create-order] item', item.productId,
         'color:', item.color, 'size:', item.size,
-        '→ store variant uid:', gelatoVariant.uid)
+        '→ storeProductId:', item.product.gelatoProductId,
+        '→ storeProductVariantId:', gelatoVariant.uid)
       return {
         itemReferenceId:       itemRef,
+        storeProductId:        item.product.gelatoProductId,
         storeProductVariantId: gelatoVariant.uid,
         quantity:              item.quantity,
       }
