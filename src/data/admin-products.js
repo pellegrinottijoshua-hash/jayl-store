@@ -611,7 +611,7 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
-    "description": "Unleash your inner Pokémon trainer with our Zapdos T-Shirt, crafted from premium Gildan 9400 cotton for ultimate comfort. This retro 90s style tee features vibrant, high-quality Gelato print technology that ensures your favorite Pokémon pops with color and detail. Perfect for fans of anime and retro aesthetics, this shirt makes a funny and unique gift for Pokémon lovers. Wear it to conventions, casual outings, or just lounging at home. Let your personality shine with this eye-catching artwork that pays homage to classic Pokémon fandom.",
+    "description": "Unleash your inner Pokémon trainer with our Zapdos T-Shirt, crafted from premium Gildan 9400 cotton for ultimate comfort. This retro 90s style tee features vibrant, high-quality print that ensures your favorite Pokémon pops with color and detail. Perfect for fans of anime and retro aesthetics, this shirt makes a funny and unique gift for Pokémon lovers. Wear it to conventions, casual outings, or just lounging at home. Let your personality shine with this eye-catching artwork that pays homage to classic Pokémon fandom.",
     "altText": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -649,12 +649,18 @@ export const adminProducts = [
       "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg"
     ],
     "imageAlts": {
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style."
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Mockup of the Cool Zapdos T-Shirt, emphasizing its stylish and fun anime-inspired look.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg": "The Cool Zapdos T-Shirt in a light blue colorway, showcasing its vibrant Pokémon design.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg": "A striking red version of the Cool Zapdos T-Shirt, featuring bold Pokémon art.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg": "The Cool Zapdos T-Shirt displayed with a fun daisy pattern, enhancing its playful style.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg": "A clean white version of the Cool Zapdos T-Shirt, highlighting its artistic Pokémon design.",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_190604_a5c54573-8690-4ad5-8881-f15ef0c8be84.jpg": "A vibrant scene showcasing the Cool Zapdos T-Shirt, capturing retro Pokémon fan art style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg": "The Cool Zapdos T-Shirt displayed on a model, emphasizing its playful Pokémon design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg": "Close-up of the Cool Zapdos T-Shirt fabric, highlighting the quality and vibrant colors.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260509_170917_5ed4801e-f905-4bab-9085-25c690a37d71.jpg": "An angled view of the Cool Zapdos T-Shirt, showcasing its unique Pokémon-inspired art.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260521_172147_3c9e077b-0257-46d6-a9cb-acef277ee3e4.png": "The Cool Zapdos T-Shirt displayed flat, revealing the intricate details of its design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/site-hero-custom-1778763471911.jpg": "The Cool Zapdos T-Shirt featured prominently, showcasing its stylish design against a vibrant background."
     },
     "tags": [
       "zapdos shirt",
@@ -893,7 +899,7 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-05-22T01:27:06.804Z",
+    "updatedAt": "2026-05-22T13:48:14.997Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg"
