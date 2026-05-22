@@ -601,6 +601,53 @@ async function handleVideo(req, res) {
   }
 }
 
+// ── generate-alts — per-image alt text ───────────────────────────────────────
+
+async function handleAlts(req, res) {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+
+  const { productTitle, movement, collection, images = [], provider = 'openai' } = req.body || {}
+  if (!productTitle)    return res.status(400).json({ error: 'productTitle is required' })
+  if (!images.length)   return res.status(400).json({ error: 'images array is empty' })
+
+  const imageList = images
+    .map((img, i) => `${i + 1}. role="${img.role || 'gallery'}"  url="${img.url}"`)
+    .join('\n')
+
+  const prompt = `You are an SEO and accessibility expert for JAYL, a premium art and objects store.
+
+Product: "${productTitle}"
+Art movement/style: "${movement || 'contemporary art'}"
+Collection: "${collection || ''}"
+
+Write descriptive alt text for each image listed below.
+Rules:
+- 1 concise sentence, under 125 characters
+- Describe what is VISUALLY shown (composition, subject, colours, mood, style)
+- Reference the art movement/style naturally when relevant
+- Useful for screen readers AND for Google image search
+- Do NOT start every sentence with "A photo of" — vary the opener
+
+Images:
+${imageList}
+
+Return a JSON object with key "alts" — an array of objects, one per image, each with "url" (exact copy from input) and "altText" fields.
+Return ONLY the JSON object, no markdown, no extra text.`
+
+  try {
+    const { content } = await callTextAI(prompt, { provider, maxTokens: 800, temperature: 0.5 })
+    const parsed = JSON.parse(content)
+    const altsMap = {}
+    ;(parsed.alts || []).forEach(item => {
+      if (item.url && item.altText) altsMap[item.url] = item.altText
+    })
+    return res.status(200).json({ alts: altsMap })
+  } catch (err) {
+    console.error('[generate-alts]', err.message)
+    return res.status(500).json({ error: err.message })
+  }
+}
+
 // ── generate-persona ──────────────────────────────────────────────────────────
 
 async function handlePersona(req, res) {
@@ -650,6 +697,7 @@ export default async function handler(req, res) {
   if (h === 'mockup')  return handleMockup(req, res)
   if (h === 'video')   return handleVideo(req, res)
   if (h === 'persona') return handlePersona(req, res)
+  if (h === 'alts')    return handleAlts(req, res)
 
   return res.status(404).json({ error: `Unknown AI handler: ${h}` })
 }

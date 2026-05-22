@@ -764,6 +764,10 @@ export default function AdminProductPage() {
   const [hashtags, setHashtags]                 = useState('')
   const [primaryKeywords, setPrimaryKeywords]   = useState([])
   const [longTailKeywords, setLongTailKeywords] = useState([])
+  // Per-image alt texts
+  const [imageAlts,        setImageAlts]        = useState({})
+  const [generatingAlts,   setGeneratingAlts]   = useState(false)
+  const [altsMsg,          setAltsMsg]          = useState('')
 
   // ── Lifted media state ────────────────────────────────────────────────────────
   const [desktopHero,    setDesktopHero]    = useState(null)
@@ -799,6 +803,7 @@ export default function AdminProductPage() {
       setMobileHero(p.heroImage   || null)
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
+      setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
     }
 
     if (staticP?.adminManaged) {
@@ -902,6 +907,38 @@ export default function AdminProductPage() {
     }
   }
 
+  const generateAlts = async () => {
+    // Build image list: each known image URL with its role
+    const imageEntries = []
+    const seen = new Set()
+    const add = (url, role) => { if (url && !seen.has(url)) { seen.add(url); imageEntries.push({ url, role }) } }
+    add(desktopHero,  'hero-desktop-16:9')
+    add(mobileHero,   'hero-mobile-9:16')
+    add(detailImage,  'detail-reveal')
+    sequenza.forEach((url, i) => add(url, `gallery-${i + 1}`))
+    // Add any pool images not yet assigned
+    allPoolImages.forEach(img => add(img.url, 'pool'))
+    if (!imageEntries.length) return setAltsMsg('⚠ Nessuna immagine trovata')
+    setGeneratingAlts(true); setAltsMsg('')
+    try {
+      const res = await fetch('/api/generate-alts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productTitle: name.trim() || 'JAYL product', movement, collection, images: imageEntries, provider: aiProvider }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
+      setImageAlts(prev => ({ ...prev, ...data.alts }))
+      const count = Object.keys(data.alts || {}).length
+      setAltsMsg(`✓ ${count} alt text${count !== 1 ? 's' : ''} generati`)
+      setTimeout(() => setAltsMsg(''), 4000)
+    } catch (e) {
+      setAltsMsg('⚠ ' + e.message)
+    } finally {
+      setGeneratingAlts(false)
+    }
+  }
+
   const handleSave = async () => {
     if (!name.trim()) return setSaveErr('Name is required')
     if (!price)       return setSaveErr('Price is required')
@@ -930,6 +967,7 @@ export default function AdminProductPage() {
         image:       desktopHero  || sequenza[0] || product.image  || null,
         heroImage:   mobileHero   || product.heroImage || null,
         detailImage: detailImage  || null,
+        imageAlts:   Object.keys(imageAlts).length > 0 ? imageAlts : undefined,
         ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : { videoUrl: undefined }),
       }
       // Clean undefined/null keys that weren't set before
@@ -1148,32 +1186,14 @@ export default function AdminProductPage() {
               loading={loadingPool}
             />
 
-            {/* Quick stats */}
-            <div className="bg-gray-900 border border-gray-800 px-4 py-3 space-y-2 text-xs text-gray-500">
-              <div className="flex justify-between">
-                <span>Current price</span>
-                <span className="text-gray-300">{product.price != null ? fmt(product.price) : '—'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Section</span>
-                <span className="text-gray-300">{product.section || '—'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Collection</span>
-                <span className="text-gray-300">{product.collection || '—'}</span>
-              </div>
-              {product.gelatoProductId && (
-                <div className="flex justify-between">
-                  <span>Gelato UID</span>
-                  <span className="text-gray-400 font-mono truncate max-w-[140px]">{product.gelatoProductId}</span>
-                </div>
-              )}
-              {product.videoUrl && (
-                <div className="flex justify-between">
-                  <span>Video</span>
-                  <span className="text-indigo-400">▶ linked</span>
-                </div>
-              )}
+            {/* Image status summary */}
+            <div className="bg-[#0a0a0a] border border-gray-800/60 px-3 py-2 space-y-1 text-[11px] text-gray-600">
+              {desktopHero && <div className="flex items-center gap-1.5"><span className="text-blue-400">🖥</span><span className="text-gray-500 truncate">Hero desktop assegnato</span></div>}
+              {mobileHero  && <div className="flex items-center gap-1.5"><span className="text-purple-400">📱</span><span className="text-gray-500 truncate">Hero mobile assegnato</span></div>}
+              {detailImage && <div className="flex items-center gap-1.5"><span className="text-amber-400">🔍</span><span className="text-gray-500 truncate">Dettaglio assegnato</span></div>}
+              {sequenza.length > 0 && <div className="flex items-center gap-1.5"><span>🖼</span><span className="text-gray-500">{sequenza.length} immagini in sequenza</span></div>}
+              {Object.keys(imageAlts).length > 0 && <div className="flex items-center gap-1.5"><span className="text-violet-400">✨</span><span className="text-gray-500">{Object.keys(imageAlts).length} alt text pronti</span></div>}
+              {!desktopHero && !mobileHero && !sequenza.length && <span className="text-gray-700 italic">Nessuna immagine assegnata</span>}
             </div>
           </div>
 
@@ -1349,6 +1369,51 @@ export default function AdminProductPage() {
                 />
               </Field>
 
+              {/* ── Per-image alt text generator ── */}
+              {isEditable && (
+                <div className="border border-violet-900/40 bg-[#0d0d0f] p-3 space-y-3">
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <div>
+                      <p className="text-violet-300 text-xs font-semibold mb-0.5">✨ Alt text AI per immagine</p>
+                      <p className="text-gray-600 text-[11px]">
+                        Genera alt text descrittivi per ogni immagine nel pool (hero, sequenza, dettaglio).
+                        Vengono salvati con il prodotto e usati per SEO e accessibilità.
+                      </p>
+                    </div>
+                    <button
+                      onClick={generateAlts}
+                      disabled={generatingAlts}
+                      className="flex items-center gap-1.5 bg-violet-800 hover:bg-violet-700 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors flex-shrink-0"
+                    >
+                      {generatingAlts
+                        ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" /> Generando…</>
+                        : `✨ Genera alt text${allPoolImages.length ? ` (${[desktopHero, mobileHero, detailImage, ...sequenza].filter(Boolean).length + allPoolImages.filter(img => ![desktopHero, mobileHero, detailImage, ...sequenza].includes(img.url)).length} immagini)` : ''}`
+                      }
+                    </button>
+                  </div>
+                  {altsMsg && (
+                    <p className={`text-xs ${altsMsg.startsWith('✓') ? 'text-violet-300' : 'text-red-400'}`}>{altsMsg}</p>
+                  )}
+                  {Object.keys(imageAlts).length > 0 && (
+                    <Collapsible label={`${Object.keys(imageAlts).length} alt text generati — espandi per vedere`}>
+                      <div className="mt-2 space-y-2 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+                        {Object.entries(imageAlts).map(([url, alt]) => (
+                          <div key={url} className="flex gap-2 items-start">
+                            <img src={url} alt="" className="w-8 h-8 object-cover flex-shrink-0 border border-gray-800 opacity-60"
+                              onError={e => { e.currentTarget.style.display = 'none' }} />
+                            <input
+                              value={alt}
+                              onChange={e => setImageAlts(prev => ({ ...prev, [url]: e.target.value }))}
+                              className="flex-1 bg-transparent border border-gray-800 text-gray-400 text-[11px] px-2 py-1 focus:outline-none focus:border-violet-700 font-mono"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </Collapsible>
+                  )}
+                </div>
+              )}
+
               <Field
                 label="Tags"
                 hint={`${tags.split(',').filter(t => t.trim()).length}/13 tags · comma-separated · each max 20 chars`}
@@ -1517,19 +1582,29 @@ export default function AdminProductPage() {
               </div>
             )}
 
-            {/* ── Generate Assets ── */}
-            <GenerateAssetsTab
-              productId={id}
-              productName={name}
-              productType={section === 'art' ? 'art print' : 'apparel/object'}
-              primaryColor={product?.variants?.[0]?.color || ''}
-              collection={collection}
-              onAssetSaved={() => setPoolRefreshKey(k => k + 1)}
-              preloadedImages={allPoolImages}
-            />
+            {/* ── Generate Assets (collapsed by default) ── */}
+            <div className="border border-gray-800">
+              <Collapsible label="🎨 Generate Assets — mockup, video AI" defaultOpen={false}>
+                <div className="mt-0">
+                  <GenerateAssetsTab
+                    productId={id}
+                    productName={name}
+                    productType={section === 'art' ? 'art print' : 'apparel/object'}
+                    primaryColor={product?.variants?.[0]?.color || ''}
+                    collection={collection}
+                    onAssetSaved={() => setPoolRefreshKey(k => k + 1)}
+                    preloadedImages={allPoolImages}
+                  />
+                </div>
+              </Collapsible>
+            </div>
 
-            {/* ── Remove Background ── */}
-            <RemoveBackground />
+            {/* ── Remove Background (collapsed by default) ── */}
+            <div className="border border-gray-800">
+              <Collapsible label="✂ Remove Background — rimuovi sfondo da immagine" defaultOpen={false}>
+                <RemoveBackground />
+              </Collapsible>
+            </div>
 
           </div>
         </div>

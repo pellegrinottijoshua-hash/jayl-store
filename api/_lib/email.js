@@ -62,29 +62,33 @@ function htmlWrapper(body) {
 
 export function buildOrderConfirmationEmail({ orderId, items = [], total = 0, shipping = 0, shippingAddress = {} }) {
   const fmt = cents => `€${(Math.max(0, cents) / 100).toFixed(2)}`
+  const firstName = shippingAddress.firstName || ''
 
-  // Items rows
+  // ── Items rows (larger images, richer layout) ─────────────────────────────────
   const itemsHtml = items.length > 0 ? `
-    <tr><td style="padding:24px 0 16px">
-      <p style="margin:0 0 14px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#b8974a">Your items</p>
+    <tr><td style="padding:28px 0 0">
+      <p style="margin:0 0 16px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#b8974a">What you ordered</p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
         ${items.map(item => `
         <tr>
-          <td style="padding:10px 0;border-bottom:1px solid #1a1a1a">
+          <td style="padding:14px 0;border-bottom:1px solid #161616">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="48" style="padding-right:14px;vertical-align:top">
+                <td width="72" style="padding-right:16px;vertical-align:top">
                   ${item.image
-                    ? `<img src="${item.image}" width="48" height="48" style="display:block;width:48px;height:48px;object-fit:cover;border:1px solid #242424" alt="">`
-                    : `<div style="width:48px;height:48px;background:#1a1a1a;border:1px solid #242424"></div>`}
+                    ? `<img src="${item.image}" width="72" height="72" style="display:block;width:72px;height:72px;object-fit:cover;border:1px solid #2a2a2a" alt="${item.name || ''}">`
+                    : `<div style="width:72px;height:72px;background:#161616;border:1px solid #2a2a2a"></div>`}
                 </td>
                 <td style="vertical-align:top">
-                  <p style="margin:0 0 3px;font-size:14px;color:#e8e0d0;line-height:1.4">${item.name || 'Item'}</p>
-                  <p style="margin:0;font-size:12px;color:#7a7268">
-                    ${[item.color, item.size].filter(Boolean).join(' · ')}${item.quantity > 1 ? ` &times; ${item.quantity}` : ''}
+                  <p style="margin:0 0 4px;font-size:15px;color:#e8dcc8;line-height:1.35;font-family:Georgia,serif">${item.name || 'Item'}</p>
+                  <p style="margin:0 0 6px;font-size:12px;color:#6a6460;letter-spacing:0.06em">
+                    ${[item.color, item.size].filter(Boolean).join(' &nbsp;·&nbsp; ')}${item.quantity > 1 ? ` &nbsp;×&nbsp; ${item.quantity}` : ''}
+                  </p>
+                  <p style="margin:0;font-size:11px;color:#4a4a4a;letter-spacing:0.08em;text-transform:uppercase">
+                    Print-on-demand &nbsp;·&nbsp; Gelato
                   </p>
                 </td>
-                <td align="right" style="vertical-align:top;font-size:14px;color:#e8e0d0;white-space:nowrap;padding-left:12px">
+                <td align="right" style="vertical-align:top;font-size:15px;color:#e8dcc8;white-space:nowrap;padding-left:12px;font-family:Georgia,serif">
                   ${fmt(item.unitPrice * item.quantity)}
                 </td>
               </tr>
@@ -94,7 +98,7 @@ export function buildOrderConfirmationEmail({ orderId, items = [], total = 0, sh
       </table>
     </td></tr>` : ''
 
-  // Shipping address block
+  // ── Shipping address ──────────────────────────────────────────────────────────
   const addrParts = [
     [shippingAddress.firstName, shippingAddress.lastName].filter(Boolean).join(' '),
     shippingAddress.address,
@@ -104,51 +108,137 @@ export function buildOrderConfirmationEmail({ orderId, items = [], total = 0, sh
   const addrHtml = addrParts.join('<br>')
 
   const body = `
-    <tr><td style="padding:28px 0 8px">
-      <h1 style="margin:0;font-weight:400;font-size:28px;color:#e8e0d0;letter-spacing:-0.01em">Order confirmed.</h1>
+    <!-- ── Opening ── -->
+    <tr><td style="padding:32px 0 6px">
+      <p style="margin:0 0 6px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#b8974a">Order confirmed</p>
+      <h1 style="margin:0;font-weight:400;font-size:30px;color:#e8dcc8;letter-spacing:-0.015em;font-family:Georgia,serif;line-height:1.2">
+        ${firstName ? `Thank you, ${firstName}.` : 'Thank you.'}
+      </h1>
     </td></tr>
-    <tr><td style="padding:0 0 24px">
-      <p style="margin:0;font-size:15px;color:#9a9587;line-height:1.75">
-        Thank you — your order is now with our print partner.<br>
-        Production usually takes 2–4 business days. We'll email you when it ships.
+    <tr><td style="padding:14px 0 24px">
+      <p style="margin:0 0 10px;font-size:15px;color:#8a867e;line-height:1.8;font-style:italic;font-family:Georgia,serif">
+        "Every piece begins its journey the moment you choose it."
+      </p>
+      <p style="margin:0;font-size:14px;color:#6a6460;line-height:1.75">
+        Your order is confirmed and sent to our production partner, Gelato.
+        You'll receive a shipping notification as soon as it's on its way.
       </p>
     </td></tr>
 
-    <!-- Order ID box -->
-    <tr><td style="padding:16px;background:#111111;border:1px solid #222222;margin-bottom:20px">
-      <p style="margin:0 0 5px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#b8974a">Order reference</p>
-      <p style="margin:0;font-family:'Courier New',Courier,monospace;font-size:13px;color:#e8e0d0;letter-spacing:0.05em">${orderId}</p>
-    </td></tr>
-
-    ${itemsHtml}
-
-    <!-- Totals -->
-    <tr><td style="padding:16px 0;border-top:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+    <!-- ── Order reference ── -->
+    <tr><td style="padding:0 0 24px">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#111111;border:1px solid #1e1e1e">
         <tr>
-          <td style="font-size:13px;color:#9a9587;padding:4px 0">Shipping</td>
-          <td align="right" style="font-size:13px;color:#e8e0d0;padding:4px 0">${shipping === 0 ? 'Free' : fmt(shipping)}</td>
-        </tr>
-        <tr>
-          <td style="font-size:15px;font-weight:bold;color:#e8e0d0;padding:10px 0 0">Total</td>
-          <td align="right" style="font-size:15px;font-weight:bold;color:#e8e0d0;padding:10px 0 0">${fmt(total)}</td>
+          <td style="padding:14px 18px">
+            <p style="margin:0 0 4px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#5a5650">Order reference</p>
+            <p style="margin:0;font-family:'Courier New',Courier,monospace;font-size:14px;color:#e8dcc8;letter-spacing:0.06em">${orderId}</p>
+          </td>
         </tr>
       </table>
     </td></tr>
 
-    <!-- Ship to -->
+    ${itemsHtml}
+
+    <!-- ── Totals ── -->
+    <tr><td style="padding:20px 0 0;border-top:1px solid #1a1a1a">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="font-size:13px;color:#6a6460;padding:3px 0">Subtotal</td>
+          <td align="right" style="font-size:13px;color:#9a9590;padding:3px 0">${fmt(total - shipping)}</td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;color:#6a6460;padding:3px 0">Shipping</td>
+          <td align="right" style="font-size:13px;color:#9a9590;padding:3px 0">${shipping === 0 ? 'Free worldwide' : fmt(shipping)}</td>
+        </tr>
+        <tr>
+          <td style="font-size:16px;color:#e8dcc8;padding:12px 0 0;font-family:Georgia,serif">Total paid</td>
+          <td align="right" style="font-size:16px;color:#e8dcc8;padding:12px 0 0;font-family:Georgia,serif">${fmt(total)}</td>
+        </tr>
+      </table>
+    </td></tr>
+
+    <!-- ── Ship to ── -->
     ${addrHtml ? `
-    <tr><td style="padding:20px 0">
-      <p style="margin:0 0 8px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#b8974a">Shipping to</p>
-      <p style="margin:0;font-size:13px;color:#9a9587;line-height:1.8">${addrHtml}</p>
+    <tr><td style="padding:24px 0 0">
+      <p style="margin:0 0 8px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#5a5650">Shipping to</p>
+      <p style="margin:0;font-size:13px;color:#6a6460;line-height:1.9">${addrHtml}</p>
     </td></tr>` : ''}
 
-    <!-- CTA -->
-    <tr><td style="padding:8px 0 28px">
+    <!-- ── What happens next ── -->
+    <tr><td style="padding:32px 0 0">
+      <p style="margin:0 0 16px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#b8974a">What happens next</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:0 0 14px;vertical-align:top">
+            <table role="presentation" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:28px;vertical-align:top;padding-top:1px">
+                  <span style="display:inline-block;width:18px;height:18px;background:#b8974a;color:#0c0c0c;font-size:10px;font-weight:bold;text-align:center;line-height:18px;border-radius:50%">1</span>
+                </td>
+                <td>
+                  <p style="margin:0;font-size:13px;color:#e8dcc8">Production</p>
+                  <p style="margin:2px 0 0;font-size:12px;color:#5a5650">2–4 business days with our Gelato partner</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 0 14px;vertical-align:top">
+            <table role="presentation" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:28px;vertical-align:top;padding-top:1px">
+                  <span style="display:inline-block;width:18px;height:18px;background:#3a3832;color:#b8974a;font-size:10px;font-weight:bold;text-align:center;line-height:18px;border-radius:50%">2</span>
+                </td>
+                <td>
+                  <p style="margin:0;font-size:13px;color:#e8dcc8">Shipping notification</p>
+                  <p style="margin:2px 0 0;font-size:12px;color:#5a5650">You'll receive a tracking link by email</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0;vertical-align:top">
+            <table role="presentation" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:28px;vertical-align:top;padding-top:1px">
+                  <span style="display:inline-block;width:18px;height:18px;background:#3a3832;color:#b8974a;font-size:10px;font-weight:bold;text-align:center;line-height:18px;border-radius:50%">3</span>
+                </td>
+                <td>
+                  <p style="margin:0;font-size:13px;color:#e8dcc8">Arrival</p>
+                  <p style="margin:2px 0 0;font-size:12px;color:#5a5650">Typically 4–7 business days depending on your location</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+
+    <!-- ── Track order CTA ── -->
+    <tr><td style="padding:28px 0 24px">
       <a href="${SITE_URL}/track?id=${encodeURIComponent(orderId)}"
-         style="display:inline-block;background:#b8974a;color:#0c0c0c;font-size:11px;font-weight:bold;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;padding:13px 28px">
-        Track your order
+         style="display:inline-block;background:#b8974a;color:#0c0c0c;font-size:11px;font-weight:bold;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:14px 32px">
+        Track your order →
       </a>
+    </td></tr>
+
+    <!-- ── Social CTA ── -->
+    <tr><td style="padding:0 0 28px;border-top:1px solid #161616">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 0 0">
+            <p style="margin:0 0 8px;font-size:12px;color:#5a5650;line-height:1.7">
+              When your piece arrives — share it. Tag us and we'll reshare it.
+            </p>
+            <a href="https://www.instagram.com/jayl.store" target="_blank"
+               style="display:inline-block;border:1px solid #2a2a2a;color:#b8974a;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;padding:9px 18px">
+              @jayl.store on Instagram
+            </a>
+          </td>
+        </tr>
+      </table>
     </td></tr>`
 
   return {
