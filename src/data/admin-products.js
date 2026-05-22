@@ -346,14 +346,20 @@ export const adminProducts = [
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
     ],
     "imageAlts": {
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg": "A mockup of the Cool Dragonite T-Shirt, capturing the essence of retro Pokémon fan art in a casual setting.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--light-blue-01.jpg": "A light blue variation of the Cool Dragonite T-Shirt, featuring a whimsical Pokémon design for fans.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--daisy-01.jpg": "The Cool Dragonite T-Shirt in a daisy colorway, showcasing vibrant Pokémon art for anime lovers.",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-02.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--natural-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--natural-01.jpg": "A natural hue version of the Cool Dragonite T-Shirt, blending playful Pokémon design with subtle colors.",
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg": "The Cool Dragonite T-Shirt in white, featuring a bright and fun Pokémon graphic perfect for any fan.",
       "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
-      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-03.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style."
+      "/images/dragonite-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dragonite-pok-mon-t-shirt-cool-anime-fan-art--mockup-03.jpg": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_185843_37ef0c52-7862-4b3f-9847-46b3148da810.jpg": "A vibrant Cool Dragonite T-Shirt displayed on a mannequin, showcasing its retro 90s Pokémon art style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg": "The Cool Dragonite T-Shirt elegantly draped on a hanger, emphasizing its playful Pokémon design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_014053_f907f0c3-130a-4e9f-b854-5160831c14bb.jpg": "Close-up of the Cool Dragonite T-Shirt fabric, highlighting its soft texture and colorful Pokémon graphic.",
+      "/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/site-hero-custom-1778182599503.jpg": "A stylish presentation of the Cool Dragonite T-Shirt, featuring a full view with a playful Pokémon theme.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260521_154629_c0320683-56d9-4c63-ab47-5ff05b9f2871.jpg": "The Cool Dragonite T-Shirt displayed on a flat surface, showcasing its unique Pokémon art and colors.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/site-hero-custom-1778182599503.jpg": "A dynamic display of the Cool Dragonite T-Shirt, emphasizing its retro Pokémon style in an artistic setting."
     },
     "tags": [
       "dragonite shirt",
@@ -592,7 +598,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-22T01:45:52.700Z",
+    "updatedAt": "2026-05-22T13:46:43.676Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_014053_f907f0c3-130a-4e9f-b854-5160831c14bb.jpg"
