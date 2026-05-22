@@ -66,18 +66,29 @@ async function handleGetOrders(req, res) {
 // ── create-order ──────────────────────────────────────────────────────────────
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
-const GELATO_ORDER_URL = 'https://order.gelatoapis.com/v4/orders'
+
+// UUID v4 pattern — identifies a Gelato *store* product vs a catalog product UID
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 async function createGelatoOrder({ paymentIntent, items, shippingAddress, email }) {
   const apiKey  = (process.env.GELATO_API_KEY  || '').trim()
   const storeId = (process.env.GELATO_STORE_ID || '').trim()
   if (!apiKey) throw new Error('GELATO_API_KEY is not configured')
 
-  // UUID v4 pattern — identifies a Gelato *store* product vs a catalog product UID
-  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+  const shippingPayload = {
+    firstName:    shippingAddress.firstName,
+    lastName:     shippingAddress.lastName,
+    addressLine1: shippingAddress.address,
+    city:         shippingAddress.city,
+    state:        shippingAddress.state || '',
+    postCode:     shippingAddress.zip,
+    country:      shippingAddress.country || 'US',
+    email:        email || '',
+    phone:        shippingAddress.phone || '',
+  }
 
-  const mappedItems = items.map((item) => {
-    // Try to find the exact variant by color + size
+  // Determine if ALL items are store products (UUID gelatoProductId + variant.uid)
+  const resolvedItems = items.map((item) => {
     const gelatoVariant = item.product.variants?.find((v) => {
       const colorMatch =
         colorToSlug(v.color) === colorToSlug(item.color) ||
@@ -88,36 +99,72 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
         v.size?.toUpperCase() === item.size?.toUpperCase()
       return colorMatch && sizeMatch
     })
-
     const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
-
-    // ── Store product approach (UUID gelatoProductId) ──────────────────────────
-    // Products created via Gelato's store already have their design saved.
-    // Use storeProductVariantId (variant.uid) — no files needed.
     const isStoreProduct = UUID_RE.test(item.product.gelatoProductId ?? '')
+    return { item, gelatoVariant, itemRef, isStoreProduct }
+  })
+
+  const allStoreProducts = resolvedItems.every(r => r.isStoreProduct && r.gelatoVariant?.uid)
+
+  if (allStoreProducts && storeId) {
+    // ── Ecommerce store API ────────────────────────────────────────────────────
+    // Use ecommerce.gelatoapis.com/v1/stores/{storeId}/orders with storeProductVariantId.
+    // Design is already saved in Gelato — no files needed.
+    const url = `https://ecommerce.gelatoapis.com/v1/stores/${storeId}/orders`
+    const payload = {
+      orderReferenceId:    `jayl-${paymentIntent.id}`,
+      customerReferenceId: email || 'unknown',
+      currency:            CURRENCY.toUpperCase(),
+      items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
+        console.log('[create-order] store-product item', item.productId,
+          'color:', item.color, 'size:', item.size,
+          '→ storeProductVariantId:', gelatoVariant.uid)
+        return {
+          itemReferenceId:       itemRef,
+          storeProductVariantId: gelatoVariant.uid,
+          quantity:              item.quantity,
+        }
+      }),
+      shippingAddress: shippingPayload,
+    }
+    console.log('[create-order] → ecommerce API', url, JSON.stringify(payload))
+    const gelatoRes = await fetch(url, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
+      body:    JSON.stringify(payload),
+    })
+    const body = await gelatoRes.json().catch(() => ({}))
+    if (!gelatoRes.ok) {
+      const err = new Error(`Gelato ecommerce ${gelatoRes.status}: ${body.message || body.error || JSON.stringify(body)}`)
+      err.status = gelatoRes.status; err.body = body
+      throw err
+    }
+    return body
+  }
+
+  // ── Standard orders API v4 ─────────────────────────────────────────────────
+  // Catalog products (productUid + files) or mixed carts.
+  const mappedItems = resolvedItems.map(({ item, gelatoVariant, itemRef, isStoreProduct }) => {
     if (isStoreProduct && gelatoVariant?.uid) {
-      console.log('[create-order] item', item.productId,
-        'color:', item.color, 'size:', item.size,
-        '→ storeProductId:', item.product.gelatoProductId,
-        '→ storeProductVariantId:', gelatoVariant.uid)
+      // Store product in a mixed cart — fall back to catalog approach if possible
+      const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+      console.log('[create-order] mixed cart store item', item.productId,
+        '→ catalog productUid:', productUid?.slice(0, 60))
       return {
-        itemReferenceId:       itemRef,
-        storeProductId:        item.product.gelatoProductId,
-        storeProductVariantId: gelatoVariant.uid,
-        quantity:              item.quantity,
+        itemReferenceId: itemRef,
+        productUid,
+        quantity:        item.quantity,
+        files: [{ type: 'default', url: item.product.printFileUrl || item.product.image }],
       }
     }
-
-    // ── Catalog product approach (productUid + files) ─────────────────────────
     const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-    console.log('[create-order] item', item.productId,
+    console.log('[create-order] catalog item', item.productId,
       'color:', item.color, 'size:', item.size,
-      '→ catalog productUid:', productUid?.slice(0, 60))
-
+      '→ productUid:', productUid?.slice(0, 60))
     return {
       itemReferenceId: itemRef,
       productUid,
-      quantity: item.quantity,
+      quantity:        item.quantity,
       files: [
         { type: 'default', url: item.product.printFileUrl || item.product.image },
         ...(item.product.neckLabelUrl
@@ -130,28 +177,18 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
   const orderPayload = {
     orderReferenceId:    `jayl-${paymentIntent.id}`,
     customerReferenceId: email || 'unknown',
-    currency: CURRENCY.toUpperCase(),
+    currency:            CURRENCY.toUpperCase(),
     ...(storeId ? { storeId } : {}),
-    items: mappedItems,
-    shippingAddress: {
-      firstName:    shippingAddress.firstName,
-      lastName:     shippingAddress.lastName,
-      addressLine1: shippingAddress.address,
-      city:         shippingAddress.city,
-      state:        shippingAddress.state || '',
-      postCode:     shippingAddress.zip,
-      country:      shippingAddress.country || 'US',
-      email:        email || '',
-      phone:        shippingAddress.phone || '',
-    },
+    items:               mappedItems,
+    shippingAddress:     shippingPayload,
   }
 
-  console.log('[create-order] sending to Gelato →', JSON.stringify({
+  console.log('[create-order] → orders API v4', JSON.stringify({
     ...orderPayload,
     items: orderPayload.items.map(i => ({ ...i, files: '[omitted]' }))
   }))
 
-  const gelatoRes = await fetch(GELATO_ORDER_URL, {
+  const gelatoRes = await fetch('https://order.gelatoapis.com/v4/orders', {
     method:  'POST',
     headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
     body:    JSON.stringify(orderPayload),
@@ -159,8 +196,7 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
   const body = await gelatoRes.json().catch(() => ({}))
   if (!gelatoRes.ok) {
     const err = new Error(`Gelato ${gelatoRes.status}: ${body.message || body.error || JSON.stringify(body)}`)
-    err.status = gelatoRes.status
-    err.body   = body
+    err.status = gelatoRes.status; err.body = body
     throw err
   }
   return body

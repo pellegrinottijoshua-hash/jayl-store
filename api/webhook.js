@@ -6,7 +6,7 @@ import { sendEmail, buildOrderConfirmationEmail } from './_lib/email.js'
 export const config = { api: { bodyParser: false } }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
-const GELATO_API_URL = 'https://order.gelatoapis.com/v4/orders'
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -51,10 +51,19 @@ async function fulfillIfNeeded(paymentIntent) {
     return
   }
 
-  // UUID v4 pattern — identifies a Gelato *store* product vs a catalog product UID
-  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+  const shippingPayload = {
+    firstName:    shippingAddress.firstName || '',
+    lastName:     shippingAddress.lastName  || '',
+    addressLine1: shippingAddress.address   || '',
+    city:         shippingAddress.city      || '',
+    state:        shippingAddress.state     || '',
+    postCode:     shippingAddress.zip       || '',
+    country:      shippingAddress.country   || 'US',
+    email:        paymentIntent.metadata?.email || '',
+    phone:        shippingAddress.phone || '',
+  }
 
-  const mappedItems = items.map((item) => {
+  const resolvedItems = items.map((item) => {
     const gelatoVariant = item.product.variants?.find((v) => {
       const colorMatch =
         colorToSlug(v.color) === colorToSlug(item.color) ||
@@ -65,59 +74,66 @@ async function fulfillIfNeeded(paymentIntent) {
         v.size?.toUpperCase() === item.size?.toUpperCase()
       return colorMatch && sizeMatch
     })
-
     const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
     const isStoreProduct = UUID_RE.test(item.product.gelatoProductId ?? '')
-
-    if (isStoreProduct && gelatoVariant?.uid) {
-      console.log('[webhook] item', item.productId,
-        'color:', item.color, 'size:', item.size,
-        '→ storeProductId:', item.product.gelatoProductId,
-        '→ storeProductVariantId:', gelatoVariant.uid)
-      return {
-        itemReferenceId:       itemRef,
-        storeProductId:        item.product.gelatoProductId,
-        storeProductVariantId: gelatoVariant.uid,
-        quantity:              item.quantity,
-      }
-    }
-
-    const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-    console.log('[webhook] item', item.productId,
-      'color:', item.color, 'size:', item.size,
-      '→ catalog productUid:', productUid?.slice(0, 60))
-    return {
-      itemReferenceId: itemRef,
-      productUid,
-      quantity:        item.quantity,
-      files: [{ type: 'default', url: item.product.printFileUrl || item.product.image }],
-    }
+    return { item, gelatoVariant, itemRef, isStoreProduct }
   })
 
-  const orderPayload = {
-    orderReferenceId:    `jayl-${paymentIntent.id}`,
-    customerReferenceId: paymentIntent.metadata?.email || 'unknown',
-    currency: CURRENCY.toUpperCase(),
-    ...(storeId ? { storeId } : {}),
-    items: mappedItems,
-    shippingAddress: {
-      firstName:    shippingAddress.firstName || '',
-      lastName:     shippingAddress.lastName  || '',
-      addressLine1: shippingAddress.address   || '',
-      city:         shippingAddress.city      || '',
-      state:        shippingAddress.state     || '',
-      postCode:     shippingAddress.zip       || '',
-      country:      shippingAddress.country   || 'US',
-      email:        paymentIntent.metadata?.email || '',
-      phone:        shippingAddress.phone || '',
-    },
+  const allStoreProducts = resolvedItems.every(r => r.isStoreProduct && r.gelatoVariant?.uid)
+
+  let gelatoRes
+  if (allStoreProducts && storeId) {
+    // ── Ecommerce store API ────────────────────────────────────────────────────
+    const url = `https://ecommerce.gelatoapis.com/v1/stores/${storeId}/orders`
+    const payload = {
+      orderReferenceId:    `jayl-${paymentIntent.id}`,
+      customerReferenceId: paymentIntent.metadata?.email || 'unknown',
+      currency:            CURRENCY.toUpperCase(),
+      items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
+        console.log('[webhook] store-product item', item.productId,
+          'color:', item.color, 'size:', item.size,
+          '→ storeProductVariantId:', gelatoVariant.uid)
+        return {
+          itemReferenceId:       itemRef,
+          storeProductVariantId: gelatoVariant.uid,
+          quantity:              item.quantity,
+        }
+      }),
+      shippingAddress: shippingPayload,
+    }
+    console.log('[webhook] → ecommerce API', url)
+    gelatoRes = await fetch(url, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
+      body:    JSON.stringify(payload),
+    })
+  } else {
+    // ── Standard orders API v4 ─────────────────────────────────────────────────
+    const orderPayload = {
+      orderReferenceId:    `jayl-${paymentIntent.id}`,
+      customerReferenceId: paymentIntent.metadata?.email || 'unknown',
+      currency:            CURRENCY.toUpperCase(),
+      ...(storeId ? { storeId } : {}),
+      items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
+        const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+        console.log('[webhook] catalog item', item.productId, '→ productUid:', productUid?.slice(0, 60))
+        return {
+          itemReferenceId: itemRef,
+          productUid,
+          quantity:        item.quantity,
+          files: [{ type: 'default', url: item.product.printFileUrl || item.product.image }],
+        }
+      }),
+      shippingAddress: shippingPayload,
+    }
+    console.log('[webhook] → orders API v4')
+    gelatoRes = await fetch('https://order.gelatoapis.com/v4/orders', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
+      body:    JSON.stringify(orderPayload),
+    })
   }
 
-  const gelatoRes = await fetch(GELATO_API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
-    body:    JSON.stringify(orderPayload),
-  })
   if (!gelatoRes.ok) {
     const text = await gelatoRes.text().catch(() => '')
     console.error('[webhook] Gelato order failed:', gelatoRes.status, text)
