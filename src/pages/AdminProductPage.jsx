@@ -190,17 +190,18 @@ function Section({ title, children }) {
 // Shows ALL image sources: Gelato defaults, uploaded externals, AI-generated.
 // Hover each thumbnail to assign it as Hero Desktop/Mobile or add to Sequenza.
 
-function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, onSetMobileHero, onToggleSequenza }) {
-  const url    = img.url
-  const isDesk = desktopHero === url
-  const isMob  = mobileHero  === url
-  const seqIdx = sequenza.indexOf(url)
-  const inSeq  = seqIdx !== -1
-  const isVid  = /\.(mp4|mov|webm)$/i.test(url)
+function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage }) {
+  const url      = img.url
+  const isDesk   = desktopHero  === url
+  const isMob    = mobileHero   === url
+  const isDetail = detailImage  === url
+  const seqIdx   = sequenza.indexOf(url)
+  const inSeq    = seqIdx !== -1
+  const isVid    = /\.(mp4|mov|webm)$/i.test(url)
   return (
     <div className="relative group flex-shrink-0 w-16 h-16">
       <div className={`w-full h-full border-2 overflow-hidden transition-all ${
-        isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
+        isDetail ? 'border-amber-400' : isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
       }`}>
         {isVid
           ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
@@ -209,9 +210,10 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, o
         }
       </div>
       {/* Role badges */}
-      {isDesk && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
-      {isMob  && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
-      {inSeq  && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
+      {isDesk   && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
+      {isMob    && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
+      {isDetail && <div className="absolute bottom-0 right-0 bg-amber-500 text-black text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🔍</div>}
+      {inSeq    && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
       {/* Hover action overlay */}
       <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-0.5 z-20">
         <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
@@ -226,6 +228,10 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, o
           className={`w-6 h-6 text-[10px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
             inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
           }`}>{inSeq ? '✓' : '+'}</button>
+        <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio (Hold to reveal)"
+          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
+            isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
+          }`}>🔍</button>
       </div>
     </div>
   )
@@ -233,8 +239,8 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, o
 
 function ImagePool({
   gelatoImages, uploadedImages, generatedImages,
-  desktopHero, mobileHero, sequenza,
-  onSetDesktopHero, onSetMobileHero, onToggleSequenza,
+  desktopHero, mobileHero, sequenza, detailImage,
+  onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage,
   productId, onUploaded, loading,
 }) {
   const [uploading,   setUploading]   = useState(false)
@@ -285,7 +291,7 @@ function ImagePool({
     }
   }, [productId, onUploaded])
 
-  const thumbProps = { desktopHero, mobileHero, sequenza, onSetDesktopHero, onSetMobileHero, onToggleSequenza }
+  const thumbProps = { desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage }
 
   const PoolSection = ({ label, images, emptyMsg }) => {
     if (!images?.length) return emptyMsg ? <p className="text-gray-700 text-[10px] italic">{emptyMsg}</p> : null
@@ -354,7 +360,7 @@ function ImagePool({
 // Assignment happens from PoolThumb hover buttons; this panel shows the result
 // and lets the user reorder the sequenza with ‹ › arrows.
 
-function MediaPanel({ desktopHero, mobileHero, sequenza, allImages, onSetDesktopHero, onSetMobileHero, onReorderSequenza, onSave, saving, msg }) {
+function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, allImages, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onReorderSequenza, onSave, saving, msg }) {
   const moveLeft  = i => { if (i === 0) return; const s = [...sequenza]; [s[i-1],s[i]]=[s[i],s[i-1]]; onReorderSequenza(s) }
   const moveRight = i => { if (i === sequenza.length-1) return; const s = [...sequenza]; [s[i],s[i+1]]=[s[i+1],s[i]]; onReorderSequenza(s) }
   const getImg    = url => allImages?.find(i => i.url === url) || { url, name: url.split('/').pop().split('?')[0] || 'image' }
@@ -411,6 +417,24 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, allImages, onSetDesktop
               onClear={() => onSetDesktopHero(null)} />
             <HeroSlot url={mobileHero} label="📱 Mobile · 9:16" aspect="aspect-[9/16] max-h-48" color="text-purple-400"
               onClear={() => onSetMobileHero(null)} />
+          </div>
+        </div>
+
+        {/* ── DETAIL IMAGE ── */}
+        <div>
+          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-1">🔍 Immagine dettaglio</p>
+          <p className="text-[10px] text-gray-700 mb-3">Visibile tenendo premuto "HOLD TO REVEAL" sulla pagina prodotto.</p>
+          <div className="flex items-start gap-4">
+            <div className="w-32 flex-shrink-0">
+              <HeroSlot url={detailImage} label="" aspect="aspect-square" color="text-amber-400"
+                onClear={() => onSetDetailImage(null)} />
+            </div>
+            <div className="text-[10px] text-gray-600 leading-relaxed pt-1">
+              Usa il pulsante <span className="text-amber-400 font-bold">🔍</span> nel pool immagini<br/>
+              per assegnare questa immagine.<br/>
+              {!detailImage && <span className="text-gray-700 italic">Nessuna immagine — il tasto non apparirà.</span>}
+              {detailImage && <span className="text-amber-400">✓ Dettaglio impostato</span>}
+            </div>
           </div>
         </div>
 
@@ -716,6 +740,7 @@ export default function AdminProductPage() {
   // ── Lifted media state ────────────────────────────────────────────────────────
   const [desktopHero,    setDesktopHero]    = useState(null)
   const [mobileHero,     setMobileHero]     = useState(null)
+  const [detailImage,    setDetailImage]    = useState(null)
   const [sequenza,       setSequenza]       = useState([])   // ordered array of URLs
   const [githubImages,   setGithubImages]   = useState([])   // [{ url, name, path }]
   const [loadingPool,    setLoadingPool]    = useState(false)
@@ -743,7 +768,8 @@ export default function AdminProductPage() {
       setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
       // media
       setDesktopHero(p.image     || null)
-      setMobileHero(p.heroImage  || null)
+      setMobileHero(p.heroImage   || null)
+      setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
     }
 
@@ -797,16 +823,18 @@ export default function AdminProductPage() {
     setSavingMedia(true); setMediaMsg('')
     try {
       await api('update-product-images', {
-        productId: id,
-        images:    sequenza,
-        heroImage: mobileHero  || null,
-        image:     desktopHero || sequenza[0] || null,
+        productId:   id,
+        images:      sequenza,
+        heroImage:   mobileHero   || null,
+        image:       desktopHero  || sequenza[0] || null,
+        detailImage: detailImage  || null,
       })
       setProduct(prev => prev ? {
         ...prev,
-        images:    sequenza,
-        image:     desktopHero || sequenza[0] || prev.image,
-        heroImage: mobileHero  || prev.heroImage,
+        images:      sequenza,
+        image:       desktopHero  || sequenza[0] || prev.image,
+        heroImage:   mobileHero   || prev.heroImage,
+        detailImage: detailImage  || null,
       } : prev)
       setMediaMsg('✓ Salvato')
       setTimeout(() => setMediaMsg(''), 3000)
@@ -815,7 +843,7 @@ export default function AdminProductPage() {
     } finally {
       setSavingMedia(false)
     }
-  }, [id, sequenza, desktopHero, mobileHero])
+  }, [id, sequenza, desktopHero, mobileHero, detailImage])
 
   const videoInfo = parseVideoUrl(videoUrl)
 
@@ -1077,9 +1105,11 @@ export default function AdminProductPage() {
               desktopHero={desktopHero}
               mobileHero={mobileHero}
               sequenza={sequenza}
+              detailImage={detailImage}
               onSetDesktopHero={setDesktopHero}
               onSetMobileHero={setMobileHero}
               onToggleSequenza={toggleSequenza}
+              onSetDetailImage={setDetailImage}
               productId={id}
               onUploaded={() => setPoolRefreshKey(k => k + 1)}
               loading={loadingPool}
@@ -1122,10 +1152,12 @@ export default function AdminProductPage() {
               <MediaPanel
                 desktopHero={desktopHero}
                 mobileHero={mobileHero}
+                detailImage={detailImage}
                 sequenza={sequenza}
                 allImages={allPoolImages}
                 onSetDesktopHero={setDesktopHero}
                 onSetMobileHero={setMobileHero}
+                onSetDetailImage={setDetailImage}
                 onReorderSequenza={setSequenza}
                 onSave={handleSaveMedia}
                 saving={savingMedia}

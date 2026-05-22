@@ -480,6 +480,7 @@ export default function ProductPage() {
   const [reviewsLoaded,  setReviewsLoaded]  = useState(false)
   const [showReviewForm, setShowReviewForm] = useState(false)
   const [reviewAuthor,   setReviewAuthor]   = useState('')
+  const [showDetail,     setShowDetail]     = useState(false)
   const [reviewRating,   setReviewRating]   = useState(5)
   const [reviewBody,     setReviewBody]     = useState('')
   const [reviewSubmitting, setReviewSubmitting] = useState(false)
@@ -835,6 +836,41 @@ export default function ProductPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
               {viewerCount} people viewing right now
             </p>
+          )}
+
+          {/* ── Hold to reveal detail ─────────────────────────────────── */}
+          {product.detailImage && (
+            <button
+              className="mt-4 self-start select-none touch-none"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                border: '1px solid',
+                borderColor: showDetail ? '#d4a853' : 'rgba(212,168,83,0.5)',
+                color: showDetail ? '#d4a853' : 'rgba(212,168,83,0.75)',
+                backgroundColor: showDetail ? 'rgba(212,168,83,0.08)' : 'transparent',
+                padding: '7px 14px',
+                fontSize: '10px',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                fontFamily: 'inherit',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+              }}
+              onMouseDown={() => setShowDetail(true)}
+              onMouseUp={() => setShowDetail(false)}
+              onMouseLeave={() => setShowDetail(false)}
+              onTouchStart={e => { e.preventDefault(); setShowDetail(true) }}
+              onTouchEnd={() => setShowDetail(false)}
+              onTouchCancel={() => setShowDetail(false)}
+            >
+              <span style={{ opacity: 0.6, fontSize: '12px' }}>✦</span>
+              HOLD TO REVEAL
+              <span style={{ opacity: 0.6, fontSize: '12px' }}>✦</span>
+            </button>
           )}
         </div>
 
@@ -1623,6 +1659,50 @@ export default function ProductPage() {
             onClick={e => e.stopPropagation()}
             draggable={false}
           />
+        </div>
+      )}
+
+      {/* ── Detail image overlay (hold to reveal) ───────────────────── */}
+      {product?.detailImage && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgba(0,0,0,0.92)',
+            opacity: showDetail ? 1 : 0,
+            pointerEvents: showDetail ? 'auto' : 'none',
+            transition: 'opacity 0.12s ease',
+          }}
+        >
+          {/* Gold corner accents */}
+          {[['top','left'],['top','right'],['bottom','left'],['bottom','right']].map(([v,h]) => (
+            <div key={v+h} style={{
+              position: 'absolute', [v]: 24, [h]: 24, width: 32, height: 32,
+              [`border${v.charAt(0).toUpperCase()+v.slice(1)}`]: '1px solid rgba(212,168,83,0.45)',
+              [`border${h.charAt(0).toUpperCase()+h.slice(1)}`]: '1px solid rgba(212,168,83,0.45)',
+            }} />
+          ))}
+          <img
+            src={product.detailImage}
+            alt="product detail"
+            draggable={false}
+            style={{
+              maxWidth: 'min(92vw, 620px)',
+              maxHeight: '80vh',
+              objectFit: 'contain',
+              display: 'block',
+            }}
+          />
+          <p style={{
+            position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+            color: 'rgba(212,168,83,0.5)', fontSize: '9px',
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontFamily: 'inherit', whiteSpace: 'nowrap',
+          }}>✦ Detail ✦</p>
         </div>
       )}
     </div>
