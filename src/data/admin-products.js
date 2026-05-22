@@ -1459,7 +1459,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-21T22:28:58.856Z",
+    "updatedAt": "2026-05-22T01:08:51.958Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": []
   },
