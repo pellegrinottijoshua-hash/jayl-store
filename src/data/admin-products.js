@@ -925,6 +925,7 @@ export const adminProducts = [
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
     "images": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260509_165315_d47b49f3-14fb-40c6-84a5-32550463b110.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260521_172235_6d19c307-bc02-4329-9d47-46a2c1a266b6.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg",
@@ -1173,7 +1174,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-22T01:12:10.854Z",
+    "updatedAt": "2026-05-22T01:28:07.672Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg"
