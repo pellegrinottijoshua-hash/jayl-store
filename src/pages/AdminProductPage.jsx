@@ -218,22 +218,22 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetD
       {inSeq    && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
       {/* Hover action overlay — 2 rows: top (assign) + bottom (delete) */}
       <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-between py-1 z-20">
-        {/* Row 1: assign buttons */}
-        <div className="flex items-center gap-0.5">
+        {/* 2×2 grid of assign buttons — fits any thumbnail width */}
+        <div className="grid grid-cols-2 gap-0.5">
           <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
-            className={`w-6 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
               isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
             }`}>🖥</button>
           <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
-            className={`w-6 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
               isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
             }`}>📱</button>
           <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
-            className={`w-6 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
+            className={`w-7 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
               inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
             }`}>{inSeq ? '✓' : '+'}</button>
           <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio (Hold to reveal)"
-            className={`w-6 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
               isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
             }`}>🔍</button>
         </div>
