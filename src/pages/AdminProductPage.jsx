@@ -769,6 +769,10 @@ export default function AdminProductPage() {
   const [hashtags, setHashtags]                 = useState('')
   const [primaryKeywords, setPrimaryKeywords]   = useState([])
   const [longTailKeywords, setLongTailKeywords] = useState([])
+  // Etsy SEO
+  const [etsyTitle,        setEtsyTitle]        = useState('')
+  const [etsyTags,         setEtsyTags]         = useState([])
+  const [etsyDescription,  setEtsyDescription]  = useState('')
   // Per-image alt texts
   const [imageAlts,        setImageAlts]        = useState({})
   const [generatingAlts,   setGeneratingAlts]   = useState(false)
@@ -811,6 +815,9 @@ export default function AdminProductPage() {
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
+      setEtsyTitle(p.etsyTitle || '')
+      setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
+      setEtsyDescription(p.etsyDescription || '')
     }
 
     if (staticP?.adminManaged) {
@@ -907,6 +914,9 @@ export default function AdminProductPage() {
       if (data.hashtags)         setHashtags(data.hashtags)
       if (data.primaryKeywords?.length)  setPrimaryKeywords(data.primaryKeywords)
       if (data.longTailKeywords?.length) setLongTailKeywords(data.longTailKeywords)
+      if (data.etsyTitle)        setEtsyTitle(data.etsyTitle)
+      if (data.etsyTags?.length) setEtsyTags(data.etsyTags)
+      if (data.etsyDescription)  setEtsyDescription(data.etsyDescription)
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -977,7 +987,10 @@ export default function AdminProductPage() {
         heroImage:   mobileHero   || product.heroImage || null,
         detailImage: detailImage  || null,
         imageAlts:   Object.keys(imageAlts).length > 0 ? imageAlts : undefined,
-        ...(videoUrl.trim() ? { videoUrl: videoUrl.trim() } : { videoUrl: undefined }),
+        ...(videoUrl.trim()        ? { videoUrl:        videoUrl.trim() }        : { videoUrl: undefined }),
+        ...(etsyTitle.trim()       ? { etsyTitle:       etsyTitle.trim() }       : {}),
+        ...(etsyTags.length > 0    ? { etsyTags:        etsyTags }               : {}),
+        ...(etsyDescription.trim() ? { etsyDescription: etsyDescription.trim() } : {}),
       }
       // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
@@ -1467,7 +1480,7 @@ export default function AdminProductPage() {
             </Section>
 
             {/* ── Social & SEO ── */}
-            {(instagramCaption || pinterestCaption || hashtags || primaryKeywords.length > 0) && (
+            {(instagramCaption || pinterestCaption || hashtags || primaryKeywords.length > 0 || etsyTitle) && (
               <Section title="Social & SEO">
                 <div className="space-y-5">
 
@@ -1498,6 +1511,90 @@ export default function AdminProductPage() {
                         ))}
                       </div>
                     </Collapsible>
+                  )}
+
+                  {/* ── Etsy SEO ── */}
+                  {(etsyTitle || etsyTags.length > 0 || etsyDescription) && (
+                    <div className="border border-orange-900/50 bg-[#0d0a08] p-4 space-y-4">
+                      <div className="flex items-center gap-2 border-b border-orange-900/30 pb-2">
+                        <span className="text-orange-400 text-sm">🏪</span>
+                        <p className="text-orange-300 text-xs font-semibold uppercase tracking-wider">SEO Etsy</p>
+                        <span className="text-gray-700 text-xs ml-auto">2025 NLP algorithm</span>
+                      </div>
+
+                      {etsyTitle && (
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <p className="text-gray-500 text-xs uppercase tracking-wider">
+                              Etsy Title
+                              <span className={`ml-2 font-mono ${etsyTitle.length > 140 ? 'text-red-400' : etsyTitle.length > 120 ? 'text-yellow-400' : 'text-green-500'}`}>
+                                {etsyTitle.length}/140
+                              </span>
+                            </p>
+                            <button
+                              onClick={() => { navigator.clipboard.writeText(etsyTitle); }}
+                              className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
+                            >⎘ Copy</button>
+                          </div>
+                          <textarea
+                            value={etsyTitle}
+                            onChange={e => setEtsyTitle(e.target.value)}
+                            rows={2}
+                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 resize-none focus:outline-none focus:border-orange-700 font-mono leading-relaxed"
+                          />
+                        </div>
+                      )}
+
+                      {etsyTags.length > 0 && (
+                        <div>
+                          <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">
+                            Etsy Tags
+                            <span className="ml-2 text-gray-600 font-mono normal-case">{etsyTags.length}/13 tag{etsyTags.length !== 1 ? 's' : ''}</span>
+                          </p>
+                          <div className="flex flex-wrap gap-1.5 mb-2">
+                            {etsyTags.map((tag, i) => (
+                              <span key={i} className={`border text-xs px-2 py-0.5 font-mono ${tag.length > 20 ? 'border-red-800 text-red-400' : 'border-orange-900/60 text-orange-300/80'}`}>
+                                {tag}
+                                <span className="text-gray-700 ml-1 text-[9px]">{tag.length}</span>
+                              </span>
+                            ))}
+                          </div>
+                          <button
+                            onClick={() => navigator.clipboard.writeText(etsyTags.join(', '))}
+                            className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
+                          >⎘ Copy all tags</button>
+                        </div>
+                      )}
+
+                      {etsyDescription && (
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <p className="text-gray-500 text-xs uppercase tracking-wider">
+                              Etsy Description
+                              <span className="ml-2 text-gray-600 font-mono normal-case text-[10px]">
+                                ~{Math.round(etsyDescription.split(/\s+/).filter(Boolean).length)} words
+                              </span>
+                            </p>
+                            <button
+                              onClick={() => navigator.clipboard.writeText(etsyDescription)}
+                              className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
+                            >⎘ Copy</button>
+                          </div>
+                          <div className="relative">
+                            <textarea
+                              value={etsyDescription}
+                              onChange={e => setEtsyDescription(e.target.value)}
+                              rows={8}
+                              className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-y focus:outline-none focus:border-orange-700 font-mono leading-relaxed"
+                            />
+                            <div className="absolute bottom-2 right-2 bg-black/60 text-[9px] text-orange-900/70 px-1.5 py-0.5 font-mono pointer-events-none">
+                              first 160: {etsyDescription.slice(0, 160).length} chars
+                            </div>
+                          </div>
+                          <p className="text-gray-700 text-[10px] mt-1">I primi 160 chars appaiono su Google e nell'anteprima Etsy — devono essere keyword-dense.</p>
+                        </div>
+                      )}
+                    </div>
                   )}
 
                 </div>

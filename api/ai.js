@@ -76,38 +76,70 @@ async function handleListing(req, res) {
   const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
   if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
 
-  const prompt = `You are a copywriter and SEO strategist for JAYL, a premium art and objects store.
-Generate listing content and keyword research for the following product:
+  const prompt = `You are a senior SEO copywriter and marketplace strategist for JAYL, a premium print-on-demand art and apparel brand.
+Generate complete listing content, keyword research, AND Etsy-optimised listing fields for this product:
 
 Product title: ${productTitle}
 Section: ${section || 'objects'}
 Collection: ${collection || ''}
 Movement/style: ${movement || ''}
 
-Return a JSON object with these exact keys:
+Return a JSON object with these EXACT keys:
 
-— Listing fields —
-- "seoTitle": An SEO-optimised product title (60-70 chars). Keep the product name prominent.
-- "description": A compelling product description of exactly ~150 words. Evocative, minimal, no fluff. Mention materials, Gelato print quality, and the art style.
-- "altText": A concise alt text for the product image (1 sentence, under 125 chars). Describe the visual clearly.
-- "tags": An array of exactly 13 Etsy-style tags (strings). Mix product type, style, fandom, gift occasion. Each tag max 20 chars, lowercase, no special chars except spaces.
+── SITE LISTING ──
+- "seoTitle": SEO-optimised product title for the JAYL website (60-70 chars). Keep product name prominent, include primary keyword near the start.
+- "description": Compelling product description ~150 words. Evocative, minimal, no fluff. Mention Gelato premium print quality, the art style, why it makes a great gift.
+- "altText": Concise alt text for the product hero image (1 sentence, under 125 chars). Describe the visual specifically.
+- "tags": Array of exactly 13 tags (strings). Mix product type, character/fandom, style, gift occasion. Each tag max 20 chars, lowercase, no special chars except spaces.
 
-— Keyword research —
-- "primaryKeywords": Array of 5 high-volume, short-tail SEO keywords (1-3 words). Focus on what buyers search on Google/Etsy/Pinterest.
-- "longTailKeywords": Array of 10 long-tail keyword phrases (4-7 words). Specific buying intent, great for product descriptions and alt text.
-- "hashtags": A single string with 30 Instagram hashtags. Mix niche (#snorlaxfan), category (#animetee), and broad (#artprint). Include the # symbol. Separated by spaces.
-- "instagramCaption": A short, engaging Instagram caption (2-3 sentences max + call-to-action). Include 3-5 relevant hashtags inline. Tone: creative, slightly edgy, not corporate.
-- "pinterestCaption": A Pinterest-optimised description (2-3 sentences). Keyword-rich, descriptive, helpful. No hashtags. Ends with a subtle call-to-action.
+── GOOGLE / PINTEREST / IG KEYWORD RESEARCH ──
+- "primaryKeywords": Array of 5 high-volume short-tail keywords (1-3 words each). What buyers search on Google/Etsy/Pinterest.
+- "longTailKeywords": Array of 10 long-tail phrases (4-7 words). Buying-intent, great for descriptions and alt text.
+- "hashtags": Single string with exactly 30 Instagram hashtags separated by spaces. Mix niche, category, and broad tags. Include # symbol on each.
+- "instagramCaption": 2-3 sentences + CTA. Creative, slightly edgy, not corporate. Include 3-5 hashtags inline.
+- "pinterestCaption": 2-3 keyword-rich sentences. No hashtags. Ends with a subtle CTA.
+
+── ETSY SEO (follow all rules below precisely — 2025 Etsy NLP algorithm) ──
+ETSY TITLE RULES:
+- Max 140 chars. Target 90-120 chars — Etsy now uses NLP and penalises keyword stuffing
+- Lead with the most-searched noun phrase in the FIRST 3-5 words: [Character Name] + [product type]
+- Natural, conversational language. Do NOT repeat the same root word twice
+- Structure: "[Character] [Product Type], [Style Descriptor], [Occasion/Gift Hook]"
+- Use commas as phrase separators. NOT pipes (|) or hyphens between distinct phrases
+- Capitalize Each Word
+- Example: "Charizard Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Fan Art Gift for Him"
+- "etsyTitle": Etsy title following all rules above.
+
+ETSY TAGS RULES (2025 — CRITICAL: tags EXPAND coverage, they do NOT repeat the title):
+- Exactly 13 tags. Each max 20 chars (including spaces). Use ALL 13 slots.
+- Multi-word phrases only (2-4 words each) — single-word tags rank for nothing
+- CRITICAL: Tags must cover DIFFERENT search paths than the title. Etsy already knows your title. Tags = extra ranking surface area, not title repetition.
+- Do NOT repeat exact words or phrases from etsyTitle across your tags
+- Cover these 7 distinct facets: (1) character-specific variant phrase, (2) genre/fandom style, (3) gift occasion (birthday, Christmas), (4) recipient (anime fan, him, teen), (5) community term (otaku, weeaboo), (6) aesthetic era (retro, vintage, 90s), (7) product fit variant (unisex tee, graphic top)
+- Use buyer-intent phrases: "gift for anime fan", "pokemon lover gift", "otaku birthday gift"
+- All lowercase
+- "etsyTags": Array of exactly 13 tags (strings, each max 20 chars, lowercase, multi-word).
+
+ETSY DESCRIPTION RULES:
+- FIRST 160 CHARS ARE CRITICAL: they become both Google's meta description AND Etsy's preview snippet. Write them as a compressed pitch — "[primary keyword phrase] — [what it is] + [who it's for] + [key differentiator]." Never waste this space on a vague intro.
+- Total: 200-300 words. Short paragraphs separated by blank lines.
+- Structure: (1) First 160-char hook paragraph, (2) Design description — describe the art/character vividly (2-3 sentences), (3) Product details — 100% cotton, DTG premium print, unisex fit, sizes S-3XL, (4) Gift/occasion hook — who it's perfect for and when, (5) Care: "Machine wash cold, tumble dry low", (6) "Made to order — ships in 3-5 business days"
+- Sprinkle 2-3 keyword phrases naturally in first two paragraphs. No stuffing.
+- "etsyDescription": Full Etsy description following all rules above.
 
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 1400, temperature: 0.7 })
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.7 })
     const parsed = JSON.parse(content)
 
     const tags = Array.isArray(parsed.tags)
       ? parsed.tags.slice(0, 13)
       : String(parsed.tags || '').split(',').map(t => t.trim()).filter(Boolean).slice(0, 13)
+
+    const etsyTags = Array.isArray(parsed.etsyTags)
+      ? parsed.etsyTags.map(t => String(t).toLowerCase().trim().slice(0, 20)).filter(Boolean).slice(0, 13)
+      : String(parsed.etsyTags || '').split(',').map(t => t.trim().toLowerCase().slice(0, 20)).filter(Boolean).slice(0, 13)
 
     return res.status(200).json({
       seoTitle:         parsed.seoTitle         || productTitle,
@@ -119,6 +151,10 @@ Return ONLY the JSON object, no markdown, no extra text.`
       hashtags:         parsed.hashtags         || '',
       instagramCaption: parsed.instagramCaption || '',
       pinterestCaption: parsed.pinterestCaption || '',
+      // Etsy SEO
+      etsyTitle:        parsed.etsyTitle        || '',
+      etsyTags,
+      etsyDescription:  parsed.etsyDescription  || '',
       model,
       usage,
     })

@@ -180,17 +180,18 @@ function ImageUploader({ files, onChange }) {
 
 // ── Pool Thumbnail (for MediaPool) ───────────────────────────────────────────
 
-function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, onSetMobileHero, onToggleSequenza }) {
-  const url   = img.url
-  const isDesk = desktopHero === url
-  const isMob  = mobileHero  === url
-  const seqIdx = sequenza.indexOf(url)
-  const inSeq  = seqIdx !== -1
-  const isVid  = /\.(mp4|mov|webm)$/i.test(url)
+function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage }) {
+  const url      = img.url
+  const isDesk   = desktopHero === url
+  const isMob    = mobileHero  === url
+  const isDetail = detailImage === url
+  const seqIdx   = sequenza.indexOf(url)
+  const inSeq    = seqIdx !== -1
+  const isVid    = /\.(mp4|mov|webm)$/i.test(url)
   return (
     <div className="relative group flex-shrink-0 w-16 h-16">
       <div className={`w-full h-full border-2 overflow-hidden transition-all ${
-        isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
+        isDetail ? 'border-amber-400' : isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
       }`}>
         {isVid
           ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
@@ -198,22 +199,32 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, onSetDesktopHero, o
               onError={e => { e.currentTarget.style.opacity = '0.3' }} />
         }
       </div>
-      {isDesk && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
-      {isMob  && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
-      {inSeq  && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
-      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-0.5 z-20">
-        <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
-          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
-            isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
-          }`}>🖥</button>
-        <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
-          className={`w-6 h-6 text-[10px] flex items-center justify-center rounded-sm border transition-colors ${
-            isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
-          }`}>📱</button>
-        <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
-          className={`w-6 h-6 text-[10px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
-            inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
-          }`}>{inSeq ? '✓' : '+'}</button>
+      {isDesk   && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
+      {isMob    && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
+      {isDetail && <div className="absolute bottom-0 right-0 bg-amber-500 text-black text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🔍</div>}
+      {inSeq    && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
+      {/* 2×2 grid of assign buttons */}
+      <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
+        <div className="grid grid-cols-2 gap-0.5">
+          <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
+            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+              isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
+            }`}>🖥</button>
+          <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
+            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+              isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
+            }`}>📱</button>
+          <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
+            className={`w-7 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
+              inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
+            }`}>{inSeq ? '✓' : '+'}</button>
+          {onSetDetailImage && (
+            <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio"
+              className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
+                isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
+              }`}>🔍</button>
+          )}
+        </div>
       </div>
     </div>
   )
@@ -287,6 +298,18 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [hashtags,         setHashtags]         = useState(editingProduct?.hashtags         || '')
   const [instagramCaption, setInstagramCaption] = useState(editingProduct?.instagramCaption || '')
   const [pinterestCaption, setPinterestCaption] = useState(editingProduct?.pinterestCaption || '')
+  // Etsy SEO
+  const [etsyTitle,        setEtsyTitle]        = useState(editingProduct?.etsyTitle        || '')
+  const [etsyTags,         setEtsyTags]         = useState(
+    Array.isArray(editingProduct?.etsyTags) ? editingProduct.etsyTags : []
+  )
+  const [etsyDescription,  setEtsyDescription]  = useState(editingProduct?.etsyDescription  || '')
+  // Per-image alt text
+  const [imageAlts,        setImageAlts]        = useState(
+    editingProduct?.imageAlts && typeof editingProduct.imageAlts === 'object' ? editingProduct.imageAlts : {}
+  )
+  const [generatingAlts,   setGeneratingAlts]   = useState(false)
+  const [altsMsg,          setAltsMsg]          = useState('')
 
   // Gelato mockup images (returned from fetch-variants)
   const [gelatoImages, setGelatoImages]   = useState([])   // [{ src, position, variantIds }]
@@ -308,9 +331,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [savedProductId, setSavedProductId] = useState(isEdit ? editingProduct.id : null)
 
   // ── Media pool (hero + sequenza) ─────────────────────────────────────────────
-  const [desktopHero,    setDesktopHero]    = useState(isEdit ? (editingProduct?.image     || null) : null)
-  const [mobileHero,     setMobileHero]     = useState(isEdit ? (editingProduct?.heroImage || null) : null)
-  const [sequenza,       setSequenza]       = useState(isEdit ? (editingProduct?.images    || [])   : [])
+  const [desktopHero,    setDesktopHero]    = useState(isEdit ? (editingProduct?.image       || null) : null)
+  const [mobileHero,     setMobileHero]     = useState(isEdit ? (editingProduct?.heroImage   || null) : null)
+  const [detailImage,    setDetailImage]    = useState(isEdit ? (editingProduct?.detailImage || null) : null)
+  const [sequenza,       setSequenza]       = useState(isEdit ? (editingProduct?.images      || [])   : [])
   const [poolImages,     setPoolImages]     = useState([])   // { url, name } loaded from GitHub
   const [poolLoading,    setPoolLoading]    = useState(false)
   const [poolRefreshKey, setPoolRefreshKey] = useState(0)
@@ -364,10 +388,44 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       if (data.hashtags)           setHashtags(data.hashtags)
       if (data.instagramCaption)   setInstagramCaption(data.instagramCaption)
       if (data.pinterestCaption)   setPinterestCaption(data.pinterestCaption)
+      if (data.etsyTitle)          setEtsyTitle(data.etsyTitle)
+      if (data.etsyTags?.length)   setEtsyTags(data.etsyTags)
+      if (data.etsyDescription)    setEtsyDescription(data.etsyDescription)
     } catch (e) {
       setGenErr(e.message)
     } finally {
       setGenerating(false)
+    }
+  }
+
+  // ── Per-image alt text generation ────────────────────────────────────────────
+  const generateAlts = async () => {
+    const entries = []
+    const seen = new Set()
+    const add = (url, role) => { if (url && !seen.has(url)) { seen.add(url); entries.push({ url, role }) } }
+    add(desktopHero, 'hero-desktop')
+    add(mobileHero,  'hero-mobile')
+    add(detailImage, 'detail-reveal')
+    sequenza.forEach((url, i) => add(url, `gallery-${i + 1}`))
+    poolImages.forEach(img => add(img.url, 'pool'))
+    if (!entries.length) return setAltsMsg('⚠ Nessuna immagine trovata')
+    setGeneratingAlts(true); setAltsMsg('')
+    try {
+      const res = await fetch('/api/generate-alts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productTitle: title.trim() || 'JAYL product', movement, collection: finalCollection, images: entries }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
+      setImageAlts(prev => ({ ...prev, ...data.alts }))
+      const count = Object.keys(data.alts || {}).length
+      setAltsMsg(`✓ ${count} alt text${count !== 1 ? 's' : ''} generati`)
+      setTimeout(() => setAltsMsg(''), 4000)
+    } catch (e) {
+      setAltsMsg('⚠ ' + e.message)
+    } finally {
+      setGeneratingAlts(false)
     }
   }
 
@@ -517,8 +575,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       }
 
       // 3. Resolve hero + sequenza — prefer explicit user selections from the media pool
-      const heroDesktopPath = desktopHero ? toRelPath(desktopHero) : (uploadedPaths[0] || '')
-      const heroMobilePath  = mobileHero  ? toRelPath(mobileHero)  : null
+      const heroDesktopPath  = desktopHero  ? toRelPath(desktopHero)  : (uploadedPaths[0] || '')
+      const heroMobilePath   = mobileHero   ? toRelPath(mobileHero)   : null
+      const detailImagePath  = detailImage  ? toRelPath(detailImage)  : null
       const finalImages     = sequenza.length > 0
         ? [...new Set(sequenza.map(toRelPath))]
         : uploadedPaths
@@ -559,14 +618,17 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         altText: altText.trim() || '',
         details: ['Printed and fulfilled via Gelato'],
         sizes,
-        image:     heroDesktopPath || finalImages[0] || '',
-        heroImage: heroMobilePath  || null,
-        images:    finalImages,
-        // Per-image alt texts: merge existing + newly imported (use global altText as fallback)
-        imageAlts: Object.fromEntries([
-          ...existingImages.map(img => [img.src, img.alt]),
-          ...importedPaths.map(p => [p, altText.trim() || '']),
-        ].filter(([src, alt]) => src && alt)),
+        image:       heroDesktopPath || finalImages[0] || '',
+        heroImage:   heroMobilePath  || null,
+        detailImage: detailImagePath || null,
+        images:      finalImages,
+        // Per-image alt texts: merge existing + AI-generated + newly imported (use global altText as fallback)
+        imageAlts: Object.keys(imageAlts).length > 0
+          ? imageAlts
+          : Object.fromEntries([
+              ...existingImages.map(img => [img.src, img.alt]),
+              ...importedPaths.map(p => [p, altText.trim() || '']),
+            ].filter(([src, alt]) => src && alt)),
         tags: tags.trim()
           ? tags.split(',').map(t => t.trim()).filter(Boolean)
           : [slugify(title), slugify(finalCollection)].filter(Boolean),
@@ -587,6 +649,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
         ...(printCost.trim() ? { printCost: Math.round(parseFloat(printCost) * 100) } : {}),
+        ...(etsyTitle.trim()       ? { etsyTitle:       etsyTitle.trim() }       : {}),
+        ...(etsyTags.length > 0    ? { etsyTags:        etsyTags }               : {}),
+        ...(etsyDescription.trim() ? { etsyDescription: etsyDescription.trim() } : {}),
       }
 
       await api('save-product', { product })
@@ -918,6 +983,82 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             )}
           </Field>
         </div>
+
+        {/* ── Etsy SEO block ── */}
+        {(etsyTitle || etsyTags.length > 0 || etsyDescription) && (
+          <div className="border border-orange-900/50 bg-[#0d0a08] p-4 space-y-4">
+            <div className="flex items-center gap-2 border-b border-orange-900/30 pb-2">
+              <span className="text-orange-400 text-sm">🏪</span>
+              <p className="text-orange-300 text-xs font-semibold uppercase tracking-wider">SEO Etsy</p>
+              <span className="text-gray-700 text-xs ml-auto">2025 NLP algorithm</span>
+            </div>
+
+            {etsyTitle && (
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider">
+                    Etsy Title
+                    <span className={`ml-2 font-mono ${etsyTitle.length > 140 ? 'text-red-400' : etsyTitle.length > 120 ? 'text-yellow-400' : 'text-green-500'}`}>
+                      {etsyTitle.length}/140
+                    </span>
+                  </p>
+                  <button type="button" onClick={() => navigator.clipboard.writeText(etsyTitle)}
+                    className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors">
+                    ⎘ Copy
+                  </button>
+                </div>
+                <textarea value={etsyTitle} onChange={e => setEtsyTitle(e.target.value)} rows={2}
+                  className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 resize-none focus:outline-none focus:border-orange-700 font-mono leading-relaxed" />
+              </div>
+            )}
+
+            {etsyTags.length > 0 && (
+              <div>
+                <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">
+                  Etsy Tags
+                  <span className="ml-2 text-gray-600 font-mono normal-case">{etsyTags.length}/13</span>
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-2">
+                  {etsyTags.map((tag, i) => (
+                    <span key={i} className={`border text-xs px-2 py-0.5 font-mono ${tag.length > 20 ? 'border-red-800 text-red-400' : 'border-orange-900/60 text-orange-300/80'}`}>
+                      {tag}<span className="text-gray-700 ml-1 text-[9px]">{tag.length}</span>
+                    </span>
+                  ))}
+                </div>
+                <button type="button" onClick={() => navigator.clipboard.writeText(etsyTags.join(', '))}
+                  className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors">
+                  ⎘ Copy all tags
+                </button>
+              </div>
+            )}
+
+            {etsyDescription && (
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider">
+                    Etsy Description
+                    <span className="ml-2 text-gray-600 font-mono normal-case text-[10px]">
+                      ~{Math.round(etsyDescription.split(/\s+/).filter(Boolean).length)} words
+                    </span>
+                  </p>
+                  <button type="button" onClick={() => navigator.clipboard.writeText(etsyDescription)}
+                    className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors">
+                    ⎘ Copy
+                  </button>
+                </div>
+                <div className="relative">
+                  <textarea value={etsyDescription} onChange={e => setEtsyDescription(e.target.value)} rows={8}
+                    className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-y focus:outline-none focus:border-orange-700 font-mono leading-relaxed" />
+                  <div className="absolute bottom-2 right-2 bg-black/60 text-[9px] text-orange-900/70 px-1.5 py-0.5 font-mono pointer-events-none">
+                    first 160: {etsyDescription.slice(0, 160).length} chars
+                  </div>
+                </div>
+                <p className="text-gray-700 text-[10px] mt-1">I primi 160 chars appaiono su Google e nell'anteprima Etsy.</p>
+              </div>
+            )}
+          </div>
+        )}
+
       </Card>
       </Collapsible>
 
@@ -990,13 +1131,14 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         {/* ── Hero & Sequenza ─────────────────────────────────────────────── */}
         {poolImages.length > 0 && (
           <div className="border-t border-gray-800 pt-3 space-y-3">
-            <div className="flex gap-3 text-[10px] text-gray-600">
+            <div className="flex flex-wrap gap-3 text-[10px] text-gray-600">
               <span><span className="inline-block w-2 h-2 bg-blue-500 rounded-sm mr-1" />🖥 Hero Desktop</span>
               <span><span className="inline-block w-2 h-2 bg-purple-500 rounded-sm mr-1" />📱 Hero Mobile</span>
               <span><span className="inline-block w-2 h-2 bg-emerald-700 rounded-sm mr-1" />+ Sequenza</span>
+              <span><span className="inline-block w-2 h-2 bg-amber-500 rounded-sm mr-1" />🔍 Dettaglio</span>
             </div>
 
-            {(desktopHero || mobileHero || sequenza.length > 0) && (
+            {(desktopHero || mobileHero || detailImage || sequenza.length > 0) && (
               <div className="bg-[#111]/50 border border-gray-700 p-2 text-xs space-y-1">
                 {desktopHero && (
                   <div className="flex items-center gap-2">
@@ -1010,6 +1152,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                     <span className="text-purple-400 w-24 flex-shrink-0">📱 Mobile:</span>
                     <span className="text-gray-300 truncate font-mono text-[10px]">{mobileHero.split('/').pop()}</span>
                     <button onClick={() => setMobileHero(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+                  </div>
+                )}
+                {detailImage && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-amber-400 w-24 flex-shrink-0">🔍 Dettaglio:</span>
+                    <span className="text-gray-300 truncate font-mono text-[10px]">{detailImage.split('/').pop()}</span>
+                    <button onClick={() => setDetailImage(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
                   </div>
                 )}
                 {sequenza.length > 0 && (
@@ -1027,10 +1176,46 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             <div className="flex flex-wrap gap-1.5">
               {poolImages.map(img => (
                 <PoolThumb key={img.url} img={img}
-                  desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza}
-                  onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza}
+                  desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza} detailImage={detailImage}
+                  onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
                 />
               ))}
+            </div>
+
+            {/* ── Per-image alt text AI generator ── */}
+            <div className="border border-violet-900/40 bg-[#0d0d0f] p-3 space-y-3 mt-2">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div>
+                  <p className="text-violet-300 text-xs font-semibold mb-0.5">✨ Alt text AI per immagine</p>
+                  <p className="text-gray-600 text-[11px]">Genera alt text SEO per ogni immagine nel pool.</p>
+                </div>
+                <button
+                  onClick={generateAlts}
+                  disabled={generatingAlts || !poolImages.length}
+                  className="flex items-center gap-1.5 bg-violet-800 hover:bg-violet-700 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors flex-shrink-0"
+                >
+                  {generatingAlts
+                    ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" /> Generando…</>
+                    : `✨ Genera alt text (${poolImages.length} img)`
+                  }
+                </button>
+              </div>
+              {altsMsg && <p className={`text-xs ${altsMsg.startsWith('✓') ? 'text-violet-300' : 'text-red-400'}`}>{altsMsg}</p>}
+              {Object.keys(imageAlts).length > 0 && (
+                <div className="space-y-2 max-h-40 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+                  {Object.entries(imageAlts).map(([url, alt]) => (
+                    <div key={url} className="flex gap-2 items-start">
+                      <img src={url} alt="" className="w-8 h-8 object-cover flex-shrink-0 border border-gray-800 opacity-60"
+                        onError={e => { e.currentTarget.style.display = 'none' }} />
+                      <input
+                        value={alt}
+                        onChange={e => setImageAlts(prev => ({ ...prev, [url]: e.target.value }))}
+                        className="flex-1 bg-transparent border border-gray-800 text-gray-400 text-[11px] px-2 py-1 focus:outline-none focus:border-violet-700 font-mono"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
