@@ -1849,14 +1849,15 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
-    "heroImage": null,
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg",
     "images": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
     ],
     "imageAlts": {
@@ -2102,6 +2103,8 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-05-23T16:18:25.070Z"
+    "updatedAt": "2026-05-23T16:28:15.138Z",
+    "relatedProducts": [],
+    "detailImage": null
   }
 ]
