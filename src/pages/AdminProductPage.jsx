@@ -7,6 +7,7 @@ import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 
 const ADMIN_PASSWORD = 'jaylpelle'
+const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -744,6 +745,10 @@ export default function AdminProductPage() {
   const [tags, setTags]             = useState('')
   const [videoUrl, setVideoUrl]     = useState('')
   const [gelatoUid, setGelatoUid]   = useState('')
+  const [printFileUrl,    setPrintFileUrl]    = useState('')
+  const [neckLabelUrl,    setNeckLabelUrl]    = useState('')
+  const [uploadingDesign, setUploadingDesign] = useState(false)
+  const [designUploadErr, setDesignUploadErr] = useState('')
   const [featured, setFeatured]     = useState(false)  // 1 | 2 | false
   const [featuringNow, setFeaturingNow] = useState(false)
   const [relatedProducts, setRelatedProducts] = useState([])
@@ -796,6 +801,8 @@ export default function AdminProductPage() {
       setTags(Array.isArray(p.tags) ? p.tags.join(', ') : (p.tags || ''))
       setVideoUrl(p.videoUrl || '')
       setGelatoUid(p.gelatoProductId || '')
+      setPrintFileUrl(p.printFileUrl || '')
+      setNeckLabelUrl(p.neckLabelUrl || '')
       setFeatured(p.featured === 1 ? 1 : p.featured === 2 ? 2 : false)
       setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
       // media
@@ -961,6 +968,8 @@ export default function AdminProductPage() {
         featured,
         relatedProducts: relatedProducts.filter(Boolean),
         gelatoProductId: gelatoUid.trim() || null,
+        ...(printFileUrl.trim() ? { printFileUrl: printFileUrl.trim() } : {}),
+        ...(neckLabelUrl.trim() ? { neckLabelUrl: neckLabelUrl.trim() } : {}),
         adminManaged: true,
         // ── media (unified save — no need to press a separate button) ──
         images:      sequenza,
@@ -981,6 +990,34 @@ export default function AdminProductPage() {
       setSaveErr(e.message)
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleUploadDesign = async (file) => {
+    if (!file) return
+    setUploadingDesign(true); setDesignUploadErr('')
+    try {
+      // Try Vercel Blob client upload for large files
+      const sanitized = sanitizeFilename(file.name)
+      const blob = await blobUpload(sanitized, file, {
+        access: 'public',
+        handleUploadUrl: '/api/admin',
+        clientPayload: JSON.stringify({ password: ADMIN_PASSWORD, productId: id }),
+      })
+      const result = await api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url })
+      setPrintFileUrl(result.url)
+    } catch {
+      // Fallback: base64 for smaller files
+      try {
+        const dataUrl = await fileToBase64(file)
+        const sanitized = sanitizeFilename(file.name)
+        const result = await api('upload-design', { productId: id, filename: sanitized, dataUrl })
+        setPrintFileUrl(result.url)
+      } catch (e2) {
+        setDesignUploadErr(e2.message || 'Upload failed')
+      }
+    } finally {
+      setUploadingDesign(false)
     }
   }
 
@@ -1505,6 +1542,83 @@ export default function AdminProductPage() {
                 <p className="text-yellow-500 text-xs mt-1">⚠ URL not recognised as YouTube, Vimeo, or .mp4</p>
               )}
             </Section>
+
+            {/* ── Stampa & Fulfillment ── */}
+            {isEditable && (
+              <Section title="🖨 Stampa & Fulfillment">
+                <div className="bg-amber-950/30 border border-amber-700/40 rounded p-3 mb-4">
+                  <p className="text-amber-400 text-xs">
+                    Gelato richiede il file di design originale (PNG/PDF ad alta risoluzione) per stampare ogni ordine.
+                    Carica il file una volta sola — verrà usato per tutti gli ordini futuri.
+                  </p>
+                </div>
+
+                {/* Print file */}
+                <Field label="File di stampa" hint="PNG/PDF alta risoluzione (almeno 300 DPI). Questo è il design che Gelato stampa sulla maglietta.">
+                  <div className="space-y-2">
+                    {printFileUrl ? (
+                      <div className="flex items-center gap-2">
+                        <a href={printFileUrl} target="_blank" rel="noreferrer"
+                           className="text-indigo-400 text-xs font-mono truncate max-w-xs hover:underline">
+                          {printFileUrl.split('/').pop()}
+                        </a>
+                        <button onClick={() => setPrintFileUrl('')} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
+                      </div>
+                    ) : (
+                      <p className="text-gray-600 text-xs italic">Nessun file caricato</p>
+                    )}
+                    <div className="flex gap-2">
+                      <label className={`cursor-pointer ${uploadingDesign ? 'opacity-50 pointer-events-none' : ''}`}>
+                        <input
+                          type="file"
+                          accept="image/png,image/jpeg,application/pdf,image/svg+xml"
+                          className="hidden"
+                          onChange={e => handleUploadDesign(e.target.files?.[0])}
+                        />
+                        <span className="inline-block bg-indigo-800 hover:bg-indigo-700 text-white text-xs px-3 py-1.5 transition-colors">
+                          {uploadingDesign ? '⏫ Caricamento…' : '⬆ Carica design'}
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        value={printFileUrl}
+                        onChange={e => setPrintFileUrl(e.target.value)}
+                        placeholder="oppure incolla URL…"
+                        className={`${inputCls} text-xs flex-1`}
+                      />
+                    </div>
+                    {designUploadErr && <p className="text-red-400 text-xs">⚠ {designUploadErr}</p>}
+                  </div>
+                </Field>
+
+                {/* Neck label */}
+                <Field label="Neck Label (colletto)" hint="Etichetta interna — richiesta per prodotti con 'inlbl' nel productUid.">
+                  <div className="space-y-2">
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setNeckLabelUrl(JAYL_NECK_LABEL_URL)}
+                        className="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs px-3 py-1.5 transition-colors whitespace-nowrap"
+                      >
+                        👕 Logo JAYL
+                      </button>
+                      <input
+                        type="text"
+                        value={neckLabelUrl}
+                        onChange={e => setNeckLabelUrl(e.target.value)}
+                        placeholder="URL neck label…"
+                        className={`${inputCls} text-xs flex-1`}
+                      />
+                      {neckLabelUrl && (
+                        <button onClick={() => setNeckLabelUrl('')} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
+                      )}
+                    </div>
+                    {neckLabelUrl && (
+                      <p className="text-green-500 text-xs">✓ {neckLabelUrl === JAYL_NECK_LABEL_URL ? 'Logo JAYL preimpostato' : 'Custom URL'}</p>
+                    )}
+                  </div>
+                </Field>
+              </Section>
+            )}
 
             {/* ── Gelato ── */}
             <Section title="Gelato">
