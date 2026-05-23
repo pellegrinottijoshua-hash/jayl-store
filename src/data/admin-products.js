@@ -1861,12 +1861,17 @@ export const adminProducts = [
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
     ],
     "imageAlts": {
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Mockup of the Cool Vileploom Pokémon T-shirt emphasizing its retro 90s anime fan art appeal.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "The Cool Vileploom Pokémon T-shirt displayed in a military green colorway, showcasing its stylish design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileploom Pokémon T-shirt presented in an azalea color, highlighting its playful design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "The Cool Vileploom Pokémon T-shirt in a bright white color, emphasizing its vibrant graphic art.",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design."
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Irish green version of the Cool Vileploom Pokémon T-shirt, showcasing its unique artistic flair.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg": "A vibrant display of the Cool Vileploom Pokémon T-shirt showcasing its colorful design in a dynamic setting.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg": "Cool Vileploom Pokémon T-shirt captured in a lively pose against a bright background for mobile view.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg": "Close-up shot highlighting the intricate details of the Cool Vileploom design on the t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png": "An angled view of the Cool Vileploom Pokémon T-shirt illustrating its unique artistic style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg": "A stylish view of the Cool Vileploom Pokémon T-shirt highlighting its artistic design in a casual setting."
     },
     "tags": [
       "pokemon shirt",
@@ -2105,7 +2110,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-05-23T16:28:15.138Z",
+    "updatedAt": "2026-05-23T16:34:13.306Z",
     "relatedProducts": [],
     "detailImage": null
   }
