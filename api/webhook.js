@@ -175,9 +175,11 @@ export default async function handler(req, res) {
     case 'payment_intent.succeeded': {
       const pi = event.data.object
       console.log('[webhook] payment_intent.succeeded:', pi.id)
-      // Re-fetch in case the PI metadata was just updated by /api/create-order
-      // racing the webhook delivery.
+      // Wait 10 s before checking — /api/create-order fires at the same moment
+      // and writes gelatoOrderId back to PI metadata within ~2-3 s.
+      // If we find gelatoOrderId already set we skip; otherwise we are the fallback.
       try {
+        await new Promise(r => setTimeout(r, 10_000))
         const fresh = await stripe.paymentIntents.retrieve(pi.id)
         await fulfillIfNeeded(fresh)
       } catch (err) {
