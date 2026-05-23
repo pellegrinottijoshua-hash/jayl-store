@@ -119,10 +119,9 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
       quantity:        item.quantity,
       files: [
         { type: 'default', url: item.product.printFileUrl || item.product.image },
-        // neck-inner disabled — SVG not accepted; re-enable when PNG/PDF label is ready
-        // ...(item.product.neckLabelUrl
-        //   ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
-        //   : []),
+        ...(item.product.neckLabelUrl
+          ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
+          : []),
       ],
     }
   })
