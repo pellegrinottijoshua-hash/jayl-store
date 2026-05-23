@@ -1885,6 +1885,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "064deeaf-aa4c-4164-8227-208efa19318f",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileploom-pok-mon-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
