@@ -4,14 +4,14 @@
     "email": "pellegrinottijoshua@gmail.com",
     "cartItems": [
       {
-        "name": "Cool Mewtwo T-Shirt",
-        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
-        "color": "black",
+        "name": "Cool Dragonite T-Shirt",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_185843_37ef0c52-7862-4b3f-9847-46b3148da810.jpg",
+        "color": "natural",
         "size": "XL",
         "quantity": 1
       }
     ],
-    "capturedAt": "2026-05-23T15:19:21.068Z",
+    "capturedAt": "2026-05-23T15:45:38.385Z",
     "sent": false,
     "converted": false
   }
