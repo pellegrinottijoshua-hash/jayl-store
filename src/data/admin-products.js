@@ -75,6 +75,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "0edda569-9ce8-43a0-9475-ead1cd2919b5",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -378,6 +380,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "02469b43-f6f2-4c2b-9d73-b1a6b56e923d",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dragonite-pok-mon-t-shirt-retro-90s-style-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -679,6 +683,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "dec76803-3d9d-4291-b077-f469d8d49a1b",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -1277,6 +1283,8 @@ export const adminProducts = [
     ],
     "featured": 2,
     "gelatoProductId": "5cb5bc0e-b1ad-4c59-88be-1fc1fb8a7dc5",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -1578,6 +1586,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "6088cc0d-4c75-4194-abf4-ac5a472c1d32",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
