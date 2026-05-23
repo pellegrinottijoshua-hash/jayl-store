@@ -67,9 +67,6 @@ async function handleGetOrders(req, res) {
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
 
-// UUID v4 pattern — identifies a Gelato *store* product vs a catalog product UID
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-
 async function createGelatoOrder({ paymentIntent, items, shippingAddress, email }) {
   const apiKey  = (process.env.GELATO_API_KEY  || '').trim()
   const storeId = (process.env.GELATO_STORE_ID || '').trim()
@@ -87,7 +84,10 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     phone:        shippingAddress.phone || '',
   }
 
-  // Determine if ALL items are store products (UUID gelatoProductId + variant.uid)
+  // Resolve the correct Gelato productUid for each item.
+  // For every item we always use v4/orders with productUid + files[].
+  // storeProductVariantId (ecommerce endpoint) is NOT used — it leaves orders
+  // in "not_connected" state for direct API integrations.
   const resolvedItems = items.map((item) => {
     const gelatoVariant = item.product.variants?.find((v) => {
       const colorMatch =
@@ -100,67 +100,19 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
       return colorMatch && sizeMatch
     })
     const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
-    const isStoreProduct = UUID_RE.test(item.product.gelatoProductId ?? '')
-    return { item, gelatoVariant, itemRef, isStoreProduct }
+    return { item, gelatoVariant, itemRef }
   })
 
-  const allStoreProducts = resolvedItems.every(r => r.isStoreProduct && r.gelatoVariant?.uid)
-
-  if (allStoreProducts && storeId) {
-    // ── Ecommerce store API ────────────────────────────────────────────────────
-    // Use ecommerce.gelatoapis.com/v1/stores/{storeId}/orders with storeProductVariantId.
-    // Design is already saved in Gelato — no files needed.
-    const url = `https://ecommerce.gelatoapis.com/v1/stores/${storeId}/orders`
-    const payload = {
-      orderReferenceId:    `jayl-${paymentIntent.id}`,
-      customerReferenceId: email || 'unknown',
-      currency:            CURRENCY.toUpperCase(),
-      items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
-        console.log('[create-order] store-product item', item.productId,
-          'color:', item.color, 'size:', item.size,
-          '→ storeProductVariantId:', gelatoVariant.uid)
-        return {
-          itemReferenceId:       itemRef,
-          storeProductVariantId: gelatoVariant.uid,
-          quantity:              item.quantity,
-        }
-      }),
-      shippingAddress: shippingPayload,
-    }
-    console.log('[create-order] → ecommerce API', url, JSON.stringify(payload))
-    const gelatoRes = await fetch(url, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
-      body:    JSON.stringify(payload),
-    })
-    const body = await gelatoRes.json().catch(() => ({}))
-    if (!gelatoRes.ok) {
-      const err = new Error(`Gelato ecommerce ${gelatoRes.status}: ${body.message || body.error || JSON.stringify(body)}`)
-      err.status = gelatoRes.status; err.body = body
-      throw err
-    }
-    return body
-  }
-
   // ── Standard orders API v4 ─────────────────────────────────────────────────
-  // Catalog products (productUid + files) or mixed carts.
-  const mappedItems = resolvedItems.map(({ item, gelatoVariant, itemRef, isStoreProduct }) => {
-    if (isStoreProduct && gelatoVariant?.uid) {
-      // Store product in a mixed cart — fall back to catalog approach if possible
-      const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-      console.log('[create-order] mixed cart store item', item.productId,
-        '→ catalog productUid:', productUid?.slice(0, 60))
-      return {
-        itemReferenceId: itemRef,
-        productUid,
-        quantity:        item.quantity,
-        files: [{ type: 'default', url: item.product.printFileUrl || item.product.image }],
-      }
-    }
+  const mappedItems = resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
+    // gelatoVariantId is the full productUid (e.g. apparel_product_gca_t-shirt_..._gco_sand_...)
+    // gelatoProductId is the fallback (either the same uid or a store product UUID)
     const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-    console.log('[create-order] catalog item', item.productId,
+    console.log('[create-order] item', item.productId,
       'color:', item.color, 'size:', item.size,
-      '→ productUid:', productUid?.slice(0, 60))
+      '→ productUid:', productUid?.slice(0, 80),
+      '| printFileUrl:', item.product.printFileUrl ? 'set' : 'MISSING',
+      '| neckLabelUrl:', item.product.neckLabelUrl ? 'set' : 'none')
     return {
       itemReferenceId: itemRef,
       productUid,
