@@ -1813,5 +1813,295 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg"
+  },
+  {
+    "id": "cool-vileploom-pok-mon-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool Vileploom Pokémon T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Elevate your wardrobe with the Cool Vileploom Pokémon T-Shirt, crafted from high-quality Gildan 64000 cotton for superior comfort and durability. Featuring vibrant Gelato print quality, this shirt showcases a unique art style that captures the essence of your favorite Pokémon. Its minimalist design makes it perfect for casual outings or as a standout piece in your collection. Wear your fandom with pride and enjoy the soft feel of this premium tee, designed for true Pokémon enthusiasts.",
+    "altText": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
+    "heroImage": null,
+    "images": [
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
+    ],
+    "imageAlts": {
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design."
+    },
+    "tags": [
+      "pokemon shirt",
+      "vileploom tee",
+      "gildan t-shirt",
+      "anime art",
+      "fan apparel",
+      "gift for gamers",
+      "vintage style",
+      "graphic tee",
+      "collectible shirt",
+      "casual wear",
+      "pokemon gift",
+      "pop culture",
+      "artistic clothing"
+    ],
+    "featured": false,
+    "gelatoProductId": "064deeaf-aa4c-4164-8227-208efa19318f",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "pokemon t-shirt",
+      "gildan shirt",
+      "graphic tee",
+      "anime merchandise",
+      "vileploom apparel"
+    ],
+    "longTailKeywords": [
+      "cool vileploom pokemon shirt",
+      "gildan 64000 t-shirt",
+      "premium pokemon apparel",
+      "anime graphic t-shirt",
+      "vibrant gelato print tee",
+      "pokemon fan gift ideas",
+      "unique anime clothing",
+      "collectible pokemon t-shirt",
+      "stylish graphic tees",
+      "comfortable casual wear"
+    ],
+    "hashtags": "#pokemon #anime #artprint #gildan #graphictee #vileploom #snorlaxfan #animetee #pokemongifts #fanart #tshirt #collectibles #casualstyle #wearableart #nerdyfashion #geekwear #otaku #streetwear #gamingapparel #vintageclothing #artlover #fashion #pokemontshirts #coolshirts #tshirtcollection #animefashion #trendy #shoplocal #fashionstatement #artistic",
+    "variants": [
+      {
+        "uid": "418b8b32-177b-4c2e-927c-7a79fee3c7d1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7f9ee537-3677-4731-bfd2-c44c1cbe41d5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0b743c4e-893d-4547-bf24-3d94c44fef2d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9cc2a2f5-efef-4f0c-8187-9fca9990eb6b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "27375ab6-676b-4298-811c-5868a0c92315",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "650ecf67-7211-4bc7-bcd8-e7e6be268fec",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "945ef7c8-ac8f-41b5-ac7a-616404eadbb4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5d1b20a5-e995-4ab3-a171-1ab5ec6131f3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b015d225-9b90-469a-8c91-a02448ba2824",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a9cca16c-f833-4bba-8c44-a28ed50e41b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a9de7bd6-9fda-49da-866f-1c204ced94bc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "10767224-be24-4098-8666-10389aa3dc46",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b5009689-7352-406f-92c4-5a85fe6810e8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d57aef86-d5d1-4b43-89a0-4b8da2e77be0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "163a3a92-e473-44fe-b41b-8a54290670c1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4d50cd9c-579a-46ef-bab9-d9c6dad3c562",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "580bb8b7-c40e-40e7-aae5-abb5013e2888",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "084d4e88-75b4-4daa-9d75-f8244236ff04",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8a1b0dc6-441b-4dc3-87c5-605b52479903",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cdeb962f-5945-448f-a600-01b61da3d5c4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "irish-green",
+        "label": "Irish Green",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg"
+      }
+    ],
+    "printCost": 700,
+    "createdAt": "2026-05-23T16:18:25.070Z",
+    "updatedAt": "2026-05-23T16:18:25.070Z"
   }
 ]
