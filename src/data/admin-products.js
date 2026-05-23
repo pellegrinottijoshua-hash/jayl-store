@@ -986,6 +986,8 @@ export const adminProducts = [
     ],
     "featured": 1,
     "gelatoProductId": "6b8f79fc-b20c-463a-93be-5fc41b9ca362",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/snorlax-pok-mon-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
