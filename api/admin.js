@@ -717,6 +717,54 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, url: rawUrl })
     }
 
+    // ── upload-design ─────────────────────────────────────────────────────────
+    // Stores print-ready design files under public/designs/{productId}/
+    // No compression — preserves full quality for printing.
+    if (action === 'upload-design') {
+      const { productId, filename, blobUrl, dataUrl } = data
+      if (!productId || !filename) return res.status(400).json({ error: 'productId and filename required' })
+      if (!blobUrl && !dataUrl)   return res.status(400).json({ error: 'blobUrl or dataUrl required' })
+      if (!/^[a-zA-Z0-9_\-./]+$/.test(productId) || !/^[a-zA-Z0-9_\-.]+$/.test(filename)) {
+        return res.status(400).json({ error: 'Invalid productId or filename' })
+      }
+      let base64
+      if (blobUrl) {
+        const blobRes = await fetch(blobUrl)
+        if (!blobRes.ok) throw new Error(`Failed to download design file: ${blobRes.status}`)
+        const buffer = await blobRes.arrayBuffer()
+        base64 = Buffer.from(buffer).toString('base64')
+        const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+        if (blobToken) blobDel(blobUrl, { token: blobToken }).catch(() => {})
+      } else {
+        base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
+      }
+      const filePath = `public/designs/${productId}/${filename}`
+      let existingSha = null
+      try { const ex = await ghGet(filePath, githubToken); existingSha = ex.sha } catch {}
+      const ghUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
+      const ghRes = await fetch(ghUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+          'X-GitHub-Api-Version': '2022-11-28',
+        },
+        body: JSON.stringify({
+          message: `admin: upload design ${filename} for ${productId} [skip ci]`,
+          content: base64,
+          branch: GITHUB_BRANCH,
+          ...(existingSha ? { sha: existingSha } : {}),
+        }),
+      })
+      if (!ghRes.ok) {
+        const err = await ghRes.json().catch(() => ({}))
+        throw new Error(`Design upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
+      }
+      const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
+      return res.status(200).json({ ok: true, url: rawUrl })
+    }
+
     // ── delete-image ──────────────────────────────────────────────────────────
     if (action === 'delete-image') {
       const { path: filePath, sha } = data
