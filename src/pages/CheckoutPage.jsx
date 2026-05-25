@@ -205,6 +205,24 @@ function CheckoutForm() {
       const orderData = orderRes.ok ? await orderRes.json() : {}
       const orderId = orderData.orderId || `JAYL-${Date.now().toString(36).toUpperCase()}`
 
+      // Meta Pixel — Purchase
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Purchase', {
+          value: total,
+          currency: 'EUR',
+          content_ids: items.map(i => i.id),
+          content_type: 'product',
+          num_items: items.reduce((s, i) => s + (i.quantity || 1), 0),
+        })
+      }
+      // Pinterest Tag — Checkout
+      if (typeof window.pintrk === 'function') {
+        window.pintrk('track', 'checkout', {
+          value: total,
+          order_quantity: items.reduce((s, i) => s + (i.quantity || 1), 0),
+          currency: 'EUR',
+        })
+      }
       clearCart()
       navigate(`/order-confirmation/${orderId}`, {
         state: {

@@ -526,6 +526,20 @@ export default function ProductPage() {
       const others = next.slice(1).map(i => getProductById(i)).filter(Boolean).slice(0, 4)
       setRecentlyViewed(others)
     } catch {}
+    // Meta Pixel — ViewContent
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'ViewContent', {
+        content_ids: [product.id],
+        content_name: product.name,
+        content_type: 'product',
+        value: product.price,
+        currency: 'EUR',
+      })
+    }
+    // Pinterest Tag — PageVisit (product page)
+    if (typeof window.pintrk === 'function') {
+      window.pintrk('track', 'pagevisit')
+    }
   }, [product?.id])
 
   // Load approved reviews for this product
@@ -649,6 +663,24 @@ export default function ProductPage() {
     setAdded(true)
     openCart()
     setTimeout(() => setAdded(false), 2000)
+    // Meta Pixel — AddToCart
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'AddToCart', {
+        content_ids: [product.id],
+        content_name: product.name,
+        content_type: 'product',
+        value: product.price,
+        currency: 'EUR',
+      })
+    }
+    // Pinterest Tag — AddToCart
+    if (typeof window.pintrk === 'function') {
+      window.pintrk('track', 'addtocart', {
+        value: product.price,
+        order_quantity: 1,
+        currency: 'EUR',
+      })
+    }
   }
 
   const handleCopy = () => {
