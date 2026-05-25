@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Lock } from 'lucide-react'
 import { loadStripe } from '@stripe/stripe-js'
-import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
 import { formatPrice, cn } from '@/lib/utils'
 
@@ -101,6 +101,93 @@ function CheckoutForm() {
   })
   const [errors, setErrors] = useState({})
   const [processing, setProcessing] = useState(false)
+
+  // Apple Pay / Google Pay
+  const [paymentRequest, setPaymentRequest] = useState(null)
+
+  useEffect(() => {
+    if (!stripe || !total) return
+    const pr = stripe.paymentRequest({
+      country: 'IT',
+      currency: 'eur',
+      total: { label: 'JAYL', amount: Math.round(total * 100) },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    })
+    pr.canMakePayment().then(result => {
+      if (result) setPaymentRequest(pr)
+    })
+    pr.on('paymentmethod', async (e) => {
+      try {
+        const piRes = await fetch('/api/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: Math.round(total * 100),
+            currency: 'eur',
+            metadata: {
+              items: JSON.stringify(items.map(i => ({
+                productId: i.product.id,
+                size: i.size || null,
+                frame: i.frame || 'none',
+                color: i.color || null,
+                quantity: i.quantity,
+              }))),
+              ...(appliedCode ? { discountCode: appliedCode.code } : {}),
+            },
+          }),
+        })
+        if (!piRes.ok) {
+          e.complete('fail')
+          return
+        }
+        const { clientSecret } = await piRes.json()
+        const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
+          clientSecret,
+          { payment_method: e.paymentMethod.id },
+          { handleActions: false }
+        )
+        if (confirmError) {
+          e.complete('fail')
+          return
+        }
+        e.complete('success')
+        // Fire analytics events
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Purchase', {
+            value: total,
+            currency: 'EUR',
+            content_ids: items.map(i => i.id),
+            content_type: 'product',
+            num_items: items.reduce((s, i) => s + (i.quantity || 1), 0),
+          })
+        }
+        if (typeof window.pintrk === 'function') {
+          window.pintrk('track', 'checkout', {
+            value: total,
+            order_quantity: items.reduce((s, i) => s + (i.quantity || 1), 0),
+            currency: 'EUR',
+          })
+        }
+        clearCart()
+        const orderId = paymentIntent.id
+        navigate(`/order-confirmation/${orderId}`, {
+          state: {
+            order: {
+              id: orderId,
+              items,
+              subtotal,
+              shipping,
+              total,
+              email: e.payerEmail || '',
+            },
+          },
+        })
+      } catch {
+        e.complete('fail')
+      }
+    })
+  }, [stripe, total]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
@@ -374,12 +461,34 @@ function CheckoutForm() {
                 to <code className="text-text-secondary font-mono">.env.local</code> to enable payments.
               </div>
             ) : (
-              <div className="space-y-1">
-                <label className="text-xs font-medium tracking-wide text-text-secondary uppercase">
-                  Card details
-                </label>
-                <div className="input-field py-3">
-                  <CardElement options={CARD_ELEMENT_OPTIONS} />
+              <div className="space-y-4">
+                {paymentRequest && (
+                  <div>
+                    <PaymentRequestButtonElement
+                      options={{
+                        paymentRequest,
+                        style: {
+                          paymentRequestButton: {
+                            theme: 'dark',
+                            height: '48px',
+                          },
+                        },
+                      }}
+                    />
+                    <div className="flex items-center gap-3 my-4">
+                      <div className="flex-1 h-px bg-border" />
+                      <span className="text-xs text-text-muted tracking-wide">— or pay by card —</span>
+                      <div className="flex-1 h-px bg-border" />
+                    </div>
+                  </div>
+                )}
+                <div className="space-y-1">
+                  <label className="text-xs font-medium tracking-wide text-text-secondary uppercase">
+                    Card details
+                  </label>
+                  <div className="input-field py-3">
+                    <CardElement options={CARD_ELEMENT_OPTIONS} />
+                  </div>
                 </div>
               </div>
             )}
