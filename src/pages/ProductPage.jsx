@@ -585,7 +585,7 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-white pt-32 flex flex-col items-center justify-center text-center px-4">
+      <div className="min-h-screen bg-paper pt-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="font-display text-4xl text-ink mb-4">Not Found</h1>
         <p className="text-ink-secondary mb-8">This work doesn't exist (yet).</p>
         <Link to="/art" className="btn-ink">Back to Shop</Link>
@@ -705,7 +705,7 @@ export default function ProductPage() {
 
   const t = isLight
     ? {
-        page: 'bg-white',
+        page: 'bg-paper',
         backBtn: 'text-ink-muted hover:text-ink',
         movement: 'text-ink-muted',
         sectionTag: 'text-ink-muted',
@@ -1645,7 +1645,7 @@ export default function ProductPage() {
                       placeholder="Jane D."
                       required
                       maxLength={80}
-                      className={cn('w-full px-3 py-2 text-sm focus:outline-none transition-colors', isLight ? 'bg-white border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
+                      className={cn('w-full px-3 py-2 text-sm focus:outline-none transition-colors', isLight ? 'bg-paper border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
                     />
                   </div>
                   <div>
@@ -1657,7 +1657,7 @@ export default function ProductPage() {
                       required
                       maxLength={1000}
                       rows={4}
-                      className={cn('w-full px-3 py-2 text-sm resize-none focus:outline-none transition-colors', isLight ? 'bg-white border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
+                      className={cn('w-full px-3 py-2 text-sm resize-none focus:outline-none transition-colors', isLight ? 'bg-paper border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
                     />
                   </div>
                 </div>

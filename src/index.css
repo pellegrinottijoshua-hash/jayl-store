@@ -34,7 +34,7 @@
   }
 
   body {
-    @apply bg-white text-ink font-sans antialiased;
+    @apply bg-paper text-ink font-sans antialiased;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

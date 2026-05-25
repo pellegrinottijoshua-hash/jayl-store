@@ -18,7 +18,7 @@ export default function ProductCard({ product, className, light = false }) {
       className={cn(
         'group block relative overflow-hidden transition-all duration-500',
         light
-          ? 'bg-white border border-paper-border hover:border-ink-muted'
+          ? 'bg-paper border border-paper-border hover:border-ink-muted'
           : 'bg-surface border border-border hover:border-border-light',
         className
       )}

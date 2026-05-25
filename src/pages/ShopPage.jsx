@@ -53,7 +53,7 @@ export default function ShopPage() {
   // Theme-aware class sets
   const t = isLight
     ? {
-        page: 'bg-white',
+        page: 'bg-paper',
         heading: 'text-ink',
         label: 'section-label-light',
         stickyBar: 'bg-white/95 backdrop-blur-md border-b border-paper-border',
