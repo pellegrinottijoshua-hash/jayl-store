@@ -443,8 +443,13 @@ export default function ProductPage() {
         image:        productImage ? [productImage] : undefined,
         brand: { '@type': 'Brand', name: 'JAYL' },
         ...(product.collection ? { category: product.collection } : {}),
-        // AggregateRating — populated when Judge.me reviews are integrated
-        // aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '0' },
+        ...(reviews.length > 0 ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1),
+            reviewCount: reviews.length,
+          },
+        } : {}),
         offers: {
           '@type':        'Offer',
           priceCurrency:  'EUR',
