@@ -298,6 +298,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [hashtags,         setHashtags]         = useState(editingProduct?.hashtags         || '')
   const [instagramCaption, setInstagramCaption] = useState(editingProduct?.instagramCaption || '')
   const [pinterestCaption, setPinterestCaption] = useState(editingProduct?.pinterestCaption || '')
+  const [seoTitle,         setSeoTitle]         = useState(editingProduct?.seoTitle         || '')
   // Etsy SEO
   const [etsyTitle,        setEtsyTitle]        = useState(editingProduct?.etsyTitle        || '')
   const [etsyTags,         setEtsyTags]         = useState(
@@ -379,7 +380,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
-      if (data.seoTitle)           setTitle(data.seoTitle)
+      if (data.seoTitle)           setSeoTitle(data.seoTitle)
       if (data.description)        setDescription(data.description)
       if (data.altText)            setAltText(data.altText)
       if (data.tags?.length)       setTags(data.tags.join(', '))
@@ -646,6 +647,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(hashtags.trim()         ? { hashtags:         hashtags.trim() }         : {}),
         ...(instagramCaption.trim() ? { instagramCaption: instagramCaption.trim() } : {}),
         ...(pinterestCaption.trim() ? { pinterestCaption: pinterestCaption.trim() } : {}),
+        ...(seoTitle.trim()         ? { seoTitle:         seoTitle.trim() }         : {}),
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
         ...(printCost.trim() ? { printCost: Math.round(parseFloat(printCost) * 100) } : {}),
@@ -968,6 +970,19 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 onClick={() => navigator.clipboard.writeText(instagramCaption)}
                 className="mt-1 text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
               >📋 Copy caption</button>
+            )}
+          </Field>
+          <Field label="SEO Title" hint="Meta title · usePageMeta aggiunge '— JAYL' · target 50-65 chars">
+            <input
+              value={seoTitle}
+              onChange={e => setSeoTitle(e.target.value)}
+              placeholder="Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift"
+              className={`${inputCls} font-mono text-xs`}
+            />
+            {seoTitle && (
+              <span className={`text-[10px] font-mono mt-0.5 block ${seoTitle.length > 70 ? 'text-yellow-400' : 'text-green-500'}`}>
+                {seoTitle.length}/70 chars
+              </span>
             )}
           </Field>
           <Field label="Pinterest caption" hint="Copy-paste to Pinterest pin description.">
