@@ -771,7 +771,7 @@ export default function AdminProductPage() {
   const [pinterestPublishing,  setPinterestPublishing]  = useState(false)
   const [pinterestMsg,         setPinterestMsg]         = useState('')
   const [pinterestPinUrl,      setPinterestPinUrl]      = useState('')
-  const [pinterestImageChoice, setPinterestImageChoice] = useState('desktop')
+  const [pinterestImageChoice, setPinterestImageChoice] = useState('')  // stores URL directly
   const [pinterestEditCaption, setPinterestEditCaption] = useState('')
   const [hashtags, setHashtags]                 = useState('')
   const [primaryKeywords, setPrimaryKeywords]   = useState([])
@@ -967,13 +967,7 @@ export default function AdminProductPage() {
 
   const publishToPinterest = async () => {
     if (!pinterestBoardId.trim()) return setPinterestMsg('⚠ Inserisci un Board ID prima')
-    const imageChoices = {
-      desktop: desktopHero,
-      mobile:  mobileHero,
-      detail:  detailImage,
-      gallery: sequenza[0],
-    }
-    const imageUrl = imageChoices[pinterestImageChoice] || desktopHero || sequenza[0]
+    const imageUrl = pinterestImageChoice || desktopHero || sequenza[0]
     if (!imageUrl) return setPinterestMsg('⚠ Nessuna immagine trovata')
     setPinterestPublishing(true); setPinterestMsg('')
     try {
@@ -1585,21 +1579,42 @@ export default function AdminProductPage() {
                           />
                         </div>
                         <div>
-                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Immagine da usare</p>
-                          <div className="flex gap-2 flex-wrap">
-                            {[
-                              { key: 'desktop', label: '🖥 Hero Desktop', url: desktopHero },
-                              { key: 'mobile',  label: '📱 Hero Mobile',  url: mobileHero },
-                              { key: 'detail',  label: '🔍 Detail',       url: detailImage },
-                              { key: 'gallery', label: '🖼 Gallery[0]',   url: sequenza[0] },
-                            ].filter(o => o.url).map(o => (
-                              <button
-                                key={o.key}
-                                onClick={() => setPinterestImageChoice(o.key)}
-                                className={`text-[10px] px-2 py-1 border transition-colors ${pinterestImageChoice === o.key ? 'border-red-700 text-red-400 bg-red-950/20' : 'border-gray-800 text-gray-600 hover:border-gray-600'}`}
-                              >{o.label}</button>
-                            ))}
-                          </div>
+                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-2">Immagine da usare</p>
+                          {(() => {
+                            const groups = [
+                              { label: '🖥 Heroes', items: [
+                                desktopHero && { url: desktopHero, tag: 'Desktop' },
+                                mobileHero  && { url: mobileHero,  tag: 'Mobile' },
+                                detailImage && { url: detailImage, tag: 'Detail' },
+                              ].filter(Boolean) },
+                              { label: '🖼 Gallery', items: sequenza.map((url, i) => ({ url, tag: `#${i+1}` })) },
+                              { label: '⬆ Importate', items: uploadedImages.map(img => ({ url: img.url, tag: 'Import' })) },
+                              { label: '✨ Generate', items: generatedImages.map(img => ({ url: img.url, tag: 'AI' })) },
+                              { label: '🏭 Gelato', items: gelatoImages.map(img => ({ url: img.url, tag: 'Gelato' })) },
+                            ].filter(g => g.items.length > 0)
+                            return (
+                              <div className="space-y-2">
+                                {groups.map(g => (
+                                  <div key={g.label}>
+                                    <p className="text-gray-700 text-[9px] uppercase tracking-wider mb-1">{g.label}</p>
+                                    <div className="flex gap-1.5 flex-wrap">
+                                      {g.items.map(o => (
+                                        <button
+                                          key={o.url}
+                                          onClick={() => setPinterestImageChoice(o.url)}
+                                          title={o.url}
+                                          className={`relative w-14 h-14 border-2 overflow-hidden transition-all flex-shrink-0 ${pinterestImageChoice === o.url ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-800 hover:border-gray-600'}`}
+                                        >
+                                          <img src={o.url} alt="" className="w-full h-full object-cover" />
+                                          <span className="absolute bottom-0 left-0 right-0 bg-black/70 text-[8px] text-gray-300 text-center leading-tight py-0.5">{o.tag}</span>
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            )
+                          })()}
                         </div>
                         <div>
                           <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Caption pin</p>
