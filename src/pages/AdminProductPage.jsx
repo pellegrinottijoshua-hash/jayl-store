@@ -174,15 +174,26 @@ function Field({ label, hint, children }) {
   )
 }
 
-function Section({ title, children }) {
+function Section({ title, icon, color = 'gray', children }) {
+  const colors = {
+    gray:    { border: 'border-gray-700',    text: 'text-gray-400',    bg: 'bg-gray-900/30' },
+    violet:  { border: 'border-violet-700',  text: 'text-violet-400',  bg: 'bg-violet-950/20' },
+    emerald: { border: 'border-emerald-700', text: 'text-emerald-400', bg: 'bg-emerald-950/20' },
+    sky:     { border: 'border-sky-700',     text: 'text-sky-400',     bg: 'bg-sky-950/20' },
+    blue:    { border: 'border-blue-700',    text: 'text-blue-400',    bg: 'bg-blue-950/20' },
+    orange:  { border: 'border-orange-700',  text: 'text-orange-400',  bg: 'bg-orange-950/20' },
+    red:     { border: 'border-red-700',     text: 'text-red-400',     bg: 'bg-red-950/20' },
+    fuchsia: { border: 'border-fuchsia-700', text: 'text-fuchsia-400', bg: 'bg-fuchsia-950/20' },
+    teal:    { border: 'border-teal-700',    text: 'text-teal-400',    bg: 'bg-teal-950/20' },
+  }
+  const c = colors[color] || colors.gray
   return (
-    <div className="space-y-4">
-      {title && (
-        <p className="text-[#666] text-xs font-mono uppercase tracking-widest border-b border-[#1a1a1a] pb-2">
-          {title}
-        </p>
-      )}
-      {children}
+    <div className={`border-l-2 ${c.border} pl-4 py-1`}>
+      <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/5">
+        {icon && <span className="text-base">{icon}</span>}
+        <h3 className={`text-xs font-semibold uppercase tracking-widest ${c.text}`}>{title}</h3>
+      </div>
+      <div className="space-y-3">{children}</div>
     </div>
   )
 }
@@ -1323,9 +1334,9 @@ export default function AdminProductPage() {
               />
             )}
 
-            {/* ── Name + AI ── */}
-            <Section title="Title">
-              <Field label="Product name" hint={`id: ${id}`}>
+            {/* ── 1. Prodotto ── */}
+            <Section title="Prodotto" icon="📝" color="gray">
+              <Field label="Nome prodotto" hint={`id: ${id}`}>
                 <input
                   value={name}
                   onChange={e => setName(e.target.value)}
@@ -1333,42 +1344,34 @@ export default function AdminProductPage() {
                   className={inputCls + (!isEditable ? ' opacity-50 cursor-not-allowed' : '')}
                 />
               </Field>
-              {isEditable && (
-                <div className="flex items-center gap-3 mt-2 flex-wrap">
-                  <button
-                    onClick={generateWithAI}
-                    disabled={generating || !name.trim()}
-                    className="flex items-center gap-1.5 bg-violet-700 hover:bg-violet-600 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors"
-                  >
-                    {generating ? (
-                      <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" /> Generating…</>
-                    ) : (
-                      <>✨ Regenerate with AI</>
-                    )}
-                  </button>
-                  <select
-                    value={aiProvider}
-                    onChange={e => setAiProvider(e.target.value)}
-                    disabled={generating}
-                    className="bg-gray-800 border border-gray-700 text-gray-300 text-xs px-2 py-1.5 focus:outline-none focus:border-violet-500 transition-colors cursor-pointer disabled:opacity-40"
-                    title="AI text provider"
-                  >
-                    <option value="openai">GPT-4o mini</option>
-                    <option value="longcat-flash">Longcat Flash</option>
-                    <option value="longcat-thinking">Longcat Thinking</option>
-                  </select>
-                  {genErr && <span className="text-red-400 text-xs">{genErr}</span>}
-                  {!genErr && !generating && altText && description && (
-                    <span className="text-violet-400 text-xs">✓ AI content applied</span>
-                  )}
-                </div>
-              )}
+              <Field label="Descrizione" hint="~150 words · shown in the About accordion on the product page">
+                <textarea
+                  value={description}
+                  onChange={e => setDescription(e.target.value)}
+                  disabled={!isEditable}
+                  rows={6}
+                  className={`${inputCls} resize-y${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
+                />
+              </Field>
+              <Field
+                label="Tag interni (separati da virgola)"
+                hint={`${tags.split(',').filter(t => t.trim()).length}/13 tags · each max 20 chars`}
+              >
+                <textarea
+                  value={tags}
+                  onChange={e => setTags(e.target.value)}
+                  disabled={!isEditable}
+                  rows={3}
+                  placeholder="snorlax shirt, pokemon gift, anime tee, …"
+                  className={`${inputCls} resize-none${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
+                />
+              </Field>
             </Section>
 
-            {/* ── Pricing & meta ── */}
-            <Section title="Pricing & Categorisation">
+            {/* ── 2. Prezzi & Categoria ── */}
+            <Section title="Prezzi & Categoria" icon="💶" color="emerald">
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Price (€)">
+                <Field label="Prezzo (€)">
                   <input
                     type="number" min="0" step="0.01"
                     value={price}
@@ -1378,7 +1381,7 @@ export default function AdminProductPage() {
                   />
                 </Field>
 
-                <Field label="Section">
+                <Field label="Sezione">
                   <select
                     value={section}
                     onChange={e => setSection(e.target.value)}
@@ -1386,11 +1389,14 @@ export default function AdminProductPage() {
                     className={inputCls + (!isEditable ? ' opacity-50 cursor-not-allowed' : '')}
                   >
                     <option value="objects">objects</option>
+                    <option value="apparel">apparel</option>
+                    <option value="wall-art">wall-art</option>
+                    <option value="accessories">accessories</option>
                     <option value="art">art</option>
                   </select>
                 </Field>
 
-                <Field label="Collection">
+                <Field label="Collezione">
                   <input
                     value={collection}
                     onChange={e => setCollection(e.target.value)}
@@ -1420,9 +1426,8 @@ export default function AdminProductPage() {
                 </p>
               )}
 
-              {/* ── Related / Upsell products ── */}
               {isEditable && (
-                <Field label="Complete the Look — Related Products" hint="Up to 4 products shown as upsell at the bottom of this product page">
+                <Field label="Complete the Look — Prodotti correlati" hint="Up to 4 products shown as upsell at the bottom of this product page">
                   <div className="space-y-1.5">
                     {[0, 1, 2, 3].map(i => (
                       <select
@@ -1452,19 +1457,101 @@ export default function AdminProductPage() {
               )}
             </Section>
 
-            {/* ── Description ── */}
-            <Section title="Copy">
-              <Field label="Description" hint="~150 words · shown in the About accordion on the product page">
-                <textarea
-                  value={description}
-                  onChange={e => setDescription(e.target.value)}
-                  disabled={!isEditable}
-                  rows={6}
-                  className={`${inputCls} resize-y${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
-                />
-              </Field>
+            {/* ── 3. Genera con AI ── */}
+            <Section title="Genera con AI" icon="🤖" color="violet">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <p className="text-gray-500 text-[11px]">
+                    Genera descrizione, SEO Google, SEO Etsy, Pinterest caption, Instagram caption, hashtag, alt text
+                  </p>
+                  <select
+                    value={aiProvider}
+                    onChange={e => setAiProvider(e.target.value)}
+                    disabled={generating}
+                    className="bg-gray-800 border border-gray-700 text-gray-300 text-xs px-2 py-1.5 focus:outline-none focus:border-violet-500 transition-colors cursor-pointer disabled:opacity-40 flex-shrink-0"
+                    title="AI text provider"
+                  >
+                    <option value="openai">GPT-4o mini</option>
+                    <option value="longcat-flash">Longcat Flash</option>
+                    <option value="longcat-thinking">Longcat Thinking</option>
+                  </select>
+                </div>
+                <button
+                  onClick={generateWithAI}
+                  disabled={generating || !name.trim()}
+                  className="w-full flex items-center justify-center gap-2 bg-violet-700 hover:bg-violet-600 disabled:opacity-40 text-white px-4 py-3 text-sm font-semibold transition-colors"
+                >
+                  {generating ? (
+                    <><span className="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full" /> Generando…</>
+                  ) : (
+                    <>✨ Genera tutto con AI</>
+                  )}
+                </button>
+                <button
+                  onClick={generateAlts}
+                  disabled={generatingAlts}
+                  className="w-full flex items-center justify-center gap-2 bg-violet-900 hover:bg-violet-800 disabled:opacity-40 text-violet-200 px-3 py-2 text-xs font-medium transition-colors"
+                >
+                  {generatingAlts
+                    ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" /> Generando alt text…</>
+                    : `🖼 Genera Alt Text immagini${allPoolImages.length ? ` (${[desktopHero, mobileHero, detailImage, ...sequenza].filter(Boolean).length + allPoolImages.filter(img => ![desktopHero, mobileHero, detailImage, ...sequenza].includes(img.url)).length} immagini)` : ''}`
+                  }
+                </button>
+                {genErr && <p className="text-red-400 text-xs">{genErr}</p>}
+                {altsMsg && (
+                  <p className={`text-xs ${altsMsg.startsWith('✓') ? 'text-violet-300' : 'text-red-400'}`}>{altsMsg}</p>
+                )}
+                {!genErr && !generating && altText && description && (
+                  <p className="text-violet-400 text-xs">✓ AI content applicato</p>
+                )}
+                {Object.keys(imageAlts).length > 0 && (
+                  <Collapsible label={`${Object.keys(imageAlts).length} alt text generati — espandi per vedere`}>
+                    <div className="mt-2 space-y-2 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+                      {Object.entries(imageAlts).map(([url, alt]) => (
+                        <div key={url} className="flex gap-2 items-start">
+                          <img src={url} alt="" className="w-8 h-8 object-cover flex-shrink-0 border border-gray-800 opacity-60"
+                            onError={e => { e.currentTarget.style.display = 'none' }} />
+                          <input
+                            value={alt}
+                            onChange={e => setImageAlts(prev => ({ ...prev, [url]: e.target.value }))}
+                            className="flex-1 bg-transparent border border-gray-800 text-gray-400 text-[11px] px-2 py-1 focus:outline-none focus:border-violet-700 font-mono"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </Collapsible>
+                )}
+              </div>
+            </Section>
 
-              <Field label="Alt text" hint="1 sentence · shown to screen readers and used for SEO image indexing">
+            {/* ── 4. SEO Google ── */}
+            <Section title="SEO Google" icon="🔵" color="blue">
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider">
+                    SEO Title
+                    <span className={`ml-2 font-mono ${seoTitle.length > 65 ? 'text-red-400' : seoTitle.length >= 50 ? 'text-green-500' : 'text-yellow-400'}`}>
+                      {seoTitle.length}/65
+                    </span>
+                  </p>
+                  <span className="text-gray-700 text-[10px]">usePageMeta aggiunge "— JAYL" automaticamente</span>
+                </div>
+                <input
+                  value={seoTitle}
+                  onChange={e => setSeoTitle(e.target.value)}
+                  placeholder="Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift"
+                  className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 focus:outline-none focus:border-blue-700 font-mono"
+                />
+              </div>
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider">
+                    Alt Text immagine hero
+                    <span className={`ml-2 font-mono ${altText.length > 125 ? 'text-red-400' : altText.length > 0 ? 'text-green-500' : 'text-gray-600'}`}>
+                      {altText.length}/125
+                    </span>
+                  </p>
+                </div>
                 <input
                   value={altText}
                   onChange={e => setAltText(e.target.value)}
@@ -1472,363 +1559,247 @@ export default function AdminProductPage() {
                   placeholder="Snorlax fan art t-shirt on white background…"
                   className={inputCls + (!isEditable ? ' opacity-50 cursor-not-allowed' : '')}
                 />
-              </Field>
-
-              {/* ── Per-image alt text generator ── */}
-              {isEditable && (
-                <div className="border border-violet-900/40 bg-[#0d0d0f] p-3 space-y-3">
-                  <div className="flex items-center justify-between gap-3 flex-wrap">
-                    <div>
-                      <p className="text-violet-300 text-xs font-semibold mb-0.5">✨ Alt text AI per immagine</p>
-                      <p className="text-gray-600 text-[11px]">
-                        Genera alt text descrittivi per ogni immagine nel pool (hero, sequenza, dettaglio).
-                        Vengono salvati con il prodotto e usati per SEO e accessibilità.
-                      </p>
-                    </div>
-                    <button
-                      onClick={generateAlts}
-                      disabled={generatingAlts}
-                      className="flex items-center gap-1.5 bg-violet-800 hover:bg-violet-700 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors flex-shrink-0"
-                    >
-                      {generatingAlts
-                        ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" /> Generando…</>
-                        : `✨ Genera alt text${allPoolImages.length ? ` (${[desktopHero, mobileHero, detailImage, ...sequenza].filter(Boolean).length + allPoolImages.filter(img => ![desktopHero, mobileHero, detailImage, ...sequenza].includes(img.url)).length} immagini)` : ''}`
-                      }
-                    </button>
-                  </div>
-                  {altsMsg && (
-                    <p className={`text-xs ${altsMsg.startsWith('✓') ? 'text-violet-300' : 'text-red-400'}`}>{altsMsg}</p>
-                  )}
-                  {Object.keys(imageAlts).length > 0 && (
-                    <Collapsible label={`${Object.keys(imageAlts).length} alt text generati — espandi per vedere`}>
-                      <div className="mt-2 space-y-2 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
-                        {Object.entries(imageAlts).map(([url, alt]) => (
-                          <div key={url} className="flex gap-2 items-start">
-                            <img src={url} alt="" className="w-8 h-8 object-cover flex-shrink-0 border border-gray-800 opacity-60"
-                              onError={e => { e.currentTarget.style.display = 'none' }} />
-                            <input
-                              value={alt}
-                              onChange={e => setImageAlts(prev => ({ ...prev, [url]: e.target.value }))}
-                              className="flex-1 bg-transparent border border-gray-800 text-gray-400 text-[11px] px-2 py-1 focus:outline-none focus:border-violet-700 font-mono"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </Collapsible>
-                  )}
-                </div>
-              )}
-
-              <Field
-                label="Tags"
-                hint={`${tags.split(',').filter(t => t.trim()).length}/13 tags · comma-separated · each max 20 chars`}
-              >
-                <textarea
-                  value={tags}
-                  onChange={e => setTags(e.target.value)}
-                  disabled={!isEditable}
-                  rows={3}
-                  placeholder="snorlax shirt, pokemon gift, anime tee, …"
-                  className={`${inputCls} resize-none${!isEditable ? ' opacity-50 cursor-not-allowed' : ''}`}
-                />
-              </Field>
+              </div>
             </Section>
 
-            {/* ── Social & SEO ── */}
-            {(instagramCaption || pinterestCaption || hashtags || primaryKeywords.length > 0 || etsyTitle || seoTitle) && (
-              <Section title="Social & SEO">
-                <div className="space-y-5">
-
-                  {/* seoTitle */}
+            {/* ── 5. SEO Etsy ── */}
+            <Section title="SEO Etsy" icon="🟠" color="orange">
+              {!etsyTitle && etsyTags.length === 0 && !etsyDescription ? (
+                <p className="text-gray-600 text-xs italic">Clicca 'Genera tutto con AI' per compilare →</p>
+              ) : (
+                <div className="space-y-4">
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <p className="text-gray-500 text-xs uppercase tracking-wider">
-                        SEO Title
-                        <span className={`ml-2 font-mono ${seoTitle.length > 70 ? 'text-yellow-400' : 'text-green-500'}`}>
-                          {seoTitle.length}/70
+                        Etsy Title
+                        <span className={`ml-2 font-mono ${etsyTitle.length > 140 ? 'text-red-400' : etsyTitle.length > 120 ? 'text-yellow-400' : 'text-green-500'}`}>
+                          {etsyTitle.length}/140
                         </span>
                       </p>
-                      <span className="text-gray-700 text-[10px]">meta title · usePageMeta aggiunge "— JAYL"</span>
+                      <button
+                        onClick={() => { navigator.clipboard.writeText(etsyTitle); }}
+                        className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
+                      >⎘ Copy</button>
                     </div>
-                    <input
-                      value={seoTitle}
-                      onChange={e => setSeoTitle(e.target.value)}
-                      placeholder="Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift"
-                      className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 focus:outline-none focus:border-blue-700 font-mono"
+                    <textarea
+                      value={etsyTitle}
+                      onChange={e => setEtsyTitle(e.target.value)}
+                      rows={2}
+                      className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 resize-none focus:outline-none focus:border-orange-700 font-mono leading-relaxed"
                     />
                   </div>
-
-                  {/* ── Etsy SEO ── */}
-                  {(etsyTitle || etsyTags.length > 0 || etsyDescription) && (
-                    <div className="border border-gray-800/60 bg-[#0a0f0a] p-3 space-y-3">
-                      <p className="text-[#f1641e]/80 text-xs font-semibold uppercase tracking-wider">🛍 Etsy SEO</p>
-                      {etsyTitle && (
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <p className="text-gray-600 text-[10px] uppercase tracking-wider">
-                              Titolo Etsy
-                              <span className={`ml-2 font-mono ${etsyTitle.length > 140 ? 'text-red-400' : etsyTitle.length > 100 ? 'text-yellow-400' : 'text-green-500'}`}>
-                                {etsyTitle.length}/140
-                              </span>
-                            </p>
-                          </div>
-                          <input
-                            value={etsyTitle}
-                            onChange={e => setEtsyTitle(e.target.value)}
-                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 focus:outline-none focus:border-orange-700 font-mono"
-                          />
-                        </div>
-                      )}
-                      {etsyTags.length > 0 && (
-                        <div>
-                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">
-                            Tag Etsy
-                            <span className={`ml-2 font-mono ${etsyTags.length === 13 ? 'text-green-500' : 'text-yellow-400'}`}>{etsyTags.length}/13</span>
-                          </p>
-                          <div className="flex flex-wrap gap-1 mb-1">
-                            {etsyTags.map((t, i) => (
-                              <span key={i} className="bg-gray-800 text-gray-400 text-[10px] px-2 py-0.5 font-mono">{t}</span>
-                            ))}
-                          </div>
-                          <input
-                            value={etsyTags.join(', ')}
-                            onChange={e => setEtsyTags(e.target.value.split(',').map(t => t.trim()).filter(Boolean))}
-                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-500 text-[10px] px-3 py-1.5 focus:outline-none focus:border-orange-700 font-mono"
-                            placeholder="tag1, tag2, tag3..."
-                          />
-                        </div>
-                      )}
-                      {etsyDescription && (
-                        <CopyBlock label="Descrizione Etsy" value={etsyDescription} rows={5} />
-                      )}
+                  <div>
+                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">
+                      Etsy Tags
+                      <span className={`ml-2 font-mono normal-case ${etsyTags.length === 13 ? 'text-green-500' : 'text-yellow-400'}`}>{etsyTags.length}/13 tags</span>
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      {etsyTags.map((tag, i) => (
+                        <span key={i} className={`border text-xs px-2 py-0.5 font-mono ${tag.length > 20 ? 'border-red-800 text-red-400' : 'border-orange-900/60 text-orange-300/80'}`}>
+                          {tag}
+                          <span className="text-gray-700 ml-1 text-[9px]">{tag.length}</span>
+                        </span>
+                      ))}
                     </div>
-                  )}
-
-                  {instagramCaption && (
-                    <CopyBlock label="Instagram caption" value={instagramCaption} rows={3} />
-                  )}
-                  {pinterestCaption && (
-                    <CopyBlock label="Pinterest caption" value={pinterestCaption} rows={3} />
-                  )}
-
-                  {/* ── Pinterest Publish Panel ── */}
-                  <div className="border border-[#1a1a2e] bg-[#0a0a14] p-4 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[#e60023] text-sm">📌</span>
-                        <p className="text-[#e60023]/80 text-xs font-semibold uppercase tracking-wider">Pubblica su Pinterest</p>
-                      </div>
-                      <button
-                        onClick={() => {
-                          setShowPinterestPanel(p => !p)
-                          if (!pinterestEditCaption && pinterestCaption) setPinterestEditCaption(pinterestCaption)
-                        }}
-                        className="text-gray-600 hover:text-gray-400 text-xs transition-colors"
-                      >{showPinterestPanel ? '▲ Chiudi' : '▼ Apri'}</button>
-                    </div>
-                    {showPinterestPanel && (
-                      <div className="space-y-3 pt-1">
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <p className="text-gray-600 text-[10px] uppercase tracking-wider">Board</p>
-                            <button onClick={fetchPinterestBoards} disabled={loadingBoards} className="text-gray-700 hover:text-gray-500 text-[9px] transition-colors">
-                              {loadingBoards ? 'Caricando...' : pinterestBoards.length > 0 ? `${pinterestBoards.length} board` : '↻ Carica board'}
-                            </button>
-                          </div>
-                          {pinterestBoards.length > 0 ? (
-                            <select
-                              value={pinterestBoardId}
-                              onChange={e => setPinterestBoardId(e.target.value)}
-                              className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800"
-                            >
-                              <option value="">— Scegli una board —</option>
-                              {pinterestBoards.map(b => (
-                                <option key={b.id} value={b.id}>{b.name}</option>
-                              ))}
-                            </select>
-                          ) : (
-                            <input
-                              value={pinterestBoardId}
-                              onChange={e => setPinterestBoardId(e.target.value)}
-                              placeholder="ID board (clicca ↻ Carica board per vedere i nomi)"
-                              className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800 font-mono"
-                            />
-                          )}
-                        </div>
-                        <div>
-                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-2">Immagine da usare</p>
-                          {(() => {
-                            const groups = [
-                              { label: '🖥 Heroes', items: [
-                                desktopHero && { url: desktopHero, tag: 'Desktop' },
-                                mobileHero  && { url: mobileHero,  tag: 'Mobile' },
-                                detailImage && { url: detailImage, tag: 'Detail' },
-                              ].filter(Boolean) },
-                              { label: '🖼 Gallery', items: sequenza.map((url, i) => ({ url, tag: `#${i+1}` })) },
-                              { label: '⬆ Importate', items: uploadedImages.map(img => ({ url: img.url, tag: 'Import' })) },
-                              { label: '✨ Generate', items: generatedImages.map(img => ({ url: img.url, tag: 'AI' })) },
-                              { label: '🏭 Gelato', items: gelatoImages.map(img => ({ url: img.url, tag: 'Gelato' })) },
-                            ].filter(g => g.items.length > 0)
-                            return (
-                              <div className="space-y-2">
-                                {groups.map(g => (
-                                  <div key={g.label}>
-                                    <p className="text-gray-700 text-[9px] uppercase tracking-wider mb-1">{g.label}</p>
-                                    <div className="flex gap-1.5 flex-wrap">
-                                      {g.items.map(o => (
-                                        <button
-                                          key={o.url}
-                                          onClick={() => setPinterestImageChoice(o.url)}
-                                          title={o.url}
-                                          className={`relative w-14 h-14 border-2 overflow-hidden transition-all flex-shrink-0 ${pinterestImageChoice === o.url ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-800 hover:border-gray-600'}`}
-                                        >
-                                          <img src={o.url} alt="" className="w-full h-full object-cover" />
-                                          <span className="absolute bottom-0 left-0 right-0 bg-black/70 text-[8px] text-gray-300 text-center leading-tight py-0.5">{o.tag}</span>
-                                        </button>
-                                      ))}
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            )
-                          })()}
-                        </div>
-                        <div>
-                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Caption pin</p>
-                          <textarea
-                            value={pinterestEditCaption}
-                            onChange={e => setPinterestEditCaption(e.target.value)}
-                            rows={3}
-                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-none focus:outline-none focus:border-red-800 font-mono"
-                          />
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={publishToPinterest}
-                            disabled={pinterestPublishing}
-                            className="bg-[#e60023] hover:bg-[#c9001f] disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 transition-colors"
-                          >{pinterestPublishing ? 'Pubblicando...' : '📌 Pubblica Pin'}</button>
-                          {pinterestMsg && (
-                            <span className={`text-xs ${pinterestMsg.startsWith('✓') ? 'text-green-400' : 'text-yellow-400'}`}>{pinterestMsg}</span>
-                          )}
-                          {pinterestPinUrl && (
-                            <a href={pinterestPinUrl} target="_blank" rel="noopener noreferrer" className="text-[#e60023] text-xs underline">Vedi Pin →</a>
-                          )}
-                        </div>
-                      </div>
-                    )}
+                    <input
+                      value={etsyTags.join(', ')}
+                      onChange={e => setEtsyTags(e.target.value.split(',').map(t => t.trim()).filter(Boolean))}
+                      className="w-full bg-gray-900/50 border border-gray-800 text-gray-500 text-[10px] px-3 py-1.5 focus:outline-none focus:border-orange-700 font-mono mb-1"
+                      placeholder="tag1, tag2, tag3..."
+                    />
+                    <button
+                      onClick={() => navigator.clipboard.writeText(etsyTags.join(', '))}
+                      className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
+                    >⎘ Copy all tags</button>
                   </div>
-
-                  {hashtags && (
-                    <CopyBlock label="Hashtags (30)" value={hashtags} rows={2} />
-                  )}
-                  {primaryKeywords.length > 0 && (
-                    <div>
-                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Primary keywords</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {primaryKeywords.map(kw => (
-                          <span key={kw} className="border border-gray-700 text-gray-400 text-xs px-2 py-0.5">{kw}</span>
-                        ))}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-gray-500 text-xs uppercase tracking-wider">
+                        Etsy Description
+                        <span className="ml-2 text-gray-600 font-mono normal-case text-[10px]">
+                          ~{Math.round(etsyDescription.split(/\s+/).filter(Boolean).length)} words
+                        </span>
+                      </p>
+                      <button
+                        onClick={() => navigator.clipboard.writeText(etsyDescription)}
+                        className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
+                      >⎘ Copy</button>
+                    </div>
+                    <div className="relative">
+                      <textarea
+                        value={etsyDescription}
+                        onChange={e => setEtsyDescription(e.target.value)}
+                        rows={6}
+                        className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-y focus:outline-none focus:border-orange-700 font-mono leading-relaxed"
+                      />
+                      <div className="absolute bottom-2 right-2 bg-black/60 text-[9px] text-orange-900/70 px-1.5 py-0.5 font-mono pointer-events-none">
+                        first 160: {etsyDescription.slice(0, 160).length} chars
                       </div>
                     </div>
-                  )}
-                  {longTailKeywords.length > 0 && (
-                    <Collapsible label={`${longTailKeywords.length} long-tail keywords`}>
-                      <div className="flex flex-wrap gap-1.5 mt-2">
-                        {longTailKeywords.map(kw => (
-                          <span key={kw} className="border border-gray-800 text-gray-500 text-xs px-2 py-0.5">{kw}</span>
-                        ))}
-                      </div>
-                    </Collapsible>
-                  )}
+                    <p className="text-gray-700 text-[10px] mt-1">I primi 160 chars appaiono su Google e nell'anteprima Etsy — devono essere keyword-dense.</p>
+                  </div>
+                </div>
+              )}
+            </Section>
 
-                  {/* ── Etsy SEO ── */}
-                  {(etsyTitle || etsyTags.length > 0 || etsyDescription) && (
-                    <div className="border border-orange-900/50 bg-[#0d0a08] p-4 space-y-4">
-                      <div className="flex items-center gap-2 border-b border-orange-900/30 pb-2">
-                        <span className="text-orange-400 text-sm">🏪</span>
-                        <p className="text-orange-300 text-xs font-semibold uppercase tracking-wider">SEO Etsy</p>
-                        <span className="text-gray-700 text-xs ml-auto">2025 NLP algorithm</span>
-                      </div>
+            {/* ── 6. SEO Pinterest ── */}
+            <Section title="SEO Pinterest" icon="🔴" color="red">
+              <Field label="Pinterest Caption">
+                <textarea
+                  value={pinterestCaption}
+                  onChange={e => setPinterestCaption(e.target.value)}
+                  rows={3}
+                  placeholder="Clicca 'Genera tutto con AI' per compilare →"
+                  className={`${inputCls} resize-none font-mono`}
+                />
+              </Field>
 
-                      {etsyTitle && (
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider">
-                              Etsy Title
-                              <span className={`ml-2 font-mono ${etsyTitle.length > 140 ? 'text-red-400' : etsyTitle.length > 120 ? 'text-yellow-400' : 'text-green-500'}`}>
-                                {etsyTitle.length}/140
-                              </span>
-                            </p>
-                            <button
-                              onClick={() => { navigator.clipboard.writeText(etsyTitle); }}
-                              className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
-                            >⎘ Copy</button>
-                          </div>
-                          <textarea
-                            value={etsyTitle}
-                            onChange={e => setEtsyTitle(e.target.value)}
-                            rows={2}
-                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 resize-none focus:outline-none focus:border-orange-700 font-mono leading-relaxed"
-                          />
-                        </div>
+              {/* Pinterest Publish Panel */}
+              <div className="border border-red-900/40 bg-[#0a0808] p-3 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#e60023] text-sm">📌</span>
+                    <p className="text-[#e60023]/80 text-xs font-semibold uppercase tracking-wider">Pubblica su Pinterest</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setShowPinterestPanel(p => !p)
+                      if (!pinterestEditCaption && pinterestCaption) setPinterestEditCaption(pinterestCaption)
+                    }}
+                    className="text-gray-600 hover:text-gray-400 text-xs transition-colors"
+                  >{showPinterestPanel ? '▲ Chiudi' : '▼ Apri'}</button>
+                </div>
+                {showPinterestPanel && (
+                  <div className="space-y-3 pt-1">
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <p className="text-gray-600 text-[10px] uppercase tracking-wider">Board</p>
+                        <button onClick={fetchPinterestBoards} disabled={loadingBoards} className="text-gray-700 hover:text-gray-500 text-[9px] transition-colors">
+                          {loadingBoards ? 'Caricando...' : pinterestBoards.length > 0 ? `${pinterestBoards.length} board` : '↻ Carica board'}
+                        </button>
+                      </div>
+                      {pinterestBoards.length > 0 ? (
+                        <select
+                          value={pinterestBoardId}
+                          onChange={e => setPinterestBoardId(e.target.value)}
+                          className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800"
+                        >
+                          <option value="">— Scegli una board —</option>
+                          {pinterestBoards.map(b => (
+                            <option key={b.id} value={b.id}>{b.name}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          value={pinterestBoardId}
+                          onChange={e => setPinterestBoardId(e.target.value)}
+                          placeholder="ID board (clicca ↻ Carica board per vedere i nomi)"
+                          className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800 font-mono"
+                        />
                       )}
-
-                      {etsyTags.length > 0 && (
-                        <div>
-                          <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">
-                            Etsy Tags
-                            <span className="ml-2 text-gray-600 font-mono normal-case">{etsyTags.length}/13 tag{etsyTags.length !== 1 ? 's' : ''}</span>
-                          </p>
-                          <div className="flex flex-wrap gap-1.5 mb-2">
-                            {etsyTags.map((tag, i) => (
-                              <span key={i} className={`border text-xs px-2 py-0.5 font-mono ${tag.length > 20 ? 'border-red-800 text-red-400' : 'border-orange-900/60 text-orange-300/80'}`}>
-                                {tag}
-                                <span className="text-gray-700 ml-1 text-[9px]">{tag.length}</span>
-                              </span>
+                    </div>
+                    <div>
+                      <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-2">Immagine da usare</p>
+                      {(() => {
+                        const groups = [
+                          { label: '🖥 Heroes', items: [
+                            desktopHero && { url: desktopHero, tag: 'Desktop' },
+                            mobileHero  && { url: mobileHero,  tag: 'Mobile' },
+                            detailImage && { url: detailImage, tag: 'Detail' },
+                          ].filter(Boolean) },
+                          { label: '🖼 Gallery', items: sequenza.map((url, i) => ({ url, tag: `#${i+1}` })) },
+                          { label: '⬆ Importate', items: uploadedImages.map(img => ({ url: img.url, tag: 'Import' })) },
+                          { label: '✨ Generate', items: generatedImages.map(img => ({ url: img.url, tag: 'AI' })) },
+                          { label: '🏭 Gelato', items: gelatoImages.map(img => ({ url: img.url, tag: 'Gelato' })) },
+                        ].filter(g => g.items.length > 0)
+                        return (
+                          <div className="space-y-2">
+                            {groups.map(g => (
+                              <div key={g.label}>
+                                <p className="text-gray-700 text-[9px] uppercase tracking-wider mb-1">{g.label}</p>
+                                <div className="flex gap-1.5 flex-wrap">
+                                  {g.items.map(o => (
+                                    <button
+                                      key={o.url}
+                                      onClick={() => setPinterestImageChoice(o.url)}
+                                      title={o.url}
+                                      className={`relative w-14 h-14 border-2 overflow-hidden transition-all flex-shrink-0 ${pinterestImageChoice === o.url ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-800 hover:border-gray-600'}`}
+                                    >
+                                      <img src={o.url} alt="" className="w-full h-full object-cover" />
+                                      <span className="absolute bottom-0 left-0 right-0 bg-black/70 text-[8px] text-gray-300 text-center leading-tight py-0.5">{o.tag}</span>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
                             ))}
                           </div>
-                          <button
-                            onClick={() => navigator.clipboard.writeText(etsyTags.join(', '))}
-                            className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
-                          >⎘ Copy all tags</button>
-                        </div>
+                        )
+                      })()}
+                    </div>
+                    <div>
+                      <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Caption pin</p>
+                      <textarea
+                        value={pinterestEditCaption}
+                        onChange={e => setPinterestEditCaption(e.target.value)}
+                        rows={3}
+                        className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-none focus:outline-none focus:border-red-800 font-mono"
+                      />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={publishToPinterest}
+                        disabled={pinterestPublishing}
+                        className="bg-[#e60023] hover:bg-[#c9001f] disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 transition-colors"
+                      >{pinterestPublishing ? 'Pubblicando...' : '📌 Pubblica Pin'}</button>
+                      {pinterestMsg && (
+                        <span className={`text-xs ${pinterestMsg.startsWith('✓') ? 'text-green-400' : 'text-yellow-400'}`}>{pinterestMsg}</span>
                       )}
-
-                      {etsyDescription && (
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider">
-                              Etsy Description
-                              <span className="ml-2 text-gray-600 font-mono normal-case text-[10px]">
-                                ~{Math.round(etsyDescription.split(/\s+/).filter(Boolean).length)} words
-                              </span>
-                            </p>
-                            <button
-                              onClick={() => navigator.clipboard.writeText(etsyDescription)}
-                              className="border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors"
-                            >⎘ Copy</button>
-                          </div>
-                          <div className="relative">
-                            <textarea
-                              value={etsyDescription}
-                              onChange={e => setEtsyDescription(e.target.value)}
-                              rows={8}
-                              className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-y focus:outline-none focus:border-orange-700 font-mono leading-relaxed"
-                            />
-                            <div className="absolute bottom-2 right-2 bg-black/60 text-[9px] text-orange-900/70 px-1.5 py-0.5 font-mono pointer-events-none">
-                              first 160: {etsyDescription.slice(0, 160).length} chars
-                            </div>
-                          </div>
-                          <p className="text-gray-700 text-[10px] mt-1">I primi 160 chars appaiono su Google e nell'anteprima Etsy — devono essere keyword-dense.</p>
-                        </div>
+                      {pinterestPinUrl && (
+                        <a href={pinterestPinUrl} target="_blank" rel="noopener noreferrer" className="text-[#e60023] text-xs underline">Vedi Pin →</a>
                       )}
                     </div>
-                  )}
+                  </div>
+                )}
+              </div>
+            </Section>
 
+            {/* ── 7. Social ── */}
+            <Section title="Social" icon="📱" color="fuchsia">
+              <Field label="Instagram Caption">
+                <div className="relative">
+                  <textarea
+                    value={instagramCaption}
+                    onChange={e => setInstagramCaption(e.target.value)}
+                    rows={3}
+                    placeholder="Clicca 'Genera tutto con AI' per compilare →"
+                    className={`${inputCls} resize-none font-mono`}
+                  />
+                  {instagramCaption && (
+                    <button
+                      onClick={() => navigator.clipboard.writeText(instagramCaption)}
+                      className="absolute top-1.5 right-1.5 border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors bg-black/60"
+                    >⎘ Copy</button>
+                  )}
                 </div>
-              </Section>
-            )}
+              </Field>
+              <Field label="Hashtags (30)">
+                <div className="relative">
+                  <textarea
+                    value={hashtags}
+                    onChange={e => setHashtags(e.target.value)}
+                    rows={2}
+                    placeholder="Clicca 'Genera tutto con AI' per compilare →"
+                    className={`${inputCls} resize-none font-mono text-[11px]`}
+                  />
+                  {hashtags && (
+                    <button
+                      onClick={() => navigator.clipboard.writeText(hashtags)}
+                      className="absolute top-1.5 right-1.5 border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors bg-black/60"
+                    >⎘ Copy</button>
+                  )}
+                </div>
+              </Field>
+            </Section>
 
             {/* ── Video ── */}
             <Section title="Video">
