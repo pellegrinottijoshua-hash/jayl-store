@@ -177,14 +177,14 @@ function Field({ label, hint, children }) {
 function Section({ title, icon, color = 'gray', children }) {
   const colors = {
     gray:    { border: 'border-gray-700',    text: 'text-gray-400',    bg: 'bg-gray-900/30' },
-    violet:  { border: 'border-violet-700',  text: 'text-violet-400',  bg: 'bg-violet-950/20' },
-    emerald: { border: 'border-emerald-700', text: 'text-emerald-400', bg: 'bg-emerald-950/20' },
-    sky:     { border: 'border-sky-700',     text: 'text-sky-400',     bg: 'bg-sky-950/20' },
-    blue:    { border: 'border-blue-700',    text: 'text-blue-400',    bg: 'bg-blue-950/20' },
-    orange:  { border: 'border-orange-700',  text: 'text-orange-400',  bg: 'bg-orange-950/20' },
-    red:     { border: 'border-red-700',     text: 'text-red-400',     bg: 'bg-red-950/20' },
-    fuchsia: { border: 'border-fuchsia-700', text: 'text-fuchsia-400', bg: 'bg-fuchsia-950/20' },
-    teal:    { border: 'border-teal-700',    text: 'text-teal-400',    bg: 'bg-teal-950/20' },
+    amber:   { border: 'border-amber-700',   text: 'text-amber-400',   bg: 'bg-amber-950/20' },
+    emerald: { border: 'border-emerald-800', text: 'text-emerald-500', bg: 'bg-emerald-950/10' },
+    sky:     { border: 'border-sky-800',     text: 'text-sky-500',     bg: 'bg-sky-950/10' },
+    blue:    { border: 'border-blue-800',    text: 'text-blue-400',    bg: 'bg-blue-950/10' },
+    orange:  { border: 'border-orange-800',  text: 'text-orange-400',  bg: 'bg-orange-950/10' },
+    red:     { border: 'border-red-800',     text: 'text-red-400',     bg: 'bg-red-950/10' },
+    fuchsia: { border: 'border-gray-600',    text: 'text-gray-400',    bg: 'bg-gray-900/20' },
+    teal:    { border: 'border-teal-800',    text: 'text-teal-400',    bg: 'bg-teal-950/10' },
   }
   const c = colors[color] || colors.gray
   return (
@@ -1308,7 +1308,7 @@ export default function AdminProductPage() {
               {mobileHero  && <div className="flex items-center gap-1.5"><span className="text-purple-400">📱</span><span className="text-gray-500 truncate">Hero mobile assegnato</span></div>}
               {detailImage && <div className="flex items-center gap-1.5"><span className="text-amber-400">🔍</span><span className="text-gray-500 truncate">Dettaglio assegnato</span></div>}
               {sequenza.length > 0 && <div className="flex items-center gap-1.5"><span>🖼</span><span className="text-gray-500">{sequenza.length} immagini in sequenza</span></div>}
-              {Object.keys(imageAlts).length > 0 && <div className="flex items-center gap-1.5"><span className="text-violet-400">✨</span><span className="text-gray-500">{Object.keys(imageAlts).length} alt text pronti</span></div>}
+              {Object.keys(imageAlts).length > 0 && <div className="flex items-center gap-1.5"><span className="text-amber-400">✨</span><span className="text-gray-500">{Object.keys(imageAlts).length} alt text pronti</span></div>}
               {!desktopHero && !mobileHero && !sequenza.length && <span className="text-gray-700 italic">Nessuna immagine assegnata</span>}
             </div>
           </div>
@@ -1458,7 +1458,7 @@ export default function AdminProductPage() {
             </Section>
 
             {/* ── 3. Genera con AI ── */}
-            <Section title="Genera con AI" icon="🤖" color="violet">
+            <Section title="Genera con AI" icon="🤖" color="amber">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                   <p className="text-gray-500 text-[11px]">
@@ -1468,7 +1468,7 @@ export default function AdminProductPage() {
                     value={aiProvider}
                     onChange={e => setAiProvider(e.target.value)}
                     disabled={generating}
-                    className="bg-gray-800 border border-gray-700 text-gray-300 text-xs px-2 py-1.5 focus:outline-none focus:border-violet-500 transition-colors cursor-pointer disabled:opacity-40 flex-shrink-0"
+                    className="bg-gray-800 border border-gray-700 text-gray-300 text-xs px-2 py-1.5 focus:outline-none focus:border-amber-600 transition-colors cursor-pointer disabled:opacity-40 flex-shrink-0"
                     title="AI text provider"
                   >
                     <option value="openai">GPT-4o mini</option>
@@ -1479,7 +1479,7 @@ export default function AdminProductPage() {
                 <button
                   onClick={generateWithAI}
                   disabled={generating || !name.trim()}
-                  className="w-full flex items-center justify-center gap-2 bg-violet-700 hover:bg-violet-600 disabled:opacity-40 text-white px-4 py-3 text-sm font-semibold transition-colors"
+                  className="w-full flex items-center justify-center gap-2 bg-amber-700 hover:bg-amber-600 disabled:opacity-40 text-white px-4 py-3 text-sm font-semibold transition-colors"
                 >
                   {generating ? (
                     <><span className="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full" /> Generando…</>
@@ -1490,7 +1490,7 @@ export default function AdminProductPage() {
                 <button
                   onClick={generateAlts}
                   disabled={generatingAlts}
-                  className="w-full flex items-center justify-center gap-2 bg-violet-900 hover:bg-violet-800 disabled:opacity-40 text-violet-200 px-3 py-2 text-xs font-medium transition-colors"
+                  className="w-full flex items-center justify-center gap-2 bg-amber-900 hover:bg-amber-800 disabled:opacity-40 text-amber-200 px-3 py-2 text-xs font-medium transition-colors"
                 >
                   {generatingAlts
                     ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" /> Generando alt text…</>
@@ -1499,10 +1499,10 @@ export default function AdminProductPage() {
                 </button>
                 {genErr && <p className="text-red-400 text-xs">{genErr}</p>}
                 {altsMsg && (
-                  <p className={`text-xs ${altsMsg.startsWith('✓') ? 'text-violet-300' : 'text-red-400'}`}>{altsMsg}</p>
+                  <p className={`text-xs ${altsMsg.startsWith('✓') ? 'text-amber-300' : 'text-red-400'}`}>{altsMsg}</p>
                 )}
                 {!genErr && !generating && altText && description && (
-                  <p className="text-violet-400 text-xs">✓ AI content applicato</p>
+                  <p className="text-amber-400 text-xs">✓ AI content applicato</p>
                 )}
                 {Object.keys(imageAlts).length > 0 && (
                   <Collapsible label={`${Object.keys(imageAlts).length} alt text generati — espandi per vedere`}>
