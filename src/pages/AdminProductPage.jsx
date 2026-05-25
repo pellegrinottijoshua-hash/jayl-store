@@ -160,9 +160,9 @@ async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
 // ── Shared UI ─────────────────────────────────────────────────────────────────
 
 const inputCls = 'w-full bg-[#111] border border-[#1e1e1e] text-[#e8dcc8] px-3 py-2 text-sm focus:outline-none focus:border-[#c8b89a] transition-colors placeholder:text-[#555]'
-const btnPrimary = 'bg-[#e8dcc8] hover:bg-white disabled:opacity-40 text-black px-4 py-2 text-sm font-semibold transition-colors cursor-pointer'
+const btnPrimary = 'bg-amber-700 hover:bg-amber-600 disabled:opacity-40 text-white px-4 py-2 text-sm font-semibold transition-colors cursor-pointer'
 const btnDanger  = 'bg-red-900/70 hover:bg-red-800 disabled:opacity-40 text-white px-4 py-2 text-sm font-medium transition-colors cursor-pointer'
-const btnGhost   = 'border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-3 py-1.5 text-xs transition-colors cursor-pointer'
+const btnGhost   = 'border border-amber-900/60 hover:border-amber-600 text-amber-700/80 hover:text-amber-400 px-3 py-1.5 text-xs transition-colors cursor-pointer'
 
 function Field({ label, hint, children }) {
   return (
@@ -616,7 +616,7 @@ function RemoveBackground() {
             value={inputUrl}
             onChange={e => { setInputUrl(e.target.value); setResult(null); setError('') }}
             placeholder="https://…"
-            className="w-full bg-gray-800 border border-gray-700 text-white text-xs px-3 py-2 focus:outline-none focus:border-purple-500 font-mono"
+            className="w-full bg-gray-800 border border-gray-700 text-white text-xs px-3 py-2 focus:outline-none focus:border-amber-600 font-mono"
           />
         ) : (
           <div
@@ -1894,7 +1894,7 @@ export default function AdminProductPage() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => setNeckLabelUrl(JAYL_NECK_LABEL_URL)}
-                        className="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs px-3 py-1.5 transition-colors whitespace-nowrap"
+                        className="bg-amber-900/40 hover:bg-amber-800/50 border border-amber-800/60 text-amber-400 text-xs px-3 py-1.5 transition-colors whitespace-nowrap"
                       >
                         👕 Logo JAYL
                       </button>
