@@ -7,16 +7,26 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    // Show banner only if user hasn't made a choice yet
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true)
-    } catch {
-      setVisible(true)
+    let choice = null
+    try { choice = localStorage.getItem(STORAGE_KEY) } catch {}
+    // Restore GA4 consent immediately if user already accepted
+    if (choice === 'accepted' && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'granted' })
     }
+    // Show banner only if user hasn't made a choice yet
+    if (!choice) setVisible(true)
   }, [])
 
   const accept = () => {
     try { localStorage.setItem(STORAGE_KEY, 'accepted') } catch {}
+    // Grant GA4 analytics consent and fire first page_view
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'granted' })
+      window.gtag('event', 'page_view', {
+        page_path:     window.location.pathname,
+        page_location: window.location.href,
+      })
+    }
     setVisible(false)
   }
 
@@ -35,8 +45,8 @@ export default function CookieBanner() {
       <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         {/* Text */}
         <p className="flex-1 text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
-          jayl.store usa solo cookie essenziali necessari al funzionamento del sito (carrello, sessione).
-          Nessun cookie di tracciamento o pubblicità.{' '}
+          Utilizziamo cookie essenziali (carrello, sessione) e, con il tuo consenso, cookie analitici
+          anonimi (Google Analytics) per migliorare il sito. Nessun cookie pubblicitario.{' '}
           <Link
             to="/cookies"
             onClick={decline}

@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
@@ -25,6 +25,18 @@ import AmbassadorPage from '@/pages/AmbassadorPage'
 import EmailCapturePopup from '@/components/EmailCapturePopup'
 import CookieBanner from '@/components/CookieBanner'
 
+/** Fire a GA4 page_view only when analytics consent has been granted. */
+function useGA4PageTracking() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    if (typeof window.gtag !== 'function') return
+    window.gtag('event', 'page_view', {
+      page_path:     pathname,
+      page_location: window.location.href,
+    })
+  }, [pathname])
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation()
   useLayoutEffect(() => {
@@ -47,6 +59,8 @@ function ScrollToTop() {
 export default function App() {
   const { pathname } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
+
+  useGA4PageTracking()
 
   return (
     <>

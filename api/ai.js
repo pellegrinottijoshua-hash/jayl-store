@@ -87,7 +87,7 @@ Movement/style: ${movement || ''}
 Return a JSON object with these EXACT keys:
 
 ── SITE LISTING ──
-- "seoTitle": SEO-optimised product title for the JAYL website (60-70 chars). Keep product name prominent, include primary keyword near the start.
+- "seoTitle": SEO-optimised meta title for the JAYL website. Format: "[Character] [Product Type] | [Keyword Hook] | [Style/Gift Context]". Target 50-65 chars. Do NOT include "JAYL" — it is appended automatically. Example: "Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift".
 - "description": Compelling product description ~150 words. Evocative, minimal, no fluff. Mention Gelato premium print quality, the art style, why it makes a great gift.
 - "altText": Concise alt text for the product hero image (1 sentence, under 125 chars). Describe the visual specifically.
 - "tags": Array of exactly 13 tags (strings). Mix product type, character/fandom, style, gift occasion. Each tag max 20 chars, lowercase, no special chars except spaces.

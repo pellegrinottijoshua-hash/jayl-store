@@ -44,6 +44,47 @@
       ]
     }
     </script>
+    <!-- Pinterest domain verification — replace content value with token from Pinterest Business → Claim Website -->
+    <!-- <meta name="p:domain_verify" content="REPLACE_WITH_PINTEREST_VERIFY_TOKEN" /> -->
+
+    <!-- Google Analytics 4 — Consent Mode (analytics denied by default, granted on cookie accept) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQ80GDTJ0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      // Consent defaults — denied until user accepts cookie banner
+      gtag('consent', 'default', {
+        analytics_storage:   'denied',
+        ad_storage:          'denied',
+        ad_user_data:        'denied',
+        ad_personalization:  'denied',
+        wait_for_update:     500
+      });
+      gtag('js', new Date());
+      // send_page_view: false — fired manually on route changes from App.jsx
+      gtag('config', 'G-SZQ80GDTJ0', { send_page_view: false });
+    </script>
+
+    <!-- Meta Pixel — uncomment and replace ID after creating pixel at business.facebook.com/events_manager2 -->
+    <!--
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'REPLACE_WITH_META_PIXEL_ID');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=REPLACE_WITH_META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    -->
+
+    <!-- Pinterest Tag — uncomment and replace ID after creating tag at ads.pinterest.com → Conversions -->
+    <!--
+    <script>
+      !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+      pintrk('load', 'REPLACE_WITH_PINTEREST_TAG_ID', {em: '<user_email_address>'});
+      pintrk('page');
+    </script>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=REPLACE_WITH_PINTEREST_TAG_ID&pd[em]=<hashed_email_address>&noscript=1" /></noscript>
+    -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- JAYL Brand Fonts -->

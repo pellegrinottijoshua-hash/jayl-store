@@ -432,29 +432,45 @@ export default function ProductPage() {
   const productDesc = product
     ? (product.description?.slice(0, 160) || `${product.name} — ${product.collection || 'JAYL'}. Premium print-on-demand. Free shipping worldwide.`)
     : undefined
+  const productUrl = typeof window !== 'undefined' ? window.location.href : `https://jayl.store/product/${product?.id}`
   const productJsonLd = product ? {
-    '@context':   'https://schema.org',
-    '@type':      'Product',
-    name:         product.name,
-    description:  productDesc,
-    image:        productImage ? [productImage] : undefined,
-    brand: { '@type': 'Brand', name: 'JAYL' },
-    ...(product.collection ? { category: product.collection } : {}),
-    offers: {
-      '@type':        'Offer',
-      priceCurrency:  'EUR',
-      price:          ((product.price ?? 0) / 100).toFixed(2),
-      availability:   'https://schema.org/InStock',
-      url:            typeof window !== 'undefined' ? window.location.href : `https://jayl.store/product/${product.id}`,
-      seller: { '@type': 'Organization', name: 'JAYL' },
-    },
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type':      'Product',
+        name:         product.name,
+        description:  productDesc,
+        image:        productImage ? [productImage] : undefined,
+        brand: { '@type': 'Brand', name: 'JAYL' },
+        ...(product.collection ? { category: product.collection } : {}),
+        // AggregateRating — populated when Judge.me reviews are integrated
+        // aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '0' },
+        offers: {
+          '@type':        'Offer',
+          priceCurrency:  'EUR',
+          price:          ((product.price ?? 0) / 100).toFixed(2),
+          availability:   'https://schema.org/InStock',
+          url:            productUrl,
+          seller: { '@type': 'Organization', name: 'JAYL' },
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home',       item: 'https://jayl.store' },
+          { '@type': 'ListItem', position: 2, name: product.section === 'art' ? 'Art' : 'Objects', item: `https://jayl.store/${product.section === 'art' ? 'art' : 'objects'}` },
+          ...(product.collection ? [{ '@type': 'ListItem', position: 3, name: product.collection, item: `https://jayl.store/collection/${encodeURIComponent(product.collection)}` }] : []),
+          { '@type': 'ListItem', position: product.collection ? 4 : 3, name: product.name, item: productUrl },
+        ],
+      },
+    ],
   } : undefined
   usePageMeta(product ? {
-    title:       product.name,
+    title:       product.seoTitle || product.name,
     subtitle:    product.collection || undefined,
     description: productDesc,
     image:       productImage || undefined,
-    url:         typeof window !== 'undefined' ? window.location.href : undefined,
+    url:         productUrl,
     type:        'product',
     jsonLd:      productJsonLd,
   } : {})
@@ -1423,6 +1439,39 @@ export default function ProductPage() {
                 )}
               </button>
               <UrgencyBadge text={product.urgency} isLight={isLight} />
+
+              {/* Trust signals */}
+              <div className={cn('mt-4 pt-4 border-t space-y-2.5', isLight ? 'border-ink/10' : 'border-white/10')}>
+                <div className="flex items-center gap-2.5 text-xs">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={isLight ? 'text-ink-muted' : 'text-text-secondary'}>
+                    <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><circle cx="8.5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>
+                  </svg>
+                  <span className={isLight ? 'text-ink-secondary' : 'text-text-secondary'}>
+                    Ships in <strong>3–5 business days</strong> · Free worldwide shipping
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={isLight ? 'text-ink-muted' : 'text-text-secondary'}>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  <span className={isLight ? 'text-ink-secondary' : 'text-text-secondary'}>
+                    <strong>30-day guarantee</strong> · Premium Gelato print quality
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={isLight ? 'text-ink-muted' : 'text-text-secondary'}>
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                  </svg>
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {['Visa', 'MC', 'PayPal', 'Apple Pay', 'Google Pay'].map(p => (
+                      <span key={p} className={cn(
+                        'px-1.5 py-0.5 text-[10px] font-medium border rounded',
+                        isLight ? 'border-ink/20 text-ink-muted' : 'border-white/15 text-text-secondary'
+                      )}>{p}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* Share */}
               <ShareButton title={product.name} isLight={isLight} onCopy={handleCopy} copied={copied} />
