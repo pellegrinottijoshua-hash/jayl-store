@@ -769,6 +769,8 @@ export default function AdminProductPage() {
   const [saveMsg, setSaveMsg]       = useState('')
   const [saveErr, setSaveErr]       = useState('')
   const [deleting, setDeleting]     = useState(false)
+  const [saveLaunching, setSaveLaunching]   = useState(false)
+  const [saveLaunchStatus, setSaveLaunchStatus] = useState('')
 
   // AI generation
   const [generating, setGenerating]             = useState(false)
@@ -1021,6 +1023,24 @@ export default function AdminProductPage() {
     finally { setLoadingBoards(false) }
   }
 
+  const handleSaveAndLaunch = async () => {
+    setSaveLaunching(true)
+    setSaveLaunchStatus('💾 Salvataggio...')
+    try {
+      await handleSave()
+      setSaveLaunchStatus('✨ Generando con AI...')
+      await generateWithAI()
+      setSaveLaunchStatus('📌 Pubblicando su Pinterest...')
+      await publishToPinterest()
+      setSaveLaunchStatus('✅ Lanciato!')
+    } catch (e) {
+      setSaveLaunchStatus('⚠ ' + (e.message || 'Errore'))
+    } finally {
+      setSaveLaunching(false)
+      setTimeout(() => setSaveLaunchStatus(''), 4000)
+    }
+  }
+
   const handleSave = async () => {
     if (!name.trim()) return setSaveErr('Name is required')
     if (!price)       return setSaveErr('Price is required')
@@ -1260,6 +1280,17 @@ export default function AdminProductPage() {
                 >
                   {saving ? 'Saving…' : 'Save Changes'}
                 </button>
+                {/* Save & Launch */}
+                <button
+                  onClick={handleSaveAndLaunch}
+                  disabled={saveLaunching || !name.trim()}
+                  className="flex items-center gap-2 bg-amber-600 hover:bg-amber-500 disabled:opacity-40 text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer"
+                >
+                  {saveLaunching ? saveLaunchStatus : '🚀 Salva & Lancia'}
+                </button>
+                {saveLaunchStatus && !saveLaunching && (
+                  <span className="text-xs text-amber-400">{saveLaunchStatus}</span>
+                )}
               </>
             )}
           </div>
@@ -1982,6 +2013,17 @@ export default function AdminProductPage() {
                 >
                   {saving ? 'Saving…' : 'Save Changes'}
                 </button>
+                {/* Save & Launch */}
+                <button
+                  onClick={handleSaveAndLaunch}
+                  disabled={saveLaunching || !name.trim()}
+                  className="flex items-center gap-2 bg-amber-600 hover:bg-amber-500 disabled:opacity-40 text-white px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer"
+                >
+                  {saveLaunching ? saveLaunchStatus : '🚀 Salva & Lancia'}
+                </button>
+                {saveLaunchStatus && !saveLaunching && (
+                  <span className="text-xs text-amber-400">{saveLaunchStatus}</span>
+                )}
                 <button
                   onClick={handleDelete}
                   disabled={deleting}
