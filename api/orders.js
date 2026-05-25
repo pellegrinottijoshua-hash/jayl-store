@@ -12,6 +12,7 @@ import Stripe from 'stripe'
 import { decodeItemsFromMetadata, colorToSlug, applyDiscount, CURRENCY } from './_lib/catalog.js'
 import { applyCors } from './_lib/cors.js'
 import { rateLimit } from './_lib/rateLimit.js'
+import { adminProducts } from '../src/data/admin-products.js'
 import {
   sendEmail,
   buildOrderConfirmationEmail,
@@ -503,6 +504,59 @@ async function handleValidateDiscount(req, res) {
 
 // ── Main router ───────────────────────────────────────────────────────────────
 
+// ── gmf — Google Merchant Center RSS 2.0 / Shopping feed ─────────────────────
+
+function escapeXml(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+async function handleGmf(req, res) {
+  const items = adminProducts.map(p => {
+    const price      = ((p.price ?? 0) / 100).toFixed(2)
+    const imageUrl   = p.image || (p.images?.[0] ?? '')
+    const link       = `https://jayl.store/product/${p.id}`
+    const extraImgs  = (p.images || []).slice(0, 10).filter(u => u && u !== imageUrl)
+      .map(u => `    <g:additional_image_link>${escapeXml(u)}</g:additional_image_link>`).join('\n')
+    const sizes      = (p.sizes || []).map(s => s.id || s.label).filter(Boolean)
+    return `  <item>
+    <g:id>${escapeXml(p.id)}</g:id>
+    <g:title>${escapeXml(p.seoTitle || p.name)}</g:title>
+    <g:description>${escapeXml((p.description || '').slice(0, 5000))}</g:description>
+    <g:link>${link}</g:link>
+    <g:image_link>${escapeXml(imageUrl)}</g:image_link>
+${extraImgs ? extraImgs + '\n' : ''}    <g:condition>new</g:condition>
+    <g:availability>in_stock</g:availability>
+    <g:price>${price} EUR</g:price>
+    <g:brand>JAYL</g:brand>
+    <g:mpn>${escapeXml(p.id)}</g:mpn>
+    <g:item_group_id>${escapeXml(p.id)}</g:item_group_id>
+    <g:product_type>Apparel &amp; Accessories &gt; Clothing &gt; Shirts &amp; Tops</g:product_type>
+    <g:google_product_category>212</g:google_product_category>
+    <g:gender>unisex</g:gender>
+    <g:age_group>adult</g:age_group>
+    <g:material>cotton</g:material>
+${sizes.length > 0 ? `    <g:size>${escapeXml(sizes.join(', '))}</g:size>\n` : ''}    <g:shipping><g:country>US</g:country><g:service>Free Shipping</g:service><g:price>0 EUR</g:price></g:shipping>
+    ${p.collection ? `<g:custom_label_0>${escapeXml(p.collection)}</g:custom_label_0>` : ''}
+  </item>`
+  }).join('\n')
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+<channel>
+  <title>JAYL — Premium Art &amp; Wearable Art</title>
+  <link>https://jayl.store</link>
+  <description>Premium print-on-demand art and apparel by JAYL. Free worldwide shipping.</description>
+${items}
+</channel>
+</rss>`
+
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8')
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400')
+  return res.status(200).send(xml)
+}
+
+// ── Router ────────────────────────────────────────────────────────────────────
+
 export default async function handler(req, res) {
   if (!cors(req, res)) return
 
@@ -519,6 +573,7 @@ export default async function handler(req, res) {
   if (h === 'contact')           return handleContact(req, res)
   if (h === 'capture-email')     return handleCaptureEmail(req, res)
   if (h === 'validate-discount') return handleValidateDiscount(req, res)
+  if (h === 'gmf')               return handleGmf(req, res)
 
   return res.status(404).json({ error: `Unknown orders handler: ${h}` })
 }

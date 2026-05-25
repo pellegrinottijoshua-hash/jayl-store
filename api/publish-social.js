@@ -96,15 +96,16 @@ async function publishTiktok({ videoUrl, caption, hashtags }) {
 }
 
 // ── Pinterest (API v5) ────────────────────────────────────────────────────────
-async function publishPinterest({ imageUrl, videoUrl, caption, hashtags, title, description, altText, link }) {
-  const token   = process.env.PINTEREST_ACCESS_TOKEN
-  const boardId = process.env.PINTEREST_BOARD_ID
-  if (!token || !boardId) return needsConnect('pinterest', [
-    '1. developers.pinterest.com → crea un app',
-    '2. Scope: pins:write, boards:read',
-    '3. OAuth → access_token',
-    '4. Trova Board ID: GET /v5/boards',
-    '5. Vercel env vars: PINTEREST_ACCESS_TOKEN + PINTEREST_BOARD_ID',
+async function publishPinterest({ imageUrl, videoUrl, caption, hashtags, title, description, altText, link, boardId: bodyBoardId }) {
+  const token   = (process.env.PINTEREST_ACCESS_TOKEN || '').trim()
+  const boardId = bodyBoardId?.trim() || process.env.PINTEREST_BOARD_ID
+  if (!token) return needsConnect('pinterest', [
+    '1. developers.pinterest.com → app 1568655 → genera access token',
+    '2. Scope richiesti: pins:write, boards:read',
+    '3. Vercel env: PINTEREST_ACCESS_TOKEN',
+  ])
+  if (!boardId) return needsConnect('pinterest', [
+    'Board ID mancante — inseriscilo nel pannello admin oppure aggiungi PINTEREST_BOARD_ID su Vercel',
   ])
 
   const mediaUrl = imageUrl || videoUrl
@@ -264,6 +265,24 @@ const HANDLERS = { instagram: publishInstagram, tiktok: publishTiktok, pinterest
 export default async function handler(req, res) {
   await applyCors(req, res)
   if (req.method === 'OPTIONS') return res.status(200).end()
+
+  // ── Pinterest boards listing — GET ?action=boards ─────────────────────────
+  if (req.method === 'GET' && req.query.action === 'boards') {
+    const token = (process.env.PINTEREST_ACCESS_TOKEN || '').trim()
+    if (!token) return res.status(500).json({ error: 'PINTEREST_ACCESS_TOKEN not configured' })
+    try {
+      const r = await fetch('https://api.pinterest.com/v5/boards?page_size=25', {
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(15_000),
+      })
+      if (!r.ok) return res.status(r.status).json({ error: `Pinterest API ${r.status}` })
+      const data = await r.json()
+      return res.status(200).json({ boards: data.items || [] })
+    } catch (e) {
+      return res.status(500).json({ error: e.message })
+    }
+  }
+
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' })
 
   const { password, platform, ...rest } = req.body || {}

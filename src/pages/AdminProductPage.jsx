@@ -978,10 +978,12 @@ export default function AdminProductPage() {
     setPinterestPublishing(true); setPinterestMsg('')
     try {
       localStorage.setItem('jayl_pinterest_board_id', pinterestBoardId.trim())
-      const res = await fetch('/api/pinterest/create-pin', {
+      const res = await fetch('/api/publish-social', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          platform:    'pinterest',
+          password:    'jaylpelle',
           boardId:     pinterestBoardId.trim(),
           title:       name.trim(),
           description: pinterestEditCaption || pinterestCaption || description.slice(0, 500),
@@ -991,8 +993,8 @@ export default function AdminProductPage() {
         }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Errore Pinterest API')
-      setPinterestPinUrl(data.url || '')
+      if (!res.ok || !data.ok) throw new Error(data.error || data.message || 'Errore Pinterest API')
+      setPinterestPinUrl(data.pinUrl || '')
       setPinterestMsg('✓ Pin pubblicato!')
     } catch (e) {
       setPinterestMsg('⚠ ' + e.message)

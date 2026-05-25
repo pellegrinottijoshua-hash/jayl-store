@@ -17,9 +17,8 @@
     { "source": "/api/contact",             "destination": "/api/orders?handler=contact"           },
     { "source": "/api/capture-email",       "destination": "/api/orders?handler=capture-email"    },
     { "source": "/api/validate-discount",   "destination": "/api/orders?handler=validate-discount"},
-    { "source": "/api/pinterest/boards",     "destination": "/api/pinterest?action=boards"     },
-    { "source": "/api/pinterest/create-pin", "destination": "/api/pinterest?action=create-pin" },
-    { "source": "/api/gmf",                  "destination": "/api/gmf"                          },
+    { "source": "/api/pinterest/boards", "destination": "/api/publish-social?action=boards" },
+    { "source": "/api/gmf",              "destination": "/api/orders?handler=gmf"            },
     { "source": "/robots.txt",            "destination": "/robots.txt"                  },
     { "source": "/api/(.*)",              "destination": "/api/$1"                      },
     { "source": "/(.*)",                  "destination": "/index.html"                  }
