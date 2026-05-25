@@ -69,7 +69,7 @@ function removeJsonLd(id = 'page-jsonld') {
  * @param {string}  [opts.type]      — og:type (default: 'website')
  * @param {Object}  [opts.jsonLd]    — JSON-LD structured data object
  */
-export function usePageMeta({ title, description, image, subtitle, url, type = 'website', jsonLd } = {}) {
+export function usePageMeta({ title, description, image, subtitle, url, type = 'website', jsonLd, priceAmount, priceCurrency } = {}) {
   useEffect(() => {
     const prevTitle = document.title
 
@@ -100,6 +100,12 @@ export function usePageMeta({ title, description, image, subtitle, url, type = '
     setMeta('twitter:description', resolvedDesc)
     setMeta('twitter:image',       resolvedImg)
 
+    // Pinterest / Open Graph product meta — enables Rich Pins
+    if (priceAmount != null) {
+      setMeta('og:price:amount',   String(priceAmount), true)
+      setMeta('og:price:currency', priceCurrency || 'EUR', true)
+    }
+
     // JSON-LD structured data
     if (jsonLd) setJsonLd(jsonLd)
     else        removeJsonLd()
@@ -109,5 +115,5 @@ export function usePageMeta({ title, description, image, subtitle, url, type = '
       removeCanonical()
       removeJsonLd()
     }
-  }, [title, description, image, subtitle, url, type, jsonLd])
+  }, [title, description, image, subtitle, url, type, jsonLd, priceAmount, priceCurrency])
 }

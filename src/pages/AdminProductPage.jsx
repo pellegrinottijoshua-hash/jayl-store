@@ -766,6 +766,13 @@ export default function AdminProductPage() {
   // AI social/SEO output
   const [instagramCaption, setInstagramCaption] = useState('')
   const [pinterestCaption, setPinterestCaption] = useState('')
+  const [pinterestBoardId,     setPinterestBoardId]     = useState(() => { try { return localStorage.getItem('jayl_pinterest_board_id') || '' } catch { return '' } })
+  const [showPinterestPanel,   setShowPinterestPanel]   = useState(false)
+  const [pinterestPublishing,  setPinterestPublishing]  = useState(false)
+  const [pinterestMsg,         setPinterestMsg]         = useState('')
+  const [pinterestPinUrl,      setPinterestPinUrl]      = useState('')
+  const [pinterestImageChoice, setPinterestImageChoice] = useState('desktop')
+  const [pinterestEditCaption, setPinterestEditCaption] = useState('')
   const [hashtags, setHashtags]                 = useState('')
   const [primaryKeywords, setPrimaryKeywords]   = useState([])
   const [longTailKeywords, setLongTailKeywords] = useState([])
@@ -773,6 +780,7 @@ export default function AdminProductPage() {
   const [etsyTitle,        setEtsyTitle]        = useState('')
   const [etsyTags,         setEtsyTags]         = useState([])
   const [etsyDescription,  setEtsyDescription]  = useState('')
+  const [seoTitle,         setSeoTitle]         = useState('')
   // Per-image alt texts
   const [imageAlts,        setImageAlts]        = useState({})
   const [generatingAlts,   setGeneratingAlts]   = useState(false)
@@ -818,6 +826,7 @@ export default function AdminProductPage() {
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
       setEtsyDescription(p.etsyDescription || '')
+      setSeoTitle(p.seoTitle || '')
     }
 
     if (staticP?.adminManaged) {
@@ -905,7 +914,7 @@ export default function AdminProductPage() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
-      if (data.seoTitle)    setName(data.seoTitle)
+      if (data.seoTitle)    setSeoTitle(data.seoTitle)
       if (data.description) setDescription(data.description)
       if (data.altText)     setAltText(data.altText)
       if (data.tags?.length) setTags(data.tags.join(', '))
@@ -956,6 +965,42 @@ export default function AdminProductPage() {
     }
   }
 
+  const publishToPinterest = async () => {
+    if (!pinterestBoardId.trim()) return setPinterestMsg('⚠ Inserisci un Board ID prima')
+    const imageChoices = {
+      desktop: desktopHero,
+      mobile:  mobileHero,
+      detail:  detailImage,
+      gallery: sequenza[0],
+    }
+    const imageUrl = imageChoices[pinterestImageChoice] || desktopHero || sequenza[0]
+    if (!imageUrl) return setPinterestMsg('⚠ Nessuna immagine trovata')
+    setPinterestPublishing(true); setPinterestMsg('')
+    try {
+      localStorage.setItem('jayl_pinterest_board_id', pinterestBoardId.trim())
+      const res = await fetch('/api/pinterest/create-pin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          boardId:     pinterestBoardId.trim(),
+          title:       name.trim(),
+          description: pinterestEditCaption || pinterestCaption || description.slice(0, 500),
+          imageUrl,
+          link:        `https://jayl.store/product/${product?.id || ''}`,
+          altText:     altText || name,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Errore Pinterest API')
+      setPinterestPinUrl(data.url || '')
+      setPinterestMsg('✓ Pin pubblicato!')
+    } catch (e) {
+      setPinterestMsg('⚠ ' + e.message)
+    } finally {
+      setPinterestPublishing(false)
+    }
+  }
+
   const handleSave = async () => {
     if (!name.trim()) return setSaveErr('Name is required')
     if (!price)       return setSaveErr('Price is required')
@@ -991,6 +1036,7 @@ export default function AdminProductPage() {
         ...(etsyTitle.trim()       ? { etsyTitle:       etsyTitle.trim() }       : {}),
         ...(etsyTags.length > 0    ? { etsyTags:        etsyTags }               : {}),
         ...(etsyDescription.trim() ? { etsyDescription: etsyDescription.trim() } : {}),
+        ...(seoTitle.trim() ? { seoTitle: seoTitle.trim() } : {}),
       }
       // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
@@ -1480,9 +1526,28 @@ export default function AdminProductPage() {
             </Section>
 
             {/* ── Social & SEO ── */}
-            {(instagramCaption || pinterestCaption || hashtags || primaryKeywords.length > 0 || etsyTitle) && (
+            {(instagramCaption || pinterestCaption || hashtags || primaryKeywords.length > 0 || etsyTitle || seoTitle) && (
               <Section title="Social & SEO">
                 <div className="space-y-5">
+
+                  {/* seoTitle */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-gray-500 text-xs uppercase tracking-wider">
+                        SEO Title
+                        <span className={`ml-2 font-mono ${seoTitle.length > 70 ? 'text-yellow-400' : 'text-green-500'}`}>
+                          {seoTitle.length}/70
+                        </span>
+                      </p>
+                      <span className="text-gray-700 text-[10px]">meta title · usePageMeta aggiunge "— JAYL"</span>
+                    </div>
+                    <input
+                      value={seoTitle}
+                      onChange={e => setSeoTitle(e.target.value)}
+                      placeholder="Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift"
+                      className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 focus:outline-none focus:border-blue-700 font-mono"
+                    />
+                  </div>
 
                   {instagramCaption && (
                     <CopyBlock label="Instagram caption" value={instagramCaption} rows={3} />
@@ -1490,6 +1555,76 @@ export default function AdminProductPage() {
                   {pinterestCaption && (
                     <CopyBlock label="Pinterest caption" value={pinterestCaption} rows={3} />
                   )}
+
+                  {/* ── Pinterest Publish Panel ── */}
+                  <div className="border border-[#1a1a2e] bg-[#0a0a14] p-4 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[#e60023] text-sm">📌</span>
+                        <p className="text-[#e60023]/80 text-xs font-semibold uppercase tracking-wider">Pubblica su Pinterest</p>
+                      </div>
+                      <button
+                        onClick={() => {
+                          setShowPinterestPanel(p => !p)
+                          if (!pinterestEditCaption && pinterestCaption) setPinterestEditCaption(pinterestCaption)
+                        }}
+                        className="text-gray-600 hover:text-gray-400 text-xs transition-colors"
+                      >{showPinterestPanel ? '▲ Chiudi' : '▼ Apri'}</button>
+                    </div>
+                    {showPinterestPanel && (
+                      <div className="space-y-3 pt-1">
+                        <div>
+                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Board ID <span className="normal-case text-gray-700">(da url pinterest.com/board_slug o dalle impostazioni board)</span></p>
+                          <input
+                            value={pinterestBoardId}
+                            onChange={e => setPinterestBoardId(e.target.value)}
+                            placeholder="1099722940167434685"
+                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800 font-mono"
+                          />
+                        </div>
+                        <div>
+                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Immagine da usare</p>
+                          <div className="flex gap-2 flex-wrap">
+                            {[
+                              { key: 'desktop', label: '🖥 Hero Desktop', url: desktopHero },
+                              { key: 'mobile',  label: '📱 Hero Mobile',  url: mobileHero },
+                              { key: 'detail',  label: '🔍 Detail',       url: detailImage },
+                              { key: 'gallery', label: '🖼 Gallery[0]',   url: sequenza[0] },
+                            ].filter(o => o.url).map(o => (
+                              <button
+                                key={o.key}
+                                onClick={() => setPinterestImageChoice(o.key)}
+                                className={`text-[10px] px-2 py-1 border transition-colors ${pinterestImageChoice === o.key ? 'border-red-700 text-red-400 bg-red-950/20' : 'border-gray-800 text-gray-600 hover:border-gray-600'}`}
+                              >{o.label}</button>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Caption pin</p>
+                          <textarea
+                            value={pinterestEditCaption}
+                            onChange={e => setPinterestEditCaption(e.target.value)}
+                            rows={3}
+                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-3 py-2 resize-none focus:outline-none focus:border-red-800 font-mono"
+                          />
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <button
+                            onClick={publishToPinterest}
+                            disabled={pinterestPublishing}
+                            className="bg-[#e60023] hover:bg-[#c9001f] disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 transition-colors"
+                          >{pinterestPublishing ? 'Pubblicando...' : '📌 Pubblica Pin'}</button>
+                          {pinterestMsg && (
+                            <span className={`text-xs ${pinterestMsg.startsWith('✓') ? 'text-green-400' : 'text-yellow-400'}`}>{pinterestMsg}</span>
+                          )}
+                          {pinterestPinUrl && (
+                            <a href={pinterestPinUrl} target="_blank" rel="noopener noreferrer" className="text-[#e60023] text-xs underline">Vedi Pin →</a>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
                   {hashtags && (
                     <CopyBlock label="Hashtags (30)" value={hashtags} rows={2} />
                   )}

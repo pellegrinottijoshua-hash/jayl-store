@@ -473,6 +473,8 @@ export default function ProductPage() {
     url:         productUrl,
     type:        'product',
     jsonLd:      productJsonLd,
+    priceAmount:  product.price != null ? ((product.price) / 100).toFixed(2) : undefined,
+    priceCurrency: 'EUR',
   } : {})
 
   const defaultSize  = product?.sizes?.[isArt ? 1 : 0]?.id
