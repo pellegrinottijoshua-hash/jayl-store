@@ -772,6 +772,8 @@ export default function AdminProductPage() {
   const [pinterestMsg,         setPinterestMsg]         = useState('')
   const [pinterestPinUrl,      setPinterestPinUrl]      = useState('')
   const [pinterestImageChoice, setPinterestImageChoice] = useState('')  // stores URL directly
+  const [pinterestBoards,      setPinterestBoards]      = useState([])
+  const [loadingBoards,        setLoadingBoards]        = useState(false)
   const [pinterestEditCaption, setPinterestEditCaption] = useState('')
   const [hashtags, setHashtags]                 = useState('')
   const [primaryKeywords, setPrimaryKeywords]   = useState([])
@@ -995,6 +997,17 @@ export default function AdminProductPage() {
     } finally {
       setPinterestPublishing(false)
     }
+  }
+
+  const fetchPinterestBoards = async () => {
+    if (pinterestBoards.length > 0) return // already loaded
+    setLoadingBoards(true)
+    try {
+      const res = await fetch('/api/pinterest/boards')
+      const data = await res.json()
+      if (data.boards?.length) setPinterestBoards(data.boards)
+    } catch {}
+    finally { setLoadingBoards(false) }
   }
 
   const handleSave = async () => {
@@ -1545,6 +1558,52 @@ export default function AdminProductPage() {
                     />
                   </div>
 
+                  {/* ── Etsy SEO ── */}
+                  {(etsyTitle || etsyTags.length > 0 || etsyDescription) && (
+                    <div className="border border-gray-800/60 bg-[#0a0f0a] p-3 space-y-3">
+                      <p className="text-[#f1641e]/80 text-xs font-semibold uppercase tracking-wider">🛍 Etsy SEO</p>
+                      {etsyTitle && (
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <p className="text-gray-600 text-[10px] uppercase tracking-wider">
+                              Titolo Etsy
+                              <span className={`ml-2 font-mono ${etsyTitle.length > 140 ? 'text-red-400' : etsyTitle.length > 100 ? 'text-yellow-400' : 'text-green-500'}`}>
+                                {etsyTitle.length}/140
+                              </span>
+                            </p>
+                          </div>
+                          <input
+                            value={etsyTitle}
+                            onChange={e => setEtsyTitle(e.target.value)}
+                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-2 focus:outline-none focus:border-orange-700 font-mono"
+                          />
+                        </div>
+                      )}
+                      {etsyTags.length > 0 && (
+                        <div>
+                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">
+                            Tag Etsy
+                            <span className={`ml-2 font-mono ${etsyTags.length === 13 ? 'text-green-500' : 'text-yellow-400'}`}>{etsyTags.length}/13</span>
+                          </p>
+                          <div className="flex flex-wrap gap-1 mb-1">
+                            {etsyTags.map((t, i) => (
+                              <span key={i} className="bg-gray-800 text-gray-400 text-[10px] px-2 py-0.5 font-mono">{t}</span>
+                            ))}
+                          </div>
+                          <input
+                            value={etsyTags.join(', ')}
+                            onChange={e => setEtsyTags(e.target.value.split(',').map(t => t.trim()).filter(Boolean))}
+                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-500 text-[10px] px-3 py-1.5 focus:outline-none focus:border-orange-700 font-mono"
+                            placeholder="tag1, tag2, tag3..."
+                          />
+                        </div>
+                      )}
+                      {etsyDescription && (
+                        <CopyBlock label="Descrizione Etsy" value={etsyDescription} rows={5} />
+                      )}
+                    </div>
+                  )}
+
                   {instagramCaption && (
                     <CopyBlock label="Instagram caption" value={instagramCaption} rows={3} />
                   )}
@@ -1570,13 +1629,31 @@ export default function AdminProductPage() {
                     {showPinterestPanel && (
                       <div className="space-y-3 pt-1">
                         <div>
-                          <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-1">Board ID <span className="normal-case text-gray-700">(da url pinterest.com/board_slug o dalle impostazioni board)</span></p>
-                          <input
-                            value={pinterestBoardId}
-                            onChange={e => setPinterestBoardId(e.target.value)}
-                            placeholder="1099722940167434685"
-                            className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800 font-mono"
-                          />
+                          <div className="flex items-center justify-between mb-1">
+                            <p className="text-gray-600 text-[10px] uppercase tracking-wider">Board</p>
+                            <button onClick={fetchPinterestBoards} disabled={loadingBoards} className="text-gray-700 hover:text-gray-500 text-[9px] transition-colors">
+                              {loadingBoards ? 'Caricando...' : pinterestBoards.length > 0 ? `${pinterestBoards.length} board` : '↻ Carica board'}
+                            </button>
+                          </div>
+                          {pinterestBoards.length > 0 ? (
+                            <select
+                              value={pinterestBoardId}
+                              onChange={e => setPinterestBoardId(e.target.value)}
+                              className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800"
+                            >
+                              <option value="">— Scegli una board —</option>
+                              {pinterestBoards.map(b => (
+                                <option key={b.id} value={b.id}>{b.name}</option>
+                              ))}
+                            </select>
+                          ) : (
+                            <input
+                              value={pinterestBoardId}
+                              onChange={e => setPinterestBoardId(e.target.value)}
+                              placeholder="ID board (clicca ↻ Carica board per vedere i nomi)"
+                              className="w-full bg-gray-900/50 border border-gray-800 text-gray-300 text-xs px-3 py-1.5 focus:outline-none focus:border-red-800 font-mono"
+                            />
+                          )}
                         </div>
                         <div>
                           <p className="text-gray-600 text-[10px] uppercase tracking-wider mb-2">Immagine da usare</p>
