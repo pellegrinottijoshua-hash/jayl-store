@@ -2390,5 +2390,286 @@ export const adminProducts = [
     "createdAt": "2026-05-26T14:46:47.331Z",
     "updatedAt": "2026-05-26T15:01:47.863Z",
     "relatedProducts": []
+  },
+  {
+    "id": "cool-mew-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool Mew T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2499,
+    "currency": "eur",
+    "description": "Embrace your inner Pokémon trainer with our Mew Pokémon T-Shirt, featuring stunning retro 90s anime fan art. Crafted with Gelato's premium print quality, this shirt ensures vibrant colors and lasting durability. Perfect for Pokémon lovers, it makes a unique gift for birthdays, holidays, or just because. Stand out in style while showcasing your love for this iconic character. Ideal for casual outings or cozy nights in, this shirt is a must-have for any fan's wardrobe.",
+    "altText": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "one-size",
+        "label": "One Size",
+        "price": 2499
+      }
+    ],
+    "image": "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-01.jpg",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-02.jpg",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-03.jpg",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-04.jpg",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-05.jpg",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-06.jpg"
+    ],
+    "imageAlts": {
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-01.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-02.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-03.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-04.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-05.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-06.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art."
+    },
+    "tags": [
+      "pokemon",
+      "mew",
+      "anime",
+      "t-shirt",
+      "funny",
+      "art",
+      "90s",
+      "fan",
+      "gift",
+      "apparel",
+      "retro",
+      "gildan",
+      "cool"
+    ],
+    "featured": false,
+    "gelatoProductId": "491259c5-52b5-4e1f-899b-cde5342af48d",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "pokemon shirt",
+      "mew t-shirt",
+      "anime apparel",
+      "retro shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "mew pokemon t-shirt for fans",
+      "retro 90s anime fan art shirt",
+      "funny pokemon lover gift idea",
+      "unique gifts for pokemon fans",
+      "cool anime apparel for adults",
+      "premium print quality pokemon shirts",
+      "gildan t-shirt for anime lovers",
+      "mew shirt for casual wear",
+      "90s style pokemon merch",
+      "funny t-shirt for pokemon lovers"
+    ],
+    "hashtags": "#mew #pokemon #anime #tshirt #funny #art #90s #fan #gift #apparel #retro #gildan #cool #fashion #style #graphictee #collectibles #geekwear #nerdstyle #popculture #giftsforhim #giftsforher #giftideas #pokemongifts #animefan #animeclothing #streetwear #casual #trending #limitededition #shopnow",
+    "instagramCaption": "Unleash your nostalgia with our Mew Pokémon T-Shirt! Perfect for the true fan who loves to stand out. Grab yours now and show off your Pokémon pride! #mew #pokemon #anime",
+    "pinterestCaption": "Discover the ultimate Mew Pokémon T-Shirt that celebrates retro 90s anime art. This shirt is perfect for gifts or personal style. Explore our collection and find your favorite today.",
+    "seoTitle": "Mew Pokémon T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "7428212d-a19e-4844-b10e-342c8c8ffe7a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bbf8fc35-dc17-4ad6-a5cb-8e4713f6bca2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7484ae14-8c83-4d1a-95bf-cee13e74d4c6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "54eb5f74-3413-4dc9-9f0e-b5ca8096045a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "87d1f5b7-0e92-4497-8bcd-93a80c7d0a74",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "46665566-7a7d-4fb9-8232-c965cd050901",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ae8aefb9-9a14-471e-9c06-a9273d499845",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9ba32bd3-d1d1-4665-b775-879034131d87",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1040b5e0-eddc-4290-8fab-6b00d8a5cae3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "acf9b34b-cb86-4f4d-9d96-ca90221205a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4be7e015-76d0-4026-86c1-a468144d3896",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "510d0840-ea93-48e4-941f-989a15e96f52",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "34c339cd-9a2c-4af1-ab06-2ce81af0d7ae",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4e6f75f5-15ef-49fd-8ec5-f98862ea7b22",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "caaa3e18-ba25-4f8e-8540-69dceb8848b1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2d74b943-a552-4014-8662-6903826c29a3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "02243f62-8e12-4b1f-b512-37a79a25ce24",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5c7ff94a-2d17-407f-bdca-edc5511af748",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8e8266c8-72e6-481f-ba1e-2842420c7f3e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b8934a62-e1e9-42d9-8601-03edde4bdf80",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": null,
+        "size": null,
+        "price": null,
+        "currency": null
+      }
+    ],
+    "printCost": 750,
+    "etsyTitle": "Mew Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Cool Gift for Pokemon Lovers",
+    "etsyTags": [
+      "mew pokemon shirt",
+      "anime fan art",
+      "birthday gift idea",
+      "gift for him",
+      "otaku merchandise",
+      "90s aesthetic",
+      "unisex t-shirt",
+      "pokemon apparel",
+      "funny graphic tee",
+      "nerdy gift",
+      "anime clothing",
+      "cool casual wear",
+      "retro style shirt"
+    ],
+    "etsyDescription": "Show off your love for Mew with this vibrant and stylish Mew Pokémon T-Shirt, perfect for fans of all ages. This retro 90s anime graphic tee is a must-have for any Pokémon lover looking for a unique gift or a fun addition to their wardrobe.\n\nThe design features a striking illustration of Mew in a playful and colorful style that captures the nostalgia of the 90s. Made with premium quality materials, this t-shirt is both comfortable and eye-catching, making it a versatile piece for any casual occasion.\n\nCrafted from 100% cotton, this unisex fit tee is available in sizes S-3XL and showcases direct-to-garment (DTG) printing for a high-quality finish. It's the ideal gift for birthdays, holidays, or just because for any Pokémon enthusiast in your life.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Mew Pokemon T-Shirt on model, showcasing vibrant design and unisex fit.",
+      "Back mockup of Mew Pokemon T-Shirt on model, highlighting the comfortable fit and style.",
+      "Close-up detail of Mew Pokemon design on t-shirt, emphasizing color and print quality.",
+      "Flat lay of Mew Pokemon T-Shirt on a neutral background, displaying the graphic and fabric texture.",
+      "Lifestyle shot of person wearing Mew Pokemon T-Shirt in a casual setting, radiating fun vibes.",
+      "Size guide shot showing Mew Pokemon T-Shirt with sizing chart and fabric details for buyers.",
+      "Gift packaging context featuring Mew Pokemon T-Shirt in a decorative box, perfect for presents."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a45eff36-3e74-44e5-ac6d-38e6dce3caf2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f064eb532ef5cd2841e6147b234e986e96ca6b35b171edcfd2417c6202d5b33a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1d6e6e0a-95e1-4cca-bac1-94c501edb285/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=91fa2a6b5548df4122fafa09dd7c803f31939ffd9223765180e8cfaeaa1dc79b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d9edc702-7246-440a-ad3c-cd7760d945e6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=de643b90cb687a8c7462ffc337173945a519266f7ede39e3bed6cf3b9494bed3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6d8a4b87-3f86-46e3-838d-d6a0989fa088/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f23cc378b24baaefd42f7cae31ebfccd27fc0e2edf6c0742e097a4f59f11175c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a3f4cf77-ebea-4988-868c-be8d100b62d8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4a23b177c3bfd6ff140ee46f034feccc072cfa58699241833e8768fa8f0bc114",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dcdd4e13-77b2-4dec-934f-48537edb342a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ed8b1e930dfe6633b1b7dadca1913cf60d8cfe4fbf1a5b96a8d5922519ecb97"
+    ],
+    "createdAt": "2026-05-26T15:11:39.661Z",
+    "updatedAt": "2026-05-26T15:11:39.661Z"
   }
 ]
