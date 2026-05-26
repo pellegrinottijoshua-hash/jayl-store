@@ -7,7 +7,8 @@
   ],
   "rewrites": [
     { "source": "/api/generate-listing",       "destination": "/api/ai?handler=listing"      },
-    { "source": "/api/generate-etsy-listing",  "destination": "/api/ai?handler=etsy-listing" },
+    { "source": "/api/generate-etsy-listing",    "destination": "/api/ai?handler=etsy-listing"    },
+    { "source": "/api/generate-social-listing",  "destination": "/api/ai?handler=social-listing"  },
     { "source": "/api/generate-mockup",   "destination": "/api/ai?handler=mockup"       },
     { "source": "/api/generate-video",    "destination": "/api/ai?handler=video"        },
     { "source": "/api/generate-persona",  "destination": "/api/ai?handler=persona"      },

@@ -774,12 +774,14 @@ export default function AdminProductPage() {
 
   // AI generation
   const [generating, setGenerating]             = useState(false)
-  const [generatingEtsy, setGeneratingEtsy]     = useState(false)
+  const [generatingEtsy,   setGeneratingEtsy]   = useState(false)
+  const [generatingSocial, setGeneratingSocial] = useState(false)
   const [genErr, setGenErr]                     = useState('')
   const [aiProvider, setAiProvider]             = useState('openai')
   // AI social/SEO output
-  const [instagramCaption, setInstagramCaption] = useState('')
-  const [pinterestCaption, setPinterestCaption] = useState('')
+  const [instagramCaption, setInstagramCaption] = useState(product?.instagramCaption || '')
+  const [pinterestCaption, setPinterestCaption] = useState(product?.pinterestCaption || '')
+  const [tiktokCaption,    setTiktokCaption]    = useState(product?.tiktokCaption    || '')
   const [pinterestBoardId,     setPinterestBoardId]     = useState(() => { try { return localStorage.getItem('jayl_pinterest_board_id') || '' } catch { return '' } })
   const [showPinterestPanel,   setShowPinterestPanel]   = useState(false)
   const [pinterestPublishing,  setPinterestPublishing]  = useState(false)
@@ -969,6 +971,29 @@ export default function AdminProductPage() {
     }
   }
 
+  // Genera SEO Social: instagramCaption, pinterestCaption, tiktokCaption, hashtags
+  const generateSocialAI = async () => {
+    if (!name.trim()) return setGenErr('Enter a product name first')
+    setGeneratingSocial(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-social-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productTitle: name.trim(), section, collection, movement, provider: aiProvider }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Social generation failed')
+      if (data.instagramCaption) setInstagramCaption(data.instagramCaption)
+      if (data.pinterestCaption) setPinterestCaption(data.pinterestCaption)
+      if (data.tiktokCaption)    setTiktokCaption(data.tiktokCaption)
+      if (data.hashtags)         setHashtags(data.hashtags)
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGeneratingSocial(false)
+    }
+  }
+
   const generateAlts = async () => {
     // Build image list: each known image URL with its role
     const imageEntries = []
@@ -1094,10 +1119,14 @@ export default function AdminProductPage() {
         detailImage: detailImage  || null,
         imageAlts:   Object.keys(imageAlts).length > 0 ? imageAlts : undefined,
         ...(videoUrl.trim()        ? { videoUrl:        videoUrl.trim() }        : { videoUrl: undefined }),
-        ...(etsyTitle.trim()       ? { etsyTitle:       etsyTitle.trim() }       : {}),
-        ...(etsyTags.length > 0    ? { etsyTags:        etsyTags }               : {}),
-        ...(etsyDescription.trim() ? { etsyDescription: etsyDescription.trim() } : {}),
-        ...(seoTitle.trim() ? { seoTitle: seoTitle.trim() } : {}),
+        ...(etsyTitle.trim()         ? { etsyTitle:         etsyTitle.trim() }         : {}),
+        ...(etsyTags.length > 0      ? { etsyTags:          etsyTags }                 : {}),
+        ...(etsyDescription.trim()   ? { etsyDescription:   etsyDescription.trim() }   : {}),
+        ...(seoTitle.trim()          ? { seoTitle:          seoTitle.trim() }          : {}),
+        ...(instagramCaption.trim()  ? { instagramCaption:  instagramCaption.trim() }  : {}),
+        ...(pinterestCaption.trim()  ? { pinterestCaption:  pinterestCaption.trim() }  : {}),
+        ...(tiktokCaption.trim()     ? { tiktokCaption:     tiktokCaption.trim() }     : {}),
+        ...(hashtags.trim()          ? { hashtags:          hashtags.trim() }          : {}),
       }
       // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
@@ -1541,13 +1570,25 @@ export default function AdminProductPage() {
                 {/* SEO Etsy */}
                 <button
                   onClick={generateEtsyAI}
-                  disabled={generatingEtsy || generating || !name.trim()}
+                  disabled={generatingEtsy || generating || generatingSocial || !name.trim()}
                   className="w-full flex items-center justify-center gap-2 bg-orange-800 hover:bg-orange-700 disabled:opacity-40 text-orange-100 px-4 py-2.5 text-xs font-semibold transition-colors"
                 >
                   {generatingEtsy ? (
                     <><span className="animate-spin inline-block w-3 h-3 border-2 border-orange-200 border-t-transparent rounded-full" /> Generando SEO Etsy…</>
                   ) : (
                     <>🏪 Genera SEO Etsy</>
+                  )}
+                </button>
+                {/* SEO Social */}
+                <button
+                  onClick={generateSocialAI}
+                  disabled={generatingSocial || generating || generatingEtsy || !name.trim()}
+                  className="w-full flex items-center justify-center gap-2 bg-pink-900 hover:bg-pink-800 disabled:opacity-40 text-pink-100 px-4 py-2.5 text-xs font-semibold transition-colors"
+                >
+                  {generatingSocial ? (
+                    <><span className="animate-spin inline-block w-3 h-3 border-2 border-pink-200 border-t-transparent rounded-full" /> Generando Social…</>
+                  ) : (
+                    <>📱 Genera SEO Social</>
                   )}
                 </button>
                 <button
@@ -1834,12 +1875,29 @@ export default function AdminProductPage() {
                     value={instagramCaption}
                     onChange={e => setInstagramCaption(e.target.value)}
                     rows={3}
-                    placeholder="Clicca 'Genera tutto con AI' per compilare →"
+                    placeholder="Clicca '📱 Genera SEO Social' per compilare →"
                     className={`${inputCls} resize-none font-mono`}
                   />
                   {instagramCaption && (
                     <button
                       onClick={() => navigator.clipboard.writeText(instagramCaption)}
+                      className="absolute top-1.5 right-1.5 border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors bg-black/60"
+                    >⎘ Copy</button>
+                  )}
+                </div>
+              </Field>
+              <Field label="TikTok Caption">
+                <div className="relative">
+                  <textarea
+                    value={tiktokCaption}
+                    onChange={e => setTiktokCaption(e.target.value)}
+                    rows={2}
+                    placeholder="Clicca '📱 Genera SEO Social' per compilare →"
+                    className={`${inputCls} resize-none font-mono`}
+                  />
+                  {tiktokCaption && (
+                    <button
+                      onClick={() => navigator.clipboard.writeText(tiktokCaption)}
                       className="absolute top-1.5 right-1.5 border border-[#252525] hover:border-[#444] text-[#777] hover:text-[#e8dcc8] px-2 py-0.5 text-[10px] transition-colors bg-black/60"
                     >⎘ Copy</button>
                   )}
@@ -1851,7 +1909,7 @@ export default function AdminProductPage() {
                     value={hashtags}
                     onChange={e => setHashtags(e.target.value)}
                     rows={2}
-                    placeholder="Clicca 'Genera tutto con AI' per compilare →"
+                    placeholder="Clicca '📱 Genera SEO Social' per compilare →"
                     className={`${inputCls} resize-none font-mono text-[11px]`}
                   />
                   {hashtags && (

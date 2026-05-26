@@ -3,8 +3,9 @@
  *
  * Replaces 4 separate functions to stay within Vercel Hobby's 12-function limit.
  * Routed via vercel.json rewrites that append ?handler=<name>:
- *   /api/generate-listing       → ?handler=listing
- *   /api/generate-etsy-listing  → ?handler=etsy-listing
+ *   /api/generate-listing        → ?handler=listing
+ *   /api/generate-etsy-listing   → ?handler=etsy-listing
+ *   /api/generate-social-listing → ?handler=social-listing
  *   /api/generate-mockup   → ?handler=mockup
  *   /api/generate-video    → ?handler=video
  *   /api/generate-persona  → ?handler=persona
@@ -772,6 +773,53 @@ Return ONLY the JSON object, no markdown, no extra text.`
   }
 }
 
+// ── generate-social-listing ──────────────────────────────────────────────────
+
+async function handleSocialListing(req, res) {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+
+  const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
+  if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
+
+  const prompt = `You are a social media strategist for JAYL, a premium print-on-demand art and apparel brand with an edgy, cultural aesthetic.
+Generate social captions and hashtags for this product:
+
+Product title: ${productTitle}
+Section: ${section || 'objects'}
+Collection: ${collection || ''}
+Movement/style: ${movement || ''}
+
+Return a JSON object with these EXACT keys:
+
+- "instagramCaption": 2-3 punchy sentences + CTA. Edgy, cultural, slightly irreverent tone — not corporate. Include 3-5 relevant hashtags inline. End with a CTA like "Link in bio 🔗" or "Shop now →".
+
+- "pinterestCaption": 2-3 keyword-rich descriptive sentences. No hashtags. Conversational but aspirational. End with a subtle CTA. Pinterest users are planning/saving — speak to that intent.
+
+- "tiktokCaption": 1-2 short punchy lines max 150 chars. Hook-first. Ultra casual, Gen Z tone. Use 3-5 trending TikTok hashtags. Examples of tone: "bro this just hits different 🔥", "the pokemon era is upon us 🫡". Include relevant hashtags like #fyp #foryou #anime #pokemon etc.
+
+- "hashtags": Single string with exactly 30 Instagram/TikTok hashtags separated by spaces. Mix: 5 niche fandom tags, 5 product-type tags, 5 aesthetic/style tags, 5 gift/occasion tags, 5 broad community tags, 5 JAYL brand tags (#jaylstore #artwear #jaylart #premiumprint #wearableart). Include # on each.
+
+Return ONLY the JSON object, no markdown, no extra text.`
+
+  try {
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 1500, temperature: 0.8 })
+    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
+    const parsed = JSON.parse(jsonStr)
+
+    return res.status(200).json({
+      instagramCaption: parsed.instagramCaption || '',
+      pinterestCaption: parsed.pinterestCaption || '',
+      tiktokCaption:    parsed.tiktokCaption    || '',
+      hashtags:         parsed.hashtags         || '',
+      model,
+      usage,
+    })
+  } catch (err) {
+    console.error('[generate-social-listing]', err.message)
+    return res.status(500).json({ error: err.message })
+  }
+}
+
 // ── Main router ───────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
@@ -782,8 +830,9 @@ export default async function handler(req, res) {
   }
 
   const h = req.query.handler
-  if (h === 'listing')      return handleListing(req, res)
-  if (h === 'etsy-listing') return handleEtsyListing(req, res)
+  if (h === 'listing')        return handleListing(req, res)
+  if (h === 'etsy-listing')   return handleEtsyListing(req, res)
+  if (h === 'social-listing') return handleSocialListing(req, res)
   if (h === 'mockup')       return handleMockup(req, res)
   if (h === 'video')        return handleVideo(req, res)
   if (h === 'persona')      return handlePersona(req, res)

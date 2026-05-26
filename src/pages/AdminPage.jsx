@@ -281,9 +281,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       : (editingProduct?.relatedProducts || '')
   )
 
-  const [generating, setGenerating]         = useState(false)
-  const [generatingEtsy, setGeneratingEtsy] = useState(false)
-  const [genErr, setGenErr]                 = useState('')
+  const [generating,       setGenerating]       = useState(false)
+  const [generatingEtsy,   setGeneratingEtsy]   = useState(false)
+  const [generatingSocial, setGeneratingSocial] = useState(false)
+  const [genErr, setGenErr]                     = useState('')
   const [personas,   setPersonas]           = useState([])
 
   // Load personas for asset generation context
@@ -299,6 +300,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [hashtags,         setHashtags]         = useState(editingProduct?.hashtags         || '')
   const [instagramCaption, setInstagramCaption] = useState(editingProduct?.instagramCaption || '')
   const [pinterestCaption, setPinterestCaption] = useState(editingProduct?.pinterestCaption || '')
+  const [tiktokCaption,    setTiktokCaption]    = useState(editingProduct?.tiktokCaption    || '')
   const [seoTitle,         setSeoTitle]         = useState(editingProduct?.seoTitle         || '')
   // Etsy SEO
   const [etsyTitle,        setEtsyTitle]        = useState(editingProduct?.etsyTitle        || '')
@@ -430,6 +432,34 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       setGenErr(e.message)
     } finally {
       setGeneratingEtsy(false)
+    }
+  }
+
+  // Genera SEO Social: instagramCaption, pinterestCaption, tiktokCaption, hashtags
+  const generateSocialAI = async () => {
+    if (!title.trim()) return setGenErr('Enter a product title first')
+    setGeneratingSocial(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-social-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productTitle: title.trim(),
+          section,
+          collection: newColl.trim() || collection,
+          movement: movement.trim(),
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Social generation failed')
+      if (data.instagramCaption) setInstagramCaption(data.instagramCaption)
+      if (data.pinterestCaption) setPinterestCaption(data.pinterestCaption)
+      if (data.tiktokCaption)    setTiktokCaption(data.tiktokCaption)
+      if (data.hashtags)         setHashtags(data.hashtags)
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGeneratingSocial(false)
     }
   }
 
@@ -725,6 +755,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(hashtags.trim()         ? { hashtags:         hashtags.trim() }         : {}),
         ...(instagramCaption.trim() ? { instagramCaption: instagramCaption.trim() } : {}),
         ...(pinterestCaption.trim() ? { pinterestCaption: pinterestCaption.trim() } : {}),
+        ...(tiktokCaption.trim()    ? { tiktokCaption:    tiktokCaption.trim() }    : {}),
         ...(seoTitle.trim()         ? { seoTitle:         seoTitle.trim() }         : {}),
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
@@ -911,9 +942,19 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                   ? <><span className="animate-spin inline-block w-3 h-3 border border-orange-200 border-t-transparent rounded-full" />Generando Etsy…</>
                   : <>🏪 SEO Etsy</>}
               </button>
+              <button
+                onClick={generateSocialAI}
+                disabled={generatingSocial || generating || generatingEtsy || !title.trim()}
+                className="flex items-center gap-1.5 bg-pink-900 hover:bg-pink-800 disabled:opacity-40 text-pink-100 px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                {generatingSocial
+                  ? <><span className="animate-spin inline-block w-3 h-3 border border-pink-200 border-t-transparent rounded-full" />Social…</>
+                  : <>📱 Social</>}
+              </button>
               {genErr && <span className="text-red-400 text-xs">{genErr}</span>}
-              {!genErr && !generating && !generatingEtsy && altText && <span className="text-amber-400 text-xs">✓ SEO sito applicato</span>}
-              {!genErr && !generatingEtsy && !generating && etsyTitle && <span className="text-orange-400 text-xs">✓ SEO Etsy applicato</span>}
+              {!genErr && !generating && !generatingEtsy && !generatingSocial && altText && <span className="text-amber-400 text-xs">✓ SEO sito</span>}
+              {!genErr && !generatingEtsy && !generating && !generatingSocial && etsyTitle && <span className="text-orange-400 text-xs">✓ Etsy</span>}
+              {!genErr && !generatingSocial && !generating && !generatingEtsy && tiktokCaption && <span className="text-pink-400 text-xs">✓ Social</span>}
             </div>
           </div>
 
