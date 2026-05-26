@@ -1202,7 +1202,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
         {/* ── Upload immagini / video ─────────────────────────────────────── */}
         {!productId ? (
-          <p className="text-gray-600 text-xs italic">Inserisci un titolo per attivare l'upload immagini.</p>
+          <div className="border-2 border-dashed border-gray-800 py-4 px-3 text-center">
+            <p className="text-gray-500 text-xs">⬆ Scrivi prima il titolo del prodotto per abilitare l'upload immagini</p>
+          </div>
         ) : (
           <div>
             <input ref={poolFileRef} type="file" accept="image/*,video/mp4,video/quicktime,video/webm" multiple className="hidden"
