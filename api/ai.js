@@ -155,6 +155,8 @@ Return a JSON object with these EXACT keys:
 
 - "etsyDescription": 200-300 words. Structure: (1) First 160-char hook — compressed pitch with primary keyword, what it is, who it's for, key differentiator. Never waste this on a vague intro. (2) Design description — vivid 2-3 sentences. (3) Product details — 100% cotton, DTG premium print, unisex fit, sizes S-3XL. (4) Gift hook. (5) "Machine wash cold, tumble dry low." (6) "Made to order — ships in 3-5 business days." Short paragraphs, blank lines between.
 
+- "etsyImageAlts": Array of exactly 7 alt text strings for the 7 standard product listing images. Assume a print-on-demand t-shirt with this design. Each alt text: 100-125 chars, includes the primary keyword + describes what the image shows. Write as if the image exists. Cover these 7 angles in order: (1) front mockup on model, (2) back mockup on model, (3) close-up design detail, (4) flat lay front, (5) lifestyle/worn candid, (6) size guide or product detail shot, (7) gift/packaging context. Do NOT mention image numbers or "Image X" — write pure descriptive alt text.
+
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
@@ -167,10 +169,15 @@ Return ONLY the JSON object, no markdown, no extra text.`
       ? parsed.etsyTags.map(t => String(t).toLowerCase().trim().slice(0, 20)).filter(Boolean).slice(0, 13)
       : String(parsed.etsyTags || '').split(',').map(t => t.trim().toLowerCase().slice(0, 20)).filter(Boolean).slice(0, 13)
 
+    const etsyImageAlts = Array.isArray(parsed.etsyImageAlts)
+      ? parsed.etsyImageAlts.map(a => String(a).trim()).filter(Boolean).slice(0, 7)
+      : []
+
     return res.status(200).json({
       etsyTitle:       parsed.etsyTitle       || '',
       etsyTags,
       etsyDescription: parsed.etsyDescription || '',
+      etsyImageAlts,
       model,
       usage,
     })

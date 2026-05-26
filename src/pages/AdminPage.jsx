@@ -308,6 +308,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     Array.isArray(editingProduct?.etsyTags) ? editingProduct.etsyTags : []
   )
   const [etsyDescription,  setEtsyDescription]  = useState(editingProduct?.etsyDescription  || '')
+  const [etsyImageAlts,    setEtsyImageAlts]    = useState(
+    Array.isArray(editingProduct?.etsyImageAlts) ? editingProduct.etsyImageAlts : []
+  )
   // Pinterest publish
   const [pinterestBoardId,     setPinterestBoardId]     = useState(() => localStorage.getItem('jayl_pinterest_board_id') || '')
   const [pinterestBoards,      setPinterestBoards]      = useState([])
@@ -429,9 +432,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Etsy generation failed')
-      if (data.etsyTitle)        setEtsyTitle(data.etsyTitle)
-      if (data.etsyTags?.length) setEtsyTags(data.etsyTags)
-      if (data.etsyDescription)  setEtsyDescription(data.etsyDescription)
+      if (data.etsyTitle)             setEtsyTitle(data.etsyTitle)
+      if (data.etsyTags?.length)      setEtsyTags(data.etsyTags)
+      if (data.etsyDescription)       setEtsyDescription(data.etsyDescription)
+      if (data.etsyImageAlts?.length) setEtsyImageAlts(data.etsyImageAlts)
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -769,9 +773,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(variants.length > 0 ? { variants } : {}),
         ...(colorsArray ? { colors: colorsArray } : {}),
         ...(printCost.trim() ? { printCost: Math.round(parseFloat(printCost) * 100) } : {}),
-        ...(etsyTitle.trim()       ? { etsyTitle:       etsyTitle.trim() }       : {}),
-        ...(etsyTags.length > 0    ? { etsyTags:        etsyTags }               : {}),
-        ...(etsyDescription.trim() ? { etsyDescription: etsyDescription.trim() } : {}),
+        ...(etsyTitle.trim()         ? { etsyTitle:       etsyTitle.trim() }       : {}),
+        ...(etsyTags.length > 0      ? { etsyTags:        etsyTags }               : {}),
+        ...(etsyDescription.trim()   ? { etsyDescription: etsyDescription.trim() } : {}),
+        ...(etsyImageAlts.length > 0 ? { etsyImageAlts }                           : {}),
         ...(savedGelatoCdnImages.length > 0 ? { gelatoCdnImages: savedGelatoCdnImages } : {}),
       }
 
@@ -1239,6 +1244,39 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               </div>
               <p className="text-gray-700 text-[10px] mt-1">I primi 160 chars appaiono su Google e nell'anteprima Etsy.</p>
             </div>
+
+            {/* Etsy Image Alt Texts */}
+            {etsyImageAlts.length > 0 && (
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider">Alt Text Immagini Etsy</p>
+                  <button type="button"
+                    onClick={() => navigator.clipboard.writeText(etsyImageAlts.map((a, i) => `Img ${i + 1}: ${a}`).join('\n'))}
+                    className="text-[10px] text-orange-800 hover:text-orange-600 transition-colors"
+                  >📋 Copia tutte</button>
+                </div>
+                <div className="space-y-1.5">
+                  {etsyImageAlts.map((alt, i) => (
+                    <div key={i} className="flex items-start gap-2 group">
+                      <span className="text-[10px] text-gray-700 font-mono w-5 shrink-0 pt-0.5">#{i + 1}</span>
+                      <input
+                        value={alt}
+                        onChange={e => setEtsyImageAlts(prev => prev.map((a, j) => j === i ? e.target.value : a))}
+                        className="flex-1 bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-2 py-1 focus:outline-none focus:border-orange-800 font-mono"
+                      />
+                      <span className={`text-[9px] font-mono shrink-0 pt-1 ${alt.length > 125 ? 'text-red-400' : alt.length > 100 ? 'text-green-500' : 'text-gray-700'}`}>
+                        {alt.length}
+                      </span>
+                      <button type="button"
+                        onClick={() => navigator.clipboard.writeText(alt)}
+                        className="text-gray-700 hover:text-orange-700 text-[10px] shrink-0 pt-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                      >📋</button>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-gray-700 text-[10px] mt-1.5">Etsy consente alt text per ogni immagine — migliora accessibilità e ranking. Target 100-125 chars.</p>
+              </div>
+            )}
           </div>
 
       </Card>

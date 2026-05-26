@@ -798,6 +798,7 @@ export default function AdminProductPage() {
   const [etsyTitle,        setEtsyTitle]        = useState('')
   const [etsyTags,         setEtsyTags]         = useState([])
   const [etsyDescription,  setEtsyDescription]  = useState('')
+  const [etsyImageAlts,    setEtsyImageAlts]    = useState([])
   const [seoTitle,         setSeoTitle]         = useState('')
   // Per-image alt texts
   const [imageAlts,        setImageAlts]        = useState({})
@@ -850,6 +851,7 @@ export default function AdminProductPage() {
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
       setEtsyDescription(p.etsyDescription || '')
+      setEtsyImageAlts(Array.isArray(p.etsyImageAlts) ? p.etsyImageAlts : [])
       setSeoTitle(p.seoTitle || '')
     }
 
@@ -972,9 +974,10 @@ export default function AdminProductPage() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Etsy generation failed')
-      if (data.etsyTitle)        setEtsyTitle(data.etsyTitle)
-      if (data.etsyTags?.length) setEtsyTags(data.etsyTags)
-      if (data.etsyDescription)  setEtsyDescription(data.etsyDescription)
+      if (data.etsyTitle)           setEtsyTitle(data.etsyTitle)
+      if (data.etsyTags?.length)    setEtsyTags(data.etsyTags)
+      if (data.etsyDescription)     setEtsyDescription(data.etsyDescription)
+      if (data.etsyImageAlts?.length) setEtsyImageAlts(data.etsyImageAlts)
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -1130,9 +1133,10 @@ export default function AdminProductPage() {
         detailImage: detailImage  || null,
         imageAlts:   Object.keys(imageAlts).length > 0 ? imageAlts : undefined,
         ...(videoUrl.trim()        ? { videoUrl:        videoUrl.trim() }        : { videoUrl: undefined }),
-        ...(etsyTitle.trim()         ? { etsyTitle:         etsyTitle.trim() }         : {}),
-        ...(etsyTags.length > 0      ? { etsyTags:          etsyTags }                 : {}),
-        ...(etsyDescription.trim()   ? { etsyDescription:   etsyDescription.trim() }   : {}),
+        ...(etsyTitle.trim()           ? { etsyTitle:         etsyTitle.trim() }           : {}),
+        ...(etsyTags.length > 0        ? { etsyTags:          etsyTags }                   : {}),
+        ...(etsyDescription.trim()     ? { etsyDescription:   etsyDescription.trim() }     : {}),
+        ...(etsyImageAlts.length > 0   ? { etsyImageAlts }                                 : {}),
         ...(seoTitle.trim()          ? { seoTitle:          seoTitle.trim() }          : {}),
         ...(instagramCaption.trim()  ? { instagramCaption:  instagramCaption.trim() }  : {}),
         ...(pinterestCaption.trim()  ? { pinterestCaption:  pinterestCaption.trim() }  : {}),
@@ -1794,6 +1798,39 @@ export default function AdminProductPage() {
                     </div>
                     <p className="text-gray-700 text-[10px] mt-1">I primi 160 chars appaiono su Google e nell'anteprima Etsy — devono essere keyword-dense.</p>
                   </div>
+
+                  {/* Etsy Image Alt Texts */}
+                  {etsyImageAlts.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="text-gray-500 text-xs uppercase tracking-wider">Alt Text Immagini Etsy</p>
+                        <button
+                          onClick={() => navigator.clipboard.writeText(etsyImageAlts.map((a, i) => `Img ${i + 1}: ${a}`).join('\n'))}
+                          className="text-[10px] text-orange-800 hover:text-orange-600 transition-colors"
+                        >📋 Copia tutte</button>
+                      </div>
+                      <div className="space-y-1.5">
+                        {etsyImageAlts.map((alt, i) => (
+                          <div key={i} className="flex items-start gap-2 group">
+                            <span className="text-[10px] text-gray-700 font-mono w-5 shrink-0 pt-0.5">#{i + 1}</span>
+                            <input
+                              value={alt}
+                              onChange={e => setEtsyImageAlts(prev => prev.map((a, j) => j === i ? e.target.value : a))}
+                              className="flex-1 bg-gray-900/50 border border-gray-800 text-gray-400 text-xs px-2 py-1 focus:outline-none focus:border-orange-800 font-mono"
+                            />
+                            <span className={`text-[9px] font-mono shrink-0 pt-1 ${alt.length > 125 ? 'text-red-400' : alt.length > 100 ? 'text-green-500' : 'text-gray-700'}`}>
+                              {alt.length}
+                            </span>
+                            <button
+                              onClick={() => navigator.clipboard.writeText(alt)}
+                              className="text-gray-700 hover:text-orange-700 text-[10px] shrink-0 pt-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                            >📋</button>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-gray-700 text-[10px] mt-1.5">Etsy consente alt text per ogni immagine — migliora accessibilità e ranking. Target 100-125 chars.</p>
+                    </div>
+                  )}
                 </div>
               )}
             </Section>
