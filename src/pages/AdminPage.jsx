@@ -328,6 +328,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [importing, setImporting]         = useState(false)
   const [importedPaths, setImportedPaths] = useState([])   // GitHub paths after import
   const [importMsg, setImportMsg]         = useState('')
+  // Original Gelato CDN URLs — persisted so pool doesn't disappear after save
+  const [savedGelatoCdnImages, setSavedGelatoCdnImages] = useState(
+    isEdit ? (editingProduct?.gelatoCdnImages || []) : []
+  )
 
   // Existing uploaded images (edit mode) — [{ src, alt }]
   const [existingImages, setExistingImages] = useState(() => {
@@ -637,9 +641,14 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             })
             const paths = importData.paths || []
             setImportedPaths(paths)
+            // Store original CDN URLs so they survive the save cycle
+            const cdnUrls = fetchedImages.map(img => img.src)
+            setSavedGelatoCdnImages(cdnUrls)
             setImportMsg(`✓ ${paths.length} mockup${paths.length !== 1 ? 's' : ''} imported`)
             // Refresh pool so new images appear immediately
             setPoolRefreshKey(k => k + 1)
+            // Auto-populate sequenza if still empty
+            if (sequenza.length === 0) setSequenza(paths)
           } catch (e) {
             setImportMsg(`⚠ Import failed: ${e.message}`)
           } finally {
@@ -763,6 +772,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(etsyTitle.trim()       ? { etsyTitle:       etsyTitle.trim() }       : {}),
         ...(etsyTags.length > 0    ? { etsyTags:        etsyTags }               : {}),
         ...(etsyDescription.trim() ? { etsyDescription: etsyDescription.trim() } : {}),
+        ...(savedGelatoCdnImages.length > 0 ? { gelatoCdnImages: savedGelatoCdnImages } : {}),
       }
 
       await api('save-product', { product })

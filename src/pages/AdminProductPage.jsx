@@ -815,6 +815,11 @@ export default function AdminProductPage() {
   const [savingMedia,    setSavingMedia]    = useState(false)
   const [mediaMsg,       setMediaMsg]       = useState('')
 
+  // Gelato CDN URLs persisted so the pool doesn't empty after save
+  const [gelatoCdnImages, setGelatoCdnImages] = useState([])
+  const [syncing,  setSyncing]  = useState(false)
+  const [syncMsg,  setSyncMsg]  = useState('')
+
   // Load product
   useEffect(() => {
     const staticP = allProducts.find(p => p.id === id)
@@ -840,6 +845,7 @@ export default function AdminProductPage() {
       setMobileHero(p.heroImage   || null)
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
+      setGelatoCdnImages(Array.isArray(p.gelatoCdnImages) ? p.gelatoCdnImages : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
@@ -877,11 +883,16 @@ export default function AdminProductPage() {
   const gelatoImages = useMemo(() => {
     const urls = new Set()
     const add  = u => u && !urls.has(u) && urls.add(u)
-    ;(product?.images || []).forEach(u => { if (u && !u.includes('raw.githubusercontent.com')) add(u) })
-    if (product?.image     && !product.image.includes('raw.githubusercontent.com'))     add(product.image)
-    if (product?.heroImage && !product.heroImage.includes('raw.githubusercontent.com')) add(product.heroImage)
+    // Prefer stored CDN URLs (survive save/reload cycle)
+    gelatoCdnImages.forEach(u => add(u))
+    // Fallback: scan product fields for non-github URLs (legacy products without gelatoCdnImages)
+    if (gelatoCdnImages.length === 0) {
+      ;(product?.images || []).forEach(u => { if (u && !u.includes('raw.githubusercontent.com')) add(u) })
+      if (product?.image     && !product.image.includes('raw.githubusercontent.com'))     add(product.image)
+      if (product?.heroImage && !product.heroImage.includes('raw.githubusercontent.com')) add(product.heroImage)
+    }
     return [...urls].map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
-  }, [product])
+  }, [product, gelatoCdnImages])
 
   const uploadedImages  = useMemo(() => githubImages.filter(img => !img.path?.includes('/generated/')), [githubImages])
   const generatedImages = useMemo(() => githubImages.filter(img =>  img.path?.includes('/generated/')), [githubImages])
@@ -1127,6 +1138,7 @@ export default function AdminProductPage() {
         ...(pinterestCaption.trim()  ? { pinterestCaption:  pinterestCaption.trim() }  : {}),
         ...(tiktokCaption.trim()     ? { tiktokCaption:     tiktokCaption.trim() }     : {}),
         ...(hashtags.trim()          ? { hashtags:          hashtags.trim() }          : {}),
+        ...(gelatoCdnImages.length > 0 ? { gelatoCdnImages } : {}),
       }
       // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
@@ -1139,6 +1151,46 @@ export default function AdminProductPage() {
       setSaveErr(e.message)
     } finally {
       setSaving(false)
+    }
+  }
+
+  const syncGelato = async () => {
+    if (!gelatoUid.trim()) return
+    setSyncing(true); setSyncMsg('')
+    try {
+      const res = await fetch(`/api/get-product-variants?productId=${encodeURIComponent(gelatoUid.trim())}`)
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Fetch failed')
+      const fetchedImages = data.images || []
+      if (fetchedImages.length === 0) { setSyncMsg('⚠ Nessuna immagine trovata su Gelato'); return }
+
+      // Store CDN URLs before import (these survive after github paths replace product.images)
+      const cdnUrls = fetchedImages.map(img => img.src)
+
+      setSyncMsg(`Importando ${fetchedImages.length} mockup…`)
+      const fetchedVariants = data.variants || []
+      const vColorMap = Object.fromEntries(
+        fetchedVariants.filter(v => v.uid && v.color).map(v => [v.uid, v.color])
+      )
+      const imagesWithColor = fetchedImages.map(img => ({
+        src:   img.src,
+        color: (img.variantIds || []).map(vid => vColorMap[vid]).find(Boolean) ?? null,
+      }))
+
+      const importData = await api('import-gelato-images', {
+        productId:    id,
+        productTitle: name.trim(),
+        images:       imagesWithColor,
+      })
+      const paths = importData.paths || []
+      setGelatoCdnImages(cdnUrls)
+      setPoolRefreshKey(k => k + 1)
+      if (sequenza.length === 0) setSequenza(paths)
+      setSyncMsg(`✓ ${paths.length} mockup importati`)
+    } catch (e) {
+      setSyncMsg(`⚠ ${e.message}`)
+    } finally {
+      setSyncing(false)
     }
   }
 
@@ -2049,6 +2101,20 @@ export default function AdminProductPage() {
                 />
               </Field>
 
+
+              {/* Sincronizza Gelato */}
+              {isEditable && (
+                <div className="flex items-center gap-3 mt-1">
+                  <button
+                    onClick={syncGelato}
+                    disabled={syncing || !gelatoUid.trim()}
+                    className="bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 text-white px-4 py-2 text-xs font-semibold transition-colors"
+                  >
+                    {syncing ? 'Sincronizzando…' : '🔄 Sincronizza Gelato'}
+                  </button>
+                  {syncMsg && <span className="text-xs text-gray-400">{syncMsg}</span>}
+                </div>
+              )}
 
               {/* Sizes read-only */}
               {product.sizes?.length > 0 && (
