@@ -1824,7 +1824,7 @@ export const adminProducts = [
     "id": "cool-vileploom-pok-mon-t-shirt",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Cool Vileploom Pokémon T-Shirt",
+    "name": "Cool Vileploom T-Shirt",
     "seoTitle": "Vileplume Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
     "price": 2500,
@@ -2117,7 +2117,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-05-23T16:47:20.114Z",
+    "updatedAt": "2026-05-26T14:47:01.866Z",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
   },
