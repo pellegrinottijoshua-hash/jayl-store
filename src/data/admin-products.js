@@ -2120,5 +2120,274 @@ export const adminProducts = [
     "updatedAt": "2026-05-23T16:47:20.114Z",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
+  },
+  {
+    "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool ditto Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 94000",
+    "subtitle": "cool Pokèmon",
+    "price": 1999,
+    "currency": "eur",
+    "description": "Embrace your love for Pokémon with our Cool Ditto T-Shirt, featuring vibrant retro 90s fan art that stands out in any crowd. Crafted with Gelato's premium print quality, this shirt showcases bold colors and intricate designs, perfect for any Pokémon lover. Whether you're at a convention or chilling with friends, this funny and stylish tee makes a fantastic gift for anime enthusiasts. Show off your personality and let Ditto's charm do the talking!",
+    "altText": "Cool Ditto Pokémon T-Shirt in retro 90s style.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 1999
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 1999
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 1999
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 1999
+      }
+    ],
+    "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134727_297c9f04-dcd8-4298-8a34-f79dcca59252.jpg",
+    "heroImage": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134155_3afdc6bc-f4d7-4acd-aea1-77be7adc7093.jpg",
+    "detailImage": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_135540_06b04568-bc43-4428-9c77-cf4fc56e10fb.jpg",
+    "images": [
+      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133713_1937144e-4ee2-4c33-b15b-5d728a6c1bd3.jpg",
+      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134727_297c9f04-dcd8-4298-8a34-f79dcca59252.jpg": "A vibrant t-shirt featuring a humorous Ditto Pokémon design, perfect for retro anime fans.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134155_3afdc6bc-f4d7-4acd-aea1-77be7adc7093.jpg": "The Ditto Pokémon t-shirt displayed on a model, showcasing its fun retro 90s anime style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_135540_06b04568-bc43-4428-9c77-cf4fc56e10fb.jpg": "Close-up of the t-shirt's fabric, highlighting the quality print of the Ditto design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133713_1937144e-4ee2-4c33-b15b-5d728a6c1bd3.jpg": "A side view of the Ditto t-shirt, showing its comfortable fit and playful design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png": "The Ditto Pokémon t-shirt laid flat, emphasizing its retro design and vibrant colors.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg": "A casual setting featuring the Ditto t-shirt, appealing to anime lovers with its playful style."
+    },
+    "tags": [
+      "ditto",
+      "pokemon",
+      "t-shirt",
+      "anime",
+      "fan art",
+      "retro",
+      "90s",
+      "funny",
+      "gift",
+      "apparel",
+      "cool",
+      "gildan",
+      "style"
+    ],
+    "featured": false,
+    "gelatoProductId": "044149c0-d796-477c-961c-eaba84047a3f",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "ditto t-shirt",
+      "pokemon shirt",
+      "anime shirt",
+      "retro t-shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "cool ditto pokemon t-shirt",
+      "retro 90s anime fan art",
+      "funny pokemon lover gift",
+      "gildan 94000 t-shirt",
+      "unique anime gift ideas",
+      "best gifts for pokemon fans",
+      "stylish retro t-shirts online",
+      "premium print on demand shirts",
+      "vibrant anime fan apparel",
+      "cool gifts for anime lovers"
+    ],
+    "hashtags": "#pokemon #ditto #anime #fanart #retrotshirt #90s #funny #gift #apparel #cool #gildan #style #animefan #pokemonlover #geekfashion #nerdstuff #collectibles #art #trendy #shopnow #fashion #graphictee #printondemand #ootd #unique #giftideas #fashionista #instagood #picoftheday #creative #fun",
+    "instagramCaption": "Level up your style game with our Cool Ditto Pokémon T-Shirt! Perfect for fans who love to stand out. Grab yours now and show off your quirky side! #pokemon #anime #funnygift",
+    "pinterestCaption": "Discover our Cool Ditto Pokémon T-Shirt, a must-have for any anime fan. This retro 90s style tee, crafted with premium print quality, makes a unique gift for Pokémon lovers. Don't miss out on adding this stylish piece to your collection!",
+    "seoTitle": "Ditto Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "5c6afa7d-1602-4690-9812-bacc677efcb4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "31c88a6c-c967-4a53-ab88-a94a4d63e16c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9650489e-6df4-43cd-862d-bd51e8c04e6f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5ec7e6bf-9d8a-4de3-ab0f-597eb75abcc7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8120a578-cc85-41f2-b582-23639b485a21",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "782eb29c-098f-4289-9ec5-3ec27b711baf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5bb9dbc4-1fb9-4b21-ad70-ffe6c2bbe8a1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "008f6806-20ba-4322-b21e-c159bc2a95ea",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "144970b3-c054-4f87-a7e7-6bd27ac6810a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "04cf7cf0-a212-4a51-96b9-4b6a4cd8b784",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f333cd90-9ea8-469a-a0bb-9cb3d63f503b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8859fc8c-fa9d-4127-8a10-7c5dbca1fbc2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "74577263-7f83-41c1-8bcb-beb08717a6f7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "534d530f-d0c7-4fa2-87d3-97db02ab8e37",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "882b8e4b-a36a-4797-a3b1-490d0b44701a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bd9585c1-54af-4e2d-9fb5-4bc5740be1cb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-azalea-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-black-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-light-blue-01.jpg"
+      }
+    ],
+    "printCost": 750,
+    "etsyTitle": "Cool Ditto Pokémon T-Shirt, Retro 90s Anime Graphic Tee, Funny Gift for Pokémon Lovers",
+    "etsyTags": [
+      "ditto pokemon shirt",
+      "anime fan art gift",
+      "retro 90s style",
+      "gifts for him",
+      "otaku lifestyle",
+      "funny pokemon gift",
+      "graphic tee unisex",
+      "pokemon lover gift",
+      "cool anime apparel",
+      "geek culture fashion",
+      "vintage aesthetic te",
+      "pop culture merch",
+      "nerdy gift idea"
+    ],
+    "etsyDescription": "Discover the ultimate Cool Ditto Pokémon T-Shirt, designed for true Pokémon fans and anime enthusiasts. This unique graphic tee showcases a playful Ditto character in a vibrant retro 90s style, making it a standout addition to any wardrobe. Perfect for expressing your love for Pokémon while enjoying the nostalgia of the 90s.\n\nCrafted from 100% cotton, this t-shirt features direct-to-garment (DTG) premium print technology for a sharp and colorful design that lasts. With a comfortable unisex fit available in sizes S-3XL, it’s perfect for anyone who wants to wear their passion with pride.\n\nLooking for the ideal gift? This shirt is a fantastic choice for birthdays, holidays, or just because! Whether you’re shopping for a friend, family member, or yourself, it’s a great way to celebrate fandom.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "createdAt": "2026-05-26T14:46:47.331Z",
+    "updatedAt": "2026-05-26T14:46:47.331Z"
   }
 ]
