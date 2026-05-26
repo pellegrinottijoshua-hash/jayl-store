@@ -2125,7 +2125,7 @@ export const adminProducts = [
     "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Cool ditto Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 94000",
+    "name": "Cool ditto T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 1999,
     "currency": "eur",
@@ -2370,24 +2370,25 @@ export const adminProducts = [
       }
     ],
     "printCost": 750,
-    "etsyTitle": "Cool Ditto Pokémon T-Shirt, Retro 90s Anime Graphic Tee, Funny Gift for Pokémon Lovers",
+    "etsyTitle": "Cool Ditto T-Shirt, Unique Pokemon Graphic Tee, Fun Gift for Fans",
     "etsyTags": [
-      "ditto pokemon shirt",
-      "anime fan art gift",
-      "retro 90s style",
-      "gifts for him",
-      "otaku lifestyle",
-      "funny pokemon gift",
-      "graphic tee unisex",
-      "pokemon lover gift",
-      "cool anime apparel",
-      "geek culture fashion",
-      "vintage aesthetic te",
-      "pop culture merch",
-      "nerdy gift idea"
+      "ditto character tee",
+      "pokemon fan art",
+      "gift for gamers",
+      "present for him",
+      "otaku apparel",
+      "90s anime style",
+      "unisex fit t-shirt",
+      "cool graphic shirt",
+      "anime merchandise",
+      "trendy casual wear",
+      "collectible pokemon",
+      "gift for her",
+      "quirky t-shirt"
     ],
-    "etsyDescription": "Discover the ultimate Cool Ditto Pokémon T-Shirt, designed for true Pokémon fans and anime enthusiasts. This unique graphic tee showcases a playful Ditto character in a vibrant retro 90s style, making it a standout addition to any wardrobe. Perfect for expressing your love for Pokémon while enjoying the nostalgia of the 90s.\n\nCrafted from 100% cotton, this t-shirt features direct-to-garment (DTG) premium print technology for a sharp and colorful design that lasts. With a comfortable unisex fit available in sizes S-3XL, it’s perfect for anyone who wants to wear their passion with pride.\n\nLooking for the ideal gift? This shirt is a fantastic choice for birthdays, holidays, or just because! Whether you’re shopping for a friend, family member, or yourself, it’s a great way to celebrate fandom.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyDescription": "Show off your love for Pokemon with our Cool Ditto T-Shirt, a must-have for fans of all ages seeking unique and stylish apparel. This one-of-a-kind tee features a vibrant graphic of Ditto, perfect for expressing your fandom in a fun way.\n\nCrafted with care, this t-shirt showcases a striking design that captures the playful essence of Ditto, making it a standout piece in any wardrobe. Whether you're attending a convention, hanging out with friends, or just relaxing at home, this shirt is designed to turn heads.\n\nMade from 100% cotton, this t-shirt offers a soft, breathable fit that keeps you comfortable all day long. With direct-to-garment (DTG) premium print technology, the colors are vivid and long-lasting. Available in sizes S-3XL, it’s perfect for everyone.\n\nLooking for the perfect gift? This Cool Ditto T-Shirt is an ideal present for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "createdAt": "2026-05-26T14:46:47.331Z",
-    "updatedAt": "2026-05-26T14:46:47.331Z"
+    "updatedAt": "2026-05-26T15:01:47.863Z",
+    "relatedProducts": []
   }
 ]
