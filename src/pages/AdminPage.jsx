@@ -326,8 +326,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [generatingAlts,   setGeneratingAlts]   = useState(false)
   const [altsMsg,          setAltsMsg]          = useState('')
 
-  // Gelato mockup images (returned from fetch-variants)
-  const [gelatoImages, setGelatoImages]   = useState([])   // [{ src, position, variantIds }]
+  // Gelato mockup images (returned from fetch-variants, or restored from saved CDN URLs)
+  const [gelatoImages, setGelatoImages]   = useState(
+    isEdit && editingProduct?.gelatoCdnImages?.length
+      ? editingProduct.gelatoCdnImages.map(src => ({ src }))
+      : []
+  )   // [{ src, position?, variantIds? }]
   const [importing, setImporting]         = useState(false)
   const [importedPaths, setImportedPaths] = useState([])   // GitHub paths after import
   const [importMsg, setImportMsg]         = useState('')
@@ -651,8 +655,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             setImportMsg(`✓ ${paths.length} mockup${paths.length !== 1 ? 's' : ''} imported`)
             // Refresh pool so new images appear immediately
             setPoolRefreshKey(k => k + 1)
-            // Auto-populate sequenza if still empty
-            if (sequenza.length === 0) setSequenza(paths)
+            // Auto-populate sequenza: merge Gelato CDN URLs in (they anchor color variants)
+            setSequenza(prev => {
+              const merged = [...prev]
+              cdnUrls.forEach(u => { if (!merged.includes(u)) merged.push(u) })
+              return merged
+            })
           } catch (e) {
             setImportMsg(`⚠ Import failed: ${e.message}`)
           } finally {
@@ -1498,11 +1506,16 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           primaryColor={variants[0]?.color || (editingProduct?.colors?.[0]?.label) || ''}
           collection={finalCollection}
           onAssetSaved={() => setPoolRefreshKey(k => k + 1)}
-          preloadedImages={
-            poolImages.length > 0
-              ? poolImages
-              : gelatoImages.map((img, i) => ({ url: img.src, name: img.src.split('/').pop() || `mockup-${i + 1}` }))
-          }
+          preloadedImages={(() => {
+            // Always merge: GitHub pool + Gelato CDN mockups (deduped by URL)
+            const gelatoEntries = gelatoImages.map((img, i) => ({
+              url:  img.src,
+              name: img.src.split('/').pop().split('?')[0] || `mockup-${i + 1}`,
+            }))
+            const seen = new Set(poolImages.map(p => p.url))
+            const extra = gelatoEntries.filter(g => !seen.has(g.url))
+            return [...poolImages, ...extra]
+          })()}
           personas={personas}
           instagramCaption={instagramCaption}
           pinterestCaption={pinterestCaption}
