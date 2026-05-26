@@ -281,9 +281,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       : (editingProduct?.relatedProducts || '')
   )
 
-  const [generating, setGenerating] = useState(false)
-  const [genErr, setGenErr]         = useState('')
-  const [personas,   setPersonas]   = useState([])
+  const [generating, setGenerating]         = useState(false)
+  const [generatingEtsy, setGeneratingEtsy] = useState(false)
+  const [genErr, setGenErr]                 = useState('')
+  const [personas,   setPersonas]           = useState([])
 
   // Load personas for asset generation context
   useEffect(() => {
@@ -372,6 +373,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     return acc
   }, {})
 
+  // Genera SEO Sito: title, description, alt, tags, keywords, hashtags, IG/Pinterest captions
   const generateWithAI = async () => {
     if (!title.trim()) return setGenErr('Enter a product title first')
     setGenerating(true); setGenErr('')
@@ -388,22 +390,46 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Generation failed')
-      if (data.seoTitle)           setSeoTitle(data.seoTitle)
-      if (data.description)        setDescription(data.description)
-      if (data.altText)            setAltText(data.altText)
-      if (data.tags?.length)       setTags(data.tags.join(', '))
-      if (data.primaryKeywords?.length)  setPrimaryKeywords(data.primaryKeywords.join(', '))
-      if (data.longTailKeywords?.length) setLongTailKeywords(data.longTailKeywords.join('\n'))
-      if (data.hashtags)           setHashtags(data.hashtags)
-      if (data.instagramCaption)   setInstagramCaption(data.instagramCaption)
-      if (data.pinterestCaption)   setPinterestCaption(data.pinterestCaption)
-      if (data.etsyTitle)          setEtsyTitle(data.etsyTitle)
-      if (data.etsyTags?.length)   setEtsyTags(data.etsyTags)
-      if (data.etsyDescription)    setEtsyDescription(data.etsyDescription)
+      if (data.seoTitle)                  setSeoTitle(data.seoTitle)
+      if (data.description)               setDescription(data.description)
+      if (data.altText)                   setAltText(data.altText)
+      if (data.tags?.length)              setTags(data.tags.join(', '))
+      if (data.primaryKeywords?.length)   setPrimaryKeywords(data.primaryKeywords.join(', '))
+      if (data.longTailKeywords?.length)  setLongTailKeywords(data.longTailKeywords.join('\n'))
+      if (data.hashtags)                  setHashtags(data.hashtags)
+      if (data.instagramCaption)          setInstagramCaption(data.instagramCaption)
+      if (data.pinterestCaption)          setPinterestCaption(data.pinterestCaption)
     } catch (e) {
       setGenErr(e.message)
     } finally {
       setGenerating(false)
+    }
+  }
+
+  // Genera SEO Etsy: etsyTitle, etsyTags, etsyDescription (chiamata separata — output più pesante)
+  const generateEtsyAI = async () => {
+    if (!title.trim()) return setGenErr('Enter a product title first')
+    setGeneratingEtsy(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-etsy-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productTitle: title.trim(),
+          section,
+          collection: newColl.trim() || collection,
+          movement: movement.trim(),
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Etsy generation failed')
+      if (data.etsyTitle)        setEtsyTitle(data.etsyTitle)
+      if (data.etsyTags?.length) setEtsyTags(data.etsyTags)
+      if (data.etsyDescription)  setEtsyDescription(data.etsyDescription)
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGeneratingEtsy(false)
     }
   }
 
@@ -866,20 +892,28 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               <input value={title} onChange={e => setTitle(e.target.value)}
                 placeholder="Snorlax T-Shirt" className={inputCls} />
             </Field>
-            <div className="mt-2 flex items-center gap-3">
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <button
                 onClick={generateWithAI}
-                disabled={generating || !title.trim()}
+                disabled={generating || generatingEtsy || !title.trim()}
                 className="flex items-center gap-1.5 bg-amber-700 hover:bg-amber-600 disabled:opacity-40 text-white px-3 py-1.5 text-xs font-medium transition-colors"
               >
-                {generating ? (
-                  <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" />Generating…</>
-                ) : (
-                  <><span>✨</span>Generate with AI</>
-                )}
+                {generating
+                  ? <><span className="animate-spin inline-block w-3 h-3 border border-white border-t-transparent rounded-full" />Generando SEO Sito…</>
+                  : <>⚡ SEO Sito</>}
+              </button>
+              <button
+                onClick={generateEtsyAI}
+                disabled={generatingEtsy || generating || !title.trim()}
+                className="flex items-center gap-1.5 bg-orange-800 hover:bg-orange-700 disabled:opacity-40 text-orange-100 px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                {generatingEtsy
+                  ? <><span className="animate-spin inline-block w-3 h-3 border border-orange-200 border-t-transparent rounded-full" />Generando Etsy…</>
+                  : <>🏪 SEO Etsy</>}
               </button>
               {genErr && <span className="text-red-400 text-xs">{genErr}</span>}
-              {!genErr && !generating && altText && <span className="text-violet-400 text-xs">✓ AI content applied</span>}
+              {!genErr && !generating && !generatingEtsy && altText && <span className="text-amber-400 text-xs">✓ SEO sito applicato</span>}
+              {!genErr && !generatingEtsy && !generating && etsyTitle && <span className="text-orange-400 text-xs">✓ SEO Etsy applicato</span>}
             </div>
           </div>
 

@@ -774,6 +774,7 @@ export default function AdminProductPage() {
 
   // AI generation
   const [generating, setGenerating]             = useState(false)
+  const [generatingEtsy, setGeneratingEtsy]     = useState(false)
   const [genErr, setGenErr]                     = useState('')
   const [aiProvider, setAiProvider]             = useState('openai')
   // AI social/SEO output
@@ -918,6 +919,7 @@ export default function AdminProductPage() {
 
   const videoInfo = parseVideoUrl(videoUrl)
 
+  // Genera SEO sito: title, description, alt, tags, keywords, hashtags, IG/Pinterest captions
   const generateWithAI = async () => {
     if (!name.trim()) return setGenErr('Enter a product name first')
     setGenerating(true); setGenErr('')
@@ -932,19 +934,38 @@ export default function AdminProductPage() {
       if (data.seoTitle)    setSeoTitle(data.seoTitle)
       if (data.description) setDescription(data.description)
       if (data.altText)     setAltText(data.altText)
-      if (data.tags?.length) setTags(data.tags.join(', '))
-      if (data.instagramCaption) setInstagramCaption(data.instagramCaption)
-      if (data.pinterestCaption) setPinterestCaption(data.pinterestCaption)
-      if (data.hashtags)         setHashtags(data.hashtags)
-      if (data.primaryKeywords?.length)  setPrimaryKeywords(data.primaryKeywords)
-      if (data.longTailKeywords?.length) setLongTailKeywords(data.longTailKeywords)
+      if (data.tags?.length)              setTags(data.tags.join(', '))
+      if (data.instagramCaption)          setInstagramCaption(data.instagramCaption)
+      if (data.pinterestCaption)          setPinterestCaption(data.pinterestCaption)
+      if (data.hashtags)                  setHashtags(data.hashtags)
+      if (data.primaryKeywords?.length)   setPrimaryKeywords(data.primaryKeywords)
+      if (data.longTailKeywords?.length)  setLongTailKeywords(data.longTailKeywords)
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGenerating(false)
+    }
+  }
+
+  // Genera SEO Etsy: etsyTitle, etsyTags, etsyDescription (separate call — heavier output)
+  const generateEtsyAI = async () => {
+    if (!name.trim()) return setGenErr('Enter a product name first')
+    setGeneratingEtsy(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-etsy-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productTitle: name.trim(), section, collection, movement, provider: aiProvider }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Etsy generation failed')
       if (data.etsyTitle)        setEtsyTitle(data.etsyTitle)
       if (data.etsyTags?.length) setEtsyTags(data.etsyTags)
       if (data.etsyDescription)  setEtsyDescription(data.etsyDescription)
     } catch (e) {
       setGenErr(e.message)
     } finally {
-      setGenerating(false)
+      setGeneratingEtsy(false)
     }
   }
 
@@ -1492,13 +1513,11 @@ export default function AdminProductPage() {
             <Section title="Genera con AI" icon="🤖" color="amber">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
-                  <p className="text-gray-500 text-[11px]">
-                    Genera descrizione, SEO Google, SEO Etsy, Pinterest caption, Instagram caption, hashtag, alt text
-                  </p>
+                  <p className="text-gray-500 text-[11px]">Provider AI per la generazione testi</p>
                   <select
                     value={aiProvider}
                     onChange={e => setAiProvider(e.target.value)}
-                    disabled={generating}
+                    disabled={generating || generatingEtsy}
                     className="bg-gray-800 border border-gray-700 text-gray-300 text-xs px-2 py-1.5 focus:outline-none focus:border-amber-600 transition-colors cursor-pointer disabled:opacity-40 flex-shrink-0"
                     title="AI text provider"
                   >
@@ -1507,15 +1526,28 @@ export default function AdminProductPage() {
                     <option value="longcat-thinking">Longcat Thinking</option>
                   </select>
                 </div>
+                {/* SEO Sito */}
                 <button
                   onClick={generateWithAI}
-                  disabled={generating || !name.trim()}
-                  className="w-full flex items-center justify-center gap-2 bg-amber-700 hover:bg-amber-600 disabled:opacity-40 text-white px-4 py-3 text-sm font-semibold transition-colors"
+                  disabled={generating || generatingEtsy || !name.trim()}
+                  className="w-full flex items-center justify-center gap-2 bg-amber-700 hover:bg-amber-600 disabled:opacity-40 text-white px-4 py-2.5 text-xs font-semibold transition-colors"
                 >
                   {generating ? (
-                    <><span className="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full" /> Generando…</>
+                    <><span className="animate-spin inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full" /> Generando SEO Sito…</>
                   ) : (
-                    <>✨ Genera tutto con AI</>
+                    <>⚡ Genera SEO Sito</>
+                  )}
+                </button>
+                {/* SEO Etsy */}
+                <button
+                  onClick={generateEtsyAI}
+                  disabled={generatingEtsy || generating || !name.trim()}
+                  className="w-full flex items-center justify-center gap-2 bg-orange-800 hover:bg-orange-700 disabled:opacity-40 text-orange-100 px-4 py-2.5 text-xs font-semibold transition-colors"
+                >
+                  {generatingEtsy ? (
+                    <><span className="animate-spin inline-block w-3 h-3 border-2 border-orange-200 border-t-transparent rounded-full" /> Generando SEO Etsy…</>
+                  ) : (
+                    <>🏪 Genera SEO Etsy</>
                   )}
                 </button>
                 <button

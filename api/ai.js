@@ -3,7 +3,8 @@
  *
  * Replaces 4 separate functions to stay within Vercel Hobby's 12-function limit.
  * Routed via vercel.json rewrites that append ?handler=<name>:
- *   /api/generate-listing  → ?handler=listing
+ *   /api/generate-listing       → ?handler=listing
+ *   /api/generate-etsy-listing  → ?handler=etsy-listing
  *   /api/generate-mockup   → ?handler=mockup
  *   /api/generate-video    → ?handler=video
  *   /api/generate-persona  → ?handler=persona
@@ -76,70 +77,39 @@ async function handleListing(req, res) {
   const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
   if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
 
-  const prompt = `You are a senior SEO copywriter and marketplace strategist for JAYL, a premium print-on-demand art and apparel brand.
-Generate complete listing content, keyword research, AND Etsy-optimised listing fields for this product:
+  // Site SEO only — intentionally excludes Etsy fields to keep response < 2k tokens
+  const prompt = `You are a senior SEO copywriter for JAYL, a premium print-on-demand art and apparel brand.
+Generate site listing content and keyword research for this product:
 
 Product title: ${productTitle}
 Section: ${section || 'objects'}
 Collection: ${collection || ''}
 Movement/style: ${movement || ''}
 
-Return a JSON object with these EXACT keys:
+Return a JSON object with these EXACT keys (no other keys):
 
-── SITE LISTING ──
-- "seoTitle": SEO-optimised meta title for the JAYL website. Format: "[Character] [Product Type] | [Keyword Hook] | [Style/Gift Context]". Target 50-65 chars. Do NOT include "JAYL" — it is appended automatically. Example: "Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift".
+- "seoTitle": SEO meta title for the JAYL website. Format: "[Character] [Product Type] | [Keyword Hook] | [Style/Gift Context]". Target 50-65 chars. Do NOT include "JAYL". Example: "Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift".
 - "description": Compelling product description ~150 words. Evocative, minimal, no fluff. Mention Gelato premium print quality, the art style, why it makes a great gift.
-- "altText": Concise alt text for the product hero image (1 sentence, under 125 chars). Describe the visual specifically.
-- "tags": Array of exactly 13 tags (strings). Mix product type, character/fandom, style, gift occasion. Each tag max 20 chars, lowercase, no special chars except spaces.
-
-── GOOGLE / PINTEREST / IG KEYWORD RESEARCH ──
-- "primaryKeywords": Array of 5 high-volume short-tail keywords (1-3 words each). What buyers search on Google/Etsy/Pinterest.
-- "longTailKeywords": Array of 10 long-tail phrases (4-7 words). Buying-intent, great for descriptions and alt text.
-- "hashtags": Single string with exactly 30 Instagram hashtags separated by spaces. Mix niche, category, and broad tags. Include # symbol on each.
-- "instagramCaption": 2-3 sentences + CTA. Creative, slightly edgy, not corporate. Include 3-5 hashtags inline.
-- "pinterestCaption": 2-3 keyword-rich sentences. No hashtags. Ends with a subtle CTA.
-
-── ETSY SEO (follow all rules below precisely — 2025 Etsy NLP algorithm) ──
-ETSY TITLE RULES:
-- Max 140 chars. Target 90-120 chars — Etsy now uses NLP and penalises keyword stuffing
-- Lead with the most-searched noun phrase in the FIRST 3-5 words: [Character Name] + [product type]
-- Natural, conversational language. Do NOT repeat the same root word twice
-- Structure: "[Character] [Product Type], [Style Descriptor], [Occasion/Gift Hook]"
-- Use commas as phrase separators. NOT pipes (|) or hyphens between distinct phrases
-- Capitalize Each Word
-- Example: "Charizard Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Fan Art Gift for Him"
-- "etsyTitle": Etsy title following all rules above.
-
-ETSY TAGS RULES (2025 — CRITICAL: tags EXPAND coverage, they do NOT repeat the title):
-- Exactly 13 tags. Each max 20 chars (including spaces). Use ALL 13 slots.
-- Multi-word phrases only (2-4 words each) — single-word tags rank for nothing
-- CRITICAL: Tags must cover DIFFERENT search paths than the title. Etsy already knows your title. Tags = extra ranking surface area, not title repetition.
-- Do NOT repeat exact words or phrases from etsyTitle across your tags
-- Cover these 7 distinct facets: (1) character-specific variant phrase, (2) genre/fandom style, (3) gift occasion (birthday, Christmas), (4) recipient (anime fan, him, teen), (5) community term (otaku, weeaboo), (6) aesthetic era (retro, vintage, 90s), (7) product fit variant (unisex tee, graphic top)
-- Use buyer-intent phrases: "gift for anime fan", "pokemon lover gift", "otaku birthday gift"
-- All lowercase
-- "etsyTags": Array of exactly 13 tags (strings, each max 20 chars, lowercase, multi-word).
-
-ETSY DESCRIPTION RULES:
-- FIRST 160 CHARS ARE CRITICAL: they become both Google's meta description AND Etsy's preview snippet. Write them as a compressed pitch — "[primary keyword phrase] — [what it is] + [who it's for] + [key differentiator]." Never waste this space on a vague intro.
-- Total: 200-300 words. Short paragraphs separated by blank lines.
-- Structure: (1) First 160-char hook paragraph, (2) Design description — describe the art/character vividly (2-3 sentences), (3) Product details — 100% cotton, DTG premium print, unisex fit, sizes S-3XL, (4) Gift/occasion hook — who it's perfect for and when, (5) Care: "Machine wash cold, tumble dry low", (6) "Made to order — ships in 3-5 business days"
-- Sprinkle 2-3 keyword phrases naturally in first two paragraphs. No stuffing.
-- "etsyDescription": Full Etsy description following all rules above.
+- "altText": Concise alt text for hero image (1 sentence, under 125 chars).
+- "tags": Array of exactly 13 tags (strings, lowercase, max 20 chars each, no special chars except spaces).
+- "primaryKeywords": Array of 5 high-volume short-tail keywords (1-3 words each).
+- "longTailKeywords": Array of 10 long-tail buying-intent phrases (4-7 words each).
+- "hashtags": Single string with exactly 30 Instagram hashtags separated by spaces (include # on each).
+- "instagramCaption": 2-3 sentences + CTA. Creative, slightly edgy. Include 3-5 hashtags inline.
+- "pinterestCaption": 2-3 keyword-rich sentences, no hashtags, ends with subtle CTA.
 
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.7 })
-    const parsed = JSON.parse(content)
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 2500, temperature: 0.7 })
+
+    // Robust JSON extraction — handles occasional markdown fences
+    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
+    const parsed = JSON.parse(jsonStr)
 
     const tags = Array.isArray(parsed.tags)
       ? parsed.tags.slice(0, 13)
       : String(parsed.tags || '').split(',').map(t => t.trim()).filter(Boolean).slice(0, 13)
-
-    const etsyTags = Array.isArray(parsed.etsyTags)
-      ? parsed.etsyTags.map(t => String(t).toLowerCase().trim().slice(0, 20)).filter(Boolean).slice(0, 13)
-      : String(parsed.etsyTags || '').split(',').map(t => t.trim().toLowerCase().slice(0, 20)).filter(Boolean).slice(0, 13)
 
     return res.status(200).json({
       seoTitle:         parsed.seoTitle         || productTitle,
@@ -151,15 +121,60 @@ Return ONLY the JSON object, no markdown, no extra text.`
       hashtags:         parsed.hashtags         || '',
       instagramCaption: parsed.instagramCaption || '',
       pinterestCaption: parsed.pinterestCaption || '',
-      // Etsy SEO
-      etsyTitle:        parsed.etsyTitle        || '',
-      etsyTags,
-      etsyDescription:  parsed.etsyDescription  || '',
       model,
       usage,
     })
   } catch (err) {
     console.error('[generate-listing]', err.message)
+    return res.status(500).json({ error: err.message })
+  }
+}
+
+// ── generate-etsy-listing ─────────────────────────────────────────────────────
+
+async function handleEtsyListing(req, res) {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+
+  const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
+  if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
+
+  const prompt = `You are a senior Etsy SEO strategist for JAYL, a premium print-on-demand art brand.
+Generate Etsy-optimised listing fields for this product (2025 Etsy NLP algorithm):
+
+Product title: ${productTitle}
+Section: ${section || 'objects'}
+Collection: ${collection || ''}
+Movement/style: ${movement || ''}
+
+Return a JSON object with these EXACT keys:
+
+- "etsyTitle": Max 140 chars, target 90-120. Lead with most-searched noun phrase first 3-5 words. Natural language, no keyword stuffing. Use commas as phrase separators, NOT pipes or hyphens. Capitalize Each Word. Example: "Charizard Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Fan Art Gift for Him"
+
+- "etsyTags": Array of exactly 13 tags. Each max 20 chars including spaces. Multi-word phrases only (2-4 words). Must cover DIFFERENT search paths than the title — tags expand coverage, not repeat it. Cover: (1) character variant, (2) genre/fandom, (3) gift occasion, (4) recipient, (5) community term (otaku/weeaboo), (6) aesthetic era, (7) product fit variant. All lowercase.
+
+- "etsyDescription": 200-300 words. Structure: (1) First 160-char hook — compressed pitch with primary keyword, what it is, who it's for, key differentiator. Never waste this on a vague intro. (2) Design description — vivid 2-3 sentences. (3) Product details — 100% cotton, DTG premium print, unisex fit, sizes S-3XL. (4) Gift hook. (5) "Machine wash cold, tumble dry low." (6) "Made to order — ships in 3-5 business days." Short paragraphs, blank lines between.
+
+Return ONLY the JSON object, no markdown, no extra text.`
+
+  try {
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3000, temperature: 0.7 })
+
+    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
+    const parsed = JSON.parse(jsonStr)
+
+    const etsyTags = Array.isArray(parsed.etsyTags)
+      ? parsed.etsyTags.map(t => String(t).toLowerCase().trim().slice(0, 20)).filter(Boolean).slice(0, 13)
+      : String(parsed.etsyTags || '').split(',').map(t => t.trim().toLowerCase().slice(0, 20)).filter(Boolean).slice(0, 13)
+
+    return res.status(200).json({
+      etsyTitle:       parsed.etsyTitle       || '',
+      etsyTags,
+      etsyDescription: parsed.etsyDescription || '',
+      model,
+      usage,
+    })
+  } catch (err) {
+    console.error('[generate-etsy-listing]', err.message)
     return res.status(500).json({ error: err.message })
   }
 }
@@ -767,11 +782,12 @@ export default async function handler(req, res) {
   }
 
   const h = req.query.handler
-  if (h === 'listing') return handleListing(req, res)
-  if (h === 'mockup')  return handleMockup(req, res)
-  if (h === 'video')   return handleVideo(req, res)
-  if (h === 'persona') return handlePersona(req, res)
-  if (h === 'alts')    return handleAlts(req, res)
+  if (h === 'listing')      return handleListing(req, res)
+  if (h === 'etsy-listing') return handleEtsyListing(req, res)
+  if (h === 'mockup')       return handleMockup(req, res)
+  if (h === 'video')        return handleVideo(req, res)
+  if (h === 'persona')      return handlePersona(req, res)
+  if (h === 'alts')         return handleAlts(req, res)
 
   return res.status(404).json({ error: `Unknown AI handler: ${h}` })
 }
