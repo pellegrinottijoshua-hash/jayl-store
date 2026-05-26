@@ -1410,6 +1410,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                   onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
                 />
               ))}
+              {/* Gelato CDN mockups — shown even when GitHub pool is populated */}
+              {gelatoImages.filter(g => !poolImages.some(p => p.url === g.src)).map((g, i) => (
+                <PoolThumb key={g.src} img={{ url: g.src, name: g.src.split('/').pop().split('?')[0] || `gelato-${i + 1}` }}
+                  desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza} detailImage={detailImage}
+                  onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
+                />
+              ))}
             </div>
 
             {/* ── Per-image alt text AI generator ── */}

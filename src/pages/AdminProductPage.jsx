@@ -513,6 +513,12 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, allImages,
                     {/* Hero badges */}
                     {isDesktop && <div className="absolute top-0.5 right-0.5 bg-blue-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">🖥</div>}
                     {isMobile  && <div className="absolute bottom-0.5 right-0.5 bg-purple-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">📱</div>}
+                    {/* Remove button */}
+                    <button
+                      onClick={() => setSequenza(prev => prev.filter((_, j) => j !== i))}
+                      className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-700 hover:bg-red-500 text-white rounded-full flex items-center justify-center text-[9px] leading-none opacity-0 group-hover:opacity-100 transition-opacity z-20"
+                      title="Rimuovi dalla sequenza"
+                    >×</button>
                     {/* Reorder controls */}
                     <div className="absolute bottom-0 inset-x-0 flex opacity-0 group-hover:opacity-100 transition-opacity bg-black/70">
                       <button onClick={() => moveLeft(i)} disabled={i === 0}
