@@ -2441,8 +2441,8 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_152008_02510406-554f-4910-ae03-c62e57d7fc79.jpg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150844_7b534456-85ed-49d5-8c85-ac45085e1354.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150917_12fc3d01-97b0-48a9-b714-2bd298e8dc31.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151352_8488033c-40cf-465a-bd5e-a4e233095d83.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150917_12fc3d01-97b0-48a9-b714-2bd298e8dc31.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-01.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-02.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-03.jpg",
@@ -2663,31 +2663,31 @@ export const adminProducts = [
       }
     ],
     "printCost": 750,
-    "etsyTitle": "Mew Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Cool Gift for Pokemon Lovers",
+    "etsyTitle": "Cool Mew T-Shirt, Vintage Pokemon Tee, Unique Graphic Gift for Fans",
     "etsyTags": [
-      "mew pokemon shirt",
-      "anime fan art",
+      "mew character t-shir",
+      "pokemon fan apparel",
       "birthday gift idea",
-      "gift for him",
-      "otaku merchandise",
-      "90s aesthetic",
-      "unisex t-shirt",
-      "pokemon apparel",
-      "funny graphic tee",
-      "nerdy gift",
-      "anime clothing",
-      "cool casual wear",
-      "retro style shirt"
+      "gift for her",
+      "otaku fashion style",
+      "retro aesthetic shir",
+      "unisex fit tee",
+      "anime graphic tee",
+      "limited edition shir",
+      "cute pokemon merch",
+      "casual streetwear",
+      "unique art apparel",
+      "anime lover gift"
     ],
-    "etsyDescription": "Show off your love for Mew with this vibrant and stylish Mew Pokémon T-Shirt, perfect for fans of all ages. This retro 90s anime graphic tee is a must-have for any Pokémon lover looking for a unique gift or a fun addition to their wardrobe.\n\nThe design features a striking illustration of Mew in a playful and colorful style that captures the nostalgia of the 90s. Made with premium quality materials, this t-shirt is both comfortable and eye-catching, making it a versatile piece for any casual occasion.\n\nCrafted from 100% cotton, this unisex fit tee is available in sizes S-3XL and showcases direct-to-garment (DTG) printing for a high-quality finish. It's the ideal gift for birthdays, holidays, or just because for any Pokémon enthusiast in your life.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyDescription": "Unleash your inner trainer with our Cool Mew T-Shirt, a stylish tee for Pokemon fans and collectors alike. Featuring a unique design that stands out, this shirt is perfect for those who want to showcase their love for the beloved Mew character in a trendy way.\n\nThe design captures Mew in a fun and vibrant style, making it a great addition to any fan's wardrobe. Made from 100% cotton, this t-shirt is soft, comfortable, and durable, perfect for everyday wear. The direct-to-garment (DTG) printing ensures that the colors remain vivid wash after wash.\n\nAvailable in unisex sizes S-3XL, this t-shirt fits everyone from kids to adults. It's an ideal gift for birthdays, holidays, or just because! Whether you're treating yourself or surprising a fellow Pokemon enthusiast, this tee is sure to delight.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "etsyImageAlts": [
-      "Front mockup of Mew Pokemon T-Shirt on model, showcasing vibrant design and unisex fit.",
-      "Back mockup of Mew Pokemon T-Shirt on model, highlighting the comfortable fit and style.",
-      "Close-up detail of Mew Pokemon design on t-shirt, emphasizing color and print quality.",
-      "Flat lay of Mew Pokemon T-Shirt on a neutral background, displaying the graphic and fabric texture.",
-      "Lifestyle shot of person wearing Mew Pokemon T-Shirt in a casual setting, radiating fun vibes.",
-      "Size guide shot showing Mew Pokemon T-Shirt with sizing chart and fabric details for buyers.",
-      "Gift packaging context featuring Mew Pokemon T-Shirt in a decorative box, perfect for presents."
+      "Front mockup of Cool Mew T-Shirt worn by model, showcasing vibrant design and comfortable fit.",
+      "Back view of Cool Mew T-Shirt on model, highlighting the unisex style and quality fabric.",
+      "Close-up detail of the Cool Mew design printed on the t-shirt, featuring vibrant colors and intricate details.",
+      "Flat lay of Cool Mew T-Shirt displaying its unique graphic design and soft cotton material.",
+      "Lifestyle shot of someone wearing the Cool Mew T-Shirt in a casual setting, enjoying their day.",
+      "Size guide image for Cool Mew T-Shirt, providing details on fit and available sizes S-3XL.",
+      "Gift packaging context for Cool Mew T-Shirt, showcasing it wrapped nicely, perfect for gifting."
     ],
     "gelatoCdnImages": [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a45eff36-3e74-44e5-ac6d-38e6dce3caf2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f064eb532ef5cd2841e6147b234e986e96ca6b35b171edcfd2417c6202d5b33a",
@@ -2698,7 +2698,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dcdd4e13-77b2-4dec-934f-48537edb342a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ed8b1e930dfe6633b1b7dadca1913cf60d8cfe4fbf1a5b96a8d5922519ecb97"
     ],
     "createdAt": "2026-05-26T15:11:39.661Z",
-    "updatedAt": "2026-05-26T15:25:05.708Z",
+    "updatedAt": "2026-05-27T15:02:57.744Z",
     "relatedProducts": []
   }
 ]
