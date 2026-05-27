@@ -1209,10 +1209,36 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-22T13:49:05.193Z",
+    "updatedAt": "2026-05-27T14:45:53.832Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg",
+    "etsyTitle": "Cool Snorlax T-Shirt, Retro Pokemon Graphic Tee, Unisex Fan Art Gift for Gamers",
+    "etsyTags": [
+      "snorlax t-shirt",
+      "pokemon fan art",
+      "gift for him",
+      "anime merchandise",
+      "otaku clothing",
+      "90s aesthetic",
+      "unisex fit tee",
+      "graphic tee gift",
+      "snorlax merchandise",
+      "pokemon lovers",
+      "casual wear",
+      "unique gift idea",
+      "cool pokemon shirt"
+    ],
+    "etsyDescription": "Get ready to embrace your inner Pokémon fan with our Cool Snorlax T-Shirt. This stylish tee is perfect for gamers and anime enthusiasts who appreciate unique designs. Made from 100% cotton, it features vibrant DTG premium print that showcases the lovable Snorlax, making it a standout in your wardrobe.\n\nThe shirt displays a detailed and colorful Snorlax graphic, set against a comfortable and breathable fabric that feels great against your skin. Whether you're lounging at home or out with friends, this shirt captures the essence of Pokémon fandom in a cool and contemporary way.\n\nAvailable in sizes S-3XL, our unisex fit makes it suitable for everyone. It's not just a shirt—it's a statement piece that shows off your passion for Pokémon.\n\nThis Cool Snorlax T-Shirt makes an excellent gift for birthdays, holidays, or just because. Ideal for any Pokémon lover in your life!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of a model wearing the Cool Snorlax T-Shirt showcasing vibrant colors and design.",
+      "Back view of the model in the Cool Snorlax T-Shirt highlighting the comfortable fit.",
+      "Close-up detail of the Snorlax graphic design on the t-shirt displaying intricate colors.",
+      "Flat lay of the Cool Snorlax T-Shirt on a surface, emphasizing the design and fabric quality.",
+      "Candid lifestyle shot of a person wearing the Cool Snorlax T-Shirt while enjoying a casual outing.",
+      "Size guide showing the Cool Snorlax T-Shirt with measurements and product detail for perfect fit.",
+      "Gift packaging of the Cool Snorlax T-Shirt, presenting it as a perfect gift for Pokémon fans."
+    ]
   },
   {
     "id": "psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift",
