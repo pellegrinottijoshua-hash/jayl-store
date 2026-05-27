@@ -908,10 +908,36 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-05-22T13:48:14.997Z",
+    "updatedAt": "2026-05-27T15:07:45.079Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg",
+    "etsyTitle": "Cool Zapdos T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
+    "etsyTags": [
+      "zapdos t-shirt",
+      "pokemon graphic tee",
+      "gift for gamers",
+      "anime fan apparel",
+      "otaku clothing",
+      "90s retro style",
+      "unisex t-shirt",
+      "pokemon merchandise",
+      "cool casual wear",
+      "collectible fan art",
+      "gift for him",
+      "anime gift idea",
+      "pokemon lover gift"
+    ],
+    "etsyDescription": "Unleash your inner trainer with our Cool Zapdos T-Shirt, a must-have for any Pokemon fan. This stylish tee features a captivating Zapdos design, perfect for showcasing your love for this iconic character. Made from 100% cotton, it offers a soft and comfortable fit, making it ideal for casual outings or lounging at home.\n\nThe vibrant print is created using DTG premium technology, ensuring that the colors stay vivid and the design stands out. Available in unisex sizes S-3XL, this shirt is designed to fit everyone comfortably.\n\nLooking for the perfect gift? This Zapdos t-shirt makes an excellent present for birthdays, holidays, or just because. It's a thoughtful choice for gamers, anime enthusiasts, and anyone who appreciates unique art.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Cool Zapdos T-Shirt on model showcasing vibrant design and comfortable fit.",
+      "Back view of Cool Zapdos T-Shirt on model highlighting the unisex style and fabric.",
+      "Close-up detail of the Zapdos design on the t-shirt, featuring bright colors and sharp graphics.",
+      "Flat lay of Cool Zapdos T-Shirt displaying the front design and soft cotton fabric.",
+      "Lifestyle shot of a person wearing the Cool Zapdos T-Shirt, enjoying a casual day out.",
+      "Size guide showing dimensions of Cool Zapdos T-Shirt to help customers choose the right fit.",
+      "Gift presentation of Cool Zapdos T-Shirt in stylish packaging, perfect for special occasions."
+    ]
   },
   {
     "id": "snorlax-pok-mon-t-shirt",
