@@ -298,10 +298,36 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-22T13:45:39.114Z",
+    "updatedAt": "2026-05-28T11:27:13.958Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg",
+    "etsyTitle": "Mewtwo T-Shirt, Cool Pokemon Graphic Tee, Perfect Gift for Fans",
+    "etsyTags": [
+      "mewtwo shirt",
+      "pokemon apparel",
+      "birthday gift idea",
+      "gift for him",
+      "otaku merchandise",
+      "anime aesthetic",
+      "unisex t-shirt",
+      "cool graphic tee",
+      "pokemon fan art",
+      "casual wear",
+      "nerdy fashion",
+      "collectible clothing",
+      "gamer gift"
+    ],
+    "etsyDescription": "Show off your love for Mewtwo with this cool Mewtwo T-Shirt, designed for dedicated Pokemon fans and collectors. Crafted with a unique graphic design, this tee stands out in any crowd, making it a standout piece in your wardrobe.\n\nThe vibrant Mewtwo graphic captures the essence of this iconic character, making it perfect for casual outings or conventions. The shirt is made from 100% cotton for a soft, breathable feel, ensuring ultimate comfort. It features a DTG premium print, delivering sharp and vivid colors that won't fade over time. Available in unisex sizes S-3XL, this tee fits everyone perfectly.\n\nThis makes a fantastic gift for birthdays, holidays, or just because! It's an excellent way to surprise a fellow Pokemon enthusiast.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of a model wearing a cool Mewtwo t-shirt showcasing vibrant graphic design.",
+      "Back view of a model in a cool Mewtwo t-shirt, highlighting the comfortable fit and style.",
+      "Close-up detail of the Mewtwo graphic on the t-shirt, showcasing the vivid colors and design intricacy.",
+      "Flat lay of the cool Mewtwo t-shirt on a neutral background, emphasizing the unique design and fabric texture.",
+      "Lifestyle shot of a person wearing the cool Mewtwo t-shirt in a casual setting, looking stylish and comfortable.",
+      "Size guide shot of the cool Mewtwo t-shirt, displaying fabric details and sizing options for customers.",
+      "Gift packaging of the cool Mewtwo t-shirt, elegantly wrapped and ready for gifting to a Pokemon fan."
+    ]
   },
   {
     "id": "dragonite-pok-mon-t-shirt-retro-90s-style-gift",
