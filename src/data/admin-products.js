@@ -2240,6 +2240,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "044149c0-d796-477c-961c-eaba84047a3f",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -2501,6 +2503,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "491259c5-52b5-4e1f-899b-cde5342af48d",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mew-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
