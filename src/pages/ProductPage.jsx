@@ -412,6 +412,9 @@ export default function ProductPage() {
     setPageTheme(isLight ? 'light' : 'dark')
   }, [isLight, setPageTheme])
 
+  // Reviews state must be declared before productJsonLd which references it
+  const [reviews, setReviews] = useState([])
+
   // Dynamic SEO meta tags + JSON-LD Product schema
   const productImage = product
     ? `${typeof window !== 'undefined' ? window.location.origin : ''}${product.image || (product.images?.[0] ?? '')}`
@@ -485,8 +488,7 @@ export default function ProductPage() {
   const [lightboxSrc,    setLightboxSrc]    = useState(null)
   const [recentlyViewed, setRecentlyViewed] = useState([])
   const [sizeGuideOpen,  setSizeGuideOpen]  = useState(false)
-  // Reviews
-  const [reviews,        setReviews]        = useState([])
+  // Reviews (state declared above, before productJsonLd)
   const [reviewsLoaded,  setReviewsLoaded]  = useState(false)
   const [showReviewForm, setShowReviewForm] = useState(false)
   const [reviewAuthor,   setReviewAuthor]   = useState('')
