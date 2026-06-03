@@ -14,7 +14,6 @@ const PERSONAS_PATH          = 'src/data/personas.json'
 const CONTENT_QUEUE_PATH     = 'src/data/content-queue.json'
 const ASSETS_PATH            = 'src/data/assets.json'
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
-if (!ADMIN_PASSWORD) throw new Error('ADMIN_PASSWORD env var is required')
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
 

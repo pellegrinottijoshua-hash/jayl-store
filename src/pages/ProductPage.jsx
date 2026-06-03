@@ -107,7 +107,7 @@ const APPAREL_COLOR_HEX = {
 
   // ── Gelato compound color names (exact strings from the API) ─────────────
   'cardinal red': '#c41230',   'fire red': '#bf0a0a',   'true red': '#cc2200',
-  'dark chocolate': '#3d1c02', 'natural white': '#f8f4ee', 'off white': '#f0ece4',
+  'natural white': '#f8f4ee', 'off white': '#f0ece4', 'dtg white': '#f5f5f5', 'dtg black': '#1a1a1a',
   'heather ice blue': '#c5dce8', 'heather mint': '#b5e0d0',
   'heather peach': '#f5c6a0', 'heather red': '#c05050',
   'heather forest': '#4a7a50', 'heather midnight navy': '#2a3a6a',
@@ -136,19 +136,6 @@ const APPAREL_COLOR_HEX = {
   'bright yellow': '#ffe135', 'antique gold': '#c9ae5d', 'metallic gold': '#d4af37',
   'light gray': '#c8c8c8', 'light grey': '#c8c8c8', 'heather gray': '#aaaaaa',
   'heather grey': '#aaaaaa', 'charcoal gray': '#3d3d3d',
-
-  // ── Special Gelato / print-on-demand colors ───────────────────────────────
-  'dtg white': '#f5f5f5', 'dtg black': '#1a1a1a',
-  'heather ice blue': '#c5dce8', 'heather mint': '#b5e0d0',
-  'heather peach': '#f5c6a0', 'heather red': '#c05050',
-  'heather forest': '#4a7a50', 'heather midnight navy': '#2a3a6a',
-  'heather true royal': '#4169e1', 'heather cardinal': '#9b2335',
-  'heather maroon': '#6e2233', 'heather dark chocolate': '#5a3020',
-  'heather sport dark navy': '#1a2a4a',
-  'athletic heather': '#b0b0b8', 'heather athletic': '#b0b0b8',
-  'sport dark navy': '#1a2a4a', 'sport dark green': '#1e4d2b',
-  'vintage heather navy': '#3a4a6a', 'vintage heather black': '#3a3a3a',
-  'dark heather gray': '#585858', 'dark heather grey': '#585858',
 }
 
 /** Resolve best hex for a color object — falls back to label name lookup, then null */
