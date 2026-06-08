@@ -7,9 +7,9 @@ export const adminProducts = [
     "name": "Cool Mewtwo T-Shirt",
     "seoTitle": "Mewtwo T-Shirt | Cool Pokemon Gift | Unique Anime Apparel",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Unleash your inner trainer with our Cool Mewtwo T-Shirt, crafted for fans who appreciate both style and quality. Made with Gelato premium print technology, this shirt features vibrant colors and intricate artwork that showcases the iconic Pokémon in a unique light. Perfect for casual outings or as a standout piece in your collection, it's a fantastic gift for anime lovers or anyone who admires the allure of Mewtwo. Elevate your wardrobe with a piece that speaks to your fandom.",
+    "description": "Mewtwo didn't ask to be created — he asked to be free. This tee is for the ones who get that. The artwork captures the anti-hero of the Pokémon world in a retro 90s illustration style: brooding, powerful, unmistakably iconic. Printed on a premium unisex Gildan tee with vibrant, long-lasting DTG print quality. Whether you're the trainer who always picked the hardest path or just someone who appreciates the most complex character in the franchise, this shirt says it without saying a word. Runs true to size. Makes an exceptional gift for fans who know their Pokémon lore deeper than the Pokédex goes.",
     "altText": "Cool Mewtwo T-Shirt featuring vibrant artwork.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -18,22 +18,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
@@ -336,9 +336,9 @@ export const adminProducts = [
     "name": "Cool Dragonite T-Shirt",
     "seoTitle": "Dragonite Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Embrace your inner Pokémon fan with our Dragonite T-Shirt, a perfect blend of nostalgia and humor. Crafted from premium Gildan 9400 fabric, this tee offers exceptional comfort and durability. Featuring vibrant  print quality, the retro 90s style artwork pops with color, making it an eye-catching addition to any anime lover's wardrobe. This shirt isn't just a fashion statement; it's a fun gift for Pokémon enthusiasts who appreciate unique fan art. Whether you're at a convention or just hanging out with friends, this T-Shirt lets you showcase your passion for the beloved Dragonite.",
+    "description": "He delivers your mail across oceans and then casually destroys mountains on the way home. Dragonite — the gentle giant with a devastation stat that doesn't match his smile — rendered in warm retro 90s fan art style that feels ripped straight out of a mid-90s anime magazine. Printed on a premium Gildan tee with DTG quality that holds up wash after wash. The kind of shirt that starts conversations at conventions, coffee shops, and everywhere in between. For the trainer who always believed in Dragonite before he became everyone's favorite. A genuinely great gift for any Pokémon fan who grew up watching the original series.",
     "altText": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -347,22 +347,22 @@ export const adminProducts = [
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_185843_37ef0c52-7862-4b3f-9847-46b3148da810.jpg",
@@ -642,9 +642,9 @@ export const adminProducts = [
     "name": "Cool Zapdos T-Shirt",
     "seoTitle": "Zapdos Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Unleash your inner Pokémon trainer with our Zapdos T-Shirt, crafted from premium Gildan 9400 cotton for ultimate comfort. This retro 90s style tee features vibrant, high-quality print that ensures your favorite Pokémon pops with color and detail. Perfect for fans of anime and retro aesthetics, this shirt makes a funny and unique gift for Pokémon lovers. Wear it to conventions, casual outings, or just lounging at home. Let your personality shine with this eye-catching artwork that pays homage to classic Pokémon fandom.",
+    "description": "There is no chill with Zapdos. Pure electric chaos bird energy, frozen mid-screech in retro 90s anime illustration style that crackles with the same voltage as the real thing. Printed on a premium unisex Gildan tee using high-quality DTG print technology that keeps colors sharp through every wash. This is the shirt for the person who is always the most intense one in the room — and completely fine with it. Perfect for fans of the original legendary trio, retro anime aesthetics, or anyone who has ever felt like a thunderstorm in a body. Ships worldwide, made to order.",
     "altText": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -653,22 +653,22 @@ export const adminProducts = [
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_190604_a5c54573-8690-4ad5-8881-f15ef0c8be84.jpg",
@@ -972,9 +972,9 @@ export const adminProducts = [
     "name": "Cool Snorlax T-Shirt",
     "seoTitle": "Snorlax Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Embrace your love for Pokémon with our Snorlax T-Shirt, designed for true fans. Crafted from soft, breathable cotton, this tee features a vibrant Gelato print that captures the charm of retro 90s anime art. The playful design showcases Snorlax in a whimsical style, making it a perfect gift for Pokémon lovers. Whether you're lounging at home or out with friends, this comfortable shirt is sure to turn heads and spark conversations. Ideal for casual wear or as a memorable gift for birthdays, holidays, or any special occasion. Wear your fandom proudly!",
+    "description": "Wake me up when it's relevant. Snorlax — the original mood, the patron saint of selective effort, the Pokémon that made blocking an entire road feel aspirational — illustrated in a retro 90s fan art style that is both iconic and deeply relatable. Printed on a premium Gildan tee with vibrant DTG print quality built to last. This is the shirt for the friend who cancels plans guilt-free, naps without apology, and somehow always comes through when it actually counts. Gifted best to the Snorlax in your life, or worn as a personal statement of priorities. Unisex sizing. Ships worldwide.",
     "altText": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -983,22 +983,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
@@ -1299,9 +1299,9 @@ export const adminProducts = [
     "name": "Cool Psyduck T-Shirt",
     "seoTitle": "Psyduck Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Unleash your nostalgia with our Psyduck Pokémon T-Shirt, perfect for anime lovers and collectors. Crafted from high-quality Gildan cotton, this tee features a vibrant Gelato print that captures the playful essence of Psyduck in a retro 90s art style. Whether you're out with friends or lounging at home, this shirt guarantees comfort and style. It makes an ideal gift for Pokémon fans and a fun addition to any wardrobe. Wear your love for Pokémon proudly!",
+    "description": "That look on Psyduck's face? That's you on a Monday morning, three meetings deep, headache building, still somehow managing to show up. The most relatable Pokémon in the franchise illustrated in a retro 90s anime art style that perfectly captures the perpetual low-grade suffering vibe. Printed on a premium unisex Gildan tee with high-quality DTG print that holds its color wash after wash. For the anxious overachiever, the chronic overthinker, and anyone who has ever stood in a doorway completely forgetting what they came for. An excellent gift for the Psyduck in your life — they will feel deeply seen.",
     "altText": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -1310,22 +1310,22 @@ export const adminProducts = [
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_192416_2dc0c732-f0fc-412e-b4ca-f07c0ae7bd67.jpg",
@@ -1601,9 +1601,9 @@ export const adminProducts = [
     "name": "Cool Charizard T-Shirt",
     "seoTitle": "Charizard Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Unleash your inner trainer with our Charizard Pokémon T-Shirt, crafted from premium Gildan 9400 fabric. This t-shirt features an eye-catching print that showcases vibrant colors and intricate details, ensuring the iconic Charizard stands out in style. With a soft, breathable material, it offers comfort for any adventure, whether you're battling in the wild or relaxing with friends. The art style combines playful nostalgia with modern flair, making it a perfect addition to any Pokémon fan's wardrobe. Elevate your casual look with this unique piece of art.",
+    "description": "You picked Charmander first. You always pick Charmander first. Charizard is the original flex — the Pokémon that made everyone want to be a trainer, rendered in bold retro 90s anime illustration style with the kind of energy that hasn't aged a single day. Printed on a premium Gildan tee with vibrant DTG print quality that stays sharp through repeated washes. This is the shirt for the person who has been a Charizard stan since before it was cool — or for anyone who simply recognizes the undisputed greatest design in Generation I. A perfect gift for Pokémon fans of any age. Unisex sizing. Ships worldwide.",
     "altText": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -1612,22 +1612,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_154107_28fd7343-c224-4650-84b7-07a7d8aa9380-1.jpg",
@@ -1899,15 +1899,15 @@ export const adminProducts = [
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg"
   },
   {
-    "id": "cool-vileploom-pok-mon-t-shirt",
+    "id": "cool-vileplume-pok-mon-t-shirt",
     "section": "objects",
     "collection": "cool Pokèmon",
     "name": "Cool Vileplume T-Shirt",
     "seoTitle": "Vileplume Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2500,
+    "price": 2499,
     "currency": "eur",
-    "description": "Elevate your wardrobe with the Cool Vileplume Pokémon T-Shirt, crafted from high-quality Gildan 64000 cotton for superior comfort and durability. Featuring vibrant Gelato print quality, this shirt showcases a unique art style that captures the essence of your favorite Pokémon. Its minimalist design makes it perfect for casual outings or as a standout piece in your collection. Wear your fandom with pride and enjoy the soft feel of this premium tee, designed for true Pokémon enthusiasts.",
+    "description": "Underestimated, a little weird, quietly dangerous, and honestly stunning once you pay attention — Vileplume has always been the sleeper pick. This retro 90s fan art illustration captures the Grass-Poison type in all her overgrown, pollen-dusted glory with the kind of warm nostalgia that only the original 151 can trigger. Printed on a premium Gildan tee with high-quality DTG print that holds its vibrancy wash after wash. For the trainer who chose the underdog and never looked back. A genuinely unique Pokémon gift for fans who go deeper than the starter trio. Unisex sizing, ships worldwide.",
     "altText": "Cool Vileplume Pokémon T-Shirt with vibrant Gelato print design.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -1916,47 +1916,47 @@ export const adminProducts = [
       {
         "id": "XL",
         "label": "XL",
-        "price": 2500
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2500
+        "price": 2499
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2500
+        "price": 2499
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2500
+        "price": 2499
       }
     ],
-    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
-    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-white-01.jpg",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
     ],
     "imageAlts": {
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Mockup of the Cool Vileploom Pokémon T-shirt emphasizing its retro 90s anime fan art appeal.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "The Cool Vileploom Pokémon T-shirt displayed in a military green colorway, showcasing its stylish design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileploom Pokémon T-shirt presented in an azalea color, highlighting its playful design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "The Cool Vileploom Pokémon T-shirt in a bright white color, emphasizing its vibrant graphic art.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
-      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Irish green version of the Cool Vileploom Pokémon T-shirt, showcasing its unique artistic flair.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg": "A vibrant display of the Cool Vileploom Pokémon T-shirt showcasing its colorful design in a dynamic setting.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg": "Cool Vileploom Pokémon T-shirt captured in a lively pose against a bright background for mobile view.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg": "Close-up shot highlighting the intricate details of the Cool Vileploom design on the t-shirt.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png": "An angled view of the Cool Vileploom Pokémon T-shirt illustrating its unique artistic style.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg": "A stylish view of the Cool Vileploom Pokémon T-shirt highlighting its artistic design in a casual setting."
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Mockup of the Cool Vileplume Pokémon T-shirt emphasizing its retro 90s anime fan art appeal.",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "The Cool Vileplume Pokémon T-shirt displayed in a military green colorway, showcasing its stylish design.",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileplume Pokémon T-shirt presented in an azalea color, highlighting its playful design.",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "The Cool Vileplume Pokémon T-shirt in a bright white color, emphasizing its vibrant graphic art.",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-black-01.jpg": "Cool Vileplume Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Irish green version of the Cool Vileplume Pokémon T-shirt, showcasing its unique artistic flair.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg": "A vibrant display of the Cool Vileplume Pokémon T-shirt showcasing its colorful design in a dynamic setting.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg": "Cool Vileplume Pokémon T-shirt captured in a lively pose against a bright background for mobile view.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg": "Close-up shot highlighting the intricate details of the Cool Vileplume design on the t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png": "An angled view of the Cool Vileplume Pokémon T-shirt illustrating its unique artistic style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg": "A stylish view of the Cool Vileplume Pokémon T-shirt highlighting its artistic design in a casual setting."
     },
     "tags": [
       "pokemon shirt",
@@ -1975,7 +1975,7 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "064deeaf-aa4c-4164-8227-208efa19318f",
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileploom-pok-mon-t-shirt/design.png",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileplume-pok-mon-t-shirt/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -1984,10 +1984,10 @@ export const adminProducts = [
       "gildan shirt",
       "graphic tee",
       "anime merchandise",
-      "vileploom apparel"
+      "vileplume apparel"
     ],
     "longTailKeywords": [
-      "cool vileploom pokemon shirt",
+      "cool vileplume pokemon shirt",
       "gildan 64000 t-shirt",
       "premium pokemon apparel",
       "anime graphic t-shirt",
@@ -1998,7 +1998,7 @@ export const adminProducts = [
       "stylish graphic tees",
       "comfortable casual wear"
     ],
-    "hashtags": "#pokemon #anime #artprint #gildan #graphictee #vileploom #snorlaxfan #animetee #pokemongifts #fanart #tshirt #collectibles #casualstyle #wearableart #nerdyfashion #geekwear #otaku #streetwear #gamingapparel #vintageclothing #artlover #fashion #pokemontshirts #coolshirts #tshirtcollection #animefashion #trendy #shoplocal #fashionstatement #artistic",
+    "hashtags": "#pokemon #anime #artprint #gildan #graphictee #vileplume #snorlaxfan #animetee #pokemongifts #fanart #tshirt #collectibles #casualstyle #wearableart #nerdyfashion #geekwear #otaku #streetwear #gamingapparel #vintageclothing #artlover #fashion #pokemontshirts #coolshirts #tshirtcollection #animefashion #trendy #shoplocal #fashionstatement #artistic",
     "variants": [
       {
         "uid": "418b8b32-177b-4c2e-927c-7a79fee3c7d1",
@@ -2166,38 +2166,38 @@ export const adminProducts = [
         "id": "irish-green",
         "label": "Irish Green",
         "hex": "#888888",
-        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
+        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
       },
       {
         "id": "military-green",
         "label": "Military Green",
         "hex": "#888888",
-        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg"
+        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg"
       },
       {
         "id": "azalea",
         "label": "Azalea",
         "hex": "#888888",
-        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg"
+        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg"
       },
       {
         "id": "white",
         "label": "White",
         "hex": "#888888",
-        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg"
+        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-white-01.jpg"
       },
       {
         "id": "black",
         "label": "Black",
         "hex": "#888888",
-        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg"
+        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-black-01.jpg"
       }
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-06-08T15:04:26.880Z",
+    "updatedAt": "2026-05-26T14:47:01.866Z",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
   },
   {
     "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
@@ -2205,9 +2205,9 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool ditto T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 1999,
+    "price": 2499,
     "currency": "eur",
-    "description": "Embrace your love for Pokémon with our Cool Ditto T-Shirt, featuring vibrant retro 90s fan art that stands out in any crowd. Crafted with Gelato's premium print quality, this shirt showcases bold colors and intricate designs, perfect for any Pokémon lover. Whether you're at a convention or chilling with friends, this funny and stylish tee makes a fantastic gift for anime enthusiasts. Show off your personality and let Ditto's charm do the talking!",
+    "description": "Ditto doesn't have a fixed form. Neither do the people who love him. The ultimate shapeshifter of the Pokémon world — rendered in warm, playful retro 90s fan art illustration style — makes this one of the most quietly clever shirts in any collection. Printed on a premium Gildan tee with vibrant DTG print quality built for long-term wear. For the chameleon in your friend group, the person who fits in everywhere, or anyone who finds Ditto's particular brand of identity freedom deeply aspirational. Also: objectively one of the more interesting Pokémon designs if you stop and actually look at it. Great gift. Unisex sizing. Ships worldwide.",
     "altText": "Cool Ditto Pokémon T-Shirt in retro 90s style.",
     "details": [
       "Printed and fulfilled via Gelato"
@@ -2216,22 +2216,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "L",
         "label": "L",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "S",
         "label": "S",
-        "price": 1999
+        "price": 2499
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 1999
+        "price": 2499
       }
     ],
     "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134727_297c9f04-dcd8-4298-8a34-f79dcca59252.jpg",
@@ -2239,11 +2239,7 @@ export const adminProducts = [
     "detailImage": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_135540_06b04568-bc43-4428-9c77-cf4fc56e10fb.jpg",
     "images": [
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133713_1937144e-4ee2-4c33-b15b-5d728a6c1bd3.jpg",
-      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85e22de-2b5d-4e15-a436-c3ba4ceebd1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=12e6ba839ebdd3c1c6d414a254c36fd5dd74224d09bf8d40fa6a86aaa9e0ff7d",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9c0e457a-3fee-4c32-bbce-ace0d7745547/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=21b9c6491bc9799ca1f5a3444853daf2be5e1c1403a04cd2bb49fb11b56d26e5",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/46438061-e1ac-402f-82d7-bff5a4d6ee8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=37b610bc837b5a28c9eb472d811567dcd58b3d1a215a787d28988d9d49787a3e",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22c8ffb5-cd30-482f-8494-17338fb5c4bd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=68e7529d0ec0b3d7fa5a6b7fe9b983d40a2d7fb9682579e7edce539db6b40e51"
+      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134727_297c9f04-dcd8-4298-8a34-f79dcca59252.jpg": "A vibrant t-shirt featuring a humorous Ditto Pokémon design, perfect for retro anime fans.",
@@ -2472,15 +2468,8 @@ export const adminProducts = [
     ],
     "etsyDescription": "Show off your love for Pokemon with our Cool Ditto T-Shirt, a must-have for fans of all ages seeking unique and stylish apparel. This one-of-a-kind tee features a vibrant graphic of Ditto, perfect for expressing your fandom in a fun way.\n\nCrafted with care, this t-shirt showcases a striking design that captures the playful essence of Ditto, making it a standout piece in any wardrobe. Whether you're attending a convention, hanging out with friends, or just relaxing at home, this shirt is designed to turn heads.\n\nMade from 100% cotton, this t-shirt offers a soft, breathable fit that keeps you comfortable all day long. With direct-to-garment (DTG) premium print technology, the colors are vivid and long-lasting. Available in sizes S-3XL, it’s perfect for everyone.\n\nLooking for the perfect gift? This Cool Ditto T-Shirt is an ideal present for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "createdAt": "2026-05-26T14:46:47.331Z",
-    "updatedAt": "2026-06-08T13:36:49.923Z",
-    "relatedProducts": [],
-    "gelatoCdnImages": [
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85e22de-2b5d-4e15-a436-c3ba4ceebd1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=12e6ba839ebdd3c1c6d414a254c36fd5dd74224d09bf8d40fa6a86aaa9e0ff7d",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6e961e93-b577-42ae-a396-feee2052c64a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=041d71c70fc2623f9b2cc2680721a9ef9c30f36744fc4d402a1c18267cc2a61d",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9c0e457a-3fee-4c32-bbce-ace0d7745547/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=21b9c6491bc9799ca1f5a3444853daf2be5e1c1403a04cd2bb49fb11b56d26e5",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/46438061-e1ac-402f-82d7-bff5a4d6ee8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=37b610bc837b5a28c9eb472d811567dcd58b3d1a215a787d28988d9d49787a3e",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22c8ffb5-cd30-482f-8494-17338fb5c4bd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260608%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260608T133620Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=68e7529d0ec0b3d7fa5a6b7fe9b983d40a2d7fb9682579e7edce539db6b40e51"
-    ]
+    "updatedAt": "2026-05-26T15:01:47.863Z",
+    "relatedProducts": []
   },
   {
     "id": "cool-mew-t-shirt",
@@ -2490,17 +2479,16 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2499,
     "currency": "eur",
-    "description": "Embrace your inner Pokémon trainer with our Mew Pokémon T-Shirt, featuring stunning retro 90s anime fan art. Crafted with Gelato's premium print quality, this shirt ensures vibrant colors and lasting durability. Perfect for Pokémon lovers, it makes a unique gift for birthdays, holidays, or just because. Stand out in style while showcasing your love for this iconic character. Ideal for casual outings or cozy nights in, this shirt is a must-have for any fan's wardrobe.",
+    "description": "They say Mew contains the DNA of every Pokémon ever discovered. Rare, elusive, unbothered, and somehow the most purely joyful creature in the entire franchise — illustrated here in a delicate retro 90s fan art style that feels like catching something you weren't supposed to. Printed on a premium Gildan tee with vibrant DTG print quality designed to last. This is the shirt for the trainer who searched every square inch of Cerulean Cave, or for anyone who simply gravitates toward the quiet magic of the original mythical Pokémon. An exceptional gift for collectors, lore nerds, and first-generation fans. Unisex sizing. Ships worldwide.",
     "altText": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
     "sizes": [
-      {
-        "id": "one-size",
-        "label": "One Size",
-        "price": 2499
-      }
+      { "id": "S",  "label": "S",  "price": 2499 },
+      { "id": "M",  "label": "M",  "price": 2499 },
+      { "id": "L",  "label": "L",  "price": 2499 },
+      { "id": "XL", "label": "XL", "price": 2499 }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_152008_02510406-554f-4910-ae03-c62e57d7fc79.jpg",

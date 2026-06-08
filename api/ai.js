@@ -90,7 +90,7 @@ Movement/style: ${movement || ''}
 Return a JSON object with these EXACT keys (no other keys):
 
 - "seoTitle": SEO meta title for the JAYL website. Format: "[Character] [Product Type] | [Keyword Hook] | [Style/Gift Context]". Target 50-65 chars. Do NOT include "JAYL". Example: "Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift".
-- "description": Compelling product description ~150 words. Evocative, minimal, no fluff. Mention Gelato premium print quality, the art style, why it makes a great gift.
+- "description": ~130-150 words. STRICT RULES: (1) NEVER open with "Unleash", "Embrace", "Step up", "Level up", "Show off", "Discover", "Celebrate" or any generic hype verb — these are banned. (2) Every product needs its OWN angle rooted in the character's personality or cultural meaning (examples: Snorlax = lazy/mood energy; Psyduck = "me on a Monday" anxiety; Charizard = the OG flex, that kid who picked Charmander; Mewtwo = anti-hero arc; Dragonite = gentle giant who delivers mail then demolishes mountains; Ditto = identity/shapeshifter energy; Mew = rare/mythical/elusive; Zapdos = pure chaotic electricity). (3) Mention Gildan premium tee + DTG print quality. (4) One sentence on gifting. (5) Zero filler phrases like "perfect for any fan" or "ideal for anime lovers". Write like a human who actually knows the character.
 - "altText": Concise alt text for hero image (1 sentence, under 125 chars).
 - "tags": Array of exactly 13 tags (strings, lowercase, max 20 chars each, no special chars except spaces).
 - "primaryKeywords": Array of 5 high-volume short-tail keywords (1-3 words each).
