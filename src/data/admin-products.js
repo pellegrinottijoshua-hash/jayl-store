@@ -1902,13 +1902,13 @@ export const adminProducts = [
     "id": "cool-vileploom-pok-mon-t-shirt",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Cool Vileploom T-Shirt",
+    "name": "Cool Vileplume T-Shirt",
     "seoTitle": "Vileplume Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
-    "description": "Elevate your wardrobe with the Cool Vileploom Pokémon T-Shirt, crafted from high-quality Gildan 64000 cotton for superior comfort and durability. Featuring vibrant Gelato print quality, this shirt showcases a unique art style that captures the essence of your favorite Pokémon. Its minimalist design makes it perfect for casual outings or as a standout piece in your collection. Wear your fandom with pride and enjoy the soft feel of this premium tee, designed for true Pokémon enthusiasts.",
-    "altText": "Cool Vileploom Pokémon T-Shirt with vibrant Gelato print design.",
+    "description": "Elevate your wardrobe with the Cool Vileplume Pokémon T-Shirt, crafted from high-quality Gildan 64000 cotton for superior comfort and durability. Featuring vibrant Gelato print quality, this shirt showcases a unique art style that captures the essence of your favorite Pokémon. Its minimalist design makes it perfect for casual outings or as a standout piece in your collection. Wear your fandom with pride and enjoy the soft feel of this premium tee, designed for true Pokémon enthusiasts.",
+    "altText": "Cool Vileplume Pokémon T-Shirt with vibrant Gelato print design.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -1960,7 +1960,7 @@ export const adminProducts = [
     },
     "tags": [
       "pokemon shirt",
-      "vileploom tee",
+      "vileplume tee",
       "gildan t-shirt",
       "anime art",
       "fan apparel",
@@ -2195,7 +2195,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-05-26T14:47:01.866Z",
+    "updatedAt": "2026-06-08T15:04:26.880Z",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
   },
