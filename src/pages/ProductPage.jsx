@@ -832,7 +832,7 @@ export default function ProductPage() {
 
         {/* Dot pagination */}
         {totalMobileSlides > 1 && (
-          <div className="flex justify-center gap-1.5 py-3">
+          <div className="flex justify-center gap-1.5 py-4">
             {Array.from({ length: totalMobileSlides }).map((_, i) => (
               <button
                 key={i}
@@ -849,7 +849,7 @@ export default function ProductPage() {
         )}
 
         {/* ── Product info ───────────────────────────────────────────────── */}
-        <div className="px-4 pt-2 pb-4 relative">
+        <div className="px-4 pt-5 pb-4 relative">
           {/* ── Hold to reveal — square button, absolute top-right ─── */}
           {product.detailImage && (
             <button
