@@ -1164,7 +1164,9 @@ export default function AdminProductPage() {
     }
   }
 
-  const syncGelato = async () => {
+  // withSave=true → auto-saves gelatoCdnImages to product after sync
+  // (passes cdnUrls directly to avoid stale React closure on gelatoCdnImages state)
+  const syncGelato = async (withSave = false) => {
     if (!gelatoUid.trim()) return
     setSyncing(true); setSyncMsg('')
     try {
@@ -1196,7 +1198,17 @@ export default function AdminProductPage() {
       setGelatoCdnImages(cdnUrls)
       setPoolRefreshKey(k => k + 1)
       if (sequenza.length === 0) setSequenza(paths)
-      setSyncMsg(`✓ ${paths.length} mockup importati`)
+
+      if (withSave) {
+        // Patch only gelatoCdnImages — pass cdnUrls directly to avoid stale closure
+        setSyncMsg('Salvando…')
+        const updated = { ...product, gelatoCdnImages: cdnUrls }
+        await api('save-product', { product: updated })
+        setProduct(updated)
+        setSyncMsg(`✓ ${paths.length} mockup sincronizzati e salvati automaticamente`)
+      } else {
+        setSyncMsg(`✓ ${paths.length} mockup importati (ricorda di salvare)`)
+      }
     } catch (e) {
       setSyncMsg(`⚠ ${e.message}`)
     } finally {
@@ -2147,13 +2159,20 @@ export default function AdminProductPage() {
 
               {/* Sincronizza Gelato */}
               {isEditable && (
-                <div className="flex items-center gap-3 mt-1">
+                <div className="flex flex-wrap items-center gap-2 mt-1">
                   <button
-                    onClick={syncGelato}
+                    onClick={() => syncGelato(false)}
                     disabled={syncing || !gelatoUid.trim()}
-                    className="bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 text-white px-4 py-2 text-xs font-semibold transition-colors"
+                    className="bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 text-white px-3 py-2 text-xs font-semibold transition-colors"
                   >
-                    {syncing ? 'Sincronizzando…' : '🔄 Sincronizza Gelato'}
+                    {syncing ? 'Sincronizzando…' : '🔄 Sync Gelato'}
+                  </button>
+                  <button
+                    onClick={() => syncGelato(true)}
+                    disabled={syncing || !gelatoUid.trim()}
+                    className="bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 text-white px-3 py-2 text-xs font-semibold transition-colors"
+                  >
+                    {syncing ? 'Salvando…' : '🔄 Re-sync & Save'}
                   </button>
                   {syncMsg && <span className="text-xs text-gray-400">{syncMsg}</span>}
                 </div>
