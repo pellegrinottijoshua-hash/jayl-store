@@ -1899,7 +1899,7 @@ export const adminProducts = [
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg"
   },
   {
-    "id": "cool-vileplume-pok-mon-t-shirt",
+    "id": "cool-vileploom-pok-mon-t-shirt",
     "section": "objects",
     "collection": "cool Pokèmon",
     "name": "Cool Vileplume T-Shirt",
@@ -1934,29 +1934,29 @@ export const adminProducts = [
         "price": 2499
       }
     ],
-    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
-    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-white-01.jpg",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
     ],
     "imageAlts": {
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Mockup of the Cool Vileplume Pokémon T-shirt emphasizing its retro 90s anime fan art appeal.",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "The Cool Vileplume Pokémon T-shirt displayed in a military green colorway, showcasing its stylish design.",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileplume Pokémon T-shirt presented in an azalea color, highlighting its playful design.",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "The Cool Vileplume Pokémon T-shirt in a bright white color, emphasizing its vibrant graphic art.",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-black-01.jpg": "Cool Vileplume Pokémon T-Shirt with vibrant Gelato print design.",
-      "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Irish green version of the Cool Vileplume Pokémon T-shirt, showcasing its unique artistic flair.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg": "A vibrant display of the Cool Vileplume Pokémon T-shirt showcasing its colorful design in a dynamic setting.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg": "Cool Vileplume Pokémon T-shirt captured in a lively pose against a bright background for mobile view.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg": "Close-up shot highlighting the intricate details of the Cool Vileplume design on the t-shirt.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png": "An angled view of the Cool Vileplume Pokémon T-shirt illustrating its unique artistic style.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg": "A stylish view of the Cool Vileplume Pokémon T-shirt highlighting its artistic design in a casual setting."
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg": "Mockup of the Cool Vileplume Pokémon T-shirt emphasizing its retro 90s anime fan art appeal.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg": "The Cool Vileplume Pokémon T-shirt displayed in a military green colorway, showcasing its stylish design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg": "Cool Vileplume Pokémon T-shirt presented in an azalea color, highlighting its playful design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg": "The Cool Vileplume Pokémon T-shirt in a bright white color, emphasizing its vibrant graphic art.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg": "Cool Vileplume Pokémon T-Shirt with vibrant Gelato print design.",
+      "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg": "Irish green version of the Cool Vileplume Pokémon T-shirt, showcasing its unique artistic flair.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg": "A vibrant display of the Cool Vileplume Pokémon T-shirt showcasing its colorful design in a dynamic setting.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg": "Cool Vileplume Pokémon T-shirt captured in a lively pose against a bright background for mobile view.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg": "Close-up shot highlighting the intricate details of the Cool Vileplume design on the t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png": "An angled view of the Cool Vileplume Pokémon T-shirt illustrating its unique artistic style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg": "A stylish view of the Cool Vileplume Pokémon T-shirt highlighting its artistic design in a casual setting."
     },
     "tags": [
       "pokemon shirt",
@@ -1975,7 +1975,7 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "064deeaf-aa4c-4164-8227-208efa19318f",
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileplume-pok-mon-t-shirt/design.png",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileploom-pok-mon-t-shirt/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
@@ -2166,46 +2166,38 @@ export const adminProducts = [
         "id": "irish-green",
         "label": "Irish Green",
         "hex": "#888888",
-        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-irish-green-01.jpg"
       },
       {
         "id": "military-green",
         "label": "Military Green",
         "hex": "#888888",
-        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg"
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg"
       },
       {
         "id": "azalea",
         "label": "Azalea",
         "hex": "#888888",
-        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg"
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg"
       },
       {
         "id": "white",
         "label": "White",
         "hex": "#888888",
-        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-white-01.jpg"
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-white-01.jpg"
       },
       {
         "id": "black",
         "label": "Black",
         "hex": "#888888",
-        "image": "/images/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileplume-pok-mon-t-shirt-cool-anime-fan-black-01.jpg"
+        "image": "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-black-01.jpg"
       }
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-06-15T13:36:32.503Z",
+    "updatedAt": "2026-05-26T14:47:01.866Z",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg",
-    "gelatoCdnImages": [
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6a2a5426-7adb-4d3f-915c-4f69c7025dc7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e286951a5f80af4af7708b9633b2a6732a8fc2da9ed2f71a13ffc37ba9b51fa",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7b1cc667-db95-4230-a426-27d9a9ebfad2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c08fad64dcf78f1a715be62140027924aeeb3206b5f85f838007153911747f0e",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8796fb5-17b1-4f59-be25-c3192ca116cd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ae85547ff86c3030536d9a0ae27ed58191f5740cb3a3d300435cf4cb099fc16d",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ba9088fe-59e0-4053-931b-50cf567af9a4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d853ccaa9f0d0ee2f9f8231cac9b71d86cdb299cfde8df32ea068382c2890314",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7067371f-dda4-4740-a185-4525def9a56a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4361e1bef28337111f0b5a4f2dff65a852701ef6a0a45dd1dc953b2e07dee1ed",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d2f82870-270e-4c11-ab3a-0a61f7da3394/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=21174bfaf32f4f286912801ab55c648edb6e1d9c16ade8133f8dbc18666b1d2e"
-    ]
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
   },
   {
     "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
@@ -2247,11 +2239,7 @@ export const adminProducts = [
     "detailImage": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_135540_06b04568-bc43-4428-9c77-cf4fc56e10fb.jpg",
     "images": [
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133713_1937144e-4ee2-4c33-b15b-5d728a6c1bd3.jpg",
-      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-azalea-01.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-black-01.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-light-blue-01.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-white-01.jpg"
+      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134727_297c9f04-dcd8-4298-8a34-f79dcca59252.jpg": "A vibrant t-shirt featuring a humorous Ditto Pokémon design, perfect for retro anime fans.",
@@ -2480,15 +2468,8 @@ export const adminProducts = [
     ],
     "etsyDescription": "Show off your love for Pokemon with our Cool Ditto T-Shirt, a must-have for fans of all ages seeking unique and stylish apparel. This one-of-a-kind tee features a vibrant graphic of Ditto, perfect for expressing your fandom in a fun way.\n\nCrafted with care, this t-shirt showcases a striking design that captures the playful essence of Ditto, making it a standout piece in any wardrobe. Whether you're attending a convention, hanging out with friends, or just relaxing at home, this shirt is designed to turn heads.\n\nMade from 100% cotton, this t-shirt offers a soft, breathable fit that keeps you comfortable all day long. With direct-to-garment (DTG) premium print technology, the colors are vivid and long-lasting. Available in sizes S-3XL, it’s perfect for everyone.\n\nLooking for the perfect gift? This Cool Ditto T-Shirt is an ideal present for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "createdAt": "2026-05-26T14:46:47.331Z",
-    "updatedAt": "2026-06-15T13:38:25.713Z",
-    "relatedProducts": [],
-    "gelatoCdnImages": [
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85e22de-2b5d-4e15-a436-c3ba4ceebd1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133803Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=529c8967caebfeca7b6b31fa153be25609cc12c3b080104ba5d6272cfc903469",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6e961e93-b577-42ae-a396-feee2052c64a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133803Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5da7480d628e9f938afed8bf44ab31a57ab358720633512b69c3e0abc4758f04",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9c0e457a-3fee-4c32-bbce-ace0d7745547/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133803Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=374bec00578c59db061c035651a50310ca7c48c6124113a575407e0c79288d17",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/46438061-e1ac-402f-82d7-bff5a4d6ee8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133803Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=95e6a0dad214be9c8367efed2d508c1ab806c4b0ffe68de1743f381ae6c7c86f",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22c8ffb5-cd30-482f-8494-17338fb5c4bd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133803Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d4f9a821fda4113fc224d155d2740318db0d78761d3b164c3e52c502442fe505"
-    ]
+    "updatedAt": "2026-05-26T15:01:47.863Z",
+    "relatedProducts": []
   },
   {
     "id": "cool-mew-t-shirt",
@@ -2504,26 +2485,10 @@ export const adminProducts = [
       "Printed and fulfilled via Gelato"
     ],
     "sizes": [
-      {
-        "id": "S",
-        "label": "S",
-        "price": 2499
-      },
-      {
-        "id": "M",
-        "label": "M",
-        "price": 2499
-      },
-      {
-        "id": "L",
-        "label": "L",
-        "price": 2499
-      },
-      {
-        "id": "XL",
-        "label": "XL",
-        "price": 2499
-      }
+      { "id": "S",  "label": "S",  "price": 2499 },
+      { "id": "M",  "label": "M",  "price": 2499 },
+      { "id": "L",  "label": "L",  "price": 2499 },
+      { "id": "XL", "label": "XL", "price": 2499 }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_152008_02510406-554f-4910-ae03-c62e57d7fc79.jpg",
