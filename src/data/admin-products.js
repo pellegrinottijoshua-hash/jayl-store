@@ -2195,7 +2195,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-06-15T13:35:27.192Z",
+    "updatedAt": "2026-06-15T13:36:32.503Z",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg",
     "gelatoCdnImages": [
