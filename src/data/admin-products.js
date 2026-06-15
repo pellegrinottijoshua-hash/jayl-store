@@ -2195,9 +2195,17 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-05-26T14:47:01.866Z",
+    "updatedAt": "2026-06-15T13:35:27.192Z",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg",
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6a2a5426-7adb-4d3f-915c-4f69c7025dc7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e286951a5f80af4af7708b9633b2a6732a8fc2da9ed2f71a13ffc37ba9b51fa",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7b1cc667-db95-4230-a426-27d9a9ebfad2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c08fad64dcf78f1a715be62140027924aeeb3206b5f85f838007153911747f0e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8796fb5-17b1-4f59-be25-c3192ca116cd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ae85547ff86c3030536d9a0ae27ed58191f5740cb3a3d300435cf4cb099fc16d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ba9088fe-59e0-4053-931b-50cf567af9a4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d853ccaa9f0d0ee2f9f8231cac9b71d86cdb299cfde8df32ea068382c2890314",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7067371f-dda4-4740-a185-4525def9a56a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4361e1bef28337111f0b5a4f2dff65a852701ef6a0a45dd1dc953b2e07dee1ed",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d2f82870-270e-4c11-ab3a-0a61f7da3394/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260615%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T133518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=21174bfaf32f4f286912801ab55c648edb6e1d9c16ade8133f8dbc18666b1d2e"
+    ]
   },
   {
     "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
@@ -2485,10 +2493,26 @@ export const adminProducts = [
       "Printed and fulfilled via Gelato"
     ],
     "sizes": [
-      { "id": "S",  "label": "S",  "price": 2499 },
-      { "id": "M",  "label": "M",  "price": 2499 },
-      { "id": "L",  "label": "L",  "price": 2499 },
-      { "id": "XL", "label": "XL", "price": 2499 }
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2499
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2499
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2499
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2499
+      }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_152008_02510406-554f-4910-ae03-c62e57d7fc79.jpg",
