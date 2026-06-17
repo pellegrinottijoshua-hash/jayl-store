@@ -2485,10 +2485,26 @@ export const adminProducts = [
       "Printed and fulfilled via Gelato"
     ],
     "sizes": [
-      { "id": "S",  "label": "S",  "price": 2499 },
-      { "id": "M",  "label": "M",  "price": 2499 },
-      { "id": "L",  "label": "L",  "price": 2499 },
-      { "id": "XL", "label": "XL", "price": 2499 }
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2499
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2499
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2499
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2499
+      }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_152008_02510406-554f-4910-ae03-c62e57d7fc79.jpg",
@@ -2755,5 +2771,334 @@ export const adminProducts = [
     "createdAt": "2026-05-26T15:11:39.661Z",
     "updatedAt": "2026-05-27T15:02:57.744Z",
     "relatedProducts": []
+  },
+  {
+    "id": "charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Charmender Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Charmander embodies the fiery spirit of adventure and loyalty, making this t-shirt a must-have for fans who remember their first Pokémon battles. With vibrant DTG print quality on a Gildan premium tee, this retro 90s style shirt captures the essence of this beloved character. Whether you're channeling Charmander's fierce determination or simply reminiscing about the early days of Pokémon, this shirt is a fantastic gift for those who appreciate the charm and nostalgia of the franchise.",
+    "altText": "Charmander t-shirt featuring retro anime fan art design.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      }
+    ],
+    "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161145_80a528c8-84e2-46b8-b3af-2677fdc0e193.jpg",
+    "heroImage": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161113_0b51cfba-b3bd-475d-9cb2-756b10469ea4.jpg",
+    "detailImage": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155615_03094b9c-a4a1-4877-98e7-a5f43c7dbb41.jpg",
+    "images": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/235f725a-e447-4e9e-8783-31686a44a430/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb2c9d950d6bb214ab222f581c290d494402d1c013f93b7a077a48846bd0874e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aa808853-6eaf-49bc-8606-a7b0d2a1a7c7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=78a0e0cd7da6cef00ad6d992dd1f3ab478d76baab1f49b326e398ca933fb7d56",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/448da373-bf5b-4afc-a1d7-6bfdf19ba129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f0fb49f94d1fe07ab4f8d33792c61bacd6b3cba4aa5bcb315ece8f09bf68dbd2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1f13a00-4f5a-4a8c-99d0-e697d5c730a9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5df544d29603846d7c61cf0132df1fee076872073b331f815c66f827d8a194ad",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c3f16162-e5b1-44fc-98e7-c30b6a40d151/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d92aa3ed4e5a5a5267d215c7cb724e33f4f2ed9019ff27485b1d6572e4a12c2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155727_74a6f63e-f0c6-4d81-b047-52e1cec4659d.jpg",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161233_eccb40ff-b6b3-4649-8313-fb3c4693e6b7.jpg"
+    ],
+    "imageAlts": {
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-mockup-01.jpg": "Charmander t-shirt featuring retro anime fan art design.",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-red-01.jpg": "Charmander t-shirt featuring retro anime fan art design.",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-black-01.jpg": "Charmander t-shirt featuring retro anime fan art design.",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-light-blue-01.jpg": "Charmander t-shirt featuring retro anime fan art design.",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-cardinal-red-01.jpg": "Charmander t-shirt featuring retro anime fan art design.",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-white-01.jpg": "Charmander t-shirt featuring retro anime fan art design."
+    },
+    "tags": [
+      "charmander",
+      "pokemon",
+      "anime",
+      "t-shirt",
+      "90s style",
+      "funny gift",
+      "fan art",
+      "cool apparel",
+      "retro fashion",
+      "print on demand",
+      "gildan",
+      "dtg print",
+      "gift idea"
+    ],
+    "featured": false,
+    "gelatoProductId": "bd5cf732-c43b-4ef5-879b-695e1e4c7d38",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "charmander t-shirt",
+      "pokemon shirt",
+      "anime apparel",
+      "retro style",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "charmander pokemon t-shirt",
+      "funny pokemon lover gift",
+      "retro 90s anime shirt",
+      "cool anime fan art gift",
+      "gildan premium tee",
+      "dtg print quality t-shirt",
+      "charmander fan art apparel",
+      "unique pokemon gifts",
+      "vintage pokemon clothing",
+      "quirky anime gifts"
+    ],
+    "hashtags": "#charmander #pokemon #anime #tshirt #90sstyle #funnygift #fanart #coolapparel #retrofashion #printondemand #gildan #dtgprint #giftidea #pokemongifts #animelovers #retroclothing #geekfashion #nerdstyle #vintageanime #cooldesigns #animefashion #pokemontshirt #charmanderfan #artapparel #animeart #cartoonist #geekgifts #pokemonmerch #fanartapparel #animecollectibles",
+    "instagramCaption": "Catch 'em all in style with our Charmander t-shirt! 🔥 Perfect for those who vibe with nostalgia and firey adventures. Grab yours now! #charmander #pokemon #anime",
+    "pinterestCaption": "Show off your love for Charmander with this retro 90s style t-shirt. Made with Gildan premium quality and vibrant DTG print, it’s the perfect addition to any Pokémon fan's wardrobe. Get yours today!",
+    "seoTitle": "Charmender Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "ac953a63-68da-451b-9bfd-baac79d9f4d5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "21b676d8-6916-4d62-9cc7-991cf077b37f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "33e8cf36-a0a0-4a14-953a-9b50f427208a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ef46200f-f7f1-4932-9a7e-360a9dfad40d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "99b79bf1-af7b-479d-809f-e625ac3fb355",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d185edd4-b56c-4c57-81fa-285a0006197e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a2f9f550-b424-49eb-bddc-646013011f7a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "de6d3853-5c20-4426-b9b6-aa5687c96b11",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "953c258c-6e45-4836-9d65-113a271df301",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "79152a62-4014-4881-bb9a-723f1aaf3074",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a9ac9673-191c-47ee-b075-9588b4eed24f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3fb619b3-bc3a-421d-9c8c-e06132d76884",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6fd25596-6d95-4fdd-b99e-c2b1deaa719d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "46b1fb59-38c7-495d-ab67-7f4bc1bad762",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b6a85fdf-553b-4058-965d-5a1266f2f9d2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0a990228-4b68-4492-8960-27f816d48e65",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "13011e42-a6b6-449e-9cf8-0c12b7cb844d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0f109681-b66f-479f-8adf-97fd04879127",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ef2f735d-a484-4e78-b144-c296d1f82df0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9d939d81-ec26-4e94-bd05-1dcaac562d71",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-light-blue-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-black-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-red-01.jpg"
+      },
+      {
+        "id": "cardinal-red",
+        "label": "Cardinal Red",
+        "hex": "#888888",
+        "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-cardinal-red-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-white-01.jpg"
+      }
+    ],
+    "etsyTitle": "Charmender Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Funny Gift for Pokemon Lovers",
+    "etsyTags": [
+      "charmender shirt",
+      "anime fan art",
+      "funny gift idea",
+      "gifts for him",
+      "otaku clothing",
+      "90s aesthetic",
+      "unisex t-shirt",
+      "pokemon apparel",
+      "graphic tee gift",
+      "anime lover gift",
+      "pop culture shirt",
+      "quirky fashion",
+      "fan merchandise"
+    ],
+    "etsyDescription": "Introducing the Charmender Pokemon T-Shirt, a must-have for true anime fans and Pokemon lovers! This retro-inspired tee is perfect for expressing your fandom and making a statement in style.\n\nFeaturing a vibrant and playful Charmender design, this shirt captures the nostalgic essence of the 90s anime era. The eye-catching graphic is perfect for both casual outings and conventions, ensuring you stand out in any crowd.\n\nCrafted from 100% cotton, this t-shirt offers a soft and comfortable fit, making it ideal for everyday wear. With direct-to-garment (DTG) premium printing, the colors are vivid and long-lasting. Available in unisex sizes S-3XL, this shirt is perfect for everyone.\n\nLooking for the ideal gift? This Charmender t-shirt makes a fantastic present for birthdays, holidays, or any special occasion for the anime enthusiast in your life.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Charmender Pokemon t-shirt on a model, showcasing vibrant colors and playful design.",
+      "Back mockup of Charmender Pokemon t-shirt on a model, highlighting the shirt's comfortable fit and style.",
+      "Close-up detail of the Charmender graphic design on the t-shirt, emphasizing the vibrant colors and quality print.",
+      "Flat lay of Charmender Pokemon t-shirt displayed on a wooden surface, featuring the colorful design prominently.",
+      "Lifestyle shot of a person wearing the Charmender Pokemon t-shirt in a casual setting, capturing a fun moment.",
+      "Size guide shot showing the Charmender t-shirt alongside measuring tape, illustrating the unisex fit and dimensions.",
+      "Gift packaging context of Charmender Pokemon t-shirt wrapped in colorful paper, ideal for gifting occasions."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/235f725a-e447-4e9e-8783-31686a44a430/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb2c9d950d6bb214ab222f581c290d494402d1c013f93b7a077a48846bd0874e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aa808853-6eaf-49bc-8606-a7b0d2a1a7c7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=78a0e0cd7da6cef00ad6d992dd1f3ab478d76baab1f49b326e398ca933fb7d56",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/448da373-bf5b-4afc-a1d7-6bfdf19ba129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f0fb49f94d1fe07ab4f8d33792c61bacd6b3cba4aa5bcb315ece8f09bf68dbd2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1f13a00-4f5a-4a8c-99d0-e697d5c730a9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5df544d29603846d7c61cf0132df1fee076872073b331f815c66f827d8a194ad",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c3f16162-e5b1-44fc-98e7-c30b6a40d151/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d92aa3ed4e5a5a5267d215c7cb724e33f4f2ed9019ff27485b1d6572e4a12c2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6"
+    ],
+    "createdAt": "2026-06-17T16:36:10.263Z",
+    "updatedAt": "2026-06-17T16:36:10.263Z"
   }
 ]
