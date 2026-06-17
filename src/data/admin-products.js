@@ -2811,14 +2811,14 @@ export const adminProducts = [
     "heroImage": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161113_0b51cfba-b3bd-475d-9cb2-756b10469ea4.jpg",
     "detailImage": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155615_03094b9c-a4a1-4877-98e7-a5f43c7dbb41.jpg",
     "images": [
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155727_74a6f63e-f0c6-4d81-b047-52e1cec4659d.jpg",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161233_eccb40ff-b6b3-4649-8313-fb3c4693e6b7.jpg",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/235f725a-e447-4e9e-8783-31686a44a430/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb2c9d950d6bb214ab222f581c290d494402d1c013f93b7a077a48846bd0874e",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aa808853-6eaf-49bc-8606-a7b0d2a1a7c7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=78a0e0cd7da6cef00ad6d992dd1f3ab478d76baab1f49b326e398ca933fb7d56",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/448da373-bf5b-4afc-a1d7-6bfdf19ba129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f0fb49f94d1fe07ab4f8d33792c61bacd6b3cba4aa5bcb315ece8f09bf68dbd2",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1f13a00-4f5a-4a8c-99d0-e697d5c730a9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5df544d29603846d7c61cf0132df1fee076872073b331f815c66f827d8a194ad",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c3f16162-e5b1-44fc-98e7-c30b6a40d151/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d92aa3ed4e5a5a5267d215c7cb724e33f4f2ed9019ff27485b1d6572e4a12c2",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6",
-      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155727_74a6f63e-f0c6-4d81-b047-52e1cec4659d.jpg",
-      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161233_eccb40ff-b6b3-4649-8313-fb3c4693e6b7.jpg"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6"
     ],
     "imageAlts": {
       "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-mockup-01.jpg": "Charmander t-shirt featuring retro anime fan art design.",
@@ -3099,6 +3099,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6"
     ],
     "createdAt": "2026-06-17T16:36:10.263Z",
-    "updatedAt": "2026-06-17T16:36:10.263Z"
+    "updatedAt": "2026-06-17T16:54:23.430Z",
+    "relatedProducts": []
   }
 ]
