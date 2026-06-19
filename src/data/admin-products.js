@@ -3177,6 +3177,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "5181979c-5b2d-4280-a8f6-32bf1366538e",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
