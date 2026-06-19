@@ -3141,14 +3141,14 @@ export const adminProducts = [
     "heroImage": "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161430_1580cc71-5f60-4166-acec-2bc3fd07782c.jpg",
     "detailImage": "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160547_e7d18961-8280-4d43-a203-5b3d64d58417.jpg",
     "images": [
+      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160634_324dc0f8-bad7-4c24-8b47-8018ff933456.jpg",
+      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161504_a1b1a277-e9c7-43b0-bd8c-a333987d153d.jpg",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/af429798-2d11-492f-9d65-115517abc355/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1ae333fe62027c2facfbefa1236f69714a2c7c3c677d3f4d7baec023d3eab8ff",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b2fd7d2e-029a-42a3-8e79-33d2e05fbbc7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4334119a6a8553fe158a41b57af6b5e4f048a07abd326088a461f6b5c088c7eb",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/107ecd17-35b3-4bea-b193-967a03e69a55/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f81d1d2ee778f1e42ff2740c522a5bc4cb45d3721d5ad79b81f86329ba6b5eb2",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d5922507-c9b5-4c07-8375-470083e70e28/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e34fadbd21820e7eede02a8138fbe0154bf045a6b61af688fa80b3819c340c59",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0e317e12-d0ec-4a56-9304-21758188f684/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=89a8d789b32988fdaee0d794058afbe9cf4be296faaef4c8b7e25e98cddd10b6",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22d7b25f-082e-4a24-aa51-eadc9ac28a8a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bd4ff72628412c6994047061ca29ab16a6087411a881afd242ec880d0fa34ef7",
-      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161504_a1b1a277-e9c7-43b0-bd8c-a333987d153d.jpg",
-      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160634_324dc0f8-bad7-4c24-8b47-8018ff933456.jpg"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22d7b25f-082e-4a24-aa51-eadc9ac28a8a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bd4ff72628412c6994047061ca29ab16a6087411a881afd242ec880d0fa34ef7"
     ],
     "imageAlts": {
       "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Gengar Pokémon T-Shirt in retro 90s style design.",
@@ -3429,6 +3429,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22d7b25f-082e-4a24-aa51-eadc9ac28a8a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260618%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260618T163259Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bd4ff72628412c6994047061ca29ab16a6087411a881afd242ec880d0fa34ef7"
     ],
     "createdAt": "2026-06-18T16:43:12.553Z",
-    "updatedAt": "2026-06-18T16:43:12.553Z"
+    "updatedAt": "2026-06-19T12:40:48.960Z",
+    "relatedProducts": []
   }
 ]
