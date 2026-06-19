@@ -2776,7 +2776,7 @@ export const adminProducts = [
     "id": "charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Charmander Pokémon T-Shirt",
+    "name": "Cool Charmander T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2499,
     "currency": "eur",
@@ -3101,7 +3101,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6"
     ],
     "createdAt": "2026-06-17T16:36:10.263Z",
-    "updatedAt": "2026-06-17T16:54:23.430Z",
+    "updatedAt": "2026-06-19T12:47:59.925Z",
     "relatedProducts": []
   }
 ]
