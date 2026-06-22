@@ -3713,5 +3713,310 @@ export const adminProducts = [
     "createdAt": "2026-06-22T15:05:20.303Z",
     "updatedAt": "2026-06-22T15:25:08.598Z",
     "relatedProducts": []
+  },
+  {
+    "id": "cool-blastoise-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool Blastoise T-shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Blastoise embodies the essence of a cool, laid-back water type with a penchant for delivering powerful Hydro Pumps. This Gildan premium tee features vibrant DTG print quality that captures every detail of this iconic Pokémon, making it a standout piece in any wardrobe. Its retro 90s style is a nod to the golden era of anime, perfect for those who appreciate nostalgia and humor in their fashion. Gift this tee to a fellow Pokémon enthusiast who loves both the playful side and the fierce battles of the Pokémon world. Wear it proudly and let Blastoise's cool demeanor inspire your day.",
+    "altText": "Blastoise Pokémon T-Shirt in retro 90s style for fans.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbfd24dd-a38d-43be-acb8-77e7b98ee352/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=30cd6e7effda4be547988d46211a5c375e5cc7961e984623984dc89b8313ecfe",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f0ca6055-4ef2-4922-8d0a-62adcfa84cab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ca66857636da9e79a9caf7ea3829a393f3e904ded6af83f8bcc0f1dbc46c4479",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c32e5a39-420e-4511-8d21-21b71f7a3ad0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a6cb875fb962603b0bdfcf1106a6547b471784b089c72b65e9f310f2b0c046e6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fc3eb1d2-3ff0-4315-9931-15e01b23eb63/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7e5696e5199f3e71daa39166af197eb971a569299e91e55b1e2bbad7c3dc3cac",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fd31200-c196-4ea3-b54f-1c758c02c1b1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c619b2490aff8b25111c584860a7d642ff20e597a72a4e004ff254c96c4aa1cb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9"
+    ],
+    "imageAlts": {
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbfd24dd-a38d-43be-acb8-77e7b98ee352/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=30cd6e7effda4be547988d46211a5c375e5cc7961e984623984dc89b8313ecfe": "A vibrant red Blastoise t-shirt showcasing contemporary art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f0ca6055-4ef2-4922-8d0a-62adcfa84cab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ca66857636da9e79a9caf7ea3829a393f3e904ded6af83f8bcc0f1dbc46c4479": "Detailed view of the red Blastoise t-shirt highlighting its contemporary art design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c32e5a39-420e-4511-8d21-21b71f7a3ad0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a6cb875fb962603b0bdfcf1106a6547b471784b089c72b65e9f310f2b0c046e6": "Artistic angle of the red Blastoise t-shirt featuring a playful contemporary design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fc3eb1d2-3ff0-4315-9931-15e01b23eb63/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7e5696e5199f3e71daa39166af197eb971a569299e91e55b1e2bbad7c3dc3cac": "Close-up of the red Blastoise t-shirt showing the fabric texture and contemporary art print.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fd31200-c196-4ea3-b54f-1c758c02c1b1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c619b2490aff8b25111c584860a7d642ff20e597a72a4e004ff254c96c4aa1cb": "A playful display of the red Blastoise t-shirt emphasizing its vibrant contemporary art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9": "Artistic perspective of the red Blastoise t-shirt showcasing its unique design elements.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151026_c7915ddb-7ee0-4c64-a3ea-eaa64489a819.jpeg": "A model wearing the red Blastoise t-shirt in a contemporary art-inspired setting.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151712_a692b117-5031-4085-9de7-1d3bde44c964.jpg": "The red Blastoise t-shirt displayed on a hanger, highlighting its contemporary design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152259_1a8cb389-82bd-426c-9b36-abc6cfdc49fb.jpeg": "Flat lay of the red Blastoise t-shirt showcasing its colorful art and fabric quality.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152355_58e9f847-3d8c-476e-8358-47f32758cf50.jpg": "A close-up view of the red Blastoise t-shirt emphasizing its intricate design details."
+    },
+    "tags": [
+      "blastoise",
+      "pokemon",
+      "anime",
+      "t-shirt",
+      "gildan",
+      "retro",
+      "90s",
+      "fan art",
+      "gift",
+      "apparel",
+      "funny",
+      "cool",
+      "art"
+    ],
+    "featured": false,
+    "gelatoProductId": "bf922300-607c-4bd3-9eeb-2becbe66ae5d",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "blastoise t-shirt",
+      "pokemon apparel",
+      "anime fan art",
+      "retro t-shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "blastoise pokemon t-shirt for sale",
+      "retro 90s style anime shirt",
+      "gildan t-shirt with blastoise",
+      "funny pokemon lover gift",
+      "cool anime fan art shirt",
+      "premium print on demand apparel",
+      "unique gifts for pokemon fans",
+      "vintage pokemon t-shirt design",
+      "best blastoise merchandise online",
+      "anime inspired graphic tee"
+    ],
+    "hashtags": "#blastoise #pokemon #anime #tshirt #gildan #retro #90s #fanart #gift #apparel #funny #cool #art #fashion #style #graphictee #printondemand #animefan #pokemongifts #vintage #nostalgia #design #clothing #merch #collectibles #geekwear #otaku #popculture #fandom #unique #trendy",
+    "instagramCaption": "Rock your love for Blastoise with this retro tee that screams cool and fun. Perfect for casual outings and Pokémon battles alike! #blastoise #anime #funnygift",
+    "pinterestCaption": "Get ready to turn heads with our Blastoise Pokémon T-Shirt, featuring a vibrant retro 90s design. This Gildan tee combines comfort and style, making it a must-have for any fan. Check it out now!",
+    "seoTitle": "Blastoise Pokémon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "d7ddd236-748b-420b-911d-9076ca052bb9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "207ed5b9-1f48-490c-8af4-e584d1cbd835",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ac4e50c2-c81e-49ed-a623-8e29dca54cb2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "41b3c931-5619-411e-90e4-e543a2df9728",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9e9864a2-9825-469f-a03f-fc5f14a113e2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "13e7fd3d-4fcd-4123-a8a1-46475c2a60e5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "85b4ffce-fde7-4372-ab75-c89d21ef54c7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3acff3d2-120f-4511-ba7c-1ddd2068da6c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "07f5becf-c6f3-404a-8432-49df10c8513e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "de1f9a79-8815-47e8-9874-ae753af1aae4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e3031c98-4a7b-445f-82e5-ca0686edb55a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3f797dec-843f-497c-a13d-dc79ef58468c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a9211104-ea4f-4c93-9e8c-d17064178b61",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c9a85e92-2d5b-4ea6-9475-7df9d4e690ca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "56a0e86c-4ef6-42d6-831a-083aff685709",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2cf7ea8b-6c64-4299-bb5e-ef463ff44e8c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4db0b825-e25b-4e45-841e-cf5b1359f3d2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ddd62c71-3fff-46d3-9b47-73dcdfbe6ea8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ba400ce8-ae06-43c9-ae86-2d25ee3c5086",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_carolina-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d0d4334c-6c09-40ac-8326-40c1f55368a9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--royal-01.jpg"
+      },
+      {
+        "id": "carolina-blue",
+        "label": "Carolina Blue",
+        "hex": "#888888",
+        "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--carolina-blue-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--white-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--navy-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbfd24dd-a38d-43be-acb8-77e7b98ee352/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=30cd6e7effda4be547988d46211a5c375e5cc7961e984623984dc89b8313ecfe",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f0ca6055-4ef2-4922-8d0a-62adcfa84cab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ca66857636da9e79a9caf7ea3829a393f3e904ded6af83f8bcc0f1dbc46c4479",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c32e5a39-420e-4511-8d21-21b71f7a3ad0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a6cb875fb962603b0bdfcf1106a6547b471784b089c72b65e9f310f2b0c046e6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fc3eb1d2-3ff0-4315-9931-15e01b23eb63/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7e5696e5199f3e71daa39166af197eb971a569299e91e55b1e2bbad7c3dc3cac",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fd31200-c196-4ea3-b54f-1c758c02c1b1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c619b2490aff8b25111c584860a7d642ff20e597a72a4e004ff254c96c4aa1cb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9"
+    ],
+    "createdAt": "2026-06-22T15:34:48.644Z",
+    "updatedAt": "2026-06-22T15:34:48.644Z"
   }
 ]
