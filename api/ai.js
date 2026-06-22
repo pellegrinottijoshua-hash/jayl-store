@@ -842,9 +842,8 @@ Return a JSON object with these EXACT keys:
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 1500, temperature: 0.8 })
-    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
-    const parsed = JSON.parse(jsonStr)
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.8 })
+    const parsed = safeJsonParse(content)
 
     return res.status(200).json({
       instagramCaption: parsed.instagramCaption || '',
