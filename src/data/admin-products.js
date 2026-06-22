@@ -2468,8 +2468,15 @@ export const adminProducts = [
     ],
     "etsyDescription": "Show off your love for Pokemon with our Cool Ditto T-Shirt, a must-have for fans of all ages seeking unique and stylish apparel. This one-of-a-kind tee features a vibrant graphic of Ditto, perfect for expressing your fandom in a fun way.\n\nCrafted with care, this t-shirt showcases a striking design that captures the playful essence of Ditto, making it a standout piece in any wardrobe. Whether you're attending a convention, hanging out with friends, or just relaxing at home, this shirt is designed to turn heads.\n\nMade from 100% cotton, this t-shirt offers a soft, breathable fit that keeps you comfortable all day long. With direct-to-garment (DTG) premium print technology, the colors are vivid and long-lasting. Available in sizes S-3XL, it’s perfect for everyone.\n\nLooking for the perfect gift? This Cool Ditto T-Shirt is an ideal present for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "createdAt": "2026-05-26T14:46:47.331Z",
-    "updatedAt": "2026-05-26T15:01:47.863Z",
-    "relatedProducts": []
+    "updatedAt": "2026-06-22T23:00:18.424Z",
+    "relatedProducts": [],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85e22de-2b5d-4e15-a436-c3ba4ceebd1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T230011Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=716a2f677b8735885400966ce9366cf50fd5a4f68c18f7584e575c5b6101d998",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6e961e93-b577-42ae-a396-feee2052c64a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T230011Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a63da1d08e83c8e9fb9936a629c910b37b4c24afffc6ac1a8ee09c7ebd2b351",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9c0e457a-3fee-4c32-bbce-ace0d7745547/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T230011Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c19dee9f80ad08dc17d15c3cd7638e33556468af4124e8eea3d8de8491e28091",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/46438061-e1ac-402f-82d7-bff5a4d6ee8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T230011Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6482947a7015cca27a1572ba55991cb91370f9d0011c3074e5299f5ac004ed4a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22c8ffb5-cd30-482f-8494-17338fb5c4bd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T230011Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3bc353cfafde23a82b6dc31413838a9d0bdbb2dec599a57d04ef1a868b1e1251"
+    ]
   },
   {
     "id": "cool-mew-t-shirt",
