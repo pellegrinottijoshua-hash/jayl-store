@@ -961,6 +961,17 @@ export default function AdminProductPage() {
       if (data.hashtags)                  setHashtags(data.hashtags)
       if (data.primaryKeywords?.length)   setPrimaryKeywords(data.primaryKeywords)
       if (data.longTailKeywords?.length)  setLongTailKeywords(data.longTailKeywords)
+      if (name.trim() && price) await saveWith({
+        ...(data.seoTitle ? { seoTitle: data.seoTitle } : {}),
+        ...(data.description ? { description: data.description } : {}),
+        ...(data.altText ? { altText: data.altText } : {}),
+        ...(data.tags?.length ? { tags: data.tags } : {}),
+        ...(data.instagramCaption ? { instagramCaption: data.instagramCaption } : {}),
+        ...(data.pinterestCaption ? { pinterestCaption: data.pinterestCaption } : {}),
+        ...(data.hashtags ? { hashtags: data.hashtags } : {}),
+        ...(data.primaryKeywords?.length ? { primaryKeywords: data.primaryKeywords } : {}),
+        ...(data.longTailKeywords?.length ? { longTailKeywords: data.longTailKeywords } : {}),
+      })
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -984,6 +995,12 @@ export default function AdminProductPage() {
       if (data.etsyTags?.length)    setEtsyTags(data.etsyTags)
       if (data.etsyDescription)     setEtsyDescription(data.etsyDescription)
       if (data.etsyImageAlts?.length) setEtsyImageAlts(data.etsyImageAlts)
+      if (name.trim() && price) await saveWith({
+        ...(data.etsyTitle ? { etsyTitle: data.etsyTitle } : {}),
+        ...(data.etsyTags?.length ? { etsyTags: data.etsyTags } : {}),
+        ...(data.etsyDescription ? { etsyDescription: data.etsyDescription } : {}),
+        ...(data.etsyImageAlts?.length ? { etsyImageAlts: data.etsyImageAlts } : {}),
+      })
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -1007,6 +1024,12 @@ export default function AdminProductPage() {
       if (data.pinterestCaption) setPinterestCaption(data.pinterestCaption)
       if (data.tiktokCaption)    setTiktokCaption(data.tiktokCaption)
       if (data.hashtags)         setHashtags(data.hashtags)
+      if (name.trim() && price) await saveWith({
+        ...(data.instagramCaption ? { instagramCaption: data.instagramCaption } : {}),
+        ...(data.pinterestCaption ? { pinterestCaption: data.pinterestCaption } : {}),
+        ...(data.tiktokCaption ? { tiktokCaption: data.tiktokCaption } : {}),
+        ...(data.hashtags ? { hashtags: data.hashtags } : {}),
+      })
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -1035,10 +1058,12 @@ export default function AdminProductPage() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
-      setImageAlts(prev => ({ ...prev, ...data.alts }))
+      const mergedAlts = { ...imageAlts, ...(data.alts || {}) }
+      setImageAlts(mergedAlts)
       const count = Object.keys(data.alts || {}).length
       setAltsMsg(`✓ ${count} alt text${count !== 1 ? 's' : ''} generati`)
       setTimeout(() => setAltsMsg(''), 4000)
+      if (name.trim() && price) await saveWith({ imageAlts: mergedAlts })
     } catch (e) {
       setAltsMsg('⚠ ' + e.message)
     } finally {
@@ -1107,7 +1132,7 @@ export default function AdminProductPage() {
     }
   }
 
-  const handleSave = async () => {
+  const saveWith = async (overrides = {}) => {
     if (!name.trim()) return setSaveErr('Name is required')
     if (!price)       return setSaveErr('Price is required')
     setSaving(true); setSaveErr(''); setSaveMsg('')
@@ -1150,6 +1175,8 @@ export default function AdminProductPage() {
         ...(hashtags.trim()          ? { hashtags:          hashtags.trim() }          : {}),
         ...(gelatoCdnImages.length > 0 ? { gelatoCdnImages } : {}),
       }
+      // Fresh AI values (passed by the generators) take precedence over stale React state
+      Object.assign(updated, overrides)
       // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
 
@@ -1163,6 +1190,8 @@ export default function AdminProductPage() {
       setSaving(false)
     }
   }
+  // Button handler (onClick passes a click event — ignore it). Generators call saveWith(overrides).
+  const handleSave = () => saveWith({})
 
   // withSave=true → auto-saves gelatoCdnImages to product after sync
   // (passes cdnUrls directly to avoid stale React closure on gelatoCdnImages state)
