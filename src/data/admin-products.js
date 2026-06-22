@@ -3414,7 +3414,7 @@ export const adminProducts = [
     "id": "alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Alakazam Pokémon T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 94000",
+    "name": "Cool Alakazam T-shirt",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
@@ -3449,14 +3449,14 @@ export const adminProducts = [
     "heroImage": "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144237_3d879994-a852-4653-a8a0-75804539c419.jpeg",
     "detailImage": "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_143730_eedeafd4-cc3d-4d00-ae3c-6f85f113ff44.jpg",
     "images": [
+      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_142533_09f66a3c-f0dd-4cab-a959-dcccf7abb8a9.jpg",
+      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144716_2d65147a-13eb-41d7-806c-e2b66687d14e.jpg",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1feaf79a-0593-4c1a-9b54-1fe137e4f9d5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=350104a23b94f11b0e930ef0dada70418defd4bb9ac5233d3273fdc75cf0440c",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/76b9e5d9-9f10-4511-8231-34c5d0a5d559/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb0131cf8568d298300ecf901e7ecb42984e0cc5cef3e91d57195ffda670460d",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8589fb8f-7d94-43f0-b241-97865d2b16f8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=55df848ffea44ffeb967b855dc1a5f7f686043f46034b3c4df38dbaa99e9da45",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/02843e1f-7738-471e-a30e-18a8cb0acfa5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=be04ecefcdf8a52e5c939f5f4393a733a24538e2fdf701439153ffd5db76c028",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/737e8ac4-aae3-4322-9173-c8a499e0c2f3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2215ec88cb8a60eeba0a83655b8828925d961b4492409d2bacbb6cf51fa410f6",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e886bb1d3ea32c5a57a96bb51e82cae6bcc642510013ccb7a3c68831b713a0d",
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_142533_09f66a3c-f0dd-4cab-a959-dcccf7abb8a9.jpg",
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144716_2d65147a-13eb-41d7-806c-e2b66687d14e.jpg"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e886bb1d3ea32c5a57a96bb51e82cae6bcc642510013ccb7a3c68831b713a0d"
     ],
     "imageAlts": {
       "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-t-shirt-cool-anime-fan-art-g-mockup-01.jpg": "Alakazam Pokémon T-Shirt featuring retro 90s design.",
@@ -3711,6 +3711,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e886bb1d3ea32c5a57a96bb51e82cae6bcc642510013ccb7a3c68831b713a0d"
     ],
     "createdAt": "2026-06-22T15:05:20.303Z",
-    "updatedAt": "2026-06-22T15:05:20.303Z"
+    "updatedAt": "2026-06-22T15:14:42.067Z",
+    "relatedProducts": []
   }
 ]
