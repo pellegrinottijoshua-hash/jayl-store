@@ -4365,14 +4365,14 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160818_692892a6-b8c5-4476-bc06-50e751e309ac.jpeg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160745_4c2a5a20-258b-47c2-8e22-43ebefd31c46.jpeg",
     "images": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161352_bd07ae2a-9d10-4d54-87fc-c7d8d6057037.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161048_6d181c47-8945-4d16-8378-fad8580d1ee9.jpg",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fdce8445-f91d-4564-96b1-d35fa44a8896/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=689a26fc0dd3ac7d1d7384754bb2aad4abd42029f4d0448378f52c1d1e95f604",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7e2b0bdc-8d3c-4e73-92df-fe643bb7d349/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d0b4de3916fbe3a4f43e8af1f27a924763892c2ccea79463fda2cfa5b7975960",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d29adc5b-2932-49df-a1ae-df95c30dd6ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7d74938775cf9470643c5e225b86d36a0298b5ef18c3d27e1f7ab1e0751ea30f",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a7df2e34-4642-4e33-add2-f10fa9acee28/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d549f76323518a5c4a073265367268ecf32c67514c67f1d406f9852e9e494b10",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d29adc5b-2932-49df-a1ae-df95c30dd6ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7d74938775cf9470643c5e225b86d36a0298b5ef18c3d27e1f7ab1e0751ea30f",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ca1b4a3e-0c9c-428b-945f-f7c8e74df10b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=62d50d6df4d509e45b2dcd6d8afd20176745bd7592ab14c64f710d970d3661b4",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/225224c5-4372-4004-b888-9f97b26ac129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0343ee9f9c6206367fbb1c23806e87bd3ef0d064c323b4ff686960e66e0982",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161352_bd07ae2a-9d10-4d54-87fc-c7d8d6057037.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161048_6d181c47-8945-4d16-8378-fad8580d1ee9.jpg"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/225224c5-4372-4004-b888-9f97b26ac129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0343ee9f9c6206367fbb1c23806e87bd3ef0d064c323b4ff686960e66e0982"
     ],
     "imageAlts": {
       "/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Machop Pokémon T-Shirt featuring retro 90s fan art.",
@@ -4420,9 +4420,9 @@ export const adminProducts = [
       "collectible anime merchandise",
       "funny retro pokemon shirt"
     ],
-    "hashtags": "#machop #pokemon #tshirt #coolapparel #gildan #dtgprint #fanmerchandise #giftidea #anime #collectibles #graphictee #unisex #stylishwear #pokemongifts #animefashion #pokemonfan #pocketmonsters #geekfashion #nerdstyle #pokedesigner #cooltees #animecollectibles #gamerfashion #pokemontshirts #machopfans #premiumapparel #animegeek #pokedex #pokemonart #coolshirts #fandomfashion",
-    "instagramCaption": "Flex your inner fighter with our Machop T-shirt! This isn't just a shirt; it's a statement of strength. 💪 #machop #pokemontshirt #coolapparel",
-    "pinterestCaption": "Check out our Cool Machop T-shirt, perfect for showcasing your love for this determined Pokémon. Made from Gildan premium fabric with vibrant DTG print, it's a stylish addition to any wardrobe. Don't miss out on adding this unique piece to your collection.",
+    "hashtags": "#pokemon #machop #fandom #animeart #geekwear #tshirt #apparel #streetwear #coolclothes #fashion #edgystyle #wearableart #uniqueclothing #giftideas #casualwear #collectibles #popculture #nerdlife #trendy #stylish #artwear #jaylstore #jaylart #premiumprint #coolvibes #edgyfashion #fashionista #trends #creativewear #jaylbrand",
+    "instagramCaption": "Unleash your inner trainer with the Cool Machop T-Shirt. It's not just a tee, it's a statement piece for those who dare to stand out. Level up your wardrobe and show off your Pokémon pride! #PokémonStyle #EdgyFashion #CoolVibes #Streetwear #AnimeArt. Link in bio 🔗",
+    "pinterestCaption": "Get ready to embrace your love for Pokémon with our Cool Machop T-Shirt. This unique piece combines style with fandom, perfect for casual outings or lounging at home. Elevate your collection and showcase your passion for the Pokémon universe.",
     "seoTitle": "Machop T-Shirt | Cool Pokémon Apparel | Unique Gift Idea",
     "variants": [
       {
@@ -4627,8 +4627,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/225224c5-4372-4004-b888-9f97b26ac129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0343ee9f9c6206367fbb1c23806e87bd3ef0d064c323b4ff686960e66e0982"
     ],
     "createdAt": "2026-06-22T16:19:27.611Z",
-    "updatedAt": "2026-06-22T16:41:45.100Z",
+    "updatedAt": "2026-06-22T16:47:15.555Z",
     "relatedProducts": [],
-    "tiktokCaption": "this Machop tee is a whole vibe 🔥💪 #pokemon #fyp #foryou #anime #machop"
+    "tiktokCaption": "Machop's flexing on the haters 💪🔥 #pokemon #fyp #foryou #anime #coolfashion"
   }
 ]
