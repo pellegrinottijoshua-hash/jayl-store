@@ -3720,7 +3720,7 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Blastoise T-shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2500,
+    "price": 2499,
     "currency": "eur",
     "description": "Blastoise embodies the essence of a cool, laid-back water type with a penchant for delivering powerful Hydro Pumps. This Gildan premium tee features vibrant DTG print quality that captures every detail of this iconic Pokémon, making it a standout piece in any wardrobe. Its retro 90s style is a nod to the golden era of anime, perfect for those who appreciate nostalgia and humor in their fashion. Gift this tee to a fellow Pokémon enthusiast who loves both the playful side and the fierce battles of the Pokémon world. Wear it proudly and let Blastoise's cool demeanor inspire your day.",
     "altText": "Blastoise Pokémon T-Shirt in retro 90s style for fans.",
@@ -3749,16 +3749,18 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/blastoise-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152355_58e9f847-3d8c-476e-8358-47f32758cf50.jpg",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_153805_6ee612cd-ac78-457f-aaf8-cc7be1d1a9d0.jpeg",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151026_c7915ddb-7ee0-4c64-a3ea-eaa64489a819.jpeg",
     "images": [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbfd24dd-a38d-43be-acb8-77e7b98ee352/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=30cd6e7effda4be547988d46211a5c375e5cc7961e984623984dc89b8313ecfe",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f0ca6055-4ef2-4922-8d0a-62adcfa84cab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ca66857636da9e79a9caf7ea3829a393f3e904ded6af83f8bcc0f1dbc46c4479",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c32e5a39-420e-4511-8d21-21b71f7a3ad0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a6cb875fb962603b0bdfcf1106a6547b471784b089c72b65e9f310f2b0c046e6",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fc3eb1d2-3ff0-4315-9931-15e01b23eb63/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7e5696e5199f3e71daa39166af197eb971a569299e91e55b1e2bbad7c3dc3cac",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fd31200-c196-4ea3-b54f-1c758c02c1b1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c619b2490aff8b25111c584860a7d642ff20e597a72a4e004ff254c96c4aa1cb",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152259_1a8cb389-82bd-426c-9b36-abc6cfdc49fb.jpeg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151712_a692b117-5031-4085-9de7-1d3bde44c964.jpg"
     ],
     "imageAlts": {
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbfd24dd-a38d-43be-acb8-77e7b98ee352/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=30cd6e7effda4be547988d46211a5c375e5cc7961e984623984dc89b8313ecfe": "A vibrant red Blastoise t-shirt showcasing contemporary art style.",
@@ -4017,6 +4019,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9"
     ],
     "createdAt": "2026-06-22T15:34:48.644Z",
-    "updatedAt": "2026-06-22T15:34:48.644Z"
+    "updatedAt": "2026-06-22T15:41:45.465Z",
+    "relatedProducts": []
   }
 ]
