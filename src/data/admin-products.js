@@ -4057,10 +4057,12 @@ export const adminProducts = [
         "price": 2499
       }
     ],
-    "image": "/images/kangaskhan-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-t-shirt-cool-anime-fan-art-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155520_56f65be5-10e4-47ac-94e4-5231911e4783.jpeg",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_154739_774027c0-5d89-42ff-add7-0b4c73516773.jpeg",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_153858_a6507b54-d299-4a0f-a74c-7b82af071af1.jpeg",
     "images": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_154818_5cc55565-d423-408f-a665-e4e439214a9d.jpeg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155205_d3e9bf1a-e6fd-42f7-9c94-de65b65ed06f.jpeg",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/99c65984-08af-4071-be92-637af03c6fa8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f862869ade1f5520e7483a6f7eba8f4ae1290784eca5d456fea6e55d2619d691",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/306675e9-3e66-4a29-9722-888c2244a585/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=288d35f2fa9af0a8ea1a134e2a85e7c7fa8f0a503b49dbee9cfd625d6e7edac3",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6a4ae873-15f0-40ed-84b9-7a13e916c908/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=55a9ca58b943b83a7341012515ccd3a6d3d464767200b3a54bcdc1db6703e508",
@@ -4321,6 +4323,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f345781-77ab-4fcf-9bed-d16f3daad1ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe072f42a55f347841c4dab7269d14b6f77c41a8ca8de08727cf16c63c60cfaa"
     ],
     "createdAt": "2026-06-22T16:00:28.936Z",
-    "updatedAt": "2026-06-22T16:00:28.936Z"
+    "updatedAt": "2026-06-22T16:03:47.815Z",
+    "relatedProducts": []
   }
 ]
