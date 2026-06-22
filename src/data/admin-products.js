@@ -4334,8 +4334,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2499,
     "currency": "eur",
-    "description": "Machop embodies the spirit of determination and hard work, making this t-shirt a tribute to those who strive to be their best. Crafted from Gildan's premium fabric, this tee features high-quality direct-to-garment printing that captures every detail of the retro 90s design. Whether you're hitting the gym or chilling with friends, this shirt reflects the fun and quirky side of Pokémon fandom. It's a fantastic gift for anyone who appreciates the hustle and humor of Machop's journey. Elevate your wardrobe with a piece that's as unique as your passion.",
-    "altText": "Machop Pokémon T-Shirt featuring retro 90s fan art.",
+    "description": "Machop embodies the spirit of determination and strength, making this T-shirt a must-have for fans who appreciate its fighting spirit. Crafted from a Gildan premium tee, the design features vibrant DTG print quality that captures Machop's iconic look in stunning detail. Whether you're hitting the gym or hanging out with friends, this shirt showcases your love for this brawny Pokémon. A thoughtful gift for anyone who relates to Machop's relentless drive to become stronger, it’s perfect for birthdays or just because you want to inspire someone special.",
+    "altText": "Cool Machop T-shirt featuring vibrant print and quality fabric.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -4361,7 +4361,7 @@ export const adminProducts = [
         "price": 2499
       }
     ],
-    "image": "/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_162130_5c460ac6-7b11-4803-add7-d76c0a8282a8.jpg",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160818_692892a6-b8c5-4476-bc06-50e751e309ac.jpeg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160745_4c2a5a20-258b-47c2-8e22-43ebefd31c46.jpeg",
     "images": [
@@ -4386,16 +4386,16 @@ export const adminProducts = [
       "machop",
       "pokemon",
       "t-shirt",
-      "anime",
-      "fan art",
-      "retro",
-      "90s style",
+      "cool apparel",
       "gildan",
-      "gift",
-      "apparel",
-      "funny",
-      "collector",
-      "geek"
+      "dtg print",
+      "fan merchandise",
+      "gift idea",
+      "anime",
+      "collectibles",
+      "graphic tee",
+      "unisex",
+      "stylish wear"
     ],
     "featured": false,
     "gelatoProductId": "8b9fdc40-b423-4442-8de0-4e7a2e0f4dd5",
@@ -4420,10 +4420,10 @@ export const adminProducts = [
       "collectible anime merchandise",
       "funny retro pokemon shirt"
     ],
-    "hashtags": "#pokemon #machop #pokemontshirt #animefashion #gamerwear #printondemand #premiumapparel #graphictee #streetwear #fashionstyle #edgyfashion #giftideas #nerdlife #geekwear #popculture #wearableart #jaylstore #artwear #jaylart #premiumprint #coolshirts #stylishteeshirts #characterapparel #fashiontrends #uniquegifts #creativeclothing #onlinestore #artistsupport #trendyapparel #customapparel #lifestylebrand",
-    "instagramCaption": "Unleash your inner fighter with our Cool Machop T-Shirt. Perfect for trainers who know how to flex both style and strength. Grab yours and level up your wardrobe! #PokémonStyle #CoolMachop #WearableArt #PokeFashion #ArtWear. Link in bio 🔗",
-    "pinterestCaption": "Elevate your style with our Cool Machop T-Shirt, a must-have for every Pokémon fan. This edgy design combines cultural aesthetics with a touch of nostalgia. Perfect for casual outings or lounging at home. Discover your new favorite tee!",
-    "seoTitle": "Machop Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "hashtags": "#machop #pokemon #tshirt #coolapparel #gildan #dtgprint #fanmerchandise #giftidea #anime #collectibles #graphictee #unisex #stylishwear #pokemongifts #animefashion #pokemonfan #pocketmonsters #geekfashion #nerdstyle #pokedesigner #cooltees #animecollectibles #gamerfashion #pokemontshirts #machopfans #premiumapparel #animegeek #pokedex #pokemonart #coolshirts #fandomfashion",
+    "instagramCaption": "Flex your inner fighter with our Machop T-shirt! This isn't just a shirt; it's a statement of strength. 💪 #machop #pokemontshirt #coolapparel",
+    "pinterestCaption": "Check out our Cool Machop T-shirt, perfect for showcasing your love for this determined Pokémon. Made from Gildan premium fabric with vibrant DTG print, it's a stylish addition to any wardrobe. Don't miss out on adding this unique piece to your collection.",
+    "seoTitle": "Machop T-Shirt | Cool Pokémon Apparel | Unique Gift Idea",
     "variants": [
       {
         "uid": "026a5a52-3c3c-4142-96a1-68b0298d0184",
@@ -4627,7 +4627,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/225224c5-4372-4004-b888-9f97b26ac129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T161535Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0343ee9f9c6206367fbb1c23806e87bd3ef0d064c323b4ff686960e66e0982"
     ],
     "createdAt": "2026-06-22T16:19:27.611Z",
-    "updatedAt": "2026-06-22T16:41:21.817Z",
+    "updatedAt": "2026-06-22T16:41:45.100Z",
     "relatedProducts": [],
     "tiktokCaption": "this Machop tee is a whole vibe 🔥💪 #pokemon #fyp #foryou #anime #machop"
   }
