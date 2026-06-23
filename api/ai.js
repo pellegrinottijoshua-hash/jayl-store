@@ -859,6 +859,44 @@ Return ONLY the JSON object, no markdown, no extra text.`
   }
 }
 
+// ── generate-pinterest-pins — 5 ready-to-publish Pinterest pins per call ───────
+async function handlePinterestPins(req, res) {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+  const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
+  if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
+
+  const prompt = `You are a senior Pinterest SEO strategist for JAYL, a premium print-on-demand art & apparel brand.
+Generate FIVE distinct, ready-to-publish Pinterest pins for this product.
+
+Product title: ${productTitle}
+Section: ${section || 'objects'}
+Collection: ${collection || ''}
+Movement/style: ${movement || ''}
+
+Return a JSON object with EXACTLY one key "pins": an array of EXACTLY 5 objects. Each object:
+- "title": Pinterest pin title, max 100 chars, keyword-rich and scroll-stopping. Each of the 5 clearly different.
+- "description": 2-3 keyword-rich descriptive sentences (max 480 chars), no hashtags, aspirational, ends with a subtle CTA, speaks to Pinterest planning/saving intent.
+- "tags": Array of 6-10 keyword tags (lowercase strings, 1-3 words each, no #). Mix character, fandom, aesthetic, gift, product-type.
+The 5 pins must cover DIFFERENT angles/keywords (gift, aesthetic, fandom, style, occasion). Return ONLY the JSON object, no markdown.`
+
+  try {
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3500, temperature: 0.85 })
+    const parsed = safeJsonParse(content)
+    const pins = (Array.isArray(parsed.pins) ? parsed.pins : [])
+      .slice(0, 5)
+      .map(p => ({
+        title:       String(p?.title || '').slice(0, 100),
+        description: String(p?.description || '').slice(0, 500),
+        tags:        Array.isArray(p?.tags) ? p.tags.map(t => String(t).toLowerCase().trim()).filter(Boolean).slice(0, 10) : [],
+      }))
+      .filter(p => p.title || p.description)
+    return res.status(200).json({ pins, model, usage })
+  } catch (err) {
+    console.error('[generate-pinterest-pins]', err.message)
+    return res.status(500).json({ error: err.message })
+  }
+}
+
 // ── Main router ───────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
@@ -876,6 +914,7 @@ export default async function handler(req, res) {
   if (h === 'video')        return handleVideo(req, res)
   if (h === 'persona')      return handlePersona(req, res)
   if (h === 'alts')         return handleAlts(req, res)
+  if (h === 'pinterest-pins') return handlePinterestPins(req, res)
 
   return res.status(404).json({ error: `Unknown AI handler: ${h}` })
 }

@@ -796,6 +796,8 @@ export default function AdminProductPage() {
   // AI social/SEO output
   const [instagramCaption, setInstagramCaption] = useState(product?.instagramCaption || '')
   const [pinterestCaption, setPinterestCaption] = useState(product?.pinterestCaption || '')
+  const [pinterestPins,    setPinterestPins]    = useState(Array.isArray(product?.pinterestPins) ? product.pinterestPins : [])
+  const [generatingPins,   setGeneratingPins]   = useState(false)
   const [tiktokCaption,    setTiktokCaption]    = useState(product?.tiktokCaption    || '')
   const [pinterestBoardId,     setPinterestBoardId]     = useState(() => { try { return localStorage.getItem('jayl_pinterest_board_id') || '' } catch { return '' } })
   const [showPinterestPanel,   setShowPinterestPanel]   = useState(false)
@@ -865,6 +867,7 @@ export default function AdminProductPage() {
       setSequenza(Array.isArray(p.images) ? p.images : [])
       setGelatoCdnImages(Array.isArray(p.gelatoCdnImages) ? p.gelatoCdnImages : [])
       setExcludedGelato(Array.isArray(p.excludedGelato) ? p.excludedGelato : [])
+      setPinterestPins(Array.isArray(p.pinterestPins) ? p.pinterestPins : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
@@ -1050,6 +1053,28 @@ export default function AdminProductPage() {
     }
   }
 
+  // Pinterest 5-pack: each press generates 5 pins (title + text + tags) and APPENDS them (autosaved)
+  const generatePinterestPins = async () => {
+    if (!name.trim()) return setGenErr('Enter a product name first')
+    setGeneratingPins(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-pinterest-pins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productTitle: name.trim(), section, collection, movement, provider: aiProvider }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Pinterest generation failed')
+      const next = [...pinterestPins, ...((data.pins) || [])]
+      setPinterestPins(next)
+      if (name.trim() && price) await saveWith({ pinterestPins: next })
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGeneratingPins(false)
+    }
+  }
+
   const generateAlts = async () => {
     // Build image list: each known image URL with its role
     const imageEntries = []
@@ -1189,6 +1214,7 @@ export default function AdminProductPage() {
         ...(gelatoCdnImages.length > 0 ? { gelatoCdnImages } : {}),
       }
       updated.excludedGelato = excludedGelato.length ? excludedGelato : undefined
+      updated.pinterestPins  = pinterestPins.length  ? pinterestPins  : undefined
       // Fresh AI values (passed by the generators) take precedence over stale React state
       Object.assign(updated, overrides)
       // Clean undefined/null keys that weren't set before
@@ -1915,6 +1941,33 @@ export default function AdminProductPage() {
                   className={`${inputCls} resize-none font-mono`}
                 />
               </Field>
+
+              {/* Pinterest 5-pack generator — each click appends 5 pins (title + text + tags) */}
+              <div className="border border-red-900/40 bg-[#0a0808] p-3 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-[#e60023]/80 text-xs font-semibold uppercase tracking-wider">
+                    5-Pack pin AI{pinterestPins.length ? ` · ${pinterestPins.length}` : ''}
+                  </p>
+                  <button type="button" onClick={generatePinterestPins} disabled={generatingPins} className={`${btnGhost} text-xs`}>
+                    {generatingPins ? 'Generando…' : '🔴 Genera 5 pin'}
+                  </button>
+                </div>
+                <p className="text-[9px] text-gray-600">Ogni click aggiunge 5 pin (titolo + testo + tag). I precedenti restano. Auto-salvato.</p>
+                {pinterestPins.length > 0 && (
+                  <div className="space-y-2 max-h-72 overflow-y-auto">
+                    {pinterestPins.map((p, i) => (
+                      <div key={i} className="border border-gray-800 bg-[#111] p-2 text-[11px] space-y-1 relative">
+                        <button type="button" title="Rimuovi"
+                          onClick={() => { const next = pinterestPins.filter((_, j) => j !== i); setPinterestPins(next); if (name.trim() && price) saveWith({ pinterestPins: next }) }}
+                          className="absolute top-1 right-1 text-gray-600 hover:text-red-400 text-[10px]">✕</button>
+                        <div className="text-amber-400/90 font-semibold pr-5">{p.title}</div>
+                        <div className="text-gray-400 whitespace-pre-wrap">{p.description}</div>
+                        {p.tags?.length > 0 && <div className="text-gray-600 text-[10px]">{p.tags.map(t => `#${t}`).join(' ')}</div>}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Pinterest Publish Panel */}
               <div className="border border-red-900/40 bg-[#0a0808] p-3 space-y-3">
