@@ -5308,7 +5308,7 @@ export const adminProducts = [
     "id": "dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Dugtrio Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift",
+    "name": "Cool Dugtrio T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
@@ -5630,6 +5630,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/52278d84-b826-496c-9688-0387849ee7a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T090403Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=99fffa2d9e753fa0cd2d734f29c69f6a114503c119ae63b4783af34338117d4e"
     ],
     "createdAt": "2026-06-23T09:09:16.853Z",
-    "updatedAt": "2026-06-23T09:09:16.853Z"
+    "updatedAt": "2026-06-23T09:12:57.097Z",
+    "relatedProducts": []
   }
 ]
