@@ -5,6 +5,7 @@ import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
+import SocialShareButtons from '@/components/SocialShareButtons'
 
 const ADMIN_PASSWORD = 'jaylpelle'
 const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg'
@@ -2080,6 +2081,11 @@ export default function AdminProductPage() {
 
             {/* ── 7. Social ── */}
             <Section title="Social" icon="📱" color="fuchsia">
+              <SocialShareButtons
+                productUrl={`https://jayl.store/product/${id}`}
+                imageUrl={desktopHero || mobileHero || product?.image || ''}
+                captions={{ pinterest: pinterestCaption, instagram: instagramCaption, tiktok: tiktokCaption }}
+              />
               <Field label="Instagram Caption">
                 <div className="relative">
                   <textarea

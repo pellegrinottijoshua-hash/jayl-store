@@ -4,4 +4,5 @@ export const SOCIAL_LINKS = {
   instagram:  '',
   tiktok:     '',
   pinterest:  '',
+  facebook:   '',
 }

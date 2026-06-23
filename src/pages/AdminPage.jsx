@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { upload as blobUpload } from '@vercel/blob/client'
 import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
+import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 
 const ADMIN_PASSWORD = 'jaylpelle'
@@ -1122,6 +1123,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               >📋 Copy caption</button>
             )}
           </Field>
+          <SocialShareButtons
+            productUrl={`https://jayl.store/product/${productId}`}
+            imageUrl={desktopHero || sequenza?.[0] || ''}
+            captions={{ pinterest: pinterestCaption, instagram: instagramCaption, tiktok: tiktokCaption }}
+          />
           <Field label="SEO Title" hint="Meta title · usePageMeta aggiunge '— JAYL' · target 50-65 chars">
             <input
               value={seoTitle}

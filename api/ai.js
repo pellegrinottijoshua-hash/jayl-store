@@ -127,7 +127,7 @@ Return a JSON object with these EXACT keys (no other keys):
 
 - "seoTitle": SEO meta title for the JAYL website. Format: "[Character] [Product Type] | [Keyword Hook] | [Style/Gift Context]". Target 50-65 chars. Do NOT include "JAYL". Example: "Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift".
 - "description": ~130-150 words. STRICT RULES: (1) NEVER open with "Unleash", "Embrace", "Step up", "Level up", "Show off", "Discover", "Celebrate" or any generic hype verb — these are banned. (2) Every product needs its OWN angle rooted in the character's personality or cultural meaning (examples: Snorlax = lazy/mood energy; Psyduck = "me on a Monday" anxiety; Charizard = the OG flex, that kid who picked Charmander; Mewtwo = anti-hero arc; Dragonite = gentle giant who delivers mail then demolishes mountains; Ditto = identity/shapeshifter energy; Mew = rare/mythical/elusive; Zapdos = pure chaotic electricity). (3) Mention Gildan premium tee + DTG print quality. (4) One sentence on gifting. (5) Zero filler phrases like "perfect for any fan" or "ideal for anime lovers". Write like a human who actually knows the character.
-- "altText": Concise alt text for hero image (1 sentence, under 125 chars).
+- "altText": Alt text for the hero image (1 sentence, 90-125 chars). STRICT RULES: (1) Open with the character + a SPECIFIC visual of their pose/expression/colour in THIS artwork (e.g. "Brooding Mewtwo…", "Zapdos frozen mid-screech…", "Snorlax slumped and snoozing…") — NEVER the generic template "[Name] Pokémon T-Shirt featuring vibrant/retro art". (2) Vary the opening word and sentence structure every time; the word "featuring" is BANNED. (3) Name the art style (retro 90s anime / fan-art) AND that it is a small chest / over-the-heart print on a premium JAYL tee. (4) Describe what is actually visible — write for accessibility first, SEO second.
 - "tags": Array of exactly 13 tags (strings, lowercase, max 20 chars each, no special chars except spaces).
 - "primaryKeywords": Array of 5 high-volume short-tail keywords (1-3 words each).
 - "longTailKeywords": Array of 10 long-tail buying-intent phrases (4-7 words each).
@@ -138,7 +138,7 @@ Return a JSON object with these EXACT keys (no other keys):
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3000, temperature: 0.7 })
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3000, temperature: 0.85 })
 
     const parsed = safeJsonParse(content)
 
@@ -742,6 +742,7 @@ Rules — strictly follow all of them:
 - Vary the role: hero images → describe the whole scene/composition; gallery → describe angle/detail; detail → describe close-up texture/quality
 - Reference the art movement/style naturally where relevant
 - Vary sentence openers: avoid starting multiple descriptions with the same word
+- BANNED: the generic template "[Name] T-Shirt featuring [vibrant/retro] art" and the word "featuring" — open instead with a specific visual (pose, expression, colour, angle)
 - Useful for screen readers AND Google image search
 - Do NOT write "A photo of" at the start
 
@@ -752,7 +753,7 @@ Return ONLY a JSON object with key "alts" — array of objects each with "url" (
 No markdown, no code fences, no explanation. Pure JSON only.`
 
   try {
-    const { content } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.6 })
+    const { content } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.8 })
 
     // Robust JSON extraction — handles partial responses and stray text
     let parsed

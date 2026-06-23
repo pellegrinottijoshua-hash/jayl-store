@@ -7,10 +7,10 @@ export const adminProducts = [
     "name": "Cool Mewtwo T-Shirt",
     "seoTitle": "Mewtwo T-Shirt | Cool Pokemon Gift | Unique Anime Apparel",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Mewtwo didn't ask to be created — he asked to be free. This tee is for the ones who get that. The artwork captures the anti-hero of the Pokémon world in a retro 90s illustration style: brooding, powerful, unmistakably iconic. Printed on a premium unisex Gildan tee with vibrant, long-lasting DTG print quality. Whether you're the trainer who always picked the hardest path or just someone who appreciates the most complex character in the franchise, this shirt says it without saying a word. Runs true to size. Makes an exceptional gift for fans who know their Pokémon lore deeper than the Pokédex goes.",
-    "altText": "Cool Mewtwo T-Shirt featuring vibrant artwork.",
+    "altText": "Brooding Mewtwo in moody retro 90s anime ink, printed small over the heart of a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -18,22 +18,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
@@ -336,10 +336,10 @@ export const adminProducts = [
     "name": "Cool Dragonite T-Shirt",
     "seoTitle": "Dragonite Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "He delivers your mail across oceans and then casually destroys mountains on the way home. Dragonite — the gentle giant with a devastation stat that doesn't match his smile — rendered in warm retro 90s fan art style that feels ripped straight out of a mid-90s anime magazine. Printed on a premium Gildan tee with DTG quality that holds up wash after wash. The kind of shirt that starts conversations at conventions, coffee shops, and everywhere in between. For the trainer who always believed in Dragonite before he became everyone's favorite. A genuinely great gift for any Pokémon fan who grew up watching the original series.",
-    "altText": "Colorful Dragonite Pokémon T-Shirt in retro 90s style.",
+    "altText": "Gentle-giant Dragonite mid-flight in warm 90s fan-art linework — a small chest print on a JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -347,22 +347,22 @@ export const adminProducts = [
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_185843_37ef0c52-7862-4b3f-9847-46b3148da810.jpg",
@@ -642,10 +642,10 @@ export const adminProducts = [
     "name": "Cool Zapdos T-Shirt",
     "seoTitle": "Zapdos Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "There is no chill with Zapdos. Pure electric chaos bird energy, frozen mid-screech in retro 90s anime illustration style that crackles with the same voltage as the real thing. Printed on a premium unisex Gildan tee using high-quality DTG print technology that keeps colors sharp through every wash. This is the shirt for the person who is always the most intense one in the room — and completely fine with it. Perfect for fans of the original legendary trio, retro anime aesthetics, or anyone who has ever felt like a thunderstorm in a body. Ships worldwide, made to order.",
-    "altText": "Zapdos Pokémon T-Shirt featuring vibrant retro art style.",
+    "altText": "Zapdos frozen mid-screech, crackling electric energy in 90s anime art on a heart-side JAYL print tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -653,22 +653,22 @@ export const adminProducts = [
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_190604_a5c54573-8690-4ad5-8881-f15ef0c8be84.jpg",
@@ -972,10 +972,10 @@ export const adminProducts = [
     "name": "Cool Snorlax T-Shirt",
     "seoTitle": "Snorlax Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Wake me up when it's relevant. Snorlax — the original mood, the patron saint of selective effort, the Pokémon that made blocking an entire road feel aspirational — illustrated in a retro 90s fan art style that is both iconic and deeply relatable. Printed on a premium Gildan tee with vibrant DTG print quality built to last. This is the shirt for the friend who cancels plans guilt-free, naps without apology, and somehow always comes through when it actually counts. Gifted best to the Snorlax in your life, or worn as a personal statement of priorities. Unisex sizing. Ships worldwide.",
-    "altText": "Snorlax Pokémon T-Shirt featuring vibrant retro 90s anime art style.",
+    "altText": "Snorlax slumped and snoozing in cozy retro 90s fan art, small left-chest print on a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -983,22 +983,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
@@ -1299,10 +1299,10 @@ export const adminProducts = [
     "name": "Cool Psyduck T-Shirt",
     "seoTitle": "Psyduck Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "That look on Psyduck's face? That's you on a Monday morning, three meetings deep, headache building, still somehow managing to show up. The most relatable Pokémon in the franchise illustrated in a retro 90s anime art style that perfectly captures the perpetual low-grade suffering vibe. Printed on a premium unisex Gildan tee with high-quality DTG print that holds its color wash after wash. For the anxious overachiever, the chronic overthinker, and anyone who has ever stood in a doorway completely forgetting what they came for. An excellent gift for the Psyduck in your life — they will feel deeply seen.",
-    "altText": "Psyduck Pokémon t-shirt featuring retro 90s anime art style.",
+    "altText": "Psyduck staring blankly through a headache, relatable 90s anime art on a small-chest JAYL premium tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -1310,22 +1310,22 @@ export const adminProducts = [
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_192416_2dc0c732-f0fc-412e-b4ca-f07c0ae7bd67.jpg",
@@ -1601,10 +1601,10 @@ export const adminProducts = [
     "name": "Cool Charizard T-Shirt",
     "seoTitle": "Charizard Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "You picked Charmander first. You always pick Charmander first. Charizard is the original flex — the Pokémon that made everyone want to be a trainer, rendered in bold retro 90s anime illustration style with the kind of energy that hasn't aged a single day. Printed on a premium Gildan tee with vibrant DTG print quality that stays sharp through repeated washes. This is the shirt for the person who has been a Charizard stan since before it was cool — or for anyone who simply recognizes the undisputed greatest design in Generation I. A perfect gift for Pokémon fans of any age. Unisex sizing. Ships worldwide.",
-    "altText": "Charizard Pokémon T-Shirt featuring vibrant Gelato print on Gildan 9400 fabric.",
+    "altText": "Charizard flaring in bold retro 90s flames, printed over the heart of a Gildan-quality JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -1612,22 +1612,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_154107_28fd7343-c224-4650-84b7-07a7d8aa9380-1.jpg",
@@ -1905,10 +1905,10 @@ export const adminProducts = [
     "name": "Cool Vileplume T-Shirt",
     "seoTitle": "Vileplume Pokemon T-Shirt | Retro 90s Anime Fan Gift",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Underestimated, a little weird, quietly dangerous, and honestly stunning once you pay attention — Vileplume has always been the sleeper pick. This retro 90s fan art illustration captures the Grass-Poison type in all her overgrown, pollen-dusted glory with the kind of warm nostalgia that only the original 151 can trigger. Printed on a premium Gildan tee with high-quality DTG print that holds its vibrancy wash after wash. For the trainer who chose the underdog and never looked back. A genuinely unique Pokémon gift for fans who go deeper than the starter trio. Unisex sizing, ships worldwide.",
-    "altText": "Cool Vileplume Pokémon T-Shirt with vibrant Gelato print design.",
+    "altText": "Pollen-dusted Vileplume in overgrown retro 90s fan art, a delicate heart-side print on a JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -1916,22 +1916,22 @@ export const adminProducts = [
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
@@ -2205,10 +2205,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool ditto T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Ditto doesn't have a fixed form. Neither do the people who love him. The ultimate shapeshifter of the Pokémon world — rendered in warm, playful retro 90s fan art illustration style — makes this one of the most quietly clever shirts in any collection. Printed on a premium Gildan tee with vibrant DTG print quality built for long-term wear. For the chameleon in your friend group, the person who fits in everywhere, or anyone who finds Ditto's particular brand of identity freedom deeply aspirational. Also: objectively one of the more interesting Pokémon designs if you stop and actually look at it. Great gift. Unisex sizing. Ships worldwide.",
-    "altText": "Cool Ditto Pokémon T-Shirt in retro 90s style.",
+    "altText": "Shapeshifting Ditto grinning in playful retro 90s fan art, small over-the-heart print on a JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -2216,22 +2216,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134727_297c9f04-dcd8-4298-8a34-f79dcca59252.jpg",
@@ -2488,10 +2488,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Mew T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "They say Mew contains the DNA of every Pokémon ever discovered. Rare, elusive, unbothered, and somehow the most purely joyful creature in the entire franchise — illustrated here in a delicate retro 90s fan art style that feels like catching something you weren't supposed to. Printed on a premium Gildan tee with vibrant DTG print quality designed to last. This is the shirt for the trainer who searched every square inch of Cerulean Cave, or for anyone who simply gravitates toward the quiet magic of the original mythical Pokémon. An exceptional gift for collectors, lore nerds, and first-generation fans. Unisex sizing. Ships worldwide.",
-    "altText": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
+    "altText": "Elusive Mew drifting in soft pastel 90s fan art, a tiny left-chest print on a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -2499,22 +2499,22 @@ export const adminProducts = [
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg",
@@ -2789,10 +2789,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Charmander T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Charmander embodies the fiery spirit of adventure and loyalty, making this t-shirt a must-have for fans who remember their first Pokémon battles. With vibrant DTG print quality on a Gildan premium tee, this retro 90s style shirt captures the essence of this beloved character. Whether you're channeling Charmander's fierce determination or simply reminiscing about the early days of Pokémon, this shirt is a fantastic gift for those who appreciate the charm and nostalgia of the franchise.",
-    "altText": "Charmander t-shirt featuring retro anime fan art design.",
+    "altText": "Eager Charmander with tail aflame in nostalgic 90s anime art, chest-print on a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -2800,22 +2800,22 @@ export const adminProducts = [
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161145_80a528c8-84e2-46b8-b3af-2677fdc0e193.jpg",
@@ -3121,10 +3121,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Gengar T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2500,
+    "price": 2399,
     "currency": "eur",
     "description": "Gengar embodies the playful mischief of the Pokémon world, lurking in shadows and ready to surprise. This Gengar T-shirt captures that essence with a nostalgic 90s vibe, making it an ideal choice for those who appreciate humor and a touch of spookiness. Made from Gildan's premium fabric and featuring high-quality direct-to-garment (DTG) printing, it ensures comfort and vibrant visuals. Gift this tee to the Pokémon lover in your life, and let them embrace their inner trickster with style.",
-    "altText": "Gengar Pokémon T-Shirt featuring retro design and vibrant colors.",
+    "altText": "Gengar lurking with a shadowy grin in retro 90s art, printed small on a dark premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -3132,22 +3132,22 @@ export const adminProducts = [
       {
         "id": "M",
         "label": "M",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2500
+        "price": 2399
       }
     ],
     "image": "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161835_91678528-d797-45c9-895c-4c8ffbc7f3f9.jpg",
@@ -3427,10 +3427,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Alakazam T-shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2500,
+    "price": 2399,
     "currency": "eur",
     "description": "With its sharp wit and psychic prowess, Alakazam embodies the essence of intellect and strategy. This Gildan premium tee features high-quality DTG print, capturing every detail of this beloved Pokémon. Whether you're strategizing in a battle or just enjoying a casual day out, this shirt brings a touch of nostalgia with its retro 90s style. It’s an ideal gift for anyone who appreciates the cleverness and charm of Alakazam, making it a thoughtful choice for birthdays or special occasions.",
-    "altText": "Alakazam Pokémon T-Shirt featuring retro 90s design.",
+    "altText": "Sharp-eyed Alakazam wielding its spoons in cerebral 90s anime art, heart-side print on a JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -3438,22 +3438,22 @@ export const adminProducts = [
       {
         "id": "S",
         "label": "S",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2500
+        "price": 2399
       }
     ],
     "image": "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144324_a9d5179b-3a76-437b-af6b-f82bf80f790f.jpg",
@@ -3731,10 +3731,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Blastoise T-shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Blastoise embodies the essence of cool with its powerful water cannons and calm demeanor. This premium Gildan tee showcases a vibrant DTG print that captures the character's iconic look, making it a must-have for any Pokémon fan. Whether you're battling in the arena or just hanging out, this shirt is a nod to Blastoise's strategic prowess and laid-back attitude. Gift it to a friend who resonates with Blastoise's cool confidence, and let them wear their fandom proudly.",
-    "altText": "Cool Blastoise T-shirt featuring vibrant DTG print.",
+    "altText": "Shades-wearing Blastoise with water cannons primed, cool 90s badge art on a small-chest JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -3742,22 +3742,22 @@ export const adminProducts = [
       {
         "id": "S",
         "label": "S",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2500
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2500
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152355_58e9f847-3d8c-476e-8358-47f32758cf50.jpg",
@@ -4039,10 +4039,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Kangaskhan T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Kangaskhan, the fierce protector and devoted mother from the Pokémon universe, embodies strength and loyalty. This Gildan premium tee showcases vibrant DTG print quality that brings this iconic character to life, making it a standout piece in any wardrobe. With its retro 90s style, this t-shirt resonates with both nostalgia and a sense of humor, perfect for expressing your love for all things Pokémon. Whether you're lounging at home or out with friends, this shirt is an excellent gift for fellow fans who appreciate Kangaskhan's unique charm.",
-    "altText": "Kangaskhan Pokemon T-Shirt in retro 90s style.",
+    "altText": "Fierce Kangaskhan shielding her joey in rugged retro 90s fan art, small chest print on a JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -4050,22 +4050,22 @@ export const adminProducts = [
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155520_56f65be5-10e4-47ac-94e4-5231911e4783.jpeg",
@@ -4343,10 +4343,10 @@ export const adminProducts = [
     "collection": "cool Pokèmon",
     "name": "Cool Machop  T-Shirt",
     "subtitle": "cool Pokèmon",
-    "price": 2499,
+    "price": 2399,
     "currency": "eur",
     "description": "Machop embodies the spirit of determination and strength, making this T-shirt a must-have for fans who appreciate its fighting spirit. Crafted from a Gildan premium tee, the design features vibrant DTG print quality that captures Machop's iconic look in stunning detail. Whether you're hitting the gym or hanging out with friends, this shirt showcases your love for this brawny Pokémon. A thoughtful gift for anyone who relates to Machop's relentless drive to become stronger, it’s perfect for birthdays or just because you want to inspire someone special.",
-    "altText": "Cool Machop T-shirt featuring vibrant print and quality fabric.",
+    "altText": "Determined Machop flexing mid-stance in gritty 90s anime art, left-chest print on a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -4354,22 +4354,22 @@ export const adminProducts = [
       {
         "id": "L",
         "label": "L",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2499
+        "price": 2399
       },
       {
         "id": "S",
         "label": "S",
-        "price": 2499
+        "price": 2399
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_162130_5c460ac6-7b11-4803-add7-d76c0a8282a8.jpg",
