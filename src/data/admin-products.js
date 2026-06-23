@@ -5312,8 +5312,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "Dugtrio, the quirky and energetic Ground-type Pokémon, captures the spirit of teamwork and playfulness in this retro 90s-style tee. With its vibrant design showcasing Dugtrio's iconic three-head formation, this Gildan premium tee combines comfort with quality, enhanced by high-definition DTG print. It's the perfect gift for those who appreciate the charm of classic Pokémon and enjoy a good laugh. Bring a smile to a Pokémon lover's face with this unique apparel that celebrates friendship and fun.",
-    "altText": "Energetic Dugtrio with three heads playfully digging in retro 90s anime style on a premium JAYL tee.",
+    "description": "Dugtrio embodies the essence of teamwork and resilience, burrowing through obstacles with effortless camaraderie. This Gildan premium tee showcases Dugtrio’s playful energy with high-quality direct-to-garment printing, ensuring vibrant colors and stunning detail. Ideal for those who relate to Dugtrio’s ability to work hard and have fun in any situation. Gifting this t-shirt to a fellow Pokémon enthusiast will spark joy and nostalgia, making it a thoughtful addition to their collection.",
+    "altText": "Energetic Dugtrio positioned playfully in a trio, depicted in retro 90s anime style on a premium JAYL tee with a small chest print.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -5361,46 +5361,46 @@ export const adminProducts = [
     },
     "tags": [
       "dugtrio",
-      "pokemon shirt",
-      "anime gift",
-      "retro style",
-      "90s apparel",
-      "fan art",
-      "funny gift",
-      "pokemon fan",
-      "geek culture",
-      "graphic tee",
-      "gildan shirt",
-      "print on demand",
-      "collectibles"
+      "pokemon",
+      "t-shirt",
+      "art",
+      "apparel",
+      "gildan",
+      "fanart",
+      "anime",
+      "cool",
+      "tee",
+      "gift",
+      "collectible",
+      "trio"
     ],
     "featured": false,
     "gelatoProductId": "c83acac1-4508-4fb4-9e5d-5e1b9a103147",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "dugtrio t-shirt",
-      "pokemon apparel",
-      "anime fan art",
-      "90s style shirt",
-      "funny pokemon gift"
+      "dugtrio",
+      "pokemon shirt",
+      "cool t-shirt",
+      "anime apparel",
+      "fan art"
     ],
     "longTailKeywords": [
       "buy dugtrio pokemon t-shirt",
-      "retro 90s style anime shirt",
-      "funny gifts for pokemon fans",
-      "gildan premium graphic tee",
-      "unique anime gift ideas",
-      "cool pokemon lover apparel",
-      "90s retro t-shirt for sale",
-      "pokemon fan art merchandise",
-      "memorable gifts for pokemon lovers",
-      "stylish dugtrio fan shirt"
+      "cool pokemon apparel online",
+      "gildan dugtrio tee shirt",
+      "unique pokemon gift ideas",
+      "premium anime fan shirt",
+      "retro dugtrio fan art",
+      "trendy pokemon t-shirt",
+      "gift for pokemon fans",
+      "stylish dugtrio shirt",
+      "pokémon themed apparel"
     ],
-    "hashtags": "#dugtrio #pokemon #anime #fanart #90s #retro #gifts #apparel #funny #geek #collectibles #printondemand #graphictee #gildan #fashion #style #tshirt #coolstuff #nostalgia #art #merch #pocketmonster #pokemongifts #animeart #fanmerch #vintage #nerd #trending #pokemontshirt #poke #fashiontrends",
-    "instagramCaption": "Digging up nostalgia with this Dugtrio tee! Perfect for those who know that friendship makes the dream work. Grab yours now! #dugtrio #pokemon #anime",
-    "pinterestCaption": "Celebrate the quirky charm of Dugtrio with this retro 90s Pokémon t-shirt, perfect for both nostalgic fans and modern Pokémon enthusiasts. A unique gift that showcases your love for anime and gaming culture.",
-    "seoTitle": "Dugtrio Pokemon T-Shirt | Retro 90s Anime Fan Gift | Funny Apparel",
+    "hashtags": "#dugtrio #pokemon #tshirt #art #apparel #gildan #fanart #anime #cool #tee #gift #collectible #trio #pokemonmerch #pokedaily #pokedex #pokemontcg #pokemonart #gaming #instagood #fashion #style #outfit #gamingapparel #pokemoncollectibles #pika #geekfashion #animeart #retrogaming #nerdstyle #pokemongifts",
+    "instagramCaption": "Digging up some serious style with our Dugtrio tee! Perfect for those who know teamwork makes the dream work. Grab yours now and show off your Pokémon pride! #dugtrio #pokemon #anime",
+    "pinterestCaption": "Show off your love for Pokémon with the stylish Dugtrio T-Shirt! This Gildan tee features vibrant direct-to-garment print showcasing Dugtrio's playful spirit. Perfect for collectors and fans alike, add this unique piece to your wardrobe today.",
+    "seoTitle": "Dugtrio T-Shirt | Cool Pokémon Fan Art | Stylish Gift Idea",
     "variants": [
       {
         "uid": "8c73b91c-0fec-4e61-98cd-3bb8894f999a",
@@ -5630,7 +5630,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/52278d84-b826-496c-9688-0387849ee7a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T090403Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=99fffa2d9e753fa0cd2d734f29c69f6a114503c119ae63b4783af34338117d4e"
     ],
     "createdAt": "2026-06-23T09:09:16.853Z",
-    "updatedAt": "2026-06-23T09:12:57.097Z",
+    "updatedAt": "2026-06-23T09:13:07.561Z",
     "relatedProducts": []
   }
 ]
