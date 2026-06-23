@@ -4646,7 +4646,7 @@ export const adminProducts = [
     "id": "slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "slowpoke Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "name": "Cool slowpoke T shirt",
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
@@ -4972,6 +4972,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7f5a7c21-856a-4dfc-9e18-58aeaceaf189/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T083413Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bb4bfc9ac4e3795416b4506e234fe31716951ba0ed3d7a2cc124967ea1dcc93c"
     ],
     "createdAt": "2026-06-23T08:43:52.552Z",
-    "updatedAt": "2026-06-23T08:43:52.552Z"
+    "updatedAt": "2026-06-23T08:48:54.165Z",
+    "relatedProducts": []
   }
 ]
