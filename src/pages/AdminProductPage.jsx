@@ -265,7 +265,7 @@ function ImagePool({
   gelatoImages, uploadedImages, generatedImages,
   desktopHero, mobileHero, sequenza, detailImage,
   onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage,
-  productId, onUploaded, loading,
+  productId, onUploaded, loading, onExcludeGelato,
 }) {
   const [uploading,   setUploading]   = useState(false)
   const [uploadErr,   setUploadErr]   = useState('')
@@ -316,7 +316,16 @@ function ImagePool({
   }, [productId, onUploaded])
 
   const handleDeleteImage = useCallback(async (img) => {
-    if (!img.path) return
+    // Gelato / external images have no GitHub path → they can't be deleted, only excluded from this product
+    if (!img.path) {
+      if (!window.confirm(`Rimuovere "${img.name}" dai mockup Gelato di questo prodotto?`)) return
+      if (desktopHero === img.url)  onSetDesktopHero(null)
+      if (mobileHero  === img.url)  onSetMobileHero(null)
+      if (detailImage === img.url)  onSetDetailImage(null)
+      if (sequenza.includes(img.url)) onToggleSequenza(img.url)
+      onExcludeGelato?.(img.url)
+      return
+    }
     if (!window.confirm(`Eliminare "${img.name}"? L'azione è irreversibile.`)) return
     try {
       // Unassign from all roles before deleting
@@ -329,7 +338,7 @@ function ImagePool({
     } catch (e) {
       alert('Errore eliminazione: ' + e.message)
     }
-  }, [desktopHero, mobileHero, detailImage, sequenza, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded])
+  }, [desktopHero, mobileHero, detailImage, sequenza, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded, onExcludeGelato])
 
   const thumbProps = { desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
 
@@ -824,6 +833,8 @@ export default function AdminProductPage() {
 
   // Gelato CDN URLs persisted so the pool doesn't empty after save
   const [gelatoCdnImages, setGelatoCdnImages] = useState([])
+  // Gelato mockups the user removed for this product (persisted)
+  const [excludedGelato, setExcludedGelato] = useState([])
   const [syncing,  setSyncing]  = useState(false)
   const [syncMsg,  setSyncMsg]  = useState('')
 
@@ -853,6 +864,7 @@ export default function AdminProductPage() {
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
       setGelatoCdnImages(Array.isArray(p.gelatoCdnImages) ? p.gelatoCdnImages : [])
+      setExcludedGelato(Array.isArray(p.excludedGelato) ? p.excludedGelato : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
@@ -899,8 +911,9 @@ export default function AdminProductPage() {
       if (product?.image     && !product.image.includes('raw.githubusercontent.com'))     add(product.image)
       if (product?.heroImage && !product.heroImage.includes('raw.githubusercontent.com')) add(product.heroImage)
     }
-    return [...urls].map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
-  }, [product, gelatoCdnImages])
+    const excl = new Set(excludedGelato)
+    return [...urls].filter(u => !excl.has(u)).map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
+  }, [product, gelatoCdnImages, excludedGelato])
 
   const uploadedImages  = useMemo(() => githubImages.filter(img => !img.path?.includes('/generated/')), [githubImages])
   const generatedImages = useMemo(() => githubImages.filter(img =>  img.path?.includes('/generated/')), [githubImages])
@@ -1175,6 +1188,7 @@ export default function AdminProductPage() {
         ...(hashtags.trim()          ? { hashtags:          hashtags.trim() }          : {}),
         ...(gelatoCdnImages.length > 0 ? { gelatoCdnImages } : {}),
       }
+      updated.excludedGelato = excludedGelato.length ? excludedGelato : undefined
       // Fresh AI values (passed by the generators) take precedence over stale React state
       Object.assign(updated, overrides)
       // Clean undefined/null keys that weren't set before
@@ -1192,6 +1206,13 @@ export default function AdminProductPage() {
   }
   // Button handler (onClick passes a click event — ignore it). Generators call saveWith(overrides).
   const handleSave = () => saveWith({})
+
+  // Remove a Gelato/external mockup from this product (persisted, so it stays removed after reload)
+  const excludeGelato = (url) => {
+    const next = excludedGelato.includes(url) ? excludedGelato : [...excludedGelato, url]
+    setExcludedGelato(next)
+    if (name.trim() && price) saveWith({ excludedGelato: next })
+  }
 
   // withSave=true → auto-saves gelatoCdnImages to product after sync
   // (passes cdnUrls directly to avoid stale React closure on gelatoCdnImages state)
@@ -1484,6 +1505,7 @@ export default function AdminProductPage() {
               productId={id}
               onUploaded={() => setPoolRefreshKey(k => k + 1)}
               loading={loadingPool}
+              onExcludeGelato={excludeGelato}
             />
 
             {/* Image status summary */}
