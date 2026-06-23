@@ -1392,10 +1392,35 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                   </div>
                 )}
                 {sequenza.length > 0 && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-emerald-400 w-24 flex-shrink-0">Sequenza:</span>
-                    <span className="text-gray-400 text-[10px]">{sequenza.length} immagini</span>
-                    <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-emerald-400 w-24 flex-shrink-0">Sequenza:</span>
+                      <span className="text-gray-400 text-[10px]">{sequenza.length} immagini · ordine mockup</span>
+                      <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
+                    </div>
+                    {/* Ordered reorder strip — ‹ › riordina la sequenza dei mockup (come in Edit Product) */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {sequenza.map((url, i) => (
+                        <div key={url} className="relative w-14 group/seq border border-emerald-900/40 bg-black">
+                          <span className="absolute top-0 left-0 z-10 bg-emerald-600 text-white text-[8px] px-1 leading-tight">{i + 1}</span>
+                          {/\.(mp4|mov|webm)$/i.test(url)
+                            ? <div className="w-14 h-14 flex items-center justify-center text-base">🎬</div>
+                            : <img src={url} alt={`seq ${i + 1}`} className="w-14 h-14 object-cover" />}
+                          <button
+                            onClick={() => setSequenza(prev => prev.filter(u => u !== url))}
+                            title="Rimuovi dalla sequenza"
+                            className="absolute top-0 right-0 z-10 bg-black/70 text-white text-[10px] leading-none px-1 opacity-0 group-hover/seq:opacity-100 hover:text-red-400 transition-opacity"
+                          >×</button>
+                          <div className="absolute bottom-0 inset-x-0 flex bg-black/60 opacity-0 group-hover/seq:opacity-100 transition-opacity">
+                            <button onClick={() => setSequenza(prev => { if (i === 0) return prev; const s = [...prev]; [s[i-1],s[i]] = [s[i],s[i-1]]; return s })} disabled={i === 0}
+                              className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a sinistra">‹</button>
+                            <button onClick={() => setSequenza(prev => { if (i === prev.length - 1) return prev; const s = [...prev]; [s[i],s[i+1]] = [s[i+1],s[i]]; return s })} disabled={i === sequenza.length - 1}
+                              className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a destra">›</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-gray-700 text-[10px]">Riordina con ‹ › — è l'ordine in cui le immagini appaiono sulla scheda prodotto.</p>
                   </div>
                 )}
               </div>

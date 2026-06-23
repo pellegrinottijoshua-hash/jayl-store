@@ -265,7 +265,7 @@ function ImagePool({
   gelatoImages, uploadedImages, generatedImages,
   desktopHero, mobileHero, sequenza, detailImage,
   onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage,
-  productId, onUploaded, loading,
+  productId, onUploaded, loading, onExcludeGelato,
 }) {
   const [uploading,   setUploading]   = useState(false)
   const [uploadErr,   setUploadErr]   = useState('')
@@ -316,7 +316,16 @@ function ImagePool({
   }, [productId, onUploaded])
 
   const handleDeleteImage = useCallback(async (img) => {
-    if (!img.path) return
+    // Gelato / external images have no GitHub path → they can't be deleted, only excluded from this product
+    if (!img.path) {
+      if (!window.confirm(`Rimuovere "${img.name}" dai mockup Gelato di questo prodotto?`)) return
+      if (desktopHero === img.url)  onSetDesktopHero(null)
+      if (mobileHero  === img.url)  onSetMobileHero(null)
+      if (detailImage === img.url)  onSetDetailImage(null)
+      if (sequenza.includes(img.url)) onToggleSequenza(img.url)
+      onExcludeGelato?.(img.url)
+      return
+    }
     if (!window.confirm(`Eliminare "${img.name}"? L'azione è irreversibile.`)) return
     try {
       // Unassign from all roles before deleting
@@ -329,7 +338,7 @@ function ImagePool({
     } catch (e) {
       alert('Errore eliminazione: ' + e.message)
     }
-  }, [desktopHero, mobileHero, detailImage, sequenza, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded])
+  }, [desktopHero, mobileHero, detailImage, sequenza, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded, onExcludeGelato])
 
   const thumbProps = { desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
 
@@ -787,6 +796,8 @@ export default function AdminProductPage() {
   // AI social/SEO output
   const [instagramCaption, setInstagramCaption] = useState(product?.instagramCaption || '')
   const [pinterestCaption, setPinterestCaption] = useState(product?.pinterestCaption || '')
+  const [pinterestPins,    setPinterestPins]    = useState(Array.isArray(product?.pinterestPins) ? product.pinterestPins : [])
+  const [generatingPins,   setGeneratingPins]   = useState(false)
   const [tiktokCaption,    setTiktokCaption]    = useState(product?.tiktokCaption    || '')
   const [pinterestBoardId,     setPinterestBoardId]     = useState(() => { try { return localStorage.getItem('jayl_pinterest_board_id') || '' } catch { return '' } })
   const [showPinterestPanel,   setShowPinterestPanel]   = useState(false)
@@ -824,6 +835,8 @@ export default function AdminProductPage() {
 
   // Gelato CDN URLs persisted so the pool doesn't empty after save
   const [gelatoCdnImages, setGelatoCdnImages] = useState([])
+  // Gelato mockups the user removed for this product (persisted)
+  const [excludedGelato, setExcludedGelato] = useState([])
   const [syncing,  setSyncing]  = useState(false)
   const [syncMsg,  setSyncMsg]  = useState('')
 
@@ -853,6 +866,8 @@ export default function AdminProductPage() {
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
       setGelatoCdnImages(Array.isArray(p.gelatoCdnImages) ? p.gelatoCdnImages : [])
+      setExcludedGelato(Array.isArray(p.excludedGelato) ? p.excludedGelato : [])
+      setPinterestPins(Array.isArray(p.pinterestPins) ? p.pinterestPins : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
@@ -899,8 +914,9 @@ export default function AdminProductPage() {
       if (product?.image     && !product.image.includes('raw.githubusercontent.com'))     add(product.image)
       if (product?.heroImage && !product.heroImage.includes('raw.githubusercontent.com')) add(product.heroImage)
     }
-    return [...urls].map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
-  }, [product, gelatoCdnImages])
+    const excl = new Set(excludedGelato)
+    return [...urls].filter(u => !excl.has(u)).map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
+  }, [product, gelatoCdnImages, excludedGelato])
 
   const uploadedImages  = useMemo(() => githubImages.filter(img => !img.path?.includes('/generated/')), [githubImages])
   const generatedImages = useMemo(() => githubImages.filter(img =>  img.path?.includes('/generated/')), [githubImages])
@@ -961,6 +977,17 @@ export default function AdminProductPage() {
       if (data.hashtags)                  setHashtags(data.hashtags)
       if (data.primaryKeywords?.length)   setPrimaryKeywords(data.primaryKeywords)
       if (data.longTailKeywords?.length)  setLongTailKeywords(data.longTailKeywords)
+      if (name.trim() && price) await saveWith({
+        ...(data.seoTitle ? { seoTitle: data.seoTitle } : {}),
+        ...(data.description ? { description: data.description } : {}),
+        ...(data.altText ? { altText: data.altText } : {}),
+        ...(data.tags?.length ? { tags: data.tags } : {}),
+        ...(data.instagramCaption ? { instagramCaption: data.instagramCaption } : {}),
+        ...(data.pinterestCaption ? { pinterestCaption: data.pinterestCaption } : {}),
+        ...(data.hashtags ? { hashtags: data.hashtags } : {}),
+        ...(data.primaryKeywords?.length ? { primaryKeywords: data.primaryKeywords } : {}),
+        ...(data.longTailKeywords?.length ? { longTailKeywords: data.longTailKeywords } : {}),
+      })
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -984,6 +1011,12 @@ export default function AdminProductPage() {
       if (data.etsyTags?.length)    setEtsyTags(data.etsyTags)
       if (data.etsyDescription)     setEtsyDescription(data.etsyDescription)
       if (data.etsyImageAlts?.length) setEtsyImageAlts(data.etsyImageAlts)
+      if (name.trim() && price) await saveWith({
+        ...(data.etsyTitle ? { etsyTitle: data.etsyTitle } : {}),
+        ...(data.etsyTags?.length ? { etsyTags: data.etsyTags } : {}),
+        ...(data.etsyDescription ? { etsyDescription: data.etsyDescription } : {}),
+        ...(data.etsyImageAlts?.length ? { etsyImageAlts: data.etsyImageAlts } : {}),
+      })
     } catch (e) {
       setGenErr(e.message)
     } finally {
@@ -1007,10 +1040,38 @@ export default function AdminProductPage() {
       if (data.pinterestCaption) setPinterestCaption(data.pinterestCaption)
       if (data.tiktokCaption)    setTiktokCaption(data.tiktokCaption)
       if (data.hashtags)         setHashtags(data.hashtags)
+      if (name.trim() && price) await saveWith({
+        ...(data.instagramCaption ? { instagramCaption: data.instagramCaption } : {}),
+        ...(data.pinterestCaption ? { pinterestCaption: data.pinterestCaption } : {}),
+        ...(data.tiktokCaption ? { tiktokCaption: data.tiktokCaption } : {}),
+        ...(data.hashtags ? { hashtags: data.hashtags } : {}),
+      })
     } catch (e) {
       setGenErr(e.message)
     } finally {
       setGeneratingSocial(false)
+    }
+  }
+
+  // Pinterest 5-pack: each press generates 5 pins (title + text + tags) and APPENDS them (autosaved)
+  const generatePinterestPins = async () => {
+    if (!name.trim()) return setGenErr('Enter a product name first')
+    setGeneratingPins(true); setGenErr('')
+    try {
+      const res = await fetch('/api/generate-pinterest-pins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productTitle: name.trim(), section, collection, movement, provider: aiProvider }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Pinterest generation failed')
+      const next = [...pinterestPins, ...((data.pins) || [])]
+      setPinterestPins(next)
+      if (name.trim() && price) await saveWith({ pinterestPins: next })
+    } catch (e) {
+      setGenErr(e.message)
+    } finally {
+      setGeneratingPins(false)
     }
   }
 
@@ -1035,10 +1096,12 @@ export default function AdminProductPage() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
-      setImageAlts(prev => ({ ...prev, ...data.alts }))
+      const mergedAlts = { ...imageAlts, ...(data.alts || {}) }
+      setImageAlts(mergedAlts)
       const count = Object.keys(data.alts || {}).length
       setAltsMsg(`✓ ${count} alt text${count !== 1 ? 's' : ''} generati`)
       setTimeout(() => setAltsMsg(''), 4000)
+      if (name.trim() && price) await saveWith({ imageAlts: mergedAlts })
     } catch (e) {
       setAltsMsg('⚠ ' + e.message)
     } finally {
@@ -1107,7 +1170,7 @@ export default function AdminProductPage() {
     }
   }
 
-  const handleSave = async () => {
+  const saveWith = async (overrides = {}) => {
     if (!name.trim()) return setSaveErr('Name is required')
     if (!price)       return setSaveErr('Price is required')
     setSaving(true); setSaveErr(''); setSaveMsg('')
@@ -1150,6 +1213,10 @@ export default function AdminProductPage() {
         ...(hashtags.trim()          ? { hashtags:          hashtags.trim() }          : {}),
         ...(gelatoCdnImages.length > 0 ? { gelatoCdnImages } : {}),
       }
+      updated.excludedGelato = excludedGelato.length ? excludedGelato : undefined
+      updated.pinterestPins  = pinterestPins.length  ? pinterestPins  : undefined
+      // Fresh AI values (passed by the generators) take precedence over stale React state
+      Object.assign(updated, overrides)
       // Clean undefined/null keys that weren't set before
       Object.keys(updated).forEach(k => updated[k] === undefined && delete updated[k])
 
@@ -1162,6 +1229,15 @@ export default function AdminProductPage() {
     } finally {
       setSaving(false)
     }
+  }
+  // Button handler (onClick passes a click event — ignore it). Generators call saveWith(overrides).
+  const handleSave = () => saveWith({})
+
+  // Remove a Gelato/external mockup from this product (persisted, so it stays removed after reload)
+  const excludeGelato = (url) => {
+    const next = excludedGelato.includes(url) ? excludedGelato : [...excludedGelato, url]
+    setExcludedGelato(next)
+    if (name.trim() && price) saveWith({ excludedGelato: next })
   }
 
   // withSave=true → auto-saves gelatoCdnImages to product after sync
@@ -1455,6 +1531,7 @@ export default function AdminProductPage() {
               productId={id}
               onUploaded={() => setPoolRefreshKey(k => k + 1)}
               loading={loadingPool}
+              onExcludeGelato={excludeGelato}
             />
 
             {/* Image status summary */}
@@ -1864,6 +1941,33 @@ export default function AdminProductPage() {
                   className={`${inputCls} resize-none font-mono`}
                 />
               </Field>
+
+              {/* Pinterest 5-pack generator — each click appends 5 pins (title + text + tags) */}
+              <div className="border border-red-900/40 bg-[#0a0808] p-3 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-[#e60023]/80 text-xs font-semibold uppercase tracking-wider">
+                    5-Pack pin AI{pinterestPins.length ? ` · ${pinterestPins.length}` : ''}
+                  </p>
+                  <button type="button" onClick={generatePinterestPins} disabled={generatingPins} className={`${btnGhost} text-xs`}>
+                    {generatingPins ? 'Generando…' : '🔴 Genera 5 pin'}
+                  </button>
+                </div>
+                <p className="text-[9px] text-gray-600">Ogni click aggiunge 5 pin (titolo + testo + tag). I precedenti restano. Auto-salvato.</p>
+                {pinterestPins.length > 0 && (
+                  <div className="space-y-2 max-h-72 overflow-y-auto">
+                    {pinterestPins.map((p, i) => (
+                      <div key={i} className="border border-gray-800 bg-[#111] p-2 text-[11px] space-y-1 relative">
+                        <button type="button" title="Rimuovi"
+                          onClick={() => { const next = pinterestPins.filter((_, j) => j !== i); setPinterestPins(next); if (name.trim() && price) saveWith({ pinterestPins: next }) }}
+                          className="absolute top-1 right-1 text-gray-600 hover:text-red-400 text-[10px]">✕</button>
+                        <div className="text-amber-400/90 font-semibold pr-5">{p.title}</div>
+                        <div className="text-gray-400 whitespace-pre-wrap">{p.description}</div>
+                        {p.tags?.length > 0 && <div className="text-gray-600 text-[10px]">{p.tags.map(t => `#${t}`).join(' ')}</div>}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Pinterest Publish Panel */}
               <div className="border border-red-900/40 bg-[#0a0808] p-3 space-y-3">

@@ -13,6 +13,7 @@
     { "source": "/api/generate-video",    "destination": "/api/ai?handler=video"        },
     { "source": "/api/generate-persona",  "destination": "/api/ai?handler=persona"      },
     { "source": "/api/generate-alts",     "destination": "/api/ai?handler=alts"         },
+    { "source": "/api/generate-pinterest-pins", "destination": "/api/ai?handler=pinterest-pins" },
     { "source": "/api/get-orders",          "destination": "/api/orders?handler=get-orders"        },
     { "source": "/api/create-order",        "destination": "/api/orders?handler=create-order"     },
     { "source": "/api/track-order",         "destination": "/api/orders?handler=track-order"      },

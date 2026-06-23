@@ -63,6 +63,42 @@ async function callTextAI(prompt, { provider = 'openai', maxTokens = 1400, tempe
   return { content, model: data.model, usage: data.usage }
 }
 
+// Robust JSON parse — salvages truncated or markdown-fenced AI JSON so a
+// slightly-too-long response never throws "Expected ',' or ']' …".
+function safeJsonParse(content) {
+  let s = String(content || '').replace(/```(?:json)?/gi, '').trim()
+  const a = s.indexOf('{'), b = s.lastIndexOf('}')
+  if (a !== -1 && b !== -1 && b > a) s = s.slice(a, b + 1)
+  try { return JSON.parse(s) } catch (_) { /* repair below */ }
+  // Detect if the string was truncated mid-value
+  let inStr = false, esc = false, lastComma = -1
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i]
+    if (esc) { esc = false; continue }
+    if (ch === '\\') { esc = true; continue }
+    if (ch === '"') { inStr = !inStr; continue }
+    if (inStr) continue
+    if (ch === ',') lastComma = i
+  }
+  // If we ended inside a string, drop the incomplete trailing element
+  let fixed = inStr && lastComma > 0 ? s.slice(0, lastComma) : s.replace(/"[^"]*$/, '')
+  fixed = fixed.replace(/,\s*$/, '')
+  // Close any still-open arrays / objects
+  const stack = []; let iS = false, eS = false
+  for (let i = 0; i < fixed.length; i++) {
+    const ch = fixed[i]
+    if (eS) { eS = false; continue }
+    if (ch === '\\') { eS = true; continue }
+    if (ch === '"') { iS = !iS; continue }
+    if (iS) continue
+    if (ch === '{') stack.push('}')
+    else if (ch === '[') stack.push(']')
+    else if (ch === '}' || ch === ']') stack.pop()
+  }
+  while (stack.length) fixed += stack.pop()
+  return JSON.parse(fixed)
+}
+
 function cors(req, res) {
   const allowed = applyCors(req, res)
   if (req.method === 'OPTIONS') { res.status(allowed ? 200 : 403).end(); return false }
@@ -102,11 +138,9 @@ Return a JSON object with these EXACT keys (no other keys):
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 2500, temperature: 0.7 })
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3000, temperature: 0.7 })
 
-    // Robust JSON extraction — handles occasional markdown fences
-    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
-    const parsed = JSON.parse(jsonStr)
+    const parsed = safeJsonParse(content)
 
     const tags = Array.isArray(parsed.tags)
       ? parsed.tags.slice(0, 13)
@@ -160,10 +194,9 @@ Return a JSON object with these EXACT keys:
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3000, temperature: 0.7 })
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 4500, temperature: 0.7 })
 
-    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
-    const parsed = JSON.parse(jsonStr)
+    const parsed = safeJsonParse(content)
 
     const etsyTags = Array.isArray(parsed.etsyTags)
       ? parsed.etsyTags.map(t => String(t).toLowerCase().trim().slice(0, 20)).filter(Boolean).slice(0, 13)
@@ -809,9 +842,8 @@ Return a JSON object with these EXACT keys:
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 1500, temperature: 0.8 })
-    const jsonStr = content.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim()
-    const parsed = JSON.parse(jsonStr)
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.8 })
+    const parsed = safeJsonParse(content)
 
     return res.status(200).json({
       instagramCaption: parsed.instagramCaption || '',
@@ -823,6 +855,44 @@ Return ONLY the JSON object, no markdown, no extra text.`
     })
   } catch (err) {
     console.error('[generate-social-listing]', err.message)
+    return res.status(500).json({ error: err.message })
+  }
+}
+
+// ── generate-pinterest-pins — 5 ready-to-publish Pinterest pins per call ───────
+async function handlePinterestPins(req, res) {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+  const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
+  if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
+
+  const prompt = `You are a senior Pinterest SEO strategist for JAYL, a premium print-on-demand art & apparel brand.
+Generate FIVE distinct, ready-to-publish Pinterest pins for this product.
+
+Product title: ${productTitle}
+Section: ${section || 'objects'}
+Collection: ${collection || ''}
+Movement/style: ${movement || ''}
+
+Return a JSON object with EXACTLY one key "pins": an array of EXACTLY 5 objects. Each object:
+- "title": Pinterest pin title, max 100 chars, keyword-rich and scroll-stopping. Each of the 5 clearly different.
+- "description": 2-3 keyword-rich descriptive sentences (max 480 chars), no hashtags, aspirational, ends with a subtle CTA, speaks to Pinterest planning/saving intent.
+- "tags": Array of 6-10 keyword tags (lowercase strings, 1-3 words each, no #). Mix character, fandom, aesthetic, gift, product-type.
+The 5 pins must cover DIFFERENT angles/keywords (gift, aesthetic, fandom, style, occasion). Return ONLY the JSON object, no markdown.`
+
+  try {
+    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3500, temperature: 0.85 })
+    const parsed = safeJsonParse(content)
+    const pins = (Array.isArray(parsed.pins) ? parsed.pins : [])
+      .slice(0, 5)
+      .map(p => ({
+        title:       String(p?.title || '').slice(0, 100),
+        description: String(p?.description || '').slice(0, 500),
+        tags:        Array.isArray(p?.tags) ? p.tags.map(t => String(t).toLowerCase().trim()).filter(Boolean).slice(0, 10) : [],
+      }))
+      .filter(p => p.title || p.description)
+    return res.status(200).json({ pins, model, usage })
+  } catch (err) {
+    console.error('[generate-pinterest-pins]', err.message)
     return res.status(500).json({ error: err.message })
   }
 }
@@ -844,6 +914,7 @@ export default async function handler(req, res) {
   if (h === 'video')        return handleVideo(req, res)
   if (h === 'persona')      return handlePersona(req, res)
   if (h === 'alts')         return handleAlts(req, res)
+  if (h === 'pinterest-pins') return handlePinterestPins(req, res)
 
   return res.status(404).json({ error: `Unknown AI handler: ${h}` })
 }
