@@ -1125,7 +1125,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </Field>
           <SocialShareButtons
             productUrl={`https://jayl.store/product/${productId}`}
-            imageUrl={desktopHero || sequenza?.[0] || ''}
+            assets={[
+              ...poolImages.map(i => ({ url: i.url, type: 'image', alt: altText })),
+              ...gelatoImages.map(i => ({ url: i.src, type: 'image', alt: i.alt || altText })),
+            ]}
+            title={seoTitle || title}
+            tags={tags}
+            altText={altText}
             captions={{ pinterest: pinterestCaption, instagram: instagramCaption, tiktok: tiktokCaption }}
           />
           <Field label="SEO Title" hint="Meta title · usePageMeta aggiunge '— JAYL' · target 50-65 chars">

@@ -2083,7 +2083,13 @@ export default function AdminProductPage() {
             <Section title="Social" icon="📱" color="fuchsia">
               <SocialShareButtons
                 productUrl={`https://jayl.store/product/${id}`}
-                imageUrl={desktopHero || mobileHero || product?.image || ''}
+                assets={[
+                  ...allPoolImages.map(i => ({ url: i.url || i.src, type: 'image', alt: imageAlts[i.url || i.src] || '' })),
+                  ...(videoUrl.trim() ? [{ url: videoUrl.trim(), type: 'video' }] : []),
+                ]}
+                title={seoTitle || name}
+                tags={tags}
+                altText={imageAlts[desktopHero] || imageAlts[mobileHero] || ''}
                 captions={{ pinterest: pinterestCaption, instagram: instagramCaption, tiktok: tiktokCaption }}
               />
               <Field label="Instagram Caption">
