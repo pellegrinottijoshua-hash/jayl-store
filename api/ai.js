@@ -12,6 +12,10 @@
  */
 
 import { applyCors }       from './_lib/cors.js'
+
+// Hobby plan caps function duration at 60s. Alt-text generation is chunked
+// client-side (6 images/request) to stay well under it; this is a safety net.
+export const config = { maxDuration: 60 }
 import { rateLimit }       from './_lib/rateLimit.js'
 import { proxyImageToFal } from './_lib/falStorage.js'
 

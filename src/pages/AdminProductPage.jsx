@@ -1090,21 +1090,34 @@ export default function AdminProductPage() {
     if (!imageEntries.length) return setAltsMsg('⚠ Nessuna immagine trovata')
     setGeneratingAlts(true); setAltsMsg('')
     try {
-      const res = await fetch('/api/generate-alts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productTitle: name.trim() || 'JAYL product', movement, collection, images: imageEntries, provider: aiProvider }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
-      const mergedAlts = { ...imageAlts, ...(data.alts || {}) }
-      setImageAlts(mergedAlts)
-      const count = Object.keys(data.alts || {}).length
-      setAltsMsg(`✓ ${count} alt text${count !== 1 ? 's' : ''} generati`)
+      // Batch the images so each request stays well under the serverless time
+      // limit — one giant call for the whole pool was the cause of the timeout.
+      const BATCH = 6
+      const merged = { ...imageAlts }
+      const before = Object.keys(merged).length
+      for (let i = 0; i < imageEntries.length; i += BATCH) {
+        const chunk = imageEntries.slice(i, i + BATCH)
+        setAltsMsg(`Generando… ${Math.min(i + chunk.length, imageEntries.length)}/${imageEntries.length}`)
+        const res = await fetch('/api/generate-alts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ productTitle: name.trim() || 'JAYL product', movement, collection, images: chunk, provider: aiProvider }),
+          signal: AbortSignal.timeout(90_000),
+        })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
+        Object.assign(merged, data.alts || {})
+        setImageAlts({ ...merged })
+      }
+      const added = Object.keys(merged).length - before
+      setAltsMsg(`✓ ${added} alt text generati (${Object.keys(merged).length} totali)`)
       setTimeout(() => setAltsMsg(''), 4000)
-      if (name.trim() && price) await saveWith({ imageAlts: mergedAlts })
+      if (name.trim() && price) await saveWith({ imageAlts: merged })
     } catch (e) {
-      setAltsMsg('⚠ ' + e.message)
+      const m = e?.name === 'TimeoutError'
+        ? 'Timeout su un blocco — riprova (alcune immagini sono lente/grandi)'
+        : (e?.message || 'Errore')
+      setAltsMsg('⚠ ' + m)
     } finally {
       setGeneratingAlts(false)
     }
