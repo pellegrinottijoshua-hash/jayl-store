@@ -136,13 +136,31 @@ const APPAREL_COLOR_HEX = {
   'bright yellow': '#ffe135', 'antique gold': '#c9ae5d', 'metallic gold': '#d4af37',
   'light gray': '#c8c8c8', 'light grey': '#c8c8c8', 'heather gray': '#aaaaaa',
   'heather grey': '#aaaaaa', 'charcoal gray': '#3d3d3d',
+
+  // ── Gelato / Gildan catalog names (incl. "RS …" brand-prefixed) ────────────
+  'royal': '#3a5dae', 'rs royal': '#3a5dae', 'heather royal': '#4169e1',
+  'rs sport grey': '#a0a0a0', 'rs sport gray': '#a0a0a0',
+  'sportgrey': '#a0a0a0', 'graphite heather': '#5b5f63',
+  'irish green': '#00a651', 'rs irish green': '#00a651',
+  'azalea': '#f25f9c', 'heliconia': '#db3e79', 'antique heliconia': '#c84e7a',
+  'safety pink': '#ff5fa2', 'cornsilk': '#f5e6a8', 'daisy': '#f5d842',
+  'old gold': '#b8923a', 'gold': '#c8a42c', 'tweed': '#5a5750',
+  'sand': '#d8c9a3', 'natural': '#e8ddc4', 'sapphire': '#0f52ba',
+  'antique sapphire': '#0b6e8f', 'tropical blue': '#0073cf', 'indigo blue': '#3b4a8c',
+  'antique cherry red': '#9e1b32', 'safety green': '#c8e600', 'safety orange': '#ff5a1f',
+  'dark chocolate': '#3a2820', 'military green': '#4a5240', 'kiwi': '#8fbf3f',
 }
 
 /** Resolve best hex for a color object — falls back to label name lookup, then null */
 function resolveSwatchHex(c) {
   if (c.hex && c.hex !== '#888888') return c.hex
-  const key = (c.label || c.id || '').toLowerCase().trim()
-  return APPAREL_COLOR_HEX[key] ?? APPAREL_COLOR_HEX[key.replace(/-/g, ' ')] ?? null
+  const raw = (c.label || c.id || '').toLowerCase().trim()
+  const key = raw.replace(/^rs\s+/, '')          // strip Gelato "RS " brand prefix
+  return APPAREL_COLOR_HEX[raw]
+    ?? APPAREL_COLOR_HEX[key]
+    ?? APPAREL_COLOR_HEX[key.replace(/-/g, ' ')]
+    ?? APPAREL_COLOR_HEX[key.replace(/\s+/g, ' ')]
+    ?? null
 }
 
 function Accordion({ title, children, light, defaultOpen = false }) {
@@ -564,6 +582,16 @@ export default function ProductPage() {
     const idx = product.images?.findIndex(img => img === colorObj.image) ?? -1
     if (idx >= 0) setActiveImage(idx)
   }, [selectedColor])
+
+  // Reverse sync: when the active gallery image is a color variant, highlight its swatch
+  useEffect(() => {
+    if (activeImage < 0 || !product?.colors || !product?.images) return
+    if (product.heroImages?.length > 0) return // editorial hero gallery — not per-color
+    const img = product.images[activeImage]
+    if (!img) return
+    const match = product.colors.find(c => c.image && c.image === img)
+    if (match && match.id !== selectedColor) setSelectedColor(match.id)
+  }, [activeImage])
 
   // Sticky CTA: appears when native add-to-cart button is out of view
   useEffect(() => {
