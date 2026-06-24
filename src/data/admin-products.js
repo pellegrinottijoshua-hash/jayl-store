@@ -5641,8 +5641,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "With its hearty appetite and lovable charm, Lickitung embodies the essence of carefree joy. This premium Gildan t-shirt showcases Lickitung in a fun retro 90s anime style, making it a delightful addition for anyone who appreciates this quirky Pokémon. The high-quality DTG print ensures every detail pops, from Lickitung's playful tongue to its vibrant colors. This shirt makes a unique gift for Pokémon enthusiasts, capturing the playful spirit of a character that has been making fans laugh for decades.",
-    "altText": "Playful Lickitung with its tongue out in a retro 90s anime style on a premium JAYL tee.",
+    "description": "Cool Likitung brings its playful charm to life with this stylish T-shirt, perfect for fans who appreciate the quirky side of Pokémon. Known for its affinity to 'lick' its foes into submission, Likitung adds a touch of humor and nostalgia to your wardrobe. Crafted from a Gildan premium tee with high-quality DTG print, this shirt ensures comfort and durability while showcasing its unique design. Ideal for gifting to friends who resonate with this fun-loving character or simply to treat yourself.",
+    "altText": "Playful Likitung licking its tail in vibrant colors on a Gildan premium tee with a small chest print.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -5687,47 +5687,47 @@ export const adminProducts = [
       "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-t-shirt-cool-anime-fan-art-g-light-blue-01.jpg": "Playful Lickitung with its tongue out in a retro 90s anime style on a premium JAYL tee."
     },
     "tags": [
-      "lickitung",
-      "pokemon",
-      "anime",
-      "t-shirt",
-      "retro",
-      "90s",
+      "likitung",
+      "pokemon shirt",
+      "cool t-shirt",
+      "anime apparel",
       "fan art",
-      "gift",
-      "apparel",
-      "print on demand",
-      "funny",
-      "gift idea",
-      "cool"
+      "retro style",
+      "gaming gift",
+      "graphic tee",
+      "cute t-shirt",
+      "collectible",
+      "artwear",
+      "geek fashion",
+      "limited edition"
     ],
     "featured": false,
     "gelatoProductId": "aa6a4a96-a20c-4083-b8f3-af8fd44960d8",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "lickitung",
-      "pokemon shirt",
-      "anime t-shirt",
-      "retro style",
-      "funny gift"
+      "likitung t-shirt",
+      "pokemon apparel",
+      "graphic tees",
+      "anime shirts",
+      "cute t-shirt"
     ],
     "longTailKeywords": [
-      "lickitung pokemon t-shirt",
-      "funny pokemon lover gift",
-      "retro 90s style tee",
-      "anime fan art apparel",
-      "cool gifts for kids",
-      "gildan premium t-shirt",
-      "unique pokemon gifts",
-      "vintage anime clothing",
-      "gifts for anime lovers",
-      "funny retro t-shirts"
+      "buy likitung pokemon shirt",
+      "fun likitung t-shirt for fans",
+      "pokemon graphic tee for adults",
+      "unique anime apparel online",
+      "cool pokemon gifts for friends",
+      "stylish likitung shirt for collectors",
+      "retro anime graphic tees",
+      "comfortable t-shirts for casual wear",
+      "gildan premium pokemon t-shirt",
+      "limited edition likitung merch"
     ],
-    "hashtags": "#lickitung #pokemon #anime #tshirt #retro #90s #fanart #gift #apparel #printondemand #funny #giftidea #cool #pokemonfans #nerdstyle #animefashion #animeart #geekwear #stylish #vintage #quirky #cartoon #collectibles #characters #graphictee #popculture #unique #funnyshirts #limitededition #fashion #trendy",
+    "hashtags": "#likitung #pokemon #anime #graphictee #cartoonshirt #fanart #tshirt #collectibles #cuteclothing #retrovibes #gifting #artwear #geekstyle #nostalgia #stylish #limitededition #cooltshirt #gildan #pokemongift #tshirtdesign #fashion #animeart #funclothing #popculture #merch #trendy #casualwear #design #apparel #unique",
     "instagramCaption": "Lickitung is bringing the laughs and the nostalgia with this retro 90s tee that's perfect for any occasion. Embrace your inner Pokémon master and grab yours now! #lickitung #pokemon #anime",
     "pinterestCaption": "Celebrate the joy of Pokémon with our unique Lickitung t-shirt, designed in a fun retro 90s anime style. A fantastic gift for fans who appreciate the quirky charm of this beloved character.",
-    "seoTitle": "Likitung Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "seoTitle": "Cool Likitung T-Shirt | Fun Pokémon Gift | Casual Style",
     "variants": [
       {
         "uid": "f4198c1e-4c80-48a7-8221-473c19416347",
@@ -5918,7 +5918,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/754da826-5c3f-4767-a489-279a5c430774/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T091429Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1d9e4cdf5cfd486ba595811216c099d7e3e9578792955941fa1590c367783b7a"
     ],
     "createdAt": "2026-06-23T09:26:28.906Z",
-    "updatedAt": "2026-06-24T00:25:59.349Z",
+    "updatedAt": "2026-06-24T00:26:08.329Z",
     "relatedProducts": []
   }
 ]
