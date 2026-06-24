@@ -5637,7 +5637,7 @@ export const adminProducts = [
     "id": "likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Likitung Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift",
+    "name": "Cool Likitung T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
@@ -5918,6 +5918,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/754da826-5c3f-4767-a489-279a5c430774/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T091429Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1d9e4cdf5cfd486ba595811216c099d7e3e9578792955941fa1590c367783b7a"
     ],
     "createdAt": "2026-06-23T09:26:28.906Z",
-    "updatedAt": "2026-06-23T09:26:28.906Z"
+    "updatedAt": "2026-06-24T00:25:59.349Z",
+    "relatedProducts": []
   }
 ]
