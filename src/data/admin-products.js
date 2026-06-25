@@ -4404,7 +4404,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f345781-77ab-4fcf-9bed-d16f3daad1ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe072f42a55f347841c4dab7269d14b6f77c41a8ca8de08727cf16c63c60cfaa"
     ],
     "createdAt": "2026-06-22T16:00:28.936Z",
-    "updatedAt": "2026-06-25T12:59:54.387Z",
+    "updatedAt": "2026-06-25T13:06:09.874Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Kangaskhan T-Shirt, Vintage Pokemon Graphic Tee, Unique Gift for Fans",
     "etsyTags": [
