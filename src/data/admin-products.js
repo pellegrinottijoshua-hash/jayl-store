@@ -3473,8 +3473,34 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22d7b25f-082e-4a24-aa51-eadc9ac28a8a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260619%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260619T125027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=956200b272b19e22e74e651c4d25162ddc9975e65f1a7d45e83092bdb367c7da"
     ],
     "createdAt": "2026-06-19T12:55:08.625Z",
-    "updatedAt": "2026-06-19T12:57:35.595Z",
-    "relatedProducts": []
+    "updatedAt": "2026-06-25T13:22:55.613Z",
+    "relatedProducts": [],
+    "etsyTitle": "Cool Gengar T-Shirt, Unique Pokemon Tee, Perfect Gift for Fans, Unisex Fit Available",
+    "etsyTags": [
+      "gengar t-shirt",
+      "pokemon fan gift",
+      "anime graphic tee",
+      "unisex clothing",
+      "otaku apparel",
+      "90s nostalgia",
+      "casual wear",
+      "gift for him",
+      "pokemon lover",
+      "cool streetwear",
+      "collectible merchand",
+      "anime fashion",
+      "gengar merchandise"
+    ],
+    "etsyDescription": "Discover the Cool Gengar T-Shirt, the ultimate tee for Pokemon fans and collectors. This unique design showcases Gengar in a stylish way, perfect for casual outings or conventions. Crafted with care, this shirt stands out with its vibrant colors and eye-catching print that any Pokemon enthusiast will love.\n\nMade from 100% cotton, this t-shirt features direct-to-garment (DTG) premium print technology, ensuring your shirt is both comfortable and durable. Available in unisex sizing from S to 3XL, it fits perfectly for everyone. \n\nLooking for the perfect gift? This Gengar T-Shirt is an ideal choice for birthdays, holidays, or just because! Surprise a friend or loved one with this trendy piece of Pokemon apparel that they'll cherish.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of the Cool Gengar T-Shirt worn by a model, showcasing vibrant design and fit.",
+      "Back mockup of the Cool Gengar T-Shirt on a model, highlighting the comfortable unisex style.",
+      "Close-up detail of the Cool Gengar T-Shirt design, featuring intricate colors and graphics.",
+      "Flat lay of the Cool Gengar T-Shirt, displaying the front design against a stylish background.",
+      "Lifestyle shot of a person wearing the Cool Gengar T-Shirt, enjoying a day out with friends.",
+      "Size guide and product detail shot of the Cool Gengar T-Shirt, showing fabric quality and fit.",
+      "Gift presentation of the Cool Gengar T-Shirt, beautifully packaged and ready for giving."
+    ]
   },
   {
     "id": "alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
