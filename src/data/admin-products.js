@@ -4106,8 +4106,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "Kangaskhan, the fierce protector and devoted mother from the Pokémon universe, embodies strength and loyalty. This Gildan premium tee showcases vibrant DTG print quality that brings this iconic character to life, making it a standout piece in any wardrobe. With its retro 90s style, this t-shirt resonates with both nostalgia and a sense of humor, perfect for expressing your love for all things Pokémon. Whether you're lounging at home or out with friends, this shirt is an excellent gift for fellow fans who appreciate Kangaskhan's unique charm.",
-    "altText": "Fierce Kangaskhan shielding her joey in rugged retro 90s fan art, small chest print on a JAYL tee.",
+    "description": "Kangaskhan embodies the spirit of protection and strength, making this t-shirt a tribute to all those who stand by their loved ones. The Gildan premium tee showcases a vibrant DTG print of Kangaskhan, capturing its fierce yet nurturing nature in stunning detail. Whether you're wearing it to a Pokémon meetup or lounging at home, this shirt signifies loyalty and determination. A fantastic gift for those who appreciate the duality of strength and care, it’s a stylish way to celebrate your favorite Pokémon character.",
+    "altText": "Kangaskhan in a defensive stance with vibrant colors, printed on a premium JAYL tee in retro 90s anime style.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -4161,18 +4161,18 @@ export const adminProducts = [
     },
     "tags": [
       "kangaskhan",
-      "pokemon",
-      "anime",
-      "t-shirt",
-      "90s",
+      "pokemon shirt",
+      "cool shirt",
+      "anime apparel",
+      "retro art",
+      "gildan tee",
+      "gift for him",
+      "gift for her",
       "fan art",
-      "gildan",
-      "funny",
-      "gift",
-      "apparel",
-      "retro",
-      "cool",
-      "art"
+      "pokemon gift",
+      "collector item",
+      "graphic tee",
+      "pocket print"
     ],
     "featured": false,
     "gelatoProductId": "e202a520-150c-4b40-a794-757ad80166d4",
@@ -4180,27 +4180,27 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "kangaskhan",
-      "pokemon t-shirt",
-      "anime fan art",
-      "retro style",
-      "funny gift"
+      "pokemon shirt",
+      "anime shirt",
+      "cool t-shirt",
+      "graphic tee"
     ],
     "longTailKeywords": [
-      "funny pokemon lover gift",
-      "retro 90s anime t-shirt",
-      "gildan premium t-shirt",
-      "kangaskhan fan art shirt",
-      "cool anime apparel gift",
-      "vintage pokemon t-shirt",
-      "unique pokemon fan gift",
-      "anime retro style shirt",
-      "pokemon character t-shirt",
-      "quirky gift for pokemon fans"
+      "buy cool kangaskhan t-shirt",
+      "kangaskhan shirt for sale",
+      "premium pokemon apparel",
+      "unique kangaskhan gift",
+      "retro pokemon clothing",
+      "gildan kangaskhan tee",
+      "pokemon graphic t-shirt",
+      "anime print shirt online",
+      "cool pokemon fan merchandise",
+      "stylish pokemon shirts"
     ],
-    "hashtags": "#kangaskhan #pokemon #anime #tshirt #90s #fanart #gildan #funny #gift #apparel #retro #cool #art #fashion #geekwear #nostalgia #pocketmonster #animefan #pokemonlover #geekculture #retrofashion #artlover #illustration #pokemonart #uniquedesign #styledaily #outfitinspo #characterdesign #vintagestyle #tshirtdesign #popculture",
+    "hashtags": "#kangaskhan #pokemon #anime #graphictee #tshirt #fanart #retro #gifts #gildan #coolapparel #animefashion #pocketprint #pokemonmerch #artshirt #geekwear #nerdstyle #trendytshirt #collectibles #fashion #streetwear #animeart #shopnow #unisex #fashionstatement #styles #art #coolfashion #pokefans #pokeday #nerdlife #unique",
     "instagramCaption": "Kangaskhan’s got your back—literally! Rock this retro tee and show off your fierce love for Pokémon. Grab yours and join the nostalgia! #kangaskhan #pokemonlover #90s",
     "pinterestCaption": "Celebrate the fierce spirit of Kangaskhan with this unique retro 90s t-shirt. Made from Gildan premium fabric with vibrant DTG print, this shirt is perfect for any Pokémon fan. Don't miss out on adding this iconic piece to your collection.",
-    "seoTitle": "Kangaskhan Pokemon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "seoTitle": "Cool Kangaskhan T-Shirt | Retro Pokémon Vibes | Gift Idea",
     "variants": [
       {
         "uid": "f7f4a20c-f2e9-455d-8a89-4ab373edc985",
@@ -4404,7 +4404,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f345781-77ab-4fcf-9bed-d16f3daad1ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe072f42a55f347841c4dab7269d14b6f77c41a8ca8de08727cf16c63c60cfaa"
     ],
     "createdAt": "2026-06-22T16:00:28.936Z",
-    "updatedAt": "2026-06-25T13:06:09.874Z",
+    "updatedAt": "2026-06-25T13:06:18.696Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Kangaskhan T-Shirt, Vintage Pokemon Graphic Tee, Unique Gift for Fans",
     "etsyTags": [
