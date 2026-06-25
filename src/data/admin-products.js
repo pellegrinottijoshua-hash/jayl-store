@@ -4404,8 +4404,34 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f345781-77ab-4fcf-9bed-d16f3daad1ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T155829Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe072f42a55f347841c4dab7269d14b6f77c41a8ca8de08727cf16c63c60cfaa"
     ],
     "createdAt": "2026-06-22T16:00:28.936Z",
-    "updatedAt": "2026-06-22T16:03:47.815Z",
-    "relatedProducts": []
+    "updatedAt": "2026-06-25T12:59:54.387Z",
+    "relatedProducts": [],
+    "etsyTitle": "Cool Kangaskhan T-Shirt, Vintage Pokemon Graphic Tee, Unique Gift for Fans",
+    "etsyTags": [
+      "kangaskhan shirt",
+      "pokemon graphic tee",
+      "gift for gamers",
+      "anime fan apparel",
+      "otaku clothing",
+      "retro t-shirt",
+      "unisex fit tee",
+      "cool pokemon merch",
+      "geeky gift idea",
+      "pokemon fandom wear",
+      "casual streetwear",
+      "vintage anime style",
+      "collectible t-shirt"
+    ],
+    "etsyDescription": "Show off your love for Pokemon with our Cool Kangaskhan T-Shirt, a must-have for fans and collectors alike. This premium tee is perfect for casual outings or lounging at home, featuring a striking design that sets it apart from the rest.\n\nThe Cool Kangaskhan T-Shirt boasts a vibrant, high-quality graphic that captures the essence of this beloved character, making it a standout piece in any wardrobe. Made from 100% cotton, it ensures maximum comfort while showcasing your passion for the Pokemon universe.\n\nAvailable in unisex sizes S-3XL, this t-shirt offers a comfortable fit for everyone. It’s an ideal gift for birthdays, holidays, or just to treat yourself!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of Cool Kangaskhan T-Shirt worn by a model, showcasing vibrant design and comfortable fit.",
+      "Back view of Cool Kangaskhan T-Shirt on a model, highlighting the unisex style and fabric quality.",
+      "Close-up detail of the Cool Kangaskhan design on the t-shirt, showcasing the vibrant colors and print quality.",
+      "Flat lay of the Cool Kangaskhan T-Shirt, displaying the front design against a clean background.",
+      "Lifestyle shot of a person wearing the Cool Kangaskhan T-Shirt, enjoying a casual day out.",
+      "Size guide shot featuring the Cool Kangaskhan T-Shirt, displaying sizing details and fabric texture.",
+      "Gift presentation of the Cool Kangaskhan T-Shirt, beautifully wrapped and ready for giving."
+    ]
   },
   {
     "id": "machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
