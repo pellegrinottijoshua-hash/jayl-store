@@ -3554,6 +3554,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "e73e3f88-b844-4bd3-8d57-041e0546825c",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -3867,6 +3869,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "bf922300-607c-4bd3-9eeb-2becbe66ae5d",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-blastoise-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -4202,6 +4206,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "e202a520-150c-4b40-a794-757ad80166d4",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-kangaskhan-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -4537,6 +4543,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "8b9fdc40-b423-4442-8de0-4e7a2e0f4dd5",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -4850,6 +4858,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "4b1df2c2-5f0d-4f9f-b69c-89c480862f8f",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -5185,6 +5195,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "9d42448c-1238-4943-843d-dd8ca09b7ec4",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-drowsee-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -5518,6 +5530,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "c83acac1-4508-4fb4-9e5d-5e1b9a103147",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
@@ -5850,6 +5864,8 @@ export const adminProducts = [
     ],
     "featured": false,
     "gelatoProductId": "aa6a4a96-a20c-4083-b8f3-af8fd44960d8",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
