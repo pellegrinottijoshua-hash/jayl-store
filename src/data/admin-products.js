@@ -3784,8 +3784,34 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e886bb1d3ea32c5a57a96bb51e82cae6bcc642510013ccb7a3c68831b713a0d"
     ],
     "createdAt": "2026-06-22T15:05:20.303Z",
-    "updatedAt": "2026-06-22T15:25:08.598Z",
-    "relatedProducts": []
+    "updatedAt": "2026-06-25T13:11:35.694Z",
+    "relatedProducts": [],
+    "etsyTitle": "Cool Alakazam T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
+    "etsyTags": [
+      "alakazam shirt",
+      "pokemon apparel",
+      "anime gift idea",
+      "gift for gamers",
+      "otaku clothing",
+      "retro aesthetic",
+      "unisex graphic tee",
+      "cool pokemon fan",
+      "nostalgic t-shirt",
+      "geeky fashion",
+      "trendy casual wear",
+      "collectible merch",
+      "graphic anime tee"
+    ],
+    "etsyDescription": "Discover the Cool Alakazam T-Shirt, a must-have for any Pokemon enthusiast! This stylish tee features a vibrant design that showcases Alakazam in a unique and eye-catching way, perfect for fans of all ages.\n\nThe design captures Alakazam's playful spirit, blending bright colors with a modern graphic style. Made from 100% cotton, this shirt ensures comfort while you showcase your love for the Pokemon universe.\n\nAvailable in sizes S-3XL, the unisex fit makes it suitable for everyone. Ideal for casual outings, conventions, or just lounging at home.\n\nThis t-shirt makes an excellent gift for birthdays, holidays, or any special occasion for the Pokemon lover in your life.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Cool Alakazam T-shirt on a model, showcasing vibrant colors and design.",
+      "Back view of Cool Alakazam T-shirt on a model, emphasizing the comfortable fit and style.",
+      "Close-up detail of Cool Alakazam T-shirt design, highlighting the graphic and colors.",
+      "Flat lay of Cool Alakazam T-shirt, displaying the fabric quality and design layout.",
+      "Lifestyle shot of a person wearing Cool Alakazam T-shirt, capturing a casual and fun moment.",
+      "Size guide shot of Cool Alakazam T-shirt, detailing sizes and product information.",
+      "Gift packaging context of Cool Alakazam T-shirt, presented in a stylish box for special occasions."
+    ]
   },
   {
     "id": "cool-blastoise-t-shirt",
