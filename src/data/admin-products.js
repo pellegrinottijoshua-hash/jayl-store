@@ -4095,8 +4095,34 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T152517Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b8dbe4fb567df976f96a13182d2759ad8ae594757f803438db3c3697681035c9"
     ],
     "createdAt": "2026-06-22T15:34:48.644Z",
-    "updatedAt": "2026-06-22T15:48:44.920Z",
-    "relatedProducts": []
+    "updatedAt": "2026-06-25T13:06:31.625Z",
+    "relatedProducts": [],
+    "etsyTitle": "Cool Blastoise T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
+    "etsyTags": [
+      "blastoise t-shirt",
+      "pokemon apparel",
+      "birthday gift idea",
+      "gift for him",
+      "otaku clothing",
+      "retro aesthetic",
+      "unisex fit tee",
+      "anime fan gear",
+      "cool graphic tee",
+      "pokemon merchandise",
+      "casual wear shirt",
+      "collectible t-shirt",
+      "gaming community wea"
+    ],
+    "etsyDescription": "Show off your love for Blastoise with this Cool Blastoise T-shirt, a must-have for any Pokemon fan! This stylish tee combines vibrant graphics and comfort, making it a unique addition to your wardrobe.\n\nFeaturing an eye-catching design of Blastoise, this shirt is perfect for casual outings or cozy days at home. Made from 100% cotton, it offers a soft touch and breathability, ensuring you stay comfortable all day long.\n\nOur t-shirt comes in unisex fit, available in sizes S to 3XL, making it suitable for everyone. Whether you're dressing up for a gaming convention or just hanging out with friends, this tee is versatile enough to fit any occasion.\n\nLooking for the ideal gift for a Pokemon enthusiast? This t-shirt makes a fantastic present for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of a model wearing a Cool Blastoise T-shirt, showcasing vibrant Pokemon design.",
+      "Back view of a model in a Cool Blastoise T-shirt, highlighting the comfortable fit.",
+      "Close-up detail of the Blastoise graphic on a Cool T-shirt, showing the quality print.",
+      "Flat lay of a Cool Blastoise T-shirt on a clean surface, emphasizing its stylish design.",
+      "Lifestyle shot of a person wearing a Cool Blastoise T-shirt, captured in a casual setting.",
+      "Size guide shot of the Cool Blastoise T-shirt, displaying available sizes and product details.",
+      "Gift presentation of a Cool Blastoise T-shirt in stylish packaging, perfect for giving."
+    ]
   },
   {
     "id": "cool-kangaskhan-t-shirt",
