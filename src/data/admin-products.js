@@ -3784,7 +3784,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T150234Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e886bb1d3ea32c5a57a96bb51e82cae6bcc642510013ccb7a3c68831b713a0d"
     ],
     "createdAt": "2026-06-22T15:05:20.303Z",
-    "updatedAt": "2026-06-25T13:11:35.694Z",
+    "updatedAt": "2026-06-25T13:20:15.220Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Alakazam T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
     "etsyTags": [
