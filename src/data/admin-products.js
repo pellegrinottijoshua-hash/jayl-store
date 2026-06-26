@@ -7421,5 +7421,337 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T13:25:03.416Z",
     "updatedAt": "2026-06-26T13:25:03.416Z"
+  },
+  {
+    "id": "cool-vileplume-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Vileplume back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Vileplume captures the essence of laid-back charm with its bright blooms and carefree vibe, making it a must-have for any Pokémon fan. This Gildan premium T-shirt showcases a striking retro 90s anime design that features the iconic character in a fun, relaxed pose. The high-quality DTG print ensures vibrant colors and lasting durability, perfect for everyday wear or lounging around. As a unique gift, this T-shirt is ideal for birthdays or just because, bringing a smile to any Pokémon lover’s face.",
+    "altText": "Cheerful Vileplume with bright petal colors, captured in a relaxed pose on a small chest print of a premium Gildan tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      }
+    ],
+    "image": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130147_8c434956-4fa4-4a43-b4f1-a18041f7571e.jpeg",
+    "heroImage": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125650_7848a585-778e-4179-bef1-3dfc6a3914ed.png",
+    "detailImage": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125712_50554d29-3092-4c4e-b505-8b11189e1286.jpeg",
+    "images": [
+      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg",
+      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130321_c898440c-a8bc-4d8f-9d47-f34142f478b2.jpeg",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f7e58db-9095-41b3-8bea-4a859c4bd5c6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4a9119a9417d2e2dd46b3503ea033621e4ed35a39041ce7264ca9eb161a3f1f2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0711a6d0-042a-473f-b790-021a2193934e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=50b877c8fc8ae7488917a0d42e102dedcab3e858a393abdd232ec901bff2ab73",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aad2852b-6efb-4b0d-812b-ed1747a00ee9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f503a2ddb31315a89046d12ea3a563c74e91b7afe409d3ae450629023f01734c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/95b9f991-57ee-4e2b-a0b5-e43455cac257/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb64339f78ee8eb376e24a07293f3d36ae9248766af5e8ad0c45eaa81358d637",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130147_8c434956-4fa4-4a43-b4f1-a18041f7571e.jpeg": "Bright back view of a Cool Vileploom Pokémon T-shirt showcasing retro anime art in vibrant colors.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125650_7848a585-778e-4179-bef1-3dfc6a3914ed.png": "Dynamic mobile view of the Cool Vileploom Pokémon T-shirt, highlighting its colorful back design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125712_50554d29-3092-4c4e-b505-8b11189e1286.jpeg": "Close-up of the Cool Vileploom T-shirt's fabric texture, showcasing its high-quality print and colors.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg": "Side angle of the T-shirt, capturing the vibrant Vileploom artwork within a contemporary art context.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130321_c898440c-a8bc-4d8f-9d47-f34142f478b2.jpeg": "The Cool Vileploom T-shirt displayed on a mannequin, accentuating its playful retro design and colors.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f7e58db-9095-41b3-8bea-4a859c4bd5c6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4a9119a9417d2e2dd46b3503ea033621e4ed35a39041ce7264ca9eb161a3f1f2": "Front view of the red version of the Cool Vileploom T-shirt, emphasizing its bold anime-inspired graphics.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0711a6d0-042a-473f-b790-021a2193934e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=50b877c8fc8ae7488917a0d42e102dedcab3e858a393abdd232ec901bff2ab73": "Captivating close-up of the red T-shirt's vibrant graphics, showcasing its retro 90s character design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aad2852b-6efb-4b0d-812b-ed1747a00ee9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f503a2ddb31315a89046d12ea3a563c74e91b7afe409d3ae450629023f01734c": "Detailed image showcasing the rich colors of the red Cool Vileploom T-shirt against a neutral background.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/95b9f991-57ee-4e2b-a0b5-e43455cac257/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb64339f78ee8eb376e24a07293f3d36ae9248766af5e8ad0c45eaa81358d637": "Artistic angle of the red Cool Vileploom T-shirt that highlights its playful character and vibrant design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a": "The red Cool Vileploom T-shirt laid flat, focusing on the intricate details of the retro-inspired artwork."
+    },
+    "tags": [
+      "vileplume",
+      "pokemon",
+      "anime",
+      "90s style",
+      "funny gift",
+      "fan art",
+      "gildan",
+      "apparel",
+      "t-shirt",
+      "retro",
+      "art",
+      "clothing",
+      "gift"
+    ],
+    "featured": false,
+    "gelatoProductId": "fa834579-83ae-44aa-999b-b9d12322e227",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "vileplume shirt",
+      "pokemon t-shirt",
+      "anime apparel",
+      "90s t-shirt",
+      "funny pokemon shirt"
+    ],
+    "longTailKeywords": [
+      "vileplume graphic tee",
+      "gildan pokemon t-shirt",
+      "retro anime fan shirt",
+      "funny gift for pokemon lovers",
+      "90s style vileplume shirt",
+      "premium dtg print t-shirt",
+      "unique pokemon fan gift",
+      "anime character t-shirt",
+      "vibrant pokemon apparel",
+      "cool retro anime gift"
+    ],
+    "hashtags": "#vileplume #pokemon #anime #90sstyle #funnygift #fanart #gildan #apparel #tshirt #retro #art #clothing #gift #pokemongifts #animefans #vintage #graphictee #style #fashion #geekwear #nerdstyle #collectibles #picoftheday #ootd #trendy #streetwear #wearableart #unisex #comfy #cooltshirt #supportsmallbusiness",
+    "instagramCaption": "Brighten your wardrobe with this Vileplume tee! Perfect for those who love a touch of nostalgia and humor. 🌼💖 #vileplume #pokemon #90sstyle",
+    "pinterestCaption": "Elevate your wardrobe with our Vileplume Pokémon T-Shirt, featuring a vibrant retro design that's sure to turn heads. Crafted on a premium Gildan tee, this shirt is a perfect gift for any Pokémon aficionado or anime lover. Check it out today!",
+    "seoTitle": "Vileplume Pokémon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "00310cbc-96fe-4ba2-a15d-a3107acc399f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4a5a4a33-3ac4-48f2-a6ef-38d70ec081db",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cc6c3654-61a8-47cb-914b-a9923aedea71",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0e071446-d021-4258-b3f7-0779779e43b6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ee0cda18-257b-43dc-9155-982f27120513",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c2bfa843-7169-4aaf-bc54-6cc384076cd4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f94bbd34-8553-4ba2-ac3d-12350c06024d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a567e6a4-f5fb-453d-a099-652baeb89e76",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "888d6b7c-e371-47c6-86d8-b7da049dda1d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ed0e1b6f-dec6-494c-9495-e1281ee64905",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "25f41ed2-64dd-47fd-8954-c6b704f7adc6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b3aaf569-73f5-4969-881b-9929d72d4d20",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "43dabdc8-de5b-4239-9d52-808a0a55af5b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "20c3e179-35a9-41a3-9b6e-90278ec82706",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4fe38401-a6a4-4818-9664-74d40107200b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "37759180-2772-4a2e-962b-2bb6dba7dcd7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e853ae70-1779-4039-9144-820865a7742e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bc2b4f5d-5ea7-4b7c-8119-21e83b449b3f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "684752b7-9299-4ad2-943f-deaf93b6c54c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "179ab53d-f3ce-4c08-b4e5-409937a8d915",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-white-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-military-green-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-azalea-01.jpg"
+      },
+      {
+        "id": "irish-green",
+        "label": "Irish Green",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-irish-green-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-black-01.jpg"
+      }
+    ],
+    "etsyTitle": "Vileplume Pokémon T-Shirt, Retro 90s Anime Fan Art, Unique Gift for Pokémon Lovers",
+    "etsyTags": [
+      "vileploom shirt",
+      "pokemon fan art",
+      "anime gift idea",
+      "gifts for him",
+      "otaku clothing",
+      "90s retro style",
+      "unisex t-shirt",
+      "funny pokemon tee",
+      "anime merchandise",
+      "geek gift idea",
+      "pop culture fashion",
+      "casual wear gift",
+      "cool graphic tee"
+    ],
+    "etsyDescription": "Show off your love for Pokémon with this Cool Vileploom Pokémon T-Shirt, perfect for anime fans and collectors alike. This unique graphic tee features a vibrant design that pays homage to the retro 90s style, making it an ideal gift for Pokémon lovers and anime enthusiasts.\n\nThe shirt showcases a striking Vileploom graphic that captures the essence of classic Pokémon art. Made from 100% cotton, it ensures maximum comfort and durability, perfect for everyday wear. With a unisex fit available in sizes S-3XL, it suits all fans of any age.\n\nWhether it's a birthday, holiday, or just because, this t-shirt makes a thoughtful gift for anyone in your life who adores Pokémon. Surprise your friends or family with this fun and stylish tee that they can wear with pride.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of a man wearing the Cool Vileploom Pokémon T-Shirt, showcasing the vibrant design and fit.",
+      "Back mockup of a woman wearing the Cool Vileploom Pokémon T-Shirt, highlighting the detailed graphic on the back.",
+      "Close-up detail of the Cool Vileploom Pokémon design on the t-shirt, illustrating the colors and print quality.",
+      "Flat lay of the Cool Vileploom Pokémon T-Shirt, neatly displayed to show the front design and fabric texture.",
+      "Lifestyle shot of a person wearing the Cool Vileploom Pokémon T-Shirt outdoors, enjoying a casual day out.",
+      "Size guide shot of the Cool Vileploom Pokémon T-Shirt, displaying dimensions and fit options for customers.",
+      "Gift packaging context showing the Cool Vileploom Pokémon T-Shirt wrapped with a bow, ready for gifting."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f7e58db-9095-41b3-8bea-4a859c4bd5c6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4a9119a9417d2e2dd46b3503ea033621e4ed35a39041ce7264ca9eb161a3f1f2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0711a6d0-042a-473f-b790-021a2193934e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=50b877c8fc8ae7488917a0d42e102dedcab3e858a393abdd232ec901bff2ab73",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aad2852b-6efb-4b0d-812b-ed1747a00ee9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f503a2ddb31315a89046d12ea3a563c74e91b7afe409d3ae450629023f01734c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/95b9f991-57ee-4e2b-a0b5-e43455cac257/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb64339f78ee8eb376e24a07293f3d36ae9248766af5e8ad0c45eaa81358d637",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/76d9b875-cc2e-495a-96e0-59b786329fd4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a3c4d45ef5d83daeb0e4898a563b089a02e4dddde5bf63923419adedbd75839b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a"
+    ],
+    "createdAt": "2026-06-26T13:41:03.363Z",
+    "updatedAt": "2026-06-26T13:41:03.363Z"
   }
 ]
