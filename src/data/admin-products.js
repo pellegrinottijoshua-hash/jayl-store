@@ -6467,5 +6467,296 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
     "updatedAt": "2026-06-26T10:58:00.689Z"
+  },
+  {
+    "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Psyduck Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Psyduck embodies the relatable struggle of anxiety and confusion, making this T-shirt a quirky addition to your wardrobe. Made from Gildan's premium fabric, the DTG print captures Psyduck's iconic dazed expression in stunning detail. This tee strikes a perfect balance between nostalgia and humor, ideal for those who relate to Psyduck's endearing personality. A whimsical gift for any Pokémon lover, this shirt brings a splash of fun for casual outings or cozy nights in.",
+    "altText": "Psyduck looking confused with a comical expression in retro 90s anime style on a small chest print of a premium Gildan tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      }
+    ],
+    "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_162149_cffc15ac-a18b-4f8c-89ec-c5031a9fcb6c.png",
+    "heroImage": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_162554_6a3050de-9ecc-4fb5-8b9b-a32fd5b2785b.png",
+    "detailImage": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163042_4bd654b5-24fd-4623-810d-70737455f9df.png",
+    "images": [
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163132_23f1184e-a260-4913-bf5f-689d53d9a342.png",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163149_f5c92604-c671-4bbb-b38d-dc55fc979363.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/93f8cb6d-ef84-4f4b-b270-cd738705f0df/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=74e7e51195a74cce652c026eea33027a7ba20fd99d7aa808d7e2688a2376e7ba",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/71774578-348d-4aae-b4f3-58b3a20830e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=be8471ca567922e138430157b83fc554472b4e9ddabc8392327e76df527904f9",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6b10c892-83bb-4343-bd63-5c27fb61415a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc0239db77ab6467b3a454d648b4f4b9d98e7a4b18fa2a258b9d9c962829e29e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9428ee03-1bde-4249-8123-6dfdbf224b07/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a90b0e657ef4622b2b89ff21df20a17bf4dc9d8efb381f341abe0ff6d350e08"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_105617_aa3298eb-d63e-42d4-9562-ab261152a7a2.png": "Vibrant Psyduck in retro style, bringing contemporary art flair to a nostalgic 90s theme.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_103722_d8e8d9db-f31a-4181-b7a0-a8ac2fc0c21a.jpeg": "Close-up of Psyduck's quirky expression in a playful 90s-inspired anime art style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102345_71624aa9-7571-4afc-a65b-e5f2b7881e63.png": "Detailed view showcasing the soft fabric and vibrant print of the Psyduck t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102439_57c9eeb0-16bf-441c-953b-65045193da22.png": "Artistic angle capturing Psyduck's fun pose against a light background, emphasizing the retro aesthetic.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png": "Perspective shot revealing the playful Psyduck art against a complementary background.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/93f8cb6d-ef84-4f4b-b270-cd738705f0df/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=74e7e51195a74cce652c026eea33027a7ba20fd99d7aa808d7e2688a2376e7ba": "Bold red variation of the Psyduck shirt, showcasing its dynamic retro and contemporary art influence.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/71774578-348d-4aae-b4f3-58b3a20830e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=be8471ca567922e138430157b83fc554472b4e9ddabc8392327e76df527904f9": "Another vibrant red Psyduck t-shirt showcasing its funny and nostalgic 90s anime design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6b10c892-83bb-4343-bd63-5c27fb61415a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc0239db77ab6467b3a454d648b4f4b9d98e7a4b18fa2a258b9d9c962829e29e": "Artistic close-up capturing the detailed print quality on the red Psyduck shirt.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9428ee03-1bde-4249-8123-6dfdbf224b07/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a90b0e657ef4622b2b89ff21df20a17bf4dc9d8efb381f341abe0ff6d350e08": "Dynamic shot of the red Psyduck shirt, merging contemporary art with playful anime vibes."
+    },
+    "tags": [
+      "psyduck",
+      "pokemon",
+      "anime",
+      "t-shirt",
+      "funny",
+      "90s",
+      "gildan",
+      "fan-art",
+      "gift",
+      "retro",
+      "apparel",
+      "cool",
+      "art"
+    ],
+    "featured": false,
+    "gelatoProductId": "de8c3afd-17c2-479d-baaa-4518b08a9a0c",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "psyduck",
+      "pokemon shirt",
+      "anime t-shirt",
+      "funny shirt",
+      "90s apparel"
+    ],
+    "longTailKeywords": [
+      "psyduck funny t-shirt",
+      "90s style pokemon shirt",
+      "gildan premium tee",
+      "cool anime fan art",
+      "retro pokemon apparel",
+      "unique gifts for gamers",
+      "anime lover gift ideas",
+      "funny gifts for fans",
+      "nostalgic pokemon clothing",
+      "psycduck merchandise online"
+    ],
+    "hashtags": "#psyduck #pokemon #anime #tshirt #funny #90s #gildan #fanart #gift #retro #apparel #cool #art #cartoon #geekfashion #nerdstyle #animefan #pokemongifts #artwear #collectibles #vintage #nostalgia #fashion #style #graphictee #trendy #outfit #cute #characterart #unique #lovepokemon",
+    "instagramCaption": "Feeling a little confused today? 😅 Let Psyduck wear your anxiety on a tee! Grab this funny shirt to show off your Pokémon pride. #psyduck #90s #anime",
+    "pinterestCaption": "Embrace your inner Psyduck with this hilarious Pokémon T-shirt that perfectly captures the essence of anxiety in style. Made with Gildan premium fabric, it’s a unique gift for any anime lover who appreciates a retro vibe. Check it out now!",
+    "seoTitle": "Psyduck Pokémon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "8864f974-1458-4f28-b24e-b437caac592c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "aaebdc57-31e7-46f5-9e6f-480f17a78bdd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8bc4eb3f-2508-4686-9041-b11955b6f6cd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "94b72109-c971-4a98-b1ea-bed42dc65e1c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4688943d-b9a0-4e87-8f44-75cf89fc3109",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f93eda43-82f7-4417-aa4f-27c8fb4f430c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "80ad44de-821d-4bb9-89b8-e17f08c7be5e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ef181e51-e884-4f70-b629-f9f03f126ddf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "87ab0b7f-ad1f-4f11-872a-846b75689b20",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2c754cda-9b53-4301-8973-94f6f30429a3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "751cfce2-7bda-4cec-aabf-d8e8b30da25e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b3a7ccf7-225d-4633-91ea-d4561e9fd22b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f72c2c7f-6b3a-4bd5-9c84-aaaf3d04ecdc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c43e9650-cec2-4e73-98e5-4140c304896e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9cddd179-38d3-4820-a317-008fbef5538f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9cea590c-1263-4ee0-8f3b-2722b9a98914",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg"
+      },
+      {
+        "id": "carolina-blue",
+        "label": "Carolina Blue",
+        "hex": "#888888",
+        "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg"
+      }
+    ],
+    "etsyTitle": "Psyduck Pokemon T-Shirt, Retro 90s Anime Fan Art Gift, Funny Tee for Pokemon Lovers",
+    "etsyTags": [
+      "psyduck shirt",
+      "pokemon fan gift",
+      "anime art tee",
+      "gifts for him",
+      "otaku apparel",
+      "90s nostalgia",
+      "unisex t-shirt",
+      "funny pokemon gift",
+      "anime lover gift",
+      "retro graphic tee",
+      "geek culture wear",
+      "casual anime style",
+      "quirky gift idea"
+    ],
+    "etsyDescription": "Celebrate your love for Pokémon with our Psyduck Pokémon T-Shirt, a perfect gift for anime fans and gamers alike! This retro 90s style tee features a vibrant design that captures the quirky charm of Psyduck, making it an ideal statement piece for any Pokémon lover.\n\nCrafted from 100% cotton, this t-shirt offers maximum comfort with its soft fabric and breathable fit. The direct-to-garment (DTG) premium print ensures that the design is both vivid and long-lasting, while the unisex fit provides versatility for everyone. Available in sizes S-3XL, it's easy to find the perfect fit for anyone.\n\nWhether you're treating yourself or looking for the ultimate gift for a friend, this Psyduck tee is a fantastic choice for birthdays, holidays, or just because! It’s a great way to express your fandom and bring a smile to anyone's face.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of the Psyduck Pokemon T-Shirt on a model, showcasing the vibrant design and comfortable fit.",
+      "Back mockup of the Psyduck Pokemon T-Shirt on a model, highlighting the unisex style and quality fabric.",
+      "Close-up detail of the Psyduck design printed on the t-shirt, capturing the colorful and playful artwork.",
+      "Flat lay of the Psyduck Pokemon T-Shirt, displaying the fabric texture and front design on a clean background.",
+      "Lifestyle shot of a person wearing the Psyduck Pokemon T-Shirt in a casual setting, radiating fun and nostalgia.",
+      "Size guide image showing the Psyduck Pokemon T-Shirt laid out with measurements to help customers choose the right size.",
+      "Gift packaging context featuring the Psyduck Pokemon T-Shirt beautifully wrapped, perfect for an anime lover's gift."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/93f8cb6d-ef84-4f4b-b270-cd738705f0df/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=74e7e51195a74cce652c026eea33027a7ba20fd99d7aa808d7e2688a2376e7ba",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/71774578-348d-4aae-b4f3-58b3a20830e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=be8471ca567922e138430157b83fc554472b4e9ddabc8392327e76df527904f9",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5c899b7b-1d03-4cde-bee6-9f405349b9fa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dd24d242da1cf7f5ba83e081278cc98e3c5eeebb2544400fcc4555ac8ed2b3bf",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6b10c892-83bb-4343-bd63-5c27fb61415a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc0239db77ab6467b3a454d648b4f4b9d98e7a4b18fa2a258b9d9c962829e29e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9428ee03-1bde-4249-8123-6dfdbf224b07/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a90b0e657ef4622b2b89ff21df20a17bf4dc9d8efb381f341abe0ff6d350e08"
+    ],
+    "createdAt": "2026-06-26T12:23:42.147Z",
+    "updatedAt": "2026-06-26T12:23:42.147Z"
   }
 ]
