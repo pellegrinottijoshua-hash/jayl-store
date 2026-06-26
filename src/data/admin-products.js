@@ -6769,8 +6769,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Zapdos embodies chaotic energy and electric vibes, making this Gildan premium tee a must-have for any fan. The striking artwork captures Zapdos in a moment of pure power, showcasing its wild spirit that resonates with those who appreciate its electrifying presence. With high-quality DTG print, this shirt promises vibrant colors and durability for all your adventures. It’s an excellent gift for friends who cherish the unpredictability of life—perfect for birthdays or just because!",
-    "altText": "Zapdos frozen mid-screech with dynamic electric colors in a retro 90s anime fan-art style on a premium Gildan tee.",
+    "description": "Zapdos embodies pure chaotic electricity, crackling with energy and ready to light up any outfit. This cool back T-shirt captures the essence of the legendary Pokémon in a vibrant design that commands attention. Made from a Gildan premium tee, its high-quality DTG print ensures that the electric blue and striking yellow colors pop brilliantly. Whether you're dressing down for a casual day out or looking for that special gift for a friend who appreciates the legend of Zapdos, this shirt is a unique addition to any wardrobe. Stand out with a piece that resonates with the iconic power of this electric-type Pokémon.",
+    "altText": "Zapdos frozen mid-screech with wings extended in electric blue hues on a premium JAYL tee, small chest print.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -6824,44 +6824,44 @@ export const adminProducts = [
       "zapdos",
       "pokemon",
       "t-shirt",
-      "anime",
-      "fan-art",
-      "90s",
-      "gift",
-      "apparel",
+      "cool",
       "electric",
-      "funny",
+      "apparel",
+      "fan-art",
       "gildan",
-      "art",
-      "collectible"
+      "backprint",
+      "anime",
+      "collectible",
+      "gift",
+      "vintage"
     ],
     "featured": false,
     "gelatoProductId": "5336071a-cb79-4922-9f32-25f82d97a041",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "zapdos",
-      "pokemon t-shirt",
-      "anime art",
-      "funny gift",
-      "90s style"
+      "zapdos t-shirt",
+      "pokemon apparel",
+      "cool t-shirt",
+      "electric t-shirt",
+      "fan-art"
     ],
     "longTailKeywords": [
-      "zapdos pokemon t-shirt gift",
-      "funny pokemon lover apparel",
-      "retro 90s anime shirt",
-      "gildan t-shirt for fans",
-      "cool anime fan art gift",
-      "electric zapdos clothing",
-      "unique pokemon art t-shirt",
-      "gift for pokemon lovers",
-      "zapdos print on demand",
-      "stylish anime merchandise"
+      "zapdos back t-shirt for men",
+      "pokemon themed clothing for fans",
+      "cool electric pokemon shirt",
+      "Gildan premium pokemon tee",
+      "unique pokemon gift ideas",
+      "retro zapdos artwork tee",
+      "vintage style pokemon apparel",
+      "electric type pokemon t-shirt",
+      "graphic tshirts featuring pokemon",
+      "collectible zapdos merchandise"
     ],
-    "hashtags": "#zapdos #pokemon #tshirt #anime #fanart #90s #gift #apparel #electric #funny #gildan #art #collectible #fashion #geek #nerd #memes #style #cool #vintage #retro #design #unique #clothing #illustration #popculture #merch #giftideas #trend #artwear",
-    "instagramCaption": "Zapdos is here to electrify your style! ⚡️ Perfect for those who love a little chaos in their wardrobe. Grab your Zapdos T-shirt and embrace the wild side—get yours now! #zapdos #pokemon #anime",
-    "pinterestCaption": "Get ready to channel the wild energy of Zapdos with this retro 90s style T-shirt. Crafted from a Gildan premium tee, it features vibrant fan-art that stands out. Perfect as a unique gift for any Pokémon fan!",
-    "seoTitle": "Zapdos Pokemon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "hashtags": "#zapdos #pokemon #tshirt #cool #electric #apparel #fanart #gildan #backprint #anime #collectible #gift #vintage #graphictee #pokemergear #stylish #unisex #animefashion #uniquegift #pokemontshirt #coolclothing #retro #pokemongifts #electricpokemon #fashion #art #pocketprint #zappower #zapdosart #geekwear #nerdfashion",
+    "instagramCaption": "Charge up your wardrobe with our Zapdos T-shirt! ⚡️ Perfect for any electric Pokémon fan ready to show their love for the legend. Grab yours today! #zapdos #pokemon #electric",
+    "pinterestCaption": "The Zapdos T-shirt is a must-have for fans craving electric vibes and unique style. Crafted on a premium Gildan tee, this shirt is perfect for casual outings or gifting. Check it out now!",
+    "seoTitle": "Zapdos T-Shirt | Electric Energy Gift | Cool Pokemon Back",
     "variants": [
       {
         "uid": "362ad040-f095-4e2a-9599-03d54a3d2983",
@@ -7091,7 +7091,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/94a995be-8c64-47c5-bd86-d94b01a97be8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b5f3d4e8ff26180eb86f6d0497a5e0a21e76b647b2dc65750020bf3fb58ae7c"
     ],
     "createdAt": "2026-06-26T13:10:51.907Z",
-    "updatedAt": "2026-06-26T13:25:39.397Z",
+    "updatedAt": "2026-06-26T13:25:52.834Z",
     "relatedProducts": []
   },
   {
