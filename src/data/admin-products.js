@@ -6473,7 +6473,7 @@ export const adminProducts = [
     "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Psyduck Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "name": "Cool Psyduck back T-Shirt|",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -6758,6 +6758,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9428ee03-1bde-4249-8123-6dfdbf224b07/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a90b0e657ef4622b2b89ff21df20a17bf4dc9d8efb381f341abe0ff6d350e08"
     ],
     "createdAt": "2026-06-26T12:23:42.147Z",
-    "updatedAt": "2026-06-26T12:23:42.147Z"
+    "updatedAt": "2026-06-26T12:32:30.825Z",
+    "relatedProducts": []
   }
 ]
