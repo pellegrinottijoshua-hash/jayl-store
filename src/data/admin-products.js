@@ -8385,12 +8385,12 @@ export const adminProducts = [
     "id": "cool-charmander-back-t-shirt",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Cool Charmander back T-Shirt|",
+    "name": "Cool Charmander back T-Shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Charmander, the fiery little lizard that embodies the spirit of adventure, is now part of your wardrobe with this retro 90s style tee. Known for its loyalty and the determination to evolve, Charmander is the perfect mascot for anyone who believes in the power of friendship and growth. Made from a Gildan premium tee and featuring high-quality DTG print, this shirt ensures both comfort and style while showcasing your love for this iconic Pokémon. It makes a fantastic gift for any occasion, especially for those who cherish the nostalgia of their Pokémon journey.",
-    "altText": "Playful Charmander with its fiery tail, captured in retro 90s anime style on a small chest print of a premium JAYL tee.",
+    "description": "Charmander embodies the fiery spirit of adventure and loyalty, making this back T-shirt a nod to those who started their Pokémon journey with the original fire starter. The vibrant retro 90s style artwork showcases Charmander’s playful personality with a burst of color that stands out. Printed on a premium Gildan tee using high-quality DTG print, this shirt offers both comfort and durability. It’s a fantastic gift for any Pokémon enthusiast, bringing a nostalgic touch to their wardrobe while celebrating the joy of fandom.",
+    "altText": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -8420,40 +8420,36 @@ export const adminProducts = [
     "heroImage": "/images/cool-charmander-back-t-shirt/hf_20260626_152901_ffece147-9e88-4003-b5da-db50c22a0a68.png",
     "detailImage": "/images/cool-charmander-back-t-shirt/hf_20260626_153556_90422635-996e-4bf9-b392-8c2cd4761bd0.png",
     "images": [
-      "/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png",
       "/images/cool-charmander-back-t-shirt/hf_20260626_153613_d59bbb39-cc69-4791-bdf6-aeff026df7f9.png",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7471728a-02f2-45a6-8a66-2b89e241095a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=750b253f55a01b59fdd6fe99f9866384e6d763520af47c7bc57c888be37406bd",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b263ff3-a86a-4d73-89aa-e65200ead4b7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2ecc91dd7d0f63afe9618361037e928126d3f684b87b17bf4f313ecc6eb2c154",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/293d3c5b-fdde-4bf8-9578-0fc2b8a87101/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=69cec3e13396a21727101ca9304af874ec0ec32e3b00390b55a5630aa59c24cf",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb94d5a5-fdc9-4a4f-bbc5-fb05fa5e0ba6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=137212640caf09bcf399310bd2ab303a0ab7cbfe433e1d1089a82a4ea2178557",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0841a37e-7c6b-4c8a-9bd4-0f5999bd3f75/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1c768a9ed5ea80c0aae0a3c91c5143e0586bf9085c462b9545f72bbcabd4b469"
+      "/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7471728a-02f2-45a6-8a66-2b89e241095a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8fc49a9a6cdd86f1f54daeff2361b30cafad48c67ab604c256c0d17439066e6d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b263ff3-a86a-4d73-89aa-e65200ead4b7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f327472bd68590c5336c4df2acb6bc7664439cdcb2d2cc263d455d54b1ab8f65",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/293d3c5b-fdde-4bf8-9578-0fc2b8a87101/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1a9d462026d7cc5c9479b962b0719164a0e4dc2cca16ad4ec84a2771f0c1eb7c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb94d5a5-fdc9-4a4f-bbc5-fb05fa5e0ba6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=03d681db78ddcbeff709e3878f5fdb5463e9b78a350db8b26ab260ee1d45a31d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0841a37e-7c6b-4c8a-9bd4-0f5999bd3f75/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=db291d7d4da5eee13825ccbb0db2d3f5745669a3106f8a5653786b044ebd23bf"
     ],
     "imageAlts": {
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_152851_b185de6f-10c6-45b2-a4fb-b45dfb2f3833.png": "Dynamic view of a Charmander back T-shirt in vibrant colors, highlighting contemporary art influences.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_152901_ffece147-9e88-4003-b5da-db50c22a0a68.png": "Close-up of a stylish Charmander T-shirt, showcasing its artistic back design against a vivid backdrop.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153556_90422635-996e-4bf9-b392-8c2cd4761bd0.png": "Detailed texture of the Charmander T-shirt fabric, emphasizing its quality and artistic flair.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png": "Side angle of the Charmander T-shirt displaying its unique design and vibrant colors, inspired by contemporary art.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153613_d59bbb39-cc69-4791-bdf6-aeff026df7f9.png": "Back view of the T-shirt featuring a striking Charmander design, perfect for contemporary art enthusiasts.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7471728a-02f2-45a6-8a66-2b89e241095a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=750b253f55a01b59fdd6fe99f9866384e6d763520af47c7bc57c888be37406bd": "A close-up shot of the red Charmander T-shirt, showcasing its artistic print and quality craftsmanship.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b263ff3-a86a-4d73-89aa-e65200ead4b7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2ecc91dd7d0f63afe9618361037e928126d3f684b87b17bf4f313ecc6eb2c154": "Front view showcasing the bright red Charmander T-shirt, alive with contemporary art charm.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/293d3c5b-fdde-4bf8-9578-0fc2b8a87101/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=69cec3e13396a21727101ca9304af874ec0ec32e3b00390b55a5630aa59c24cf": "Artful display of the Charmander T-shirt in red, emphasizing its playful and contemporary design.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb94d5a5-fdc9-4a4f-bbc5-fb05fa5e0ba6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=137212640caf09bcf399310bd2ab303a0ab7cbfe433e1d1089a82a4ea2178557": "Low-angle view of the red Charmander T-shirt, capturing its vibrant art and stylish cut.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0841a37e-7c6b-4c8a-9bd4-0f5999bd3f75/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1c768a9ed5ea80c0aae0a3c91c5143e0586bf9085c462b9545f72bbcabd4b469": "Artistic representation of the red Charmander T-shirt laid flat, showcasing its eye-catching design."
+      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
+      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-cardinal-red-01.jpg": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
+      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
+      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
+      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-red-01.jpg": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
+      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-white-01.jpg": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee."
     },
     "tags": [
       "charmander",
-      "pokemon",
-      "anime",
-      "90s style",
-      "fan art",
-      "shirt",
-      "gifting",
-      "cute apparel",
-      "retro fashion",
+      "pokemon shirt",
+      "anime fan art",
+      "retro style",
+      "90s apparel",
       "funny gift",
-      "anime merch",
+      "fire starter",
+      "geek fashion",
       "cool t-shirt",
-      "collectible"
+      "artistic design",
+      "fan merchandise",
+      "anime clothing",
+      "collectible tee"
     ],
     "featured": false,
     "gelatoProductId": "75272ceb-235b-4b32-9780-9d97680ba990",
@@ -8461,26 +8457,26 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "charmander",
-      "pokemon t-shirt",
-      "anime shirt",
+      "pokemon shirt",
+      "anime t-shirt",
       "90s style",
-      "funny gift"
+      "fan art"
     ],
     "longTailKeywords": [
       "charmander pokemon t-shirt",
       "retro 90s anime shirt",
       "funny pokemon lover gift",
-      "cool charmender apparel",
-      "gildan premium tee",
-      "charmander fan art gift",
-      "quirky anime fan shirt",
-      "nostalgic pokemon clothing",
-      "unique charmender gift",
-      "anime lover t-shirt"
+      "cool anime fan apparel",
+      "premium Gildan tee",
+      "vintage style pokemon shirt",
+      "charmander art gift",
+      "fire starter t-shirt",
+      "anime character clothing",
+      "fan art clothing for adults"
     ],
-    "hashtags": "#charmander #pokemon #anime #90sstyle #fanart #shirt #gifting #cuteapparel #retrofashion #funnygift #animerch #cooltshirt #collectible #nostalgia #geekwear #otakustyle #pocketmonster #merchandise #animefans #animefashion #popculture #geekygifts #vintageanime #characterart #pokemonmerch #arttee #graphictee #quirkyfashion #throwbackfashion #animecommunity #retrocollectibles",
-    "instagramCaption": "Bring the heat with Charmander, your fiery friend with a funny twist. Perfect for those who embrace their inner Pokémon trainer. #charmander #anime #gifts",
-    "pinterestCaption": "Show off your love for Charmander with this retro 90s style t-shirt! Perfect for Pokémon fans who appreciate unique and fun apparel. Grab yours today.",
+    "hashtags": "#charmander #pokemon #anime #retro #90s #fanart #geekfashion #cooltshirt #funnygift #vintage #art #merchandise #illustration #tshirt #apparel #collectibles #fashion #graphictee #giftideas #fandom #nostalgia #geekculture #animefan #artlover #pokemongifts #style #pokemonfan #teeshirt #unique #creativestyle",
+    "instagramCaption": "Ignite your style with this Charmander tee—perfect for those who remember their first Pokémon!🔥 Grab yours and wear your nostalgia with pride! #charmander #pokemon #animefan",
+    "pinterestCaption": "Celebrate your love for Charmander with this stylish retro 90s T-shirt, perfect for showcasing your passion for Pokémon. An ideal gift for anime fans and collectors alike, this premium tee combines quality and quirky flair.",
     "seoTitle": "Charmender Pokémon T-Shirt | Retro 90s Anime Fan Gift",
     "variants": [
       {
@@ -8676,41 +8672,15 @@ export const adminProducts = [
         "image": "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
       }
     ],
-    "etsyTitle": "Charmender Pokemon T-Shirt, Cool Anime Fan Art Gift, Retro 90s Style Tee, Funny Pokemon Lover Shirt",
-    "etsyTags": [
-      "charmender shirt",
-      "anime fan art",
-      "birthday gift idea",
-      "gift for him",
-      "otaku clothing",
-      "90s retro style",
-      "unisex t-shirt",
-      "pokemon merchandise",
-      "fan art apparel",
-      "geek culture gift",
-      "anime lover gift",
-      "casual graphic tee",
-      "funny pokemon tee"
-    ],
-    "etsyDescription": "Unleash your inner Pokemon trainer with our Charmender Pokemon T-Shirt, the perfect gift for anime enthusiasts and retro fans alike! This unique tee showcases vibrant fan art that pays homage to the beloved character, making it a must-have for any Pokemon lover.\n\nFeaturing a playful design that captures the essence of the 90s anime aesthetic, this shirt is crafted from 100% cotton for ultimate comfort. The direct-to-garment (DTG) premium print ensures that the colors pop, while the unisex fit suits everyone from casual wearers to dedicated collectors. Available in sizes S-3XL, everyone can enjoy this stylish addition to their wardrobe.\n\nLooking for a thoughtful gift? This t-shirt is ideal for birthdays, holidays, or just because! It’s a delightful way to surprise a friend or loved one with something they’ll cherish.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
-    "etsyImageAlts": [
-      "Front mockup of a model wearing the Charmender Pokemon T-Shirt showcasing vibrant colors and detailed design.",
-      "Back mockup of a model wearing the Charmender Pokemon T-Shirt highlighting the unique fan art style.",
-      "Close-up detail of the Charmender Pokemon design on the t-shirt showing intricate artwork and colors.",
-      "Flat lay of the Charmender Pokemon T-Shirt displaying the front design on a clean surface.",
-      "Lifestyle shot of a person wearing the Charmender Pokemon T-Shirt while enjoying a casual outing.",
-      "Size guide image showing the Charmender Pokemon T-Shirt alongside measurements for accurate fitting.",
-      "Gift packaging of the Charmender Pokemon T-Shirt presented in a stylish box, perfect for gifting."
-    ],
     "gelatoCdnImages": [
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7471728a-02f2-45a6-8a66-2b89e241095a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=750b253f55a01b59fdd6fe99f9866384e6d763520af47c7bc57c888be37406bd",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b263ff3-a86a-4d73-89aa-e65200ead4b7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2ecc91dd7d0f63afe9618361037e928126d3f684b87b17bf4f313ecc6eb2c154",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/293d3c5b-fdde-4bf8-9578-0fc2b8a87101/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=69cec3e13396a21727101ca9304af874ec0ec32e3b00390b55a5630aa59c24cf",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb94d5a5-fdc9-4a4f-bbc5-fb05fa5e0ba6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=137212640caf09bcf399310bd2ab303a0ab7cbfe433e1d1089a82a4ea2178557",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0841a37e-7c6b-4c8a-9bd4-0f5999bd3f75/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1c768a9ed5ea80c0aae0a3c91c5143e0586bf9085c462b9545f72bbcabd4b469",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T154521Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bd317a6ec381d4640715f4b0edca280c541117a6468d62f90c5a64ca7458fd39"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7471728a-02f2-45a6-8a66-2b89e241095a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8fc49a9a6cdd86f1f54daeff2361b30cafad48c67ab604c256c0d17439066e6d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b263ff3-a86a-4d73-89aa-e65200ead4b7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f327472bd68590c5336c4df2acb6bc7664439cdcb2d2cc263d455d54b1ab8f65",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/293d3c5b-fdde-4bf8-9578-0fc2b8a87101/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1a9d462026d7cc5c9479b962b0719164a0e4dc2cca16ad4ec84a2771f0c1eb7c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb94d5a5-fdc9-4a4f-bbc5-fb05fa5e0ba6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=03d681db78ddcbeff709e3878f5fdb5463e9b78a350db8b26ab260ee1d45a31d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0841a37e-7c6b-4c8a-9bd4-0f5999bd3f75/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=db291d7d4da5eee13825ccbb0db2d3f5745669a3106f8a5653786b044ebd23bf",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7076c36759976fab1f245b23e971d39b5d64217f18f7db7bbad6e2efd835884"
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
-    "updatedAt": "2026-06-26T15:54:23.790Z"
+    "updatedAt": "2026-06-26T16:10:51.599Z"
   }
 ]
