@@ -7753,5 +7753,339 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T13:41:03.363Z",
     "updatedAt": "2026-06-26T13:41:03.363Z"
+  },
+  {
+    "id": "cool-mewtwo-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Mewtwo back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Mewtwo, the iconic anti-hero of the Pokémon universe, stands defiant in this retro 90s style T-shirt. Crafted from Gildan's premium tee fabric, the direct-to-garment print showcases his complex personality—part villain, part protector, always captivating. The design features a vibrant portrayal of Mewtwo that resonates with those who appreciate the deeper narratives behind their favorite characters. This shirt makes a standout gift for any Pokémon enthusiast who values the blend of nostalgia and artistry in their wardrobe.",
+    "altText": "Defiant Mewtwo with piercing gaze, rendered in retro 90s anime style on a small chest print of a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      }
+    ],
+    "image": "/images/cool-mewtwo-back-t-shirt/hf_20260626_133224_a1409471-8ad2-48de-b617-371ce03d39ac.jpeg",
+    "heroImage": "/images/cool-mewtwo-back-t-shirt/hf_20260626_133216_9a6849e2-4c88-418a-a909-e79eb34f3647.jpeg",
+    "detailImage": null,
+    "images": [
+      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png",
+      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ece5f0a-4fd2-43bc-ac03-d21da1b7cf48/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=af84057e7fd0216ec0ce287decd33c13f685283a53a226b371d8710c3f6c8f8d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/64019a4e-a1c9-440f-8eba-2378ad58ab8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=39925513bcc2f1fb7825a2246c53d9cac8e3c77a0fb671fbf117b22a00bed48e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/558f253e-6224-4278-9ee3-f9c98c7ac973/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6a6b96e4e0f4aaa309cbe53bd9784539a455f27a886b19e3f2ba6eeaa9a08038",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/834123c4-42fb-47d6-b9c5-94cb761defe1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=15e71d96311f7ec2a9f85c394e2f3fb1840d588da002e7f7e1397ea28348f59f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a89cfd55-5999-453d-a469-efab8e62d1e6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8be7578c724e87528b34e175aa888c4ebb46245d2f46bf686a938c5e753b11dd"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133224_a1409471-8ad2-48de-b617-371ce03d39ac.jpeg": "Mewtwo artwork showcased on a contemporary-style T-shirt, depicting vibrant shades of purple.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133216_9a6849e2-4c88-418a-a909-e79eb34f3647.jpeg": "The back of a T-shirt displaying a striking Mewtwo design, artistically rendered with cool tones.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png": "Close-up of Mewtwo's face illustrated on the T-shirt, highlighting its vibrant expression and sleek lines.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg": "Side view of the T-shirt showcasing a detailed Mewtwo graphic with an artistic flair and vivid colours.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ece5f0a-4fd2-43bc-ac03-d21da1b7cf48/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=af84057e7fd0216ec0ce287decd33c13f685283a53a226b371d8710c3f6c8f8d": "Red version of the T-shirt displaying an abstract Mewtwo design, infused with contemporary art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/64019a4e-a1c9-440f-8eba-2378ad58ab8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=39925513bcc2f1fb7825a2246c53d9cac8e3c77a0fb671fbf117b22a00bed48e": "The back of a red T-shirt showcasing Mewtwo artwork, with an emphasis on its dynamic pose in contemporary style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/558f253e-6224-4278-9ee3-f9c98c7ac973/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6a6b96e4e0f4aaa309cbe53bd9784539a455f27a886b19e3f2ba6eeaa9a08038": "Close-up on the vibrant red T-shirt showcasing Mewtwo's intricate details and contemporary artistic style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/834123c4-42fb-47d6-b9c5-94cb761defe1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=15e71d96311f7ec2a9f85c394e2f3fb1840d588da002e7f7e1397ea28348f59f": "The vibrant red T-shirt artfully depicting Mewtwo from a slightly tilted angle, enhancing its dynamic look.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a89cfd55-5999-453d-a469-efab8e62d1e6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8be7578c724e87528b34e175aa888c4ebb46245d2f46bf686a938c5e753b11dd": "Another red T-shirt angle revealing the vibrant Mewtwo design, showcasing its detailed contemporary visuals.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png": "A pool of vibrant colours displayed on the T-shirt with Mewtwo art, embodying contemporary artistic charm.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg": "Another pool shot showcasing the red T-shirt featuring Mewtwo's artistic design, vibrant and eye-catching.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_134822_0d309060-11ed-4705-bda2-a7ebec3ea62a.jpeg": "Close-up of the T-shirt's fabric texture, highlighting the quality alongside Mewtwo’s vibrant artwork."
+    },
+    "tags": [
+      "mewtwo",
+      "pokemon",
+      "anime",
+      "90s style",
+      "fan art",
+      "t-shirt",
+      "gifts",
+      "apparel",
+      "geek culture",
+      "retro",
+      "collectibles",
+      "nerd",
+      "fashion"
+    ],
+    "featured": false,
+    "gelatoProductId": "14904292-45ed-4e45-a0f5-e43bb71036c2",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "mewtwo t-shirt",
+      "pokemon apparel",
+      "anime fan art",
+      "retro t-shirt",
+      "funny gifts"
+    ],
+    "longTailKeywords": [
+      "mewtwo pokemon t-shirt",
+      "retro 90s anime shirt",
+      "funny pokemon lover gift",
+      "anime fan art gift",
+      "mewtwo shirt for adults",
+      "90s style fan apparel",
+      "unique pokemon gifts",
+      "gildan premium t-shirt",
+      "mewtwo art print shirt",
+      "gift for anime fans"
+    ],
+    "hashtags": "#mewtwo #pokemon #anime #90sstyle #fanart #tshirt #gifts #apparel #geekculture #retro #collectibles #nerd #fashion #pokemonfan #animeart #gildan #mewtwoart #animefashion #artshirt #uniquegifts #funnyshirts #printondemand #otaku #animecommunity #trending #stylish #giftideas #popculture #pokemongifts #vintage #nostalgia #characterart",
+    "instagramCaption": "Channel your inner anti-hero with our Mewtwo T-shirt. It's not just about the nostalgia; it's about embracing the complexity of your favorite Pokémon! Grab yours now and let your style speak. #mewtwo #anime #gifts",
+    "pinterestCaption": "Dive into the world of Pokémon with our Mewtwo T-shirt, perfect for fans of retro 90s anime. This premium tee captures the essence of Mewtwo's character in a stylish way. Check it out today!",
+    "seoTitle": "Mewtwo Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "7e7c6aa9-4c46-4698-9f00-0d667cc80754",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "174aff88-d257-41ea-bfa8-7cac3a276479",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "26027eb3-b0de-4313-8a57-f87594d6c1e6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "41f3543d-e6b3-4e3c-9104-eaaf7037b943",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "113e8aa6-18c2-49d5-967d-e2d869ecbd07",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cfb7df1c-d58e-4ef3-a9b8-f54fbb83cddc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "67ff2ffe-a7d2-407d-ab1c-79089596acca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f81ddf6b-2b94-4bd8-a2a2-9744b0ad9b72",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e9245ef8-e100-4c91-bac4-9507c635cefd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c04874fd-6649-4c5d-bff3-33878ea38fdd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0de5f5ce-8bf1-4021-9c1f-625473688e8f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c2a430f5-e544-4840-adf3-f17fc4ccc544",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "50277371-c948-4b84-a2f4-c636537c1c58",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ba4bd03e-61e9-4f51-9f8e-224c55298a27",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1ab3d79c-166f-4fa1-9d18-471bf7a7c0d8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "26311fb2-9504-427f-ac3d-6c7f293dafeb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9cc7ceaa-af86-43b8-a83a-fb992dcc5c51",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fbe0c82c-f2a0-4a7b-8964-b9f6b18914ea",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3653653f-328a-45b8-9d17-18b36b60a148",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d708d608-f927-4416-9498-6b87a9b229df",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "heather-navy",
+        "label": "Heather Navy",
+        "hex": "#888888",
+        "image": "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-navy-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-navy-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-white-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-purple-01.jpg"
+      }
+    ],
+    "etsyTitle": "Mewtwo Pokemon T-Shirt, Cool Anime Fan Art Gift, Retro 90s Style Tee for Fans",
+    "etsyTags": [
+      "mewtwo t-shirt",
+      "pokemon fan art",
+      "anime gift idea",
+      "gifts for him",
+      "otaku apparel",
+      "90s retro style",
+      "unisex graphic tee",
+      "funny pokemon shirt",
+      "anime merchandise",
+      "pokemon lover gift",
+      "cool graphic tee",
+      "nerdy gift idea",
+      "geek culture fashion"
+    ],
+    "etsyDescription": "Elevate your wardrobe with our Mewtwo Pokémon Back T-Shirt, a must-have for any cool anime fan. This retro 90s style tee makes the perfect gift for Pokémon lovers who appreciate unique art and humor.\n\nThe design features a vibrant illustration of Mewtwo, capturing the essence of the classic Pokémon while adding a contemporary twist. The tee is crafted from 100% cotton, ensuring a soft and comfortable fit, and is available in unisex sizes ranging from S to 3XL.\n\nIdeal for birthdays, holidays, or just because, this shirt is a great choice for friends and family who adore Pokémon. It's a fantastic way to show off their fandom and sense of style.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Mewtwo Pokemon T-Shirt worn by a model, showcasing vibrant design and comfortable fit.",
+      "Back view mockup of Mewtwo Pokemon T-Shirt on a model, highlighting the unique design details.",
+      "Close-up detail of Mewtwo design on the T-Shirt, emphasizing high-quality print and colors.",
+      "Flat lay of Mewtwo Pokemon T-Shirt displaying the front design on a clean background.",
+      "Lifestyle shot of a person wearing the Mewtwo Pokemon T-Shirt in a casual setting, showing everyday style.",
+      "Size guide shot of Mewtwo Pokemon T-Shirt laid flat, demonstrating available sizes and fit.",
+      "Gift packaging context for Mewtwo Pokemon T-Shirt, presented as an ideal gift for anime fans."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ece5f0a-4fd2-43bc-ac03-d21da1b7cf48/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=af84057e7fd0216ec0ce287decd33c13f685283a53a226b371d8710c3f6c8f8d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/64019a4e-a1c9-440f-8eba-2378ad58ab8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=39925513bcc2f1fb7825a2246c53d9cac8e3c77a0fb671fbf117b22a00bed48e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/558f253e-6224-4278-9ee3-f9c98c7ac973/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6a6b96e4e0f4aaa309cbe53bd9784539a455f27a886b19e3f2ba6eeaa9a08038",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a89cfd55-5999-453d-a469-efab8e62d1e6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8be7578c724e87528b34e175aa888c4ebb46245d2f46bf686a938c5e753b11dd",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/834123c4-42fb-47d6-b9c5-94cb761defe1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=15e71d96311f7ec2a9f85c394e2f3fb1840d588da002e7f7e1397ea28348f59f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2e43137f-def8-4438-b8e1-5496065ec0ff/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=66c9ffcfb3f4388eeeb1ddad48019f634dd2a2d90ed6aeb792857ab677bd49cb"
+    ],
+    "createdAt": "2026-06-26T14:15:44.480Z",
+    "updatedAt": "2026-06-26T14:15:44.480Z"
   }
 ]
