@@ -8087,5 +8087,298 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T14:15:44.480Z",
     "updatedAt": "2026-06-26T14:15:44.480Z"
+  },
+  {
+    "id": "cool-ditto-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Ditto back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Ditto embodies the playful spirit of transformation and identity, making this cool T-shirt a must-have for fans who appreciate its quirky charm. Crafted from a Gildan premium tee, this shirt showcases a high-quality DTG print that brings Ditto’s iconic features to life. The small chest print captures Ditto's signature smile and vibrant color, perfect for expressing your personality. Ideal for gifting, this T-shirt resonates with those who celebrate the art of being uniquely themselves.",
+    "altText": "Playful Ditto smiling in a soft lavender hue, captured in a small chest print on a premium Gildan tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      }
+    ],
+    "image": "/images/cool-ditto-back-t-shirt/hf_20260626_145015_a7cd799e-df6e-483d-abd7-a48669f572c4.png",
+    "heroImage": "/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png",
+    "detailImage": "/images/cool-ditto-back-t-shirt/hf_20260626_142237_bdba374a-2155-4071-9277-7b81eb2e0a8e.jpeg",
+    "images": [
+      "/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg",
+      "/images/cool-ditto-back-t-shirt/hf_20260626_144403_5d461f84-f80e-46fe-8902-fe257616b310.jpeg",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/303585a9-5d8c-4bea-9f47-89f7a81b49df/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=976c7797986c391202d89e12a12be8c68b92df6ae78f594d159d191aafeeafc8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/60efec38-c3e7-41d5-9b01-08be13c7cfb0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f252ad8f79adf1105b679d5dbb62594d680c28bad1ff9f17c130df9ec6d83855",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8fd0fc99-2f60-4205-97b4-0d1a0a0397ab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80e1608e47e8f21ddd7727b34261ea46a48ebd3eb97db80883f26504ac74833b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a667bc29-9338-4e17-9f9c-2e0763fc3383/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb191a623639b5268dec054a803ae74cdaf843ced1a4b9044d6bdf4032b3aa5a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e4c25aafc279fb1ea436d190ce15d42dd39c3266f22a10f1cfedb47f7b244aa"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145015_a7cd799e-df6e-483d-abd7-a48669f572c4.png": "Front view of a Cool Ditto back T-Shirt with vibrant contemporary art on a relaxed fit.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png": "Side angle of the Cool Ditto back T-Shirt showcasing its unique design on a comfortable fabric.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_142237_bdba374a-2155-4071-9277-7b81eb2e0a8e.jpeg": "Close-up of the Cool Ditto back T-Shirt texture highlighting the quality of the fabric and print.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/303585a9-5d8c-4bea-9f47-89f7a81b49df/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=976c7797986c391202d89e12a12be8c68b92df6ae78f594d159d191aafeeafc8": "Back view of the Cool Ditto back T-Shirt in red, capturing its playful contemporary art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/60efec38-c3e7-41d5-9b01-08be13c7cfb0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f252ad8f79adf1105b679d5dbb62594d680c28bad1ff9f17c130df9ec6d83855": "Detail view of the Cool Ditto back T-Shirt in red, showcasing the intricate design elements.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8fd0fc99-2f60-4205-97b4-0d1a0a0397ab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80e1608e47e8f21ddd7727b34261ea46a48ebd3eb97db80883f26504ac74833b": "Close-up of the vibrant contemporary art on the red Cool Ditto back T-Shirt, highlighting details.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a667bc29-9338-4e17-9f9c-2e0763fc3383/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb191a623639b5268dec054a803ae74cdaf843ced1a4b9044d6bdf4032b3aa5a": "Another angle of the Cool Ditto back T-Shirt in red, emphasizing its contemporary art design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e4c25aafc279fb1ea436d190ce15d42dd39c3266f22a10f1cfedb47f7b244aa": "Overview of the Cool Ditto back T-Shirt in red, set against a minimalistic background.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg": "Flat lay of the Cool Ditto back T-Shirt emphasizing its vibrant color and playful design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_144403_5d461f84-f80e-46fe-8902-fe257616b310.jpeg": "Detail of the Cool Ditto back T-Shirt showing the soft fabric and unique artistic print."
+    },
+    "tags": [
+      "ditto",
+      "pokemon",
+      "t-shirt",
+      "gildan",
+      "print-on-demand",
+      "art",
+      "apparel",
+      "unique gift",
+      "fan art",
+      "anime",
+      "cool fashion",
+      "shapeshifter",
+      "collectibles"
+    ],
+    "featured": false,
+    "gelatoProductId": "3131582c-9578-4a58-ab3c-7508ebd21ad8",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "ditto t-shirt",
+      "pokemon apparel",
+      "gildan shirt",
+      "cool t-shirt",
+      "anime fashion"
+    ],
+    "longTailKeywords": [
+      "cool ditto pokemon t-shirt",
+      "gildan premium t-shirt",
+      "funny pokemon shirts",
+      "unique anime gifts",
+      "shapeshifter character shirt",
+      "creative pokemon apparel",
+      "colorful ditto tee",
+      "fan art pokemon clothing",
+      "collectible pokemon merchandise",
+      "retro pokemon fashion"
+    ],
+    "hashtags": "#ditto #pokemon #tshirt #gildan #printondemand #art #apparel #uniquegift #fanart #anime #coolfashion #shapeshifter #collectibles #style #fashion #giftideas #animefan #pokemongifts #quirky #vintage #animeapparel #pokemonlove #geekfashion #nerdstuff #artshirt #trendy #creative #giftforher #giftforhim #pokemonmerch #dittolove",
+    "instagramCaption": "Transform your look with this cool Ditto tee, where shapeshifting meets style. Don’t miss out on this unique piece! #ditto #pokemon #fashion",
+    "pinterestCaption": "Show off your love for Ditto with this stylish T-shirt, perfect for fans of the playful shapeshifter. Made from Gildan's premium quality fabric, this shirt is great for everyday wear or as a unique gift.",
+    "seoTitle": "Cool Ditto Pokémon T-Shirt | Shapeshifting Style | Unique Gift",
+    "variants": [
+      {
+        "uid": "8269a79d-98ed-41c1-89e9-0f3b891c6f7f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e7e893bb-66dc-4c5d-acc9-25e80c570ea8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "640f0834-0ec3-4b53-b53d-b40c11d7de46",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "157d297c-e225-4e6c-a933-27c1545809fe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "33a5b4de-048b-4670-877b-8788cfdef8de",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4abc45c1-6d5a-4c51-bbbb-67e8f5ba1af2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0294a44c-bef9-4812-904a-7dfa7c3834de",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b0983938-d2a0-4b73-b680-3267a8644535",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c784647e-f739-4250-903c-279228e8ab5e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "66024bce-e339-436f-b558-b02df6940868",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "547702ad-9495-4c6f-96f9-641d24d34cdc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "879cb049-fda9-4023-8aba-e914ea5a4709",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "50519b94-c047-4488-a438-0b89d0059017",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e710eda4-dfbd-4e38-a6fa-016255cf13b7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "70bf48e2-6e27-47a3-af4b-35adf435e72b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "58e4244f-edbe-4fd7-a71f-dabcb2bed691",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-white-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-azalea-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
+      }
+    ],
+    "etsyTitle": "Cool Ditto Pokémon Back T-Shirt, Gildan 64000 Graphic Tee, Perfect Gift for Pokémon Fans",
+    "etsyTags": [
+      "ditto pokemon shirt",
+      "anime graphic tee",
+      "gift for gamers",
+      "unisex t-shirt",
+      "otaku apparel",
+      "90s nostalgia style",
+      "casual streetwear",
+      "pokemon fan art",
+      "gifts for him",
+      "cool graphic t-shirt",
+      "trendy anime shirt",
+      "pokemon merchandise",
+      "unique gift idea"
+    ],
+    "etsyDescription": "Discover the Cool Ditto Pokémon Back T-Shirt, a must-have for all Pokémon enthusiasts. This stylish graphic tee, crafted for comfort and designed for fans, features a vibrant Ditto print that stands out. Perfect for wearing to conventions, casual outings, or simply showing off your love for Pokémon.\n\nThe eye-catching design showcases Ditto in a playful and artistic way, making it a unique addition to your wardrobe. Made from 100% cotton for a soft feel, this Gildan 64000 t-shirt ensures a comfortable fit while maintaining its shape and color.\n\nAvailable in sizes S to 3XL, this unisex t-shirt is perfect for everyone. It makes a fantastic gift for birthdays, holidays, or just because you want to treat yourself or a friend.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of the Cool Ditto Pokémon back t-shirt on a model showcasing the vibrant design.",
+      "Back view of the Cool Ditto Pokémon t-shirt on a model highlighting the unique Ditto graphic.",
+      "Close-up detail of the Ditto design on the t-shirt showing the quality of the print.",
+      "Flat lay of the Cool Ditto Pokémon t-shirt displaying the front design on a clean surface.",
+      "Lifestyle shot of a person wearing the Ditto Pokémon t-shirt in a casual outdoor setting.",
+      "Size guide and product detail shot of the Cool Ditto Pokémon t-shirt showing fabric and fit.",
+      "Gift presentation of the Cool Ditto Pokémon t-shirt in stylish packaging ready for gifting."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/303585a9-5d8c-4bea-9f47-89f7a81b49df/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=976c7797986c391202d89e12a12be8c68b92df6ae78f594d159d191aafeeafc8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/60efec38-c3e7-41d5-9b01-08be13c7cfb0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f252ad8f79adf1105b679d5dbb62594d680c28bad1ff9f17c130df9ec6d83855",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8fd0fc99-2f60-4205-97b4-0d1a0a0397ab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80e1608e47e8f21ddd7727b34261ea46a48ebd3eb97db80883f26504ac74833b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a667bc29-9338-4e17-9f9c-2e0763fc3383/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb191a623639b5268dec054a803ae74cdaf843ced1a4b9044d6bdf4032b3aa5a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e4c25aafc279fb1ea436d190ce15d42dd39c3266f22a10f1cfedb47f7b244aa"
+    ],
+    "createdAt": "2026-06-26T15:05:11.927Z",
+    "updatedAt": "2026-06-26T15:05:11.927Z"
   }
 ]
