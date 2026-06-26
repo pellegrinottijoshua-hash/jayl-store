@@ -6144,8 +6144,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Charizard, the iconic fire-breathing Pokémon, embodies the spirit of adventure and nostalgia. This Gildan premium tee features a vibrant, retro 90s anime-inspired design, perfect for those who remember the thrill of choosing Charmander as their starter. With top-notch DTG print quality, this shirt not only looks great but feels amazing to wear. It's a fantastic gift for fellow fans who appreciate the fiery charm and fierce loyalty of this beloved character.",
-    "altText": "Charizard roaring confidently in bright orange and blue, illustrated in a retro 90s anime style on a premium JAYL tee.",
+    "description": "Charizard embodies the fierce spirit of the Pokémon world, representing the ultimate flex of choosing Charmander as your starter. This premium Gildan T-shirt showcases a stunning DTG print that captures Charizard's fiery essence, making it a standout piece in any collection. Ideal for those who resonate with its boldness and cool factor, this tee is not just a clothing item; it’s a statement. Gift it to fellow fans or treat yourself to this iconic representation of strength and confidence.",
+    "altText": "Charizard blazing with confidence in a fierce pose, crafted in retro 90s anime style on a premium JAYL tee with a small chest print.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -6198,17 +6198,17 @@ export const adminProducts = [
     "tags": [
       "charizard",
       "pokemon",
-      "anime",
-      "90s",
-      "fanart",
       "t-shirt",
-      "gildan",
-      "gift",
-      "retro",
+      "cool",
       "apparel",
-      "funny",
-      "art",
-      "cool"
+      "fan art",
+      "gildan",
+      "dtg",
+      "gift",
+      "collectible",
+      "anime",
+      "vintage",
+      "style"
     ],
     "featured": false,
     "gelatoProductId": "34b5e0c4-0700-45ab-b175-af87dce91f48",
@@ -6217,26 +6217,26 @@ export const adminProducts = [
     "primaryKeywords": [
       "charizard",
       "pokemon t-shirt",
-      "anime fan art",
-      "retro t-shirt",
-      "90s style"
+      "cool apparel",
+      "gildan tee",
+      "fan art"
     ],
     "longTailKeywords": [
-      "cool charizard t-shirt for fans",
-      "retro pokemon apparel gift",
-      "funny pokemon lover shirt",
-      "anime charizard print tee",
-      "gildan pokemon t-shirt design",
-      "90s style charizard clothing",
-      "unique charizard gift idea",
-      "premium anime fan t-shirt",
-      "charizard art print shirt",
-      "retro anime fan apparel"
+      "charizard graphic t-shirt",
+      "cool pokemon apparel online",
+      "gildan premium t-shirt",
+      "best gifts for pokemon fans",
+      "retro charizard fan art",
+      "unique pokemon clothing",
+      "collectible charizard t-shirt",
+      "cool anime merchandise",
+      "pokemon back t-shirt",
+      "stylish charizard shirt"
     ],
-    "hashtags": "#charizard #pokemon #anime #90s #fanart #tshirt #gildan #gift #retro #apparel #funny #art #cool #vintage #collectibles #otaku #geek #nerd #nostalgia #fashion #merch #creativity #design #animeart #popculture #love #lifestyle #streetwear #trend #custom #illustration",
-    "instagramCaption": "🔥 Channel your inner Charizard with this epic tee! Perfect for showing off your Pokémon pride or scaring off those weak trainers. Grab yours now! #charizard #pokemon #90s",
-    "pinterestCaption": "Embrace the fiery spirit of Charizard with this retro 90s style t-shirt. Made from premium Gildan fabric, it's perfect for any Pokémon lover. Don't miss out on adding this unique piece to your collection!",
-    "seoTitle": "Charizard T-Shirt | Funny Pokémon Lover Gift | Retro 90s Style",
+    "hashtags": "#charizard #pokemon #tshirt #cool #apparel #fanart #gildan #dtg #gift #collectible #anime #vintage #style #shirt #fashion #illustration #printondemand #art #design #graphictee #stylish #trendy #merch #pokemonfan #retrogaming #90sanime #flame #artistic #creative #unique #wearableart",
+    "instagramCaption": "Fuel your inner flame with our Charizard T-Shirt! 🔥 This isn’t just a tee, it's a declaration of cool. Grab yours now! #pokemon #charizard #gifts",
+    "pinterestCaption": "Showcase your love for Pokémon with our Charizard T-Shirt, a perfect blend of style and nostalgia. This premium piece makes an excellent gift for any fan or a bold addition to your wardrobe.",
+    "seoTitle": "Charizard T-Shirt | Cool Pokémon Apparel | Ultimate Gift",
     "variants": [
       {
         "uid": "11f589ee-123e-4572-abc8-0042145eb095",
@@ -6466,7 +6466,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d1dc405-3265-4591-a26d-1c6440a0d931/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T102647Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2d65f1d57eef09f0149c6b38c6ec048576636ade28d568966d54ab677845b68a"
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
-    "updatedAt": "2026-06-26T12:32:47.035Z",
+    "updatedAt": "2026-06-26T12:32:56.576Z",
     "relatedProducts": []
   },
   {
