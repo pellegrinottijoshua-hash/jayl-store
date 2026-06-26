@@ -6760,5 +6760,337 @@ export const adminProducts = [
     "createdAt": "2026-06-26T12:23:42.147Z",
     "updatedAt": "2026-06-26T12:32:30.825Z",
     "relatedProducts": []
+  },
+  {
+    "id": "zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Zapdos Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Zapdos embodies chaotic energy and electric vibes, making this Gildan premium tee a must-have for any fan. The striking artwork captures Zapdos in a moment of pure power, showcasing its wild spirit that resonates with those who appreciate its electrifying presence. With high-quality DTG print, this shirt promises vibrant colors and durability for all your adventures. It’s an excellent gift for friends who cherish the unpredictability of life—perfect for birthdays or just because!",
+    "altText": "Zapdos frozen mid-screech with dynamic electric colors in a retro 90s anime fan-art style on a premium Gildan tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      }
+    ],
+    "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_105617_aa3298eb-d63e-42d4-9562-ab261152a7a2.png",
+    "heroImage": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_103722_d8e8d9db-f31a-4181-b7a0-a8ac2fc0c21a.jpeg",
+    "detailImage": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102345_71624aa9-7571-4afc-a65b-e5f2b7881e63.png",
+    "images": [
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102439_57c9eeb0-16bf-441c-953b-65045193da22.png",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/11875728-e086-4f11-8d2a-de29ca48fac0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c1205c1a7fda043f7c5e38b1ca109e4af365b3262529ffe5e2b500a8160e84eb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b4680393-f447-4904-939c-95489d2531db/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cb0360e9daf14fbebf4ee9d82b1251682866c4e02a0def29a4828a5bd7f5476",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e87d7127-83d5-4d0c-a383-e1ef1480c457/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a4878bcab43e2c73866fc4137825364a7807861aab0033dc09526ce2d11e0011",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2c72340e-cb30-45e1-a52c-3c92e25d9079/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3572bf6eeb2a27df0b297ec3257c3d596936e7bdf513fede2d0a8b4b3a403502",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f32a66e-110b-4f01-90e8-6e654d1c0e82/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4233d944a30f10b393d11675c753aa9e15dabdefe8fd62e8c82d17da5a617ee0"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_105617_aa3298eb-d63e-42d4-9562-ab261152a7a2.png": "Bold Zapdos design on a vibrant t-shirt showcases contemporary art elements with a dynamic pose.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_103722_d8e8d9db-f31a-4181-b7a0-a8ac2fc0c21a.jpeg": "Front view of the Zapdos t-shirt captures its playful, animated style in a compact mobile-friendly design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102345_71624aa9-7571-4afc-a65b-e5f2b7881e63.png": "Close-up detail highlights the vibrant texture and print quality of the Zapdos artwork on the fabric.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102439_57c9eeb0-16bf-441c-953b-65045193da22.png": "Side angle reveals the stylish cut of the Zapdos t-shirt, enhancing its contemporary art appeal.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png": "Back view showcases the full design of the Zapdos t-shirt, perfect for anime and Pokémon enthusiasts.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/11875728-e086-4f11-8d2a-de29ca48fac0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c1205c1a7fda043f7c5e38b1ca109e4af365b3262529ffe5e2b500a8160e84eb": "Vibrant red variant focuses on Zapdos in a striking pose, ideal for contemporary art enthusiasts.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b4680393-f447-4904-939c-95489d2531db/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cb0360e9daf14fbebf4ee9d82b1251682866c4e02a0def29a4828a5bd7f5476": "Close view of the red Zapdos t-shirt accentuates its playful art style and retro 90s vibe.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e87d7127-83d5-4d0c-a383-e1ef1480c457/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a4878bcab43e2c73866fc4137825364a7807861aab0033dc09526ce2d11e0011": "A detailed glimpse into the red t-shirt displays the intricate Zapdos artwork and its contemporary style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2c72340e-cb30-45e1-a52c-3c92e25d9079/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3572bf6eeb2a27df0b297ec3257c3d596936e7bdf513fede2d0a8b4b3a403502": "Another angle of the red Zapdos t-shirt illustrates its playful design and high-quality print.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f32a66e-110b-4f01-90e8-6e654d1c0e82/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4233d944a30f10b393d11675c753aa9e15dabdefe8fd62e8c82d17da5a617ee0": "Zoomed-in view of the red t-shirt highlights the vibrant colors and intricate details of the Zapdos design."
+    },
+    "tags": [
+      "zapdos",
+      "pokemon",
+      "t-shirt",
+      "anime",
+      "fan-art",
+      "90s",
+      "gift",
+      "apparel",
+      "electric",
+      "funny",
+      "gildan",
+      "art",
+      "collectible"
+    ],
+    "featured": false,
+    "gelatoProductId": "5336071a-cb79-4922-9f32-25f82d97a041",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "zapdos",
+      "pokemon t-shirt",
+      "anime art",
+      "funny gift",
+      "90s style"
+    ],
+    "longTailKeywords": [
+      "zapdos pokemon t-shirt gift",
+      "funny pokemon lover apparel",
+      "retro 90s anime shirt",
+      "gildan t-shirt for fans",
+      "cool anime fan art gift",
+      "electric zapdos clothing",
+      "unique pokemon art t-shirt",
+      "gift for pokemon lovers",
+      "zapdos print on demand",
+      "stylish anime merchandise"
+    ],
+    "hashtags": "#zapdos #pokemon #tshirt #anime #fanart #90s #gift #apparel #electric #funny #gildan #art #collectible #fashion #geek #nerd #memes #style #cool #vintage #retro #design #unique #clothing #illustration #popculture #merch #giftideas #trend #artwear",
+    "instagramCaption": "Zapdos is here to electrify your style! ⚡️ Perfect for those who love a little chaos in their wardrobe. Grab your Zapdos T-shirt and embrace the wild side—get yours now! #zapdos #pokemon #anime",
+    "pinterestCaption": "Get ready to channel the wild energy of Zapdos with this retro 90s style T-shirt. Crafted from a Gildan premium tee, it features vibrant fan-art that stands out. Perfect as a unique gift for any Pokémon fan!",
+    "seoTitle": "Zapdos Pokemon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "362ad040-f095-4e2a-9599-03d54a3d2983",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1e486695-7710-46c8-aaea-a2254d0d40b5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "92d4e164-930a-4d4a-ad67-8199a166f8f4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45b55424-4ff2-4f69-82a5-622b54167c61",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "28a3eb8b-be13-40ce-bf77-c4cfb5d9713c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5575d702-9218-4f73-9963-d1f6487a1015",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a8046970-5872-40fd-a592-f42764388681",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "84991a67-48e3-4485-aff9-ea7ae8df7e68",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "84e26e08-eb00-4359-85b2-83b954f9fcd5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cdfc6207-0285-41c2-915b-672f9b0a0275",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a4cf7c32-bc88-4ec7-899a-1eff2d4515af",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f18ad2fc-9337-49d2-b976-409b0a13752f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "88c0d4f0-c1c0-4f43-a5e5-ab680b95cebd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e665934a-9099-4562-97cd-dbd6a2a77423",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "34bf930c-7634-4fbe-a794-d497c43dcf74",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0ecb289a-f565-488c-84cf-0fac7abce394",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "82951b0a-6cec-419f-86a2-d6af652ccda4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0c5f8e9d-c6ae-4eb0-9b1f-b7900c01af94",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5970d134-2f7a-4824-bffa-9bfbf2a142a9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f8cb7f27-1463-4e20-81df-b893b5eeee76",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg"
+      }
+    ],
+    "etsyTitle": "Zapdos Pokemon T-Shirt, Retro 90s Anime Fan Art, Funny Gift for Pokemon Lovers",
+    "etsyTags": [
+      "zapdos shirt",
+      "anime fan art",
+      "funny gift idea",
+      "gift for him",
+      "otaku merch",
+      "90s nostalgia",
+      "unisex t-shirt",
+      "pokemon apparel",
+      "graphic tee",
+      "anime gifts",
+      "geek culture",
+      "casual wear",
+      "cartoon fandom"
+    ],
+    "etsyDescription": "Show off your love for Zapdos with this stylish Pokemon T-Shirt, perfect for anime fans and collectors alike. Made from 100% cotton and featuring a vibrant retro 90s design, this shirt makes a unique gift for any Pokemon lover.\n\nThe striking Zapdos graphic captures the essence of this iconic character, bringing a nostalgic vibe to your wardrobe. With its fun and quirky style, this tee is sure to spark conversations and admiration from fellow fans.\n\nOur t-shirt is crafted from premium DTG print technology, ensuring bright colors and a soft feel. It comes in unisex fit and sizes ranging from S to 3XL, making it perfect for everyone.\n\nAn ideal gift for birthdays, holidays, or just because, this shirt is a must-have for all Pokemon enthusiasts.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of a model wearing a Zapdos Pokemon t-shirt, showcasing vibrant 90s anime fan art design.",
+      "Back view of a model in a Zapdos Pokemon t-shirt, featuring the unique retro style.",
+      "Close-up detail of the Zapdos graphic on the t-shirt, highlighting the colors and design intricacies.",
+      "Flat lay of the Zapdos Pokemon t-shirt, displaying the front design on a clean background.",
+      "Lifestyle shot of a person casually wearing a Zapdos Pokemon t-shirt in a park setting.",
+      "Size guide shot showing the size variations of the Zapdos t-shirt with a measuring tape.",
+      "Gift packaging of the Zapdos Pokemon t-shirt, wrapped and ready for gifting with a bow."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/11875728-e086-4f11-8d2a-de29ca48fac0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c1205c1a7fda043f7c5e38b1ca109e4af365b3262529ffe5e2b500a8160e84eb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b4680393-f447-4904-939c-95489d2531db/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cb0360e9daf14fbebf4ee9d82b1251682866c4e02a0def29a4828a5bd7f5476",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e87d7127-83d5-4d0c-a383-e1ef1480c457/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a4878bcab43e2c73866fc4137825364a7807861aab0033dc09526ce2d11e0011",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2c72340e-cb30-45e1-a52c-3c92e25d9079/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3572bf6eeb2a27df0b297ec3257c3d596936e7bdf513fede2d0a8b4b3a403502",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f32a66e-110b-4f01-90e8-6e654d1c0e82/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4233d944a30f10b393d11675c753aa9e15dabdefe8fd62e8c82d17da5a617ee0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/94a995be-8c64-47c5-bd86-d94b01a97be8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b5f3d4e8ff26180eb86f6d0497a5e0a21e76b647b2dc65750020bf3fb58ae7c"
+    ],
+    "createdAt": "2026-06-26T13:10:51.907Z",
+    "updatedAt": "2026-06-26T13:10:51.907Z"
   }
 ]
