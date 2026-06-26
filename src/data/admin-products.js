@@ -8682,5 +8682,333 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
     "updatedAt": "2026-06-26T16:10:51.599Z"
+  },
+  {
+    "id": "cool-alakazam-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Alakazam back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Cunning and intelligent, Alakazam embodies the essence of strategy and power, known for its incredible psychic abilities and sharp wit. This retro 90s style t-shirt showcases Alakazam in stunning detail with Gildan’s premium fabric and DTG print quality, making it a standout piece in any anime lover's wardrobe. It's not just a shirt; it’s a conversation starter and a unique gift for Pokémon enthusiasts who appreciate the clever side of their favorite psychic type.",
+    "altText": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      }
+    ],
+    "image": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161153_365c3356-8402-4d57-89cb-613aa7c3d244.png",
+    "heroImage": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161220_0af2ad1d-118b-4a78-8a5f-87420da4eed8.png",
+    "detailImage": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161725_e0ba5edd-4da4-4788-a4fc-141e486be559.png",
+    "images": [
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161741_ee168f87-8b30-4711-835e-fccbbe776aed.png",
+      "/images/cool-alakazam-back-t-shirt/hf_20260626_162219_4fd80bc6-177d-4047-bedd-3008189819e5.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/444c7697-61cc-4cf3-9828-d800ef486356/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cae444151e2d58e2b1778e6e3a5dcae93f0a778d75e1a6e05d7586c6cdf242b0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b72f75c-526b-4939-bc02-80cecdbc442c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cf0e2805359537a67d56af652b80f547aaab200e44108fe451c39dab7beaf81a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/83cf094a-446b-43e8-9302-0ba87faf4b2a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e6d3ec3822b87f019b6095aae2eed88a0f2b7bcab2104dd889de6ae632970477",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fa2f432-d470-4d4d-bbb8-32b411fe1dcf/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ee20f2daa833de34b091b52ad49cd2cb1e0bd7d15bc72b79a8263020f5bb28a5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1bf5482b-d85d-4f96-964f-211cb4aeb01c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=08c18def25e89a934e05186ef5aa825399b9f2313152ed86eafa74afe3ac093f"
+    ],
+    "imageAlts": {
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--mockup-01.jpg": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--white-01.jpg": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--black-01.jpg": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--light-blue-01.jpg": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--daisy-01.jpg": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--natural-01.jpg": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print."
+    },
+    "tags": [
+      "alakazam",
+      "pokemon",
+      "anime",
+      "t-shirt",
+      "funny gift",
+      "90s style",
+      "fan art",
+      "cool art",
+      "apparel",
+      "gifts",
+      "geek culture",
+      "collectibles",
+      "graphic tee"
+    ],
+    "featured": false,
+    "gelatoProductId": "e2343141-f469-4c6e-954d-2f369c5058cd",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "alakazam t-shirt",
+      "pokemon apparel",
+      "anime fan art",
+      "90s style shirt",
+      "funny pokemon gift"
+    ],
+    "longTailKeywords": [
+      "Alakazam Pokémon back t-shirt",
+      "retro 90s style fan art",
+      "Gildan premium quality tee",
+      "unique gifts for anime fans",
+      "funny gifts for Pokémon lovers",
+      "Alakazam graphic tee design",
+      "cool apparel for Pokémon fans",
+      "anime inspired t-shirt",
+      "collector's item Pokémon art",
+      "fashionable Pokémon merchandise"
+    ],
+    "hashtags": "#alakazam #pokemon #anime #tshirt #funnygift #90sstyle #fanart #coolart #apparel #gifts #geekculture #collectibles #graphictee #animefan #pokemongifts #retrovibes #nerdstuff #geekfashion #arttee #streetwear #animeclothing #fashion #popculture #otaku #merch #animecommunity #pokemonmaster #nerdlife #stylish #uniquegift",
+    "instagramCaption": "Channel your inner Alakazam with this retro gem that’s as clever as it is cool. Perfect for those who appreciate the art of strategy and style! #pokemon #fanart #90sstyle",
+    "pinterestCaption": "Attention Pokémon fans! Our Alakazam t-shirt blends retro 90s style with premium quality for an unbeatable look. This unique piece makes an ideal gift for anyone who loves clever characters and striking art.",
+    "seoTitle": "Alakazam Pokémon T-Shirt | Retro 90s Style Gift | Cool Fan Art",
+    "variants": [
+      {
+        "uid": "a01ba577-7296-4532-be10-2e9f501e0721",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "327e0bee-f751-4271-9870-d19fb8f1f179",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea250978-3de5-4f1c-871b-76b44dbce826",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9770f9ba-8a42-43dc-9b1b-05eb7e5a6caa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e4c34c3c-9565-4a15-81d1-e50f8df76fc5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "97fde3ab-e9c7-450c-8d16-e8cf582dda3f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f71c62a2-c8fc-4fd8-9e7d-4d60ab85e989",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0deafa2a-8f3a-4130-98ef-46ef922fba8f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "01055bb9-da3e-4b69-babe-a6caa14053fe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "006b6cc6-72ff-4144-a316-cda98aea34c0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bef8ef43-d886-4e4f-af91-84148b2bb4bf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "607677ee-5c74-4cdb-ae16-5b4bc0a666db",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2eb5dd90-0ee4-4a46-a795-574d4b4c2a32",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "35c552e8-e707-4a6a-bd43-1cf5f25cc94f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b4367f7c-b39c-455d-a3d6-092fbe1f2ad5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9d3e4594-2234-457e-84e1-664d3c7deec5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cf107335-56f3-4b79-810b-10f5e7f12073",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c6e8d516-661b-494f-aa0d-1317e63840ab",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "40c450f2-5434-416b-a8f4-2cb2139c9dc0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6a64cc25-4b5f-4d14-ab4f-d24449b80e64",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--daisy-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--natural-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--white-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--light-blue-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--black-01.jpg"
+      }
+    ],
+    "etsyTitle": "Alakazam Pokemon T-Shirt, Cool 90s Anime Graphic Tee, Funny Gift for Pokemon Lovers",
+    "etsyTags": [
+      "alakazam t-shirt",
+      "anime fan art",
+      "pokemon gift idea",
+      "gift for him",
+      "otaku apparel",
+      "retro 90s style",
+      "unisex fit shirt",
+      "funny pokemon shirt",
+      "geek culture gift",
+      "anime graphic tee",
+      "pokemon lover gift",
+      "cool anime merch",
+      "fan art clothing"
+    ],
+    "etsyDescription": "Discover the ultimate Alakazam Pokémon back T-Shirt, perfect for anime fans and Pokémon lovers alike! This unique graphic tee features a vibrant design that captures the essence of the beloved character, making it an ideal gift for birthdays, holidays, or just because.\n\nThe artwork showcases Alakazam in a retro 90s style, blending nostalgia with contemporary fashion. Made from 100% cotton, this tee is soft, breathable, and comfortable for all-day wear. With a unisex fit available in sizes S-3XL, it’s perfect for anyone who loves to express their passion for Pokémon.\n\nLooking for a special gift? This T-shirt is a fantastic choice for friends, family, or even yourself! It’s sure to bring a smile to any Pokémon enthusiast.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of Alakazam Pokemon T-Shirt on a model, showcasing the vibrant design and unisex fit.",
+      "Back view of Alakazam Pokemon T-Shirt on a model, highlighting the unique graphic detail.",
+      "Close-up detail of the Alakazam design on the T-Shirt, emphasizing the vibrant colors and quality print.",
+      "Flat lay of Alakazam Pokemon T-Shirt, displaying the front design on a clean, white background.",
+      "Lifestyle shot of a person wearing the Alakazam Pokemon T-Shirt in a casual outdoor setting.",
+      "Detailed shot of the T-Shirt's fabric and size guide, showing the premium quality and unisex fit.",
+      "Gift presentation of the Alakazam Pokemon T-Shirt in stylish packaging, ready for giving."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/444c7697-61cc-4cf3-9828-d800ef486356/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cae444151e2d58e2b1778e6e3a5dcae93f0a778d75e1a6e05d7586c6cdf242b0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/35977f7d-2692-4d72-9936-b564f2353ab9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0f8e4bd5f943e0a7800640db5d05b8ec9f63882fe02b7a633c0a213f13c993a3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b72f75c-526b-4939-bc02-80cecdbc442c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cf0e2805359537a67d56af652b80f547aaab200e44108fe451c39dab7beaf81a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/83cf094a-446b-43e8-9302-0ba87faf4b2a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e6d3ec3822b87f019b6095aae2eed88a0f2b7bcab2104dd889de6ae632970477",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fa2f432-d470-4d4d-bbb8-32b411fe1dcf/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ee20f2daa833de34b091b52ad49cd2cb1e0bd7d15bc72b79a8263020f5bb28a5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1bf5482b-d85d-4f96-964f-211cb4aeb01c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=08c18def25e89a934e05186ef5aa825399b9f2313152ed86eafa74afe3ac093f"
+    ],
+    "createdAt": "2026-06-26T16:31:53.176Z",
+    "updatedAt": "2026-06-26T16:31:53.176Z"
   }
 ]
