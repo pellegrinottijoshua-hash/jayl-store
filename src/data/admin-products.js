@@ -6140,7 +6140,7 @@ export const adminProducts = [
     "id": "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Cool Charizard Pokémon T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "name": "Cool Charizard back t shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -6466,7 +6466,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d1dc405-3265-4591-a26d-1c6440a0d931/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T102647Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2d65f1d57eef09f0149c6b38c6ec048576636ade28d568966d54ab677845b68a"
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
-    "updatedAt": "2026-06-26T10:58:00.689Z"
+    "updatedAt": "2026-06-26T12:31:39.662Z",
+    "relatedProducts": []
   },
   {
     "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
