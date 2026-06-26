@@ -7092,5 +7092,333 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T13:10:51.907Z",
     "updatedAt": "2026-06-26T13:10:51.907Z"
+  },
+  {
+    "id": "cool-snorlax-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Snorlax back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Snorlax, the ultimate champion of chill vibes, perfectly embodies the spirit of relaxation and lazy afternoons. This Gildan premium tee showcases a playful retro 90s anime design, featuring Snorlax slumped in a blissful snooze, demonstrating that sometimes doing nothing is an art form. With high-quality DTG print, every detail pops, making it a striking piece for any casual outfit. If you’re looking for a unique gift that captures the essence of laid-back Pokémon lovers, this t-shirt is a fun choice for birthdays or special occasions.",
+    "altText": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      }
+    ],
+    "image": "/images/cool-snorlax-back-t-shirt/hf_20260626_113736_1628fcc8-cd30-4c13-8ce9-85a5beaa729b.png",
+    "heroImage": "/images/cool-snorlax-back-t-shirt/hf_20260626_121424_593e8fb3-bb55-43db-bb2e-258b6376819a.jpeg",
+    "detailImage": "/images/cool-snorlax-back-t-shirt/hf_20260626_121523_60f0d981-0dc2-4df2-95a4-26bce5045a0f.png",
+    "images": [
+      "/images/cool-snorlax-back-t-shirt/hf_20260626_114025_c69996c2-a7f5-418c-99c4-d61a7b9f8f03.jpeg",
+      "/images/cool-snorlax-back-t-shirt/hf_20260626_121455_9160de3b-30c7-49ea-996d-85a0eebc2d36.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c01a11c5-0dde-4988-9930-0a7440709494/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c35f3f21c81bdbf3ad8b4aaaf37d79708375c1014c5e5477bafe399b5b269de3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/316184be-a30e-46b7-822d-ee946691e733/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7caab69e288ee3bd6b4d2dc75041217b4c42f4ea8fc1c13ee33c0399227fb7ec",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a58c1e0e-e58c-49b2-b385-1628b1384630/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=58c60f31942cab5250292965fcba346d93d3570ea513c41fd26930774bbb204a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f813ebbc-a9d5-4009-a88e-df7808d2a2af/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=587af79445724d339d24af17abae4c7ec64dde94b6171c9049552e3416bf99ca",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88c51c10-06b9-4d81-ac8b-ea49d23d9db2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=555d6961abfa6a2a033c395311bfcb20e33411f568c31df3700e190c5445fb05"
+    ],
+    "imageAlts": {
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-mockup-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-military-green-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-rs-sport-grey-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-sand-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-white-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee."
+    },
+    "tags": [
+      "snorlax",
+      "pokemon",
+      "anime",
+      "retro",
+      "90s",
+      "funny",
+      "t-shirt",
+      "gift",
+      "apparel",
+      "fanart",
+      "gildan",
+      "cool",
+      "art"
+    ],
+    "featured": false,
+    "gelatoProductId": "53917dcc-3522-46cb-ad20-8dfd0f02c687",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "snorlax t-shirt",
+      "pokemon shirt",
+      "anime apparel",
+      "retro shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "snorlax back t-shirt",
+      "cool anime fan art gift",
+      "retro 90s style t-shirt",
+      "funny pokemon lover gift",
+      "gildan snorlax tee",
+      "premium pokemon apparel",
+      "anime art print shirt",
+      "90s style fan merch",
+      "snorlax themed clothing",
+      "gildan t-shirt for fans"
+    ],
+    "hashtags": "#snorlax #pokemon #anime #retro #90s #funny #tshirt #gift #apparel #fanart #gildan #cool #art #vintage #merch #nerdwear #geekfashion #pokemongifts #animefan #artistic #creative #stylish #lifegoals #snooze #sleepy #chillvibes #fashion #wardrobe #collectibles #nostalgia #popculture",
+    "instagramCaption": "Lazy days call for a Snorlax tee that vibes just right. Whether you're catching Zs or Pokémon, this shirt has you covered. Grab yours now! #snorlax #anime #retro",
+    "pinterestCaption": "Show off your love for Snorlax with this retro 90s style t-shirt. Featuring a fun design, it’s the perfect gift for any Pokémon enthusiast. Explore unique fan apparel!",
+    "seoTitle": "Snorlax Pokémon T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "2508509c-547d-48a4-a440-7d91691fdb00",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "09502d2b-e142-4f89-91c3-436cabb2ffdd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6646154f-1f26-4f0c-933b-62f0037baccc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "34f82f28-7c91-48bc-bf95-9fe9f155f9e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4f4041d5-46f3-49d7-9750-36fbba13634c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "80cb490f-6966-4810-af05-2dc9fac2ba06",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "716b6f19-3c06-49e6-8d8f-ffd3a4dec670",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "740fa402-efb6-4346-85d9-447ddbfdc866",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "02cae803-3138-4bb4-ba83-6ed047288798",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "787740d2-2c6f-43e5-8ad1-2685dfd001e5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0b7d9a6f-1d5a-485d-8c6e-22c046b57b5d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "214ec64a-70be-4075-924c-fda7841c7f85",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "64473ab5-ff39-496e-bebe-aedd16e36e06",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "002e3253-65ff-4e58-9832-da087c5f2c11",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5ad69999-8d9c-4647-87ee-591a59b4f335",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f563f233-759c-4066-a406-c51b4d459229",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "adaaff78-824d-4552-8899-70139f95edfd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5ac61a68-012a-475a-bdd2-963bf76785e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "eb56ffcb-c240-4a92-b8fe-d0d38dc8056c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c020d286-031d-4235-a911-d57139c84501",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-sand-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-white-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-military-green-01.jpg"
+      }
+    ],
+    "etsyTitle": "Snorlax Pokemon T-Shirt, Retro 90s Style Anime Tee, Funny Gift for Pokemon Lovers",
+    "etsyTags": [
+      "snorlax shirt",
+      "anime fan art",
+      "gifts for him",
+      "pokemon lover gift",
+      "otaku apparel",
+      "90s nostalgia",
+      "unisex t-shirt",
+      "anime gifts",
+      "fan art clothing",
+      "casual wear",
+      "funny graphic tee",
+      "pokemon merchandise",
+      "retro graphic tee"
+    ],
+    "etsyDescription": "Snorlax Pokémon T-Shirt is the ultimate gift for anime fans and Pokémon lovers alike, featuring a fun retro design perfect for any casual outing or laid-back day. This eye-catching tee showcases the iconic Snorlax in a vibrant print that captures the essence of 90s anime culture.\n\nCrafted from 100% cotton, this shirt offers comfort and breathability, while the direct-to-garment (DTG) premium print ensures high-quality, long-lasting colors. Available in unisex fit sizes S-3XL, it's perfect for anyone looking to express their love for Pokémon in style.\n\nLooking for a unique gift? This Snorlax t-shirt is an excellent choice for birthdays, holidays, or just because. It's sure to bring a smile to any Pokémon enthusiast's face.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Snorlax Pokémon t-shirt on model with vibrant colors and retro design.",
+      "Back view of Snorlax Pokémon t-shirt on model, showcasing the unique design and comfortable fit.",
+      "Close-up detail of Snorlax design printed on the t-shirt, highlighting color quality and intricate artwork.",
+      "Flat lay of Snorlax Pokémon t-shirt showing the front design against a neutral background.",
+      "Lifestyle shot of a person wearing Snorlax Pokémon t-shirt in a casual outdoor setting.",
+      "Size guide shot displaying Snorlax t-shirt dimensions and fabric details for customer reference.",
+      "Gift presentation of Snorlax Pokémon t-shirt in a stylish packaging, ready for gifting."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c01a11c5-0dde-4988-9930-0a7440709494/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c35f3f21c81bdbf3ad8b4aaaf37d79708375c1014c5e5477bafe399b5b269de3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/316184be-a30e-46b7-822d-ee946691e733/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7caab69e288ee3bd6b4d2dc75041217b4c42f4ea8fc1c13ee33c0399227fb7ec",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a58c1e0e-e58c-49b2-b385-1628b1384630/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=58c60f31942cab5250292965fcba346d93d3570ea513c41fd26930774bbb204a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f813ebbc-a9d5-4009-a88e-df7808d2a2af/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=587af79445724d339d24af17abae4c7ec64dde94b6171c9049552e3416bf99ca",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b2354d5-5eb3-4488-839f-a88fc85a71ac/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=955c3096649e4e4551dd958eef32c0fe6047bb44e31e54f82f47a3a91ebf1e14",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88c51c10-06b9-4d81-ac8b-ea49d23d9db2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=555d6961abfa6a2a033c395311bfcb20e33411f568c31df3700e190c5445fb05"
+    ],
+    "createdAt": "2026-06-26T13:25:03.416Z",
+    "updatedAt": "2026-06-26T13:25:03.416Z"
   }
 ]
