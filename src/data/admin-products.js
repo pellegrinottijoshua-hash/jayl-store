@@ -9978,5 +9978,336 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-27T13:31:16.749Z",
     "updatedAt": "2026-06-27T13:31:16.749Z"
+  },
+  {
+    "id": "cool-drowsee-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Drowsee back  T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Drowsee, the master of dreams and sleep, brings a lighthearted twist to your wardrobe with this retro 90s style T-shirt. The whimsical design showcases Drowsee's unique personality, perfect for those who appreciate humor and nostalgia. Made from high-quality Gildan fabric and printed using direct-to-garment (DTG) technology, this tee ensures comfort and durability. Surprise your fellow Pokémon enthusiasts with a gift that captures the essence of Drowsee's sleepy charm.",
+    "altText": "Charming Drowsee lounging with a sleepy expression in retro 90s anime style on a premium JAYL tee with small print.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      }
+    ],
+    "image": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_134918_c642db58-d7d7-487f-82f5-eabd76c7f7de.png",
+    "heroImage": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_141308_14f8cae7-0231-48c8-bf1a-fbdeed17d579.png",
+    "detailImage": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135854_54f5f780-5ddd-4293-a58d-cdfea1c86695.png",
+    "images": [
+      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135836_1c1a6c7d-7602-4fd4-8238-1da5a96b097e.png",
+      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135307_82146959-9e93-4c4c-8763-98e117a21a56.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a0148644-8ba1-46b4-975b-3835a7f73a78/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4155bc2054a77e65bf2884c1f129d00e7e1f63a9a764732fc5204d0c8d520cd2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cfe2c449-5a05-4093-a983-37e38bf9a21f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1198b445aa4773ea9ba221f7b7e126c288aa506449ebaf8ac53ee3edcaef5fc5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9bb0f4ef-4317-4b3a-a2a1-51952db076c8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fdb17f259cc556263b59b4389e5befe788d89f46e6b365de85548b621bff324f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c36671ea-dc6e-4aa4-b7aa-b5f1a1e9d3b9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d847ffc5bb4a211403b19a7103a4a9f456d9d1476c9fee3441aceebccea23543",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3682315-ca68-433a-9cb8-12e9f90f9f1f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52d2a0a9bfa536c89187ccec429a1bcafda95aa5e39286f9241ced3bc8cf1294"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_134918_c642db58-d7d7-487f-82f5-eabd76c7f7de.png": "Drowsee Pokémon back T-shirt displays vibrant contemporary art with a humorous pose against a muted background.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135854_54f5f780-5ddd-4293-a58d-cdfea1c86695.png": "Close-up of the T-shirt's fabric showcasing the detailed print of Drowsee in a playful retro style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135836_1c1a6c7d-7602-4fd4-8238-1da5a96b097e.png": "Side view emphasizing the cool 90s style of the Drowsee design on the T-shirt against a neutral backdrop.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135307_82146959-9e93-4c4c-8763-98e117a21a56.png": "Back view of the T-shirt with a large, amusing depiction of Drowsee in bright, eye-catching colors.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a0148644-8ba1-46b4-975b-3835a7f73a78/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4155bc2054a77e65bf2884c1f129d00e7e1f63a9a764732fc5204d0c8d520cd2": "Bright red T-shirt featuring Drowsee art captured from an angle that highlights the playful design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cfe2c449-5a05-4093-a983-37e38bf9a21f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1198b445aa4773ea9ba221f7b7e126c288aa506449ebaf8ac53ee3edcaef5fc5": "The red T-shirt showcases an artistic Drowsee print from a straight-on perspective, exuding retro charm.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9bb0f4ef-4317-4b3a-a2a1-51952db076c8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fdb17f259cc556263b59b4389e5befe788d89f46e6b365de85548b621bff324f": "Red T-shirt close-up focusing on the vibrant Drowsee design, revealing the contemporary art style's texture.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c36671ea-dc6e-4aa4-b7aa-b5f1a1e9d3b9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d847ffc5bb4a211403b19a7103a4a9f456d9d1476c9fee3441aceebccea23543": "Looking closely at the red T-shirt, the unique Drowsee art reveals intricate details and vibrant colors.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3682315-ca68-433a-9cb8-12e9f90f9f1f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52d2a0a9bfa536c89187ccec429a1bcafda95aa5e39286f9241ced3bc8cf1294": "Another angle of the red T-shirt showcases the Drowsee print, emphasizing its playful, retro-inspired style."
+    },
+    "tags": [
+      "drowsee",
+      "pokemon",
+      "anime",
+      "retro",
+      "90s style",
+      "fan art",
+      "gildan tee",
+      "funny shirt",
+      "gift",
+      "apparel",
+      "cool t-shirt",
+      "artwear",
+      "anime gift"
+    ],
+    "featured": false,
+    "gelatoProductId": "c99d196a-5660-41b0-af0c-0b9465113443",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "drowsee shirt",
+      "pokemon tee",
+      "anime apparel",
+      "retro t-shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "funny drowsee pokemon shirt",
+      "retro 90s anime t-shirt",
+      "gildan premium pokemon tee",
+      "unique anime fan gift",
+      "drowsee lover apparel",
+      "cool pokemon character shirt",
+      "sleepy drowsee fan art",
+      "humorous pokemon gift",
+      "soft retro anime t-shirt",
+      "gift for pokemon fans"
+    ],
+    "hashtags": "#drowsee #pokemon #anime #retro #90sstyle #fanart #gildan #funnyshirt #gift #apparel #cooltee #artwear #animegift #pokemontshirt #drowseedesign #90sanime #delicioussleep #geekwear #nerdyclothing #dreamcatcher #sleepyhead #artsy #animefashion #pocketart #giftsforher #giftsformom #giftsforhim #collectibles #quirkyfashion #vintagevibes",
+    "instagramCaption": "Catch some Z's with our Drowsee Pokémon T-shirt! Perfect for those who love a little nostalgia and humor. Grab yours now and join the dream team! #drowsee #pokemon #anime",
+    "pinterestCaption": "Express your love for Pokémon with this charming Drowsee T-shirt, featuring a retro 90s design that captures the character's sleepy essence. Made from Gildan's premium fabric, it's an ideal gift for fans looking to combine comfort and style.",
+    "seoTitle": "Drowsee Pokémon T-Shirt | Funny Anime Lover Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "fca61a50-cfd7-4fac-a1f6-d1ce16c57210",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a3d1667c-3e02-4702-90d2-c7d8ca0e7f9b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "21520697-a6ae-4f69-91f3-1dc480e9b4e2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6f63c5ca-880d-4405-b8f4-29df1e6b9965",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45b0927f-b7ee-4e51-8e5b-8d6cae32db72",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c2566ba2-7bc5-47af-b975-a09b388a4782",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7945a24e-3cad-44c7-808f-b4d05f9f901e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "93919340-96ce-47f2-9ceb-21ebff81b387",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "649f6321-76d8-4485-91c8-843410cf1731",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "94cac6ce-5df5-452f-9ad2-28248e076131",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0f296c7d-27dd-438f-8d1e-4362394b3d5c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a625816d-7051-4376-a2cd-58a467e3f516",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "884571e9-ea76-442b-b2ea-3aa1256aa383",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "39370bf6-8435-479c-ae84-8d81b4901c33",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "86ec082b-7077-4bcb-b12a-70665ff4c008",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e82675a5-7ccf-4c94-ac5d-f4a413edc456",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "23425a71-c6e9-41b6-8ff5-22f3bf0fd788",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "940d0698-a2fb-48e1-bda4-5f3b2a53742e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bb1a6056-ad30-4d4a-b38c-28faf2c6e014",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "640ba068-ce15-438b-95a9-b302c593a49d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-natural-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-white-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-daisy-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-purple-01.jpg"
+      }
+    ],
+    "etsyTitle": "Drowsee Pokemon T-Shirt, Retro 90s Style Anime Fan Art, Funny Gift for Pokemon Lovers",
+    "etsyTags": [
+      "drowsee t shirt",
+      "anime fan art",
+      "gift for him",
+      "pokemon lover gift",
+      "otaku merchandise",
+      "90s aesthetic",
+      "gildan 64000",
+      "funny pokemon tee",
+      "anime gift idea",
+      "retro graphic tee",
+      "unisex t shirt",
+      "cool pokemon shirt",
+      "geek fashion"
+    ],
+    "etsyDescription": "Show off your love for Drowsee with this vibrant Pokémon T-shirt, perfect for fans of all ages. This retro 90s style tee is a unique gift for any Pokémon lover, featuring cool anime fan art that stands out in any crowd.\n\nThe design showcases Drowsee in a playful pose, bringing nostalgia and humor together. Made from 100% cotton, this T-shirt offers a soft, comfortable fit for everyday wear. With direct-to-garment premium printing, the vivid colors and intricate details of the artwork are sure to impress.\n\nAvailable in unisex sizes S-3XL, this shirt is perfect for anyone who wants to express their fandom in style. It's an ideal gift for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view of Drowsee Pokemon T-shirt on a model showcasing vibrant colors and anime design.",
+      "Back view of Drowsee Pokemon T-shirt on a model, highlighting the unique retro 90s style.",
+      "Close-up detail of Drowsee design printed on the T-shirt, emphasizing quality and colors.",
+      "Flat lay of Drowsee Pokemon T-shirt displaying the front design on a wooden background.",
+      "Lifestyle shot of a person wearing Drowsee Pokemon T-shirt in a casual outdoor setting.",
+      "Size guide displayed next to the Drowsee Pokemon T-shirt, showing available sizes S-3XL.",
+      "Gift packaging of Drowsee Pokemon T-shirt, beautifully wrapped with a card, ready for gifting."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a0148644-8ba1-46b4-975b-3835a7f73a78/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4155bc2054a77e65bf2884c1f129d00e7e1f63a9a764732fc5204d0c8d520cd2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cfe2c449-5a05-4093-a983-37e38bf9a21f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1198b445aa4773ea9ba221f7b7e126c288aa506449ebaf8ac53ee3edcaef5fc5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/81ee8831-1618-45a1-8d9c-f05477c34c6b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=772269d32672e13a489e4592f8e7cb04bf0f8e68d13aaed42ecc889103e3d5df",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9bb0f4ef-4317-4b3a-a2a1-51952db076c8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fdb17f259cc556263b59b4389e5befe788d89f46e6b365de85548b621bff324f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c36671ea-dc6e-4aa4-b7aa-b5f1a1e9d3b9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d847ffc5bb4a211403b19a7103a4a9f456d9d1476c9fee3441aceebccea23543",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3682315-ca68-433a-9cb8-12e9f90f9f1f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52d2a0a9bfa536c89187ccec429a1bcafda95aa5e39286f9241ced3bc8cf1294"
+    ],
+    "createdAt": "2026-06-27T14:19:42.734Z",
+    "updatedAt": "2026-06-27T14:19:42.734Z"
   }
 ]
