@@ -9317,5 +9317,337 @@ export const adminProducts = [
     "createdAt": "2026-06-27T13:00:11.484Z",
     "updatedAt": "2026-06-27T13:03:25.253Z",
     "relatedProducts": []
+  },
+  {
+    "id": "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "kangaskhan Pokémon back T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Kangaskhan embodies the fierce protector spirit and untamed energy of parenthood, making this T-shirt a tribute to those who nurture fiercely. Made from a Gildan premium tee, it showcases high-quality direct-to-garment prints that capture this iconic character's boldness and charm in vibrant detail. Whether you’re battling in your local Pokémon League or lounging with friends, this retro 90s style shirt is a unique gift for any Pokémon lover. Perfect for expressing your love for Kangaskhan's strong maternal instinct and adventure-driven persona.",
+    "altText": "Kangaskhan poised in a dynamic stance with a determined expression in retro 90s anime art on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      }
+    ],
+    "image": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_122957_baf157f7-40d7-4b20-a7be-2c6209ef311f.png",
+    "heroImage": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_123012_3dc13ed8-ee97-4278-be2a-798f1db9799b.png",
+    "detailImage": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124522_3c6720d5-b94d-4c28-866d-4abbc6a8acfb.png",
+    "images": [
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124544_d0dd4376-f19e-4956-bc14-97b912f6a029.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fffee66d-faa5-4aeb-8daf-c4fcd213699b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f3e241180f168a35687f284ea6b388ee94207d402f1528782db3ac7488409ead",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/379cfa39-e11f-49c9-a713-3248db3c09e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bbdb389c6c1c4ae70c34353918a87a15b1d955cbefdb9999dd582056e55b7713",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/adca3cde-eb66-4650-b9d5-8e210b4b5ae2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb6daa41eae8ae1ab7ed5a762e7a8545d00d9b61ed4049a8d3630a20088c8749",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/45b38f43-f9ef-48fb-8b69-380adf1ec7a7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3a8a48099df64eb637adcecf1e6f0ecdf0129da1659bc3bd55764be64598ecd8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4c1b0bb-284d-47d5-9f55-157b3c90152f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=76be87cc19db879cd713435e2953dd1c4494035d962db9d376c21d085b269102"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_122957_baf157f7-40d7-4b20-a7be-2c6209ef311f.png": "A vibrant Kangaskhan graphic dominates the back of this contemporary-style T-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_123012_3dc13ed8-ee97-4278-be2a-798f1db9799b.png": "Captured from a front angle, this T-shirt showcases its unique Kangaskhan artwork.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124522_3c6720d5-b94d-4c28-866d-4abbc6a8acfb.png": "A close-up capture reveals the intricate details of the Kangaskhan print on the T-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png": "This T-shirt angles slightly to showcase its bold Kangaskhan design in a playful style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124544_d0dd4376-f19e-4956-bc14-97b912f6a029.png": "A dynamic view highlights the T-shirt's vibrant Kangaskhan art against its fabric backdrop.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fffee66d-faa5-4aeb-8daf-c4fcd213699b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f3e241180f168a35687f284ea6b388ee94207d402f1528782db3ac7488409ead": "A bold red version of the T-shirt showcases the playful Kangaskhan art, emphasizing its retro charm.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/379cfa39-e11f-49c9-a713-3248db3c09e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bbdb389c6c1c4ae70c34353918a87a15b1d955cbefdb9999dd582056e55b7713": "Another striking red version emphasizes the fun and quirky elements of the Kangaskhan design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/adca3cde-eb66-4650-b9d5-8e210b4b5ae2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb6daa41eae8ae1ab7ed5a762e7a8545d00d9b61ed4049a8d3630a20088c8749": "A vibrant red color highlights the whimsical nature of the Kangaskhan art on this T-shirt.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/45b38f43-f9ef-48fb-8b69-380adf1ec7a7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3a8a48099df64eb637adcecf1e6f0ecdf0129da1659bc3bd55764be64598ecd8": "A close look at the T-shirt’s fabric reveals the quality and texture accompanying the Kangaskhan art.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4c1b0bb-284d-47d5-9f55-157b3c90152f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=76be87cc19db879cd713435e2953dd1c4494035d962db9d376c21d085b269102": "A vibrant red backdrop enhances the playful Kangaskhan design, making it a perfect gift for fans."
+    },
+    "tags": [
+      "kangaskhan",
+      "pokemon shirt",
+      "anime apparel",
+      "90s style",
+      "fan art",
+      "gildan t-shirt",
+      "funny gift",
+      "retro fashion",
+      "pokemon gift",
+      "anime fan",
+      "graphic tee",
+      "pokémon merch",
+      "retro clothing"
+    ],
+    "featured": false,
+    "gelatoProductId": "ad4eb0ab-317d-4aa0-b5d5-93dfbfc1f71f",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "kangaskhan shirt",
+      "pokemon t-shirt",
+      "anime apparel",
+      "retro t-shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "funny kangaskhan shirt",
+      "retro pokemon t-shirt",
+      "gildan anime apparel",
+      "90s style fan art",
+      "kangaskhan gift for him",
+      "pokemon lover gift ideas",
+      "anime fan t-shirt",
+      "unique pokemon merchandise",
+      "cool retro t-shirt",
+      "graphic tee gifts for fans"
+    ],
+    "hashtags": "#kangaskhan #pokemon #anime #fanart #90s #retro #gildan #tshirt #graphictee #funnygift #pokemongift #animeshirt #retrostyle #fanartshirt #coolapparel #pokemonmerch #animefan #giftideas #animefashion #vintage #nerdstuff #geekwear #pokemonlover #teeshirt #animeaddict #cartoonstyle #artprints #collectibles #fashion #trendy",
+    "instagramCaption": "Unleash the mom energy with this Kangaskhan tee that packs a punch! For those who dare to protect and battle with style. #kangaskhan #anime #funnygift",
+    "pinterestCaption": "Show your love for Kangaskhan with our retro 90s style T-shirt. Made from high-quality Gildan fabric, this shirt is perfect for any Pokémon enthusiast. Get yours now!",
+    "seoTitle": "Kangaskhan Pokemon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "variants": [
+      {
+        "uid": "a0a2096e-5c8e-4d29-85b0-5bbe282008a7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f7d6efe4-429b-42b3-bafb-c8a0ddf3bb5e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0273106d-17dc-4d0a-b597-2d2ef16570d7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9d67f259-16ec-4a15-9461-ed2f60260158",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5bad9c0f-5216-4e93-9201-4c1f0ce5ec18",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f403ec00-e654-4275-b153-7649ddbd3fed",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "057b0406-04a3-48df-b783-cfdc07cbf213",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7420cbb4-24ea-4274-b2d0-d4d867decd44",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5b34f888-2638-44cc-8803-b7fb740ad858",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d2029869-288b-4fca-8530-229cbb079c76",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c1a515de-6965-4408-9f75-0878c13ec958",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "641906ce-d230-4465-ad57-ec8626979e86",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "16b405aa-344f-4a64-98f6-2ed400cfada7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e59e2f3e-d1ee-4e22-87c5-37933eefe20d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "efe5d0ec-12a1-4fd5-9031-2ad8320ae971",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a626404a-b023-489f-894a-f71bfc8dc4fc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "074c2a13-80c5-4cc8-a845-a53439f515a4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ece0e227-d89a-4676-bd60-37096d19eee1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "01214f46-cad7-4dab-9940-ee5162929733",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e30a1616-2340-4054-82ff-5cc901109ece",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-natural-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-white-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-sand-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
+      }
+    ],
+    "etsyTitle": "Kangaskhan Pokemon T-Shirt, Cool Anime Fan Art Gift, Retro 90s Style Tee for Pokémon Lovers",
+    "etsyTags": [
+      "kangaskhan shirt",
+      "pokemon fan art",
+      "anime gift idea",
+      "funny gift for him",
+      "otaku apparel",
+      "90s retro style",
+      "unisex t-shirt",
+      "gildan 64000 tee",
+      "pokemon lover gift",
+      "geek fashion",
+      "anime merchandise",
+      "unique gift for her",
+      "pop culture shirt"
+    ],
+    "etsyDescription": "Show off your love for Pokémon with this Kangaskhan T-Shirt, the perfect gift for anime fans and collectors alike. Featuring vibrant artwork and a retro 90s style, this tee is a standout piece for any casual outfit.\n\nThe design showcases the beloved Kangaskhan in a playful and eye-catching way, making it an ideal choice for fans who appreciate unique and nostalgic art. Made from 100% cotton, this shirt offers ultimate comfort and breathability.\n\nOur unisex fit is available in sizes S-3XL, ensuring a perfect fit for everyone. This t-shirt is not just a stylish addition to your wardrobe, but also a great gift for birthdays, holidays, or just because.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of a model wearing the Kangaskhan Pokemon T-Shirt showcasing its vibrant design.",
+      "Back view of a model in the Kangaskhan T-Shirt highlighting the unique back graphic.",
+      "Close-up detail of the Kangaskhan design printed on the T-Shirt, showcasing quality and vibrancy.",
+      "Flat lay of the Kangaskhan Pokemon T-Shirt on a surface, displaying the front design clearly.",
+      "Lifestyle shot of a person casually wearing the Kangaskhan T-Shirt in an outdoor setting.",
+      "Size guide shot showing the Kangaskhan T-Shirt laid out with measurement details for sizing.",
+      "Gift packaging context featuring the Kangaskhan T-Shirt wrapped beautifully for presentation."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fffee66d-faa5-4aeb-8daf-c4fcd213699b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f3e241180f168a35687f284ea6b388ee94207d402f1528782db3ac7488409ead",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/604647e4-c85c-49ab-a4c4-e57c569e2275/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4549efc3bd933df0322b640726e85955bdec2bc9aa9711991d3d677e0ce0e8fe",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/379cfa39-e11f-49c9-a713-3248db3c09e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bbdb389c6c1c4ae70c34353918a87a15b1d955cbefdb9999dd582056e55b7713",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/adca3cde-eb66-4650-b9d5-8e210b4b5ae2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb6daa41eae8ae1ab7ed5a762e7a8545d00d9b61ed4049a8d3630a20088c8749",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/45b38f43-f9ef-48fb-8b69-380adf1ec7a7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3a8a48099df64eb637adcecf1e6f0ecdf0129da1659bc3bd55764be64598ecd8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4c1b0bb-284d-47d5-9f55-157b3c90152f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=76be87cc19db879cd713435e2953dd1c4494035d962db9d376c21d085b269102"
+    ],
+    "createdAt": "2026-06-27T13:23:00.895Z",
+    "updatedAt": "2026-06-27T13:23:00.895Z"
   }
 ]
