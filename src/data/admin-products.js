@@ -9015,7 +9015,7 @@ export const adminProducts = [
     "id": "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Blastoise Pokémon back T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "name": "Cool Blastoise back T-Shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -9315,6 +9315,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4f1cee6f-f658-41fa-87b2-87d45c73ac40/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T122851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c494621889ac14119a0230f843c0eeccd71f791e71a37397832b9d062f8eaf3"
     ],
     "createdAt": "2026-06-27T13:00:11.484Z",
-    "updatedAt": "2026-06-27T13:00:11.484Z"
+    "updatedAt": "2026-06-27T13:03:14.995Z",
+    "relatedProducts": []
   }
 ]
