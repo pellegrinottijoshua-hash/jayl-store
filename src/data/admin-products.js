@@ -9649,5 +9649,333 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-27T13:23:00.895Z",
     "updatedAt": "2026-06-27T13:23:00.895Z"
+  },
+  {
+    "id": "cool-machop-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Machop back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Machop embodies the hard-working spirit of the Pokémon world, always striving to become stronger and prove its worth. This premium Gildan tee showcases a unique retro 90s anime-style print that captures Machop's determined expression, making it a standout piece for any collection. Crafted with high-quality DTG print technology, this shirt not only feels amazing but also boasts vibrant colors that won't fade. As a gift, it’s perfect for those who appreciate the grind and dedication Machop represents, ideal for birthdays or special occasions.",
+    "altText": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      }
+    ],
+    "image": "/images/cool-machop-back-t-shirt/hf_20260627_131535_78e2bcf5-6042-4e47-b1f0-208d91bc4057.png",
+    "heroImage": "/images/cool-machop-back-t-shirt/hf_20260627_131557_d047a67f-39b7-4864-b8e2-1e59ab897add.png",
+    "detailImage": "/images/cool-machop-back-t-shirt/hf_20260627_131610_c72b0182-fc89-4f04-a7a8-1de37e0eae77.png",
+    "images": [
+      "/images/cool-machop-back-t-shirt/hf_20260627_131622_52aef132-ee97-4a63-834f-a5aa803119d6.png",
+      "/images/cool-machop-back-t-shirt/hf_20260627_132102_34903f27-842e-419e-bb97-619f6dd97964.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/851b4a3a-6db5-44d2-8fdc-bfa49b05b233/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bc4ba4eaaac2782bcfaa3cd13e1df163a081dc59237a6774d60bcaba166d16a3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/61fbf686-4b79-445a-a97b-254fc9caea3c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c4285e000c7bb0a911b44540d221eec076cae88a79e4936ef5c7070d4e32220e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f19e3135-0929-4d9f-b0d8-4d5adba7e63f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d9b3608b9194b72c9997df7759a260b3c90780f126fbc29e79fbd757abf0ce77",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f776e3ba-42dc-48ae-9dc5-079fc1b30888/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f38cf6199986c2e11071c468aa8c2d7cf5ca2b350a6f7ea5f0fb70b8da1dd1fe",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/127b88c4-5de9-4348-b80f-b23b5b557ea1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe1beefa53765a92361f398d971f3682a2ceba8b18b7c02fec62ecedb51998b1"
+    ],
+    "imageAlts": {
+      "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-white-01.jpg": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-military-green-01.jpg": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-rs-sport-grey-01.jpg": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
+      "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-royal-01.jpg": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print."
+    },
+    "tags": [
+      "machop",
+      "pokemon",
+      "anime",
+      "retro",
+      "90s",
+      "gift",
+      "fanart",
+      "funny",
+      "apparel",
+      "t-shirt",
+      "art",
+      "cool",
+      "fun"
+    ],
+    "featured": false,
+    "gelatoProductId": "2cedae41-d75c-49d9-a212-03689f4d57d3",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "machop",
+      "pokemon t-shirt",
+      "anime shirt",
+      "retro art",
+      "90s apparel"
+    ],
+    "longTailKeywords": [
+      "machop pokemon t-shirt",
+      "retro 90s anime fan art",
+      "funny pokemon lover gift",
+      "cool anime merchandise",
+      "unique machop apparel",
+      "premium pokemon t-shirt",
+      "funny pokemon fan art",
+      "vintage style anime shirt",
+      "gift for pokemon fans",
+      "artistic machop clothing"
+    ],
+    "hashtags": "#machop #pokemon #anime #retro #90s #gift #fanart #funny #apparel #tshirt #art #cool #fun #animeart #pokedex #geekwear #nostalgia #retrostyle #animefan #pokemonfan #pokemontshirt #animefashion #artshirt #gifts #geekculture #collectibles #animecommunity #illustration #popculture #artlover #fanmerch",
+    "instagramCaption": "Channel your inner Machop with this retro tee that screams 'I’m here to work hard and flex harder.' Grab yours now and wear your passion boldly! #machop #pokemon #retro",
+    "pinterestCaption": "Get your hands on this Machop Pokémon t-shirt, a stylish nod to retro 90s anime culture. This premium piece combines comfort with unique artwork that every fan would love to wear. Check it out and elevate your wardrobe!",
+    "seoTitle": "Machop Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "9a39f025-19ad-431c-b1ec-3023c4b1f1a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "15939783-7d1d-451b-a448-94718d83ec0e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6af79b06-7a1e-4db4-b013-44e787fba496",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3ddd7c02-4dd3-4f0b-be9a-30f6b51d7ca0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "390f4066-c6a6-498e-ac56-fc73cfd7167f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "66910e45-9cb3-4610-8978-53b346ea211d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ac13ddde-81cc-4688-ad28-7468a94c4afc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "36b89df0-4670-4ff9-a2f0-08dd26ba4796",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2c1e4703-21b8-42dc-bc76-b1d3235299d0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9fc0b17b-48b6-4d44-b563-6d127ed0b88d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dece39cd-e606-4c1c-bab0-eeabe8f59788",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "014b4a02-43e0-4dc4-bcd6-b77c02a3c286",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c36d5081-1089-4261-bdf6-bc247222b7b9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6e3ccede-752a-4733-bb57-6553ea086260",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d7343ad2-9624-4b5b-b976-ae56215a5162",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "97b2ea60-30e8-4910-a221-6598f89066f0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0424d278-16d7-4e78-ae64-b22f98c93c16",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "787623ca-5c89-45b7-9092-badbd6ec09f6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "60fa4a80-fd8c-4a1b-a2bd-3e1358a82298",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4563795c-f8f8-434e-9321-a6c2157ef446",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg"
+      },
+      {
+        "id": "heather-royal",
+        "label": "Heather Royal",
+        "hex": "#888888",
+        "image": "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-royal-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-military-green-01.jpg"
+      }
+    ],
+    "etsyTitle": "Machop Pokemon T-Shirt, Cool Anime Fan Art Gift, Retro 90s Style Tee for Pokemon Lovers",
+    "etsyTags": [
+      "machop t-shirt",
+      "pokemon fan art",
+      "gift for gamers",
+      "anime lover gift",
+      "otaku clothing",
+      "90s retro style",
+      "unisex graphic tee",
+      "funny pokemon gift",
+      "anime merch",
+      "pokemon nostalgia",
+      "fan art apparel",
+      "geek chic fashion",
+      "casual wear"
+    ],
+    "etsyDescription": "Celebrate your love for Machop with this unique t-shirt, perfect for anime fans and Pokémon lovers alike. This retro 90s style tee is a fun gift idea that stands out with its vibrant design and quality. \n\nThe shirt features a stunning print of Machop that captures its playful spirit, making it a must-have for anyone who appreciates nostalgic Pokémon art. The design is a tribute to the iconic characters we all grew up with, blending humor and style effortlessly. \n\nMade from 100% cotton, this t-shirt offers a soft and comfortable fit, with direct-to-garment premium print technology ensuring durability and vibrant colors. Available in sizes S-3XL, it’s perfect for everyone. \n\nLooking for the perfect gift? This t-shirt makes a great birthday present or surprise for any Pokémon enthusiast in your life. \n\nMachine wash cold, tumble dry low. \n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view mockup of a model wearing the Machop Pokemon t-shirt showcasing vibrant colors and design.",
+      "Back view mockup of a model displaying the unique Machop print on the t-shirt.",
+      "Close-up detail shot of the Machop design on the t-shirt highlighting colors and print quality.",
+      "Flat lay of the Machop Pokemon t-shirt on a clean surface, emphasizing its graphic design and fabric texture.",
+      "Lifestyle shot of a person wearing the Machop t-shirt in a casual setting, showing off its fit and style.",
+      "Size guide shot of the Machop t-shirt laid out with measurements to help customers choose the right size.",
+      "Gift packaging context featuring the Machop t-shirt wrapped in a stylish box, perfect for giving."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/851b4a3a-6db5-44d2-8fdc-bfa49b05b233/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bc4ba4eaaac2782bcfaa3cd13e1df163a081dc59237a6774d60bcaba166d16a3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6c0b0fe1-8973-4d4c-bca8-ae52d180f6c1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=68c1f3dad4e6a4d74da320f653ed9555d102016eef6e6408174e034d5021d675",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/61fbf686-4b79-445a-a97b-254fc9caea3c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c4285e000c7bb0a911b44540d221eec076cae88a79e4936ef5c7070d4e32220e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f19e3135-0929-4d9f-b0d8-4d5adba7e63f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d9b3608b9194b72c9997df7759a260b3c90780f126fbc29e79fbd757abf0ce77",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f776e3ba-42dc-48ae-9dc5-079fc1b30888/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f38cf6199986c2e11071c468aa8c2d7cf5ca2b350a6f7ea5f0fb70b8da1dd1fe",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/127b88c4-5de9-4348-b80f-b23b5b557ea1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe1beefa53765a92361f398d971f3682a2ceba8b18b7c02fec62ecedb51998b1"
+    ],
+    "createdAt": "2026-06-27T13:31:16.749Z",
+    "updatedAt": "2026-06-27T13:31:16.749Z"
   }
 ]
