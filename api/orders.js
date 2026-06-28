@@ -109,9 +109,19 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     // gelatoVariantId is the full productUid (e.g. apparel_product_gca_t-shirt_..._gco_sand_...)
     // gelatoProductId is the fallback (either the same uid or a store product UUID)
     const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+    // Back-of-garment products print on Gelato's 'back' placeholder (centred, large
+    // on the back); everything else uses 'default' (front/chest). Back detection
+    // mirrors the storefront so the two never drift apart.
+    const onBack = /back/i.test(item.product.collection || '')
+    // A back product with no printFileUrl would otherwise send the MOCKUP photo as the
+    // print file → a garbage print. Refuse to fulfil something unsellable.
+    if (onBack && !item.product.printFileUrl) {
+      throw new Error(`Back product "${item.productId}" has no back print file (printFileUrl) — refusing to print the mockup image on the garment`)
+    }
     console.log('[create-order] item', item.productId,
       'color:', item.color, 'size:', item.size,
       '→ productUid:', productUid?.slice(0, 80),
+      '| placement:', onBack ? 'back' : 'default',
       '| printFileUrl:', item.product.printFileUrl ? 'set' : 'MISSING',
       '| neckLabelUrl:', item.product.neckLabelUrl ? 'set' : 'none')
     return {
@@ -119,7 +129,7 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
       productUid,
       quantity:        item.quantity,
       files: [
-        { type: 'default', url: item.product.printFileUrl || item.product.image },
+        { type: onBack ? 'back' : 'default', url: item.product.printFileUrl || item.product.image },
         ...(item.product.neckLabelUrl
           ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
           : []),

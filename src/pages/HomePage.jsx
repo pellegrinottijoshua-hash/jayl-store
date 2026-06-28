@@ -20,11 +20,23 @@ const featuredObject2 = objectsProducts.find(p => p.featured === 2)
   ?? objectsProducts.find(p => p.featured === true && p.id !== featuredObject?.id)
   ?? objectsProducts[1] ?? objectsProducts[0] ?? null
 
-// Carousel collection — set via admin "🎠 Carosello" toggle on a collection
-const carouselColl    = adminCollections.find(c => c.carousel)
-const carouselProducts = carouselColl
-  ? objectsProducts.filter(p => p.collection?.toLowerCase() === carouselColl.name?.toLowerCase())
-  : objectsProducts
+// Two separate carousels — "back" line first (higher impact), then "front".
+// Matched by a robust "back" test on the product's collection string so it is
+// immune to the accent/casing drift between product data ("cool pokemon back")
+// and the admin collection names ("cool Pokémon (back)").
+const isBack          = p => /back/i.test(p.collection || '')
+const backProducts    = objectsProducts.filter(isBack)
+const frontProducts   = objectsProducts.filter(p => !isBack(p))
+const backColl        = adminCollections.find(c => /back/i.test(`${c.name || ''} ${c.id || ''}`))
+const frontColl       = adminCollections.find(c => c !== backColl && !/back/i.test(`${c.name || ''} ${c.id || ''}`))
+
+// "View all" must route to the slug CollectionPage actually matches on, which it
+// derives from each product's own `collection` string (not the admin collection id —
+// the two drift, e.g. product "cool pokemon back" → "cool-pokemon-back" vs id
+// "cool-pok-mon-back"). Derive the link from the products so it never 404s/empties.
+const collectionSlug  = s => (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const backViewAll     = backProducts[0]  ? `/collection/${collectionSlug(backProducts[0].collection)}`  : '/objects'
+const frontViewAll    = frontProducts[0] ? `/collection/${collectionSlug(frontProducts[0].collection)}` : '/objects'
 
 // Sort: products with createdAt first (newest → oldest), then the rest in original order
 const newInProducts = [...objectsProducts]
@@ -68,6 +80,124 @@ function FallingS() {
   )
 }
 
+// Reusable auto-scrolling collection carousel — each instance owns its own ref,
+// drag state and rAF loop, so multiple carousels on one page run independently.
+function CollectionCarousel({ title, viewAllTo, products: items, imagePick }) {
+  const ref  = useRef(null)
+  const drag = useRef({ active: false, hovered: false, startX: 0, startScroll: 0, moved: false })
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const SPEED = 36 // px / second
+    let last = null
+    let raf
+
+    function tick(now) {
+      const d = drag.current
+      if (!d.active && !d.hovered) {
+        const dt = last !== null ? now - last : 0
+        el.scrollLeft += (SPEED / 1000) * dt
+        // Seamless infinite reset — content is duplicated so half = one full set
+        if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft -= el.scrollWidth / 2
+      }
+      last = now
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  if (!items.length) return null
+
+  const onEnter = () => { drag.current.hovered = true }
+  const onLeave = () => {
+    drag.current.hovered = false
+    drag.current.active  = false
+    if (ref.current) ref.current.style.cursor = 'grab'
+  }
+  const onDown = (e) => {
+    if (!ref.current) return
+    drag.current = { active: true, hovered: true, startX: e.clientX, startScroll: ref.current.scrollLeft, moved: false }
+    ref.current.style.cursor = 'grabbing'
+    e.preventDefault()
+  }
+  const onMove = (e) => {
+    const d = drag.current
+    if (!d.active || !ref.current) return
+    const dx = e.clientX - d.startX
+    if (Math.abs(dx) > 3) d.moved = true
+    ref.current.scrollLeft = d.startScroll - dx
+  }
+  const onUp = () => {
+    drag.current.active = false
+    if (ref.current) ref.current.style.cursor = 'grab'
+  }
+
+  return (
+    <section className="h-screen w-screen bg-off-black relative overflow-hidden">
+      <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
+        <p className="text-2xs font-sans tracking-label-xl uppercase text-text-muted">{title}</p>
+        <div className="flex-1" />
+        <Link
+          to={viewAllTo}
+          className="inline-flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-text-muted hover:text-cream transition-colors"
+        >
+          View all <ArrowRight size={10} />
+        </Link>
+      </div>
+
+      {/* Scrollable track — rAF auto-scroll, mouse drag, native touch */}
+      <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
+        <div
+          ref={ref}
+          className="flex gap-5 overflow-x-scroll will-change-transform select-none"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch',
+            cursor: 'grab',
+            paddingLeft: '1.5rem',
+            paddingRight: '1.5rem',
+          }}
+          onMouseEnter={onEnter}
+          onMouseLeave={onLeave}
+          onMouseDown={onDown}
+          onMouseMove={onMove}
+          onMouseUp={onUp}
+        >
+          {/* Render the list twice for seamless infinite loop */}
+          {[...items, ...items].map((product, idx) => (
+            <Link
+              key={`${product.id}-${idx}`}
+              to={`/product/${product.id}`}
+              className="flex-shrink-0 w-48 sm:w-60 group"
+              draggable={false}
+              onClick={e => {
+                // block navigation if user was dragging
+                if (drag.current.moved) e.preventDefault()
+              }}
+            >
+              <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3 pointer-events-none">
+                <img
+                  src={imagePick.get(product.id) ?? product.image}
+                  alt={product.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  draggable={false}
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              </div>
+              <h3 className="font-display text-sm text-cream leading-tight truncate pointer-events-none">{product.name}</h3>
+              <p className="text-xs text-text-muted mt-0.5 pointer-events-none">from {formatPrice(product.price)}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function HomePage() {
   const [section, setSection] = useState(0)
   const { setPageTheme, setActiveSection } = useThemeStore()
@@ -97,55 +227,7 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
-  // ── Carousel: rAF auto-scroll + mouse drag + native touch ─────────────────
-  const carouselRef  = useRef(null)
-  const carouselDrag = useRef({ active: false, hovered: false, startX: 0, startScroll: 0, moved: false })
-
-  useEffect(() => {
-    const el = carouselRef.current
-    if (!el) return
-    const SPEED = 36 // px / second
-    let last = null
-    let raf
-
-    function tick(now) {
-      const d = carouselDrag.current
-      if (!d.active && !d.hovered) {
-        const dt = last !== null ? now - last : 0
-        el.scrollLeft += (SPEED / 1000) * dt
-        // Seamless infinite reset — content is duplicated so half = one full set
-        if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft -= el.scrollWidth / 2
-      }
-      last = now
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [])
-
-  function onCarouselMouseEnter() { carouselDrag.current.hovered = true }
-  function onCarouselMouseLeave() {
-    carouselDrag.current.hovered = false
-    carouselDrag.current.active  = false
-    if (carouselRef.current) carouselRef.current.style.cursor = 'grab'
-  }
-  function onCarouselMouseDown(e) {
-    if (!carouselRef.current) return
-    carouselDrag.current = { active: true, hovered: true, startX: e.clientX, startScroll: carouselRef.current.scrollLeft, moved: false }
-    carouselRef.current.style.cursor = 'grabbing'
-    e.preventDefault()
-  }
-  function onCarouselMouseMove(e) {
-    const d = carouselDrag.current
-    if (!d.active || !carouselRef.current) return
-    const dx = e.clientX - d.startX
-    if (Math.abs(dx) > 3) d.moved = true
-    carouselRef.current.scrollLeft = d.startScroll - dx
-  }
-  function onCarouselMouseUp() {
-    carouselDrag.current.active = false
-    if (carouselRef.current) carouselRef.current.style.cursor = 'grab'
-  }
+  // Carousel auto-scroll/drag now lives in the <CollectionCarousel> component.
 
   return (
     <div className="w-full">
@@ -333,69 +415,19 @@ export default function HomePage() {
       </section>}
       {/* ════ END SECTION 5 hidden ══════════════════════════════════════ */}
 
-      {/* ════ SECTION 6 — Collection carousel (auto-scroll) ══════════ */}
-      <section className="h-screen w-screen bg-off-black relative overflow-hidden">
-        <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
-          <p className="text-2xs font-sans tracking-label-xl uppercase text-text-muted">
-            {carouselColl ? carouselColl.name : 'objects'}
-          </p>
-          <div className="flex-1" />
-          <Link
-            to={carouselColl ? `/collection/${carouselColl.id}` : '/objects'}
-            className="inline-flex items-center gap-1.5 text-2xs font-sans tracking-label uppercase text-text-muted hover:text-cream transition-colors"
-          >
-            View all <ArrowRight size={10} />
-          </Link>
-        </div>
-
-        {/* Scrollable track — rAF auto-scroll, mouse drag, native touch */}
-        <div className="absolute inset-0 flex flex-col justify-center pt-[84px] pb-10">
-          <div
-            ref={carouselRef}
-            className="flex gap-5 overflow-x-scroll will-change-transform select-none"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-              cursor: 'grab',
-              paddingLeft: '1.5rem',
-              paddingRight: '1.5rem',
-            }}
-            onMouseEnter={onCarouselMouseEnter}
-            onMouseLeave={onCarouselMouseLeave}
-            onMouseDown={onCarouselMouseDown}
-            onMouseMove={onCarouselMouseMove}
-            onMouseUp={onCarouselMouseUp}
-          >
-            {/* Render the list twice for seamless infinite loop */}
-            {[...carouselProducts, ...carouselProducts].map((product, idx) => (
-              <Link
-                key={`${product.id}-${idx}`}
-                to={`/product/${product.id}`}
-                className="flex-shrink-0 w-48 sm:w-60 group"
-                draggable={false}
-                onClick={e => {
-                  // block navigation if user was dragging
-                  if (carouselDrag.current.moved) e.preventDefault()
-                }}
-              >
-                <div className="w-full aspect-[3/4] bg-stone-900 overflow-hidden mb-3 pointer-events-none">
-                  <img
-                    src={carouselImagePick.get(product.id) ?? product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    draggable={false}
-                    onError={(e) => { e.currentTarget.style.display = 'none' }}
-                  />
-                </div>
-                <h3 className="font-display text-sm text-cream leading-tight truncate pointer-events-none">{product.name}</h3>
-                <p className="text-xs text-text-muted mt-0.5 pointer-events-none">from {formatPrice(product.price)}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ════ SECTION 6 — Collection carousels (back first = higher impact, then front) ══════════ */}
+      <CollectionCarousel
+        title={backColl ? backColl.name : 'cool Pokémon (back)'}
+        viewAllTo={backViewAll}
+        products={backProducts}
+        imagePick={carouselImagePick}
+      />
+      <CollectionCarousel
+        title={frontColl ? frontColl.name : 'cool Pokémon (front)'}
+        viewAllTo={frontViewAll}
+        products={frontProducts}
+        imagePick={carouselImagePick}
+      />
 
       {/* ════ SECTION 7 — Artist's (cream) ════════════════════════════ */}
       <section

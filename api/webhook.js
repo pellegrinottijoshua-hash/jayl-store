@@ -87,9 +87,16 @@ async function fulfillIfNeeded(paymentIntent) {
     ...(storeId ? { storeId } : {}),
     items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
       const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+      // Back products print on Gelato's 'back' placeholder; everything else on
+      // 'default' (front). Mirrors the storefront + create-order placement logic.
+      const onBack = /back/i.test(item.product.collection || '')
+      if (onBack && !item.product.printFileUrl) {
+        throw new Error(`Back product "${item.productId}" has no back print file (printFileUrl) — refusing to print the mockup image on the garment`)
+      }
       console.log('[webhook] item', item.productId,
         'color:', item.color, 'size:', item.size,
         '→ productUid:', productUid?.slice(0, 80),
+        '| placement:', onBack ? 'back' : 'default',
         '| printFileUrl:', item.product.printFileUrl ? 'set' : 'MISSING',
         '| neckLabelUrl:', item.product.neckLabelUrl ? 'set' : 'none')
       return {
@@ -97,7 +104,7 @@ async function fulfillIfNeeded(paymentIntent) {
         productUid,
         quantity:        item.quantity,
         files: [
-          { type: 'default', url: item.product.printFileUrl || item.product.image },
+          { type: onBack ? 'back' : 'default', url: item.product.printFileUrl || item.product.image },
           ...(item.product.neckLabelUrl
             ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
             : []),

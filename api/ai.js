@@ -30,7 +30,7 @@ const AI_PROVIDERS = {
   'longcat-thinking':  { baseUrl: 'https://api.longcat.chat/openai',     model: 'LongCat-Flash-Thinking',    keyEnv: 'LONGCAT_API_KEY' },
 }
 
-async function callTextAI(prompt, { provider = 'openai', maxTokens = 1400, temperature = 0.7, jsonMode = true } = {}) {
+async function callTextAI(prompt, { provider = 'openai', maxTokens = 1400, temperature = 0.7, jsonMode = true, frequencyPenalty = 0, presencePenalty = 0 } = {}) {
   const cfg = AI_PROVIDERS[provider] ?? AI_PROVIDERS['openai']
   const apiKey = (process.env[cfg.keyEnv] || '').trim()
   if (!apiKey) throw new Error(`${cfg.keyEnv} not configured`)
@@ -44,6 +44,9 @@ async function callTextAI(prompt, { provider = 'openai', maxTokens = 1400, tempe
     messages:    [{ role: 'user', content: prompt }],
     temperature,
     max_tokens:  maxTokens,
+    // Repetition controls — push gpt-4o-mini away from formulaic, near-identical copy.
+    ...(frequencyPenalty ? { frequency_penalty: frequencyPenalty } : {}),
+    ...(presencePenalty  ? { presence_penalty:  presencePenalty  } : {}),
     ...(useJsonMode ? { response_format: { type: 'json_object' } } : {}),
   }
 
@@ -103,6 +106,84 @@ function safeJsonParse(content) {
   return JSON.parse(fixed)
 }
 
+// ── Anti-repetition helpers ───────────────────────────────────────────────────
+// gpt-4o-mini left to its own devices writes near-identical "generic POD" copy.
+// We force divergence per call by (a) penalties in callTextAI, (b) injecting a
+// randomly-rotated creative brief so each listing is pushed in a fresh direction.
+const pick = arr => arr[Math.floor(Math.random() * arr.length)]
+
+const CREATIVE_VOICES = [
+  'wry and deadpan, like a friend who is too cool to try hard',
+  'hyped collector energy — this is a grail and you know it',
+  'nostalgic 90s-kid warmth, Saturday-morning-cartoon feels',
+  'streetwear hype-beast, drop-culture confidence',
+  'cozy and wholesome, soft and a little tender',
+  'bold and rebellious, anti-establishment edge',
+  'minimalist and understated — let the art do the talking',
+  'playful and meme-aware without trying too hard',
+  'cinematic and a touch dramatic, like a movie trailer',
+  'confident gift-guide expert who knows exactly who this is for',
+]
+
+const DESC_OPENERS = [
+  'open mid-scene, describing the character in motion or mood',
+  'open with a sharp, specific statement about the character\'s personality',
+  'open by naming the exact person/occasion this is the perfect gift for',
+  'open with a vivid sensory detail of the artwork itself',
+  'open with a cultural reference or in-joke real fans will get',
+  'open with the feeling someone gets wearing it',
+]
+
+// Overused print-on-demand phrasings the model must avoid — keeps copy from
+// collapsing back to the same template every time.
+const BANNED_POD_PHRASES = [
+  'perfect for any fan', 'ideal for', 'whether you', 'look no further',
+  'unleash', 'embrace', 'elevate your', 'step up your', 'level up',
+  'show off', 'make a statement', 'turn heads', 'must-have', 'one of a kind',
+  'crafted with care', 'high-quality', 'sure to', 'this stunning', 'this amazing',
+]
+
+// Returns a per-call creative brief block to splice into a prompt.
+function creativeBrief({ etsy = false } = {}) {
+  const seed = Math.floor(Math.random() * 1e9)
+  return `CREATIVE BRIEF (unique to THIS listing — do not reuse phrasing from any other listing):
+- Voice for this one: ${pick(CREATIVE_VOICES)}
+- For the main description, ${pick(DESC_OPENERS)}.
+${etsy ? `- For the Etsy description hook, ${pick(DESC_OPENERS)} — and make the FIRST line feel handwritten, not templated.\n` : ''}- Variation seed: ${seed} — treat as an instruction to take a genuinely fresh, non-templated approach versus a typical listing.
+- BANNED phrases (never use, in any field): ${BANNED_POD_PHRASES.join(', ')}.`
+}
+
+// Calls the model, parses JSON, and on failure retries ONCE with a strict-JSON
+// repair instruction. Centralises robustness so a single malformed response
+// (unescaped quote, missing comma) no longer 500s the whole request.
+async function callTextAIJson(prompt, opts = {}) {
+  const first = await callTextAI(prompt, opts)
+  try {
+    return { parsed: safeJsonParse(first.content), model: first.model, usage: first.usage }
+  } catch (_) {
+    const repairPrompt = `${prompt}
+
+IMPORTANT: Your previous answer was not valid JSON. Return STRICTLY valid, minified JSON only.
+Escape every double-quote that appears inside a string value (use \\"). Do not use smart/curly quotes.
+No markdown, no code fences, no commentary — JSON object only.`
+    const retry = await callTextAI(repairPrompt, { ...opts, temperature: 0.2 })
+    return { parsed: safeJsonParse(retry.content), model: retry.model, usage: retry.usage }
+  }
+}
+
+// Tolerant last-resort extractor for alt-text payloads. Pulls {url, altText}
+// pairs out of even malformed JSON (unescaped inner quotes, missing commas) —
+// the exact failure that used to 500 generate-alts with "Expected ',' or ']'".
+function extractAltPairs(content) {
+  const out = []
+  const re = /"url"\s*:\s*"([^"]+)"\s*,\s*"altText"\s*:\s*"([\s\S]*?)"\s*(?=[},])/g
+  let m
+  while ((m = re.exec(content)) !== null) {
+    out.push({ url: m[1], altText: m[2].replace(/\\"/g, '"').trim() })
+  }
+  return out
+}
+
 function cors(req, res) {
   const allowed = applyCors(req, res)
   if (req.method === 'OPTIONS') { res.status(allowed ? 200 : 403).end(); return false }
@@ -127,6 +208,8 @@ Section: ${section || 'objects'}
 Collection: ${collection || ''}
 Movement/style: ${movement || ''}
 
+${creativeBrief()}
+
 Return a JSON object with these EXACT keys (no other keys):
 
 - "seoTitle": SEO meta title for the JAYL website. Format: "[Character] [Product Type] | [Keyword Hook] | [Style/Gift Context]". Target 50-65 chars. Do NOT include "JAYL". Example: "Mewtwo Pokemon T-Shirt | Retro 90s Anime Fan Gift".
@@ -142,9 +225,9 @@ Return a JSON object with these EXACT keys (no other keys):
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 3000, temperature: 0.85 })
-
-    const parsed = safeJsonParse(content)
+    const { parsed, model, usage } = await callTextAIJson(prompt, {
+      provider, maxTokens: 3000, temperature: 0.95, frequencyPenalty: 0.4, presencePenalty: 0.6,
+    })
 
     const tags = Array.isArray(parsed.tags)
       ? parsed.tags.slice(0, 13)
@@ -177,30 +260,34 @@ async function handleEtsyListing(req, res) {
   const { productTitle, section, collection, movement, provider = 'openai' } = req.body || {}
   if (!productTitle) return res.status(400).json({ error: 'productTitle is required' })
 
-  const prompt = `You are a senior Etsy SEO strategist for JAYL, a premium print-on-demand art brand.
-Generate Etsy-optimised listing fields for this product (2025 Etsy NLP algorithm):
+  const prompt = `You are JAYL's Etsy shop owner — you genuinely love this design and you're writing a listing that SELLS, not a templated catalogue entry. JAYL is a premium print-on-demand art brand.
+Optimise for Etsy's 2025 NLP search algorithm AND for a real human deciding to add to cart.
 
 Product title: ${productTitle}
 Section: ${section || 'objects'}
 Collection: ${collection || ''}
 Movement/style: ${movement || ''}
 
+${creativeBrief({ etsy: true })}
+
+NON-NEGOTIABLE: This listing must read DIFFERENTLY from every other listing in the shop — different hook, different sentence shapes, different angle. If it could be copy-pasted onto another character by swapping the name, you have failed. Anchor everything in THIS specific character's personality, look, and cultural meaning.
+
 Return a JSON object with these EXACT keys:
 
-- "etsyTitle": Max 140 chars, target 90-120. Lead with most-searched noun phrase first 3-5 words. Natural language, no keyword stuffing. Use commas as phrase separators, NOT pipes or hyphens. Capitalize Each Word. Example: "Charizard Pokemon T-Shirt, Retro 90s Anime Graphic Tee, Fan Art Gift for Him"
+- "etsyTitle": Max 140 chars, target 90-120. Lead with the most-searched noun phrase in the first 3-5 words, then add a DISTINCT secondary angle (style era, recipient, occasion, or vibe) — not a generic repeat. Natural language, no keyword stuffing. Commas as separators, NOT pipes or hyphens. Capitalize Each Word. Follow this FORMAT only (do not copy its words): "[Character] [Product] Type, [Style/Era] [Descriptor], [Recipient/Occasion]".
 
 - "etsyTags": Array of exactly 13 tags. Each max 20 chars including spaces. Multi-word phrases only (2-4 words). Must cover DIFFERENT search paths than the title — tags expand coverage, not repeat it. Cover: (1) character variant, (2) genre/fandom, (3) gift occasion, (4) recipient, (5) community term (otaku/weeaboo), (6) aesthetic era, (7) product fit variant. All lowercase.
 
-- "etsyDescription": 200-300 words. Structure: (1) First 160-char hook — compressed pitch with primary keyword, what it is, who it's for, key differentiator. Never waste this on a vague intro. (2) Design description — vivid 2-3 sentences. (3) Product details — 100% cotton, DTG premium print, unisex fit, sizes S-3XL. (4) Gift hook. (5) "Machine wash cold, tumble dry low." (6) "Made to order — ships in 3-5 business days." Short paragraphs, blank lines between.
+- "etsyDescription": 200-300 words that SELL. (1) A first-line hook (<160 chars) that feels handwritten and is specific to THIS character — a real reason to want it, with the primary keyword folded in naturally. NEVER a vague intro. (2) 2-3 vivid sentences on the design rooted in the character's personality/vibe (what it feels like, who gets it). (3) Product details woven in conversationally: 100% cotton, DTG premium print, unisex fit, sizes S-3XL. (4) A gift hook tied to a real person/occasion. (5) "Machine wash cold, tumble dry low." (6) "Made to order — ships in 3-5 business days." Short paragraphs, blank lines between. Vary structure and openings from any standard listing.
 
-- "etsyImageAlts": Array of exactly 7 alt text strings for the 7 standard product listing images. Assume a print-on-demand t-shirt with this design. Each alt text: 100-125 chars, includes the primary keyword + describes what the image shows. Write as if the image exists. Cover these 7 angles in order: (1) front mockup on model, (2) back mockup on model, (3) close-up design detail, (4) flat lay front, (5) lifestyle/worn candid, (6) size guide or product detail shot, (7) gift/packaging context. Do NOT mention image numbers or "Image X" — write pure descriptive alt text.
+- "etsyImageAlts": Array of exactly 7 alt text strings for the 7 standard product listing images. Assume a print-on-demand t-shirt with this design. Each: 100-125 chars, includes the primary keyword + describes what the image shows, opening with a specific visual (never the word "featuring"). Cover these 7 angles in order: (1) front mockup on model, (2) back mockup on model, (3) close-up design detail, (4) flat lay front, (5) lifestyle/worn candid, (6) size guide or product detail shot, (7) gift/packaging context. Do NOT mention image numbers or "Image X".
 
 Return ONLY the JSON object, no markdown, no extra text.`
 
   try {
-    const { content, model, usage } = await callTextAI(prompt, { provider, maxTokens: 4500, temperature: 0.7 })
-
-    const parsed = safeJsonParse(content)
+    const { parsed, model, usage } = await callTextAIJson(prompt, {
+      provider, maxTokens: 4500, temperature: 0.95, frequencyPenalty: 0.5, presencePenalty: 0.6,
+    })
 
     const etsyTags = Array.isArray(parsed.etsyTags)
       ? parsed.etsyTags.map(t => String(t).toLowerCase().trim().slice(0, 20)).filter(Boolean).slice(0, 13)
@@ -757,17 +844,17 @@ Return ONLY a JSON object with key "alts" — array of objects each with "url" (
 No markdown, no code fences, no explanation. Pure JSON only.`
 
   try {
-    const { content } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.8 })
-
-    // Robust JSON extraction — handles partial responses and stray text
+    // safeJsonParse + one strict-JSON retry handles the common malformed-JSON
+    // case; if even that fails, fall back to tolerant pair extraction so a
+    // single bad quote never loses the whole batch.
     let parsed
     try {
-      parsed = JSON.parse(content)
-    } catch {
-      // Try extracting JSON from within the string (e.g. Longcat adds leading text)
-      const match = content.match(/\{[\s\S]*\}/)
-      if (!match) throw new Error('No JSON found in response')
-      parsed = JSON.parse(match[0])
+      ({ parsed } = await callTextAIJson(prompt, {
+        provider, maxTokens: 2000, temperature: 0.85, frequencyPenalty: 0.3, presencePenalty: 0.3,
+      }))
+    } catch (_) {
+      const { content } = await callTextAI(prompt, { provider, maxTokens: 2000, temperature: 0.4 })
+      parsed = { alts: extractAltPairs(content) }
     }
 
     const altsMap = {}
