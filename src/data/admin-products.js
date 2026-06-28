@@ -6467,7 +6467,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
     "updatedAt": "2026-06-26T12:32:56.576Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -6759,7 +6760,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T12:23:42.147Z",
     "updatedAt": "2026-06-26T12:32:30.825Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -7420,7 +7422,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88c51c10-06b9-4d81-ac8b-ea49d23d9db2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=555d6961abfa6a2a033c395311bfcb20e33411f568c31df3700e190c5445fb05"
     ],
     "createdAt": "2026-06-26T13:25:03.416Z",
-    "updatedAt": "2026-06-26T13:25:03.416Z"
+    "updatedAt": "2026-06-26T13:25:03.416Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-snorlax-back-t-shirt/design.png"
   },
   {
     "id": "cool-vileplume-back-t-shirt",
@@ -8086,7 +8089,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2e43137f-def8-4438-b8e1-5496065ec0ff/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=66c9ffcfb3f4388eeeb1ddad48019f634dd2a2d90ed6aeb792857ab677bd49cb"
     ],
     "createdAt": "2026-06-26T14:15:44.480Z",
-    "updatedAt": "2026-06-26T14:15:44.480Z"
+    "updatedAt": "2026-06-26T14:15:44.480Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mewtwo-back-t-shirt/design.png"
   },
   {
     "id": "cool-ditto-back-t-shirt",
@@ -8379,7 +8383,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T145239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e4c25aafc279fb1ea436d190ce15d42dd39c3266f22a10f1cfedb47f7b244aa"
     ],
     "createdAt": "2026-06-26T15:05:11.927Z",
-    "updatedAt": "2026-06-26T15:05:11.927Z"
+    "updatedAt": "2026-06-26T15:05:11.927Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-back-t-shirt/design.png"
   },
   {
     "id": "cool-charmander-back-t-shirt",
@@ -8681,7 +8686,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7076c36759976fab1f245b23e971d39b5d64217f18f7db7bbad6e2efd835884"
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
-    "updatedAt": "2026-06-26T16:10:51.599Z"
+    "updatedAt": "2026-06-26T16:10:51.599Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charmander-back-t-shirt/design.png"
   },
   {
     "id": "cool-alakazam-back-t-shirt",
@@ -9009,7 +9015,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1bf5482b-d85d-4f96-964f-211cb4aeb01c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=08c18def25e89a934e05186ef5aa825399b9f2313152ed86eafa74afe3ac093f"
     ],
     "createdAt": "2026-06-26T16:31:53.176Z",
-    "updatedAt": "2026-06-26T16:31:53.176Z"
+    "updatedAt": "2026-06-26T16:31:53.176Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-alakazam-back-t-shirt/design.png"
   },
   {
     "id": "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -9316,7 +9323,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-27T13:00:11.484Z",
     "updatedAt": "2026-06-27T13:03:25.253Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -9649,7 +9657,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-27T13:23:00.895Z",
     "updatedAt": "2026-06-27T13:37:43.733Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "cool-machop-back-t-shirt",
@@ -9977,7 +9986,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/127b88c4-5de9-4348-b80f-b23b5b557ea1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe1beefa53765a92361f398d971f3682a2ceba8b18b7c02fec62ecedb51998b1"
     ],
     "createdAt": "2026-06-27T13:31:16.749Z",
-    "updatedAt": "2026-06-27T13:31:16.749Z"
+    "updatedAt": "2026-06-27T13:31:16.749Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-machop-back-t-shirt/design.png"
   },
   {
     "id": "cool-drowsee-back-t-shirt",
@@ -10308,6 +10318,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3682315-ca68-433a-9cb8-12e9f90f9f1f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52d2a0a9bfa536c89187ccec429a1bcafda95aa5e39286f9241ced3bc8cf1294"
     ],
     "createdAt": "2026-06-27T14:19:42.734Z",
-    "updatedAt": "2026-06-27T14:19:42.734Z"
+    "updatedAt": "2026-06-27T14:19:42.734Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-drowsee-back-t-shirt/design.png"
   }
 ]
