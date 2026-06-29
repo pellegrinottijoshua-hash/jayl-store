@@ -10658,5 +10658,337 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
     "updatedAt": "2026-06-29T12:35:13.002Z"
+  },
+  {
+    "id": "cool-mew-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Mew back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Mew, the elusive psychic type, embodies rebellion and untamed spirit in a world of conformity. This quirky design captures its playful essence, surrounded by vibrant colors that bring retro 90s anime to life. Made from Gildan's premium tee fabric and featuring top-notch DTG print quality, this shirt tells a story of individuality that resonates with those who dare to be different. An ideal gift for those who appreciate the charm behind Pokémon’s most mystical character, it’s not just a shirt; it's a statement.",
+    "altText": "Playful Mew gliding through space in pink hues on a small chest print of a premium Gildan tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      }
+    ],
+    "image": "/images/cool-mew-back-t-shirt/hf_20260628_233410_5eda8878-4372-4dc6-984b-b3f1cd3f61b9.png",
+    "heroImage": "/images/cool-mew-back-t-shirt/hf_20260629_122130_9ba1f775-c271-46e1-94e8-f2a0a54d35fd.png",
+    "detailImage": "/images/cool-mew-back-t-shirt/hf_20260628_232315_4a6e6eda-f90a-45ce-a840-8f77a068bcd8.png",
+    "images": [
+      "/images/cool-mew-back-t-shirt/hf_20260628_233432_8e159e90-a48d-44b4-a14d-8dc1e70ed8bf.png",
+      "/images/cool-mew-back-t-shirt/hf_20260628_233416_377fc29b-7c4c-4ce6-a3f4-cd79e2f38db0.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/12c57aba-bf7f-40a9-b387-25b791c177c0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e02870660f17a6d2c319e0e1ecfdc7426be959c77a8966150602f9c4bb4aef91",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f85557d9-8fdc-45aa-b1c9-33dc87ce3b1e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0651984477dd02a6f63a0aafc59654869a52e06dbed89a0c18f6e1aa3e2304",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/83e3e3f6-8abd-43b5-bbcf-baa08f1585cc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0ac31542cfc0f3444b958b34a2a600b4033289410b8a1788ea574a2101538185",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d27cc5fe-ca87-44f8-bcd0-d10a149fb0d0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5cd08c33afd328896756eafaf73ad9105be7f1b5d5dbb925fe1113fb94f54e72",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8287d08-c891-4cb2-888d-ee4e7675697e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d646053b6a1b6182864c3fe296dd0bde4a80cb16bd62a8c9501d04273101c231"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260628_233410_5eda8878-4372-4dc6-984b-b3f1cd3f61b9.png": "Bold illustration of Cool Mew on a contemporary art-inspired t-shirt design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260629_122130_9ba1f775-c271-46e1-94e8-f2a0a54d35fd.png": "Vibrant depiction of Cool Mew printed on a sleek t-shirt from various angles.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260628_232315_4a6e6eda-f90a-45ce-a840-8f77a068bcd8.png": "Close-up revealing the fabric texture of the Cool Mew art t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260628_233432_8e159e90-a48d-44b4-a14d-8dc1e70ed8bf.png": "Artfully styled t-shirt showcasing a striking Cool Mew design on display.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260628_233416_377fc29b-7c4c-4ce6-a3f4-cd79e2f38db0.png": "Contemporary artwork featuring Cool Mew elegantly positioned on the shirt.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/12c57aba-bf7f-40a9-b387-25b791c177c0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e02870660f17a6d2c319e0e1ecfdc7426be959c77a8966150602f9c4bb4aef91": "Red version of the Cool Mew t-shirt captures vibrant colors in an aesthetic angle.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f85557d9-8fdc-45aa-b1c9-33dc87ce3b1e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0651984477dd02a6f63a0aafc59654869a52e06dbed89a0c18f6e1aa3e2304": "Back view highlights the captivating red hue and Cool Mew illustration on this tee.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/83e3e3f6-8abd-43b5-bbcf-baa08f1585cc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0ac31542cfc0f3444b958b34a2a600b4033289410b8a1788ea574a2101538185": "Showcasing a close-up of the vibrant red fabric and detailed Cool Mew art craftsmanship.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d27cc5fe-ca87-44f8-bcd0-d10a149fb0d0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5cd08c33afd328896756eafaf73ad9105be7f1b5d5dbb925fe1113fb94f54e72": "Artistic angle showcases the vibrant red tone against a modern backdrop.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8287d08-c891-4cb2-888d-ee4e7675697e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d646053b6a1b6182864c3fe296dd0bde4a80cb16bd62a8c9501d04273101c231": "The intricate detail on the red background brings out the cool aesthetic of Mew's design."
+    },
+    "tags": [
+      "mew",
+      "pokemon",
+      "anime",
+      "tshirt",
+      "retro",
+      "fanart",
+      "90sstyle",
+      "gildan64000",
+      "giftideas",
+      "funnygift",
+      "streetwear",
+      "apparel",
+      "coolclothes"
+    ],
+    "featured": false,
+    "gelatoProductId": "1f8a6448-3eaa-49f4-89a2-406fd7ebee79",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "Mew t-shirt",
+      "Pokemon apparel",
+      "anime fan art",
+      "retro shirt",
+      "90s style"
+    ],
+    "longTailKeywords": [
+      "cool Mew t-shirt for sale",
+      "unique Pokemon gift idea",
+      "retro anime fashion shirt",
+      "funny graphic tee for fans",
+      "Gildan t-shirt with Mew design",
+      "anime lover gift clothing",
+      "quirky Pokemon apparel online",
+      "vintage style anime merchandise",
+      "playful Mew back print tee",
+      "collector's item Pokemon shirt"
+    ],
+    "hashtags": "#mew #pokemon #anime #tshirt #retrofashion #fanart #90sstyle #gildan64000 #giftideas #funnygift #streetwear #apparel #coolclothes #animefan #geekwear #nostalgia #popculture #cartoonart #graphictee #shirtdesigns #unconventionalfashion #gamechanger #edgyfashion #printondemand #stylishshirts #mythicalcreatures #vintagevibes #collectibleshirts #mewtwoelectricmood",
+    "instagramCaption": "\"Be the myth in a sea of mundane! Rock your rebellion with our Mew tee designed for the wild at heart. Perfect for turning every sidewalk into your runway. ✌️💖#funnygift#pokemon#retrofashion\"",
+    "pinterestCaption": "\"Discover the playful spirit of Mew with this bold retro t-shirt perfect for anime lovers and those who stand out from the crowd. Make your wardrobe an expression of individuality with this unique piece! Check it out now!\"",
+    "seoTitle": "Mew Pokémon T-Shirt | Cool Anime Fan Art Gift | Retro Style",
+    "variants": [
+      {
+        "uid": "28dba23d-150c-41dd-a3e4-634524b20a51",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6787b0de-3522-40b8-97c3-6b0dc46d2fa4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dbbeaf52-42b1-454e-9d49-e317a560c0af",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "137bf625-8c3b-412d-8703-6fe8caa0029b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f9633231-d8d0-4432-b8b4-37c2c479fed3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cd72b9f3-366d-44fb-a876-c9f0ce90e954",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5b0a646-c993-41aa-85d3-4e24c6945630",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "23115a01-5e13-4d5e-856f-18445cf16244",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b494c59b-1242-495f-8557-83bce1ee3127",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "17b3afbb-e032-4d74-b46d-650be133dd66",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "96a4700f-961c-4d94-8444-09c50e36637a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "51f59d50-496d-47af-94b5-36ec646d6969",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5974002-4c02-4add-a036-14aede88839b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "423c40a9-cf22-4ce7-9010-8c86e8711176",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6156fc34-03f7-4ef2-aa9a-5270ebc20df7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f6885838-8f13-4366-a4b1-215a59209b90",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b32a1621-eef5-42cf-af38-e36f662257f2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a62379d4-5f6d-4c00-b06c-25823205da09",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "462b1ddb-c791-4f0f-ba9d-2e329d50805f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2e57a9d6-ef96-4c45-9224-d2d8ea7f3e8a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/mew-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-back-t-shirt-cool-anime-fan-art-g-light-blue-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/mew-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-back-t-shirt-cool-anime-fan-art-g-black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/mew-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-back-t-shirt-cool-anime-fan-art-g-white-01.jpg"
+      },
+      {
+        "id": "cardinal-red",
+        "label": "Cardinal Red",
+        "hex": "#888888",
+        "image": "/images/mew-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-back-t-shirt-cool-anime-fan-art-g-cardinal-red-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/mew-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-back-t-shirt-cool-anime-fan-art-g-azalea-01.jpg"
+      }
+    ],
+    "etsyTitle": "Mew Pokémon Back T-Shirt, Retro 90s Style Gift, Anime Lover Wear",
+    "etsyTags": [
+      "mew t-shirt",
+      "anime fan gift",
+      "pokemon lover",
+      "gamer apparel",
+      "otaku merchandise",
+      "90s aesthetic",
+      "unisex t-shirt",
+      "funny pokemon shirt",
+      "gift for her",
+      "cool graphic tee",
+      "unique pokemon art",
+      "kawaii clothing",
+      "retro anime top"
+    ],
+    "etsyDescription": "\"Just a regular day in Pallet Town, chasing dreams and catching Mew!\" This cozy t-shirt is a nostalgic nod to the joy of Pokémon adventures, with our beloved Psychic-type emblazoned on the back. It's perfect for those late-night gaming sessions or casual hangouts where you want to feel comfy yet expressive. With its playful charm and vintage vibe, this shirt speaks volumes about your love for the enchanting world of Pokémon. \n\nCrafted from breathable 100% cotton and printed using premium DTG techniques, this unisex fit runs from sizes S to 3XL — there's something for every trainer! The soft fabric keeps you feeling relaxed while looking effortlessly cool whether you're out battling at PokéStops or lounging at home. \n\nLooking for a thoughtful gift? This retro-style Mew t-shirt is an ideal way to surprise that special friend whose heart still holds a place for childhood nostalgia. Birthdays, anniversaries, or just because—make it memorable.\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of a model wearing a Mew Pokémon back t-shirt in a warm setting.",
+      "Back view of model showcasing the vibrant Mew design on the t-shirt.",
+      "Close-up detail of the Mew design printed on soft fabric.",
+      "Flat lay image of Mew Pokémon back t-shirt on a wooden background.",
+      "Casual lifestyle shot of someone wearing the Mew shirt while sipping coffee outdoors.",
+      "Product detail shot showing size guide and Gildan logo on the tag.",
+      "Gift-ready packaging featuring Mew-themed artwork beside the folded t-shirt."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/12c57aba-bf7f-40a9-b387-25b791c177c0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e02870660f17a6d2c319e0e1ecfdc7426be959c77a8966150602f9c4bb4aef91",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f85557d9-8fdc-45aa-b1c9-33dc87ce3b1e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eb0651984477dd02a6f63a0aafc59654869a52e06dbed89a0c18f6e1aa3e2304",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2cc11263-15ea-42f3-98c5-5818ea44bdc0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=78d48de7c293c9c34d791b453caacb5e226158f8edf90adbe98063ee47f06e33",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/83e3e3f6-8abd-43b5-bbcf-baa08f1585cc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0ac31542cfc0f3444b958b34a2a600b4033289410b8a1788ea574a2101538185",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d27cc5fe-ca87-44f8-bcd0-d10a149fb0d0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5cd08c33afd328896756eafaf73ad9105be7f1b5d5dbb925fe1113fb94f54e72",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8287d08-c891-4cb2-888d-ee4e7675697e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T123637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d646053b6a1b6182864c3fe296dd0bde4a80cb16bd62a8c9501d04273101c231"
+    ],
+    "createdAt": "2026-06-29T12:43:34.046Z",
+    "updatedAt": "2026-06-29T12:43:34.046Z"
   }
 ]
