@@ -11563,5 +11563,292 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
     "updatedAt": "2026-06-29T13:01:53.101Z"
+  },
+  {
+    "id": "cool-slowpoke-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Slowpoke back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Prowling through the scene with a laid-back vibe, Slowpoke captures the essence of chill mastery — that carefree spirit where time slows down. This retro 90s style tee showcases the lovable Pokémon in its signature relaxed pose, embodying a mood you can't help but relate to when your day takes it slow. Made with Gildan premium fabric and direct-to-garment print quality, this shirt doesn’t just wear well; it represents an attitude. Perfect as a gift for that friend who understands life’s leisurely pace or just wants to carry their trusty sidekick everywhere they go.",
+    "altText": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      }
+    ],
+    "image": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_131934_f59b2a52-4ed8-47aa-a0c6-cff329170b65.png",
+    "heroImage": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132411_91169ddf-d023-4498-8189-882dc549ad0a.png",
+    "detailImage": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132441_82e21641-d6b4-46c9-a416-f1bfa9d9fe22.png",
+    "images": [
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png",
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132433_9bb4598e-f909-4e52-ac51-82ef4640ac0f.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb367141-4c52-4401-868e-d7012dcf5d8e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a7666a2295866ffc40f090ddf3775f6316d5e918e854bd52b13d18c989347e1e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/964dfca6-b146-4ddc-bcc5-63b0f95508d1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0b548592e8c916e981e69052b592ac6fbfe7f97f1da2ab663b4c104e1157f77a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c214e210-2455-40b8-b6c5-5eb0bfe1f403/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b3f7bc128c39b897ef18e09cd32ee75726da772446e7d15fd5d8996597e76b5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f68f5fd8-bd43-4091-8969-22f35047a570/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9bf599a66ef1388209ca87ca5eb40f45567035d3fa2c9d8355cc022e47942fe9"
+    ],
+    "imageAlts": {
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--mockup-01.jpg": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--white-01.jpg": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--light-blue-01.jpg": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--black-01.jpg": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--azalea-01.jpg": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee."
+    },
+    "tags": [
+      "slowpoke",
+      "pokemon",
+      "anime",
+      "retro",
+      "streetwear",
+      "fanart",
+      "apparel",
+      "giftidea",
+      "90sfashion",
+      "funnytshirt",
+      "geekwear",
+      "popculture",
+      "trendy"
+    ],
+    "featured": false,
+    "gelatoProductId": "380433f6-42fe-4313-a785-4952bc44ec14",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "slowpoke t-shirt",
+      "pokemon apparel",
+      "anime gifts",
+      "retro clothing",
+      "fan art merch"
+    ],
+    "longTailKeywords": [
+      "slowpoke pokemon back shirt",
+      "funny pokemon lover gift idea",
+      "retro 90s anime apparel online",
+      "cool streetwear fan art tee",
+      "unique gifts for anime fans",
+      "buy slowpoke back t-shirt now",
+      "cool pokemon merchandise for sale",
+      "funny shirts for pokemon lovers",
+      "vintage style pokemon tops online",
+      "anime inspired fashion statement"
+    ],
+    "hashtags": "#slowpoke #pokemon #anime #retro #streetwear #fanart #apparel #giftidea #90sfashion #funnytshirt #geekwear #popculture #trendy #cuteclothing #fashiongram #fashionstyle #nerdlife #animecommunity #pokemongifts #stylishtee #artwear #hypebeaststyle #casualfashion #quirkytshirts #wanna_bebanned ##teeoftheday ##moodwear ##comfyshirts ##tshirtoftheday ##epicmerchandise",
+    "instagramCaption": "#Slowpoke vibes all day! 🐾 Rock this retro tee and let the world know you’re all about that chill life. Tag that friend who needs one in their closet! 🌊💖#pokemonlover #90sfashion#coolanime",
+    "pinterestCaption": "\"Catch the slow vibe with our Slowpoke Pokémon back T-Shirt featuring unique retro fan art! This comfy Gildan tee is perfect as a gift or personal treat for anyone wanting to celebrate their love for Pokémon culture. Explore our collection and grab yours now!",
+    "seoTitle": "Slowpoke Pokemon T-Shirt | Retro 90s Anime Gift | Funny Fan Art",
+    "variants": [
+      {
+        "uid": "0d9beb50-0d5a-454a-95ba-36c67c1f9dac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "893d6163-3abb-4a38-91f2-d86b54bd19d0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "95190c55-5225-4b44-8846-b822e4860744",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "058e2460-3f73-4525-9336-cc94bde3ff2f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2498b162-f8a9-46e7-8dfa-57675513d6c5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "11584aad-ffdf-4929-8eec-bf643b0afac0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c377bc7d-09d6-4bdf-ad3a-5dab82c99f47",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "22c8d48e-00ca-4466-9f7b-5e32e68e5ced",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "80ca861d-ebaa-47b7-8cb3-b76388c94d06",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "be36a740-148b-48c8-b15f-69e0f83dfade",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "85ef08df-86eb-4f4e-8485-37729fbe4c4e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a61f44ac-0605-4c73-ab47-12b7321600bc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2a304d0a-2e3b-4c0c-a347-d1a68579a8a8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9d85887f-9c46-463a-ae98-70a75ef29383",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "492d69e9-0717-448b-bee5-951b97f74406",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8a4c72bc-b1ef-4fbb-87ef-77a082a028d8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--white-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--azalea-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--black-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--light-blue-01.jpg"
+      }
+    ],
+    "etsyTitle": "Slowpoke Pokémon Back T-Shirt, Retro 90s Vibe, Gift for Anime Fans",
+    "etsyTags": [
+      "slowpoke t-shirt",
+      "anime fan gift",
+      "pokemon apparel",
+      "retro fashion",
+      "geeky presents",
+      "pokémon lover tee",
+      "otaku clothing",
+      "cool t-shirt design",
+      "90s nostalgia shirt",
+      "funny anime shirt",
+      "unique gift idea",
+      "casual wear unisex",
+      "gift for him"
+    ],
+    "etsyDescription": "If you know someone who thinks Slowpoke's laid-back vibes are life goals, this is the tee they're destined to own! \n\nThis charming design radiates that unmistakable blend of goofy fun and retro flair. Channeling ‘90s nostalgia, the graphic embodies Slowpoke’s relaxed spirit—perfect for those who appreciate a little humor in their style. Crafted from soft and breathable 100% cotton with vibrant DTG premium print, it boasts an unisex fit available in sizes S-3XL.\n\nThink about that friend or sibling whose casual wardrobe desperately needs some playful pizzazz—this tee makes a delightful birthday surprise or just-because gift!\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup on model wearing Slowpoke Pokémon back t-shirt.",
+      "Back view of model showcasing the Slowpoke design on the t-shirt.",
+      "Close-up detail of the vibrant Slowpoke graphic on the t-shirt.",
+      "Flat lay front view of Slowpoke Pokémon back t-shirt on a surface.",
+      "Lifestyle shot of a person casually wearing the Slowpoke t-shirt outdoors.",
+      "Product detail shot highlighting size guide alongside the shirt fabric.",
+      "Gift-ready presentation of Slowpoke themed packaging with the t-shirt."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eb367141-4c52-4401-868e-d7012dcf5d8e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a7666a2295866ffc40f090ddf3775f6316d5e918e854bd52b13d18c989347e1e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e5d30e2b-1753-4739-b69a-c45c12b9bc32/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9e6e28a5c9a6a9351a4399b2245d7fe44768af5c63c42e57c58ad0a45975b2bb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/964dfca6-b146-4ddc-bcc5-63b0f95508d1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0b548592e8c916e981e69052b592ac6fbfe7f97f1da2ab663b4c104e1157f77a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c214e210-2455-40b8-b6c5-5eb0bfe1f403/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b3f7bc128c39b897ef18e09cd32ee75726da772446e7d15fd5d8996597e76b5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f68f5fd8-bd43-4091-8969-22f35047a570/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T131059Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9bf599a66ef1388209ca87ca5eb40f45567035d3fa2c9d8355cc022e47942fe9"
+    ],
+    "createdAt": "2026-06-29T13:31:44.943Z",
+    "updatedAt": "2026-06-29T13:31:44.943Z"
   }
 ]
