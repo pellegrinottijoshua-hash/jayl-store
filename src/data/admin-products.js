@@ -10338,7 +10338,7 @@ export const adminProducts = [
     "id": "dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Dugtrio Pokémon back T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "name": "Cool Dugtrio back T-Shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -10657,7 +10657,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc973a4431e4464c40c7a72ad359d26ea2bd51d3933737d94aa28dddbc4c00dc"
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
-    "updatedAt": "2026-06-29T12:35:13.002Z"
+    "updatedAt": "2026-06-29T12:45:32.204Z",
+    "relatedProducts": []
   },
   {
     "id": "cool-mew-back-t-shirt",
