@@ -10342,8 +10342,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Dugtrio doesn't just dig holes; they burrow into your soul with their relentless spirit! This mischievous Pokémon embodies the thrill of breaking the mold, making every adventure feel electric. Printed on a Gildan premium tee using DTG quality, this shirt ensures every underground escapade is matched by comfort and style. A rebellious gift for anyone who revels in all things Pokémon, this shirt serves as a badge of honor for those who dare to be different.",
-    "altText": "Energetic Dugtrio with a cheeky smile, bursting from the ground in retro 90s anime style on a small chest print of a premium Gildan tee.",
+    "description": "Digging through nostalgia, this Dugtrio shirt captures the essence of your favorite ground-type trio in a captivating back print. The artwork brings to life their energizing spirit as they burrow into adventure, each layer textured with retro 90s anime vibes on a Gildan premium tee using vibrant DTG printing. Perfect for collectors wanting to wear their love for Pokémon pridefully. Gifting this piece means sharing a slice of childhood magic with someone special, sparking joy with every wear.",
+    "altText": "Dugtrio digging energetically in retro 90s anime style on a premium JAYL tee with small chest print.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -10395,18 +10395,18 @@ export const adminProducts = [
     },
     "tags": [
       "dugtrio",
-      "pokemon t-shirt",
-      "anime fan art",
-      "90s retro apparel",
-      "funny gift",
-      "gildan shirt",
-      "cool pokemon gear",
-      "unique fashion",
-      "fan art gift",
-      "underground style",
-      "artistic wear",
-      "geek culture tee",
-      "anime merchandise"
+      "pokemon",
+      "art",
+      "t-shirt",
+      "collectible",
+      "anime",
+      "retro fashion",
+      "gaming",
+      "fan art",
+      "fashion tee",
+      "streetwear",
+      "graphic tee",
+      "kidult"
     ],
     "featured": false,
     "gelatoProductId": "8d61beba-85f5-460f-a496-f4add59099a2",
@@ -10415,26 +10415,26 @@ export const adminProducts = [
     "primaryKeywords": [
       "dugtrio t-shirt",
       "pokemon apparel",
-      "anime clothing",
-      "retro shirt",
-      "funny gifts"
+      "graphic t-shirt",
+      "anime shirt",
+      "collector item"
     ],
     "longTailKeywords": [
-      "dugtrio pokemon back t-shirt",
-      "retro anime fan apparel online",
-      "buy funny pokemon lover gifts",
-      "gildan premium tees collection",
-      "90s style pokemon shirts for sale",
-      "unique dugtrio themed clothing gift ideas",
-      "funny retro anime graphic teeshirts",
-      "collectible pokemon fan art apparel",
-      "stylish dugtrio shirt for anime fans",
-      "humorous t-shirts for pokemon lovers"
+      "cool dugtrio back shirt",
+      "pokemon fan art t-shirt",
+      "premium pokemon apparel online",
+      "unique pokémon t-shirts for collectors",
+      "retro pokemon graphic tees for sale",
+      "best gifts for pokemon fans",
+      "Gildan premium pokémon shirts shop",
+      "exclusive dugtrio collector's item tshirt",
+      "Artistic dugtrio anime style t-shirt purchase",
+      "[Character] back design t-shirts for gifts"
     ],
-    "hashtags": "#dugtrio #pokemon #animefanart #retro90s #funnytshirt #geekculture #apparel #fashion #graphictee #nerdstyle #pokemongifts #exclusivewear #pokedex #animeclothing #collectibleshirts #stylishgift #printswithattitude #quirkyfashion #originaldesigns #fanartapparel #diversefandoms #undergroundstyle #premiumtshirts #pocketprintartwork #vintageinspiredfashion #pokemontshirtcollection #creativewearables #subversiveartstyle #customteeshirtshop#comfortandstyle",
-    "instagramCaption": "'Digging deep and pushing boundaries! 💥 Ready to embrace the quirks? This Dugtrio T-Shirt is not just a piece of clothing; it's an attitude. Grab yours today! 👕✨#dugtrio#pokemon#retrofashion'",
-    "pinterestCaption": "'Dive into nostalgia with our Dugtrio Pokémon back T-Shirt – a bold statement piece crafted for true fans. Perfectly blending retro vibes with modern comfort, it's an essential addition to your anime apparel collection.",
-    "seoTitle": "Dugtrio Pokémon T-Shirt | Retro 90s Anime Fan Gift | Funny Apparel",
+    "hashtags": "#dugtrio #pokemon #art #tshirt #collectible #anime #retrofashion #gaming #fanart #fashiontee #streetwear #graphictee #kidult #collectorsdream #tshirtsale #retropokemon #exclusiveapparel #gildanpremium #shopnow #limitededitionart #stylishwears #pokemonloversunite #teeforlife #quirkyfashion #nerdstyleclothes #arcanumofgeekdoms #originaldesignertshirts #wonderlandoftees #younichefinds2023 ",
+    "instagramCaption": "!Dig it! 🌟 Rock the underground vibes with this Dugtrio back T-Shirt that speaks leagues to true collectors. Dig your passions deep and grab yours now! 🐾✨#dugtrio#collectoritem#apparelinnovation",
+    "pinterestCaption": "\"Digging into nostalgia is easy with this exclusive Dugtrio back T-Shirt crafted for fans and collectors alike. Made from a premium Gildan tee and featuring stunning retro artwork, it's perfect for showcasing your passion at any gathering or event. Don’t miss out on adding this grail to your collection!\"",
+    "seoTitle": "Dugtrio T-Shirt | Cool Pokémon Back Style | Collector’s Dream",
     "variants": [
       {
         "uid": "ee917173-e567-4585-9cf5-2535feadb859",
@@ -10657,7 +10657,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc973a4431e4464c40c7a72ad359d26ea2bd51d3933737d94aa28dddbc4c00dc"
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
-    "updatedAt": "2026-06-29T12:45:32.204Z",
+    "updatedAt": "2026-06-29T12:45:42.995Z",
     "relatedProducts": []
   },
   {
