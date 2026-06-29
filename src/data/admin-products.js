@@ -11000,8 +11000,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Wearing this Gengar T-shirt is like channeling your inner mischief—nothing says playful haunting quite like this shadowy figure. With a retro 90s anime style, this design captures Gengar’s cheeky spirit and love for prankster vibes in eye-catching detail. The Gildan premium tee paired with high-quality DTG print ensures that not only will you look good, but you’ll feel comfortable too. It’s the perfect gift for anyone who appreciates true fan art and enjoys a chuckle about their favorite ghostly Pokémon.",
-    "altText": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
+    "description": "In a midnight hue, Gengar looms large, playfully mischievous with that sly grin and haunting eyes. The artwork captures him mid-leap, an embodiment of rebellious energy that's both shadowy and vibrant. Crafted on a Gildan premium tee, the direct-to-garment print is sharp and striking, ensuring your style stands out in any crowd. Perfect for those who resonate with the underdog spirit or just enjoy a bit of chaos. This shirt makes a bold gift choice for anyone who’s unapologetically themselves.",
+    "altText": "Mischievous Gengar leaping with a sly grin in retro 90s anime style on a small chest print of a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -11048,45 +11048,45 @@ export const adminProducts = [
     "tags": [
       "gengar",
       "pokemon",
-      "anime",
-      "retro",
-      "90s",
-      "fanart",
-      "tshirt",
-      "gift",
-      "funny",
-      "apparel",
-      "collectibles",
-      "geekwear",
-      "casual"
+      "t-shirt",
+      "cool art",
+      "anime apparel",
+      "gaming fashion",
+      "graphic tee",
+      "print on demand",
+      "pokemon fanwear",
+      "rebellious style",
+      "dark humor",
+      "mischievous design",
+      "pop culture"
     ],
     "featured": false,
     "gelatoProductId": "2fab9e0a-a5e9-45e1-8b4a-59b2dd5651d4",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "gengar shirt",
-      "pokemon t-shirt",
+      "gengar t-shirt",
+      "cool pokemon shirt",
       "anime apparel",
-      "retro t-shirt",
-      "funny gift"
+      "print on demand t-shirt",
+      "gaming fashion"
     ],
     "longTailKeywords": [
-      "gengar pokemon back t-shirt",
-      "cool anime fan art gift",
-      "retro style pokemon shirt",
-      "90s nostalgic clothing online",
-      "funny pokemon lover gifts",
-      "unique anime prints for fans",
-      "premium gildan t-shirts online",
-      "trendy vintage pokemon apparel",
-      "comfortable retro graphic tees",
-      "limited edition pokemon art wear"
+      "gengar graphic t-shirt online",
+      "buy cool pokemon clothing now",
+      "unique gifts for gamers tshirt",
+      "retro anime style shirts sale",
+      "best pokemon fan apparel t-shirts",
+      "trendy gaming t-shirt designs to buy",
+      "gengar dark humor clothing online store",
+      "exclusive humorous pokemon tees shop now",
+      "stylish prints on demand shirts gift ideas",
+      "fashionable anime graphic tees collection"
     ],
-    "hashtags": "#gengar #pokemon #anime #retrofashion #90sstyle #fanfavorite #graphictee #collectoritem #geekgear #trendyshirts #animeart #quirkyfashion #fanartapparel #ghosttypepokemon #pokelove #vintageanimeart #printondemand #teespringstyle #fashionstatement #quirkyteeartwork #playfulwearables #geekchicstyle #coolgiftsforhim #giftingideasforher #cartoonapparel #nostalgicclothing #crazyforpokemon #ultimatefanmerchandise #musthavecollectibleitems #viralshirthub",
-    "instagramCaption": "#Gengar knows how to mix mischief and fun! 😏 Grab yours today and embrace that spooky vibe. Let’s haunt those fashion choices! 👻✨#PokemonFanArt #RetroVibes#AnimeLove",
-    "pinterestCaption": "#Gengar lovers, this T-shirt channels all the mischievous energy your wardrobe has been missing! Dive into the nostalgia with our retro-style design that showcases your passion for Pokémon. Don’t miss out on adding this must-have piece to your collection!",
-    "seoTitle": "Gengar Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "hashtags": "#gengar #pokemon #tshirt #coolart #animeapparel #gamingfashion #graphictee #printondemand #pokemonfanwear #rebelliousstyle #darkhumor #mischievousdesign #popculture #cuteclothing #streetwear #appaerelfashion #customtees #nerdgifts #animefashionista #quirkyapparel #trendyclothing #fandomfashion #charactermerchandise #teeshoponline #vintageanimestyle #pokedexstyle #creativegiftideas #uniqueapparelstore #limitededitionshirts",
+    "instagramCaption": "\"Wandering into the shadows with Gengar on my back. This isn’t just apparel; it’s an attitude. Tap the link in bio to grab yours! 🖤✨#gengar#animeapparel#coolart\" ",
+    "pinterestCaption": "\"Transform your wardrobe with this Gengar-inspired tee that screams individuality and mischief. With its edgy design printed on soft fabric, it’s perfect for expressing your unique style. Check it out today!\"",
+    "seoTitle": "Gengar T-Shirt | Cool Pokemon Back Art | Gift for Gamers",
     "variants": [
       {
         "uid": "6db613d1-8779-471a-b8ee-ca08fed25002",
@@ -11277,7 +11277,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d63c04ce0b68fb898617fb27e23a63df2c56a2c911b4406fb671798799dd8d5"
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
-    "updatedAt": "2026-06-29T13:02:48.132Z",
+    "updatedAt": "2026-06-29T13:02:58.906Z",
     "relatedProducts": []
   },
   {
