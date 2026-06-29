@@ -10333,5 +10333,330 @@ export const adminProducts = [
     "createdAt": "2026-06-27T14:19:42.734Z",
     "updatedAt": "2026-06-27T14:19:42.734Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-drowsee-back-t-shirt/design.png"
+  },
+  {
+    "id": "dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Dugtrio Pokémon back T-Shirt| Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Dugtrio doesn't just dig holes; they burrow into your soul with their relentless spirit! This mischievous Pokémon embodies the thrill of breaking the mold, making every adventure feel electric. Printed on a Gildan premium tee using DTG quality, this shirt ensures every underground escapade is matched by comfort and style. A rebellious gift for anyone who revels in all things Pokémon, this shirt serves as a badge of honor for those who dare to be different.",
+    "altText": "Energetic Dugtrio with a cheeky smile, bursting from the ground in retro 90s anime style on a small chest print of a premium Gildan tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      }
+    ],
+    "image": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_210241_7c9f9ac5-8d80-4de7-a1f5-c661ebe32813.png",
+    "heroImage": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png",
+    "detailImage": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180956_0f721d92-2979-4e14-8495-cc37056d9964.png",
+    "images": [
+      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png",
+      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115550_e9bbe324-06e2-4167-be37-04e830f034b6.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/31433d3b-946e-4ffa-b7c3-b430870e2438/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=64dc0a5434a0da4b3cea8b2276d4e4be140475c1b35032955037fbd44216d7fa",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/50bb484a-1798-4556-b7e6-5a450487447c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6710e467a037f21f79976bc1b56ac1ef91a555d4603dd94165774fa6375305c0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1edc639-1bef-41c1-8158-ed855f9cb5b0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=56eab450ff85de998254d784ba7770b25a701c72958a40598e9eacdd6f7b9395",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/603a4cdd-d11f-49bd-9f2a-344344d22828/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b30d3a50933e86ee21b6901c2c1224291af353cb139b64d51f40cb549e01f20d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d7127088-15e1-4438-a2b0-973750c74bfa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e0f0ea3d80e02815fc8b960fc8da88ec173f55608c002e7246d8a17ecbd69ad7"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_210241_7c9f9ac5-8d80-4de7-a1f5-c661ebe32813.png": "Dugtrio animated characters displayed on a t-shirt in contemporary art style, emphasizing humor.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png": "Close-up of Dugtrio design on the back of a shirt, showcasing retro colors and details.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180956_0f721d92-2979-4e14-8495-cc37056d9964.png": "Textured fabric revealing the quality of the Dugtrio graphic t-shirt, perfect for collectors.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png": "Side view highlighting the vibrant back design of the Dugtrio t-shirt showcasing its playful essence.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115550_e9bbe324-06e2-4167-be37-04e830f034b6.png": "Front angle capturing the stylish fit and retro feel of the Dugtrio t-shirt in contemporary art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/31433d3b-946e-4ffa-b7c3-b430870e2438/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=64dc0a5434a0da4b3cea8b2276d4e4be140475c1b35032955037fbd44216d7fa": "Dugtrio shirt displayed against a vibrant red backdrop, enhancing its playful and humorous design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/50bb484a-1798-4556-b7e6-5a450487447c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6710e467a037f21f79976bc1b56ac1ef91a555d4603dd94165774fa6375305c0": "Close-up detail revealing printing quality and vivid colors on the red Dugtrio shirt design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1edc639-1bef-41c1-8158-ed855f9cb5b0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=56eab450ff85de998254d784ba7770b25a701c72958a40598e9eacdd6f7b9395": "Dynamic view highlighting bold colors of the red Dugtrio shirt from an artistic angle.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/603a4cdd-d11f-49bd-9f2a-344344d22828/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b30d3a50933e86ee21b6901c2c1224291af353cb139b64d51f40cb549e01f20d": "Artistic presentation of additional details on the red Dugtrio shirt, emphasizing its fun character.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d7127088-15e1-4438-a2b0-973750c74bfa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e0f0ea3d80e02815fc8b960fc8da88ec173f55608c002e7246d8a17ecbd69ad7": "View showcasing the unique cut and fit of the red Dugtrio shirt with playful contemporary art vibes."
+    },
+    "tags": [
+      "dugtrio",
+      "pokemon t-shirt",
+      "anime fan art",
+      "90s retro apparel",
+      "funny gift",
+      "gildan shirt",
+      "cool pokemon gear",
+      "unique fashion",
+      "fan art gift",
+      "underground style",
+      "artistic wear",
+      "geek culture tee",
+      "anime merchandise"
+    ],
+    "featured": false,
+    "gelatoProductId": "8d61beba-85f5-460f-a496-f4add59099a2",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "dugtrio t-shirt",
+      "pokemon apparel",
+      "anime clothing",
+      "retro shirt",
+      "funny gifts"
+    ],
+    "longTailKeywords": [
+      "dugtrio pokemon back t-shirt",
+      "retro anime fan apparel online",
+      "buy funny pokemon lover gifts",
+      "gildan premium tees collection",
+      "90s style pokemon shirts for sale",
+      "unique dugtrio themed clothing gift ideas",
+      "funny retro anime graphic teeshirts",
+      "collectible pokemon fan art apparel",
+      "stylish dugtrio shirt for anime fans",
+      "humorous t-shirts for pokemon lovers"
+    ],
+    "hashtags": "#dugtrio #pokemon #animefanart #retro90s #funnytshirt #geekculture #apparel #fashion #graphictee #nerdstyle #pokemongifts #exclusivewear #pokedex #animeclothing #collectibleshirts #stylishgift #printswithattitude #quirkyfashion #originaldesigns #fanartapparel #diversefandoms #undergroundstyle #premiumtshirts #pocketprintartwork #vintageinspiredfashion #pokemontshirtcollection #creativewearables #subversiveartstyle #customteeshirtshop#comfortandstyle",
+    "instagramCaption": "'Digging deep and pushing boundaries! 💥 Ready to embrace the quirks? This Dugtrio T-Shirt is not just a piece of clothing; it's an attitude. Grab yours today! 👕✨#dugtrio#pokemon#retrofashion'",
+    "pinterestCaption": "'Dive into nostalgia with our Dugtrio Pokémon back T-Shirt – a bold statement piece crafted for true fans. Perfectly blending retro vibes with modern comfort, it's an essential addition to your anime apparel collection.",
+    "seoTitle": "Dugtrio Pokémon T-Shirt | Retro 90s Anime Fan Gift | Funny Apparel",
+    "variants": [
+      {
+        "uid": "ee917173-e567-4585-9cf5-2535feadb859",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "be64361b-a4d2-4528-aebb-5b6cd3459d13",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2d995077-2c73-4d39-a20d-623aafe11713",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Maroon",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b93843af-8c82-461f-9bc3-5a16a2312499",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Maroon",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "eec831d0-d745-4d35-9f93-244a5afd9420",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0a23dd07-ec82-4bf9-9128-af41b98ffc65",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Maroon",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "84f6b626-0d01-4b83-a0d1-c984986da1f7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5357c0ce-6e9f-4e6f-a57e-aaff7ef20e20",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "726e1082-a093-4736-9db4-1796c2e074e1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Maroon",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "21e1182f-c0ec-4a89-8eaa-8c33cce36667",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e8f1d90a-f1e0-40b7-a500-3d5fa402e0e9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c450b638-5c1b-4364-87d8-8d928a5f8464",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d8cd2fb3-373d-4515-ad7d-54d0dd10c415",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7aac28bd-05aa-4370-ab26-47ed55abf9c7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0abf0f18-1ebd-4d2c-852f-0f83f02f0800",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b45a680e-3f7d-4e56-b16f-284958f271f8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "449eca03-7391-4fcb-b78c-744c8c9d66d7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a6ac3e4f-d5a2-4d40-a704-2cadc8a8882d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e8420066-9754-4855-8a9c-4f2a4fe12a01",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "63b9c79e-3547-4b83-871e-8062efe021ad",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-a-military-green-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg"
+      },
+      {
+        "id": "maroon",
+        "label": "Maroon",
+        "hex": "#888888",
+        "image": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-a-maroon-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-a-natural-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-a-white-01.jpg"
+      }
+    ],
+    "etsyTitle": "Dugtrio Pokémon Back T-Shirt, Cozy 90s Retro Style, Fun Gift for Anime Lovers",
+    "etsyTags": [
+      "dugtrio t-shirt",
+      "anime fan art",
+      "gift for gamers",
+      "pokemon merchandise",
+      "otaku apparel",
+      "90s nostalgia",
+      "unisex tee"
+    ],
+    "etsyImageAlts": [
+      "Front view mockup of Dugtrio Pokémon back t-shirt worn by model outdoors.",
+      "Back view mockup showcasing Dugtrio design on t-shirt worn by model.",
+      "Close-up detail of Dugtrio graphic on t-shirt highlighting colors and design.",
+      "Flat lay shot of Dugtrio Pokémon back t-shirt revealing vibrant graphics.",
+      "Lifestyle candid photo of person wearing Dugtrio t-shirt while relaxing at home.",
+      "Product detail shot displaying size guide for Dugtrio t-shirt options.",
+      "Gift-wrapped packaging context featuring Dugtrio t-shirt ready to be presented."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/31433d3b-946e-4ffa-b7c3-b430870e2438/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=64dc0a5434a0da4b3cea8b2276d4e4be140475c1b35032955037fbd44216d7fa",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/50bb484a-1798-4556-b7e6-5a450487447c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6710e467a037f21f79976bc1b56ac1ef91a555d4603dd94165774fa6375305c0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1edc639-1bef-41c1-8158-ed855f9cb5b0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=56eab450ff85de998254d784ba7770b25a701c72958a40598e9eacdd6f7b9395",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/603a4cdd-d11f-49bd-9f2a-344344d22828/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b30d3a50933e86ee21b6901c2c1224291af353cb139b64d51f40cb549e01f20d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d7127088-15e1-4438-a2b0-973750c74bfa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e0f0ea3d80e02815fc8b960fc8da88ec173f55608c002e7246d8a17ecbd69ad7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T122009Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc973a4431e4464c40c7a72ad359d26ea2bd51d3933737d94aa28dddbc4c00dc"
+    ],
+    "createdAt": "2026-06-29T12:35:13.001Z",
+    "updatedAt": "2026-06-29T12:35:13.002Z"
   }
 ]
