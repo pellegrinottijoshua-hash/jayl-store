@@ -11277,5 +11277,289 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
     "updatedAt": "2026-06-29T12:52:31.776Z"
+  },
+  {
+    "id": "cool-likitung-back-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Likitung back T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "With a cheerful grin and an enthusiastic bounce, Likitung embodies the joy of pure playfulness as it readies itself to tackle its next culinary adventure. This retro 90s style Gildan premium tee captures that whimsical energy through stunning DTG print quality, making every detail pop. Whether you’re a nostalgic Pokémon trainer or seeking the perfect gift for someone who lives and breathes Pokémon lore, this shirt delivers a delightful blend of humor and artistry.",
+    "altText": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      }
+    ],
+    "image": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_124454_10f01db1-41e8-44b1-b49d-db2953b61c46.png",
+    "heroImage": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125011_05a3ffb9-e616-4a59-a67b-656a03c1f249.png",
+    "detailImage": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125019_551982ff-c83c-4e47-b92b-934b9db81b61.png",
+    "images": [
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125032_85cfdebc-e139-41be-8e5d-20b8cf64b762.png",
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125422_29ab1e41-ff6b-491c-bfcb-4aad8a775f5b.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77ecc57c-3c54-4950-89cf-45c2c4ff0109/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3c30033b406a9544362d68e0b33edb7544c639f5eef393f3aa64a4d0afe8b937",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/28899ed4-6f92-4183-ab71-82acf24068a3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7ab2f24d7c5900e7191ac5905eab144e1d3c03226944f244654c3598ee0080d4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7d2894ae-00b1-4ee6-b937-562c145bfd11/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f04a8179571685a77d38761414a2b0b12f03f7c9d95dccaa5e597d4bf46f25b4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=24377e6d93125d1412e68afd3edb889352fbc7ffe78f459ab07dea3c29fe3051"
+    ],
+    "imageAlts": {
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--mockup-01.jpg": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--white-01.jpg": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--black-01.jpg": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--light-blue-01.jpg": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--azalea-01.jpg": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee."
+    },
+    "tags": [
+      "likitung",
+      "pokemon",
+      "anime",
+      "90s style",
+      "funny gift",
+      "fan art",
+      "apparel",
+      "gildan 64000",
+      "collectibles",
+      "possession",
+      "cartoon"
+    ],
+    "featured": false,
+    "gelatoProductId": "fc91df3d-649e-4dd9-9c3c-ec2edc593d3b",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "Likitung shirt",
+      "Pokemon apparel",
+      "anime t-shirt",
+      "retro t-shirt",
+      "funny gifts"
+    ],
+    "longTailKeywords": [
+      "buy Likitung Pokemon T-shirt online",
+      "cool anime gifts for friends",
+      "retro Pokemon fan apparel purchase",
+      "unique gifts for anime fans",
+      "best Pokemon art t-shirts available now",
+      "90s style fun gift ideas for men",
+      "Gildan Pokemon graphic tees sale",
+      "limited edition Likitung shirts online shopping",
+      "trendy anime fan apparel store near me",
+      "quirky gifts for Pokemon lovers"
+    ],
+    "hashtags": "#likitung #pokemon #anime #fanart #retrovintage #tshirt #gifts #uniqueapparel #nostalgia #cartoons #funnygiftideas #AestheticApparel #WearYourPassion #AnimeMerchandise #GeekChic #MangaStyle #ArtPrints #PopCultureFashion #NerdStyle #CollectibleShirts #AnimeLifestyle #CasualWear #RetroVibes #LimitedEditionTees #GildanTees #CharacterTeeShirts #UnconventionalGifts #StreetwearStyle #ColorfulTshirts",
+    "instagramCaption": "\"Do you feel like indulging in some playful adventures? 🍧 Slip into the spirit of gaming glory with our Likitung tee! A funny addition to any collection, it’s time to show your love. 💖✨#likitung#pokemon#fashiongoals\"",
+    "pinterestCaption": "\"Dive into nostalgia with our Likitung Pokémon T-Shirt! The retro vibe combined with humorous design makes it a standout choice for any anime lover. Grab yours today and wear your fandom proudly!\"",
+    "seoTitle": "Likitung Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "8baed2a9-8d3b-4c54-9b9e-4882c2eea95e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d6dc81d9-7597-46a1-9d61-7a6a7ece4701",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e06f845c-e76a-422d-9c18-c076870538bb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "209117cd-bdab-4b40-b9a9-17dc85ae9a7d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "66cf5e0c-db30-40ec-a941-0f4503409a4e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9e52e1aa-f358-4158-b7f5-910545cba8eb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3e3c27ca-e815-4ec8-a2f8-26d38a7270fe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c6dd05ba-83f1-440a-a301-9a7f34d67852",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b45e1c10-9cf0-44f2-bcb6-faef82295e68",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7863e12b-d9f7-42f2-a7c0-250785a75c66",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "00364335-dffc-4073-98f9-2e7defd7e350",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ced2e060-9a05-4b3c-8eda-59e0c1b68c44",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f790d890-d511-4444-b2d3-032d17f9f87b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "726a43e3-40d9-433a-a92e-b0c36be1cc52",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8e91a9a5-fc32-4c5a-85e1-ccd4585f995c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "46d1077e-b608-4f7e-91f8-8408c9b95193",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--white-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--light-blue-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--azalea-01.jpg"
+      }
+    ],
+    "etsyTitle": "Likitung Pokémon Back T-Shirt, Retro 90s Vibe, Gift for Anime Enthusiasts",
+    "etsyTags": [
+      "likitung shirt",
+      "anime fan gift",
+      "retro t-shirt",
+      "pokémon lover gift",
+      "otaku apparel",
+      "90s nostalgia",
+      "unisex fit shirt",
+      "quirky fashion",
+      "funny graphic tee",
+      "geek culture merch",
+      "casual wear",
+      "anime birthday gift"
+    ],
+    "etsyDescription": "For the friend who still believes they can catch 'em all—this Likitung back t-shirt is the ideal blend of retro vibes and Pokémon love.\n\nImagine them rocking this design at the next anime convention or during a laid-back weekend binge-watch session. The wry humor captured in this tee resonates with those who appreciate not just the flair of '90s anime, but also the clever charm of Pokémon's quirkiest characters. It's designed for anyone whose heart skips a beat at the thought of battling gym leaders while sipping on bubble tea.\n\nMade from 100% cotton, this unisex-fit t-shirt offers soft comfort in sizes S-3XL. The direct-to-garment print ensures that every detail pops without fading away—just like your friend's hopes after seeing their favorite Pokémon (that’s Likitung, by the way) go down in battle! \n\nNeed a gift idea for someone who lives and breathes Pikachu? This is it—it'll bring a smile to birthdays, holidays, or just as a surprise treat to show you care. \n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "front view mockup of likitung pokémon back t-shirt on model showcasing design and fit",
+      "back view mockup of likitung pokémon back t-shirt on model highlighting unique artwork details",
+      "close-up shot focusing on vibrant design details of likitung pokémon back t-shirt fabric texture",
+      "flat lay front view of likitung pokémon back t-shirt displaying color and printed design accurately",
+      "lifestyle candid photo of person wearing likitung pokémon t-shirt enjoying casual day outdoors",
+      "size guide shot showing measurements and product detail highlights for likitung pokémon back t-shirt",
+      "gift packaging context featuring likitung pokémon back t-shirt wrapped ready for giving occasion"
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77ecc57c-3c54-4950-89cf-45c2c4ff0109/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3c30033b406a9544362d68e0b33edb7544c639f5eef393f3aa64a4d0afe8b937",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f921acb2-effa-4564-abf3-637083ea05ad/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d26fe9f0334613fec28c1bfc907e93e46a5af75391ebc2143c84ce8002516f62",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/28899ed4-6f92-4183-ab71-82acf24068a3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7ab2f24d7c5900e7191ac5905eab144e1d3c03226944f244654c3598ee0080d4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7d2894ae-00b1-4ee6-b937-562c145bfd11/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f04a8179571685a77d38761414a2b0b12f03f7c9d95dccaa5e597d4bf46f25b4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T125311Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=24377e6d93125d1412e68afd3edb889352fbc7ffe78f459ab07dea3c29fe3051"
+    ],
+    "createdAt": "2026-06-29T13:01:53.101Z",
+    "updatedAt": "2026-06-29T13:01:53.101Z"
   }
 ]
