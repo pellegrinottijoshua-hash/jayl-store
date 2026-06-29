@@ -10991,5 +10991,291 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T12:43:34.046Z",
     "updatedAt": "2026-06-29T12:43:34.046Z"
+  },
+  {
+    "id": "gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Gengar Pokémon back T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Wearing this Gengar T-shirt is like channeling your inner mischief—nothing says playful haunting quite like this shadowy figure. With a retro 90s anime style, this design captures Gengar’s cheeky spirit and love for prankster vibes in eye-catching detail. The Gildan premium tee paired with high-quality DTG print ensures that not only will you look good, but you’ll feel comfortable too. It’s the perfect gift for anyone who appreciates true fan art and enjoys a chuckle about their favorite ghostly Pokémon.",
+    "altText": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      }
+    ],
+    "image": "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1bc0d0d-040c-4621-928f-fb41cd46123f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f47a03e778cddaccdb584b0a75046bdd7817832f20a89824e5d0b3ec48f83fba",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2600d37d-b8ce-459c-8c33-303168e2c854/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ba0736d0a75a181825ed0895c535c5bbb3a9ade1f7559d3ea51d29630a426a9",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d83b254-1944-4ada-a917-734f99daf41b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f9e94d5d258b0fbe05ae864b2827e5fab6acce3846a1de0382314fcc823ddccc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ef48637-dd85-4ff0-8f21-6afa4401dcf0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d85141fa9b89d86e0fb0117014e69b2b39303e20e7135a0a3105e541fefa20ae",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d63c04ce0b68fb898617fb27e23a63df2c56a2c911b4406fb671798799dd8d5"
+    ],
+    "imageAlts": {
+      "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
+      "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
+      "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-purple-01.jpg": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
+      "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-navy-01.jpg": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
+      "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-white-01.jpg": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee."
+    },
+    "tags": [
+      "gengar",
+      "pokemon",
+      "anime",
+      "retro",
+      "90s",
+      "fanart",
+      "tshirt",
+      "gift",
+      "funny",
+      "apparel",
+      "collectibles",
+      "geekwear",
+      "casual"
+    ],
+    "featured": false,
+    "gelatoProductId": "2fab9e0a-a5e9-45e1-8b4a-59b2dd5651d4",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "gengar shirt",
+      "pokemon t-shirt",
+      "anime apparel",
+      "retro t-shirt",
+      "funny gift"
+    ],
+    "longTailKeywords": [
+      "gengar pokemon back t-shirt",
+      "cool anime fan art gift",
+      "retro style pokemon shirt",
+      "90s nostalgic clothing online",
+      "funny pokemon lover gifts",
+      "unique anime prints for fans",
+      "premium gildan t-shirts online",
+      "trendy vintage pokemon apparel",
+      "comfortable retro graphic tees",
+      "limited edition pokemon art wear"
+    ],
+    "hashtags": "#gengar #pokemon #anime #retrofashion #90sstyle #fanfavorite #graphictee #collectoritem #geekgear #trendyshirts #animeart #quirkyfashion #fanartapparel #ghosttypepokemon #pokelove #vintageanimeart #printondemand #teespringstyle #fashionstatement #quirkyteeartwork #playfulwearables #geekchicstyle #coolgiftsforhim #giftingideasforher #cartoonapparel #nostalgicclothing #crazyforpokemon #ultimatefanmerchandise #musthavecollectibleitems #viralshirthub",
+    "instagramCaption": "#Gengar knows how to mix mischief and fun! 😏 Grab yours today and embrace that spooky vibe. Let’s haunt those fashion choices! 👻✨#PokemonFanArt #RetroVibes#AnimeLove",
+    "pinterestCaption": "#Gengar lovers, this T-shirt channels all the mischievous energy your wardrobe has been missing! Dive into the nostalgia with our retro-style design that showcases your passion for Pokémon. Don’t miss out on adding this must-have piece to your collection!",
+    "seoTitle": "Gengar Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "6db613d1-8779-471a-b8ee-ca08fed25002",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bf390a78-1c1e-4e20-9a75-0fdce3215947",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "29992d50-2b19-4bb4-bc3a-33b891c74a0f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fd5c5f44-b588-40c4-ba5f-ff40f214137a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e8422813-1539-447a-ac39-1ae548730258",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d7e26fee-ef4b-4d67-a61d-21f842fe5f8b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "207bf3ae-34f0-4a83-a3e7-49140f75c269",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9e853e50-aefb-44c8-b122-98cb727395b7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d9d086cd-30ff-4fb0-93ca-4f0d22f39821",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "deab0636-cf36-4767-9299-373a252d794d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a4bd65db-0de4-4574-8b0c-38ac6ee46a75",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "56615534-88f3-46ac-89e9-06bee13c0c52",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "69b230d0-70b8-4fd1-8912-990d55c1a551",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "451f2786-1bff-4889-b22a-a958db1df665",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "10ad23f0-9a97-46fa-a506-5aa130bff721",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5b590684-b1df-4b02-92ec-6a444e0bd86b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-purple-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-white-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-navy-01.jpg"
+      }
+    ],
+    "etsyTitle": "Gengar Pokémon Back T-Shirt, Retro 90s Vibe, Gift for Anime Fans",
+    "etsyTags": [
+      "gengar back design",
+      "anime fan art",
+      "birthday gift",
+      "gift for friends",
+      "otaku clothing",
+      "90s nostalgia",
+      "unisex fit tee",
+      "pokemon apparel",
+      "funny shirt gift",
+      "retro fashion t-shir",
+      "gengar lover gift",
+      "character merch shir",
+      "casual wear"
+    ],
+    "etsyDescription": "'Running through shadows and giggles, Gengar knows how to steal the spotlight — and your heart! This Gengar Pokémon back T-shirt brings that playful spirit to every moment. \n\nWith a bold design capturing Gengar's mischievous grin and iconic silhouette, this shirt is a tribute to the coolest Ghost-type Pokémon of all time. Whether you're at a convention or lounging with fellow fans, it radiates retro vibes only true enthusiasts can appreciate. Made from 100% cotton and featuring vibrant DTG premium print technology, it's not just a shirt; it’s a statement about who you are.\n\nAvailable in sizes S-3XL with an unisex fit that drapes comfortably on anyone’s frame. Thinking of the perfect gift? Surprise your best friend on their birthday or treat yourself to that nostalgic ‘90s throwback. This tee is bound to spark conversations and cheer among like-minded souls.\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Model wearing Gengar Pokémon back t-shirt showcasing vibrant design.",
+      "Model displaying the back view of Gengar design on stylish t-shirt.",
+      "Close-up of Gengar graphic detail highlighting character traits.",
+      "Flat lay of front side of Gengar Pokémon t-shirt emphasizing color.",
+      "Lifestyle shot of person casually wearing Gengar t-shirt in outdoor setting.",
+      "Size guide image next to folded t-shirt showing size variations available.",
+      "Gift-ready packaging of Gengar t-shirt arranged attractively."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1bc0d0d-040c-4621-928f-fb41cd46123f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f47a03e778cddaccdb584b0a75046bdd7817832f20a89824e5d0b3ec48f83fba",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2600d37d-b8ce-459c-8c33-303168e2c854/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ba0736d0a75a181825ed0895c535c5bbb3a9ade1f7559d3ea51d29630a426a9",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d83b254-1944-4ada-a917-734f99daf41b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f9e94d5d258b0fbe05ae864b2827e5fab6acce3846a1de0382314fcc823ddccc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ef48637-dd85-4ff0-8f21-6afa4401dcf0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d85141fa9b89d86e0fb0117014e69b2b39303e20e7135a0a3105e541fefa20ae",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d63c04ce0b68fb898617fb27e23a63df2c56a2c911b4406fb671798799dd8d5"
+    ],
+    "createdAt": "2026-06-29T12:52:31.776Z",
+    "updatedAt": "2026-06-29T12:52:31.776Z"
   }
 ]
