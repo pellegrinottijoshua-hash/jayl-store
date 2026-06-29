@@ -10996,7 +10996,7 @@ export const adminProducts = [
     "id": "gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Gengar Pokémon back T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style | Funny Pokémon Lover Gift gildan 64000",
+    "name": "Cool Gengar back T-Shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -11027,15 +11027,16 @@ export const adminProducts = [
         "price": 2399
       }
     ],
-    "image": "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122145_7b286055-26f6-452c-8d4b-aeb7d4347c4c.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_120624_5a9063e2-aee5-4565-8bde-64fca4f9df3d.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_120720_3226fbca-8dc3-4372-827c-9457fb486dd4.png",
     "images": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122614_d5f65d4c-120d-4bf7-94ab-2b8bea5ef9f4.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122625_a32417ca-6861-4a6b-8d3a-2b85c3afad18.png",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e1bc0d0d-040c-4621-928f-fb41cd46123f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f47a03e778cddaccdb584b0a75046bdd7817832f20a89824e5d0b3ec48f83fba",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2600d37d-b8ce-459c-8c33-303168e2c854/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ba0736d0a75a181825ed0895c535c5bbb3a9ade1f7559d3ea51d29630a426a9",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d83b254-1944-4ada-a917-734f99daf41b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f9e94d5d258b0fbe05ae864b2827e5fab6acce3846a1de0382314fcc823ddccc",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ef48637-dd85-4ff0-8f21-6afa4401dcf0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d85141fa9b89d86e0fb0117014e69b2b39303e20e7135a0a3105e541fefa20ae",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d63c04ce0b68fb898617fb27e23a63df2c56a2c911b4406fb671798799dd8d5"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ef48637-dd85-4ff0-8f21-6afa4401dcf0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d85141fa9b89d86e0fb0117014e69b2b39303e20e7135a0a3105e541fefa20ae"
     ],
     "imageAlts": {
       "/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg": "Cheeky Gengar smirking mischievously, set against a retro 90s anime backdrop on a premium JAYL tee.",
@@ -11276,7 +11277,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260629%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260629T124715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9d63c04ce0b68fb898617fb27e23a63df2c56a2c911b4406fb671798799dd8d5"
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
-    "updatedAt": "2026-06-29T12:52:31.776Z"
+    "updatedAt": "2026-06-29T13:02:48.132Z",
+    "relatedProducts": []
   },
   {
     "id": "cool-likitung-back-t-shirt",
