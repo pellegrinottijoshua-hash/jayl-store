@@ -120,6 +120,47 @@ async function writeAdminProducts(products, sha, message, token) {
   return ghPut(ADMIN_PRODUCTS_PATH, content, sha, message, token)
 }
 
+// ── Gelato mockup localizer ─────────────────────────────────────────────────
+// Gelato standard mockups come back as presigned S3 URLs (…amazonaws.com…?X-Amz-…)
+// that 403 after ~24h, leaving blank galleries. Whenever a product is saved we
+// download any such URL into the repo and swap it for a committed local path, so
+// images[] never persists an expiring URL. Non-expiring entries pass through.
+const isExpiringGelatoUrl = (u) =>
+  typeof u === 'string' && /amazonaws\.com/i.test(u) && /[?&]X-Amz-/i.test(u)
+
+async function localizeGelatoMockups(productId, productTitle, images, token) {
+  if (!Array.isArray(images) || !images.some(isExpiringGelatoUrl)) return images
+  if (!/^[a-zA-Z0-9_-]+$/.test(productId)) return images
+
+  const titleSlug = (productTitle || productId)
+    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 45)
+
+  let n = 0
+  const out = []
+  for (const entry of images) {
+    if (!isExpiringGelatoUrl(entry)) { out.push(entry); continue }
+    try {
+      const imgRes = await fetch(entry)
+      if (!imgRes.ok) { out.push(entry); continue }   // already expired — leave as-is
+      const buf = Buffer.from(await imgRes.arrayBuffer())
+      const ct  = imgRes.headers.get('content-type') || 'image/jpeg'
+      const ext = ct.split('/')[1]?.split(';')[0]?.replace('jpeg', 'jpg') || 'jpg'
+      n += 1
+      const filename = `${titleSlug}-gelato-${String(n).padStart(2, '0')}.${ext}`
+      const filePath = `public/images/${productId}/${filename}`
+      let existingSha = null
+      try { const ex = await ghGet(filePath, token); existingSha = ex.sha } catch {}
+      await ghPut(filePath, buf, existingSha,
+        `admin: localize gelato mockup ${filename} for ${productId}`, token)
+      out.push(`/images/${productId}/${filename}`)
+    } catch (e) {
+      console.warn(`[admin] localizeGelatoMockups: ${e.message}`)
+      out.push(entry)   // never lose the image reference if download/commit fails
+    }
+  }
+  return out
+}
+
 // ── Admin collections helpers ─────────────────────────────────────────────────
 
 async function readAdminCollections(token) {
@@ -358,6 +399,15 @@ export default async function handler(req, res) {
       const { product } = data
       if (!product?.id) return res.status(400).json({ error: 'product.id required' })
 
+      // Download any expiring Gelato S3 mockups → committed local paths (no blank galleries)
+      if (Array.isArray(product.images)) {
+        const original = product.images
+        product.images = await localizeGelatoMockups(product.id, product.title, original, githubToken)
+        const remap = new Map(original.map((o, i) => [o, product.images[i]]))
+        if (product.image)     product.image     = remap.get(product.image)     ?? product.image
+        if (product.heroImage) product.heroImage = remap.get(product.heroImage) ?? product.heroImage
+      }
+
       const { products, sha } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === product.id)
       // Preserve createdAt on update; stamp it on first save
@@ -414,12 +464,16 @@ export default async function handler(req, res) {
       const { products, sha } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === productId)
       if (idx < 0) return res.status(404).json({ error: 'Product not found' })
+      // Download any expiring Gelato S3 mockups → committed local paths (no blank galleries)
+      const localImages = await localizeGelatoMockups(productId, products[idx].title, newImages, githubToken)
+      const remap = new Map(newImages.map((o, i) => [o, localImages[i]]))
+      const fixUrl = (u) => (u == null ? u : remap.get(u) ?? u)
       products[idx] = {
         ...products[idx],
-        images:    newImages,
+        images:    localImages,
         // explicitImage = 16:9 desktop hero set by admin; heroImage = 9:16 mobile hero
-        image:     explicitImage ?? heroImage ?? newImages[0] ?? products[idx].image,
-        heroImage: heroImage     ?? newImages[0] ?? products[idx].heroImage,
+        image:     fixUrl(explicitImage ?? heroImage ?? localImages[0] ?? products[idx].image),
+        heroImage: fixUrl(heroImage     ?? localImages[0] ?? products[idx].heroImage),
         // detailImage = shown via "hold to reveal" on product page
         ...(detailImage !== undefined ? { detailImage: detailImage || null } : {}),
         updatedAt: new Date().toISOString(),
