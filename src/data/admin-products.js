@@ -11386,7 +11386,11 @@ export const adminProducts = [
     "detailImage": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125019_551982ff-c83c-4e47-b92b-934b9db81b61.png",
     "images": [
       "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125032_85cfdebc-e139-41be-8e5d-20b8cf64b762.png",
-      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125422_29ab1e41-ff6b-491c-bfcb-4aad8a775f5b.png"
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125422_29ab1e41-ff6b-491c-bfcb-4aad8a775f5b.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-azalea-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-black-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-light-blue-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-mockup-01.jpg"
     ],
     "imageAlts": {
       "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-back-t-shirt-cool-anime-fan--mockup-01.jpg": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
@@ -11624,7 +11628,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150046Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3471e6613f3bcd2123c69cfea7bed976eb043072c237e521e446f82e7d633e4e"
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
-    "updatedAt": "2026-06-30T15:00:52.448Z"
+    "updatedAt": "2026-06-30T15:01:02.688Z",
+    "relatedProducts": []
   },
   {
     "id": "cool-slowpoke-back-t-shirt",
