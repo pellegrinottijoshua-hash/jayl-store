@@ -2573,8 +2573,7 @@ export const adminProducts = [
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-02.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-03.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-04.jpg",
-      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-05.jpg",
-      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-06.jpg"
+      "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-05.jpg"
     ],
     "imageAlts": {
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-01.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art.",
@@ -2826,7 +2825,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dcdd4e13-77b2-4dec-934f-48537edb342a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ed8b1e930dfe6633b1b7dadca1913cf60d8cfe4fbf1a5b96a8d5922519ecb97"
     ],
     "createdAt": "2026-05-26T15:11:39.661Z",
-    "updatedAt": "2026-05-27T15:02:57.744Z",
+    "updatedAt": "2026-06-30T15:12:17.438Z",
     "relatedProducts": []
   },
   {
