@@ -11349,8 +11349,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "With a cheerful grin and an enthusiastic bounce, Likitung embodies the joy of pure playfulness as it readies itself to tackle its next culinary adventure. This retro 90s style Gildan premium tee captures that whimsical energy through stunning DTG print quality, making every detail pop. Whether you’re a nostalgic Pokémon trainer or seeking the perfect gift for someone who lives and breathes Pokémon lore, this shirt delivers a delightful blend of humor and artistry.",
-    "altText": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
+    "description": "Likitung, the embodiment of playful chaos and endless appetite, is here to spice up your wardrobe! With a quirky charm that speaks to those who love a good meme, this Gildan premium tee showcases a vibrant direct-to-garment print capturing his dynamic energy. It’s not just a shirt; it’s a conversation starter and a perfect gift for anyone who appreciates humor in their fashion. Whether you’re wandering through conventions or chilling with friends, rep this character with pride!",
+    "altText": "Quirky Likitung mid-chew with a playful expression on premium Gildan tee featuring retro fan-art style chest print.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -11401,44 +11401,46 @@ export const adminProducts = [
     },
     "tags": [
       "likitung",
-      "pokemon",
-      "anime",
-      "90s style",
-      "funny gift",
-      "fan art",
-      "apparel",
-      "gildan 64000",
-      "collectibles",
-      "possession",
-      "cartoon"
+      "pokemon tshirt",
+      "cool pokemon",
+      "meme apparel",
+      "anime fashion",
+      "geek clothing",
+      "funny t-shirt",
+      "kawaii art",
+      "retro anime",
+      "unique gifts",
+      "playful style",
+      "fan art t-shirt",
+      "quirky designs"
     ],
     "featured": false,
     "gelatoProductId": "fc91df3d-649e-4dd9-9c3c-ec2edc593d3b",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "Likitung shirt",
-      "Pokemon apparel",
-      "anime t-shirt",
-      "retro t-shirt",
-      "funny gifts"
+      "likitung t-shirt",
+      "pokemon apparel",
+      "funny shirts",
+      "anime tees",
+      "meme clothing"
     ],
     "longTailKeywords": [
-      "buy Likitung Pokemon T-shirt online",
-      "cool anime gifts for friends",
-      "retro Pokemon fan apparel purchase",
-      "unique gifts for anime fans",
-      "best Pokemon art t-shirts available now",
-      "90s style fun gift ideas for men",
-      "Gildan Pokemon graphic tees sale",
-      "limited edition Likitung shirts online shopping",
-      "trendy anime fan apparel store near me",
-      "quirky gifts for Pokemon lovers"
+      "cool likitung graphic shirt",
+      "pokemon lover apparel online",
+      "quirky anime themed t-shirts",
+      "best gifts for memers",
+      "fun pokémon fan merchandise",
+      "unique likitung artwork shirt",
+      "playful anime t-shirt designs",
+      "retro pokemon inspired styles",
+      "Gildan quality anime shirts",
+      "memes and gaming fashion"
     ],
-    "hashtags": "#likitung #pokemon #anime #fanart #retrovintage #tshirt #gifts #uniqueapparel #nostalgia #cartoons #funnygiftideas #AestheticApparel #WearYourPassion #AnimeMerchandise #GeekChic #MangaStyle #ArtPrints #PopCultureFashion #NerdStyle #CollectibleShirts #AnimeLifestyle #CasualWear #RetroVibes #LimitedEditionTees #GildanTees #CharacterTeeShirts #UnconventionalGifts #StreetwearStyle #ColorfulTshirts",
+    "hashtags": "#likitung #pokemon #memes #anime #fashion #teeshirt #coolclothes #kawaii #retrofashion #fanart #pokedex #gamingapparel #quirkyshirts #giftideas #stylishwear #animecommunity #pokemongifts #tshirtcollection #wearableart #animatedstyle #geekstyle #cartoonfashion #comicrelief #vintageanime #jokesandgags #playfuldesigns #colorfulprints #characterfashion #popculturetee ##nerdwearsale ",
     "instagramCaption": "\"Do you feel like indulging in some playful adventures? 🍧 Slip into the spirit of gaming glory with our Likitung tee! A funny addition to any collection, it’s time to show your love. 💖✨#likitung#pokemon#fashiongoals\"",
     "pinterestCaption": "\"Dive into nostalgia with our Likitung Pokémon T-Shirt! The retro vibe combined with humorous design makes it a standout choice for any anime lover. Grab yours today and wear your fandom proudly!\"",
-    "seoTitle": "Likitung Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "seoTitle": "Cool Likitung T-Shirt | Meme-Inspired Gear | Playful Gift Idea",
     "variants": [
       {
         "uid": "8baed2a9-8d3b-4c54-9b9e-4882c2eea95e",
@@ -11628,7 +11630,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150046Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3471e6613f3bcd2123c69cfea7bed976eb043072c237e521e446f82e7d633e4e"
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
-    "updatedAt": "2026-06-30T15:01:02.688Z",
+    "updatedAt": "2026-06-30T15:01:13.248Z",
     "relatedProducts": []
   },
   {
