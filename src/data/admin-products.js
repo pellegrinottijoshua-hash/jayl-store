@@ -2835,8 +2835,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "Charmander embodies the fiery spirit of adventure and loyalty, making this t-shirt a must-have for fans who remember their first Pokémon battles. With vibrant DTG print quality on a Gildan premium tee, this retro 90s style shirt captures the essence of this beloved character. Whether you're channeling Charmander's fierce determination or simply reminiscing about the early days of Pokémon, this shirt is a fantastic gift for those who appreciate the charm and nostalgia of the franchise.",
-    "altText": "Eager Charmander with tail aflame in nostalgic 90s anime art, chest-print on a premium JAYL tee.",
+    "description": "For fans who cherish childhood memories and a spark of adventure, the Cool Charmander T-Shirt captures the essence of this fiery companion. Known as the charming little flame starter, Charmander embodies warmth, loyalty, and that adventurous spirit that ignites our passion for exploration. Made from Gildan premium fabric with direct-to-garment print quality, this tee highlights charm rather than bravado. Gift it to someone special celebrating a birthday or milestone—they’ll appreciate both the nostalgia and the understated style.",
+    "altText": "Charming Charmander curled playfully, showcasing soft orange hues in retro fan-art style with a small chest print on premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -2890,17 +2890,17 @@ export const adminProducts = [
     "tags": [
       "charmander",
       "pokemon",
-      "anime",
-      "t-shirt",
-      "90s style",
-      "funny gift",
-      "fan art",
-      "cool apparel",
-      "retro fashion",
-      "print on demand",
-      "gildan",
-      "dtg print",
-      "gift idea"
+      "cool shirt",
+      "anime apparel",
+      "gamer gift",
+      "collectible",
+      "retro art",
+      "cute clothing",
+      "geek fashion",
+      "kids gift",
+      "fire type",
+      "fan merchandise",
+      "print on demand"
     ],
     "featured": false,
     "gelatoProductId": "bd5cf732-c43b-4ef5-879b-695e1e4c7d38",
@@ -2909,28 +2909,28 @@ export const adminProducts = [
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "charmander t-shirt",
-      "pokemon shirt",
-      "anime apparel",
-      "retro style",
-      "funny gift"
+      "charmander shirt",
+      "pokemon t-shirt",
+      "cool apparel",
+      "anime tee",
+      "funny shirt"
     ],
     "longTailKeywords": [
-      "charmander pokemon t-shirt",
-      "funny pokemon lover gift",
-      "retro 90s anime shirt",
-      "cool anime fan art gift",
-      "gildan premium tee",
-      "dtg print quality t-shirt",
-      "charmander fan art apparel",
-      "unique pokemon gifts",
-      "vintage pokemon clothing",
-      "quirky anime gifts"
+      "charmander t-shirt for adults",
+      "premium pokemon apparel online",
+      "unique charmader clothing gift",
+      "buy cool charmender shirts near me",
+      "vintage style Pokemon t-shirts online",
+      "trending anime wear for men",
+      "best charmader gifts for kids",
+      "popular Pokemon themed casual wear",
+      "comfortable gaming t-shirts for teens",
+      "artistic Pokemon fan attire shop"
     ],
-    "hashtags": "#charmander #pokemon #anime #tshirt #90sstyle #funnygift #fanart #coolapparel #retrofashion #printondemand #gildan #dtgprint #giftidea #pokemongifts #animelovers #retroclothing #geekfashion #nerdstyle #vintageanime #cooldesigns #animefashion #pokemontshirt #charmanderfan #artapparel #animeart #cartoonist #geekgifts #pokemonmerch #fanartapparel #animecollectibles",
-    "instagramCaption": "Catch 'em all in style with our Charmander t-shirt! 🔥 Perfect for those who vibe with nostalgia and firey adventures. Grab yours now! #charmander #pokemon #anime",
+    "hashtags": "#Charmander #Pokemon #AnimeTee #GamerGift #RetroArt #FanMerchandise #CuteClothing #CoolShirt #FireType #GeekFashion #CollectibleApparel #AnimeApparel #PrintOnDemand #CharacterDesign #NostalgiaWear #UniqueGiftIdea #CasualStyle #StreetwearStyle #VintageVibes #ArtDrivenFashion #MinimalistLook #EpicPokeStyles #CoolAnimeShirts #EverydayEssentials #CreativeWearableArt #StylishTeesForFans #UnisexFashionPosters#TrendyApparelOnline#MustHaveTrendingshirt#ArtisticThreads#VibrantColorsInFashion ",
+    "instagramCaption": "\"Spark up your wardrobe with a touch of nostalgia! This Cool Charmander Tee isn't just clothing; it’s an expression. Perfect for all those fire starters at heart! 🔥🔥✨ Get yours today!  #Charmander #GamerGift #CoolShirt\".",
     "pinterestCaption": "Show off your love for Charmander with this retro 90s style t-shirt. Made with Gildan premium quality and vibrant DTG print, it’s the perfect addition to any Pokémon fan's wardrobe. Get yours today!",
-    "seoTitle": "Charmender Pokémon T-Shirt | Retro 90s Anime Fan Gift",
+    "seoTitle": "Charmander T-Shirt | Cool Charmander Gift | Pokémon Apparel",
     "variants": [
       {
         "uid": "ac953a63-68da-451b-9bfd-baac79d9f4d5",
@@ -3160,7 +3160,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6"
     ],
     "createdAt": "2026-06-17T16:36:10.263Z",
-    "updatedAt": "2026-06-30T15:12:05.856Z",
+    "updatedAt": "2026-06-30T15:12:53.200Z",
     "relatedProducts": []
   },
   {
