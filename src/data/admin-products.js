@@ -10431,9 +10431,11 @@ export const adminProducts = [
     "images": [
       "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png",
       "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115550_e9bbe324-06e2-4167-be37-04e830f034b6.png",
-      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_210241_7c9f9ac5-8d80-4de7-a1f5-c661ebe32813.png",
-      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png",
-      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180956_0f721d92-2979-4e14-8495-cc37056d9964.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-black-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-maroon-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-military-green-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-mockup-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-natural-01.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_210241_7c9f9ac5-8d80-4de7-a1f5-c661ebe32813.png": "Dugtrio animated characters displayed on a t-shirt in contemporary art style, emphasizing humor.",
@@ -10711,7 +10713,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4f1af26c883d5f8d91b64c937c2f09d834a5eee00f66331a3fd474a76a1c7e74"
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
-    "updatedAt": "2026-06-30T15:03:11.688Z",
+    "updatedAt": "2026-06-30T15:03:25.089Z",
     "relatedProducts": []
   },
   {
