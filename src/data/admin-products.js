@@ -5499,8 +5499,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "Dugtrio embodies the essence of teamwork and resilience, burrowing through obstacles with effortless camaraderie. This Gildan premium tee showcases Dugtrio’s playful energy with high-quality direct-to-garment printing, ensuring vibrant colors and stunning detail. Ideal for those who relate to Dugtrio’s ability to work hard and have fun in any situation. Gifting this t-shirt to a fellow Pokémon enthusiast will spark joy and nostalgia, making it a thoughtful addition to their collection.",
-    "altText": "Energetic Dugtrio positioned playfully in a trio, depicted in retro 90s anime style on a premium JAYL tee with a small chest print.",
+    "description": "Searching for a unique gift for your Pokémon-obsessed friend? This Cool Dugtrio T-Shirt captures the mischievous energy of everyone's favorite subterranean trio. With Dugtrio's playful, dirt-loving nature illustrated in vibrant detail, this tee is a nod to classic Pokémon charm. Crafted on a Gildan premium tee with top-notch DTG print quality, it’s as comfy as it is eye-catching. Whether it’s a birthday surprise or just because, this shirt will bring joy to any casual occasion.",
+    "altText": "Energetic Dugtrio with its iconic brown mud-like body in playful poses, printed as small chest art on a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -5540,7 +5540,6 @@ export const adminProducts = [
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-maroon-01.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
-      "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-natural-01.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
     ],
@@ -5555,17 +5554,16 @@ export const adminProducts = [
     "tags": [
       "dugtrio",
       "pokemon",
-      "t-shirt",
-      "art",
-      "apparel",
-      "gildan",
-      "fanart",
+      "tshirt",
+      "cool pokemon",
+      "print on demand",
+      "graphic tee",
       "anime",
-      "cool",
-      "tee",
-      "gift",
-      "collectible",
-      "trio"
+      "fan art",
+      "gift idea",
+      "retro style",
+      "geek fashion",
+      "cartoon shirt"
     ],
     "featured": false,
     "gelatoProductId": "c83acac1-4508-4fb4-9e5d-5e1b9a103147",
@@ -5574,28 +5572,28 @@ export const adminProducts = [
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "dugtrio",
-      "pokemon shirt",
-      "cool t-shirt",
-      "anime apparel",
-      "fan art"
+      "dugtrio shirt",
+      "pokemon clothing",
+      "anime t-shirt",
+      "cool shirts",
+      "fan art tee"
     ],
     "longTailKeywords": [
-      "buy dugtrio pokemon t-shirt",
-      "cool pokemon apparel online",
-      "gildan dugtrio tee shirt",
-      "unique pokemon gift ideas",
-      "premium anime fan shirt",
-      "retro dugtrio fan art",
-      "trendy pokemon t-shirt",
-      "gift for pokemon fans",
-      "stylish dugtrio shirt",
-      "pokémon themed apparel"
+      "fun dugtrio t-shirt design",
+      "unique pokemon apparel gift",
+      "playful dugtrio graphic shirt",
+      "casual retro pokemon tee",
+      "quirky diglett and dugtrio shirt",
+      "premium pokemon graphic tee",
+      "best gift for pokemon fans",
+      "colorful dugtrio themed clothing",
+      "stylish anime-inspired t-shirt",
+      "comfy pokémon charmer t-shirt"
     ],
-    "hashtags": "#dugtrio #pokemon #tshirt #art #apparel #gildan #fanart #anime #cool #tee #gift #collectible #trio #pokemonmerch #pokedaily #pokedex #pokemontcg #pokemonart #gaming #instagood #fashion #style #outfit #gamingapparel #pokemoncollectibles #pika #geekfashion #animeart #retrogaming #nerdstyle #pokemongifts",
-    "instagramCaption": "Digging up some serious style with our Dugtrio tee! Perfect for those who know teamwork makes the dream work. Grab yours now and show off your Pokémon pride! #dugtrio #pokemon #anime",
-    "pinterestCaption": "Show off your love for Pokémon with the stylish Dugtrio T-Shirt! This Gildan tee features vibrant direct-to-garment print showcasing Dugtrio's playful spirit. Perfect for collectors and fans alike, add this unique piece to your wardrobe today.",
-    "seoTitle": "Dugtrio T-Shirt | Cool Pokémon Fan Art | Stylish Gift Idea",
+    "hashtags": "#dugtrio #pokemon #tshirt #coolpokemon #printondemand #graphictee #anime #fanart #giftidea #retrostyl #geekfashion #cartoons #pkmn #pokedex #fashiongram #instacool #memeaware #pokemergirl #throwbackstyle #vintageanimeart #nerdwears #collectibleshirt ##otakufashion ##gamerswears ##diyapparel ##stylishprints ##vibrantfashion ##fandomclothing ##cutecharacters ##mythandmagic ##instafashionnova ",
+    "instagramCaption": "#Dugtrio giving us all the underground vibes! 🐾 Grab one now and let your inner meme-lord shine through! 💥#PokemonLove #FanArtTees ",
+    "pinterestCaption": "Dive into the world of Pokémon with our Cool Dugtrio T-Shirt! Perfectly blends comfort and style while showcasing Dugtrio's quirky personality. Don't miss out on this awesome gear!",
+    "seoTitle": "Dugtrio T-Shirt | Cool Pokémon Gift | Fun Casual Style",
     "variants": [
       {
         "uid": "8c73b91c-0fec-4e61-98cd-3bb8894f999a",
@@ -5825,7 +5823,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/52278d84-b826-496c-9688-0387849ee7a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T090403Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=99fffa2d9e753fa0cd2d734f29c69f6a114503c119ae63b4783af34338117d4e"
     ],
     "createdAt": "2026-06-23T09:09:16.853Z",
-    "updatedAt": "2026-06-23T09:13:07.561Z",
+    "updatedAt": "2026-06-30T15:08:39.956Z",
     "relatedProducts": []
   },
   {
