@@ -2283,7 +2283,6 @@ export const adminProducts = [
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-azalea-01.jpg",
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-black-01.jpg",
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-light-blue-01.jpg",
-      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-mockup-01.jpg",
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-white-01.jpg"
     ],
     "imageAlts": {
@@ -2513,7 +2512,7 @@ export const adminProducts = [
     ],
     "etsyDescription": "Show off your love for Pokemon with our Cool Ditto T-Shirt, a must-have for fans of all ages seeking unique and stylish apparel. This one-of-a-kind tee features a vibrant graphic of Ditto, perfect for expressing your fandom in a fun way.\n\nCrafted with care, this t-shirt showcases a striking design that captures the playful essence of Ditto, making it a standout piece in any wardrobe. Whether you're attending a convention, hanging out with friends, or just relaxing at home, this shirt is designed to turn heads.\n\nMade from 100% cotton, this t-shirt offers a soft, breathable fit that keeps you comfortable all day long. With direct-to-garment (DTG) premium print technology, the colors are vivid and long-lasting. Available in sizes S-3XL, it’s perfect for everyone.\n\nLooking for the perfect gift? This Cool Ditto T-Shirt is an ideal present for birthdays, holidays, or just because!\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "createdAt": "2026-05-26T14:46:47.331Z",
-    "updatedAt": "2026-06-22T23:00:36.947Z",
+    "updatedAt": "2026-06-30T15:12:27.526Z",
     "relatedProducts": [],
     "gelatoCdnImages": [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85e22de-2b5d-4e15-a436-c3ba4ceebd1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260622%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260622T230011Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=716a2f677b8735885400966ce9366cf50fd5a4f68c18f7584e575c5b6101d998",
