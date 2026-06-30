@@ -6771,8 +6771,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Zapdos embodies pure chaotic electricity, crackling with energy and ready to light up any outfit. This cool back T-shirt captures the essence of the legendary Pokémon in a vibrant design that commands attention. Made from a Gildan premium tee, its high-quality DTG print ensures that the electric blue and striking yellow colors pop brilliantly. Whether you're dressing down for a casual day out or looking for that special gift for a friend who appreciates the legend of Zapdos, this shirt is a unique addition to any wardrobe. Stand out with a piece that resonates with the iconic power of this electric-type Pokémon.",
-    "altText": "Zapdos frozen mid-screech with wings extended in electric blue hues on a premium JAYL tee, small chest print.",
+    "description": "In a thunderstorm of nostalgia, this Zapdos back t-shirt electrifies your wardrobe. As the embodiment of chaotic energy, Zapdos charges forth with crackling electricity, reminding us of those epic battles where every bolt could turn the tide. The Gildan premium tee showcases this fierce avian in vibrant detail through direct-to-garment (DTG) print quality, ensuring that every detail sparkles like a lightning strike. Whether you're catching 'em all or just vibing with your favorite electric Pokémon, this shirt is a way to express your fandom. A perfect gift for anyone who understands the thrill of adventure and the allure of Pokémon lore.",
+    "altText": "Dynamic Zapdos mid-screech with brilliant yellow feathers on a Gildan premium tee featuring retro fan-art print on the chest.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -6830,17 +6830,17 @@ export const adminProducts = [
     "tags": [
       "zapdos",
       "pokemon",
-      "t-shirt",
-      "cool",
-      "electric",
-      "apparel",
-      "fan-art",
-      "gildan",
-      "backprint",
-      "anime",
-      "collectible",
-      "gift",
-      "vintage"
+      "back t-shirt",
+      "cool art",
+      "fan apparel",
+      "electric type",
+      "anime fashion",
+      "geek wear",
+      "collectibles",
+      "gifts for him",
+      "graphic tee",
+      "retro style",
+      "gaming merch"
     ],
     "featured": false,
     "gelatoProductId": "5336071a-cb79-4922-9f32-25f82d97a041",
@@ -6848,27 +6848,27 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "zapdos t-shirt",
-      "pokemon apparel",
-      "cool t-shirt",
-      "electric t-shirt",
-      "fan-art"
+      "pokemon shirt",
+      "electric pokemon",
+      "fan apparel",
+      "graphic tee"
     ],
     "longTailKeywords": [
-      "zapdos back t-shirt for men",
-      "pokemon themed clothing for fans",
-      "cool electric pokemon shirt",
-      "Gildan premium pokemon tee",
-      "unique pokemon gift ideas",
-      "retro zapdos artwork tee",
-      "vintage style pokemon apparel",
-      "electric type pokemon t-shirt",
-      "graphic tshirts featuring pokemon",
-      "collectible zapdos merchandise"
+      "zapdos back graphic shirt",
+      "electric pokemon art tee",
+      "anime zapdos fan gift",
+      "unique pokemon apparel online",
+      "stylish zapdos clothing for fans",
+      "limited edition pokemon t-shirt",
+      "Gildan premium zapdos shirt",
+      "vintage zapdos design top buy",
+      "colorful zapdos back t-shirt sale",
+      "pokemon themed clothing gifts"
     ],
-    "hashtags": "#zapdos #pokemon #tshirt #cool #electric #apparel #fanart #gildan #backprint #anime #collectible #gift #vintage #graphictee #pokemergear #stylish #unisex #animefashion #uniquegift #pokemontshirt #coolclothing #retro #pokemongifts #electricpokemon #fashion #art #pocketprint #zappower #zapdosart #geekwear #nerdfashion",
-    "instagramCaption": "Charge up your wardrobe with our Zapdos T-shirt! ⚡️ Perfect for any electric Pokémon fan ready to show their love for the legend. Grab yours today! #zapdos #pokemon #electric",
-    "pinterestCaption": "The Zapdos T-shirt is a must-have for fans craving electric vibes and unique style. Crafted on a premium Gildan tee, this shirt is perfect for casual outings or gifting. Check it out now!",
-    "seoTitle": "Zapdos T-Shirt | Electric Energy Gift | Cool Pokemon Back",
+    "hashtags": "#zapdos #pokemon #backtshirt #coolart #fanapparel #electrictype #animefashion #geekwear #collectibles #giftsforhim #graphictee #retrostyle #gamingmerch #pokemerlovers #nerdfashion #cosplayclothing #pokemonswag #tshirtdesigns #pocketmonsters #fandomfashion #pokeshop #elitemerchandise #quirkyapparel #creativeclothes #collectorsitem #geekculture #retrovibes #geeksquad #teepartyoutfitters ",
+    "instagramCaption": "@Pokémon fans, can you feel the charge? ⚡️ Our Zapdos back t-shirt brings all that electric energy to life! Get yours now and show off your style — link in bio! 🔥#zapdos#pokemonart#coolfashion ",
+    "pinterestCaption": "Embrace the chaos with our Zapdos back t-shirt, capturing the essence of pure electric energy in stunning detail. Crafted from a premium fabric blend for comfort and style, it’s an essential piece for any Pokémon enthusiast's wardrobe. Discover your new favorite tee today.",
+    "seoTitle": "Zapdos Back T-Shirt | Electric Pokémon Gift | Fan Apparel",
     "variants": [
       {
         "uid": "362ad040-f095-4e2a-9599-03d54a3d2983",
@@ -7098,7 +7098,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/94a995be-8c64-47c5-bd86-d94b01a97be8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b5f3d4e8ff26180eb86f6d0497a5e0a21e76b647b2dc65750020bf3fb58ae7c"
     ],
     "createdAt": "2026-06-26T13:10:51.907Z",
-    "updatedAt": "2026-06-30T15:07:17.153Z",
+    "updatedAt": "2026-06-30T15:07:27.225Z",
     "relatedProducts": []
   },
   {
