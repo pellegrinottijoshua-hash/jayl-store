@@ -7111,8 +7111,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Snorlax, the ultimate champion of chill vibes, perfectly embodies the spirit of relaxation and lazy afternoons. This Gildan premium tee showcases a playful retro 90s anime design, featuring Snorlax slumped in a blissful snooze, demonstrating that sometimes doing nothing is an art form. With high-quality DTG print, every detail pops, making it a striking piece for any casual outfit. If you’re looking for a unique gift that captures the essence of laid-back Pokémon lovers, this t-shirt is a fun choice for birthdays or special occasions.",
-    "altText": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
+    "description": "For that friend who embodies the art of relaxation, the Cool Snorlax back T-Shirt is an indulgence in chill vibes. As snug as a cozy afternoon nap, this shirt captures Snorlax’s laid-back essence with its captivating design—perfect for those days when life calls for a pause. Crafted on a Gildan premium tee and brought to life through superior DTG print quality, it promises comfort and style hand-in-hand. This tee also makes for an unforgettable gift that speaks volumes for anyone who adores the tranquil spirit of this beloved Pokémon.",
+    "altText": "Snorlax slumped and snoozing with a playful grin in retro fan-art style on a Gildan tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -7166,17 +7166,17 @@ export const adminProducts = [
     "tags": [
       "snorlax",
       "pokemon",
-      "anime",
-      "retro",
-      "90s",
-      "funny",
-      "t-shirt",
-      "gift",
       "apparel",
+      "tshirt",
+      "coolpokemon",
+      "anime",
+      "gift",
       "fanart",
-      "gildan",
-      "cool",
-      "art"
+      "collectibles",
+      "uniqueclothing",
+      "geekwear",
+      "casualstyle",
+      "retro"
     ],
     "featured": false,
     "gelatoProductId": "53917dcc-3522-46cb-ad20-8dfd0f02c687",
@@ -7184,27 +7184,27 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "snorlax t-shirt",
-      "pokemon shirt",
-      "anime apparel",
-      "retro shirt",
-      "funny gift"
+      "pokemon apparel",
+      "funny t-shirt",
+      "anime clothing",
+      "cool gifts"
     ],
     "longTailKeywords": [
-      "snorlax back t-shirt",
-      "cool anime fan art gift",
-      "retro 90s style t-shirt",
-      "funny pokemon lover gift",
-      "gildan snorlax tee",
-      "premium pokemon apparel",
-      "anime art print shirt",
-      "90s style fan merch",
-      "snorlax themed clothing",
-      "gildan t-shirt for fans"
+      "cool snorlax back t-shirt",
+      "unique pokemon fan shirt",
+      "anime inspired clothing gift",
+      "snorlax themed apparel online",
+      "relaxed fit pokemon t-shirts for men",
+      "premium pokemon graphic tee sale",
+      "gifts for snorlax lovers online",
+      "retro anime shirts for adults",
+      "stylish snorlax merchandise buy now",
+      "comfortable pokemon t-shirt collection"
     ],
-    "hashtags": "#snorlax #pokemon #anime #retro #90s #funny #tshirt #gift #apparel #fanart #gildan #cool #art #vintage #merch #nerdwear #geekfashion #pokemongifts #animefan #artistic #creative #stylish #lifegoals #snooze #sleepy #chillvibes #fashion #wardrobe #collectibles #nostalgia #popculture",
-    "instagramCaption": "Lazy days call for a Snorlax tee that vibes just right. Whether you're catching Zs or Pokémon, this shirt has you covered. Grab yours now! #snorlax #anime #retro",
-    "pinterestCaption": "Show off your love for Snorlax with this retro 90s style t-shirt. Featuring a fun design, it’s the perfect gift for any Pokémon enthusiast. Explore unique fan apparel!",
-    "seoTitle": "Snorlax Pokémon T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style",
+    "hashtags": "#snorlax #pokemon #apparel #tshirt #coolpokemon #anime #gift #fanart #collectibles #uniqueclothing #geekwear #casualstyle #retro #fashion #stylediaries #comiccon #otakustyle #teeshirts #kawaii #cuteclothingshop #summervibes #streetwearfashion #merchandise #artprints #pokemongifts #popculturemerchandise #creativephotography #graphicteeartwork #playfulstyle #",
+    "instagramCaption": "'Chillin’ like Snorlax? Grab your new favorite tee. Perfect vibes await! ✌️🌟#SnorlaxVibes#CoolPokemon#ArtApparel'",
+    "pinterestCaption": "'Embrace the essence of relaxation with our Cool Snorlax back T-Shirt, perfect for making any casual day feel special. Made with Gildan premium fabric and vibrant print, it's an effortless addition to your wardrobe or a thoughtful gift.'",
+    "seoTitle": "Snorlax T-Shirt | Mood Energy Gift | Cool Pokemon Back",
     "variants": [
       {
         "uid": "2508509c-547d-48a4-a440-7d91691fdb00",
@@ -7434,7 +7434,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88c51c10-06b9-4d81-ac8b-ea49d23d9db2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=555d6961abfa6a2a033c395311bfcb20e33411f568c31df3700e190c5445fb05"
     ],
     "createdAt": "2026-06-26T13:25:03.416Z",
-    "updatedAt": "2026-06-30T15:06:59.109Z",
+    "updatedAt": "2026-06-30T15:07:09.292Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-snorlax-back-t-shirt/design.png",
     "relatedProducts": []
   },
