@@ -11057,8 +11057,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "In a midnight hue, Gengar looms large, playfully mischievous with that sly grin and haunting eyes. The artwork captures him mid-leap, an embodiment of rebellious energy that's both shadowy and vibrant. Crafted on a Gildan premium tee, the direct-to-garment print is sharp and striking, ensuring your style stands out in any crowd. Perfect for those who resonate with the underdog spirit or just enjoy a bit of chaos. This shirt makes a bold gift choice for anyone who’s unapologetically themselves.",
-    "altText": "Mischievous Gengar leaping with a sly grin in retro 90s anime style on a small chest print of a premium JAYL tee.",
+    "description": "A cozy swirl of purple and shadows captures Gengar’s playful spirit in this charming design. With its signature mischievous grin and hauntingly vibrant hues, this artwork perfectly parallels the joyful cheekiness of Gengar itself. Printed on a soft Gildan premium tee using DTG quality techniques, the design feels as good as it looks. Whether giving it to a friend or keeping it close for yourself, this piece radiates warmth and affection, perfect for cuddling up on game night or embarking on new adventures.",
+    "altText": "Gengar with a cheeky grin surrounded by dynamic purples in retro fan-art style on a small chest print of a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -11109,18 +11109,18 @@ export const adminProducts = [
     },
     "tags": [
       "gengar",
-      "pokemon",
-      "t-shirt",
-      "cool art",
+      "pokemon shirt",
       "anime apparel",
-      "gaming fashion",
-      "graphic tee",
-      "print on demand",
-      "pokemon fanwear",
-      "rebellious style",
-      "dark humor",
-      "mischievous design",
-      "pop culture"
+      "gamer t-shirt",
+      "cool pokemon",
+      "wholesome clothing",
+      "art shirt",
+      "geek fashion",
+      "retro art",
+      "cozy wear",
+      "fan merchandise",
+      "collector item",
+      "unique design"
     ],
     "featured": false,
     "gelatoProductId": "2fab9e0a-a5e9-45e1-8b4a-59b2dd5651d4",
@@ -11130,25 +11130,25 @@ export const adminProducts = [
       "gengar t-shirt",
       "cool pokemon shirt",
       "anime apparel",
-      "print on demand t-shirt",
-      "gaming fashion"
+      "gamer tee",
+      "fan art clothing"
     ],
     "longTailKeywords": [
-      "gengar graphic t-shirt online",
-      "buy cool pokemon clothing now",
-      "unique gifts for gamers tshirt",
-      "retro anime style shirts sale",
-      "best pokemon fan apparel t-shirts",
-      "trendy gaming t-shirt designs to buy",
-      "gengar dark humor clothing online store",
-      "exclusive humorous pokemon tees shop now",
-      "stylish prints on demand shirts gift ideas",
-      "fashionable anime graphic tees collection"
+      "gengar back print t-shirt",
+      "fun pokemon themed apparel",
+      "soft Gildan t-shirt gift",
+      "unique pokemon fan gear",
+      "vintage anime inspired clothing",
+      "whimsical gamer merch online",
+      "comfortable cartoon character tees",
+      "quirky pokemon shirts for fans",
+      "playful back print shirts online",
+      "dtg printed art fashion"
     ],
-    "hashtags": "#gengar #pokemon #tshirt #coolart #animeapparel #gamingfashion #graphictee #printondemand #pokemonfanwear #rebelliousstyle #darkhumor #mischievousdesign #popculture #cuteclothing #streetwear #appaerelfashion #customtees #nerdgifts #animefashionista #quirkyapparel #trendyclothing #fandomfashion #charactermerchandise #teeshoponline #vintageanimestyle #pokedexstyle #creativegiftideas #uniqueapparelstore #limitededitionshirts",
-    "instagramCaption": "\"Wandering into the shadows with Gengar on my back. This isn’t just apparel; it’s an attitude. Tap the link in bio to grab yours! 🖤✨#gengar#animeapparel#coolart\" ",
-    "pinterestCaption": "\"Transform your wardrobe with this Gengar-inspired tee that screams individuality and mischief. With its edgy design printed on soft fabric, it’s perfect for expressing your unique style. Check it out today!\"",
-    "seoTitle": "Gengar T-Shirt | Cool Pokemon Back Art | Gift for Gamers",
+    "hashtags": "#Gengar #Pokemon #Anime #ArtTee #CoolStyle #GamerGear #WholesomeWear #RetroArt #FanMerchandise #GeekFashion #CollectibleShirts #AnimeApparel #UniqueDesigns #CasualClothing #PrintOnDemand #CozyFashion #NerdCulture #CartoonTee #GeekChic #VibrantArt #GamingCommunity #CharacterShirts #FanArtTees #SoftTees #JAYLStyle #OtakuLife #KawaiiFashion #PikachuLove #ComfortWearOfChoice #NostalgicVibes ",
+    "instagramCaption": "*Gengar’s got that cozy mischief in every stitch!** Wrap yourself in warmth with our comfy tee that captures your favorite ghost Pokémon's playful vibe. Check the link in bio to grab yours now! 🌌👾💜#Gengar#AnimeApparel#NerdLife ",
+    "pinterestCaption": "*Snag this unique Gengar back T-Shirt for an extra dose of cozy vibes. Perfect for at home or out exploring, this cheerful piece reflects Gengar's personality beautifully while being made from comfortable fabric. Check it out today!",
+    "seoTitle": "Gengar T-Shirt | Cool Pokemon Back Style Gift",
     "variants": [
       {
         "uid": "6db613d1-8779-471a-b8ee-ca08fed25002",
@@ -11339,7 +11339,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150138Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7dd8fcc6dda4e9a0e9c6b959fb87f0e2001239b37bbddabd015418629c08c2dc"
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
-    "updatedAt": "2026-06-30T15:02:09.684Z",
+    "updatedAt": "2026-06-30T15:02:19.727Z",
     "relatedProducts": []
   },
   {
