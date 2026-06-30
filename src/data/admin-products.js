@@ -8163,7 +8163,6 @@ export const adminProducts = [
       "/images/cool-ditto-back-t-shirt/hf_20260626_144403_5d461f84-f80e-46fe-8902-fe257616b310.jpeg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg",
-      "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-white-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-azalea-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
     ],
@@ -8411,8 +8410,9 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T145932Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d36531bff1a342b65c6a83f6f18779e1ba48cc2523699390509ad006aea9d671"
     ],
     "createdAt": "2026-06-26T15:05:11.927Z",
-    "updatedAt": "2026-06-30T14:59:39.383Z",
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-back-t-shirt/design.png"
+    "updatedAt": "2026-06-30T14:59:47.179Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-back-t-shirt/design.png",
+    "relatedProducts": []
   },
   {
     "id": "cool-charmander-back-t-shirt",
