@@ -8464,7 +8464,6 @@ export const adminProducts = [
       "/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg",
-      "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-white-01.jpg",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-red-01.jpg",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-cardinal-red-01.jpg",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
@@ -8722,8 +8721,9 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7076c36759976fab1f245b23e971d39b5d64217f18f7db7bbad6e2efd835884"
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
-    "updatedAt": "2026-06-26T16:10:51.599Z",
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charmander-back-t-shirt/design.png"
+    "updatedAt": "2026-06-30T15:06:01.279Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charmander-back-t-shirt/design.png",
+    "relatedProducts": []
   },
   {
     "id": "cool-alakazam-back-t-shirt",
