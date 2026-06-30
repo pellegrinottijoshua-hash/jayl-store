@@ -1357,11 +1357,11 @@ export const adminProducts = [
     "images": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_172823_ee813e19-9e39-425b-b888-114bd4cb13e5.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154543_1d6c53f7-b82f-411d-a7c1-8d6c1f763c52.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-sand-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-black-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-carolina-blue-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-daisy-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-sand-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-white-01.jpg"
     ],
     "imageAlts": {
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Mockup of the Psyduck t-shirt, illustrating its eye-catching design rooted in cool anime aesthetics.",
@@ -1614,10 +1614,18 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-05-22T13:52:23.916Z",
+    "updatedAt": "2026-06-30T15:13:46.869Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg",
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/27ea15ba-418b-4abf-a95b-e9ad8d1e7e94/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9171ea8726d085441c22d273b05c93eb66f51ec638759b6705e52350af43654f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/87146bf4-064f-4466-ad8f-5cf1997287b9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e38eea4b43eebfaf421f63f9e71df20ca412cc94eb16846a67b65598b8476861",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b41060ef-afca-46a5-a92b-f02c2d902ff0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9a966e8fd0ac65afc013868c334b57548a94c8ed52d4596ecfeaa874d17bb26d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/332291df-8ce7-4029-82bb-986ab8e871fb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c75912244b2aaf3f8a5778765d658170e8fb462d92df10b9bcd5746ba837a4e0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/80271472-ec89-482d-bb0e-fca24325beeb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0cc702103e6f85b5cc1105964fd3b2da583ab27309d799ee8428b44e6422f205",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/37cd856a-7a14-46ee-a43c-a6c9dd392170/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b384d16d2eb4bb44b5f9111994be6379661d3fbd63cc517c30ded27f95edecfa"
+    ]
   },
   {
     "id": "charizard-pok-mon-t-shirt-gildan-9400-premium-artwear",
