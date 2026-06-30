@@ -9066,8 +9066,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "With its turtle-like demeanor and powerful water attacks, Blastoise represents both strength and tranquility. This Cool Blastoise back T-Shirt captures the essence of this beloved Pokémon, showcasing its iconic shell and relaxed aura in striking detail. Crafted from a Gildan premium tee and enhanced with high-quality DTG print technology, it ensures a comfortable fit while achieving vibrant color accuracy. Perfect for fans who appreciate both style and nostalgia, this shirt makes a thoughtful gift for fellow trainers or a treat for yourself.",
-    "altText": "Blastoise relaxing with its powerful shell displayed prominently in this retro 90s anime style small chest print on a premium tee.",
+    "description": "When Blastoise unleashes its Hydro Pump, you know that something epic is about to go down. Channel the energy of this beloved water-type Pokémon with our Cool Blastoise back T-Shirt, showcasing a majestic print that captures the essence of this iconic character. Made with a Gildan premium tee and vivid DTG print quality, it's not just a shirt; it’s an affirmation of your Pokemon enthusiasm. Gift this to your favorite trainer, and watch their eyes light up at the sight of their childhood favorite in stylish form.",
+    "altText": "Dynamic Blastoise launching Hydro Pump in vibrant colors on a premium JAYL tee with small chest print.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -9106,7 +9106,6 @@ export const adminProducts = [
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_111841_cb9072c5-0c7d-4736-8e3c-80f29071b9fd.png",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-mockup-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-navy-01.jpg",
-      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-white-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-carolina-blue-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-royal-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-black-01.jpg"
@@ -9127,16 +9126,16 @@ export const adminProducts = [
       "blastoise",
       "pokemon",
       "t-shirt",
-      "cool pokemon back",
-      "anime",
-      "apparel",
       "fan art",
-      "gildan",
-      "dtg",
+      "cool pokemon",
+      "apparel",
       "collectible",
-      "gift",
-      "trainer",
-      "artwear"
+      "anime",
+      "gifts",
+      "retro style",
+      "gaming gear",
+      "cartoon merch",
+      "wearable art"
     ],
     "featured": false,
     "gelatoProductId": "359d2223-3a44-4519-8483-765aa0540207",
@@ -9144,27 +9143,27 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "blastoise shirt",
-      "pokemon t-shirt",
-      "cool t-shirt",
-      "anime apparel",
-      "fan art t-shirt"
+      "pokemon apparel",
+      "anime t-shirt",
+      "fan merchandise",
+      "retro shirt"
     ],
     "longTailKeywords": [
-      "blastoise t-shirt for fans",
-      "cool pokemon back apparel",
-      "retro anime t-shirt design",
-      "gift for pokemon trainers",
-      "gildan premium pokemon shirt",
-      "dtg print pokemon apparel",
-      "fashionable pokemon t-shirt",
-      "unique blastoise gift idea",
-      "anime fan apparel online",
-      "stylish t-shirt for collectors"
+      "buy blastoise t-shirt online",
+      "cool pokemon fan clothing",
+      "unique anime inspired shirts",
+      "blastoise graphic print tee",
+      "official pokemon collector shirt",
+      "trendy retro gaming apparel",
+      "gift ideas for pokemon fans",
+      "stylish blastoise merch options",
+      "premium anime print tees sale",
+      "collectible pokemon shirts for gifts"
     ],
-    "hashtags": "#blastoise #pokemon #tshirt #coolpokemonback #anime #apparel #fanart #gildan #dtg #collectible #gift #trainer #artwear #pokemongift #animefashion #geekwear #fashion #streetwear #art #style #trending #retro #vintage #merch #pokefans #gaming #graphictee #design #illustration #cooltshirt #premiumtee",
+    "hashtags": "#blastoise #pokemon #tshirt #fanart #coolpokemon #apparel #collectible #anime #gifts #retrostyling #gaminggear #cartoonmerch #wearableart #pokemongifts #nerdstyle #vintagefashion #pokecommunity #animefans #otakulifestyle #graphictee #limitededition #fashionforward #geekchic #hypedcollector #fanmerchandise #qualityprintting #pokemontshirt #covetedpieces #teelife",
     "instagramCaption": "Keep it cool and casual with Blastoise on your back. This tee isn't just for battles, it's a style statement. Grab yours now! #blastoise #pokemon #anime",
     "pinterestCaption": "Show off your love for Blastoise with this stylish t-shirt, featuring a unique retro design that fans will adore. Made for comfort and style, it’s the perfect addition to any trainer's wardrobe.",
-    "seoTitle": "Blastoise T-Shirt | Cool Pokemon Back | Fan Gift for Trainers",
+    "seoTitle": "Blastoise T-Shirt | Cool Pokemon Collectible | Fan Apparel",
     "variants": [
       {
         "uid": "a17e7283-4f0d-44a8-9550-1552a87e7549",
@@ -9368,7 +9367,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4f1cee6f-f658-41fa-87b2-87d45c73ac40/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T122851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c494621889ac14119a0230f843c0eeccd71f791e71a37397832b9d062f8eaf3"
     ],
     "createdAt": "2026-06-27T13:00:11.484Z",
-    "updatedAt": "2026-06-27T13:03:25.253Z",
+    "updatedAt": "2026-06-30T15:04:34.323Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
