@@ -2530,8 +2530,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "They say Mew contains the DNA of every Pokémon ever discovered. Rare, elusive, unbothered, and somehow the most purely joyful creature in the entire franchise — illustrated here in a delicate retro 90s fan art style that feels like catching something you weren't supposed to. Printed on a premium Gildan tee with vibrant DTG print quality designed to last. This is the shirt for the trainer who searched every square inch of Cerulean Cave, or for anyone who simply gravitates toward the quiet magic of the original mythical Pokémon. An exceptional gift for collectors, lore nerds, and first-generation fans. Unisex sizing. Ships worldwide.",
-    "altText": "Elusive Mew drifting in soft pastel 90s fan art, a tiny left-chest print on a premium JAYL tee.",
+    "description": "A playful Mew lounges with an air of mystery, invoking the whimsical nature of this elusive creature. The soft pastel hues contrast with its bold figure, capturing an essence that's both calming and intriguing. Printed on a Gildan premium tee using DTG technology, this shirt showcases the art with clarity and vibrancy. It’s a gift that resonates with anyone who appreciates the depth and charm of Pokémon lore.",
+    "altText": "Mew curled playfully in soft pastels, illustrated in retro 90s anime on a premium JAYL tee as a small chest print.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -2583,19 +2583,19 @@ export const adminProducts = [
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-06.jpg": "Mew Pokémon T-Shirt featuring retro 90s anime art."
     },
     "tags": [
-      "pokemon",
       "mew",
-      "anime",
+      "pokemon",
       "t-shirt",
-      "funny",
-      "art",
-      "90s",
-      "fan",
-      "gift",
-      "apparel",
-      "retro",
-      "gildan",
-      "cool"
+      "anime",
+      "cartoon",
+      "artwear",
+      "geekfashion",
+      "streetwear",
+      "nostalgic",
+      "popculture",
+      "merchandise",
+      "fanart",
+      "minimalist"
     ],
     "featured": false,
     "gelatoProductId": "491259c5-52b5-4e1f-899b-cde5342af48d",
@@ -2604,28 +2604,28 @@ export const adminProducts = [
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "pokemon shirt",
-      "mew t-shirt",
+      "Mew shirt",
+      "Pokémon tee",
       "anime apparel",
-      "retro shirt",
-      "funny gift"
+      "art t-shirt",
+      "minimalist design"
     ],
     "longTailKeywords": [
-      "mew pokemon t-shirt for fans",
-      "retro 90s anime fan art shirt",
-      "funny pokemon lover gift idea",
-      "unique gifts for pokemon fans",
-      "cool anime apparel for adults",
-      "premium print quality pokemon shirts",
-      "gildan t-shirt for anime lovers",
-      "mew shirt for casual wear",
-      "90s style pokemon merch",
-      "funny t-shirt for pokemon lovers"
+      "buy Mew Pokemon t-shirt online",
+      "best cool Pokemon shirts for fans",
+      "unique Mew graphic tee gift ideas",
+      "retro anime t-shirts for collectors",
+      "minimalist artwork shirts for adults",
+      "Gildan cotton tees with prints",
+      "cute Mew character clothing options",
+      "stylish Pokemon fan apparel to wear out",
+      "vintage inspired Pokemon t-shirts shop",
+      "comfortable tees featuring popular characters"
     ],
-    "hashtags": "#mew #pokemon #anime #tshirt #funny #art #90s #fan #gift #apparel #retro #gildan #cool #fashion #style #graphictee #collectibles #geekwear #nerdstyle #popculture #giftsforhim #giftsforher #giftideas #pokemongifts #animefan #animeclothing #streetwear #casual #trending #limitededition #shopnow",
-    "instagramCaption": "Unleash your nostalgia with our Mew Pokémon T-Shirt! Perfect for the true fan who loves to stand out. Grab yours now and show off your Pokémon pride! #mew #pokemon #anime",
-    "pinterestCaption": "Discover the ultimate Mew Pokémon T-Shirt that celebrates retro 90s anime art. This shirt is perfect for gifts or personal style. Explore our collection and find your favorite today.",
-    "seoTitle": "Mew Pokémon T-Shirt | Cool Anime Fan Art Gift | Retro 90s Style",
+    "hashtags": "#Mew #Pokemon #tshirt #anime #cartoon #fashion #artwear #geekfashion #streetwear #nostalgia #popculture #merchandise #fanart #minimalist #collectibles #giftideas #graphictee #vintage #playfulart #softstyle #coolclothes #idlecreature #pastelcolors #retrostyle #animegear #pocketprint #appareldesigns #accesorystore #trendyclothingStore ",
+    "instagramCaption": "@everyone, it's time to bring some chill vibes into your wardrobe! Our new Mew T-Shirt is here—capturing the essence of this enchanting creature. Grab yours now and flaunt that casual elegance. 🐾✨#MewTee#PokemonWear#MinimalistArt ",
+    "pinterestCaption": "#Mew T-Shirt captures the charm of this iconic Pokémon with a minimalist design perfect for any occasion. Elevate your style or find a unique gift for fellow enthusiasts today.",
+    "seoTitle": "Mew T-Shirt | Minimalist Art Style | Cool Pokémon Apparel",
     "variants": [
       {
         "uid": "7428212d-a19e-4844-b10e-342c8c8ffe7a",
@@ -2824,7 +2824,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dcdd4e13-77b2-4dec-934f-48537edb342a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ed8b1e930dfe6633b1b7dadca1913cf60d8cfe4fbf1a5b96a8d5922519ecb97"
     ],
     "createdAt": "2026-05-26T15:11:39.661Z",
-    "updatedAt": "2026-06-30T15:12:17.438Z",
+    "updatedAt": "2026-06-30T15:12:30.431Z",
     "relatedProducts": []
   },
   {
