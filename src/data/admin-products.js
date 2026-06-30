@@ -6133,7 +6133,12 @@ export const adminProducts = [
     "description": "Charizard embodies the fierce spirit of the Pokémon world, representing the ultimate flex of choosing Charmander as your starter. This premium Gildan T-shirt showcases a stunning DTG print that captures Charizard's fiery essence, making it a standout piece in any collection. Ideal for those who resonate with its boldness and cool factor, this tee is not just a clothing item; it’s a statement. Gift it to fellow fans or treat yourself to this iconic representation of strength and confidence.",
     "altText": "Charizard blazing with confidence in a fierce pose, crafted in retro 90s anime style on a premium JAYL tee with a small chest print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -6468,7 +6473,12 @@ export const adminProducts = [
     "description": "Psyduck embodies the relatable struggle of anxiety and confusion, making this T-shirt a quirky addition to your wardrobe. Made from Gildan's premium fabric, the DTG print captures Psyduck's iconic dazed expression in stunning detail. This tee strikes a perfect balance between nostalgia and humor, ideal for those who relate to Psyduck's endearing personality. A whimsical gift for any Pokémon lover, this shirt brings a splash of fun for casual outings or cozy nights in.",
     "altText": "Psyduck looking confused with a comical expression in retro 90s anime style on a small chest print of a premium Gildan tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -6762,7 +6772,12 @@ export const adminProducts = [
     "description": "Zapdos embodies pure chaotic electricity, crackling with energy and ready to light up any outfit. This cool back T-shirt captures the essence of the legendary Pokémon in a vibrant design that commands attention. Made from a Gildan premium tee, its high-quality DTG print ensures that the electric blue and striking yellow colors pop brilliantly. Whether you're dressing down for a casual day out or looking for that special gift for a friend who appreciates the legend of Zapdos, this shirt is a unique addition to any wardrobe. Stand out with a piece that resonates with the iconic power of this electric-type Pokémon.",
     "altText": "Zapdos frozen mid-screech with wings extended in electric blue hues on a premium JAYL tee, small chest print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -7097,7 +7112,12 @@ export const adminProducts = [
     "description": "Snorlax, the ultimate champion of chill vibes, perfectly embodies the spirit of relaxation and lazy afternoons. This Gildan premium tee showcases a playful retro 90s anime design, featuring Snorlax slumped in a blissful snooze, demonstrating that sometimes doing nothing is an art form. With high-quality DTG print, every detail pops, making it a striking piece for any casual outfit. If you’re looking for a unique gift that captures the essence of laid-back Pokémon lovers, this t-shirt is a fun choice for birthdays or special occasions.",
     "altText": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -7427,7 +7447,12 @@ export const adminProducts = [
     "description": "Vileplume captures the essence of laid-back charm with its bright blooms and carefree vibe, making it a must-have for any Pokémon fan. This Gildan premium T-shirt showcases a striking retro 90s anime design that features the iconic character in a fun, relaxed pose. The high-quality DTG print ensures vibrant colors and lasting durability, perfect for everyday wear or lounging around. As a unique gift, this T-shirt is ideal for birthdays or just because, bringing a smile to any Pokémon lover’s face.",
     "altText": "Cheerful Vileplume with bright petal colors, captured in a relaxed pose on a small chest print of a premium Gildan tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -7760,7 +7785,12 @@ export const adminProducts = [
     "description": "Mewtwo, the iconic anti-hero of the Pokémon universe, stands defiant in this retro 90s style T-shirt. Crafted from Gildan's premium tee fabric, the direct-to-garment print showcases his complex personality—part villain, part protector, always captivating. The design features a vibrant portrayal of Mewtwo that resonates with those who appreciate the deeper narratives behind their favorite characters. This shirt makes a standout gift for any Pokémon enthusiast who values the blend of nostalgia and artistry in their wardrobe.",
     "altText": "Defiant Mewtwo with piercing gaze, rendered in retro 90s anime style on a small chest print of a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -8096,7 +8126,12 @@ export const adminProducts = [
     "description": "Ditto embodies the playful spirit of transformation and identity, making this cool T-shirt a must-have for fans who appreciate its quirky charm. Crafted from a Gildan premium tee, this shirt showcases a high-quality DTG print that brings Ditto’s iconic features to life. The small chest print captures Ditto's signature smile and vibrant color, perfect for expressing your personality. Ideal for gifting, this T-shirt resonates with those who celebrate the art of being uniquely themselves.",
     "altText": "Playful Ditto smiling in a soft lavender hue, captured in a small chest print on a premium Gildan tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -8390,7 +8425,12 @@ export const adminProducts = [
     "description": "Charmander embodies the fiery spirit of adventure and loyalty, making this back T-shirt a nod to those who started their Pokémon journey with the original fire starter. The vibrant retro 90s style artwork showcases Charmander’s playful personality with a burst of color that stands out. Printed on a premium Gildan tee using high-quality DTG print, this shirt offers both comfort and durability. It’s a fantastic gift for any Pokémon enthusiast, bringing a nostalgic touch to their wardrobe while celebrating the joy of fandom.",
     "altText": "Playful Charmander striking a cheerful pose in vibrant colors, illustrated in retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -8694,7 +8734,12 @@ export const adminProducts = [
     "description": "Cunning and intelligent, Alakazam embodies the essence of strategy and power, known for its incredible psychic abilities and sharp wit. This retro 90s style t-shirt showcases Alakazam in stunning detail with Gildan’s premium fabric and DTG print quality, making it a standout piece in any anime lover's wardrobe. It's not just a shirt; it’s a conversation starter and a unique gift for Pokémon enthusiasts who appreciate the clever side of their favorite psychic type.",
     "altText": "Cunning Alakazam striking a thoughtful pose in vibrant retro 90s anime style on a premium JAYL tee with a small chest print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -9024,7 +9069,12 @@ export const adminProducts = [
     "description": "With its turtle-like demeanor and powerful water attacks, Blastoise represents both strength and tranquility. This Cool Blastoise back T-Shirt captures the essence of this beloved Pokémon, showcasing its iconic shell and relaxed aura in striking detail. Crafted from a Gildan premium tee and enhanced with high-quality DTG print technology, it ensures a comfortable fit while achieving vibrant color accuracy. Perfect for fans who appreciate both style and nostalgia, this shirt makes a thoughtful gift for fellow trainers or a treat for yourself.",
     "altText": "Blastoise relaxing with its powerful shell displayed prominently in this retro 90s anime style small chest print on a premium tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -9333,7 +9383,12 @@ export const adminProducts = [
     "description": "Featuring Kangaskhan, the fiercely protective Pokémon, this back T-shirt captures the essence of strength and family bonds. With a striking retro 90s anime art style, this Gildan premium tee showcases high-quality DTG print that brings Kangaskhan to life in vivid detail. Its design reflects the character's nurturing side, making it a great way to express your love for the Pokémon world. Perfect for gifting to friends or family who appreciate strong characters and nostalgic vibes.",
     "altText": "Kangaskhan in a protective stance with a soft color palette, showcased in retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -9668,7 +9723,12 @@ export const adminProducts = [
     "description": "Machop embodies the hard-working spirit of the Pokémon world, always striving to become stronger and prove its worth. This premium Gildan tee showcases a unique retro 90s anime-style print that captures Machop's determined expression, making it a standout piece for any collection. Crafted with high-quality DTG print technology, this shirt not only feels amazing but also boasts vibrant colors that won't fade. As a gift, it’s perfect for those who appreciate the grind and dedication Machop represents, ideal for birthdays or special occasions.",
     "altText": "Determined Machop flexing its muscles in a retro 90s anime style on a premium JAYL tee with a small chest print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -9998,7 +10058,12 @@ export const adminProducts = [
     "description": "Drowsee, the master of dreams and sleep, brings a lighthearted twist to your wardrobe with this retro 90s style T-shirt. The whimsical design showcases Drowsee's unique personality, perfect for those who appreciate humor and nostalgia. Made from high-quality Gildan fabric and printed using direct-to-garment (DTG) technology, this tee ensures comfort and durability. Surprise your fellow Pokémon enthusiasts with a gift that captures the essence of Drowsee's sleepy charm.",
     "altText": "Charming Drowsee lounging with a sleepy expression in retro 90s anime style on a premium JAYL tee with small print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -10331,7 +10396,12 @@ export const adminProducts = [
     "description": "Digging through nostalgia, this Dugtrio shirt captures the essence of your favorite ground-type trio in a captivating back print. The artwork brings to life their energizing spirit as they burrow into adventure, each layer textured with retro 90s anime vibes on a Gildan premium tee using vibrant DTG printing. Perfect for collectors wanting to wear their love for Pokémon pridefully. Gifting this piece means sharing a slice of childhood magic with someone special, sparking joy with every wear.",
     "altText": "Dugtrio digging energetically in retro 90s anime style on a premium JAYL tee with small chest print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -10655,7 +10725,12 @@ export const adminProducts = [
     "description": "Mew, the elusive psychic type, embodies rebellion and untamed spirit in a world of conformity. This quirky design captures its playful essence, surrounded by vibrant colors that bring retro 90s anime to life. Made from Gildan's premium tee fabric and featuring top-notch DTG print quality, this shirt tells a story of individuality that resonates with those who dare to be different. An ideal gift for those who appreciate the charm behind Pokémon’s most mystical character, it’s not just a shirt; it's a statement.",
     "altText": "Playful Mew gliding through space in pink hues on a small chest print of a premium Gildan tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -10985,7 +11060,12 @@ export const adminProducts = [
     "description": "In a midnight hue, Gengar looms large, playfully mischievous with that sly grin and haunting eyes. The artwork captures him mid-leap, an embodiment of rebellious energy that's both shadowy and vibrant. Crafted on a Gildan premium tee, the direct-to-garment print is sharp and striking, ensuring your style stands out in any crowd. Perfect for those who resonate with the underdog spirit or just enjoy a bit of chaos. This shirt makes a bold gift choice for anyone who’s unapologetically themselves.",
     "altText": "Mischievous Gengar leaping with a sly grin in retro 90s anime style on a small chest print of a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -11272,7 +11352,12 @@ export const adminProducts = [
     "description": "With a cheerful grin and an enthusiastic bounce, Likitung embodies the joy of pure playfulness as it readies itself to tackle its next culinary adventure. This retro 90s style Gildan premium tee captures that whimsical energy through stunning DTG print quality, making every detail pop. Whether you’re a nostalgic Pokémon trainer or seeking the perfect gift for someone who lives and breathes Pokémon lore, this shirt delivers a delightful blend of humor and artistry.",
     "altText": "Cheerful Likitung bouncing with excitement in vibrant retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -11552,7 +11637,12 @@ export const adminProducts = [
     "description": "Prowling through the scene with a laid-back vibe, Slowpoke captures the essence of chill mastery — that carefree spirit where time slows down. This retro 90s style tee showcases the lovable Pokémon in its signature relaxed pose, embodying a mood you can't help but relate to when your day takes it slow. Made with Gildan premium fabric and direct-to-garment print quality, this shirt doesn’t just wear well; it represents an attitude. Perfect as a gift for that friend who understands life’s leisurely pace or just wants to carry their trusty sidekick everywhere they go.",
     "altText": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
