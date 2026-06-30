@@ -7485,7 +7485,6 @@ export const adminProducts = [
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130321_c898440c-a8bc-4d8f-9d47-f34142f478b2.jpeg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-mockup-01.jpg",
-      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-white-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-military-green-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-azalea-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-irish-green-01.jpg",
@@ -7774,7 +7773,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a"
     ],
     "createdAt": "2026-06-26T13:41:03.363Z",
-    "updatedAt": "2026-06-26T13:41:03.363Z"
+    "updatedAt": "2026-06-30T15:06:39.503Z",
+    "relatedProducts": []
   },
   {
     "id": "cool-mewtwo-back-t-shirt",
