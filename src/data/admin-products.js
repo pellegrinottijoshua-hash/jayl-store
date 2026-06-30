@@ -10096,7 +10096,6 @@ export const adminProducts = [
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-mockup-01.jpg",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-natural-01.jpg",
-      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-white-01.jpg",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-daisy-01.jpg",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-purple-01.jpg"
     ],
@@ -10382,8 +10381,9 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3682315-ca68-433a-9cb8-12e9f90f9f1f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52d2a0a9bfa536c89187ccec429a1bcafda95aa5e39286f9241ced3bc8cf1294"
     ],
     "createdAt": "2026-06-27T14:19:42.734Z",
-    "updatedAt": "2026-06-27T14:19:42.734Z",
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-drowsee-back-t-shirt/design.png"
+    "updatedAt": "2026-06-30T15:03:45.539Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-drowsee-back-t-shirt/design.png",
+    "relatedProducts": []
   },
   {
     "id": "dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
