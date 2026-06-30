@@ -7826,7 +7826,6 @@ export const adminProducts = [
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-navy-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-navy-01.jpg",
-      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-white-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-purple-01.jpg"
     ],
     "imageAlts": {
@@ -8114,8 +8113,9 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2e43137f-def8-4438-b8e1-5496065ec0ff/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=66c9ffcfb3f4388eeeb1ddad48019f634dd2a2d90ed6aeb792857ab677bd49cb"
     ],
     "createdAt": "2026-06-26T14:15:44.480Z",
-    "updatedAt": "2026-06-26T14:15:44.480Z",
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mewtwo-back-t-shirt/design.png"
+    "updatedAt": "2026-06-30T15:06:25.444Z",
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mewtwo-back-t-shirt/design.png",
+    "relatedProducts": []
   },
   {
     "id": "cool-ditto-back-t-shirt",
