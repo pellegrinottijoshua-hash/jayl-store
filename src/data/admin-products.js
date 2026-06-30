@@ -5166,8 +5166,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "This Drowsee t-shirt captures the essence of the sleepy psychic Pokémon, known for its laid-back demeanor and quirky charm. The vibrant, retro 90s anime style brings this beloved character to life, making it a unique addition to any fan's wardrobe. Crafted from Gildan’s premium tee with high-quality DTG print, it ensures both comfort and style. Whether you're lounging at home or out with friends, this shirt is a humorous nod to Drowsee’s tranquility. It makes an excellent gift for anyone who appreciates Pokémon’s whimsical side.",
-    "altText": "Sleepy Drowsee lounging with a serene expression, rendered in retro 90s anime style as a small chest print on a premium Gildan tee.",
+    "description": "Drowsee embodies the chill vibes of your Saturday morning cartoons, always ready for a lazy afternoon nap or a snack break. This Gildan premium tee showcases vibrant DTG print quality, accentuating Drowsee’s whimsical character with an eye-catching design. Perfect for those who appreciate the more relaxed side of life and whimsical Pokémon moments. Whether it's a nostalgic gift for yourself or for someone who shares those retro vibes, this shirt is sure to bring a smile.",
+    "altText": "Drowsee lounging lazily with drooping eyes in a small chest print on a premium Gildan tee in retro 90s anime style.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -5219,19 +5219,19 @@ export const adminProducts = [
       "/images/drowsee-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg": "Sleepy Drowsee lounging with a serene expression, rendered in retro 90s anime style as a small chest print on a premium Gildan tee."
     },
     "tags": [
-      "drowsee",
-      "pokemon",
-      "anime",
-      "t-shirt",
-      "retro",
-      "90s",
-      "fan art",
-      "apparel",
-      "gift",
-      "funny",
-      "gildan",
-      "premium",
-      "cool"
+      "cool drowsee",
+      "drowsee t-shirt",
+      "pokemon apparel",
+      "90s nostalgia",
+      "funny pokemon",
+      "anime fashion",
+      "chill vibes",
+      "kids cartoon",
+      "graphic tee",
+      "retro clothing",
+      "gift for him",
+      "gift for her",
+      "unique art"
     ],
     "featured": false,
     "gelatoProductId": "9d42448c-1238-4943-843d-dd8ca09b7ec4",
@@ -5240,28 +5240,28 @@ export const adminProducts = [
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "drowsee",
-      "pokemon t-shirt",
-      "anime shirt",
-      "funny gift",
-      "90s style"
+      "drowsee t-shirt",
+      "pokemon shirt",
+      "anime apparel",
+      "retro t-shirt",
+      "cool graphic tee"
     ],
     "longTailKeywords": [
-      "drowsee pokemon t-shirt",
-      "funny pokemon lover gift",
-      "retro anime fan art shirt",
-      "gildan premium tee",
-      "90s style pokemon apparel",
-      "unique anime character t-shirt",
-      "gift for pokemon fans",
-      "cool drowsee art shirt",
-      "anime apparel for adults",
-      "funny retro t-shirt gift"
+      "drowsee t-shirt for adults",
+      "retro pokemon merchandise online",
+      "buy cool drowsee shirts",
+      "90s cartoon inspired apparel",
+      "unique graphic tees for collectors",
+      "anime graphics t-shirts direct sale",
+      "premium quality pokemon clothing options",
+      "vintage style drowsee merch shop online",
+      "funny pokemon themed gifts ideas",
+      "creative designs pokemon fan apparel"
     ],
-    "hashtags": "#drowsee #pokemon #tshirt #anime #retro #90s #fanart #gildan #premium #cool #gift #funny #apparel #art #fashion #animefashion #pokemontshirt #retrostyle #geekwear #nerdy #pokemongifts #animefan #cartoonart #popculture #collector #geekchic #style #graphictee #fashionstatement #trendy #streetwear",
-    "instagramCaption": "Catch some z's with this Drowsee t-shirt that's as chill as you are. Perfect for those lazy days or when you just want to express your love for Pokémon. Grab yours now! #drowsee #pokemon #fanart",
-    "pinterestCaption": "This Drowsee Pokémon t-shirt features a retro 90s anime style that fans will love. Made from a comfortable Gildan tee, it's the perfect gift for any Pokémon enthusiast. Check it out today!",
-    "seoTitle": "Drowsee Pokémon T-Shirt | Funny Gift for Fans | Retro 90s Style",
+    "hashtags": "#cooldrowsee #pokemontshirt #90snostalgia #retrovibes #animeart #graphictee #fashionstyle #geekwear #animefan #pokemonlove #snacktime #casualwear #artfashion #nerdstuff #collectiblemerch #tshirtshop #comfortableclothing #cartoonmemories #playfuldesigns #quirkyapparel #teestagram #artisticfashion #cuteclothing #youthculture #nostalgicgifts #mynextfavoriteitem #hobbyistfashionista #uniquemodesofexpression #personalizedstyleelements",
+    "instagramCaption": "#ChillinLikeDrowsee 😴 Bring back that Saturday morning magic with this retro-inspired Drowsee tee. Perfect talk starter! 💬💖 Grab yours now! 🔥#PokémonFanArt#90sFashion#ChillVibes",
+    "pinterestCaption": "Embrace the playful essence of the Drowsee T-Shirt, inspired by iconic Saturday morning shows. Crafted on premium fabric with stunning retro art, it's designed for those who appreciate nostalgia and unique styles. Don’t miss adding this piece to your collection!",
+    "seoTitle": "Cool Drowsee T-Shirt | Nostalgic 90s Kids Gift | Cool Pokémon",
     "variants": [
       {
         "uid": "2d0cfc34-64ad-446e-b692-e21adde28119",
@@ -5491,7 +5491,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c00e1d37-5bce-453b-b47b-5423e87647e4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150848Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cfc93b7b64011c7c06017196765b58ffa2f4f7af7d69519b99726fadc85c899"
     ],
     "createdAt": "2026-06-23T09:02:57.088Z",
-    "updatedAt": "2026-06-30T15:09:06.007Z",
+    "updatedAt": "2026-06-30T15:09:14.631Z",
     "relatedProducts": []
   },
   {
