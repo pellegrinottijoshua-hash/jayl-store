@@ -20,7 +20,11 @@ export function priceItem(raw) {
   if (!raw || typeof raw !== 'object') {
     return { ok: false, error: 'Invalid item' }
   }
-  const productId = String(raw.productId || '').slice(0, 100)
+  // Admin product ids are title-derived slugs that can run to ~110 chars
+  // (e.g. "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-…-gildan-64000").
+  // The cap only guards against abuse — keep it well above real id lengths or
+  // priceItem truncates the id, the lookup misses, and the item becomes unbuyable.
+  const productId = String(raw.productId || '').slice(0, 200)
   const product = productMap.get(productId)
   if (!product) return { ok: false, error: `Unknown product: ${productId}` }
 
