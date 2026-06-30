@@ -5204,9 +5204,11 @@ export const adminProducts = [
     "images": [
       "/images/cool-drowsee-t-shirt/hf_20260623_055534_dd11d480-f56c-4967-b773-9a7c2b0ecc75.jpg",
       "/images/cool-drowsee-t-shirt/hf_20260623_055214_90712159-8890-4645-9a1a-562ab05cbee2.jpg",
-      "/images/cool-drowsee-t-shirt/hf_20260623_054817_5e5cb90e-e340-428c-b171-08c6dd2c6a4f.jpg",
-      "/images/cool-drowsee-t-shirt/hf_20260623_055111_cf87b556-8575-498c-8566-301966cfff8f.jpg",
-      "/images/cool-drowsee-t-shirt/hf_20260623_055954_47e08380-7812-4aea-be07-31971aeaeeb5.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-black-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-daisy-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-mockup-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-purple-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-white-01.jpg"
     ],
     "imageAlts": {
       "/images/drowsee-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg": "Sleepy Drowsee lounging with a serene expression, rendered in retro 90s anime style as a small chest print on a premium Gildan tee.",
@@ -5489,7 +5491,8 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c00e1d37-5bce-453b-b47b-5423e87647e4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150848Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cfc93b7b64011c7c06017196765b58ffa2f4f7af7d69519b99726fadc85c899"
     ],
     "createdAt": "2026-06-23T09:02:57.088Z",
-    "updatedAt": "2026-06-30T15:08:56.227Z"
+    "updatedAt": "2026-06-30T15:09:06.007Z",
+    "relatedProducts": []
   },
   {
     "id": "dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
