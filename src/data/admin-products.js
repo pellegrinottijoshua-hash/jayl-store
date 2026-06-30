@@ -3847,8 +3847,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "Blastoise embodies the essence of cool with its powerful water cannons and calm demeanor. This premium Gildan tee showcases a vibrant DTG print that captures the character's iconic look, making it a must-have for any Pokémon fan. Whether you're battling in the arena or just hanging out, this shirt is a nod to Blastoise's strategic prowess and laid-back attitude. Gift it to a friend who resonates with Blastoise's cool confidence, and let them wear their fandom proudly.",
-    "altText": "Shades-wearing Blastoise with water cannons primed, cool 90s badge art on a small-chest JAYL tee.",
+    "description": "For the dedicated Pokémon collector who remembers the thrill of battling with Blastoise, this Cool Blastoise T-shirt is an absolute grail. The design captures Blastoise's iconic shell and water cannons in a dynamic pose, reflecting its status as both a powerhouse and a beloved fan-favorite from the Kanto region. Printed on a Gildan premium tee using advanced DTG print quality, this shirt is as comfortable as it is stylish. It's not just a piece of clothing; it's a badge of honor for any true PokéMaster. Gift it to that special someone who has nostalgia for classic battles and the vibrant world of Pokémon.",
+    "altText": "Blastoise charging forward with fierce determination in bold colors on a small chest print on a Gildan premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -3906,17 +3906,17 @@ export const adminProducts = [
     "tags": [
       "blastoise",
       "pokemon",
-      "t-shirt",
-      "cool style",
-      "print on demand",
+      "art shirt",
+      "gifts for collectors",
+      "cool apparel",
+      "anime merch",
+      "vintage style",
+      "poke fandom",
+      "tee shirts",
+      "graphic tees",
       "water type",
-      "anime apparel",
-      "gildan",
-      "dtg print",
-      "fan merchandise",
-      "pokemon shirt",
-      "cool pokémon",
-      "art"
+      "kanto pokemon",
+      "fan art"
     ],
     "featured": false,
     "gelatoProductId": "bf922300-607c-4bd3-9eeb-2becbe66ae5d",
@@ -3925,28 +3925,25 @@ export const adminProducts = [
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "blastoise t-shirt",
-      "pokemon apparel",
-      "anime fan art",
-      "retro t-shirt",
-      "funny gift"
+      "blastoise shirt",
+      "pokemon tee",
+      "anime t-shirt",
+      "graphic tee"
     ],
     "longTailKeywords": [
-      "blastoise pokemon t-shirt for sale",
-      "retro 90s style anime shirt",
-      "gildan t-shirt with blastoise",
-      "funny pokemon lover gift",
-      "cool anime fan art shirt",
-      "premium print on demand apparel",
-      "unique gifts for pokemon fans",
-      "vintage pokemon t-shirt design",
-      "best blastoise merchandise online",
-      "anime inspired graphic tee"
+      "buy blastoise t-shirt online",
+      "cool pokemon apparel gifts",
+      "blastoise graphic t-shirts for fans",
+      "unique anime shirts for collectors",
+      "popular pokemon merchandise gifts",
+      "trending blastoise fan art shirt",
+      "retro style pokemon t-shirts for sale",
+      "comfortable printed anime tees online"
     ],
-    "hashtags": "#blastoise #pokemon #tshirt #coolstyle #anime #printondemand #gildan #dtgprint #fanmerch #waterType #coolpokemon #art #apparel #animeapparel #pokemonfan #gifts #graphictee #pocketmonsters #retro #collectibles #fashion #streetwear #geekwear #nerdstyle #trending #style #outfit #fashiongram #instafashion #shopnow #getyours",
+    "hashtags": "#blastoise #pokemon #anime #artshirt #graphictee #giftsforcollectors #coolapparel #vintagestyle #pokefandom #teeshirts #graphictees #watertype #kantopokemon #fanart #pokedex #pokelife #pokecommunity #trendymenswear #animefashion #collecteditons #geekstyle #retropokemonart #nerdwears #illustrationshirt #shoplocalartisits #uncommonstylesearches #popculturefashionstaystylishatjaynlineaminsidersclubfashionfindswhatmakesyouuniqueandoriginalitymattersnotlikedreamsinthedaylightarnotjustafashionstatementsignupforupdatesandexclusiveoffersnowtobearbyourcommunitygoalsseetheworldthroughyourstyleandstandoutinacrowd#designeraware",
     "instagramCaption": "Dive into style with our Cool Blastoise T-shirt. It's not just a shirt; it's a lifestyle for the ones who know that cool never goes out of style. #blastoise #pokemon #fashion",
     "pinterestCaption": "Check out our Cool Blastoise T-shirt that combines style and fandom seamlessly. Featuring premium DTG print quality, this shirt is perfect for any Pokémon enthusiast. Get yours today and showcase your love for this iconic character.",
-    "seoTitle": "Blastoise T-Shirt | Retro Water-Type Pokémon Gift | Cool Style",
+    "seoTitle": "Blastoise T-Shirt | Epic Pokémon Collector Gift | Cool Style",
     "variants": [
       {
         "uid": "d7ddd236-748b-420b-911d-9076ca052bb9",
@@ -4150,7 +4147,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151101Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=84129c52ee2c6b12c43192cb5a2a4e6a4816afa0d2fad0dca220806ad8c7f851"
     ],
     "createdAt": "2026-06-22T15:34:48.644Z",
-    "updatedAt": "2026-06-30T15:11:22.060Z",
+    "updatedAt": "2026-06-30T15:11:30.153Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Blastoise T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
     "etsyTags": [
