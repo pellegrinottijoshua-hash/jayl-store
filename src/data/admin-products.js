@@ -3549,9 +3549,11 @@ export const adminProducts = [
     "images": [
       "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_142533_09f66a3c-f0dd-4cab-a959-dcccf7abb8a9.jpg",
       "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144716_2d65147a-13eb-41d7-806c-e2b66687d14e.jpg",
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_143730_eedeafd4-cc3d-4d00-ae3c-6f85f113ff44.jpg",
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144237_3d879994-a852-4653-a8a0-75804539c419.jpeg",
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144324_a9d5179b-3a76-437b-af6b-f82bf80f790f.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-white-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-natural-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-mockup-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-light-blue-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-daisy-01.jpg"
     ],
     "imageAlts": {
       "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-t-shirt-cool-anime-fan-art-g-mockup-01.jpg": "Alakazam Pokémon T-Shirt featuring retro 90s design.",
@@ -3808,7 +3810,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150454Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6ea7dfce10511cae534f2501d955cb2e4caf4b647758e3654871ba73761d690c"
     ],
     "createdAt": "2026-06-22T15:05:20.303Z",
-    "updatedAt": "2026-06-30T15:05:02.056Z",
+    "updatedAt": "2026-06-30T15:05:21.864Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Alakazam T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
     "etsyTags": [
