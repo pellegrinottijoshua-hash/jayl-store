@@ -7446,8 +7446,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Vileplume captures the essence of laid-back charm with its bright blooms and carefree vibe, making it a must-have for any Pokémon fan. This Gildan premium T-shirt showcases a striking retro 90s anime design that features the iconic character in a fun, relaxed pose. The high-quality DTG print ensures vibrant colors and lasting durability, perfect for everyday wear or lounging around. As a unique gift, this T-shirt is ideal for birthdays or just because, bringing a smile to any Pokémon lover’s face.",
-    "altText": "Cheerful Vileplume with bright petal colors, captured in a relaxed pose on a small chest print of a premium Gildan tee.",
+    "description": "Wearing this Cool Vileplume back T-Shirt wraps you in the whimsical nostalgia of Saturday mornings spent watching your favorite cartoons. With its joyful pastel colors and playful design, it channels Vileplume's gentle vibe, reminding you to take life one sunny day at a time. Made with a Gildan premium tee and printed with high-quality DTG methods, this shirt promises both comfort and style as you navigate everyday adventures. A thoughtful gift for anyone who cherishes their childhood memories and the fun of the Pokémon universe.",
+    "altText": "Joyful Vileplume in vibrant bloom mid-dance on a retro 90s anime-style small chest print on a JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -7505,17 +7505,17 @@ export const adminProducts = [
     "tags": [
       "vileplume",
       "pokemon",
-      "anime",
-      "90s style",
-      "funny gift",
-      "fan art",
-      "gildan",
-      "apparel",
       "t-shirt",
       "retro",
+      "anime",
       "art",
-      "clothing",
-      "gift"
+      "apparel",
+      "kidcore",
+      "nineties",
+      "nostalgia",
+      "fanart",
+      "chillstyle",
+      "gaming"
     ],
     "featured": false,
     "gelatoProductId": "fa834579-83ae-44aa-999b-b9d12322e227",
@@ -7523,27 +7523,27 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "vileplume shirt",
-      "pokemon t-shirt",
-      "anime apparel",
-      "90s t-shirt",
-      "funny pokemon shirt"
+      "pokemon tshirt",
+      "cool pokemon tee",
+      "retro t-shirt",
+      "anime apparel"
     ],
     "longTailKeywords": [
-      "vileplume graphic tee",
-      "gildan pokemon t-shirt",
-      "retro anime fan shirt",
-      "funny gift for pokemon lovers",
-      "90s style vileplume shirt",
-      "premium dtg print t-shirt",
-      "unique pokemon fan gift",
-      "anime character t-shirt",
-      "vibrant pokemon apparel",
-      "cool retro anime gift"
+      "vileplume pokémon fan shirt",
+      "retro pokemon t-shirt for kids",
+      "90s inspired anime clothing online",
+      "gift for pokemon lovers apparel",
+      "nostalgic kids cartoon t-shirts",
+      "vibrant t-shirt for casual wear",
+      "unique designs for vintage tees",
+      "premium quality pokemon apparel gift",
+      "fun character shirts for adults",
+      "Gildan tees with custom prints"
     ],
-    "hashtags": "#vileplume #pokemon #anime #90sstyle #funnygift #fanart #gildan #apparel #tshirt #retro #art #clothing #gift #pokemongifts #animefans #vintage #graphictee #style #fashion #geekwear #nerdstyle #collectibles #picoftheday #ootd #trendy #streetwear #wearableart #unisex #comfy #cooltshirt #supportsmallbusiness",
-    "instagramCaption": "Brighten your wardrobe with this Vileplume tee! Perfect for those who love a touch of nostalgia and humor. 🌼💖 #vileplume #pokemon #90sstyle",
-    "pinterestCaption": "Elevate your wardrobe with our Vileplume Pokémon T-Shirt, featuring a vibrant retro design that's sure to turn heads. Crafted on a premium Gildan tee, this shirt is a perfect gift for any Pokémon aficionado or anime lover. Check it out today!",
-    "seoTitle": "Vileplume Pokémon T-Shirt | Funny Anime Fan Gift | Retro 90s Style",
+    "hashtags": "#vileplume #pokemon #art #tshirt #retro #anime #apparel #kidcore #nineties #nostalgia #fanart #chillstyle #gaming #fashion #ootd #streetwear #graphictee #pockettee #vintageclothing #cartoonnetwork #saturdaymorningcartoons #gamerfashion #cozyvibes #geekwear #colorfulshirts #mangaartwork #potd #trendingnow #uniqueapparel #memoriesmadeeasy ##collectiblemerchandise",
+    "instagramCaption": "'Bask in the blooms of nostalgia 🌼💚! Our Cool Vileplume back T-Shirt brings Saturday morning vibes right back. Ready to rock your childhood style? 🌈💫 Grab yours now!#pokemonfanart#retrovibes#nostalgia'",
+    "pinterestCaption": "'Channel your inner retro Pokémon fan with our Cool Vileplume back T-Shirt. This vibrant tribute to childhood favorites combines nostalgic artistry with premium comfort, making it a delightful addition to any wardrobe. Check it out and revisit those carefree days!'",
+    "seoTitle": "Vileplume T-Shirt | Nostalgic 90s Pokémon Apparel",
     "variants": [
       {
         "uid": "00310cbc-96fe-4ba2-a15d-a3107acc399f",
@@ -7773,7 +7773,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a"
     ],
     "createdAt": "2026-06-26T13:41:03.363Z",
-    "updatedAt": "2026-06-30T15:06:39.503Z",
+    "updatedAt": "2026-06-30T15:06:48.864Z",
     "relatedProducts": []
   },
   {
