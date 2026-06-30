@@ -4866,9 +4866,10 @@ export const adminProducts = [
     "images": [
       "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053850_6068f400-90b6-4967-93bb-43e250e59629.jpg",
       "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053859_a7fdd974-41fa-4bab-a6f7-33a473ddebf8.jpg",
-      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_052817_0d130b69-1672-42eb-b0bc-8ee01bea5004.jpg",
-      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_052857_4ed173b3-5d47-45bd-b13b-a4e3cd787e44.jpg",
-      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053228_d2e21a1f-7a3c-490a-9406-ee75708981d2.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-azalea-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-black-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-carolina-blue-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-light-blue-01.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053228_d2e21a1f-7a3c-490a-9406-ee75708981d2.jpg": "A vibrant Slowpoke T-shirt displayed on a model, showcasing a playful retro 90s style.",
@@ -5155,7 +5156,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7f5a7c21-856a-4dfc-9e18-58aeaceaf189/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150926Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b16c07858129a6ca60185b165079e6fd7fcdc9428c0aad17d23bafd41d386c9"
     ],
     "createdAt": "2026-06-23T08:43:52.552Z",
-    "updatedAt": "2026-06-30T15:09:34.053Z",
+    "updatedAt": "2026-06-30T15:09:42.084Z",
     "relatedProducts": []
   },
   {
