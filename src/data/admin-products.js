@@ -4828,8 +4828,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2399,
     "currency": "eur",
-    "description": "Slowpoke embodies the relaxed and laid-back attitude we all crave in this fast-paced world. With its signature sleepy expression and playful demeanor, this tee captures the essence of taking life at your own pace. Made from Gildan premium cotton, this t-shirt ensures both comfort and durability, while the high-quality direct-to-garment (DTG) print showcases vibrant colors that bring Slowpoke to life. Whether it’s a gift for a friend who loves the chill Pokémon lifestyle or a treat for yourself, this shirt is perfect for lounging or casual outings.",
-    "altText": "Playful Slowpoke lounging with a sleepy expression on a Gildan premium tee in retro 90s anime art style, small chest print.",
+    "description": "A serene Slowpoke lounges, embodying a blissful indifference in soft pastel tones. This piece captures the essence of carefree days and lazy vibes, reflecting the lovable nature of this Pokémon. The Gildan premium tee showcases vibrant DTG print quality that brings this artwork to life, creating a wearable canvas that speaks volumes. Consider gifting it to someone who appreciates the beauty of taking life at a gentle pace.",
+    "altText": "Charming Slowpoke resting with a relaxed expression in pastel colors on a premium JAYL tee, art style is retro 90s anime.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -4886,17 +4886,17 @@ export const adminProducts = [
     "tags": [
       "slowpoke",
       "pokemon",
-      "t-shirt",
-      "cool",
-      "art",
-      "apparel",
-      "gifts",
-      "anime",
-      "90s",
-      "fan-art",
-      "Gildan",
-      "premium",
-      "DTG"
+      "art shirt",
+      "gildan tee",
+      "anime fashion",
+      "vintage style",
+      "pokémon fan",
+      "casual wear",
+      "prints on demand",
+      "chill vibes",
+      "gift idea",
+      "minimalist art",
+      "cool apparel"
     ],
     "featured": false,
     "gelatoProductId": "4b1df2c2-5f0d-4f9f-b69c-89c480862f8f",
@@ -4905,28 +4905,28 @@ export const adminProducts = [
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "Slowpoke",
-      "Pokemon shirt",
-      "anime t-shirt",
-      "cool t-shirt",
-      "premium apparel"
+      "slowpoke shirt",
+      "pokemon t-shirt",
+      "retro apparel",
+      "Gildan shirt",
+      "anime clothing"
     ],
     "longTailKeywords": [
-      "slowpoke t-shirt for sale",
-      "buy cool pokemon shirts",
-      "anime fan apparel online",
-      "Gildan pokemon t-shirt",
-      "DTG printed pokemon shirt",
-      "cute slowpoke t-shirt gift",
-      "retro pokemon clothing",
-      "unique anime gifts for friends",
-      "chill vibes pokemon tee",
-      "comfortable pokemon apparel"
+      "slowpoke pokemon t-shirt for adults",
+      "chill themed slowpoke graphic tee",
+      "retro pokemon art t-shirt gift idea",
+      "premium quality slowpoke apparel online",
+      "buy slowpoke print-on-demand shirt",
+      "unique gifts for pokemon fans",
+      "soft pastel colored slowpoke t-shirt",
+      "trendy pokemon clothing for everyday wear",
+      "Gildan tees with beautiful prints",
+      "classic slowpoke design t-shirt"
     ],
-    "hashtags": "#slowpoke #pokemon #tshirt #cool #art #apparel #gifts #anime #90s #fanart #Gildan #premium #DTG #pocket #casualwear #graphictee #pokedex #nerdstyle #collectibles #pokemongifts #animefashion #retrovibes #vintage #geekwear #quirky #style #fashion #trendy #lounge #comfort #hobbies",
-    "instagramCaption": "Chillin’ like Slowpoke? This tee captures that laid-back vibe perfectly. Grab yours now and let your fashion flow! #slowpoke #pokemon #cooltshirt",
-    "pinterestCaption": "Get cozy with the Slowpoke t-shirt, showcasing the relaxed spirit of this beloved Pokémon. Made with Gildan premium quality, it's perfect for casual outings or lounging. Add this unique piece to your collection today!",
-    "seoTitle": "Slowpoke T-Shirt | Chill Vibes | Cool Pokémon Gift",
+    "hashtags": "#slowpoke #pokemon #artshirt #gildantee #animefashion #vintagestyle #pokémonfan #casualwear #printsondemand #chillvibes #giftidea #minimalistart #coolapparel #retrofashion #uniqueclothing #graphictee #cartoonstyle #pocketart #lazydesigns #kawaiioutfit #teeshirtsale #illustratedclothing #modernaesthetic #collectiblewearables #sleepytimefashion #nerdapparel #fanmerchandise #playfulfashion #creativewardrobe #stylishcomfort ",
+    "instagramCaption": "\"Chillin’ like Slowpoke... because life’s too short to rush! Snag your own vibe today. 🌊✨#slowpoke#pokemon#artshirt\" ",
+    "pinterestCaption": "\"Explore effortless style with our Slowpoke T-shirt, perfect for laid-back days and showcasing unique Pokémon artistry. Elevate your casual wardrobe now and enjoy comfort in every thread.\"",
+    "seoTitle": "Slowpoke T-Shirt | Chill Vibes | Retro Pokémon Apparel",
     "variants": [
       {
         "uid": "2844b95b-5d01-4f9d-b279-f9a262f9aa06",
@@ -5156,7 +5156,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7f5a7c21-856a-4dfc-9e18-58aeaceaf189/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150926Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b16c07858129a6ca60185b165079e6fd7fcdc9428c0aad17d23bafd41d386c9"
     ],
     "createdAt": "2026-06-23T08:43:52.552Z",
-    "updatedAt": "2026-06-30T15:09:42.084Z",
+    "updatedAt": "2026-06-30T15:09:53.556Z",
     "relatedProducts": []
   },
   {
