@@ -690,11 +690,11 @@ export const adminProducts = [
     "images": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260509_170917_5ed4801e-f905-4bab-9085-25c690a37d71.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260521_172147_3c9e077b-0257-46d6-a9cb-acef277ee3e4.png",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-light-blue-01.jpg",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-red-01.jpg",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-white-01.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-black-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-daisy-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-light-blue-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-red-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-white-01.jpg"
     ],
     "imageAlts": {
       "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg": "Mockup of the Cool Zapdos T-Shirt, emphasizing its stylish and fun anime-inspired look.",
@@ -949,7 +949,7 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-05-27T15:07:45.079Z",
+    "updatedAt": "2026-06-30T15:14:38.909Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg",
@@ -978,6 +978,14 @@ export const adminProducts = [
       "Lifestyle shot of a person wearing the Cool Zapdos T-Shirt, enjoying a casual day out.",
       "Size guide showing dimensions of Cool Zapdos T-Shirt to help customers choose the right fit.",
       "Gift presentation of Cool Zapdos T-Shirt in stylish packaging, perfect for special occasions."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/db2c3b8d-678a-4d3d-b69e-360e7144ee4d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5e9c20115b1007eeb524e973a62e7b900b6bbefe4347c7d072a8637041c1b812",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/423cedc9-bb58-48e7-8adc-fd5dd1daf01e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5017d2908db7b1e351b909e0533f49b2076cd0b50605ce3db7a05084573b7500",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/188c2861-1485-44d0-914e-d05e21eeae51/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fee27a178b67a38a3e693cff4958ab57b31e49dadf1c9f9f31c4ab0858c3d856",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a25e8255-52dc-4f90-8a40-2b74d999b67d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ebf8f30eae41a463bdc0fd285da718d4a49d7439f40b3ccfea1e8d4d9275accc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b14a722b-2af7-45b7-8a40-61f3fd4618a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=97174fcf6bb21ce853fbdc0e31c841cc1c7256c079425c2601d755bcf8aeff7c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/69dca16d-9188-4143-9eaf-ac00ba273a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7d134eeebc828e0b1a8d664a17f8f6eec6cec05661456d04c270890881c69f30"
     ]
   },
   {
