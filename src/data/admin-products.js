@@ -5507,8 +5507,70 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c00e1d37-5bce-453b-b47b-5423e87647e4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150848Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cfc93b7b64011c7c06017196765b58ffa2f4f7af7d69519b99726fadc85c899"
     ],
     "createdAt": "2026-06-23T09:02:57.088Z",
-    "updatedAt": "2026-06-30T15:09:14.631Z",
-    "relatedProducts": []
+    "updatedAt": "2026-07-01T13:27:03.361Z",
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Elevate Your Wardrobe with the Cool Drowsee T-Shirt",
+        "description": "Unleash your inner Pokémon trainer with our Cool Drowsee T-Shirt! This stylish tee blends comfort and aesthetic, making it perfect for casual outings or cozy nights in. Show off your love for Pokémon while staying fashionable. Don't miss out on adding this unique piece to your collection!",
+        "tags": [
+          "drowsee",
+          "pokemon",
+          "cool t-shirt",
+          "fandom fashion",
+          "apparel",
+          "street style"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Fans: Cool Drowsee T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon lover? Look no further than the Cool Drowsee T-Shirt! This trendy tee is a delightful addition to any fan's wardrobe, perfect for birthdays or special occasions. Give the gift of style and nostalgia—your loved ones will thank you!",
+        "tags": [
+          "gift ideas",
+          "pokemon",
+          "drowsee",
+          "trendy apparel",
+          "fandom",
+          "stylish gift"
+        ]
+      },
+      {
+        "title": "Chill and Stylish: Meet the Cool Drowsee T-Shirt",
+        "description": "Embrace a laid-back vibe with our Cool Drowsee T-Shirt, where comfort meets trendy style. Ideal for casual meetups or gaming nights, this tee showcases your love for Pokémon in a chic way. Make sure to save this stylish piece for your next outfit inspiration!",
+        "tags": [
+          "casual wear",
+          "drowsee",
+          "pokemon style",
+          "cool fashion",
+          "outfit inspo",
+          "lifestyle"
+        ]
+      },
+      {
+        "title": "Show Your Pokémon Spirit with the Cool Drowsee T-Shirt",
+        "description": "Channel your favorite Pokémon with the Cool Drowsee T-Shirt! This unique design reflects your fandom while ensuring you stay comfortable and stylish. Perfect for events, conventions, or everyday wear—make this tee a staple in your wardrobe. Start planning your Pokémon-inspired outfits today!",
+        "tags": [
+          "pokemon",
+          "drowsee",
+          "fandom apparel",
+          "event wear",
+          "trendy",
+          "style statement"
+        ]
+      },
+      {
+        "title": "Stylish and Fun: Cool Drowsee T-Shirt for Everyday Wear",
+        "description": "Add a splash of fun to your outfit with the Cool Drowsee T-Shirt! This eye-catching tee combines playful design with comfort, making it a must-have for any Pokémon enthusiast. Perfect for both lounging and outings, don't forget to pin this stylish staple for your wardrobe refresh!",
+        "tags": [
+          "drowsee",
+          "pokemon clothing",
+          "fun fashion",
+          "everyday style",
+          "apparel",
+          "casual outfit"
+        ]
+      }
+    ]
   },
   {
     "id": "dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
