@@ -2646,160 +2646,160 @@ export const adminProducts = [
       {
         "uid": "7428212d-a19e-4844-b10e-342c8c8ffe7a",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Black",
+        "size": "XL",
         "price": null,
         "currency": null
       },
       {
         "uid": "bbf8fc35-dc17-4ad6-a5cb-8e4713f6bca2",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Light Blue",
+        "size": "XL",
         "price": null,
         "currency": null
       },
       {
         "uid": "7484ae14-8c83-4d1a-95bf-cee13e74d4c6",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Heather Navy",
+        "size": "L",
         "price": null,
         "currency": null
       },
       {
         "uid": "54eb5f74-3413-4dc9-9f0e-b5ca8096045a",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Heather Navy",
+        "size": "XL",
         "price": null,
         "currency": null
       },
       {
         "uid": "87d1f5b7-0e92-4497-8bcd-93a80c7d0a74",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Light Blue",
+        "size": "S",
         "price": null,
         "currency": null
       },
       {
         "uid": "46665566-7a7d-4fb9-8232-c965cd050901",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "White",
+        "size": "S",
         "price": null,
         "currency": null
       },
       {
         "uid": "ae8aefb9-9a14-471e-9c06-a9273d499845",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Cardinal Red",
+        "size": "M",
         "price": null,
         "currency": null
       },
       {
         "uid": "9ba32bd3-d1d1-4665-b775-879034131d87",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "White",
+        "size": "M",
         "price": null,
         "currency": null
       },
       {
         "uid": "1040b5e0-eddc-4290-8fab-6b00d8a5cae3",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Heather Navy",
+        "size": "M",
         "price": null,
         "currency": null
       },
       {
         "uid": "acf9b34b-cb86-4f4d-9d96-ca90221205a6",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Light Blue",
+        "size": "L",
         "price": null,
         "currency": null
       },
       {
         "uid": "4be7e015-76d0-4026-86c1-a468144d3896",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Light Blue",
+        "size": "M",
         "price": null,
         "currency": null
       },
       {
         "uid": "510d0840-ea93-48e4-941f-989a15e96f52",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Cardinal Red",
+        "size": "L",
         "price": null,
         "currency": null
       },
       {
         "uid": "34c339cd-9a2c-4af1-ab06-2ce81af0d7ae",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Black",
+        "size": "S",
         "price": null,
         "currency": null
       },
       {
         "uid": "4e6f75f5-15ef-49fd-8ec5-f98862ea7b22",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-navy_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Heather Navy",
+        "size": "S",
         "price": null,
         "currency": null
       },
       {
         "uid": "caaa3e18-ba25-4f8e-8540-69dceb8848b1",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Cardinal Red",
+        "size": "XL",
         "price": null,
         "currency": null
       },
       {
         "uid": "2d74b943-a552-4014-8662-6903826c29a3",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Black",
+        "size": "L",
         "price": null,
         "currency": null
       },
       {
         "uid": "02243f62-8e12-4b1f-b512-37a79a25ce24",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "White",
+        "size": "XL",
         "price": null,
         "currency": null
       },
       {
         "uid": "5c7ff94a-2d17-407f-bdca-edc5511af748",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "White",
+        "size": "L",
         "price": null,
         "currency": null
       },
       {
         "uid": "8e8266c8-72e6-481f-ba1e-2842420c7f3e",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Cardinal Red",
+        "size": "S",
         "price": null,
         "currency": null
       },
       {
         "uid": "b8934a62-e1e9-42d9-8601-03edde4bdf80",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
-        "color": null,
-        "size": null,
+        "color": "Black",
+        "size": "M",
         "price": null,
         "currency": null
       }
@@ -2841,7 +2841,39 @@ export const adminProducts = [
     ],
     "createdAt": "2026-05-26T15:11:39.661Z",
     "updatedAt": "2026-06-30T15:12:30.431Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg"
+      },
+      {
+        "id": "heather-navy",
+        "label": "Heather Navy",
+        "hex": "#888888",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg"
+      },
+      {
+        "id": "cardinal-red",
+        "label": "Cardinal Red",
+        "hex": "#888888",
+        "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg"
+      }
+    ]
   },
   {
     "id": "charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
@@ -7176,7 +7208,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T13:10:51.907Z",
     "updatedAt": "2026-06-30T15:07:27.225Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "cool-snorlax-back-t-shirt",
@@ -7849,7 +7882,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-26T13:41:03.363Z",
     "updatedAt": "2026-06-30T15:06:48.864Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileplume-back-t-shirt/design.png"
   },
   {
     "id": "cool-mewtwo-back-t-shirt",
@@ -10789,7 +10823,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
     "updatedAt": "2026-06-30T15:03:34.455Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "cool-mew-back-t-shirt",
@@ -11126,7 +11161,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T12:43:34.046Z",
     "updatedAt": "2026-06-30T15:03:00.122Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mew-back-t-shirt/design.png"
   },
   {
     "id": "gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -11419,7 +11455,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
     "updatedAt": "2026-06-30T15:02:19.727Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
   },
   {
     "id": "cool-likitung-back-t-shirt",
@@ -11711,7 +11748,8 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
     "updatedAt": "2026-06-30T15:01:13.248Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-likitung-back-t-shirt/design.png"
   },
   {
     "id": "cool-slowpoke-back-t-shirt",
@@ -12004,6 +12042,7 @@ export const adminProducts = [
     ],
     "createdAt": "2026-06-29T13:31:44.943Z",
     "updatedAt": "2026-06-30T15:00:30.598Z",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design.png"
   }
 ]
