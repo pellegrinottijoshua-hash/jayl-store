@@ -6,16 +6,16 @@ import { SOCIAL_LINKS } from '@/data/social-links'
 // No platform API/token needed — each button opens the platform's compose/upload
 // page (the user authenticates there) and prefills as much as the web allows.
 //
-// You pick WHICH asset to publish (image or video) from the thumbnail strip, and
-// title / description / alt text / tags are prepared:
-//   • Pinterest → opens the pin-builder with the SELECTED image + a description
-//     that folds in title + body + hashtags. Title & Alt also land on the
-//     clipboard (Pinterest's URL builder can't pre-fill those two fields).
+// You pick WHICH asset to publish (image or video) from the thumbnail strip AND,
+// when Pinterest 5-pack pins exist, WHICH pin (title + description + tags) to pair
+// with it. The selected pin drives the Pinterest description; title / alt / tags
+// also land on the clipboard.
+//   • Pinterest → opens the pin-builder with the SELECTED image + SELECTED pin.
 //   • Facebook  → shares the product link; all fields copied to clipboard.
 //   • Instagram / TikTok → no web prefill exists → all fields copied to clipboard.
-// A "Campi pronti" panel lets you copy Title / Description / Alt / Tags one by one.
 //
-// Platform targets (instagram/tiktok/facebook profiles) read from social-links.js.
+// After a Pinterest publish, the used pin + image are marked "già pubblicato"
+// (persisted on the product via onPinPublished), so you never repost the same pair.
 // ──────────────────────────────────────────────────────────────────────────────
 
 const enc = encodeURIComponent
@@ -37,6 +37,9 @@ export default function SocialShareButtons({
   tags       = [],          // array OR comma-separated string
   altText    = '',          // global fallback alt
   captions   = {},          // { pinterest, instagram, tiktok }
+  pins       = [],          // [{ title, description, tags[], published? }] — Pinterest 5-pack
+  publishedImages = [],     // urls already published to Pinterest
+  onPinPublished,           // ({ pinIndex, imageUrl }) => void — mark pin+image as published
   links      = SOCIAL_LINKS,
 }) {
   // Normalise + de-dupe the asset list
@@ -53,25 +56,32 @@ export default function SocialShareButtons({
   }, [assets, imageUrl])
 
   const [selUrl, setSelUrl] = useState('')
+  const [selPin, setSelPin] = useState(0)
   const [msg, setMsg]       = useState('')
   const [showFields, setShowFields] = useState(false)
 
   const sel = list.find(a => a.url === selUrl) || list[0] || null
+  const pin = (pins && pins.length) ? (pins[selPin] || pins[0]) : null
+  const pubSet = useMemo(() => new Set(publishedImages || []), [publishedImages])
 
   const flash = (t) => { setMsg(t); window.clearTimeout(flash._t); flash._t = window.setTimeout(() => setMsg(''), 4500) }
   const copy  = async (t) => { try { await navigator.clipboard.writeText(t || '') ; return true } catch { return false } }
   const open  = (url) => window.open(url, '_blank', 'noopener,noreferrer')
 
-  const tagArr   = Array.isArray(tags) ? tags : String(tags || '').split(',').map(t => t.trim()).filter(Boolean)
-  const hashtags = tagArr.map(t => '#' + t.replace(/[^a-z0-9]+/gi, '')).filter(h => h.length > 1).join(' ')
-  const desc     = captions.pinterest || captions.instagram || ''
+  // A selected pin overrides the generic caption/title/tags for what gets published.
+  const tagArr   = (pin?.tags?.length ? pin.tags
+                    : (Array.isArray(tags) ? tags : String(tags || '').split(',').map(t => t.trim()).filter(Boolean)))
+  const hashtags = tagArr.map(t => '#' + String(t).replace(/[^a-z0-9]+/gi, '')).filter(h => h.length > 1).join(' ')
+  const effTitle = pin?.title || title
+  const desc     = pin?.description || captions.pinterest || captions.instagram || ''
   const selAlt   = (sel && sel.alt) || altText || ''
   const media    = abs(sel?.url || '')
   const url      = abs(productUrl)
+  const imgPublished = sel && pubSet.has(sel.url)
 
   // Structured block (everything) — copied on every share so title/alt/tags are pasteable
   const fieldsBlock = [
-    title    && `TITLE:\n${title}`,
+    effTitle && `TITLE:\n${effTitle}`,
     desc     && `DESCRIPTION:\n${desc}`,
     selAlt   && `ALT TEXT:\n${selAlt}`,
     tagArr.length && `TAGS:\n${tagArr.join(', ')}`,
@@ -80,14 +90,16 @@ export default function SocialShareButtons({
   const handle = async (p) => {
     await copy(fieldsBlock)
     if (p.key === 'pinterest') {
-      const pinDesc = [title, captions.pinterest || desc, hashtags].filter(Boolean).join('\n\n').slice(0, 480)
+      const pinDesc = [effTitle, desc, hashtags].filter(Boolean).join('\n\n').slice(0, 480)
       if (sel?.type === 'video') {
         open('https://www.pinterest.com/pin-creation-tool/')
         flash('🎬 Video: si carica a mano in "Crea Pin". Titolo/descrizione/alt/tag copiati negli appunti.')
       } else {
         open(`https://www.pinterest.com/pin/create/button/?url=${enc(url)}&media=${enc(media)}&description=${enc(pinDesc)}`)
-        flash('📌 Pinterest: immagine scelta + titolo/descrizione/tag precompilati. Titolo e ALT anche negli appunti.')
+        flash('📌 Pinterest: immagine + pin scelti precompilati. Segnati come pubblicati.')
       }
+      // Mark the used pin + image as published (persisted by the parent)
+      onPinPublished?.({ pinIndex: (pins && pins.length && pins[selPin]) ? selPin : null, imageUrl: sel?.url || null })
     } else if (p.key === 'facebook') {
       open(`https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`)
       flash('📘 Facebook aperto col link. Tutti i campi copiati negli appunti.')
@@ -115,18 +127,20 @@ export default function SocialShareButtons({
           <p className="text-[10px] text-gray-600 mb-1">Asset da pubblicare {sel?.type === 'video' && <span className="text-amber-400">· video</span>}</p>
           <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1">
             {list.map(a => {
-              const active = a.url === (sel?.url)
+              const active    = a.url === (sel?.url)
+              const published = pubSet.has(a.url)
               return (
                 <button
                   key={a.url}
                   type="button"
                   onClick={() => setSelUrl(a.url)}
-                  title={a.type === 'video' ? 'Video' : 'Immagine'}
+                  title={published ? 'Già pubblicata su Pinterest' : (a.type === 'video' ? 'Video' : 'Immagine')}
                   className={`relative flex-shrink-0 w-12 h-12 overflow-hidden border-2 transition-colors ${active ? 'border-emerald-500' : 'border-[#252525] hover:border-[#444]'}`}
                 >
                   {a.type === 'video'
                     ? <span className="w-full h-full flex items-center justify-center text-base bg-black">🎬</span>
-                    : <img src={a.url} alt="" className="w-full h-full object-cover" onError={e => { e.currentTarget.style.opacity = 0.25 }} />}
+                    : <img src={a.url} alt="" className={`w-full h-full object-cover ${published ? 'opacity-50' : ''}`} onError={e => { e.currentTarget.style.opacity = 0.25 }} />}
+                  {published && <span className="absolute top-0 left-0 bg-[#e60023] text-white text-[8px] leading-none px-0.5" title="Già pubblicata su Pinterest">📌</span>}
                   {active && <span className="absolute bottom-0 right-0 bg-emerald-500 text-black text-[8px] leading-none px-0.5">✓</span>}
                 </button>
               )
@@ -135,6 +149,37 @@ export default function SocialShareButtons({
         </div>
       ) : (
         <p className="text-[10px] text-gray-600 italic">Nessun asset disponibile — carica o genera un'immagine prima.</p>
+      )}
+
+      {/* Pin picker — choose WHICH 5-pack pin (description) to pair with the image */}
+      {pins && pins.length > 0 && (
+        <div>
+          <p className="text-[10px] text-gray-600 mb-1">Descrizione pin da abbinare</p>
+          <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1">
+            {pins.map((p, i) => {
+              const active = i === selPin
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setSelPin(i)}
+                  title={p.description || p.title}
+                  className={`relative flex-shrink-0 w-36 h-16 text-left overflow-hidden border-2 p-1.5 transition-colors ${active ? 'border-emerald-500 bg-emerald-950/20' : 'border-[#252525] hover:border-[#444] bg-[#111]'}`}
+                >
+                  <div className={`text-[9px] font-semibold leading-tight line-clamp-1 pr-8 ${p.published ? 'text-gray-500' : 'text-amber-400/90'}`}>{p.title || `Pin ${i + 1}`}</div>
+                  <div className="text-[8px] text-gray-500 leading-tight line-clamp-2 mt-0.5">{p.description}</div>
+                  {p.published && <span className="absolute top-0.5 right-0.5 bg-[#e60023] text-white text-[7px] leading-none px-1 py-0.5" title="Già pubblicato su Pinterest">📌 fatto</span>}
+                  {active && !p.published && <span className="absolute bottom-0 right-0 bg-emerald-500 text-black text-[8px] leading-none px-0.5">✓</span>}
+                </button>
+              )
+            })}
+          </div>
+          {(pin?.published || imgPublished) && (
+            <p className="text-[9px] text-[#e60023] mt-0.5">
+              📌 {pin?.published && imgPublished ? 'Pin e immagine già pubblicati' : pin?.published ? 'Questo pin è già stato pubblicato' : 'Questa immagine è già stata pubblicata'} su Pinterest
+            </p>
+          )}
+        </div>
       )}
 
       {/* 4 platform buttons */}
@@ -148,7 +193,7 @@ export default function SocialShareButtons({
               onClick={() => handle(p)}
               disabled={list.length === 0 && p.key === 'pinterest'}
               title={
-                p.key === 'pinterest' ? 'Apre il pin-builder con l’immagine scelta + titolo/descrizione/tag; titolo e alt negli appunti'
+                p.key === 'pinterest' ? 'Apre il pin-builder con l’immagine + il pin scelti; li segna come pubblicati'
                 : p.key === 'facebook' ? 'Condivide il link del prodotto (tutti i campi copiati)'
                 : 'Apre la piattaforma e copia tutti i campi negli appunti'
               }
@@ -176,7 +221,7 @@ export default function SocialShareButtons({
         {showFields && (
           <div className="mt-1.5 space-y-1 text-[11px]">
             {[
-              ['Titolo', title],
+              ['Titolo', effTitle],
               ['Descrizione', desc],
               ['Alt text', selAlt],
               ['Tag', tagArr.join(', ')],

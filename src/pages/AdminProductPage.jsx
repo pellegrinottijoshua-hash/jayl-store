@@ -798,6 +798,7 @@ export default function AdminProductPage() {
   const [instagramCaption, setInstagramCaption] = useState(product?.instagramCaption || '')
   const [pinterestCaption, setPinterestCaption] = useState(product?.pinterestCaption || '')
   const [pinterestPins,    setPinterestPins]    = useState(Array.isArray(product?.pinterestPins) ? product.pinterestPins : [])
+  const [pinterestPublishedImages, setPinterestPublishedImages] = useState(Array.isArray(product?.pinterestPublishedImages) ? product.pinterestPublishedImages : [])
   const [generatingPins,   setGeneratingPins]   = useState(false)
   const [tiktokCaption,    setTiktokCaption]    = useState(product?.tiktokCaption    || '')
   const [pinterestBoardId,     setPinterestBoardId]     = useState(() => { try { return localStorage.getItem('jayl_pinterest_board_id') || '' } catch { return '' } })
@@ -869,6 +870,7 @@ export default function AdminProductPage() {
       setGelatoCdnImages(Array.isArray(p.gelatoCdnImages) ? p.gelatoCdnImages : [])
       setExcludedGelato(Array.isArray(p.excludedGelato) ? p.excludedGelato : [])
       setPinterestPins(Array.isArray(p.pinterestPins) ? p.pinterestPins : [])
+      setPinterestPublishedImages(Array.isArray(p.pinterestPublishedImages) ? p.pinterestPublishedImages : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
       setEtsyTitle(p.etsyTitle || '')
       setEtsyTags(Array.isArray(p.etsyTags) ? p.etsyTags : [])
@@ -1123,6 +1125,24 @@ export default function AdminProductPage() {
     }
   }
 
+  // Called by the redirect "Condividi sui social" Pinterest button after opening
+  // the pin-builder — marks the used pin + image as published and persists it.
+  const markPinterestPublished = ({ pinIndex, imageUrl }) => {
+    let nextPins = pinterestPins
+    if (pinIndex != null && pinterestPins[pinIndex] && !pinterestPins[pinIndex].published) {
+      nextPins = pinterestPins.map((p, j) => (j === pinIndex ? { ...p, published: true } : p))
+      setPinterestPins(nextPins)
+    }
+    let nextImgs = pinterestPublishedImages
+    if (imageUrl && !pinterestPublishedImages.includes(imageUrl)) {
+      nextImgs = [...pinterestPublishedImages, imageUrl]
+      setPinterestPublishedImages(nextImgs)
+    }
+    if ((nextPins !== pinterestPins || nextImgs !== pinterestPublishedImages) && name.trim() && price) {
+      saveWith({ pinterestPins: nextPins, pinterestPublishedImages: nextImgs })
+    }
+  }
+
   const publishToPinterest = async () => {
     if (!pinterestBoardId.trim()) return setPinterestMsg('⚠ Inserisci un Board ID prima')
     const imageUrl = pinterestImageChoice || desktopHero || sequenza[0]
@@ -1229,6 +1249,7 @@ export default function AdminProductPage() {
       }
       updated.excludedGelato = excludedGelato.length ? excludedGelato : undefined
       updated.pinterestPins  = pinterestPins.length  ? pinterestPins  : undefined
+      updated.pinterestPublishedImages = pinterestPublishedImages.length ? pinterestPublishedImages : undefined
       // Fresh AI values (passed by the generators) take precedence over stale React state
       Object.assign(updated, overrides)
       // Clean undefined/null keys that weren't set before
@@ -1974,7 +1995,8 @@ export default function AdminProductPage() {
                         <button type="button" title="Rimuovi"
                           onClick={() => { const next = pinterestPins.filter((_, j) => j !== i); setPinterestPins(next); if (name.trim() && price) saveWith({ pinterestPins: next }) }}
                           className="absolute top-1 right-1 text-gray-600 hover:text-red-400 text-[10px]">✕</button>
-                        <div className="text-amber-400/90 font-semibold pr-5">{p.title}</div>
+                        {p.published && <span className="absolute top-1 right-6 text-[#e60023] text-[9px]" title="Già pubblicato su Pinterest">📌 pubblicato</span>}
+                        <div className={`font-semibold pr-16 ${p.published ? 'text-gray-500' : 'text-amber-400/90'}`}>{p.title}</div>
                         <div className="text-gray-400 whitespace-pre-wrap">{p.description}</div>
                         {p.tags?.length > 0 && <div className="text-gray-600 text-[10px]">{p.tags.map(t => `#${t}`).join(' ')}</div>}
                       </div>
@@ -2104,6 +2126,9 @@ export default function AdminProductPage() {
                 tags={tags}
                 altText={imageAlts[desktopHero] || imageAlts[mobileHero] || ''}
                 captions={{ pinterest: pinterestCaption, instagram: instagramCaption, tiktok: tiktokCaption }}
+                pins={pinterestPins}
+                publishedImages={pinterestPublishedImages}
+                onPinPublished={markPinterestPublished}
               />
               <Field label="Instagram Caption">
                 <div className="relative">
