@@ -9165,9 +9165,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1bf5482b-d85d-4f96-964f-211cb4aeb01c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=08c18def25e89a934e05186ef5aa825399b9f2313152ed86eafa74afe3ac093f"
     ],
     "createdAt": "2026-06-26T16:31:53.176Z",
-    "updatedAt": "2026-06-30T15:05:49.736Z",
+    "updatedAt": "2026-07-02T14:03:36.941Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-alakazam-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Embrace Your Inner Trainer with Cool Alakazam Back T-Shirt",
+        "description": "Show off your love for Pokémon with our Cool Alakazam Back T-Shirt! Perfect for fans who appreciate unique designs, this shirt combines style and fandom effortlessly. Whether you're attending a convention or hanging out with friends, this tee will make you stand out. Save it to your collection now and elevate your wardrobe!",
+        "tags": [
+          "alakazam",
+          "pokemon",
+          "fandom",
+          "t-shirt",
+          "cool style",
+          "unique design"
+        ]
+      },
+      {
+        "title": "Gift the Ultimate Pokémon Fan: Cool Alakazam T-Shirt",
+        "description": "Looking for the perfect gift for a Pokémon enthusiast? Our Cool Alakazam Back T-Shirt is the ideal choice! With its trendy design and comfortable fit, it's bound to be a hit for birthdays or special occasions. Save this pin for gifting inspiration and make someone's day extra special!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "alakazam",
+          "apparel",
+          "fan gift",
+          "t-shirt"
+        ]
+      },
+      {
+        "title": "Stylish Pokémon Vibes: Cool Alakazam T-Shirt Design",
+        "description": "Elevate your casual look with our stylish Cool Alakazam Back T-Shirt! This design is perfect for those who want to express their love for Pokémon while keeping it cool and trendy. Pair it with your favorite jeans or shorts for a laid-back vibe. Pin this to your fashion inspiration board and stay ahead in style!",
+        "tags": [
+          "pokemon",
+          "alakazam",
+          "style",
+          "fashion",
+          "t-shirt",
+          "cool aesthetic"
+        ]
+      },
+      {
+        "title": "Casual Days Made Cool with Alakazam Back T-Shirt",
+        "description": "Transform your everyday outfit with our Cool Alakazam Back T-Shirt. Ideal for casual hangouts or lounging at home, this tee embodies relaxation and fandom. Add this to your wardrobe must-haves and get ready to turn heads! Save this pin for your next shopping haul.",
+        "tags": [
+          "casual",
+          "pokemon",
+          "alakazam",
+          "comfortable",
+          "t-shirt",
+          "everyday wear"
+        ]
+      },
+      {
+        "title": "Retro Aesthetic: Cool Alakazam Back T-Shirt for Fans",
+        "description": "Capture the essence of nostalgia with our Cool Alakazam Back T-Shirt, designed for avid Pokémon fans! This tee combines a retro feel with modern style, making it a versatile choice for any outfit. Don't miss out—pin this to your retro aesthetic inspiration and show off your Pokémon pride!",
+        "tags": [
+          "retro",
+          "alakazam",
+          "pokemon",
+          "aesthetic",
+          "t-shirt",
+          "fan apparel"
+        ]
+      }
+    ]
   },
   {
     "id": "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
