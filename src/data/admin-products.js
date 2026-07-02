@@ -7274,9 +7274,72 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/94a995be-8c64-47c5-bd86-d94b01a97be8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b5f3d4e8ff26180eb86f6d0497a5e0a21e76b647b2dc65750020bf3fb58ae7c"
     ],
     "createdAt": "2026-06-26T13:10:51.907Z",
-    "updatedAt": "2026-06-30T15:07:27.225Z",
+    "updatedAt": "2026-07-02T14:11:52.378Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with the Cool Zapdos Back T-Shirt",
+        "description": "Show off your love for Pokémon with our Cool Zapdos back T-Shirt! This stylish tee features a vibrant Zapdos design that is perfect for any fan looking to stand out. Ideal for casual outings or Pokémon-themed events, this shirt is a must-have for your wardrobe. Don't miss out—add it to your collection today!",
+        "tags": [
+          "zapdos",
+          "pokemon",
+          "fandom",
+          "t-shirt",
+          "cool fashion",
+          "gift idea",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "Elevate Your Style: Cool Zapdos Back T-Shirt for Fans",
+        "description": "Transform your everyday look with the Cool Zapdos back T-Shirt, designed for true Pokémon fans! The unique back print combines comfort and style, making it perfect for both lounging and outings. Whether you're sparking conversations or just showcasing your favorite Pokémon, this tee is a game changer. Save it now and upgrade your style!",
+        "tags": [
+          "pokemon clothing",
+          "zapdos",
+          "aesthetic",
+          "fan apparel",
+          "trendy t-shirt",
+          "everyday wear"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Lovers: Cool Zapdos T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon enthusiast? Look no further than our Cool Zapdos back T-Shirt! This eye-catching shirt is a fantastic way to surprise a friend or loved one who adores Pokémon. Perfect for birthdays or special occasions, this tee will surely delight any fan. Pin it for thoughtful gifting ideas!",
+        "tags": [
+          "gift for him",
+          "zapdos",
+          "pokemon fan",
+          "t-shirt gift",
+          "cool apparel",
+          "special occasion"
+        ]
+      },
+      {
+        "title": "Stand Out in Style with the Cool Zapdos Back T-Shirt",
+        "description": "Make a statement with the Cool Zapdos back T-Shirt! This unique design captures the essence of Pokémon while ensuring you stay stylish and comfortable. Perfect for comic cons, meetups, or casual hangouts, it’s a great addition to any fan's closet. Don't forget to save this pin for your next purchase!",
+        "tags": [
+          "zapdos",
+          "pokemon",
+          "cool style",
+          "fan gear",
+          "graphic tee",
+          "event apparel"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Craze with Our Cool Zapdos T-Shirt",
+        "description": "Dive into the world of Pokémon with our Cool Zapdos back T-Shirt! This trendy tee showcases a stunning back design that's perfect for fans who want to express their love for the franchise. Ideal for everyday wear or as a stylish statement piece, this t-shirt is a collector's dream. Pin it now to keep this awesome find on your radar!",
+        "tags": [
+          "zapdos",
+          "pokemon",
+          "cool clothing",
+          "fan fashion",
+          "everyday style",
+          "collectible apparel"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-snorlax-back-t-shirt",
