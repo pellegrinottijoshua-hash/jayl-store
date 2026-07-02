@@ -10759,9 +10759,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3682315-ca68-433a-9cb8-12e9f90f9f1f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T134759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52d2a0a9bfa536c89187ccec429a1bcafda95aa5e39286f9241ced3bc8cf1294"
     ],
     "createdAt": "2026-06-27T14:19:42.734Z",
-    "updatedAt": "2026-06-30T15:03:55.255Z",
+    "updatedAt": "2026-07-02T14:08:17.620Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-drowsee-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Embrace Your Fandom with the Cool Drowsee T-Shirt",
+        "description": "Show off your love for cool Pokémon with this stylish Drowsee back T-shirt. Perfect for casual outings or lounging at home, this tee is a must-have for any Pokémon fan. Elevate your wardrobe and express your passion today!",
+        "tags": [
+          "drowsee",
+          "pokemon",
+          "fandom",
+          "t-shirt",
+          "apparel",
+          "cool style"
+        ]
+      },
+      {
+        "title": "Stylish Drowsee T-Shirt for Everyday Aesthetic",
+        "description": "Transform your everyday look with our Cool Drowsee back T-shirt. This unique piece combines comfort and style, making it a perfect addition to your aesthetic wardrobe. Whether you're out with friends or chilling at home, this tee will keep you looking fresh!",
+        "tags": [
+          "aesthetic",
+          "drowsee",
+          "cool",
+          "apparel",
+          "outfit",
+          "fashion"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Cool Drowsee Tee",
+        "description": "Looking for the ideal gift for a Pokémon enthusiast? Our Cool Drowsee back T-shirt is a fantastic choice! It's not just a shirt; it's a statement piece that will delight any fan. Surprise someone special and share the love of Pokémon today!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "drowsee",
+          "t-shirt",
+          "apparel",
+          "fan merchandise"
+        ]
+      },
+      {
+        "title": "Cool Drowsee T-Shirt: A Must-Have for Pokémon Events",
+        "description": "Gear up for your next Pokémon event with our Cool Drowsee back T-shirt! This stylish tee is perfect for conventions, meet-ups, or casual hangouts with friends. Stand out from the crowd and showcase your passion for Pokémon with pride!",
+        "tags": [
+          "event",
+          "drowsee",
+          "t-shirt",
+          "pokemon",
+          "fan",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Discover Comfort & Style with the Cool Drowsee Tee",
+        "description": "Experience the ultimate blend of comfort and style with our Cool Drowsee back T-shirt. It's an essential piece that effortlessly complements any casual look. Treat yourself to this fantastic tee that resonates with your love for Pokémon and level up your wardrobe!",
+        "tags": [
+          "style",
+          "drowsee",
+          "cool",
+          "apparel",
+          "pokemon",
+          "wardrobe"
+        ]
+      }
+    ]
   },
   {
     "id": "dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
