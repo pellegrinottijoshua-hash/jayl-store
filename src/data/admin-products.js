@@ -9544,9 +9544,76 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4f1cee6f-f658-41fa-87b2-87d45c73ac40/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T122851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c494621889ac14119a0230f843c0eeccd71f791e71a37397832b9d062f8eaf3"
     ],
     "createdAt": "2026-06-27T13:00:11.484Z",
-    "updatedAt": "2026-06-30T15:04:34.323Z",
+    "updatedAt": "2026-07-02T14:04:44.177Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Blastoise Back T-Shirt!",
+        "description": "Dive into the world of cool Pokemon fashion with our Blastoise back T-shirt! Perfect for trainers and fans alike, this stylish tee showcases the iconic water-type Pokemon in a bold design. Elevate your wardrobe and show off your passion for Pokemon with every wear. Don’t miss out on adding this must-have piece to your collection!",
+        "tags": [
+          "blastoise",
+          "pokemon",
+          "fan apparel",
+          "cool t-shirt",
+          "anime fashion",
+          "gift idea",
+          "casual style"
+        ]
+      },
+      {
+        "title": "Cool Blastoise T-Shirt: Perfect Gift for Pokemon Lovers!",
+        "description": "Searching for the ideal gift for a Pokemon fan? Our Cool Blastoise back T-shirt is the ultimate choice! Featuring a striking design that captures the essence of this beloved character, it’s perfect for birthdays, holidays, or just because. Make your loved ones smile with this unique and stylish gift that every Pokemon trainer will cherish. Save this idea for later and surprise them!",
+        "tags": [
+          "pokemon gift",
+          "blastoise",
+          "fan merchandise",
+          "apparel gift",
+          "geek culture",
+          "anime style",
+          "trendy clothing"
+        ]
+      },
+      {
+        "title": "Level Up Your Aesthetic with Our Blastoise T-Shirt!",
+        "description": "Elevate your aesthetic with our Cool Blastoise back T-shirt! This trendy tee merges style with fandom, allowing you to express your love for Pokemon effortlessly. Its unique design makes it a statement piece for any casual outing or a cozy day at home. Discover how this t-shirt can enhance your wardrobe and showcase your personality. Pin it now for a stylish upgrade!",
+        "tags": [
+          "aesthetic",
+          "blastoise",
+          "fashion",
+          "pokemon",
+          "trendy",
+          "stylish apparel",
+          "unique t-shirt"
+        ]
+      },
+      {
+        "title": "Celebrate Every Occasion with Our Cool Blastoise T-Shirt!",
+        "description": "No matter the occasion, our Cool Blastoise back T-shirt is your go-to choice! From casual meet-ups to themed events, this shirt is designed to impress fellow Pokemon fans with its eye-catching graphics and comfortable fit. Stand out in style while celebrating your favorite franchise. Save it for your next adventure and make a statement!",
+        "tags": [
+          "casual wear",
+          "blastoise",
+          "pokemon apparel",
+          "event outfit",
+          "fan culture",
+          "unique design",
+          "everyday style"
+        ]
+      },
+      {
+        "title": "Join the Pokemon Fandom in Style with Our Blastoise T-Shirt!",
+        "description": "Show your love for the Pokemon fandom with our Cool Blastoise back T-shirt! This eye-catching design not only expresses your enthusiasm for the franchise but also offers comfort and style for any occasion. Whether you're heading to a convention or hanging out with friends, this tee makes a bold statement. Don’t forget to save this pin for your next shopping spree!",
+        "tags": [
+          "blastoise",
+          "pokemon fandom",
+          "cool style",
+          "apparel",
+          "fan art",
+          "trendy t-shirt",
+          "unique gift"
+        ]
+      }
+    ]
   },
   {
     "id": "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
