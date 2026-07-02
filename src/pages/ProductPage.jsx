@@ -517,13 +517,13 @@ export default function ProductPage() {
   const [reviewSubmitted,  setReviewSubmitted]  = useState(false)
   const [reviewError,    setReviewError]    = useState('')
 
-  // Viewer count — random on mount, drifts slightly every 30s for "live" feel
+  // Viewer count — random on mount, drifts slightly every 5 min for "live" feel
   useEffect(() => {
     const base = 4 + Math.floor(Math.random() * 14) // 4-17
     setViewerCount(base)
     const id = setInterval(() => {
       setViewerCount(n => Math.max(2, n + (Math.random() > 0.5 ? 1 : -1)))
-    }, 30_000)
+    }, 300_000)
     return () => clearInterval(id)
   }, [])
 

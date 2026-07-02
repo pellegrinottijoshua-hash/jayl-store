@@ -9,9 +9,15 @@ export default function CookieBanner() {
   useEffect(() => {
     let choice = null
     try { choice = localStorage.getItem(STORAGE_KEY) } catch {}
-    // Restore GA4 consent immediately if user already accepted
+    // Restore full consent immediately if the user already accepted.
+    // (Marketing pixels self-load from index.html on 'accepted'.)
     if (choice === 'accepted' && typeof window.gtag === 'function') {
-      window.gtag('consent', 'update', { analytics_storage: 'granted' })
+      window.gtag('consent', 'update', {
+        analytics_storage:  'granted',
+        ad_storage:         'granted',
+        ad_user_data:       'granted',
+        ad_personalization: 'granted',
+      })
     }
     // Show banner only if user hasn't made a choice yet
     if (!choice) setVisible(true)
@@ -19,14 +25,21 @@ export default function CookieBanner() {
 
   const accept = () => {
     try { localStorage.setItem(STORAGE_KEY, 'accepted') } catch {}
-    // Grant GA4 analytics consent and fire first page_view
+    // Grant analytics + marketing consent and fire first page_view
     if (typeof window.gtag === 'function') {
-      window.gtag('consent', 'update', { analytics_storage: 'granted' })
+      window.gtag('consent', 'update', {
+        analytics_storage:  'granted',
+        ad_storage:         'granted',
+        ad_user_data:       'granted',
+        ad_personalization: 'granted',
+      })
       window.gtag('event', 'page_view', {
         page_path:     window.location.pathname,
         page_location: window.location.href,
       })
     }
+    // Load the marketing pixels (Meta + Pinterest) now that consent is given
+    if (typeof window.__jaylLoadMarketing === 'function') window.__jaylLoadMarketing()
     setVisible(false)
   }
 
@@ -45,8 +58,9 @@ export default function CookieBanner() {
       <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         {/* Text */}
         <p className="flex-1 text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
-          Utilizziamo cookie essenziali (carrello, sessione) e, con il tuo consenso, cookie analitici
-          anonimi (Google Analytics) per migliorare il sito. Nessun cookie pubblicitario.{' '}
+          Utilizziamo cookie essenziali (carrello, sessione) e, con il tuo consenso, cookie
+          analitici (Google Analytics) e di marketing (Meta, Pinterest) per migliorare il sito
+          e mostrarti contenuti pertinenti. Puoi rifiutarli in qualsiasi momento.{' '}
           <Link
             to="/cookies"
             onClick={decline}

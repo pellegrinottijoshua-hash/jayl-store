@@ -166,13 +166,19 @@ function CollectionCarousel({ title, viewAllTo, products: items, imagePick }) {
           onMouseMove={onMove}
           onMouseUp={onUp}
         >
-          {/* Render the list twice for seamless infinite loop */}
-          {[...items, ...items].map((product, idx) => (
+          {/* Render the list twice for seamless infinite loop — the second set is
+              a visual clone, hidden from screen readers / crawlers to avoid
+              duplicate content in the accessibility tree. */}
+          {[...items, ...items].map((product, idx) => {
+            const isClone = idx >= items.length
+            return (
             <Link
               key={`${product.id}-${idx}`}
               to={`/product/${product.id}`}
               className="flex-shrink-0 w-48 sm:w-60 group"
               draggable={false}
+              aria-hidden={isClone || undefined}
+              tabIndex={isClone ? -1 : undefined}
               onClick={e => {
                 // block navigation if user was dragging
                 if (drag.current.moved) e.preventDefault()
@@ -191,7 +197,8 @@ function CollectionCarousel({ title, viewAllTo, products: items, imagePick }) {
               <h3 className="font-display text-sm text-cream leading-tight truncate pointer-events-none">{product.name}</h3>
               <p className="text-xs text-text-muted mt-0.5 pointer-events-none">from {formatPrice(product.price)}</p>
             </Link>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
@@ -203,7 +210,9 @@ export default function HomePage() {
   const { setPageTheme, setActiveSection } = useThemeStore()
 
   usePageMeta({
-    title:       'JAYL — Art & Wearable Art',
+    // usePageMeta appends " — JAYL"; keep the brand out of the title here to
+    // avoid "JAYL — Art & Wearable Art — JAYL".
+    title:       'Art & Wearable Art',
     description: 'Premium print-on-demand art and streetwear. AI-reinterpreted art movements meet contemporary culture. Free worldwide shipping.',
   })
   const navigate   = useNavigate()

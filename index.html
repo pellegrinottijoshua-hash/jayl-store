@@ -34,12 +34,7 @@
           "@id": "https://jayl.store/#website",
           "url": "https://jayl.store",
           "name": "JAYL",
-          "publisher": { "@id": "https://jayl.store/#organization" },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": { "@type": "EntryPoint", "urlTemplate": "https://jayl.store/objects?q={search_term_string}" },
-            "query-input": "required name=search_term_string"
-          }
+          "publisher": { "@id": "https://jayl.store/#organization" }
         }
       ]
     }
@@ -65,21 +60,25 @@
       gtag('config', 'G-SZQ80GDTJ0', { send_page_view: false });
     </script>
 
-    <!-- Meta Pixel -->
+    <!-- Marketing pixels (Meta Pixel + Pinterest Tag) — GDPR/ePrivacy:
+         nothing is loaded or fired until the user accepts marketing cookies in
+         the banner. __jaylLoadMarketing() is called by CookieBanner on accept,
+         and auto-runs on repeat visits where consent was already granted. -->
     <script>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '2044599416436249');
-      fbq('track', 'PageView');
+      window.__jaylLoadMarketing = function () {
+        if (window.__jaylMarketingLoaded) return;
+        window.__jaylMarketingLoaded = true;
+        /* Meta Pixel */
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2044599416436249');
+        fbq('track', 'PageView');
+        /* Pinterest Tag */
+        !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+        pintrk('load', '2613163991136');
+        pintrk('page');
+      };
+      try { if (localStorage.getItem('jayl_cookie_consent') === 'accepted') window.__jaylLoadMarketing(); } catch (e) {}
     </script>
-    <!-- End Meta Pixel -->
-
-    <!-- Pinterest Tag -->
-    <script>
-      !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
-      pintrk('load', '2613163991136');
-      pintrk('page');
-    </script>
-    <!-- end Pinterest Tag -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -89,9 +88,8 @@
     <link rel="alternate" type="application/rss+xml" title="JAYL Product Feed" href="https://jayl.store/api/gmf" />
   </head>
   <body>
-    <!-- Pixel noscript fallbacks (must be in body) -->
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2044599416436249&ev=PageView&noscript=1"/></noscript>
-    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613163991136&noscript=1" /></noscript>
+    <!-- No unconditional pixel noscript fallbacks: they would fire Meta/Pinterest
+         without consent. Marketing pixels load via __jaylLoadMarketing() after opt-in. -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
