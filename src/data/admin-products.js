@@ -8081,9 +8081,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a"
     ],
     "createdAt": "2026-06-26T13:41:03.363Z",
-    "updatedAt": "2026-06-30T15:06:48.864Z",
+    "updatedAt": "2026-07-02T14:13:53.600Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileplume-back-t-shirt/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileplume-back-t-shirt/design.png",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Vileplume T-Shirt",
+        "description": "Elevate your style with our Cool Vileplume back T-Shirt, perfect for Pokémon enthusiasts. Whether you're out on a casual day or attending a fandom event, this shirt showcases your love for Vileplume in style. Save this pin for your next outfit inspiration and embrace your Pokémon passion!",
+        "tags": [
+          "vileplume",
+          "pokemon",
+          "fandom fashion",
+          "gift for gamers",
+          "casual style",
+          "art tee"
+        ]
+      },
+      {
+        "title": "Cool Vileplume Shirt: The Perfect Gift for Pokémon Lovers",
+        "description": "Searching for the ideal gift for a Pokémon fan? Our Cool Vileplume back T-Shirt combines comfort with a unique design that any trainer would love. Make their day special with a gift that speaks to their passion. Pin this for your gift ideas and bring smiles to their faces!",
+        "tags": [
+          "pokemon gifts",
+          "vileplume shirt",
+          "gift ideas",
+          "fan apparel",
+          "cool t-shirts",
+          "stylish gift"
+        ]
+      },
+      {
+        "title": "Express Your Love for Pokémon with This Vileplume Tee",
+        "description": "Show off your fandom with our stylish Cool Vileplume back T-Shirt. This eye-catching design not only highlights your favorite Pokémon but also adds a trendy touch to any outfit. Perfect for casual outings or Pokémon meet-ups! Save this pin for your next fashion upgrade!",
+        "tags": [
+          "pokemon attire",
+          "vileplume",
+          "fan style",
+          "aesthetic wear",
+          "trendy t-shirt",
+          "cool outfit"
+        ]
+      },
+      {
+        "title": "Stay Cool and Trendy with Our Vileplume T-Shirt",
+        "description": "Make a statement this season with our Cool Vileplume back T-Shirt, designed for the modern Pokémon fan. With its vibrant graphics and comfortable fit, it's an essential addition to your wardrobe. Don’t forget to pin this for your shopping list and stay stylish!",
+        "tags": [
+          "cool shirts",
+          "pokemon style",
+          "vileplume fan",
+          "casual wear",
+          "fashion statement",
+          "trendy apparel"
+        ]
+      },
+      {
+        "title": "Celebrate Your Favorite Pokémon with the Vileplume Tee",
+        "description": "Channel your love for Pokémon in style with our Cool Vileplume back T-Shirt. Ideal for conventions, parties, or casual everyday wear, this shirt makes a bold statement about your fandom. Be sure to pin this for your next event outfit and celebrate your unique style!",
+        "tags": [
+          "pokemon event",
+          "vileplume t-shirt",
+          "fandom clothing",
+          "casual fashion",
+          "stylish tee",
+          "character apparel"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-mewtwo-back-t-shirt",
