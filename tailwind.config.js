@@ -54,8 +54,8 @@ export default {
         sans:    ['Space Grotesk', 'system-ui', 'sans-serif'],
         // Editorial / Body / Payoff → Cormorant Garamond
         display: ['Cormorant Garamond', 'Georgia', 'serif'],
-        // Admin / Code
-        mono:    ['JetBrains Mono', 'monospace'],
+        // Admin / Code — system monospace (no web-font download; saves LCP)
+        mono:    ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       },
 
       fontSize: {

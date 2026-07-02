@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
-import { useLayoutEffect, useEffect } from 'react'
+import { useLayoutEffect, useEffect, lazy, Suspense } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
@@ -16,8 +16,10 @@ import ReturnsPage from '@/pages/ReturnsPage'
 import TermsPage from '@/pages/TermsPage'
 import PrivacyPage from '@/pages/PrivacyPage'
 import CookiesPage from '@/pages/CookiesPage'
-import AdminPage from '@/pages/AdminPage'
-import AdminProductPage from '@/pages/AdminProductPage'
+// Admin panel is owner-only + heavy (generate-assets, big editors) — lazy-load it
+// so its code and deps stay OUT of the storefront's main bundle.
+const AdminPage        = lazy(() => import('@/pages/AdminPage'))
+const AdminProductPage = lazy(() => import('@/pages/AdminProductPage'))
 import WishlistPage from '@/pages/WishlistPage'
 import TrackPage from '@/pages/TrackPage'
 import CollectionPage from '@/pages/CollectionPage'
@@ -69,8 +71,9 @@ export default function App() {
       {!isAdmin && <CartDrawer />}
       {!isAdmin && <EmailCapturePopup />}
 
+      <Suspense fallback={null}>
       <Routes>
-        {/* ── Admin (standalone, no Navbar/Footer) ─────── */}
+        {/* ── Admin (standalone, no Navbar/Footer) — lazy-loaded ─────── */}
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/product/:id" element={<AdminProductPage />} />
 
@@ -102,6 +105,7 @@ export default function App() {
           </main>
         } />
       </Routes>
+      </Suspense>
 
       {!isAdmin && <Footer />}
       {!isAdmin && <CookieBanner />}
