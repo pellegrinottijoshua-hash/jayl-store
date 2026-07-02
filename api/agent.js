@@ -32,7 +32,7 @@ const ADMIN_INTERNAL_URL = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000'
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'jaylpelle'
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
 // ── System prompt con expertise marketing ─────────────────────────────────────
 const AGENT_SYSTEM_PROMPT = `You are JAYL's AI content orchestrator for a print-on-demand lifestyle brand.
@@ -295,9 +295,9 @@ export default async function handler(req, res) {
   const authHeader = req.headers.authorization || ''
   const bearerKey  = authHeader.replace('Bearer ', '').trim()
   const bodyKey    = req.body?.apiKey || req.body?.password || ''
-  const validKey   = process.env.AGENT_API_KEY || process.env.ADMIN_PASSWORD || 'jaylpelle'
+  const validKey   = process.env.AGENT_API_KEY || process.env.ADMIN_PASSWORD
 
-  if (bearerKey !== validKey && bodyKey !== validKey) {
+  if (!validKey || (bearerKey !== validKey && bodyKey !== validKey)) {
     return res.status(401).json({ error: 'Invalid API key. Use Authorization: Bearer <key> or { "apiKey": "<key>" }' })
   }
 

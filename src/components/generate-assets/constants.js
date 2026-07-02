@@ -1,6 +1,6 @@
 // ── Shared constants & helpers for Generate Assets panels ────────────────────
 
-export const ADMIN_PASSWORD = 'jaylpelle'
+export const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 
 // ── Social platform metadata ────────────────────────────────────────────────
 export const SOCIAL_META = {
@@ -24,7 +24,7 @@ export async function api(action, data) {
   const res = await fetch('/api/admin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action, password: ADMIN_PASSWORD, ...data }),
+    body: JSON.stringify({ action, password: getAdminPassword(), ...data }),
   })
   const json = await res.json()
   if (!res.ok) throw new Error(json.error || 'Request failed')

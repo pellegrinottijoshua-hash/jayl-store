@@ -236,7 +236,7 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     const cronSecret = process.env.CRON_SECRET
     const authHeader = req.headers['authorization'] || ''
-    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+    if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
       return res.status(401).json({ error: 'Unauthorized' })
     }
     const githubToken = process.env.GITHUB_TOKEN
@@ -384,8 +384,12 @@ export default async function handler(req, res) {
 
   const { action, password, ...data } = req.body || {}
 
-  if (password !== ADMIN_PASSWORD) {
+  if (!ADMIN_PASSWORD || password !== ADMIN_PASSWORD) {
     return res.status(401).json({ error: 'Unauthorized' })
+  }
+
+  if (action === 'verify-password') {
+    return res.status(200).json({ ok: true })
   }
 
   const githubToken = process.env.GITHUB_TOKEN

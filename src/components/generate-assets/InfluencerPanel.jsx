@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import PromptCard from './PromptCard'
 import {
-  api, ADMIN_PASSWORD, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES,
+  api, getAdminPassword, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES,
   SOCIAL_META, toAbsoluteUrl, subVars,
 } from './constants'
 
@@ -386,7 +386,7 @@ function InfluencerWorkspace({ persona, productId, productName, allImages, onAss
       const best        = preferVideo ? (videoAsset || imageAsset) : (imageAsset || videoAsset)
 
       const payload = {
-        password:    ADMIN_PASSWORD,
+        password:    getAdminPassword(),
         platform,
         imageUrl:    best?.imageUrl || null,
         videoUrl:    best?.videoUrl || null,

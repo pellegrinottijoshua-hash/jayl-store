@@ -32,7 +32,7 @@ async function compressImageIfNeeded(file) {
     img.src = blobUrl
   })
 }
-import { btnPrimary, btnGhost, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, DESTINATION_META, toAbsoluteUrl, downloadAsset, api } from './constants'
+import { btnPrimary, btnGhost, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, DESTINATION_META, toAbsoluteUrl, downloadAsset, api, getAdminPassword } from './constants'
 
 // PromptCard — usato sia da SitoPanel che da InfluencerPanel
 export default function PromptCard({
@@ -123,7 +123,7 @@ export default function PromptCard({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action:   'upload-reference',
-          password: 'jaylpelle',
+          password: getAdminPassword(),
           filename: file.name,
           dataUrl,
         }),

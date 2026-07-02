@@ -6,7 +6,7 @@ import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 
-const ADMIN_PASSWORD = 'jaylpelle'
+const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -28,7 +28,7 @@ async function api(action, data, signal) {
   const res = await fetch('/api/admin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action, password: ADMIN_PASSWORD, ...data }),
+    body: JSON.stringify({ action, password: getAdminPassword(), ...data }),
     ...(signal ? { signal } : {}),
   })
   let json
@@ -531,7 +531,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           platform: 'pinterest',
-          password: 'jaylpelle',
+          password: getAdminPassword(),
           boardId: pinterestBoardId.trim(),
           title: title.trim(),
           description: pinterestCaption || description.slice(0, 500),
@@ -2150,10 +2150,22 @@ function ImagesTab() {
 function LoginScreen({ onLogin }) {
   const [pw, setPw] = useState('')
   const [err, setErr] = useState('')
-  const submit = e => {
+  const submit = async e => {
     e.preventDefault()
-    if (pw === ADMIN_PASSWORD) { sessionStorage.setItem('adminAuth', '1'); onLogin() }
-    else setErr('Incorrect password')
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'verify-password', password: pw }),
+      })
+      if (res.ok) {
+        sessionStorage.setItem('jaylAdminPw', pw)
+        sessionStorage.setItem('adminAuth', '1')
+        onLogin()
+      } else setErr('Incorrect password')
+    } catch {
+      setErr('Network error — try again')
+    }
   }
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
@@ -2658,7 +2670,7 @@ function OrderRow({ o, STATUS_COLOR }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action:      'send-review-request',
-          password:    'jaylpelle',
+          password:    getAdminPassword(),
           orderId:     o.id,
           email,
           customerName: [o.shippingAddress?.firstName, o.shippingAddress?.lastName].filter(Boolean).join(' '),
@@ -3060,7 +3072,7 @@ function QuickGenerateSheet({ product, open, onClose }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          apiKey:      ADMIN_PASSWORD,
+          apiKey:      getAdminPassword(),
           task:        'generate-social',
           productId:   product.id,
           productName: product.name,
@@ -3262,7 +3274,7 @@ function BatchAgentTab() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            apiKey:      ADMIN_PASSWORD,
+            apiKey:      getAdminPassword(),
             task:        'generate_social_content',
             productId:   p.id,
             productName: p.name,
@@ -3613,7 +3625,7 @@ function SeoAuditTab() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'generate-seo', password: ADMIN_PASSWORD,
+          action: 'generate-seo', password: getAdminPassword(),
           productId: p.id, productName: p.name,
           productType: p.section, collection: p.collection,
           description: p.seoDescription, tags: p.tags,
@@ -3643,7 +3655,7 @@ function SeoAuditTab() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'save-product', password: ADMIN_PASSWORD,
+          action: 'save-product', password: getAdminPassword(),
           product: { ...p, ...seo, tags: Array.isArray(seo.etsyTags) ? seo.etsyTags : (seo.etsyTags || '').split(',').map(t => t.trim()).filter(Boolean) },
         }),
       })
@@ -4069,7 +4081,7 @@ function AssetGallerySheet({ product, open, onClose }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          password: ADMIN_PASSWORD, platform,
+          password: getAdminPassword(), platform,
           imageUrl: asset.type !== 'video' ? asset.blobUrl : undefined,
           videoUrl: asset.type === 'video' ? asset.blobUrl : undefined,
           caption: asset.caption, hashtags: asset.hashtags,

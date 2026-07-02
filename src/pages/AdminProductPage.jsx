@@ -7,7 +7,7 @@ import { products as allProducts } from '@/data/products'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
-const ADMIN_PASSWORD = 'jaylpelle'
+const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -30,7 +30,7 @@ async function api(action, data, signal) {
   const res = await fetch('/api/admin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action, password: ADMIN_PASSWORD, ...data }),
+    body: JSON.stringify({ action, password: getAdminPassword(), ...data }),
     ...(signal ? { signal } : {}),
   })
   let json
@@ -1155,7 +1155,7 @@ export default function AdminProductPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           platform:    'pinterest',
-          password:    'jaylpelle',
+          password:    getAdminPassword(),
           boardId:     pinterestBoardId.trim(),
           title:       name.trim(),
           description: pinterestEditCaption || pinterestCaption || description.slice(0, 500),
@@ -1336,7 +1336,7 @@ export default function AdminProductPage() {
       const blob = await blobUpload(sanitized, file, {
         access: 'public',
         handleUploadUrl: '/api/admin',
-        clientPayload: JSON.stringify({ password: ADMIN_PASSWORD, productId: id }),
+        clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
       })
       const result = await api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url })
       setPrintFileUrl(result.url)

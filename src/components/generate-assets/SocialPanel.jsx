@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import PromptCard from './PromptCard'
 import {
   api, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, SOCIAL_META, PRODUCT_TYPE_META,
-  subVars, toAbsoluteUrl,
+  subVars, toAbsoluteUrl, getAdminPassword,
 } from './constants'
 
 // ── Platforms to show (order matters) ────────────────────────────────────────
@@ -338,7 +338,7 @@ export default function SocialPanel({
         : (imageAsset || videoAsset)
 
       const payload = {
-        password:    'jaylpelle',
+        password:    getAdminPassword(),
         platform,
         imageUrl:    best?.imageUrl || null,
         videoUrl:    best?.videoUrl || null,

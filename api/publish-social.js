@@ -23,7 +23,7 @@
 
 import { applyCors } from './_lib/cors.js'
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'jaylpelle'
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
 // ── Instagram (Meta Graph API v19) ────────────────────────────────────────────
 async function publishInstagram({ imageUrl, videoUrl, caption, hashtags, altText }) {
@@ -286,7 +286,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' })
 
   const { password, platform, ...rest } = req.body || {}
-  if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' })
+  if (!ADMIN_PASSWORD || password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' })
   if (!platform || !HANDLERS[platform]) return res.status(400).json({ error: `Invalid platform. Use: ${Object.keys(HANDLERS).join(' | ')}` })
 
   try {
