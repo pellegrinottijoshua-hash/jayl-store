@@ -6868,9 +6868,72 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9428ee03-1bde-4249-8123-6dfdbf224b07/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T110339Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a90b0e657ef4622b2b89ff21df20a17bf4dc9d8efb381f341abe0ff6d350e08"
     ],
     "createdAt": "2026-06-26T12:23:42.147Z",
-    "updatedAt": "2026-06-30T15:08:03.350Z",
+    "updatedAt": "2026-07-02T14:10:45.789Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "pinterestPins": [
+      {
+        "title": "Show Off Your Love for Pokémon with the Cool Psyduck T-Shirt",
+        "description": "Dive into the world of Pokémon with our Cool Psyduck back T-Shirt. This stylish tee is perfect for fans who want to represent their favorite character in a unique way. Whether you're out on a casual day or at a Pokémon-themed event, this shirt will keep you cool and fashionable. Add it to your wardrobe today and showcase your fandom!",
+        "tags": [
+          "psyduck",
+          "pokemon",
+          "fandom",
+          "cool t-shirt",
+          "apparel",
+          "fashion",
+          "gift idea"
+        ]
+      },
+      {
+        "title": "Elevate Your Style with the Cool Psyduck Back Tee",
+        "description": "Our Cool Psyduck back T-Shirt is not just a piece of clothing; it's a statement! Perfect for casual outings, it combines comfort with a playful design that every Pokémon lover will adore. Pair it with your favorite jeans or shorts for a laid-back look that turns heads. Don’t miss the chance to own this trendy tee—add it to your collection now!",
+        "tags": [
+          "style",
+          "psyduck",
+          "apparel",
+          "fashion",
+          "cool pokemon",
+          "gift"
+        ]
+      },
+      {
+        "title": "Gift the Ultimate Pokémon Lover: Cool Psyduck T-Shirt",
+        "description": "Searching for the perfect gift for a Pokémon fan? Look no further! Our Cool Psyduck back T-Shirt is a fantastic choice for birthdays, holidays, or just because. With its eye-catching design and comfortable fit, it's a thoughtful way to show you care. Surprise someone special today with this must-have tee!",
+        "tags": [
+          "gift",
+          "psyduck",
+          "pokemon",
+          "fandom",
+          "apparel",
+          "t-shirt"
+        ]
+      },
+      {
+        "title": "Casual Days Made Stylish with Cool Psyduck T-Shirt",
+        "description": "Upgrade your everyday wardrobe with our Cool Psyduck back T-Shirt! Ideal for lounging at home or hanging out with friends, this tee blends comfort and fun perfectly. Its vibrant design makes it a standout piece that expresses your love for Pokémon. Plan your next casual outfit with this stylish must-have—get yours now!",
+        "tags": [
+          "lifestyle",
+          "psyduck",
+          "casual",
+          "cool t-shirt",
+          "apparel",
+          "pokemon"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Craze with Our Psyduck Back T-Shirt",
+        "description": "Join in on the Pokémon excitement with our Cool Psyduck back T-Shirt! This trendy tee is designed for fans who want to wear their passion proudly. Perfect for conventions, gatherings, or everyday wear, it’s a versatile addition to any fan's closet. Don’t wait—make a statement and add this cool piece to your wardrobe today!",
+        "tags": [
+          "fandom",
+          "psyduck",
+          "pokemon",
+          "apparel",
+          "cool t-shirt",
+          "style"
+        ]
+      }
+    ]
   },
   {
     "id": "zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
