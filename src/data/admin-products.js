@@ -10355,9 +10355,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/127b88c4-5de9-4348-b80f-b23b5b557ea1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe1beefa53765a92361f398d971f3682a2ceba8b18b7c02fec62ecedb51998b1"
     ],
     "createdAt": "2026-06-27T13:31:16.749Z",
-    "updatedAt": "2026-06-30T15:04:10.301Z",
+    "updatedAt": "2026-07-02T14:07:02.031Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-machop-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with the Cool Machop Back T-Shirt",
+        "description": "Show off your love for Pokémon with our Cool Machop back T-Shirt. Perfect for trainers and fans alike, this stylish tee captures the essence of one of the most beloved fighting types. Whether you're at a convention or just hanging out with friends, this shirt is a must-have for any Pokémon enthusiast. Add it to your collection today!",
+        "tags": [
+          "machop",
+          "pokemon",
+          "fan apparel",
+          "cool t-shirt",
+          "gift idea",
+          "fandom style"
+        ]
+      },
+      {
+        "title": "Stylish Machop T-Shirt – A Must-Have for Pokémon Fans!",
+        "description": "Elevate your wardrobe with our Cool Machop back T-Shirt, designed for true Pokémon fans. This trendy tee is not just a piece of clothing, it's a statement of your passion for the Pokémon universe. Perfect for casual outings or cozy nights in, grab yours now and showcase your unique style!",
+        "tags": [
+          "pokemon art",
+          "cool design",
+          "casual wear",
+          "gift for him",
+          "fan merchandise",
+          "pocket monster"
+        ]
+      },
+      {
+        "title": "Gift the Perfect Pokémon Tee: Cool Machop Back T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon lover? Look no further than our Cool Machop back T-Shirt! This unique design combines comfort and style, making it a fantastic choice for birthdays, holidays, or just because. Delight a friend or family member with this thoughtful gift they'll cherish!",
+        "tags": [
+          "gift for her",
+          "pokemon gifts",
+          "comfortable t-shirt",
+          "fandom clothing",
+          "cool style",
+          "collector's item"
+        ]
+      },
+      {
+        "title": "Catch the Style with Cool Machop Back T-Shirt!",
+        "description": "Make a fashion statement while embracing your love for Pokémon with our Cool Machop back T-Shirt. This stylish tee blends comfort and coolness, perfect for any outing. Whether you're dressing up or keeping it casual, this shirt complements your aesthetic flawlessly. Don't miss out on transforming your wardrobe!",
+        "tags": [
+          "stylish apparel",
+          "pokemon fashion",
+          "aesthetic clothing",
+          "fan style",
+          "trendy t-shirt",
+          "casual outfit"
+        ]
+      },
+      {
+        "title": "Cool Machop Back T-Shirt: The Ultimate Pokémon Statement Piece",
+        "description": "Step up your Pokémon game with the Cool Machop back T-Shirt, a standout piece for any fan's closet. This eye-catching design not only showcases your favorite character but also fits perfectly into your everyday style. Ready to make heads turn? Add this to your Pinterest boards for future inspiration!",
+        "tags": [
+          "pokemon tee",
+          "unique design",
+          "fashion statement",
+          "fandom fashion",
+          "artistic apparel",
+          "casual chic"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-drowsee-back-t-shirt",
