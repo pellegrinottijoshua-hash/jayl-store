@@ -8488,9 +8488,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2e43137f-def8-4438-b8e1-5496065ec0ff/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=66c9ffcfb3f4388eeeb1ddad48019f634dd2a2d90ed6aeb792857ab677bd49cb"
     ],
     "createdAt": "2026-06-26T14:15:44.480Z",
-    "updatedAt": "2026-06-30T15:06:35.784Z",
+    "updatedAt": "2026-07-02T14:15:00.146Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mewtwo-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Mewtwo Back T-Shirt",
+        "description": "Elevate your wardrobe with our Cool Mewtwo back T-Shirt, perfect for any Pokémon fan! This stylish tee features a unique design that showcases your passion for Pokémon while keeping you comfortable. Perfect for casual outings or Pokémon-themed events. Don't miss out on this must-have addition to your collection!",
+        "tags": [
+          "mewtwo",
+          "pokemon gift",
+          "fan apparel",
+          "cool t-shirt",
+          "geek style",
+          "anime fashion"
+        ]
+      },
+      {
+        "title": "Step Up Your Style Game with the Cool Mewtwo Back T-Shirt",
+        "description": "Transform your everyday look with the striking Cool Mewtwo back T-Shirt. This trendy tee is designed for those who want to express their love for Pokémon in a fashionable way. Ideal for casual hangouts or conventions, it's a versatile piece that every fan should own. Save this pin to your collection and stand out in style!",
+        "tags": [
+          "pokemon style",
+          "fan outfit",
+          "pop culture",
+          "mewtwo design",
+          "graphic tee",
+          "anime lovers"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Cool Mewtwo Back T-Shirt",
+        "description": "Searching for the ultimate gift for a Pokémon enthusiast? Look no further! Our Cool Mewtwo back T-Shirt combines quality and style, making it the ideal present for birthdays, holidays, or special occasions. Show your loved ones how much you care with this unique tee that they will treasure. Pin it now for future gifting inspiration!",
+        "tags": [
+          "gift idea",
+          "mewtwo shirt",
+          "pokemon merch",
+          "unique apparel",
+          "anime gift",
+          "fandom fashion"
+        ]
+      },
+      {
+        "title": "Join the Fandom Revolution with the Cool Mewtwo Back T-Shirt",
+        "description": "Celebrate your love for Pokémon with our Cool Mewtwo back T-Shirt, designed for true fans! This eye-catching tee represents the spirit of adventure and camaraderie that comes with being part of the Pokémon community. Whether you're battling or just hanging out, this shirt is a great way to showcase your fandom. Save it now for your next Pokémon event!",
+        "tags": [
+          "pokemon community",
+          "fandom apparel",
+          "mewtwo fan art",
+          "stylish t-shirt",
+          "anime culture",
+          "collectible fashion"
+        ]
+      },
+      {
+        "title": "Casual Comfort Meets Cool Design: Mewtwo Back T-Shirt",
+        "description": "Experience the perfect blend of comfort and style with our Cool Mewtwo back T-Shirt. Its soft fabric and striking design make it a go-to piece for any casual outing or lounging day. Whether you’re at home or out with friends, this tee is an effortless addition to your wardrobe. Pin it to your favorites and elevate your everyday look!",
+        "tags": [
+          "casual wear",
+          "mewtwo",
+          "pokemon apparel",
+          "everyday style",
+          "comfortable fashion",
+          "geek chic"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-ditto-back-t-shirt",
