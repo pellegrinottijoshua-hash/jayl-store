@@ -24,6 +24,16 @@
     { "source": "/api/gmf",              "destination": "/api/orders?handler=gmf"            },
     { "source": "/robots.txt",            "destination": "/robots.txt"                  },
     { "source": "/api/(.*)",              "destination": "/api/$1"                      },
+    {
+      "source": "/product/:id",
+      "has": [{ "type": "header", "key": "user-agent", "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*" }],
+      "destination": "/api/orders?handler=prerender&path=/product/:id"
+    },
+    {
+      "source": "/collection/:slug",
+      "has": [{ "type": "header", "key": "user-agent", "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*" }],
+      "destination": "/api/orders?handler=prerender&path=/collection/:slug"
+    },
     { "source": "/(.*)",                  "destination": "/index.html"                  }
   ],
   "headers": [

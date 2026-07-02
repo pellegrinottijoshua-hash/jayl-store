@@ -565,6 +565,114 @@ ${items}
   return res.status(200).send(xml)
 }
 
+// ── Prerender for social crawlers ──────────────────────────────────────────────
+// The storefront is a client-rendered SPA, so bots that don't run JS (Facebook,
+// Pinterest, Twitter, LinkedIn, WhatsApp…) only see the generic index.html meta.
+// vercel.json rewrites ONLY crawler user-agents for /product/:id and
+// /collection/:slug to this handler, which returns real per-page OG/Twitter tags
+// + Product JSON-LD (price/availability → Pinterest Rich Pins). Real users are
+// untouched — they keep hitting the static SPA on the CDN.
+const SITE_URL       = 'https://jayl.store'
+const PRERENDER_DESC = 'Premium print-on-demand art and wearable art by JAYL.'
+const absUrl   = (u) => !u ? '' : (/^https?:\/\//i.test(u) ? u : `${SITE_URL}${u.startsWith('/') ? '' : '/'}${u}`)
+// Must mirror CollectionPage.collectionSlug EXACTLY (no diacritics normalization)
+// so prerendered /collection/:slug matches the same products the SPA routes to.
+const colSlug  = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const ogImageFor = (p) => {
+  const params = new URLSearchParams()
+  params.set('title', p.seoTitle || p.name || 'JAYL')
+  const img = absUrl(p.image || p.images?.[0] || '')
+  if (img) params.set('image', img)
+  return `${SITE_URL}/api/og?${params.toString()}`
+}
+
+function prerenderHtml({ title, description, image, url, jsonLd, ogType = 'website', h1 }) {
+  const e = escapeXml
+  const ld = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''
+  const img = image ? `<meta property="og:image" content="${e(image)}" /><meta name="twitter:image" content="${e(image)}" />` : ''
+  return `<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${e(title)}</title>
+<meta name="description" content="${e(description)}" />
+<link rel="canonical" href="${e(url)}" />
+<meta property="og:type" content="${e(ogType)}" />
+<meta property="og:site_name" content="JAYL" />
+<meta property="og:title" content="${e(title)}" />
+<meta property="og:description" content="${e(description)}" />
+<meta property="og:url" content="${e(url)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${e(title)}" />
+<meta name="twitter:description" content="${e(description)}" />
+${img}
+${ld}
+</head><body>
+<h1>${e(h1 || title)}</h1>
+<p>${e(description)}</p>
+${image ? `<img src="${e(image)}" alt="${e(h1 || title)}" width="600" />` : ''}
+<p><a href="${e(url)}">View on JAYL &rarr;</a></p>
+</body></html>`
+}
+
+function handlePrerender(req, res) {
+  const path = String(req.query.path || '/')
+  let html = null
+
+  if (path.startsWith('/product/')) {
+    const id = decodeURIComponent(path.slice(9)).replace(/\/+$/, '')
+    const p  = adminProducts.find(x => x.id === id)
+    if (p) {
+      const name        = p.seoTitle || p.name
+      const description = (p.seoDescription || p.description || PRERENDER_DESC).replace(/\s+/g, ' ').trim().slice(0, 280)
+      const url         = `${SITE_URL}/product/${p.id}`
+      const images      = [absUrl(p.image), ...(p.images || []).map(absUrl)].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 6)
+      const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type':    'Product',
+        name,
+        image:       images,
+        description,
+        brand:      { '@type': 'Brand', name: 'JAYL' },
+        offers: {
+          '@type':        'Offer',
+          price:          ((p.price ?? 0) / 100).toFixed(2),
+          priceCurrency:  'EUR',
+          availability:   'https://schema.org/InStock',
+          url,
+        },
+      }
+      html = prerenderHtml({ title: `${name} — JAYL`, description, image: ogImageFor(p), url, jsonLd, ogType: 'product', h1: name })
+    }
+  } else if (path.startsWith('/collection/')) {
+    const slug  = decodeURIComponent(path.slice(12)).replace(/\/+$/, '')
+    const inCol = adminProducts.filter(p => colSlug(p.collection) === slug)
+    if (inCol.length) {
+      const name = inCol[0].collection || slug
+      html = prerenderHtml({
+        title:       `${name} — JAYL`,
+        description: `Shop the ${name} collection at JAYL — ${inCol.length} pieces of premium print-on-demand wearable art.`.slice(0, 280),
+        image:       ogImageFor(inCol[0]),
+        url:         `${SITE_URL}/collection/${slug}`,
+        h1:          name,
+      })
+    }
+  }
+
+  if (!html) {
+    html = prerenderHtml({
+      title:       'JAYL — Premium Art & Wearable Art',
+      description: PRERENDER_DESC,
+      image:       `${SITE_URL}/api/og`,
+      url:         SITE_URL + path,
+    })
+  }
+
+  res.setHeader('Content-Type', 'text/html; charset=utf-8')
+  res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400')
+  return res.status(200).send(html)
+}
+
 // ── Router ────────────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
@@ -584,6 +692,7 @@ export default async function handler(req, res) {
   if (h === 'capture-email')     return handleCaptureEmail(req, res)
   if (h === 'validate-discount') return handleValidateDiscount(req, res)
   if (h === 'gmf')               return handleGmf(req, res)
+  if (h === 'prerender')         return handlePrerender(req, res)
 
   return res.status(404).json({ error: `Unknown orders handler: ${h}` })
 }
