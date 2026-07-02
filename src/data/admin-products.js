@@ -8853,9 +8853,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T145932Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d36531bff1a342b65c6a83f6f18779e1ba48cc2523699390509ad006aea9d671"
     ],
     "createdAt": "2026-06-26T15:05:11.927Z",
-    "updatedAt": "2026-06-30T14:59:59.047Z",
+    "updatedAt": "2026-07-02T14:16:07.215Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Chill with Our Cool Ditto Back T-Shirt for Pokémon Fans",
+        "description": "Embrace your love for Pokémon with our Cool Ditto Back T-Shirt, designed for ultimate comfort and style. Perfect for casual outings or lounging at home, this shirt showcases Ditto in a fun and unique way. Add this must-have piece to your collection and elevate your wardrobe today!",
+        "tags": [
+          "pokemon",
+          "ditto",
+          "fandom",
+          "casual wear",
+          "apparel",
+          "gift idea"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with Our Cool Ditto Back T-Shirt",
+        "description": "Transform your outfit into a statement with our Cool Ditto Back T-Shirt. This stylish tee combines comfort and a laid-back vibe, making it ideal for any occasion. Perfect for layering or wearing solo, this shirt is a fantastic addition to your aesthetic collection. Save it for your next shopping spree!",
+        "tags": [
+          "aesthetic",
+          "fashion",
+          "pokemon",
+          "ditto",
+          "style",
+          "everyday wear"
+        ]
+      },
+      {
+        "title": "Gift the Perfect Pokémon Shirt: Cool Ditto Back Tee",
+        "description": "Looking for a unique gift for a Pokémon lover? The Cool Ditto Back T-Shirt is a great choice, blending fun designs with cozy comfort. This tee is sure to delight fans of all ages and make any occasion special. Consider adding this gem to your gift list!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "ditto",
+          "unique gift",
+          "apparel",
+          "fan merchandise"
+        ]
+      },
+      {
+        "title": "Show Off Your Pokémon Fandom with Our Cool Ditto Tee",
+        "description": "Celebrate your passion for Pokémon with our Cool Ditto Back T-Shirt. This shirt perfectly encapsulates your fandom while providing a relaxed fit for everyday wear. Ideal for conventions, meet-ups, or casual days out, this tee lets you express yourself effortlessly. Pin it now for your next fan event!",
+        "tags": [
+          "fandom",
+          "pokemon",
+          "ditto",
+          "casual style",
+          "t-shirt",
+          "collectible"
+        ]
+      },
+      {
+        "title": "Stay Trendy with Our Cool Ditto Back T-Shirt",
+        "description": "Stay on-trend with our Cool Ditto Back T-Shirt, a must-have for Pokémon lovers who appreciate unique style. Crafted for both comfort and flair, this shirt is perfect for any outing. Pair it with your favorite jeans or shorts for a chic, relaxed look. Don’t forget to save this trendy piece for your wardrobe refresh!",
+        "tags": [
+          "trendy",
+          "pokemon",
+          "ditto",
+          "apparel",
+          "casual wear",
+          "style"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-charmander-back-t-shirt",
