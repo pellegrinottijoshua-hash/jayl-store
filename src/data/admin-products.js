@@ -9228,9 +9228,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7076c36759976fab1f245b23e971d39b5d64217f18f7db7bbad6e2efd835884"
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
-    "updatedAt": "2026-06-30T15:06:10.888Z",
+    "updatedAt": "2026-07-02T14:17:53.558Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charmander-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Level Up Your Style with Our Cool Charmander T-Shirt",
+        "description": "Embrace your love for Pokémon with our Cool Charmander back T-Shirt. This stylish piece is perfect for Pokémon fans who want to showcase their passion while looking trendy. Ideal for casual outings or as a unique addition to your wardrobe, this shirt makes a great gift for yourself or a fellow fan. Save it now for your next shopping spree!",
+        "tags": [
+          "charmander",
+          "pokemon fandom",
+          "cool t-shirt",
+          "gift idea",
+          "aesthetic fashion",
+          "nerdy style"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Lovers: Cool Charmander T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon enthusiast? Look no further! Our Cool Charmander back T-Shirt combines comfort and style, making it a delightful present for birthdays or special occasions. With its unique design, this shirt is sure to impress any fan. Don't miss out—pin it for later and brighten someone’s day!",
+        "tags": [
+          "pokemon gift",
+          "charmander tee",
+          "fan apparel",
+          "gift for him",
+          "gift for her",
+          "cool style"
+        ]
+      },
+      {
+        "title": "Stand Out with Our Trendy Charmander Back T-Shirt",
+        "description": "Make a bold statement with our trendy Cool Charmander T-Shirt. This eye-catching design is perfect for anyone who wants to express their fandom in a fashionable way. Pair it with jeans for a casual look or dress it up for a fun night out. Save this pin for effortless outfit inspiration and elevate your wardrobe!",
+        "tags": [
+          "fashion shirt",
+          "charmander design",
+          "pokemon style",
+          "casual wear",
+          "unique apparel",
+          "trendy outfit"
+        ]
+      },
+      {
+        "title": "Express Your Pokémon Fandom with Charmander T-Shirt",
+        "description": "Show off your Pokémon fandom in style with our Cool Charmander back T-Shirt. This piece not only reflects your love for the iconic character but also keeps you comfortable all day long. Perfect for conventions, casual meet-ups, or simply lounging at home. Save this pin now to add some fun flair to your outfit rotation!",
+        "tags": [
+          "pokemon apparel",
+          "charmander",
+          "fandom wear",
+          "casual style",
+          "fan merchandise",
+          "unique gifts"
+        ]
+      },
+      {
+        "title": "Charming Aesthetic: Cool Charmander T-Shirt for Every Occasion",
+        "description": "Elevate your aesthetic with our Cool Charmander back T-Shirt, designed for Pokémon lovers. This versatile shirt is perfect for every occasion, whether you're attending a gaming event or hanging out with friends. Its cool design and comfy fabric make it a staple in any wardrobe. Pin this for stylish outfit ideas and the perfect addition to your collection!",
+        "tags": [
+          "aesthetic apparel",
+          "charmander shirt",
+          "everyday wear",
+          "pokemon style",
+          "casual fashion",
+          "stylish gift"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-alakazam-back-t-shirt",
