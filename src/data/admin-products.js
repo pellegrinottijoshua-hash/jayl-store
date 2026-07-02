@@ -7676,9 +7676,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88c51c10-06b9-4d81-ac8b-ea49d23d9db2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=555d6961abfa6a2a033c395311bfcb20e33411f568c31df3700e190c5445fb05"
     ],
     "createdAt": "2026-06-26T13:25:03.416Z",
-    "updatedAt": "2026-06-30T15:07:09.292Z",
+    "updatedAt": "2026-07-02T14:12:39.700Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-snorlax-back-t-shirt/design.png",
-    "relatedProducts": []
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Pokémon Trainer with the Cool Snorlax T-Shirt",
+        "description": "Celebrate your love for Pokémon with our Cool Snorlax back T-Shirt. Perfect for casual outings or lounging at home, this shirt showcases the iconic Snorlax design. Grab this stylish tee and express your fandom in comfort and style. Pin it now for your next outfit inspiration!",
+        "tags": [
+          "snorlax",
+          "pokemon",
+          "fandom",
+          "casual style",
+          "apparel",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Fans: Cool Snorlax T-Shirt",
+        "description": "Searching for a unique gift for the Pokémon lover in your life? Our Cool Snorlax back T-Shirt is a great choice for birthdays or special occasions. With its eye-catching design, this tee is sure to delight any fan. Don’t wait—add it to your gift ideas board now!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "snorlax",
+          "fan merch",
+          "apparel",
+          "unique gift"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with the Cool Snorlax T-Shirt",
+        "description": "Enhance your wardrobe with our Cool Snorlax back T-Shirt, perfect for a laid-back, trendy aesthetic. This shirt combines comfort with a playful design that resonates with fellow fans. Save this pin for a casual look that captures your love for Pokémon effortlessly!",
+        "tags": [
+          "aesthetic",
+          "snorlax",
+          "pokemon",
+          "casual wear",
+          "fashion",
+          "graphic tee"
+        ]
+      },
+      {
+        "title": "Stand Out at Events with the Cool Snorlax T-Shirt",
+        "description": "Make a statement at your next Pokémon event or gathering with our Cool Snorlax back T-Shirt. This stylish piece is a conversation starter and showcases your passion for Pokémon. Pin this to your event outfit planner and get ready to turn heads!",
+        "tags": [
+          "event wear",
+          "snorlax",
+          "pokemon",
+          "apparel",
+          "fan events",
+          "cool style"
+        ]
+      },
+      {
+        "title": "Comfort Meets Style: Cool Snorlax T-Shirt for Everyday Wear",
+        "description": "Experience unbeatable comfort with the Cool Snorlax back T-Shirt, designed for daily wear. Whether you're running errands or hanging out with friends, this shirt ensures you look great while repping your favorite Pokémon. Add this to your wardrobe essentials today!",
+        "tags": [
+          "casual style",
+          "snorlax",
+          "pokemon",
+          "everyday wear",
+          "apparel",
+          "comfortable clothing"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-vileplume-back-t-shirt",
