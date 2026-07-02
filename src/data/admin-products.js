@@ -11158,9 +11158,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4f1af26c883d5f8d91b64c937c2f09d834a5eee00f66331a3fd474a76a1c7e74"
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
-    "updatedAt": "2026-06-30T15:03:34.455Z",
+    "updatedAt": "2026-07-02T14:09:48.091Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "pinterestPins": [
+      {
+        "title": "Rock Your Style with the Cool Dugtrio Back T-Shirt",
+        "description": "Embrace your love for Pokémon with our Cool Dugtrio back T-shirt. This stylish piece is perfect for fans who want to showcase their unique aesthetic while celebrating their favorite characters. Ideal for casual outings or Pokémon-themed events, this shirt will have you standing out. Add it to your wardrobe today and express your fandom in style!",
+        "tags": [
+          "pokemon",
+          "dugtrio",
+          "fan apparel",
+          "cool style",
+          "gift idea",
+          "fashion"
+        ]
+      },
+      {
+        "title": "Unique Pokémon Gift: Cool Dugtrio Back T-Shirt",
+        "description": "Searching for the perfect gift for a Pokémon lover? Look no further! The Cool Dugtrio back T-shirt is an ideal choice that combines fun and fashion. This shirt is not just a piece of clothing; it's a way to share in the joy of the Pokémon community. Surprise someone special with this unique gift and let them show off their passion!",
+        "tags": [
+          "gift",
+          "pokemon lover",
+          "unique apparel",
+          "cool design",
+          "fandom",
+          "t-shirt"
+        ]
+      },
+      {
+        "title": "Casual Vibes with Cool Dugtrio Back T-Shirt",
+        "description": "Achieve laid-back vibes with the Cool Dugtrio back T-shirt, a must-have for any Pokémon enthusiast. This shirt perfectly balances comfort and style, making it great for everyday wear or special occasions. Elevate your casual wardrobe with this standout piece and let your personality shine through!",
+        "tags": [
+          "casual wear",
+          "pokemon",
+          "laid-back style",
+          "cool t-shirt",
+          "everyday fashion",
+          "aesthetic"
+        ]
+      },
+      {
+        "title": "Express Your Pokémon Fandom: Dugtrio Back T-Shirt",
+        "description": "Showcase your Pokémon fandom with the Cool Dugtrio back T-shirt, designed for true enthusiasts. This eye-catching shirt lets you express your passion for your favorite Pokémon while staying stylish and comfy. Perfect for conventions, meetups, or just hanging out with friends, it’s time to show the world what you love. Add it to your collection today!",
+        "tags": [
+          "fandom",
+          "pokemon",
+          "dugtrio",
+          "event wear",
+          "stylish t-shirt",
+          "fan gear"
+        ]
+      },
+      {
+        "title": "Cool Dugtrio Back T-Shirt: The Perfect Addition to Your Wardrobe",
+        "description": "Elevate your wardrobe with the Cool Dugtrio back T-shirt, where fandom meets fashion. This trendy tee is perfect for any occasion, whether you're out with friends or attending a Pokémon event. Don't miss your chance to own this stylish piece and make a statement wherever you go. Plan your look and grab yours today!",
+        "tags": [
+          "wardrobe staple",
+          "pokemon",
+          "cool design",
+          "fashion statement",
+          "event tee",
+          "stylish apparel"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-mew-back-t-shirt",
