@@ -9954,9 +9954,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4c1b0bb-284d-47d5-9f55-157b3c90152f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=76be87cc19db879cd713435e2953dd1c4494035d962db9d376c21d085b269102"
     ],
     "createdAt": "2026-06-27T13:23:00.895Z",
-    "updatedAt": "2026-06-30T15:04:26.500Z",
+    "updatedAt": "2026-07-02T14:05:55.182Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Style with Cool Kangaskhan T-Shirt",
+        "description": "Show off your love for Pokémon with our Cool Kangaskhan back T-Shirt! Perfect for casual outings, this tee is a must-have for true fans who want to stand out in style. Pair it with your favorite jeans and let your personality shine. Don't miss out, add it to your collection today!",
+        "tags": [
+          "kangaskhan",
+          "pokemon",
+          "apparel",
+          "fan gear",
+          "casual style",
+          "unique gift"
+        ]
+      },
+      {
+        "title": "The Ultimate Gift for Pokémon Lovers: Kangaskhan T-Shirt",
+        "description": "Searching for the perfect gift for a Pokémon enthusiast? Our Cool Kangaskhan back T-Shirt is the ideal choice! Celebrate their fandom with this stylish tee that they can wear proudly on any occasion. Make their day unforgettable with this thoughtful present; save it for later!",
+        "tags": [
+          "gift idea",
+          "pokemon",
+          "kangaskhan",
+          "fandom",
+          "apparel",
+          "cool design"
+        ]
+      },
+      {
+        "title": "Cool Kangaskhan T-Shirt: A Must-Have for Your Wardrobe",
+        "description": "Elevate your daily wardrobe with our Cool Kangaskhan back T-Shirt! This eye-catching tee is perfect for Pokémon fans looking to express their unique style while staying comfortable. Discover how this shirt can transform your outfit and keep it in your save list for future reference!",
+        "tags": [
+          "wardrobe",
+          "pokemon",
+          "kangaskhan",
+          "apparel",
+          "fashion",
+          "daily wear"
+        ]
+      },
+      {
+        "title": "Express Your Fandom with Kangaskhan Back T-Shirt",
+        "description": "Wear your love for Pokémon on your sleeve with our Cool Kangaskhan back T-Shirt! Ideal for conventions, game nights, or casual hangouts, this shirt is designed to spark conversations and showcase your passion. Don't forget to save it for your next shopping spree!",
+        "tags": [
+          "fandom",
+          "apparel",
+          "kangaskhan",
+          "pokemon",
+          "events",
+          "conversation starter"
+        ]
+      },
+      {
+        "title": "Stylish Kangaskhan T-Shirt for Every Occasion",
+        "description": "Be ready for any occasion with our Cool Kangaskhan back T-Shirt! This versatile tee pairs well with everything, making it a staple in your wardrobe. Whether you're out with friends or just lounging at home, let your style reflect your fandom. Remember to pin this for your next outfit inspiration!",
+        "tags": [
+          "occasion",
+          "kangaskhan",
+          "pokemon",
+          "apparel",
+          "versatile",
+          "style"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-machop-back-t-shirt",
