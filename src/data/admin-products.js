@@ -11498,7 +11498,7 @@ export const adminProducts = [
         "price": 2399
       }
     ],
-    "image": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_124454_10f01db1-41e8-44b1-b49d-db2953b61c46.png",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/hf_20260702_122253_b94628db-6971-417c-b336-e78758240b56.png",
     "heroImage": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125011_05a3ffb9-e616-4a59-a67b-656a03c1f249.png",
     "detailImage": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125019_551982ff-c83c-4e47-b92b-934b9db81b61.png",
     "images": [
@@ -11747,7 +11747,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150046Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3471e6613f3bcd2123c69cfea7bed976eb043072c237e521e446f82e7d633e4e"
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
-    "updatedAt": "2026-06-30T15:01:13.248Z",
+    "updatedAt": "2026-07-02T12:25:59.654Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-likitung-back-t-shirt/design.png"
   },
