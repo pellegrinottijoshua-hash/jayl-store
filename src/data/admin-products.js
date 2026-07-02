@@ -9228,7 +9228,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7076c36759976fab1f245b23e971d39b5d64217f18f7db7bbad6e2efd835884"
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
-    "updatedAt": "2026-07-02T14:17:53.558Z",
+    "updatedAt": "2026-07-02T14:17:59.691Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charmander-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -9242,7 +9242,8 @@ export const adminProducts = [
           "gift idea",
           "aesthetic fashion",
           "nerdy style"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Perfect Gift for Pokémon Lovers: Cool Charmander T-Shirt",
@@ -9292,6 +9293,9 @@ export const adminProducts = [
           "stylish gift"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_152901_ffece147-9e88-4003-b5da-db50c22a0a68.png"
     ]
   },
   {
