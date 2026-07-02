@@ -12907,8 +12907,9 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f68f5fd8-bd43-4091-8969-22f35047a570/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150005Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b161dbd528190e04ba46c23504567f85bc397971b88a6c245fb670e149560e80"
     ],
     "createdAt": "2026-06-29T13:31:44.943Z",
-    "updatedAt": "2026-06-30T15:00:30.598Z",
+    "updatedAt": "2026-07-02T14:18:36.944Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   }
 ]
