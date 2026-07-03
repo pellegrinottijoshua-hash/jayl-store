@@ -1497,7 +1497,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-05-27T14:45:53.832Z",
+    "updatedAt": "2026-07-03T11:59:23.275Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg",
@@ -1526,6 +1526,68 @@ export const adminProducts = [
       "Candid lifestyle shot of a person wearing the Cool Snorlax T-Shirt while enjoying a casual outing.",
       "Size guide showing the Cool Snorlax T-Shirt with measurements and product detail for perfect fit.",
       "Gift packaging of the Cool Snorlax T-Shirt, presenting it as a perfect gift for Pokémon fans."
+    ],
+    "pinterestPins": [
+      {
+        "title": "Chill in Style with Our Cool Snorlax T-Shirt",
+        "description": "Embrace your inner Pokémon fan with our Cool Snorlax T-Shirt, perfect for any casual occasion. This stylish tee combines comfort and fandom, making it a must-have for your wardrobe. Don't miss out on adding a touch of playful charm to your outfits—save it to your collection today!",
+        "tags": [
+          "snorlax",
+          "pokemon",
+          "casual wear",
+          "fandom",
+          "apparel",
+          "cool style"
+        ]
+      },
+      {
+        "title": "Gift the Ultimate Cool Snorlax T-Shirt to Pokémon Lovers",
+        "description": "Looking for the perfect gift for a Pokémon enthusiast? Our Cool Snorlax T-Shirt is a unique choice that blends fun and style, ensuring it will be cherished. Ideal for birthdays or special occasions, this tee is sure to bring a smile—plan your gift-giving and save it now!",
+        "tags": [
+          "gift idea",
+          "snorlax",
+          "pokemon",
+          "apparel",
+          "cool design",
+          "fan merch"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with the Cool Snorlax T-Shirt",
+        "description": "Stand out from the crowd with our Cool Snorlax T-Shirt, a perfect blend of comfort and playful design. This shirt not only showcases your love for Pokémon but also enhances your laid-back aesthetic. Perfect for chill days or hanging out with friends—save it to your aesthetic board today!",
+        "tags": [
+          "aesthetic",
+          "snorlax",
+          "pokemon",
+          "casual outfit",
+          "trendy",
+          "fan apparel"
+        ]
+      },
+      {
+        "title": "Sport Your Favorite Pokémon in Our Cool Snorlax T-Shirt",
+        "description": "Showcase your love for Pokémon with our Cool Snorlax T-Shirt that brings a fun twist to your everyday style. This tee is perfect for casual outings, conventions, or lounging at home, making it a versatile addition to your collection. Don't wait—add it to your wish list now!",
+        "tags": [
+          "snorlax",
+          "pokemon",
+          "lifestyle",
+          "casual wear",
+          "trendy",
+          "fan gear"
+        ]
+      },
+      {
+        "title": "Celebrate Your Fandom with the Cool Snorlax T-Shirt",
+        "description": "Dive into the world of Pokémon with our Cool Snorlax T-Shirt, designed for true fans. This tee is perfect for casual outings or Pokémon events, allowing you to express your love for your favorite character. Make it a staple in your wardrobe—save this pin for inspiration!",
+        "tags": [
+          "fandom",
+          "snorlax",
+          "pokemon",
+          "apparel",
+          "cool style",
+          "fan merchandise"
+        ]
+      }
     ]
   },
   {
