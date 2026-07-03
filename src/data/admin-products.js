@@ -13126,9 +13126,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f68f5fd8-bd43-4091-8969-22f35047a570/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150005Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b161dbd528190e04ba46c23504567f85bc397971b88a6c245fb670e149560e80"
     ],
     "createdAt": "2026-06-29T13:31:44.943Z",
-    "updatedAt": "2026-07-02T14:18:36.944Z",
+    "updatedAt": "2026-07-03T11:52:25.447Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "pinterestPins": [
+      {
+        "title": "Embrace Your Inner Cool with Slowpoke Back T-Shirt",
+        "description": "Unleash your love for Pokémon with our Cool Slowpoke back T-shirt! Perfect for casual outings or a fun day with friends, this shirt combines comfort and style. Add a touch of nostalgia to your wardrobe and let your Slowpoke spirit shine! Save this pin for your next shopping spree.",
+        "tags": [
+          "slowpoke",
+          "pokemon",
+          "casual style",
+          "fandom",
+          "trendy tee",
+          "gift idea"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Fans: Cool Slowpoke T-Shirt",
+        "description": "Looking for a unique gift for the Pokémon enthusiast in your life? Our Cool Slowpoke back T-shirt is the ideal choice! It’s stylish, comfortable, and a great way to celebrate their favorite character. Don't miss out, pin this for the next birthday or holiday gift!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "slowpoke",
+          "apparel",
+          "fan gift",
+          "unique present"
+        ]
+      },
+      {
+        "title": "Chill Vibes with Cool Slowpoke Back T-Shirt",
+        "description": "Capture the chill vibes of your favorite Pokémon with our Cool Slowpoke back T-Shirt! This trendy piece is perfect for lounging at home or hanging out with friends. Its relaxed fit and eye-catching design make it a must-have. Save this look to elevate your casual wardrobe!",
+        "tags": [
+          "aesthetic",
+          "slowpoke",
+          "casual wear",
+          "pokemon",
+          "chill",
+          "fashion"
+        ]
+      },
+      {
+        "title": "Stand Out with Our Cool Slowpoke Back T-Shirt",
+        "description": "Express your unique style with our Cool Slowpoke back T-shirt! This eye-catching design is perfect for Pokémon fans who want to stand out in a crowd. Embrace your fandom and showcase your love for Slowpoke with this stylish addition to your wardrobe. Pin it now for inspiration!",
+        "tags": [
+          "style",
+          "slowpoke",
+          "pokemon",
+          "unique fashion",
+          "trendy",
+          "wardrobe"
+        ]
+      },
+      {
+        "title": "Casual Cool: The Slowpoke Back T-Shirt You Need",
+        "description": "Elevate your casual look with our Cool Slowpoke back T-shirt! Ideal for day-to-day wear or a weekend adventure, this shirt is a blend of comfort and playful style. Make it a staple in your collection and celebrate your love for Pokémon in style. Don’t forget to save this pin for future reference!",
+        "tags": [
+          "casual",
+          "slowpoke",
+          "pokemon",
+          "everyday wear",
+          "cool design",
+          "fashion tee"
+        ]
+      }
+    ]
   }
 ]
