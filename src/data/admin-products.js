@@ -12400,10 +12400,77 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150138Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7dd8fcc6dda4e9a0e9c6b959fb87f0e2001239b37bbddabd015418629c08c2dc"
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
-    "updatedAt": "2026-07-02T14:19:05.708Z",
+    "updatedAt": "2026-07-03T11:49:03.231Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
+    "pinterestPins": [
+      {
+        "title": "Elevate Your Style with the Cool Gengar Back T-Shirt",
+        "description": "Unleash your inner Pokémon fan with our Cool Gengar back T-Shirt! This stylish piece combines comfort and a unique design to make you stand out. Perfect for casual outings or Pokémon-themed events, it's a must-have addition to your wardrobe. Don’t wait, add this statement piece to your collection today!",
+        "tags": [
+          "gengar",
+          "pokemon",
+          "t-shirt",
+          "cool style",
+          "fandom",
+          "gift idea",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "The Ultimate Gengar T-Shirt for Pokémon Lovers!",
+        "description": "Show off your love for Pokémon with our Cool Gengar back T-Shirt. This trendy shirt features an eye-catching design that celebrates the iconic ghost-type Pokémon. Whether you're at a game night or a cosplay event, this shirt will be your go-to choice. Make a statement and grab yours now!",
+        "tags": [
+          "pokemon",
+          "gengar",
+          "fandom",
+          "gift for him",
+          "cosplay",
+          "apparel",
+          "fan gear"
+        ]
+      },
+      {
+        "title": "Must-Have Cool Gengar T-Shirt for Your Collection",
+        "description": "Add a unique touch to your outfit with the Cool Gengar back T-Shirt! Its captivating design makes it an ideal choice for anime conventions, casual hangouts, or simply relaxing at home. Great for gifting to fellow Pokémon enthusiasts, this tee will definitely spark joy. Save it for your next fashion upgrade!",
+        "tags": [
+          "gengar",
+          "pokemon",
+          "anime",
+          "gift for her",
+          "fashion",
+          "print-on-demand",
+          "unique apparel"
+        ]
+      },
+      {
+        "title": "Cool Gengar T-Shirt: The Perfect Gift for Pokémon Fans!",
+        "description": "Searching for the ideal gift for a Pokémon aficionado? Look no further! Our Cool Gengar back T-Shirt is crafted for comfort and style, making it a delightful surprise for any occasion. Celebrate birthdays, holidays, or just because with this unique addition. Click to discover the perfect present!",
+        "tags": [
+          "gengar",
+          "gift",
+          "pokemon",
+          "fan apparel",
+          "cool t-shirt",
+          "occasion",
+          "present"
+        ]
+      },
+      {
+        "title": "Stand Out with Our Cool Pokémon Gengar T-Shirt",
+        "description": "Express your passion for Pokémon in style with the Cool Gengar back T-Shirt. This trendy tee is not only stylish but also perfect for creating an effortless casual look. Ideal for Pokémon meetups or just expressing your fandom every day, it's a wardrobe essential. Plan your next fashion statement and pin it now!",
+        "tags": [
+          "gengar",
+          "pokemon",
+          "style",
+          "casual fashion",
+          "fandom",
+          "trendy",
+          "wardrobe essential"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-likitung-back-t-shirt",
