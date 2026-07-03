@@ -2279,10 +2279,73 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-05-22T14:20:48.955Z",
+    "updatedAt": "2026-07-03T12:02:22.166Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Cool Charizard T-Shirt",
+        "description": "Celebrate your love for Pokémon with our Cool Charizard T-Shirt! Perfect for any fan, this stylish tee showcases Charizard in a unique design that stands out. Whether you're at a Pokémon event or just hanging out, this shirt is the ideal way to express your fandom. Don't wait—add this must-have piece to your collection today!",
+        "tags": [
+          "charizard",
+          "pokemon",
+          "fandom",
+          "t-shirt",
+          "gift",
+          "cool style",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Cool Charizard T-Shirt: A Must-Have for Pokémon Aficionados",
+        "description": "Elevate your wardrobe with our Cool Charizard T-Shirt, designed specifically for true Pokémon enthusiasts. This tee not only offers comfort but also showcases your passion for the Pokémon world. Perfect as a gift for friends or a stylish choice for yourself—plan to stand out in your next gathering with this iconic shirt!",
+        "tags": [
+          "pokemon",
+          "charizard",
+          "gift",
+          "fan apparel",
+          "cool design",
+          "fashion"
+        ]
+      },
+      {
+        "title": "Stylish Charizard T-Shirt: Perfect for Every Pokémon Trainer",
+        "description": "Show off your Pokémon pride with our Cool Charizard T-Shirt, crafted for both casual wear and special occasions. This tee combines comfort with an eye-catching design, making it the perfect fit for any outfit. Save this stunning piece for your next adventure and let your style reflect your love for Pokémon!",
+        "tags": [
+          "charizard",
+          "t-shirt",
+          "style",
+          "fashion",
+          "cool pokemon",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Gift the Ultimate Charizard T-Shirt to Pokémon Lovers",
+        "description": "Looking for the perfect gift for a Pokémon fan? Our Cool Charizard T-Shirt is a fantastic choice! With its unique design and comfortable fit, it's an excellent way for anyone to express their love for Charizard. Don’t miss out—pin this now to surprise your friends with a gift they'll cherish!",
+        "tags": [
+          "gift",
+          "charizard",
+          "pokemon",
+          "fan apparel",
+          "cool style",
+          "t-shirt"
+        ]
+      },
+      {
+        "title": "Join the Fandom with Our Cool Charizard T-Shirt!",
+        "description": "Join the ranks of Pokémon trainers with our Cool Charizard T-Shirt, a blend of style and fandom. This premium tee is perfect for casual outings, conventions, or simply lounging at home while representing your favorite Pokémon. Start planning your outfits and make this iconic shirt a staple in your wardrobe!",
+        "tags": [
+          "pokemon",
+          "charizard",
+          "fandom",
+          "apparel",
+          "style",
+          "cool t-shirt"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-vileploom-pok-mon-t-shirt",
