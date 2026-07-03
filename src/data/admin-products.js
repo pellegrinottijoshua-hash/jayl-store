@@ -706,10 +706,72 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-05-22T13:46:43.676Z",
+    "updatedAt": "2026-07-03T11:55:18.685Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_014053_f907f0c3-130a-4e9f-b854-5160831c14bb.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_014053_f907f0c3-130a-4e9f-b854-5160831c14bb.jpg",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Dragonite T-Shirt",
+        "description": "Elevate your style with the Cool Dragonite T-Shirt, perfect for Pokémon fans who want to showcase their love for their favorite dragon-type Pokémon. This shirt is not only fashionable but also incredibly comfortable, making it ideal for casual outings or conventions. Add it to your collection or surprise a fellow Pokémon enthusiast with this must-have tee. Start planning your next look today!",
+        "tags": [
+          "dragonite",
+          "pokemon",
+          "fan apparel",
+          "casual style",
+          "gift idea",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "Stylish Dragonite T-Shirt for Every Pokémon Aficionado",
+        "description": "Step out in style with our Cool Dragonite T-Shirt, designed for those who appreciate the unique charm of Pokémon. Its trendy look is perfect for any occasion, from gaming sessions to social gatherings. Make a statement and show your love for Dragonite while feeling comfortable. Save this pin and get ready to wear your fandom with pride!",
+        "tags": [
+          "dragonite",
+          "cool fashion",
+          "pokemon fan",
+          "aesthetic",
+          "trendy apparel",
+          "gift for him"
+        ]
+      },
+      {
+        "title": "Gift the Cool Dragonite T-Shirt to Your Favorite Pokémon Fan",
+        "description": "Looking for the perfect gift? The Cool Dragonite T-Shirt is an ideal choice for birthdays, holidays, or just because! This tee combines comfort with a stylish design, making it a delightful surprise for any Pokémon lover. Make their day special by gifting them this unique shirt. Pin it now for future gift planning!",
+        "tags": [
+          "dragonite",
+          "gift ideas",
+          "pokemon merchandise",
+          "fan gift",
+          "apparel",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "Embrace the Dragonite Aesthetic with Our Premium T-Shirt",
+        "description": "Join the Pokémon trend and embrace the Dragonite aesthetic with our exclusive Cool Dragonite T-Shirt. This shirt effortlessly combines comfort and style, ideal for day-to-day wear or special Pokémon events. Transform your wardrobe and showcase your fandom in a fashionable way. Don't forget to save this pin for styling inspiration!",
+        "tags": [
+          "dragonite",
+          "pokemon style",
+          "aesthetic fashion",
+          "casual wear",
+          "fan collection",
+          "cool tee"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Craze with the Cool Dragonite T-Shirt!",
+        "description": "Be part of the Pokémon craze with our Cool Dragonite T-Shirt, crafted for fans who want to express their passion through fashion. Perfect for cosplay, conventions, or just hanging out, this shirt harmonizes comfort and style beautifully. Make sure to pin this for a dose of Pokémon inspiration in your wardrobe!",
+        "tags": [
+          "dragonite",
+          "pokemon craze",
+          "cosplay outfit",
+          "fan apparel",
+          "fashion statement",
+          "cool clothing"
+        ]
+      }
+    ]
   },
   {
     "id": "zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift",
