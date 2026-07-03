@@ -1896,7 +1896,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-06-30T15:13:55.487Z",
+    "updatedAt": "2026-07-03T12:00:41.045Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg",
@@ -1907,6 +1907,68 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/332291df-8ce7-4029-82bb-986ab8e871fb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c75912244b2aaf3f8a5778765d658170e8fb462d92df10b9bcd5746ba837a4e0",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/80271472-ec89-482d-bb0e-fca24325beeb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0cc702103e6f85b5cc1105964fd3b2da583ab27309d799ee8428b44e6422f205",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/37cd856a-7a14-46ee-a43c-a6c9dd392170/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151333Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b384d16d2eb4bb44b5f9111994be6379661d3fbd63cc517c30ded27f95edecfa"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with this Cool Psyduck T-Shirt",
+        "description": "Dive into the world of Pokémon with our exclusive Cool Psyduck T-Shirt. Perfect for trainers and fans, this stylish tee captures Psyduck's quirky charm while ensuring you stay comfy all day. Whether it's for a casual outing or a Pokémon-themed event, it's a must-have addition to your wardrobe. Discover your new favorite outfit today!",
+        "tags": [
+          "psyduck",
+          "pokémon",
+          "casual style",
+          "fan apparel",
+          "gifts for gamers",
+          "fandom fashion"
+        ]
+      },
+      {
+        "title": "Stylish Psyduck T-Shirt: A Perfect Gift for Pokémon Lovers",
+        "description": "Searching for the ultimate gift for a Pokémon aficionado? Look no further than our Cool Psyduck T-Shirt. This unique tee showcases Psyduck's iconic design, making it an ideal present for birthdays, holidays, or just because. Share the love for Pokémon and inspire smiles with this thoughtful gift that they’ll cherish!",
+        "tags": [
+          "gift ideas",
+          "pokémon apparel",
+          "psyduck shirt",
+          "fan gifts",
+          "cool fashion",
+          "anime merchandise"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with Our Cool Psyduck Tee",
+        "description": "Make a statement with our Cool Psyduck T-Shirt that's designed to elevate your aesthetic. This trendy tee blends comfort and style, making it perfect for casual outings or lounging at home. Pair it with your favorite jeans or a cute skirt for a laid-back look, and let your love for Pokémon shine through. Save this look for your next fashion inspiration!",
+        "tags": [
+          "aesthetic fashion",
+          "psyduck",
+          "pokémon style",
+          "trendy t-shirt",
+          "casual wear",
+          "graphic tee"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Fandom with Our Cool Psyduck T-Shirt",
+        "description": "Embrace your fandom with our Cool Psyduck T-Shirt and showcase your love for Pokémon. This comfortable and trendy tee is perfect for conventions, meet-ups, or everyday wear. Let everyone know you're a proud trainer with style. Pin this to your collection and get ready to turn heads with every wear!",
+        "tags": [
+          "fandom culture",
+          "cool t-shirt",
+          "psyduck",
+          "pokémon fans",
+          "stylish apparel",
+          "anime t-shirt"
+        ]
+      },
+      {
+        "title": "Cool Psyduck T-Shirt: Your New Go-To for Every Occasion",
+        "description": "Looking for the perfect t-shirt for any occasion? Our Cool Psyduck T-Shirt fits the bill! Whether you're heading out with friends, relaxing at home, or attending a Pokémon event, this stylish shirt is as versatile as it is fun. It’s time to level up your style game—save this pin and shop today!",
+        "tags": [
+          "versatile style",
+          "psyduck",
+          "everyday wear",
+          "pokémon clothing",
+          "casual outfit",
+          "gift for him"
+        ]
+      }
     ]
   },
   {
