@@ -303,7 +303,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-08T15:47:10.772Z",
-    "updatedAt": "2026-05-28T11:37:16.341Z",
+    "updatedAt": "2026-07-03T11:53:27.847Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg",
@@ -332,6 +332,68 @@ export const adminProducts = [
       "Lifestyle shot of a person wearing the cool Mewtwo t-shirt in a casual setting, looking stylish and comfortable.",
       "Size guide shot of the cool Mewtwo t-shirt, displaying fabric details and sizing options for customers.",
       "Gift packaging of the cool Mewtwo t-shirt, elegantly wrapped and ready for gifting to a Pokemon fan."
+    ],
+    "pinterestPins": [
+      {
+        "title": "Elevate Your Style with Our Cool Mewtwo T-Shirt!",
+        "description": "Show off your love for Pokémon with our Cool Mewtwo T-Shirt, perfect for any fan's wardrobe. This stylish tee combines comfort and fandom, making it a must-have for casual outings or Pokémon events. Don’t miss out on the chance to express your passion for this iconic character—save it to your collection today!",
+        "tags": [
+          "mewtwo",
+          "pokemon",
+          "cool t-shirt",
+          "fandom fashion",
+          "casual wear",
+          "gift ideas"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Cool Mewtwo T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon enthusiast? Look no further than our Cool Mewtwo T-Shirt! This unique design captures the essence of the beloved character while ensuring comfort and style. Make someone’s day special by gifting them this awesome tee—pin it for later!",
+        "tags": [
+          "gift for him",
+          "gift for her",
+          "pokemon shirt",
+          "anime merchandise",
+          "unique gift",
+          "stylish t-shirt"
+        ]
+      },
+      {
+        "title": "Unleash Your Inner Trainer with our Mewtwo Apparel!",
+        "description": "Embrace your Pokémon fandom with our Cool Mewtwo T-Shirt, designed for those who dare to stand out. This tee not only showcases your love for Mewtwo but also enhances your everyday style. Perfect for casual hangouts or Pokémon meetups, it’s a must-have addition to your wardrobe—save it now to elevate your look!",
+        "tags": [
+          "pokemon apparel",
+          "mewtwo fan",
+          "street style",
+          "cool fashion",
+          "trainer outfit",
+          "graphic tee"
+        ]
+      },
+      {
+        "title": "Chill Vibes Only: Cool Mewtwo T-Shirt for Casual Days",
+        "description": "Keep it cool and stylish with our Mewtwo T-Shirt, perfect for laid-back days and Pokémon fan gatherings. This comfortable tee features a striking design that complements your relaxed aesthetic while showcasing your favorite character. Don’t let this stylish piece slip away—pin it to your inspiration board!",
+        "tags": [
+          "chill outfit",
+          "casual wear",
+          "pokemon fan",
+          "mewtwo lover",
+          "everyday fashion",
+          "graphic t-shirt"
+        ]
+      },
+      {
+        "title": "Celebrate Pokémon Day in Style with Our Mewtwo T-Shirt!",
+        "description": "Get ready for Pokémon Day with our Cool Mewtwo T-Shirt! This trendy tee is designed for fans who want to flaunt their love for Mewtwo while staying comfortable. It's the perfect piece for any celebration or themed event. Make sure to save this pin and wear it with pride—join the Pokémon fandom in style!",
+        "tags": [
+          "pokemon day",
+          "event outfit",
+          "mewtwo design",
+          "fan apparel",
+          "celebration fashion",
+          "cool t-shirt"
+        ]
+      }
     ]
   },
   {
