@@ -2279,7 +2279,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-14T15:23:15.291Z",
-    "updatedAt": "2026-07-03T12:02:22.166Z",
+    "updatedAt": "2026-07-03T12:02:36.570Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_163644_b595e5c4-10e4-4059-bcf9-2b787f7b2c37-1.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg",
@@ -2295,7 +2295,8 @@ export const adminProducts = [
           "gift",
           "cool style",
           "apparel"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Cool Charizard T-Shirt: A Must-Have for Pokémon Aficionados",
@@ -2345,6 +2346,9 @@ export const adminProducts = [
           "cool t-shirt"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260511_163429_83c9111e-1ad1-4c28-bf01-06d71fae515b.jpg"
     ]
   },
   {
