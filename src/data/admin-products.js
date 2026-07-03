@@ -1081,7 +1081,7 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-06-30T15:14:47.579Z",
+    "updatedAt": "2026-07-03T11:57:45.433Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg",
@@ -1118,6 +1118,68 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a25e8255-52dc-4f90-8a40-2b74d999b67d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ebf8f30eae41a463bdc0fd285da718d4a49d7439f40b3ccfea1e8d4d9275accc",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b14a722b-2af7-45b7-8a40-61f3fd4618a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=97174fcf6bb21ce853fbdc0e31c841cc1c7256c079425c2601d755bcf8aeff7c",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/69dca16d-9188-4143-9eaf-ac00ba273a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151420Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7d134eeebc828e0b1a8d664a17f8f6eec6cec05661456d04c270890881c69f30"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Fandom with the Cool Zapdos T-Shirt",
+        "description": "Show your love for Pokémon in style with our Cool Zapdos T-Shirt. Perfect for casual outings, conventions, or just lounging at home, this shirt lets you express your passion for this iconic character. Elevate your wardrobe and embrace your fandom with this must-have tee!",
+        "tags": [
+          "zapdos",
+          "pokemon",
+          "fandom",
+          "apparel",
+          "graphic tee",
+          "casual style"
+        ]
+      },
+      {
+        "title": "Aesthetic Pokémon Fashion: Cool Zapdos T-Shirt",
+        "description": "Elevate your aesthetic with the Cool Zapdos T-Shirt that perfectly blends comfort and style. This unique design captures the essence of Zapdos in a trendy way, making it an essential piece for any Pokémon fan's wardrobe. Plan your next outfit and add this iconic tee to your collection today!",
+        "tags": [
+          "zapdos",
+          "aesthetic",
+          "fashion",
+          "pokemon",
+          "graphic shirt",
+          "style"
+        ]
+      },
+      {
+        "title": "Gift the Cool Zapdos T-Shirt to Your Pokémon Lover",
+        "description": "Looking for the perfect gift for a Pokémon enthusiast? The Cool Zapdos T-Shirt is a fantastic choice that combines comfort and fandom. Surprise your loved ones with this stylish tee and watch their faces light up with joy. Don't miss the chance to gift something truly special!",
+        "tags": [
+          "zapdos",
+          "gift",
+          "pokemon",
+          "apparel",
+          "t-shirt",
+          "fan gift"
+        ]
+      },
+      {
+        "title": "Versatile Style with the Cool Zapdos T-Shirt for All Occasions",
+        "description": "Whether it's a casual day out or a themed event, the Cool Zapdos T-Shirt fits every occasion. Its trendy design and comfortable fit make it a versatile addition to your wardrobe. Plan your next outing with this stylish tee that showcases your love for Pokémon!",
+        "tags": [
+          "zapdos",
+          "style",
+          "occasion",
+          "pokemon",
+          "graphic tee",
+          "everyday wear"
+        ]
+      },
+      {
+        "title": "Stand Out with the Cool Zapdos T-Shirt in Your Collection",
+        "description": "Make a statement with the Cool Zapdos T-Shirt, a perfect blend of style and fandom. This unique design is made for those who want to stand out while celebrating their favorite Pokémon. Save this pin and elevate your collection with this eye-catching tee that is sure to turn heads!",
+        "tags": [
+          "zapdos",
+          "collection",
+          "fashion",
+          "pokemon",
+          "graphic shirt",
+          "stand out"
+        ]
+      }
     ]
   },
   {
