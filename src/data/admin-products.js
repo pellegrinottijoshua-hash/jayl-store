@@ -12765,10 +12765,72 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150046Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3471e6613f3bcd2123c69cfea7bed976eb043072c237e521e446f82e7d633e4e"
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
-    "updatedAt": "2026-07-02T14:18:51.011Z",
+    "updatedAt": "2026-07-03T11:51:22.977Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-likitung-back-t-shirt/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Lickitung Back T-Shirt",
+        "description": "Show off your love for Pokémon with our Cool Lickitung Back T-Shirt. Perfect for Pokémon fans, this stylish tee combines comfort with a fun design that showcases Lickitung in action. Wear it on your next adventure and let everyone know you mean business. Save this for your next shopping spree!",
+        "tags": [
+          "lickitung",
+          "pokemon",
+          "fandom",
+          "cool t-shirt",
+          "gift idea",
+          "anime style"
+        ]
+      },
+      {
+        "title": "Elevate Your Street Style with Pokémon Vibes",
+        "description": "Step up your fashion game with our Cool Lickitung Back T-Shirt, designed for the ultimate Pokémon enthusiast. Its unique design and comfortable fit make it a must-have for any casual outing. Make a statement and let your personality shine. Pin it now for your next stylish look!",
+        "tags": [
+          "street style",
+          "pokemon apparel",
+          "cool design",
+          "casual wear",
+          "fashion",
+          "trendy t-shirt"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Lickitung Tee",
+        "description": "Searching for the ideal gift for a Pokémon fan? Look no further! Our Cool Lickitung Back T-Shirt is a thoughtful choice that combines fandom with fashion. Whether it's a birthday or just because, this tee is sure to make any Pokémon enthusiast smile. Don't forget to save this gift idea for later!",
+        "tags": [
+          "gift",
+          "pokemon lover",
+          "cool t-shirt",
+          "unique gift",
+          "fandom",
+          "friends"
+        ]
+      },
+      {
+        "title": "Stay Cozy and Cool with Lickitung T-Shirt",
+        "description": "Embrace comfort without sacrificing style with our Cool Lickitung Back T-Shirt. This tee is perfect for lounging at home or heading out with friends, showcasing a beloved Pokémon character that resonates with collectors. Gather your friends and show off your shared love for Pokémon. Add this to your collection today!",
+        "tags": [
+          "comfortable",
+          "pokemon",
+          "back design",
+          "loungewear",
+          "casual fashion",
+          "collectibles"
+        ]
+      },
+      {
+        "title": "Celebrate Pokémon Day in Style: Lickitung Tee",
+        "description": "Make your Pokémon Day unforgettable with our Cool Lickitung Back T-Shirt! This eye-catching design is perfect for events, parties, or casual hangouts, allowing you to showcase your favorite Pokémon. Stand out from the crowd and celebrate your passion with flair. Plan to wear this at your next Pokémon gathering!",
+        "tags": [
+          "occasion",
+          "pokemon day",
+          "celebration",
+          "cool t-shirt",
+          "event wear",
+          "fan apparel"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-slowpoke-back-t-shirt",
