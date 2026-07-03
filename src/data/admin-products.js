@@ -12039,10 +12039,72 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8287d08-c891-4cb2-888d-ee4e7675697e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150227Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7c9fdab963f8248bf7fa3e55f07ad937e38a17ec1b93eac4a92ebcfc1ebaab02"
     ],
     "createdAt": "2026-06-29T12:43:34.046Z",
-    "updatedAt": "2026-07-02T14:19:16.802Z",
+    "updatedAt": "2026-07-03T11:48:16.249Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mew-back-t-shirt/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with the Cool Mew Back T-Shirt",
+        "description": "Elevate your Pokémon style with our Cool Mew Back T-Shirt, perfect for fans who want to showcase their love for this iconic character. Made from high-quality materials, this shirt blends comfort with a unique design that stands out. Perfect for casual outings or Pokémon-themed events. Don't miss out on adding this must-have piece to your wardrobe!",
+        "tags": [
+          "mew",
+          "pokemon",
+          "fandom",
+          "apparel",
+          "style",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "Gift the Magic of Pokémon with Our Cool Mew T-Shirt",
+        "description": "Searching for the perfect gift for a Pokémon lover? Look no further than our Cool Mew Back T-Shirt! This stylish tee combines vibrant art with comfort, making it an ideal present for birthdays, holidays, or any special occasion. Surprise your loved ones with a piece they'll cherish. Add it to your gift list today!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "mew",
+          "apparel",
+          "fan gear",
+          "unique gift"
+        ]
+      },
+      {
+        "title": "Explore the Cool Side of Fashion with Mew Back T-Shirt",
+        "description": "Step up your fashion game with our Cool Mew Back T-Shirt, designed for those who appreciate a playful yet stylish aesthetic. This shirt not only celebrates your love for Pokémon but also elevates your everyday look. Perfect for casual meet-ups or lounging at home, it’s a versatile addition to any wardrobe. Save it now for your next shopping spree!",
+        "tags": [
+          "fashion",
+          "mew",
+          "style",
+          "pokemon",
+          "aesthetic",
+          "trendy t-shirt"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Craze with the Cool Mew Back T-Shirt",
+        "description": "Join the community of passionate Pokémon fans with our Cool Mew Back T-Shirt. This eye-catching design is a nod to nostalgia, perfect for conventions, game nights, or casual outings. Express your fandom in style while staying comfy all day long. Pin it now to remind yourself to grab this awesome tee soon!",
+        "tags": [
+          "fandom",
+          "mew",
+          "pokemon",
+          "apparel",
+          "fan gear",
+          "unique style"
+        ]
+      },
+      {
+        "title": "Make Every Day Special with Cool Mew Back T-Shirt",
+        "description": "Transform your daily outfits with our Cool Mew Back T-Shirt, the perfect blend of fun and functionality. Ideal for Pokémon enthusiasts who appreciate unique designs, this shirt is great for everyday wear or special events. Embrace your passion and wear it with pride. Don’t forget to save this gem for your next outfit inspiration!",
+        "tags": [
+          "mew",
+          "pokemon",
+          "everyday wear",
+          "apparel",
+          "style",
+          "cool design"
+        ]
+      }
+    ]
   },
   {
     "id": "gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
