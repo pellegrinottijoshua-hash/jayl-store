@@ -4204,7 +4204,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22d7b25f-082e-4a24-aa51-eadc9ac28a8a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260619%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260619T125027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=956200b272b19e22e74e651c4d25162ddc9975e65f1a7d45e83092bdb367c7da"
     ],
     "createdAt": "2026-06-19T12:55:08.625Z",
-    "updatedAt": "2026-07-06T13:08:55.037Z",
+    "updatedAt": "2026-07-06T13:09:23.430Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Gengar T-Shirt, Unique Pokemon Tee, Perfect Gift for Fans, Unisex Fit Available",
     "etsyTags": [
@@ -4243,7 +4243,8 @@ export const adminProducts = [
           "fandom fashion",
           "casual wear",
           "gift idea"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Aesthetic Gengar T-Shirt for the Coolest Pokémon Fans",
@@ -4293,6 +4294,9 @@ export const adminProducts = [
           "cool t-shirt"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161407_e8cb1d8e-85f2-40cf-a455-0a0c55aeb4d5.jpg"
     ]
   },
   {
