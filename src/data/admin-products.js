@@ -5411,7 +5411,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f345781-77ab-4fcf-9bed-d16f3daad1ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151028Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ccf1939d9e93a13007bb1c2d5977b5b4b82f171331ff12dc59c724eec79f3d1b"
     ],
     "createdAt": "2026-06-22T16:00:28.936Z",
-    "updatedAt": "2026-07-06T13:14:27.586Z",
+    "updatedAt": "2026-07-06T13:14:51.165Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Kangaskhan T-Shirt, Vintage Pokemon Graphic Tee, Unique Gift for Fans",
     "etsyTags": [
@@ -5450,7 +5450,8 @@ export const adminProducts = [
           "t-shirt",
           "apparel",
           "cool style"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Gift the Ultimate Cool Kangaskhan T-Shirt for Pokémon Lovers",
@@ -5500,6 +5501,9 @@ export const adminProducts = [
           "casual style"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155713_17b75f2f-f79c-4e0a-804d-6ec4fe1c5339.jpeg"
     ]
   },
   {
