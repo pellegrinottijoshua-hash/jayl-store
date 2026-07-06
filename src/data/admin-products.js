@@ -5009,7 +5009,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151101Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=84129c52ee2c6b12c43192cb5a2a4e6a4816afa0d2fad0dca220806ad8c7f851"
     ],
     "createdAt": "2026-06-22T15:34:48.644Z",
-    "updatedAt": "2026-07-06T13:13:35.806Z",
+    "updatedAt": "2026-07-06T13:13:47.095Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Blastoise T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
     "etsyTags": [
@@ -5048,7 +5048,8 @@ export const adminProducts = [
           "fandom fashion",
           "gift idea",
           "apparel"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Upgrade Your Aesthetic with Our Premium Blastoise Tee",
@@ -5098,6 +5099,9 @@ export const adminProducts = [
           "trendy"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151417_95f0280d-55f3-4d28-b681-62cdb32a53f7.jpg"
     ]
   },
   {
