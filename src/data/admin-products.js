@@ -4204,7 +4204,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22d7b25f-082e-4a24-aa51-eadc9ac28a8a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260619%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260619T125027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=956200b272b19e22e74e651c4d25162ddc9975e65f1a7d45e83092bdb367c7da"
     ],
     "createdAt": "2026-06-19T12:55:08.625Z",
-    "updatedAt": "2026-06-30T15:12:03.350Z",
+    "updatedAt": "2026-07-06T13:08:55.037Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Gengar T-Shirt, Unique Pokemon Tee, Perfect Gift for Fans, Unisex Fit Available",
     "etsyTags": [
@@ -4231,6 +4231,68 @@ export const adminProducts = [
       "Lifestyle shot of a person wearing the Cool Gengar T-Shirt, enjoying a day out with friends.",
       "Size guide and product detail shot of the Cool Gengar T-Shirt, showing fabric quality and fit.",
       "Gift presentation of the Cool Gengar T-Shirt, beautifully packaged and ready for giving."
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Gengar T-Shirt",
+        "description": "Embrace your love for Pokémon with this stylish Gengar T-Shirt. Perfect for casual outings, gaming sessions, or just lounging at home, this design captures the essence of your favorite ghostly Pokémon. Elevate your wardrobe and showcase your fandom with this must-have piece. Add it to your collection today!",
+        "tags": [
+          "gengar",
+          "pokémon",
+          "cool t-shirt",
+          "fandom fashion",
+          "casual wear",
+          "gift idea"
+        ]
+      },
+      {
+        "title": "Aesthetic Gengar T-Shirt for the Coolest Pokémon Fans",
+        "description": "Step up your style game with our aesthetic Gengar T-Shirt that’s sure to turn heads. This shirt perfectly blends comfort and trendy design, making it an ideal choice for Pokémon enthusiasts who appreciate unique aesthetics. Get ready to inspire envy among your friends—save it for your next shopping spree!",
+        "tags": [
+          "aesthetic",
+          "gengar",
+          "fashion shirt",
+          "pokémon lover",
+          "unique style",
+          "artistic apparel"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Fans: Cool Gengar T-Shirt",
+        "description": "Looking for a thoughtful gift for a Pokémon fan? Our Cool Gengar T-Shirt is the ultimate surprise for birthdays or special occasions. With its eye-catching design, this shirt will delight anyone who loves Pokémon. Don’t miss out on making someone's day—plan ahead and grab one now!",
+        "tags": [
+          "gift for him",
+          "gengar",
+          "pokémon",
+          "birthday gift",
+          "fan merchandise",
+          "casual outfit"
+        ]
+      },
+      {
+        "title": "Casual Cool: Gengar T-Shirt for Your Every Adventure",
+        "description": "Whether you’re heading to a Pokémon watch party or just hanging out with friends, our Cool Gengar T-Shirt is the perfect companion. Designed for comfort and style, it's a great addition to any casual wardrobe. Ready to set your Pokémon style apart? Save this pin for your next outfit inspiration!",
+        "tags": [
+          "gengar",
+          "casual style",
+          "pokémon",
+          "everyday wear",
+          "trendy t-shirt",
+          "fun fashion"
+        ]
+      },
+      {
+        "title": "Level Up Your Wardrobe with Cool Gengar T-Shirt",
+        "description": "Transform your everyday look with our Cool Gengar T-Shirt that embodies the spirit of Pokémon. Ideal for trainers and fans alike, it's a trendy reminder of your favorite ghost Pokémon. Don’t just wear a t-shirt; wear a statement! Pin this for when you’re ready to upgrade your style!",
+        "tags": [
+          "gengar",
+          "pokémon",
+          "wardrobe upgrade",
+          "stylish apparel",
+          "fan clothing",
+          "cool t-shirt"
+        ]
+      }
     ]
   },
   {
