@@ -3389,7 +3389,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dcdd4e13-77b2-4dec-934f-48537edb342a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ed8b1e930dfe6633b1b7dadca1913cf60d8cfe4fbf1a5b96a8d5922519ecb97"
     ],
     "createdAt": "2026-05-26T15:11:39.661Z",
-    "updatedAt": "2026-06-30T15:12:30.431Z",
+    "updatedAt": "2026-07-06T13:07:05.955Z",
     "relatedProducts": [],
     "colors": [
       {
@@ -3421,6 +3421,68 @@ export const adminProducts = [
         "label": "Cardinal Red",
         "hex": "#888888",
         "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151507_6d6098a5-2d68-4457-9aa7-914a6b5fec22.jpg"
+      }
+    ],
+    "pinterestPins": [
+      {
+        "title": "Express Your Love for Pokémon with Our Cool Mew T-Shirt!",
+        "description": "Show off your love for Pokémon in style with our Cool Mew T-Shirt! Perfect for casual outings, conventions, or just lounging at home, this tee will elevate your wardrobe. Don't miss out on adding this unique piece to your collection today!",
+        "tags": [
+          "mew",
+          "pokemon",
+          "anime apparel",
+          "fashion",
+          "fan gift",
+          "graphic t-shirt"
+        ]
+      },
+      {
+        "title": "Ultimate Gift for Pokémon Fans: Cool Mew T-Shirt",
+        "description": "Searching for the perfect gift for a Pokémon enthusiast? Our Cool Mew T-Shirt is both stylish and comfortable, making it ideal for birthdays, holidays, or just because. Give a gift that they'll cherish and wear proudly!",
+        "tags": [
+          "gift ideas",
+          "mew",
+          "pokemon lovers",
+          "apparel",
+          "unique gifts",
+          "fan merchandise"
+        ]
+      },
+      {
+        "title": "Level Up Your Aesthetic with the Cool Mew T-Shirt!",
+        "description": "Transform your everyday look with the Cool Mew T-Shirt! This tee combines comfort with a trendy Pokémon design, making it a must-have for anyone who loves to express their fandom in style. Save this pin to keep your wardrobe stylish and fun!",
+        "tags": [
+          "aesthetic",
+          "cool style",
+          "pokemon",
+          "fashion",
+          "graphic tees",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "Celebrate Pokémon Day with Our Cool Mew T-Shirt!",
+        "description": "Get ready for Pokémon Day with our Cool Mew T-Shirt! This limited edition design perfectly captures the spirit of your favorite Pokémon, making it a fantastic choice for any occasion. Mark your calendar and make sure to grab yours before they're gone!",
+        "tags": [
+          "pokemon day",
+          "mew",
+          "special occasion",
+          "fan gear",
+          "t-shirt",
+          "celebration"
+        ]
+      },
+      {
+        "title": "Stand Out with Our Unique Cool Mew T-Shirt Design!",
+        "description": "Make a statement with our Cool Mew T-Shirt! This eye-catching design not only showcases your love for Pokémon but also fits seamlessly into your everyday style. Pin this tee for your next shopping spree and step out in confidence!",
+        "tags": [
+          "unique design",
+          "mew",
+          "pokemon fashion",
+          "trending",
+          "apparel",
+          "graphic design"
+        ]
       }
     ]
   },
