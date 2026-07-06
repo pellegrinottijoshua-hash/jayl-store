@@ -5813,7 +5813,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/225224c5-4372-4004-b888-9f97b26ac129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150956Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=257ebc53cfe8805ccf396bd64cc4ffc2c78438f327456cb2f1f8d7227df57f7c"
     ],
     "createdAt": "2026-06-22T16:19:27.611Z",
-    "updatedAt": "2026-07-06T13:15:20.738Z",
+    "updatedAt": "2026-07-06T13:15:30.726Z",
     "relatedProducts": [],
     "tiktokCaption": "Machop's flexing on the haters 💪🔥 #pokemon #fyp #foryou #anime #coolfashion",
     "pinterestPins": [
@@ -5827,7 +5827,8 @@ export const adminProducts = [
           "casual wear",
           "gift idea",
           "anime shirt"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Cool Machop T-Shirt: The Perfect Gift for Pokémon Enthusiasts",
@@ -5877,6 +5878,9 @@ export const adminProducts = [
           "cool clothing"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161831_82cc856d-214c-4b37-a2e1-054f7ccb0cf8.jpg"
     ]
   },
   {
