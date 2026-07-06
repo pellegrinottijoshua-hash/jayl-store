@@ -2653,9 +2653,71 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-05-26T14:47:01.866Z",
+    "updatedAt": "2026-07-06T13:02:44.643Z",
     "relatedProducts": [],
-    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg",
+    "pinterestPins": [
+      {
+        "title": "Chic Cool Vileplume T-Shirt for Pokémon Fans",
+        "description": "Embrace your love for Pokémon with our stylish Cool Vileplume T-Shirt. Perfect for casual outings, this tee combines comfort with a unique design that every fan will admire. Add it to your wardrobe and show off your Pokémon pride today!",
+        "tags": [
+          "vileplume",
+          "pokemon",
+          "fan apparel",
+          "casual style",
+          "gift idea",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "Stylish Vileplume Tee: Perfect Gift for Gamers",
+        "description": "Looking for the ideal gift for a Pokémon enthusiast? Our Cool Vileplume T-Shirt is a standout choice that blends gaming nostalgia with contemporary style. Surprise your loved ones with this unique piece that they’ll cherish and wear proudly!",
+        "tags": [
+          "gift for him",
+          "pokemon fan",
+          "vileplume shirt",
+          "unique gifts",
+          "gaming fashion",
+          "cool design"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with Vileplume T-Shirt",
+        "description": "Transform your everyday look with our Cool Vileplume T-Shirt, designed for those who appreciate both style and fandom. This eye-catching piece adds a touch of Pokémon flair to any outfit, making it a must-have for your aesthetic wardrobe. Don’t miss out—save it for later!",
+        "tags": [
+          "aesthetic fashion",
+          "vileplume",
+          "pokemon style",
+          "casual chic",
+          "artistic wear",
+          "trendy t-shirt"
+        ]
+      },
+      {
+        "title": "Cool Vileplume T-Shirt for Pokémon Events",
+        "description": "Get ready for your next Pokémon event with our Cool Vileplume T-Shirt, designed to impress fellow fans! This comfy and stylish tee is perfect for conventions, meetups, or casual hangouts. Make a statement and plan your outfit today!",
+        "tags": [
+          "pokemon events",
+          "vileplume",
+          "fan gatherings",
+          "casual wear",
+          "comfortable tee",
+          "event attire"
+        ]
+      },
+      {
+        "title": "Unleash Your Inner Trainer with Vileplume Tee",
+        "description": "Join the ranks of stylish Pokémon trainers with our Cool Vileplume T-Shirt. This trendy apparel is perfect for daily adventures or relaxed days at home, offering both comfort and flair. Explore this exciting piece and add it to your collection now!",
+        "tags": [
+          "pokemon trainer",
+          "vileplume shirt",
+          "everyday wear",
+          "fashion statement",
+          "casual style",
+          "comfortable clothing"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
