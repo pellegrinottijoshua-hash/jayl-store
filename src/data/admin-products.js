@@ -5813,9 +5813,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/225224c5-4372-4004-b888-9f97b26ac129/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150956Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=257ebc53cfe8805ccf396bd64cc4ffc2c78438f327456cb2f1f8d7227df57f7c"
     ],
     "createdAt": "2026-06-22T16:19:27.611Z",
-    "updatedAt": "2026-06-30T15:10:22.364Z",
+    "updatedAt": "2026-07-06T13:15:20.738Z",
     "relatedProducts": [],
-    "tiktokCaption": "Machop's flexing on the haters 💪🔥 #pokemon #fyp #foryou #anime #coolfashion"
+    "tiktokCaption": "Machop's flexing on the haters 💪🔥 #pokemon #fyp #foryou #anime #coolfashion",
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Machop T-Shirt!",
+        "description": "Show off your love for Pokémon with this stylish Machop T-Shirt. Perfect for casual outings or Pokémon meet-ups, this tee is a must-have for fans who appreciate both comfort and style. Level up your wardrobe and become the ultimate trainer - grab yours today!",
+        "tags": [
+          "machop",
+          "pokemon fan",
+          "trainer style",
+          "casual wear",
+          "gift idea",
+          "anime shirt"
+        ]
+      },
+      {
+        "title": "Cool Machop T-Shirt: The Perfect Gift for Pokémon Enthusiasts",
+        "description": "Looking for the perfect gift for a Pokémon lover? The Cool Machop T-Shirt is an ideal choice for birthdays, holidays, or just because! Its unique design and premium quality make it a standout piece in any collection. Surprise a friend or treat yourself - save it now for gifting inspiration!",
+        "tags": [
+          "gift for her",
+          "pokemon merchandise",
+          "anime lovers",
+          "stylish tee",
+          "pop culture gift",
+          "geek fashion"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with Our Cool Machop T-Shirt",
+        "description": "Add a touch of Pokémon charm to your wardrobe with our Cool Machop T-Shirt. This trendy tee combines style and fandom, making it perfect for any casual occasion. Create your unique aesthetic while celebrating your favorite character - pin this for your next outfit inspiration!",
+        "tags": [
+          "pokémon aesthetic",
+          "fashion outfit",
+          "trendy tee",
+          "casual style",
+          "anime aesthetic",
+          "streetwear"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Adventure in Style: Cool Machop T-Shirt",
+        "description": "Step into a world of adventure with our Cool Machop T-Shirt! Designed for fans who want to express their passion for Pokémon, this shirt is great for conventions, outings, or just hanging out with friends. Show everyone your style and love for the game - save this pin for your next adventure outfit!",
+        "tags": [
+          "pokemon adventures",
+          "fan apparel",
+          "convention wear",
+          "stylish design",
+          "pokemon clothes",
+          "cool graphics"
+        ]
+      },
+      {
+        "title": "Express Your Fandom with Our Cool Machop T-Shirt",
+        "description": "Celebrate your Pokémon fandom with our eye-catching Cool Machop T-Shirt! This tee is not only a representation of your favorite character but also a stylish addition to your everyday look. Perfect for any occasion, it's time to wear your passion proudly - pin it now for your fandom collection!",
+        "tags": [
+          "fan gear",
+          "pokemon style",
+          "collectible apparel",
+          "unisex t-shirt",
+          "pop culture",
+          "cool clothing"
+        ]
+      }
+    ]
   },
   {
     "id": "slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
