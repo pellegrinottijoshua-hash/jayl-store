@@ -5411,7 +5411,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0f345781-77ab-4fcf-9bed-d16f3daad1ae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151028Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ccf1939d9e93a13007bb1c2d5977b5b4b82f171331ff12dc59c724eec79f3d1b"
     ],
     "createdAt": "2026-06-22T16:00:28.936Z",
-    "updatedAt": "2026-06-30T15:11:10.125Z",
+    "updatedAt": "2026-07-06T13:14:27.586Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Kangaskhan T-Shirt, Vintage Pokemon Graphic Tee, Unique Gift for Fans",
     "etsyTags": [
@@ -5438,6 +5438,68 @@ export const adminProducts = [
       "Lifestyle shot of a person wearing the Cool Kangaskhan T-Shirt, enjoying a casual day out.",
       "Size guide shot featuring the Cool Kangaskhan T-Shirt, displaying sizing details and fabric texture.",
       "Gift presentation of the Cool Kangaskhan T-Shirt, beautifully wrapped and ready for giving."
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Kangaskhan T-Shirt",
+        "description": "Celebrate your love for the Pokémon universe with this stylish Cool Kangaskhan T-Shirt. Perfect for any Pokémon fan, this shirt combines comfort with a cool aesthetic that stands out in any crowd. Add this unique piece to your wardrobe and show off your style in every casual outing!",
+        "tags": [
+          "kangaskhan",
+          "pokemon",
+          "fandom",
+          "t-shirt",
+          "apparel",
+          "cool style"
+        ]
+      },
+      {
+        "title": "Gift the Ultimate Cool Kangaskhan T-Shirt for Pokémon Lovers",
+        "description": "Searching for the perfect gift for a Pokémon enthusiast? Look no further! Our Cool Kangaskhan T-Shirt is a fantastic choice for birthdays, holidays, or just because. It's a thoughtful present that combines style and fandom, making it a must-have for any collection. Surprise someone special today!",
+        "tags": [
+          "gift",
+          "kangaskhan",
+          "pokemon",
+          "apparel",
+          "fan gift",
+          "unique present"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with a Cool Kangaskhan T-Shirt",
+        "description": "Transform your wardrobe with our Cool Kangaskhan T-Shirt, the ultimate blend of fashion and fandom. This trendy tee is perfect for casual outings or lounging at home while showcasing your love for Pokémon. Join the cool crowd and make a statement with this unique design!",
+        "tags": [
+          "aesthetic",
+          "kangaskhan",
+          "fashion",
+          "pokemon",
+          "t-shirt",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "Celebrate Pokémon with Our Stylish Cool Kangaskhan T-Shirt",
+        "description": "Get ready to embrace your passion for Pokémon with this eye-catching Cool Kangaskhan T-Shirt. Ideal for conventions, casual hangouts, or just everyday wear, this shirt lets you express your fandom in style. Don't miss out on adding this must-have piece to your collection!",
+        "tags": [
+          "fandom",
+          "kangaskhan",
+          "pokemon",
+          "apparel",
+          "stylish",
+          "collector's item"
+        ]
+      },
+      {
+        "title": "Cool Kangaskhan T-Shirt: Perfect for Pokémon Events and Beyond",
+        "description": "Gear up for your next Pokémon event with our exclusive Cool Kangaskhan T-Shirt! This tee not only looks great but also showcases your love for one of the coolest characters in the franchise. Get ready to turn heads and make new friends; this shirt is a conversation starter!",
+        "tags": [
+          "event",
+          "kangaskhan",
+          "pokemon",
+          "t-shirt",
+          "fan apparel",
+          "casual style"
+        ]
+      }
     ]
   },
   {
