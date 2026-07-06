@@ -6219,8 +6219,74 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7f5a7c21-856a-4dfc-9e18-58aeaceaf189/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150926Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b16c07858129a6ca60185b165079e6fd7fcdc9428c0aad17d23bafd41d386c9"
     ],
     "createdAt": "2026-06-23T08:43:52.552Z",
-    "updatedAt": "2026-06-30T15:09:53.556Z",
-    "relatedProducts": []
+    "updatedAt": "2026-07-06T13:16:26.758Z",
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Chill Vibes with Cool Slowpoke T-Shirt for Pokémon Fans",
+        "description": "Embrace your laid-back style with our Cool Slowpoke T-Shirt, perfect for any Pokémon enthusiast. This trendy tee not only showcases your love for Slowpoke but also adds a touch of cool to your everyday outfit. Ideal for casual outings or cozy nights in, this shirt is a must-have for any fan. Save it for your next shopping list!",
+        "tags": [
+          "slowpoke",
+          "pokemon",
+          "cool style",
+          "casual wear",
+          "fan apparel",
+          "gift for him"
+        ],
+        "published": true
+      },
+      {
+        "title": "Gift the Cool Slowpoke T-Shirt: Perfect for Pokémon Lovers!",
+        "description": "Looking for the ideal gift for a Pokémon lover? The Cool Slowpoke T-Shirt is a fantastic choice that combines comfort and style. This unique design will make any fan smile, whether for birthdays or just because. Don't forget to save this pin for your gift-giving occasions!",
+        "tags": [
+          "slowpoke",
+          "gift idea",
+          "pokemon merch",
+          "apparel",
+          "fandom fashion",
+          "unique gift"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with Our Cool Slowpoke T-Shirt",
+        "description": "Transform your wardrobe with the Cool Slowpoke T-Shirt, designed for those who appreciate the art of Pokémon. This fashionable tee not only makes a statement but also enhances your aesthetic effortlessly. Perfect for layering or wearing solo, it's a piece that every fan needs. Plan your outfit and save this pin now!",
+        "tags": [
+          "slowpoke",
+          "pokemon",
+          "aesthetic",
+          "trendy t-shirt",
+          "fashion",
+          "graphic tee"
+        ]
+      },
+      {
+        "title": "Cool Slowpoke T-Shirt: The Ultimate Casual Wear for Fans",
+        "description": "Experience comfort and style with our Cool Slowpoke T-Shirt, designed specifically for Pokémon fans who love to chill. This shirt is perfect for everyday wear, whether you're hanging out with friends or running errands. Make it a staple in your wardrobe by saving this pin for later!",
+        "tags": [
+          "slowpoke",
+          "pokemon",
+          "casual style",
+          "everyday wear",
+          "fan clothing",
+          "comfortable apparel"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Craze with Our Cool Slowpoke T-Shirt",
+        "description": "Be part of the Pokémon trend with our Cool Slowpoke T-Shirt that stands out in any crowd. This stylish tee is perfect for conventions, game nights, or simply showing off your love for Pokémon. Make sure to save this pin for your next shopping spree and express your fandom in style!",
+        "tags": [
+          "slowpoke",
+          "pokemon",
+          "fan apparel",
+          "trendy",
+          "event outfit",
+          "graphic t-shirt"
+        ]
+      }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053306_0da0ec11-e252-47e9-86d9-11acb8a274f3.jpg"
+    ]
   },
   {
     "id": "cool-drowsee-t-shirt",
