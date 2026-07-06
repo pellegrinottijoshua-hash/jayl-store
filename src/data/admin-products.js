@@ -5009,7 +5009,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1067b639-7f94-4951-9cb1-7c2ac4e4ed84/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T151101Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=84129c52ee2c6b12c43192cb5a2a4e6a4816afa0d2fad0dca220806ad8c7f851"
     ],
     "createdAt": "2026-06-22T15:34:48.644Z",
-    "updatedAt": "2026-06-30T15:11:30.153Z",
+    "updatedAt": "2026-07-06T13:13:35.806Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Blastoise T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
     "etsyTags": [
@@ -5036,6 +5036,68 @@ export const adminProducts = [
       "Lifestyle shot of a person wearing a Cool Blastoise T-shirt, captured in a casual setting.",
       "Size guide shot of the Cool Blastoise T-shirt, displaying available sizes and product details.",
       "Gift presentation of a Cool Blastoise T-shirt in stylish packaging, perfect for giving."
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Blastoise T-Shirt!",
+        "description": "Show off your love for Pokémon with our Cool Blastoise T-Shirt, designed for true fans. This stylish tee adds a unique flair to your wardrobe while showcasing your passion for the iconic Water-type Pokémon. Perfect for any occasion, grab yours today and let your fandom shine!",
+        "tags": [
+          "blastoise",
+          "pokemon fan",
+          "cool t-shirt",
+          "fandom fashion",
+          "gift idea",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Upgrade Your Aesthetic with Our Premium Blastoise Tee",
+        "description": "Elevate your casual look with our premium Cool Blastoise T-Shirt, a must-have for any Pokémon enthusiast. Featuring a sleek design, this shirt embodies both style and comfort, making it an essential addition to your wardrobe. Pin it for later and transform your everyday outfits into a Pokémon masterpiece!",
+        "tags": [
+          "aesthetic",
+          "pokemon art",
+          "blastoise",
+          "fashion",
+          "casual wear",
+          "cool outfit"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Cool Blastoise T-Shirt",
+        "description": "Searching for a unique gift for the Pokémon lover in your life? Our Cool Blastoise T-Shirt is an excellent choice, combining style with a touch of nostalgia. Whether it's for birthdays or special occasions, this tee will bring a smile to any fan's face. Save this pin for gifting inspiration!",
+        "tags": [
+          "gift for him",
+          "gift for her",
+          "pokemon gifts",
+          "blastoise",
+          "t-shirt",
+          "fandom"
+        ]
+      },
+      {
+        "title": "Game On with the Stylish Blastoise T-Shirt for Everyday Wear",
+        "description": "Step into the world of Pokémon with our Cool Blastoise T-Shirt, perfect for gaming sessions or casual outings. With its comfortable fit and eye-catching design, this shirt is ideal for fans who want to showcase their love for Blastoise while feeling great. Don't forget to pin this for your gaming wardrobe essentials!",
+        "tags": [
+          "gaming fashion",
+          "blastoise",
+          "pokemon style",
+          "t-shirt",
+          "everyday wear",
+          "cool design"
+        ]
+      },
+      {
+        "title": "Join the Cool Pokémon Movement with Our Blastoise T-Shirt",
+        "description": "Be part of the cool Pokémon movement with our trendy Cool Blastoise T-Shirt. This fashionable piece not only lets you express your love for a legendary Pokémon but also keeps you stylish on any adventure. Save this pin and embrace your Pokémon passion with flair!",
+        "tags": [
+          "cool pokemon",
+          "blastoise",
+          "fashion t-shirt",
+          "pokemon pride",
+          "apparel",
+          "trendy"
+        ]
+      }
     ]
   },
   {
