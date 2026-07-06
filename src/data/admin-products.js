@@ -3823,8 +3823,75 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/77cf9281-2bbd-4663-92b0-71918f3cae0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260617%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260617T163110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1fcc118461d0ba6204e59501ec3418a800cdbb3bd7785809cdfc654ef21e4c6"
     ],
     "createdAt": "2026-06-17T16:36:10.263Z",
-    "updatedAt": "2026-06-30T15:12:53.200Z",
-    "relatedProducts": []
+    "updatedAt": "2026-07-06T13:07:53.554Z",
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Rock Your Style with a Cool Charmander T-Shirt!",
+        "description": "Unleash your inner Pokémon trainer with our Cool Charmander T-Shirt! This vibrant tee showcases your favorite fire-type Pokémon in a stylish design perfect for any casual outing. Pair it with jeans or shorts for a laid-back look that sparks conversations. Don't miss out – add this must-have to your wardrobe today!",
+        "tags": [
+          "charmander",
+          "pokemon",
+          "cool fashion",
+          "graphic tee",
+          "apparel",
+          "fandom",
+          "casual style"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Fans: Cool Charmander Tee!",
+        "description": "Searching for a unique gift for a Pokémon lover? Our Cool Charmander T-Shirt is the ultimate surprise! With its eye-catching design, it’s sure to bring joy and excitement to any fan's collection. Make their day extra special by gifting this stylish tee – it’s a present they'll cherish!",
+        "tags": [
+          "gift ideas",
+          "pokemon t-shirt",
+          "charmander",
+          "fan merchandise",
+          "thoughtful gifts",
+          "apparel",
+          "trendy"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with a Cool Charmander T-Shirt",
+        "description": "Transform your casual look with our Cool Charmander T-Shirt, designed for those who love to stand out! This stylish tee blends Pokémon fandom with modern aesthetics, making it a perfect addition to your everyday wardrobe. Create a unique outfit that expresses your love for Pokémon while keeping it trendy. Save this pin for your next style inspiration!",
+        "tags": [
+          "aesthetic",
+          "pokemon apparel",
+          "charmander",
+          "fashion",
+          "graphic t-shirt",
+          "style",
+          "vibrant colors"
+        ]
+      },
+      {
+        "title": "Celebrate Pokémon Day with Our Cool Charmander T-Shirt!",
+        "description": "Get ready for Pokémon Day with our Cool Charmander T-Shirt, a must-have for any Pokémon event! This eye-catching tee is perfect for gatherings, conventions, or just a fun day out. Show off your love for Charmander and connect with fellow fans while making a fashion statement. Plan your outfit today and celebrate in style!",
+        "tags": [
+          "pokémon day",
+          "event outfit",
+          "charmander",
+          "fan gear",
+          "celebration",
+          "casual wear",
+          "pokemon"
+        ]
+      },
+      {
+        "title": "Charming Style: The Cool Charmander T-Shirt You Need!",
+        "description": "Step up your wardrobe game with the Cool Charmander T-Shirt! This trendy piece is ideal for Pokémon enthusiasts who appreciate a blend of style and fandom. Its unique design will attract compliments and celebrate your love for Pokémon wherever you go. Be sure to save this pin for your next shopping spree!",
+        "tags": [
+          "charmander",
+          "pokemon style",
+          "fashion",
+          "graphic tee",
+          "trendy apparel",
+          "collectibles",
+          "fan fashion"
+        ]
+      }
+    ]
   },
   {
     "id": "gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
