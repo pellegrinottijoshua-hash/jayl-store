@@ -4606,7 +4606,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b63d0d1-64a5-4f9b-8c15-54b64bdd6c4e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150454Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6ea7dfce10511cae534f2501d955cb2e4caf4b647758e3654871ba73761d690c"
     ],
     "createdAt": "2026-06-22T15:05:20.303Z",
-    "updatedAt": "2026-06-30T15:05:33.997Z",
+    "updatedAt": "2026-07-06T13:10:42.088Z",
     "relatedProducts": [],
     "etsyTitle": "Cool Alakazam T-Shirt, Vintage Pokemon Graphic Tee, Perfect Gift for Fans",
     "etsyTags": [
@@ -4633,6 +4633,68 @@ export const adminProducts = [
       "Lifestyle shot of a person wearing Cool Alakazam T-shirt, capturing a casual and fun moment.",
       "Size guide shot of Cool Alakazam T-shirt, detailing sizes and product information.",
       "Gift packaging context of Cool Alakazam T-shirt, presented in a stylish box for special occasions."
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Style with the Cool Alakazam T-Shirt",
+        "description": "Elevate your wardrobe with our Cool Alakazam T-Shirt, designed for true Pokémon fans. This stylish tee not only showcases your love for Alakazam but also brings a unique aesthetic to your everyday look. Perfect for casual hangouts or conventions, make this tee a staple in your collection today!",
+        "tags": [
+          "alakazam",
+          "cool pokemon",
+          "fashion",
+          "fandom",
+          "graphic tee",
+          "casual style"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Cool Alakazam T-Shirt",
+        "description": "Searching for a unique gift? The Cool Alakazam T-Shirt is a fantastic choice for Pokémon aficionados. With its vibrant design and comfortable fit, this tee is sure to impress any fan. Make someone's day special by gifting them this exclusive piece from our collection!",
+        "tags": [
+          "gift",
+          "pokémon fan",
+          "tees",
+          "collectible",
+          "birthday gift",
+          "cool style"
+        ]
+      },
+      {
+        "title": "Express Your Pokémon Fandom with the Cool Alakazam Tee",
+        "description": "Show off your love for Pokémon with our Cool Alakazam T-Shirt, perfect for fans who want to express their passion in style. This shirt features a striking design that stands out and makes a statement. Join the Pokémon community and wear your fandom proudly—add this tee to your wardrobe today!",
+        "tags": [
+          "fandom",
+          "pokemon apparel",
+          "stylish",
+          "unique design",
+          "casual wear",
+          "t-shirt"
+        ]
+      },
+      {
+        "title": "Rock the Day with Our Cool Alakazam T-Shirt",
+        "description": "Make every day a little cooler with the Cool Alakazam T-Shirt! Ideal for any occasion, this shirt brings together comfort and style for a look that’s both fun and fashionable. Whether you're at a Pokémon meetup or just hanging out with friends, this tee is a must-have. Grab yours and show off your Pokémon pride!",
+        "tags": [
+          "everyday wear",
+          "cool outfit",
+          "casual tee",
+          "pokemon",
+          "stylish",
+          "graphic shirt"
+        ]
+      },
+      {
+        "title": "Casual and Cool: The Ultimate Alakazam T-Shirt",
+        "description": "Discover the blend of comfort and style with our Cool Alakazam T-Shirt, designed for fans of all ages. This tee is not just clothing; it’s a statement piece that enhances your casual wardrobe. Perfect for those laid-back weekends, don't miss out on adding this eye-catching shirt to your collection!",
+        "tags": [
+          "casual style",
+          "alakazam",
+          "pokemon shirt",
+          "graphic tee",
+          "trendy",
+          "collection piece"
+        ]
+      }
     ]
   },
   {
