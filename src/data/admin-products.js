@@ -7854,9 +7854,71 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d1dc405-3265-4591-a26d-1c6440a0d931/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T102647Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2d65f1d57eef09f0149c6b38c6ec048576636ade28d568966d54ab677845b68a"
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
-    "updatedAt": "2026-06-30T15:08:28.377Z",
+    "updatedAt": "2026-07-07T13:22:18.180Z",
     "relatedProducts": [],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
+    "pinterestPins": [
+      {
+        "title": "Epic Cool Charizard Back T-Shirt for Pokémon Fans",
+        "description": "Show off your love for Pokémon with our Cool Charizard Back T-Shirt! This stylish tee features an eye-catching design that captures the spirit of your favorite fire-breathing dragon. Perfect for casual outings or Pokémon events, this shirt makes a fantastic gift for any fan. Add it to your collection and wear your fandom proudly!",
+        "tags": [
+          "charizard",
+          "pokemon",
+          "fan apparel",
+          "gift idea",
+          "cool t-shirt",
+          "casual style"
+        ]
+      },
+      {
+        "title": "Stylish Charizard Tee: A Must-Have for Pokémon Lovers",
+        "description": "Elevate your wardrobe with our Cool Charizard Back T-Shirt, designed for true Pokémon enthusiasts. The bold graphics and comfortable fit make it an ideal choice for everyday wear, conventions, or cosplay. Don't miss out on this unique piece that reflects your passion—save it to your collection today!",
+        "tags": [
+          "pokemon",
+          "charizard",
+          "cool fashion",
+          "fandom style",
+          "casual wear",
+          "gift for him"
+        ]
+      },
+      {
+        "title": "Trendy Charizard T-Shirt: Perfect for Any Occasion",
+        "description": "Step out in style with our Cool Charizard Back T-Shirt! Whether it's a laid-back day at home or a fun outing with friends, this tee offers a perfect blend of comfort and trendiness. Great for gifting or for your own wardrobe refresh, this shirt is sure to turn heads. Start planning your outfit today!",
+        "tags": [
+          "charizard",
+          "pokemon gifts",
+          "fashion tee",
+          "cool outfit",
+          "trendsetting",
+          "casual style"
+        ]
+      },
+      {
+        "title": "Gift the Ultimate Charizard T-Shirt to Pokémon Fans!",
+        "description": "Surprise the Pokémon lover in your life with our Cool Charizard Back T-Shirt! This premium shirt not only celebrates their favorite character but also offers unmatched comfort and style. Perfect for birthdays or special occasions, it's a gift they'll treasure forever. Get ready to make someone's day—pin it now!",
+        "tags": [
+          "charizard",
+          "pokemon",
+          "gift for him",
+          "fan merchandise",
+          "special occasions",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Express Your Fandom with a Charizard Back T-Shirt",
+        "description": "Embrace your inner Pokémon trainer with our Cool Charizard Back T-Shirt! This stylish design is perfect for showcasing your love for Charizard while staying comfortable. Ideal for both everyday wear and Pokémon events, it's a great addition to any fan's closet. Don't wait—save it for your next shopping spree!",
+        "tags": [
+          "pokemon",
+          "charizard",
+          "graphic tee",
+          "fandom fashion",
+          "casual outfit",
+          "cool gifts"
+        ]
+      }
+    ]
   },
   {
     "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
