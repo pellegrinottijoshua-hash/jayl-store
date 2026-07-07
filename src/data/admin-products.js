@@ -9440,7 +9440,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c95262ca-297b-4a35-845e-62325a47a61c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T133143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e9608e1633fa1000da22966c4a28b1d27fad2261f9268becf70be82b619129a"
     ],
     "createdAt": "2026-06-26T13:41:03.363Z",
-    "updatedAt": "2026-07-02T14:21:39.725Z",
+    "updatedAt": "2026-07-07T13:25:03.086Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-vileplume-back-t-shirt/design.png",
     "pinterestPins": [
@@ -9467,7 +9467,8 @@ export const adminProducts = [
           "fan apparel",
           "cool t-shirts",
           "stylish gift"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Express Your Love for Pokémon with This Vileplume Tee",
@@ -9507,7 +9508,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-back-t-shirt/hf_20260626_125650_7848a585-778e-4179-bef1-3dfc6a3914ed.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-back-t-shirt/hf_20260626_125650_7848a585-778e-4179-bef1-3dfc6a3914ed.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-back-t-shirt/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
