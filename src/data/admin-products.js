@@ -10218,7 +10218,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T145932Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d36531bff1a342b65c6a83f6f18779e1ba48cc2523699390509ad006aea9d671"
     ],
     "createdAt": "2026-06-26T15:05:11.927Z",
-    "updatedAt": "2026-07-02T14:21:12.562Z",
+    "updatedAt": "2026-07-07T13:26:24.317Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -10245,7 +10245,8 @@ export const adminProducts = [
           "ditto",
           "style",
           "everyday wear"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Gift the Perfect Pokémon Shirt: Cool Ditto Back Tee",
@@ -10285,7 +10286,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
