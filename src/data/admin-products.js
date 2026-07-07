@@ -7078,8 +7078,80 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/52278d84-b826-496c-9688-0387849ee7a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T090403Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=99fffa2d9e753fa0cd2d734f29c69f6a114503c119ae63b4783af34338117d4e"
     ],
     "createdAt": "2026-06-23T09:09:16.853Z",
-    "updatedAt": "2026-06-30T15:08:39.956Z",
-    "relatedProducts": []
+    "updatedAt": "2026-07-07T13:20:40.171Z",
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Rock Your Style with Our Cool Dugtrio T-Shirt!",
+        "description": "Show off your love for Pokémon with our Cool Dugtrio T-Shirt! Perfect for casual outings, this stylish tee captures the essence of Dugtrio while keeping you comfortable and fashionable. Whether you're heading to a convention or just hanging with friends, this shirt is a must-have in your collection. Add it to your cart today and elevate your wardrobe!",
+        "tags": [
+          "dugtrio",
+          "pokemon",
+          "style",
+          "apparel",
+          "cool t-shirt",
+          "fandom",
+          "casual fashion",
+          "gift idea"
+        ]
+      },
+      {
+        "title": "Perfect Gift: Cool Dugtrio T-Shirt for Pokémon Fans!",
+        "description": "Searching for the perfect gift for a Pokémon fan? Look no further than our Cool Dugtrio T-Shirt! Designed with fans in mind, this shirt combines comfort and style, making it an ideal present for birthdays or special occasions. Surprise someone special today with this trendy tee that showcases their favorite Pokémon!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "dugtrio",
+          "apparel",
+          "fan merchandise",
+          "cool t-shirt",
+          "birthday gift",
+          "special occasion"
+        ]
+      },
+      {
+        "title": "Express Your Fandom with Our Cool Dugtrio Tee!",
+        "description": "Celebrate your love for Pokémon with our eye-catching Cool Dugtrio T-Shirt! This unique design is perfect for fans who want to express their passion in a stylish way. Whether attending meet-ups or lounging at home, this tee will keep you comfortable while showcasing your fandom. Save it now for your next Pokémon-themed adventure!",
+        "tags": [
+          "fandom",
+          "dugtrio",
+          "pokemon",
+          "cool t-shirt",
+          "apparel",
+          "fan art",
+          "casual wear",
+          "collectibles"
+        ]
+      },
+      {
+        "title": "Casual Aesthetic: Cool Dugtrio T-Shirt for Everyday Wear!",
+        "description": "Elevate your casual aesthetic with our Cool Dugtrio T-Shirt! This chic and comfortable tee is ideal for everyday wear, giving you a trendy Pokémon vibe without sacrificing comfort. Pair it with your favorite jeans or shorts for a laid-back look that's perfect for any occasion. Pin it for your next shopping spree and add a touch of Pokémon flair to your wardrobe!",
+        "tags": [
+          "aesthetic",
+          "dugtrio",
+          "pokemon",
+          "casual",
+          "apparel",
+          "cool t-shirt",
+          "everyday style",
+          "trendy"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Craze with Our Cool Dugtrio T-Shirt!",
+        "description": "Dive into the Pokémon craze with our stunning Cool Dugtrio T-Shirt! This shirt not only showcases your fandom but also offers a stylish addition to your closet. Perfect for Pokémon gatherings or simply showing off your love for these iconic characters. Remember to save this pin for your next outfit inspiration!",
+        "tags": [
+          "pokemon",
+          "dugtrio",
+          "fandom",
+          "cool t-shirt",
+          "apparel",
+          "trending",
+          "fashion",
+          "pop culture"
+        ]
+      }
+    ]
   },
   {
     "id": "likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
