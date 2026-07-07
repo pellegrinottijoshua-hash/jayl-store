@@ -6621,7 +6621,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c00e1d37-5bce-453b-b47b-5423e87647e4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150848Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cfc93b7b64011c7c06017196765b58ffa2f4f7af7d69519b99726fadc85c899"
     ],
     "createdAt": "2026-06-23T09:02:57.088Z",
-    "updatedAt": "2026-07-07T13:19:47.609Z",
+    "updatedAt": "2026-07-07T13:19:54.591Z",
     "relatedProducts": [],
     "pinterestPins": [
       {
@@ -6646,8 +6646,7 @@ export const adminProducts = [
           "trendy apparel",
           "fandom",
           "stylish gift"
-        ],
-        "published": true
+        ]
       },
       {
         "title": "Chill and Stylish: Meet the Cool Drowsee T-Shirt",
@@ -6684,10 +6683,67 @@ export const adminProducts = [
           "apparel",
           "casual outfit"
         ]
+      },
+      {
+        "title": "Embrace Your Dreams with Our Cool Drowzee T-Shirt",
+        "description": "Capture the essence of your favorite Pokémon with our Cool Drowzee T-shirt. Perfect for casual outings or lounging at home, this tee combines comfort and style while showcasing your love for the Pokémon universe. Add this unique piece to your wardrobe and let your fandom shine—pin it now for your next shopping spree!",
+        "tags": [
+          "drowzee",
+          "pokemon t-shirt",
+          "fandom fashion",
+          "comfortable style",
+          "anime apparel",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "Stylish and Fun: The Cool Drowzee T-Shirt for Pokémon Lovers",
+        "description": "Level up your fashion game with our Cool Drowzee T-shirt, designed for true Pokémon enthusiasts. Its unique design and comfortable fabric make it the ideal choice for everyday wear or special gaming events. Don’t miss out on this must-have item to express your love for the Pokémon world—save this pin for future shopping!",
+        "tags": [
+          "cool drowzee",
+          "pokemon gift",
+          "fashionable tee",
+          "gamer style",
+          "anime merchandise",
+          "print on demand"
+        ]
+      },
+      {
+        "title": "Gift the Perfect Drowzee T-Shirt for Pokémon Fans",
+        "description": "Searching for the ultimate gift for a Pokémon fan? Look no further! Our Cool Drowzee T-shirt is a fantastic choice for birthdays, holidays, or any occasion. Its playful design not only brings joy but also shows off their love for Pokémon. Pin this idea today and make their day extra special!",
+        "tags": [
+          "gift for pokemon fans",
+          "drowzee shirt",
+          "pokemon merchandise",
+          "casual wear",
+          "anime gift",
+          "unique apparel"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with Our Cool Drowzee Tee",
+        "description": "Make a bold statement with our Cool Drowzee T-shirt that perfectly fits your aesthetic. This trendy tee not only showcases your passion for Pokémon but also effortlessly complements your style. Whether for a casual day out or chilling at home, it’s a must-have! Pin this shirt to your wish list and elevate your wardrobe today!",
+        "tags": [
+          "pokemon aesthetic",
+          "drowzee fashion",
+          "casual style",
+          "trendy t-shirt",
+          "cool apparel",
+          "anime style"
+        ]
+      },
+      {
+        "title": "Cool Drowzee T-Shirt: The Must-Have for Pokémon Events",
+        "description": "Gear up for your next Pokémon event with our Cool Drowzee T-shirt! Its eye-catching design is perfect for showing off your fandom while ensuring comfort throughout the day. This shirt is ideal for conventions, game nights, or just hanging out with friends. Don’t forget to save this pin for your Pokémon collection!",
+        "tags": [
+          "event apparel",
+          "drowzee pokemon",
+          "fanwear",
+          "gaming events",
+          "casual t-shirt",
+          "anime collectibles"
+        ]
       }
-    ],
-    "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/hf_20260623_055624_fb2ef55d-fda1-4357-989e-f12394be6d8f.jpg"
     ]
   },
   {
