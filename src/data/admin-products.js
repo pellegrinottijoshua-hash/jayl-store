@@ -8627,7 +8627,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/94a995be-8c64-47c5-bd86-d94b01a97be8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T123555Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b5f3d4e8ff26180eb86f6d0497a5e0a21e76b647b2dc65750020bf3fb58ae7c"
     ],
     "createdAt": "2026-06-26T13:10:51.907Z",
-    "updatedAt": "2026-07-02T14:22:13.806Z",
+    "updatedAt": "2026-07-07T13:23:46.013Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -8655,7 +8655,8 @@ export const adminProducts = [
           "fan apparel",
           "trendy t-shirt",
           "everyday wear"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Perfect Gift for Pokémon Lovers: Cool Zapdos T-Shirt",
@@ -8695,7 +8696,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_103722_d8e8d9db-f31a-4181-b7a0-a8ac2fc0c21a.jpeg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_103722_d8e8d9db-f31a-4181-b7a0-a8ac2fc0c21a.jpeg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
