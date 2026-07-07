@@ -7450,8 +7450,70 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/754da826-5c3f-4767-a489-279a5c430774/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T091429Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1d9e4cdf5cfd486ba595811216c099d7e3e9578792955941fa1590c367783b7a"
     ],
     "createdAt": "2026-06-23T09:26:28.906Z",
-    "updatedAt": "2026-06-24T00:26:08.329Z",
-    "relatedProducts": []
+    "updatedAt": "2026-07-07T13:21:29.817Z",
+    "relatedProducts": [],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Style with the Cool Lickitung T-Shirt!",
+        "description": "Elevate your wardrobe with our Cool Lickitung T-Shirt, perfect for Pokémon fans and fashion enthusiasts alike. This unique design combines comfort with a playful aesthetic, making it a must-have for any casual outing or gaming night. Don't miss out on adding this iconic piece to your collection—save it for your next shopping spree!",
+        "tags": [
+          "lickitung",
+          "pokemon shirt",
+          "cool aesthetic",
+          "fan apparel",
+          "gift idea",
+          "casual style"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Lovers: Cool Lickitung T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon fan? Look no further than our Cool Lickitung T-Shirt! This stylish and comfy shirt is sure to delight anyone who loves the unique charm of Pokémon. Make their day extra special by saving this pin and getting ready to gift them something they'll cherish!",
+        "tags": [
+          "pokemon gift",
+          "lickitung",
+          "fan merchandise",
+          "unique shirts",
+          "aesthetic clothing",
+          "gift for him"
+        ]
+      },
+      {
+        "title": "Join the Pokémon Trend with Our Cool Lickitung Tee!",
+        "description": "Step into the spotlight with our Cool Lickitung T-Shirt, designed for those who want to showcase their love for Pokémon in style. With its vibrant design and comfy fit, this tee is perfect for casual hangouts, conventions, or just lounging at home. Pin this now and get ready to rock the Pokémon trend!",
+        "tags": [
+          "pokemon fandom",
+          "lickitung",
+          "trendy apparel",
+          "casual outfit",
+          "pop culture",
+          "graphic tee"
+        ]
+      },
+      {
+        "title": "Casual Vibes: Cool Lickitung T-Shirt for Everyday Wear",
+        "description": "Embrace everyday comfort with our Cool Lickitung T-Shirt, designed for laid-back days and fun adventures. Its playful design adds a pop of personality to any outfit, making it a versatile addition to your wardrobe. Save this pin for the perfect tee to express your love for Pokémon casually!",
+        "tags": [
+          "casual fashion",
+          "lickitung",
+          "pokemon art",
+          "everyday wear",
+          "comfortable tee",
+          "stylish shirt"
+        ]
+      },
+      {
+        "title": "Express Your Pokémon Love: Shop the Cool Lickitung T-Shirt",
+        "description": "Let your fandom shine with our Cool Lickitung T-Shirt, a stylish representation of your favorite Pokémon. This tee is not just a piece of clothing; it's a statement of your passion and style. Add this pin to your favorites and get one step closer to wearing your love for Pokémon proudly!",
+        "tags": [
+          "pokemon apparel",
+          "lickitung",
+          "fan style",
+          "graphic t-shirt",
+          "unique fashion",
+          "collectible clothing"
+        ]
+      }
+    ]
   },
   {
     "id": "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
