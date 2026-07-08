@@ -12199,7 +12199,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/127b88c4-5de9-4348-b80f-b23b5b557ea1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe1beefa53765a92361f398d971f3682a2ceba8b18b7c02fec62ecedb51998b1"
     ],
     "createdAt": "2026-06-27T13:31:16.749Z",
-    "updatedAt": "2026-07-02T14:19:53.987Z",
+    "updatedAt": "2026-07-08T15:19:28.839Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-machop-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -12226,7 +12226,8 @@ export const adminProducts = [
           "gift for him",
           "fan merchandise",
           "pocket monster"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Gift the Perfect Pokémon Tee: Cool Machop Back T-Shirt",
@@ -12266,7 +12267,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131557_d047a67f-39b7-4864-b8e2-1e59ab897add.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131557_d047a67f-39b7-4864-b8e2-1e59ab897add.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131622_52aef132-ee97-4a63-834f-a5aa803119d6.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
