@@ -13008,7 +13008,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4f1af26c883d5f8d91b64c937c2f09d834a5eee00f66331a3fd474a76a1c7e74"
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
-    "updatedAt": "2026-07-02T14:19:27.995Z",
+    "updatedAt": "2026-07-08T15:20:44.111Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -13035,7 +13035,8 @@ export const adminProducts = [
           "cool design",
           "fandom",
           "t-shirt"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Casual Vibes with Cool Dugtrio Back T-Shirt",
@@ -13075,7 +13076,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
