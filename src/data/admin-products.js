@@ -11382,7 +11382,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4f1cee6f-f658-41fa-87b2-87d45c73ac40/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T122851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c494621889ac14119a0230f843c0eeccd71f791e71a37397832b9d062f8eaf3"
     ],
     "createdAt": "2026-06-27T13:00:11.484Z",
-    "updatedAt": "2026-07-02T14:20:21.088Z",
+    "updatedAt": "2026-07-08T15:18:39.552Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -11411,7 +11411,8 @@ export const adminProducts = [
           "geek culture",
           "anime style",
           "trendy clothing"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Level Up Your Aesthetic with Our Blastoise T-Shirt!",
@@ -11454,7 +11455,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_114552_ed67b707-b269-41ee-bb99-07a346fa2620.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_114552_ed67b707-b269-41ee-bb99-07a346fa2620.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_111841_cb9072c5-0c7d-4736-8e3c-80f29071b9fd.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
