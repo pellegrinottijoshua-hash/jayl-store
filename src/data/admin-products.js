@@ -708,7 +708,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-09T15:58:25.116Z",
-    "updatedAt": "2026-07-03T11:56:49.554Z",
+    "updatedAt": "2026-07-09T13:35:04.169Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260518_140959_a8359d45-7e06-4262-8f4c-b12b30329431.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_014053_f907f0c3-130a-4e9f-b854-5160831c14bb.jpg",
@@ -736,7 +736,8 @@ export const adminProducts = [
           "aesthetic",
           "trendy apparel",
           "gift for him"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Gift the Cool Dragonite T-Shirt to Your Favorite Pokémon Fan",
@@ -776,7 +777,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260511_163350_dcd0a4ef-bb8e-4003-8125-6f7ce132d71d.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260511_163350_dcd0a4ef-bb8e-4003-8125-6f7ce132d71d.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dragonite-pok-mon-t-shirt-retro-90s-style-gift/hf_20260522_014053_f907f0c3-130a-4e9f-b854-5160831c14bb.jpg"
     ]
   },
   {
