@@ -1503,7 +1503,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:32:03.324Z",
-    "updatedAt": "2026-07-03T11:59:30.266Z",
+    "updatedAt": "2026-07-09T13:35:59.204Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_183826_bacc4315-c54a-4661-8044-673ab5556382.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg",
@@ -1557,7 +1557,8 @@ export const adminProducts = [
           "apparel",
           "cool design",
           "fan merch"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Elevate Your Aesthetic with the Cool Snorlax T-Shirt",
@@ -1597,7 +1598,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260511_163703_f6356d48-4977-4e12-9e84-5dc4cc7c7147.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260511_163703_f6356d48-4977-4e12-9e84-5dc4cc7c7147.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg"
     ]
   },
   {
