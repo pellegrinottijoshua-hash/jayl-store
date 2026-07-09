@@ -2665,7 +2665,7 @@ export const adminProducts = [
     ],
     "printCost": 700,
     "createdAt": "2026-05-23T16:18:25.070Z",
-    "updatedAt": "2026-07-06T13:05:04.868Z",
+    "updatedAt": "2026-07-09T13:37:04.609Z",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg",
     "pinterestPins": [
@@ -2692,7 +2692,8 @@ export const adminProducts = [
           "unique gifts",
           "gaming fashion",
           "cool design"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Elevate Your Aesthetic with Vileplume T-Shirt",
@@ -2732,7 +2733,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161844_c5268fbe-0978-4fa2-b669-1e95228a4365.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161844_c5268fbe-0978-4fa2-b669-1e95228a4365.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
     ]
   },
   {
