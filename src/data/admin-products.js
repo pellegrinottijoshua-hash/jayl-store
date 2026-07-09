@@ -3405,7 +3405,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dcdd4e13-77b2-4dec-934f-48537edb342a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260526%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T150654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ed8b1e930dfe6633b1b7dadca1913cf60d8cfe4fbf1a5b96a8d5922519ecb97"
     ],
     "createdAt": "2026-05-26T15:11:39.661Z",
-    "updatedAt": "2026-07-06T13:07:13.062Z",
+    "updatedAt": "2026-07-09T13:37:56.587Z",
     "relatedProducts": [],
     "colors": [
       {
@@ -3463,7 +3463,8 @@ export const adminProducts = [
           "apparel",
           "unique gifts",
           "fan merchandise"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Level Up Your Aesthetic with the Cool Mew T-Shirt!",
@@ -3503,7 +3504,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151956_fcd76b49-5f9f-42bf-a7a4-9ccceae3f791.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151956_fcd76b49-5f9f-42bf-a7a4-9ccceae3f791.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150844_7b534456-85ed-49d5-8c85-ac45085e1354.jpg"
     ]
   },
   {
