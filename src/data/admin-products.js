@@ -1904,7 +1904,7 @@ export const adminProducts = [
       }
     ],
     "createdAt": "2026-05-09T16:39:15.748Z",
-    "updatedAt": "2026-07-03T12:00:47.068Z",
+    "updatedAt": "2026-07-09T13:36:25.119Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_140302_d6319253-126b-4663-8c12-4f886a1da22b.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg",
@@ -1940,7 +1940,8 @@ export const adminProducts = [
           "fan gifts",
           "cool fashion",
           "anime merchandise"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Elevate Your Aesthetic with Our Cool Psyduck Tee",
@@ -1980,7 +1981,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260511_163529_91b7602a-5d6c-47ed-89e3-f229aaf8c71b.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260511_163529_91b7602a-5d6c-47ed-89e3-f229aaf8c71b.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg"
     ]
   },
   {
