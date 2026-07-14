@@ -6655,7 +6655,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c00e1d37-5bce-453b-b47b-5423e87647e4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150848Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9cfc93b7b64011c7c06017196765b58ffa2f4f7af7d69519b99726fadc85c899"
     ],
     "createdAt": "2026-06-23T09:02:57.088Z",
-    "updatedAt": "2026-07-07T13:19:54.591Z",
+    "updatedAt": "2026-07-14T13:13:19.724Z",
     "relatedProducts": [],
     "pinterestPins": [
       {
@@ -6680,7 +6680,8 @@ export const adminProducts = [
           "trendy apparel",
           "fandom",
           "stylish gift"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Chill and Stylish: Meet the Cool Drowsee T-Shirt",
@@ -6778,6 +6779,9 @@ export const adminProducts = [
           "anime collectibles"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/hf_20260623_054817_5e5cb90e-e340-428c-b171-08c6dd2c6a4f.jpg"
     ]
   },
   {
