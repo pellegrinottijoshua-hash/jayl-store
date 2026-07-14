@@ -7896,7 +7896,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d1dc405-3265-4591-a26d-1c6440a0d931/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T102647Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2d65f1d57eef09f0149c6b38c6ec048576636ade28d568966d54ab677845b68a"
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
-    "updatedAt": "2026-07-07T13:22:33.192Z",
+    "updatedAt": "2026-07-14T13:16:10.791Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -7923,7 +7923,8 @@ export const adminProducts = [
           "fandom style",
           "casual wear",
           "gift for him"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Trendy Charizard T-Shirt: Perfect for Any Occasion",
@@ -7963,7 +7964,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_160158_208b8337-cc3b-446c-842c-c33acc394714.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_160158_208b8337-cc3b-446c-842c-c33acc394714.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_155630_8758b7f8-e590-4094-9c06-3acdc66c05a2.png"
     ]
   },
   {
