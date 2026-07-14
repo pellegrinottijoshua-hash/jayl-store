@@ -7490,7 +7490,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/754da826-5c3f-4767-a489-279a5c430774/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260623%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260623T091429Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1d9e4cdf5cfd486ba595811216c099d7e3e9578792955941fa1590c367783b7a"
     ],
     "createdAt": "2026-06-23T09:26:28.906Z",
-    "updatedAt": "2026-07-07T13:21:40.010Z",
+    "updatedAt": "2026-07-14T13:14:24.183Z",
     "relatedProducts": [],
     "pinterestPins": [
       {
@@ -7516,7 +7516,8 @@ export const adminProducts = [
           "unique shirts",
           "aesthetic clothing",
           "gift for him"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Join the Pokémon Trend with Our Cool Lickitung Tee!",
@@ -7556,7 +7557,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071457_49eca5d8-07e7-486a-a267-4551cd9c4b3e.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071457_49eca5d8-07e7-486a-a267-4551cd9c4b3e.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_070536_080c72be-e143-483c-b878-d7067f5006a7.jpg"
     ]
   },
   {
