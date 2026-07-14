@@ -6251,7 +6251,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7f5a7c21-856a-4dfc-9e18-58aeaceaf189/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150926Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5b16c07858129a6ca60185b165079e6fd7fcdc9428c0aad17d23bafd41d386c9"
     ],
     "createdAt": "2026-06-23T08:43:52.552Z",
-    "updatedAt": "2026-07-06T13:16:26.758Z",
+    "updatedAt": "2026-07-14T13:12:51.432Z",
     "relatedProducts": [],
     "pinterestPins": [
       {
@@ -6277,7 +6277,8 @@ export const adminProducts = [
           "apparel",
           "fandom fashion",
           "unique gift"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Elevate Your Aesthetic with Our Cool Slowpoke T-Shirt",
@@ -6317,7 +6318,8 @@ export const adminProducts = [
       }
     ],
     "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053306_0da0ec11-e252-47e9-86d9-11acb8a274f3.jpg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053306_0da0ec11-e252-47e9-86d9-11acb8a274f3.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_052817_0d130b69-1672-42eb-b0bc-8ee01bea5004.jpg"
     ]
   },
   {
