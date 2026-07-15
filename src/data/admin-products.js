@@ -9901,7 +9901,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2e43137f-def8-4438-b8e1-5496065ec0ff/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T140307Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=66c9ffcfb3f4388eeeb1ddad48019f634dd2a2d90ed6aeb792857ab677bd49cb"
     ],
     "createdAt": "2026-06-26T14:15:44.480Z",
-    "updatedAt": "2026-07-07T13:25:53.853Z",
+    "updatedAt": "2026-07-15T13:24:03.457Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mewtwo-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -9941,7 +9941,8 @@ export const adminProducts = [
           "unique apparel",
           "anime gift",
           "fandom fashion"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Join the Fandom Revolution with the Cool Mewtwo Back T-Shirt",
@@ -9970,7 +9971,8 @@ export const adminProducts = [
     ],
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133216_9a6849e2-4c88-418a-a909-e79eb34f3647.jpeg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   },
