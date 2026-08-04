@@ -44,7 +44,13 @@ export default [
       // Deliberate throughout: best-effort calls (analytics, clipboard) that must never throw.
       'no-empty': ['error', { allowEmptyCatch: true }],
       // Pre-existing dead bindings — surfaced, not blocking, until they're cleaned up.
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'no-unused-vars': ['warn', {
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+      }],
     },
   },
 
@@ -60,7 +66,13 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       'no-empty': ['error', { allowEmptyCatch: true }],
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'no-unused-vars': ['warn', {
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+      }],
     },
   },
 ]

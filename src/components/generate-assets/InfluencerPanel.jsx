@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import PromptCard from './PromptCard'
 import {
   api, getAdminPassword, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES,
-  SOCIAL_META, toAbsoluteUrl, subVars,
+  SOCIAL_META, toAbsoluteUrl,
 } from './constants'
 
 // ── Platforms available in influencer workspace ───────────────────────────────

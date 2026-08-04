@@ -4,7 +4,12 @@
 // src/data/products-samples.js — HIDDEN until the Art launch.
 // To re-enable: import sampleProducts from './products-samples.js' and
 // change: export const products = [...sampleProducts, ...adminProducts]
-import { adminProducts } from './admin-products.js'
+// Storefront catalog. The import is rewritten at build time to a stripped copy of
+// admin-products.js with the admin-only fields removed (see the `storefrontProducts`
+// plugin in vite.config.js). Admin editors need the full records — they import
+// './products-full.js' instead. Under plain Node (api/*) this resolves to the real
+// module, so server code always sees everything.
+import { adminProducts } from 'virtual:storefront-products'
 
 export const MOVEMENTS = [
   'impressionism',

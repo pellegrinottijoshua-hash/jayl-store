@@ -48,7 +48,7 @@ export default async function handler(req, res) {
 
   let rawBody
   try { rawBody = await readRawBody(req) }
-  catch (e) { return res.status(400).json({ error: 'Failed to read body' }) }
+  catch { return res.status(400).json({ error: 'Failed to read body' }) }
 
   // ── Signature verification (optional) ────────────────────────────────────
   const secret    = process.env.GELATO_WEBHOOK_SECRET

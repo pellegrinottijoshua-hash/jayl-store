@@ -60,7 +60,7 @@ export default function SocialPanel({
   const [expandedPlatform, setExpandedPlatform] = useState('instagram')
   const [imageModel,       setImageModel]       = useState(IMAGE_MODELS[0].id)
   const [videoModel,       setVideoModel]       = useState(VIDEO_MODELS[0].id)
-  const [imageSize,        setImageSize]        = useState('portrait_4_3')
+  const [imageSize]                             = useState('portrait_4_3')
   const [videoDuration,    setVideoDuration]    = useState('5')
 
   // Per-prompt state (keyed by template id)

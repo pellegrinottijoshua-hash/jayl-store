@@ -1,0 +1,167 @@
+{
+  "_comment": "Calendario eventi & holiday — ancora temporale usata dall'Editor-in-Chief per pianificare drop e attivazioni. Date ricorrenti (mese-giorno) e date variabili per anno. Tag indicano la rilevanza per JAYL.",
+  "_schema": {
+    "id": "slug univoco",
+    "name": "nome leggibile",
+    "date": "YYYY-MM-DD per eventi puntuali, MM-DD per ricorrenti annuali",
+    "recurring": "true = ogni anno, false = data fissa",
+    "tags": "array — pop-culture | streetwear | art | community | seasonal | brand | gift",
+    "audience": "chi rilevante — gen-z | pop-culture-fans | art-lovers | gift-buyers | community",
+    "leadDays": "giorni di anticipo consigliati per iniziare la campagna",
+    "notes": "angolo creativo suggerito per JAYL"
+  },
+  "events": [
+    {
+      "id": "valentines-day",
+      "name": "San Valentino",
+      "date": "02-14",
+      "recurring": true,
+      "tags": ["seasonal", "gift", "community"],
+      "audience": "gift-buyers",
+      "leadDays": 21,
+      "notes": "Push su mug & art print come gift culturale, non romantico cliché. Angolo: 'regala arte, non rose'."
+    },
+    {
+      "id": "international-womens-day",
+      "name": "International Women's Day",
+      "date": "03-08",
+      "recurring": true,
+      "tags": ["community", "art"],
+      "audience": "community",
+      "leadDays": 14,
+      "notes": "Spotlight su artiste donne, collezioni a tema, storytelling sulla forza femminile."
+    },
+    {
+      "id": "earth-day",
+      "name": "Earth Day",
+      "date": "04-22",
+      "recurring": true,
+      "tags": ["community", "brand"],
+      "audience": "gen-z",
+      "leadDays": 14,
+      "notes": "Comunica POD = produzione on-demand = meno spreco. Educational, non greenwashing."
+    },
+    {
+      "id": "pride-month",
+      "name": "Pride Month",
+      "date": "06-01",
+      "recurring": true,
+      "tags": ["community", "art", "seasonal"],
+      "audience": "community",
+      "leadDays": 30,
+      "notes": "Mese intero — drop dedicato, artist collab, storytelling autentico. Evitare rainbow-washing."
+    },
+    {
+      "id": "summer-solstice",
+      "name": "Solstizio d'estate",
+      "date": "06-21",
+      "recurring": true,
+      "tags": ["seasonal", "art"],
+      "audience": "gen-z",
+      "leadDays": 14,
+      "notes": "Apertura collezione estate — luce, colore, vibe Mediterraneo (Venice origin)."
+    },
+    {
+      "id": "back-to-school",
+      "name": "Back to School",
+      "date": "09-01",
+      "recurring": true,
+      "tags": ["seasonal", "gift"],
+      "audience": "gen-z",
+      "leadDays": 21,
+      "notes": "Tote bag, mug, t-shirt come 'kit identità' per il nuovo anno. Angolo: cultura > diploma."
+    },
+    {
+      "id": "halloween",
+      "name": "Halloween",
+      "date": "10-31",
+      "recurring": true,
+      "tags": ["pop-culture", "seasonal", "art"],
+      "audience": "pop-culture-fans",
+      "leadDays": 30,
+      "notes": "Drop dedicato a horror/dark art/anime spettrali. Forte angolo TikTok e Pinterest."
+    },
+    {
+      "id": "dia-de-los-muertos",
+      "name": "Día de los Muertos",
+      "date": "11-02",
+      "recurring": true,
+      "tags": ["art", "pop-culture"],
+      "audience": "art-lovers",
+      "leadDays": 21,
+      "notes": "Estetica forte, art print e t-shirt. Rispetto culturale, non costume."
+    },
+    {
+      "id": "black-friday",
+      "name": "Black Friday / Cyber Week",
+      "date": "11-28",
+      "recurring": true,
+      "tags": ["seasonal", "gift"],
+      "audience": "gift-buyers",
+      "leadDays": 21,
+      "notes": "Settimana intera. Drop nuovi prodotti più che sconti aggressivi (brand premium)."
+    },
+    {
+      "id": "christmas-gifting",
+      "name": "Christmas Gifting Window",
+      "date": "12-01",
+      "recurring": true,
+      "tags": ["seasonal", "gift"],
+      "audience": "gift-buyers",
+      "leadDays": 45,
+      "notes": "Tutto dicembre. Mug e art print primi candidati gift. Comunicare deadline Gelato per arrivo entro Natale."
+    },
+    {
+      "id": "new-year-drop",
+      "name": "New Year Drop",
+      "date": "01-01",
+      "recurring": true,
+      "tags": ["seasonal", "brand"],
+      "audience": "community",
+      "leadDays": 14,
+      "notes": "Apertura anno — nuova collezione manifesto, tono 'Art finds a way' in chiave reset."
+    },
+    {
+      "id": "jayl-anniversary",
+      "name": "JAYL Anniversary (2025 launch)",
+      "date": "09-15",
+      "recurring": true,
+      "tags": ["brand"],
+      "audience": "community",
+      "leadDays": 30,
+      "notes": "Compleanno del brand. Drop celebrativo, ringraziamento community, storytelling Venice origin."
+    }
+  ],
+  "popCultureWindows": [
+    {
+      "id": "anime-season-spring",
+      "name": "Spring Anime Season",
+      "date": "04-01",
+      "recurring": true,
+      "tags": ["pop-culture"],
+      "audience": "pop-culture-fans",
+      "leadDays": 14,
+      "notes": "Push sulla collezione anime/Pokémon. Allinea drop a release di stagione anime."
+    },
+    {
+      "id": "anime-season-fall",
+      "name": "Fall Anime Season",
+      "date": "10-01",
+      "recurring": true,
+      "tags": ["pop-culture"],
+      "audience": "pop-culture-fans",
+      "leadDays": 14,
+      "notes": "Seconda finestra anime — Halloween crossover."
+    },
+    {
+      "id": "venice-biennale",
+      "name": "Venice Biennale (anni dispari)",
+      "date": "05-01",
+      "recurring": true,
+      "tags": ["art", "brand"],
+      "audience": "art-lovers",
+      "leadDays": 30,
+      "notes": "JAYL è di Venezia — sfruttare il momento Biennale per posizionamento art-world."
+    }
+  ]
+}

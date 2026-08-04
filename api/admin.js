@@ -110,7 +110,7 @@ async function readAdminProducts(token) {
     const match = content.match(/export const adminProducts = (\[[\s\S]*\])/)
     if (!match) return { products: [], sha: file.sha }
     return { products: JSON.parse(match[1]), sha: file.sha }
-  } catch (e) {
+  } catch {
     return { products: [], sha: null }
   }
 }
@@ -170,7 +170,7 @@ async function readAdminCollections(token) {
     const match = content.match(/export const adminCollections = (\[[\s\S]*\])/)
     if (!match) return { collections: [], sha: file.sha }
     return { collections: JSON.parse(match[1]), sha: file.sha }
-  } catch (e) {
+  } catch {
     return { collections: [], sha: null }
   }
 }
@@ -1383,7 +1383,7 @@ Return a JSON object with these exact keys:
 
     // ── generate-seo ─────────────────────────────────────────────────────────
     if (action === 'generate-seo') {
-      const { productId, productName, productType, collection, description, tags } = data
+      const { productName, productType, collection, description, tags } = data
       const anthropicKey = (process.env.ANTHROPIC_API_KEY || '').trim()
       if (!anthropicKey) return res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' })
 

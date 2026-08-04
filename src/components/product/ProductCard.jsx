@@ -10,8 +10,6 @@ export default function ProductCard({ product, className, light = false }) {
   const defaultSize = product.sizes?.[Math.floor(product.sizes.length / 2)]
   const displayPrice = defaultSize?.price ?? product.price
 
-  const sectionLabel = product.section === 'art' ? 'Print' : 'Object'
-
   return (
     <Link
       to={`/product/${product.id}`}

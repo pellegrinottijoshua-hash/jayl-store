@@ -1,0 +1,123 @@
+{
+  "_comment": "Libreria di reference visive (moodboard) usate dalla Content Factory come MULTI-REFERENCE su Higgsfield Nano Banana Pro. Ogni voce ha: URL pubblico (o vuoto se da popolare), tag estetici, brand-feel ispirato. La Factory seleziona 1-2 ref per generazione, in base ai tag del brief.",
+  "_schema": {
+    "id": "slug univoco",
+    "url": "URL https pubblico dell'immagine (o vuoto)",
+    "name": "nome leggibile",
+    "category": "fashion-campaign | art-direction | cinema | lifestyle-photo | streetwear-lookbook | product-flatlay",
+    "tags": "array di tag estetici (mood, light, color, era)",
+    "useFor": "array di brief-tag dove questa ref è ottima: gen-z-anime | art-lover | urban-streetwear | gift-buyer | community | hero-shot | flat-lay | reel | pinterest",
+    "notes": "perché è nel moodboard JAYL"
+  },
+  "_instructions_for_jayl": "Quando vuoi aggiungere una reference: 1) carica l'immagine pubblicamente accessibile (Vercel Blob, Cloudinary, GitHub raw URL) 2) aggiungi una voce in 'refs' qui sotto con url popolato. La Content Factory rifiuterà voci con url vuoto.",
+  "refs": [
+    {
+      "id": "jacquemus-le-bleu-sun",
+      "url": "",
+      "name": "Jacquemus — Le Bleu sun-soaked campaign",
+      "category": "fashion-campaign",
+      "tags": ["sun-drenched", "warm-tones", "minimal", "mediterranean", "editorial"],
+      "useFor": ["hero-shot", "urban-streetwear", "art-lover", "instagram"],
+      "notes": "Vibe Venezia-Mediterraneo che matcha JAYL origin"
+    },
+    {
+      "id": "bottega-soft-light",
+      "url": "",
+      "name": "Bottega Veneta — soft cream light",
+      "category": "fashion-campaign",
+      "tags": ["cream", "soft-light", "luxury", "minimal", "editorial"],
+      "useFor": ["hero-shot", "art-lover", "instagram", "pinterest"],
+      "notes": "Match diretto con palette cream/ink del brand"
+    },
+    {
+      "id": "loewe-craft-portrait",
+      "url": "",
+      "name": "Loewe — craft portrait series",
+      "category": "fashion-campaign",
+      "tags": ["dark", "moody", "craft", "portrait", "rich-colors"],
+      "useFor": ["hero-shot", "art-lover", "instagram", "feed"],
+      "notes": "Direzione artistica colta, mai pop-cliché"
+    },
+    {
+      "id": "saint-laurent-night",
+      "url": "",
+      "name": "Saint Laurent — night street",
+      "category": "fashion-campaign",
+      "tags": ["night", "urban", "high-contrast", "street", "moody"],
+      "useFor": ["urban-streetwear", "tiktok", "reel"],
+      "notes": "Energia notturna urbana per TikTok"
+    },
+    {
+      "id": "a24-cinema-grain",
+      "url": "",
+      "name": "A24 film stills — grain & color",
+      "category": "cinema",
+      "tags": ["grain", "cinematic", "warm-shadow", "muted", "story"],
+      "useFor": ["hero-shot", "art-lover", "community", "instagram"],
+      "notes": "Texture cinematica che JAYL prompt richiama esplicitamente (Hasselblad, film grain)"
+    },
+    {
+      "id": "jw-anderson-quiet",
+      "url": "",
+      "name": "JW Anderson — quiet editorial",
+      "category": "fashion-campaign",
+      "tags": ["minimal", "neutral", "quiet", "editorial", "white-space"],
+      "useFor": ["product-flatlay", "pinterest", "feed"],
+      "notes": "Quiet luxury — match diretto con tono silent confidence"
+    },
+    {
+      "id": "kodak-portra-400",
+      "url": "",
+      "name": "Kodak Portra 400 — analog reference",
+      "category": "lifestyle-photo",
+      "tags": ["film", "warm-shadows", "lifted-blacks", "natural"],
+      "useFor": ["hero-shot", "reel", "instagram", "tiktok"],
+      "notes": "Esplicitamente citato in generate-prompts.js — film simulation di riferimento"
+    },
+    {
+      "id": "fujifilm-superia",
+      "url": "",
+      "name": "Fujifilm Superia — gritty street film",
+      "category": "lifestyle-photo",
+      "tags": ["gritty", "urban", "midday-light", "harsh", "street"],
+      "useFor": ["urban-streetwear", "tiktok", "reel"],
+      "notes": "Citato nello screenshot Nano Banana Pro — coerenza con preset di Jayl"
+    },
+    {
+      "id": "supreme-lookbook-90s",
+      "url": "",
+      "name": "Supreme — 90s skate lookbook",
+      "category": "streetwear-lookbook",
+      "tags": ["90s", "skate", "pop-culture", "raw"],
+      "useFor": ["gen-z-anime", "urban-streetwear", "tiktok"],
+      "notes": "Anchor culturale per drop pop-culture (Pokémon, anime)"
+    },
+    {
+      "id": "studio-ghibli-light",
+      "url": "",
+      "name": "Studio Ghibli — golden hour stills",
+      "category": "cinema",
+      "tags": ["golden-hour", "warm", "nostalgic", "anime"],
+      "useFor": ["gen-z-anime", "art-lover", "pinterest"],
+      "notes": "Per collezioni anime/nostalgia — luce dorata Ghibli, non kitsch"
+    },
+    {
+      "id": "hasselblad-portrait-classic",
+      "url": "",
+      "name": "Hasselblad — medium format portrait reference",
+      "category": "lifestyle-photo",
+      "tags": ["medium-format", "studio", "deep-shadows", "warm-key", "luxury"],
+      "useFor": ["hero-shot", "feed", "instagram"],
+      "notes": "Esplicitamente nei prompt JAYL — Hasselblad medium format aesthetic"
+    },
+    {
+      "id": "venice-light-archive",
+      "url": "",
+      "name": "Venezia — light & water archive",
+      "category": "lifestyle-photo",
+      "tags": ["water", "warm-stone", "filtered-light", "mediterranean"],
+      "useFor": ["community", "pinterest", "instagram"],
+      "notes": "Anchor città di origine — Venice 2025 brand story"
+    }
+  ]
+}

@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     if (!addrCheck.ok) return res.status(400).json({ error: addrCheck.error })
     const addr = addrCheck.address
 
-    const { subtotal, shipping, total: rawTotal } = computeTotals(priced.items)
+    const { subtotal, total: rawTotal } = computeTotals(priced.items)
 
     // Apply discount code if provided
     let discountAmount = 0

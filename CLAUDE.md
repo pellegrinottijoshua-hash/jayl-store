@@ -9,7 +9,7 @@ E-commerce JAYL (jayl.store): print-on-demand t-shirts via Gelato, admin panel a
 
 ## Commands
 - `npm run dev` — local dev (Vite). API routes need `vercel dev` or the prod URL.
-- `npm run build` — prebuild generates `public/sitemap.xml` via `scripts/generate-sitemap.js`. The file is tracked but regenerated on every build, so don't hand-edit it. Collection URLs come from each product's `collection` string — never from the admin collection id, which drifts from it.
+- `npm run build` — prebuild generates `public/sitemap.xml` via `scripts/generate-sitemap.js`. The file is gitignored (regenerated on every build, including on Vercel) — don't hand-edit or re-add it. Collection URLs come from each product's `collection` string — never from the admin collection id, which drifts from it.
 - `npm run lint` — ESLint 9 flat config (`eslint.config.js`). Errors block; there is a known backlog of ~45 warnings (dead bindings + `react-hooks/exhaustive-deps`) to burn down. **Don't add new errors, and don't silence a rule to make one go away.**
 
 ## CRITICAL git rule

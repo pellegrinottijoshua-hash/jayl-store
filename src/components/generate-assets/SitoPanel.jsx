@@ -1,9 +1,8 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-import { generatePrompts as staticPrompts } from '@/data/generate-prompts'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import PromptCard from './PromptCard'
 import {
   api, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES,
-  subVars, toAbsoluteUrl, downloadAsset,
+  subVars, toAbsoluteUrl,
 } from './constants'
 
 // ── Sito section types ─────────────────────────────────────────────────────────

@@ -43,7 +43,6 @@ function StatusTimeline({ status }) {
       {STATUS_STEPS.map((step, i) => {
         const done    = i < activeIdx
         const current = i === activeIdx
-        const future  = i > activeIdx
         return (
           <div key={step} className="flex items-start gap-3">
             <div className="flex flex-col items-center flex-shrink-0">

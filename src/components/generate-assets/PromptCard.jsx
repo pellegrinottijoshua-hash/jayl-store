@@ -32,12 +32,11 @@ async function compressImageIfNeeded(file) {
     img.src = blobUrl
   })
 }
-import { btnPrimary, btnGhost, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, DESTINATION_META, toAbsoluteUrl, downloadAsset, api, getAdminPassword } from './constants'
+import { btnPrimary, btnGhost, IMAGE_MODELS, VIDEO_MODELS, IMAGE_SIZES, DESTINATION_META, toAbsoluteUrl, downloadAsset, getAdminPassword } from './constants'
 
 // PromptCard — usato sia da SitoPanel che da InfluencerPanel
 export default function PromptCard({
   template,
-  productId,       // for reference uploads
   isVideo,
   promptText,
   onPromptChange,

@@ -351,7 +351,7 @@ export async function sendEmail({ to, subject, html, replyTo }) {
 
 // ── Template: abandoned cart ──────────────────────────────────────────────────
 
-export function buildAbandonedCartEmail({ email, cartItems = [] }) {
+export function buildAbandonedCartEmail({ cartItems = [] }) {
   const itemsHtml = cartItems.length > 0 ? `
     <tr><td style="padding:20px 0 16px">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">

@@ -428,10 +428,6 @@ const KONTEXT_MODELS = new Set([
   'fal-ai/flux-pro/kontext/max',
 ])
 
-const GPT_IMAGE_MODELS = new Set([
-  'fal-ai/gpt-image-1/text-to-image',
-  'fal-ai/gpt-image-1/edit-image',
-])
 
 // Strictly text-to-image — no img2img endpoint exists for these
 const T2I_ONLY = new Set([

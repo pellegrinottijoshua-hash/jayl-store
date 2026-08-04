@@ -640,7 +640,6 @@ function CheckoutForm() {
 
 export default function CheckoutPage() {
   const { items } = useCartStore()
-  const navigate = useNavigate()
 
   if (items.length === 0) {
     return (

@@ -82,9 +82,6 @@ export default function CollectionPage() {
   const textCls  = isDark ? 'text-cream'    : 'text-ink'
   const mutedCls = isDark ? 'text-text-muted' : 'text-ink-muted'
   const borderCls = isDark ? 'border-border' : 'border-paper-border'
-  const pillActive = isDark
-    ? 'bg-cream text-black border-cream'
-    : 'bg-ink text-paper border-ink'
   const cardBg   = isDark ? 'bg-surface' : 'bg-paper-2'
   const imgAspect = isDark ? '1 / 1' : '3 / 4'
 

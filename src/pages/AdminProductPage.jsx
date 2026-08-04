@@ -3,7 +3,8 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { upload as blobUpload } from '@vercel/blob/client'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
-import { products as allProducts } from '@/data/products'
+// Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
+import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
@@ -12,7 +13,6 @@ const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijosh
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 const fmt = cents => `€${(cents / 100).toFixed(2)}`
 const sanitizeFilename = name => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
 

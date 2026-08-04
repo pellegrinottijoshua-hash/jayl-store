@@ -3,11 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
 import { adminCollections } from '@/data/admin-collections'
-import { formatPrice, slugToTitle } from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
-const artProducts     = products.filter((p) => p.section === 'art')
 const objectsProducts = products.filter((p) => p.section === 'objects')
 
 // Featured products for sections 3 + 4 — set via admin slot buttons (① ②)

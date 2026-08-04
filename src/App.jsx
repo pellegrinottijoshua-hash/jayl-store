@@ -3,29 +3,36 @@ import { useLayoutEffect, useEffect, lazy, Suspense } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
+// Eager: the pages on the browse-to-buy path. Anything a first-time visitor is
+// likely to hit before deciding, so no chunk waterfall where it hurts.
 import HomePage from '@/pages/HomePage'
 import ArtPage from '@/pages/ArtPage'
 import ObjectsPage from '@/pages/ObjectsPage'
-import ArtistPage from '@/pages/ArtistPage'
 import ProductPage from '@/pages/ProductPage'
-import CheckoutPage from '@/pages/CheckoutPage'
-import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
-import ContactPage from '@/pages/ContactPage'
-import ShippingPage from '@/pages/ShippingPage'
-import ReturnsPage from '@/pages/ReturnsPage'
-import TermsPage from '@/pages/TermsPage'
-import PrivacyPage from '@/pages/PrivacyPage'
-import CookiesPage from '@/pages/CookiesPage'
+import CollectionPage from '@/pages/CollectionPage'
+import EmailCapturePopup from '@/components/EmailCapturePopup'
+import CookieBanner from '@/components/CookieBanner'
+
 // Admin panel is owner-only + heavy (generate-assets, big editors) — lazy-load it
 // so its code and deps stay OUT of the storefront's main bundle.
 const AdminPage        = lazy(() => import('@/pages/AdminPage'))
 const AdminProductPage = lazy(() => import('@/pages/AdminProductPage'))
-import WishlistPage from '@/pages/WishlistPage'
-import TrackPage from '@/pages/TrackPage'
-import CollectionPage from '@/pages/CollectionPage'
-import AmbassadorPage from '@/pages/AmbassadorPage'
-import EmailCapturePopup from '@/components/EmailCapturePopup'
-import CookieBanner from '@/components/CookieBanner'
+
+// Checkout drags in the whole Stripe SDK — nobody pays before they browse.
+const CheckoutPage          = lazy(() => import('@/pages/CheckoutPage'))
+const OrderConfirmationPage = lazy(() => import('@/pages/OrderConfirmationPage'))
+
+// Long-tail pages: reached from the footer or a link, never on the critical path.
+const ArtistPage     = lazy(() => import('@/pages/ArtistPage'))
+const WishlistPage   = lazy(() => import('@/pages/WishlistPage'))
+const TrackPage      = lazy(() => import('@/pages/TrackPage'))
+const AmbassadorPage = lazy(() => import('@/pages/AmbassadorPage'))
+const ContactPage    = lazy(() => import('@/pages/ContactPage'))
+const ShippingPage   = lazy(() => import('@/pages/ShippingPage'))
+const ReturnsPage    = lazy(() => import('@/pages/ReturnsPage'))
+const TermsPage      = lazy(() => import('@/pages/TermsPage'))
+const PrivacyPage    = lazy(() => import('@/pages/PrivacyPage'))
+const CookiesPage    = lazy(() => import('@/pages/CookiesPage'))
 
 /** Fire a GA4 page_view only when analytics consent has been granted. */
 function useGA4PageTracking() {

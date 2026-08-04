@@ -1,7 +1,8 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { upload as blobUpload } from '@vercel/blob/client'
-import { products as allProducts } from '@/data/products'
+// Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
+import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
@@ -319,7 +320,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [pinterestPublishing,  setPinterestPublishing]  = useState(false)
   const [pinterestMsg,         setPinterestMsg]         = useState('')
   const [pinterestPinUrl,      setPinterestPinUrl]      = useState('')
-  const [pinterestImageChoice, setPinterestImageChoice] = useState('')
+  const [pinterestImageChoice] = useState('')
   // Per-image alt text
   const [imageAlts,        setImageAlts]        = useState(
     editingProduct?.imageAlts && typeof editingProduct.imageAlts === 'object' ? editingProduct.imageAlts : {}
@@ -519,7 +520,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     finally { setLoadingBoards(false) }
   }
 
-  const publishToPinterest = async (productId, productName) => {
+  const publishToPinterest = async (productId) => {
     if (!pinterestBoardId.trim()) return setPinterestMsg('⚠ Seleziona un board prima')
     const imageUrl = pinterestImageChoice || desktopHero || (poolImages[0]?.url)
     if (!imageUrl) return setPinterestMsg('⚠ Nessuna immagine trovata')
@@ -1656,8 +1657,7 @@ function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deletin
 
 // ── Product List Tab ──────────────────────────────────────────────────────────
 
-function ProductsTab({ onEdit, onGenerate, onGallery }) {
-  const navigate = useNavigate()
+function ProductsTab({ onGenerate, onGallery }) {
   const [deletingId,   setDeletingId]   = useState(null)
   const [bulkDeleting, setBulkDeleting] = useState(false)
   const [error,        setError]        = useState('')
@@ -1704,7 +1704,7 @@ function ProductsTab({ onEdit, onGenerate, onGallery }) {
         await api('delete-product', { productId: p.id })
         setHidden(prev => [...prev, p.id])
         setSelectedIds(prev => { const n = new Set(prev); n.delete(p.id); return n })
-      } catch (e) {
+      } catch {
         failed.push(p.id)
       }
     }
@@ -3667,14 +3667,6 @@ function SeoAuditTab() {
     finally { setSaving(null) }
   }
 
-  const scoreColor = (val, max, warn, ok) => {
-    if (!val) return 'text-red-400'
-    const len = typeof val === 'string' ? val.length : (Array.isArray(val) ? val.length : 0)
-    if (len >= ok)   return 'text-emerald-400'
-    if (len >= warn) return 'text-yellow-400'
-    return 'text-red-400'
-  }
-
   return (
     <div>
       {error && <div className="mx-4 mb-3 bg-red-900/20 border border-red-800 px-4 py-2 text-red-400 text-sm">{error}</div>}
@@ -3684,7 +3676,6 @@ function SeoAuditTab() {
 
       <div className="divide-y divide-gray-800/50">
         {allProducts.map(p => {
-          const status = getProductStatus(p)
           const seoOk  = !!(p.seoTitle?.trim() && p.seoDescription?.trim())
           const hasSug = !!suggestions[p.id]
           const isOpen = expandedId === p.id
@@ -4285,9 +4276,6 @@ export default function AdminPage() {
     setTab(id)
   }
 
-  // Secondary tabs shown via MoreDrawer
-  const isSecondaryTab = ['add', 'collections', 'personas', 'orders', 'settings'].includes(tab)
-
   return (
     <>
       {/* ── Edit modal ── */}
@@ -4387,7 +4375,7 @@ export default function AdminPage() {
           {tab === 'home'        && <HomeTab onNavigate={navigate} onGenerate={handleGenerate} />}
           {tab === 'products'    && (
             <div className="px-4 pt-4">
-              <ProductsTab onEdit={handleEdit} onGenerate={handleGenerate} onGallery={handleGallery} />
+              <ProductsTab onGenerate={handleGenerate} onGallery={handleGallery} />
             </div>
           )}
           {tab === 'generate'    && <GenerateTab onGenerate={handleGenerate} onGallery={handleGallery} />}
