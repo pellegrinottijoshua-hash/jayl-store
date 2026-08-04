@@ -559,7 +559,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       .then(d => setPoolImages(d.images || []))
       .catch(() => {})
       .finally(() => setPoolLoading(false))
-  }, [productId, poolRefreshKey]) // eslint-disable-line
+  }, [productId, poolRefreshKey])  
 
   // ── Pool image upload (immediate, same hybrid logic as AdminProductPage) ─────
   const doPoolUpload = useCallback(async files => {
@@ -597,7 +597,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       setPoolUploading(false)
       if (poolFileRef.current) poolFileRef.current.value = ''
     }
-  }, [productId]) // eslint-disable-line
+  }, [productId])  
 
   const toggleSequenza = useCallback(url => {
     setSequenza(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url])

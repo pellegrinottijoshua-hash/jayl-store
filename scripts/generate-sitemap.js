@@ -11,8 +11,7 @@ import { dirname, resolve } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Read data files directly (avoid Vite alias resolution)
-const productsPath    = resolve(__dirname, '../src/data/admin-products.js')
-const collectionsPath = resolve(__dirname, '../src/data/admin-collections.js')
+const productsPath = resolve(__dirname, '../src/data/admin-products.js')
 
 function extractExport(filePath) {
   const raw = readFileSync(filePath, 'utf-8')
@@ -22,14 +21,23 @@ function extractExport(filePath) {
   return JSON.parse(match[1].replace(/,\s*\]/g, ']').replace(/,\s*\}/g, '}'))
 }
 
-let adminProducts, adminCollections
+let adminProducts
 try {
-  adminProducts    = extractExport(productsPath)
-  adminCollections = extractExport(collectionsPath)
+  adminProducts = extractExport(productsPath)
 } catch (err) {
   console.error('[sitemap] Could not parse data files:', err.message)
-  adminProducts    = []
-  adminCollections = []
+  adminProducts = []
+}
+
+/**
+ * Must stay identical to `collectionSlug` in src/pages/CollectionPage.jsx and
+ * `colSlug` in api/orders.js. Collection URLs are derived from each product's
+ * own `collection` string — NOT from the admin collection id, which drifts from
+ * it (id "cool-pok-mon-back" vs product "cool pokemon back") and would emit a
+ * URL that renders an empty page.
+ */
+function collectionSlug(name) {
+  return String(name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
 const SITE_URL = 'https://jayl.store'
@@ -78,10 +86,14 @@ for (const product of adminProducts) {
   </url>`)
 }
 
-for (const coll of adminCollections) {
-  if (!coll.id) continue
+// Only collections that actually resolve to products get a URL.
+const collectionSlugs = [...new Set(
+  adminProducts.map(p => collectionSlug(p.collection)).filter(Boolean)
+)]
+
+for (const slug of collectionSlugs) {
   urls.push(`  <url>
-    <loc>${esc(`${SITE_URL}/collection/${coll.id}`)}</loc>
+    <loc>${esc(`${SITE_URL}/collection/${slug}`)}</loc>
     <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

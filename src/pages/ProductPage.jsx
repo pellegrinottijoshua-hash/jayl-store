@@ -99,56 +99,42 @@ const APPAREL_COLOR_HEX = {
   'lilac': '#c8a2c8', 'orchid': '#da70d6',
 
   // ── Browns & naturals ─────────────────────────────────────────────────────
-  'brown': '#795548', 'chocolate': '#5d3c1e', 'dark chocolate': '#3d1c02',
-  'natural': '#d4c5a9', 'cream': '#f0ece4', 'bone': '#d4cdc0',
-  'sand': '#c8b89a', 'tan': '#c4a882', 'khaki': '#c3b091',
+  'brown': '#795548', 'chocolate': '#5d3c1e',
+  'cream': '#f0ece4', 'bone': '#d4cdc0',
+  'tan': '#c4a882', 'khaki': '#c3b091',
   'beige': '#d9c9a3', 'camel': '#c19a6b', 'linen': '#faf0e6',
   'stone': '#b0a090', 'hemp': '#c7b08b',
 
   // ── Gelato compound color names (exact strings from the API) ─────────────
-  'cardinal red': '#c41230',   'fire red': '#bf0a0a',   'true red': '#cc2200',
-  'natural white': '#f8f4ee', 'off white': '#f0ece4', 'dtg white': '#f5f5f5', 'dtg black': '#1a1a1a',
+  // Only names not already covered above — a repeated key would silently shadow
+  // the earlier one, so every entry here must be new.
+  'cardinal red': '#c41230', 'dtg white': '#f5f5f5', 'dtg black': '#1a1a1a',
   'heather ice blue': '#c5dce8', 'heather mint': '#b5e0d0',
   'heather peach': '#f5c6a0', 'heather red': '#c05050',
   'heather forest': '#4a7a50', 'heather midnight navy': '#2a3a6a',
   'heather true royal': '#4169e1', 'heather cardinal': '#9b2335',
   'heather maroon': '#6e2233', 'heather dark chocolate': '#5a3020',
   'heather sport dark navy': '#1a2a4a', 'sport dark navy': '#1a2a4a',
-  'sport dark green': '#1e4d2b', 'sport grey': '#a0a0a0',
+  'sport dark green': '#1e4d2b',
   'athletic heather': '#b0b0b8', 'heather athletic': '#b0b0b8',
   'dark heather gray': '#585858', 'dark heather grey': '#585858',
   'vintage heather navy': '#3a4a6a', 'vintage heather black': '#3a3a3a',
-  'tri blend charcoal': '#4a4a4a', 'solid black triblend': '#1a1a1a',
-  'solid white triblend': '#f0f0f0', 'triblend navy': '#3a5280',
-  'navy blue': '#1f2d5c', 'dark navy': '#0f1a3a', 'navy heather': '#3a4a72',
-  'royal blue': '#4169e1', 'heather royal': '#4169e1',
-  'forest green': '#228b22', 'dark green': '#165a16', 'hunter green': '#355e3b',
-  'kelly green': '#4cbb17', 'army green': '#4b5320', 'military green': '#4a5240',
-  'heather green': '#5a8a60', 'military olive': '#5a5a28',
-  'burnt orange': '#cc5500', 'deep orange': '#b84200',
-  'dark purple': '#4b0082', 'heather purple': '#9b59b6',
-  'light pink': '#ffb6c1', 'hot pink': '#e82a8a', 'neon pink': '#ff6eb4',
-  'dusty rose': '#dcb0b0',
-  'jet black': '#111111', 'washed black': '#1a1a1a', 'faded black': '#333333',
-  'vintage black': '#2a2a2a', 'black heather': '#2d2d2d',
-  'light blue': '#6ba4d4', 'sky blue': '#87ceeb', 'carolina blue': '#56a0d3',
-  'steel blue': '#4682b4', 'ocean blue': '#006994', 'midnight navy': '#0a0f3c',
-  'bright yellow': '#ffe135', 'antique gold': '#c9ae5d', 'metallic gold': '#d4af37',
-  'light gray': '#c8c8c8', 'light grey': '#c8c8c8', 'heather gray': '#aaaaaa',
-  'heather grey': '#aaaaaa', 'charcoal gray': '#3d3d3d',
+  'navy heather': '#3a4a72', 'charcoal gray': '#3d3d3d',
 
   // ── Gelato / Gildan catalog names (incl. "RS …" brand-prefixed) ────────────
-  'royal': '#3a5dae', 'rs royal': '#3a5dae', 'heather royal': '#4169e1',
+  // Gildan's own swatches for 'sand', 'natural' and 'dark chocolate' are warmer
+  // than the generic names above, so the catalog values are the ones we keep.
+  'royal': '#3a5dae', 'rs royal': '#3a5dae',
   'rs sport grey': '#a0a0a0', 'rs sport gray': '#a0a0a0',
   'sportgrey': '#a0a0a0', 'graphite heather': '#5b5f63',
   'irish green': '#00a651', 'rs irish green': '#00a651',
   'azalea': '#f25f9c', 'heliconia': '#db3e79', 'antique heliconia': '#c84e7a',
-  'safety pink': '#ff5fa2', 'cornsilk': '#f5e6a8', 'daisy': '#f5d842',
-  'old gold': '#b8923a', 'gold': '#c8a42c', 'tweed': '#5a5750',
+  'safety pink': '#ff5fa2', 'cornsilk': '#f5e6a8',
+  'old gold': '#b8923a', 'tweed': '#5a5750',
   'sand': '#d8c9a3', 'natural': '#e8ddc4', 'sapphire': '#0f52ba',
   'antique sapphire': '#0b6e8f', 'tropical blue': '#0073cf', 'indigo blue': '#3b4a8c',
   'antique cherry red': '#9e1b32', 'safety green': '#c8e600', 'safety orange': '#ff5a1f',
-  'dark chocolate': '#3a2820', 'military green': '#4a5240', 'kiwi': '#8fbf3f',
+  'dark chocolate': '#3a2820', 'kiwi': '#8fbf3f',
 }
 
 /** Resolve best hex for a color object — falls back to label name lookup, then null */
@@ -573,23 +559,34 @@ export default function ProductPage() {
   // Ref on the in-flow "Add to Cart" button — sticky bar shows when it leaves viewport
   const addToCartBtnRef = useRef(null)
 
-  // Jump to color image when color changes (only when not in hero-image mode)
+  // Whichever image array is actually shown in the gallery (hero gallery takes priority)
+  const galleryImages = product?.heroImages?.length > 0 ? product.heroImages : product?.images
+
+  // Admin-authored color.image paths sometimes point at a stale directory/filename
+  // that no longer matches product.images — fall back to matching by color slug
+  // in the filename (e.g. "...-carolina-blue-01.jpg") when the exact URL doesn't match.
+  const colorMatchesImage = (color, img) => {
+    if (!color?.image || !img) return false
+    if (color.image === img) return true
+    const slug = colorToSlug(color.label || color.id)
+    return !!slug && img.toLowerCase().includes(slug)
+  }
+
+  // Jump to color image when color changes
   useEffect(() => {
-    if (!selectedColor || !product?.colors) return
-    if (product.heroImages?.length > 0) return // hero gallery is editorial — don't jump
+    if (!selectedColor || !product?.colors || !galleryImages) return
     const colorObj = product.colors.find(c => c.id === selectedColor)
-    if (!colorObj?.image) return
-    const idx = product.images?.findIndex(img => img === colorObj.image) ?? -1
-    if (idx >= 0) setActiveImage(idx)
+    if (!colorObj) return
+    const idx = galleryImages.findIndex(img => colorMatchesImage(colorObj, img))
+    if (idx >= 0 && idx !== activeImage) setActiveImage(idx)
   }, [selectedColor])
 
   // Reverse sync: when the active gallery image is a color variant, highlight its swatch
   useEffect(() => {
-    if (activeImage < 0 || !product?.colors || !product?.images) return
-    if (product.heroImages?.length > 0) return // editorial hero gallery — not per-color
-    const img = product.images[activeImage]
+    if (activeImage < 0 || !product?.colors || !galleryImages) return
+    const img = galleryImages[activeImage]
     if (!img) return
-    const match = product.colors.find(c => c.image && c.image === img)
+    const match = product.colors.find(c => colorMatchesImage(c, img))
     if (match && match.id !== selectedColor) setSelectedColor(match.id)
   }, [activeImage])
 
@@ -605,29 +602,21 @@ export default function ProductPage() {
     return () => obs.disconnect()
   }, [product])
 
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-paper pt-32 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="font-display text-4xl text-ink mb-4">Not Found</h1>
-        <p className="text-ink-secondary mb-8">This work doesn't exist (yet).</p>
-        <Link to="/art" className="btn-ink">Back to Shop</Link>
-      </div>
-    )
-  }
-
   // ── Computed values ──────────────────────────────────────────────────────────
+  // `product` may be null (unknown slug) — the "Not Found" bail-out lives further
+  // down, after the last hook, so these stay optional-chained.
 
-  const sizeObj   = product.sizes?.find((s) => s.id === selectedSize)
-  const frameObj  = product.frames?.find((f) => f.id === selectedFrame)
-  const totalPrice = (sizeObj?.price ?? product.price) + (frameObj?.price ?? 0)
+  const sizeObj   = product?.sizes?.find((s) => s.id === selectedSize)
+  const frameObj  = product?.frames?.find((f) => f.id === selectedFrame)
+  const totalPrice = (sizeObj?.price ?? product?.price) + (frameObj?.price ?? 0)
 
   // Normalise image list (fallback to product.image)
-  const productImages = product.images?.length > 0
+  const productImages = product?.images?.length > 0
     ? product.images
-    : (product.image ? [product.image] : [])
+    : (product?.image ? [product.image] : [])
 
   // Hero mode: admin-selected editorial images override the default gallery
-  const heroImages    = product.heroImages?.length > 0 ? product.heroImages : null
+  const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
   // displayImages is what the main carousel shows
   const displayImages = heroImages ?? productImages
 
@@ -646,7 +635,7 @@ export default function ProductPage() {
   const totalMobileSlides = (videoInfo ? 1 : 0) + displayImages.length
 
   // Which sizes are available for the selected color (when variants exist)
-  const availableSizesForColor = (product.variants?.length && selectedColor)
+  const availableSizesForColor = (product?.variants?.length && selectedColor)
     ? new Set(
         product.variants
           .filter(v => colorToSlug(v.color) === colorToSlug(selectedColor))
@@ -654,7 +643,7 @@ export default function ProductPage() {
       )
     : null
 
-  const canAddToCart = !!selectedSize || !product.sizes?.length
+  const canAddToCart = !!selectedSize || !product?.sizes?.length
 
   // ── Event handlers ───────────────────────────────────────────────────────────
 
@@ -716,6 +705,18 @@ export default function ProductPage() {
     onSwipeLeft:  () => setActiveImage(i => Math.min(i + 1, maxSlide)),
     onSwipeRight: () => setActiveImage(i => Math.max(i - 1, minSlide)),
   })
+
+  // Last hook has run — safe to bail out. Returning any earlier would change the
+  // hook count between renders and crash React when navigating to a bad slug.
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-paper pt-32 flex flex-col items-center justify-center text-center px-4">
+        <h1 className="font-display text-4xl text-ink mb-4">Not Found</h1>
+        <p className="text-ink-secondary mb-8">This work doesn&apos;t exist (yet).</p>
+        <Link to="/art" className="btn-ink">Back to Shop</Link>
+      </div>
+    )
+  }
 
   const related = products
     .filter((p) => p.section === product.section && p.id !== product.id)

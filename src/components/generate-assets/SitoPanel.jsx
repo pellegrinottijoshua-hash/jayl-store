@@ -61,7 +61,7 @@ export default function SitoPanel({
     }
     setLocalPrompts(local)
     setPromptSettings(settings)
-  }, [productName, productType, primaryColor, collection]) // eslint-disable-line
+  }, [productName, productType, primaryColor, collection])  
 
   useEffect(() => {
     api('read-prompts', {})

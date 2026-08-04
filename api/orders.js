@@ -578,6 +578,9 @@ const absUrl   = (u) => !u ? '' : (/^https?:\/\//i.test(u) ? u : `${SITE_URL}${u
 // Must mirror CollectionPage.collectionSlug EXACTLY (no diacritics normalization)
 // so prerendered /collection/:slug matches the same products the SPA routes to.
 const colSlug  = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+// Mirrors LEGACY_COLLECTION_SLUGS in CollectionPage.jsx — collection URLs the
+// sitemap once built from the admin collection id instead of product.collection.
+const LEGACY_COLLECTION_SLUGS = { 'cool-pok-mon-back': 'cool-pokemon-back' }
 const ogImageFor = (p) => {
   const params = new URLSearchParams()
   params.set('title', p.seoTitle || p.name || 'JAYL')
@@ -645,7 +648,8 @@ function handlePrerender(req, res) {
       html = prerenderHtml({ title: `${name} — JAYL`, description, image: ogImageFor(p), url, jsonLd, ogType: 'product', h1: name })
     }
   } else if (path.startsWith('/collection/')) {
-    const slug  = decodeURIComponent(path.slice(12)).replace(/\/+$/, '')
+    const raw   = decodeURIComponent(path.slice(12)).replace(/\/+$/, '')
+    const slug  = LEGACY_COLLECTION_SLUGS[raw] ?? raw
     const inCol = adminProducts.filter(p => colSlug(p.collection) === slug)
     if (inCol.length) {
       const name = inCol[0].collection || slug
@@ -653,6 +657,7 @@ function handlePrerender(req, res) {
         title:       `${name} — JAYL`,
         description: `Shop the ${name} collection at JAYL — ${inCol.length} pieces of premium print-on-demand wearable art.`.slice(0, 280),
         image:       ogImageFor(inCol[0]),
+        // Always the canonical slug, so a legacy URL points crawlers at the real one
         url:         `${SITE_URL}/collection/${slug}`,
         h1:          name,
       })

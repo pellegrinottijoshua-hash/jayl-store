@@ -11,19 +11,31 @@ function collectionSlug(name) {
   return (name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
+/**
+ * URLs the sitemap used to publish, built from the admin collection *id* instead
+ * of the product's own `collection` string. They render nothing, so send them to
+ * the canonical slug rather than bouncing visitors to /art. Add an entry here if
+ * a collection name with accents ever ships a mismatched id again.
+ */
+const LEGACY_COLLECTION_SLUGS = {
+  'cool-pok-mon-back': 'cool-pokemon-back',
+}
+
 export default function CollectionPage() {
   const { slug } = useParams()
   const { setPageTheme, setActiveSection } = useThemeStore()
   const [sortBy, setSortBy] = useState('default')
 
+  const canonicalSlug = LEGACY_COLLECTION_SLUGS[slug] ?? slug
+
   // Find items that belong to this collection
   const collectionProducts = useMemo(
-    () => products.filter((p) => collectionSlug(p.collection) === slug),
-    [slug],
+    () => products.filter((p) => collectionSlug(p.collection) === canonicalSlug),
+    [canonicalSlug],
   )
 
   // Derive the display name from the first matching product
-  const collectionName = collectionProducts[0]?.collection ?? slugToTitle(slug)
+  const collectionName = collectionProducts[0]?.collection ?? slugToTitle(canonicalSlug)
 
   // Detect section from products to set the right theme
   const section = collectionProducts[0]?.section ?? 'art'
@@ -50,16 +62,21 @@ export default function CollectionPage() {
     }
   }, [isDark, setPageTheme, setActiveSection])
 
-  if (collectionProducts.length === 0) {
-    return <Navigate to="/art" replace />
-  }
-
   const sorted = useMemo(() => {
     let list = [...collectionProducts]
     if (sortBy === 'price-asc')  list.sort((a, b) => a.price - b.price)
     if (sortBy === 'price-desc') list.sort((a, b) => b.price - a.price)
     return list
   }, [collectionProducts, sortBy])
+
+  // Every hook above runs on all renders — only bail out once they have.
+  if (canonicalSlug !== slug) {
+    return <Navigate to={`/collection/${canonicalSlug}`} replace />
+  }
+
+  if (collectionProducts.length === 0) {
+    return <Navigate to="/art" replace />
+  }
 
   const bgCls    = isDark ? 'bg-off-black'  : 'bg-paper'
   const textCls  = isDark ? 'text-cream'    : 'text-ink'

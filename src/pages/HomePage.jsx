@@ -366,6 +366,7 @@ export default function HomePage() {
         className="h-screen w-screen relative overflow-hidden"
         style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}
       > */}
+      {/* eslint-disable-next-line no-constant-binary-expression -- deliberate kill switch: re-enable when the section has 6+ products */}
       {false && <section
         className="h-screen w-screen relative overflow-hidden"
         style={{ backgroundColor: '#f5f0e8', colorScheme: 'light' }}

@@ -9,8 +9,8 @@ E-commerce JAYL (jayl.store): print-on-demand t-shirts via Gelato, admin panel a
 
 ## Commands
 - `npm run dev` — local dev (Vite). API routes need `vercel dev` or the prod URL.
-- `npm run build` — prebuild generates `public/sitemap.xml` via `scripts/generate-sitemap.js`. **Never commit sitemap.xml — it's generated.**
-- `npm run lint` — ESLint, zero-warning policy.
+- `npm run build` — prebuild generates `public/sitemap.xml` via `scripts/generate-sitemap.js`. The file is tracked but regenerated on every build, so don't hand-edit it. Collection URLs come from each product's `collection` string — never from the admin collection id, which drifts from it.
+- `npm run lint` — ESLint 9 flat config (`eslint.config.js`). Errors block; there is a known backlog of ~45 warnings (dead bindings + `react-hooks/exhaustive-deps`) to burn down. **Don't add new errors, and don't silence a rule to make one go away.**
 
 ## CRITICAL git rule
 The admin panel writes changes by committing **directly to remote main** via the GitHub Contents API (products, orders, reviews, queue). Local is therefore often behind remote:

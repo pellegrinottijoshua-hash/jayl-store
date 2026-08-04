@@ -86,7 +86,7 @@ export default async function handler(req, res) {
 
         // Fallback: parse from variant title like "Black / M" or "Red - XL - DTG (Direct-to-garment)"
         if ((!color || !size) && v.title) {
-          const parts = v.title.split(/\s*[\/\-]\s*/).map(p => p.trim()).filter(Boolean)
+          const parts = v.title.split(/\s*[/-]\s*/).map(p => p.trim()).filter(Boolean)
           if (parts.length >= 2) {
             const sizeKeywords = /^(xs|s|m|l|xl|2xl|3xl|4xl|xxl|one.?size|\d+(\.\d+)?(cm|in|oz|g)?)$/i
             // First part is almost always the color
