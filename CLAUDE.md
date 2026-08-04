@@ -18,8 +18,12 @@ The admin panel writes changes by committing **directly to remote main** via the
 - If a push is rejected non-fast-forward or pull complains about unstaged changes → use the `/sync-main` skill.
 
 ## Data model
-- Products "DB": `src/data/admin-products.js` (~750KB JS module, includes SEO, Pinterest state, print-file refs). Every admin save round-trips this whole file through the GitHub API — avoid concurrent saves.
-- Other state: `src/data/*.json` (queue, assets, reviews…).
+- Products "DB": `src/data/admin-products.js` (~860KB JS module, includes SEO, Pinterest state, print-file refs). Every admin save round-trips this whole file through the GitHub API — avoid concurrent saves.
+- **Two views of the catalog — pick the right import:**
+  - Storefront → `@/data/products`. Fed a build-time-stripped copy via the `storefront-products` plugin in `vite.config.js`, which drops ~16 admin-only fields (`etsy*`, `pinterest*`, `gelatoCdnImages`, `imageAlts`, `printCost`, …). Adding a field to `ADMIN_ONLY_FIELDS` requires checking every `src/` reference outside the admin pages first.
+  - Admin editors → `@/data/products-full`. Full records. Both admin pages are lazy-loaded, so the full catalog lands in the `admin-catalog` chunk and never reaches shoppers.
+  - `api/*` imports `admin-products.js` directly under Node — always the full data.
+- Other state: `src/data/*.json` (queue, assets, reviews…). `events.json` and `moodboard-refs.json` are not read by any code yet — they belong to a Content Factory / Editor-in-Chief agent setup that only ships `.claude/agents/2-scout.md` so far.
 - `api/admin.js` is a single action-switch endpoint (~40 actions: save-product, generate-seo, import-gelato-images, upload-design, publish-social-asset, verify-password, …).
 
 ## Auth (do not regress this)
