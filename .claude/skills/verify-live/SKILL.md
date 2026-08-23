@@ -23,11 +23,15 @@ Never claim "deployed" or "fatto" based on a successful `git push`. A push only 
 3. **jayl-store only — ALWAYS smoke-test the API, whatever you changed.** Not just for "API changes": a build-config or `src/data` edit can kill every function while the HTML and assets look perfect. Run these against production and expect exactly these:
 
    ```
-   POST /api/create-payment-intent  {"items":[]}                    → 400 {"error":"Cart is empty"}
-   POST /api/create-order           {"paymentIntentId":"pi_fake"}   → 400 {"error":"Invalid payment intent id"}
+   POST /api/create-payment-intent  {"items":[]}                          → 400 {"error":"Cart is empty"}
+   POST /api/create-order           {"paymentIntentId":"pi_invalid_id"}   → 400 {"error":"Invalid payment intent id"}
    POST /api/admin                  {"action":"verify-password","password":"wrong"} → 401
-   POST /api/webhook                {}                              → 400 missing stripe-signature
+   POST /api/webhook                {}                                    → 400 missing stripe-signature
    ```
+
+   Use an id **with an underscore** for create-order: the guard is `/^pi_[A-Za-z0-9]+$/`, so
+   `pi_fake` passes validation and reaches Stripe, which 500s with "No such payment_intent".
+   That is correct behaviour, just a useless signal for a smoke test.
 
    **A 500 / `FUNCTION_INVOCATION_FAILED` on any of them means checkout is down.** Get the reason with
    `npx vercel logs https://www.jayl.store --json 2>/dev/null | grep -o '"message":"[^"]*'  | tail -5`.
