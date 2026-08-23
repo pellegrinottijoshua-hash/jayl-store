@@ -4,6 +4,11 @@
 // src/data/products-samples.js — HIDDEN until the Art launch.
 // To re-enable: import sampleProducts from './products-samples.js' and
 // change: export const products = [...sampleProducts, ...adminProducts]
+// ⚠️ BROWSER ONLY. This module resolves only inside Vite — never import it from
+// api/*, which runs under plain Node and will die at module load with
+// ERR_UNSUPPORTED_ESM_URL_SCHEME. Server code imports './admin-products.js'
+// directly (see api/_lib/catalog.js). scripts/check-api-imports.js enforces this.
+//
 // Storefront catalog. The import is rewritten at build time to a stripped copy of
 // admin-products.js with the admin-only fields removed (see the `storefrontProducts`
 // plugin in vite.config.js). Admin editors need the full records — they import

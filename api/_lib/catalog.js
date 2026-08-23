@@ -1,7 +1,14 @@
 // Server-side product lookup, validation, and pricing.
 // All API routes MUST go through priceItem() rather than trusting
 // client-supplied prices.
-import { products } from '../../src/data/products.js'
+//
+// Import the raw catalog, NOT '../../src/data/products.js'. That module is the
+// storefront view and imports the Vite-only 'virtual:storefront-products'
+// specifier, which plain Node cannot resolve — doing so crashes every function
+// that reaches this file (create-payment-intent, webhook, orders, admin) with
+// ERR_UNSUPPORTED_ESM_URL_SCHEME at module load, before any handler runs.
+// Server code wants the full records anyway. See scripts/check-api-imports.js.
+import { adminProducts as products } from '../../src/data/admin-products.js'
 
 const productMap = new Map(products.map((p) => [p.id, p]))
 
