@@ -15126,5 +15126,542 @@ export const adminProducts = [
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260820_231831_884ada2e-cc49-49a2-897a-2200e25a506a-corr-1s4nnvk4-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+  },
+  {
+    "id": "elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Elekid Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt, Electric Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "The vibrant illustration of Elekid electrifies the retro 90s vibe, capturing that wild energy as it bursts onto this unisex cotton tee. With a striking large back design that playfully channels Elekid's mischievous spirit, you’ll feel like you're wearing a piece of fan culture history. The premium Gildan tee showcases high-quality DTG print, ensuring the electrifying art comes alive in every detail. This shirt isn’t just for you; it’s an electric gift for anyone who grew up in the era of iconic anime and Pokémon battles.",
+    "altText": "Elekid leaping energetically with electrifying sparks in retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      }
+    ],
+    "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-mockup-01.jpg",
+    "heroImage": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115140_b4ebe8f3-5e8e-470e-929e-c64540464d6a.png",
+    "detailImage": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_120239_c1842783-115f-4fc9-9911-eb5be2170641.png",
+    "images": [
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115831_29d8ff92-6d2f-49e3-b8bc-af07e25533b0.png",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115840_8206e7eb-7196-4eb0-87d7-af9592428daa.png",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-01.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-02.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-03.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-04.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-05.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-06.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-07.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-08.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-09.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-10.jpg",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-11.jpg"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115140_b4ebe8f3-5e8e-470e-929e-c64540464d6a.png": "A vibrant scene featuring the Elekid shirt with a large, playful graphic on the back.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_120239_c1842783-115f-4fc9-9911-eb5be2170641.png": "Close-up of the Elekid shirt showcasing detailed stitching and soft cotton texture.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115831_29d8ff92-6d2f-49e3-b8bc-af07e25533b0.png": "The Elekid shirt is displayed from an angle, highlighting its unique artistic back design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115840_8206e7eb-7196-4eb0-87d7-af9592428daa.png": "Angle view revealing the bold colors and large print of the Elekid back design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c9a4331c-ab13-451e-ab14-3d012ae5f9a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ef74a46a60ae5bee399d7498b7df44ef98be8f0299d8f724933b5f4f7a2a8547": "Front view of the red version of the Elekid shirt showcasing its striking retro design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2a7e7e50-e674-4d57-82ff-a8c4d23b13d3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7d642ac727e48138d3d9bfe827b2290541d96f0a82e9501e547c2ba09b558793": "The Elekid shirt displayed in a flat lay, highlighting its vibrant colors against a contrasting backdrop.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/24265a50-82a1-4a76-91c5-658fbb939951/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fd4c87bd2cc4eedfc2c9f2c6d0f52b0af18c6570d3b9054100a6882c56d143af": "Close-up view displaying vibrant details of the red Elekid shirt’s playful back graphic.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/38178c8c70b54028b5c5fb9c98e3048d/preview?X-Amz-content-sha256=UNSIGNED-PAYLOAD&x-amzn-algorithm=AWS4-HMAC-SHA256&AWSAccessKeyId={your-access-key-id}&x-amzn-date={your-date}&x-amzn-signature={your-signature}": "Artistic display of the red Elekid shirt emphasizing its nostalgic 90s anime style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6f8f8b6b-fa7a406e-b6809-e0bb0de94/preview?x-amzn-content-sha256=UNSIGNED-PAYLOAD&AWSAccessKeyId={your-access-key-id}&x-amzn-algorithm=AWS4-HMAC-SHA256&AWSAccessKeyId={your-access-key-id}&x-amzn-date={your-date}&x-amzn-signature={your-signature}": "The textured fabric of the Elekid shirt shines in this detailed view showcasing its quality and appeal.",
+      "https://gelato-api-live.s3.eu-west--1.amazonaws.com/ecommerce/store_product_image/9f28c86f--ea20--51dd--93020--0cd52829.jpg/": "The illustrative detail on the red Elekid shirt brings retro anime charm to contemporary design.",
+      " https://gelato-api-live.s3.eu-west--1.amazonaws.com/ecommerce/store_product_image/c9aa84021454433804070860184193ac81ee87cd40daebbcbd66de57.jpg/": "Each stitch reveals premium craftsmanship on this stylish red Elekid T-shirt for fans of vintage anime art.",
+      " https://gelato-api-live.s3.eu-west--1.amazonaws.com/ecommerce/store_product_image/c97bb604bd25085330340c63ab84ed84049879.jpg/": "Front design view captures the vibrant hue and electric nostalgia of this unisex Pokémon shirt.",
+      " https://gelato-api-live.s3.eu-west--1.amazonaws.com/ecommerce/store_product_image/d81393db05ef94169fb68478042032bc21750.jpg/": "High-quality cotton drapes beautifully in this gallery shot accentuating the t-shirt's playful essence.",
+      " https://gelato-api-live.s3.eu-west--1.amazonaws.com/ecommerce/store_product_image/b13165981dc48cc93211328866164175453.jpeg/": "Subtle shadows enhance the dynamic form of this contemporary art-inspired Pokémon tee in red."
+    },
+    "tags": [
+      "elekid shirt",
+      "pokemon apparel",
+      "retro anime tee",
+      "funny graphic shirt",
+      "unisex t-shirt",
+      "anime gift",
+      "90s nostalgia",
+      "electric pokemon",
+      "large back design",
+      "cotton graphic tee",
+      "gaming clothing",
+      "pop culture merch",
+      "collector item"
+    ],
+    "featured": false,
+    "gelatoProductId": "8c560afb-421a-4ce5-bb34-c6afdaf340c9",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "Elekid shirt",
+      "Pokemon t-shirt",
+      "anime t-shirt",
+      "graphic tee",
+      "retro shirts"
+    ],
+    "longTailKeywords": [
+      "funny retro anime shirt for men",
+      "electric Pokemon gift ideas for him",
+      "vintage style Elekid graphic tee",
+      "large design unisex cotton t-shirt",
+      "unique gifts for Pokemon fans",
+      "best attire for anime collectors",
+      "$20 Pokemon tees online shopping",
+      "$30 retro anime art shirts",
+      "$25 collector items graphic tees",
+      "$15 funny vintage shirts"
+    ],
+    "hashtags": "#Elekid #Pokemon #Anime #VintageFashion #RetroTees #GraphicTee #CollectorItem #ElectricType #UnisexShirt #AnimeStyle #ArtApparel #GamerStyle #GiftForHim #FunnyShirts #NostalgiaWear #FanMerchandise #90sVibes #GeekChic #PopCultureClothing #ExpressYourself #StatementPiece #PokemonArt #LimitedEditionShirt #AnimeFanatic #TeesOfInstagram #CoolOutfitIdeas #StreetwearFashion #AnimeMerchandiseSoFreshAndSoClean#JokeShirtsForAMoodSliceOfLife",
+    "instagramCaption": "\"Channel your inner electric mischief with our new Elekid Tee! ⚡️ Perfect for collectors who know true art when they see it. Grab yours and sparkle bright! ✨🔥#Elekid#Pokemon#GraphicTees\"",
+    "pinterestCaption": "\"Discover our stunning Elekid Back Print Shirt—an electrifying blend of retro vibes and unforgettable characters. This unique tee is perfect for expressing your love for Pokémon culture and adds to any collection instantly. Check it out now!\"",
+    "seoTitle": "Elekid Back Print Shirt | Retro 90s Anime Gift | Electric Pokémon",
+    "variants": [
+      {
+        "uid": "3074cb43-fdf8-48b5-9998-2bfb457fe069",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6564d18b-c446-4142-bf5f-8c74a64e24d6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e8c292ab-130b-46e9-812d-53e5b670d13c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cf098e58-9c63-4af7-9f7f-b5ce22078640",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0e89e8c5-f73f-4860-ac81-06da65513ead",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1ecb9b25-8535-4a2c-84ce-27b0127b8f5d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f49a232e-7a1b-43b0-b6c3-ce52a544cf9e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0c0d56d8-1959-4f1c-a0de-782a1921ef7f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b91026e3-a9d0-431d-b440-1d323a75e045",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "efff7f09-1728-4414-9d43-1d59c26468a1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "580b24b1-af53-4e9c-a069-178d669b23d5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4a5e9d8a-1361-45fd-b80d-1089b6878cf2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "80e046f4-2a50-4f28-8e0f-28cf7fec548e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7a8b0aa3-0396-48ea-acbb-3cd2852de7d4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f0463a66-2f9b-483f-8bcf-8d561b21a0c7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8ca5c676-fb35-497b-ac76-9fb0f6866c3d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7e7dbe67-4a69-4bf9-babb-e07afd1c39c6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dfce78b2-3588-4554-bf6d-10713849c471",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1ad5c6b7-4bcd-4b3e-9746-0895fc208d97",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "185ae24e-e385-4776-ac06-d60a5d45b0f6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "00d0a668-4647-4627-9870-34d9bd0239d9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6bbb77e2-b16a-4a4c-adfd-54f8f12a681b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ac287fde-7e33-49af-b8f2-b177301677bb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1804efe6-92b2-4f9e-857d-fbb143b9db6d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f6853471-4975-4617-9c2f-3e2c3d610c6a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f4cd9057-e67f-407b-b879-00b1999237f5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b4d50c17-1c31-4648-a2c0-29bbfa206ac0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5016a026-0186-49c9-b6f2-1bd2cfcf306e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "696432b5-b951-4636-bd36-393aa3184f39",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4f1fa555-fbd6-45ea-ac5b-3ea657291f05",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "93376dab-09c2-45db-8448-ae763a186633",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a7072545-95f0-427a-921d-dd808c806f70",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9ac7ea15-83a6-412a-a67c-1676f82447cb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea786ec1-e081-4714-9002-98158e83b3f4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dcca7b3d-a583-471a-aa16-e7b837d2156b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1efb4276-aba9-4070-abee-9039043b29ce",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "79bb8ade-f23b-43ee-931e-44cf51d17a5d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d6ce055f-2632-41de-bf93-e14c4c0090cd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f7d21c3a-657e-447b-8b0e-5e0c73c21248",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45fbd18f-b375-46cc-b60d-bee74db46e98",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-white-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-navy-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-red-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-daisy-01.jpg"
+      },
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-royal-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-natural-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-light-blue-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "gold",
+        "label": "Gold",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gold-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-black-01.jpg"
+      }
+    ],
+    "etsyTitle": "Elekid Back Print Shirt, Retro 90s Vibe, Gift for Nintendo Lover",
+    "etsyTags": [
+      "elekid t-shirt",
+      "anime graphic tee",
+      "pokemon gift",
+      "geeky clothing",
+      "nostalgic fashion",
+      "unisex apparel",
+      "otaku merch",
+      "funny t-shirts",
+      "90s nostalgia",
+      "casual wear",
+      "electric pokemon",
+      "anime gifts for him",
+      "vintage style"
+    ],
+    "etsyDescription": "'Like a spark in the night, Elekid dances with electric joy!' This animated little Pokémon radiates enthusiasm and mischief, making it the perfect companion on your everyday adventures. As you slip on this cozy retro-inspired shirt, feel that nostalgic vibe from the '90s wash over you—it's more than just a t-shirt; it's a trip back to simpler times filled with colorful critters and laughter. \n\nThe large design on the back captures Elekid in all its vibrant glory, echoing its playful spirit while the soft cotton fabric feels like a warm hug against your skin. Available in unisex sizes S-3XL, this shirt is designed to fit everyone comfortably, whether you're lounging at home or out meeting friends. \n\nLooking for a special gift? Surprise that electric friend who just can't get enough Pokémon! This tee is perfect for birthdays or just-because moments—or even as an homage to your favorite gaming buddy during game nights.\n\nMachine wash cold, tumble dry low. Made to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Model wearing front of Elekid back print shirt showcasing bright colors and design.",
+      "Model showing off the large Elekid graphic on the back of the t-shirt.",
+      "Close-up of Elekid design details highlighting colors and intricate elements.",
+      "Flat lay image of the front side of Elekid t-shirt displaying vivid graphics.",
+      "Lifestyle shot of person casually wearing Elekid shirt during outdoor activity.",
+      "Size guide image showing available unisex sizes S-3XL alongside product details.",
+      "Gift-wrapped Elekid shirt in festive packaging ready for giving."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c9a4331c-ab13-451e-ab14-3d012ae5f9a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ef74a46a60ae5bee399d7498b7df44ef98be8f0299d8f724933b5f4f7a2a8547",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2a7e7e50-e674-4d57-82ff-a8c4d23b13d3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7d642ac727e48138d3d9bfe827b2290541d96f0a82e9501e547c2ba09b558793",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/24265a50-82a1-4a76-91c5-658fbb939951/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fd4c87bd2cc4eedfc2c9f2c6d0f52b0af18c6570d3b9054100a6882c56d143af",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/38178c8c-70b5-4028-b5c5-fb9c98e3048d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=de9c4c4599814b4cb0cf8efcb2878de345cf41ce5c7fb998b8d9610dcbdc2b56",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6f8f8b6b-fa7a-406e-b680-9e0bb0dede94/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fdaa2d58d8697969dd43f023ae610ce23a6bf1020e53e4c79179f74f4e1cf27c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f28c86f-3a28-451d-9302-0c1376a0d4d0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e570e87dd1acceb4779b04326a893fdacbb8140e3ab21cba6e55e01e0cd52829",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/97202304-9804-411a-b3ad-52b16960a6f2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=302e20ce538cd0e9af7ec6e31e6b853c44c7ee87b98395c645886fbeec587deb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3db8f144-7244-43d4-a635-ed8674e3a6e7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a491ebd5f89b3e2ca3af168673015274a1b15aaaae4f5108980ed1caf00f8b4d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/755d5996-adc7-4a37-840a-4508bfef35b5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cd32b8542560e633ad47400013557c08f53c5f45b4b20bcc35463cb0cfc065c8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/487c4823-2fac-4b03-93af-af2eea3fae2f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=75e69dc6a70989707688dfda5cb7eb42e37b7770cd3e762f746457d5bc324eec",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/07faf2ee-b274-468b-a724-e7cd08e1013c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ac0f7c25e88dbc733ef458ecaf3289130f8bcf3be32c1941a70accc9b6482c1a"
+    ],
+    "createdAt": "2026-08-31T16:40:55.281Z",
+    "updatedAt": "2026-08-31T16:40:55.281Z"
   }
 ]
