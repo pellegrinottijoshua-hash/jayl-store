@@ -1386,7 +1386,7 @@ export default function AdminProductPage() {
     try {
       // Try Vercel Blob client upload for large files
       const blob = await blobUpload(sanitized, file, {
-        access: 'public',
+        access: 'private',
         handleUploadUrl: '/api/admin',
         clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
         abortSignal: ctrl.signal,

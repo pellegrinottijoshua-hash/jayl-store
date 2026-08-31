@@ -578,7 +578,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         const useBlob  = isVideo
         if (useBlob) {
           const blob = await blobUpload(`${productId}/${filename}`, file, {
-            access: 'public', handleUploadUrl: '/api/admin', abortSignal: ctrl.signal,
+            access: 'private', handleUploadUrl: '/api/admin', abortSignal: ctrl.signal,
           })
           await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo }, ctrl.signal)
         } else {

@@ -1,5 +1,5 @@
 import { applyCors } from './_lib/cors.js'
-import { put, del as blobDel } from '@vercel/blob'
+import { put, del as blobDel, get as blobGet } from '@vercel/blob'
 import { handleUpload } from '@vercel/blob/client'
 import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
@@ -226,6 +226,34 @@ async function writeAssets(assets, sha, message, token) {
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
+
+/**
+ * Download a blob the admin just staged, as base64.
+ *
+ * The Blob store is PRIVATE, so a plain fetch(blobUrl) gets a 401 — the url is
+ * not publicly readable. Uploads must be made with access:'private' (a 'public'
+ * upload is rejected outright with "Cannot use public access on a private
+ * store"), and read back through the SDK with the read-write token.
+ *
+ * These blobs are pure staging: the caller copies the bytes into the repo via
+ * the GitHub Contents API and then deletes the blob.
+ */
+async function blobToBase64(blobUrl, label) {
+  const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+  if (!blobToken) throw new Error('BLOB_READ_WRITE_TOKEN not configured on server')
+
+  const result = await blobGet(blobUrl, { access: 'private', token: blobToken })
+  if (result.statusCode !== 200) {
+    throw new Error(`Failed to download ${label}: blob returned ${result.statusCode}`)
+  }
+  const chunks = []
+  for await (const chunk of result.stream) chunks.push(Buffer.from(chunk))
+  const base64 = Buffer.concat(chunks).toString('base64')
+
+  // Clean up the temporary blob now that the bytes are in hand.
+  blobDel(blobUrl, { token: blobToken }).catch(() => {})
+  return base64
+}
 
 export default async function handler(req, res) {
   const allowed = applyCors(req, res)
@@ -561,13 +589,7 @@ export default async function handler(req, res) {
       // Images: get base64 content (from blob download or from data URL)
       let base64
       if (blobUrl) {
-        const blobRes = await fetch(blobUrl)
-        if (!blobRes.ok) throw new Error(`Failed to download uploaded file: ${blobRes.status}`)
-        const buffer = await blobRes.arrayBuffer()
-        base64 = Buffer.from(buffer).toString('base64')
-        // Clean up the temporary blob now that we've copied it to GitHub
-        const blobToken = process.env.BLOB_READ_WRITE_TOKEN
-        if (blobToken) blobDel(blobUrl, { token: blobToken }).catch(() => {})
+        base64 = await blobToBase64(blobUrl, 'uploaded file')
       } else {
         // Legacy path: base64 data URL (still works for small files)
         base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
@@ -737,12 +759,7 @@ export default async function handler(req, res) {
 
       let base64
       if (blobUrl) {
-        const blobRes = await fetch(blobUrl)
-        if (!blobRes.ok) throw new Error(`Failed to download design file: ${blobRes.status}`)
-        const buffer = await blobRes.arrayBuffer()
-        base64 = Buffer.from(buffer).toString('base64')
-        const blobToken = process.env.BLOB_READ_WRITE_TOKEN
-        if (blobToken) blobDel(blobUrl, { token: blobToken }).catch(() => {})
+        base64 = await blobToBase64(blobUrl, 'design file')
       } else {
         base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
       }
@@ -1443,7 +1460,10 @@ Return JSON with these exact keys:
       const blobToken    = process.env.BLOB_READ_WRITE_TOKEN
 
       if (blobToken) {
-        // Try Vercel Blob — falls through to GitHub if the store is private (access: 'public' fails)
+        // Deliberately asks for 'public' even though the store is private, so this
+        // throws and falls through to the GitHub branch below. That is the desired
+        // outcome: the reference url is rendered in an <img>, so it must be publicly
+        // readable, and a private blob url would 401. Do not "fix" this to 'private'.
         try {
           const contentType = dataUrl.match(/^data:([^;]+);/)?.[1] || 'image/jpeg'
           const buffer      = Buffer.from(base64, 'base64')
@@ -1557,6 +1577,8 @@ Return JSON with these exact keys:
         const contentType = assetRes.headers.get('content-type') || (type === 'video' ? 'video/mp4' : 'image/jpeg')
         const ext         = type === 'video' ? 'mp4' : contentType.includes('png') ? 'png' : 'jpg'
         const filename    = `assets/${productId}/${Date.now()}.${ext}`
+        // 'public' on purpose: this url is handed to social platforms and rendered
+        // in the admin, so it has to be readable without a token. See upload-reference.
         const { url } = await put(filename, buffer, { access: 'public', token: blobToken, contentType })
         finalUrl = url
       }
