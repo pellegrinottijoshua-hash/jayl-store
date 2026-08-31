@@ -782,6 +782,10 @@ export default function AdminProductPage() {
   const [designDraft,  setDesignDraft]  = useState(null)   // {previewUrl, blob, meta, filename}
   const [fittingDesign, setFittingDesign] = useState(false)
   const [autoFitDesign, setAutoFitDesign] = useState(true)
+  // Live state of the upload. Without this the operator sees one opaque spinner
+  // and cannot tell a stalled network from a stalled server — which is exactly
+  // how a hard 400 from Blob looked indistinguishable from "still working".
+  const [designProgress, setDesignProgress] = useState(null) // {phase, pct?, detail?}
   const [featured, setFeatured]     = useState(false)  // 1 | 2 | false
   const [featuringNow, setFeaturingNow] = useState(false)
   const [relatedProducts, setRelatedProducts] = useState([])
@@ -1370,51 +1374,77 @@ export default function AdminProductPage() {
     if (await handleUploadDesign(file)) setDesignDraft(null)
   }
 
+  /**
+   * Upload the print file.
+   *
+   * Every phase reports itself. An opaque spinner made a hard 400 from Blob
+   * indistinguishable from "still working", and an AbortSignal alone was not
+   * enough — a promise that never settles never reaches the catch either. So the
+   * deadline is enforced with an explicit race, and each step names itself so a
+   * stall is attributable instead of mysterious.
+   */
   const handleUploadDesign = async (file) => {
-    if (!file) return
-    // Without a deadline this spinner runs forever: a 6400×4800 source PNG is tens
-    // of MB, gets base64-inflated by a third, and is held whole in the serverless
-    // function before the GitHub PUT. When that stalls there is nothing to catch —
-    // the media uploader has had this timeout for a while, this one never did.
-    const ctrl  = new AbortController()
-    const timer = setTimeout(
-      () => ctrl.abort(new Error('Timeout — upload troppo lento (>120s). Il file è probabilmente troppo grande: lascia attivo l’adattamento automatico, che lo rigenera alla dimensione di stampa.')),
-      120_000,
-    )
+    if (!file) return false
+    const ctrl = new AbortController()
+    const deadline = (promise, ms, phase) => Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => {
+        ctrl.abort()
+        reject(new Error(`Timeout in fase "${phase}" dopo ${Math.round(ms / 1000)}s — nessuna risposta.`))
+      }, ms)),
+    ])
+
     setUploadingDesign(true); setDesignUploadErr('')
+    setDesignProgress({ phase: 'Preparazione…' })
     const sanitized = sanitizeFilename(file.name)
+    const mb = (file.size / 1024 / 1024).toFixed(1)
+
     try {
-      // Try Vercel Blob client upload for large files
-      const blob = await blobUpload(sanitized, file, {
-        access: 'private',
-        handleUploadUrl: '/api/admin',
-        clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
-        abortSignal: ctrl.signal,
-      })
-      const result = await api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url }, ctrl.signal)
+      setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct: 0 })
+      const blob = await deadline(
+        blobUpload(sanitized, file, {
+          access: 'private',
+          handleUploadUrl: '/api/admin',
+          clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
+          abortSignal: ctrl.signal,
+          onUploadProgress: ({ percentage }) =>
+            setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct: Math.round(percentage) }),
+        }),
+        120_000, 'upload su Blob',
+      )
+
+      setDesignProgress({ phase: 'Commit su GitHub…', detail: 'può richiedere ~30s' })
+      const result = await deadline(
+        api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url }, ctrl.signal),
+        180_000, 'commit su GitHub',
+      )
       setPrintFileUrl(result.url)
+      setDesignProgress(null)
       return true
     } catch (e1) {
-      if (ctrl.signal.aborted) {
-        setDesignUploadErr(ctrl.signal.reason?.message || 'Timeout upload')
+      // The base64 route only exists for files under the 4.5 MB function body
+      // limit. Above that it is a guaranteed 413, so do not pretend to retry.
+      if (file.size > 4 * 1024 * 1024) {
+        setDesignUploadErr(`${e1.message} — file troppo grande (${mb} MB) per la via alternativa base64 (limite 4,5 MB).`)
+        setDesignProgress(null)
         return false
       }
-      // Fallback: base64 for smaller files
       try {
+        setDesignProgress({ phase: 'Ritento via base64…' })
         const dataUrl = await fileToBase64(file)
-        const result = await api('upload-design', { productId: id, filename: sanitized, dataUrl }, ctrl.signal)
+        const result = await deadline(
+          api('upload-design', { productId: id, filename: sanitized, dataUrl }),
+          120_000, 'upload base64',
+        )
         setPrintFileUrl(result.url)
+        setDesignProgress(null)
         return true
       } catch (e2) {
-        setDesignUploadErr(
-          ctrl.signal.aborted
-            ? (ctrl.signal.reason?.message || 'Timeout upload')
-            : (e2.message || e1.message || 'Upload failed'),
-        )
+        setDesignUploadErr(`${e1.message} · poi: ${e2.message}`)
+        setDesignProgress(null)
         return false
       }
     } finally {
-      clearTimeout(timer)
       setUploadingDesign(false)
     }
   }
@@ -2364,6 +2394,22 @@ export default function AdminProductPage() {
                     )}
                     {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Adattamento al canvas di stampa…</p>}
 
+                    {/* Live phase readout — turns a silent stall into a locatable one */}
+                    {designProgress && (
+                      <div className="rounded border border-indigo-800/60 bg-indigo-950/20 p-2 space-y-1">
+                        <p className="text-indigo-300 text-xs">
+                          ⏳ {designProgress.phase}
+                          {designProgress.pct != null && <span className="font-mono"> — {designProgress.pct}%</span>}
+                          {designProgress.detail && <span className="text-gray-500"> · {designProgress.detail}</span>}
+                        </p>
+                        {designProgress.pct != null && (
+                          <div className="h-1 w-full bg-gray-800 overflow-hidden">
+                            <div className="h-full bg-indigo-500 transition-all" style={{ width: `${designProgress.pct}%` }} />
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     {printFileUrl ? (
                       <div className="flex items-center gap-3">
                         <div
@@ -2403,7 +2449,14 @@ export default function AdminProductPage() {
                         className={`${inputCls} text-xs flex-1`}
                       />
                     </div>
-                    {designUploadErr && <p className="text-red-400 text-xs">⚠ {designUploadErr}</p>}
+                    {designUploadErr && (
+                      <div className="rounded border border-red-900/60 bg-red-950/20 p-2">
+                        <p className="text-red-400 text-xs break-words">⚠ {designUploadErr}</p>
+                        <p className="text-gray-500 text-[11px] mt-1">
+                          Copia questo messaggio: dice in quale fase si è fermato.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </Field>
 
