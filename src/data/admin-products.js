@@ -15131,7 +15131,7 @@ export const adminProducts = [
     "id": "elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Elekid Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt, Electric Pokemon Gift for Him",
+    "name": "Cool Elekid Back T Shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -15662,6 +15662,9 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/07faf2ee-b274-468b-a724-e7cd08e1013c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ac0f7c25e88dbc733ef458ecaf3289130f8bcf3be32c1941a70accc9b6482c1a"
     ],
     "createdAt": "2026-08-31T16:40:55.281Z",
-    "updatedAt": "2026-08-31T16:40:55.281Z"
+    "updatedAt": "2026-08-31T16:45:02.162Z",
+    "relatedProducts": [],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_133035_531b4c22-ed29-4cfc-b4d1-df3ce4226aab-gela-wdkvn19t-gelato-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
   }
 ]
