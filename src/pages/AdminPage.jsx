@@ -770,6 +770,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         180_000, 'commit su GitHub',
       )
       setPrintFileUrl(result.url)
+      if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
       setDesignProgress(null)
       return true
     } catch (e1) {
@@ -786,6 +787,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           120_000, 'upload base64',
         )
         setPrintFileUrl(result.url)
+        if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
         setDesignProgress(null)
         return true
       } catch (e2) {

@@ -789,7 +789,37 @@ export default async function handler(req, res) {
         throw new Error(`Design upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
       }
       const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
-      return res.status(200).json({ ok: true, url: rawUrl })
+
+      // Confirm the raw CDN (Fastly, in front of raw.githubusercontent.com) is
+      // actually serving the byte-exact file before telling the operator the
+      // upload succeeded. That CDN caches per-path and does not invalidate the
+      // instant a commit lands via the Contents API — a real order (Altaria,
+      // 2026-08-31) reached Gelato with "issue with the design file" seconds
+      // after the design was uploaded; the same URL, fetched minutes later,
+      // served the correct bytes with an `x-cache: MISS` first-hit. Gelato
+      // fetches printFileUrl at order time, not at upload time, so a stale or
+      // 404 response from a not-yet-propagated edge silently poisons every
+      // order placed in that window — the upload itself looks successful.
+      const expectedBytes = Buffer.from(base64, 'base64').length
+      let propagated = false
+      for (let attempt = 0; attempt < 6 && !propagated; attempt++) {
+        if (attempt > 0) await new Promise((r) => setTimeout(r, 1500))
+        try {
+          const check = await fetch(rawUrl, { cache: 'no-store' })
+          const len = Number(check.headers.get('content-length') || 0)
+          if (check.ok && len === expectedBytes) propagated = true
+        } catch { /* transient — retry */ }
+      }
+
+      return res.status(200).json({
+        ok: true,
+        url: rawUrl,
+        ...(propagated ? {} : {
+          warning: 'Il file è committato ma la CDN GitHub non lo serve ancora byte-per-byte dopo ~9s. ' +
+                    'Attendi circa 30-60s prima di inviare un ordine reale a Gelato — altrimenti Gelato ' +
+                    'può scaricare una versione non ancora propagata e segnalare "issue with the design file".',
+        }),
+      })
     }
 
     // ── delete-image ──────────────────────────────────────────────────────────
