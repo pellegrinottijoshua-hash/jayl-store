@@ -110,7 +110,10 @@ function CheckoutForm() {
     const pr = stripe.paymentRequest({
       country: 'IT',
       currency: 'eur',
-      total: { label: 'JAYL', amount: Math.round(total * 100) },
+      // `total` is already in cents (it's the sum of unitPrice, itself in cents —
+      // see formatPrice in src/lib/utils.js). Multiplying by 100 again is what
+      // turned a 23.99€ tee into a 2,399.00€ line in the Apple/Google Pay sheet.
+      total: { label: 'JAYL', amount: Math.round(total) },
       requestPayerName: true,
       requestPayerEmail: true,
     })
@@ -119,25 +122,50 @@ function CheckoutForm() {
     })
     pr.on('paymentmethod', async (e) => {
       try {
+        // The shipping address form on this page is filled before the Apple/Google
+        // Pay button is usable (Payment section renders after it), so reuse it —
+        // same validation the card flow applies.
+        const errs = validate()
+        if (Object.keys(errs).length) {
+          setErrors(errs)
+          e.complete('fail')
+          return
+        }
+
+        // Send items + shippingAddress, exactly like the card flow. The server
+        // prices from the catalog and ignores client-supplied amounts — sending
+        // {amount, metadata} here (the previous shape) doesn't match what
+        // create-payment-intent reads (`items`, `shippingAddress`), so priceItems()
+        // always rejected with 400 before a PaymentIntent was even created. That is
+        // also why no customer could have been charged the wrong (x100) amount:
+        // the request failed before Stripe was involved.
         const piRes = await fetch('/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            amount: Math.round(total * 100),
-            currency: 'eur',
-            metadata: {
-              items: JSON.stringify(items.map(i => ({
-                productId: i.product.id,
-                size: i.size || null,
-                frame: i.frame || 'none',
-                color: i.color || null,
-                quantity: i.quantity,
-              }))),
-              ...(appliedCode ? { discountCode: appliedCode.code } : {}),
+            items: items.map((i) => ({
+              productId: i.product.id,
+              size:     i.size  || null,
+              frame:    i.frame || 'none',
+              color:    i.color || null,
+              quantity: i.quantity,
+            })),
+            shippingAddress: {
+              email: e.payerEmail || form.email,
+              firstName: form.firstName,
+              lastName: form.lastName,
+              address: form.address,
+              city: form.city,
+              state: form.state,
+              zip: form.zip,
+              country: form.country,
             },
+            ...(appliedCode ? { discountCode: appliedCode.code } : {}),
           }),
         })
         if (!piRes.ok) {
+          const { error } = await piRes.json().catch(() => ({}))
+          setErrors({ payment: error || 'Could not initialize payment. Please try again.' })
           e.complete('fail')
           return
         }
@@ -148,14 +176,27 @@ function CheckoutForm() {
           { handleActions: false }
         )
         if (confirmError) {
+          setErrors({ payment: confirmError.message })
           e.complete('fail')
           return
         }
         e.complete('success')
-        // Fire analytics events
+
+        // Create the Gelato order now, same as the card flow — previously this
+        // block never called create-order, leaving the 10s-delayed webhook as the
+        // only fulfiller for every Apple/Google Pay purchase.
+        const orderRes = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paymentIntentId: paymentIntent.id }),
+        })
+        const orderData = orderRes.ok ? await orderRes.json() : {}
+        const orderId = orderData.orderId || paymentIntent.id
+
+        // Fire analytics events. `total` is cents; ad platforms expect major units.
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Purchase', {
-            value: total,
+            value: total / 100,
             currency: 'EUR',
             content_ids: items.map(i => i.id),
             content_type: 'product',
@@ -164,13 +205,12 @@ function CheckoutForm() {
         }
         if (typeof window.pintrk === 'function') {
           window.pintrk('track', 'checkout', {
-            value: total,
+            value: total / 100,
             order_quantity: items.reduce((s, i) => s + (i.quantity || 1), 0),
             currency: 'EUR',
           })
         }
         clearCart()
-        const orderId = paymentIntent.id
         navigate(`/order-confirmation/${orderId}`, {
           state: {
             order: {
@@ -179,11 +219,14 @@ function CheckoutForm() {
               subtotal,
               shipping,
               total,
-              email: e.payerEmail || '',
+              email: e.payerEmail || form.email,
+              gelatoOrderId: orderData.orderId,
+              trackingInfo: orderData.trackingInfo,
             },
           },
         })
-      } catch {
+      } catch (err) {
+        console.error('Apple/Google Pay checkout error:', err)
         e.complete('fail')
       }
     })
@@ -292,10 +335,11 @@ function CheckoutForm() {
       const orderData = orderRes.ok ? await orderRes.json() : {}
       const orderId = orderData.orderId || `JAYL-${Date.now().toString(36).toUpperCase()}`
 
-      // Meta Pixel — Purchase
+      // Meta Pixel — Purchase. `total` is cents; ad platforms expect major units —
+      // same fix applied to the Apple/Google Pay block above, same root cause.
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Purchase', {
-          value: total,
+          value: total / 100,
           currency: 'EUR',
           content_ids: items.map(i => i.id),
           content_type: 'product',
@@ -305,7 +349,7 @@ function CheckoutForm() {
       // Pinterest Tag — Checkout
       if (typeof window.pintrk === 'function') {
         window.pintrk('track', 'checkout', {
-          value: total,
+          value: total / 100,
           order_quantity: items.reduce((s, i) => s + (i.quantity || 1), 0),
           currency: 'EUR',
         })
