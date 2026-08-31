@@ -14645,5 +14645,483 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_132411_91169ddf-d023-4498-8189-882dc549ad0a.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png"
     ]
+  },
+  {
+    "id": "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Altaria Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt, dragon Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "Basking in nostalgia, this Altaria graphic tee showcases the beloved dragon Pokemon soaring majestically against a backdrop of vibrant colors and retro vibes. The large back design captures Altaria’s serene yet playful spirit, making it a badge of honor for fans who appreciate the charms of 90s anime aesthetics. Made from Gildan premium cotton and featuring high-quality DTG printing, this unisex t-shirt promises comfort with every wear. Gift it to that special guy who cherishes Pokémon lore or just loves a unique streetwear vibe.",
+    "altText": "Soaring Altaria in vibrant colors, showcasing retro 90s anime art on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      }
+    ],
+    "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204805_f1761fd9-8362-44ab-b83d-501dfd2f9c02.png",
+    "heroImage": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_205355_b6ed0e0d-1629-439a-be6b-c33d1606a02f.png",
+    "detailImage": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_211721_06dbc278-17a2-40c0-986c-621cf312c39c.png",
+    "images": [
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204805_f1761fd9-8362-44ab-b83d-501dfd2f9c02.png",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204749_0067d549-2a19-4873-ade5-48f42ca1080b.png",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-01.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-02.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-03.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-04.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-05.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-06.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-07.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-08.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-09.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-10.jpg"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_205355_b6ed0e0d-1629-439a-be6b-c33d1606a02f.png": "A vibrant Altaria back print shirt showcasing a large, colorful anime design in a contemporary art style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_211721_06dbc278-17a2-40c0-986c-621cf312c39c.png": "Close-up of the soft cotton fabric revealing the intricate details of the Altaria graphic design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204805_f1761fd9-8362-44ab-b83d-501dfd2f9c02.png": "The Altaria shirt displayed on a mannequin, highlighting its unisex fit and retro 90s anime aesthetic.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204749_0067d549-2a19-4873-ade5-48f42ca1080b.png": "Side view of the Altaria shirt showcasing the large back print and the relaxed silhouette.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4308e950-a457-4958-a1b9-86053164312f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d8509ccb7d1eabecb6c406ba38b77e3faf560a5eca2f96f2530831be7b0076e1": "The Altaria shirt in a striking red colorway, emphasizing its playful anime-inspired graphics.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1a639f95-c76a-4ee2-a6df-92bdac0ccf20/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6c3b49ebb62784a50092e77449740cf161443c2a624f3ee98f3be45ee9544be5": "A detailed view of the Altaria shirt's vibrant red fabric, showcasing the quality of the cotton material.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7ac6ebb0-8b22-4de1-bad9-42a34c300b6a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ef60b1a4171b83cbc4f161f336cfbf0003da5acf9af4b9adb060eab8e261f924": "The Altaria shirt laid flat, capturing the bold back print and the contemporary art-inspired design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/18abd572-0b87-4163-91b0-264b812f134a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ace7402aa67d74be1eaafffd5d2929b5efa7ac5cc294d49c9f1243aef9bc91e7": "A close-up of the Altaria shirt’s vibrant red back print, showcasing the playful anime illustration.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1cdfe80d-5cee-405c-8c01-6ecd9e307af1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ad679e41b83f090461df99e35254484892a79bfaa5f63081a907f8614435f54b": "The Altaria shirt displayed against a contrasting background, emphasizing its bold red and anime design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d21726ef-12c4-4002-a4f2-af06d657def4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d49e934e00ddb7e8d5ac54a9aaf24e0522f7cd49ec27e2cca01091fdcdd4f404": "A dynamic angle of the Altaria shirt, highlighting the large back print and its retro vibe."
+    },
+    "tags": [
+      "altaria shirt",
+      "pokemon apparel",
+      "anime fashion",
+      "retro graphic tee",
+      "funny t-shirt",
+      "unisex clothing",
+      "cotton t-shirt",
+      "90s anime",
+      "dragon pokemon",
+      "gift for him",
+      "streetwear style",
+      "anime gift idea",
+      "large back print"
+    ],
+    "featured": false,
+    "gelatoProductId": "44fd6624-b70f-4b00-95f1-5933809ec29e",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "Altaria shirt",
+      "Pokemon t-shirt",
+      "anime graphic tee",
+      "retro clothing",
+      "funny shirt"
+    ],
+    "longTailKeywords": [
+      "funny retro pokemon shirt",
+      "large back print anime tee",
+      "unisex cotton graphic shirt",
+      "unique gift for Pokemon fans",
+      "90s style anime apparel",
+      "dragon Pokemon clothing gift",
+      "cool vintage graphic t-shirt",
+      "quirky retro fan merchandise",
+      "streetwear inspired by anime",
+      "men's humor graphic tees"
+    ],
+    "hashtags": "#altariashirt #pokemontshirt #animefashion #retrografictshirt #funnytshirt #unisexclothing #cottontee #90sanime #dragonpokemon #giftforhim #streetwearstyle #animegiftidea #largebackprint #geekfashion #vintageapparel #cartoontee #animeartwear #popculturefashion #nerdyshirts #graphicteeaddict #fanmerchandise #japaneseculture #trendyclothing #casualstyle ##gamingclothes #whimsicalartwear#collectibleapparel#illustratedclothing#creativefashion",
+    "instagramCaption": "\"Channel your inner hero with our Altaria Back Print Shirt! This isn’t just streetwear; it’s how you express yourself among the crowd. Grab yours today and fly high! 💙✨#AltariaShirt #AnimeFashion #StreetwearStyle \"",
+    "pinterestCaption": "\"Dive into nostalgic vibes with our Altaria Back Print Shirt! Perfect for any Pokémon enthusiast who loves both humor and style. Discover the magic of retro anime fashion today!\"",
+    "seoTitle": "Altaria Back Print Shirt | Retro 90s Anime Gift | Streetwear Vibe",
+    "variants": [
+      {
+        "uid": "8b3355cc-3184-476b-9013-13ba23241b89",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0d4b36ce-5c80-4dca-bf45-4ea4c4543329",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3bb1c784-9036-46ad-95cc-cb7fbb03eb86",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4b72df01-d23b-4282-baeb-821f3f34c6c7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "956562a9-77ac-49b4-8f67-054a2e3a5143",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c1dda3c2-dd68-4123-b69e-28b89e357aea",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c41d1857-3520-4ade-bd96-c23b9a01caca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "37cfddba-464b-4ec0-b5c7-d0f16246dba0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "10949fcb-3e99-4cbc-970a-da3c2c8c7527",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cc4cccc1-3cb9-41f8-bd4a-e5029e657514",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3a71bca9-dfc4-4ef2-b597-69e1bf9ea51e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "09e39ec3-d9de-419d-a161-d10ab3fa7019",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8786bb03-e969-4944-adc7-5fdb170bc8fd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "db6d7f9f-7290-4f98-b58d-9094e5083a6d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1d16f48d-9d38-4444-bb8c-3886181671db",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5cad693-5cfd-484d-96a8-ed5b50b09f9a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5c5a086-8693-4128-b585-cb253fbc1334",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "184c14ee-c5a7-400f-9af6-4499a02d7e80",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3909dfa4-be73-467b-aee0-788bd0201364",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "86f4dafb-3b47-44da-8250-b3437c16ddcb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a51e8aa5-a285-4be4-add1-2497e798f751",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9023ee7f-c6aa-423c-93db-bc4ae0a04ae1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "51aac9f8-8b80-46be-a2aa-feb693282a2a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b872bcfa-824e-4efa-a682-92db3a192529",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dd960a58-1ec5-4c00-b08d-09c689472953",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9896bddf-e0eb-42d7-8ff5-225a848b8698",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "aae7381d-7393-4634-a799-61a2a15e357b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "857a7584-e97d-4677-87b8-681ec0466abe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "514567f2-629d-4cd9-9d04-41e057ba3547",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "56e86131-dd8d-4260-8028-009ffafc2c5c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5caed83e-0dda-4071-a071-56de7459c246",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5f0c0911-25c0-42cf-ae4d-d139185d015f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b60416d9-41f9-423d-8edf-e0e399240e54",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4d4c1511-1812-4889-a02b-51ee4745ef59",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "390e461e-2eee-4be1-a17e-0a5308462eb7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b19676b1-d581-4781-b7ba-6e74eb9fd7fb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888"
+      },
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888"
+      }
+    ],
+    "etsyTitle": "Altaria Back Print Shirt, 90s Anime Vibe, Gift For Retro Lovers",
+    "etsyTags": [
+      "altaria shirt",
+      "anime graphic tee",
+      "gift for him",
+      "pokemon fan gift",
+      "otaku apparel",
+      "retro style shirt",
+      "unisex t-shirt"
+    ],
+    "etsyDescription": "Hey there! If you know a guy who loves dragons and retro vibes, this Altaria back print shirt is just what he needs.\n\nPicture this: Altaria soaring through the skies, its wings embracing freedom. This design captures that raw, whimsical energy, making it an instant favorite for anyone who recognizes the beauty of dragon Pokémon. Crafted from soft, 100% cotton with premium DTG printing, we ensure every detail pops beautifully against your skin. Plus, it’s unisex and available in sizes S-3XL — perfectly versatile for any wardrobe!\n\nThinking about a birthday surprise or a just-because gift? This tee is perfect for your anime-loving friend who values both comfort and standout style.\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of model wearing Altaria back print shirt showcasing vibrant colors.",
+      "Back view of model in Altaria back print shirt highlighting large design detail.",
+      "Close-up of the Altaria back print showing intricate design features.",
+      "Flat lay of Altaria back print shirt on a clean surface with styled elements.",
+      "Lifestyle shot of individual enjoying day out in Altaria back print shirt.",
+      "Size guide displayed alongside Altaria back print t-shirt detailing size options.",
+      "Gift-wrapped package of Altaria back print shirt set up for presentation."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4308e950-a457-4958-a1b9-86053164312f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d8509ccb7d1eabecb6c406ba38b77e3faf560a5eca2f96f2530831be7b0076e1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1a639f95-c76a-4ee2-a6df-92bdac0ccf20/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6c3b49ebb62784a50092e77449740cf161443c2a624f3ee98f3be45ee9544be5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7ac6ebb0-8b22-4de1-bad9-42a34c300b6a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ef60b1a4171b83cbc4f161f336cfbf0003da5acf9af4b9adb060eab8e261f924",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/18abd572-0b87-4163-91b0-264b812f134a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ace7402aa67d74be1eaafffd5d2929b5efa7ac5cc294d49c9f1243aef9bc91e7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1cdfe80d-5cee-405c-8c01-6ecd9e307af1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ad679e41b83f090461df99e35254484892a79bfaa5f63081a907f8614435f54b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d21726ef-12c4-4002-a4f2-af06d657def4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d49e934e00ddb7e8d5ac54a9aaf24e0522f7cd49ec27e2cca01091fdcdd4f404",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/59c62654-6902-4746-bc21-6319d537f57e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=77f399687ef8c6150a9fc3d7a73a9e52e326a8d7f4f6d14421497ad838b93c41",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2145625c-7f5f-4e33-a093-de4e340e4215/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f361a8b2fc32aaef0b3fd2cac329dbe0fe077d612bfc01a7d5ece2a3ff4cfbfa",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f810e8c7-3f3b-4942-be86-e6ba89b0d82d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=07356fefdd1f5553f8388af47320b6625c4dd68362ee6466cc6a842d35450828",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e815a9b8-8482-46b8-bb9c-3aab36eea795/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c9af108d50fdb958d02e63ca205ed2dc203be4ecf29420e25c13949994d6c280"
+    ],
+    "createdAt": "2026-08-31T12:06:04.035Z",
+    "updatedAt": "2026-08-31T12:06:04.035Z"
   }
 ]
