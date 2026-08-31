@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { upload as blobUpload } from '@vercel/blob/client'
+import { blobDirectUpload } from '@/lib/blobDirectUpload'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -577,8 +577,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         // Only videos still go through Vercel Blob.
         const useBlob  = isVideo
         if (useBlob) {
-          const blob = await blobUpload(`${productId}/${filename}`, file, {
-            access: 'private', handleUploadUrl: '/api/admin', abortSignal: ctrl.signal,
+          // Direct HTTP rather than @vercel/blob/client's upload(), which hangs
+          // forever against this store without ever settling. See src/lib/blobDirectUpload.js
+          const blob = await blobDirectUpload(`${productId}/${filename}`, file, {
+            clientPayload: JSON.stringify({ password: getAdminPassword(), productId }),
+            signal: ctrl.signal,
           })
           await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo }, ctrl.signal)
         } else {

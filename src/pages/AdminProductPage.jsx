@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { upload as blobUpload } from '@vercel/blob/client'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import { fitDesignToCanvas, detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS } from '@/lib/printCanvas'
+import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
@@ -1402,13 +1402,10 @@ export default function AdminProductPage() {
     try {
       setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct: 0 })
       const blob = await deadline(
-        blobUpload(sanitized, file, {
-          access: 'private',
-          handleUploadUrl: '/api/admin',
+        blobDirectUpload(`designs/${id}/${sanitized}`, file, {
           clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
-          abortSignal: ctrl.signal,
-          onUploadProgress: ({ percentage }) =>
-            setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct: Math.round(percentage) }),
+          signal: ctrl.signal,
+          onProgress: (pct) => setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct }),
         }),
         120_000, 'upload su Blob',
       )
