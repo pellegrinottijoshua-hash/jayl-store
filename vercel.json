@@ -2,50 +2,152 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "functions": {
+    "api/admin.js": {
+      "maxDuration": 300,
+      "memory": 1024
+    },
+    "api/orders.js": {
+      "maxDuration": 120
+    },
+    "api/webhook.js": {
+      "maxDuration": 120
+    }
+  },
   "crons": [
-    { "path": "/api/admin", "schedule": "0 8 * * *" }
+    {
+      "path": "/api/admin",
+      "schedule": "0 8 * * *"
+    }
   ],
   "rewrites": [
-    { "source": "/api/generate-listing",       "destination": "/api/ai?handler=listing"      },
-    { "source": "/api/generate-etsy-listing",    "destination": "/api/ai?handler=etsy-listing"    },
-    { "source": "/api/generate-social-listing",  "destination": "/api/ai?handler=social-listing"  },
-    { "source": "/api/generate-mockup",   "destination": "/api/ai?handler=mockup"       },
-    { "source": "/api/generate-video",    "destination": "/api/ai?handler=video"        },
-    { "source": "/api/generate-persona",  "destination": "/api/ai?handler=persona"      },
-    { "source": "/api/generate-alts",     "destination": "/api/ai?handler=alts"         },
-    { "source": "/api/generate-pinterest-pins", "destination": "/api/ai?handler=pinterest-pins" },
-    { "source": "/api/get-orders",          "destination": "/api/orders?handler=get-orders"        },
-    { "source": "/api/create-order",        "destination": "/api/orders?handler=create-order"     },
-    { "source": "/api/track-order",         "destination": "/api/orders?handler=track-order"      },
-    { "source": "/api/contact",             "destination": "/api/orders?handler=contact"           },
-    { "source": "/api/capture-email",       "destination": "/api/orders?handler=capture-email"    },
-    { "source": "/api/validate-discount",   "destination": "/api/orders?handler=validate-discount"},
-    { "source": "/api/pinterest/boards", "destination": "/api/publish-social?action=boards" },
-    { "source": "/api/gmf",              "destination": "/api/orders?handler=gmf"            },
-    { "source": "/robots.txt",            "destination": "/robots.txt"                  },
-    { "source": "/api/(.*)",              "destination": "/api/$1"                      },
+    {
+      "source": "/api/generate-listing",
+      "destination": "/api/ai?handler=listing"
+    },
+    {
+      "source": "/api/generate-etsy-listing",
+      "destination": "/api/ai?handler=etsy-listing"
+    },
+    {
+      "source": "/api/generate-social-listing",
+      "destination": "/api/ai?handler=social-listing"
+    },
+    {
+      "source": "/api/generate-mockup",
+      "destination": "/api/ai?handler=mockup"
+    },
+    {
+      "source": "/api/generate-video",
+      "destination": "/api/ai?handler=video"
+    },
+    {
+      "source": "/api/generate-persona",
+      "destination": "/api/ai?handler=persona"
+    },
+    {
+      "source": "/api/generate-alts",
+      "destination": "/api/ai?handler=alts"
+    },
+    {
+      "source": "/api/generate-pinterest-pins",
+      "destination": "/api/ai?handler=pinterest-pins"
+    },
+    {
+      "source": "/api/get-orders",
+      "destination": "/api/orders?handler=get-orders"
+    },
+    {
+      "source": "/api/create-order",
+      "destination": "/api/orders?handler=create-order"
+    },
+    {
+      "source": "/api/track-order",
+      "destination": "/api/orders?handler=track-order"
+    },
+    {
+      "source": "/api/contact",
+      "destination": "/api/orders?handler=contact"
+    },
+    {
+      "source": "/api/capture-email",
+      "destination": "/api/orders?handler=capture-email"
+    },
+    {
+      "source": "/api/validate-discount",
+      "destination": "/api/orders?handler=validate-discount"
+    },
+    {
+      "source": "/api/pinterest/boards",
+      "destination": "/api/publish-social?action=boards"
+    },
+    {
+      "source": "/api/gmf",
+      "destination": "/api/orders?handler=gmf"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
     {
       "source": "/product/:id",
-      "has": [{ "type": "header", "key": "user-agent", "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*" }],
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*"
+        }
+      ],
       "destination": "/api/orders?handler=prerender&path=/product/:id"
     },
     {
       "source": "/collection/:slug",
-      "has": [{ "type": "header", "key": "user-agent", "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*" }],
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*"
+        }
+      ],
       "destination": "/api/orders?handler=prerender&path=/collection/:slug"
     },
-    { "source": "/(.*)",                  "destination": "/index.html"                  }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security",   "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options",      "value": "nosniff" },
-        { "key": "X-Frame-Options",             "value": "DENY" },
-        { "key": "Referrer-Policy",             "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy",          "value": "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")" },
-        { "key": "Content-Security-Policy",     "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://js.stripe.com https://m.stripe.network https://www.googletagmanager.com https://s.pinimg.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://*.stripe.com https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.gelato.com https://*.gelatoapis.com https://*.cloudfront.net https://*.amazonaws.com https://*.public.blob.vercel-storage.com https://raw.githubusercontent.com https://*.pinimg.com https://www.facebook.com; connect-src 'self' https://api.stripe.com https://m.stripe.network https://q.stripe.com https://*.public.blob.vercel-storage.com https://raw.githubusercontent.com https://unpkg.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://api.pinterest.com https://ct.pinterest.com https://www.facebook.com https://graph.facebook.com; frame-src https://js.stripe.com https://hooks.stripe.com; media-src 'self' blob: https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.public.blob.vercel-storage.com https://raw.githubusercontent.com; worker-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://js.stripe.com https://m.stripe.network https://www.googletagmanager.com https://s.pinimg.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://*.stripe.com https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.gelato.com https://*.gelatoapis.com https://*.cloudfront.net https://*.amazonaws.com https://*.public.blob.vercel-storage.com https://raw.githubusercontent.com https://*.pinimg.com https://www.facebook.com; connect-src 'self' https://api.stripe.com https://m.stripe.network https://q.stripe.com https://*.public.blob.vercel-storage.com https://raw.githubusercontent.com https://unpkg.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://api.pinterest.com https://ct.pinterest.com https://www.facebook.com https://graph.facebook.com; frame-src https://js.stripe.com https://hooks.stripe.com; media-src 'self' blob: https://fal.media https://*.fal.media https://storage.googleapis.com https://*.fal.run https://*.public.blob.vercel-storage.com https://raw.githubusercontent.com; worker-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'"
+        }
       ]
     }
   ]
