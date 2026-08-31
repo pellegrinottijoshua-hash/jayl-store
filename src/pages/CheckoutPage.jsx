@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Lock } from 'lucide-react'
 import { loadStripe } from '@stripe/stripe-js'
@@ -105,6 +105,22 @@ function CheckoutForm() {
   // Apple Pay / Google Pay
   const [paymentRequest, setPaymentRequest] = useState(null)
 
+  // The `pr.on('paymentmethod', …)` handler below is bound ONCE, inside an effect
+  // that only reruns on [stripe, total] — so it closes over whatever `form`,
+  // `items`, `appliedCode` were AT MOUNT TIME, not what the user has since typed.
+  // That stale closure is why a fully-filled shipping form still failed
+  // validate() with "Required" after a real Apple/Google Pay authorization:
+  // the handler was reading the empty initial `form`, frozen from first render.
+  // Refs mirror the latest values on every render without re-registering the
+  // handler (which would otherwise re-trigger canMakePayment() on every
+  // keystroke and flicker the button).
+  const formRef        = useRef(form)
+  const itemsRef        = useRef(items)
+  const appliedCodeRef  = useRef(appliedCode)
+  formRef.current       = form
+  itemsRef.current      = items
+  appliedCodeRef.current = appliedCode
+
   useEffect(() => {
     if (!stripe || !total) return
     const pr = stripe.paymentRequest({
@@ -121,11 +137,16 @@ function CheckoutForm() {
       if (result) setPaymentRequest(pr)
     })
     pr.on('paymentmethod', async (e) => {
+      const form        = formRef.current
+      const items        = itemsRef.current
+      const appliedCode  = appliedCodeRef.current
       try {
         // The shipping address form on this page is filled before the Apple/Google
         // Pay button is usable (Payment section renders after it), so reuse it —
-        // same validation the card flow applies.
-        const errs = validate()
+        // same validation the card flow applies. Pass the ref'd form explicitly:
+        // validate()'s default param would still resolve to this closure's own
+        // stale `form`, same bug one level down.
+        const errs = validate(form)
         if (Object.keys(errs).length) {
           setErrors(errs)
           e.complete('fail')
@@ -234,14 +255,17 @@ function CheckoutForm() {
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
-  const validate = () => {
+  // Accepts an explicit form so the Apple/Google Pay handler (bound once inside
+  // an effect, see formRef above) can validate the LATEST form via formRef.current
+  // instead of the stale `form` this closure would otherwise capture at mount.
+  const validate = (f = form) => {
     const e = {}
-    if (!form.email.includes('@')) e.email = 'Valid email required'
-    if (!form.firstName) e.firstName = 'Required'
-    if (!form.lastName) e.lastName = 'Required'
-    if (!form.address) e.address = 'Required'
-    if (!form.city) e.city = 'Required'
-    if (!form.zip) e.zip = 'Required'
+    if (!f.email.includes('@')) e.email = 'Valid email required'
+    if (!f.firstName) e.firstName = 'Required'
+    if (!f.lastName) e.lastName = 'Required'
+    if (!f.address) e.address = 'Required'
+    if (!f.city) e.city = 'Required'
+    if (!f.zip) e.zip = 'Required'
     return e
   }
 
