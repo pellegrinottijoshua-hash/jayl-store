@@ -1,6 +1,7 @@
 import Stripe from 'stripe'
 import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
 import { sendEmail, buildOrderConfirmationEmail } from './_lib/email.js'
+import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 
 // Disable Vercel's default body parser — Stripe needs the raw body to verify the signature
 export const config = { api: { bodyParser: false } }
@@ -87,24 +88,21 @@ async function fulfillIfNeeded(paymentIntent) {
     ...(storeId ? { storeId } : {}),
     items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
       const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-      // Back products print on Gelato's 'back' placeholder; everything else on
-      // 'default' (front). Mirrors the storefront + create-order placement logic.
-      const onBack = /back/i.test(item.product.collection || '')
-      if (onBack && !item.product.printFileUrl) {
-        throw new Error(`Back product "${item.productId}" has no back print file (printFileUrl) — refusing to print the mockup image on the garment`)
-      }
+      // Placement comes from Gelato's gpr_<front>-<back> uid segment, not from the
+      // collection name. Shared with create-order so the two can never drift.
+      const placement    = resolvePlacement(item.product, productUid)
+      const printFileUrl = assertPrintable(item.product, placement)
       console.log('[webhook] item', item.productId,
         'color:', item.color, 'size:', item.size,
         '→ productUid:', productUid?.slice(0, 80),
-        '| placement:', onBack ? 'back' : 'default',
-        '| printFileUrl:', item.product.printFileUrl ? 'set' : 'MISSING',
+        '| placement:', placement.type, `(da ${placement.source}, gpr_${placement.gpr ?? 'n/a'})`,
         '| neckLabelUrl:', item.product.neckLabelUrl ? 'set' : 'none')
       return {
         itemReferenceId: itemRef,
         productUid,
         quantity:        item.quantity,
         files: [
-          { type: onBack ? 'back' : 'default', url: item.product.printFileUrl || item.product.image },
+          { type: placement.type, url: printFileUrl },
           ...(item.product.neckLabelUrl
             ? [{ type: 'neck-inner', url: item.product.neckLabelUrl }]
             : []),

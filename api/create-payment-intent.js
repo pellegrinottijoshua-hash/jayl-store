@@ -7,6 +7,7 @@ import {
   applyDiscount,
   CURRENCY,
 } from './_lib/catalog.js'
+import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { applyCors } from './_lib/cors.js'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
@@ -29,6 +30,28 @@ export default async function handler(req, res) {
     // Server-side price lookup — never trust client-supplied unitPrice/total.
     const priced = priceItems(rawItems)
     if (!priced.ok) return res.status(400).json({ error: priced.error })
+
+    // Fulfillment check BEFORE taking any money.
+    //
+    // create-order and the Stripe webhook both refuse to send an item to Gelato
+    // without a real print file — but they run *after* the payment succeeds. Until
+    // this check existed, a product saved without artwork could be paid for in full
+    // and then silently fail to produce an order: the customer was charged, no
+    // shirt was ever made, and the money sat in Stripe waiting for a manual refund.
+    // Reject at the payment intent instead, so the charge never happens.
+    for (const item of priced.items) {
+      // priceItem already resolved the variant from colour+size — reuse it rather
+      // than repeating the matching rules and risking a different answer here.
+      const productUid = item.variantObj?.gelatoVariantId ?? item.product?.gelatoProductId
+      try {
+        assertPrintable(item.product, resolvePlacement(item.product, productUid))
+      } catch (err) {
+        console.error('[create-payment-intent] unfulfillable item blocked:', err.message)
+        return res.status(409).json({
+          error: `"${item.product?.name || item.productId}" non è al momento disponibile. Rimuovilo dal carrello per completare l'ordine.`,
+        })
+      }
+    }
 
     const addrCheck = validateAddress(shippingAddress)
     if (!addrCheck.ok) return res.status(400).json({ error: addrCheck.error })

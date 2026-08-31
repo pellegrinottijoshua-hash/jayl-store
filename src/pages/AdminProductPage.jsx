@@ -6,6 +6,7 @@ import { fetchFile, toBlobURL } from '@ffmpeg/util'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
+import { fitDesignToCanvas, detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS } from '@/lib/printCanvas'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
@@ -776,6 +777,11 @@ export default function AdminProductPage() {
   const [neckLabelUrl,    setNeckLabelUrl]    = useState('')
   const [uploadingDesign, setUploadingDesign] = useState(false)
   const [designUploadErr, setDesignUploadErr] = useState('')
+  // Staged print file: the source art fitted onto the 3661×4843 canvas, held for
+  // preview so the operator confirms the placement BEFORE it is committed.
+  const [designDraft,  setDesignDraft]  = useState(null)   // {previewUrl, blob, meta, filename}
+  const [fittingDesign, setFittingDesign] = useState(false)
+  const [autoFitDesign, setAutoFitDesign] = useState(true)
   const [featured, setFeatured]     = useState(false)  // 1 | 2 | false
   const [featuringNow, setFeaturingNow] = useState(false)
   const [relatedProducts, setRelatedProducts] = useState([])
@@ -1325,6 +1331,42 @@ export default function AdminProductPage() {
     } finally {
       setSyncing(false)
     }
+  }
+
+  // Which side this product prints on. Derived from the Gelato productUid exactly
+  // like api/_lib/placement.js does, so the preview matches what Gelato receives.
+  const placement = useMemo(() => detectPlacement(product), [product])
+
+  /**
+   * Step 1 — pick a file. When auto-fit is on we do NOT upload yet: the artwork is
+   * composed onto the print canvas and staged for review. Uploading straight away
+   * was how wrongly-placed designs used to reach the repo unnoticed.
+   */
+  const handlePickDesign = async (file) => {
+    if (!file) return
+    setDesignUploadErr('')
+    const isRaster = /^image\/(png|jpeg|webp)$/.test(file.type)
+    if (!autoFitDesign || !isRaster) {
+      // PDFs and SVGs cannot be measured on a canvas — upload them untouched.
+      return handleUploadDesign(file)
+    }
+    setFittingDesign(true)
+    try {
+      const fitted = await fitDesignToCanvas(file, placement.type)
+      setDesignDraft({ ...fitted, filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
+    } catch (e) {
+      setDesignUploadErr(e.message || 'Impossibile adattare il file')
+    } finally {
+      setFittingDesign(false)
+    }
+  }
+
+  /** Step 2 — confirm the staged canvas and commit it. */
+  const handleConfirmDesign = async () => {
+    if (!designDraft) return
+    const file = new File([designDraft.blob], designDraft.filename, { type: 'image/png' })
+    await handleUploadDesign(file)
+    setDesignDraft(null)
   }
 
   const handleUploadDesign = async (file) => {
@@ -2232,11 +2274,82 @@ export default function AdminProductPage() {
                   </p>
                 </div>
 
+                {/* Which side Gelato will print — derived from the productUid, not the collection */}
+                <div className={`mb-4 flex items-start gap-3 rounded border p-3 ${
+                  placement.source === 'uid'
+                    ? 'border-emerald-800/60 bg-emerald-950/20'
+                    : 'border-amber-700/50 bg-amber-950/20'
+                }`}>
+                  <span className="text-lg leading-none">{placement.type === 'back' ? '🔙' : '👕'}</span>
+                  <div className="text-xs">
+                    <p className={placement.source === 'uid' ? 'text-emerald-400' : 'text-amber-400'}>
+                      Lato di stampa: <strong>{placement.type === 'back' ? 'RETRO' : 'FRONTE'}</strong>
+                      {' — '}{PLACEMENT_SPECS[placement.type].label}
+                    </p>
+                    <p className="text-gray-500 mt-0.5">
+                      {placement.source === 'uid'
+                        ? `Rilevato da Gelato (gpr_${placement.gpr}) — affidabile.`
+                        : `Nessun codice gpr nel productUid: dedotto dalla collection "${collection || '—'}". Verifica prima di caricare.`}
+                    </p>
+                  </div>
+                </div>
+
                 {/* Print file */}
-                <Field label="File di stampa" hint="PNG/PDF alta risoluzione (almeno 300 DPI). Questo è il design che Gelato stampa sulla maglietta.">
+                <Field label="File di stampa" hint={`PNG trasparente ad alta risoluzione. Viene adattato al canvas di stampa ${PRINT_CANVAS.w}×${PRINT_CANVAS.h}.`}>
                   <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        checked={autoFitDesign}
+                        onChange={e => setAutoFitDesign(e.target.checked)}
+                        className="accent-indigo-600"
+                      />
+                      Adatta automaticamente al canvas di stampa (consigliato)
+                    </label>
+
+                    {/* Staged canvas — review before committing */}
+                    {designDraft && (
+                      <div className="flex gap-4 rounded border border-indigo-800/60 bg-indigo-950/20 p-3">
+                        <div
+                          className="shrink-0 border border-dashed border-indigo-700/60 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:16px_16px]"
+                          style={{ width: 110, height: 110 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
+                        >
+                          <img src={designDraft.previewUrl} alt="Anteprima di stampa" className="w-full h-full object-contain" />
+                        </div>
+                        <div className="flex-1 min-w-0 text-xs space-y-1">
+                          <p className="text-indigo-300 font-semibold">Anteprima di stampa — {designDraft.meta.type === 'back' ? 'RETRO' : 'FRONTE'}</p>
+                          <p className="text-gray-500">Sorgente {designDraft.meta.sourceSize} · arte {designDraft.meta.artSize}</p>
+                          <p className="text-gray-500">Sul canvas: {designDraft.meta.drawnSize} ({designDraft.meta.widthPct}% larghezza) · {designDraft.meta.offset}</p>
+                          <p className="text-gray-600">{(designDraft.meta.bytes / 1024 / 1024).toFixed(1)} MB</p>
+                          <div className="flex gap-2 pt-1">
+                            <button
+                              onClick={handleConfirmDesign}
+                              disabled={uploadingDesign}
+                              className="bg-emerald-800 hover:bg-emerald-700 disabled:opacity-50 text-white text-xs px-3 py-1.5 transition-colors"
+                            >
+                              {uploadingDesign ? '⏫ Caricamento…' : '✓ Conferma e carica'}
+                            </button>
+                            <button
+                              onClick={() => setDesignDraft(null)}
+                              disabled={uploadingDesign}
+                              className="text-gray-500 hover:text-red-400 text-xs px-2"
+                            >
+                              Annulla
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Adattamento al canvas di stampa…</p>}
+
                     {printFileUrl ? (
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="shrink-0 border border-gray-800 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:12px_12px]"
+                          style={{ width: 54, height: 54 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
+                        >
+                          <img src={printFileUrl} alt="File di stampa caricato" className="w-full h-full object-contain" />
+                        </div>
                         <a href={printFileUrl} target="_blank" rel="noreferrer"
                            className="text-indigo-400 text-xs font-mono truncate max-w-xs hover:underline">
                           {printFileUrl.split('/').pop()}
@@ -2244,18 +2357,20 @@ export default function AdminProductPage() {
                         <button onClick={() => setPrintFileUrl('')} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
                       </div>
                     ) : (
-                      <p className="text-gray-600 text-xs italic">Nessun file caricato</p>
+                      <p className="text-amber-500 text-xs italic">
+                        ⚠ Nessun file caricato — il prodotto non è vendibile: l’ordine viene rifiutato dopo il pagamento.
+                      </p>
                     )}
                     <div className="flex gap-2">
-                      <label className={`cursor-pointer ${uploadingDesign ? 'opacity-50 pointer-events-none' : ''}`}>
+                      <label className={`cursor-pointer ${uploadingDesign || fittingDesign ? 'opacity-50 pointer-events-none' : ''}`}>
                         <input
                           type="file"
                           accept="image/png,image/jpeg,application/pdf,image/svg+xml"
                           className="hidden"
-                          onChange={e => handleUploadDesign(e.target.files?.[0])}
+                          onChange={e => { handlePickDesign(e.target.files?.[0]); e.target.value = '' }}
                         />
                         <span className="inline-block bg-indigo-800 hover:bg-indigo-700 text-white text-xs px-3 py-1.5 transition-colors">
-                          {uploadingDesign ? '⏫ Caricamento…' : '⬆ Carica design'}
+                          {uploadingDesign ? '⏫ Caricamento…' : fittingDesign ? '⏳ Adatto…' : '⬆ Carica design'}
                         </span>
                       </label>
                       <input
