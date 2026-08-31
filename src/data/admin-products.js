@@ -14654,8 +14654,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Basking in nostalgia, this Altaria graphic tee showcases the beloved dragon Pokemon soaring majestically against a backdrop of vibrant colors and retro vibes. The large back design captures Altaria’s serene yet playful spirit, making it a badge of honor for fans who appreciate the charms of 90s anime aesthetics. Made from Gildan premium cotton and featuring high-quality DTG printing, this unisex t-shirt promises comfort with every wear. Gift it to that special guy who cherishes Pokémon lore or just loves a unique streetwear vibe.",
-    "altText": "Soaring Altaria in vibrant colors, showcasing retro 90s anime art on a premium JAYL tee.",
+    "description": "With wings unfurled and a soft, soothing hue of sky blue, Altaria glides through the air like a gentle breeze that stirs the soul. This design encapsulates the essence of the Cloud Pokémon; a calming presence amid chaos, reminiscent of serene summer skies and soaring freedom. Each Gildan premium tee showcases vibrant direct-to-garment print quality, making Altaria's charm come alive in every stitch. It’s a wearable piece of art that captures not just an image but a feeling—a touchstone for anyone who appreciates beauty in motion. Perfect as a thoughtful gift for those who value tranquility and elegance.",
+    "altText": "Soaring Altaria with open wings in serene blue tones on vibrant fan-art style chest print on a premium JAYL tee.",
     "details": [
       "Printed and fulfilled via Gelato"
     ],
@@ -14711,47 +14711,47 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d21726ef-12c4-4002-a4f2-af06d657def4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d49e934e00ddb7e8d5ac54a9aaf24e0522f7cd49ec27e2cca01091fdcdd4f404": "A dynamic angle of the Altaria shirt, highlighting the large back print and its retro vibe."
     },
     "tags": [
-      "altaria shirt",
-      "pokemon apparel",
-      "anime fashion",
-      "retro graphic tee",
-      "funny t-shirt",
-      "unisex clothing",
-      "cotton t-shirt",
-      "90s anime",
-      "dragon pokemon",
+      "altaria",
+      "pokemon t-shirt",
+      "cool pokemon",
+      "anime apparel",
+      "gamer fashion",
+      "cloud pokemon",
+      "vintage style",
+      "anime t-shirt",
+      "fan merchandise",
+      "pocket print",
       "gift for him",
-      "streetwear style",
-      "anime gift idea",
-      "large back print"
+      "gift for her",
+      "artistic wear"
     ],
     "featured": false,
     "gelatoProductId": "44fd6624-b70f-4b00-95f1-5933809ec29e",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "Altaria shirt",
-      "Pokemon t-shirt",
-      "anime graphic tee",
-      "retro clothing",
-      "funny shirt"
+      "altaria t-shirt",
+      "pokemon shirt",
+      "cloud pokemon",
+      "anime shirt",
+      "gamer apparel"
     ],
     "longTailKeywords": [
-      "funny retro pokemon shirt",
-      "large back print anime tee",
-      "unisex cotton graphic shirt",
-      "unique gift for Pokemon fans",
-      "90s style anime apparel",
-      "dragon Pokemon clothing gift",
-      "cool vintage graphic t-shirt",
-      "quirky retro fan merchandise",
-      "streetwear inspired by anime",
-      "men's humor graphic tees"
+      "altaria pokemon fan shirt",
+      "unique altaria clothing online",
+      "smart casual anime t-shirts",
+      "gildan premium altaria tee",
+      "affordable pokemon apparel gifts",
+      "stylish cloud pokemon wearables",
+      "pokemon graphic tees for gamers",
+      "fashionable anime character shirts",
+      "direct-to-garment printed shirts",
+      "'cool' anime merch for friends"
     ],
-    "hashtags": "#altariashirt #pokemontshirt #animefashion #retrografictshirt #funnytshirt #unisexclothing #cottontee #90sanime #dragonpokemon #giftforhim #streetwearstyle #animegiftidea #largebackprint #geekfashion #vintageapparel #cartoontee #animeartwear #popculturefashion #nerdyshirts #graphicteeaddict #fanmerchandise #japaneseculture #trendyclothing #casualstyle ##gamingclothes #whimsicalartwear#collectibleapparel#illustratedclothing#creativefashion",
-    "instagramCaption": "\"Channel your inner hero with our Altaria Back Print Shirt! This isn’t just streetwear; it’s how you express yourself among the crowd. Grab yours today and fly high! 💙✨#AltariaShirt #AnimeFashion #StreetwearStyle \"",
-    "pinterestCaption": "\"Dive into nostalgic vibes with our Altaria Back Print Shirt! Perfect for any Pokémon enthusiast who loves both humor and style. Discover the magic of retro anime fashion today!\"",
-    "seoTitle": "Altaria Back Print Shirt | Retro 90s Anime Gift | Streetwear Vibe",
+    "hashtags": "#altaria #pokemon #pokemontshirt #animefashion #gamerapparel #cloudpokemon #animeapparel #fanmerchandise #artwear #pokémonfanart #tshirtcollection #vintageanime #graphictee #streetwearstyle #uniqueclothing #gaminglife #nerdfashion #collectiblemerchandise #premiumqualityshirts #stylishdesigns #giftideasforher #giftideasforhim #onlineshopping #fanartfashion #limitededitionteeshirt #trendyapparel #characterinspiredclothing #exclusiveprints #makingmemories",
+    "instagramCaption": "\"Sky-high dreams? Let Altaria take you there 🌤️🕊️ Unleash your inner calm with this classic piece. Don’t just wear it – live it! 💙✨#altariatees #pokemonapparel#animefashion\" ",
+    "pinterestCaption": "\"Elevate your wardrobe with our stunning Altaria T-Shirt, showcasing the enchanting Cloud Pokémon in vibrant colors. Experience exceptional comfort with its Gildan premium fabric and direct-to-garment print quality. Add this unique piece to your collection today!\"",
+    "seoTitle": "Altaria T-Shirt | Cool Pokemon Back Art | Unique Gift Idea",
     "variants": [
       {
         "uid": "8b3355cc-3184-476b-9013-13ba23241b89",
@@ -15122,7 +15122,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e815a9b8-8482-46b8-bb9c-3aab36eea795/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c9af108d50fdb958d02e63ca205ed2dc203be4ecf29420e25c13949994d6c280"
     ],
     "createdAt": "2026-08-31T12:06:04.035Z",
-    "updatedAt": "2026-08-31T12:35:12.818Z",
+    "updatedAt": "2026-08-31T12:35:24.759Z",
     "relatedProducts": []
   }
 ]
