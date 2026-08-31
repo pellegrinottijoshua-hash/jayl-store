@@ -1365,34 +1365,56 @@ export default function AdminProductPage() {
   const handleConfirmDesign = async () => {
     if (!designDraft) return
     const file = new File([designDraft.blob], designDraft.filename, { type: 'image/png' })
-    await handleUploadDesign(file)
-    setDesignDraft(null)
+    // Keep the staged canvas on failure so the operator can retry without
+    // re-picking and re-fitting the source file.
+    if (await handleUploadDesign(file)) setDesignDraft(null)
   }
 
   const handleUploadDesign = async (file) => {
     if (!file) return
+    // Without a deadline this spinner runs forever: a 6400×4800 source PNG is tens
+    // of MB, gets base64-inflated by a third, and is held whole in the serverless
+    // function before the GitHub PUT. When that stalls there is nothing to catch —
+    // the media uploader has had this timeout for a while, this one never did.
+    const ctrl  = new AbortController()
+    const timer = setTimeout(
+      () => ctrl.abort(new Error('Timeout — upload troppo lento (>120s). Il file è probabilmente troppo grande: lascia attivo l’adattamento automatico, che lo rigenera alla dimensione di stampa.')),
+      120_000,
+    )
     setUploadingDesign(true); setDesignUploadErr('')
+    const sanitized = sanitizeFilename(file.name)
     try {
       // Try Vercel Blob client upload for large files
-      const sanitized = sanitizeFilename(file.name)
       const blob = await blobUpload(sanitized, file, {
         access: 'public',
         handleUploadUrl: '/api/admin',
         clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
+        abortSignal: ctrl.signal,
       })
-      const result = await api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url })
+      const result = await api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url }, ctrl.signal)
       setPrintFileUrl(result.url)
-    } catch {
+      return true
+    } catch (e1) {
+      if (ctrl.signal.aborted) {
+        setDesignUploadErr(ctrl.signal.reason?.message || 'Timeout upload')
+        return false
+      }
       // Fallback: base64 for smaller files
       try {
         const dataUrl = await fileToBase64(file)
-        const sanitized = sanitizeFilename(file.name)
-        const result = await api('upload-design', { productId: id, filename: sanitized, dataUrl })
+        const result = await api('upload-design', { productId: id, filename: sanitized, dataUrl }, ctrl.signal)
         setPrintFileUrl(result.url)
+        return true
       } catch (e2) {
-        setDesignUploadErr(e2.message || 'Upload failed')
+        setDesignUploadErr(
+          ctrl.signal.aborted
+            ? (ctrl.signal.reason?.message || 'Timeout upload')
+            : (e2.message || e1.message || 'Upload failed'),
+        )
+        return false
       }
     } finally {
+      clearTimeout(timer)
       setUploadingDesign(false)
     }
   }
