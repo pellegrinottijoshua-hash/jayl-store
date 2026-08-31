@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
+import { fitDesignToCanvas, detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS } from '@/lib/printCanvas'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -14,6 +15,7 @@ const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 const fmt = cents => `€${(cents / 100).toFixed(2)}`
 const sanitizeFilename = name => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
+const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg'
 
 export function parseVideoUrl(url) {
   if (!url) return null
@@ -277,6 +279,17 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
   const [printCost,        setPrintCost]        = useState(editingProduct?.printCost ? (editingProduct.printCost / 100).toString() : '')
   const [urgency,          setUrgency]          = useState(editingProduct?.urgency          || '')
+
+  // ── Stampa & Fulfillment — same flow as AdminProductPage.jsx, ported so a new
+  // product can get its print file at creation time instead of only after saving.
+  const [printFileUrl,    setPrintFileUrl]    = useState(editingProduct?.printFileUrl || '')
+  const [neckLabelUrl,    setNeckLabelUrl]    = useState(editingProduct?.neckLabelUrl || '')
+  const [uploadingDesign, setUploadingDesign] = useState(false)
+  const [designUploadErr, setDesignUploadErr] = useState('')
+  const [designDraft,     setDesignDraft]     = useState(null)  // {previewUrl, blob, meta, filename}
+  const [fittingDesign,   setFittingDesign]   = useState(false)
+  const [autoFitDesign,   setAutoFitDesign]   = useState(true)
+  const [designProgress,  setDesignProgress]  = useState(null)  // {phase, pct?, detail?}
   const [relatedProducts,  setRelatedProducts]  = useState(
     Array.isArray(editingProduct?.relatedProducts)
       ? editingProduct.relatedProducts.join(', ')
@@ -682,6 +695,109 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     }
   }
 
+  // Which side this product prints on, derived from the Gelato productUid exactly
+  // like api/_lib/placement.js — so the preview matches what fulfillment will do.
+  // Falls back to the collection string, which is why the banner below can be amber.
+  const designPlacement = detectPlacement({ collection: finalCollection, variants, gelatoProductId: gelatoUid })
+
+  const handlePickDesign = async (file) => {
+    if (!file) return
+    setDesignUploadErr('')
+    const isRaster = /^image\/(png|jpeg|webp)$/.test(file.type)
+    if (!autoFitDesign || !isRaster) {
+      return handleUploadDesign(file)
+    }
+    setFittingDesign(true)
+    try {
+      const fitted = await fitDesignToCanvas(file, designPlacement.type)
+      setDesignDraft({ ...fitted, filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
+    } catch (e) {
+      setDesignUploadErr(e.message || 'Impossibile adattare il file')
+    } finally {
+      setFittingDesign(false)
+    }
+  }
+
+  const handleConfirmDesign = async () => {
+    if (!designDraft) return
+    const file = new File([designDraft.blob], designDraft.filename, { type: 'image/png' })
+    if (await handleUploadDesign(file)) setDesignDraft(null)
+  }
+
+  /**
+   * Upload the print file straight to Blob (not through @vercel/blob/client's
+   * upload(), which hangs indefinitely against this store — see
+   * src/lib/blobDirectUpload.js) and commit it via /api/admin upload-design.
+   *
+   * Before a product is saved it has no id yet on the "add" path — productId is
+   * derived from the title via slugify(), so it exists as soon as a title is
+   * typed but changes if the title changes. The print file is staged under that
+   * id; if the title changes afterward the operator should re-upload, same as
+   * every other per-id asset (images, gelatoCdnImages) already behaves.
+   */
+  const handleUploadDesign = async (file) => {
+    if (!file) return false
+    if (!productId) { setDesignUploadErr('Scrivi prima un titolo — serve per generare l’id del prodotto.'); return false }
+
+    const ctrl = new AbortController()
+    const deadline = (promise, ms, phase) => Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => {
+        ctrl.abort()
+        reject(new Error(`Timeout in fase "${phase}" dopo ${Math.round(ms / 1000)}s — nessuna risposta.`))
+      }, ms)),
+    ])
+
+    setUploadingDesign(true); setDesignUploadErr('')
+    setDesignProgress({ phase: 'Preparazione…' })
+    const sanitized = sanitizeFilename(file.name)
+    const mb = (file.size / 1024 / 1024).toFixed(1)
+
+    try {
+      setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct: 0 })
+      const blob = await deadline(
+        blobDirectUpload(`designs/${productId}/${sanitized}`, file, {
+          clientPayload: JSON.stringify({ password: getAdminPassword(), productId }),
+          signal: ctrl.signal,
+          onProgress: (pct) => setDesignProgress({ phase: `Upload su Blob (${mb} MB)`, pct }),
+        }),
+        120_000, 'upload su Blob',
+      )
+
+      setDesignProgress({ phase: 'Commit su GitHub…', detail: 'può richiedere ~30s' })
+      const result = await deadline(
+        api('upload-design', { productId, filename: sanitized, blobUrl: blob.url }, ctrl.signal),
+        180_000, 'commit su GitHub',
+      )
+      setPrintFileUrl(result.url)
+      setDesignProgress(null)
+      return true
+    } catch (e1) {
+      if (file.size > 4 * 1024 * 1024) {
+        setDesignUploadErr(`${e1.message} — file troppo grande (${mb} MB) per la via alternativa base64 (limite 4,5 MB).`)
+        setDesignProgress(null)
+        return false
+      }
+      try {
+        setDesignProgress({ phase: 'Ritento via base64…' })
+        const dataUrl = await fileToBase64(file)
+        const result = await deadline(
+          api('upload-design', { productId, filename: sanitized, dataUrl }),
+          120_000, 'upload base64',
+        )
+        setPrintFileUrl(result.url)
+        setDesignProgress(null)
+        return true
+      } catch (e2) {
+        setDesignUploadErr(`${e1.message} · poi: ${e2.message}`)
+        setDesignProgress(null)
+        return false
+      }
+    } finally {
+      setUploadingDesign(false)
+    }
+  }
+
   const handleSave = async () => {
     if (!title.trim())       return setSaveErr('Title is required')
     if (!price)              return setSaveErr('Price is required')
@@ -791,6 +907,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(etsyDescription.trim()   ? { etsyDescription: etsyDescription.trim() } : {}),
         ...(etsyImageAlts.length > 0 ? { etsyImageAlts }                           : {}),
         ...(savedGelatoCdnImages.length > 0 ? { gelatoCdnImages: savedGelatoCdnImages } : {}),
+        ...(printFileUrl.trim() ? { printFileUrl: printFileUrl.trim() } : {}),
+        ...(neckLabelUrl.trim() ? { neckLabelUrl: neckLabelUrl.trim() } : {}),
       }
 
       await api('save-product', { product })
@@ -1372,6 +1490,172 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           {videoUrl && !videoInfo && (
             <p className="text-yellow-500 text-xs mt-1">⚠ URL non riconosciuto (YouTube, Vimeo o .mp4)</p>
           )}
+        </div>
+
+        {/* ── Stampa & Fulfillment ─────────────────────────────────────────── */}
+        <div className="border-t border-gray-800 pt-3 space-y-3">
+          <p className="text-xs uppercase tracking-wider text-gray-500">🖨 Stampa & Fulfillment</p>
+          <div className="bg-amber-950/30 border border-amber-700/40 rounded p-3">
+            <p className="text-amber-400 text-xs">
+              Gelato richiede il file di design originale (PNG/PDF ad alta risoluzione) per stampare ogni ordine.
+              Carica il file una volta sola — verrà usato per tutti gli ordini futuri.
+            </p>
+          </div>
+
+          {/* Which side Gelato will print — derived from the productUid, not the collection */}
+          <div className={`flex items-start gap-3 rounded border p-3 ${
+            designPlacement.source === 'uid'
+              ? 'border-emerald-800/60 bg-emerald-950/20'
+              : 'border-amber-700/50 bg-amber-950/20'
+          }`}>
+            <span className="text-lg leading-none">{designPlacement.type === 'back' ? '🔙' : '👕'}</span>
+            <div className="text-xs">
+              <p className={designPlacement.source === 'uid' ? 'text-emerald-400' : 'text-amber-400'}>
+                Lato di stampa: <strong>{designPlacement.type === 'back' ? 'RETRO' : 'FRONTE'}</strong>
+                {' — '}{PLACEMENT_SPECS[designPlacement.type].label}
+              </p>
+              <p className="text-gray-500 mt-0.5">
+                {designPlacement.source === 'uid'
+                  ? `Rilevato da Gelato (gpr_${designPlacement.gpr}) — affidabile.`
+                  : `Nessun codice gpr nel productUid: dedotto dalla collection "${finalCollection || '—'}". Compila prima Gelato Product UID / varianti se possibile.`}
+              </p>
+            </div>
+          </div>
+
+          <Field label="File di stampa" hint={`PNG trasparente ad alta risoluzione. Viene adattato al canvas di stampa ${PRINT_CANVAS.w}×${PRINT_CANVAS.h}.`}>
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={autoFitDesign}
+                  onChange={e => setAutoFitDesign(e.target.checked)}
+                  className="accent-indigo-600"
+                />
+                Adatta automaticamente al canvas di stampa (consigliato)
+              </label>
+
+              {designDraft && (
+                <div className="flex gap-4 rounded border border-indigo-800/60 bg-indigo-950/20 p-3">
+                  <div
+                    className="shrink-0 border border-dashed border-indigo-700/60 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:16px_16px]"
+                    style={{ width: 110, height: 110 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
+                  >
+                    <img src={designDraft.previewUrl} alt="Anteprima di stampa" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="flex-1 min-w-0 text-xs space-y-1">
+                    <p className="text-indigo-300 font-semibold">Anteprima di stampa — {designDraft.meta.type === 'back' ? 'RETRO' : 'FRONTE'}</p>
+                    <p className="text-gray-500">Sorgente {designDraft.meta.sourceSize} · arte {designDraft.meta.artSize}</p>
+                    <p className="text-gray-500">Sul canvas: {designDraft.meta.drawnSize} ({designDraft.meta.widthPct}% larghezza) · {designDraft.meta.offset}</p>
+                    <p className="text-gray-600">{(designDraft.meta.bytes / 1024 / 1024).toFixed(1)} MB</p>
+                    <div className="flex gap-2 pt-1">
+                      <button
+                        onClick={handleConfirmDesign}
+                        disabled={uploadingDesign}
+                        className="bg-emerald-800 hover:bg-emerald-700 disabled:opacity-50 text-white text-xs px-3 py-1.5 transition-colors"
+                      >
+                        {uploadingDesign ? '⏫ Caricamento…' : '✓ Conferma e carica'}
+                      </button>
+                      <button
+                        onClick={() => setDesignDraft(null)}
+                        disabled={uploadingDesign}
+                        className="text-gray-500 hover:text-red-400 text-xs px-2"
+                      >
+                        Annulla
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Adattamento al canvas di stampa…</p>}
+
+              {designProgress && (
+                <div className="rounded border border-indigo-800/60 bg-indigo-950/20 p-2 space-y-1">
+                  <p className="text-indigo-300 text-xs">
+                    ⏳ {designProgress.phase}
+                    {designProgress.pct != null && <span className="font-mono"> — {designProgress.pct}%</span>}
+                    {designProgress.detail && <span className="text-gray-500"> · {designProgress.detail}</span>}
+                  </p>
+                  {designProgress.pct != null && (
+                    <div className="h-1 w-full bg-gray-800 overflow-hidden">
+                      <div className="h-full bg-indigo-500 transition-all" style={{ width: `${designProgress.pct}%` }} />
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {printFileUrl ? (
+                <div className="flex items-center gap-3">
+                  <div
+                    className="shrink-0 border border-gray-800 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:12px_12px]"
+                    style={{ width: 54, height: 54 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
+                  >
+                    <img src={printFileUrl} alt="File di stampa caricato" className="w-full h-full object-contain" />
+                  </div>
+                  <a href={printFileUrl} target="_blank" rel="noreferrer"
+                     className="text-indigo-400 text-xs font-mono truncate max-w-xs hover:underline">
+                    {printFileUrl.split('/').pop()}
+                  </a>
+                  <button onClick={() => setPrintFileUrl('')} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
+                </div>
+              ) : (
+                <p className="text-amber-500 text-xs italic">
+                  ⚠ Nessun file caricato — il prodotto non è vendibile: l’ordine viene rifiutato dopo il pagamento.
+                </p>
+              )}
+              <div className="flex gap-2">
+                <label className={`cursor-pointer ${uploadingDesign || fittingDesign ? 'opacity-50 pointer-events-none' : ''}`}>
+                  <input
+                    type="file"
+                    accept="image/png,image/jpeg,application/pdf,image/svg+xml"
+                    className="hidden"
+                    onChange={e => { handlePickDesign(e.target.files?.[0]); e.target.value = '' }}
+                  />
+                  <span className="inline-block bg-indigo-800 hover:bg-indigo-700 text-white text-xs px-3 py-1.5 transition-colors">
+                    {uploadingDesign ? '⏫ Caricamento…' : fittingDesign ? '⏳ Adatto…' : '⬆ Carica design'}
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  value={printFileUrl}
+                  onChange={e => setPrintFileUrl(e.target.value)}
+                  placeholder="oppure incolla URL…"
+                  className={`${inputCls} text-xs flex-1`}
+                />
+              </div>
+              {designUploadErr && (
+                <div className="rounded border border-red-900/60 bg-red-950/20 p-2">
+                  <p className="text-red-400 text-xs break-words">⚠ {designUploadErr}</p>
+                  <p className="text-gray-500 text-[11px] mt-1">Copia questo messaggio: dice in quale fase si è fermato.</p>
+                </div>
+              )}
+            </div>
+          </Field>
+
+          <Field label="Neck Label (colletto)" hint="Etichetta interna — richiesta per prodotti con 'inlbl' nel productUid.">
+            <div className="space-y-2">
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setNeckLabelUrl(JAYL_NECK_LABEL_URL)}
+                  className="bg-amber-900/40 hover:bg-amber-800/50 border border-amber-800/60 text-amber-400 text-xs px-3 py-1.5 transition-colors whitespace-nowrap"
+                >
+                  👕 Logo JAYL
+                </button>
+                <input
+                  type="text"
+                  value={neckLabelUrl}
+                  onChange={e => setNeckLabelUrl(e.target.value)}
+                  placeholder="URL neck label…"
+                  className={`${inputCls} text-xs flex-1`}
+                />
+                {neckLabelUrl && (
+                  <button onClick={() => setNeckLabelUrl('')} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
+                )}
+              </div>
+              {neckLabelUrl && (
+                <p className="text-green-500 text-xs">✓ {neckLabelUrl === JAYL_NECK_LABEL_URL ? 'Logo JAYL preimpostato' : 'Custom URL'}</p>
+              )}
+            </div>
+          </Field>
         </div>
 
         {/* ── Hero & Sequenza ─────────────────────────────────────────────── */}
