@@ -52,6 +52,15 @@ check('drop → dropPrice, non il prezzo per taglia',
 check('listino → archivePrice',
   basePriceFor('ddd', size, { id: 'ddd', price: 2399 }, cfg), 2500)
 
+const vaultSize = { id: 'M', price: 1999 }
+const vaultProd = { id: 'zzz', price: 2599 }
+check('vault con taglia → prezzo della taglia (precedenza su product.price)',
+  basePriceFor('zzz', vaultSize, vaultProd, cfg), 1999)
+check('vault senza taglia → prezzo del prodotto',
+  basePriceFor('zzz', null, vaultProd, cfg), 2599)
+check('vault senza taglia né prodotto → 0',
+  basePriceFor('zzz', null, null, cfg), 0)
+
 // ── Cap ─────────────────────────────────────────────────────────────────────
 check('cap di default',          capFor('aaa', cfg), 20)
 check('cap sovrascritto',        capFor('ccc', cfg), 10)
