@@ -5,10 +5,13 @@ import {
   validateAddress,
   encodeItemsForMetadata,
   applyDiscount,
+  bundleAdjustment,
   CURRENCY,
 } from './_lib/catalog.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { applyCors } from './_lib/cors.js'
+import { productState, isDropOpen, capFor, getDrop, VAULT, DROP } from './_lib/drop.js'
+import { soldFor } from './_lib/drop-sales.js'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
 
@@ -53,6 +56,51 @@ export default async function handler(req, res) {
       }
     }
 
+    // Gate del drop. Copre tre problemi con un solo controllo: prodotti nascosti
+    // che sopravvivono in un carrello persistito (cartStore salva l'intero oggetto
+    // prodotto in localStorage, non l'id), drop scaduti, ed edizioni esaurite.
+    // Senza questo, "EDITION OF 20" sarebbe una dichiarazione falsa.
+    const cfg = getDrop()
+    const dropOpen = isDropOpen(new Date(), cfg)
+
+    for (const item of priced.items) {
+      const state = productState(item.productId, cfg)
+
+      if (state === VAULT) {
+        return res.status(409).json({
+          error: `"${item.product?.name || item.productId}" non è più disponibile. Rimuovilo dal carrello per completare l'ordine.`,
+        })
+      }
+
+      if (state === DROP && !dropOpen) {
+        const next = cfg.next?.startsAt
+          ? new Date(cfg.next.startsAt).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })
+          : null
+        return res.status(409).json({
+          error: next
+            ? `Il drop è chiuso. Il prossimo apre il ${next}.`
+            : 'Il drop è chiuso.',
+        })
+      }
+
+      if (state === DROP) {
+        const cap = capFor(item.productId, cfg)
+        // Fail-open: se il registro non è leggibile lasciamo passare e logghiamo.
+        // Vendere 21 pezzi su 20 è recuperabile; bloccare ogni checkout perché
+        // GitHub ha singhiozzato non lo è.
+        try {
+          const sold = await soldFor(cfg.current.id, item.productId)
+          if (cap && sold + item.quantity > cap) {
+            return res.status(409).json({
+              error: `"${item.product?.name || item.productId}" è esaurito: l'edizione è chiusa a ${cap} pezzi.`,
+            })
+          }
+        } catch (err) {
+          console.error('[create-payment-intent] cap check unavailable, allowing:', err.message)
+        }
+      }
+    }
+
     const addrCheck = validateAddress(shippingAddress)
     if (!addrCheck.ok) return res.status(400).json({ error: addrCheck.error })
     const addr = addrCheck.address
@@ -63,10 +111,17 @@ export default async function handler(req, res) {
     let discountAmount = 0
     let discountLabel  = null
     if (discountCode?.trim()) {
-      const disc = applyDiscount(subtotal, discountCode)
+      const disc = applyDiscount(subtotal, discountCode, priced.items)
       if (!disc.ok) return res.status(400).json({ error: disc.error })
       discountAmount = disc.amount
       discountLabel  = disc.label
+    }
+
+    // Sconto bundle automatico — nessun codice, si applica da solo e si somma.
+    const bundle = bundleAdjustment(priced.items)
+    if (bundle.amount > 0) {
+      discountAmount += bundle.amount
+      discountLabel   = discountLabel ? `${discountLabel} + ${bundle.label}` : bundle.label
     }
 
     const total = Math.max(rawTotal - discountAmount, 50) // minimum 50 cents
