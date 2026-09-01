@@ -17,6 +17,7 @@ Questo piano copre **solo il negozio**. La §6 della spec — carosello e storie
 ## Global Constraints
 
 - **Nessuna nuova serverless function.** `vercel.json` instrada gli endpoint su pochi handler per restare sotto il limite Vercel. Le azioni nuove entrano in `api/orders.js` e `api/admin.js`.
+- **Import statici, mai `await import()` dentro una funzione, in tutto `api/`.** `scripts/check-api-imports.js` cammina solo il grafo degli import statici: un import dinamico di un modulo rotto passa la build e muore in produzione a runtime, che è esattamente il fallimento per cui quello script esiste. Ogni task che tocca `api/` aggiunge i suoi import in cima al file.
 - **Il codice server non importa mai moduli Vite-only.** Niente `src/data/products.js`, niente alias `@/`, niente specifier risolti da plugin. `scripts/check-api-imports.js` gira in prebuild e fa fallire la build. È per questo che `src/data/drop.js` è un `.js` e non un `.json`.
 - **`src/data/admin-products.js` non si modifica.** 860 KB che transitano interi dall'API GitHub a ogni salvataggio admin.
 - **Prezzi in centesimi, interi.** DROP 2200, LISTINO 2500, bundle 5700, sconto bundle 900.
@@ -754,13 +755,18 @@ git commit -m "feat(drop): gate al checkout — vault, drop chiuso, cap esaurito
 
 - [ ] **Step 1: Registrare dal percorso primario**
 
-In `api/orders.js`, dentro `handleCreateOrder`, subito dopo che l'ordine Gelato è stato creato con successo e prima della risposta:
+Aggiungere in cima a `api/orders.js`, con gli altri import:
+
+```js
+import { recordDropSale } from './_lib/drop-sales.js'
+```
+
+Poi, dentro `handleCreateOrder`, subito dopo che l'ordine Gelato è stato creato con successo e prima della risposta:
 
 ```js
   // Contatore del drop. Non deve mai far fallire un ordine già pagato ed evaso:
   // se questa scrittura salta, il contatore è indietro, non il cliente senza maglietta.
   try {
-    const { recordDropSale } = await import('./_lib/drop-sales.js')
     await recordDropSale(paymentIntentId, priced.items)
   } catch (err) {
     console.error('[create-order] recordDropSale failed:', err.message)
@@ -771,13 +777,18 @@ In `api/orders.js`, dentro `handleCreateOrder`, subito dopo che l'ordine Gelato 
 
 - [ ] **Step 2: Registrare dal fallback**
 
-In `api/webhook.js`, dentro `fulfillIfNeeded`, dopo la creazione dell'ordine Gelato:
+Aggiungere in cima a `api/webhook.js`, con gli altri import:
+
+```js
+import { recordDropSale } from './_lib/drop-sales.js'
+```
+
+Poi, dentro `fulfillIfNeeded`, dopo la creazione dell'ordine Gelato:
 
 ```js
   // Stesso registro del percorso primario. recordDropSale è idempotente sul
   // payment intent id, quindi la doppia chiamata non conta due volte.
   try {
-    const { recordDropSale } = await import('./_lib/drop-sales.js')
     await recordDropSale(paymentIntent.id, resolvedItems.map(({ item }) => item))
   } catch (err) {
     console.error('[webhook] recordDropSale failed:', err.message)
@@ -817,13 +828,17 @@ git commit -m "feat(drop): registra la vendita da create-order e dal webhook"
 
 In `api/orders.js`:
 
+Gli import vanno in cima a `api/orders.js`, con gli altri (`recordDropSale` è già stato aggiunto dal Task 5):
+
+```js
+import { getDrop, capFor } from './_lib/drop.js'
+import { readSales, recordDropSale } from './_lib/drop-sales.js'
+```
+
 ```js
 // ── drop-status — pubblico, senza password ────────────────────────────────────
 // Il conteggio dev'essere runtime: al build sarebbe congelato al deploy.
 async function handleDropStatus(req, res) {
-  const { getDrop, capFor } = await import('./_lib/drop.js')
-  const { readSales } = await import('./_lib/drop-sales.js')
-
   const cfg = getDrop()
   const c   = cfg.current || {}
   let sales = { products: {} }
@@ -929,7 +944,6 @@ git commit -m "feat(drop): endpoint pubblico drop-status e hook client"
 In `vite.config.js`, dentro `load()` del plugin `storefront-products`, sostituire il `.map` con filtro più map:
 
 ```js
-      const { drop } = await import('./src/data/drop.js')
       const visible = new Set([...(drop.current?.productIds || []), ...(drop.released || [])])
       const stripped = JSON.parse(match[1])
         // I prodotti VAULT non sono nascosti via CSS: non entrano proprio nel bundle.
@@ -941,7 +955,7 @@ In `vite.config.js`, dentro `load()` del plugin `storefront-products`, sostituir
         })
 ```
 
-> `load()` va reso `async` se non lo è già. In alternativa importare `drop` in cima al file con un import statico — è la strada più semplice e va bene, perché `vite.config.js` gira sotto Node.
+> Importare `drop` con un **import statico in cima a `vite.config.js`** (`import { drop } from './src/data/drop.js'`). `vite.config.js` è già ESM e gira sotto Node, quindi l'import statico funziona e non costringe a rendere `load()` async.
 
 - [ ] **Step 2: Verificare che il bundle si restringa**
 
@@ -969,10 +983,10 @@ const sitemapProducts = products.filter((p) => visible.has(p.id))
 
 - [ ] **Step 4: Rendere il prerender consapevole del vault**
 
-In `api/orders.js`, in `handlePrerender`, prima di generare l'HTML del prodotto:
+In `api/orders.js`, estendere l'import da `./_lib/drop.js` già aggiunto dai Task 5-6 con
+`productState` e `VAULT`, poi, in `handlePrerender`, prima di generare l'HTML del prodotto:
 
 ```js
-  const { productState, VAULT } = await import('./_lib/drop.js')
   if (productState(productId) === VAULT) {
     // Niente 404: la pagina esiste ma non è indicizzabile né acquistabile.
     return res.status(200).setHeader('Content-Type', 'text/html; charset=utf-8').send(
@@ -1334,7 +1348,12 @@ const saving  = ids.length * (cfg.current?.dropPrice ?? 0) - (cfg.current?.bundl
 )}
 ```
 
-> Lo sconto lo calcola il server in `create-payment-intent`. Questa riga è solo informativa: non modificare i totali lato client, o divergerebbero da quelli addebitati.
+> Lo sconto lo calcola il server in `create-payment-intent`, che ora restituisce `total`,
+> `discountAmount` e `discountLabel` accanto a `clientSecret`. **`CheckoutPage.jsx` deve leggere
+> quei valori invece di ricalcolare il totale lato client**: oggi lo calcola da sé, quindi con il
+> bundle attivo il riepilogo e il foglio Apple/Google Pay mostrerebbero €66,00 mentre il
+> PaymentIntent addebita €57,00. La riga nel carrello resta informativa, ma il totale mostrato al
+> checkout deve venire dal server.
 
 - [ ] **Step 2: Verificare**
 
