@@ -10,7 +10,7 @@ import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
-const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg'
+const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

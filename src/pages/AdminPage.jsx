@@ -15,7 +15,7 @@ const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 const fmt = cents => `€${(cents / 100).toFixed(2)}`
 const sanitizeFilename = name => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
-const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg'
+const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png'
 
 export function parseVideoUrl(url) {
   if (!url) return null

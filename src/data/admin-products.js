@@ -8335,7 +8335,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163149_f5c92604-c671-4bbb-b38d-dc55fc979363.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163132_23f1184e-a260-4913-bf5f-689d53d9a342.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -8746,7 +8746,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102439_57c9eeb0-16bf-441c-953b-65045193da22.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-snorlax-back-t-shirt",
@@ -9152,7 +9152,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-snorlax-back-t-shirt/hf_20260626_114025_c69996c2-a7f5-418c-99c4-d61a7b9f8f03.jpeg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-snorlax-back-t-shirt/hf_20260626_121455_9160de3b-30c7-49ea-996d-85a0eebc2d36.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-vileplume-back-t-shirt",
@@ -9562,7 +9562,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-back-t-shirt/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-back-t-shirt/hf_20260626_130321_c898440c-a8bc-4d8f-9d47-f34142f478b2.jpeg"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-mewtwo-back-t-shirt",
@@ -9974,7 +9974,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-ditto-back-t-shirt",
@@ -10344,7 +10344,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_144403_5d461f84-f80e-46fe-8902-fe257616b310.jpeg"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-charmander-back-t-shirt",
@@ -10724,7 +10724,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153613_d59bbb39-cc69-4791-bdf6-aeff026df7f9.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-alakazam-back-t-shirt",
@@ -11130,7 +11130,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-alakazam-back-t-shirt/hf_20260626_161741_ee168f87-8b30-4711-835e-fccbbe776aed.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-alakazam-back-t-shirt/hf_20260626_162219_4fd80bc6-177d-4047-bedd-3008189819e5.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -11519,7 +11519,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_111841_cb9072c5-0c7d-4736-8e3c-80f29071b9fd.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_165038_b3691bdb-5942-4adc-bc09-e0c9bdf6954e.jpg"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -11929,7 +11929,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124544_d0dd4376-f19e-4956-bc14-97b912f6a029.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-machop-back-t-shirt",
@@ -12335,7 +12335,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131622_52aef132-ee97-4a63-834f-a5aa803119d6.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_132102_34903f27-842e-419e-bb97-619f6dd97964.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-drowsee-back-t-shirt",
@@ -12743,7 +12743,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-back-t-shirt/hf_20260627_141308_14f8cae7-0231-48c8-bf1a-fbdeed17d579.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-back-t-shirt/hf_20260627_135307_82146959-9e93-4c4c-8763-98e117a21a56.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -13144,7 +13144,7 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "cool-mew-back-t-shirt",
@@ -13483,7 +13483,7 @@ export const adminProducts = [
     "updatedAt": "2026-07-08T15:21:18.278Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mew-back-t-shirt/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "pinterestPins": [
       {
         "title": "Unleash Your Inner Trainer with the Cool Mew Back T-Shirt",
@@ -13846,7 +13846,7 @@ export const adminProducts = [
     "updatedAt": "2026-07-08T15:21:42.210Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "pinterestPins": [
       {
         "title": "Elevate Your Style with the Cool Gengar Back T-Shirt",
@@ -14213,7 +14213,7 @@ export const adminProducts = [
     "updatedAt": "2026-07-08T15:22:57.189Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-likitung-back-t-shirt/design.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "pinterestPins": [
       {
         "title": "Unleash Your Inner Trainer with Lickitung Back T-Shirt",
@@ -15125,7 +15125,7 @@ export const adminProducts = [
     "updatedAt": "2026-09-01T10:16:07.032Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260820_231831_884ada2e-cc49-49a2-897a-2200e25a506a-corr-1s4nnvk4-gelato-front.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   },
   {
     "id": "elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
@@ -15665,6 +15665,6 @@ export const adminProducts = [
     "updatedAt": "2026-08-31T16:47:37.038Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_133035_531b4c22-ed29-4cfc-b4d1-df3ce4226aab-gela-wdkvn19t-gelato-front.png",
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.svg"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
   }
 ]
