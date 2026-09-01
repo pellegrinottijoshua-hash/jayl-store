@@ -44,8 +44,8 @@ async function fulfillIfNeeded(paymentIntent) {
     return
   }
 
-  const apiKey  = (process.env.GELATO_API_KEY  || '').trim()
-  const storeId = (process.env.GELATO_STORE_ID || '').trim()
+  // No GELATO_STORE_ID here — see the comment on orderPayload below for why.
+  const apiKey = (process.env.GELATO_API_KEY || '').trim()
   if (!apiKey) {
     console.error('[webhook] GELATO_API_KEY is not configured — skipping')
     return
@@ -81,11 +81,17 @@ async function fulfillIfNeeded(paymentIntent) {
   })
 
   // ── Standard orders API v4 ─────────────────────────────────────────────────
+  // storeId deliberately NOT included — see the matching, longer comment in
+  // api/orders.js. Attaching it routes the order through Gelato's
+  // connected-store flow, which requires each SKU pre-mapped in the dashboard
+  // and rejects a per-order files[] array with "Can't combine multiple files
+  // into production one" the moment a product has more than one file (a back
+  // print + an inner-neck label). Confirmed live on the Altaria order
+  // (2026-08-31 22:32).
   const orderPayload = {
     orderReferenceId:    `jayl-${paymentIntent.id}`,
     customerReferenceId: paymentIntent.metadata?.email || 'unknown',
     currency:            CURRENCY.toUpperCase(),
-    ...(storeId ? { storeId } : {}),
     items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
       const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
       // Placement comes from Gelato's gpr_<front>-<back> uid segment, not from the

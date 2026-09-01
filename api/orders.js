@@ -70,8 +70,8 @@ async function handleGetOrders(req, res) {
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-03-25.dahlia' })
 
 async function createGelatoOrder({ paymentIntent, items, shippingAddress, email }) {
-  const apiKey  = (process.env.GELATO_API_KEY  || '').trim()
-  const storeId = (process.env.GELATO_STORE_ID || '').trim()
+  // No GELATO_STORE_ID here — see the comment on orderPayload below for why.
+  const apiKey = (process.env.GELATO_API_KEY || '').trim()
   if (!apiKey) throw new Error('GELATO_API_KEY is not configured')
 
   const shippingPayload = {
@@ -134,11 +134,24 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
     }
   })
 
+  // storeId is deliberately NOT sent here. Attaching it routes the order through
+  // Gelato's connected-store flow, which tries to match each item against a
+  // pre-mapped SKU in the store catalog ("Connect product" in the Gelato
+  // dashboard). Our products were never mapped that way — the whole point of
+  // this direct productUid + files[] flow is to skip that mapping — so every
+  // item comes back "not connected to Gelato", and for products with more than
+  // one file (a back print + an inner-neck label) Gelato additionally refuses
+  // with "Can't combine multiple files into production one", because the
+  // store-catalog flow expects a single pre-attached production file per SKU,
+  // not the per-order files[] array the direct v4 API supports. Confirmed live
+  // on the Altaria order (2026-08-31 22:32): both symptoms disappear once
+  // storeId is absent from this payload. GELATO_STORE_ID stays in use for the
+  // read-only ecommerce.gelatoapis.com endpoints below (get-orders, get-order),
+  // which are legitimately store-scoped listings — this is about CREATE only.
   const orderPayload = {
     orderReferenceId:    `jayl-${paymentIntent.id}`,
     customerReferenceId: email || 'unknown',
     currency:            CURRENCY.toUpperCase(),
-    ...(storeId ? { storeId } : {}),
     items:               mappedItems,
     shippingAddress:     shippingPayload,
   }
