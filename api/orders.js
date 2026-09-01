@@ -661,6 +661,8 @@ function handlePrerender(req, res) {
 // ── drop-status — pubblico, senza password ────────────────────────────────────
 // Il conteggio dev'essere runtime: al build sarebbe congelato al deploy.
 async function handleDropStatus(req, res) {
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
+
   const cfg = getDrop()
   const c   = cfg.current || {}
   let sales = { products: {} }

@@ -18,14 +18,34 @@ function readRawBody(req) {
   })
 }
 
-async function fulfillIfNeeded(paymentIntent) {
+// Exported (in addition to the default handler) so it can be exercised
+// directly by scripts/*.js without going through Stripe signature
+// verification or a real network call — see the fix-round-1 report for why.
+export async function fulfillIfNeeded(paymentIntent) {
+  // Il registro vendite va tentato PRIMA del gate di idempotenza qui sotto, non
+  // dopo. create-order marca gelatoOrderId anche quando recordDropSale è
+  // fallito lì (es. GitHub 403 per un burst di rate-limit al lancio del drop)
+  // — è solo loggato, mai bloccante. Se questo tentativo vivesse dopo il gate,
+  // in quel caso preciso non partirebbe mai: il gate vede gelatoOrderId già
+  // impostato e ritorna subito, il webhook — l'unico fallback che questo
+  // registro ha — non tenterebbe mai la scrittura mancata, e il cap
+  // continuerebbe a sottocontare silenziosamente. recordDropSale è idempotente
+  // sul payment intent id, quindi tentarla qui è gratis nel caso comune (il
+  // conteggio è già andato a buon fine altrove: una sola lettura, risposta
+  // alreadyCounted). NON spostare questa chiamata dopo il gate.
+  const items = decodeItemsFromMetadata(paymentIntent.metadata?.items)
+  try {
+    await recordDropSale(paymentIntent.id, items)
+  } catch (err) {
+    console.error('[webhook] recordDropSale failed:', err.message)
+  }
+
   // Idempotency: skip if already fulfilled by /api/create-order or a previous webhook.
   if (paymentIntent.metadata?.gelatoOrderId) {
     console.log('[webhook] PI', paymentIntent.id, 'already fulfilled — skipping')
     return
   }
 
-  const items = decodeItemsFromMetadata(paymentIntent.metadata?.items)
   if (!items.length) {
     console.warn('[webhook] No items in PI metadata — skipping')
     return
@@ -133,14 +153,6 @@ async function fulfillIfNeeded(paymentIntent) {
 
   const order = await gelatoRes.json()
   console.log('[webhook] Gelato order created from webhook fallback:', order.id)
-
-  // Stesso registro del percorso primario. recordDropSale è idempotente sul
-  // payment intent id, quindi la doppia chiamata non conta due volte.
-  try {
-    await recordDropSale(paymentIntent.id, resolvedItems.map(({ item }) => item))
-  } catch (err) {
-    console.error('[webhook] recordDropSale failed:', err.message)
-  }
 
   try {
     await stripe.paymentIntents.update(paymentIntent.id, {
