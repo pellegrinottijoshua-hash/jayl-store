@@ -2,6 +2,7 @@ import Stripe from 'stripe'
 import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
 import { sendEmail, buildOrderConfirmationEmail } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
+import { recordDropSale } from './_lib/drop-sales.js'
 
 // Disable Vercel's default body parser — Stripe needs the raw body to verify the signature
 export const config = { api: { bodyParser: false } }
@@ -132,6 +133,14 @@ async function fulfillIfNeeded(paymentIntent) {
 
   const order = await gelatoRes.json()
   console.log('[webhook] Gelato order created from webhook fallback:', order.id)
+
+  // Stesso registro del percorso primario. recordDropSale è idempotente sul
+  // payment intent id, quindi la doppia chiamata non conta due volte.
+  try {
+    await recordDropSale(paymentIntent.id, resolvedItems.map(({ item }) => item))
+  } catch (err) {
+    console.error('[webhook] recordDropSale failed:', err.message)
+  }
 
   try {
     await stripe.paymentIntents.update(paymentIntent.id, {

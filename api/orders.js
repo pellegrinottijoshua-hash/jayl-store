@@ -22,6 +22,7 @@ import {
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { ghGet, ghPut } from './_lib/github.js'
+import { recordDropSale } from './_lib/drop-sales.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -218,6 +219,14 @@ async function handleCreateOrder(req, res) {
       shippingAddress,
       email: pi.metadata?.email || pi.receipt_email || '',
     })
+
+    // Contatore del drop. Non deve mai far fallire un ordine già pagato ed evaso:
+    // se questa scrittura salta, il contatore è indietro, non il cliente senza maglietta.
+    try {
+      await recordDropSale(pi.id, items)
+    } catch (err) {
+      console.error('[create-order] recordDropSale failed:', err.message)
+    }
 
     try {
       await stripe.paymentIntents.update(pi.id, {
