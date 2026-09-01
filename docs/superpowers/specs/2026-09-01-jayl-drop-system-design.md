@@ -181,8 +181,8 @@ scroll, exit-intent o visita di ritorno, e aspetta che il banner cookie sia stat
 Cambia solo il testo: offre l'accesso alla lista drop, non uno sconto.
 
 **Il codice `JAYL10` è disattivato durante un drop attivo.** Su un'edizione limitata a €22 uno
-sconto del 10% produce €19,80 e dissolve la scala di prezzo. `applyDiscount` rifiuta i codici
-percentuali quando il carrello contiene prodotti in stato DROP.
+sconto del 10% produce €19,80 e dissolve la scala di prezzo. `applyDiscount` rifiuta i codici sconto
+quando il carrello contiene prodotti in stato DROP.
 
 Iscrizioni: endpoint esistente → `src/data/emails.json` (il file non esiste ancora; viene
 creato alla prima iscrizione). In aggiunta, creazione del contatto su **Resend Audiences**
