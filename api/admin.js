@@ -3,6 +3,7 @@ import { put, del as blobDel, get as blobGet } from '@vercel/blob'
 import { handleUpload } from '@vercel/blob/client'
 import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
+import { ghGet, ghPut } from './_lib/github.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -16,44 +17,6 @@ const ASSETS_PATH            = 'src/data/assets.json'
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
-
-async function ghGet(path, token) {
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(path)}?ref=${GITHUB_BRANCH}`
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  })
-  if (!res.ok) throw new Error(`GitHub GET ${path}: ${res.status}`)
-  return res.json()
-}
-
-async function ghPut(path, content, sha, message, token) {
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`
-  const body = {
-    message,
-    content: Buffer.from(content).toString('base64'),
-    branch: GITHUB_BRANCH,
-    ...(sha ? { sha } : {}),
-  }
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'Content-Type': 'application/json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-    body: JSON.stringify(body),
-  })
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}))
-    throw new Error(`GitHub PUT ${path}: ${res.status} — ${JSON.stringify(err.message || err)}`)
-  }
-  return res.json()
-}
 
 async function ghDelete(path, sha, message, token) {
   const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`

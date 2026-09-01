@@ -21,6 +21,7 @@ import {
   STORE_EMAIL_ADDRESS,
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
+import { ghGet, ghPut } from './_lib/github.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -343,49 +344,8 @@ async function handleContact(req, res) {
 
 // ── capture-email (absorbed from api/capture-email.js) ───────────────────────
 
-const GITHUB_OWNER  = 'pellegrinottijoshua-hash'
-const GITHUB_REPO   = 'jayl-store'
-const GITHUB_BRANCH = 'main'
 const EMAILS_PATH   = 'src/data/emails.json'
 const CARTS_PATH    = 'src/data/abandoned-carts.json'
-
-async function ghGet(path, token) {
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(path)}?ref=${GITHUB_BRANCH}`
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  })
-  if (!res.ok) throw new Error(`GitHub GET ${path}: ${res.status}`)
-  return res.json()
-}
-
-async function ghPut(path, content, sha, message, token) {
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`
-  const body = {
-    message,
-    content: Buffer.from(content).toString('base64'),
-    branch: GITHUB_BRANCH,
-    ...(sha ? { sha } : {}),
-  }
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'Content-Type': 'application/json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-    body: JSON.stringify(body),
-  })
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}))
-    throw new Error(`GitHub PUT ${path}: ${res.status} — ${JSON.stringify(err.message || err)}`)
-  }
-  return res.json()
-}
 
 async function readCarts(token) {
   try {
