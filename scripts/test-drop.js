@@ -8,6 +8,7 @@ import {
   productState, isDropOpen, basePriceFor, capFor, counterMode, bundleDiscount,
   DROP, LISTINO, VAULT,
 } from '../api/_lib/drop.js'
+import { applyDiscount, bundleAdjustment } from '../api/_lib/catalog.js'
 
 let passed = 0
 const failures = []
@@ -84,6 +85,42 @@ check('tre più un estraneo → sconto comunque',
   bundleDiscount(it(['aaa', 'bbb', 'ccc', 'ddd']), cfg), 900)
 check('drop da due prodotti → nessun bundle',
   bundleDiscount(it(['aaa', 'bbb']), { ...cfg, current: { ...cfg.current, productIds: ['aaa', 'bbb'] } }), 0)
+
+// ── Integrazione con catalog.js ─────────────────────────────────────────────
+// Questi test usano la configurazione REALE di src/data/drop.js, non `cfg`.
+const ALTARIA = 'altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him'
+const SNORLAX = 'cool-snorlax-back-t-shirt'
+const NON_DROP = 'zzz-non-esiste'
+
+check('sconto percentuale su carrello senza pezzi in drop → valido',
+  applyDiscount(10000, 'JAYL10', [{ productId: NON_DROP }]).ok, true)
+
+check('sconto percentuale con un pezzo in drop → rifiutato',
+  applyDiscount(10000, 'JAYL10', [{ productId: ALTARIA }]).ok, false)
+
+check('senza lista items il codice resta valido (retrocompatibilità)',
+  applyDiscount(10000, 'JAYL10').ok, true)
+
+check('codice inesistente resta invalido anche senza items',
+  applyDiscount(10000, 'NONESISTE').ok, false)
+
+// Il drop reale ha 2 prodotti: il bundle ne richiede 3, quindi qui è sempre 0.
+check('bundleAdjustment sul drop reale a due prodotti → 0',
+  bundleAdjustment([{ productId: ALTARIA }, { productId: SNORLAX }]).amount, 0)
+
+check('bundleAdjustment senza sconto → label null',
+  bundleAdjustment([{ productId: ALTARIA }]).label, null)
+
+// Il ramo con sconto si prova con una cfg sintetica a tre prodotti.
+const cfg3 = {
+  current: { productIds: ['aaa', 'bbb', 'ccc'], dropPrice: 2200, bundlePrice: 5700 },
+  released: [], archivePrice: 2500,
+}
+check('bundleAdjustment con tre pezzi → 900',
+  bundleAdjustment([{ productId: 'aaa' }, { productId: 'bbb' }, { productId: 'ccc' }], cfg3).amount, 900)
+
+check('bundleAdjustment con tre pezzi → label presente',
+  typeof bundleAdjustment([{ productId: 'aaa' }, { productId: 'bbb' }, { productId: 'ccc' }], cfg3).label, 'string')
 
 // ── Report ──────────────────────────────────────────────────────────────────
 if (failures.length) {

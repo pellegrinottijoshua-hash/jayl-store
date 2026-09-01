@@ -9,6 +9,7 @@
 // ERR_UNSUPPORTED_ESM_URL_SCHEME at module load, before any handler runs.
 // Server code wants the full records anyway. See scripts/check-api-imports.js.
 import { adminProducts as products } from '../../src/data/admin-products.js'
+import { basePriceFor, bundleDiscount, productState, DROP } from './drop.js'
 
 const productMap = new Map(products.map((p) => [p.id, p]))
 
@@ -78,7 +79,9 @@ export function priceItem(raw) {
     if (!variantObj) return { ok: false, error: `Invalid color variant for ${productId}` }
   }
 
-  const unitPrice = (sizeObj?.price ?? product.price) + (frameObj?.price ?? 0)
+  // Il prezzo di stato (drop / listino) sovrascrive sia product.price sia
+  // sizes[].price: un drop ha un prezzo unico, non una scala per taglia.
+  const unitPrice = basePriceFor(productId, sizeObj, product) + (frameObj?.price ?? 0)
 
   return {
     ok: true,
@@ -158,14 +161,24 @@ const DISCOUNT_CODES = {
 }
 
 /**
- * Validate a discount code and compute the discount amount.
- * Returns { ok: true, amount, label } or { ok: false, error }.
- * amount is in cents, always ≥ 0.
+ * Valida un codice sconto e calcola l'importo.
+ * Ritorna { ok: true, amount, label } oppure { ok: false, error }.
+ * amount in centesimi, sempre ≥ 0.
+ *
+ * `items` è opzionale per retrocompatibilità, ma va passato ovunque sia
+ * disponibile: un -10% su un'edizione limitata a €22 produce €19,80 e scioglie
+ * la scala di prezzo su cui si regge il drop.
  */
-export function applyDiscount(subtotal, code) {
+export function applyDiscount(subtotal, code, items = []) {
   if (!code) return { ok: false, error: 'No discount code provided' }
   const entry = DISCOUNT_CODES[String(code).trim().toUpperCase()]
   if (!entry) return { ok: false, error: 'Invalid discount code' }
+
+  const hasDropItem = items.some((i) => productState(i.productId) === DROP)
+  if (hasDropItem) {
+    return { ok: false, error: 'I codici sconto non sono validi sui pezzi in drop.' }
+  }
+
   if (entry.type === 'percent') {
     return { ok: true, amount: Math.round(subtotal * entry.value / 100), label: entry.label }
   }
@@ -173,6 +186,15 @@ export function applyDiscount(subtotal, code) {
     return { ok: true, amount: Math.min(entry.value, subtotal), label: entry.label }
   }
   return { ok: false, error: 'Invalid discount type' }
+}
+
+/**
+ * Sconto bundle automatico: nessun codice, nessuno SKU dedicato. Se il carrello
+ * contiene tutti e tre i pezzi del drop, si applica da solo.
+ */
+export function bundleAdjustment(items, cfg) {
+  const amount = bundleDiscount(items, cfg)
+  return amount > 0 ? { amount, label: 'Bundle drop — tutti e tre' } : { amount: 0, label: null }
 }
 
 /** Encode the canonical, server-priced item list for storage in Stripe metadata. */
