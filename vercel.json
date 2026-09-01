@@ -86,6 +86,10 @@
       "destination": "/api/orders?handler=gmf"
     },
     {
+      "source": "/api/drop-status",
+      "destination": "/api/orders?handler=drop-status"
+    },
+    {
       "source": "/robots.txt",
       "destination": "/robots.txt"
     },

@@ -22,7 +22,8 @@ import {
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { ghGet, ghPut } from './_lib/github.js'
-import { recordDropSale } from './_lib/drop-sales.js'
+import { getDrop, capFor } from './_lib/drop.js'
+import { readSales, recordDropSale } from './_lib/drop-sales.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -657,6 +658,38 @@ function handlePrerender(req, res) {
   return res.status(200).send(html)
 }
 
+// ── drop-status — pubblico, senza password ────────────────────────────────────
+// Il conteggio dev'essere runtime: al build sarebbe congelato al deploy.
+async function handleDropStatus(req, res) {
+  const cfg = getDrop()
+  const c   = cfg.current || {}
+  let sales = { products: {} }
+  try {
+    sales = await readSales(c.id)
+  } catch (err) {
+    console.error('[drop-status] readSales failed:', err.message)
+  }
+
+  const products = {}
+  for (const id of c.productIds || []) {
+    products[id] = {
+      sold:   sales.products?.[id]?.sold   ?? 0,
+      lastAt: sales.products?.[id]?.lastAt ?? null,
+      cap:    capFor(id, cfg),
+    }
+  }
+
+  res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=60')
+  return res.status(200).json({
+    dropId: c.id, number: c.number, title: c.title,
+    startsAt: c.startsAt, endsAt: c.endsAt,
+    dropPrice: c.dropPrice, bundlePrice: c.bundlePrice,
+    archivePrice: cfg.archivePrice,
+    next: cfg.next ?? null,
+    products,
+  })
+}
+
 // ── Router ────────────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
@@ -677,6 +710,7 @@ export default async function handler(req, res) {
   if (h === 'validate-discount') return handleValidateDiscount(req, res)
   if (h === 'gmf')               return handleGmf(req, res)
   if (h === 'prerender')         return handlePrerender(req, res)
+  if (h === 'drop-status')       return handleDropStatus(req, res)
 
   return res.status(404).json({ error: `Unknown orders handler: ${h}` })
 }
