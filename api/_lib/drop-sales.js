@@ -8,7 +8,26 @@ import { ghGet, ghPut } from './github.js'
 import { capFor, productState, getDrop, DROP } from './drop.js'
 
 const SALES_PATH = 'src/data/drop-sales.json'
-const EMPTY = { counted: [], products: {} }
+
+// Fabbrica, non costante condivisa: un `const EMPTY = {...}` riusato via spread
+// (`{...EMPTY}`) fa una copia solo superficiale, quindi `entry.products` sarebbe
+// letteralmente `EMPTY.products` e una scrittura successiva mutasse lo stato del
+// modulo — su un container Vercel caldo questo avvelena i contatori tra un drop
+// e l'altro e salta il pezzo #1. Ogni chiamata a `emptyEntry()` crea oggetti
+// nuovi, quindi non c'è nulla da condividere.
+const emptyEntry = () => ({ counted: {}, products: {} })
+
+function isNotFound(err) {
+  return err instanceof Error && /:\s*404\b/.test(err.message)
+}
+
+function isShaConflict(err) {
+  // ghPut lancia `GitHub PUT ${path}: ${status} — ...`; solo un 409 significa
+  // "qualcun altro ha scritto per primo, sha da rileggere, sicuro ritentare".
+  // Qualsiasi altro status (401/403/422/5xx) è un fallimento vero e non va
+  // inghiottito come se fosse la normale contesa sullo sha.
+  return err instanceof Error && /:\s*409\b/.test(err.message)
+}
 
 async function readFile(token) {
   try {
@@ -17,16 +36,30 @@ async function readFile(token) {
       sha: file.sha,
       data: JSON.parse(Buffer.from(file.content, 'base64').toString('utf-8')),
     }
-  } catch {
-    return { sha: null, data: {} }   // il file non esiste ancora
+  } catch (err) {
+    // Il file "non esiste ancora" SOLO se GitHub risponde 404 (prima vendita mai
+    // registrata per l'intero store): è l'unico caso da trattare come vuoto.
+    // Qualsiasi altro errore (401/403 di token, 5xx, JSON corrotto) deve
+    // propagare — se lo inghiottissimo qui, soldFor tornerebbe silenziosamente 0
+    // durante un'interruzione reale (il cap-check al checkout fallirebbe aperto
+    // senza che nessuno lo sappia), e una scrittura successiva con
+    // `nextData = { ...data, [dropId]: entry }` collasserebbe l'intero registro
+    // — tutti gli altri drop — a una sola chiave.
+    if (isNotFound(err)) return { sha: null, data: {} }
+    throw err
   }
 }
 
-/** Stato del registro per un drop. Non lancia: senza token o senza file torna vuoto. */
+/**
+ * Stato del registro per un drop. Torna vuoto solo se manca il token o se il
+ * file non esiste ancora; qualsiasi altro errore di lettura si propaga (vedi il
+ * commento in readFile) — il chiamante (il cap-check al checkout) lo intercetta
+ * ed è lì che vive il fail-open, in modo osservabile invece che silenzioso.
+ */
 export async function readSales(dropId, token = process.env.GITHUB_TOKEN) {
-  if (!token) return { ...EMPTY }
+  if (!token) return emptyEntry()
   const { data } = await readFile(token)
-  return data[dropId] ? { counted: [], products: {}, ...data[dropId] } : { ...EMPTY }
+  return data[dropId] ? { ...emptyEntry(), ...data[dropId] } : emptyEntry()
 }
 
 /** Pezzi venduti di un prodotto. */
@@ -39,36 +72,54 @@ export async function soldFor(dropId, productId, token = process.env.GITHUB_TOKE
  * Registra una vendita e assegna i numeri dei pezzi.
  * Idempotente sul payment intent id: create-order e il webhook chiamano entrambi
  * questa funzione, e il webhook è solo un fallback che parte 10 s dopo.
- * Riprova fino a 3 volte sul conflitto di sha causato da vendite simultanee.
+ *
+ * Il cap NON blocca qui: si applica al checkout (Task 4). A questo punto il
+ * pagamento è già avvenuto, quindi il registro deve riportare la verità anche in
+ * caso di sforamento — vedi `overCap` nel risultato — invece di far sparire un
+ * pezzo pagato dietro un clamp silenzioso.
+ *
+ * Riprova fino a 5 volte con backoff con jitter, solo sul conflitto di sha (409)
+ * causato da vendite simultanee (anche l'admin panel scrive sullo stesso file).
+ * Qualsiasi altro errore di lettura o scrittura torna subito come
+ * { ok: false, error } senza ritentare.
  */
 export async function recordDropSale(paymentIntentId, items, token = process.env.GITHUB_TOKEN) {
-  if (!token) return { ok: false, error: 'GITHUB_TOKEN not configured' }
-  if (!paymentIntentId) return { ok: false, error: 'paymentIntentId required' }
-
   const dropItems = (items || []).filter((i) => productState(i.productId) === DROP)
   if (dropItems.length === 0) return { ok: true, numbers: {} }
 
+  if (!token) return { ok: false, error: 'GITHUB_TOKEN not configured' }
+  if (!paymentIntentId) return { ok: false, error: 'paymentIntentId required' }
+
   const dropId = getDrop().current.id
 
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const { sha, data } = await readFile(token)
-    const entry = data[dropId] ? { counted: [], products: {}, ...data[dropId] } : { ...EMPTY }
+  for (let attempt = 0; attempt < 5; attempt++) {
+    let sha, data
+    try {
+      ;({ sha, data } = await readFile(token))
+    } catch (err) {
+      console.error('[drop-sales] read failed:', err.message)
+      return { ok: false, error: err.message }
+    }
+    const entry = data[dropId] ? { ...emptyEntry(), ...data[dropId] } : emptyEntry()
 
-    if (entry.counted.includes(paymentIntentId)) {
-      return { ok: true, alreadyCounted: true, numbers: {} }
+    if (entry.counted[paymentIntentId]) {
+      return { ok: true, alreadyCounted: true, numbers: entry.counted[paymentIntentId] }
     }
 
     const numbers = {}
     const now = new Date().toISOString()
+    let overCap = false
     for (const item of dropItems) {
       const prev = entry.products[item.productId]?.sold ?? 0
       const qty  = Math.max(1, parseInt(item.quantity, 10) || 1)
       const cap  = capFor(item.productId)
-      const next = cap ? Math.min(prev + qty, cap) : prev + qty
+      const next = prev + qty   // mai clampato: il pagamento è già avvenuto
+      if (cap && next > cap) overCap = true
       entry.products[item.productId] = { sold: next, lastAt: now }
-      numbers[item.productId] = next          // il numero del pezzo: "#7/20"
+      // i numeri assegnati a questo acquisto, es. qty 3 da prev 5 → [6, 7, 8]
+      numbers[item.productId] = Array.from({ length: qty }, (_, i) => prev + i + 1)
     }
-    entry.counted = [...entry.counted, paymentIntentId]
+    entry.counted = { ...entry.counted, [paymentIntentId]: numbers }
 
     const nextData = { ...data, [dropId]: entry }
     try {
@@ -79,13 +130,19 @@ export async function recordDropSale(paymentIntentId, items, token = process.env
         `[drop] sale ${paymentIntentId} [skip ci]`,
         token,
       )
-      return { ok: true, numbers }
+      return { ok: true, numbers, ...(overCap ? { overCap: true } : {}) }
     } catch (err) {
-      if (attempt === 2) {
-        console.error('[drop-sales] record failed after 3 attempts:', err.message)
+      if (!isShaConflict(err)) {
+        console.error('[drop-sales] write failed (not a conflict):', err.message)
         return { ok: false, error: err.message }
       }
-      // conflitto di sha: un'altra vendita ha scritto nel frattempo, rileggi
+      if (attempt === 4) {
+        console.error('[drop-sales] record failed after 5 attempts (conflict):', err.message)
+        return { ok: false, error: err.message }
+      }
+      // conflitto di sha 409: un'altra vendita ha scritto nel frattempo, rileggi
+      // con backoff con jitter per non ripresentarsi tutti allo stesso istante
+      await new Promise((r) => setTimeout(r, 100 * 2 ** attempt + Math.random() * 100))
     }
   }
   return { ok: false, error: 'unreachable' }
