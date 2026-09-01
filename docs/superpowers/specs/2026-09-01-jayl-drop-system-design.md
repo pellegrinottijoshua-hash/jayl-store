@@ -85,7 +85,7 @@ Tutte le date in UTC, rese in ora locale dal client.
 ```json
 {
   "drop-01-sleep-mode": {
-    "counted": ["pi_3AbC…"],
+    "counted": { "pi_3AbC…": { "<productId>": [6, 7] } },
     "products": { "<productId>": { "sold": 14, "lastAt": "2026-09-06T09:12:00Z" } }
   }
 }
@@ -103,8 +103,21 @@ chiamano quindi lo stesso `recordDropSale(paymentIntentId, items)`, che esce sen
 se il `paymentIntentId` è già in `counted`. È anche il punto in cui si assegna il numero del
 pezzo.
 
+`counted` è una mappa e non una lista perché il ritorno idempotente deve restituire i numeri
+davvero assegnati: senza, il webhook di fallback non può ricostruirli — `products[].sold` è solo
+il totale corrente — e la mail di conferma partirebbe senza il `#7/20`. I numeri sono un array
+per prodotto: un ordine con la stessa maglietta in due taglie riceve due pezzi.
+
 **Concorrenza.** Due vendite simultanee leggono lo stesso `sha` e la seconda `ghPut` fallisce
-con conflitto. `recordDropSale` rilegge e riprova, fino a 3 tentativi.
+con conflitto. `recordDropSale` rilegge e riprova, fino a 5 tentativi con backoff a jitter — il
+pannello admin committa sullo stesso branch, quindi la contesa è la norma e non l'eccezione. Si
+riprova **solo** sul conflitto, mai su 401/403; l'unica eccezione è il 422 su un tentativo di
+creazione, che significa "il file esiste già" ed è il conflitto della primissima vendita.
+
+**Il cap non si applica in scrittura.** Il registro annota `prev + qty` senza clamp e segnala
+`overCap`. Il cap si impone al checkout: qui il pagamento è già riuscito e il registro deve dire
+la verità, altrimenti un oversell viene cancellato a tempo di scrittura e diventa non
+rilevabile — il contrario dello scopo del modulo.
 
 ## 3 · Storefront
 

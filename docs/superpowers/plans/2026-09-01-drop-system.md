@@ -439,13 +439,13 @@ git commit -m "feat(drop): prezzo per stato, sconto bundle, blocco codici in dro
 - Consumes: `capFor`, `productState`, `getDrop`, `DROP` da `api/_lib/drop.js`.
 - Produces:
   - `ghGet(path, token) → { content, sha, … }`, `ghPut(path, content, sha, message, token) → json` da `api/_lib/github.js`
-  - `readSales(dropId) → { counted: string[], products: { [id]: { sold, lastAt } } }`
-  - `soldFor(dropId, productId) → Promise<number>`
-  - `recordDropSale(paymentIntentId, items) → Promise<{ ok, numbers?: { [productId]: number } }>`
+  - `readSales(dropId) → { counted: { [piId]: { [productId]: number[] } }, products: { [id]: { sold, lastAt } } }` — rilancia se la lettura fallisce per un motivo diverso dal 404
+  - `soldFor(dropId, productId) → Promise<number>` — rilancia allo stesso modo
+  - `recordDropSale(paymentIntentId, items) → Promise<{ ok, alreadyCounted?, overCap?, numbers: { [productId]: number[] } }>`
 
 - [ ] **Step 1: Estrarre gli helper GitHub**
 
-`ghGet` e `ghPut` sono oggi duplicati identici in `api/orders.js` e `api/admin.js`; il registro vendite sarebbe il terzo consumatore. Creare `api/_lib/github.js` spostando il codice **verbatim**:
+`ghGet` e `ghPut` sono oggi duplicati identici in `api/orders.js` e `api/admin.js`; il registro vendite sarebbe il terzo consumatore (ce n'è una quarta copia in api/reviews.js, fuori scope). Creare `api/_lib/github.js` spostando il codice **verbatim**:
 
 ```js
 // Helper condivisi per l'API GitHub Contents. Erano duplicati in api/orders.js e
@@ -512,6 +512,15 @@ git commit -m "refactor(api): estrae ghGet/ghPut in _lib/github.js"
 ```
 
 - [ ] **Step 4: Scrivere il registro vendite**
+
+> ⚠️ **Il codice qui sotto è superato — non riapplicarlo così com'è.** La review del Task 3 ci
+> ha trovato tre difetti Critical: `{...EMPTY}` è una copia shallow che aliasa e muta stato di
+> modulo; il `catch` nudo rende un guasto di GitHub indistinguibile da "0 venduti"; e
+> `Math.min(prev+qty, cap)` cancella l'oversell a tempo di scrittura rendendolo non
+> rilevabile. Più due difetti emersi dal fix: `numbers` sovrascritto quando lo stesso prodotto
+> compare in due righe di carrello, e il 422 della primissima creazione non ritentato.
+> L'implementazione corretta è quella committata in `api/_lib/drop-sales.js` — leggi quella.
+> Questo blocco resta solo come traccia di com'era nata.
 
 `api/_lib/drop-sales.js`:
 
