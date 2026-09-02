@@ -6,7 +6,7 @@
 
 import {
   productState, isDropOpen, basePriceFor, capFor, counterMode, bundleDiscount,
-  DROP, LISTINO, VAULT,
+  DROP, LISTINO, VAULT, getDrop,
 } from '../api/_lib/drop.js'
 import { applyDiscount, bundleAdjustment } from '../api/_lib/catalog.js'
 
@@ -87,16 +87,39 @@ check('drop da due prodotti → nessun bundle',
   bundleDiscount(it(['aaa', 'bbb']), { ...cfg, current: { ...cfg.current, productIds: ['aaa', 'bbb'] } }), 0)
 
 // ── Integrazione con catalog.js ─────────────────────────────────────────────
-// Questi test usano la configurazione REALE di src/data/drop.js, non `cfg`.
-const ALTARIA = 'altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him'
-const SNORLAX = 'cool-snorlax-back-t-shirt'
+// Il resto di questa sezione usa la configurazione REALE di src/data/drop.js
+// (non `cfg`): applyDiscount/bundleAdjustment leggono lo stato di un prodotto
+// via productState/bundleDiscount, che di default leggono `dropConfig` reale.
+// La maggior parte delle assertion qui sotto è comunque indipendente dal
+// CONTENUTO di quella config (vedi i commenti puntuali) — TRANNE una: "sconto
+// percentuale con un pezzo in drop → rifiutato" ha bisogno che un prodotto
+// specifico sia DAVVERO in drop nel momento in cui gira il test, cosa che
+// `close-drop` (api/admin.js) smentisce ogni volta che un admin chiude un
+// drop — stessa causa, stesso bug di scripts/test-drop-orders.js (vedi il suo
+// commento in cima al file per il caso completo). Fix: stesso trucco usato
+// lì — getDrop() non torna una copia ma l'oggetto vivo importato da
+// src/data/drop.js (un binding `const`, ma un OGGETTO, quindi mutabile); dato
+// che applyDiscount non accetta una `cfg` come parametro, l'unico modo per
+// iniettarne una sintetica senza toccare la firma di produzione è mutare
+// `liveDrop.current` sul posto per la durata del singolo caso e ripristinarlo
+// subito dopo.
+const liveDrop = getDrop()
 const NON_DROP = 'zzz-non-esiste'
 
 check('sconto percentuale su carrello senza pezzi in drop → valido',
   applyDiscount(10000, 'JAYL10', [{ productId: NON_DROP }]).ok, true)
 
-check('sconto percentuale con un pezzo in drop → rifiutato',
-  applyDiscount(10000, 'JAYL10', [{ productId: ALTARIA }]).ok, false)
+{
+  const SYNTHETIC_DROP_ITEM = 'test-drop-synthetic-item'
+  const originalCurrent = liveDrop.current
+  liveDrop.current = { ...originalCurrent, productIds: [SYNTHETIC_DROP_ITEM] }
+  try {
+    check('sconto percentuale con un pezzo in drop → rifiutato',
+      applyDiscount(10000, 'JAYL10', [{ productId: SYNTHETIC_DROP_ITEM }]).ok, false)
+  } finally {
+    liveDrop.current = originalCurrent
+  }
+}
 
 check('senza lista items il codice resta valido (retrocompatibilità)',
   applyDiscount(10000, 'JAYL10').ok, true)
@@ -119,12 +142,18 @@ check('codice inesistente resta invalido anche senza items',
     result?.ok, true)
 }
 
-// Il drop reale ha 2 prodotti: il bundle ne richiede 3, quindi qui è sempre 0.
-check('bundleAdjustment sul drop reale a due prodotti → 0',
-  bundleAdjustment([{ productId: ALTARIA }, { productId: SNORLAX }]).amount, 0)
+// bundleDiscount richiede `cfg.current.productIds.length === 3` per applicare
+// QUALSIASI sconto (vedi api/_lib/drop.js) — il drop reale non ha mai avuto
+// più di 2 prodotti, e close-drop lo svuota a 0, mai a 3: questi due
+// controlli restano 0/null a prescindere dal CONTENUTO di src/data/drop.js
+// (drop aperto, chiuso, o riconfigurato con prodotti diversi), quindi non
+// serve una config sintetica qui — gli id sotto non devono esistere nel
+// catalogo, bundleDiscount non lo controlla.
+check('bundleAdjustment su un cart di due pezzi, drop reale (mai a 3 prodotti) → 0',
+  bundleAdjustment([{ productId: 'test-bundle-item-a' }, { productId: 'test-bundle-item-b' }]).amount, 0)
 
 check('bundleAdjustment senza sconto → label null',
-  bundleAdjustment([{ productId: ALTARIA }]).label, null)
+  bundleAdjustment([{ productId: 'test-bundle-item-a' }]).label, null)
 
 // Il ramo con sconto si prova con una cfg sintetica a tre prodotti.
 const cfg3 = {

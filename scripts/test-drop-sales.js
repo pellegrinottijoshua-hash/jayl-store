@@ -15,6 +15,7 @@
 // contaminano a vicenda. Run: node scripts/test-drop-sales.js
 
 import { readSales, soldFor, recordDropSale } from '../api/_lib/drop-sales.js'
+import { getDrop } from '../api/_lib/drop.js'
 
 let passed = 0
 const failures = []
@@ -39,9 +40,48 @@ async function throwsAsync(label, fn, matcher) {
   }
 }
 
-const TOKEN   = 'fake-token'
-const DROP_ID = 'drop-01-sleep-mode'                 // id reale, da src/data/drop.js
-const PRODUCT = 'cool-snorlax-back-t-shirt'          // prodotto reale del drop corrente, cap 20
+const TOKEN = 'fake-token'
+
+// Id SINTETICI, non legati al drop reale — recordDropSale ricava dropId da
+// getDrop().current.id e filtra gli item con productState(i.productId) ===
+// DROP (entrambi senza accettare una `cfg`, sempre sulla config REALE); prima
+// di questo fix, DROP_ID/PRODUCT erano l'id e un prodotto REALI del drop
+// corrente ("cap 20"). Bastava che un admin chiudesse il drop (close-drop
+// svuota current.productIds — vedi il BLOCKING in cima a
+// scripts/test-drop-orders.js, stessa causa) perché PRODUCT smettesse di
+// essere DROP: recordDropSale lo avrebbe filtrato via alla riga 107 di
+// api/_lib/drop-sales.js, tornando `{ ok: true, numbers: {} }` invece di
+// scrivere una vendita, e ogni test qui sotto che dipende da un numero
+// assegnato sarebbe fallito in blocco. Fix: stesso trucco di
+// scripts/test-drop.js/scripts/test-drop-orders.js — mutare sul posto
+// l'oggetto che getDrop() restituisce con una config sintetica (cap 20, un
+// solo prodotto sintetico), per tutta la durata di questo file — vedi
+// withSyntheticCurrent sotto.
+const DROP_ID = 'test-drop-sales-synthetic-drop'
+const PRODUCT = 'test-drop-sales-synthetic-item'   // cap 20 nella config sintetica sotto
+
+const liveDrop = getDrop()
+const originalCurrent = liveDrop.current
+
+async function withSyntheticCurrent(fn) {
+  liveDrop.current = {
+    id: DROP_ID,
+    number: 1,
+    title: 'TEST',
+    productIds: [PRODUCT],
+    startsAt: '2026-01-10T00:00:00Z',
+    endsAt:   '2026-01-13T00:00:00Z',
+    cap: 20,
+    caps: {},
+    dropPrice: 2200,
+    bundlePrice: 5700,
+  }
+  try {
+    return await fn()
+  } finally {
+    liveDrop.current = originalCurrent
+  }
+}
 
 const originalFetch = globalThis.fetch
 
@@ -92,9 +132,10 @@ async function main() {
   // oggetto EMPTY riusato per riferimento (spread superficiale): scrivere
   // nell'entry di un drop "vuoto" mutava lo stato del modulo, e il prossimo
   // drop letto come vuoto nello stesso container caldo partiva già sporco.
-  // recordDropSale ricava il proprio dropId da getDrop() (la config reale,
-  // fissa in questo processo) e non lo accetta come parametro, quindi per
-  // dimostrare l'isolamento fra due drop diversi usiamo readSales — che
+  // recordDropSale ricava il proprio dropId da getDrop() (fissa per tutta la
+  // durata di questo file — vedi withSyntheticCurrent) e non lo accetta come
+  // parametro, quindi per dimostrare l'isolamento fra due drop diversi
+  // usiamo readSales — che
   // accetta il dropId e usa la stessa fabbrica (emptyEntry) che recordDropSale
   // usa internamente.
   {
@@ -229,7 +270,7 @@ async function main() {
 }
 
 try {
-  await main()
+  await withSyntheticCurrent(main)
 } finally {
   restoreFetch()
 }
