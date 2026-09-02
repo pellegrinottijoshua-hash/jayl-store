@@ -32,7 +32,11 @@ export default function DropCountdown({ to, label, onExpire, className = '' }) {
     }
   }, [left, onExpire])
 
-  if (!to) return null
+  // `to` is admin-edited (src/data/drop.js) — a malformed value (e.g. a space
+  // instead of 'T') can parse in one engine and come back NaN in another
+  // (Safari is strict about ISO 8601). Without this guard that renders
+  // "NaN : NaN : NaN : NaN" and onExpire never fires, since NaN <= 0 is false.
+  if (!to || Number.isNaN(Date.parse(to))) return null
   const { d, h, m, s } = parts(left)
   return (
     <span className={className}>

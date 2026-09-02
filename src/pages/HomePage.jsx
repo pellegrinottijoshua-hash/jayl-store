@@ -8,6 +8,7 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop } from '../../api/_lib/drop.js'
 import DropPanels from '@/components/drop/DropPanels'
 import DropCountdown from '@/components/drop/DropCountdown'
+import { dropWindowState, BEFORE } from '@/components/drop/dropWindowState'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
 const dropCfg          = getDrop()
@@ -19,20 +20,42 @@ const releasedProducts = (dropCfg.released || [])
   .map((id) => objectsProducts.find((p) => p.id === id))
   .filter(Boolean)
 
-// light = cream sections, dark = dark sections
-// Screen 1: Drop panels | Screen 2: Waitlist | Screen 3: Artist's
-const SECTION_THEMES = ['dark', 'dark', 'light']
+// Le stesse condizioni usate più sotto in JSX per decidere se DropPanels e
+// l'archivio renderizzano qualcosa — non tempo-dipendenti (a differenza dello
+// stato before/live/closed, che vive dentro ai singoli componenti perché deve
+// restare fresco a ogni render), quindi calcolabili una volta a module-load
+// come il resto dei dati derivati qui sopra.
+const dropPanelsIds = (dropCfg.current?.productIds?.length > 0)
+  ? dropCfg.current.productIds
+  : (dropCfg.previous?.productIds || [])
+const dropPanelsWillRender = dropPanelsIds.some((id) => objectsProducts.some((p) => p.id === id))
+const archiveWillRender    = releasedProducts.length >= 6
 
-// Stable per-session random choice between images[0] and images[1] per product.
-// Computed once at module load: each product always shows the same image within a session,
-// but rotates randomly between sessions (e.g. man → woman → man → ...).
-const carouselImagePick = new Map(
-  objectsProducts.map(p => {
-    const imgs = p.images || []
-    const pick = Math.random() < 0.5 ? (imgs[0] ?? p.image) : (imgs[1] ?? imgs[0] ?? p.image)
-    return [p.id, pick]
-  })
-)
+// light = cream sections, dark = dark sections. Derived from the screens that
+// actually render (DropPanels can render nothing between drops before the admin
+// configures the next one; the archive is gated at 6+ released products) —
+// hard-coding this array desyncs it from reality and Navbar paints the wrong
+// text color on whichever screen inherits the wrong index.
+const SECTION_THEMES = [
+  ...(dropPanelsWillRender ? ['dark'] : []),
+  'dark', // Screen — Waitlist, always renders
+  ...(archiveWillRender ? ['dark'] : []),
+  'light', // Screen — Artist's, always renders
+]
+
+// Stable per-session random choice between images[0] and images[1] per product,
+// for the archive carousel only — the sole consumer. Gated the same as the
+// carousel itself and scoped to just the released products, not the whole
+// catalog: no reason to burn Math.random() over items nothing renders.
+const carouselImagePick = archiveWillRender
+  ? new Map(
+      releasedProducts.map(p => {
+        const imgs = p.images || []
+        const pick = Math.random() < 0.5 ? (imgs[0] ?? p.image) : (imgs[1] ?? imgs[0] ?? p.image)
+        return [p.id, pick]
+      })
+    )
+  : null
 
 function FallingS() {
   return (
@@ -209,6 +232,11 @@ export default function HomePage() {
 
   // Carousel auto-scroll/drag now lives in the <CollectionCarousel> component.
 
+  // Time-dependent, unlike dropPanelsWillRender above — recomputed every render
+  // so it stays correct as the countdown crosses startsAt/endsAt during a
+  // long-lived tab, same as DropPanels' own call to dropWindowState.
+  const dropState = dropWindowState(dropCfg)
+
   // ── Waitlist form — reuses the same /api/capture-email endpoint as
   // EmailCapturePopup, so no new server code is needed for this screen.
   const [waitlistEmail,     setWaitlistEmail]     = useState('')
@@ -230,6 +258,11 @@ export default function HomePage() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Something went wrong')
       setWaitlistSubmitted(true)
+      // Same key EmailCapturePopup sets on its own successful submit — without
+      // this, a visitor who signs up here still gets asked for the same email
+      // seconds later by that popup (it fires on scroll depth, which a 3-screen
+      // homepage crosses right around this section).
+      localStorage.setItem('jayl-email-popup', 'subscribed')
     } catch (err) {
       setWaitlistError(err.message)
     } finally {
@@ -274,7 +307,18 @@ export default function HomePage() {
             archive at full price. Join the list for early access to the next one.
           </p>
 
-          {dropCfg.next?.startsAt && (
+          {/* Before the current drop opens, "the next drop" IS the current one —
+              pointing this at cfg.next here would put a second, later date next
+              to DropPanels' own "apre tra" for the same drop, two countdowns
+              disagreeing about when the thing actually opens. Once it's live or
+              closed, this goes back to genuinely meaning the drop after this one. */}
+          {dropState.state === BEFORE ? (
+            <DropCountdown
+              to={dropState.target}
+              label="apre tra"
+              className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-8"
+            />
+          ) : dropCfg.next?.startsAt && (
             <DropCountdown
               to={dropCfg.next.startsAt}
               label="prossimo drop tra"
@@ -311,7 +355,7 @@ export default function HomePage() {
           comes from getDrop().released; empty today, so nothing renders yet). Reuses
           CollectionCarousel, which duplicates its list for the infinite-loop illusion
           and looks visibly broken with too few items — same 6-item floor "New In" used. ════ */}
-      {releasedProducts.length >= 6 && (
+      {archiveWillRender && (
         <CollectionCarousel
           title="The Archive"
           viewAllTo="/objects"
