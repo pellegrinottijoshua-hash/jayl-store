@@ -5,6 +5,9 @@ import { products } from '@/data/products'
 import { formatPrice, slugToTitle, isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+
+const dropCfg = getDrop()
 
 /** Match a collection name to a URL slug */
 function collectionSlug(name) {
@@ -74,8 +77,12 @@ export default function CollectionPage() {
     return <Navigate to={`/collection/${canonicalSlug}`} replace />
   }
 
+  // /art has no launched section yet (ArtPage filters `section === 'art'`,
+  // and nothing carries that section today — see Navbar.jsx, where the 'art'
+  // nav item itself is commented out pending launch), so an empty collection
+  // used to bounce to another empty page. /objects is live.
   if (collectionProducts.length === 0) {
-    return <Navigate to="/art" replace />
+    return <Navigate to="/objects" replace />
   }
 
   const bgCls    = isDark ? 'bg-off-black'  : 'bg-paper'
@@ -144,7 +151,7 @@ export default function CollectionPage() {
                 </p>
               )}
               <h3 className={`font-display text-base ${textCls} leading-tight mb-1`}>{product.name}</h3>
-              <p className={`text-sm ${mutedCls}`}>from {formatPrice(product.price)}</p>
+              <p className={`text-sm ${mutedCls}`}>from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
             </Link>
           ))}
         </div>

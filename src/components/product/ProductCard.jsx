@@ -3,12 +3,19 @@ import { Plus, Heart } from 'lucide-react'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 import { useWishlistStore } from '@/store/wishlistStore'
+import { getDrop, basePriceFor } from '../../../api/_lib/drop.js'
 
 export default function ProductCard({ product, className, light = false }) {
   const { toggle, isWishlisted } = useWishlistStore()
   const wishlisted = isWishlisted(product.id)
   const defaultSize = product.sizes?.[Math.floor(product.sizes.length / 2)]
-  const displayPrice = defaultSize?.price ?? product.price
+  // basePriceFor(), not defaultSize?.price ?? product.price directly — same
+  // reasoning as ProductPage's buy box: a DROP/LISTINO product has one price
+  // for the whole edition, not a per-size scale. Without this, a card in
+  // "Complete the Look" / ShopPage / WishlistPage showed the raw catalog
+  // price while the product's own page (via basePriceFor) showed the real
+  // drop price — €23.99 on the card, €22.00 on the page for the same item.
+  const displayPrice = basePriceFor(product.id, defaultSize, product, getDrop())
 
   return (
     <Link

@@ -4,8 +4,10 @@ import { products } from '@/data/products'
 import { formatPrice, isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
+const dropCfg = getDrop()
 
 const collectionNames = [...new Set(objectsProducts.map((p) => p.collection || 'Other'))]
 
@@ -113,7 +115,7 @@ export default function ObjectsPage() {
                   />
                 </div>
                 <h3 className="font-display text-base text-cream leading-tight mb-1">{product.name}</h3>
-                <p className="text-sm text-text-muted">from {formatPrice(product.price)}</p>
+                <p className="text-sm text-text-muted">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
               </Link>
             ))}
           </div>
@@ -163,7 +165,7 @@ export default function ObjectsPage() {
                     <h3 className="font-display text-base sm:text-lg text-cream leading-tight mb-1">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-text-muted">from {formatPrice(product.price)}</p>
+                    <p className="text-sm text-text-muted">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
                   </div>
                 </Link>
               ))}

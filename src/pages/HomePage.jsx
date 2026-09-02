@@ -5,7 +5,7 @@ import { products } from '@/data/products'
 import { formatPrice } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
-import { getDrop } from '../../api/_lib/drop.js'
+import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 import DropPanels from '@/components/drop/DropPanels'
 import DropCountdown from '@/components/drop/DropCountdown'
 import { dropWindowState, BEFORE } from '@/components/drop/dropWindowState'
@@ -189,7 +189,7 @@ function CollectionCarousel({ title, viewAllTo, products: items, imagePick }) {
                 />
               </div>
               <h3 className="font-display text-sm text-cream leading-tight truncate pointer-events-none">{product.name}</h3>
-              <p className="text-xs text-text-muted mt-0.5 pointer-events-none">from {formatPrice(product.price)}</p>
+              <p className="text-xs text-text-muted mt-0.5 pointer-events-none">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
             </Link>
             )
           })}

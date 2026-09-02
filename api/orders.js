@@ -22,7 +22,7 @@ import {
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { ghGet, ghPut } from './_lib/github.js'
-import { getDrop, capFor, productState, basePriceFor, VAULT } from './_lib/drop.js'
+import { getDrop, capFor, productState, basePriceFor, isDropOpen, VAULT, DROP } from './_lib/drop.js'
 import { readSales, recordDropSale } from './_lib/drop-sales.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
@@ -224,7 +224,14 @@ async function handleCreateOrder(req, res) {
     // Contatore del drop. Non deve mai far fallire un ordine già pagato ed evaso:
     // se questa scrittura salta, il contatore è indietro, non il cliente senza maglietta.
     try {
-      await recordDropSale(pi.id, items)
+      const saleResult = await recordDropSale(pi.id, items)
+      // overCap:true means the ledger honestly recorded a piece past the cap
+      // (two simultaneous checkouts both passed the gate) — the ledger's job
+      // is to make that detectable, not to prevent it. Without this log the
+      // oversell is invisible: nothing reads `overCap` otherwise.
+      if (saleResult?.overCap) {
+        console.error('[create-order] drop sale recorded OVER CAP for PI', pi.id, saleResult.numbers)
+      }
     } catch (err) {
       console.error('[create-order] recordDropSale failed:', err.message)
     }
@@ -501,17 +508,52 @@ function escapeXml(s) {
 }
 
 async function handleGmf(req, res) {
+  // Il cap si legge dal registro vendite reale, non presunto 0: senza questo,
+  // un prodotto DROP già esaurito resterebbe annunciato in_stock nel feed
+  // finché il cron o una visita non forzano un refresh. Una sola lettura per
+  // l'intero feed (non una per prodotto) — stesso motivo di evaluateDropGate.
+  // Se la lettura fallisce, soldByProduct resta vuota: ogni prodotto DROP
+  // legge sold 0, quindi il cap non lo marca mai esaurito qui — la finestra
+  // (isDropOpen) resta comunque l'unico vincolo che decide, di per sé
+  // sufficiente per il caso comune (drop non ancora aperto).
+  const cfg = getDrop()
+  let soldByProduct = new Map()
+  try {
+    const sales = await readSales(cfg.current?.id)
+    for (const [productId, entry] of Object.entries(sales.products || {})) {
+      soldByProduct.set(productId, entry.sold ?? 0)
+    }
+  } catch (err) {
+    console.error('[gmf] readSales failed, cap check skipped for this feed refresh:', err.message)
+  }
+  const dropOpenNow = isDropOpen(new Date(), cfg)
+
   // Google Shopping must never advertise a product it can't sell: a VAULT
   // product isn't purchasable (checkDropGate rejects it) and its page renders
   // COMING SOON, not a product — Merchant Center suspends accounts over an
   // availability/landing-page mismatch like that. Same visibility rule as
   // scripts/generate-sitemap.js and handlePrerender below (productState !==
   // VAULT means DROP or LISTINO — the only two states anything is buyable in).
-  const items = adminProducts.filter(p => productState(p.id) !== VAULT).map(p => {
+  //
+  // A DROP product is a NARROWER case than "visible": it's only actually
+  // buyable while the window is open AND under its cap (checkDropGate 409s
+  // otherwise) — today's real drop.js has a startsAt in the future, so this
+  // is not a hypothetical. out_of_stock (not preorder — preorder needs an
+  // availability_date we don't track, and would risk the same disapproval
+  // this exists to avoid) until both hold.
+  const items = adminProducts.filter(p => productState(p.id, cfg) !== VAULT).map(p => {
     // basePriceFor(), not p.price — the feed must declare the price checkout
     // actually charges (dropPrice/archivePrice for DROP/LISTINO), or Google
     // flags the mismatch between the ad and what the customer is charged.
-    const price      = ((basePriceFor(p.id, null, p) ?? 0) / 100).toFixed(2)
+    const price      = ((basePriceFor(p.id, null, p, cfg) ?? 0) / 100).toFixed(2)
+    const state      = productState(p.id, cfg)
+    let availability = 'in_stock'
+    if (state === DROP) {
+      const cap    = capFor(p.id, cfg)
+      const sold   = soldByProduct.get(p.id) ?? 0
+      const soldOut = cap > 0 && sold >= cap
+      availability = (dropOpenNow && !soldOut) ? 'in_stock' : 'out_of_stock'
+    }
     const imageUrl   = p.image || (p.images?.[0] ?? '')
     const link       = `https://jayl.store/product/${p.id}`
     const extraImgs  = (p.images || []).slice(0, 10).filter(u => u && u !== imageUrl)
@@ -524,7 +566,7 @@ async function handleGmf(req, res) {
     <g:link>${link}</g:link>
     <g:image_link>${escapeXml(imageUrl)}</g:image_link>
 ${extraImgs ? extraImgs + '\n' : ''}    <g:condition>new</g:condition>
-    <g:availability>in_stock</g:availability>
+    <g:availability>${availability}</g:availability>
     <g:price>${price} EUR</g:price>
     <g:brand>JAYL</g:brand>
     <g:mpn>${escapeXml(p.id)}</g:mpn>
@@ -688,6 +730,41 @@ function handlePrerender(req, res) {
 
 // ── drop-status — pubblico, senza password ────────────────────────────────────
 // Il conteggio dev'essere runtime: al build sarebbe congelato al deploy.
+//
+// Ogni querystring diversa è una chiave di cache CDN diversa, quindi
+// `s-maxage=30` sotto NON protegge da un burst cache-busting
+// (`?_=1`, `?_=2`, …): ognuna di quelle richieste raggiunge comunque questa
+// funzione e farebbe una ghGet autenticata. 5000 di queste esauriscono il
+// budget orario di GITHUB_TOKEN — dopo di che GitHub risponde 403 a tutto e
+// evaluateDropGate (create-payment-intent) fallisce aperto per OGNI checkout,
+// disattivando il cap che questo intero sistema esiste per far rispettare.
+// Questo memo di modulo condivide UNA lettura fra un burst di richieste
+// concorrenti, a prescindere dalla querystring: chiave sul dropId, TTL breve
+// (drop-status resta quasi realtime), e MAI un fallimento cachato come
+// successo — una promise rifiutata viene rimossa subito, così la richiesta
+// successiva ritenta invece di ereditare in silenzio l'errore per il resto
+// del TTL.
+const SALES_MEMO_TTL_MS = 15_000
+const salesMemo = new Map() // dropId → { at, promise }
+
+function memoizedReadSales(dropId) {
+  const cached = salesMemo.get(dropId)
+  if (cached && Date.now() - cached.at < SALES_MEMO_TTL_MS) return cached.promise
+
+  const promise = readSales(dropId).catch((err) => {
+    salesMemo.delete(dropId)
+    throw err
+  })
+  salesMemo.set(dropId, { at: Date.now(), promise })
+  return promise
+}
+
+// Esportato solo per scripts/test-drop-orders.js, per azzerare il memo fra un
+// caso di test e l'altro senza dover aspettare il TTL di 15s.
+export function clearDropStatusMemoForTests() {
+  salesMemo.clear()
+}
+
 async function handleDropStatus(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
 
@@ -695,7 +772,7 @@ async function handleDropStatus(req, res) {
   const c   = cfg.current || {}
   let sales = { products: {} }
   try {
-    sales = await readSales(c.id)
+    sales = await memoizedReadSales(c.id)
   } catch (err) {
     console.error('[drop-status] readSales failed:', err.message)
   }
@@ -740,7 +817,12 @@ export default async function handler(req, res) {
   if (h === 'validate-discount') return handleValidateDiscount(req, res)
   if (h === 'gmf')               return handleGmf(req, res)
   if (h === 'prerender')         return handlePrerender(req, res)
-  if (h === 'drop-status')       return handleDropStatus(req, res)
+  if (h === 'drop-status') {
+    if (rateLimit(req, { max: 60, windowMs: 60_000 })) {
+      return res.status(429).json({ error: 'Too many requests. Please try again later.' })
+    }
+    return handleDropStatus(req, res)
+  }
 
   return res.status(404).json({ error: `Unknown orders handler: ${h}` })
 }

@@ -104,6 +104,21 @@ check('senza lista items il codice resta valido (retrocompatibilità)',
 check('codice inesistente resta invalido anche senza items',
   applyDiscount(10000, 'NONESISTE').ok, false)
 
+// N1 — handleValidateDiscount (api/orders.js) passa `items` da req.body
+// direttamente: un client pubblico può mandare `items: null` esplicito, e
+// `items = []` come default del parametro NON scatta su un `null` passato
+// esplicitamente (scatta solo quando l'argomento è omesso) — solo `items ??
+// []` copre anche questo caso. Senza il fix, `items.some(...)` lancia e la
+// funzione serverless torna FUNCTION_INVOCATION_FAILED invece di un 400.
+{
+  let threw = null
+  let result
+  try { result = applyDiscount(1000, 'JAYL10', null) } catch (e) { threw = e }
+  check('N1: applyDiscount(1000, "JAYL10", null) non lancia', threw, null)
+  check('N1: con items:null il codice resta valido (nessun pezzo in drop da escludere)',
+    result?.ok, true)
+}
+
 // Il drop reale ha 2 prodotti: il bundle ne richiede 3, quindi qui è sempre 0.
 check('bundleAdjustment sul drop reale a due prodotti → 0',
   bundleAdjustment([{ productId: ALTARIA }, { productId: SNORLAX }]).amount, 0)

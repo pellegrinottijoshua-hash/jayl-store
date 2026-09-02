@@ -65,6 +65,39 @@ if (cfg) {
     JSON.stringify(cfg) === JSON.stringify(liveDrop))
 }
 
+// ── N4 — un prezzo 0 non è "sintatticamente a posto" ────────────────────────
+// dropPrice/bundlePrice/archivePrice controllavano solo Number.isInteger,
+// quindi 0 passava: DropTab fa `parseInt(v, 10) || 0`, e un admin che svuota
+// il campo prezzo e salva scriverebbe silenziosamente dropPrice: 0 — la
+// vetrina mostrerebbe €0.00 mentre Stripe arrotonda comunque al minimo di 50
+// centesimi. Config sintetica (non src/data/drop.js reale), per restare
+// deterministico e non dipendere da cosa contiene il drop corrente.
+{
+  const validCfg = {
+    current: {
+      id: 'test-drop', number: 1, title: 'TEST',
+      productIds: ['aaa'],
+      startsAt: '2026-01-10T00:00:00Z',
+      endsAt:   '2026-01-13T00:00:00Z',
+      cap: 20, caps: {},
+      dropPrice: 2200, bundlePrice: 5700,
+    },
+    released: [],
+    archivePrice: 2500,
+  }
+  check('N4: config sintetica valida passa validateDropConfig() (baseline)',
+    validateDropConfig(validCfg).ok === true)
+
+  check('N4: current.dropPrice: 0 → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, dropPrice: 0 } }).ok === false)
+  check('N4: current.bundlePrice: 0 → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, bundlePrice: 0 } }).ok === false)
+  check('N4: archivePrice: 0 → rifiutato',
+    validateDropConfig({ ...validCfg, archivePrice: 0 }).ok === false)
+  check('N4: current.dropPrice negativo → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, dropPrice: -100 } }).ok === false)
+}
+
 // ── Report ──────────────────────────────────────────────────────────────────
 if (failures.length) {
   console.error(`\n✗ ${failures.length} controlli falliti (${passed} passati) su src/data/drop.js:\n`)

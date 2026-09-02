@@ -174,7 +174,10 @@ export function applyDiscount(subtotal, code, items = []) {
   const entry = DISCOUNT_CODES[String(code).trim().toUpperCase()]
   if (!entry) return { ok: false, error: 'Invalid discount code' }
 
-  const hasDropItem = items.some((i) => productState(i.productId) === DROP)
+  // `items = []` as a default only fires when the argument is omitted, not
+  // when a public endpoint (handleValidateDiscount) passes an explicit
+  // `null` straight from req.body — `(items ?? [])` covers both.
+  const hasDropItem = (items ?? []).some((i) => productState(i.productId) === DROP)
   if (hasDropItem) {
     return { ok: false, error: 'I codici sconto non sono validi sui pezzi in drop.' }
   }

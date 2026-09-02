@@ -6,6 +6,9 @@ import { products } from '@/data/products'
 import { formatPrice } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+
+const dropCfg = getDrop()
 
 // TikTok icon (Lucide doesn't include it)
 function TikTokIcon({ size = 16 }) {
@@ -212,7 +215,7 @@ export default function AmbassadorPage() {
                 />
               </div>
               <h3 className="font-display text-sm text-ink leading-tight truncate">{product.name}</h3>
-              <p className="text-xs text-ink-muted mt-0.5">from {formatPrice(product.price)}</p>
+              <p className="text-xs text-ink-muted mt-0.5">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
             </Link>
           ))}
         </div>

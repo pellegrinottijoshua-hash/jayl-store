@@ -68,7 +68,15 @@ async function readFile(token) {
  * ed è lì che vive il fail-open, in modo osservabile invece che silenzioso.
  */
 export async function readSales(dropId, token = process.env.GITHUB_TOKEN) {
-  if (!token) return emptyEntry()
+  // A missing token isn't "no sales yet" — it's the cap-check silently
+  // disabled (sold reads as 0 for every product, forever). Unlike a real
+  // read failure (which evaluateDropGate catches and logs as fail-open),
+  // this branch used to return empty with no signal at all. This env var
+  // never mattered to create-payment-intent before this branch.
+  if (!token) {
+    console.error('[drop-sales] GITHUB_TOKEN not configured — cap check disabled, reporting 0 sold for every product')
+    return emptyEntry()
+  }
   const { data } = await readFile(token)
   return data[dropId] ? { ...emptyEntry(), ...data[dropId] } : emptyEntry()
 }

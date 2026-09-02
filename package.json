@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/check-api-imports.js && node scripts/test-placement.js && node scripts/test-drop.js && node scripts/test-drop-sales.js && node scripts/test-drop-gate.js && node scripts/test-drop-config.js && node scripts/check-print-files.js && node scripts/generate-sitemap.js",
-    "test": "node scripts/test-placement.js && node scripts/test-drop.js && node scripts/test-drop-sales.js && node scripts/test-drop-gate.js && node scripts/test-drop-config.js && node scripts/check-print-files.js",
+    "prebuild": "node scripts/check-api-imports.js && node scripts/test-placement.js && node scripts/test-drop.js && node scripts/test-drop-sales.js && node scripts/test-drop-gate.js && node scripts/test-drop-config.js && node scripts/test-drop-orders.js && node scripts/check-print-files.js && node scripts/generate-sitemap.js",
+    "test": "node scripts/test-placement.js && node scripts/test-drop.js && node scripts/test-drop-sales.js && node scripts/test-drop-gate.js && node scripts/test-drop-config.js && node scripts/test-drop-orders.js && node scripts/check-print-files.js",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives"

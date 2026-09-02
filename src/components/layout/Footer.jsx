@@ -118,7 +118,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { to: '/objects',                   label: 'Objects' },
-                { to: '/collection/cool-pok-mon',   label: 'Cool Pokémon' },
+                // Cool Pokémon removed: all 37 products in that collection
+                // are VAULT (not released yet) — see the matching comment in
+                // Navbar.jsx's OBJECTS_DROPDOWN.
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link

@@ -35,7 +35,14 @@ export async function fulfillIfNeeded(paymentIntent) {
   // alreadyCounted). NON spostare questa chiamata dopo il gate.
   const items = decodeItemsFromMetadata(paymentIntent.metadata?.items)
   try {
-    await recordDropSale(paymentIntent.id, items)
+    const saleResult = await recordDropSale(paymentIntent.id, items)
+    // Same as the create-order call site — overCap:true means the ledger
+    // recorded a piece past the cap. Nothing reads this field otherwise, so
+    // without the log the oversell this module exists to make detectable
+    // stays invisible.
+    if (saleResult?.overCap) {
+      console.error('[webhook] drop sale recorded OVER CAP for PI', paymentIntent.id, saleResult.numbers)
+    }
   } catch (err) {
     console.error('[webhook] recordDropSale failed:', err.message)
   }

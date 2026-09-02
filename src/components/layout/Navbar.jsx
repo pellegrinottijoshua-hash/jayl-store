@@ -84,9 +84,13 @@ const ART_DROPDOWN = [
   { label: 'Urban Movements',          to: '/collection/urban-movements' },
 ]
 
+// Cool Pokémon removed: all 37 products in that collection are VAULT (not
+// released yet), so the storefront bundle ships none of them — the link
+// bounced every visitor to an empty page (CollectionPage finds zero products
+// and redirects). Re-add once the collection has at least one non-VAULT
+// product.
 const OBJECTS_DROPDOWN = [
   { label: 'All Objects',   to: '/objects',                 divider: true },
-  { label: 'Cool Pokémon',  to: '/collection/cool-pok-mon' },
 ]
 
 export default function Navbar() {

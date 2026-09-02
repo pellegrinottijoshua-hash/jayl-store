@@ -129,11 +129,17 @@ export function validateDropConfig(cfg) {
   if (!isPositiveInteger(c.cap)) {
     return { ok: false, error: 'current.cap must be a positive integer' }
   }
-  if (!Number.isInteger(c.dropPrice)) {
-    return { ok: false, error: 'current.dropPrice must be an integer' }
+  // Un prezzo 0 (o negativo) non è "gratis" per errore di forma: DropTab fa
+  // `parseInt(v, 10) || 0`, quindi un admin che svuota il campo e salva scrive
+  // silenziosamente dropPrice: 0 — la vetrina mostra €0.00 e Stripe arrotonda
+  // comunque al minimo di 50 centesimi, cioè una maglietta a €0,50 addebitata
+  // diversamente da quanto mostrato. Stesso trattamento di current.cap sopra:
+  // intero positivo, mai una stringa numerica coercibile.
+  if (!isPositiveInteger(c.dropPrice)) {
+    return { ok: false, error: 'current.dropPrice must be a positive integer' }
   }
-  if (!Number.isInteger(c.bundlePrice)) {
-    return { ok: false, error: 'current.bundlePrice must be an integer' }
+  if (!isPositiveInteger(c.bundlePrice)) {
+    return { ok: false, error: 'current.bundlePrice must be a positive integer' }
   }
 
   if (!isPlainObject(c.caps)) {
@@ -149,8 +155,8 @@ export function validateDropConfig(cfg) {
     return { ok: false, error: 'released must be an array of strings' }
   }
 
-  if (!Number.isInteger(cfg.archivePrice)) {
-    return { ok: false, error: 'archivePrice must be an integer' }
+  if (!isPositiveInteger(cfg.archivePrice)) {
+    return { ok: false, error: 'archivePrice must be a positive integer' }
   }
 
   return { ok: true }
