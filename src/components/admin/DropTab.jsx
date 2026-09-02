@@ -15,6 +15,11 @@ export default function DropTab() {
   const [status, setStatus] = useState(null)
   const [msg, setMsg]       = useState('')
   const [q, setQ]           = useState('')
+  // Un solo flag per save/close: la Contents API richiede lo sha del blob
+  // CORRENTE ad ogni PUT, quindi due scritture concorrenti dalla stessa scheda
+  // (es. un doppio click) userebbero lo stesso sha e la seconda 409erebbe —
+  // disabilitare i bottoni mentre una richiesta è in volo lo previene a monte.
+  const [busy, setBusy]     = useState(false)
 
   const loadDrop = () =>
     post('get-drop').then((r) => {
@@ -45,30 +50,59 @@ export default function DropTab() {
   const setCap = (v) => setCurrent({ cap: v === '' ? '' : Math.max(1, parseInt(v, 10) || 1) })
 
   const save = async () => {
+    if (busy) return
     // Difesa in profondità: anche se il campo è rimasto vuoto o invalido al
-    // momento del salvataggio, non mandiamo mai un cap <= 0 al server.
+    // momento del salvataggio, non mandiamo mai un cap <= 0 al server (il
+    // server lo rifiuterebbe comunque, ma non c'è motivo di fargli fare
+    // andata e ritorno per un errore che possiamo evitare qui).
     const capNum  = parseInt(cfg.current.cap, 10)
     const safeCap = Number.isFinite(capNum) && capNum > 0 ? capNum : 1
     const toSave  = { ...cfg, current: { ...cfg.current, cap: safeCap } }
     if (safeCap !== cfg.current.cap) setCurrent({ cap: safeCap })
 
+    setBusy(true)
     setMsg('Salvataggio…')
     const r = await post('save-drop', { drop: toSave, sha })
-    setMsg(r.ok ? 'Salvato — il deploy parte da solo' : (r.error || 'errore'))
+    setBusy(false)
+    if (r.ok) {
+      // La Contents API richiede lo sha del blob CORRENTE ad ogni scrittura.
+      // Senza salvare quello che il server restituisce qui, un secondo save
+      // nella stessa sessione userebbe lo sha ormai stantio e fallirebbe con
+      // un errore GitHub grezzo — "edit, save, edit di nuovo, save di nuovo"
+      // è il flusso base, non un caso limite.
+      if (r.sha) setSha(r.sha)
+      setMsg('Salvato — il deploy parte da solo')
+    } else {
+      // cfg (le modifiche dell'admin) resta intatto: un retry riparte da qui,
+      // niente viene perso.
+      setMsg(r.error || 'errore')
+    }
   }
 
   const closeDrop = async () => {
+    if (busy || cfg.current.productIds.length === 0) return
     if (!confirm('Chiudere il drop? I pezzi passano in listino a prezzo pieno.')) return
+    setBusy(true)
     setMsg('Chiusura…')
     const r = await post('close-drop')
-    setMsg(r.ok ? 'Drop chiuso' : (r.error || 'errore'))
-    if (r.ok) loadDrop()
+    setBusy(false)
+    if (!r.ok) { setMsg(r.error || 'errore'); return }
+    if (r.sha) setSha(r.sha)
+    setMsg(r.noop ? 'Drop già chiuso' : 'Drop chiuso')
+    loadDrop()
   }
 
   const release = async (id) => {
+    if (busy) return
+    setBusy(true)
     const r = await post('release-product', { productId: id })
-    if (r.ok) setCfg((c) => ({ ...c, released: r.released }))
-    else setMsg(r.error || 'errore')
+    setBusy(false)
+    if (r.ok) {
+      if (r.sha) setSha(r.sha)
+      setCfg((c) => ({ ...c, released: r.released }))
+    } else {
+      setMsg(r.error || 'errore')
+    }
   }
 
   const field = (label, value, onChange, type = 'text') => (
@@ -124,8 +158,12 @@ export default function DropTab() {
       </section>
 
       <section className="flex gap-3 items-center flex-wrap">
-        <button onClick={save} className="px-4 py-2 bg-white text-black rounded text-sm">Salva</button>
-        <button onClick={closeDrop} className="px-4 py-2 border border-red-700 text-red-400 rounded text-sm">
+        <button onClick={save} disabled={busy}
+          className="px-4 py-2 bg-white text-black rounded text-sm disabled:opacity-40 disabled:cursor-not-allowed">
+          Salva
+        </button>
+        <button onClick={closeDrop} disabled={busy || cfg.current.productIds.length === 0}
+          className="px-4 py-2 border border-red-700 text-red-400 rounded text-sm disabled:opacity-40 disabled:cursor-not-allowed">
           Chiudi drop → listino
         </button>
         {msg && <span className="text-xs text-gray-400">{msg}</span>}
@@ -141,7 +179,8 @@ export default function DropTab() {
             .map((p) => (
               <div key={p.id} className="flex justify-between items-center px-3 py-2 text-sm text-gray-400">
                 <span>{p.name}</span>
-                <button onClick={() => release(p.id)} className="text-xs underline hover:text-white">
+                <button onClick={() => release(p.id)} disabled={busy}
+                  className="text-xs underline hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
                   Attiva in listino
                 </button>
               </div>

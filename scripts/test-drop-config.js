@@ -14,7 +14,7 @@
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
-import { parseDropConfig } from '../api/_lib/drop-config.js'
+import { parseDropConfig, validateDropConfig } from '../api/_lib/drop-config.js'
 import { drop as liveDrop } from '../src/data/drop.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -41,25 +41,20 @@ try {
 
 if (cfg) {
   // ── Forma minima attesa ────────────────────────────────────────────────────
-  check('current.productIds è un array', Array.isArray(cfg.current?.productIds))
-
-  check('current.cap è un intero', Number.isInteger(cfg.current?.cap))
-  check('current.dropPrice è un intero (centesimi)', Number.isInteger(cfg.current?.dropPrice))
-  check('current.bundlePrice è un intero (centesimi)', Number.isInteger(cfg.current?.bundlePrice))
-  check('archivePrice è un intero (centesimi)', Number.isInteger(cfg.archivePrice))
-
-  // 0 su cap è ambiguo con "illimitato" per capFor()/il gate del checkout — mai
-  // in un file scritto dalle azioni admin (che lo rifiutano).
-  check('current.cap non è 0 (0 = illimitato, non "chiuso")', cfg.current?.cap !== 0)
-
-  check('released è un array', Array.isArray(cfg.released))
-
-  // ── Finestra temporale coerente ────────────────────────────────────────────
-  const startsAt = Date.parse(cfg.current?.startsAt)
-  const endsAt   = Date.parse(cfg.current?.endsAt)
-  check('current.startsAt è una data ISO valida', Number.isFinite(startsAt))
-  check('current.endsAt è una data ISO valida',   Number.isFinite(endsAt))
-  check('current.startsAt < current.endsAt', Number.isFinite(startsAt) && Number.isFinite(endsAt) && startsAt < endsAt)
+  // Stessa validateDropConfig() usata da save-drop (api/admin.js): id/number/
+  // title, productIds array, startsAt < endsAt, cap e caps[*] interi
+  // POSITIVI (mai 0 = "illimitato" col contatore nascosto, mai negativi —
+  // con cap < 0 checkDropGate legge `total > cap` vero per ogni quantità
+  // ≥ 1, e QUEL prodotto va in 409 permanentemente al checkout senza che
+  // nessuna build lo segnali), prezzi interi, released array. Un'unica
+  // definizione delle regole: se save-drop e questo test avessero due copie
+  // separate potrebbero divergere, ed è esattamente quella divergenza che ha
+  // lasciato passare un cap: -1 fino a qui nel primo giro di fix.
+  const validation = validateDropConfig(cfg)
+  check(
+    validation.ok ? 'la struttura passa validateDropConfig()' : `struttura non valida: ${validation.error}`,
+    validation.ok,
+  )
 
   // ── Il parse del sorgente combacia esattamente con l'export reale del modulo ─
   // Se serializeDropConfig()/parseDropConfig() e l'import ESM del modulo

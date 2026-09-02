@@ -4,7 +4,7 @@ import { handleUpload } from '@vercel/blob/client'
 import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 import { ghGet, ghPut } from './_lib/github.js'
-import { DROP_CONFIG_PATH, serializeDropConfig, parseDropConfig } from './_lib/drop-config.js'
+import { DROP_CONFIG_PATH, serializeDropConfig, parseDropConfig, validateDropConfig } from './_lib/drop-config.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -1647,22 +1647,25 @@ Return JSON with these exact keys:
     // ── save-drop ────────────────────────────────────────────────────────────
     if (action === 'save-drop') {
       const { drop: nextDrop, sha } = data
-      if (!nextDrop || typeof nextDrop !== 'object') {
-        return res.status(400).json({ error: 'drop object required' })
-      }
-      // capFor() ritorna 0 per un prodotto non in drop, e il gate del checkout
-      // legge `if (cap && ...)`: uno 0 esplicito su current.cap non "chiude" il
-      // pezzo, lo rende illimitato E nasconde il contatore (counterMode). Un
-      // admin che digita 0 pensando "chiuso" otterrebbe l'opposto — rifiutato
-      // qui come difesa in profondità, oltre al clamp lato UI in DropTab.
-      if (nextDrop.current && Number(nextDrop.current.cap) === 0) {
-        return res.status(400).json({
-          error: 'cap 0 significa "illimitato" (nasconde il contatore), non "chiuso". Usa endsAt nel passato o "Chiudi drop" per fermare le vendite.',
-        })
+      // Valida la FORMA (id/number/title, productIds array, date coerenti,
+      // cap/caps interi positivi, prezzi interi, released array) — le stesse
+      // regole di scripts/test-drop-config.js, condivise via drop-config.js
+      // così non possono divergere. Un payload che passa qui ma fallirebbe
+      // comunque quel test bloccherebbe ogni deploy futuro finché qualcuno
+      // non ripara il file a mano su GitHub: meglio rifiutarlo ora, con un
+      // messaggio che nomina il campo, che scoprirlo al prossimo prebuild.
+      const validation = validateDropConfig(nextDrop)
+      if (!validation.ok) {
+        return res.status(400).json({ error: validation.error })
       }
       const source = serializeDropConfig(nextDrop)
-      await ghPut(DROP_CONFIG_PATH, source, sha, `[drop] update ${nextDrop.current?.id || ''}`, githubToken)
-      return res.status(200).json({ ok: true })
+      const result = await ghPut(DROP_CONFIG_PATH, source, sha, `[drop] update ${nextDrop.current?.id || ''}`, githubToken)
+      // La Contents API richiede lo sha del blob CORRENTE ad ogni PUT e 409a
+      // su mismatch. Se non restituissimo lo sha aggiornato, un secondo save
+      // nella stessa sessione userebbe quello ormai stantio e fallirebbe con
+      // un errore GitHub grezzo — vedi DropTab.jsx, che lo salva per il
+      // prossimo giro.
+      return res.status(200).json({ ok: true, sha: result?.content?.sha })
     }
 
     // ── close-drop ───────────────────────────────────────────────────────────
@@ -1676,14 +1679,22 @@ Return JSON with these exact keys:
         return res.status(500).json({ error: e.message })
       }
       const ids = cfg.current?.productIds || []
+      if (ids.length === 0) {
+        // Già chiuso — un doppio click, un retry su una richiesta lenta, o
+        // una seconda scheda admin rimasta aperta. Non scrivere: sovrascrivere
+        // `previous` qui lo svuoterebbe, distruggendo l'unico motivo per cui
+        // esiste (il fallback della home fra un drop e l'altro non sarebbe
+        // più mai vuoto). No-op idempotente.
+        return res.status(200).json({ ok: true, released: cfg.released || [], sha: file.sha, noop: true })
+      }
       cfg.released = [...new Set([...(cfg.released || []), ...ids])]
       // Conserva il drop chiuso: fra un drop e l'altro la home lo mostra
       // marcato invece di svuotarsi. Senza questo, DropPanels non renderizza niente.
       cfg.previous = { number: cfg.current?.number, title: cfg.current?.title, productIds: ids }
       cfg.current  = { ...cfg.current, productIds: [] }
       const source = serializeDropConfig(cfg)
-      await ghPut(DROP_CONFIG_PATH, source, file.sha, '[drop] close drop → listino', githubToken)
-      return res.status(200).json({ ok: true, released: cfg.released })
+      const result = await ghPut(DROP_CONFIG_PATH, source, file.sha, '[drop] close drop → listino', githubToken)
+      return res.status(200).json({ ok: true, released: cfg.released, sha: result?.content?.sha })
     }
 
     // ── release-product ──────────────────────────────────────────────────────
@@ -1698,10 +1709,20 @@ Return JSON with these exact keys:
       } catch (e) {
         return res.status(500).json({ error: e.message })
       }
+      // productState() controlla `current` PRIMA di `released`: un id presente
+      // in entrambi resta DROP, e dopo endsAt il checkout risponde "il drop è
+      // chiuso" invece di vendere a prezzo listino. Raggiungibile da due
+      // schede admin non sincronizzate o da una chiamata diretta — il filtro
+      // del vault in DropTab protegge solo una scheda appena caricata.
+      if (cfg.current?.productIds?.includes(productId)) {
+        return res.status(400).json({
+          error: `${productId} è ancora nel drop corrente — chiudi il drop o rimuovilo dai pezzi prima di rilasciarlo in listino`,
+        })
+      }
       cfg.released = [...new Set([...(cfg.released || []), productId])]
       const source = serializeDropConfig(cfg)
-      await ghPut(DROP_CONFIG_PATH, source, file.sha, `[drop] release ${productId}`, githubToken)
-      return res.status(200).json({ ok: true, released: cfg.released })
+      const result = await ghPut(DROP_CONFIG_PATH, source, file.sha, `[drop] release ${productId}`, githubToken)
+      return res.status(200).json({ ok: true, released: cfg.released, sha: result?.content?.sha })
     }
 
     return res.status(400).json({ error: `Unknown action: ${action}` })

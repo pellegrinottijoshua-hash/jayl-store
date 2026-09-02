@@ -59,3 +59,99 @@ export function parseDropConfig(raw) {
     throw new Error(`src/data/drop.js non è machine-parseable: ${e.message}`)
   }
 }
+
+function isPositiveInteger(n) {
+  return typeof n === 'number' && Number.isInteger(n) && n > 0
+}
+
+function isPlainObject(v) {
+  return v !== null && typeof v === 'object' && !Array.isArray(v)
+}
+
+/**
+ * Valida la FORMA minima di una configurazione drop prima di scriverla —
+ * non la business logic (es. non controlla che i productIds esistano
+ * davvero nel catalogo). Unica definizione delle regole, usata sia da
+ * save-drop (api/admin.js) sia da scripts/test-drop-config.js, così le due
+ * non possono divergere.
+ *
+ * Perché conta: un payload che scrive con successo ma non supera queste
+ * regole passa comunque il prossimo `npm run prebuild` (che chiama
+ * scripts/test-drop-config.js sullo stesso file) — bloccando ogni deploy
+ * successivo finché qualcuno non ripara src/data/drop.js a mano via git, un
+ * vicolo cieco per un admin che passa solo dal pannello. save-drop deve
+ * rifiutare PRIMA di scrivere, non lasciare che il prebuild lo scopra dopo.
+ *
+ * Un cap non positivo è un caso a parte, non solo "sbagliato": capFor() lo
+ * ritorna così com'è, e checkDropGate legge `total > cap`. Con cap 0
+ * (illimitato, contatore nascosto) o negativo (`total > cap` vero per
+ * qualunque quantità ≥ 1) il checkout per quel prodotto va in 409
+ * permanentemente — nessuna build fallisce ad avvisare, perché tutto era
+ * "sintatticamente" a posto. Per questo cap e ogni override in `caps` deve
+ * essere un intero positivo, mai una stringa numerica coercibile.
+ *
+ * Ritorna { ok: true } oppure { ok: false, error } col nome del campo
+ * incriminato nel messaggio.
+ */
+export function validateDropConfig(cfg) {
+  if (!isPlainObject(cfg)) return { ok: false, error: 'drop config must be an object' }
+
+  const c = cfg.current
+  if (!isPlainObject(c)) return { ok: false, error: 'current is required and must be an object' }
+
+  if (typeof c.id !== 'string' || !c.id.trim()) {
+    return { ok: false, error: 'current.id is required' }
+  }
+  if (!Number.isInteger(c.number)) {
+    return { ok: false, error: 'current.number must be an integer' }
+  }
+  if (typeof c.title !== 'string' || !c.title.trim()) {
+    return { ok: false, error: 'current.title is required' }
+  }
+  if (!Array.isArray(c.productIds) || !c.productIds.every((id) => typeof id === 'string')) {
+    return { ok: false, error: 'current.productIds must be an array of strings' }
+  }
+
+  const startsAt = Date.parse(c.startsAt)
+  if (!Number.isFinite(startsAt)) {
+    return { ok: false, error: 'current.startsAt must be a parseable date' }
+  }
+  const endsAt = Date.parse(c.endsAt)
+  if (!Number.isFinite(endsAt)) {
+    return { ok: false, error: 'current.endsAt must be a parseable date' }
+  }
+  if (!(startsAt < endsAt)) {
+    return { ok: false, error: 'current.startsAt must be before current.endsAt' }
+  }
+
+  // Mai una stringa numerica ("20") o un float (1.5) accettati per coercizione:
+  // sarebbero silenziosamente sbagliati altrove (capFor, il gate del checkout).
+  if (!isPositiveInteger(c.cap)) {
+    return { ok: false, error: 'current.cap must be a positive integer' }
+  }
+  if (!Number.isInteger(c.dropPrice)) {
+    return { ok: false, error: 'current.dropPrice must be an integer' }
+  }
+  if (!Number.isInteger(c.bundlePrice)) {
+    return { ok: false, error: 'current.bundlePrice must be an integer' }
+  }
+
+  if (!isPlainObject(c.caps)) {
+    return { ok: false, error: 'current.caps must be an object' }
+  }
+  for (const [productId, capOverride] of Object.entries(c.caps)) {
+    if (!isPositiveInteger(capOverride)) {
+      return { ok: false, error: `current.caps.${productId} must be a positive integer` }
+    }
+  }
+
+  if (!Array.isArray(cfg.released) || !cfg.released.every((id) => typeof id === 'string')) {
+    return { ok: false, error: 'released must be an array of strings' }
+  }
+
+  if (!Number.isInteger(cfg.archivePrice)) {
+    return { ok: false, error: 'archivePrice must be an integer' }
+  }
+
+  return { ok: true }
+}
