@@ -53,7 +53,7 @@ export default function DropPanels() {
           return (
             <Link key={p.id} to={`/product/${p.id}`} className="relative group overflow-hidden bg-off-black">
               <img
-                src={p.heroImage ?? p.image}
+                src={cfg.current.heroImages?.[p.id] ?? p.heroImage ?? p.image}
                 alt={p.altText || p.name}
                 // Screen 1, above the fold — the first panel is the LCP candidate the
                 // old hero used to be eager for. Only the first: the rest can still

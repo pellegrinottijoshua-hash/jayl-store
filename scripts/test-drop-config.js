@@ -96,6 +96,39 @@ if (cfg) {
     validateDropConfig({ ...validCfg, archivePrice: 0 }).ok === false)
   check('N4: current.dropPrice negativo → rifiutato',
     validateDropConfig({ ...validCfg, current: { ...validCfg.current, dropPrice: -100 } }).ok === false)
+
+  // ── current.caps.<id> — stessa regola di current.cap ─────────────────────
+  // Non testato finora nonostante validateDropConfig lo controlli già dal
+  // primo giro: la stessa trappola di N4 (0 = illimitato col contatore
+  // nascosto, negativo = 409 permanente) vale anche per un override
+  // per-prodotto, e il picker admin per-pezzo lo scrive qui dentro.
+  check('caps.<id>: 0 → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, caps: { aaa: 0 } } }).ok === false)
+  check('caps.<id>: negativo → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, caps: { aaa: -5 } } }).ok === false)
+  check('caps.<id>: stringa numerica → rifiutato (nessuna coercizione)',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, caps: { aaa: '10' } } }).ok === false)
+  check('caps.<id>: intero positivo → accettato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, caps: { aaa: 10 } } }).ok === true)
+
+  // ── heroImages — opzionale, oggetto di stringhe non vuote ────────────────
+  // Il picker della tab Drop scrive qui l'hero per pannello scelto per
+  // ciascun prodotto del drop (src/components/admin/DropTab.jsx); DropPanels
+  // lo legge con `cfg.current.heroImages?.[p.id]`. Assente = fallback al
+  // comportamento di sempre (`heroImage ?? image`), quindi un drop config
+  // scritto prima di questo campo deve restare valido senza modifiche.
+  check('heroImages assente → comunque valido (retrocompatibilità)',
+    validateDropConfig(validCfg).ok === true)
+  check('heroImages: {} → valido',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: {} } }).ok === true)
+  check('heroImages con un URL non vuoto → valido',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: { aaa: '/images/aaa/macro.jpg' } } }).ok === true)
+  check('heroImages con valore non-stringa (numero) → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: { aaa: 123 } } }).ok === false)
+  check('heroImages con stringa vuota → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: { aaa: '' } } }).ok === false)
+  check('heroImages non-oggetto (array) → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: ['not', 'an', 'object'] } }).ok === false)
 }
 
 // ── Report ──────────────────────────────────────────────────────────────────

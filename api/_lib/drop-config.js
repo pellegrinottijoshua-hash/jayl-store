@@ -151,6 +151,22 @@ export function validateDropConfig(cfg) {
     }
   }
 
+  // heroImages è opzionale — assente del tutto per i drop creati prima di questo
+  // campo, o per un admin che non ha ancora scelto un hero per nessuno dei tre
+  // pezzi. Quando c'è, ogni voce deve essere una stringa non vuota (un URL o un
+  // path relativo come quelli già in product.images): mai un booleano, un numero
+  // o una stringa vuota che DropPanels finirebbe per passare a <img src>.
+  if (c.heroImages !== undefined) {
+    if (!isPlainObject(c.heroImages)) {
+      return { ok: false, error: 'current.heroImages must be an object' }
+    }
+    for (const [productId, url] of Object.entries(c.heroImages)) {
+      if (typeof url !== 'string' || !url.trim()) {
+        return { ok: false, error: `current.heroImages.${productId} must be a non-empty string` }
+      }
+    }
+  }
+
   if (!Array.isArray(cfg.released) || !cfg.released.every((id) => typeof id === 'string')) {
     return { ok: false, error: 'released must be an array of strings' }
   }
