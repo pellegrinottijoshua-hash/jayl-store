@@ -15671,7 +15671,7 @@ export const adminProducts = [
     "id": "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Ursaring Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  Pokemon Gift for Him",
+    "name": "Cool Ursaring Back T Shirt",
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
@@ -16159,6 +16159,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_132204_dfcb2d9a-1c30-4cc5-9725-7e93cf47ec87-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-02T20:04:27.469Z",
-    "updatedAt": "2026-09-02T20:04:27.469Z"
+    "updatedAt": "2026-09-02T20:07:11.701Z",
+    "relatedProducts": []
   }
 ]
