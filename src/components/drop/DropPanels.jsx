@@ -47,7 +47,21 @@ export default function DropPanels() {
         )}
       </div>
 
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+      {/* sm: (640px), non oltre — misurato il 2026-09-02 con gli hero
+          attuali. Alzare questa soglia (es. a xl: per tenere le 3 colonne
+          solo da desktop "vero") sembra la scelta ovvia ma peggiora le cose:
+          sotto la soglia i pannelli si impilano nella STESSA altezza
+          disponibile (vedi "tutti visibili insieme" più sopra), quindi un
+          pannello impilato si schiaccia tanto più la finestra è larga-e-
+          bassa — esattamente la forma di un iPad in landscape o della
+          maggior parte dei laptop. A 1024×768 la colonna singola taglia
+          l'emblema stampato fino a ~250px combinati sulle tre magliette,
+          contro 0px restando in 3 colonne alla stessa larghezza; a 768×1024
+          (iPad portrait) le 3 colonne restano quasi intatte (~5px su un
+          lato solo, Ursaring). Non spostare questa soglia oltre sm: senza
+          rimisurare con lo stesso metodo — vedi
+          .superpowers/sdd/2026-09-01-drop-system/panels-breakpoint-report.md */}
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10">
         {items.map((p, idx) => {
           const s = status?.products?.[p.id]
           return (
