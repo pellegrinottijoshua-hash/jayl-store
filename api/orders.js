@@ -380,7 +380,7 @@ async function writeCarts(carts, sha, message, token) {
 async function handleCaptureEmail(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
-  if (rateLimit(req, { max: 20, windowMs: 60_000 })) {
+  if (rateLimit(req, { max: 20, windowMs: 60_000, key: 'capture-email' })) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
@@ -480,7 +480,7 @@ async function handleCaptureEmail(req, res) {
 async function handleValidateDiscount(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
-  if (rateLimit(req, { max: 15, windowMs: 60_000 })) {
+  if (rateLimit(req, { max: 15, windowMs: 60_000, key: 'validate-discount' })) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
@@ -507,7 +507,16 @@ function escapeXml(s) {
   return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
-async function handleGmf(req, res) {
+// `now` è un parametro esplicito con default `new Date()` (mai un `new
+// Date()` fisso nel corpo) — stesso pattern di checkDropGate/evaluateDropGate
+// in api/create-payment-intent.js — così scripts/test-drop-orders.js può
+// iniettare un istante fisso invece di dipendere dall'orologio reale. Il
+// router invoca sempre `handleGmf(req, res)` senza terzo argomento, quindi il
+// comportamento in produzione non cambia. Esportata (oltre al default
+// `handler`) solo perché il terzo argomento non è raggiungibile passando
+// dal router — vedi clearDropStatusMemoForTests poco sotto per lo stesso
+// motivo applicato al memo.
+export async function handleGmf(req, res, now = new Date()) {
   // Il cap si legge dal registro vendite reale, non presunto 0: senza questo,
   // un prodotto DROP già esaurito resterebbe annunciato in_stock nel feed
   // finché il cron o una visita non forzano un refresh. Una sola lettura per
@@ -516,17 +525,25 @@ async function handleGmf(req, res) {
   // legge sold 0, quindi il cap non lo marca mai esaurito qui — la finestra
   // (isDropOpen) resta comunque l'unico vincolo che decide, di per sé
   // sufficiente per il caso comune (drop non ancora aperto).
+  //
+  // memoizedReadSales, non readSales diretta: /api/gmf è pubblico e senza
+  // questo era un secondo amplificatore GitHub-API identico a quello che
+  // drop-status aveva prima del fix — ogni richiesta cache-busted (?_=N)
+  // scavalca il CDN e arriva qui, e ognuna faceva una ghGet autenticata
+  // propria. Condividere il memo con drop-status (stessa chiave: dropId)
+  // vuol dire che un burst su ENTRAMBI gli endpoint per lo stesso drop
+  // costa comunque una sola lettura reale entro il TTL.
   const cfg = getDrop()
   let soldByProduct = new Map()
   try {
-    const sales = await readSales(cfg.current?.id)
+    const sales = await memoizedReadSales(cfg.current?.id)
     for (const [productId, entry] of Object.entries(sales.products || {})) {
       soldByProduct.set(productId, entry.sold ?? 0)
     }
   } catch (err) {
     console.error('[gmf] readSales failed, cap check skipped for this feed refresh:', err.message)
   }
-  const dropOpenNow = isDropOpen(new Date(), cfg)
+  const dropOpenNow = isDropOpen(now, cfg)
 
   // Google Shopping must never advertise a product it can't sell: a VAULT
   // product isn't purchasable (checkDropGate rejects it) and its page renders
@@ -804,7 +821,7 @@ export default async function handler(req, res) {
 
   const h = req.query.handler
   if (h === 'track-order') {
-    if (rateLimit(req, { max: 20, windowMs: 60_000 })) {
+    if (rateLimit(req, { max: 20, windowMs: 60_000, key: h })) {
       return res.status(429).json({ error: 'Too many requests. Please try again later.' })
     }
     return handleTrackOrder(req, res)
@@ -815,10 +832,19 @@ export default async function handler(req, res) {
   if (h === 'contact')           return handleContact(req, res)
   if (h === 'capture-email')     return handleCaptureEmail(req, res)
   if (h === 'validate-discount') return handleValidateDiscount(req, res)
-  if (h === 'gmf')               return handleGmf(req, res)
+  if (h === 'gmf') {
+    // Endpoint pubblico non autenticato, stesso amplificatore GitHub-API di
+    // drop-status prima del fix — stesso schema: rate limit sulla rotta del
+    // router, con bucket proprio (key: h) così non consuma il budget di
+    // track-order/capture-email/validate-discount/drop-status sullo stesso IP.
+    if (rateLimit(req, { max: 60, windowMs: 60_000, key: h })) {
+      return res.status(429).json({ error: 'Too many requests. Please try again later.' })
+    }
+    return handleGmf(req, res)
+  }
   if (h === 'prerender')         return handlePrerender(req, res)
   if (h === 'drop-status') {
-    if (rateLimit(req, { max: 60, windowMs: 60_000 })) {
+    if (rateLimit(req, { max: 60, windowMs: 60_000, key: h })) {
       return res.status(429).json({ error: 'Too many requests. Please try again later.' })
     }
     return handleDropStatus(req, res)
