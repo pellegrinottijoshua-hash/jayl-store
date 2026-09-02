@@ -4,12 +4,38 @@ import { X, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
 import { formatPrice, slugToTitle } from '@/lib/utils'
 import { cn } from '@/lib/utils'
+import { getDrop, basePriceFor, bundleDiscount } from '../../../api/_lib/drop.js'
+
+// cartStore persists the whole product object at add-to-cart time, so a tee
+// added before a drop opens (or before the admin edits src/data/drop.js)
+// still carries whatever price was live back then. Re-resolve it against the
+// CURRENT drop config on every render instead of trusting item.unitPrice —
+// the persisted cart is a snapshot, not a price quote. Never write the result
+// back into the store.
+function livePriceFor(item, cfg) {
+  const sizeObj  = item.product.sizes?.find((s) => s.id === item.size)
+  const frameObj = item.product.frames?.find((f) => f.id === item.frame)
+  return basePriceFor(item.product.id, sizeObj, item.product, cfg) + (frameObj?.price ?? 0)
+}
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity } = useCartStore()
   const drawerRef = useRef(null)
 
-  const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0)
+  const cfg      = getDrop()
+  const subtotal = items.reduce((sum, i) => sum + livePriceFor(i, cfg) * i.quantity, 0)
+
+  // Bundle nudge. `bundleDiscount` only depends on the drop config, not on
+  // which specific items are already in the cart, so the same call doubles as
+  // "what the saving WOULD be" (informational line, 1-2 of 3 present) and
+  // "what it IS" (all 3 present) — no separate arithmetic to keep in sync.
+  // Today the drop has two products, so dropIds.length !== 3 and this is 0:
+  // both lines below stay hidden until a third product exists, rather than
+  // showing a wrong saving.
+  const dropIds = cfg.current?.productIds || []
+  const haveIds = new Set(items.map((i) => i.product.id))
+  const missing = dropIds.filter((id) => !haveIds.has(id))
+  const saving  = bundleDiscount(dropIds.map((id) => ({ productId: id })), cfg)
 
   // Close on Escape
   useEffect(() => {
@@ -80,7 +106,9 @@ export default function CartDrawer() {
             </div>
           ) : (
             <ul className="space-y-6">
-              {items.map((item) => (
+              {items.map((item) => {
+                const price = livePriceFor(item, cfg)
+                return (
                 <li key={item.variantKey} className="flex gap-4">
                   {/* Thumbnail */}
                   <div className="w-20 h-20 flex-shrink-0 bg-surface-2 overflow-hidden">
@@ -148,13 +176,25 @@ export default function CartDrawer() {
                       </div>
 
                       <span className="text-sm font-semibold text-text-primary">
-                        {formatPrice(item.unitPrice * item.quantity)}
+                        {formatPrice(price * item.quantity)}
                       </span>
                     </div>
                   </div>
                 </li>
-              ))}
+                )
+              })}
             </ul>
+          )}
+
+          {dropIds.length === 3 && missing.length > 0 && missing.length < 3 && saving > 0 && (
+            <p className="text-xs text-amber-300 px-4 py-2">
+              aggiungi {missing.length === 1 ? "l'ultimo pezzo" : `${missing.length} pezzi`} del drop → {formatPrice(saving)} in meno
+            </p>
+          )}
+          {dropIds.length === 3 && missing.length === 0 && items.length > 0 && (
+            <p className="text-xs text-amber-300 px-4 py-2">
+              bundle drop applicato — {formatPrice(saving)} in meno
+            </p>
           )}
         </div>
 

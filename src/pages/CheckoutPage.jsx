@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
 import { formatPrice, cn } from '@/lib/utils'
+import { getDrop, basePriceFor, bundleDiscount, productState, DROP } from '../../api/_lib/drop.js'
 
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
@@ -46,13 +47,26 @@ function Field({ label, id, error, className, ...props }) {
   )
 }
 
+// cartStore persists the whole product object at add-to-cart time, so a tee
+// added before a drop opens (or before the admin edits src/data/drop.js)
+// still carries whatever price was live back then. Re-resolve it against the
+// CURRENT drop config on every render instead of trusting item.unitPrice —
+// the persisted cart is a snapshot, not a price quote. Never write the result
+// back into the store. (Same helper as src/components/cart/CartDrawer.jsx.)
+function livePriceFor(item, cfg) {
+  const sizeObj  = item.product.sizes?.find((s) => s.id === item.size)
+  const frameObj = item.product.frames?.find((f) => f.id === item.frame)
+  return basePriceFor(item.product.id, sizeObj, item.product, cfg) + (frameObj?.price ?? 0)
+}
+
 function CheckoutForm() {
   const { items, clearCart } = useCartStore()
   const navigate = useNavigate()
   const stripe = useStripe()
   const elements = useElements()
 
-  const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0)
+  const cfg      = getDrop()
+  const subtotal = items.reduce((sum, i) => sum + livePriceFor(i, cfg) * i.quantity, 0)
   const shipping = 0
 
   // Discount state
@@ -61,18 +75,54 @@ function CheckoutForm() {
   const [discountError,   setDiscountError]   = useState('')
   const [discountLoading, setDiscountLoading] = useState(false)
 
-  const discountAmount = appliedCode?.amount ?? 0
-  const total          = Math.max(subtotal - discountAmount, 0)
+  // The server is authoritative once it has priced the cart (after
+  // create-payment-intent responds): its total/discountAmount/discountLabel
+  // are what Stripe will actually charge. Until then these are null and every
+  // figure below falls back to the local pre-flight estimate — which is why
+  // that estimate has to be right too (see localBundleDiscount): it's what
+  // the Apple/Google Pay sheet shows the customer BEFORE any server call.
+  const [serverPricing, setServerPricing] = useState(null)
+
+  // Automatic bundle discount, computed the same way the server will
+  // (bundleDiscount is pure and depends only on the drop config + which
+  // product ids are present) — not a separate "informational" estimate that
+  // can drift from what create-payment-intent actually applies.
+  const localBundleDiscount = bundleDiscount(items.map((i) => ({ productId: i.product.id })), cfg)
+  const localDiscountAmount = (appliedCode?.amount ?? 0) + localBundleDiscount
+  const localDiscountLabel  = appliedCode
+    ? (localBundleDiscount > 0 ? `${appliedCode.label} + Bundle drop` : appliedCode.label)
+    : (localBundleDiscount > 0 ? 'Bundle drop — tutti e tre' : null)
+  const localTotal = Math.max(subtotal - localDiscountAmount, 0)
+
+  const discountAmount = serverPricing?.discountAmount ?? localDiscountAmount
+  const discountLabel  = serverPricing?.discountLabel  ?? localDiscountLabel
+  const total          = serverPricing?.total          ?? localTotal
 
   const handleApplyCode = async () => {
     const code = discountInput.trim().toUpperCase()
     if (!code) return
     setDiscountLoading(true); setDiscountError('')
+
+    // `applyDiscount` (api/_lib/catalog.js) refuses any code once the cart
+    // holds a drop item — mirror that check here so it's rejected in the
+    // discount box, before the customer has filled in card details, instead
+    // of surfacing as a generic payment error at the very last step.
+    const hasDropItem = items.some((i) => productState(i.product.id, cfg) === DROP)
+    if (hasDropItem) {
+      setDiscountError('I codici sconto non sono validi sui pezzi in drop.')
+      setDiscountLoading(false)
+      return
+    }
+
     try {
       const res  = await fetch('/api/validate-discount', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code, subtotal }),
+        body: JSON.stringify({
+          code,
+          subtotal,
+          items: items.map((i) => ({ productId: i.product.id, quantity: i.quantity })),
+        }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Invalid code')
@@ -106,7 +156,7 @@ function CheckoutForm() {
   const [paymentRequest, setPaymentRequest] = useState(null)
 
   // The `pr.on('paymentmethod', …)` handler below is bound ONCE, inside an effect
-  // that only reruns on [stripe, total] — so it closes over whatever `form`,
+  // that only reruns on [stripe, localTotal] — so it closes over whatever `form`,
   // `items`, `appliedCode` were AT MOUNT TIME, not what the user has since typed.
   // That stale closure is why a fully-filled shipping form still failed
   // validate() with "Required" after a real Apple/Google Pay authorization:
@@ -122,14 +172,18 @@ function CheckoutForm() {
   appliedCodeRef.current = appliedCode
 
   useEffect(() => {
-    if (!stripe || !total) return
+    if (!stripe || !localTotal) return
     const pr = stripe.paymentRequest({
       country: 'IT',
       currency: 'eur',
-      // `total` is already in cents (it's the sum of unitPrice, itself in cents —
-      // see formatPrice in src/lib/utils.js). Multiplying by 100 again is what
-      // turned a 23.99€ tee into a 2,399.00€ line in the Apple/Google Pay sheet.
-      total: { label: 'JAYL', amount: Math.round(total) },
+      // `localTotal` is already in cents (it's the sum of livePriceFor(item),
+      // itself in cents — see formatPrice in src/lib/utils.js). Multiplying by
+      // 100 again is what turned a 23.99€ tee into a 2,399.00€ line in the
+      // Apple/Google Pay sheet. This is the PRE-FLIGHT estimate (subtotal minus
+      // the local bundle-discount estimate) — the only number available before
+      // create-payment-intent has run, so it has to already be right: it's what
+      // the Apple/Google Pay sheet shows the customer before any server call.
+      total: { label: 'JAYL', amount: Math.round(localTotal) },
       requestPayerName: true,
       requestPayerEmail: true,
     })
@@ -190,7 +244,16 @@ function CheckoutForm() {
           e.complete('fail')
           return
         }
-        const { clientSecret } = await piRes.json()
+        // Shadows the outer `total`/`discountAmount`/`discountLabel` (the local
+        // pre-flight estimate used above to size the payment sheet) with the
+        // server's authoritative numbers for everything below — analytics,
+        // the order-confirmation state, and the on-screen summary via
+        // setServerPricing. The PaymentIntent Stripe just confirmed was
+        // created for exactly this `total`; the estimate above was only ever
+        // a stand-in for showing the Apple/Google Pay sheet before this
+        // response existed.
+        const { clientSecret, total, discountAmount, discountLabel } = await piRes.json()
+        setServerPricing({ total, discountAmount, discountLabel })
         const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
           clientSecret,
           { payment_method: e.paymentMethod.id },
@@ -251,7 +314,7 @@ function CheckoutForm() {
         e.complete('fail')
       }
     })
-  }, [stripe, total]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [stripe, localTotal]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
@@ -321,7 +384,13 @@ function CheckoutForm() {
         return
       }
 
-      const { clientSecret } = await piRes.json()
+      // Shadows the outer `total`/`discountAmount`/`discountLabel` (the local
+      // pre-flight estimate) with the server's authoritative numbers for
+      // everything below — this PaymentIntent was created for exactly this
+      // `total`. setServerPricing also updates the on-screen Order Summary,
+      // in case it re-renders before navigation.
+      const { clientSecret, total, discountAmount, discountLabel } = await piRes.json()
+      setServerPricing({ total, discountAmount, discountLabel })
 
       // 2. Confirm the card payment with Stripe.js — card data never touches our server
       const cardElement = elements.getElement(CardElement)
@@ -617,7 +686,7 @@ function CheckoutForm() {
                     </p>
                   </div>
                   <span className="text-sm font-semibold text-text-primary flex-shrink-0">
-                    {formatPrice(item.unitPrice * item.quantity)}
+                    {formatPrice(livePriceFor(item, cfg) * item.quantity)}
                   </span>
                 </li>
               ))}
@@ -669,10 +738,12 @@ function CheckoutForm() {
                 <span className="text-text-secondary">Subtotal</span>
                 <span className="text-text-primary">{formatPrice(subtotal)}</span>
               </div>
-              {appliedCode && (
+              {discountAmount > 0 && (
                 <div className="flex justify-between text-sm">
-                  <span className="text-success">Discount ({appliedCode.code})</span>
-                  <span className="text-success font-medium">−{formatPrice(appliedCode.amount)}</span>
+                  <span className="text-success">
+                    Discount{appliedCode ? ` (${appliedCode.code})` : discountLabel ? ` (${discountLabel})` : ''}
+                  </span>
+                  <span className="text-success font-medium">−{formatPrice(discountAmount)}</span>
                 </div>
               )}
               <div className="flex justify-between text-sm">
@@ -683,7 +754,7 @@ function CheckoutForm() {
               <div className="flex justify-between">
                 <span className="text-sm font-semibold text-text-primary">Total</span>
                 <div className="text-right">
-                  {appliedCode && (
+                  {discountAmount > 0 && (
                     <span className="text-text-muted text-sm line-through mr-2">{formatPrice(subtotal)}</span>
                   )}
                   <span className="text-lg font-bold text-cream">{formatPrice(total)}</span>
