@@ -20,7 +20,8 @@ export const drop = {
     "title": "SLEEP MODE",
     "productIds": [
       "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
-      "cool-snorlax-back-t-shirt"
+      "cool-snorlax-back-t-shirt",
+      "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him"
     ],
     "startsAt": "2026-09-05T16:00:00Z",
     "endsAt": "2026-09-08T16:00:00Z",
