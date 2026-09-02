@@ -8,6 +8,11 @@ import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
 import { useSwipe } from '@/hooks/useSwipe'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { useDropStatus } from '@/hooks/useDropStatus'
+import DropCountdown from '@/components/drop/DropCountdown'
+import DropBadge from '@/components/drop/DropBadge'
+import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
+import { getDrop, productState, capFor, basePriceFor, DROP, LISTINO, VAULT } from '../../api/_lib/drop.js'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -293,6 +298,69 @@ function UrgencyBadge({ text, isLight }) {
   )
 }
 
+// ── Drop block ────────────────────────────────────────────────────────────────
+// Buy-box readout of the current drop's state for one product: label,
+// countdown, availability badge, and — once the product has moved to the
+// permanent archive — the listino line. Mirrors DropPanels.jsx (home page,
+// Task 8) state-for-state: both call the same `dropWindowState` and never
+// recompute the window, so the two surfaces can't disagree about where it
+// stands. `status` is passed down from the parent's own `useDropStatus()`
+// call rather than fetched again here, so the badge and the sold-out gate on
+// Add to Cart always read the same snapshot.
+function DropBlock({ productId, isLight, status }) {
+  const cfg   = getDrop()
+  const state = productState(productId, cfg)
+  if (state === VAULT) return null
+
+  if (state === LISTINO) {
+    return (
+      <p className={`text-xs tracking-[0.15em] uppercase mb-3 ${isLight ? 'text-ink-muted' : 'text-white/60'}`}>
+        Drop {String(cfg.current?.number ?? 1).padStart(2, '0')} · sold out — ora in listino permanente
+      </p>
+    )
+  }
+
+  const { state: winState, target } = dropWindowState(cfg)
+  const s   = status?.products?.[productId]
+  const cap = capFor(productId, cfg)
+  const hrs = s?.lastAt ? Math.floor((Date.now() - Date.parse(s.lastAt)) / 3_600_000) : null
+
+  return (
+    <div className={`mb-4 space-y-1 ${isLight ? 'text-ink' : 'text-cream'}`}>
+      <p className="text-xs tracking-[0.2em] uppercase">
+        Drop {String(cfg.current.number).padStart(2, '0')} · {cfg.current.title}
+      </p>
+      {winState === BEFORE && (
+        <DropCountdown to={target} label="apre tra" className="block text-sm tabular-nums" />
+      )}
+      {winState === LIVE && (
+        <DropCountdown to={target} label="finisce tra" className="block text-sm tabular-nums" />
+      )}
+      {winState === CLOSED && target && (
+        <DropCountdown to={target} label="prossimo drop tra" className="block text-sm tabular-nums" />
+      )}
+      {winState === BEFORE && (
+        <span className="block text-xs tracking-widest uppercase opacity-60">
+          Anteprima · non ancora in vendita
+        </span>
+      )}
+      {winState === LIVE && (
+        <DropBadge sold={s?.sold ?? 0} cap={s?.cap ?? cap} className="block" />
+      )}
+      {winState === CLOSED && (
+        <span className="block text-xs tracking-widest uppercase opacity-60">
+          Drop chiuso · ora in listino
+        </span>
+      )}
+      {winState === LIVE && hrs !== null && hrs < 48 && (
+        <p className="text-xs opacity-60">
+          ultimo pezzo preso {hrs === 0 ? 'meno di un’ora fa' : `${hrs} ${hrs === 1 ? 'ora' : 'ore'} fa`}
+        </p>
+      )}
+    </div>
+  )
+}
+
 // ── Size guide modal ───────────────────────────────────────────────────────────
 
 const SIZE_GUIDE = {
@@ -408,6 +476,12 @@ export default function ProductPage() {
   const product = getProductById(id)
   const { addItem, openCart } = useCartStore()
   const { setPageTheme } = useThemeStore()
+  // Single fetch shared by the DropBlock badge and the sold-out gate below —
+  // called unconditionally (rules of hooks), correct even before it resolves:
+  // useDropStatus() starts at {status: null}, and every read of it below is
+  // optional-chained to a safe fallback.
+  const { status: dropStatus } = useDropStatus()
+  const dropCfg = getDrop()
 
   const isArt = product?.section === 'art'
   const isLight = isArt
@@ -608,7 +682,12 @@ export default function ProductPage() {
 
   const sizeObj   = product?.sizes?.find((s) => s.id === selectedSize)
   const frameObj  = product?.frames?.find((f) => f.id === selectedFrame)
-  const totalPrice = (sizeObj?.price ?? product?.price) + (frameObj?.price ?? 0)
+  // basePriceFor overrides sizeObj/product.price for DROP and LISTINO state — a
+  // drop has one price, not a per-size scale (see api/_lib/drop.js). Reading
+  // product.price directly here would show the admin's list price (e.g. €23.99)
+  // for a product whose actual drop price is €22: the buy box would contradict
+  // what checkout actually charges.
+  const totalPrice = basePriceFor(product?.id, sizeObj, product, dropCfg) + (frameObj?.price ?? 0)
 
   // Normalise image list (fallback to product.image)
   const productImages = product?.images?.length > 0
@@ -643,7 +722,17 @@ export default function ProductPage() {
       )
     : null
 
-  const canAddToCart = !!selectedSize || !product?.sizes?.length
+  // Sold-out gate: once the edition is fully claimed, disable Add to Cart and
+  // swap the label for SOLD OUT. This is a UX courtesy only — the real defense
+  // is the server-side checkDropGate in api/create-payment-intent.js, which
+  // rejects the order regardless of what the client shows.
+  const dropProductState = product ? productState(product.id, dropCfg) : null
+  const dropCap          = product ? capFor(product.id, dropCfg) : 0
+  const dropSale         = product ? dropStatus?.products?.[product.id] : null
+  const isSoldOut        = dropProductState === DROP && dropCap > 0
+    && (dropSale?.sold ?? 0) >= (dropSale?.cap ?? dropCap)
+
+  const canAddToCart = (!!selectedSize || !product?.sizes?.length) && !isSoldOut
 
   // ── Event handlers ───────────────────────────────────────────────────────────
 
@@ -708,12 +797,30 @@ export default function ProductPage() {
 
   // Last hook has run — safe to bail out. Returning any earlier would change the
   // hook count between renders and crash React when navigating to a bad slug.
+  //
+  // A VAULT product isn't in the storefront bundle (see the `storefront-products`
+  // plugin in vite.config.js) — getProductById returns undefined for it, and
+  // that undefined is the ONLY signal the client has. There's no way to tell a
+  // real hidden product from a genuinely bogus /product/<id> from here: the full
+  // catalog deliberately never reaches the storefront bundle (CLAUDE.md), so we
+  // can't check existence client-side. productState() already treats "anything
+  // not explicitly in the current drop or released" as VAULT (see api/_lib/drop.js);
+  // this screen follows the same rule rather than claiming the piece doesn't
+  // exist, which is wrong for the overwhelming majority of ids that land here
+  // (37 of 39 products are VAULT today, 0 unknown). A URL that doesn't match any
+  // route at all still gets the real 404 — the catch-all "*" -> <NotFound />
+  // route in App.jsx, untouched by this file — so the two cases stay
+  // distinguishable at the app level even though ProductPage itself can't tell
+  // them apart for a bad /product/:id.
   if (!product) {
     return (
-      <div className="min-h-screen bg-paper pt-32 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="font-display text-4xl text-ink mb-4">Not Found</h1>
-        <p className="text-ink-secondary mb-8">This work doesn&apos;t exist (yet).</p>
-        <Link to="/art" className="btn-ink">Back to Shop</Link>
+      <div className="min-h-screen bg-off-black flex flex-col items-center justify-center text-center px-6">
+        <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-3">Coming soon</p>
+        <h1 className="text-cream text-2xl mb-6">Questo pezzo non è ancora uscito.</h1>
+        <p className="text-white/60 text-sm mb-8 max-w-sm">
+          Entra nella lista: ti avvisiamo quando entra in un drop.
+        </p>
+        <Link to="/" className="text-cream underline text-sm">Vedi il drop in corso</Link>
       </div>
     )
   }
@@ -1109,10 +1216,13 @@ export default function ProductPage() {
           >
             {added ? (
               <><Check size={16} />Added to Cart</>
+            ) : isSoldOut ? (
+              'Sold Out'
             ) : (
               <>Add to Cart · {formatPrice(totalPrice)}</>
             )}
           </button>
+          <DropBlock productId={product.id} isLight={isLight} status={dropStatus} />
           <UrgencyBadge text={product.urgency} isLight={isLight} />
         </div>
 
@@ -1196,6 +1306,8 @@ export default function ProductPage() {
           >
             {added
               ? '✓ Added'
+              : isSoldOut
+              ? 'Sold Out'
               : canAddToCart
               ? `Add · ${formatPrice(totalPrice)}`
               : 'Select Size'}
@@ -1354,7 +1466,11 @@ export default function ProductPage() {
                       <div className="flex items-center gap-3">
                         {sizeObj && (
                           <p className={cn('text-xs', t.selectorSub)}>
-                            {sizeObj.label} · {formatPrice(sizeObj.price)}
+                            {/* basePriceFor, not sizeObj.price directly — same reasoning as
+                                totalPrice above: a drop has one price, not a per-size scale,
+                                and this label sits right next to the Add to Cart button that
+                                already shows the drop price. */}
+                            {sizeObj.label} · {formatPrice(basePriceFor(product.id, sizeObj, product, dropCfg))}
                           </p>
                         )}
                         <button
@@ -1492,10 +1608,13 @@ export default function ProductPage() {
               >
                 {added ? (
                   <><Check size={16} />Added to Cart</>
+                ) : isSoldOut ? (
+                  'Sold Out'
                 ) : (
                   <>Add to Cart · {formatPrice(totalPrice)}</>
                 )}
               </button>
+              <DropBlock productId={product.id} isLight={isLight} status={dropStatus} />
               <UrgencyBadge text={product.urgency} isLight={isLight} />
 
               {/* Trust signals */}
