@@ -5,6 +5,7 @@ import { fitDesignToCanvas, detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS } fro
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
+import DropTab from '@/components/admin/DropTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 
@@ -4491,6 +4492,7 @@ function BottomNav({ active, onNavigate, pendingCount }) {
 function MoreDrawer({ open, onClose, onNavigate, onLogout }) {
   const nav = (id) => { onClose(); onNavigate(id) }
   const items = [
+    { id: 'drop',        icon: '🎯', label: 'Drop',          sub: 'Configure & close the current drop' },
     { id: 'revenue',     icon: '📊', label: 'Revenue',       sub: 'Sales analytics & margins' },
     { id: 'batch',       icon: '⚡', label: 'Batch Agent',   sub: 'Generate assets for a collection' },
     { id: 'seo-audit',   icon: '🔍', label: 'SEO Audit',     sub: 'AI-powered Etsy SEO fixes' },
@@ -4612,6 +4614,7 @@ export default function AdminPage() {
                 { id: 'products',  label: 'Products' },
                 { id: 'generate',  label: '✦ Generate' },
                 { id: 'reviews',   label: `Reviews${pendingCount > 0 ? ` (${pendingCount})` : ''}` },
+                { id: 'drop',      label: '🎯 Drop' },
                 { id: 'revenue',   label: '📊 Revenue' },
                 { id: 'batch',     label: '⚡ Batch' },
                 { id: 'seo-audit', label: '🔍 SEO' },
@@ -4647,6 +4650,7 @@ export default function AdminPage() {
                 {tab === 'generate'    ? '✦ Quick Generate'
                  : tab === 'products'  ? 'Products'
                  : tab === 'reviews'   ? 'Reviews'
+                 : tab === 'drop'      ? '🎯 Drop'
                  : tab === 'revenue'   ? '📊 Revenue'
                  : tab === 'batch'     ? '⚡ Batch Agent'
                  : tab === 'seo-audit' ? '🔍 SEO Audit'
@@ -4668,6 +4672,11 @@ export default function AdminPage() {
             </div>
           )}
           {tab === 'generate'    && <GenerateTab onGenerate={handleGenerate} onGallery={handleGallery} />}
+          {tab === 'drop'        && (
+            <div className="px-4 pt-4">
+              <DropTab />
+            </div>
+          )}
           {tab === 'revenue'     && <RevenueTab />}
           {tab === 'batch'       && <BatchAgentTab />}
           {tab === 'seo-audit'   && <SeoAuditTab />}

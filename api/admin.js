@@ -4,6 +4,7 @@ import { handleUpload } from '@vercel/blob/client'
 import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 import { ghGet, ghPut } from './_lib/github.js'
+import { DROP_CONFIG_PATH, serializeDropConfig, parseDropConfig } from './_lib/drop-config.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -1625,6 +1626,82 @@ Return JSON with these exact keys:
       const result = await sendEmail({ to: customerEmail.trim(), subject, html })
       if (!result.ok) return res.status(500).json({ error: result.error })
       return res.status(200).json({ ok: true })
+    }
+
+    // ── get-drop ─────────────────────────────────────────────────────────────
+    if (action === 'get-drop') {
+      const file = await ghGet(DROP_CONFIG_PATH, githubToken)
+      const raw  = Buffer.from(file.content, 'base64').toString('utf-8')
+      let cfg
+      try {
+        cfg = parseDropConfig(raw)
+      } catch (e) {
+        // Il file non è più machine-parseable (es. modificato a mano). Meglio
+        // fermarsi qui con un errore chiaro che lasciar credere al pannello di
+        // avere una configurazione valida.
+        return res.status(500).json({ error: e.message })
+      }
+      return res.status(200).json({ ok: true, drop: cfg, sha: file.sha })
+    }
+
+    // ── save-drop ────────────────────────────────────────────────────────────
+    if (action === 'save-drop') {
+      const { drop: nextDrop, sha } = data
+      if (!nextDrop || typeof nextDrop !== 'object') {
+        return res.status(400).json({ error: 'drop object required' })
+      }
+      // capFor() ritorna 0 per un prodotto non in drop, e il gate del checkout
+      // legge `if (cap && ...)`: uno 0 esplicito su current.cap non "chiude" il
+      // pezzo, lo rende illimitato E nasconde il contatore (counterMode). Un
+      // admin che digita 0 pensando "chiuso" otterrebbe l'opposto — rifiutato
+      // qui come difesa in profondità, oltre al clamp lato UI in DropTab.
+      if (nextDrop.current && Number(nextDrop.current.cap) === 0) {
+        return res.status(400).json({
+          error: 'cap 0 significa "illimitato" (nasconde il contatore), non "chiuso". Usa endsAt nel passato o "Chiudi drop" per fermare le vendite.',
+        })
+      }
+      const source = serializeDropConfig(nextDrop)
+      await ghPut(DROP_CONFIG_PATH, source, sha, `[drop] update ${nextDrop.current?.id || ''}`, githubToken)
+      return res.status(200).json({ ok: true })
+    }
+
+    // ── close-drop ───────────────────────────────────────────────────────────
+    if (action === 'close-drop') {
+      const file = await ghGet(DROP_CONFIG_PATH, githubToken)
+      const raw  = Buffer.from(file.content, 'base64').toString('utf-8')
+      let cfg
+      try {
+        cfg = parseDropConfig(raw)
+      } catch (e) {
+        return res.status(500).json({ error: e.message })
+      }
+      const ids = cfg.current?.productIds || []
+      cfg.released = [...new Set([...(cfg.released || []), ...ids])]
+      // Conserva il drop chiuso: fra un drop e l'altro la home lo mostra
+      // marcato invece di svuotarsi. Senza questo, DropPanels non renderizza niente.
+      cfg.previous = { number: cfg.current?.number, title: cfg.current?.title, productIds: ids }
+      cfg.current  = { ...cfg.current, productIds: [] }
+      const source = serializeDropConfig(cfg)
+      await ghPut(DROP_CONFIG_PATH, source, file.sha, '[drop] close drop → listino', githubToken)
+      return res.status(200).json({ ok: true, released: cfg.released })
+    }
+
+    // ── release-product ──────────────────────────────────────────────────────
+    if (action === 'release-product') {
+      const { productId } = data
+      if (!productId) return res.status(400).json({ error: 'productId required' })
+      const file = await ghGet(DROP_CONFIG_PATH, githubToken)
+      const raw  = Buffer.from(file.content, 'base64').toString('utf-8')
+      let cfg
+      try {
+        cfg = parseDropConfig(raw)
+      } catch (e) {
+        return res.status(500).json({ error: e.message })
+      }
+      cfg.released = [...new Set([...(cfg.released || []), productId])]
+      const source = serializeDropConfig(cfg)
+      await ghPut(DROP_CONFIG_PATH, source, file.sha, `[drop] release ${productId}`, githubToken)
+      return res.status(200).json({ ok: true, released: cfg.released })
     }
 
     return res.status(400).json({ error: `Unknown action: ${action}` })
