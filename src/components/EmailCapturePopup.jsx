@@ -1,10 +1,26 @@
 import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
+import { getDrop } from '../../api/_lib/drop.js'
 
-const STORAGE_KEY   = 'jayl-email-popup'
-const VISIT_KEY     = 'jayl-visit-count'
-const CONSENT_KEY   = 'jayl_cookie_consent'
-const DISCOUNT_CODE = 'JAYL10'
+const STORAGE_KEY = 'jayl-email-popup'
+const VISIT_KEY   = 'jayl-visit-count'
+const CONSENT_KEY = 'jayl_cookie_consent'
+
+// The popup used to promise JAYL10 (10% off), but applyDiscount() (api/_lib/
+// catalog.js) refuses every code once the cart holds a drop item — so it now
+// offers what it can actually deliver: access to the drop list. JAYL10 stays
+// defined in catalog.js for non-drop orders; this component just stops
+// advertising it. Shares STORAGE_KEY with the homepage waitlist section
+// (src/pages/HomePage.jsx) so subscribing there also keeps this from
+// reappearing — one signup, not two.
+function nextDropTitle(cfg) {
+  const next = cfg?.next
+  if (!next?.number) return 'Prossimo drop'
+  const number = `Drop ${String(next.number).padStart(2, '0')}`
+  if (!next.startsAt) return number
+  const date = new Date(next.startsAt).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })
+  return `${number} · ${date}`
+}
 
 // Non-blocking bottom-corner card. Triggers on scroll depth OR exit-intent OR a
 // short delay for returning visitors — never a fullscreen overlay, so it can't
@@ -17,6 +33,8 @@ export default function EmailCapturePopup() {
   const [submitted, setSubmitted] = useState(false)
   const [loading,   setLoading]   = useState(false)
   const [error,     setError]     = useState('')
+
+  const title = nextDropTitle(getDrop())
 
   useEffect(() => {
     if (localStorage.getItem(STORAGE_KEY)) return // already dismissed/subscribed
@@ -87,7 +105,7 @@ export default function EmailCapturePopup() {
     <div
       className={`fixed z-[60] bottom-4 right-4 left-4 sm:left-auto sm:w-[370px] transition-all duration-300 ${enter ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
       role="dialog"
-      aria-label="Iscriviti alla newsletter"
+      aria-label="Lista d'attesa drop"
     >
       <div className="relative bg-off-black border border-border rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
         <button
@@ -101,27 +119,25 @@ export default function EmailCapturePopup() {
         <div className="p-6">
           {submitted ? (
             <div className="text-center space-y-3">
-              <div className="text-3xl">🎉</div>
-              <h2 className="font-display text-xl text-cream">You're in.</h2>
-              <div className="bg-gray-900 border border-border-light rounded-lg px-5 py-3">
-                <p className="font-sans font-light text-xl text-cream">{DISCOUNT_CODE}</p>
-                <p className="text-text-muted text-xs mt-1">10% off your first order</p>
-              </div>
+              <h2 className="font-display text-xl text-cream">Sei in lista.</h2>
+              <p className="text-text-muted text-xs">
+                Ti avvisiamo appena il drop apre.
+              </p>
               <button
                 onClick={dismiss}
                 className="text-xs text-text-muted hover:text-cream underline underline-offset-2 transition-colors"
               >
-                Start shopping →
+                Continua a guardare →
               </button>
             </div>
           ) : (
             <div className="space-y-4">
               <div>
-                <p className="text-[10px] text-text-muted uppercase tracking-widest mb-1.5">Exclusive offer</p>
-                <h2 className="font-display text-xl text-cream leading-tight">10% off your first order</h2>
+                <p className="text-[10px] text-text-muted uppercase tracking-widest mb-1.5">Prossimo drop</p>
+                <h2 className="font-display text-xl text-cream leading-tight">{title}</h2>
               </div>
               <p className="text-text-secondary text-xs leading-relaxed">
-                Join the JAYL community — early access to new drops and your welcome discount.
+                entra nella lista: i pezzi sono 20 per design
               </p>
               <form onSubmit={handleSubmit} className="space-y-2.5">
                 <input
@@ -138,7 +154,7 @@ export default function EmailCapturePopup() {
                   disabled={loading || !email.trim()}
                   className="w-full bg-cream text-off-black py-2.5 text-sm font-semibold tracking-wide disabled:opacity-40 transition-opacity hover:opacity-90"
                 >
-                  {loading ? 'Just a sec…' : 'Claim my 10% off'}
+                  {loading ? 'Just a sec…' : 'AVVISAMI'}
                 </button>
               </form>
               <p className="text-text-muted text-[10px] text-center">No spam. Unsubscribe any time.</p>
