@@ -598,6 +598,15 @@ ${image ? `<img src="${e(image)}" alt="${e(h1 || title)}" width="600" />` : ''}
 </body></html>`
 }
 
+// Forma condivisa per tutto ciò che il crawler non deve indicizzare né trattare
+// come acquistabile: un prodotto VAULT, o una collezione con zero prodotti
+// visibili (un visitatore reale su quella stessa URL viene reindirizzato subito
+// a /art — vedi CollectionPage — quindi il crawler non deve vedere una pagina
+// popolata che nessun umano vedrà mai).
+function noindexHtml() {
+  return `<!doctype html><html lang="it"><head><meta name="robots" content="noindex"><title>Coming soon — JAYL</title></head><body></body></html>`
+}
+
 function handlePrerender(req, res) {
   const path = String(req.query.path || '/')
   let html = null
@@ -608,9 +617,7 @@ function handlePrerender(req, res) {
     if (p && productState(id) === VAULT) {
       // Niente 404: la pagina esiste ma non è indicizzabile né acquistabile.
       res.setHeader('Content-Type', 'text/html; charset=utf-8')
-      return res.status(200).send(
-        `<!doctype html><html lang="it"><head><meta name="robots" content="noindex"><title>Coming soon — JAYL</title></head><body></body></html>`
-      )
+      return res.status(200).send(noindexHtml())
     }
     if (p) {
       const name        = p.seoTitle || p.name
@@ -638,6 +645,11 @@ function handlePrerender(req, res) {
     const raw   = decodeURIComponent(path.slice(12)).replace(/\/+$/, '')
     const slug  = LEGACY_COLLECTION_SLUGS[raw] ?? raw
     const inCol = adminProducts.filter(p => colSlug(p.collection) === slug)
+    if (inCol.length && !inCol.some(p => productState(p.id) !== VAULT)) {
+      // Collezione interamente VAULT: niente pagina popolata per i crawler.
+      res.setHeader('Content-Type', 'text/html; charset=utf-8')
+      return res.status(200).send(noindexHtml())
+    }
     if (inCol.length) {
       const name = inCol[0].collection || slug
       html = prerenderHtml({

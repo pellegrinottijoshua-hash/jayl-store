@@ -75,9 +75,9 @@ for (const p of STATIC_PAGES) {
 }
 
 // VAULT products aren't buyable or indexable (see api/orders.js handlePrerender) —
-// keep them out of the sitemap too. Collection URLs below stay derived from the
-// full catalog: a collection isn't itself vaulted, only the products in it are,
-// and it may hold visible products again after a future drop.
+// keep them out of the sitemap too. Collection URLs below are derived from this
+// same visible-only list (see collectionSlugs), so a collection with no visible
+// products drops out of the sitemap along with its products.
 const visible = new Set([...(drop.current?.productIds || []), ...(drop.released || [])])
 const sitemapProducts = adminProducts.filter((p) => visible.has(p.id))
 
@@ -94,9 +94,12 @@ for (const product of sitemapProducts) {
   </url>`)
 }
 
-// Only collections that actually resolve to products get a URL.
+// Only collections with at least one visible (non-VAULT) product get a URL — a
+// fully-vaulted collection page redirects every real visitor straight to /art
+// (see CollectionPage), so it must not be indexable either. Still derived from
+// each product's own `collection` string, never the admin collection id.
 const collectionSlugs = [...new Set(
-  adminProducts.map(p => collectionSlug(p.collection)).filter(Boolean)
+  sitemapProducts.map(p => collectionSlug(p.collection)).filter(Boolean)
 )]
 
 for (const slug of collectionSlugs) {
