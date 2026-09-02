@@ -477,11 +477,11 @@ async function handleValidateDiscount(req, res) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
-  const { code, subtotal } = req.body || {}
+  const { code, subtotal, items } = req.body || {}
   if (!code?.trim()) return res.status(400).json({ error: 'code required' })
   if (!subtotal || subtotal < 1) return res.status(400).json({ error: 'subtotal required' })
 
-  const result = applyDiscount(Number(subtotal), code)
+  const result = applyDiscount(Number(subtotal), code, items)
   if (!result.ok) return res.status(400).json({ error: result.error })
 
   return res.status(200).json({

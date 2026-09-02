@@ -5,7 +5,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
 import { formatPrice, cn } from '@/lib/utils'
-import { getDrop, basePriceFor, bundleDiscount, productState, DROP } from '../../api/_lib/drop.js'
+import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
 
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
@@ -103,17 +103,13 @@ function CheckoutForm() {
     if (!code) return
     setDiscountLoading(true); setDiscountError('')
 
-    // `applyDiscount` (api/_lib/catalog.js) refuses any code once the cart
-    // holds a drop item — mirror that check here so it's rejected in the
-    // discount box, before the customer has filled in card details, instead
-    // of surfacing as a generic payment error at the very last step.
-    const hasDropItem = items.some((i) => productState(i.product.id, cfg) === DROP)
-    if (hasDropItem) {
-      setDiscountError('I codici sconto non sono validi sui pezzi in drop.')
-      setDiscountLoading(false)
-      return
-    }
-
+    // The drop-cart rejection ("I codici sconto non sono validi sui pezzi in
+    // drop.") comes entirely from the server's applyDiscount() (api/_lib/
+    // catalog.js), which reads the `items` sent below. No local mirror of
+    // that check: applyDiscount looks the code up FIRST and only then checks
+    // for drop items, so a nonexistent code with a drop item in cart is
+    // "Invalid discount code" — a client-side copy of just the drop-item
+    // check got that order wrong, with no shared source to keep it in sync.
     try {
       const res  = await fetch('/api/validate-discount', {
         method: 'POST',

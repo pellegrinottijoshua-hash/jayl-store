@@ -2,12 +2,27 @@ import { useLocation, useParams, Link } from 'react-router-dom'
 import { CheckCircle, ArrowRight, Package, MailOpen } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+
+// `order.items` is the cart's own item list, carried straight through from
+// checkout — it still has the cartStore-snapshot `unitPrice` (see
+// CartDrawer.jsx / CheckoutPage.jsx for why that's stale during a drop), and
+// the server never returns a per-item price breakdown, only the aggregate
+// `total`. So there is no server-sourced per-item price to prefer here;
+// resolve the display price from the drop config at render time instead,
+// same as the cart and checkout pages. Never mutate anything persisted.
+function livePriceFor(item, cfg) {
+  const sizeObj  = item.product.sizes?.find((s) => s.id === item.size)
+  const frameObj = item.product.frames?.find((f) => f.id === item.frame)
+  return basePriceFor(item.product.id, sizeObj, item.product, cfg) + (frameObj?.price ?? 0)
+}
 
 export default function OrderConfirmationPage() {
   const { orderId } = useParams()
   const { state } = useLocation()
 
   const order = state?.order  // null if user refreshed — show graceful fallback
+  const cfg   = getDrop()
 
   usePageMeta({ title: 'Order Confirmed' })
 
@@ -53,7 +68,7 @@ export default function OrderConfirmationPage() {
                       <p className="text-xs text-text-muted">Qty {item.quantity}</p>
                     </div>
                     <span className="text-sm text-text-primary">
-                      {formatPrice(item.unitPrice * item.quantity)}
+                      {formatPrice(livePriceFor(item, cfg) * item.quantity)}
                     </span>
                   </li>
                 ))}
