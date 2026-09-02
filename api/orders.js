@@ -22,7 +22,7 @@ import {
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { ghGet, ghPut } from './_lib/github.js'
-import { getDrop, capFor } from './_lib/drop.js'
+import { getDrop, capFor, productState, VAULT } from './_lib/drop.js'
 import { readSales, recordDropSale } from './_lib/drop-sales.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
@@ -605,6 +605,13 @@ function handlePrerender(req, res) {
   if (path.startsWith('/product/')) {
     const id = decodeURIComponent(path.slice(9)).replace(/\/+$/, '')
     const p  = adminProducts.find(x => x.id === id)
+    if (p && productState(id) === VAULT) {
+      // Niente 404: la pagina esiste ma non è indicizzabile né acquistabile.
+      res.setHeader('Content-Type', 'text/html; charset=utf-8')
+      return res.status(200).send(
+        `<!doctype html><html lang="it"><head><meta name="robots" content="noindex"><title>Coming soon — JAYL</title></head><body></body></html>`
+      )
+    }
     if (p) {
       const name        = p.seoTitle || p.name
       const description = (p.seoDescription || p.description || PRERENDER_DESC).replace(/\s+/g, ' ').trim().slice(0, 280)

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync } from 'fs'
 import path from 'path'
+import { drop } from './src/data/drop.js'
 
 /**
  * Fields the storefront never reads — Etsy copy, Pinterest bookkeeping, Gelato
@@ -31,11 +32,15 @@ function storefrontProducts() {
       const raw = readFileSync(source, 'utf-8')
       const match = raw.match(/=\s*(\[[\s\S]*\])\s*$/)
       if (!match) throw new Error('[storefront-products] could not parse admin-products.js')
-      const stripped = JSON.parse(match[1]).map((product) => {
-        const out = { ...product }
-        for (const field of ADMIN_ONLY_FIELDS) delete out[field]
-        return out
-      })
+      const visible = new Set([...(drop.current?.productIds || []), ...(drop.released || [])])
+      const stripped = JSON.parse(match[1])
+        // I prodotti VAULT non sono nascosti via CSS: non entrano proprio nel bundle.
+        .filter((product) => visible.has(product.id))
+        .map((product) => {
+          const out = { ...product }
+          for (const field of ADMIN_ONLY_FIELDS) delete out[field]
+          return out
+        })
       return `export const adminProducts = ${JSON.stringify(stripped)}\n`
     },
   }

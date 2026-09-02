@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
+import { drop } from '../src/data/drop.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -73,7 +74,14 @@ for (const p of STATIC_PAGES) {
   </url>`)
 }
 
-for (const product of adminProducts) {
+// VAULT products aren't buyable or indexable (see api/orders.js handlePrerender) —
+// keep them out of the sitemap too. Collection URLs below stay derived from the
+// full catalog: a collection isn't itself vaulted, only the products in it are,
+// and it may hold visible products again after a future drop.
+const visible = new Set([...(drop.current?.productIds || []), ...(drop.released || [])])
+const sitemapProducts = adminProducts.filter((p) => visible.has(p.id))
+
+for (const product of sitemapProducts) {
   if (!product.id) continue
   const lastmod = product.updatedAt
     ? new Date(product.updatedAt).toISOString().split('T')[0]
