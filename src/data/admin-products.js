@@ -15666,5 +15666,499 @@ export const adminProducts = [
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_133035_531b4c22-ed29-4cfc-b4d1-df3ce4226aab-gela-wdkvn19t-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
+  },
+  {
+    "id": "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Ursaring Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2399,
+    "currency": "eur",
+    "description": "This Ursaring Back Print Shirt is a must for the friend who lives the nostalgia of the 90s anime boom. With its large graphic design showcasing a playful Ursaring in a vintage aesthetic, this unisex cotton tee channels both comfort and style. Crafted from Gildan's premium material with cutting-edge DTG print quality, it's made to withstand the adventures of any Pokémon trainer. Gift it to your buddy who still remembers the thrill of catching 'em all, or treat yourself to a bold throwback look that says you appreciate both art and fun.",
+    "altText": "Ursaring depicted striking a playful pose in vibrant colors on a retro 90s anime-inspired JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2399
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2399
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2399
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2399
+      }
+    ],
+    "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
+    "heroImage": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_143851_905e0306-d981-4989-bc3e-053c05dfc660-copia.png",
+    "detailImage": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_154042_4a7d1814-c830-4a5c-8812-03b9351ebab3.png",
+    "images": [
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163620_69d19933-1c25-4b78-87de-eb72b3524d44.png",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163629_a0d06d87-770e-4187-8d59-2d570a5001d1.png",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-04.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-05.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-06.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-07.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-08.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-09.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-10.jpg"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_143851_905e0306-d981-4989-bc3e-053c05dfc660-copia.png": "Bold Ursaring back print on a graphic tee showcasing contemporary art vibes.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_154042_4a7d1814-c830-4a5c-8812-03b9351ebab3.png": "Close-up of soft cotton texture highlighting the vibrant Ursaring design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163620_69d19933-1c25-4b78-87de-eb72b3524d44.png": "Side view of the shirt displaying a large, eye-catching Ursaring back print.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163629_a0d06d87-770e-4187-8d59-2d570a5001d1.png": "Front angle focusing on the unique fit of the unisex cotton t-shirt.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dc619d95-7c21-4514-a180-9751bae24fe4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=abfc14ec383cc527b032160aa2b44d4f69e5306a5676a8482e6436a62ad6b57a": "Vibrant red version of the Ursaring shirt showcasing playful retro design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8def46c9-00aa-4436-9319-1c889881a964/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1f6a3cc254a02e0c1ac93dd9c94b5e3defcafc679adaf29b73e2303a99fb26e9": "Another perspective of the red tee highlighting its casual style and print.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/05fbb947-cc52-4fd5-bf2b-ee10e5bba922/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=139bb525f825b777fa7f7710e2fddade80091a44a2a0bbfefa08bb8be88d8fca": "The bold red shirt laid flat, accentuating its colorful design and quality fabric.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e3e3ca62-a127-44e0-8666-dca337fb9c55/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fb293272d18fd34727f4b9f95e6091de02dd1d0b5ec63e911e3097856f77899f": "Close-up detailing on the vibrant red fabric and unique graphic elements.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fce8fde1-2a3f-4468-a930-c4c0e502fddb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d6920b9104c86f0110b960b89b418e8e9e7a02ab751cdb2f8f5618f6177bf6c4": "Another angle displaying the playful Ursaring design in vivid red hues."
+    },
+    "tags": [
+      "ursaring shirt",
+      "pokemon t-shirt",
+      "anime graphic tee",
+      "retro apparel",
+      "90s fashion",
+      "gift for gamers",
+      "funny t-shirt",
+      "unisex clothing",
+      "anime gift",
+      "cotton t-shirt",
+      "pokemon gift",
+      "graphic design tee",
+      "large back print"
+    ],
+    "featured": false,
+    "gelatoProductId": "27cdfcde-de9f-4617-859b-4174bb249b1b",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "ursaring shirt",
+      "retro t-shirt",
+      "anime graphic tee",
+      "pokemon apparel",
+      "funny t-shirt"
+    ],
+    "longTailKeywords": [
+      "ursaring pokemon graphic tee",
+      "retro anime style shirt for men",
+      "90s nostalgic apparel gift for him",
+      "funny graphic tees for pokemon fans",
+      "large back design anime shirt",
+      "\"unisex cotton pokémon tee\"",
+      "\"gildan premium organic t-shirt\"",
+      "\"vintage ursaring artwork shirt\"",
+      "unique gifts for gamers",
+      "best regalos para amigos"
+    ],
+    "hashtags": "#ursaring #pokemon #graphictee #retrofashion #90sanime #vintageclothing #cottonshirt #geekwear #fanapparel #unisexfashion #giftforhim #animeartwork #nostalgia #animelover #shoplocal #streetwearstyle #trendytshirts #creativegifts #originalartwork #popculturefashion #quirkytshirt #customteeshirts #madeinusa #funnypokemonshirts #summerfashion2023 #coolshirtsforkids #stylishapparel #collectibleshirt#fanmerchandise#creativewearing#tshirtdesigns#casualoutfit#uniquetoddlershirts#funnygiftideas#nostalgicclothing#artistmerchandising#styleinspiration",
+    "instagramCaption": "\"When adventure calls, will you answer? Get ready to embrace your inner Pokémon master with our Ursaring Back Print Tee! Don't miss out—grab yours now! 🔥🎮💥\" #ursaring #retrofashion #gamerstyle",
+    "pinterestCaption": "\"Channel your inner Pokémon master with our Ursaring Back Print Shirt that captures the whimsical spirit of retro anime. Made from soft cotton, this unique piece offers both comfort and nostalgia. Shop now to find the perfect gift for fans of all ages!\"",
+    "seoTitle": "Ursaring Back Print Shirt | Retro 90s Anime Gift | For Him",
+    "variants": [
+      {
+        "uid": "7ed5cf71-9a2f-4864-b7dd-d50dbdb458e2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1586c9e4-7562-4e46-9542-34f9612bc1fc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6c398eea-7d8b-49b2-8154-59372f0f3020",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "08e536cc-f724-410c-8199-429302189a6e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5f134ea4-1ae0-4878-967a-c35967a440fb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea140c28-f2c3-4ad6-a953-54a507fc2609",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c5424623-dc42-4f8d-8dad-1e2c31af8626",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "be6466ea-d5c5-4627-b888-46c994fc63f3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c73026fe-e24d-4f21-8a9f-539f0928665b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4f8815a9-780a-404c-a8c1-edf520e247c9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "185f5aaf-1d53-49d7-b29d-5ea55a19e0e7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4ff4c0e1-ca57-449e-a5a7-5fc5e1743eb4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3c0119bc-e4ac-4745-b854-f5200d935f96",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e209f688-62ca-46ef-bcc7-fe4d2c829d62",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "634c1e51-58da-4506-bacc-52bef39c951f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6de4a9cd-3f6e-4c46-ae70-10c7e9a47934",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cde0ff75-f0db-4412-8bbd-03df4a60489d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7b1cc665-af2a-4b57-a883-cc4da5587589",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4ab4d029-b16f-4a39-bc8d-bd4331722c11",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2f94c5ef-cd43-42b1-b74b-eacdb8f7a8fb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f9fa09e4-50ae-43d1-a16e-29a7f9f0f171",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4590b54d-9e0b-49aa-a289-97a488ea0c53",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f9383423-61db-4865-90c9-0ebf85b1f7cd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d1005efa-1003-4a99-9937-bb94e09d2fee",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a62dfd3b-30ad-4845-8716-f750fa9321ce",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "063f7fe9-07af-48dd-8b25-745f3b63a1fc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c3619821-dcee-4ec9-a337-046409e9f5fa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a1fe53a6-dd7a-4e0e-a84b-6555be52246c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e19e64c9-48a9-42d7-bf70-74433bcfd9a0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "25253ba2-b9be-471c-9fe8-dc4255c334a8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ff5a8c6b-315b-4042-a7f4-6e746e25f220",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0da51f60-540a-47a8-b30b-2d743d0ef0f3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "be5b1e75-5793-4744-a4c0-e3f0044ce077",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "24286b39-c6b3-449f-a047-6038a527bf0d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7d3ecb47-2f50-4423-9169-7a7679dfdea4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5166e095-b1d6-4288-81f4-f797212f0e07",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-sand-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-white-01.jpg"
+      },
+      {
+        "id": "gold",
+        "label": "Gold",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gold-01.jpg"
+      },
+      {
+        "id": "cardinal-red",
+        "label": "Cardinal Red",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-cardinal-red-01.jpg"
+      },
+      {
+        "id": "heather-maroon",
+        "label": "Heather Maroon",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-heather-maroon-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-navy-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-black-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-purple-01.jpg"
+      }
+    ],
+    "etsyTitle": "Ursaring Back Print Shirt, Retro 90s Graphic Tee, Gift for Pokemon Lover",
+    "etsyTags": [
+      "ursaring shirt",
+      "pokemon tee",
+      "anime graphic shirt",
+      "gift for him",
+      "otaku apparel",
+      "90s nostalgia",
+      "unisex t-shirt",
+      "funny graphic tee",
+      "cotton t-shirt",
+      "retro style clothing",
+      "geek culture gift",
+      "fan merchandise",
+      "cartoon character sh"
+    ],
+    "etsyDescription": "Hey there, fellow Ursaring fan! You know there's nothing quite like rocking a vintage tee that celebrates your favorite Pokémon — this one is a total gem.\n\nWith its playful large back design, this shirt captures the mischievous charm and cuddly strength of Ursaring. It's not just a garment; it’s a cozy way to wear your fandom with pride. Made from soft and breathable 100% cotton, it's the perfect blend of comfort and style for any casual outing or anime convention.\n\nAvailable in sizes S-3XL with an unisex fit that's flattering on everyone, prepare yourself for endless compliments from friends who get it. Plus, if you're looking to surprise your best buddy who just can’t stop quoting old-school Pokémon episodes, this is *the* gift they didn’t know they needed!\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Model wearing front view of Ursaring back print shirt with vibrant colors.",
+      "Model showcasing large back design of Ursaring graphic tee in playful pose.",
+      "Close-up detail of vibrant Ursaring back print illustrating fun retro styling.",
+      "Flat lay image showing front view of cotton Ursaring graphic tee on white background.",
+      "Lifestyle shot capturing wearer enjoying casual day out in Ursaring shirt.",
+      "Size guide displaying options available for unisex fit on the Ursaring t-shirt.",
+      "Gift-ready packaging featuring the delightful Ursaring back print shirt inside."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dc619d95-7c21-4514-a180-9751bae24fe4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=abfc14ec383cc527b032160aa2b44d4f69e5306a5676a8482e6436a62ad6b57a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8def46c9-00aa-4436-9319-1c889881a964/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1f6a3cc254a02e0c1ac93dd9c94b5e3defcafc679adaf29b73e2303a99fb26e9",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/05fbb947-cc52-4fd5-bf2b-ee10e5bba922/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=139bb525f825b777fa7f7710e2fddade80091a44a2a0bbfefa08bb8be88d8fca",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e3e3ca62-a127-44e0-8666-dca337fb9c55/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fb293272d18fd34727f4b9f95e6091de02dd1d0b5ec63e911e3097856f77899f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fce8fde1-2a3f-4468-a930-c4c0e502fddb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d6920b9104c86f0110b960b89b418e8e9e7a02ab751cdb2f8f5618f6177bf6c4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7d8968a3-2e57-4256-8675-1e5842edf1d0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6c779b8f9c4eae33f1f114542aa179644eb89e68b5941cb51edb314a57213dd6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a8dbc639-e7c6-48dd-b36b-d6779bf9a575/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c3b8eec67edf1f855921ff1a596868c3f7c326bba08e584d465f1438ad7bf13",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cbf08c6d-df91-4892-bc50-0faac52f4486/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cd8a747bacf87feced1c00a4ddecd139ba25979226179ed0ff64506f3cfd0fb9",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bf5c87d1-2998-42fd-bfc7-2608bc78cc94/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8202c181d11af2c445437fdcf099690a052ca99101b5f4460521ec9ebbb24339",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0ab35f22-8b37-42f6-b3de-be95564907f0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a65de87912d16db80dee4e0c2893b25bee54d4228953f0f94516b4a61df50117"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_132204_dfcb2d9a-1c30-4cc5-9725-7e93cf47ec87-gelato-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-09-02T20:04:27.469Z",
+    "updatedAt": "2026-09-02T20:04:27.469Z"
   }
 ]
