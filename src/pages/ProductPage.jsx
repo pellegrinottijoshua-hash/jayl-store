@@ -482,6 +482,18 @@ export default function ProductPage() {
   // optional-chained to a safe fallback.
   const { status: dropStatus } = useDropStatus()
   const dropCfg = getDrop()
+  // Window state (BEFORE/LIVE/CLOSED) doesn't depend on `product` — only on the
+  // drop config — so it's safe to compute unconditionally up here, before the
+  // not-found bail-out, same as `dropCfg` above. Task 8's `DropBlock` computes
+  // its own copy for the same reason: it's a pure function of `cfg`, cheap to
+  // call twice, and importing a shared *value* across two components would be
+  // more coupling than the seconds it'd save.
+  const dropWin = dropWindowState(dropCfg)
+  // Representative product-level price (no size/frame math) — used anywhere
+  // that isn't the buy box itself: JSON-LD, og:price, and ad-pixel event
+  // values. Same basePriceFor() the buy box and checkout both use, so none of
+  // these can drift from what the customer is actually charged.
+  const productBasePrice = product ? basePriceFor(product.id, null, product, dropCfg) : undefined
 
   const isArt = product?.section === 'art'
   const isLight = isArt
@@ -521,7 +533,11 @@ export default function ProductPage() {
         offers: {
           '@type':        'Offer',
           priceCurrency:  'EUR',
-          price:          ((product.price ?? 0) / 100).toFixed(2),
+          // basePriceFor(), not product.price — Merchant Center flags/suspends
+          // accounts over a mismatch between declared structured-data price and
+          // what checkout actually charges (see totalPrice above for the same
+          // reasoning applied to the buy box).
+          price:          ((productBasePrice ?? 0) / 100).toFixed(2),
           availability:   'https://schema.org/InStock',
           url:            productUrl,
           seller: { '@type': 'Organization', name: 'JAYL' },
@@ -546,7 +562,7 @@ export default function ProductPage() {
     url:         productUrl,
     type:        'product',
     jsonLd:      productJsonLd,
-    priceAmount:  product.price != null ? ((product.price) / 100).toFixed(2) : undefined,
+    priceAmount:  productBasePrice != null ? (productBasePrice / 100).toFixed(2) : undefined,
     priceCurrency: 'EUR',
   } : {})
 
@@ -604,7 +620,7 @@ export default function ProductPage() {
         content_ids: [product.id],
         content_name: product.name,
         content_type: 'product',
-        value: product.price,
+        value: productBasePrice,
         currency: 'EUR',
       })
     }
@@ -722,17 +738,34 @@ export default function ProductPage() {
       )
     : null
 
-  // Sold-out gate: once the edition is fully claimed, disable Add to Cart and
-  // swap the label for SOLD OUT. This is a UX courtesy only — the real defense
-  // is the server-side checkDropGate in api/create-payment-intent.js, which
+  // Drop-window + sold-out gate: Add to Cart must never promise something the
+  // server will refuse. `checkDropGate` in api/create-payment-intent.js
+  // rejects any DROP product order placed outside its own open window
+  // (state === DROP && !dropOpen) with a 409 — this mirrors that same check
+  // client-side, using the identical `dropWindowState()` the DropBlock badge
+  // above already reads, so the button and the badge can never disagree about
+  // what's actually purchasable. This is a UX courtesy only, same as the
+  // sold-out check below — the real defense is the server-side gate, which
   // rejects the order regardless of what the client shows.
   const dropProductState = product ? productState(product.id, dropCfg) : null
   const dropCap          = product ? capFor(product.id, dropCfg) : 0
   const dropSale         = product ? dropStatus?.products?.[product.id] : null
-  const isSoldOut        = dropProductState === DROP && dropCap > 0
+  const isDropBefore      = dropProductState === DROP && dropWin.state === BEFORE
+  const isDropClosed      = dropProductState === DROP && dropWin.state === CLOSED
+  // Sold-out only means something while the drop is actually LIVE — before it
+  // opens there's no sales data to check yet, and once it's closed the
+  // "Drop chiuso" label already covers it regardless of the last known count.
+  const isSoldOut          = dropProductState === DROP && dropWin.state === LIVE && dropCap > 0
     && (dropSale?.sold ?? 0) >= (dropSale?.cap ?? dropCap)
+  const dropWindowBlocked = isDropBefore || isDropClosed || isSoldOut
 
-  const canAddToCart = (!!selectedSize || !product?.sizes?.length) && !isSoldOut
+  // "Apre il 5 settembre" — derived from the real startsAt (never hardcoded),
+  // so it can't drift from the countdown DropBlock shows for the same date.
+  const dropOpensLabel = dropCfg.current?.startsAt
+    ? `Apre il ${new Date(dropCfg.current.startsAt).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })}`
+    : 'In arrivo'
+
+  const canAddToCart = (!!selectedSize || !product?.sizes?.length) && !dropWindowBlocked
 
   // ── Event handlers ───────────────────────────────────────────────────────────
 
@@ -769,14 +802,14 @@ export default function ProductPage() {
         content_ids: [product.id],
         content_name: product.name,
         content_type: 'product',
-        value: product.price,
+        value: productBasePrice,
         currency: 'EUR',
       })
     }
     // Pinterest Tag — AddToCart
     if (typeof window.pintrk === 'function') {
       window.pintrk('track', 'addtocart', {
-        value: product.price,
+        value: productBasePrice,
         order_quantity: 1,
         currency: 'EUR',
       })
@@ -1216,6 +1249,10 @@ export default function ProductPage() {
           >
             {added ? (
               <><Check size={16} />Added to Cart</>
+            ) : isDropBefore ? (
+              dropOpensLabel
+            ) : isDropClosed ? (
+              'Drop chiuso'
             ) : isSoldOut ? (
               'Sold Out'
             ) : (
@@ -1306,6 +1343,10 @@ export default function ProductPage() {
           >
             {added
               ? '✓ Added'
+              : isDropBefore
+              ? dropOpensLabel
+              : isDropClosed
+              ? 'Drop chiuso'
               : isSoldOut
               ? 'Sold Out'
               : canAddToCart
@@ -1608,6 +1649,10 @@ export default function ProductPage() {
               >
                 {added ? (
                   <><Check size={16} />Added to Cart</>
+                ) : isDropBefore ? (
+                  dropOpensLabel
+                ) : isDropClosed ? (
+                  'Drop chiuso'
                 ) : isSoldOut ? (
                   'Sold Out'
                 ) : (

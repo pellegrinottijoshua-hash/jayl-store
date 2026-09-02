@@ -22,7 +22,7 @@ import {
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { ghGet, ghPut } from './_lib/github.js'
-import { getDrop, capFor, productState, VAULT } from './_lib/drop.js'
+import { getDrop, capFor, productState, basePriceFor, VAULT } from './_lib/drop.js'
 import { readSales, recordDropSale } from './_lib/drop-sales.js'
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
@@ -501,8 +501,17 @@ function escapeXml(s) {
 }
 
 async function handleGmf(req, res) {
-  const items = adminProducts.map(p => {
-    const price      = ((p.price ?? 0) / 100).toFixed(2)
+  // Google Shopping must never advertise a product it can't sell: a VAULT
+  // product isn't purchasable (checkDropGate rejects it) and its page renders
+  // COMING SOON, not a product — Merchant Center suspends accounts over an
+  // availability/landing-page mismatch like that. Same visibility rule as
+  // scripts/generate-sitemap.js and handlePrerender below (productState !==
+  // VAULT means DROP or LISTINO — the only two states anything is buyable in).
+  const items = adminProducts.filter(p => productState(p.id) !== VAULT).map(p => {
+    // basePriceFor(), not p.price — the feed must declare the price checkout
+    // actually charges (dropPrice/archivePrice for DROP/LISTINO), or Google
+    // flags the mismatch between the ad and what the customer is charged.
+    const price      = ((basePriceFor(p.id, null, p) ?? 0) / 100).toFixed(2)
     const imageUrl   = p.image || (p.images?.[0] ?? '')
     const link       = `https://jayl.store/product/${p.id}`
     const extraImgs  = (p.images || []).slice(0, 10).filter(u => u && u !== imageUrl)
