@@ -20,25 +20,23 @@ const releasedProducts = (dropCfg.released || [])
   .map((id) => objectsProducts.find((p) => p.id === id))
   .filter(Boolean)
 
-// Le stesse condizioni usate più sotto in JSX per decidere se DropPanels e
-// l'archivio renderizzano qualcosa — non tempo-dipendenti (a differenza dello
-// stato before/live/closed, che vive dentro ai singoli componenti perché deve
-// restare fresco a ogni render), quindi calcolabili una volta a module-load
-// come il resto dei dati derivati qui sopra.
-const dropPanelsIds = (dropCfg.current?.productIds?.length > 0)
-  ? dropCfg.current.productIds
-  : (dropCfg.previous?.productIds || [])
-const dropPanelsWillRender = dropPanelsIds.some((id) => objectsProducts.some((p) => p.id === id))
-const archiveWillRender    = releasedProducts.length >= 6
+// Same condition used further down in JSX to decide whether the archive
+// renders anything — not time-dependent (unlike the before/live/closed
+// state, which lives inside the individual components because it must stay
+// fresh on every render), so computable once at module-load like the rest
+// of the data derived above.
+const archiveWillRender = releasedProducts.length >= 6
 
 // light = cream sections, dark = dark sections. Derived from the screens that
-// actually render (DropPanels can render nothing between drops before the admin
-// configures the next one; the archive is gated at 6+ released products) —
-// hard-coding this array desyncs it from reality and Navbar paints the wrong
-// text color on whichever screen inherits the wrong index.
+// actually render (the archive is gated at 6+ released products) — hard-coding
+// this array desyncs it from reality and Navbar paints the wrong text color on
+// whichever screen inherits the wrong index.
+//
+// Screen 1 (drop pieces + waitlist, merged into one <section>) always renders
+// — even with zero configured pieces, the waitlist half still shows — so
+// unlike the old two-screen layout this first entry needs no conditional.
 const SECTION_THEMES = [
-  ...(dropPanelsWillRender ? ['dark'] : []),
-  'dark', // Screen — Waitlist, always renders
+  'dark', // Screen — Drop pieces + waitlist, always renders
   ...(archiveWillRender ? ['dark'] : []),
   'light', // Screen — Artist's, always renders
 ]
@@ -76,7 +74,7 @@ function FallingS() {
 
 // Reusable auto-scrolling collection carousel — each instance owns its own ref,
 // drag state and rAF loop, so multiple carousels on one page run independently.
-function CollectionCarousel({ title, viewAllTo, products: items, imagePick }) {
+function CollectionCarousel({ title, viewAllTo, products: items, imagePick, sectionRef }) {
   const ref  = useRef(null)
   const drag = useRef({ active: false, hovered: false, startX: 0, startScroll: 0, moved: false })
 
@@ -129,7 +127,7 @@ function CollectionCarousel({ title, viewAllTo, products: items, imagePick }) {
   }
 
   return (
-    <section className="h-screen w-screen bg-off-black relative overflow-hidden">
+    <section ref={sectionRef} className="h-screen w-screen bg-off-black relative overflow-hidden">
       <div className="absolute top-[88px] left-6 sm:left-8 right-6 sm:right-8 z-10 flex items-center gap-3">
         <p className="text-2xs font-sans tracking-label-xl uppercase text-text-muted">{title}</p>
         <div className="flex-1" />
@@ -209,18 +207,34 @@ export default function HomePage() {
     title:       'Art & Wearable Art',
     description: 'Premium print-on-demand art and streetwear. AI-reinterpreted art movements meet contemporary culture. Free worldwide shipping.',
   })
-  const navigate   = useNavigate()
-  const sectionRef = useRef(0)
+  const navigate      = useNavigate()
+  const sectionIdxRef = useRef(0)
+  // DOM node per top-level screen, in the same order as SECTION_THEMES —
+  // sectionEls[i] and SECTION_THEMES[i] must always describe the same screen.
+  const sectionEls    = useRef([])
 
   useEffect(() => {
     setPageTheme(SECTION_THEMES[section] ?? 'dark')
     setActiveSection(null)
   }, [section, setPageTheme, setActiveSection])
 
+  // Screen 1 is no longer a fixed h-screen panel (4:5 cards size themselves
+  // by width, and the waitlist block now lives inside it too), so its height
+  // is no longer a clean multiple of window.innerHeight — the old
+  // `scrollY / innerHeight` division would drift out of sync with which
+  // screen is actually on glass as soon as screen 1 differs from 100vh.
+  // Measuring each screen's own offsetTop instead stays correct regardless
+  // of any individual screen's height.
   const handleScroll = useCallback(() => {
-    const idx = Math.round(window.scrollY / window.innerHeight)
-    if (idx !== sectionRef.current) {
-      sectionRef.current = idx
+    const els = sectionEls.current
+    if (!els.length) return
+    const mid = window.scrollY + window.innerHeight / 2
+    let idx = 0
+    for (let i = 0; i < els.length; i++) {
+      if (els[i] && els[i].offsetTop <= mid) idx = i
+    }
+    if (idx !== sectionIdxRef.current) {
+      sectionIdxRef.current = idx
       setSection(idx)
     }
   }, [])
@@ -283,71 +297,81 @@ export default function HomePage() {
       </section>
       ════════════════════════════════════════════════════════════════════════ */}
 
-      {/* ════ SCREEN 1 — Drop panels: the live (or just-closed) drop pieces ══ */}
-      <DropPanels />
+      {/* ════ SCREEN 1 — Drop pieces + waitlist, one screen, nothing below the
+          fold to reach the email field. DropPanels renders the bar + pieces
+          (nothing if the drop is empty — the top-anchored flex column just
+          leaves the waitlist half alone at the top); the waitlist half below
+          always renders, so this <section> is never empty and SECTION_THEMES'
+          first 'dark' entry is never wrong. `min-h-screen`, not `h-screen`:
+          on a short viewport the composition may run past 100vh (a little
+          scroll), it must never shrink the hero images to force an exact fit. ════ */}
+      <section ref={(el) => { sectionEls.current[0] = el }} className="min-h-screen w-screen bg-off-black flex flex-col">
+        <DropPanels />
 
-      {/* ════ SCREEN 2 — Waitlist ═══════════════════════════════════════ */}
-      <section className="min-h-screen w-screen bg-off-black relative overflow-hidden flex items-center justify-center px-6 sm:px-12">
-        {/* Faint decorative large letter, matches the value-prop treatment used elsewhere on the site */}
-        <span
-          aria-hidden="true"
-          className="absolute right-[-0.05em] top-1/2 -translate-y-1/2 font-display leading-none select-none pointer-events-none"
-          style={{ fontSize: 'clamp(12rem, 28vw, 26rem)', color: '#C4A35A', opacity: 0.04, letterSpacing: '-0.05em' }}
-        >J</span>
+        <div className="flex-1 flex flex-col justify-center pt-6 pb-8 sm:pt-8 sm:pb-16">
+          <div className="relative overflow-hidden px-6 sm:px-12">
+            {/* Faint decorative large letter, matches the value-prop treatment used elsewhere on the site */}
+            <span
+              aria-hidden="true"
+              className="absolute right-[-0.05em] top-1/2 -translate-y-1/2 font-display leading-none select-none pointer-events-none"
+              style={{ fontSize: 'clamp(8rem, 20vw, 20rem)', color: '#C4A35A', opacity: 0.04, letterSpacing: '-0.05em' }}
+            >J</span>
 
-        <div className="relative max-w-md w-full text-center">
-          <p className="text-[10px] font-sans tracking-[0.25em] uppercase mb-6" style={{ color: '#C4A35A', opacity: 0.7 }}>
-            Get notified
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl text-cream leading-tight mb-4">
-            Never miss a drop.
-          </h2>
-          <p className="text-white/60 text-sm leading-relaxed mb-6">
-            Every drop is a limited edition — once it closes, the pieces go back to the
-            archive at full price. Join the list for early access to the next one.
-          </p>
+            <div className="relative max-w-md mx-auto w-full text-center">
+              <p className="hidden sm:block text-[10px] font-sans tracking-[0.25em] uppercase mb-4" style={{ color: '#C4A35A', opacity: 0.7 }}>
+                Get notified
+              </p>
+              <h2 className="font-display text-xl sm:text-4xl text-cream leading-tight mb-2 sm:mb-4">
+                Never miss a drop.
+              </h2>
+              <p className="text-white/60 text-xs sm:text-sm leading-snug sm:leading-relaxed mb-3 sm:mb-6 max-w-[280px] sm:max-w-none mx-auto">
+                Every drop is a limited edition — once it closes, the pieces go back to the
+                archive at full price. Join the list for early access to the next one.
+              </p>
 
-          {/* Before the current drop opens, "the next drop" IS the current one —
-              pointing this at cfg.next here would put a second, later date next
-              to DropPanels' own "apre tra" for the same drop, two countdowns
-              disagreeing about when the thing actually opens. Once it's live or
-              closed, this goes back to genuinely meaning the drop after this one. */}
-          {dropState.state === BEFORE ? (
-            <DropCountdown
-              to={dropState.target}
-              label="apre tra"
-              className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-8"
-            />
-          ) : dropCfg.next?.startsAt && (
-            <DropCountdown
-              to={dropCfg.next.startsAt}
-              label="prossimo drop tra"
-              className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-8"
-            />
-          )}
+              {/* Before the current drop opens, "the next drop" IS the current one —
+                  pointing this at cfg.next here would put a second, later date next
+                  to DropPanels' own "apre tra" for the same drop, two countdowns
+                  disagreeing about when the thing actually opens. Once it's live or
+                  closed, this goes back to genuinely meaning the drop after this one. */}
+              {dropState.state === BEFORE ? (
+                <DropCountdown
+                  to={dropState.target}
+                  label="apre tra"
+                  className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-3 sm:mb-8"
+                />
+              ) : dropCfg.next?.startsAt && (
+                <DropCountdown
+                  to={dropCfg.next.startsAt}
+                  label="prossimo drop tra"
+                  className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-3 sm:mb-8"
+                />
+              )}
 
-          {waitlistSubmitted ? (
-            <p className="text-cream text-sm">You're on the list.</p>
-          ) : (
-            <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-2.5">
-              <input
-                type="email"
-                value={waitlistEmail}
-                onChange={(e) => setWaitlistEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="flex-1 bg-gray-900 border border-border text-cream px-4 py-3 text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
-              />
-              <button
-                type="submit"
-                disabled={waitlistLoading || !waitlistEmail.trim()}
-                className="bg-cream text-off-black px-6 py-3 text-xs font-sans tracking-label uppercase disabled:opacity-40 transition-opacity hover:opacity-90"
-              >
-                {waitlistLoading ? 'Just a sec…' : 'Join the waitlist'}
-              </button>
-            </form>
-          )}
-          {waitlistError && <p className="text-red-400 text-xs mt-2">{waitlistError}</p>}
+              {waitlistSubmitted ? (
+                <p className="text-cream text-sm">You're on the list.</p>
+              ) : (
+                <form onSubmit={handleWaitlistSubmit} className="flex gap-2 sm:gap-2.5">
+                  <input
+                    type="email"
+                    value={waitlistEmail}
+                    onChange={(e) => setWaitlistEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    required
+                    className="flex-1 min-w-0 bg-gray-900 border border-border text-cream px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
+                  />
+                  <button
+                    type="submit"
+                    disabled={waitlistLoading || !waitlistEmail.trim()}
+                    className="shrink-0 bg-cream text-off-black px-4 sm:px-6 py-2.5 sm:py-3 text-2xs sm:text-xs font-sans tracking-label uppercase disabled:opacity-40 transition-opacity hover:opacity-90"
+                  >
+                    {waitlistLoading ? 'Just a sec…' : 'Join the waitlist'}
+                  </button>
+                </form>
+              )}
+              {waitlistError && <p className="text-red-400 text-xs mt-2">{waitlistError}</p>}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -361,11 +385,13 @@ export default function HomePage() {
           viewAllTo="/objects"
           products={releasedProducts}
           imagePick={carouselImagePick}
+          sectionRef={(el) => { sectionEls.current[1] = el }}
         />
       )}
 
       {/* ════ SCREEN 3 — Artist's (cream) ════════════════════════════ */}
       <section
+        ref={(el) => { sectionEls.current[archiveWillRender ? 2 : 1] = el }}
         className="h-screen w-screen bg-paper relative flex items-center justify-center cursor-pointer"
         onClick={() => navigate('/artist')}
       >
