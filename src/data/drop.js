@@ -30,9 +30,9 @@ export const drop = {
     "dropPrice": 2200,
     "bundlePrice": 5700,
     "heroImages": {
-      "cool-mewtwo-back-t-shirt": "/images/images/cool-mewtwo-back-t-shirt/hf_20260902_221831_3b5deca1-89a4-42d6-88a8-bb52d5c82c5b.png",
-      "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/c-post-1.png",
-      "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260902_214600_9948bad5-e6e0-4d4d-98cc-5becbeb19d78.png"
+      "cool-mewtwo-back-t-shirt": "/images/cool-mewtwo-back-t-shirt/hf_20260902_221831_3b5deca1-89a4-42d6-88a8-bb52d5c82c5b.png",
+      "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/c-post-1.png",
+      "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260902_214600_9948bad5-e6e0-4d4d-98cc-5becbeb19d78.png"
     }
   },
   "previous": null,

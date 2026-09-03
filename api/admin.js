@@ -588,7 +588,11 @@ export default async function handler(req, res) {
       }
       // Return a raw GitHub CDN URL so the thumbnail shows immediately
       const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
-      return res.status(200).json({ ok: true, path: `/${filePath.replace(/^public/, 'images')}`, url: rawUrl })
+      // filePath is "public/images/<id>/<file>" — strip the "public/" prefix
+      // entirely, don't replace "public" with "images" (that doubled the
+      // segment into "/images/images/..." and broke every hero the Drop tab
+      // set: bug introduced in cf15b02, never exercised until a real upload).
+      return res.status(200).json({ ok: true, path: `/${filePath.replace(/^public\//, '')}`, url: rawUrl })
     }
 
     // ── list-images ───────────────────────────────────────────────────────────
