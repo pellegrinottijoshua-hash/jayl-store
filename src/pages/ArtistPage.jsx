@@ -62,29 +62,45 @@ export default function ArtistPage() {
       <div className="px-6 sm:px-10 lg:px-16">
         <div className="max-w-2xl">
           <p className="font-display text-xl sm:text-2xl lg:text-3xl text-ink leading-[1.5] italic mb-8">
-            "Every great artist drew the world differently — they saw their world. JAYL takes the
-            greatest visual languages in history and applies them to subjects, emotions, and
-            landscapes they never reached. This is what they would have made. If they had seen
-            what we see."
+            Hi, I'm Joshua — a designer from Venice.
           </p>
 
           <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-5">
-            The great movements of art history were not conclusions — they were openings.
-            Each one established a new way of seeing: a grammar, a gaze, a set of obsessions
-            that defined how a generation understood beauty, tension, and truth.
-            Then time ran out. The artists died. The movements calcified into museums.
+            I grew up surrounded by history and craftsmanship, in a city where beauty is
+            ordinary. It taught me that art isn't something you look at. It's something you feel.
+          </p>
+
+          <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-5">
+            So I make things that carry a feeling. Every piece here starts from one — a memory,
+            a joke, a quiet moment of recognition — and tries to hold it in a shape you can wear.
+          </p>
+
+          <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-5">
+            Two people can look at the same object and feel completely different things, and
+            still both feel understood by it. That's the part worth chasing.
           </p>
 
           <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-8">
-            JAYL continues from where they stopped. The same visual languages, applied to the
-            world those artists never lived to paint — its textures, its figures, its quiet
-            and loud moments. Not as tribute. As continuation.
+            I don't design for decoration. I design to spark something.
           </p>
 
-          {/* Payoff */}
-          <p className="font-display italic font-light text-lg sm:text-xl" style={{ color: '#C4A35A' }}>
-            Art finds a way.
+          <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-8">
+            Thank you for being here, and for supporting independent work. I hope something
+            here speaks to you.
           </p>
+
+          {/* Signature + link */}
+          <p className="font-display italic font-light text-lg sm:text-xl mb-3" style={{ color: '#C4A35A' }}>
+            — Joshua
+          </p>
+          <a
+            href="https://pellegrinotti.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink-secondary text-sm underline underline-offset-4 hover:text-ink transition-colors"
+          >
+            See my other work
+          </a>
         </div>
       </div>
 
