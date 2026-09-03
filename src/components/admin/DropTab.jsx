@@ -1,61 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { products as allProducts } from '@/data/products-full'
 import { getAdminPassword } from '@/components/generate-assets/constants'
+import { blobDirectUpload } from '@/lib/blobDirectUpload'
 
-// ── Upload helpers per il picker hero ────────────────────────────────────────
-// Duplicati volutamente da AdminProductPage.jsx / AdminPage.jsx invece che
-// estratti in un modulo condiviso: lo stesso pattern (fileToBase64 +
-// compressImage + sanitizeFilename, poi POST action:'upload-image') è già
-// copiato in quei due file senza un util comune — seguirlo qui evita di
-// introdurre la prima astrazione condivisa in un task che non la richiede,
-// e non tocca api/admin.js (nessun secondo percorso di upload, stessa azione
-// riusata).
+// ── Upload helper per il picker hero ─────────────────────────────────────────
+// Vercel Blob first, poi action:'upload-image' con blobUrl — stesso percorso
+// di AdminPage.jsx (upload di un'immagine prodotto verso Blob) e di
+// AdminProductPage.jsx (upload del print file), non il vecchio dataUrl
+// base64: gli hero sono macrofotografie, spesso oltre il limite di 4.5 MB
+// del body delle function Vercel, quindi il vecchio percorso base64 falliva
+// con un 413 garantito sopra quella soglia. Nessun secondo percorso di
+// upload introdotto — stessa azione upload-image di api/admin.js, solo con
+// blobUrl al posto di dataUrl.
 const sanitizeFilename = (name) => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
-
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader()
-    r.onload  = () => resolve(r.result)
-    r.onerror = reject
-    r.readAsDataURL(file)
-  })
-}
-
-// Comprime solo se serve (limite del body JSON su Vercel) — stessa soglia e
-// stessa strategia (scala + qualità JPEG decrescenti) delle altre due copie.
-function compressImage(file, maxMB = 3.2) {
-  if (!file.type.startsWith('image/')) return Promise.resolve(file)
-  if (file.size <= maxMB * 1024 * 1024) return Promise.resolve(file)
-  return new Promise((resolve) => {
-    const img = new Image()
-    const url = URL.createObjectURL(file)
-    img.onload = () => {
-      URL.revokeObjectURL(url)
-      const { width, height } = img
-      const canvas = document.createElement('canvas')
-      const tryCompress = (quality, scale) => {
-        canvas.width  = Math.round(width  * scale)
-        canvas.height = Math.round(height * scale)
-        const ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        canvas.toBlob((blob) => {
-          if (!blob) { resolve(file); return }
-          if (blob.size <= maxMB * 1024 * 1024 || quality <= 0.25) {
-            const baseName = file.name.replace(/\.[^.]+$/, '')
-            resolve(new File([blob], baseName + '.jpg', { type: 'image/jpeg' }))
-          } else if (quality > 0.45) {
-            tryCompress(quality - 0.15, scale)
-          } else {
-            tryCompress(quality - 0.1, scale * 0.8)
-          }
-        }, 'image/jpeg', quality)
-      }
-      tryCompress(0.85, 1)
-    }
-    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
-    img.src = url
-  })
-}
 
 const post = (action, body = {}) =>
   fetch('/api/admin', {
@@ -322,34 +279,45 @@ export default function DropTab() {
   )
 }
 
-// ── Picker hero + cap per-prodotto, uno per pezzo selezionato nel drop ──────
+// ── Hero + cap per-prodotto, uno per pezzo selezionato nel drop ────────────
+// Un solo compito: mostrare/sostituire l'hero del pannello home. Tutte le
+// altre immagini del prodotto (pool, gallery) restano nell'editor prodotto —
+// qui elencarle tutte come thumbnail (9-14 per prodotto) non aiutava a
+// scegliere, affollava soltanto la scheda.
 function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap }) {
   const fileRef = useRef(null)
-  const [uploading, setUploading] = useState(false)
-  const [uploadErr, setUploadErr] = useState('')
+  const [uploading, setUploading]   = useState(false)
+  const [progress, setProgress]     = useState(null) // { phase, pct? }
+  const [uploadErr, setUploadErr]   = useState('')
 
-  // heroImage e image NON sono duplicati dentro images (verificato sul
-  // catalogo reale) — vanno aggiunti a mano come candidati, altrimenti
-  // sparirebbero dal picker pur essendo immagini legittime del prodotto.
-  const candidates = [...new Set(
-    [product.heroImage, product.image, ...(product.images || [])].filter(Boolean),
-  )]
+  const isOverride = Boolean(heroUrl)
+  // Stesso fallback di DropPanels sulla home (heroImage ?? image) — così
+  // l'anteprima mostra davvero cosa vedrebbe uno shopper senza override.
+  const previewUrl = heroUrl || product.heroImage || product.image
 
   const doUpload = async (files) => {
     const file = files?.[0]
     if (!file) return
+    const filename = sanitizeFilename(file.name)
+    const mb = (file.size / 1024 / 1024).toFixed(1)
     setUploading(true)
     setUploadErr('')
+    setProgress({ phase: `Upload su Blob (${mb} MB)`, pct: 0 })
     try {
-      const compressed = await compressImage(file)
-      const filename    = sanitizeFilename(compressed.name || file.name)
-      const dataUrl      = await fileToBase64(compressed)
+      // Blob prima, poi upload-image con blobUrl — vedi commento in testa al
+      // file. Niente più dataUrl base64: gli hero sono macrofotografie,
+      // spesso oltre il limite di 4.5 MB del body delle function Vercel.
+      const blob = await blobDirectUpload(`${product.id}/${filename}`, file, {
+        clientPayload: JSON.stringify({ password: getAdminPassword(), productId: product.id }),
+        onProgress: (pct) => setProgress({ phase: `Upload su Blob (${mb} MB)`, pct }),
+      })
+      setProgress({ phase: 'Commit su GitHub…' })
       const r = await fetch('/api/admin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: 'upload-image', password: getAdminPassword(),
-          productId: product.id, filename, dataUrl,
+          productId: product.id, filename, blobUrl: blob.url,
         }),
       }).then((res) => res.json())
       if (!r.ok) throw new Error(r.error || 'upload fallito')
@@ -363,59 +331,65 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
       setUploadErr(e.message || 'errore upload')
     } finally {
       setUploading(false)
+      setProgress(null)
       if (fileRef.current) fileRef.current.value = ''
     }
   }
 
   return (
-    <div className="border border-gray-800 rounded p-3 mb-3">
-      <div className="flex items-center justify-between gap-3 mb-2">
-        <span className="text-sm text-white truncate">{product.name}</span>
-        <label className="flex items-center gap-1.5 text-xs text-gray-400 shrink-0">
-          Cap
-          <input type="number" min="1" value={capOverride ?? ''} placeholder="default"
-            onChange={(e) => onSetCap(e.target.value)}
-            className="w-16 bg-gray-900 border border-gray-700 rounded px-2 py-1 text-white text-xs" />
-        </label>
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        {candidates.map((url) => {
-          const active = heroUrl === url
-          return (
-            <button key={url} type="button" onClick={() => onSetHero(active ? null : url)}
-              title={active ? 'Hero del pannello — clic per rimuovere' : 'Usa come hero del pannello'}
-              className={`relative w-16 h-16 border-2 overflow-hidden shrink-0 ${
-                active ? 'border-emerald-500' : 'border-gray-700 hover:border-gray-500'
-              }`}>
-              <img src={url} alt="" className="w-full h-full object-cover"
-                onError={(e) => { e.currentTarget.style.opacity = '0.3' }} />
-              {active && (
-                <span className="absolute top-0 right-0 bg-emerald-600 text-white text-[8px] px-0.5 leading-none pointer-events-none">
-                  HERO
-                </span>
-              )}
-            </button>
-          )
-        })}
-        <button type="button" onClick={() => fileRef.current?.click()} disabled={uploading}
-          className="w-16 h-16 border-2 border-dashed border-gray-700 hover:border-gray-500 text-gray-400 text-[10px] flex items-center justify-center shrink-0 disabled:opacity-40 disabled:cursor-not-allowed">
-          {uploading ? '…' : '+ carica'}
-        </button>
-        <input ref={fileRef} type="file" accept="image/*" className="hidden"
-          onChange={(e) => doUpload(e.target.files)} />
-      </div>
-
-      <div className="mt-2 flex items-center gap-3">
-        {heroUrl
+    <div className="border border-gray-800 rounded p-4 mb-3 flex gap-4">
+      <div className="relative w-28 h-28 shrink-0 overflow-hidden rounded border border-gray-700 bg-gray-900">
+        {previewUrl
           ? (
-            <button type="button" onClick={() => onSetHero(null)}
-              className="text-xs text-gray-400 underline hover:text-white">
+            <img src={previewUrl} alt="" className="w-full h-full object-cover"
+              onError={(e) => { e.currentTarget.style.opacity = '0.3' }} />
+          )
+          : (
+            <span className="absolute inset-0 flex items-center justify-center text-center text-[10px] text-gray-600 px-1">
+              nessuna immagine
+            </span>
+          )}
+        <span className={`absolute bottom-0 left-0 right-0 text-center text-[8px] py-0.5 leading-none ${
+          isOverride ? 'bg-emerald-600 text-white' : 'bg-gray-800/90 text-gray-400'
+        }`}>
+          {isOverride ? 'HERO' : 'DEFAULT'}
+        </span>
+      </div>
+
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <span className="text-sm text-white truncate">{product.name}</span>
+          <label className="flex items-center gap-1.5 text-xs text-gray-400 shrink-0">
+            Cap
+            <input type="number" min="1" value={capOverride ?? ''} placeholder="default"
+              onChange={(e) => onSetCap(e.target.value)}
+              className="w-16 bg-gray-900 border border-gray-700 rounded px-2 py-1 text-white text-xs" />
+          </label>
+        </div>
+
+        <div className="flex items-center gap-3 flex-wrap">
+          <button type="button" onClick={() => fileRef.current?.click()} disabled={uploading}
+            className="px-3 py-1.5 border border-gray-700 hover:border-gray-500 rounded text-xs text-gray-300 disabled:opacity-40 disabled:cursor-not-allowed">
+            {uploading
+              ? (progress?.pct != null ? `${progress.phase} — ${progress.pct}%` : progress?.phase || 'Upload…')
+              : 'Carica nuovo hero'}
+          </button>
+          {isOverride && (
+            <button type="button" onClick={() => onSetHero(null)} disabled={uploading}
+              className="text-xs text-gray-400 underline hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
               Ripristina default (immagine di catalogo)
             </button>
-          )
-          : <span className="text-xs text-gray-600">Nessun hero scelto — usa l'immagine di catalogo</span>}
-        {uploadErr && <span className="text-xs text-red-400">{uploadErr}</span>}
+          )}
+          <input ref={fileRef} type="file" accept="image/*" className="hidden"
+            onChange={(e) => doUpload(e.target.files)} />
+        </div>
+
+        <p className="text-xs text-gray-600 mt-1.5">
+          {isOverride
+            ? 'Hero personalizzato per il pannello home.'
+            : "Nessun hero scelto — il pannello usa l'immagine di catalogo del prodotto (heroImage o image)."}
+        </p>
+        {uploadErr && <p className="text-xs text-red-400 mt-1">{uploadErr}</p>}
       </div>
     </div>
   )
