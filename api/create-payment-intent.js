@@ -68,12 +68,15 @@ export function checkDropGate(items, cfg, now, soldByProduct) {
       const label = target
         ? new Date(target).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })
         : null
-      return {
-        status: 409,
-        error: label
-          ? `Il drop è chiuso. Il prossimo apre il ${label}.`
-          : 'Il drop è chiuso.',
-      }
+      // Stesso window-check, due esiti testuali diversi: prima di startsAt il
+      // drop non è "chiuso" (non ha ancora aperto) ed è QUESTO drop, non "il
+      // prossimo" — dopo endsAt invece è davvero chiuso e "il prossimo" è
+      // corretto. Riusa `beforeOpen` calcolato sopra, nessun ricalcolo della
+      // finestra.
+      const error = beforeOpen
+        ? (label ? `Questo drop apre il ${label}.` : 'Questo drop non è ancora aperto.')
+        : (label ? `Il drop è chiuso. Il prossimo apre il ${label}.` : 'Il drop è chiuso.')
+      return { status: 409, error }
     }
 
     if (state === DROP) {

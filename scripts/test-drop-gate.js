@@ -137,6 +137,15 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
   checkMatch('6: messaggio nomina il 5 settembre (apertura del drop CORRENTE)', r?.error, /5 settembre/)
   check('6: NON nomina il 9 settembre (quello sarebbe il prossimo drop, sbagliato qui)',
     /9 settembre/.test(r?.error || ''), false)
+  // Il drop non ha ancora aperto: non è "chiuso" e non è "il prossimo" — è
+  // QUESTO drop. Guardia contro la regressione al testo sbagliato fissato
+  // nel commento di checkDropGate ("Il drop è chiuso. Il prossimo apre il…").
+  checkMatch('6: messaggio dice che QUESTO drop apre (non "chiuso", non "il prossimo")',
+    r?.error, /^Questo drop apre il 5 settembre\.$/)
+  check('6: messaggio NON contiene "chiuso" prima dell\'apertura',
+    /chiuso/.test(r?.error || ''), false)
+  check('6: messaggio NON contiene "prossimo" prima dell\'apertura',
+    /prossimo/.test(r?.error || ''), false)
 }
 
 // ── 7. Dopo endsAt → respinto, messaggio con la data del PROSSIMO drop ─────
