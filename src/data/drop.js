@@ -23,8 +23,8 @@ export const drop = {
       "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
       "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
     ],
-    "startsAt": "2026-09-05T16:00:00Z",
-    "endsAt": "2026-09-08T16:00:00Z",
+    "startsAt": "2026-09-06T16:00:00Z",
+    "endsAt": "2026-09-09T16:00:00Z",
     "cap": 20,
     "caps": {},
     "dropPrice": 2200,
@@ -38,7 +38,7 @@ export const drop = {
   "previous": null,
   "next": {
     "number": 2,
-    "startsAt": "2026-09-09T16:00:00Z"
+    "startsAt": "2026-09-10T16:00:00Z"
   },
   "released": [],
   "archivePrice": 2500
