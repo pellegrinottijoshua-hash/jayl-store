@@ -1,6 +1,39 @@
 import { useEffect } from 'react'
 import { useThemeStore } from '@/store/themeStore'
 
+// Ritratti animati del founder. Sono dipinti in chiaroscuro: il nero non è un
+// fondale dietro la figura, è l'ombra di cui la figura è fatta — capelli,
+// panciotto e lato in ombra del viso ci si fondono dentro. Per questo restano
+// su fondo scuro invece di essere scontornati su panna: un luma key toglie
+// ~60% dei pixel e con quelli si porta via mezzo soggetto. La cornice scura
+// sulla carta panna è la scelta che tiene insieme il quadro.
+const PORTRAITS = [
+  { src: '/video/artist-1.mp4', poster: '/video/artist-1.jpg', alt: 'Illustrated portrait of Joshua waving' },
+  { src: '/video/artist-2.mp4', poster: '/video/artist-2.jpg', alt: 'Illustrated portrait of Joshua in a leather jacket' },
+  { src: '/video/artist-3.mp4', poster: '/video/artist-3.jpg', alt: 'Illustrated portrait of Joshua looking aside' },
+]
+
+function PortraitLoop({ src, poster, alt, className = '' }) {
+  return (
+    <figure
+      className={`relative overflow-hidden rounded-sm shadow-[0_18px_40px_-24px_rgba(17,17,17,0.55)] ${className}`}
+      style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(196,163,90,0.28)' }}
+    >
+      <video
+        className="block w-full h-full object-cover"
+        src={src}
+        poster={poster}
+        aria-label={alt}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+      />
+    </figure>
+  )
+}
+
 /** Falling-s: smaller, dropped, slightly rotated clockwise */
 function FallingS({ scale = 1 }) {
   return (
@@ -58,8 +91,8 @@ export default function ArtistPage() {
         <div className="w-full" style={{ height: '1px', backgroundColor: '#C4A35A', opacity: 0.35 }} />
       </div>
 
-      {/* Vision text */}
-      <div className="px-6 sm:px-10 lg:px-16">
+      {/* Vision text + portrait column */}
+      <div className="px-6 sm:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[minmax(0,42rem)_minmax(0,1fr)] gap-12 lg:gap-16 items-start">
         <div className="max-w-2xl">
           <p className="font-display text-xl sm:text-2xl lg:text-3xl text-ink leading-[1.5] italic mb-8">
             Hi, I'm Joshua — a designer from Venice.
@@ -101,6 +134,25 @@ export default function ArtistPage() {
           >
             See my other work
           </a>
+        </div>
+
+        {/* Portrait column — staggered stack on desktop, swipeable row on mobile */}
+        <div className="lg:sticky lg:top-28">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-2 lg:mx-0 lg:px-0 lg:pb-0 lg:block lg:overflow-visible">
+            {PORTRAITS.map((p, i) => (
+              <PortraitLoop
+                key={p.src}
+                {...p}
+                className={[
+                  'shrink-0 basis-[62%] snap-center aspect-[9/16]',
+                  'sm:basis-[42%]',
+                  'lg:w-[72%] lg:basis-auto lg:aspect-[9/14]',
+                  i === 1 ? 'lg:ml-auto lg:-mt-16' : '',
+                  i === 2 ? 'lg:ml-[14%] lg:-mt-12' : '',
+                ].join(' ')}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
