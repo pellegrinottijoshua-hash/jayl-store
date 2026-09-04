@@ -1,24 +1,76 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useThemeStore } from '@/store/themeStore'
 
-// Ritratti illustrati del founder, scontornati (alpha) così da poggiare
-// direttamente sulla carta panna senza cornice. Sono WebP con canale alpha:
-// ~170 KB in tutto per i tre.
-const PORTRAITS = [
-  { src: '/images/artist/artist-1.webp', alt: 'Illustrated portrait of Joshua in a leather jacket' },
-  { src: '/images/artist/artist-2.webp', alt: 'Illustrated portrait of Joshua in a green jacket' },
-  { src: '/images/artist/artist-3.webp', alt: 'Illustrated portrait of Joshua wearing a red scarf' },
-]
+// Venti ritratti illustrati del founder, scontornati (WebP con alpha) così da
+// poggiare direttamente sulla carta panna senza cornice. Ne è visibile UNO alla
+// volta: ruota da solo ogni 4s, e passa al successivo al passaggio del mouse o
+// al click. ~1,2 MB in tutto, ma non si scarica tutto: parte solo il primo e
+// viene precaricato il successivo, quindi il costo iniziale è una sola immagine.
+const PORTRAIT_COUNT = 20
+const ROTATE_MS = 4000
+const PORTRAITS = Array.from({ length: PORTRAIT_COUNT }, (_, i) => ({
+  src: `/images/artist/artist-${String(i + 1).padStart(2, '0')}.webp`,
+  alt: `Illustrated portrait of Joshua, ${i + 1} of ${PORTRAIT_COUNT}`,
+}))
 
-function Portrait({ src, alt, className = '' }) {
+function PortraitRotator({ className = '' }) {
+  const [index, setIndex] = useState(0)
+  // Solo i ritratti già mostrati restano nel DOM: il primo render monta una
+  // sola <img>, gli altri entrano quando arriva il loro turno e poi restano
+  // montati, così tornare su uno già visto è istantaneo.
+  const [seen, setSeen] = useState(() => new Set([0]))
+
+  const advance = useCallback(() => {
+    setIndex((i) => {
+      const next = (i + 1) % PORTRAIT_COUNT
+      setSeen((s) => (s.has(next) ? s : new Set(s).add(next)))
+      return next
+    })
+  }, [])
+
+  // Precarica il prossimo fuori dal DOM, così il cambio non mostra mai un buco.
+  useEffect(() => {
+    const img = new Image()
+    img.src = PORTRAITS[(index + 1) % PORTRAIT_COUNT].src
+  }, [index])
+
+  // La rotazione automatica riparte da zero a ogni interazione: senza questo,
+  // un click a 3,9s verrebbe seguito da un secondo cambio 100ms dopo.
+  useEffect(() => {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(advance, ROTATE_MS)
+    return () => clearInterval(id)
+  }, [advance, index])
+
+  // Su touch il mouseenter sintetico arriva insieme al click e farebbe
+  // avanzare di due. Ignora l'hover se l'ultimo evento è stato un tocco.
+  const touchedRef = useRef(false)
+
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      className={`block h-auto select-none pointer-events-none ${className}`}
-    />
+    <button
+      type="button"
+      aria-label="Show the next portrait"
+      onClick={advance}
+      onMouseEnter={() => { if (!touchedRef.current) advance() }}
+      onTouchStart={() => { touchedRef.current = true }}
+      onMouseLeave={() => { touchedRef.current = false }}
+      className={`relative block w-full cursor-pointer bg-transparent p-0 border-0 ${className}`}
+    >
+      {PORTRAITS.map((p, i) => (
+        seen.has(i) && (
+          <img
+            key={p.src}
+            src={p.src}
+            alt={i === index ? p.alt : ''}
+            aria-hidden={i === index ? undefined : true}
+            decoding="async"
+            draggable={false}
+            className="absolute inset-0 w-full h-full object-contain object-bottom select-none transition-opacity duration-700 ease-out"
+            style={{ opacity: i === index ? 1 : 0 }}
+          />
+        )
+      ))}
+    </button>
   )
 }
 
@@ -124,23 +176,11 @@ export default function ArtistPage() {
           </a>
         </div>
 
-        {/* Portrait column — overlapping figures standing on the paper, no frame.
-            Below lg they become a swipeable row under the text. */}
+        {/* Un solo ritratto alla volta, in rotazione. Altezza fissata sul
+            contenitore: i venti file hanno proporzioni diverse e senza questo
+            la pagina salterebbe a ogni cambio. */}
         <div className="lg:sticky lg:top-28">
-          <div className="flex items-end gap-2 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 lg:block lg:overflow-visible">
-            {PORTRAITS.map((p, i) => (
-              <Portrait
-                key={p.src}
-                {...p}
-                className={[
-                  'shrink-0 w-[46%] snap-center sm:w-[32%]',
-                  'lg:w-[58%] lg:shrink',
-                  i === 1 ? 'lg:ml-auto lg:-mt-[22%]' : '',
-                  i === 2 ? 'lg:ml-[8%] lg:-mt-[18%]' : '',
-                ].join(' ')}
-              />
-            ))}
-          </div>
+          <PortraitRotator className="h-[380px] sm:h-[460px] lg:h-[620px]" />
         </div>
       </div>
 
