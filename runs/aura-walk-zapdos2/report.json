@@ -1,0 +1,84 @@
+{
+  "source": "/Users/jpelle/Downloads/hf_20260611_155133_2fb06518-b118-4fcc-a705-2a42cb7c21a7.mp4",
+  "question": "List every error in this AI streetwear video, per second: walk direction, shot count/cuts, aura timing and quality (ring/halo vs body, neon?), gesture timing, emblem fidelity, final shot cut, anatomy/face/hand artifacts, anything broken.",
+  "video_path": "/Users/jpelle/Downloads/hf_20260611_155133_2fb06518-b118-4fcc-a705-2a42cb7c21a7.mp4",
+  "stats": {
+    "frame_count": 10,
+    "transcript_segment_count": 0,
+    "frame_fps": 1.0,
+    "frame_descriptions_count": 10
+  },
+  "frames": [
+    {
+      "frame_index": 1,
+      "timestamp_seconds": 0.0,
+      "timestamp": "00:00",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00001.jpg",
+      "description": "A man in a black t-shirt with a yellow and blue emblem, black bomber jacket, and black sunglasses walks towards the camera under an overpass at night. The ground is wet."
+    },
+    {
+      "frame_index": 2,
+      "timestamp_seconds": 1.0,
+      "timestamp": "00:01",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00002.jpg",
+      "description": "A man in a black t-shirt with a yellow and blue emblem, black bomber jacket, and black sunglasses walks towards the camera under an overpass at night. The ground is wet. His right leg is blurred."
+    },
+    {
+      "frame_index": 3,
+      "timestamp_seconds": 2.0,
+      "timestamp": "00:02",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00003.jpg",
+      "description": "A man in a black t-shirt with a yellow and blue emblem and black bomber jacket stands under an overpass at night, surrounded by a glowing orange ring of light. He is no longer wearing sunglasses."
+    },
+    {
+      "frame_index": 4,
+      "timestamp_seconds": 3.0,
+      "timestamp": "00:03",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00004.jpg",
+      "description": "A close-up of the man's face, wearing black sunglasses, looking directly at the camera. He is wearing a black t-shirt with a yellow and blue emblem and a black bomber jacket."
+    },
+    {
+      "frame_index": 5,
+      "timestamp_seconds": 4.0,
+      "timestamp": "00:04",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00005.jpg",
+      "description": "A close-up of the man's face, with black sunglasses pushed down to his nose, looking directly at the camera. He is wearing a black t-shirt with a yellow and blue emblem and a black bomber jacket. There are orange sparks in the background."
+    },
+    {
+      "frame_index": 6,
+      "timestamp_seconds": 5.0,
+      "timestamp": "00:05",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00006.jpg",
+      "description": "A close-up shot of the yellow and blue emblem on the black t-shirt, depicting a stylized yellow bird with a blue background."
+    },
+    {
+      "frame_index": 7,
+      "timestamp_seconds": 6.0,
+      "timestamp": "00:06",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00007.jpg",
+      "description": "A close-up shot of the yellow and blue emblem on the black t-shirt, depicting a stylized yellow bird with a blue background. The image is slightly blurred compared to the previous frame."
+    },
+    {
+      "frame_index": 8,
+      "timestamp_seconds": 7.0,
+      "timestamp": "00:07",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00008.jpg",
+      "description": "A man in a black t-shirt with a yellow and blue emblem, black bomber jacket, and black cargo pants stands under an overpass at night, surrounded by a glowing orange aura."
+    },
+    {
+      "frame_index": 9,
+      "timestamp_seconds": 8.0,
+      "timestamp": "00:08",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00009.jpg",
+      "description": "[vision error] unexpected API response shape"
+    },
+    {
+      "frame_index": 10,
+      "timestamp_seconds": 9.0,
+      "timestamp": "00:09",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-zapdos2/frames/frame_00010.jpg",
+      "description": "[vision error] unexpected API response shape"
+    }
+  ],
+  "transcript_segments": []
+}

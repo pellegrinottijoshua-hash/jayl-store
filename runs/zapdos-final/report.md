@@ -1,0 +1,93 @@
+# Video Analysis Package
+
+- Source: `/Users/jpelle/Downloads/202605181519 (16).mp4`
+- Question: AI 'Aura Walk' streetwear video, ~10s. Per second: walk direction, shot count/cuts, the electric effect (subtle ambient glow/sparks vs a fire ring/halo? color? size?), sunglasses gesture and continuity, emblem fidelity, the final shot (is there an awkward run?), any artifacts.
+- Video File: `/Users/jpelle/Downloads/202605181519 (16).mp4`
+- Frames: 100
+- Transcript Segments: 0
+
+## Frame descriptions (OpenRouter vision)
+
+- **00:00** — An underwater scene with light rays, five fish, and seaweed, with the word 'Renata.' in a script font in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00001.jpg`
+- **00:01** — An underwater scene with light rays, five fish, and seaweed, with the word 'Renata...' in a script font in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00002.jpg`
+- **00:02** — An underwater scene with light rays, five fish, and seaweed, with the text 'Renata... E lei chi è?' in a script font in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00003.jpg`
+- **00:03** — An animated panoramic view of a coastal town with buildings, boats, and seagulls, seen from the water, with two fish visible underwater in the foreground.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00004.jpg`
+- **00:04** — An animated panoramic view of a coastal town with buildings, boats, and seagulls, seen from the water, with the word 'Music' in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00005.jpg`
+- **00:05** — An animated panoramic view of a coastal town with buildings, boats, and seagulls, seen from the water, with the text 'Music by Edo' in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00006.jpg`
+- **00:06** — An animated panoramic view of a coastal town with buildings, boats, and seagulls, seen from the water, with the word 'Vid' in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00007.jpg`
+- **00:07** — An animated panoramic view of a coastal town with buildings, boats, and seagulls, seen from the water, with the text 'Video by Jayl' in the center.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00008.jpg`
+- **00:08** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00009.jpg`
+- **00:09** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00010.jpg`
+- **00:10** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00011.jpg`
+- **00:11** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00012.jpg`
+- **00:12** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00013.jpg`
+- **00:13** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00014.jpg`
+- **00:14** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00015.jpg`
+- **00:15** — [vision error] unexpected API response shape
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00016.jpg`
+- **00:16** — A cartoon man and woman walk side-by-side on a paved street, looking at each other and smiling. They are in a European-style town with buildings and trees in the background. Other people are visible in the distance.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00017.jpg`
+- **00:17** — The cartoon man and woman are now standing in front of an ice cream stand. The woman is pointing at the ice cream in the display case, and a man behind the counter is smiling at them. Other people are visible in the background.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00018.jpg`
+- **00:18** — The cartoon man and woman are still at the ice cream stand. The woman is pointing at the ice cream, and the man behind the counter is smiling. The scene is identical to the previous frame.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00019.jpg`
+- **00:19** — The cartoon man and woman are still at the ice cream stand. The woman is pointing at the ice cream, and the man behind the counter is smiling. The scene is identical to the previous two frames.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00020.jpg`
+- **00:20** — The cartoon man and woman are still at the ice cream stand. The woman is pointing at the ice cream, and the man behind the counter is smiling. A small child holding an adult's hand is now visible in the background on the right.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00021.jpg`
+- **00:21** — A close-up of the cartoon man holding and looking at an ice cream cone. He has a slight smile. People and buildings are blurred in the background, suggesting a busy street scene.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00022.jpg`
+- **00:22** — The cartoon man is taking a bite of his ice cream cone. His eyes are closed slightly, and he appears to be enjoying it. The background remains blurred.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00023.jpg`
+- **00:23** — The cartoon man is holding his ice cream cone and smiling contentedly. He has finished taking a bite. The background remains blurred.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00024.jpg`
+- **00:24** — A watercolor-style illustration of a young woman with brown hair, wearing a green shirt, holding an ice cream cone with three scoops. She is looking down at the ice cream with her eyes closed slightly, appearing to savor the moment. In the background, there's a cafe with an awning and people seated at tables, and blurred figures walking.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00025.jpg`
+- **00:25** — A watercolor-style illustration of a young woman with brown hair, wearing a green shirt, holding an ice cream cone. She is licking the ice cream, with her tongue extended. The background shows a cafe with an awning and blurred figures.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00026.jpg`
+- **00:26** — A watercolor-style illustration of a young woman with brown hair, wearing a green shirt, holding an ice cream cone. She is looking to her right with a slight smile, her eyes open. The background shows a cafe with an awning and blurred figures.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00027.jpg`
+- **00:27** — A watercolor-style illustration of a young woman with brown hair, wearing a green shirt, holding an ice cream cone. She is smiling broadly with her eyes closed, appearing happy. The background shows a cafe with an awning and blurred figures.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00028.jpg`
+- **00:28** — A low-angle shot of a person's legs walking on a cracked asphalt street, wearing sparkly green pants and white loafers. The street is lined with buildings and trees, and a cat is visible on the right side of the street in the distance. Sunlight is shining from the upper right.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00029.jpg`
+- **00:29** — A low-angle shot of a person's legs walking on a cracked asphalt street, wearing sparkly green pants and white loafers. The person's left foot is slightly forward. The street is lined with buildings and trees, and a cat is visible on the right side of the street in the distance. Sunlight is shining from the upper right.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00030.jpg`
+- **00:30** — A low-angle shot of a person's legs walking on a cracked asphalt street, wearing sparkly green pants and white loafers. The person's right foot is slightly forward, and fallen leaves are on the ground. The street is lined with buildings and trees, and a cat is visible on the right side of the street in the distance. Sunlight is shining from the upper right.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00031.jpg`
+- **00:31** — A low-angle shot of a person's legs walking on a cracked asphalt street, wearing sparkly green pants and white loafers. The person's left foot is slightly forward. The street is lined with buildings and trees, and a cat is visible on the right side of the street in the distance. Sunlight is shining from the upper right.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00032.jpg`
+- **00:32** — A man and a woman are walking on a sidewalk next to a street with buildings and trees in the background. The man is on the left, looking forward, and the woman is on the right, looking towards the man. A crosswalk is visible in front of them.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00033.jpg`
+- **00:33** — The man and woman are still on the sidewalk. The woman is now pointing her right arm forward and slightly to the right, looking in that direction, while the man looks at her.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00034.jpg`
+- **00:34** — The man and woman are still on the sidewalk. The woman has her right arm extended forward and slightly down, as if gesturing to cross the street, and is looking forward. The man is looking at her.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00035.jpg`
+- **00:35** — The man and woman are now crossing the street on the crosswalk, holding hands. They are both looking forward and appear to be in motion.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00036.jpg`
+- **00:36** — The man and woman are sitting at an outdoor cafe table. The man is holding up a glass with an orange drink and looking at the woman, who is smiling and looking at him. There's another drink and a bowl of snacks on the table. A bar is visible through the window behind them.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00037.jpg`
+- **00:37** — The man and woman are still at the cafe table. The man is gesturing with his left hand while holding the orange drink in his right, looking at the woman and talking. The woman is listening intently, with her hand near her chin.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00038.jpg`
+- **00:38** — The man and woman are still at the cafe table. The man is talking with a slightly surprised or concerned expression, gesturing with his left hand. The woman is looking at him with a similar expression, her hand still near her chin.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00039.jpg`
+- **00:39** — The man and woman are still at the cafe table. The man has lowered his drink and is looking at the woman with a serious expression. The woman is looking at him with a concerned expression, her hand still near her chin.
+  - file: `/Users/jpelle/jayl-store/runs/zapdos-final/frames/frame_00040.jpg`
+- ... additional frames omitted in markdown view ...
+
+## Transcript Excerpts

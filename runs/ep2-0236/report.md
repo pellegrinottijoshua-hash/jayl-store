@@ -1,0 +1,30 @@
+# Video Analysis Package
+
+- Source: `/Users/jpelle/Desktop/202607150236.mp4`
+- Question: 3D comedy short with black duck DAKS (gold quill on head, deadpan half-lidded eyes) and cream-white pigeon in a cream void. Describe precisely shot by shot: actions, objects, emotions, camera, how it ends (final frames in detail), and what story beat feels missing.
+- Video File: `/Users/jpelle/Desktop/202607150236.mp4`
+- Frames: 9
+- Transcript Segments: 0
+
+## Frame descriptions (OpenRouter vision)
+
+- **00:00** — A black duck with a gold quill on its head and half-lidded eyes stands in a cream void, raising its right wing as if to salute or scratch its head. The camera is static, eye-level, and centered on the duck.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00001.jpg`
+- **00:01** — The black duck stands in the cream void, holding the gold quill in its right wing, which is now at chest level. A golden, glowing trail arcs from the quill, suggesting magic or a wish. The camera is static, eye-level, and centered on the duck.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00002.jpg`
+- **00:02** — The black duck stands in the cream void, holding an ice cream cone with a scoop of vanilla ice cream in its right wing. Its left wing is raised to its head, touching the gold quill. The camera is static, eye-level, and centered on the duck.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00003.jpg`
+- **00:03** — The black duck stands in the cream void, holding the ice cream cone in its right wing. Both wings are now down at its sides. The camera is static, eye-level, and centered on the duck.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00004.jpg`
+- **00:04** — A close-up, eye-level shot of a cream-white pigeon's face, with angry, narrowed eyes and a black beak. The background is a blurry cream void. The camera is static.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00005.jpg`
+- **00:05** — The black duck, holding the ice cream cone, runs to the right with a determined expression. The cream-white pigeon is flying in pursuit from the left, also with an angry expression. Speed lines emanate from the background, indicating rapid motion. The camera is tracking the duck from a slightly low angle.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00006.jpg`
+- **00:06** — The black duck lies face down on the cream ground, appearing defeated or unconscious, with the gold quill still on its head. An overturned ice cream cone with melted ice cream is beside it. The cream-white pigeon stands upright behind the duck, eyes closed, looking serene. The camera is static, eye-level, and centered on the scene.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00007.jpg`
+- **00:07** — The black duck lies face down on the cream ground, appearing defeated or unconscious, with the gold quill still on its head. An overturned ice cream cone with melted ice cream is beside it. The cream-white pigeon stands upright behind the duck, eyes closed, looking serene. The camera is static, eye-level, and centered on the scene. This is the final frame.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00008.jpg`
+- **00:08** — A cream-white pigeon with closed eyes stands behind a black duck, DAKS, who is lying face down on the cream-colored ground with a golden quill on its head and half-lidded eyes. An overturned ice cream cone with spilled white ice cream is on the ground to the left of DAKS.
+  - file: `/Users/jpelle/jayl-store/runs/ep2-0236/frames/frame_00009.jpg`
+
+## Transcript Excerpts

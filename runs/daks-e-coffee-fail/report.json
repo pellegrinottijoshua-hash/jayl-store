@@ -1,0 +1,105 @@
+{
+  "source": "/Users/jpelle/Downloads/hf_20260714_170034_7fc397fc-80c5-41df-a63f-bf8b672dc3b8.mp4",
+  "question": "This is a 13s AI-generated 3D comedy short with a black duck (DAKS) and a white pigeon and a giant coffee mug. Describe shot by shot what actually happens, and identify visual errors: character anatomy drift, wrong actions, missing story beats (duck drawing with a gold quill, pigeon evil glare closeup, pigeon dive into the mug, splash, wet duck deadpan), palette violations, garbled text.",
+  "video_path": "/Users/jpelle/Downloads/hf_20260714_170034_7fc397fc-80c5-41df-a63f-bf8b672dc3b8.mp4",
+  "stats": {
+    "frame_count": 13,
+    "transcript_segment_count": 0,
+    "frame_fps": 1.0,
+    "frame_descriptions_count": 13
+  },
+  "frames": [
+    {
+      "frame_index": 1,
+      "timestamp_seconds": 0.0,
+      "timestamp": "00:00",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00001.jpg",
+      "description": "A sad-looking black duck with a gold feather on its head stands facing forward against a light background."
+    },
+    {
+      "frame_index": 2,
+      "timestamp_seconds": 1.0,
+      "timestamp": "00:01",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00002.jpg",
+      "description": "The black duck, still looking sad, holds the gold feather in its right hand/wing, with a faint glowing trail behind the feather."
+    },
+    {
+      "frame_index": 3,
+      "timestamp_seconds": 2.0,
+      "timestamp": "00:02",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00003.jpg",
+      "description": "The black duck, still sad, holds the gold feather against its chest. A glowing outline of a large coffee mug appears behind it."
+    },
+    {
+      "frame_index": 4,
+      "timestamp_seconds": 3.0,
+      "timestamp": "00:03",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00004.jpg",
+      "description": "The black duck is now smiling broadly, holding the gold feather in its right hand/wing. A large, steaming black coffee mug is behind it. Text overlay reads: \"HE JUST JUST WANTED A COFFEE\"."
+    },
+    {
+      "frame_index": 5,
+      "timestamp_seconds": 4.0,
+      "timestamp": "00:04",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00005.jpg",
+      "description": "The black duck is still smiling broadly, holding the gold feather, and has its wings spread slightly. The steaming coffee mug is still behind it. Text overlay reads: \"HE JUST JUST WANTED A COFFEE\"."
+    },
+    {
+      "frame_index": 6,
+      "timestamp_seconds": 5.0,
+      "timestamp": "00:05",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00006.jpg",
+      "description": "A close-up of a white pigeon's face, looking angry with narrowed eyes. Small gold specks are visible on its head."
+    },
+    {
+      "frame_index": 7,
+      "timestamp_seconds": 6.0,
+      "timestamp": "00:06",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00007.jpg",
+      "description": "A white pigeon is shown from above, diving downwards with its wings spread, towards a small black coffee mug at the bottom of the frame. Radial lines emanate from the pigeon, suggesting motion."
+    },
+    {
+      "frame_index": 8,
+      "timestamp_seconds": 7.0,
+      "timestamp": "00:07",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00008.jpg",
+      "description": "A close-up of a black coffee mug with coffee splashing dramatically upwards, creating droplets and a crown-like shape."
+    },
+    {
+      "frame_index": 9,
+      "timestamp_seconds": 8.0,
+      "timestamp": "00:08",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00009.jpg",
+      "description": "A black duck character, covered in chocolate, sits in the foreground with a gold feather on its head. In the background, a white pigeon character is floating in a large black coffee mug filled with chocolate, which is splashing out."
+    },
+    {
+      "frame_index": 10,
+      "timestamp_seconds": 9.0,
+      "timestamp": "00:09",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00010.jpg",
+      "description": "A black duck character, covered in chocolate, sits in the foreground with a gold feather on its head. In the background, a white pigeon character is floating in a large black coffee mug filled with chocolate. The chocolate splashes have receded slightly."
+    },
+    {
+      "frame_index": 11,
+      "timestamp_seconds": 10.0,
+      "timestamp": "00:10",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00011.jpg",
+      "description": "A black duck character, covered in chocolate, sits in the foreground with a gold feather on its head. In the background, a white pigeon character is floating in a large black coffee mug filled with chocolate. The chocolate splashes have receded further."
+    },
+    {
+      "frame_index": 12,
+      "timestamp_seconds": 11.0,
+      "timestamp": "00:11",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00012.jpg",
+      "description": "A black coffee cup with steam rising from it sits on a matching saucer in the center of a light beige background. The text 'JAYL' is below the cup, with 'Art finds a way.' underneath it."
+    },
+    {
+      "frame_index": 13,
+      "timestamp_seconds": 12.0,
+      "timestamp": "00:12",
+      "path": "/Users/jpelle/jayl-store/runs/daks-e-coffee-fail/frames/frame_00013.jpg",
+      "description": "A black coffee cup with steam rising from it sits on a matching saucer in the center of a light beige background. The text 'JAYL' is below the cup, with 'Art finds a way.' underneath it."
+    }
+  ],
+  "transcript_segments": []
+}

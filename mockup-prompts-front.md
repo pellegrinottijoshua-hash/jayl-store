@@ -1,9 +1,12 @@
 # JAYL — Mockup prompts **FRONT** · 20 asset
 Collezione: **Pokémon Built Different** — stampa sul petto · motore: Nano Banana Pro
 
-**Due reference, sempre in quest'ordine:**
+**Tre reference, sempre in quest'ordine:**
 - **REF-A** = l'artwork, l'emblema circolare del Pokémon con gli occhiali. Caricala **per prima**: il primo slot pesa di più.
 - **REF-B** = la maglietta base, con l'etichetta nera "JAYL" nel colletto.
+- **REF-C** = una foto reale di prodotto (screenshot Etsy) che mostra la stampa **già nella scala e nella posizione corrette**: badge piccolo, in basso a sinistra sul petto — non un emblema gigante centrato sullo sterno. Caricala quando il fronte della maglietta è visibile: senza REF-C, il generatore tende a ingrandire il logo e a centrarlo, che è sbagliato per ogni foto dove la maglietta è indossata o stesa e non è un macro ravvicinato sulla stampa stessa.
+
+> **Regola di scala:** ovunque trovi la frase *"placement and scale locked to REF-C"*, il badge deve restare piccolo e spostato in basso a sinistra come nella foto reale — non ingrandirlo, non centrarlo, non farlo diventare il soggetto dominante dell'inquadratura via ridimensionamento del capo.
 
 Ogni prompt qui sotto è **completo e pronto da incollare**. Nessun blocco da comporre.
 
@@ -46,15 +49,20 @@ Ogni prompt qui sotto è **completo e pronto da incollare**. Nessun blocco da co
 Top-down editorial flat-lay of the cotton t-shirt from REF-B, FRONT PANEL FACE-UP,
 loosely folded with only two soft, deliberate folds — the shirt rotated exactly 15
 degrees from the frame axis, never more, so it reads relaxed but composed.
-Camera tight: the chest emblem (identical to REF-A) fills roughly 45–50% of the frame
-and is the undisputed protagonist, razor-sharp, centred, upright, pixel-perfect in
-design and colour, never distorted by the folds. The collar is visible in frame and
-the small black "JAYL" neckband label stays legible.
-Props kept to three at most, in REF-A's palette: dried flowers and one pair of the
-same sunglasses depicted in REF-A, arranged around the shirt and never on the print.
+The chest print's size and position are locked to REF-C: a small circular badge sitting
+low on the left side of the chest, not centred on the sternum and not enlarged — camera
+distance is tight enough that this small badge still reads clearly, but the print itself
+is never scaled up beyond what REF-C shows. Razor-sharp, upright, pixel-perfect in design
+and colour, never distorted by the folds. The collar is visible in frame and the small
+black "JAYL" neckband label stays legible.
+Props: EXACTLY ONE single pair of sunglasses, the same model depicted in REF-A — only one
+object, not a duplicate, not a second pair, not a reflection creating a second pair — plus
+one small cluster of dried flowers in REF-A's palette, both arranged beside the shirt and
+never on the print.
 Light wooden table, natural solar daylight from the side, shot on ARRI, shallow depth
 of field, premium gift-worthy mood.
-Negatives: no back panel, no model, no props covering the print, no text overlay, no
+Negatives: no back panel, no model, no props covering the print, no second pair of
+sunglasses, no duplicated props, no oversized or centred logo, no text overlay, no
 watermark, no UI, no brand logos, no famous brands, no neon.
 Aspect ratio 1:1 square.
 ```
@@ -81,8 +89,10 @@ Aspect ratio 1:1 square.
 ```
 Top-down editorial flat-lay, bright and airy. The t-shirt from REF-B lies FRONT PANEL
 FACE-UP, softly folded, rotated ~15 degrees, occupying the upper-left two thirds of
-the frame; the chest emblem (identical to REF-A) is the focal point, crisp, centred
-and fully unobstructed — nothing overlaps it. The black "JAYL" neckband label stays visible.
+the frame; the chest print's size and position are locked to REF-C — a small circular
+badge sitting low on the left side of the chest, not centred on the sternum and not
+enlarged. It is the focal point of attention despite its small real-world size: crisp,
+fully unobstructed, nothing overlaps it. The black "JAYL" neckband label stays visible.
 Arranged around it, never on it, exactly four coordinated items in REF-A's palette:
 folded trousers, one pair of shoes, the same sunglasses as in REF-A, and one small
 accessory. Negative space is deliberate — the composition breathes.
@@ -100,9 +110,11 @@ Aspect ratio 1:1 square.
 ```
 A clean 2x2 grid showing the same design on four garment colour options of the t-shirt
 from REF-B, each shot identically — folded flat or on a ghost mannequin, FRONT view,
-the emblem (identical to REF-A) centred on the chest of each.
+the emblem (identical to REF-A) placed on the chest of each with its size and position
+locked to REF-C — a small circular badge low on the left side of the chest, never
+centred, never enlarged.
 Colours true to life; the print keeps identical hue, scale and position on every
-variant. The black "JAYL" neckband label is present and legible on all four.
+variant, matching REF-C on all four. The black "JAYL" neckband label is present and legible on all four.
 Evenly lit on a warm neutral cream background, consistent framing and spacing between
 panels, high clarity, premium catalog feel.
 Negatives: no model, no back view, no panel borders, no captions, no text overlay, no
@@ -122,8 +134,8 @@ face, hairstyle, body proportions, skin tone, age and identity. One photoshoot, 
 person, nine frames. No second person anywhere in the grid.
 POSES: a wide variety of natural, confident editorial poses — full body, three quarter,
 medium, close-up, profile, walking, relaxed, dynamic. At least two panels are BACK views
-that clearly show the back panel is completely blank, with no print. The chest emblem
-(identical to REF-A) reads clearly in every front-facing panel.
+that clearly show the back panel is completely blank, with no print. The chest print, sized and positioned as in REF-C — a small badge low on the left side
+of the chest, never centred, never enlarged — reads clearly in every front-facing panel.
 Lighting: clean balanced soft studio light in every panel, minimal soft shadows, high
 fabric texture, elevated Vogue editorial quality, hyper-realistic skin micro-texture,
 35mm film grain.
@@ -144,8 +156,9 @@ Hasselblad aesthetic, single dramatic key light from the upper left, deep shadow
 the right side of the face, high contrast, warm-shadow cool-highlight grade, deep
 near-black background. Hyper-realistic skin micro-texture — visible pores, T-zone
 sheen, matte cheeks, never airbrushed. 35mm film grain, shallow depth of field.
-He wears the t-shirt from REF-B; the chest emblem (identical to REF-A) is lit by the
-key light, centred, sharp and fully legible, the hero of the frame.
+He wears the t-shirt from REF-B; the chest print's size and position are locked to
+REF-C — a small circular badge low on the left side of the chest, not centred on the
+sternum, not enlarged — lit by the key light, sharp and fully legible.
 POKEMON EMBODIMENT: read the Pokémon in REF-A and translate it into a believable real
 human — build matched literally to its physique (heavy and soft like Snorlax, broad and
 muscular like Machamp, tall and lean like Dragonite, wiry and restless like Jolteon,
@@ -173,8 +186,9 @@ Hasselblad aesthetic, single dramatic key light from the upper left, deep shadow
 the right side of the face, high contrast, warm-shadow cool-highlight grade, deep
 near-black background. Hyper-realistic skin micro-texture — visible pores, T-zone
 sheen, matte cheeks, never airbrushed. 35mm film grain, shallow depth of field.
-She wears the t-shirt from REF-B; the chest emblem (identical to REF-A) is lit by the
-key light, centred, sharp and fully legible, the hero of the frame.
+She wears the t-shirt from REF-B; the chest print's size and position are locked to
+REF-C — a small circular badge low on the left side of the chest, not centred on the
+sternum, not enlarged — lit by the key light, sharp and fully legible.
 POKEMON EMBODIMENT: read the Pokémon in REF-A and translate it into a believable real
 human — build matched literally to its physique (heavy and soft like Snorlax, broad and
 muscular like Machamp, tall and lean like Dragonite, wiry and restless like Jolteon,
@@ -197,9 +211,9 @@ Aspect ratio 4:5 vertical.
 
 ```
 Intimate medium close-up, chest-up framing, camera roughly 0.5 m from the subject at
-eye level. The chest emblem (identical to REF-A) on the t-shirt from REF-B is the focal
-point, filling a significant portion of the frame with absolute sharpness, centred and
-pixel-perfect.
+eye level. The chest print, sized and positioned exactly as in REF-C — a small circular
+badge low on the left side of the chest, never centred, never enlarged — is rendered
+with absolute sharpness at that real small scale despite the tight framing.
 Editorial fashion portrait, Fujifilm Superia grain, 35mm f/2, harsh midday side light
 with strong shadow definition, extreme shallow depth of field, gritty urban background
 softly blurred, bounce light carrying an environmental colour cast, warm highlights and
@@ -250,8 +264,9 @@ oversized structured blazer with exaggerated shoulders worn open, wide tailored 
 and long glossy latex opera gloves in a saturated colour pulled directly from REF-A.
 Sculptural oversized earrings echoing the emblem's shapes. Hair pulled back severely and
 flat, clean centre parting.
-The chest emblem (identical to REF-A) sits fully exposed inside the open blazer, centred
-and razor-sharp — the blazer frames the print and never covers it.
+The chest print sits fully exposed inside the open blazer, its size and position locked
+to REF-C — a small circular badge low on the left side of the chest, never centred, never
+enlarged — razor-sharp; the blazer frames it and never covers it.
 POKEMON EMBODIMENT: build matched to the Pokémon's physique, hair colour pulled from its
 dominant tone in a realistic salon cut, posture channelling its personality, and the
 exact sunglasses from REF-A rendered at human scale.
@@ -277,8 +292,8 @@ One model seated on a low stone step, turned three quarters to camera, chin slig
 raised, wearing realistic human sunglasses identical to those in REF-A. Outfit: the
 t-shirt from REF-B under a cropped structured jacket in leather, tweed or wool, with
 heavy chain jewellery, all in colours pulled directly from REF-A. The jacket hangs open;
-the chest emblem (identical to REF-A) is fully exposed, centred, razor-sharp, the hero
-of the frame.
+the chest print is fully exposed, razor-sharp, its size and position locked to REF-C —
+a small circular badge low on the left side of the chest, never centred, never enlarged.
 POKEMON EMBODIMENT: the model's build, hair colour and attitude all translated from the
 Pokémon in REF-A into a believable real human — natural salon cut, no costume styling,
 Southern European or Western features, natural complexion only.
@@ -331,9 +346,9 @@ the light. No studio, no seamless backdrop.
 One model standing, weight on one hip, head tilted, wearing realistic human sunglasses
 identical to those in REF-A. Outfit: the t-shirt from REF-B under a long sharply
 tailored coat in a deliberately CONTRASTING colour — the chromatic opposite of REF-A's
-dominant tone — with matching wide trousers. The coat hangs fully open; the chest emblem
-(identical to REF-A) is exposed, centred and razor-sharp, its colours popping hard
-against the opposing outfit.
+dominant tone — with matching wide trousers. The coat hangs fully open; the chest print is exposed and razor-sharp, its size and position locked to REF-C — a
+small circular badge low on the left side of the chest, never centred, never enlarged —
+its colours popping hard against the opposing outfit.
 POKEMON EMBODIMENT: the model's build, hair colour and attitude translated from the
 Pokémon in REF-A into a believable real human — natural salon cut, no costume styling,
 Southern European or Western features, natural complexion only.
@@ -371,7 +386,9 @@ Aspect ratio 4:5 vertical.
 ```
 Full-length shot of an early-20s model standing tall, facing camera, in a dark concrete
 underpass at night, wearing realistic human sunglasses identical to those in REF-A.
-The chest emblem (identical to REF-A) on the t-shirt from REF-B is crisp and centred.
+The chest print on the t-shirt from REF-B is crisp, its size and position locked to
+REF-C — a small circular badge low on the left side of the chest, never centred,
+never enlarged.
 All other garments are a chromatic extension of REF-A, kept clearly distinct in value
 from the tee so the print never merges into the outfit.
 Deep shadows, single warm side light, warm orange rim from behind, chiaroscuro, true
@@ -389,8 +406,9 @@ Aspect ratio 9:16 vertical.
 ```
 Studio shot, waist-up, model facing camera in a solid #111 black void, lit by a single
 warm gold key from the side, wearing the sunglasses from REF-A.
-The chest emblem (identical to REF-A) on the t-shirt from REF-B catches the light and is
-the only bright element in the frame, centred and sharp.
+The chest print on the t-shirt from REF-B catches the light and is the only bright
+element in the frame, sharp, its size and position locked to REF-C — a small circular
+badge low on the left side of the chest, never centred, never enlarged.
 Chiaroscuro, true blacks, film grain, medium format, shallow depth of field, real skin
 micro-texture.
 Negatives: no text overlay, no watermark, no UI, no brand logos, no neon, no Instagram
@@ -405,9 +423,10 @@ Aspect ratio 9:16 vertical.
 ```
 Cinematic full shot from a worm's-eye low angle, camera at ground level in front of the
 model looking up; the model stands facing camera, chin raised, wearing realistic human
-sunglasses identical to those in REF-A. The chest emblem (identical to REF-A) on the
-t-shirt from REF-B reads clearly and dominates the upper frame. Other garments a
-chromatic extension of REF-A, kept distinct from the tee.
+sunglasses identical to those in REF-A. The chest print on the t-shirt from REF-B reads
+clearly, its size and position locked to REF-C — a small circular badge low on the left
+side of the chest, never centred, never enlarged — legible even at a distance thanks to
+the low angle. Other garments a chromatic extension of REF-A, kept distinct from the tee.
 Hard direct natural sunlight, sharp shadows, vibrant highlights, high contrast, warm
 afternoon temperature.
 BACKGROUND — invent it freely but obey REF-A's palette: an unpredictable location (a
@@ -426,8 +445,9 @@ Aspect ratio 9:16 vertical.
 
 ```
 Waist-up portrait, model facing camera, wearing realistic human sunglasses identical to
-those in REF-A. The chest emblem (identical to REF-A) on the t-shirt from REF-B is
-centred, crisp, the hero of the shot.
+those in REF-A. The chest print on the t-shirt from REF-B is crisp, its size and position locked to
+REF-C — a small circular badge low on the left side of the chest, never centred,
+never enlarged.
 Outfit freely varied — jacket, hoodie, vest, or the tee alone — always in REF-A's
 palette, but the tee and its print stay clearly distinct and fully unobstructed;
 outerwear must not blend into, cover or merge with the emblem.
@@ -541,8 +561,9 @@ Aspect ratio 1:1 square.
 Direct on-camera flash photograph, backstage candid fashion snapshot aesthetic.
 One model standing in a plain corridor or against a scuffed painted wall, caught
 mid-movement, slightly off-centre and imperfectly framed. The model wears the t-shirt
-from REF-B; the chest emblem (identical to REF-A) is lit flat and hard by the flash,
-centred and fully legible.
+from REF-B; the chest print is lit flat and hard by the flash, fully legible, its size and position
+locked to REF-C — a small circular badge low on the left side of the chest, never
+centred, never enlarged.
 POKEMON EMBODIMENT: build, hair colour and attitude translated from the Pokémon in REF-A
 into a believable real human, natural salon cut, natural complexion only, wearing the
 exact sunglasses from REF-A at human scale.

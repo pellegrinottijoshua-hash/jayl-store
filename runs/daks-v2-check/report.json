@@ -1,0 +1,98 @@
+{
+  "source": "/Users/jpelle/Downloads/hf_20260715_000259_8fad09fa-a9f4-40bc-8c9f-2b0de77dea43.mp4",
+  "question": "AI-generated 3D comedy short: black duck DAKS (chubby black duck, cream flat beak, single gold quill feather on head, half-lidded deadpan eyes, right foot cream left foot black) vs a chubby cream-white pigeon, in an infinite cream void. Expected story: western standoff over a single cookie OR ice-cream chase. Describe each frame precisely: characters present, their anatomy (eyes open/half-lidded, beak, feet colors, quill), what action happens, objects (cookie/ice cream/ramp/catapult/wall/table), any text, palette violations, duplicated characters, scale problems, physics errors.",
+  "video_path": "/Users/jpelle/Downloads/hf_20260715_000259_8fad09fa-a9f4-40bc-8c9f-2b0de77dea43.mp4",
+  "stats": {
+    "frame_count": 12,
+    "transcript_segment_count": 0,
+    "frame_fps": 1.0,
+    "frame_descriptions_count": 12
+  },
+  "frames": [
+    {
+      "frame_index": 1,
+      "timestamp_seconds": 0.0,
+      "timestamp": "00:00",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00001.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, half-lidded deadpan eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, stands in an infinite cream void. DAKS holds an ice cream cone with a scoop of vanilla ice cream. A faint golden light trail curves behind DAKS's head."
+    },
+    {
+      "frame_index": 2,
+      "timestamp_seconds": 1.0,
+      "timestamp": "00:01",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00002.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, half-lidded deadpan eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, stands in an infinite cream void. DAKS holds an ice cream cone with a scoop of vanilla ice cream. The golden light trail from the previous frame is gone."
+    },
+    {
+      "frame_index": 3,
+      "timestamp_seconds": 2.0,
+      "timestamp": "00:02",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00003.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, a single gold quill feather on its head, a cream right foot, and a black left foot, stands in an infinite cream void. DAKS holds an ice cream cone with a scoop of vanilla ice cream. DAKS's left eye is wide open and looking to the left, while its right eye is half-lidded and looking forward."
+    },
+    {
+      "frame_index": 4,
+      "timestamp_seconds": 3.0,
+      "timestamp": "00:03",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00004.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, half-lidded deadpan eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, is running to the right in an infinite cream void. DAKS holds an ice cream cone with a scoop of vanilla ice cream. A chubby cream-white pigeon with wide-open eyes and spread wings is flying behind DAKS on the left, also moving right. Speed lines are visible in the background."
+    },
+    {
+      "frame_index": 5,
+      "timestamp_seconds": 4.0,
+      "timestamp": "00:04",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00005.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, half-lidded deadpan eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, is running to the right in an infinite cream void. DAKS holds an ice cream cone with a scoop of vanilla ice cream. A chubby cream-white pigeon with wide-open eyes and spread wings is flying behind DAKS on the left, also moving right. Speed lines are visible in the background. The pigeon appears slightly closer to DAKS than in the previous frame."
+    },
+    {
+      "frame_index": 6,
+      "timestamp_seconds": 5.0,
+      "timestamp": "00:05",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00006.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, half-lidded deadpan eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, is standing in an infinite cream void. DAKS holds an ice cream cone with a scoop of vanilla ice cream. A large golden quill pen is stuck upright in the ground in front of DAKS. In the background, a chubby cream-white pigeon with wide-open eyes is perched on a broken black brick wall or structure, looking towards DAKS. Debris from the wall is scattered on the ground."
+    },
+    {
+      "frame_index": 7,
+      "timestamp_seconds": 6.0,
+      "timestamp": "00:06",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00007.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, wide-open eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, is balancing on the golden quill pen, which is now lying flat on the ground. DAKS's left wing is raised, and its right wing is slightly extended. The ice cream cone is airborne above DAKS's head, with the scoop of vanilla ice cream still on top. A chubby cream-white pigeon with wide-open eyes and spread wings is flying in the background, looking towards DAKS. The broken black brick wall is still visible in the background."
+    },
+    {
+      "frame_index": 8,
+      "timestamp_seconds": 7.0,
+      "timestamp": "00:07",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00008.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, wide-open eyes, a single gold quill feather on its head, a cream right foot, and a black left foot, is balancing on the golden quill pen, which is lying flat on the ground. DAKS's left wing is raised, and its right wing is slightly extended. The ice cream cone is airborne above DAKS's head, with the scoop of vanilla ice cream still on top, and a drip of ice cream is falling from the cone. A chubby cream-white pigeon with wide-open eyes and spread wings is flying in the background, looking towards DAKS. The broken black brick wall is still visible in the background."
+    },
+    {
+      "frame_index": 9,
+      "timestamp_seconds": 8.0,
+      "timestamp": "00:08",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00009.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak, half-lidded deadpan eyes, and a single gold quill feather on its head, is running towards the right with its right foot cream and left foot black. A chubby cream-white pigeon with an open beak and wide-open eyes is flying above DAKS, holding an ice cream cone with a scoop of vanilla ice cream. A golden pen is on the ground to the left of DAKS. There are some black debris on the ground to the far left. The background is an infinite cream void."
+    },
+    {
+      "frame_index": 10,
+      "timestamp_seconds": 9.0,
+      "timestamp": "00:09",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00010.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak and a single gold quill feather on its head, is lying face down on the ground with its eyes closed. Its right foot is cream and its left foot is black. A chubby cream-white pigeon with closed eyes is standing behind DAKS. An overturned ice cream cone with melted ice cream is on the ground to the left of DAKS. The background is an infinite cream void."
+    },
+    {
+      "frame_index": 11,
+      "timestamp_seconds": 10.0,
+      "timestamp": "00:10",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00011.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak and a single gold quill feather on its head, is lying face down on the ground with its eyes closed. Its right foot is cream and its left foot is black. A chubby cream-white pigeon with closed eyes is standing behind DAKS. An overturned ice cream cone with melted ice cream is on the ground to the left of DAKS. The background is an infinite cream void."
+    },
+    {
+      "frame_index": 12,
+      "timestamp_seconds": 11.0,
+      "timestamp": "00:11",
+      "path": "/Users/jpelle/jayl-store/runs/daks-v2-check/frames/frame_00012.jpg",
+      "description": "DAKS, a chubby black duck with a cream flat beak and a single gold quill feather on its head, is lying face down on the ground with half-lidded deadpan eyes. Its right foot is cream and its left foot is black. A chubby cream-white pigeon with closed eyes is standing behind DAKS. An overturned ice cream cone with melted ice cream is on the ground to the left of DAKS. The background is an infinite cream void."
+    }
+  ],
+  "transcript_segments": []
+}

@@ -1,0 +1,77 @@
+{
+  "source": "/Users/jpelle/Downloads/hf_20260615_144647_6a27cff6-99d6-4174-8e8a-f06e6c177a6b.mp4",
+  "question": "AI 'Aura Walk' ~9s. Per second: does the model walk TOWARD or AWAY (backward) from camera? shot count and cuts? when/what is the HOOK gesture (sunglasses) and does it land at ~3s? is the final shot static or moving and does it look good? aura/glow quality and timing. any other errors (backward motion, frozen frames, weird pacing, artifacts).",
+  "video_path": "/Users/jpelle/Downloads/hf_20260615_144647_6a27cff6-99d6-4174-8e8a-f06e6c177a6b.mp4",
+  "stats": {
+    "frame_count": 9,
+    "transcript_segment_count": 0,
+    "frame_fps": 1.0,
+    "frame_descriptions_count": 9
+  },
+  "frames": [
+    {
+      "frame_index": 1,
+      "timestamp_seconds": 0.0,
+      "timestamp": "00:00",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00001.jpg",
+      "description": "A young man with curly hair and sunglasses, wearing a black t-shirt with a Psyduck graphic and a jacket draped over his shoulders, walks towards the camera on a wet, foggy night with streetlights in the background."
+    },
+    {
+      "frame_index": 2,
+      "timestamp_seconds": 1.0,
+      "timestamp": "00:01",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00002.jpg",
+      "description": "The young man continues to walk towards the camera in the same foggy, streetlight-lit setting, his expression unchanged."
+    },
+    {
+      "frame_index": 3,
+      "timestamp_seconds": 2.0,
+      "timestamp": "00:02",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00003.jpg",
+      "description": "The young man is closer to the camera, pulling down his sunglasses with his right hand, revealing his eyes. The background is still dark and foggy with distant lights."
+    },
+    {
+      "frame_index": 4,
+      "timestamp_seconds": 3.0,
+      "timestamp": "00:03",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00004.jpg",
+      "description": "The young man is even closer to the camera, still adjusting his sunglasses. The background has changed to a warm, glowing yellow light, suggesting a change in lighting or location."
+    },
+    {
+      "frame_index": 5,
+      "timestamp_seconds": 4.0,
+      "timestamp": "00:04",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00005.jpg",
+      "description": "A close-up shot of the Psyduck graphic on the young man's black t-shirt, showing the character wearing sunglasses and holding its head."
+    },
+    {
+      "frame_index": 6,
+      "timestamp_seconds": 5.0,
+      "timestamp": "00:05",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00006.jpg",
+      "description": "A slightly closer shot of the Psyduck graphic on the t-shirt, with more detail visible on the character and sunglasses."
+    },
+    {
+      "frame_index": 7,
+      "timestamp_seconds": 6.0,
+      "timestamp": "00:06",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00007.jpg",
+      "description": "An even tighter close-up of the Psyduck graphic, highlighting the texture of the print and the details of the character's face and sunglasses."
+    },
+    {
+      "frame_index": 8,
+      "timestamp_seconds": 7.0,
+      "timestamp": "00:07",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00008.jpg",
+      "description": "The young man stands still, facing the camera, with his sunglasses back in place. He is in the original foggy, streetlight-lit setting, suggesting a cut back to the initial scene."
+    },
+    {
+      "frame_index": 9,
+      "timestamp_seconds": 8.0,
+      "timestamp": "00:08",
+      "path": "/Users/jpelle/jayl-store/runs/psyduck2/frames/frame_00009.jpg",
+      "description": "A young man with messy brown hair and round sunglasses stands facing the camera, wearing a black t-shirt with a circular logo, a dark jacket draped over his shoulders, dark pants, and black shoes. He is on a wet, paved surface with yellow lines, possibly at the top of a staircase with metal railings visible to the left. The background is foggy with distant streetlights glowing orange and white."
+    }
+  ],
+  "transcript_segments": []
+}

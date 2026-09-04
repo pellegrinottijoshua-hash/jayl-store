@@ -1,36 +1,24 @@
 import { useEffect } from 'react'
 import { useThemeStore } from '@/store/themeStore'
 
-// Ritratti animati del founder. Sono dipinti in chiaroscuro: il nero non è un
-// fondale dietro la figura, è l'ombra di cui la figura è fatta — capelli,
-// panciotto e lato in ombra del viso ci si fondono dentro. Per questo restano
-// su fondo scuro invece di essere scontornati su panna: un luma key toglie
-// ~60% dei pixel e con quelli si porta via mezzo soggetto. La cornice scura
-// sulla carta panna è la scelta che tiene insieme il quadro.
+// Ritratti illustrati del founder, scontornati (alpha) così da poggiare
+// direttamente sulla carta panna senza cornice. Sono WebP con canale alpha:
+// ~170 KB in tutto per i tre.
 const PORTRAITS = [
-  { src: '/video/artist-1.mp4', poster: '/video/artist-1.jpg', alt: 'Illustrated portrait of Joshua waving' },
-  { src: '/video/artist-2.mp4', poster: '/video/artist-2.jpg', alt: 'Illustrated portrait of Joshua in a leather jacket' },
-  { src: '/video/artist-3.mp4', poster: '/video/artist-3.jpg', alt: 'Illustrated portrait of Joshua looking aside' },
+  { src: '/images/artist/artist-1.webp', alt: 'Illustrated portrait of Joshua in a leather jacket' },
+  { src: '/images/artist/artist-2.webp', alt: 'Illustrated portrait of Joshua in a green jacket' },
+  { src: '/images/artist/artist-3.webp', alt: 'Illustrated portrait of Joshua wearing a red scarf' },
 ]
 
-function PortraitLoop({ src, poster, alt, className = '' }) {
+function Portrait({ src, alt, className = '' }) {
   return (
-    <figure
-      className={`relative overflow-hidden rounded-sm shadow-[0_18px_40px_-24px_rgba(17,17,17,0.55)] ${className}`}
-      style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(196,163,90,0.28)' }}
-    >
-      <video
-        className="block w-full h-full object-cover"
-        src={src}
-        poster={poster}
-        aria-label={alt}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-      />
-    </figure>
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className={`block h-auto select-none pointer-events-none ${className}`}
+    />
   )
 }
 
@@ -136,19 +124,19 @@ export default function ArtistPage() {
           </a>
         </div>
 
-        {/* Portrait column — staggered stack on desktop, swipeable row on mobile */}
+        {/* Portrait column — overlapping figures standing on the paper, no frame.
+            Below lg they become a swipeable row under the text. */}
         <div className="lg:sticky lg:top-28">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-2 lg:mx-0 lg:px-0 lg:pb-0 lg:block lg:overflow-visible">
+          <div className="flex items-end gap-2 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 lg:block lg:overflow-visible">
             {PORTRAITS.map((p, i) => (
-              <PortraitLoop
+              <Portrait
                 key={p.src}
                 {...p}
                 className={[
-                  'shrink-0 basis-[62%] snap-center aspect-[9/16]',
-                  'sm:basis-[42%]',
-                  'lg:w-[72%] lg:basis-auto lg:aspect-[9/14]',
-                  i === 1 ? 'lg:ml-auto lg:-mt-16' : '',
-                  i === 2 ? 'lg:ml-[14%] lg:-mt-12' : '',
+                  'shrink-0 w-[46%] snap-center sm:w-[32%]',
+                  'lg:w-[58%] lg:shrink',
+                  i === 1 ? 'lg:ml-auto lg:-mt-[22%]' : '',
+                  i === 2 ? 'lg:ml-[8%] lg:-mt-[18%]' : '',
                 ].join(' ')}
               />
             ))}

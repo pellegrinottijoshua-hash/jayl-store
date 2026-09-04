@@ -1,0 +1,20 @@
+# Video Analysis Package
+
+- Source: `/Users/jpelle/Downloads/hf_20260715_010515_2e6a7d4f-a9f5-42dd-bde4-f31c521a23f8.mp4`
+- Question: 3D short: black duck DAKS soaked in a coffee puddle, white pigeon on rim of giant black mug behind him. Expected: DAKS plucks gold feather from head, draws a tiny espresso cup in mid-air with gold light trail, dips it in the puddle, sips while staring at camera. Describe frame by frame exactly what happens instead: where the cup comes from, what the feather does, eye state, pigeon behavior, physics/scale/continuity errors.
+- Video File: `/Users/jpelle/Downloads/hf_20260715_010515_2e6a7d4f-a9f5-42dd-bde4-f31c521a23f8.mp4`
+- Frames: 4
+- Transcript Segments: 0
+
+## Frame descriptions (OpenRouter vision)
+
+- **00:00** — A black duck-like character, DAKS, is sitting in a puddle of coffee, looking sad with half-closed eyes. A white pigeon-like character is sleeping on the rim of a large black mug behind DAKS. Steam rises from the mug. DAKS has a golden feather on its head.
+  - file: `/Users/jpelle/jayl-store/runs/ep1-payoff-fail/frames/frame_00001.jpg`
+- **00:01** — DAKS is still sitting in the coffee puddle, looking sad with half-closed eyes. The golden feather is now floating in front of DAKS's chest, glowing with a golden light trail that forms a heart shape. The white pigeon is still sleeping on the mug rim. The golden feather is no longer on DAKS's head.
+  - file: `/Users/jpelle/jayl-store/runs/ep1-payoff-fail/frames/frame_00002.jpg`
+- **00:02** — DAKS is holding a tiny black espresso cup in its right hand, which has appeared from nowhere. The golden feather is now stuck upright on DAKS's head again. DAKS's eyes are still half-closed and sad. The white pigeon is still sleeping on the mug rim.
+  - file: `/Users/jpelle/jayl-store/runs/ep1-payoff-fail/frames/frame_00003.jpg`
+- **00:03** — DAKS is holding the tiny black espresso cup to its beak, as if sipping. Its eyes are now fully open and looking directly at the viewer, with a slightly less sad expression. The golden feather is still on DAKS's head. The white pigeon is still sleeping on the mug rim.
+  - file: `/Users/jpelle/jayl-store/runs/ep1-payoff-fail/frames/frame_00004.jpg`
+
+## Transcript Excerpts

@@ -1,0 +1,84 @@
+{
+  "source": "/Users/jpelle/Downloads/hf_20260611_140644_a15f90a7-f97a-47bc-ad32-158f0e03b627.mp4",
+  "question": "AI-generated 'Aura Walk' streetwear promo for a t-shirt brand. Generated from a GENERALIZED prompt (not tuned to this specific shirt). Evaluate critically: camera dynamism and framing variety (fisheye/whip/Dutch/strange angles vs a plain push-in), model movement & expressions, does the chest emblem print stay sharp and correct, is there an AURA around the PERSON (not the logo), lighting, pacing/shot variety, and AI artifacts (face/hands/logo warping, text). What specifically fails and why might a generalized prompt underperform here?",
+  "video_path": "/Users/jpelle/Downloads/hf_20260611_140644_a15f90a7-f97a-47bc-ad32-158f0e03b627.mp4",
+  "stats": {
+    "frame_count": 10,
+    "transcript_segment_count": 0,
+    "frame_fps": 1.0,
+    "frame_descriptions_count": 10
+  },
+  "frames": [
+    {
+      "frame_index": 1,
+      "timestamp_seconds": 0.0,
+      "timestamp": "00:00",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00001.jpg",
+      "description": "A young man in sunglasses and a black t-shirt with a circular yellow and blue logo is seen from a low, wide-angle perspective, looking upwards. The background is dark and blurry with distant lights, suggesting an urban night setting."
+    },
+    {
+      "frame_index": 2,
+      "timestamp_seconds": 1.0,
+      "timestamp": "00:01",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00002.jpg",
+      "description": "A close-up, low-angle shot of the young man's face, wearing sunglasses, with a blurry background of distant lights. The fisheye lens effect is prominent, distorting the edges of the frame."
+    },
+    {
+      "frame_index": 3,
+      "timestamp_seconds": 2.0,
+      "timestamp": "00:02",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00003.jpg",
+      "description": "A full-body shot of the young man walking up a concrete staircase in a dark, foggy environment with streetlights in the background. He is wearing a black t-shirt with a logo, a dark jacket, and dark pants."
+    },
+    {
+      "frame_index": 4,
+      "timestamp_seconds": 3.0,
+      "timestamp": "00:03",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00004.jpg",
+      "description": "The young man continues walking up the stairs, looking slightly upwards, with the same dark, foggy, and lit background. The camera angle is slightly lower than the previous frame."
+    },
+    {
+      "frame_index": 5,
+      "timestamp_seconds": 4.0,
+      "timestamp": "00:04",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00005.jpg",
+      "description": "The young man is walking forward on a wet concrete path, with a streetlamp directly above him. The background remains dark and foggy with distant lights."
+    },
+    {
+      "frame_index": 6,
+      "timestamp_seconds": 5.0,
+      "timestamp": "00:05",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00006.jpg",
+      "description": "A close-up profile shot of the young man's face, looking to the right, with blurry lights in the background. His hand is slightly blurred in the foreground."
+    },
+    {
+      "frame_index": 7,
+      "timestamp_seconds": 6.0,
+      "timestamp": "00:06",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00007.jpg",
+      "description": "A medium close-up of the young man, looking directly at the camera, with his hand resting on his chin. He is wearing round sunglasses, and the background is dark with some light sources."
+    },
+    {
+      "frame_index": 8,
+      "timestamp_seconds": 7.0,
+      "timestamp": "00:07",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00008.jpg",
+      "description": "An overhead shot of a circular yellow and blue logo on a black surface, with two hands holding sunglasses over the logo, making it appear as if the logo is wearing the sunglasses. The surrounding area is dark."
+    },
+    {
+      "frame_index": 9,
+      "timestamp_seconds": 8.0,
+      "timestamp": "00:08",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00009.jpg",
+      "description": "A top-down shot shows a person's hands holding a pair of sunglasses in front of a circular Psyduck illustration on a dark surface. The Psyduck is wearing sunglasses on its head, and the person is about to place the real sunglasses over its eyes."
+    },
+    {
+      "frame_index": 10,
+      "timestamp_seconds": 9.0,
+      "timestamp": "00:09",
+      "path": "/Users/jpelle/jayl-store/runs/aura-walk-psyduck/frames/frame_00010.jpg",
+      "description": "A top-down shot focuses on a circular illustration of Psyduck wearing sunglasses, centered on a dark surface. The real sunglasses from the previous frame are now gone, and the Psyduck's own sunglasses are visible."
+    }
+  ],
+  "transcript_segments": []
+}
