@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useThemeStore } from '@/store/themeStore'
 
-// Venti ritratti illustrati del founder, scontornati (WebP con alpha) così da
+// Ritratti illustrati del founder, scontornati (WebP con alpha) così da
 // poggiare direttamente sulla carta panna senza cornice. Ne è visibile UNO alla
 // volta: ruota da solo ogni 4s, e passa al successivo al passaggio del mouse o
-// al click. ~1,2 MB in tutto, ma non si scarica tutto: parte solo il primo e
-// viene precaricato il successivo, quindi il costo iniziale è una sola immagine.
-const PORTRAIT_COUNT = 20
+// al click. Non si scarica tutto: parte solo il primo e viene precaricato il
+// successivo, quindi il costo iniziale è una sola immagine.
+const PORTRAIT_COUNT = 18
 const ROTATE_MS = 4000
 const PORTRAITS = Array.from({ length: PORTRAIT_COUNT }, (_, i) => ({
   src: `/images/artist/artist-${String(i + 1).padStart(2, '0')}.webp`,
@@ -65,7 +65,7 @@ function PortraitRotator({ className = '' }) {
             aria-hidden={i === index ? undefined : true}
             decoding="async"
             draggable={false}
-            className="absolute inset-0 w-full h-full object-contain object-bottom select-none transition-opacity duration-700 ease-out"
+            className="absolute inset-0 w-full h-full object-contain object-center select-none transition-opacity duration-700 ease-out"
             style={{ opacity: i === index ? 1 : 0 }}
           />
         )
@@ -135,7 +135,7 @@ export default function ArtistPage() {
       <div className="px-6 sm:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[minmax(0,42rem)_minmax(0,1fr)] gap-12 lg:gap-16 items-start">
         <div className="max-w-2xl">
           <p className="font-display text-xl sm:text-2xl lg:text-3xl text-ink leading-[1.5] italic mb-8">
-            Hi, I'm Joshua — a designer from Venice.
+            Hi, I'm Joshua — an artist from Venice.
           </p>
 
           <p className="text-ink-secondary leading-relaxed text-base sm:text-lg mb-5">
@@ -172,15 +172,18 @@ export default function ArtistPage() {
             rel="noopener noreferrer"
             className="text-ink-secondary text-sm underline underline-offset-4 hover:text-ink transition-colors"
           >
-            See my other work
+            See my other works at pellegrinotti.com
           </a>
         </div>
 
         {/* Un solo ritratto alla volta, in rotazione. Altezza fissata sul
-            contenitore: i venti file hanno proporzioni diverse e senza questo
-            la pagina salterebbe a ogni cambio. */}
+            contenitore: i file hanno proporzioni diverse e senza questo la
+            pagina salterebbe a ogni cambio. object-center (non object-bottom)
+            così lo spazio vuoto attorno al ritratto resta uniforme qualunque
+            sia la sua proporzione, invece di variare in alto a seconda della
+            foto mostrata. */}
         <div className="lg:sticky lg:top-28">
-          <PortraitRotator className="h-[380px] sm:h-[460px] lg:h-[620px]" />
+          <PortraitRotator className="h-[340px] sm:h-[420px] lg:h-[540px]" />
         </div>
       </div>
 
