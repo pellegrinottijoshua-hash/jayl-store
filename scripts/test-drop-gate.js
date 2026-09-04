@@ -89,7 +89,7 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
   const sold = new Map([['drop-item-a', 19]])
   const r = checkDropGate([item('drop-item-a', 2)], CFG, INSIDE_WINDOW, sold)
   check('2: sold 19 + qty 2 = 21 (> cap) → status 409', r?.status, 409)
-  checkMatch('2: messaggio "esaurito ... chiusa a 20 pezzi"', r?.error, /esaurito.*chiusa a 20 pezzi/)
+  checkMatch('2: messaggio "sold out ... capped at 20 pieces"', r?.error, /sold out.*capped at 20 pieces/)
 }
 
 // ── 3. IL CRITICO: cap 20, sold 19, due righe dello stesso prodotto qty 1
@@ -99,7 +99,7 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
   const items = [item('drop-item-a', 1, 'Tee M'), item('drop-item-a', 1, 'Tee L')]
   const r = checkDropGate(items, CFG, INSIDE_WINDOW, sold)
   check('3 (CRITICO): due righe stesso prodotto, 19+1+1=21 > 20 → status 409', r?.status, 409)
-  checkMatch('3 (CRITICO): messaggio esaurito sulla seconda riga', r?.error, /esaurito.*chiusa a 20 pezzi/)
+  checkMatch('3 (CRITICO): messaggio sold-out sulla seconda riga', r?.error, /sold out.*capped at 20 pieces/)
 }
 
 // ── 4. Cap 20, sold 0, venti righe dello stesso prodotto qty 20 ciascuna →
@@ -110,7 +110,7 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
   const items = Array.from({ length: 20 }, () => item('drop-item-a', 20))
   const r = checkDropGate(items, CFG, INSIDE_WINDOW, sold)
   check('4: 20 righe da 20 pezzi (cap 20) → status 409 già sulla prima riga', r?.status, 409)
-  checkMatch('4: messaggio esaurito', r?.error, /esaurito.*chiusa a 20 pezzi/)
+  checkMatch('4: messaggio sold-out', r?.error, /sold out.*capped at 20 pieces/)
 }
 {
   // Variante che dimostra l'accumulo vero e proprio: due righe da 15 (cap 20).
@@ -126,7 +126,7 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
 {
   const r = checkDropGate([item('vault-item', 1, 'Vault Tee')], CFG, INSIDE_WINDOW, new Map())
   check('5: prodotto VAULT → status 409', r?.status, 409)
-  checkMatch('5: messaggio "non è più disponibile"', r?.error, /non è più disponibile/)
+  checkMatch('5: messaggio "no longer available"', r?.error, /no longer available/)
 }
 
 // ── 6. Prima di startsAt → respinto, messaggio con la data del drop
@@ -134,14 +134,14 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
 {
   const r = checkDropGate([item('drop-item-a', 1)], CFG, BEFORE_OPEN, new Map())
   check('6: prima dell\'apertura → status 409', r?.status, 409)
-  checkMatch('6: messaggio nomina il 5 settembre (apertura del drop CORRENTE)', r?.error, /5 settembre/)
-  check('6: NON nomina il 9 settembre (quello sarebbe il prossimo drop, sbagliato qui)',
-    /9 settembre/.test(r?.error || ''), false)
+  checkMatch('6: messaggio nomina il 5 September (apertura del drop CORRENTE)', r?.error, /5 September/)
+  check('6: NON nomina il 9 September (quello sarebbe il prossimo drop, sbagliato qui)',
+    /9 September/.test(r?.error || ''), false)
   // Il drop non ha ancora aperto: non è "chiuso" e non è "il prossimo" — è
   // QUESTO drop. Guardia contro la regressione al testo sbagliato fissato
-  // nel commento di checkDropGate ("Il drop è chiuso. Il prossimo apre il…").
+  // nel commento di checkDropGate ("This drop is closed. The next one opens on…").
   checkMatch('6: messaggio dice che QUESTO drop apre (non "chiuso", non "il prossimo")',
-    r?.error, /^Questo drop apre il 5 settembre\.$/)
+    r?.error, /^This drop opens on 5 September\.$/)
   check('6: messaggio NON contiene "chiuso" prima dell\'apertura',
     /chiuso/.test(r?.error || ''), false)
   check('6: messaggio NON contiene "prossimo" prima dell\'apertura',
@@ -152,7 +152,7 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
 {
   const r = checkDropGate([item('drop-item-a', 1)], CFG, AFTER_CLOSE, new Map())
   check('7: dopo la chiusura → status 409', r?.status, 409)
-  checkMatch('7: messaggio nomina il 9 settembre (apertura del PROSSIMO drop)', r?.error, /9 settembre/)
+  checkMatch('7: messaggio nomina il 9 September (apertura del PROSSIMO drop)', r?.error, /9 September/)
 }
 
 // ── 8. Registro vendite irraggiungibile → fail-open: l'ordine passa, e viene

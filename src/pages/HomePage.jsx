@@ -331,19 +331,19 @@ export default function HomePage() {
 
               {/* Before the current drop opens, "the next drop" IS the current one —
                   pointing this at cfg.next here would put a second, later date next
-                  to DropPanels' own "apre tra" for the same drop, two countdowns
+                  to DropPanels' own "opens in" for the same drop, two countdowns
                   disagreeing about when the thing actually opens. Once it's live or
                   closed, this goes back to genuinely meaning the drop after this one. */}
               {dropState.state === BEFORE ? (
                 <DropCountdown
                   to={dropState.target}
-                  label="apre tra"
+                  label="opens in"
                   className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-3 sm:mb-8"
                 />
               ) : dropCfg.next?.startsAt && (
                 <DropCountdown
                   to={dropCfg.next.startsAt}
-                  label="prossimo drop tra"
+                  label="next drop in"
                   className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-3 sm:mb-8"
                 />
               )}

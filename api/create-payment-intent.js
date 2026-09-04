@@ -52,7 +52,7 @@ export function checkDropGate(items, cfg, now, soldByProduct) {
     if (state === VAULT) {
       return {
         status: 409,
-        error: `"${item.product?.name || item.productId}" non è più disponibile. Rimuovilo dal carrello per completare l'ordine.`,
+        error: `"${item.product?.name || item.productId}" is no longer available. Remove it from your cart to complete the order.`,
       }
     }
 
@@ -66,7 +66,7 @@ export function checkDropGate(items, cfg, now, soldByProduct) {
       const beforeOpen = cfg.current?.startsAt && now.getTime() < Date.parse(cfg.current.startsAt)
       const target = beforeOpen ? cfg.current?.startsAt : cfg.next?.startsAt
       const label = target
-        ? new Date(target).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })
+        ? new Date(target).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
         : null
       // Stesso window-check, due esiti testuali diversi: prima di startsAt il
       // drop non è "chiuso" (non ha ancora aperto) ed è QUESTO drop, non "il
@@ -74,8 +74,8 @@ export function checkDropGate(items, cfg, now, soldByProduct) {
       // corretto. Riusa `beforeOpen` calcolato sopra, nessun ricalcolo della
       // finestra.
       const error = beforeOpen
-        ? (label ? `Questo drop apre il ${label}.` : 'Questo drop non è ancora aperto.')
-        : (label ? `Il drop è chiuso. Il prossimo apre il ${label}.` : 'Il drop è chiuso.')
+        ? (label ? `This drop opens on ${label}.` : 'This drop is not open yet.')
+        : (label ? `This drop is closed. The next one opens on ${label}.` : 'This drop is closed.')
       return { status: 409, error }
     }
 
@@ -87,7 +87,7 @@ export function checkDropGate(items, cfg, now, soldByProduct) {
         if (total > cap) {
           return {
             status: 409,
-            error: `"${item.product?.name || item.productId}" è esaurito: l'edizione è chiusa a ${cap} pezzi.`,
+            error: `"${item.product?.name || item.productId}" is sold out: the edition is capped at ${cap} pieces.`,
           }
         }
         running.set(item.productId, total)

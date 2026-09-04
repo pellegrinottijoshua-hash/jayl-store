@@ -315,7 +315,7 @@ function DropBlock({ productId, isLight, status }) {
   if (state === LISTINO) {
     return (
       <p className={`text-xs tracking-[0.15em] uppercase mb-3 ${isLight ? 'text-ink-muted' : 'text-white/60'}`}>
-        Drop {String(cfg.current?.number ?? 1).padStart(2, '0')} · sold out — ora in listino permanente
+        Drop {String(cfg.current?.number ?? 1).padStart(2, '0')} · sold out — now in the permanent archive
       </p>
     )
   }
@@ -331,17 +331,17 @@ function DropBlock({ productId, isLight, status }) {
         Drop {String(cfg.current.number).padStart(2, '0')} · {cfg.current.title}
       </p>
       {winState === BEFORE && (
-        <DropCountdown to={target} label="apre tra" className="block text-sm tabular-nums" />
+        <DropCountdown to={target} label="opens in" className="block text-sm tabular-nums" />
       )}
       {winState === LIVE && (
-        <DropCountdown to={target} label="finisce tra" className="block text-sm tabular-nums" />
+        <DropCountdown to={target} label="ends in" className="block text-sm tabular-nums" />
       )}
       {winState === CLOSED && target && (
-        <DropCountdown to={target} label="prossimo drop tra" className="block text-sm tabular-nums" />
+        <DropCountdown to={target} label="next drop in" className="block text-sm tabular-nums" />
       )}
       {winState === BEFORE && (
         <span className="block text-xs tracking-widest uppercase opacity-60">
-          Anteprima · non ancora in vendita
+          Preview · not on sale yet
         </span>
       )}
       {winState === LIVE && (
@@ -349,12 +349,12 @@ function DropBlock({ productId, isLight, status }) {
       )}
       {winState === CLOSED && (
         <span className="block text-xs tracking-widest uppercase opacity-60">
-          Drop chiuso · ora in listino
+          Drop closed · now in the archive
         </span>
       )}
       {winState === LIVE && hrs !== null && hrs < 48 && (
         <p className="text-xs opacity-60">
-          ultimo pezzo preso {hrs === 0 ? 'meno di un’ora fa' : `${hrs} ${hrs === 1 ? 'ora' : 'ore'} fa`}
+          last piece claimed {hrs === 0 ? 'less than an hour ago' : `${hrs} ${hrs === 1 ? 'hour' : 'hours'} ago`}
         </p>
       )}
     </div>

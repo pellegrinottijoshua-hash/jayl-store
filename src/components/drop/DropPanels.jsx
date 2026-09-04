@@ -87,13 +87,13 @@ export default function DropPanels() {
           Drop {String(head.number).padStart(2, '0')} · {head.title}
         </span>
         {state === BEFORE && (
-          <DropCountdown to={target} label="apre tra" className="text-xs tabular-nums" />
+          <DropCountdown to={target} label="opens in" className="text-xs tabular-nums" />
         )}
         {state === LIVE && (
-          <DropCountdown to={target} label="finisce tra" className="text-xs tabular-nums" />
+          <DropCountdown to={target} label="ends in" className="text-xs tabular-nums" />
         )}
         {state === CLOSED && target && (
-          <DropCountdown to={target} label="prossimo drop tra" className="text-xs tabular-nums" />
+          <DropCountdown to={target} label="next drop in" className="text-xs tabular-nums" />
         )}
       </div>
 
@@ -147,12 +147,12 @@ export default function DropPanels() {
                 )}
                 {state === BEFORE && (
                   <span className="text-xs tracking-widest uppercase text-white/60">
-                    Anteprima · non ancora in vendita
+                    Preview · not on sale yet
                   </span>
                 )}
                 {state === CLOSED && (
                   <span className="text-xs tracking-widest uppercase text-white/60">
-                    Drop chiuso · ora in listino
+                    Drop closed · now in the archive
                   </span>
                 )}
               </div>
