@@ -305,6 +305,30 @@ export function buildContactAutoReplyEmail({ name }) {
   }
 }
 
+export function buildWelcomeEmail() {
+  const body = `
+    <tr><td style="padding:28px 0 8px">
+      <h1 style="margin:0;font-weight:400;font-size:26px;color:#e8e0d0">You're on the list.</h1>
+    </td></tr>
+    <tr><td style="padding:0 0 28px">
+      <p style="margin:0 0 14px;font-size:15px;color:#9a9587;line-height:1.75">
+        JAYL is a Venice-based label doing limited drops — small runs, gone for good once
+        they sell out.
+      </p>
+      <p style="margin:0 0 14px;font-size:15px;color:#9a9587;line-height:1.75">
+        You'll hear from us when the next one opens.
+      </p>
+      <p style="margin:0;font-size:13px;color:#4a4a4a">
+        — The JAYL team
+      </p>
+    </td></tr>`
+
+  return {
+    subject: 'You’re on the list — JAYL',
+    html:    htmlWrapper(body),
+  }
+}
+
 // ── Resend sender ─────────────────────────────────────────────────────────────
 
 /**

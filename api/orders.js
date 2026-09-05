@@ -18,6 +18,7 @@ import {
   buildOrderConfirmationEmail,
   buildContactNotificationEmail,
   buildContactAutoReplyEmail,
+  buildWelcomeEmail,
   STORE_EMAIL_ADDRESS,
 } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
@@ -468,6 +469,10 @@ async function handleCaptureEmail(req, res) {
       `newsletter: new subscriber ${normalised}`,
       githubToken
     )
+    // Fire-and-forget: l'iscrizione è già scritta su GitHub a questo punto,
+    // sendEmail non deve poterla far fallire (non throwa mai, vedi email.js).
+    const { subject, html } = buildWelcomeEmail()
+    sendEmail({ to: normalised, subject, html })
     return res.status(200).json({ ok: true })
   } catch (err) {
     console.error('[capture-email]', err.message)
