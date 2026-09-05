@@ -4,13 +4,15 @@ export default function CookiesPage() {
   return (
     <LegalPage title="Cookie Policy">
       <p>
-        jayl.store uses only essential cookies necessary for the site to function (cart, session).
+        jayl.store uses essential cookies necessary for the site to function (cart, session).
+        No consent is required for these under GDPR.
       </p>
       <p>
-        We do not use tracking cookies, analytics cookies, or advertising cookies.
-      </p>
-      <p>
-        No consent is required for essential cookies under GDPR.
+        With your consent, we also use analytics cookies (Google Analytics) to understand how
+        the site is used, and marketing cookies (Meta Pixel, Pinterest Tag) to measure and
+        improve our ads. These only load after you accept them in the cookie banner, and you
+        can withdraw consent at any time by clearing your browser's site data and choosing
+        "Decline" again.
       </p>
     </LegalPage>
   )

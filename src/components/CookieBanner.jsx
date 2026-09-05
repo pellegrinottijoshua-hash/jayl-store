@@ -58,9 +58,9 @@ export default function CookieBanner() {
       <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         {/* Text */}
         <p className="flex-1 text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
-          Utilizziamo cookie essenziali (carrello, sessione) e, con il tuo consenso, cookie
-          analitici (Google Analytics) e di marketing (Meta, Pinterest) per migliorare il sito
-          e mostrarti contenuti pertinenti. Puoi rifiutarli in qualsiasi momento.{' '}
+          We use essential cookies (cart, session) and, with your consent, analytics (Google
+          Analytics) and marketing cookies (Meta, Pinterest) to improve the site and show you
+          relevant content. You can decline them at any time.{' '}
           <Link
             to="/cookies"
             onClick={decline}
@@ -81,14 +81,14 @@ export default function CookieBanner() {
               color: 'rgba(255,255,255,0.45)',
             }}
           >
-            Rifiuta
+            Decline
           </button>
           <button
             onClick={accept}
             className="text-xs px-5 py-2 font-medium transition-colors"
             style={{ backgroundColor: '#C4A35A', color: '#111111' }}
           >
-            Accetta
+            Accept
           </button>
         </div>
       </div>

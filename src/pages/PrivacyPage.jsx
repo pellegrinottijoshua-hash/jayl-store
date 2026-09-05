@@ -48,10 +48,24 @@ export default function PrivacyPage() {
         <li>
           <strong className="text-ink">Resend</strong> — transactional email delivery.
         </li>
+        <li>
+          <strong className="text-ink">Google Analytics</strong> — site usage analytics. Only
+          loads if you accept analytics cookies. Privacy policy:{' '}
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4">policies.google.com/privacy</a>
+        </li>
+        <li>
+          <strong className="text-ink">Meta (Facebook/Instagram) and Pinterest</strong> —
+          advertising measurement. Only load if you accept marketing cookies. Privacy policies:{' '}
+          <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4">facebook.com/privacy/policy</a>
+          {' '}·{' '}
+          <a href="https://policy.pinterest.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4">policy.pinterest.com</a>
+        </li>
       </ul>
       <p>
-        We do not use cookies for tracking or analytics. We do not sell or share your data with
-        any other third parties.
+        Analytics and marketing cookies only load after you accept them in the cookie banner —
+        see our{' '}
+        <a href="/cookies" className="text-ink underline underline-offset-4">Cookie Policy</a>.
+        We do not sell your data to any third party.
       </p>
 
       <h2 className="font-display text-xl text-ink mt-8 mb-2">Retention</h2>
