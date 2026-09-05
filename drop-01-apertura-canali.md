@@ -72,22 +72,27 @@ cerca): `JAYL · Wearable Art`
 
 ## 5. Le bio
 
-Instagram (150 caratteri):
+**Instagram ha un campo Link a parte, sotto il testo della bio — non dentro il testo.**
+Va compilato con `https://jayl.store`: è quello il link cliccabile che userai in ogni caption
+con "Link in bio".
+
+Testo bio (150 caratteri):
 ```
-Hand-painted art, printed big on the back.
+Original art, printed big on the back.
 Editions of 20. When they're gone, they're gone.
 Venice, Italy 🇮🇹
 ```
+Campo Link: `https://jayl.store`
 
-TikTok:
+TikTok (link scritto in chiaro perché il campo Link è bloccato sotto i 1.000 follower — vedi sotto):
 ```
-hand-painted tees · editions of 20 · venice
+original tees · editions of 20 · venice
 new drop every few days → jayl.store
 ```
 
 Facebook (più lunga, è l'unico posto dove qualcuno la legge davvero):
 ```
-JAYL is an independent label from Venice. We paint original artwork and print it
+JAYL is an independent label from Venice. We create original artwork and print it
 large across the back of heavyweight cotton tees.
 
 Every design is a numbered edition of 20. When the twenty are gone the design
@@ -95,6 +100,11 @@ closes and never reopens at that price.
 
 jayl.store
 ```
+
+**Nessuna delle tre bio dice come nasce l'artwork.** Non è una scelta di marketing, è
+letteralmente vero che il metodo non è affar loro: "original art" e "we create" descrivono
+il risultato, non il processo. Vale la stessa regola per tutte le caption dei post — l'ho
+applicata anche in `drop-01-social-posts.md`.
 
 ## 6. Sul feed stasera non pubblichi niente
 

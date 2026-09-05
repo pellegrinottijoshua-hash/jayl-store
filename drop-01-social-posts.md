@@ -57,7 +57,7 @@ fatto) → **la creatura** (perché sorridi) → **la dropcard** (cosa devi fare
 ```
 CHARIZARD — Drop 01 · ORIGIN. Open now.
 
-Hand-painted Charizard, printed large across the whole back. Deep maroon heavyweight cotton.
+Original Charizard artwork, printed large across the whole back. Deep maroon heavyweight cotton.
 
 €22 for the next 72 hours. Edition of 20, numbered #1 to #20 at checkout.
 Tuesday at 18:00 it closes and moves to the archive at €25 — the twenty stay twenty, forever.
@@ -72,10 +72,10 @@ Link in bio 🔗
 
 ### TikTok — post foto, 18:00
 
-Testo in sovraimpressione slide 1: **«we painted Charizard and put him on your back»**
+Testo in sovraimpressione slide 1: **«we made Charizard and put him on your back»**
 
 ```
-charizard, hand-painted, full back print 🔥
+charizard, original artwork, full back print 🔥
 twenty pieces. seventy-two hours. then never again at this price.
 
 #charizard #pokemon #pokemonfanart #anime #streetwear #fyp
@@ -86,7 +86,7 @@ twenty pieces. seventy-two hours. then never again at this price.
 ```
 CHARIZARD — Drop 01 · ORIGIN is open.
 
-Hand-painted Charizard printed large across the back of a deep maroon heavyweight cotton tee.
+Original Charizard artwork printed large across the back of a deep maroon heavyweight cotton tee.
 
 €22 for the next 72 hours. Every piece is numbered at checkout, #1 to #20 — that's the entire
 run. On Tuesday at 18:00 the drop closes and the design moves to the archive at €25. The
@@ -110,7 +110,7 @@ All three designs together: €57.
 ```
 MEWTWO — Drop 01 · ORIGIN. Open now.
 
-Hand-painted Mewtwo across the full back, on purple heavyweight cotton.
+Original Mewtwo artwork across the full back, on purple heavyweight cotton.
 
 €22 for the next 72 hours. Edition of 20 — your number is assigned at checkout and it's yours.
 When the twentieth goes, the shop stops selling it. Not a countdown gimmick: order 21 is
@@ -129,7 +129,7 @@ Link in bio 🔗
 Testo in sovraimpressione slide 1: **«20 exist. that's the whole run.»**
 
 ```
-mewtwo, hand-painted, full back print 💜
+mewtwo, original artwork, full back print 💜
 the shop literally refuses order number 21. twenty is twenty.
 
 #mewtwo #pokemon #pokemonfanart #anime #streetwear #fyp
@@ -140,7 +140,7 @@ the shop literally refuses order number 21. twenty is twenty.
 ```
 MEWTWO — Drop 01 · ORIGIN is open.
 
-Hand-painted Mewtwo printed across the full back of a purple heavyweight cotton tee.
+Original Mewtwo artwork printed across the full back of a purple heavyweight cotton tee.
 
 €22 for the next 72 hours, and every piece is numbered at checkout from #1 to #20. Once the
 twentieth is gone the design closes — the shop refuses the twenty-first order. Tuesday at
@@ -164,7 +164,7 @@ All three designs together: €57.
 ```
 PSYDUCK — Drop 01 · ORIGIN. Open now.
 
-Hand-painted Psyduck across the full back, on golden yellow heavyweight cotton.
+Original Psyduck artwork across the full back, on golden yellow heavyweight cotton.
 Sunglasses included. Headache not.
 
 €22 for the next 72 hours. Edition of 20, numbered at checkout.
@@ -183,7 +183,7 @@ Link in bio 🔗
 Testo in sovraimpressione slide 1: **«psyduck has sunglasses now»**
 
 ```
-psyduck, hand-painted, full back print 🦆
+psyduck, original artwork, full back print 🦆
 twenty pieces, seventy-two hours. all three designs for €57.
 
 #psyduck #pokemon #pokemonfanart #anime #streetwear #fyp
@@ -194,7 +194,7 @@ twenty pieces, seventy-two hours. all three designs for €57.
 ```
 PSYDUCK — Drop 01 · ORIGIN is open.
 
-Hand-painted Psyduck printed across the full back of a golden yellow heavyweight cotton tee.
+Original Psyduck artwork printed across the full back of a golden yellow heavyweight cotton tee.
 
 €22 for the next 72 hours. Edition of 20, numbered at checkout. On Tuesday at 18:00 the drop
 closes and the design moves to the archive at €25.
@@ -224,8 +224,8 @@ Instagram i tag di fandom hanno gente che li sfoglia davvero, quindi lo strato p
 fandom si ripaga; su TikTok il testo in sovraimpressione pesa più dei tag, quindi sei bastano;
 su Facebook i tag non fanno praticamente nulla e servono solo a non far sembrare il post nudo.
 
-**Nel testo della caption il nome del personaggio va scritto per esteso** («Hand-painted
-Charizard»), non solo come hashtag: la ricerca di Instagram indicizza il testo della caption,
+**Nel testo della caption il nome del personaggio va scritto per esteso** («Original Charizard
+artwork»), non solo come hashtag: la ricerca di Instagram indicizza il testo della caption,
 non solo i tag.
 
 ---
