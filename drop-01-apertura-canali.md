@@ -10,7 +10,7 @@ Scritto venerdì 5 settembre 2026. Il drop apre **sabato 6 alle 18:00 italiane**
 | | |
 |---|---|
 | **Apro ora o domani?** | **Stasera.** Vedi sotto il perché — non è preferenza, è un vincolo tecnico. |
-| **Quando i post?** | Teaser **stasera**. I tre post prodotto **domani alle 18:00 in punto** (TikTok scaglionato). |
+| **Quando i post?** | Solo i tre, **domani alle 18:00 in punto**. Sul feed stasera non va niente (TikTok scaglionato). |
 | **Quando le storie?** | Stasera 1, domani dalle 17:00 a scalare, poi 2-3 al giorno fino a martedì. Calendario sotto. |
 
 **Perché stasera e non domani.** Tre ragioni concrete:
@@ -21,8 +21,8 @@ Scritto venerdì 5 settembre 2026. Il drop apre **sabato 6 alle 18:00 italiane**
 2. Meta e TikTok applicano meno fiducia agli account appena nati. Un account creato e messo
    subito a pubblicare tre caroselli commerciali con link è il peggior avvio possibile. Anche
    solo 24 ore di età e un po' di attività non commerciale aiutano.
-3. Il teaser ha bisogno di un profilo che esista. Senza, domani alle 18:00 apri un meccanismo
-   di scarsità davanti a un profilo vuoto.
+3. Le storie teaser e i messaggi che mandi stasera hanno bisogno di un profilo che esista già,
+   con bio e immagine a posto.
 
 ---
 
@@ -96,31 +96,23 @@ closes and never reopens at that price.
 jayl.store
 ```
 
-## 6. Il post teaser — stasera, sul feed
+## 6. Sul feed stasera non pubblichi niente
 
-Non solo storia: **anche un post**. Serve perché domani, quando i tre post di lancio arrivano,
-il profilo non deve essere nato cinque minuti prima.
+Il primo contenuto del feed sono i tre post di lancio, domani alle 18:00. Tre motivi:
 
-Usa `charizard/post/05-dropcard.png` (la dropcard bordeaux, sobria, non svela nulla).
+- **Tre post fanno una riga di griglia esatta.** Un quarto post la sporca e basta: chi apre il
+  profilo per la prima volta vedrebbe una riga completa più un orfano sotto.
+- Un teaser sul feed con zero follower **non lo vede nessuno**, quindi la sua unica funzione
+  sarebbe «il profilo non è vuoto» — problema che i tre post risolvono da soli, arrivando insieme.
+- L'account guadagna fiducia **esistendo** da ieri, non pubblicando ieri. Il beneficio te lo dà
+  la creazione di stasera, non un post in più.
 
-```
-Something opens Saturday at 18:00.
-
-Three hand-painted designs, printed large across the back.
-Twenty pieces of each. Seventy-two hours. Then they close.
-
-jayl.store
-
-#jayl #wearableart #backprint #graphictee #dropculture #pokemonfanart
-```
-
-Sul feed, la sequenza funziona così: pubblichi il teaser stasera e i tre post domani.
-Instagram mostra i più recenti in alto, quindi domani la **prima riga della griglia** sarà
-occupata dai tre lanci e il teaser scenderà sotto. È esattamente la disposizione che vuoi.
+Il teaser vive **solo nelle storie**, che scadono e non toccano la griglia.
 
 ## 7. Le storie di stasera
 
-Una sola, `06-teaser` (una qualunque delle tre — usa Charizard).
+Una sola: `charizard/story/06-teaser.png`. Gli altri due teaser li usi domani pomeriggio, così
+non ripeti mai la stessa immagine.
 
 **Metti la sticker LINK con `https://jayl.store`.** Le storie hanno il link cliccabile diretto
 per tutti gli account, senza soglia di follower: nelle storie *non* si dice «link in bio», si
@@ -148,8 +140,8 @@ nella prima ora.
 | Ora | Cosa | Dove |
 |---|---|---|
 | mattina | programma i 3 caroselli + le storie del pomeriggio | Business Suite |
-| **17:00** | storia countdown: `05-dropcard` + sticker countdown alle 18:00 | IG |
-| **17:45** | storia: `06-teaser` + sticker link | IG |
+| **17:00** | storia: `06-teaser` (Mewtwo) + sticker countdown alle 18:00 | IG |
+| **17:45** | storia: `06-teaser` (Psyduck) + sticker link | IG |
 | **18:00** | **i 3 caroselli insieme** — Charizard, Mewtwo, Psyduck | IG + FB |
 | **18:05** | storia che ricondivide il tuo post di lancio + sticker link | IG |
 | 18:00 | Charizard | TikTok |
@@ -182,7 +174,7 @@ prodotto: dosali.
 | **Lunedì pomeriggio** | `08-macro` (Mewtwo) | — |
 | **Lunedì ~19:00** | `10-cta` + sticker link | **post «ultime 24 ore»** — copertina `04-creature`, poi `05-dropcard` |
 | **Martedì mattina** | `10-cta` (gli altri due) | — |
-| **Martedì 16:00** | storia countdown alle 18:00 | — |
+| **Martedì 16:00** | `09-scale` (Charizard) + sticker countdown alle 18:00 | — |
 | **Martedì 18:00** | — | chiudi il drop dall'admin |
 
 **Sul post di lunedì.** Dice quante ne restano **solo se il numero fa una bella figura** (oltre
