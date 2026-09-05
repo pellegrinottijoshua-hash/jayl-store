@@ -67,8 +67,11 @@ cerca): `JAYL · Wearable Art`
   Business possono usare solo la *Commercial Sounds Library*, molto più povera. Sui post-foto
   il suono pesa parecchio sulla distribuzione, e non vale la pena perderlo per avere le
   analytics.
-- Bio + link al sito (TikTok consente il link in bio agli account con 1.000 follower; sotto
-  quella soglia scrivi `jayl.store` in chiaro nella bio e nei commenti).
+- **Sotto i 1.000 follower il campo Link della bio non compare proprio**, con o senza Business.
+  Non c'è modo di aggirarlo dalla bio. L'unica soluzione reale è il **commento fissato**: sotto
+  ogni video, `jayl.store` scritto in chiaro come primo commento, poi fissato (pin). Non è
+  cliccabile, ma è dove la gente lo cerca per abitudine — è lo standard su questa piattaforma
+  per chi è sotto soglia. Scrivilo anche nel testo della bio.
 
 ## 5. Le bio
 
@@ -119,6 +122,24 @@ Il primo contenuto del feed sono i tre post di lancio, domani alle 18:00. Tre mo
 
 Il teaser vive **solo nelle storie**, che scadono e non toccano la griglia.
 
+## 6-bis. Seguire e commentare — poco, e mai in giro sulle pagine Pokémon
+
+**Seguire ha senso, con due paletti.** 20-30 account in totale, distribuiti nella serata, mai
+in un colpo solo — un account nato oggi che segue 200 profili in un'ora è il pattern che i
+sistemi anti-spam guardano, e rischi una limitazione proprio nelle ore prima del lancio. Segui
+piccoli account di fan art Pokémon (dimensione tua, non pagine enormi), altri brand
+streetwear/graphic-tee simili, creator o negozi di Venezia. Non seguire pagine ufficiali
+Pokémon: zero ritorno, ed è l'ultimo posto dove vuoi comparire nella lista follower.
+
+**Non commentare sulle pagine Pokémon per pubblicizzare i post, né oggi né domani.** Due motivi
+concreti: le pagine fan moderano i commenti promozionali e li cancellano, a volte li segnalano
+— su un account nato oggi una segnalazione può tradursi in una limitazione proprio mentre ti
+serve reach. E comunque non funzionerebbe: i link nei commenti Instagram non sono cliccabili,
+stai chiedendo a qualcuno di copiare a mano un URL sotto il post di qualcun altro.
+
+Quello che funziona: commenti genuini, non promozionali, sugli stessi account di fan art e
+streetwear che segui. È lì che si nota il tuo handle, non piazzando plug in giro.
+
 ## 7. Le storie di stasera
 
 Una sola: `charizard/story/06-teaser.png`. Gli altri due teaser li usi domani pomeriggio, così
@@ -146,6 +167,12 @@ Non è un dettaglio di contorno: è la differenza tra chiudere a 0/20 e chiudere
 le storie Instagram gratis: significa che alle 18:00 non devi essere al telefono a fare
 copia-incolla, puoi stare a rispondere ai commenti — che è la cosa che conta davvero
 nella prima ora.
+
+**Prima di fidarti del calendario, verifica stasera che lo sticker Link funzioni sulle storie
+programmate.** In Business Suite non è sempre disponibile in fase di programmazione — a volte
+sta solo nella pubblicazione dal telefono in diretta. Fai una storia di test ora: se lo sticker
+non compare, il piano B è pubblicare le storie live dal telefono agli orari previsti, niente
+di complicato, richiede solo che tu sia presente in quei momenti.
 
 | Ora | Cosa | Dove |
 |---|---|---|
