@@ -180,7 +180,7 @@ export default function DropPanels() {
 
       {state === LIVE && items.length === 3 && (
         <p className="px-5 sm:px-6 lg:px-8 pt-4 text-center text-xs tracking-[0.2em] uppercase text-white/60">
-          tutti e tre · {formatPrice(cfg.current.bundlePrice)}
+          all three · {formatPrice(cfg.current.bundlePrice)}
         </p>
       )}
     </div>

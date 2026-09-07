@@ -197,7 +197,7 @@ export function applyDiscount(subtotal, code, items = []) {
  */
 export function bundleAdjustment(items, cfg) {
   const amount = bundleDiscount(items, cfg)
-  return amount > 0 ? { amount, label: 'Bundle drop — tutti e tre' } : { amount: 0, label: null }
+  return amount > 0 ? { amount, label: 'Bundle drop — all three' } : { amount: 0, label: null }
 }
 
 /** Encode the canonical, server-priced item list for storage in Stripe metadata. */

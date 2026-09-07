@@ -91,7 +91,7 @@ function CheckoutForm() {
   const localDiscountAmount = (appliedCode?.amount ?? 0) + localBundleDiscount
   const localDiscountLabel  = appliedCode
     ? (localBundleDiscount > 0 ? `${appliedCode.label} + Bundle drop` : appliedCode.label)
-    : (localBundleDiscount > 0 ? 'Bundle drop — tutti e tre' : null)
+    : (localBundleDiscount > 0 ? 'Bundle drop — all three' : null)
   const localTotal = Math.max(subtotal - localDiscountAmount, 0)
 
   const discountAmount = serverPricing?.discountAmount ?? localDiscountAmount
