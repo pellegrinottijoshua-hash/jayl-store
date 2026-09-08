@@ -17013,5 +17013,460 @@ export const adminProducts = [
     "createdAt": "2026-09-08T14:47:54.039Z",
     "updatedAt": "2026-09-08T14:56:31.828Z",
     "relatedProducts": []
+  },
+  {
+    "id": "cool-suicune-back-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Suicune Back Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Radiating a vibe of fluid elegance, this Suicune shirt showcases the water Pokémon in a striking pose, with waves and energy swirling around its majestic form. The bold retro 90s anime graphic on this Gildan premium tee delivers crisp DTG print quality that refuses to fade into the background. The design captures the essence of Suicune’s grace while vibrating with rebellious spirit—perfect for those who dare to stand out. Gift it to those who cherish quirky anime flair and channel their inner water warrior.",
+    "altText": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-mockup-01.jpg",
+    "heroImage": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_174053_aad0c01a-a7a7-4c6e-88e8-71ce35cc6380.png",
+    "detailImage": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_190549_3ba92051-a224-4398-b847-a7001ae058e3.png",
+    "images": [
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_174020_a35373b4-93e5-4e12-bb52-2093515ecfa8.png",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_173908_24827162-ff37-416a-8b8a-52d5b5c62b98.png",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-01.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-02.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-03.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-04.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-05.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-06.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-07.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-08.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-09.jpg"
+    ],
+    "imageAlts": {
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-mockup-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-rs-sport-grey-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-azalea-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-navy-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-black-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-light-blue-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-purple-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-royal-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-white-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee."
+    },
+    "tags": [
+      "suicune shirt",
+      "anime t-shirt",
+      "retro graphic tee",
+      "unisex apparel",
+      "pokemon gift",
+      "90s nostalgia",
+      "water pokemon",
+      "funny t-shirt",
+      "fan art clothing",
+      "cool graphic shirt",
+      "Gildan cotton tee",
+      "anime fashion",
+      "unique gifts"
+    ],
+    "featured": false,
+    "gelatoProductId": "4c1f5286-d7bf-4f14-9358-ea23f6794dea",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "suicune shirt",
+      "pokemon t-shirt",
+      "anime apparel",
+      "graphic tee",
+      "retro shirt"
+    ],
+    "longTailKeywords": [
+      "funny retro pokemon t-shirt",
+      "water pokemon gift for him",
+      "large back design anime shirt",
+      "unisex cotton graphic tee",
+      "nostalgic anime fan gift idea",
+      "premium quality pokemon apparel",
+      "unique gifts for anime lovers",
+      "bold 90s graphic shirts online",
+      "trendy retro style t-shirts for men",
+      "cool designs inspired by suicune"
+    ],
+    "hashtags": "#Pokemon #AnimeMerch #GraphicTees #90sFashion #RetroAnime #CottonTShirt #UnisexFashion #CasualWear #StreetStyle #GiftForHim #EdgyAesthetic #CulturalArt #AnimeCommunity #WearableArt #GeekStyle #NerdMerch #ArtCollective #PopCulture #ClothingLine #FashionTrends #JAYL #jaylstore #artwear #jaylart #premiumprint #wearableart #CoolPokemon #AnimeStyle #GiftIdeas #FashionAddict #TrendyWear",
+    "instagramCaption": "Unleash your inner water warrior with our Suicune Back Print Shirt! 🌊 Perfect for the cool kids who vibe with retro 90s anime aesthetics. Grab this cotton gem and level up your wardrobe! #PokemonStyle #RetroVibes #StreetwearShop 🔥 Link in bio 🔗",
+    "pinterestCaption": "Dive into nostalgia with our Suicune Back Print Shirt, featuring a large, eye-catching design perfect for any anime lover. This unisex tee is not just a fashion statement; it's a tribute to the water Pokémon era. Make it a part of your collection today!",
+    "tiktokCaption": "this Suicune shirt slaps harder than your childhood 🔥 #vintageanime #pokemon #fyp #foryou #coolwear",
+    "seoTitle": "Suicune Back Print Shirt | Retro Anime Fun Gift | Unisex Tee",
+    "variants": [
+      {
+        "uid": "4172cb3a-0065-4e55-84a8-3d783240045d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "79715b8d-2b86-44a8-99d2-a5a9435672c8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b22adc41-6d48-4970-813f-15105e343014",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "49cde802-80a2-4247-b505-b0618847f885",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "69824a2c-272e-4f82-86d9-ff376e80a450",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bb376b6d-2d89-49f9-a0dc-2c10f7d8aab2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "26fb0b89-3c47-43ad-9648-fb90cd1c2433",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b13bed2e-4130-426c-b9a3-6d6733891b5a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e87176f7-092c-4858-95d9-cd654f0d3bfe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "372ca7d7-5cef-4a72-ab6e-3016846f82be",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "544ee3fc-5c04-4610-805e-89c3cfc6748f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4c0f0d32-cfd1-42e5-a9eb-f7da888b8df5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "67b7a184-e6f8-4f42-93bc-de26c8052eb1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea2c1070-3a24-4308-aae3-50e62982ba27",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "76dc63ad-9baf-421c-8b8a-63c9d5b25a3b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9891d7c2-ab7d-466f-8deb-142a23f2b60b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2c412f4f-4a8c-4178-b6b1-e3bebad8734c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3ac98a70-c71b-4d15-8335-268bcd707033",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5987f881-6f64-486e-a1e4-b857dd4e3532",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "540432c0-e1be-4a97-95f6-1e1a1f1f1d39",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "895594e4-5640-4174-b6fa-6923dc0b32ac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "59fa0a8b-6309-4cb4-b533-b23846622db4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e8d35b80-8ca0-4415-afbd-6a0a768c9621",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "68565e6b-59e4-4319-a5e9-903983b8c371",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7a3652d3-905f-4632-8b7f-45f9e1334e06",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0070b56c-b488-4b72-b267-70fe0cf871e3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7e4f6a37-97c4-49da-99d0-9d5bf6baf65c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c5a3efc7-eb1c-4efb-9b3b-b12ada535020",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7643471f-3d0a-4c30-aed4-12c25535f08a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "65f56e85-0856-4cf5-a99b-ea7ab9baa1b0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "419eae50-4bdc-4494-8d0b-c45296b4ea9b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "514dec89-5b81-441b-99bc-94eff2d7759d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-royal-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-navy-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-black-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-azalea-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-light-blue-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-purple-01.jpg"
+      }
+    ],
+    "etsyTitle": "Suicune Back Print Shirt, Retro 90s Graphic Tee, Water Pokemon Gift for Him",
+    "etsyTags": [
+      "suicune shirt",
+      "anime graphic tee",
+      "pokemon gift",
+      "gift for him",
+      "otaku merch",
+      "retro aesthetic",
+      "unisex fit shirt",
+      "funny graphic tee",
+      "90s nostalgia appare",
+      "water pokemon gear",
+      "unique anime gift",
+      "casual clothing gift",
+      "pop culture t-shirt"
+    ],
+    "etsyDescription": "For that one friend who not only collects Pokemon cards but also tends to drop random Suicune facts at parties — this shirt is made just for them. Nothing says 'I get you' like a huge back print showcasing the majestic water Pokémon, so they can express their love while staying comfy and stylish.\n\nThe design encapsulates Suicune’s cool vibe: smooth lines, stunning colors, and a hint of retro flair that screams '90s nostalgia'. It’s like wearing a piece of childhood magic that instantly transports you back to the glory days of anime marathons. Made from 100% cotton, it feels soft against your skin whether you're out battling trainers or just hanging with friends. Available in sizes S-3XL, this unisex tee works for everyone.\n\nThinking about a gift? Perfect for Birthdays or those everyday 'just because' moments when you want to make someone smile. Machine wash cold, tumble dry low — easy care for anyone who's got better things to do than laundry. \n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front view mockup of Suicune back print shirt on model outdoors.",
+      "Back view mockup of Suicune shirt on model showcasing large design.",
+      "Close-up detail of colorful Suicune back print design on cotton fabric.",
+      "Flat lay front view of Suicune graphic tee laid out on wooden surface.",
+      "Lifestyle worn candid shot depicting person in Suicune shirt enjoying time with friends.",
+      "Size guide showing measurement details alongside Suicune back print t-shirt.",
+      "Gift packaging context showcasing Suicune shirt ready for gifting."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/434b456f-e771-4a57-b62d-f1e1a26d9733/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=559542ce816b8755e3d5e7ea3be8b0c74727f69b24fff22e46da92445bb46f38",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dd7444c3-8dc7-4cab-b4c7-412f0945d351/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=68fb59764417a3115022541a801f48d2fcd2ac10818fa28c96b0af49d3201b55",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/02a5513b-40de-4bda-8357-74e6a0ab04da/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ca7dc3772efde365edce55b062b5b0b907f50872324dab09e77016469e244379",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8416e9d6-104a-4df9-9c03-54f8a4716e73/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a84fb4d0c36ff976e78dc9e3b8d4fb4b0d6b7990f55ff3825be5e6cdbb79e6ab",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a9eccda0-d3e7-4e71-bfde-2a4e09f88925/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=921f6cd6ed73c44e07644bae6afcccbb48a80bfd61aafb93bfc691b2082d02c6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e9eb5bde-86a2-4064-9cc1-1558354ce119/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=627cd5275a713d1ce5e3e80988baa7905a26837d096b82bd07548c16182cf957",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1883611f-f692-461c-8006-96045d478c71/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2ae9bc28b02d1a89ca5fcb2fb8cfcbc84c6af51a3745ddbe10e9892a3a765f23",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c53660b5-f919-4c9d-a610-3cd83325ec1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fd8c2ec69bb892837684cef94ce382ac964948b8b9fbd054af84696d9d8c4c37",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/185baf39-2d8e-412e-8477-3f6b82779760/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T145703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=35220ea4ee0576b1f3f92bbaa885e0dd93527fa195de2f45fbfb4939f701f14e"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260824_104412_247bb58f-40de-477e-ba5e-b07330fae62a-gelato-front-350.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-09-08T14:59:15.309Z",
+    "updatedAt": "2026-09-08T14:59:15.309Z"
   }
 ]
