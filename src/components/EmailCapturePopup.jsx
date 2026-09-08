@@ -15,10 +15,10 @@ const CONSENT_KEY = 'jayl_cookie_consent'
 // reappearing — one signup, not two.
 function nextDropTitle(cfg) {
   const next = cfg?.next
-  if (!next?.number) return 'Prossimo drop'
+  if (!next?.number) return 'Next drop'
   const number = `Drop ${String(next.number).padStart(2, '0')}`
   if (!next.startsAt) return number
-  const date = new Date(next.startsAt).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })
+  const date = new Date(next.startsAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
   return `${number} · ${date}`
 }
 

@@ -157,7 +157,7 @@ export default function TrackPage() {
                 <div className="text-right">
                   <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Date</p>
                   <p className="text-cream text-sm">
-                    {order.createdAt ? new Date(order.createdAt).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }) : '—'}
+                    {order.createdAt ? new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '—'}
                   </p>
                 </div>
               </div>

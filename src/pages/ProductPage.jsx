@@ -759,11 +759,11 @@ export default function ProductPage() {
     && (dropSale?.sold ?? 0) >= (dropSale?.cap ?? dropCap)
   const dropWindowBlocked = isDropBefore || isDropClosed || isSoldOut
 
-  // "Apre il 5 settembre" — derived from the real startsAt (never hardcoded),
+  // "Opens 5 September" — derived from the real startsAt (never hardcoded),
   // so it can't drift from the countdown DropBlock shows for the same date.
   const dropOpensLabel = dropCfg.current?.startsAt
-    ? `Apre il ${new Date(dropCfg.current.startsAt).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })}`
-    : 'In arrivo'
+    ? `Opens ${new Date(dropCfg.current.startsAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })}`
+    : 'Coming soon'
 
   const canAddToCart = (!!selectedSize || !product?.sizes?.length) && !dropWindowBlocked
 
