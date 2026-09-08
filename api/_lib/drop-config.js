@@ -69,6 +69,92 @@ function isPlainObject(v) {
 }
 
 /**
+ * Valida la FORMA di UNA voce drop — `current` o una delle voci in
+ * `scheduled`. Le due condividono esattamente la stessa forma perché il cron
+ * promuove una voce programmata copiandola in `current` così com'è (vedi
+ * api/_lib/drop-schedule.js): regole diverse fra le due significherebbero
+ * poter salvare dal pannello un drop futuro che diventa un `current` invalido
+ * il giorno della promozione, cioè un prebuild rotto su un file scritto da un
+ * cron alle 08:00 con nessuno a guardare.
+ *
+ * `label` finisce nel messaggio d'errore ("current.cap", "scheduled[1].cap")
+ * così l'admin sa QUALE drop rifiutare, non solo quale campo.
+ */
+export function validateDropEntry(c, label = 'current') {
+  if (!isPlainObject(c)) return { ok: false, error: `${label} is required and must be an object` }
+
+  if (typeof c.id !== 'string' || !c.id.trim()) {
+    return { ok: false, error: `${label}.id is required` }
+  }
+  if (!Number.isInteger(c.number)) {
+    return { ok: false, error: `${label}.number must be an integer` }
+  }
+  if (typeof c.title !== 'string' || !c.title.trim()) {
+    return { ok: false, error: `${label}.title is required` }
+  }
+  if (!Array.isArray(c.productIds) || !c.productIds.every((id) => typeof id === 'string')) {
+    return { ok: false, error: `${label}.productIds must be an array of strings` }
+  }
+
+  const startsAt = Date.parse(c.startsAt)
+  if (!Number.isFinite(startsAt)) {
+    return { ok: false, error: `${label}.startsAt must be a parseable date` }
+  }
+  const endsAt = Date.parse(c.endsAt)
+  if (!Number.isFinite(endsAt)) {
+    return { ok: false, error: `${label}.endsAt must be a parseable date` }
+  }
+  if (!(startsAt < endsAt)) {
+    return { ok: false, error: `${label}.startsAt must be before ${label}.endsAt` }
+  }
+
+  // Mai una stringa numerica ("20") o un float (1.5) accettati per coercizione:
+  // sarebbero silenziosamente sbagliati altrove (capFor, il gate del checkout).
+  if (!isPositiveInteger(c.cap)) {
+    return { ok: false, error: `${label}.cap must be a positive integer` }
+  }
+  // Un prezzo 0 (o negativo) non è "gratis" per errore di forma: DropTab fa
+  // `parseInt(v, 10) || 0`, quindi un admin che svuota il campo e salva scrive
+  // silenziosamente dropPrice: 0 — la vetrina mostra €0.00 e Stripe arrotonda
+  // comunque al minimo di 50 centesimi, cioè una maglietta a €0,50 addebitata
+  // diversamente da quanto mostrato. Stesso trattamento di cap sopra:
+  // intero positivo, mai una stringa numerica coercibile.
+  if (!isPositiveInteger(c.dropPrice)) {
+    return { ok: false, error: `${label}.dropPrice must be a positive integer` }
+  }
+  if (!isPositiveInteger(c.bundlePrice)) {
+    return { ok: false, error: `${label}.bundlePrice must be a positive integer` }
+  }
+
+  if (!isPlainObject(c.caps)) {
+    return { ok: false, error: `${label}.caps must be an object` }
+  }
+  for (const [productId, capOverride] of Object.entries(c.caps)) {
+    if (!isPositiveInteger(capOverride)) {
+      return { ok: false, error: `${label}.caps.${productId} must be a positive integer` }
+    }
+  }
+
+  // heroImages è opzionale — assente del tutto per i drop creati prima di questo
+  // campo, o per un admin che non ha ancora scelto un hero per nessuno dei tre
+  // pezzi. Quando c'è, ogni voce deve essere una stringa non vuota (un URL o un
+  // path relativo come quelli già in product.images): mai un booleano, un numero
+  // o una stringa vuota che DropPanels finirebbe per passare a <img src>.
+  if (c.heroImages !== undefined) {
+    if (!isPlainObject(c.heroImages)) {
+      return { ok: false, error: `${label}.heroImages must be an object` }
+    }
+    for (const [productId, url] of Object.entries(c.heroImages)) {
+      if (typeof url !== 'string' || !url.trim()) {
+        return { ok: false, error: `${label}.heroImages.${productId} must be a non-empty string` }
+      }
+    }
+  }
+
+  return { ok: true }
+}
+
+/**
  * Valida la FORMA minima di una configurazione drop prima di scriverla —
  * non la business logic (es. non controlla che i productIds esistano
  * davvero nel catalogo). Unica definizione delle regole, usata sia da
@@ -96,74 +182,42 @@ function isPlainObject(v) {
 export function validateDropConfig(cfg) {
   if (!isPlainObject(cfg)) return { ok: false, error: 'drop config must be an object' }
 
-  const c = cfg.current
-  if (!isPlainObject(c)) return { ok: false, error: 'current is required and must be an object' }
+  const currentCheck = validateDropEntry(cfg.current, 'current')
+  if (!currentCheck.ok) return currentCheck
 
-  if (typeof c.id !== 'string' || !c.id.trim()) {
-    return { ok: false, error: 'current.id is required' }
-  }
-  if (!Number.isInteger(c.number)) {
-    return { ok: false, error: 'current.number must be an integer' }
-  }
-  if (typeof c.title !== 'string' || !c.title.trim()) {
-    return { ok: false, error: 'current.title is required' }
-  }
-  if (!Array.isArray(c.productIds) || !c.productIds.every((id) => typeof id === 'string')) {
-    return { ok: false, error: 'current.productIds must be an array of strings' }
-  }
-
-  const startsAt = Date.parse(c.startsAt)
-  if (!Number.isFinite(startsAt)) {
-    return { ok: false, error: 'current.startsAt must be a parseable date' }
-  }
-  const endsAt = Date.parse(c.endsAt)
-  if (!Number.isFinite(endsAt)) {
-    return { ok: false, error: 'current.endsAt must be a parseable date' }
-  }
-  if (!(startsAt < endsAt)) {
-    return { ok: false, error: 'current.startsAt must be before current.endsAt' }
-  }
-
-  // Mai una stringa numerica ("20") o un float (1.5) accettati per coercizione:
-  // sarebbero silenziosamente sbagliati altrove (capFor, il gate del checkout).
-  if (!isPositiveInteger(c.cap)) {
-    return { ok: false, error: 'current.cap must be a positive integer' }
-  }
-  // Un prezzo 0 (o negativo) non è "gratis" per errore di forma: DropTab fa
-  // `parseInt(v, 10) || 0`, quindi un admin che svuota il campo e salva scrive
-  // silenziosamente dropPrice: 0 — la vetrina mostra €0.00 e Stripe arrotonda
-  // comunque al minimo di 50 centesimi, cioè una maglietta a €0,50 addebitata
-  // diversamente da quanto mostrato. Stesso trattamento di current.cap sopra:
-  // intero positivo, mai una stringa numerica coercibile.
-  if (!isPositiveInteger(c.dropPrice)) {
-    return { ok: false, error: 'current.dropPrice must be a positive integer' }
-  }
-  if (!isPositiveInteger(c.bundlePrice)) {
-    return { ok: false, error: 'current.bundlePrice must be a positive integer' }
-  }
-
-  if (!isPlainObject(c.caps)) {
-    return { ok: false, error: 'current.caps must be an object' }
-  }
-  for (const [productId, capOverride] of Object.entries(c.caps)) {
-    if (!isPositiveInteger(capOverride)) {
-      return { ok: false, error: `current.caps.${productId} must be a positive integer` }
+  // ── scheduled — i drop futuri, in attesa di promozione ────────────────────
+  // Assente = valido: ogni drop config scritto prima dello scheduling deve
+  // restare accettabile senza modifiche (retrocompatibilità, come heroImages).
+  // Quando c'è, ogni voce ha ESATTAMENTE la stessa forma di `current`: il cron
+  // la promuove copiandola in `current` così com'è, quindi una voce che non
+  // passerebbe queste regole diventerebbe un `current` invalido — e a quel
+  // punto il prossimo `npm run prebuild` fallirebbe su un file scritto da una
+  // macchina, di notte, senza nessuno a guardare. Si rifiuta al salvataggio.
+  if (cfg.scheduled !== undefined) {
+    if (!Array.isArray(cfg.scheduled)) {
+      return { ok: false, error: 'scheduled must be an array' }
     }
-  }
-
-  // heroImages è opzionale — assente del tutto per i drop creati prima di questo
-  // campo, o per un admin che non ha ancora scelto un hero per nessuno dei tre
-  // pezzi. Quando c'è, ogni voce deve essere una stringa non vuota (un URL o un
-  // path relativo come quelli già in product.images): mai un booleano, un numero
-  // o una stringa vuota che DropPanels finirebbe per passare a <img src>.
-  if (c.heroImages !== undefined) {
-    if (!isPlainObject(c.heroImages)) {
-      return { ok: false, error: 'current.heroImages must be an object' }
+    for (let i = 0; i < cfg.scheduled.length; i++) {
+      const entryCheck = validateDropEntry(cfg.scheduled[i], `scheduled[${i}]`)
+      if (!entryCheck.ok) return entryCheck
     }
-    for (const [productId, url] of Object.entries(c.heroImages)) {
-      if (typeof url !== 'string' || !url.trim()) {
-        return { ok: false, error: `current.heroImages.${productId} must be a non-empty string` }
+
+    // Gli id devono essere unici fra current e scheduled. Il registro vendite
+    // (api/_lib/drop-sales.js) è indicizzato per `current.id`: due drop che
+    // condividono un id condividerebbero anche i contatori, e il secondo
+    // aprirebbe con i pezzi del primo già "venduti" — quindi sold-out al
+    // primo checkout, senza che niente lo segnali. Nota: `previous` non
+    // conserva l'id del drop chiuso, quindi qui si può controllare solo la
+    // collisione fra current e i programmati; è comunque il caso che un
+    // pannello admin può davvero produrre (duplicare una voce e cambiarle
+    // solo la data).
+    const ids = [cfg.current.id, ...cfg.scheduled.map((e) => e.id)]
+    const seen = new Set()
+    for (const id of ids) {
+      if (seen.has(id)) {
+        return { ok: false, error: `drop id duplicato: "${id}" — ogni drop deve avere un id unico (il registro vendite è indicizzato per id)` }
       }
+      seen.add(id)
     }
   }
 

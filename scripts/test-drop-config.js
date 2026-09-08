@@ -129,6 +129,66 @@ if (cfg) {
     validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: { aaa: '' } } }).ok === false)
   check('heroImages non-oggetto (array) → rifiutato',
     validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: ['not', 'an', 'object'] } }).ok === false)
+
+  // ── scheduled — i drop futuri in attesa di promozione ────────────────────
+  // Ogni voce ha ESATTAMENTE la forma di `current` perché il cron la promuove
+  // copiandola lì così com'è (api/_lib/drop-schedule.js). Se le regole delle
+  // due divergessero, si potrebbe salvare dal pannello un drop futuro che
+  // diventa un `current` invalido il giorno della promozione — cioè un
+  // prebuild rotto su un file scritto da un cron alle 08:00, con nessuno a
+  // guardare e il pannello admin incapace di ripararlo (get-drop riparsa lo
+  // stesso file). Si rifiuta al salvataggio, non dopo.
+  const validEntry = {
+    id: 'test-drop-02', number: 2, title: 'TEST 02',
+    productIds: ['bbb'],
+    startsAt: '2026-01-20T00:00:00Z',
+    endsAt:   '2026-01-23T00:00:00Z',
+    cap: 20, caps: {},
+    dropPrice: 2200, bundlePrice: 5700,
+  }
+
+  check('scheduled assente → comunque valido (retrocompatibilità)',
+    validateDropConfig(validCfg).ok === true)
+  check('scheduled: [] → valido',
+    validateDropConfig({ ...validCfg, scheduled: [] }).ok === true)
+  check('scheduled con una voce ben formata → valido',
+    validateDropConfig({ ...validCfg, scheduled: [validEntry] }).ok === true)
+  check('scheduled non-array (oggetto) → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: { 0: validEntry } }).ok === false)
+
+  // Le stesse trappole di `current`, applicate a una voce programmata.
+  check('scheduled[0].cap: 0 → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, cap: 0 }] }).ok === false)
+  check('scheduled[0].dropPrice: 0 → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, dropPrice: 0 }] }).ok === false)
+  check('scheduled[0].startsAt dopo endsAt → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, startsAt: '2026-01-25T00:00:00Z' }] }).ok === false)
+  check('scheduled[0].caps.<id> negativo → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, caps: { bbb: -1 } }] }).ok === false)
+  check('scheduled[0].id vuoto → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, id: '' }] }).ok === false)
+  check('scheduled[0]: heroImages con stringa vuota → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, heroImages: { bbb: '' } }] }).ok === false)
+
+  // Il messaggio d'errore deve nominare QUALE drop, non solo quale campo:
+  // con tre drop programmati "cap must be a positive integer" non basta a
+  // sapere quale riga del pannello riaprire.
+  const named = validateDropConfig({ ...validCfg, scheduled: [validEntry, { ...validEntry, id: 'test-drop-03', cap: 0 }] })
+  check('l\'errore su una voce programmata nomina l\'indice (scheduled[1])',
+    named.ok === false && named.error.includes('scheduled[1]'))
+
+  // ── id duplicati ─────────────────────────────────────────────────────────
+  // Il registro vendite (api/_lib/drop-sales.js) è indicizzato per
+  // `current.id`: due drop con lo stesso id condividono i contatori, e il
+  // secondo apre coi pezzi del primo già "venduti" — sold-out al primo
+  // checkout, senza che niente lo segnali. Il pannello può davvero produrlo
+  // (duplicare una voce e cambiarle solo la data).
+  check('id duplicato fra current e scheduled → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [{ ...validEntry, id: 'test-drop' }] }).ok === false)
+  check('id duplicato fra due voci programmate → rifiutato',
+    validateDropConfig({ ...validCfg, scheduled: [validEntry, { ...validEntry, number: 3 }] }).ok === false)
+  check('id tutti distinti → accettato',
+    validateDropConfig({ ...validCfg, scheduled: [validEntry, { ...validEntry, id: 'test-drop-03', number: 3 }] }).ok === true)
 }
 
 // ── Report ──────────────────────────────────────────────────────────────────

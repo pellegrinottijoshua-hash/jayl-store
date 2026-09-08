@@ -36,6 +36,7 @@ export const drop = {
     }
   },
   "previous": null,
+  "scheduled": [],
   "next": {
     "number": 2,
     "startsAt": "2026-09-10T16:00:00Z"

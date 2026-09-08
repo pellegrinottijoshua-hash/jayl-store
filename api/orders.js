@@ -248,9 +248,18 @@ async function handleCreateOrder(req, res) {
     // Send order confirmation email — non-blocking, never throws
     const customerEmail = pi.metadata?.email || pi.receipt_email
 
-    // Mark abandoned cart as converted — fire-and-forget
+    // Mark abandoned cart as converted — AWAITED, non fire-and-forget.
+    // In una funzione serverless la risposta congela il processo: una fetch
+    // non attesa può non partire mai. Qui non c'è un secondo percorso che
+    // rimandi la stessa richiesta (a differenza della conferma d'ordine, che
+    // il webhook Stripe doppia), quindi senza await il carrello resta
+    // `converted: false` per sempre — e chi ha appena comprato riceve
+    // l'email "hai lasciato qualcosa nel carrello" al giro di cron dopo.
+    // Verificato in produzione: il carrello del 7 settembre è rimasto
+    // converted:false nonostante l'acquisto quattordici secondi dopo.
+    // Il .catch resta: un errore qui non deve far fallire l'ordine.
     if (customerEmail) {
-      fetch(`${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/capture-email`, {
+      await fetch(`${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/capture-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'cart-converted', email: customerEmail }),

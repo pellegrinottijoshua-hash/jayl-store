@@ -5,6 +5,7 @@ import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 import { ghGet, ghPut } from './_lib/github.js'
 import { DROP_CONFIG_PATH, serializeDropConfig, parseDropConfig, validateDropConfig } from './_lib/drop-config.js'
+import { pickDueDrop, promoteDrop } from './_lib/drop-schedule.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -235,44 +236,57 @@ export default async function handler(req, res) {
     if (!githubToken) return res.status(500).json({ error: 'GITHUB_TOKEN not configured' })
 
     const now = new Date()
-    const { items, sha } = await readQueue(githubToken)
-    const due = items.filter(it => it.status === 'pending' && new Date(it.scheduledAt) <= now)
-    if (!due.length) return res.status(200).json({ processed: 0, message: 'No items due' })
 
+    // Ogni blocco di questo cron è indipendente e va in try/catch proprio: un
+    // errore nella coda social non deve impedire le email dei carrelli, né la
+    // promozione del drop programmato. È esattamente il bug che ha tenuto
+    // ferme le email di recupero carrello per otto giorni — non un errore, ma
+    // un `return` anticipato quando la coda era vuota, che rendeva
+    // irraggiungibile tutto ciò che veniva dopo. Da qui in poi: nessun return
+    // prima della risposta finale.
     let processed = 0
-    for (const item of due) {
-      try {
-        const result = await fetch(
-          `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/publish-social`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              password: ADMIN_PASSWORD,
-              platform: item.platform,
-              imageUrl: item.imageUrl,
-              videoUrl: item.videoUrl,
-              caption:  item.caption,
-              hashtags: item.hashtags,
-              altText:  item.altText,
-              title:    item.title,
-              description: item.description,
-              link:     item.link,
-            }),
-          }
-        ).then(r => r.json())
+    let queueDue  = 0
+    try {
+      const { items, sha } = await readQueue(githubToken)
+      const due = items.filter(it => it.status === 'pending' && new Date(it.scheduledAt) <= now)
+      queueDue = due.length
 
-        item.status      = result.ok ? 'published' : 'failed'
-        item.publishedAt = result.ok ? new Date().toISOString() : null
-        item.error       = result.ok ? null : (result.error || 'Unknown error')
-        if (result.ok) processed++
-      } catch (e) {
-        item.status = 'failed'
-        item.error  = e.message
+      for (const item of due) {
+        try {
+          const result = await fetch(
+            `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/publish-social`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                password: ADMIN_PASSWORD,
+                platform: item.platform,
+                imageUrl: item.imageUrl,
+                videoUrl: item.videoUrl,
+                caption:  item.caption,
+                hashtags: item.hashtags,
+                altText:  item.altText,
+                title:    item.title,
+                description: item.description,
+                link:     item.link,
+              }),
+            }
+          ).then(r => r.json())
+
+          item.status      = result.ok ? 'published' : 'failed'
+          item.publishedAt = result.ok ? new Date().toISOString() : null
+          item.error       = result.ok ? null : (result.error || 'Unknown error')
+          if (result.ok) processed++
+        } catch (e) {
+          item.status = 'failed'
+          item.error  = e.message
+        }
       }
-    }
 
-    await writeQueue(items, sha, `[cron] Process ${processed} queue items`, githubToken)
+      if (due.length) await writeQueue(items, sha, `[cron] Process ${processed} queue items`, githubToken)
+    } catch (e) {
+      console.error('[cron] queue error:', e.message)
+    }
 
     // ── Abandoned cart emails ───────────────────────────────────────────────
     let cartsSent = 0
@@ -326,7 +340,56 @@ export default async function handler(req, res) {
       console.error('[cron] abandoned cart error:', e.message)
     }
 
-    return res.status(200).json({ processed, total: due.length, cartsSent })
+    // ── Promozione del drop programmato ─────────────────────────────────────
+    // Il vincolo che decide questa architettura sta in cima a
+    // api/_lib/drop-schedule.js: il bundle del client è deciso al momento
+    // della build, quindi la rotazione dei drop deve passare da un COMMIT
+    // (che fa partire il deploy) e non da un controllo a runtime. Il cron
+    // scrive src/data/drop.js e il deploy fa il resto.
+    let promoted = null
+    let promotionReason = null
+    try {
+      const dropFile = await ghGet(DROP_CONFIG_PATH, githubToken)
+      const dropRaw  = Buffer.from(dropFile.content, 'base64').toString('utf-8')
+      const dropCfg  = parseDropConfig(dropRaw)
+
+      const { entry, index, reason } = pickDueDrop(dropCfg, now)
+      promotionReason = reason
+
+      if (entry) {
+        const nextCfg = promoteDrop(dropCfg, index)
+
+        // Ultimo cancello prima di scrivere. save-drop valida già ogni voce
+        // programmata al salvataggio, ma questo commit lo fa una macchina di
+        // notte: una config invalida qui farebbe fallire OGNI deploy
+        // successivo su un file che nessun umano ha toccato, e il pannello
+        // admin non ha modo di ripararlo (get-drop riparsa lo stesso file).
+        // Meglio non promuovere e lasciarlo scritto nel log.
+        const validation = validateDropConfig(nextCfg)
+        if (!validation.ok) {
+          promotionReason = `promozione ANNULLATA — config risultante invalida: ${validation.error}`
+          console.error('[cron] drop promotion aborted:', validation.error)
+        } else {
+          // Nessun [skip ci] qui, al contrario dei commit di vendite e
+          // carrelli: il deploy È il meccanismo: senza rebuild il nuovo
+          // `current` punterebbe a prodotti che il bundle non contiene.
+          await ghPut(
+            DROP_CONFIG_PATH,
+            serializeDropConfig(nextCfg),
+            dropFile.sha,
+            `[drop] promote ${entry.id} (drop ${entry.number})`,
+            githubToken,
+          )
+          promoted = { id: entry.id, number: entry.number, startsAt: entry.startsAt }
+          console.log('[cron] drop promoted:', entry.id)
+        }
+      }
+    } catch (e) {
+      console.error('[cron] drop promotion error:', e.message)
+      promotionReason = `errore: ${e.message}`
+    }
+
+    return res.status(200).json({ processed, total: queueDue, cartsSent, promoted, promotionReason })
   }
 
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })

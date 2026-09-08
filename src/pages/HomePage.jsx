@@ -9,6 +9,7 @@ import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 import DropPanels from '@/components/drop/DropPanels'
 import DropCountdown from '@/components/drop/DropCountdown'
 import { dropWindowState, BEFORE } from '@/components/drop/dropWindowState'
+import { nextDropStartsAt } from '../../api/_lib/drop-schedule.js'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
 const dropCfg          = getDrop()
@@ -250,6 +251,10 @@ export default function HomePage() {
   // so it stays correct as the countdown crosses startsAt/endsAt during a
   // long-lived tab, same as DropPanels' own call to dropWindowState.
   const dropState = dropWindowState(dropCfg)
+  // Il primo drop programmato ancora futuro, con fallback al vecchio
+  // `cfg.next` — la stessa fonte che usa dropWindowState per il suo target,
+  // così i due countdown non possono annunciare date diverse.
+  const nextStartsAt = nextDropStartsAt(dropCfg)
 
   // ── Waitlist form — reuses the same /api/capture-email endpoint as
   // EmailCapturePopup, so no new server code is needed for this screen.
@@ -340,9 +345,9 @@ export default function HomePage() {
                   label="opens in"
                   className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-3 sm:mb-8"
                 />
-              ) : dropCfg.next?.startsAt && (
+              ) : nextStartsAt && (
                 <DropCountdown
-                  to={dropCfg.next.startsAt}
+                  to={nextStartsAt}
                   label="next drop in"
                   className="block text-xs tracking-widest uppercase text-white/50 tabular-nums mb-3 sm:mb-8"
                 />
