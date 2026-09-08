@@ -20,7 +20,25 @@
 // "Invalid pathname" — that detail costs an afternoon if you assume otherwise.
 //
 // The resulting url is NOT publicly readable (403 without a token): the server
-// reads it back with blobGet + BLOB_READ_WRITE_TOKEN. See api/_lib blobToBase64.
+// reads it back with blobGet + BLOB_READ_WRITE_TOKEN. See api/_lib blobToBase64,
+// which now deletes the blob in a `finally` — not only on the success path — so
+// a re-upload of the SAME pathname (see allowOverwrite below) never meets a
+// blob orphaned by a server-side failure.
+//
+// ── allowOverwrite ───────────────────────────────────────────────────────────
+// Every caller here uses a DETERMINISTIC pathname (`<productId>/<filename>`,
+// `designs/<id>/<filename>`) — a re-upload of the same file for the same
+// product is meant to replace what's there, not fail. Without
+// `x-allow-overwrite: 1`, Vercel Blob rejects a PUT to an existing pathname
+// with 400 "This blob already exists" — and the blob normally never survives
+// past the request that reads it (the server deletes it right after), so
+// under normal operation this collision cannot happen. It DID happen once:
+// the server-side commit for Entei's 13.8 MB print file failed mid-request
+// (the site was mid-incident from the admin-products.js catalog bug at the
+// same time), the blob was never read, so it was never deleted — and every
+// retry with the same filename hit the same 400 forever after, because the
+// orphan had nothing that would ever clean it up. `allowOverwrite` makes a
+// retry succeed instead of getting permanently stuck on its own leftover.
 
 const BLOB_API = 'https://blob.vercel-storage.com'
 
@@ -61,6 +79,7 @@ export async function blobDirectUpload(pathname, file, { clientPayload, onProgre
     xhr.setRequestHeader('authorization', `Bearer ${clientToken}`)
     xhr.setRequestHeader('x-api-version', '11')
     xhr.setRequestHeader('x-vercel-blob-access', 'private')
+    xhr.setRequestHeader('x-allow-overwrite', '1')
     xhr.setRequestHeader('content-type', file.type || 'application/octet-stream')
 
     if (onProgress) {

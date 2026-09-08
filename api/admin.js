@@ -255,17 +255,33 @@ async function blobToBase64(blobUrl, label) {
   const blobToken = process.env.BLOB_READ_WRITE_TOKEN
   if (!blobToken) throw new Error('BLOB_READ_WRITE_TOKEN not configured on server')
 
-  const result = await blobGet(blobUrl, { access: 'private', token: blobToken })
-  if (result.statusCode !== 200) {
-    throw new Error(`Failed to download ${label}: blob returned ${result.statusCode}`)
+  // The delete moved into `finally`, deliberately unconditional. It used to run
+  // only after a successful download+decode, on the last line of the happy
+  // path — so a throw ANYWHERE above it (blobGet failing, the stream erroring
+  // mid-read) left the blob behind at its pathname forever. That is exactly
+  // what stranded Entei's 13.8 MB print file: the upload PUT to Blob succeeded,
+  // this function threw before reaching its old cleanup line (the site was
+  // mid-incident from the admin-products.js catalog bug at the same moment),
+  // and every retry after that hit the SAME pathname with nothing to clear it.
+  //
+  // These blobs are pure staging (see the file-level comment above): nothing
+  // downstream ever reads one a second time, success or failure, so deleting
+  // unconditionally here cannot lose data — it can only stop losing a
+  // pathname. Paired with `x-allow-overwrite: 1` on the client PUT
+  // (src/lib/blobDirectUpload.js) as a second line of defense: even a blob
+  // this can't reach (a crash before `finally` runs at all) no longer blocks
+  // the next retry.
+  try {
+    const result = await blobGet(blobUrl, { access: 'private', token: blobToken })
+    if (result.statusCode !== 200) {
+      throw new Error(`Failed to download ${label}: blob returned ${result.statusCode}`)
+    }
+    const chunks = []
+    for await (const chunk of result.stream) chunks.push(Buffer.from(chunk))
+    return Buffer.concat(chunks).toString('base64')
+  } finally {
+    blobDel(blobUrl, { token: blobToken }).catch(() => {})
   }
-  const chunks = []
-  for await (const chunk of result.stream) chunks.push(Buffer.from(chunk))
-  const base64 = Buffer.concat(chunks).toString('base64')
-
-  // Clean up the temporary blob now that the bytes are in hand.
-  blobDel(blobUrl, { token: blobToken }).catch(() => {})
-  return base64
 }
 
 export default async function handler(req, res) {
