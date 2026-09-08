@@ -16190,7 +16190,7 @@ export const adminProducts = [
     "id": "meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Meganium Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  grass Pokemon Gift for Him",
+    "name": "Cool Meganium Back T Shirt",
     "subtitle": "cool pokemon back",
     "price": 2400,
     "currency": "eur",
@@ -16597,7 +16597,8 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260816_113516_3f2f58d0-ecea-4083-a650-2517b66eddc6-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:44:50.914Z",
-    "updatedAt": "2026-09-08T14:44:50.914Z"
+    "updatedAt": "2026-09-08T14:49:39.357Z",
+    "relatedProducts": []
   },
   {
     "id": "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
