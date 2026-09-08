@@ -68,20 +68,67 @@ async function addToVideosManifest(productId, asset, token) {
 
 // ── Admin products helpers ────────────────────────────────────────────────────
 
+/**
+ * Legge il catalogo. LANCIA se non riesce a leggerlo davvero — non ritorna
+ * mai un catalogo vuoto per "non ho potuto leggere".
+ *
+ * Questa funzione ritornava `{ products: [], sha }` su ogni lettura non
+ * riuscita, e quel valore è indistinguibile da "il catalogo è legittimamente
+ * vuoto". Ogni chiamante ci costruisce sopra la lista che riscriverà: un
+ * catalogo vuoto letto per errore diventa un catalogo vuoto SCRITTO, e con lo
+ * sha valido che la Contents API restituisce anche sopra il MB (vedi ghGet)
+ * la scrittura riesce. L'8 settembre 2026 è costato 40 prodotti su 43 senza un
+ * errore in nessun log.
+ *
+ * Ora un fallimento resta un fallimento: il chiamante risponde 500 e l'admin
+ * riprova. Un salvataggio rifiutato è un fastidio; un salvataggio che riesce
+ * cancellando il catalogo è la fine del negozio.
+ */
 async function readAdminProducts(token) {
-  try {
-    const file = await ghGet(ADMIN_PRODUCTS_PATH, token)
-    const content = Buffer.from(file.content, 'base64').toString('utf8')
-    // Extract the JSON array between the first [ and matching ]
-    const match = content.match(/export const adminProducts = (\[[\s\S]*\])/)
-    if (!match) return { products: [], sha: file.sha }
-    return { products: JSON.parse(match[1]), sha: file.sha }
-  } catch {
-    return { products: [], sha: null }
+  const file = await ghGet(ADMIN_PRODUCTS_PATH, token)
+  const content = Buffer.from(file.content || '', 'base64').toString('utf8')
+
+  // Vuoto con size > 0 = ghGet non ha potuto risolvere il contenuto. Non è un
+  // catalogo vuoto, è una lettura fallita che si traveste da catalogo vuoto.
+  if (!content.trim()) {
+    throw new Error(`${ADMIN_PRODUCTS_PATH}: letto vuoto (size ${file.size}) — lettura non riuscita, salvataggio annullato`)
   }
+
+  const match = content.match(/export const adminProducts = (\[[\s\S]*\])/)
+  if (!match) {
+    throw new Error(`${ADMIN_PRODUCTS_PATH}: nessun array adminProducts nel sorgente — salvataggio annullato`)
+  }
+
+  const products = JSON.parse(match[1])
+  if (!Array.isArray(products)) {
+    throw new Error(`${ADMIN_PRODUCTS_PATH}: adminProducts non è un array — salvataggio annullato`)
+  }
+  return { products, sha: file.sha, previousCount: products.length }
 }
 
-async function writeAdminProducts(products, sha, message, token) {
+/**
+ * Scrive il catalogo, rifiutando le scritture che lo svuotano.
+ *
+ * Ultima rete prima di un file che è, letteralmente, tutto il negozio: SEO,
+ * immagini, print file, varianti, prezzi di 45 prodotti costruiti in mesi.
+ * Nessuna azione dell'admin rimuove più di un prodotto alla volta
+ * (delete-product), quindi una scrittura che ne toglie due o più non è una
+ * modifica: è un bug a monte, e va fermata qui invece di essere committata.
+ *
+ * `previousCount` arriva da readAdminProducts, cioè da ciò che era davvero sul
+ * repo un istante prima — non da un conteggio che il client può sbagliare.
+ */
+async function writeAdminProducts(products, sha, message, token, previousCount = null) {
+  if (!Array.isArray(products)) throw new Error('writeAdminProducts: products deve essere un array')
+
+  if (previousCount != null && products.length < previousCount - 1) {
+    throw new Error(
+      `Scrittura del catalogo RIFIUTATA: passerebbe da ${previousCount} a ${products.length} prodotti. ` +
+      `Nessuna azione admin ne rimuove più di uno alla volta — è un bug di lettura, non una modifica. ` +
+      `Il catalogo su GitHub non è stato toccato.`,
+    )
+  }
+
   const content = `// This file is managed by the JAYL admin panel. Do not edit manually.\nexport const adminProducts = ${JSON.stringify(products, null, 2)}\n`
   return ghPut(ADMIN_PRODUCTS_PATH, content, sha, message, token)
 }
@@ -468,7 +515,7 @@ export default async function handler(req, res) {
         if (product.heroImage) product.heroImage = remap.get(product.heroImage) ?? product.heroImage
       }
 
-      const { products, sha } = await readAdminProducts(githubToken)
+      const { products, sha, previousCount } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === product.id)
       // Preserve createdAt on update; stamp it on first save
       const existing = idx >= 0 ? products[idx] : null
@@ -480,7 +527,7 @@ export default async function handler(req, res) {
       if (idx >= 0) products[idx] = productWithMeta
       else products.push(productWithMeta)
 
-      await writeAdminProducts(products, sha, `admin: ${idx >= 0 ? 'update' : 'add'} ${product.id}`, githubToken)
+      await writeAdminProducts(products, sha, `admin: ${idx >= 0 ? 'update' : 'add'} ${product.id}`, githubToken, previousCount)
       return res.status(200).json({ ok: true })
     }
 
@@ -493,7 +540,7 @@ export default async function handler(req, res) {
       const { productId, featured } = data   // featured = 1 | 2 | false
       if (!productId) return res.status(400).json({ error: 'productId required' })
 
-      const { products, sha } = await readAdminProducts(githubToken)
+      const { products, sha, previousCount } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === productId)
       if (idx < 0) return res.status(404).json({ error: 'Product not found' })
 
@@ -509,7 +556,7 @@ export default async function handler(req, res) {
       const slot = featured === 1 ? 1 : featured === 2 ? 2 : false
       products[idx] = { ...products[idx], featured: slot, updatedAt: new Date().toISOString() }
       await writeAdminProducts(products, sha,
-        `admin: ${slot ? `set slot ${slot}` : 'unfeature'} ${productId}`, githubToken)
+        `admin: ${slot ? `set slot ${slot}` : 'unfeature'} ${productId}`, githubToken, previousCount)
       return res.status(200).json({ ok: true })
     }
 
@@ -521,7 +568,7 @@ export default async function handler(req, res) {
       if (!productId || !Array.isArray(newImages)) {
         return res.status(400).json({ error: 'productId and images[] required' })
       }
-      const { products, sha } = await readAdminProducts(githubToken)
+      const { products, sha, previousCount } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === productId)
       if (idx < 0) return res.status(404).json({ error: 'Product not found' })
       // Download any expiring Gelato S3 mockups → committed local paths (no blank galleries)
@@ -538,7 +585,7 @@ export default async function handler(req, res) {
         ...(detailImage !== undefined ? { detailImage: detailImage || null } : {}),
         updatedAt: new Date().toISOString(),
       }
-      await writeAdminProducts(products, sha, `admin: update images order for ${productId}`, githubToken)
+      await writeAdminProducts(products, sha, `admin: update images order for ${productId}`, githubToken, previousCount)
       return res.status(200).json({ ok: true })
     }
 
@@ -547,12 +594,12 @@ export default async function handler(req, res) {
       const { productId } = data
       if (!productId) return res.status(400).json({ error: 'productId required' })
 
-      const { products, sha } = await readAdminProducts(githubToken)
+      const { products, sha, previousCount } = await readAdminProducts(githubToken)
       const filtered = products.filter(p => p.id !== productId)
       if (filtered.length === products.length) {
         return res.status(404).json({ error: 'Product not found in admin products' })
       }
-      await writeAdminProducts(filtered, sha, `admin: delete ${productId}`, githubToken)
+      await writeAdminProducts(filtered, sha, `admin: delete ${productId}`, githubToken, previousCount)
       return res.status(200).json({ ok: true })
     }
 
@@ -1251,7 +1298,7 @@ export default async function handler(req, res) {
       if (savedPaths.length === 0) return res.status(500).json({ error: 'No assets could be saved' })
 
       // 2. Update product: heroImages + SEO + socialCopy
-      const { products, sha: prodSha } = await readAdminProducts(githubToken)
+      const { products, sha: prodSha, previousCount } = await readAdminProducts(githubToken)
       const idx = products.findIndex(p => p.id === productId)
       if (idx < 0) return res.status(404).json({ error: 'Product not found' })
 
@@ -1281,7 +1328,7 @@ export default async function handler(req, res) {
         updatedAt: new Date().toISOString(),
       }
       products[idx] = updated
-      await writeAdminProducts(products, prodSha, `admin: publish ${platform} assets for ${productId}`, githubToken)
+      await writeAdminProducts(products, prodSha, `admin: publish ${platform} assets for ${productId}`, githubToken, previousCount)
 
       return res.status(200).json({ ok: true, savedPaths, heroImages, updatedProduct: updated })
     }
@@ -1377,7 +1424,10 @@ Return a JSON object with these exact keys:
         startingAfter = d.data[d.data.length - 1]?.id
       }
 
-      // Import all products from GitHub for printCost + collection lookup
+      // Import all products from GitHub for printCost + collection lookup.
+      // Il fallback a [] resta solo qui: questo percorso LEGGE e basta (report
+      // dei ricavi), non riscrive mai il catalogo — al massimo un printCost
+      // manca dal report. Ovunque si scriva, readAdminProducts deve lanciare.
       const { products: adminProds } = await readAdminProducts(githubToken).catch(() => ({ products: [] }))
       const productMap = {}
       adminProds.forEach(p => { productMap[p.id] = p })
