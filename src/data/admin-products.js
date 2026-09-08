@@ -14657,7 +14657,12 @@ export const adminProducts = [
     "description": "With wings unfurled and a soft, soothing hue of sky blue, Altaria glides through the air like a gentle breeze that stirs the soul. This design encapsulates the essence of the Cloud Pokémon; a calming presence amid chaos, reminiscent of serene summer skies and soaring freedom. Each Gildan premium tee showcases vibrant direct-to-garment print quality, making Altaria's charm come alive in every stitch. It’s a wearable piece of art that captures not just an image but a feeling—a touchstone for anyone who appreciates beauty in motion. Perfect as a thoughtful gift for those who value tranquility and elegance.",
     "altText": "Soaring Altaria with open wings in serene blue tones on vibrant fan-art style chest print on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -15046,47 +15051,56 @@ export const adminProducts = [
       {
         "id": "white",
         "label": "White",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-06.jpg"
       },
       {
         "id": "daisy",
         "label": "Daisy",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-04.jpg"
       },
       {
         "id": "azalea",
         "label": "Azalea",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-09.jpg"
       },
       {
         "id": "navy",
         "label": "Navy",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-05.jpg"
       },
       {
         "id": "black",
         "label": "Black",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-10.jpg"
       },
       {
         "id": "natural",
         "label": "Natural",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-03.jpg"
       },
       {
         "id": "light-blue",
         "label": "Light Blue",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-01.jpg"
       },
       {
         "id": "royal",
         "label": "Royal",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-02.jpg"
       },
       {
         "id": "rs-sport-grey",
         "label": "Rs Sport Grey",
-        "hex": "#888888"
+        "hex": "#888888",
+        "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-08.jpg"
       }
     ],
     "etsyTitle": "Altaria Back Print Shirt, 90s Anime Vibe, Gift For Retro Lovers",
@@ -15138,7 +15152,12 @@ export const adminProducts = [
     "description": "The vibrant illustration of Elekid electrifies the retro 90s vibe, capturing that wild energy as it bursts onto this unisex cotton tee. With a striking large back design that playfully channels Elekid's mischievous spirit, you’ll feel like you're wearing a piece of fan culture history. The premium Gildan tee showcases high-quality DTG print, ensuring the electrifying art comes alive in every detail. This shirt isn’t just for you; it’s an electric gift for anyone who grew up in the era of iconic anime and Pokémon battles.",
     "altText": "Elekid leaping energetically with electrifying sparks in retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -15565,61 +15584,61 @@ export const adminProducts = [
         "id": "white",
         "label": "White",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-white-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-09.jpg"
       },
       {
         "id": "navy",
         "label": "Navy",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-navy-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-05.jpg"
       },
       {
         "id": "red",
         "label": "Red",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-red-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-08.jpg"
       },
       {
         "id": "daisy",
         "label": "Daisy",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-daisy-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-02.jpg"
       },
       {
         "id": "royal",
         "label": "Royal",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-royal-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-06.jpg"
       },
       {
         "id": "natural",
         "label": "Natural",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-natural-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-03.jpg"
       },
       {
         "id": "light-blue",
         "label": "Light Blue",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-light-blue-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-04.jpg"
       },
       {
         "id": "rs-sport-grey",
         "label": "Rs Sport Grey",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-rs-sport-grey-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-07.jpg"
       },
       {
         "id": "gold",
         "label": "Gold",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gold-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-10.jpg"
       },
       {
         "id": "black",
         "label": "Black",
         "hex": "#888888",
-        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-black-01.jpg"
+        "image": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-01.jpg"
       }
     ],
     "etsyTitle": "Elekid Back Print Shirt, Retro 90s Vibe, Gift for Nintendo Lover",
@@ -15678,7 +15697,12 @@ export const adminProducts = [
     "description": "This Ursaring Back Print Shirt is a must for the friend who lives the nostalgia of the 90s anime boom. With its large graphic design showcasing a playful Ursaring in a vintage aesthetic, this unisex cotton tee channels both comfort and style. Crafted from Gildan's premium material with cutting-edge DTG print quality, it's made to withstand the adventures of any Pokémon trainer. Gift it to your buddy who still remembers the thrill of catching 'em all, or treat yourself to a bold throwback look that says you appreciate both art and fun.",
     "altText": "Ursaring depicted striking a playful pose in vibrant colors on a retro 90s anime-inspired JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -16067,55 +16091,55 @@ export const adminProducts = [
         "id": "sand",
         "label": "Sand",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-sand-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-05.jpg"
       },
       {
         "id": "rs-sport-grey",
         "label": "Rs Sport Grey",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-rs-sport-grey-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-08.jpg"
       },
       {
         "id": "white",
         "label": "White",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-white-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-04.jpg"
       },
       {
         "id": "gold",
         "label": "Gold",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gold-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-06.jpg"
       },
       {
         "id": "cardinal-red",
         "label": "Cardinal Red",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-cardinal-red-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-07.jpg"
       },
       {
         "id": "heather-maroon",
         "label": "Heather Maroon",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-heather-maroon-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-09.jpg"
       },
       {
         "id": "navy",
         "label": "Navy",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-navy-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg"
       },
       {
         "id": "black",
         "label": "Black",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-black-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg"
       },
       {
         "id": "purple",
         "label": "Purple",
         "hex": "#888888",
-        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-purple-01.jpg"
+        "image": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg"
       }
     ],
     "etsyTitle": "Ursaring Back Print Shirt, Retro 90s Graphic Tee, Gift for Pokemon Lover",

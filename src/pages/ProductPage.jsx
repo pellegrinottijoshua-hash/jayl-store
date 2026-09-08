@@ -849,11 +849,11 @@ export default function ProductPage() {
     return (
       <div className="min-h-screen bg-off-black flex flex-col items-center justify-center text-center px-6">
         <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-3">Coming soon</p>
-        <h1 className="text-cream text-2xl mb-6">Questo pezzo non è ancora uscito.</h1>
+        <h1 className="text-cream text-2xl mb-6">This piece hasn't dropped yet.</h1>
         <p className="text-white/60 text-sm mb-8 max-w-sm">
-          Entra nella lista: ti avvisiamo quando entra in un drop.
+          Join the waitlist — we'll let you know when it enters a drop.
         </p>
-        <Link to="/" className="text-cream underline text-sm">Vedi il drop in corso</Link>
+        <Link to="/" className="text-cream underline text-sm">See the current drop</Link>
       </div>
     )
   }

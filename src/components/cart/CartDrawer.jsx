@@ -188,12 +188,12 @@ export default function CartDrawer() {
 
           {dropIds.length === 3 && missing.length > 0 && missing.length < 3 && saving > 0 && (
             <p className="text-xs text-amber-300 px-4 py-2">
-              aggiungi {missing.length === 1 ? "l'ultimo pezzo" : `${missing.length} pezzi`} del drop → {formatPrice(saving)} in meno
+              add {missing.length === 1 ? "the last piece" : `${missing.length} more pieces`} from the drop → save {formatPrice(saving)}
             </p>
           )}
           {dropIds.length === 3 && missing.length === 0 && items.length > 0 && (
             <p className="text-xs text-amber-300 px-4 py-2">
-              bundle drop applicato — {formatPrice(saving)} in meno
+              bundle discount applied — save {formatPrice(saving)}
             </p>
           )}
         </div>

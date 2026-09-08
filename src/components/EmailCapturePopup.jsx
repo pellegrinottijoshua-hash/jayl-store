@@ -133,11 +133,11 @@ export default function EmailCapturePopup() {
           ) : (
             <div className="space-y-4">
               <div>
-                <p className="text-[10px] text-text-muted uppercase tracking-widest mb-1.5">Prossimo drop</p>
+                <p className="text-[10px] text-text-muted uppercase tracking-widest mb-1.5">Next drop</p>
                 <h2 className="font-display text-xl text-cream leading-tight">{title}</h2>
               </div>
               <p className="text-text-secondary text-xs leading-relaxed">
-                entra nella lista: i pezzi sono 20 per design
+                join the list: each design is limited to 20 pieces
               </p>
               <form onSubmit={handleSubmit} className="space-y-2.5">
                 <input
