@@ -5,7 +5,12 @@ import { fetchFile, toBlobURL } from '@ffmpeg/util'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
-import { fitDesignToCanvas, detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS } from '@/lib/printCanvas'
+import {
+  detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS,
+  prepareDesignForPlacement, renderPrintFile,
+  loadImageFromUrl, extractArt, measurePlacement, defaultTransform, clampTransform,
+} from '@/lib/printCanvas'
+import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
@@ -777,11 +782,15 @@ export default function AdminProductPage() {
   const [neckLabelUrl,    setNeckLabelUrl]    = useState('')
   const [uploadingDesign, setUploadingDesign] = useState(false)
   const [designUploadErr, setDesignUploadErr] = useState('')
-  // Staged print file: the source art fitted onto the 3661×4843 canvas, held for
-  // preview so the operator confirms the placement BEFORE it is committed.
-  const [designDraft,  setDesignDraft]  = useState(null)   // {previewUrl, blob, meta, filename}
+  // Staged print file: the art (already alpha-cropped) plus an editable
+  // transform, held so the operator can drag/resize it BEFORE anything is
+  // rendered or committed. `mode` only changes the filename/label shown —
+  // 'new' comes from a freshly picked file, 'existing' from reopening the
+  // print file already on the product for repositioning.
+  const [designEditor, setDesignEditor] = useState(null)   // {art, transform, filename, mode}
   const [fittingDesign, setFittingDesign] = useState(false)
   const [autoFitDesign, setAutoFitDesign] = useState(true)
+  const [repositionErr, setRepositionErr] = useState('')
   // Live state of the upload. Without this the operator sees one opaque spinner
   // and cannot tell a stalled network from a stalled server — which is exactly
   // how a hard 400 from Blob looked indistinguishable from "still working".
@@ -1116,7 +1125,18 @@ export default function AdminProductPage() {
           body: JSON.stringify({ productTitle: name.trim() || 'JAYL product', movement, collection, images: chunk, provider: aiProvider }),
           signal: AbortSignal.timeout(90_000),
         })
-        const data = await res.json()
+        // Stesso pattern difensivo di api() sopra: un fallimento a livello di
+        // piattaforma (funzione uccisa per timeout, cold start, 502) risponde
+        // con una pagina d'errore Vercel, non JSON — `res.json()` alla cieca
+        // lanciava "Unexpected token 'A', "An error o"... is not valid JSON",
+        // un messaggio che non dice nulla di quello che è successo davvero.
+        // Root cause vera: api/ai.js girava a maxDuration:60 mentre questo
+        // stesso handler può fare due chiamanate AI in sequenza al ritentativo
+        // — ora alzato, ma questo resta comunque la seconda linea di difesa
+        // per qualunque altro modo in cui la piattaforma può rispondere non-JSON.
+        let data
+        try { data = await res.json() }
+        catch { throw new Error(`Errore server (${res.status}) — la funzione non ha risposto in tempo o è andata in errore. Riprova con un blocco più piccolo.`) }
         if (!res.ok) throw new Error(data.error || 'Alt text generation failed')
         Object.assign(merged, data.alts || {})
         setImageAlts({ ...merged })
@@ -1342,13 +1362,16 @@ export default function AdminProductPage() {
   const placement = useMemo(() => detectPlacement(product), [product])
 
   /**
-   * Step 1 — pick a file. When auto-fit is on we do NOT upload yet: the artwork is
-   * composed onto the print canvas and staged for review. Uploading straight away
-   * was how wrongly-placed designs used to reach the repo unnoticed.
+   * Step 1 — pick a file. When auto-fit is on we do NOT upload yet: the artwork
+   * is alpha-cropped and opened in the placement editor, pre-filled with the
+   * usual default position/size — the operator can drag/resize from there, or
+   * just confirm as-is (same result the old fixed auto-fit produced).
+   * Uploading straight away was how wrongly-placed designs used to reach the
+   * repo unnoticed.
    */
   const handlePickDesign = async (file) => {
     if (!file) return
-    setDesignUploadErr('')
+    setDesignUploadErr(''); setRepositionErr('')
     const isRaster = /^image\/(png|jpeg|webp)$/.test(file.type)
     if (!autoFitDesign || !isRaster) {
       // PDFs and SVGs cannot be measured on a canvas — upload them untouched.
@@ -1356,22 +1379,61 @@ export default function AdminProductPage() {
     }
     setFittingDesign(true)
     try {
-      const fitted = await fitDesignToCanvas(file, placement.type)
-      setDesignDraft({ ...fitted, filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
+      const { art, transform } = await prepareDesignForPlacement(file, placement.type)
+      setDesignEditor({
+        art, transform,
+        filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png'),
+        mode: 'new',
+      })
     } catch (e) {
-      setDesignUploadErr(e.message || 'Impossibile adattare il file')
+      setDesignUploadErr(e.message || 'Impossibile leggere il file')
     } finally {
       setFittingDesign(false)
     }
   }
 
-  /** Step 2 — confirm the staged canvas and commit it. */
-  const handleConfirmDesign = async () => {
-    if (!designDraft) return
-    const file = new File([designDraft.blob], designDraft.filename, { type: 'image/png' })
-    // Keep the staged canvas on failure so the operator can retry without
-    // re-picking and re-fitting the source file.
-    if (await handleUploadDesign(file)) setDesignDraft(null)
+  /**
+   * Riapre un file di stampa GIÀ caricato per spostarlo/ridimensionarlo.
+   * L'arte viene ritagliata a partire dal file composito stesso — la stessa
+   * estrazione alpha funziona sia sull'artwork grezzo sia su un canvas già
+   * composto, perché in entrambi i casi è solo "arte su sfondo trasparente".
+   * `measurePlacement` legge la posizione ATTUALE dai pixel, così riaprire un
+   * file non lo fa saltare alla posizione di default perdendo un aggiustamento
+   * fatto in una sessione precedente.
+   */
+  const handleRepositionExisting = async () => {
+    if (!printFileUrl) return
+    setRepositionErr(''); setDesignUploadErr('')
+    setFittingDesign(true)
+    try {
+      const img = await loadImageFromUrl(printFileUrl)
+      const art = extractArt(img)
+      const artAspect = art.height / art.width
+      const measured = measurePlacement(img)
+      const transform = clampTransform(measured || defaultTransform(placement.type, artAspect))
+      setDesignEditor({
+        art, transform,
+        filename: printFileUrl.split('/').pop() || 'design.png',
+        mode: 'existing',
+      })
+    } catch (e) {
+      setRepositionErr(
+        `${e.message} — non riesco a rileggere questo file per modificarlo (spesso un problema di CORS sull'URL). ` +
+        `Ricarica il file da zero con "Carica design" per usare l'editor.`,
+      )
+    } finally {
+      setFittingDesign(false)
+    }
+  }
+
+  /** Step 2 — confirm the edited placement and commit it. */
+  const handleConfirmDesign = async (transform) => {
+    if (!designEditor) return
+    const { blob } = await renderPrintFile(designEditor.art, transform, placement.type)
+    const file = new File([blob], designEditor.filename, { type: 'image/png' })
+    // Keep the editor open on failure so the operator can retry without
+    // re-picking/re-measuring the source file and losing their adjustment.
+    if (await handleUploadDesign(file)) setDesignEditor(null)
   }
 
   /**
@@ -2358,40 +2420,23 @@ export default function AdminProductPage() {
                       Adatta automaticamente al canvas di stampa (consigliato)
                     </label>
 
-                    {/* Staged canvas — review before committing */}
-                    {designDraft && (
-                      <div className="flex gap-4 rounded border border-indigo-800/60 bg-indigo-950/20 p-3">
-                        <div
-                          className="shrink-0 border border-dashed border-indigo-700/60 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:16px_16px]"
-                          style={{ width: 110, height: 110 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
-                        >
-                          <img src={designDraft.previewUrl} alt="Anteprima di stampa" className="w-full h-full object-contain" />
-                        </div>
-                        <div className="flex-1 min-w-0 text-xs space-y-1">
-                          <p className="text-indigo-300 font-semibold">Anteprima di stampa — {designDraft.meta.type === 'back' ? 'RETRO' : 'FRONTE'}</p>
-                          <p className="text-gray-500">Sorgente {designDraft.meta.sourceSize} · arte {designDraft.meta.artSize}</p>
-                          <p className="text-gray-500">Sul canvas: {designDraft.meta.drawnSize} ({designDraft.meta.widthPct}% larghezza) · {designDraft.meta.offset}</p>
-                          <p className="text-gray-600">{(designDraft.meta.bytes / 1024 / 1024).toFixed(1)} MB</p>
-                          <div className="flex gap-2 pt-1">
-                            <button
-                              onClick={handleConfirmDesign}
-                              disabled={uploadingDesign}
-                              className="bg-emerald-800 hover:bg-emerald-700 disabled:opacity-50 text-white text-xs px-3 py-1.5 transition-colors"
-                            >
-                              {uploadingDesign ? '⏫ Caricamento…' : '✓ Conferma e carica'}
-                            </button>
-                            <button
-                              onClick={() => setDesignDraft(null)}
-                              disabled={uploadingDesign}
-                              className="text-gray-500 hover:text-red-400 text-xs px-2"
-                            >
-                              Annulla
-                            </button>
-                          </div>
-                        </div>
+                    {/* Editor di posizionamento — sposta/ridimensiona prima di caricare */}
+                    {designEditor && (
+                      <PrintPlacementEditor
+                        art={designEditor.art}
+                        initialTransform={designEditor.transform}
+                        placementType={placement.type}
+                        busy={uploadingDesign}
+                        onConfirm={handleConfirmDesign}
+                        onCancel={() => setDesignEditor(null)}
+                      />
+                    )}
+                    {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Preparazione dell'editor di posizionamento…</p>}
+                    {repositionErr && (
+                      <div className="rounded border border-red-900/60 bg-red-950/20 p-2">
+                        <p className="text-red-400 text-xs break-words">⚠ {repositionErr}</p>
                       </div>
                     )}
-                    {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Adattamento al canvas di stampa…</p>}
 
                     {/* Live phase readout — turns a silent stall into a locatable one */}
                     {designProgress && (
@@ -2421,6 +2466,14 @@ export default function AdminProductPage() {
                            className="text-indigo-400 text-xs font-mono truncate max-w-xs hover:underline">
                           {printFileUrl.split('/').pop()}
                         </a>
+                        <button
+                          onClick={handleRepositionExisting}
+                          disabled={fittingDesign || uploadingDesign}
+                          className="border border-indigo-800/60 hover:border-indigo-600 text-indigo-400 text-xs px-2 py-1 whitespace-nowrap disabled:opacity-40 transition-colors"
+                          title="Sposta o ridimensiona questo file di stampa"
+                        >
+                          🎯 Riposiziona
+                        </button>
                         <button onClick={() => setPrintFileUrl('')} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
                       </div>
                     ) : (

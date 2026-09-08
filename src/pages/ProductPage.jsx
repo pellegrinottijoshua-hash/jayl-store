@@ -8,6 +8,7 @@ import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
 import { useSwipe } from '@/hooks/useSwipe'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { findColorImageIndex, findImageColor } from '@/lib/colorImageMatch'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import DropCountdown from '@/components/drop/DropCountdown'
 import DropBadge from '@/components/drop/DropBadge'
@@ -652,31 +653,31 @@ export default function ProductPage() {
   // Whichever image array is actually shown in the gallery (hero gallery takes priority)
   const galleryImages = product?.heroImages?.length > 0 ? product.heroImages : product?.images
 
-  // Admin-authored color.image paths sometimes point at a stale directory/filename
-  // that no longer matches product.images — fall back to matching by color slug
-  // in the filename (e.g. "...-carolina-blue-01.jpg") when the exact URL doesn't match.
-  const colorMatchesImage = (color, img) => {
-    if (!color?.image || !img) return false
-    if (color.image === img) return true
-    const slug = colorToSlug(color.label || color.id)
-    return !!slug && img.toLowerCase().includes(slug)
-  }
-
-  // Jump to color image when color changes
+  // Jump to color image when color changes.
+  //
+  // `color.image` (admin-authored, stale) and the old plain-substring fallback
+  // are both gone — see src/lib/colorImageMatch.js for why: nothing writes
+  // color.image anymore so it drifts on every Gelato mockup reimport, and
+  // substring matching alone picks the wrong photo whenever one color name is
+  // contained in another ("Navy" inside "Heather Navy", "Red" inside
+  // "Cardinal Red" — both are real color pairs on this catalog). The shared
+  // resolver assigns each gallery image to its MOST SPECIFIC matching color,
+  // so "Heather Navy" wins the file that mentions it even though "Navy" also
+  // matches — same algorithm scripts/test-color-image-match.js runs against
+  // the whole catalog before every deploy, so a future reimport that
+  // reintroduces a collision fails the build instead of shipping quietly.
   useEffect(() => {
     if (!selectedColor || !product?.colors || !galleryImages) return
     const colorObj = product.colors.find(c => c.id === selectedColor)
     if (!colorObj) return
-    const idx = galleryImages.findIndex(img => colorMatchesImage(colorObj, img))
+    const idx = findColorImageIndex(colorObj, product.colors, galleryImages)
     if (idx >= 0 && idx !== activeImage) setActiveImage(idx)
   }, [selectedColor])
 
   // Reverse sync: when the active gallery image is a color variant, highlight its swatch
   useEffect(() => {
     if (activeImage < 0 || !product?.colors || !galleryImages) return
-    const img = galleryImages[activeImage]
-    if (!img) return
-    const match = product.colors.find(c => colorMatchesImage(c, img))
+    const match = findImageColor(activeImage, product.colors, galleryImages)
     if (match && match.id !== selectedColor) setSelectedColor(match.id)
   }, [activeImage])
 

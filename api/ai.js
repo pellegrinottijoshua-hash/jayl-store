@@ -13,9 +13,22 @@
 
 import { applyCors }       from './_lib/cors.js'
 
-// Hobby plan caps function duration at 60s. Alt-text generation is chunked
-// client-side (6 images/request) to stay well under it; this is a safety net.
-export const config = { maxDuration: 60 }
+// Account is on Pro (see vercel-github-infra notes; api/admin.js already runs
+// at maxDuration: 300 in production). The stale "Hobby caps at 60s" premise
+// this used to rest on doesn't hold, and 60s was actively too low: several
+// handlers here already give a single upstream fetch up to 120s
+// (AbortSignal.timeout(120_000) — OpenAI image edits/generation below), and
+// generate-alts can make TWO sequential AI calls when the first response
+// isn't valid JSON (see handleAlts' catch-and-retry) — worst case ~120s on
+// its own. With maxDuration: 60, Vercel killed the function BEFORE either
+// call's own error handling could run, and a platform-level timeout response
+// is not JSON — the client's `res.json()` then threw a cryptic
+// "Unexpected token 'A', "An error o"... is not valid JSON" instead of any
+// message naming what actually happened. 150s covers the worst case with
+// margin; the client (src/pages/AdminProductPage.jsx generateAlts) also no
+// longer trusts every response to be parseable JSON, as defense in depth for
+// whatever platform-level failure still slips through (502, cold start, …).
+export const config = { maxDuration: 150 }
 import { rateLimit }       from './_lib/rateLimit.js'
 import { proxyImageToFal } from './_lib/falStorage.js'
 
@@ -994,15 +1007,26 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
-  const h = req.query.handler
-  if (h === 'listing')        return handleListing(req, res)
-  if (h === 'etsy-listing')   return handleEtsyListing(req, res)
-  if (h === 'social-listing') return handleSocialListing(req, res)
-  if (h === 'mockup')       return handleMockup(req, res)
-  if (h === 'video')        return handleVideo(req, res)
-  if (h === 'persona')      return handlePersona(req, res)
-  if (h === 'alts')         return handleAlts(req, res)
-  if (h === 'pinterest-pins') return handlePinterestPins(req, res)
+  // Ogni handleX ha già il proprio try/catch, ma nessuno lo aveva anche qui —
+  // un throw sincrono prima di entrarci (es. un req.query malformato) sarebbe
+  // uscito come crash non gestito, e Vercel risponde a un crash con una
+  // pagina di errore della piattaforma, non JSON. Stessa classe di problema
+  // di un maxDuration troppo basso (vedi sopra): il client si aspetta sempre
+  // un body JSON, quindi ogni percorso deve garantirne uno.
+  try {
+    const h = req.query.handler
+    if (h === 'listing')        return await handleListing(req, res)
+    if (h === 'etsy-listing')   return await handleEtsyListing(req, res)
+    if (h === 'social-listing') return await handleSocialListing(req, res)
+    if (h === 'mockup')       return await handleMockup(req, res)
+    if (h === 'video')        return await handleVideo(req, res)
+    if (h === 'persona')      return await handlePersona(req, res)
+    if (h === 'alts')         return await handleAlts(req, res)
+    if (h === 'pinterest-pins') return await handlePinterestPins(req, res)
 
-  return res.status(404).json({ error: `Unknown AI handler: ${h}` })
+    return res.status(404).json({ error: `Unknown AI handler: ${h}` })
+  } catch (err) {
+    console.error('[ai]', req.query?.handler, err.message)
+    if (!res.headersSent) return res.status(500).json({ error: err.message || 'Internal error' })
+  }
 }

@@ -1,7 +1,8 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
-import { fitDesignToCanvas, detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS } from '@/lib/printCanvas'
+import { detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS, prepareDesignForPlacement, renderPrintFile } from '@/lib/printCanvas'
+import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -288,7 +289,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [neckLabelUrl,    setNeckLabelUrl]    = useState(editingProduct?.neckLabelUrl || '')
   const [uploadingDesign, setUploadingDesign] = useState(false)
   const [designUploadErr, setDesignUploadErr] = useState('')
-  const [designDraft,     setDesignDraft]     = useState(null)  // {previewUrl, blob, meta, filename}
+  const [designEditor,    setDesignEditor]    = useState(null)  // {art, transform, filename}
   const [fittingDesign,   setFittingDesign]   = useState(false)
   const [autoFitDesign,   setAutoFitDesign]   = useState(true)
   const [designProgress,  setDesignProgress]  = useState(null)  // {phase, pct?, detail?}
@@ -711,19 +712,20 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     }
     setFittingDesign(true)
     try {
-      const fitted = await fitDesignToCanvas(file, designPlacement.type)
-      setDesignDraft({ ...fitted, filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
+      const { art, transform } = await prepareDesignForPlacement(file, designPlacement.type)
+      setDesignEditor({ art, transform, filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
     } catch (e) {
-      setDesignUploadErr(e.message || 'Impossibile adattare il file')
+      setDesignUploadErr(e.message || 'Impossibile leggere il file')
     } finally {
       setFittingDesign(false)
     }
   }
 
-  const handleConfirmDesign = async () => {
-    if (!designDraft) return
-    const file = new File([designDraft.blob], designDraft.filename, { type: 'image/png' })
-    if (await handleUploadDesign(file)) setDesignDraft(null)
+  const handleConfirmDesign = async (transform) => {
+    if (!designEditor) return
+    const { blob } = await renderPrintFile(designEditor.art, transform, designPlacement.type)
+    const file = new File([blob], designEditor.filename, { type: 'image/png' })
+    if (await handleUploadDesign(file)) setDesignEditor(null)
   }
 
   /**
@@ -1538,39 +1540,17 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 Adatta automaticamente al canvas di stampa (consigliato)
               </label>
 
-              {designDraft && (
-                <div className="flex gap-4 rounded border border-indigo-800/60 bg-indigo-950/20 p-3">
-                  <div
-                    className="shrink-0 border border-dashed border-indigo-700/60 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:16px_16px]"
-                    style={{ width: 110, height: 110 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
-                  >
-                    <img src={designDraft.previewUrl} alt="Anteprima di stampa" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1 min-w-0 text-xs space-y-1">
-                    <p className="text-indigo-300 font-semibold">Anteprima di stampa — {designDraft.meta.type === 'back' ? 'RETRO' : 'FRONTE'}</p>
-                    <p className="text-gray-500">Sorgente {designDraft.meta.sourceSize} · arte {designDraft.meta.artSize}</p>
-                    <p className="text-gray-500">Sul canvas: {designDraft.meta.drawnSize} ({designDraft.meta.widthPct}% larghezza) · {designDraft.meta.offset}</p>
-                    <p className="text-gray-600">{(designDraft.meta.bytes / 1024 / 1024).toFixed(1)} MB</p>
-                    <div className="flex gap-2 pt-1">
-                      <button
-                        onClick={handleConfirmDesign}
-                        disabled={uploadingDesign}
-                        className="bg-emerald-800 hover:bg-emerald-700 disabled:opacity-50 text-white text-xs px-3 py-1.5 transition-colors"
-                      >
-                        {uploadingDesign ? '⏫ Caricamento…' : '✓ Conferma e carica'}
-                      </button>
-                      <button
-                        onClick={() => setDesignDraft(null)}
-                        disabled={uploadingDesign}
-                        className="text-gray-500 hover:text-red-400 text-xs px-2"
-                      >
-                        Annulla
-                      </button>
-                    </div>
-                  </div>
-                </div>
+              {designEditor && (
+                <PrintPlacementEditor
+                  art={designEditor.art}
+                  initialTransform={designEditor.transform}
+                  placementType={designPlacement.type}
+                  busy={uploadingDesign}
+                  onConfirm={handleConfirmDesign}
+                  onCancel={() => setDesignEditor(null)}
+                />
               )}
-              {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Adattamento al canvas di stampa…</p>}
+              {fittingDesign && <p className="text-indigo-400 text-xs">⏳ Preparazione dell'editor di posizionamento…</p>}
 
               {designProgress && (
                 <div className="rounded border border-indigo-800/60 bg-indigo-950/20 p-2 space-y-1">
