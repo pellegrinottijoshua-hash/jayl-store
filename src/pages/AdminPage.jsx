@@ -8,6 +8,7 @@ import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import DropTab from '@/components/admin/DropTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
+import { SOCIAL_CHANNELS, socialPlaceholder } from '../../api/_lib/social-links.js'
 
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 
@@ -3095,9 +3096,13 @@ function OrdersTab() {
 // ── Settings Tab ──────────────────────────────────────────────────────────────
 
 function SettingsTab() {
-  const [instagram, setInstagram] = useState(SOCIAL_LINKS_DEFAULT?.instagram || '')
-  const [tiktok,    setTikTok]    = useState(SOCIAL_LINKS_DEFAULT?.tiktok    || '')
-  const [pinterest, setPinterest] = useState(SOCIAL_LINKS_DEFAULT?.pinterest || '')
+  // Un solo stato per tutti i canali, con le chiavi prese da SOCIAL_CHANNELS:
+  // tre useState hardcoded significavano che aggiungere un canale richiedeva
+  // di toccare stato, form e payload separatamente — ed è così che `facebook`
+  // è finito nel file di dati senza campo, senza icona e fuori dalla
+  // whitelist del server.
+  const [links, setLinks] = useState(() =>
+    Object.fromEntries(SOCIAL_CHANNELS.map((c) => [c.key, SOCIAL_LINKS_DEFAULT?.[c.key] || ''])))
   const [saving,    setSaving]    = useState(false)
   const [msg,       setMsg]       = useState('')
   const [emails,    setEmails]    = useState(null)
@@ -3106,7 +3111,7 @@ function SettingsTab() {
   const handleSave = async () => {
     setSaving(true); setMsg('')
     try {
-      await api('save-social-links', { links: { instagram, tiktok, pinterest } })
+      await api('save-social-links', { links })
       setMsg('✓ Saved — Vercel will deploy in ~2 min')
     } catch (e) {
       setMsg(`⚠ ${e.message}`)
@@ -3138,21 +3143,18 @@ function SettingsTab() {
       <Card title="Social Links">
         <p className="text-gray-500 text-xs mb-4">
           These links appear as icons in the top navbar (desktop) and mobile menu.
+          An empty channel shows no icon. You can paste a full URL or just the handle
+          (<code className="text-gray-400">jayl</code>) — the handle gets expanded.
           Saving commits the file to GitHub and triggers a Vercel deploy (~2 min).
         </p>
         <div className="space-y-3">
-          <Field label="Instagram">
-            <input value={instagram} onChange={e => setInstagram(e.target.value)}
-              placeholder="https://instagram.com/yourhandle" className={inputCls} />
-          </Field>
-          <Field label="TikTok">
-            <input value={tiktok} onChange={e => setTikTok(e.target.value)}
-              placeholder="https://tiktok.com/@yourhandle" className={inputCls} />
-          </Field>
-          <Field label="Pinterest">
-            <input value={pinterest} onChange={e => setPinterest(e.target.value)}
-              placeholder="https://pinterest.com/yourhandle" className={inputCls} />
-          </Field>
+          {SOCIAL_CHANNELS.map((c) => (
+            <Field key={c.key} label={c.label}>
+              <input value={links[c.key] || ''}
+                onChange={e => setLinks(prev => ({ ...prev, [c.key]: e.target.value }))}
+                placeholder={socialPlaceholder(c)} className={inputCls} />
+            </Field>
+          ))}
         </div>
         <div className="flex items-center gap-3 mt-4">
           <button

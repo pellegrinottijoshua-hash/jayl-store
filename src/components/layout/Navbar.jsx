@@ -6,6 +6,7 @@ import { useCartStore } from '@/store/cartStore'
 import { useThemeStore } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
+import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
 // Logo: uses PNG files /public/logo-light.svg (dark logo, light bg) and /public/logo-dark.svg (light logo, dark bg)
 // Place your logo PNG files in /public/ with those names.
 function JaylLogoPng({ isLight, height = 16 }) {
@@ -46,11 +47,44 @@ function PinterestIcon({ size = 16 }) {
   )
 }
 
-const SOCIAL_ICONS = [
-  { key: 'instagram', Icon: InstagramIcon, label: 'Instagram' },
-  { key: 'tiktok',    Icon: TikTokIcon,    label: 'TikTok'    },
-  { key: 'pinterest', Icon: PinterestIcon, label: 'Pinterest' },
-]
+function YouTubeIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M23.5 6.9a3 3 0 00-2.12-2.12C19.5 4.27 12 4.27 12 4.27s-7.5 0-9.38.51A3 3 0 00.5 6.9C0 8.78 0 12 0 12s0 3.22.5 5.1a3 3 0 002.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3 3 0 002.12-2.12C24 15.22 24 12 24 12s0-3.22-.5-5.1zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>
+    </svg>
+  )
+}
+function XIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.81-5.96 6.81H1.68l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23zm-1.16 17.52h1.83L7.08 4.13H5.11l11.97 15.64z"/>
+    </svg>
+  )
+}
+function FacebookIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/>
+    </svg>
+  )
+}
+
+// La lista e l'ordine vengono da SOCIAL_CHANNELS (api/_lib/social-links.js),
+// la stessa definizione che il pannello usa per i campi e il server per la
+// whitelist del salvataggio. Qui restano solo le icone, che sono JSX e non
+// possono vivere in un modulo importato anche da Node.
+const SOCIAL_SVGS = {
+  instagram: InstagramIcon,
+  tiktok:    TikTokIcon,
+  youtube:   YouTubeIcon,
+  pinterest: PinterestIcon,
+  x:         XIcon,
+  facebook:  FacebookIcon,
+}
+
+const SOCIAL_ICONS = SOCIAL_CHANNELS
+  .filter((c) => SOCIAL_SVGS[c.key])
+  .map((c) => ({ key: c.key, Icon: SOCIAL_SVGS[c.key], label: c.label }))
 
 /** The 's' in "artist's" — smaller, dropped, slightly rotated clockwise */
 function FallingS() {

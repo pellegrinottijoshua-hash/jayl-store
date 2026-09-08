@@ -6,6 +6,7 @@ import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 import { ghGet, ghPut } from './_lib/github.js'
 import { DROP_CONFIG_PATH, serializeDropConfig, parseDropConfig, validateDropConfig } from './_lib/drop-config.js'
 import { pickDueDrop, promoteDrop } from './_lib/drop-schedule.js'
+import { SOCIAL_LINKS_PATH, sanitizeSocialLinks, serializeSocialLinks } from './_lib/social-links.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
 const GITHUB_REPO        = 'jayl-store'
@@ -998,17 +999,33 @@ export default async function handler(req, res) {
     if (action === 'save-social-links') {
       const { links } = data
       if (!links || typeof links !== 'object') return res.status(400).json({ error: 'links object required' })
-      const safe = {
-        instagram:  String(links.instagram  || '').trim(),
-        tiktok:     String(links.tiktok     || '').trim(),
-        pinterest:  String(links.pinterest  || '').trim(),
+
+      // La whitelist non è più scritta qui: è SOCIAL_CHANNELS in
+      // api/_lib/social-links.js, la stessa lista che genera i campi del
+      // pannello e le icone della navbar. Quando erano tre copie separate
+      // divergevano — `facebook` aveva una chiave nel file di dati ma nessun
+      // campo, nessuna icona e nessun posto in questa whitelist: un canale
+      // che il pannello non poteva riempire e che il server avrebbe scartato
+      // comunque, in silenzio.
+      //
+      // sanitizeSocialLinks normalizza anche gli handle scritti senza
+      // protocollo e rifiuta ogni schema che non sia http/https: questi
+      // valori finiscono in un href renderizzato a ogni visitatore.
+      const safe = sanitizeSocialLinks(links)
+
+      // Un valore rifiutato dalla normalizzazione (schema non http, URL
+      // malformato) tornerebbe stringa vuota, cioè "canale scollegato": senza
+      // dirlo, l'admin salverebbe, vedrebbe "✓ salvato" e poi nessuna icona,
+      // senza capire perché.
+      const rejected = Object.keys(safe).filter((k) => links[k] && String(links[k]).trim() && !safe[k])
+      if (rejected.length) {
+        return res.status(400).json({ error: `link non valido per: ${rejected.join(', ')} — serve un URL http(s) o un handle` })
       }
-      const SOCIAL_PATH = 'src/data/social-links.js'
-      const content = `// Social channel links — edit via Admin → Settings → Social Links\n// Saved from the admin panel; takes effect after Vercel deploy (~2 min).\nexport const SOCIAL_LINKS = ${JSON.stringify(safe, null, 2)}\n`
+
       let sha = null
-      try { const f = await ghGet(SOCIAL_PATH, githubToken); sha = f.sha } catch {}
-      await ghPut(SOCIAL_PATH, content, sha, 'admin: update social links', githubToken)
-      return res.status(200).json({ ok: true })
+      try { const f = await ghGet(SOCIAL_LINKS_PATH, githubToken); sha = f.sha } catch {}
+      await ghPut(SOCIAL_LINKS_PATH, serializeSocialLinks(safe), sha, 'admin: update social links', githubToken)
+      return res.status(200).json({ ok: true, links: safe })
     }
 
     // ── personas: list ───────────────────────────────────────────────────────
