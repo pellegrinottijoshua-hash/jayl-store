@@ -16185,5 +16185,418 @@ export const adminProducts = [
     "createdAt": "2026-09-02T20:04:27.469Z",
     "updatedAt": "2026-09-02T20:07:11.701Z",
     "relatedProducts": []
+  },
+  {
+    "id": "meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Meganium Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  grass Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2400,
+    "currency": "eur",
+    "description": "For that friend who always lets their love for nature shine, the Meganium Back Print Shirt captures the gentle spirit of this beloved grass Pokémon. In a vibrant retro 90s anime style, this unisex cotton tee offers a large back design that transforms everyday wear into a life-filled tribute to your favorite calming creature. Gildan’s premium tee and advanced DTG print quality ensure that every detail pops with color. This t-shirt makes for a thoughtful gift that resonates with anyone who has felt the embrace of Meganium's nurturing energy.",
+    "altText": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2400
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2400
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2400
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2400
+      }
+    ],
+    "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
+    "heroImage": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143112_ace27a54-b576-4f58-bd4d-46d82f045f0b.png",
+    "detailImage": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143144_418a7a3e-676b-4495-a852-e84076f64725.png",
+    "images": [
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143107_fc9e2bd0-608d-4647-8f13-7ca74d9d348d.png",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_142645_d2704574-e6a1-4588-85fc-80c1f50fbb48.png",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-04.jpg",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-05.jpg",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-06.jpg",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-07.jpg"
+    ],
+    "imageAlts": {
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-light-blue-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-azalea-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-white-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-navy-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-purple-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-black-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-irish-green-01.jpg": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee."
+    },
+    "tags": [
+      "meganium",
+      "pokemon shirt",
+      "anime t-shirt",
+      "retro apparel",
+      "90s fashion",
+      "funny graphic tee",
+      "unisex clothing",
+      "cotton tee",
+      "anime gift",
+      "grass pokemon",
+      "geeky gifts",
+      "casual wear",
+      "anime merchandise"
+    ],
+    "featured": false,
+    "gelatoProductId": "6d568da7-cab0-4b05-9c9e-9a354bd671d3",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "meganium shirt",
+      "pokemon t-shirt",
+      "anime graphic tee",
+      "retro anime shirt",
+      "cotton t-shirt"
+    ],
+    "longTailKeywords": [
+      "funny meganium graphic tee for men",
+      "retro pokemon t-shirts for women",
+      "90s anime themed apparel gift",
+      "large back design anime shirt",
+      "unique shirt for pokemon fans",
+      "unisex cotton t-shirt with graphics",
+      "memorable gifts for him meganium shirt",
+      "anime gifts for grass type lovers",
+      "vibrant meganium print on soft cotton tee",
+      "trendy shirts inspired by pokemon"
+    ],
+    "hashtags": "#pokemon #anime #90snostalgia #retrostyle #grasspokemon #graphictee #cottonshirt #unisexfashion #streetwear #animefashion #coolvibes #artwear #wearableart #uniquegifts #giftideas #pokemongifts #jaylstore #jaylart #premiumprint #coolclothes #styleinspo #fashioncommunity #trendsetter #edgyfashion #casualwear #retroclothing #vintageaesthetic #artisticstyle #fashiongoals #jaynation #jaylbrand",
+    "instagramCaption": "Channel your inner 90s vibes with our Meganium Back Print Shirt! Perfect for turning heads and sparking nostalgia. Grab yours now and let the good times roll! #PokemonFashion #RetroTees #AnimeVibes #WearableArt #NostalgiaTrip Link in bio 🔗",
+    "pinterestCaption": "Discover our Meganium Back Print Shirt, a bold statement piece that blends retro 90s anime with modern cool. Perfect as a gift for Pokémon lovers or a stylish addition to your own collection. Pin it now and elevate your wardrobe!",
+    "tiktokCaption": "This Meganium tee is all kinds of nostalgic! Get ready to turn heads! 😎✨ #pokemon #anime #fyp #foryou #fashion",
+    "seoTitle": "Meganium Back Print Shirt | Retro 90s Anime Gift | Grass Pokémon",
+    "variants": [
+      {
+        "uid": "00fb4f69-cdc7-4408-80a8-9af7ab336ead",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8771e55a-5803-4a27-b339-96788600bc09",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3f47f127-2fea-4e21-97f0-871c90b9740e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a1664802-2290-4066-a310-fa4e35c97a09",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "37a45a4d-4706-4621-b137-0a04db99de82",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "243189b5-2286-4496-b35b-3f631cb93332",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "39309353-402d-449e-8cb2-5c30821e2804",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f0334b89-b25b-4c23-bc39-acfc1c61de22",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "47950a57-a3c5-4b50-b3f9-1d776da59cb9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "27fd9f2a-75c7-42ce-b673-f336e2e05c89",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7b21728b-e0d7-471a-a1aa-f08ad5d80b59",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dbaed964-55b1-4fdd-8771-79f2ea83d95e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a45b8710-92eb-47d2-915b-a25fa1a87536",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "03ff3a5e-343d-4c95-8233-a04f1dc07473",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d4ed1616-bd48-4ddc-ba3f-94eaade45915",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "58e3f6ad-c24c-431a-9ad6-d55ecbfba771",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b2a8b3e4-66e1-4d16-b802-c902e3064f8f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "72801d38-fe12-4dc4-918a-81a63407625a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b2e83251-1f8d-4c15-a72c-68d54f028d75",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "13c58124-91cf-43d5-9657-736fd0554102",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2575ef9e-b199-4799-aad7-6261959a85b6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "add2b2bc-7678-48db-80c3-d927a6302080",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2ca6ceb0-b21a-4e61-8bbf-7bfe9589fdbe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0e816aa6-cc8f-4514-9b75-7efabbe904c1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c35d8b91-4ca2-4c9a-8a3b-c1adafec82ab",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8cfc6499-ffb6-435e-a9c6-91fb301988ef",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0de988ec-75a6-438b-8493-37b02ee72591",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "72512e70-c7c6-4277-8e65-9f5dd66aecb0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-azalea-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-navy-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-black-01.jpg"
+      },
+      {
+        "id": "irish-green",
+        "label": "Irish Green",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-irish-green-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-light-blue-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-purple-01.jpg"
+      }
+    ],
+    "etsyTitle": "Meganium Back Print Shirt, Retro Vibe Graphic Tee, Grass Pokemon Gift for Him",
+    "etsyTags": [
+      "meganium shirt",
+      "anime graphic tee",
+      "pokemon gift idea",
+      "gifts for gamers",
+      "otaku fashion",
+      "90s streetwear",
+      "funny t-shirt",
+      "unisex fit shirt",
+      "vintage anime style",
+      "cartoon character te",
+      "pokemon community",
+      "casual clothing",
+      "quirky graphic top"
+    ],
+    "etsyDescription": "Imagine striding through the park, the sun shining as your Meganium Back Print Shirt catches everyone's eye. This isn’t just a tee; it’s an homage to nostalgia and grass-type charm that you feel in every fiber. Every time you put it on, you’ll channel that playful energy of battling or just chilling with your favorite Pokémon friends.\n\nThe large back design takes center stage, showcasing our beloved Meganium in all its glory—its vibrant greens and whimsical pose remind you of those carefree afternoons spent watching battles unfold. Made from 100% cotton with a premium direct-to-garment print process, this unisex fit is comfortable for everyone from sizes S to 3XL.\n\nGot a friend who’s obsessed with Pokémon? This shirt makes for a heartfelt gift on their birthday or any occasion when you want to bring a smile. Whether it’s for gaming nights or casual hangouts, they’ll appreciate the retro vibe wrapped up in a soft and stylish package.\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup showing model wearing Meganium Back Print Shirt against urban backdrop.",
+      "Back mockup featuring vibrant Meganium design on model perched casually.",
+      "Close-up detail showing intricate colors and textures of the Meganium print.",
+      "Flat lay setup displaying Meganium Back Print Shirt neatly arranged with accessories.",
+      "Lifestyle shot capturing someone laughing and enjoying wearing the Meganium shirt outdoors.",
+      "Size guide image showing various sizes of Meganium shirt laid out together.",
+      "Gift context photo illustrating beautifully packaged Meganium shirt ready for gifting."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a33ccc87-54e3-437c-9b1f-7d44f8ea5cdc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fd7aa877d91350642d7d863344d762e31e6e5cdd804e7e12a06ac31a22fa9def",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8932a6c0-1606-4039-89ea-c3cac8d9071d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2836b75240ebfb82ef5daa2a0b7e0cf9ad0822d3fca00a56df3e8cb3915616cd",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/40761852-f6d1-48ce-af26-35c311d32f76/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1a2fbef6e5df71de15807338503e90cbb8ffb9bb3a682ef6df32ff584235b809",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/65feadc8-9546-499c-9d92-ca2b7473999c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=993b7bbbf5df4040546ef10448c9a156e70bcbad804f1a2f77cf501ae8b5dee6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1e9bf522-4c70-4ef1-9ba4-d1cb40ff82d6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=24ea348080041037b44b7651d1adbf1e64566561c087febe1a3ea70b9d4ba7b7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/78f02e83-131b-4f3e-92f9-4a8b701ab501/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1a138a1342f11ab661a5fa265e442d1c53d42d8b1289bf3c41fb38e27f1d623",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d9a23812-d522-4b25-8a10-77728163b57c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a4ea1a568c0501f32efd4cc82dc46f41bd79823f483e86ef6922af3861d5d9f7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/647f6840-bd5b-4e40-803f-6f8d3ca866b2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144044Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb6cb31affbf6b94d31189c4c05041b9117a14ba3a3246fd1ca08a9d2fc04fc9"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260816_113516_3f2f58d0-ecea-4083-a650-2517b66eddc6-gelato-front-350.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-09-08T14:44:50.914Z",
+    "updatedAt": "2026-09-08T14:44:50.914Z"
   }
 ]
