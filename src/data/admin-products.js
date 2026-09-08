@@ -16598,5 +16598,418 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:44:50.914Z",
     "updatedAt": "2026-09-08T14:44:50.914Z"
+  },
+  {
+    "id": "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Raikou Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  electric Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Electric as a thunderstorm, Raikou captures the essence of raw power wrapped in fur. This Gildan premium cotton tee showcases a bold retro 90s anime graphic with an oversized back print that boldly proclaims your affinity for this electric Pokémon icon. The vibrant colors pop, making it an essential statement piece in any streetwear collection. It also makes for a memorable gift for fans who appreciate the electrifying presence of Raikou. With its DTG print quality, you can trust that this tee stands the test of time in both style and comfort.",
+    "altText": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+    "details": [
+      "Printed and fulfilled via Gelato"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-mockup-01.jpg",
+    "heroImage": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_161010_b788e2d8-f2ea-4145-92e3-1299aac1e293.png",
+    "detailImage": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_161445_98afd869-1323-41e4-82d5-5109a81c0bda.png",
+    "images": [
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_155948_1e952fd4-e02e-4ee3-b910-94465b46446b.png",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_155932_29f9e404-6e65-471c-9890-3e5dc948a965.png",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-01.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-02.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-03.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-04.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-05.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-06.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-07.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-08.jpg"
+    ],
+    "imageAlts": {
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-mockup-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gold-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-navy-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-black-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-daisy-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-white-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-light-blue-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-royal-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee."
+    },
+    "tags": [
+      "raikou",
+      "pokemon shirt",
+      "anime apparel",
+      "graphic tee",
+      "retro clothing",
+      "unisex t-shirt",
+      "electric pokemon",
+      "fan merchandise",
+      "90s style",
+      "streetwear fashion",
+      "gifts for him",
+      "anime gifts",
+      "cotton t-shirt"
+    ],
+    "featured": false,
+    "gelatoProductId": "f6418ca3-16b2-44e8-b60d-ad26748a6184",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "pokemon shirt",
+      "raikou t-shirt",
+      "anime graphic tee",
+      "retro t-shirt",
+      "electric pokemon"
+    ],
+    "longTailKeywords": [
+      "funny anime graphic tee for men",
+      "retro raikou pokemon shirt gift",
+      "unisex cotton t-shirt with design",
+      "large back print anime shirt",
+      "premium print-on-demand shirts",
+      "unique gift for pokemon fans",
+      "90s retro graphic tees online",
+      "edgy streetwear anime tees",
+      "electric pokemon fan apparel",
+      "cool gifts for anime lovers"
+    ],
+    "hashtags": "#raikou #pokemon #anime #graphictee #retromode #streetwear #hypebeast #unisexclothing #funnytshirt #giftforhim #vintagefashion #nerdstyle #collectibles #fashiontrends #onlineshop #dtgprint #geekchic #stylishapparel #pockettee #shopnow #coolshirts #mangaart #fashionlookbook #trendsetter #pokemontoys #memorablegifts #artistictees #animeinspo #japaneseanimation",
+    "instagramCaption": "\"Charge through life like Raikou! ⚡ Rock this retro vibe and let everyone know you embrace the energy! ✌️✨ Shop now and spark some interest! 💥#animefashion#raikoupower#streetstyle\".",
+    "pinterestCaption": "\"Embrace the electric energy of Raikou with our retro-inspired back print shirt. Perfect for anyone seeking unique streetwear that resonates with their love for vintage anime culture. Check it out today!\"",
+    "seoTitle": "Raikou Back Print Shirt | Retro 90s Anime Gift | Electric Pokemon Tee",
+    "variants": [
+      {
+        "uid": "43e66a0a-33a6-41b6-acb9-c24f8fd90cae",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9d6e0ab0-32cb-435f-9df3-7f20f898e6a1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "24de29b9-4598-427e-bbe2-d370cd79d632",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7a84a1e9-9a43-4353-bd2a-93fe139058e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "724d72c2-78f8-416e-b5c9-780f3192479b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8fa55e72-d70c-480c-8447-a9829b8b5192",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bbe0296e-a323-448d-af93-43597e9c0abf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6005dd6a-5991-48ac-bf84-3955904f5f39",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5f9a312a-10d2-414b-ab27-a705ef97a257",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "279cfc76-ffb7-49d7-88b6-2719841b5f3b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7908a351-6fd6-4fca-81db-57d0b667e9db",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0817919a-28cd-4300-899b-840166a9b794",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "02a91014-d5b4-4991-a430-036f2333b2a7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2846e231-d0c8-48de-bd7e-402f287f3f8c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "586b35e0-6ce1-4abc-a4cc-d0a77cab8b99",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4b7c1aac-de35-47f3-812b-eca351667e78",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "852b8c50-cf26-4c87-a019-9da51c5e3ff8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f813caf5-2376-43d2-a9ca-5736a19e73a5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e3221a4f-d8c7-4a86-b083-6471c070a2b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5effb72-d78a-4193-aad6-df7e53fbd327",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fb483ca1-c81f-4537-b4a4-cb625dc33cc7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "82c1481e-a43c-45af-857d-80e6dc31d25f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea7db2f2-9135-4a24-9716-3ed0693d0732",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "422a4e50-b829-49bf-9cda-849af7c2301c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6df91d66-b627-4ee1-8d02-ff291f2f80d2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "65126e6c-d18a-4382-828a-2ccc6a363bc4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d596ff49-c0b6-425f-b2b3-958bb270ceca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "786a1730-d0cb-4743-91eb-e0ba6caf1f0d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-royal-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-white-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-light-blue-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-daisy-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-navy-01.jpg"
+      },
+      {
+        "id": "gold",
+        "label": "Gold",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gold-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-black-01.jpg"
+      }
+    ],
+    "etsyTitle": "Raikou Back Print Shirt, Retro 90s Aesthetic, Perfect Gift for Anime Fans",
+    "etsyTags": [
+      "raikou t-shirt",
+      "retro anime shirt",
+      "gift for him",
+      "anime fandom gift",
+      "otaku merchandise",
+      "90s aesthetic shirt",
+      "unisex graphic tee",
+      "electric pokemon fan",
+      "pokemon clothing",
+      "anime lovers apparel",
+      "fan art t-shirt",
+      "pokemon party gift",
+      "vintage anime style"
+    ],
+    "etsyDescription": "When you think of Raikou, the embodiment of electric energy and fierce loyalty springs to mind. This Raikou Back Print Shirt captures that essence perfectly, merging minimalist design with retro vibes that any true anime lover will appreciate.\n\nThe bold graphic adorns the back of this unisex cotton tee, making it a standout piece in any wardrobe. Imagery inspired by the spirit of the stormy legendary brings nostalgia for those who grew up with Pokémon in their hearts. With sizes ranging from S to 3XL, it’s made for everyone who loves to wear their passion on their sleeve—literally.\n\nWhether you’re shopping for a birthday gift or just because it's Tuesday and you want to brighten a friend’s day, this shirt is a conversation starter. Ideal for game nights or casual outings, it expresses an appreciation for both style and sentiment.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
+    "etsyImageAlts": [
+      "Front mockup of Raikou back print shirt on model showcasing vibrant colors.",
+      "Back view of Raikou back print shirt demonstrating large graphic design.",
+      "Close-up detail of Raikou artwork highlighting intricate features and colors.",
+      "Flat lay front view of Raikou back print shirt arranged stylishly on surface.",
+      "Lifestyle shot showing person wearing Raikou t-shirt in an outdoor setting.",
+      "Size guide showing dimensions and fit details for Raikou t-shirt options.",
+      "Gift presentation of Raikou t-shirt neatly packaged ready to be given."
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6fb1e8f8-56e4-43f6-8d0f-4e428cc3b847/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f4f089474a41a58bc30c5a5aea2fda8e8dbfdeff604375169fb99adae3706d55",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/474851d5-f908-4332-bfa6-ba155fc95991/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d9d42590c50e2999ce341bf29491b96d045c6fdcc69b8002f0e3bdeb14f37272",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/34ba7ead-6f36-41b4-b33e-6f2d8faa2e4c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=63a22867f2fcb860c828d1989cd7098a6533befbd66e3a06f8bbe6e13e20599c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1d3ba56a-35be-4ded-a632-745750b4c117/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bc3e5ecb85471aefbafbdd1c68361c8e35083e398317c5f08cdb4b4dd8f5a272",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ad93762e-3d6d-4356-bbce-729edfd06694/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0fe6009976fa0bf389c965cc7aaa1acfc39f2379670fd9516c43a1ee0b313c76",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/47f753a7-fea8-4a41-a1a7-831a501bc752/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e99ca3bc9bb1a3644a1e514543df35494bc4158d3ccbf0df6fdb6f1e75b4d27",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fafaf259-0e0e-4c49-a25d-d9f39a89c762/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=330279be55fbd66791229fdf885a9aaccec967f495b8cdfe01fec7023f34b3a7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2f8edd37-4334-4cd7-97f8-2135203e257d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T144549Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e97b4b6f1b340ea3941d90edf440a85d3e1ae781e6ab795d838dc004628e897b"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_113839_3651409f-d368-400f-9dbf-72a8d002ff8a-gelato-front-350.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-09-08T14:47:54.039Z",
+    "updatedAt": "2026-09-08T14:47:54.039Z"
   }
 ]
