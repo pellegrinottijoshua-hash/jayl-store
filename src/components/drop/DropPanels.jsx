@@ -46,6 +46,14 @@ export default function DropPanels() {
   const head  = showingCurrent ? cfg.current : (cfg.previous || cfg.current)
   const items = shown.map(getProductById).filter(Boolean)
 
+  // La riga d'intestazione può nominare la dimensione dell'edizione solo se è
+  // la stessa per tutti e tre i pezzi; i cap sono per-prodotto e l'admin può
+  // differenziarli, e in quel caso "Editions of 20" sarebbe falso per uno dei
+  // tre. Stessa fonte del badge sulla card (status, con fallback a capFor) così
+  // le due non possono dichiarare numeri diversi.
+  const caps = items.map((p) => status?.products?.[p.id]?.cap ?? capFor(p.id, cfg))
+  const uniformCap = caps.length && caps.every((c) => c && c === caps[0]) ? caps[0] : null
+
   // Quale card è centrata nel track — guida sia il testo mostrato sotto
   // (solo quello del pezzo attivo, su mobile) sia i puntini indicatore.
   // IntersectionObserver invece di leggere scrollLeft: resta corretto a
@@ -82,18 +90,35 @@ export default function DropPanels() {
     // the vw-based peek math on the track further down is relative to the
     // viewport, not this wrapper).
     <div className="sm:max-w-7xl sm:mx-auto">
-      <div className="flex items-center justify-between px-5 sm:px-6 lg:px-8 pt-[88px] pb-3 sm:pb-6 text-cream">
-        <span className="text-xs tracking-[0.2em] uppercase">
-          Drop {String(head.number).padStart(2, '0')} · {head.title}
-        </span>
-        {state === BEFORE && (
-          <DropCountdown to={target} label="opens in" className="text-xs tabular-nums" />
-        )}
+      {/* Due scarsità convivono qui — la quantità (edizione di N) e il tempo
+          (la finestra del drop) — e se il countdown resta l'unica cosa in
+          evidenza si annullano a vicenda: un timer nudo si legge come una
+          scadenza di prezzo, e allora la quantità non conta più. Quindi il
+          timer dice cosa *chiude* (non "ends", che non nomina nessun evento) e
+          la riga sotto enuncia per esteso il patto: quante copie esistono, e
+          cosa succede a zero. Il prezzo d'archivio è scritto lì perché è
+          l'unico posto in home dove la conseguenza del countdown è dichiarata
+          invece che sottintesa. */}
+      <div className="px-5 sm:px-6 lg:px-8 pt-[88px] pb-3 sm:pb-6 text-cream">
+        <div className="flex items-center justify-between">
+          <span className="text-xs tracking-[0.2em] uppercase">
+            Drop {String(head.number).padStart(2, '0')} · {head.title}
+          </span>
+          {state === BEFORE && (
+            <DropCountdown to={target} label="opens in" className="text-xs tabular-nums" />
+          )}
+          {state === LIVE && (
+            <DropCountdown to={target} label="closes in" className="text-xs tabular-nums" />
+          )}
+          {state === CLOSED && target && (
+            <DropCountdown to={target} label="next drop in" className="text-xs tabular-nums" />
+          )}
+        </div>
         {state === LIVE && (
-          <DropCountdown to={target} label="ends in" className="text-xs tabular-nums" />
-        )}
-        {state === CLOSED && target && (
-          <DropCountdown to={target} label="next drop in" className="text-xs tabular-nums" />
+          <p className="mt-2 text-[11px] sm:text-xs tracking-[0.14em] uppercase text-white/55">
+            {uniformCap ? `Editions of ${uniformCap}` : 'Limited editions'} · when the drop
+            closes, what's left moves to the archive at {formatPrice(cfg.archivePrice)}
+          </p>
         )}
       </div>
 

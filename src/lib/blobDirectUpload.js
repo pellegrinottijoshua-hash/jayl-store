@@ -42,37 +42,14 @@
 
 const BLOB_API = 'https://blob.vercel-storage.com'
 
-/**
- * @param {string} pathname     target name inside the blob store
- * @param {File|Blob} file
- * @param {object} opts
- * @param {string} opts.clientPayload  JSON string forwarded to the token endpoint
- * @param {(pct:number)=>void} [opts.onProgress]  0-100, real upload progress
- * @param {AbortSignal} [opts.signal]
- * @returns {Promise<{url:string, pathname:string}>}
- */
-export async function blobDirectUpload(pathname, file, { clientPayload, onProgress, signal } = {}) {
-  // ── 1. token ──────────────────────────────────────────────────────────────
-  const tokenRes = await fetch('/api/admin', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      type: 'blob.generate-client-token',
-      payload: { pathname, clientPayload, multipart: false },
-    }),
-    signal,
-  })
-  if (!tokenRes.ok) {
-    const msg = await tokenRes.text().catch(() => '')
-    throw new Error(`Token Blob rifiutato (${tokenRes.status}) ${msg.slice(0, 120)}`)
-  }
-  const { clientToken, error } = await tokenRes.json()
-  if (!clientToken) throw new Error(`Token Blob assente${error ? `: ${error}` : ''}`)
+// Marks a rejection as a transport-layer failure (xhr.onerror/ontimeout — the
+// PUT never reached the server, so nothing was written and retrying the exact
+// same request is safe) as opposed to a real Blob rejection (bad pathname,
+// size cap, "already exists" from a stuck orphan) which retrying verbatim
+// would just repeat forever.
+class NetworkLayerError extends Error {}
 
-  // ── 2. PUT the bytes ──────────────────────────────────────────────────────
-  // XMLHttpRequest rather than fetch: browsers still expose upload progress only
-  // through XHR, and progress is the difference between a diagnosable stall and
-  // a mystery.
+function putOnce(pathname, file, clientToken, { onProgress, signal } = {}) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest()
     xhr.open('PUT', `${BLOB_API}/?pathname=${encodeURIComponent(pathname)}`, true)
@@ -103,8 +80,8 @@ export async function blobDirectUpload(pathname, file, { clientPayload, onProgre
         reject(new Error(`Blob ha rifiutato l'upload (${xhr.status}): ${detail}`))
       }
     }
-    xhr.onerror   = () => reject(new Error('Errore di rete durante l\'upload su Blob'))
-    xhr.ontimeout = () => reject(new Error('Timeout di rete durante l\'upload su Blob'))
+    xhr.onerror   = () => reject(new NetworkLayerError('Errore di rete durante l\'upload su Blob'))
+    xhr.ontimeout = () => reject(new NetworkLayerError('Timeout di rete durante l\'upload su Blob'))
     xhr.onabort   = () => reject(new Error('Upload annullato'))
 
     if (signal) {
@@ -114,4 +91,60 @@ export async function blobDirectUpload(pathname, file, { clientPayload, onProgre
 
     xhr.send(file)
   })
+}
+
+function sleep(ms) { return new Promise((r) => setTimeout(r, ms)) }
+
+/**
+ * @param {string} pathname     target name inside the blob store
+ * @param {File|Blob} file
+ * @param {object} opts
+ * @param {string} opts.clientPayload  JSON string forwarded to the token endpoint
+ * @param {(pct:number)=>void} [opts.onProgress]  0-100, real upload progress
+ * @param {AbortSignal} [opts.signal]
+ * @param {number} [opts.maxNetworkRetries]  retries for onerror/ontimeout only (default 2)
+ * @returns {Promise<{url:string, pathname:string}>}
+ */
+export async function blobDirectUpload(pathname, file, { clientPayload, onProgress, signal, maxNetworkRetries = 2 } = {}) {
+  // ── 1. token ──────────────────────────────────────────────────────────────
+  const tokenRes = await fetch('/api/admin', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: 'blob.generate-client-token',
+      payload: { pathname, clientPayload, multipart: false },
+    }),
+    signal,
+  })
+  if (!tokenRes.ok) {
+    const msg = await tokenRes.text().catch(() => '')
+    throw new Error(`Token Blob rifiutato (${tokenRes.status}) ${msg.slice(0, 120)}`)
+  }
+  const { clientToken, error } = await tokenRes.json()
+  if (!clientToken) throw new Error(`Token Blob assente${error ? `: ${error}` : ''}`)
+
+  // ── 2. PUT the bytes ──────────────────────────────────────────────────────
+  // XMLHttpRequest rather than fetch: browsers still expose upload progress only
+  // through XHR, and progress is the difference between a diagnosable stall and
+  // a mystery.
+  //
+  // A bare xhr.onerror carries no status code and no response body — the
+  // browser refused or lost the connection before the server ever answered
+  // (a WiFi hiccup mid-transfer on a multi-MB macro photo is the common case
+  // here). That is retriable: the request never landed, so nothing was
+  // written server-side and re-sending the same bytes is safe. A real Blob
+  // rejection (bad pathname, size cap, an actual "already exists") comes back
+  // through xhr.onload with a status code instead, and is NOT retried here —
+  // retrying that verbatim would just fail the same way forever.
+  let attempt = 0
+  for (;;) {
+    try {
+      return await putOnce(pathname, file, clientToken, { onProgress, signal })
+    } catch (e) {
+      if (!(e instanceof NetworkLayerError) || attempt >= maxNetworkRetries || signal?.aborted) throw e
+      attempt++
+      if (onProgress) onProgress(0)
+      await sleep(attempt * 1000) // 1s, then 2s
+    }
+  }
 }

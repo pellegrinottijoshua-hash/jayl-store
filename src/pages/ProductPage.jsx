@@ -335,7 +335,7 @@ function DropBlock({ productId, isLight, status }) {
         <DropCountdown to={target} label="opens in" className="block text-sm tabular-nums" />
       )}
       {winState === LIVE && (
-        <DropCountdown to={target} label="ends in" className="block text-sm tabular-nums" />
+        <DropCountdown to={target} label="closes in" className="block text-sm tabular-nums" />
       )}
       {winState === CLOSED && target && (
         <DropCountdown to={target} label="next drop in" className="block text-sm tabular-nums" />

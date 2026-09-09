@@ -11,8 +11,12 @@ export default function DropBadge({ sold = 0, cap = 0, className = '' }) {
   if (state.mode === 'soldout') {
     return <span className={`text-xs tracking-widest uppercase text-white/60 ${className}`}>Sold out · {state.cap}/{state.cap}</span>
   }
+  // Più leggibile degli altri due stati di proposito: finché il contatore è
+  // nascosto questa riga è l'unica scarsità dichiarata sulla card, e a white/60
+  // finiva per essere il testo più sbiadito della colonna — sotto al prezzo e
+  // sotto al countdown, cioè esattamente il contrario della gerarchia voluta.
   if (state.mode === 'edition') {
-    return <span className={`text-xs tracking-widest uppercase text-white/60 ${className}`}>Edition of {state.cap}</span>
+    return <span className={`text-xs tracking-widest uppercase text-cream/90 ${className}`}>Edition of {state.cap}</span>
   }
   const pct = Math.round((state.sold / state.cap) * 100)
   return (
