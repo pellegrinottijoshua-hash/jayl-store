@@ -273,7 +273,33 @@ async function blobToBase64(blobUrl, label) {
   // this can't reach (a crash before `finally` runs at all) no longer blocks
   // the next retry.
   try {
-    const result = await blobGet(blobUrl, { access: 'private', token: blobToken })
+    // useCache:false (found 2026-09-09, @vercel/blob installed at ^2.3.3 —
+    // Vercel's build resolves whatever the caret allows, currently up to
+    // 2.8.0, and the two SDKs behave differently here). This function only
+    // ever reads a blob it wrote itself, seconds earlier: the pathname is
+    // deterministic and freshly PUT, so the CDN has either no cached entry
+    // yet or — worse — a stale/negative one from a PRIOR attempt at the same
+    // deterministic pathname (an earlier failed upload retry, same
+    // `<productId>/<filename>`). With caching left on default (true), that
+    // stale entry wins: `get()` returns a stream that decodes to garbage or
+    // empty bytes, no error thrown, and a corrupt hero silently reaches
+    // GitHub — that is what broke Ursaring's hero just now. useCache:false
+    // forces this read to hit origin storage, guaranteeing it sees the bytes
+    // this same request chain just wrote, at the cost of a slightly slower
+    // read — a cost this staging path (never re-read, always freshly
+    // written) can always afford.
+    const result = await blobGet(blobUrl, { access: 'private', token: blobToken, useCache: false })
+    // Also newly documented behavior of the same SDK bump: get() returns
+    // `null` for "not found" instead of throwing — that surfaced as
+    // "Cannot read properties of null (reading 'statusCode')" on Altaria's
+    // upload just now, a crash with no information in it. A blob that
+    // legitimately isn't there yet (upload still propagating) is exactly the
+    // case useCache:false above should eliminate; if it still happens, this
+    // at least fails with a message that says what happened instead of a
+    // bare null-property TypeError.
+    if (!result) {
+      throw new Error(`Blob non trovato dopo l'upload di ${label} — riprova`)
+    }
     if (result.statusCode !== 200) {
       throw new Error(`Failed to download ${label}: blob returned ${result.statusCode}`)
     }
