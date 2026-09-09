@@ -12,8 +12,9 @@
       }
     ],
     "capturedAt": "2026-09-07T14:26:52.208Z",
-    "sent": false,
-    "converted": false
+    "sent": true,
+    "converted": false,
+    "sentAt": "2026-09-09T08:34:16.357Z"
   },
   {
     "id": "cart_1788195926806",
@@ -28,7 +29,8 @@
       }
     ],
     "capturedAt": "2026-08-31T20:06:02.004Z",
-    "sent": false,
-    "converted": false
+    "sent": true,
+    "converted": false,
+    "sentAt": "2026-09-09T08:34:16.425Z"
   }
 ]
