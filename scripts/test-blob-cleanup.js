@@ -11,8 +11,16 @@
 // 400 rifiutato da Blob perché `allowOverwrite` di default è false.
 //
 // Due difese indipendenti, entrambe verificate qui:
-//   1. src/lib/blobDirectUpload.js manda x-allow-overwrite:1 sul PUT — un
-//      retry con lo stesso pathname sovrascrive invece di scontrarsi.
+//   1. api/admin.js chiede allowOverwrite:true nella generazione del token
+//      (onBeforeGenerateToken) — un retry con lo stesso pathname sovrascrive
+//      invece di scontrarsi. NON più un header sul PUT del client: quello
+//      girava come `x-allow-overwrite: 1` fino al 2026-09-09, quando il
+//      preflight CORS di blob.vercel-storage.com ha smesso di elencarlo in
+//      Access-Control-Allow-Headers e ogni upload dal browser ha iniziato a
+//      fallire silenziosamente (xhr.onerror, nessun dettaglio recuperabile —
+//      solo la console del browser mostrava il vero motivo). Il permesso ora
+//      vive dentro il clientToken firmato, non su una richiesta che un
+//      preflight può rifiutare.
 //   2. api/admin.js cancella il blob in un `finally`, non più sull'ultima
 //      riga del percorso felice — un fallimento a valle del download non
 //      lascia comunque un orfano.
@@ -25,15 +33,17 @@ let passed = 0
 const failures = []
 const check = (label, cond) => { if (cond) passed++; else failures.push(label) }
 
-// ── 1. Il client manda l'header giusto ──────────────────────────────────────
+// ── 1. Il permesso vive sul token (server), non su un header (client) ──────
 {
-  const src = readFileSync(new URL('../src/lib/blobDirectUpload.js', import.meta.url), 'utf-8')
-  check("blobDirectUpload: invia x-allow-overwrite: '1' sul PUT",
-    /setRequestHeader\(\s*['"]x-allow-overwrite['"]\s*,\s*['"]1['"]\s*\)/.test(src))
-  // L'header dev'esserci PRIMA di xhr.send, non in un ramo morto.
-  const sendIdx = src.indexOf('xhr.send(file)')
-  const headerIdx = src.indexOf("x-allow-overwrite")
-  check('…e prima di xhr.send(file), non dopo', headerIdx > -1 && headerIdx < sendIdx)
+  const adminSrc = readFileSync(new URL('../api/admin.js', import.meta.url), 'utf-8')
+  const tokenFnMatch = adminSrc.match(/onBeforeGenerateToken:\s*async[\s\S]*?\}\)/)
+  check('api/admin.js: onBeforeGenerateToken esiste', !!tokenFnMatch)
+  check('api/admin.js: onBeforeGenerateToken chiede allowOverwrite:true',
+    /allowOverwrite:\s*true/.test(tokenFnMatch ? tokenFnMatch[0] : ''))
+
+  const clientSrc = readFileSync(new URL('../src/lib/blobDirectUpload.js', import.meta.url), 'utf-8')
+  check("blobDirectUpload: NON manda più x-allow-overwrite sul PUT (il preflight CORS lo rifiuta)",
+    !/setRequestHeader\(\s*['"]x-allow-overwrite['"]/.test(clientSrc))
 }
 
 // ── 2. Il cleanup lato server è nel `finally`, non nel percorso felice ─────

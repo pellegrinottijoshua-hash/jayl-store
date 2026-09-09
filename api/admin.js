@@ -267,8 +267,9 @@ async function blobToBase64(blobUrl, label) {
   // These blobs are pure staging (see the file-level comment above): nothing
   // downstream ever reads one a second time, success or failure, so deleting
   // unconditionally here cannot lose data — it can only stop losing a
-  // pathname. Paired with `x-allow-overwrite: 1` on the client PUT
-  // (src/lib/blobDirectUpload.js) as a second line of defense: even a blob
+  // pathname. Paired with `allowOverwrite: true` on the client token
+  // (onBeforeGenerateToken below, not a header on the PUT anymore — see
+  // src/lib/blobDirectUpload.js) as a second line of defense: even a blob
   // this can't reach (a crash before `finally` runs at all) no longer blocks
   // the next retry.
   try {
