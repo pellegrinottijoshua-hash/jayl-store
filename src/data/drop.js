@@ -46,13 +46,15 @@ export const drop = {
         "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
         "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him"
       ],
-      "startsAt": "2026-09-16T16:00:00Z",
-      "endsAt": "2026-09-19T16:00:00Z",
+      "startsAt": "2026-09-09T16:00:00Z",
+      "endsAt": "2026-09-13T16:00:00Z",
       "cap": 20,
       "caps": {},
       "dropPrice": 2200,
       "bundlePrice": 5700,
-      "heroImages": {}
+      "heroImages": {
+        "cool-snorlax-back-t-shirt": "/images/cool-snorlax-back-t-shirt/s-post-1.png"
+      }
     }
   ],
   "next": {
