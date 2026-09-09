@@ -36,7 +36,25 @@ export const drop = {
     }
   },
   "previous": null,
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-02",
+      "number": 2,
+      "title": "SLEEP MODE",
+      "productIds": [
+        "cool-snorlax-back-t-shirt",
+        "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
+        "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him"
+      ],
+      "startsAt": "2026-09-16T16:00:00Z",
+      "endsAt": "2026-09-19T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 2200,
+      "bundlePrice": 5700,
+      "heroImages": {}
+    }
+  ],
   "next": {
     "number": 2,
     "startsAt": "2026-09-10T16:00:00Z"
