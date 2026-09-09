@@ -492,6 +492,15 @@ export default async function handler(req, res) {
             'video/mp4', 'video/quicktime', 'video/webm',
           ],
           maximumSizeInBytes: 500 * 1024 * 1024, // 500 MB
+          // Baked into the signed clientToken now, not sent as a client
+          // header (see blobDirectUpload.js — `x-allow-overwrite` used to
+          // live there and the browser's CORS preflight now rejects it,
+          // since blob.vercel-storage.com stopped listing it in
+          // Access-Control-Allow-Headers). Every caller here uses a
+          // deterministic pathname on purpose (see blobDirectUpload.js
+          // header comment on allowOverwrite) — a re-upload of the same
+          // file for the same product replaces what's there.
+          allowOverwrite: true,
         }),
         // No onUploadCompleted — skips the server callback entirely
       })

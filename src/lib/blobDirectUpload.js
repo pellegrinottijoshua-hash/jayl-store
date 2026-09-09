@@ -28,17 +28,30 @@
 // ── allowOverwrite ───────────────────────────────────────────────────────────
 // Every caller here uses a DETERMINISTIC pathname (`<productId>/<filename>`,
 // `designs/<id>/<filename>`) — a re-upload of the same file for the same
-// product is meant to replace what's there, not fail. Without
-// `x-allow-overwrite: 1`, Vercel Blob rejects a PUT to an existing pathname
-// with 400 "This blob already exists" — and the blob normally never survives
-// past the request that reads it (the server deletes it right after), so
-// under normal operation this collision cannot happen. It DID happen once:
-// the server-side commit for Entei's 13.8 MB print file failed mid-request
-// (the site was mid-incident from the admin-products.js catalog bug at the
-// same time), the blob was never read, so it was never deleted — and every
-// retry with the same filename hit the same 400 forever after, because the
-// orphan had nothing that would ever clean it up. `allowOverwrite` makes a
-// retry succeed instead of getting permanently stuck on its own leftover.
+// product is meant to replace what's there, not fail. Without it, Vercel Blob
+// rejects a PUT to an existing pathname with 400 "This blob already exists" —
+// and the blob normally never survives past the request that reads it (the
+// server deletes it right after), so under normal operation this collision
+// cannot happen. It DID happen once: the server-side commit for Entei's
+// 13.8 MB print file failed mid-request (the site was mid-incident from the
+// admin-products.js catalog bug at the same time), the blob was never read,
+// so it was never deleted — and every retry with the same filename hit the
+// same 400 forever after, because the orphan had nothing that would ever
+// clean it up. `allowOverwrite` makes a retry succeed instead of getting
+// permanently stuck on its own leftover.
+//
+// THE PERMISSION LIVES ON THE TOKEN, NOT ON THE REQUEST (found 2026-09-09)
+// This used to travel as an `x-allow-overwrite: 1` header on the PUT below.
+// It broke silently: Vercel Blob's CORS preflight for blob.vercel-storage.com
+// stopped listing that header in Access-Control-Allow-Headers, so every PUT
+// failed the browser's preflight check before the request ever left the
+// tab — surfacing here only as a bare, undiagnosable `xhr.onerror`, with the
+// real reason ("Request header field x-allow-overwrite is not allowed by
+// Access-Control-Allow-Headers in preflight response") visible only in the
+// browser console, never in anything this file could catch or report.
+// `allowOverwrite: true` now lives server-side, baked into the signed
+// clientToken by onBeforeGenerateToken (see api/admin.js) — nothing on this
+// end needs to ask for the permission at request time anymore.
 
 const BLOB_API = 'https://blob.vercel-storage.com'
 
@@ -56,7 +69,6 @@ function putOnce(pathname, file, clientToken, { onProgress, signal } = {}) {
     xhr.setRequestHeader('authorization', `Bearer ${clientToken}`)
     xhr.setRequestHeader('x-api-version', '11')
     xhr.setRequestHeader('x-vercel-blob-access', 'private')
-    xhr.setRequestHeader('x-allow-overwrite', '1')
     xhr.setRequestHeader('content-type', file.type || 'application/octet-stream')
 
     if (onProgress) {
