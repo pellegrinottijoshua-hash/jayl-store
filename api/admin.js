@@ -5,7 +5,7 @@ import { decodeItemsFromMetadata } from './_lib/catalog.js'
 import { sendEmail, buildAbandonedCartEmail } from './_lib/email.js'
 import { ghGet, ghPut } from './_lib/github.js'
 import { DROP_CONFIG_PATH, serializeDropConfig, parseDropConfig, validateDropConfig } from './_lib/drop-config.js'
-import { pickDueDrop, promoteDrop } from './_lib/drop-schedule.js'
+import { pickDueDrop, promoteDrop, archiveDrop } from './_lib/drop-schedule.js'
 import { SOCIAL_LINKS_PATH, sanitizeSocialLinks, serializeSocialLinks } from './_lib/social-links.js'
 
 const GITHUB_OWNER       = 'pellegrinottijoshua-hash'
@@ -1877,10 +1877,36 @@ Return JSON with these exact keys:
       // Conserva il drop chiuso: fra un drop e l'altro la home lo mostra
       // marcato invece di svuotarsi. Senza questo, DropPanels non renderizza niente.
       cfg.previous = { number: cfg.current?.number, title: cfg.current?.title, productIds: ids }
+      cfg.past     = archiveDrop(cfg, cfg.current)
       cfg.current  = { ...cfg.current, productIds: [] }
+
+      // Subentro immediato del programmato, quando ce n'è uno dovuto.
+      // Chiudere un drop e lasciare la vetrina vuota fino al prossimo giro di
+      // cron è il buco che si vedeva in home come "DROP CLOSED" per ore: qui
+      // l'admin ha appena dichiarato finito il drop, quindi il momento giusto
+      // per far partire il successivo è adesso, non domattina. pickDueDrop
+      // decide con le stesse regole del cron (niente promozione di un drop che
+      // apre fra giorni: quello resta programmato e parte alla sua data).
+      let chained = null
+      const due = pickDueDrop(cfg, new Date())
+      if (due.entry) {
+        const nextCfg = promoteDrop(cfg, due.index)
+        const check = validateDropConfig(nextCfg)
+        if (check.ok) {
+          cfg = nextCfg
+          chained = { id: due.entry.id, number: due.entry.number, title: due.entry.title, startsAt: due.entry.startsAt }
+        }
+        // Se non valida non si blocca la chiusura: il drop resta chiuso (che è
+        // quello che l'admin ha chiesto) e il programmato resta in coda, dove
+        // il pannello lo mostra e si può correggere.
+      }
+
       const source = serializeDropConfig(cfg)
-      const result = await ghPut(DROP_CONFIG_PATH, source, file.sha, '[drop] close drop → listino', githubToken)
-      return res.status(200).json({ ok: true, released: cfg.released, sha: result?.content?.sha })
+      const message = chained
+        ? `[drop] close drop → listino, subentra drop ${chained.number}`
+        : '[drop] close drop → listino'
+      const result = await ghPut(DROP_CONFIG_PATH, source, file.sha, message, githubToken)
+      return res.status(200).json({ ok: true, released: cfg.released, chained, sha: result?.content?.sha })
     }
 
     // ── release-product ──────────────────────────────────────────────────────

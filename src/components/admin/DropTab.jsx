@@ -3,6 +3,38 @@ import { products as allProducts } from '@/data/products-full'
 import { getAdminPassword } from '@/components/generate-assets/constants'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
 
+// Stato in chiaro di una voce drop, dalle sue sole date. Il pannello mostrava
+// "DROP CORRENTE" identico sopra un drop che vendeva e sopra uno finito da
+// ore: la sezione si chiama "corrente" per la sua posizione nella config, non
+// perché quel drop sia davvero in vendita, e da lì nasceva la confusione di
+// trovare in admin come corrente un drop che in home era già chiuso.
+function entryState(entry, now = Date.now()) {
+  const starts = Date.parse(entry?.startsAt)
+  const ends   = Date.parse(entry?.endsAt)
+  if (!Number.isFinite(starts) || !Number.isFinite(ends)) {
+    return { key: 'unknown', label: 'DATE NON VALIDE', tone: 'bg-red-900/60 text-red-200' }
+  }
+  if (!(entry?.productIds || []).length) {
+    return { key: 'empty', label: 'CHIUSO — NESSUN PEZZO', tone: 'bg-gray-700 text-gray-300' }
+  }
+  if (now < starts) return { key: 'before', label: 'IN ANTEPRIMA — NON ANCORA IN VENDITA', tone: 'bg-amber-900/60 text-amber-200' }
+  if (now >= ends)  return { key: 'closed', label: 'CHIUSO — I PEZZI SONO IN ARCHIVIO', tone: 'bg-gray-700 text-gray-300' }
+  return { key: 'live', label: 'IN VENDITA ORA', tone: 'bg-emerald-800/70 text-emerald-100' }
+}
+
+/** "fra 2g 4h" / "3h 12m fa" — durata leggibile rispetto ad adesso. */
+function relTime(iso, now = Date.now()) {
+  const t = Date.parse(iso)
+  if (!Number.isFinite(t)) return ''
+  const diff = t - now
+  const abs  = Math.abs(diff)
+  const d = Math.floor(abs / 86400000)
+  const h = Math.floor((abs % 86400000) / 3600000)
+  const m = Math.floor((abs % 3600000) / 60000)
+  const parts = d ? `${d}g ${h}h` : h ? `${h}h ${m}m` : `${m}m`
+  return diff >= 0 ? `fra ${parts}` : `${parts} fa`
+}
+
 // ── Upload helper per il picker hero ─────────────────────────────────────────
 // Vercel Blob first, poi action:'upload-image' con blobUrl — stesso percorso
 // di AdminPage.jsx (upload di un'immagine prodotto verso Blob) e di
@@ -207,13 +239,19 @@ export default function DropTab() {
     const numbers = [c.current?.number || 0, ...list.map((e) => e.number || 0)]
     const number  = Math.max(...numbers) + 1
 
-    // Parte dopo la chiusura dell'ultimo drop conosciuto: una settimana dopo,
-    // stessa ora, finestra di 72 ore come il drop 01.
+    // Attaccato alla chiusura dell'ultimo drop conosciuto: apre nell'istante
+    // esatto in cui quello chiude, finestra di 72 ore. Prima il default era
+    // una settimana dopo, che lasciava scoperta la vetrina per sette giorni e
+    // costringeva a correggere le date a mano ogni volta — i drop qui sono
+    // pensati per essere consecutivi, quindi è quello il default giusto.
+    // Contiguo è anche la condizione in cui la promozione automatica funziona
+    // meglio: il cron delle 16:00 trova il corrente appena scaduto e questo
+    // pronto ad aprire nello stesso giro.
     const lastEnd = [c.current?.endsAt, ...list.map((e) => e.endsAt)]
       .map((d) => Date.parse(d))
       .filter(Number.isFinite)
       .sort((a, b) => b - a)[0] ?? Date.now()
-    const startsAt = new Date(lastEnd + 7 * 24 * 60 * 60 * 1000)
+    const startsAt = new Date(lastEnd)
     const endsAt   = new Date(startsAt.getTime() + 72 * 60 * 60 * 1000)
 
     const entry = {
@@ -280,6 +318,13 @@ export default function DropTab() {
     loadDrop()
   }
 
+  // Ricalcolato a ogni render: basta a far cambiare il badge quando l'admin
+  // sposta le date nei campi qui sotto, che è il momento in cui serve davvero
+  // vederlo cambiare. Niente timer — un drop che scade con la pagina aperta è
+  // un caso che il prossimo caricamento risolve da sé.
+  const currentState = entryState(cfg.current)
+  const past = Array.isArray(cfg.past) ? cfg.past : []
+
   const release = async (id) => {
     if (busy) return
     setBusy(true)
@@ -296,7 +341,26 @@ export default function DropTab() {
   return (
     <div className="space-y-8 text-white">
       <section>
-        <h3 className="text-sm uppercase tracking-widest text-gray-400 mb-3">Drop corrente</h3>
+        <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+          <h3 className="text-sm uppercase tracking-widest text-gray-400">
+            Drop corrente — {String(cfg.current?.number ?? '?').padStart(2, '0')} · {cfg.current?.title || 'senza titolo'}
+          </h3>
+          <span className={`text-[11px] tracking-widest uppercase px-2 py-1 rounded ${currentState.tone}`}>
+            {currentState.label}
+          </span>
+        </div>
+        <p className="text-xs text-gray-500 mb-3">
+          {currentState.key === 'live' && <>Chiude {relTime(cfg.current.endsAt)} — {cfg.current.endsAt}</>}
+          {currentState.key === 'before' && <>Apre {relTime(cfg.current.startsAt)} — {cfg.current.startsAt}</>}
+          {currentState.key === 'closed' && (
+            <>
+              Chiuso {relTime(cfg.current.endsAt)}. {scheduled.length > 0
+                ? `Il prossimo programmato apre il ${scheduled[0].startsAt}.`
+                : 'Nessun drop programmato: la home resta senza drop attivo finché non ne programmi uno qui sotto.'}
+            </>
+          )}
+          {currentState.key === 'empty' && <>Chiuso a mano. I pezzi sono in listino a prezzo pieno.</>}
+        </p>
         <DropEntryFields entry={cfg.current} onChange={setCurrent} />
         <div className="grid grid-cols-2 gap-x-4">
           {field('Prezzo listino (cent) — vale per tutti i drop', cfg.archivePrice, (v) => setCfg((c) => ({ ...c, archivePrice: parseInt(v, 10) || 0 })), 'number')}
@@ -345,16 +409,19 @@ export default function DropTab() {
           Prossimi drop — {scheduled.length} programmati
         </h3>
         <p className="text-xs text-gray-500 mb-4">
-          Il cron delle 08:00 promuove da solo il primo drop che apre entro 24 ore: chiude il
-          corrente (i pezzi passano in listino), mette questo al suo posto e committa — il commit
-          fa partire il deploy. Fino a <em>Apre</em> il drop resta in anteprima: si vede in home,
-          non si può comprare. Se il drop corrente è ancora aperto la promozione slitta al giorno
-          dopo, non lo interrompe mai a metà.
+          Un drop programmato subentra da solo in due momenti: quando premi <em>Chiudi drop</em>
+          {' '}(subentra nello stesso salvataggio, senza buchi in vetrina) e col cron delle 16:00,
+          allineato all'ora in cui i tuoi drop cambiano. In entrambi i casi chiude il corrente
+          (i pezzi passano in listino), mette questo al suo posto e committa — il commit fa
+          partire il deploy. Fino a <em>Apre</em> il drop resta in anteprima: si vede in home,
+          non si può comprare. Un drop corrente ancora aperto non viene mai interrotto a metà.
         </p>
 
         {scheduled.length === 0 && (
-          <p className="text-xs text-gray-600 mb-3">
-            Nessun drop programmato — la home mostrerà il countdown solo se `next` è compilato a mano.
+          <p className="text-xs text-amber-300/80 mb-3">
+            Nessun drop programmato. Quando il corrente chiude non subentra niente e la home resta
+            senza drop attivo: programmane uno qui sotto: si precompila attaccato alla chiusura del
+            corrente, così i due sono consecutivi.
           </p>
         )}
 
@@ -406,6 +473,48 @@ export default function DropTab() {
           className="px-4 py-2 border border-gray-700 hover:border-gray-500 rounded text-sm text-gray-300 disabled:opacity-40">
           + Programma un drop
         </button>
+      </section>
+
+      <section>
+        <h3 className="text-sm uppercase tracking-widest text-gray-400 mb-1">
+          Drop passati — {past.length}
+        </h3>
+        <p className="text-xs text-gray-500 mb-3">
+          Archivio in sola lettura: ogni drop concluso finisce qui, con la sua finestra e i suoi
+          pezzi. I pezzi restano in vendita nell'archivio a {(cfg.archivePrice / 100).toFixed(2)}€.
+        </p>
+
+        {past.length === 0 && (
+          <p className="text-xs text-gray-600">
+            Nessun drop concluso ancora — il primo comparirà qui alla prima chiusura.
+          </p>
+        )}
+
+        {[...past].reverse().map((entry) => (
+          <div key={entry.id} className="border border-gray-800 rounded px-4 py-3 mb-2">
+            <div className="flex items-baseline justify-between gap-3 flex-wrap">
+              <span className="text-sm text-white">
+                Drop {String(entry.number).padStart(2, '0')} · {entry.title}
+              </span>
+              <span className="text-[11px] tracking-widest uppercase text-gray-500">
+                chiuso {relTime(entry.endsAt)}
+              </span>
+            </div>
+            <p className="text-xs text-gray-500 mt-0.5">
+              {entry.startsAt} → {entry.endsAt}
+            </p>
+            <ul className="mt-2 space-y-0.5">
+              {(entry.productIds || []).map((id) => {
+                const p = allProducts.find((pp) => pp.id === id)
+                return (
+                  <li key={id} className="text-xs text-gray-400 truncate">
+                    · {p?.name || id}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
       </section>
 
       <section className="flex gap-3 items-center flex-wrap">

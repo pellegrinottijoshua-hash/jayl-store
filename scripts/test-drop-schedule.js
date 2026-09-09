@@ -13,7 +13,7 @@
 // un test che leggeva l'orologio reale avrebbe fatto fallire ogni deploy per
 // le 72 ore di un drop. Run: node scripts/test-drop-schedule.js
 
-import { pickDueDrop, promoteDrop, nextDropStartsAt, PROMOTION_LEAD_MS } from '../api/_lib/drop-schedule.js'
+import { pickDueDrop, promoteDrop, archiveDrop, nextDropStartsAt, PROMOTION_LEAD_MS } from '../api/_lib/drop-schedule.js'
 import { validateDropConfig } from '../api/_lib/drop-config.js'
 
 let passed = 0
@@ -164,6 +164,36 @@ const at = (iso) => new Date(iso)
   const afterManual = promoteDrop(manuallyClosed, 0)
   check('promoteDrop: previous preservato se il drop era già chiuso a mano',
     afterManual.previous?.productIds.join() === 'aaa')
+}
+
+// ── archiveDrop — l'archivio storico letto dal pannello ─────────────────────
+// Serve a una cosa sola: che un drop concluso smetta di occupare la sezione
+// "Drop corrente" del pannello come se stesse ancora vendendo. Le regole che
+// contano sono l'idempotenza (chiusura manuale + giro di cron toccano lo
+// stesso drop uscente) e il non archiviare un guscio già svuotato sopra la
+// voce buona.
+{
+  const outgoing = { id: 'drop-01', number: 1, title: 'ORIGIN', productIds: ['aaa'], startsAt: '2026-02-01T16:00:00Z', endsAt: '2026-02-04T16:00:00Z' }
+
+  const first = archiveDrop({ past: [] }, outgoing)
+  check('archiveDrop: archivia un drop concluso', first.length === 1 && first[0].id === 'drop-01')
+  check('archiveDrop: conserva finestra e pezzi',
+    first[0].startsAt === '2026-02-01T16:00:00Z' && first[0].endsAt === '2026-02-04T16:00:00Z' && first[0].productIds.join() === 'aaa')
+
+  check('archiveDrop: idempotente sullo stesso id (close-drop poi cron)',
+    archiveDrop({ past: first }, outgoing).length === 1)
+
+  check('archiveDrop: non archivia un drop già svuotato',
+    archiveDrop({ past: [] }, { ...outgoing, productIds: [] }).length === 0)
+
+  check('archiveDrop: past assente → parte da zero senza rompersi',
+    archiveDrop({}, outgoing).length === 1)
+
+  const promoted = promoteDrop(cfg({ scheduled: [entry()] }), 0)
+  check('promoteDrop: il drop uscente finisce in past',
+    (promoted.past || []).length === 1 && promoted.past[0].id === cfg().current.id)
+  check('promoteDrop: past resta valido per validateDropConfig',
+    validateDropConfig(promoted).ok === true)
 }
 
 // ── nextDropStartsAt — la data annunciata dai countdown ─────────────────────

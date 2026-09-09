@@ -13,12 +13,27 @@
 // stato in memoria.
 //
 // ── Perché promuovere in anticipo non mette in vendita ───────────────────────
-// Il cron gira una volta al giorno alle 08:00 UTC, un drop apre quando vuole.
-// Promuovere PRIMA di startsAt è sicuro perché il drop entra nello stato
-// BEFORE (dropWindowState): la home mostra l'anteprima, e checkDropGate in
+// Il cron gira una volta al giorno, un drop apre quando vuole. Promuovere
+// PRIMA di startsAt è sicuro perché il drop entra nello stato BEFORE
+// (dropWindowState): la home mostra l'anteprima, e checkDropGate in
 // api/create-payment-intent.js rifiuta qualunque checkout fino a startsAt.
 // Le ore di anticipo non sono un effetto collaterale da tollerare, sono la
 // vetrina d'attesa.
+//
+// ── Perché il cron gira alle 16:00 UTC (vercel.json) ─────────────────────────
+// Girava alle 08:00, e con drop contigui quell'ora è la peggiore possibile.
+// Il guardrail qui sotto rifiuta di promuovere sopra un drop ancora in corso
+// (giustamente: i pezzi passerebbero a prezzo pieno mentre qualcuno li sta
+// comprando a prezzo drop). Con un drop che chiude alle 16:00 e il successivo
+// che apre alle 16:00, il giro delle 08:00 vede il corrente ancora aperto e
+// rimanda — e il giro utile diventa quello del giorno DOPO: il drop nuovo
+// parte con 16 ore di ritardo e la home resta su "DROP CLOSED" per tutta la
+// sera. Allineare il cron all'ora di cambio riduce quel ritardo alla finestra
+// di jitter del cron (Vercel lo fa partire entro l'ora schedulata, mai prima).
+// Se un giorno l'ora dei drop cambia, questa va cambiata con lei.
+//
+// Il percorso manuale non dipende da questo: 'close-drop' in api/admin.js fa
+// subentrare da sé il programmato dovuto, nello stesso commit della chiusura.
 
 /**
  * Finestra di anticipo: una voce è "dovuta" quando manca al massimo questo
@@ -85,6 +100,41 @@ export function pickDueDrop(cfg, now = new Date()) {
 }
 
 /**
+ * Aggiunge un drop concluso all'archivio storico `past`, se non c'è già.
+ *
+ * `previous` conserva SOLO l'ultimo drop chiuso, perché serve a una cosa sola:
+ * dare alla home qualcosa da mostrare nel buco fra due drop. `past` è un'altra
+ * cosa — è la cronologia completa, quella che il pannello admin elenca sotto
+ * "Drop passati" così che un drop concluso non resti a occupare la sezione
+ * "Drop corrente" facendo credere che stia ancora vendendo.
+ *
+ * Idempotente per id: close-drop e la promozione del cron possono toccare lo
+ * stesso drop uscente a pochi minuti di distanza (chiusura manuale seguita dal
+ * giro di cron), e due voci identiche nell'archivio sarebbero solo rumore.
+ */
+export function archiveDrop(cfg, outgoing) {
+  const past = Array.isArray(cfg.past) ? cfg.past : []
+  const ids = outgoing?.productIds || []
+  // Un drop già svuotato (chiuso a mano prima) è già stato archiviato al
+  // momento della chiusura: archiviarlo di nuovo scriverebbe una voce senza
+  // pezzi sopra quella buona.
+  if (!outgoing?.id || ids.length === 0) return past
+  if (past.some((p) => p.id === outgoing.id)) return past
+
+  return [
+    ...past,
+    {
+      id: outgoing.id,
+      number: outgoing.number,
+      title: outgoing.title,
+      productIds: ids,
+      startsAt: outgoing.startsAt,
+      endsAt: outgoing.endsAt,
+    },
+  ]
+}
+
+/**
  * Applica la promozione: restituisce una NUOVA config, senza mutare quella
  * passata (il chiamante deve poter abortire senza aver sporcato nulla).
  *
@@ -93,9 +143,10 @@ export function pickDueDrop(cfg, now = new Date()) {
  *   1. i pezzi del drop uscente entrano in `released` (listino, prezzo pieno)
  *   2. `previous` conserva il drop uscente, così la home ha ancora qualcosa da
  *      mostrare nel buco fra i due (senza, DropPanels non renderizza niente)
- *   3. il programmato diventa `current` così com'è — stessa forma, nessuna
+ *   3. il drop uscente entra in `past`, l'archivio che il pannello elenca
+ *   4. il programmato diventa `current` così com'è — stessa forma, nessuna
  *      trasformazione, nessun campo inventato al volo
- *   4. esce da `scheduled`
+ *   5. esce da `scheduled`
  */
 export function promoteDrop(cfg, index) {
   const scheduled = Array.isArray(cfg.scheduled) ? cfg.scheduled : []
@@ -113,6 +164,7 @@ export function promoteDrop(cfg, index) {
     previous: outgoingIds.length > 0
       ? { number: cfg.current?.number, title: cfg.current?.title, productIds: outgoingIds }
       : (cfg.previous ?? null),
+    past: archiveDrop(cfg, cfg.current),
     released: [...new Set([...(cfg.released || []), ...outgoingIds])],
     current: entry,
     scheduled: scheduled.filter((_, i) => i !== index),
