@@ -17505,14 +17505,13 @@ export const adminProducts = [
       }
     ],
     "image": "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--mockup-01.jpg",
-    "heroImage": "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170349_6731594b-1b20-4d97-b354-3317511a3cd5.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170349_6731594b-1b20-4d97-b354-3317511a3cd5.png",
     "detailImage": "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170419_c044d201-c33c-45d0-b3a2-90b533daa1a0.png",
     "images": [
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_225151_b4573516-1cd4-4a9b-a6e1-0b61620876d9.png",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170323_9056807b-1600-4469-b84b-5077b38b5e7c.png",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-01.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-02.jpg",
-      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-03.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-04.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-05.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-06.jpg",
@@ -17920,7 +17919,7 @@ export const adminProducts = [
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T15:05:44.591Z",
-    "updatedAt": "2026-09-10T10:38:26.500Z",
+    "updatedAt": "2026-09-10T10:38:55.208Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_123253_b366555c-9df2-4833-ae17-0f7a807798a9-gelato-front-350.png"
   },
