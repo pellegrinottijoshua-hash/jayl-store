@@ -4,6 +4,7 @@ import { ArrowLeft, Lock } from 'lucide-react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
+import { trackGA4, cartToGaItems, toMajor } from '@/lib/analytics'
 import { formatPrice, cn } from '@/lib/utils'
 import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
 
@@ -97,6 +98,23 @@ function CheckoutForm() {
   const discountAmount = serverPricing?.discountAmount ?? localDiscountAmount
   const discountLabel  = serverPricing?.discountLabel  ?? localDiscountLabel
   const total          = serverPricing?.total          ?? localTotal
+
+  // GA4 — begin_checkout, una sola volta per visita alla pagina.
+  // `items` cambia identità a ogni render dello store, e serverPricing arriva
+  // dopo: senza il ref l'evento partirebbe più volte per lo stesso checkout e
+  // il tasso prodotto→checkout risulterebbe più alto del vero. Il valore usato
+  // è il subtotale locale perché è l'unico disponibile al momento in cui il
+  // cliente ENTRA nel checkout — lo sconto server non è ancora stato chiesto.
+  const beginCheckoutFired = useRef(false)
+  useEffect(() => {
+    if (beginCheckoutFired.current || items.length === 0) return
+    beginCheckoutFired.current = true
+    trackGA4('begin_checkout', {
+      currency: 'EUR',
+      value:    toMajor(subtotal),
+      items:    cartToGaItems(items, (i) => livePriceFor(i, cfg)),
+    })
+  }, [items, subtotal, cfg])
 
   const handleApplyCode = async () => {
     const code = discountInput.trim().toUpperCase()
@@ -274,11 +292,15 @@ function CheckoutForm() {
         const orderId = orderData.orderId || paymentIntent.id
 
         // Fire analytics events. `total` is cents; ad platforms expect major units.
+        // Le righe di carrello NON hanno `id` (la forma è { variantKey, product,
+        // size, color, frame, quantity, unitPrice } — vedi cartStore.js): l'id
+        // prodotto sta su `i.product.id`. Con `i.id` ogni Purchase partiva con
+        // content_ids tutti undefined, cioè senza attribuzione di prodotto.
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Purchase', {
             value: total / 100,
             currency: 'EUR',
-            content_ids: items.map(i => i.id),
+            content_ids: items.map(i => i.product?.id),
             content_type: 'product',
             num_items: items.reduce((s, i) => s + (i.quantity || 1), 0),
           })
@@ -290,6 +312,14 @@ function CheckoutForm() {
             currency: 'EUR',
           })
         }
+        // GA4 — purchase
+        trackGA4('purchase', {
+          transaction_id: orderId,
+          currency:       'EUR',
+          value:          toMajor(total),
+          shipping:       toMajor(shipping),
+          items:          cartToGaItems(items, (i) => livePriceFor(i, cfg)),
+        })
         clearCart()
         navigate(`/order-confirmation/${orderId}`, {
           state: {
@@ -430,7 +460,7 @@ function CheckoutForm() {
         window.fbq('track', 'Purchase', {
           value: total / 100,
           currency: 'EUR',
-          content_ids: items.map(i => i.id),
+          content_ids: items.map(i => i.product?.id),
           content_type: 'product',
           num_items: items.reduce((s, i) => s + (i.quantity || 1), 0),
         })
@@ -443,6 +473,14 @@ function CheckoutForm() {
           currency: 'EUR',
         })
       }
+      // GA4 — purchase
+      trackGA4('purchase', {
+        transaction_id: orderId,
+        currency:       'EUR',
+        value:          toMajor(total),
+        shipping:       toMajor(shipping),
+        items:          cartToGaItems(items, (i) => livePriceFor(i, cfg)),
+      })
       clearCart()
       navigate(`/order-confirmation/${orderId}`, {
         state: {

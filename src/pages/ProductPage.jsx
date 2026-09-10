@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { getProductById, products } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
+import { trackGA4, gaItem, toMajor } from '@/lib/analytics'
 import { formatPrice, slugToTitle, cn } from '@/lib/utils'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
@@ -615,13 +616,16 @@ export default function ProductPage() {
       const others = next.slice(1).map(i => getProductById(i)).filter(Boolean).slice(0, 4)
       setRecentlyViewed(others)
     } catch {}
-    // Meta Pixel — ViewContent
+    // Meta Pixel — ViewContent. `productBasePrice` è in CENTESIMI: le
+    // piattaforme pubblicitarie vogliono unità maggiori, come già fa Purchase
+    // in CheckoutPage. Senza toMajor() Meta registrava ogni vista prodotto a
+    // €2.200 invece di €22.
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'ViewContent', {
         content_ids: [product.id],
         content_name: product.name,
         content_type: 'product',
-        value: productBasePrice,
+        value: toMajor(productBasePrice),
         currency: 'EUR',
       })
     }
@@ -629,6 +633,12 @@ export default function ProductPage() {
     if (typeof window.pintrk === 'function') {
       window.pintrk('track', 'pagevisit')
     }
+    // GA4 — view_item
+    trackGA4('view_item', {
+      currency: 'EUR',
+      value:    toMajor(productBasePrice),
+      items:    [gaItem(product, productBasePrice)],
+    })
   }, [product?.id])
 
   // Load approved reviews for this product
@@ -797,24 +807,33 @@ export default function ProductPage() {
     setAdded(true)
     openCart()
     setTimeout(() => setAdded(false), 2000)
-    // Meta Pixel — AddToCart
+    // Meta Pixel — AddToCart. Stesso motivo di ViewContent sopra: centesimi
+    // → unità maggiori, o il valore arriva gonfiato di 100 volte.
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'AddToCart', {
         content_ids: [product.id],
         content_name: product.name,
         content_type: 'product',
-        value: productBasePrice,
+        value: toMajor(productBasePrice),
         currency: 'EUR',
       })
     }
     // Pinterest Tag — AddToCart
     if (typeof window.pintrk === 'function') {
       window.pintrk('track', 'addtocart', {
-        value: productBasePrice,
+        value: toMajor(productBasePrice),
         order_quantity: 1,
         currency: 'EUR',
       })
     }
+    // GA4 — add_to_cart
+    trackGA4('add_to_cart', {
+      currency: 'EUR',
+      value:    toMajor(productBasePrice),
+      items:    [gaItem(product, productBasePrice, 1, {
+        item_variant: [selectedSize, selectedColor].filter(Boolean).join(' / ') || undefined,
+      })],
+    })
   }
 
   const handleCopy = () => {
