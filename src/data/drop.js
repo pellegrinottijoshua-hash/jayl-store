@@ -58,7 +58,29 @@ export const drop = {
       "endsAt": "2026-09-09T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-03",
+      "number": 3,
+      "title": "NO RUSH",
+      "productIds": [
+        "cool-ditto-back-t-shirt",
+        "cool-slowpoke-back-t-shirt",
+        "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
+      ],
+      "startsAt": "2026-09-13T16:00:00Z",
+      "endsAt": "2026-09-17T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 2200,
+      "bundlePrice": 5700,
+      "heroImages": {
+        "cool-ditto-back-t-shirt": "/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png",
+        "cool-slowpoke-back-t-shirt": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132411_91169ddf-d023-4498-8189-882dc549ad0a.png",
+        "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_123012_3dc13ed8-ee97-4278-be2a-798f1db9799b.png"
+      }
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
