@@ -60,11 +60,18 @@
       gtag('config', 'G-SZQ80GDTJ0', { send_page_view: false });
     </script>
 
-    <!-- Marketing pixels (Meta Pixel + Pinterest Tag) — GDPR/ePrivacy:
+    <!-- Marketing pixels (Meta Pixel + Pinterest Tag + TikTok Pixel) — GDPR/ePrivacy:
          nothing is loaded or fired until the user accepts marketing cookies in
          the banner. __jaylLoadMarketing() is called by CookieBanner on accept,
          and auto-runs on repeat visits where consent was already granted. -->
     <script>
+      /* TikTok Pixel ID — TikTok Business Center → Strumenti → Eventi → Pixel web.
+         Finché resta null il pixel NON si carica: nessuno script scaricato,
+         nessuna richiesta di rete, nessun errore in console. Gli eventi
+         ttq.track() sparsi nell'app sono già al loro posto e diventano attivi
+         da soli nel momento in cui qui c'è un id. */
+      window.__jaylTiktokPixelId = null;
+
       window.__jaylLoadMarketing = function () {
         if (window.__jaylMarketingLoaded) return;
         window.__jaylMarketingLoaded = true;
@@ -76,6 +83,14 @@
         !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
         pintrk('load', '2613163991136');
         pintrk('page');
+        /* TikTok Pixel — solo se un id è stato configurato sopra. */
+        if (window.__jaylTiktokPixelId) {
+          !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+          }(window, document, 'ttq');
+          ttq.load(window.__jaylTiktokPixelId);
+          ttq.page();
+        }
       };
       try { if (localStorage.getItem('jayl_cookie_consent') === 'accepted') window.__jaylLoadMarketing(); } catch (e) {}
     </script>

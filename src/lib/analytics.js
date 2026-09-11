@@ -79,3 +79,47 @@ export function cartToGaItems(items, priceOf) {
     })
   )
 }
+
+// ── TikTok Pixel ────────────────────────────────────────────────────────────
+//
+// Stessa forma degli helper GA4 sopra, stesse due regole (centesimi → unità
+// maggiori, prezzo risolto dal drop). Il pixel si carica solo dopo il consenso
+// e solo se __jaylTiktokPixelId è valorizzato in index.html — finché non lo è,
+// `window.ttq` non esiste e ogni chiamata qui è un no-op silenzioso. Gli eventi
+// restano comunque scritti nei punti giusti: il giorno in cui l'id compare,
+// iniziano a partire senza toccare altro codice.
+//
+// I nomi degli eventi sono quelli standard di TikTok e NON coincidono con
+// quelli GA4: InitiateCheckout (non begin_checkout), CompletePayment (non
+// purchase). Un nome fuori standard viene accettato dal pixel ma non è
+// ottimizzabile in campagna, che è l'unico motivo per cui lo si installa.
+
+/** Invia un evento al TikTok Pixel, se caricato. */
+export function trackTikTok(event, params) {
+  if (typeof window === 'undefined' || typeof window.ttq?.track !== 'function') return
+  try {
+    window.ttq.track(event, params)
+  } catch {
+    // Come per GA4: un evento perso non vale un checkout rotto.
+  }
+}
+
+/**
+ * Un `content` TikTok da un prodotto del catalogo.
+ *
+ * @param priceCents  prezzo DAVVERO addebitato, in centesimi
+ */
+export function ttContent(product, priceCents, quantity = 1) {
+  return {
+    content_id:   product?.id,
+    content_type: 'product',
+    content_name: product?.name,
+    price:        toMajor(priceCents),
+    quantity,
+  }
+}
+
+/** Righe di carrello → array di `contents` TikTok. `priceOf` torna CENTESIMI. */
+export function cartToTtContents(items, priceOf) {
+  return (items || []).map((i) => ttContent(i.product, priceOf(i), i.quantity || 1))
+}

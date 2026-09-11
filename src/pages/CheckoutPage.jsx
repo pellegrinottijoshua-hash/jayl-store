@@ -4,7 +4,7 @@ import { ArrowLeft, Lock } from 'lucide-react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
-import { trackGA4, cartToGaItems, toMajor } from '@/lib/analytics'
+import { trackGA4, cartToGaItems, toMajor, trackTikTok, cartToTtContents } from '@/lib/analytics'
 import { formatPrice, cn } from '@/lib/utils'
 import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
 
@@ -113,6 +113,12 @@ function CheckoutForm() {
       currency: 'EUR',
       value:    toMajor(subtotal),
       items:    cartToGaItems(items, (i) => livePriceFor(i, cfg)),
+    })
+    // TikTok Pixel — InitiateCheckout (nome standard TikTok, non begin_checkout)
+    trackTikTok('InitiateCheckout', {
+      currency: 'EUR',
+      value:    toMajor(subtotal),
+      contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
     })
   }, [items, subtotal, cfg])
 
@@ -320,6 +326,12 @@ function CheckoutForm() {
           shipping:       toMajor(shipping),
           items:          cartToGaItems(items, (i) => livePriceFor(i, cfg)),
         })
+        // TikTok Pixel — CompletePayment (nome standard TikTok, non purchase)
+        trackTikTok('CompletePayment', {
+          currency: 'EUR',
+          value:    toMajor(total),
+          contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
+        })
         clearCart()
         navigate(`/order-confirmation/${orderId}`, {
           state: {
@@ -480,6 +492,12 @@ function CheckoutForm() {
         value:          toMajor(total),
         shipping:       toMajor(shipping),
         items:          cartToGaItems(items, (i) => livePriceFor(i, cfg)),
+      })
+      // TikTok Pixel — CompletePayment (nome standard TikTok, non purchase)
+      trackTikTok('CompletePayment', {
+        currency: 'EUR',
+        value:    toMajor(total),
+        contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
       })
       clearCart()
       navigate(`/order-confirmation/${orderId}`, {

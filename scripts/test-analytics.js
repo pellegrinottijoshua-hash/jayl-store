@@ -8,7 +8,10 @@
 // vista prodotto a €2.200 invece di €22 perché passava i centesimi grezzi.
 
 import assert from 'node:assert'
-import { toMajor, gaItem, cartToGaItems } from '../src/lib/analytics.js'
+import {
+  toMajor, gaItem, cartToGaItems,
+  trackTikTok, ttContent, cartToTtContents,
+} from '../src/lib/analytics.js'
 
 let passed = 0
 function check(label, fn) {
@@ -125,6 +128,58 @@ check('il valore totale del carrello torna sommando le righe', () => {
   const subtotalCents = cart.reduce((s, i) => s + priceOf(i) * i.quantity, 0)
   assert.strictEqual(sumFromItems, toMajor(subtotalCents))
   assert.strictEqual(sumFromItems, 66) // 3 pezzi × €22
+})
+
+// ── TikTok Pixel ────────────────────────────────────────────────────────────
+check('ttContent usa il prezzo passato e la forma TikTok', () => {
+  const c = ttContent(product, 2200)
+  assert.strictEqual(c.content_id, 'cool-ditto-back-t-shirt')
+  assert.strictEqual(c.content_type, 'product')
+  assert.strictEqual(c.content_name, 'Cool Ditto back T-Shirt')
+  assert.strictEqual(c.price, 22)          // non 2200, non 23.99
+  assert.strictEqual(c.quantity, 1)
+})
+
+check('cartToTtContents rispecchia quantità e prezzo risolto', () => {
+  const cs = cartToTtContents(cart, () => 2200)
+  assert.strictEqual(cs.length, 2)
+  assert.strictEqual(cs[0].quantity, 2)
+  assert.ok(cs.every((c) => c.price === 22))
+})
+
+check('carrello vuoto/assente → array vuoto anche lato TikTok', () => {
+  assert.deepStrictEqual(cartToTtContents([], () => 0), [])
+  assert.deepStrictEqual(cartToTtContents(null, () => 0), [])
+})
+
+check('trackTikTok è un no-op silenzioso senza pixel caricato', () => {
+  // È lo stato in cui il sito vive finché __jaylTiktokPixelId resta null in
+  // index.html: gli eventi sono già scritti nelle pagine e NON devono lanciare.
+  const had = 'window' in globalThis
+  if (!had) globalThis.window = {}
+  delete globalThis.window.ttq
+  assert.doesNotThrow(() => trackTikTok('AddToCart', { value: 22 }))
+
+  // E con un ttq che esiste ma è rotto, l'errore non deve uscire.
+  globalThis.window.ttq = { track() { throw new Error('pixel rotto') } }
+  assert.doesNotThrow(() => trackTikTok('AddToCart', { value: 22 }))
+
+  // Con un ttq sano l'evento passa, con i parametri intatti.
+  const seen = []
+  globalThis.window.ttq = { track: (e, p) => seen.push([e, p]) }
+  trackTikTok('CompletePayment', { currency: 'EUR', value: 66 })
+  assert.deepStrictEqual(seen, [['CompletePayment', { currency: 'EUR', value: 66 }]])
+  delete globalThis.window.ttq
+  if (!had) delete globalThis.window
+})
+
+check('i nomi evento TikTok non sono quelli GA4', () => {
+  // Guardia contro la svista più facile: copiare i nomi GA4 nel pixel TikTok.
+  // TikTok accetta nomi fuori standard ma non li rende ottimizzabili.
+  const tiktok = ['ViewContent', 'AddToCart', 'InitiateCheckout', 'CompletePayment']
+  const ga4    = ['view_item', 'add_to_cart', 'begin_checkout', 'purchase']
+  assert.ok(tiktok.every((n) => !ga4.includes(n)))
+  assert.ok(tiktok.every((n) => /^[A-Z]/.test(n)), 'gli eventi TikTok sono in PascalCase')
 })
 
 console.log(`✓ analytics: ${passed} controlli passati`)

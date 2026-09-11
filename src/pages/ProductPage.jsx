@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { getProductById, products } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
-import { trackGA4, gaItem, toMajor } from '@/lib/analytics'
+import { trackGA4, gaItem, toMajor, trackTikTok, ttContent } from '@/lib/analytics'
 import { formatPrice, slugToTitle, cn } from '@/lib/utils'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
@@ -639,6 +639,12 @@ export default function ProductPage() {
       value:    toMajor(productBasePrice),
       items:    [gaItem(product, productBasePrice)],
     })
+    // TikTok Pixel — ViewContent
+    trackTikTok('ViewContent', {
+      currency: 'EUR',
+      value:    toMajor(productBasePrice),
+      contents: [ttContent(product, productBasePrice)],
+    })
   }, [product?.id])
 
   // Load approved reviews for this product
@@ -833,6 +839,12 @@ export default function ProductPage() {
       items:    [gaItem(product, productBasePrice, 1, {
         item_variant: [selectedSize, selectedColor].filter(Boolean).join(' / ') || undefined,
       })],
+    })
+    // TikTok Pixel — AddToCart
+    trackTikTok('AddToCart', {
+      currency: 'EUR',
+      value:    toMajor(productBasePrice),
+      contents: [ttContent(product, productBasePrice)],
     })
   }
 
