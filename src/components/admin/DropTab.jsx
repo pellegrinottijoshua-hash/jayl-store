@@ -568,19 +568,28 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
   // del browser hanno tutti lo stesso identico aspetto. Ora l'errore si
   // vede e porta con sé il path.
   const [loadErr, setLoadErr]       = useState(false)
-  // URL Blob dell'ultimo upload fatto in questa sessione, usato SOLO come
-  // anteprima. È la correzione del motivo per cui gli hero appena caricati
-  // risultavano rotti: onSetHero riceve il path relativo `/images/...`, che
-  // è quello giusto da salvare in config ma esiste in rete soltanto quando
-  // il deploy del commit di upload è pronto — un minuto o due dopo. Fino ad
-  // allora il riquadro puntava a un 404 e mostrava un'immagine rotta proprio
-  // sull'upload appena riuscito. L'URL Blob invece è servibile all'istante.
-  const [blobPreview, setBlobPreview] = useState(null)
+  // Anteprima del file appena scelto, presa dal file stesso nel browser.
+  //
+  // È la correzione del motivo per cui un hero appena caricato appariva rotto.
+  // Due URL sembrano il candidato ovvio e nessuno dei due funziona subito:
+  //  · il path relativo `/images/...` è quello giusto da salvare in config,
+  //    ma esiste in rete solo quando il deploy del commit di upload è pronto
+  //    (un minuto o due): fino ad allora è un 404 proprio sull'upload riuscito;
+  //  · l'URL di Vercel Blob sta su *.private.blob.vercel-storage.com — lo
+  //    store è privato, e senza token firmato il browser non lo carica.
+  // Il file però è già in memoria nel browser: mostrarlo non costa una
+  // richiesta e non può fallire. In config continua ad andare il path
+  // relativo — questo vive solo per la durata della sessione.
+  const [localPreview, setLocalPreview] = useState(null)
+
+  // Un object URL resta allocato finché non lo si revoca: qui si libera il
+  // precedente a ogni cambio e l'ultimo allo smontaggio.
+  useEffect(() => () => { if (localPreview) URL.revokeObjectURL(localPreview) }, [localPreview])
 
   const isOverride = Boolean(heroUrl)
   // Stesso fallback di DropPanels sulla home (heroImage ?? image) — così
   // l'anteprima mostra davvero cosa vedrebbe uno shopper senza override.
-  const previewUrl = blobPreview || heroUrl || product.heroImage || product.image
+  const previewUrl = localPreview || heroUrl || product.heroImage || product.image
 
   // Un nuovo path merita un nuovo tentativo: senza questo, il riquadro
   // resterebbe in errore anche dopo un upload andato a buon fine, perché
@@ -591,6 +600,9 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
   const doUpload = async (files) => {
     const file = files?.[0]
     if (!file) return
+    // Subito, prima che l'upload parta: da qui in poi il riquadro mostra la
+    // scelta appena fatta, qualunque cosa facciano Blob, GitHub e il deploy.
+    setLocalPreview(URL.createObjectURL(file))
     const filename = sanitizeFilename(file.name)
     const mb = (file.size / 1024 / 1024).toFixed(1)
     setUploading(true)
@@ -604,9 +616,6 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
         clientPayload: JSON.stringify({ password: getAdminPassword(), productId: product.id }),
         onProgress: (pct) => setProgress({ phase: `Upload su Blob (${mb} MB)`, pct }),
       })
-      // Prima del commit: da qui in poi l'anteprima ha un URL servibile subito,
-      // qualunque cosa faccia il deploy.
-      setBlobPreview(blob.url)
       setProgress({ phase: 'Commit su GitHub…' })
       const r = await fetch('/api/admin', {
         method: 'POST',
