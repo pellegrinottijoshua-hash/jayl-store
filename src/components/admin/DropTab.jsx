@@ -561,11 +561,32 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
   const [uploading, setUploading]   = useState(false)
   const [progress, setProgress]     = useState(null) // { phase, pct? }
   const [uploadErr, setUploadErr]   = useState('')
+  // L'anteprima che non carica era muta: l'unico effetto era un'opacità 0.3
+  // sul riquadro, senza dire quale URL avesse fallito. Da fuori diventava
+  // "gli hero non caricano" senza un solo indizio su cosa guardare — file
+  // mancante nel repo, path con un refuso, deploy non ancora pronto e cache
+  // del browser hanno tutti lo stesso identico aspetto. Ora l'errore si
+  // vede e porta con sé il path.
+  const [loadErr, setLoadErr]       = useState(false)
+  // URL Blob dell'ultimo upload fatto in questa sessione, usato SOLO come
+  // anteprima. È la correzione del motivo per cui gli hero appena caricati
+  // risultavano rotti: onSetHero riceve il path relativo `/images/...`, che
+  // è quello giusto da salvare in config ma esiste in rete soltanto quando
+  // il deploy del commit di upload è pronto — un minuto o due dopo. Fino ad
+  // allora il riquadro puntava a un 404 e mostrava un'immagine rotta proprio
+  // sull'upload appena riuscito. L'URL Blob invece è servibile all'istante.
+  const [blobPreview, setBlobPreview] = useState(null)
 
   const isOverride = Boolean(heroUrl)
   // Stesso fallback di DropPanels sulla home (heroImage ?? image) — così
   // l'anteprima mostra davvero cosa vedrebbe uno shopper senza override.
-  const previewUrl = heroUrl || product.heroImage || product.image
+  const previewUrl = blobPreview || heroUrl || product.heroImage || product.image
+
+  // Un nuovo path merita un nuovo tentativo: senza questo, il riquadro
+  // resterebbe in errore anche dopo un upload andato a buon fine, perché
+  // React riusa lo stesso nodo <img> e lo stato d'errore sopravvive al
+  // cambio di src.
+  useEffect(() => { setLoadErr(false) }, [previewUrl])
 
   const doUpload = async (files) => {
     const file = files?.[0]
@@ -583,6 +604,9 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
         clientPayload: JSON.stringify({ password: getAdminPassword(), productId: product.id }),
         onProgress: (pct) => setProgress({ phase: `Upload su Blob (${mb} MB)`, pct }),
       })
+      // Prima del commit: da qui in poi l'anteprima ha un URL servibile subito,
+      // qualunque cosa faccia il deploy.
+      setBlobPreview(blob.url)
       setProgress({ phase: 'Commit su GitHub…' })
       const r = await fetch('/api/admin', {
         method: 'POST',
@@ -611,10 +635,17 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
   return (
     <div className="border border-gray-800 rounded p-4 mb-3 flex gap-4">
       <div className="relative w-28 h-28 shrink-0 overflow-hidden rounded border border-gray-700 bg-gray-900">
-        {previewUrl
+        {previewUrl && !loadErr
           ? (
             <img src={previewUrl} alt="" className="w-full h-full object-cover"
-              onError={(e) => { e.currentTarget.style.opacity = '0.3' }} />
+              onError={() => setLoadErr(true)} />
+          )
+          : previewUrl && loadErr
+          ? (
+            <span className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 text-center text-[9px] text-red-300 px-1 bg-red-950/40">
+              <span className="text-sm leading-none">⚠</span>
+              <span>immagine non trovata</span>
+            </span>
           )
           : (
             <span className="absolute inset-0 flex items-center justify-center text-center text-[10px] text-gray-600 px-1">
@@ -661,6 +692,12 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
             ? 'Hero personalizzato per il pannello home.'
             : "Nessun hero scelto — il pannello usa l'immagine di catalogo del prodotto (heroImage o image)."}
         </p>
+        {loadErr && (
+          <p className="text-xs text-red-400 mt-1 break-all">
+            Anteprima non caricata: <code>{previewUrl}</code> — il file non esiste in{' '}
+            <code>public/</code> su main, oppure il deploy che lo contiene non è ancora pronto.
+          </p>
+        )}
         {uploadErr && <p className="text-xs text-red-400 mt-1">{uploadErr}</p>}
       </div>
     </div>
