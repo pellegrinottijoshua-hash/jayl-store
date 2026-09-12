@@ -69,7 +69,7 @@ export const drop = {
         "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
       ],
       "startsAt": "2026-09-13T16:00:00Z",
-      "endsAt": "2026-09-17T16:00:00Z",
+      "endsAt": "2026-09-18T16:00:00Z",
       "cap": 20,
       "caps": {},
       "dropPrice": 2200,
