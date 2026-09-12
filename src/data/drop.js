@@ -75,9 +75,9 @@ export const drop = {
       "dropPrice": 2200,
       "bundlePrice": 5700,
       "heroImages": {
-        "cool-ditto-back-t-shirt": "/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png",
-        "cool-slowpoke-back-t-shirt": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132411_91169ddf-d023-4498-8189-882dc549ad0a.png",
-        "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_123012_3dc13ed8-ee97-4278-be2a-798f1db9799b.png"
+        "cool-ditto-back-t-shirt": "/images/cool-ditto-back-t-shirt/hf_20260902_223349_3bbd25fb-e764-412a-ba37-afaf2e195a83.png",
+        "cool-slowpoke-back-t-shirt": "/images/cool-slowpoke-back-t-shirt/hf_20260902_224359_a93c98f7-5f39-4a63-905f-74055db0de72.png",
+        "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260902_230751_29a9b3cf-8b05-4f6e-b1c4-abf9fda9cdf0.png"
       }
     }
   ],
