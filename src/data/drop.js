@@ -15,33 +15,33 @@
 // scripts/test-drop-config.js.
 export const drop = {
   "current": {
-    "id": "drop-02",
+    "id": "drop-03",
+    "number": 3,
+    "title": "NO RUSH",
+    "productIds": [
+      "cool-ditto-back-t-shirt",
+      "cool-slowpoke-back-t-shirt",
+      "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
+    ],
+    "startsAt": "2026-09-13T16:00:00Z",
+    "endsAt": "2026-09-18T16:00:00Z",
+    "cap": 20,
+    "caps": {},
+    "dropPrice": 2200,
+    "bundlePrice": 5700,
+    "heroImages": {
+      "cool-ditto-back-t-shirt": "/images/cool-ditto-back-t-shirt/hf_20260902_223349_3bbd25fb-e764-412a-ba37-afaf2e195a83.png",
+      "cool-slowpoke-back-t-shirt": "/images/cool-slowpoke-back-t-shirt/hf_20260902_224359_a93c98f7-5f39-4a63-905f-74055db0de72.png",
+      "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260902_230751_29a9b3cf-8b05-4f6e-b1c4-abf9fda9cdf0.png"
+    }
+  },
+  "previous": {
     "number": 2,
     "title": "SLEEP MODE",
     "productIds": [
       "cool-snorlax-back-t-shirt",
       "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
       "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him"
-    ],
-    "startsAt": "2026-09-09T16:00:00Z",
-    "endsAt": "2026-09-13T16:00:00Z",
-    "cap": 20,
-    "caps": {},
-    "dropPrice": 2200,
-    "bundlePrice": 5700,
-    "heroImages": {
-      "cool-snorlax-back-t-shirt": "/images/cool-snorlax-back-t-shirt/s-post-1.png",
-      "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260902_160750_689c4c08-c1db-4855-8612-24c038f06a38.png",
-      "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/u-post1.png"
-    }
-  },
-  "previous": {
-    "number": 1,
-    "title": "ORIGIN",
-    "productIds": [
-      "cool-mewtwo-back-t-shirt",
-      "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
-      "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
     ]
   },
   "past": [
@@ -56,36 +56,29 @@ export const drop = {
       ],
       "startsAt": "2026-09-06T16:00:00Z",
       "endsAt": "2026-09-09T16:00:00Z"
-    }
-  ],
-  "scheduled": [
+    },
     {
-      "id": "drop-03",
-      "number": 3,
-      "title": "NO RUSH",
+      "id": "drop-02",
+      "number": 2,
+      "title": "SLEEP MODE",
       "productIds": [
-        "cool-ditto-back-t-shirt",
-        "cool-slowpoke-back-t-shirt",
-        "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
+        "cool-snorlax-back-t-shirt",
+        "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
+        "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him"
       ],
-      "startsAt": "2026-09-13T16:00:00Z",
-      "endsAt": "2026-09-18T16:00:00Z",
-      "cap": 20,
-      "caps": {},
-      "dropPrice": 2200,
-      "bundlePrice": 5700,
-      "heroImages": {
-        "cool-ditto-back-t-shirt": "/images/cool-ditto-back-t-shirt/hf_20260902_223349_3bbd25fb-e764-412a-ba37-afaf2e195a83.png",
-        "cool-slowpoke-back-t-shirt": "/images/cool-slowpoke-back-t-shirt/hf_20260902_224359_a93c98f7-5f39-4a63-905f-74055db0de72.png",
-        "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260902_230751_29a9b3cf-8b05-4f6e-b1c4-abf9fda9cdf0.png"
-      }
+      "startsAt": "2026-09-09T16:00:00Z",
+      "endsAt": "2026-09-13T16:00:00Z"
     }
   ],
+  "scheduled": [],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
     "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
-    "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000"
+    "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "cool-snorlax-back-t-shirt",
+    "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
+    "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him"
   ],
   "archivePrice": 2500
 }
