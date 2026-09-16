@@ -109,3 +109,55 @@ Single hard key light from upper left at 5600K: the nearest garment fully lit, t
 
 The group sits inside the central vertical band of the frame; the top fifth and bottom fifth stay empty. Photoreal, fine grain, high detail, no text anywhere in frame.
 ```
+
+---
+
+# Aggiunta — i due macro veri
+
+I frame 4 e 5 della prima tornata sono venuti come capi interi, non come macro: il
+JAYL è alto una quarantina di pixel e gli occhialini del Kangaskhan sono minuscoli.
+Kling non può entrarci dentro senza sfarinarli — a quella scala sta interpolando,
+non rivelando.
+
+Questi due prompt chiedono il macro in modo esplicito: **l'oggetto occupa una
+frazione dichiarata del frame**, ed è quello che mancava.
+
+Entrambi mostrano l'inchiostro dentro la trama del cotone. Non è un vezzo: è
+l'argomento. A questa scala si vede che la stampa è *nel* tessuto e non sopra, ed è
+la cosa che separa un capo stampato bene da una decalcomania.
+
+## 6 · MACRO COLLETTO — il JAYL nero
+
+> Element: capo sabbia, vista colletto. Sostituisce il frame 5 per il beat F2
+> e come `end_image` del 15s.
+
+```
+Vertical 9:16 extreme macro photograph, shot from very close. The frame is filled entirely by white-sand cotton jersey fabric — no garment silhouette visible, no background, no edges of the shirt in frame. This is a detail shot at thread level.
+
+Across the upper third runs the ribbed collar band and its double-needle stitch line, the ribbing reading as deep parallel grooves, individual stitch loops visible. Below it, printed flat onto the cotton in matte black ink, the wordmark JAYL: four geometric sans-serif letters with the A drawn as a plain triangle with no crossbar, exactly as in the reference. The wordmark spans roughly one third of the frame width and sits centered. The ink has soaked slightly into the weave, its edges showing tiny fiber texture where the black meets the fabric rather than a clean vector edge.
+
+Shallow depth of field: the wordmark and the stitch line are tack sharp, the fabric falls softly out of focus toward the bottom of the frame.
+
+Hard raking light from upper left at 5600K skimming across the weave, so every cotton fiber and every rib throws a fine shadow and the matte black print stays dead flat against the lit fabric.
+
+Photoreal, extreme detail, fine grain, no text other than the wordmark.
+```
+
+## 7 · MACRO OCCHIALINI — dettaglio della stampa Kangaskhan
+
+> Element: Kangaskhan sabbia. Il beat che mostra che la grafica è disegnata,
+> non scaricata.
+
+```
+Vertical 9:16 extreme macro photograph, shot from very close against pale sand cotton jersey. The frame is filled by printed fabric — no garment silhouette, no background, no shirt edges in frame. This is a detail shot at thread level.
+
+Centered and filling roughly half the frame width: the printed sunglasses from the illustrated character, reproduced exactly as in the reference — the same dark lens shapes, the same frame line, the same painted highlights and the same colors. Around them, the surrounding parts of the illustration continue toward the frame edges, softening out of focus.
+
+The ink sits inside the cotton weave rather than on top of it: individual fibers catch across the printed areas, the color breaks microscopically where a thread crosses, the edges of each painted stroke show a hair of absorption into the fabric. The jersey curves gently across the frame, following the body of the garment beneath.
+
+Shallow depth of field: the lenses are tack sharp, the illustration falls soft at the frame edges.
+
+Hard raking light from upper left at 5600K skimming across the weave so the fabric texture reads through the ink and the printed surface picks up a faint sheen along the curve.
+
+Photoreal, extreme detail, fine grain, no text anywhere in frame.
+```
