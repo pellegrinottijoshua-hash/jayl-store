@@ -2,6 +2,7 @@ import { useLocation, useParams, Link } from 'react-router-dom'
 import { CheckCircle, ArrowRight, Package, MailOpen } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import TrustBox from '@/components/TrustBox'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 
 // `order.items` is the cart's own item list, carried straight through from
@@ -105,6 +106,17 @@ export default function OrderConfirmationPage() {
             </div>
           </div>
         )}
+
+        {/* Trustpilot Review Collector — qui e non in pagina prodotto: chiede
+            una recensione a chi ha appena comprato, che è l'unico momento in
+            cui la domanda ha senso.
+            Il widget Collector ha uno stile chiaro fisso e ignora data-theme,
+            quindi invece di subire un rettangolo bianco in mezzo al nero lo
+            mettiamo dentro una card crema: così lo stacco sembra una scelta. */}
+        <div className="bg-cream/95 p-5 mb-8 text-left">
+          <p className="section-label text-ink-muted mb-3">Got a minute?</p>
+          <TrustBox variant="collector" theme="light" />
+        </div>
 
         {/* What happens next */}
         <div className="bg-surface border border-border p-6 text-left mb-8">

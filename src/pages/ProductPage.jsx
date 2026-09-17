@@ -1115,7 +1115,7 @@ export default function ProductPage() {
             {formatPrice(totalPrice)}
           </p>
 
-          <TrustBox variant="micro" className="mt-2" />
+          <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
 
           {/* Social proof */}
           {viewerCount && (
@@ -1523,7 +1523,7 @@ export default function ProductPage() {
                 )}
               </p>
 
-              <TrustBox variant="micro" className="mt-2" />
+              <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
 
               {/* Social proof */}
               <div className="mb-8">

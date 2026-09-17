@@ -16,21 +16,38 @@
 // come i pixel Meta/Pinterest. Se un domani si decide che il widget è
 // interesse legittimo, si mette REQUIRE_CONSENT a false ed è fatta.
 
-export const BUSINESS_UNIT_ID = ''
+export const BUSINESS_UNIT_ID = '6aabedbe55739ab8760a607c'
 export const LOCALE = 'en-US'
 export const REQUIRE_CONSENT = true
 
 // Un template per forma di widget. Prendi gli id dal picker TrustBox: quelli
 // disponibili dipendono dal piano, quindi se uno di questi non è nel tuo
 // account lascialo vuoto e quel widget semplicemente non comparirà.
+//
+// I widget Trustpilot fanno due mestieri opposti e vanno in due posti opposti:
+// il Review Collector CHIEDE una recensione (ha senso dopo l'acquisto), gli
+// altri MOSTRANO il punteggio (hanno senso prima). Montare un collector in
+// pagina prodotto significa chiedere una recensione a chi non ha comprato.
 export const TEMPLATES = {
   // Riga compatta: stelle + numero recensioni. Va sotto il prezzo.
   micro:    { id: '', height: '24px',  width: '100%' },
   // Stelle + punteggio, un po' più grande. Header o footer.
   mini:     { id: '', height: '150px', width: '100%' },
-  // Caroselo di recensioni. Home, sezione dedicata.
+  // Carosello di recensioni. Home, sezione dedicata.
   carousel: { id: '', height: '240px', width: '100%' },
+  // Review Collector: il riquadro "lasciaci una recensione". Solo post-acquisto.
+  // È l'unico che porta un token, ed è specifico di questo widget.
+  collector: {
+    id:     '56278e9abfbbba0bdcd568bc',
+    height: '52px',
+    width:  '100%',
+    token:  '3a8a5c33-1e14-4a56-a140-9bb28eefa872',
+  },
 }
+
+// Link diretto alla pagina di recensione, utile nelle email e ovunque serva un
+// href invece di un widget.
+export const REVIEW_LINK = 'https://trstp.lt/J2xQ8Rww6F'
 
 const SCRIPT_SRC =
   'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js'

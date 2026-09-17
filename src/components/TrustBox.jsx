@@ -23,11 +23,15 @@ import {
  *   <TrustBox variant="micro" />                     riga sotto il prezzo
  *   <TrustBox variant="carousel" className="my-12" /> sezione in home
  *
+ * Il tema è "dark" di default perché il sito è su off-black; nelle sezioni
+ * crema va passato theme="light", altrimenti il widget si porta dietro il
+ * proprio fondo e stacca dalla pagina.
+ *
  * Finché BUSINESS_UNIT_ID o il template della variante sono vuoti in
  * src/lib/trustpilot.js, il componente non renderizza nulla — si può montare
  * ovunque prima di avere le credenziali senza lasciare spazi vuoti in pagina.
  */
-export default function TrustBox({ variant = 'micro', className = '' }) {
+export default function TrustBox({ variant = 'micro', className = '', theme = 'dark' }) {
   const ref = useRef(null)
   const [allowed, setAllowed] = useState(() => hasConsent())
 
@@ -75,7 +79,8 @@ export default function TrustBox({ variant = 'micro', className = '' }) {
         data-businessunit-id={BUSINESS_UNIT_ID}
         data-style-height={tpl.height}
         data-style-width={tpl.width}
-        data-theme="light"
+        data-theme={theme}
+        {...(tpl.token ? { 'data-token': tpl.token } : {})}
       >
         {/* Fallback se lo script non parte: un link al profilo è comunque
             meglio di un buco, e Trustpilot lo sostituisce quando carica. */}
