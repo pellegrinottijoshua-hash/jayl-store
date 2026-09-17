@@ -5,6 +5,7 @@ import { getProductById, products } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
 import { trackGA4, gaItem, toMajor, trackTikTok, ttContent } from '@/lib/analytics'
 import { formatPrice, slugToTitle, cn } from '@/lib/utils'
+import TrustBox from '@/components/TrustBox'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
 import { useSwipe } from '@/hooks/useSwipe'
@@ -1114,6 +1115,8 @@ export default function ProductPage() {
             {formatPrice(totalPrice)}
           </p>
 
+          <TrustBox variant="micro" className="mt-2" />
+
           {/* Social proof */}
           {viewerCount && (
             <p className={cn('flex items-center gap-1.5 text-xs mt-2', isLight ? 'text-ink-muted' : 'text-text-muted')}>
@@ -1519,6 +1522,8 @@ export default function ProductPage() {
                   <span className={cn('text-sm font-normal ml-2', t.priceSub)}>(incl. frame)</span>
                 )}
               </p>
+
+              <TrustBox variant="micro" className="mt-2" />
 
               {/* Social proof */}
               <div className="mb-8">

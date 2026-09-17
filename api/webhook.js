@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
-import { sendEmail, buildOrderConfirmationEmail } from './_lib/email.js'
+import { sendEmail, buildOrderConfirmationEmail, TRUSTPILOT_AFS_BCC } from './_lib/email.js'
 import { resolvePlacement, assertPrintable } from './_lib/placement.js'
 import { recordDropSale } from './_lib/drop-sales.js'
 
@@ -187,7 +187,12 @@ export async function fulfillIfNeeded(paymentIntent) {
         shipping:        0,
         shippingAddress: shippingAddress,
       })
-      await sendEmail({ to: customerEmail, subject, html })
+      // Il bcc Trustpilot sta QUI e non nel percorso gemello di
+      // api/orders.js: quello è fire-and-forget e in una funzione serverless
+      // può venire congelato prima che la fetch parta (è la stessa classe di
+      // bug che aveva zittito l'email di benvenuto). Un invito a recensire
+      // che parte a volte è peggio di uno che parte sempre da un posto solo.
+      await sendEmail({ to: customerEmail, subject, html, bcc: TRUSTPILOT_AFS_BCC })
     } catch (e) {
       console.error('[webhook] sendEmail failed:', e.message)
     }

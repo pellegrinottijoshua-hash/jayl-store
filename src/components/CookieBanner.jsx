@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { CONSENT_EVENT } from '@/lib/trustpilot'
 
 const STORAGE_KEY = 'jayl_cookie_consent'
 
@@ -40,6 +41,9 @@ export default function CookieBanner() {
     }
     // Load the marketing pixels (Meta + Pinterest) now that consent is given
     if (typeof window.__jaylLoadMarketing === 'function') window.__jaylLoadMarketing()
+    // Tell already-mounted consent-gated widgets (Trustpilot) they can load
+    // now, so they appear without a reload.
+    window.dispatchEvent(new CustomEvent(CONSENT_EVENT))
     setVisible(false)
   }
 

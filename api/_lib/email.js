@@ -336,7 +336,7 @@ export function buildWelcomeEmail() {
  * Returns { ok: true } on success, { ok: false, error } on failure.
  * Never throws — email failures must not break the main order flow.
  */
-export async function sendEmail({ to, subject, html, replyTo }) {
+export async function sendEmail({ to, subject, html, replyTo, bcc }) {
   const apiKey = (process.env.RESEND_API_KEY || '').trim()
   if (!apiKey) {
     console.warn('[email] RESEND_API_KEY not set — skipping email to', to)
@@ -356,6 +356,7 @@ export async function sendEmail({ to, subject, html, replyTo }) {
         subject,
         html,
         ...(replyTo ? { reply_to: replyTo } : {}),
+        ...(bcc ? { bcc: Array.isArray(bcc) ? bcc : [bcc] } : {}),
       }),
       signal: AbortSignal.timeout(10_000),
     })
@@ -527,3 +528,17 @@ export function buildShippingEmail({ orderId, customerName, trackingCode, tracki
 }
 
 export const STORE_EMAIL_ADDRESS = STORE_EMAIL
+
+// ── Trustpilot AFS ────────────────────────────────────────────────────────────
+// L'Automatic Feedback Service di Trustpilot funziona in copia nascosta: se
+// questo indirizzo è in bcc sulla conferma d'ordine, Trustpilot legge da solo
+// destinatario e numero d'ordine dall'email e manda l'invito a recensire per
+// conto suo. Nessun cron, nessuna chiamata API, nessuno stato da tenere.
+//
+// L'indirizzo sta su business.trustpilot.com → Get reviews → Automatic
+// invitations, e ha forma <id>.bcc@invite.trustpilot.com.
+//
+// Senza la env var il valore è undefined e sendEmail non aggiunge il campo:
+// l'integrazione è inerte finché la variabile non esiste su Vercel.
+export const TRUSTPILOT_AFS_BCC =
+  (process.env.TRUSTPILOT_AFS_BCC || '').trim() || undefined
