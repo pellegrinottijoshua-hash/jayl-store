@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "etsy-filippo-p",
+    "productId": null,
+    "author": "filippo p",
+    "rating": 5,
+    "body": "Bravo competente disponibile anche in chat",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-11T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-patrick-kabuye",
+    "productId": "cool-mewtwo-back-t-shirt",
+    "author": "Patrick Kabuye",
+    "rating": 5,
+    "body": "i love the shirt! the print is great and it arrived super fast✨ gonna where it at the next smash tournament 😂",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-10T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-luna",
+    "productId": "cool-slowpoke-back-t-shirt",
+    "author": "Luna",
+    "rating": 5,
+    "body": "Well crafted T-shirt, a perfect gift for slowpoke lovers!",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-09T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-margarethe-ditto",
+    "productId": null,
+    "author": "Margarethe",
+    "rating": 4,
+    "body": "Cute design and accurate sizing, but the fabric is thinner than expected.",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-07T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-margarethe-psyduck",
+    "productId": null,
+    "author": "Margarethe",
+    "rating": 4,
+    "body": "Cute design and accurate sizing, but the fabric is thinner than expected.",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-07T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-aj-garcia",
+    "productId": null,
+    "author": "AJ garcia",
+    "rating": 5,
+    "body": "looks just as shown good shirt",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-02T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-lion",
+    "productId": null,
+    "author": "Lion",
+    "rating": 5,
+    "body": "Great print! I am very satisfied.",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-08-23T00:00:00.000Z"
+  }
+]
