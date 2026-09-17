@@ -130,15 +130,20 @@ la cosa che separa un capo stampato bene da una decalcomania.
 
 > Element: capo sabbia, vista colletto. Sostituisce il frame 5 per il beat F2
 > e come `end_image` del 15s.
+>
+> **v2** — la prima versione era 100% tessuto: bellissima ma piatta come spazio.
+> Un cuneo di prugna fuori fuoco nell'angolo in alto a sinistra lega il macro alla
+> palette degli altri shot e, cosa che conta di più per un `start_image`, dice a
+> Kling che dietro il capo c'è un ambiente in cui muovere la camera.
 
 ```
-Vertical 9:16 extreme macro photograph, shot from very close. The frame is filled entirely by white-sand cotton jersey fabric — no garment silhouette visible, no background, no edges of the shirt in frame. This is a detail shot at thread level.
+Vertical 9:16 extreme macro photograph, shot from very close. Almost the whole frame is filled by warm sand cotton jersey fabric — a detail shot at thread level. In the top-left corner, past the edge of the shoulder, a small wedge of deep plum-aubergine backdrop shows through, thrown completely out of focus into a soft field of colour, taking up roughly a sixth of the frame and reading as depth behind the garment.
 
-Across the upper third runs the ribbed collar band and its double-needle stitch line, the ribbing reading as deep parallel grooves, individual stitch loops visible. Below it, printed flat onto the cotton in matte black ink, the wordmark JAYL: four geometric sans-serif letters with the A drawn as a plain triangle with no crossbar, exactly as in the reference. The wordmark spans roughly one third of the frame width and sits centered. The ink has soaked slightly into the weave, its edges showing tiny fiber texture where the black meets the fabric rather than a clean vector edge.
+Across the upper third runs the ribbed collar band and its double-needle stitch line, curving down from upper left toward the right, the ribbing reading as deep parallel grooves with individual stitch loops visible. Below it, printed flat onto the cotton in matte black ink, the wordmark JAYL: four geometric sans-serif letters with the A drawn as a plain triangle with no crossbar, exactly as in the reference. The wordmark spans roughly one third of the frame width and sits centered. The ink has soaked slightly into the weave, its edges showing tiny fiber texture where the black meets the fabric rather than a clean vector edge.
 
-Shallow depth of field: the wordmark and the stitch line are tack sharp, the fabric falls softly out of focus toward the bottom of the frame.
+Shallow depth of field: the wordmark and the stitch line are tack sharp, the fabric falls softly out of focus toward the bottom of the frame, and the plum corner is fully diffused.
 
-Hard raking light from upper left at 5600K skimming across the weave, so every cotton fiber and every rib throws a fine shadow and the matte black print stays dead flat against the lit fabric.
+Hard raking light from upper left at 5600K skimming across the weave, so every cotton fiber and every rib throws a fine shadow and the matte black print stays dead flat against the lit fabric. A faint plum bounce touches the fabric along the edge nearest the backdrop.
 
 Photoreal, extreme detail, fine grain, no text other than the wordmark.
 ```
