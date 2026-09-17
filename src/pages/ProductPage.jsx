@@ -508,6 +508,11 @@ export default function ProductPage() {
   // Reviews state must be declared before productJsonLd which references it
   const [reviews, setReviews] = useState([])
 
+  // Recensioni raccolte da noi: le sole che possono alimentare un
+  // aggregateRating. Le importate portano source: 'etsy' (o altro) e restano
+  // fuori dai dati strutturati, pur restando visibili in pagina.
+  const ownReviews = reviews.filter(r => !r.source || r.source === 'jayl')
+
   // Dynamic SEO meta tags + JSON-LD Product schema
   const productImage = product
     ? `${typeof window !== 'undefined' ? window.location.origin : ''}${product.image || (product.images?.[0] ?? '')}`
@@ -526,11 +531,17 @@ export default function ProductPage() {
         image:        productImage ? [productImage] : undefined,
         brand: { '@type': 'Brand', name: 'JAYL' },
         ...(product.collection ? { category: product.collection } : {}),
-        ...(reviews.length > 0 ? {
+        // Solo le recensioni raccolte da noi finiscono nell'aggregateRating.
+        // Quelle importate da Etsy sono autentiche e si mostrano in pagina,
+        // ma dichiararle a Google come raccolte qui è un dato strutturato che
+        // non corrisponde alla realtà — la stessa classe di problema del
+        // prezzo che fa sospendere Merchant Center (vedi offers qui sotto),
+        // con in più il rischio di manual action su tutto il dominio.
+        ...(ownReviews.length > 0 ? {
           aggregateRating: {
             '@type': 'AggregateRating',
-            ratingValue: (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1),
-            reviewCount: reviews.length,
+            ratingValue: (ownReviews.reduce((s, r) => s + r.rating, 0) / ownReviews.length).toFixed(1),
+            reviewCount: ownReviews.length,
           },
         } : {}),
         offers: {

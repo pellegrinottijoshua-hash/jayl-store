@@ -7,6 +7,7 @@ import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 import DropPanels from '@/components/drop/DropPanels'
+import HomeReviews from '@/components/HomeReviews'
 import DropCountdown from '@/components/drop/DropCountdown'
 import { dropWindowState, BEFORE } from '@/components/drop/dropWindowState'
 import { nextDropStartsAt } from '../../api/_lib/drop-schedule.js'
@@ -414,6 +415,10 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      {/* ════ Recensioni — in fondo, dopo che la pagina ha finito di parlare.
+          Si nasconde da sola finché reviews.json è vuoto. ════ */}
+      <HomeReviews />
 
     </div>
   )
