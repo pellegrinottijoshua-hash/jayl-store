@@ -6,7 +6,7 @@ card finale in Remotion.
 | Shot | Durata | `start_image` | `end_image` | Elements |
 |---|---|---|---|---|
 | 1 | 4s | trittico su petrolio | Ditto rosa su petrolio | — |
-| 2 | 4s | Slowpoke azzurra su terracotta | — | `slopoke-t-shirt` |
+| 2 | 4s | **fondo terracotta vuoto** ⚠️ da generare | Slowpoke azzurra | `slopoke-t-shirt` |
 | 3 | 6s | Kangaskhan sabbia su prugna | macro colletto sabbia su prugna | `kanghaskan-t-shirt` |
 
 **Niente Element nello shot 1**: lì dai a Kling sia il frame di partenza sia
@@ -46,35 +46,38 @@ POSITIVE LOCKS
 The pink tee's printed graphic stays sharp and fully readable from the first frame to the last. The garments are the only objects in frame. The pink tee keeps its colour and its print unchanged as it comes forward. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
 ```
 
-## Shot 2 · 4s — Slowpoke, zoom leggero sulla stampa
+## Shot 2 · 4s — la Slowpoke entra nel vuoto
 
 ```
 SCENE
-A light blue cotton t-shirt floats in a burnt-terracotta void. The camera eases in on its printed graphic.
+An empty burnt-terracotta studio void. A light blue cotton t-shirt flies in from the right, the camera looks closely at its printed graphic, then pulls back as the garment settles.
 
 ACTIVE REFERENCES
 <<<378096c0-b97d-46d5-be5b-07c9ec8e7d87>>> light blue tee, printed back showing a round character wearing dark round sunglasses on a violet disc. Colour and print exactly as in the reference.
 
 FIRST FRAME
-Identical to the start image: the light blue tee turned three quarters away, printed back to camera, already twisting, one sleeve swinging forward.
+Identical to the start image: the terracotta backdrop alone, nothing in shot.
 
 CAMERA
-Single continuous shot, one axis, no roll, no shake, 47 degrees easing to 29. The camera does not cut.
+Single continuous shot, one axis, no roll, no shake. 47 degrees, easing to 29 between 2.0s and 3.0s, opening back to 47 by 4.0s. The camera does not cut.
 
 ACTION
-The tee rotates 12 degrees at 2 km/h, one sleeve swinging toward camera and the hem trailing behind the turn, while the camera eases in at 2 km/h until the printed character sits large in the centre of frame, its sunglasses catching the key light.
+0.0s to 1.0s - the frame holds on the empty terracotta backdrop, nothing in shot.
+1.0s to 2.0s - the light blue tee flies in from the right edge at 25 km/h and decelerates toward the centre, sleeves and hem trailing behind the motion, printed back turning toward camera.
+2.0s to 3.0s - the camera eases in at 3 km/h until the printed character sits large in the centre of frame, its sunglasses catching the key light.
+3.0s to 4.0s - the camera pulls back at 3 km/h while the tee rotates 12 degrees and settles into the pose of the end image, one sleeve swinging toward camera, the hem trailing.
 
 PHYSICS
-Heavy cotton: folds fall under their own weight, the hem swings half a beat behind the body, the fabric holds its shape.
+Heavy cotton: the garment carries its weight into the entrance, sleeves and hem lagging half a beat behind the body and swinging past centre before settling, folds falling under their own weight.
 
 LIGHTING
-One hard key from upper left at 5600K, raking across the weave so every fold edge catches a bright line, the lit shoulder burning bright while the receding half stays in deep shadow. The terracotta background stays clean, unlit and fully saturated.
+One hard key from upper left at 5600K throughout, raking across the weave so every fold edge catches a bright line, the lit shoulder burning bright while the receding half stays in deep shadow. The terracotta background stays clean, unlit and fully saturated from the first frame to the last.
 
 STYLE
-Photoreal product film, fine grain.
+Photoreal product film, fine grain, motion blur on the entrance.
 
 POSITIVE LOCKS
-The tee keeps its light blue colour and its print exactly as in the reference throughout. The printed graphic stays sharp and fully readable from the first frame to the last. The printed ink sits inside the cotton weave. One garment only in frame. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
+The tee keeps its light blue colour and its print exactly as in the reference throughout. The printed graphic stays sharp and fully readable from the moment the garment settles. The printed ink sits inside the cotton weave. One garment only in frame. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
 ```
 
 ## Shot 3 · 6s — Kangaskhan, macro, rotazione, logo
@@ -110,3 +113,21 @@ POSITIVE LOCKS
 The printed ink sits inside the cotton weave in the macro. Through the turn the tee keeps the sand colour, the collar and the JAYL wordmark of its reference. The black JAYL wordmark stays legible and in focus through the final frame. One garment only in frame. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
 ```
 
+
+---
+
+## Frame mancante · il fondo terracotta vuoto (Nano Banana Pro, gratis)
+
+Deve combaciare con la luce del frame Slowpoke, perche' e' lo stesso set: stessa
+chiave da sinistra, stessa saturazione. Se il fondo non corrisponde, l'arrivo
+sulla posa finale stacca.
+
+```
+Vertical 9:16 photograph of an empty studio backdrop. The entire frame is a deep burnt-terracotta seamless sweep, clean and completely bare — no object, no product, no garment, no figure, nothing in shot.
+
+One hard key light from upper left at 5600K falls across the backdrop, leaving a soft bright wash in the upper left that falls off gradually into deeper shade at the lower right. A faint diffuse shadow pools low in the frame, the kind an object suspended above the floor would cast, though nothing is there to cast it.
+
+The colour is fully saturated and even, the paper surface smooth with only the faintest photographic grain across it. Depth reads from the light alone.
+
+Photoreal studio photography, fine grain, no text anywhere in frame.
+```
