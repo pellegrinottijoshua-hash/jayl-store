@@ -20,7 +20,11 @@ import reviews from '@/data/reviews.json'
  *    pagina recensioni possa dare, e una critica vera fa credere alle altre.
  */
 
-const MAX = 5
+// Sei e non cinque: la griglia e' a tre colonne, quindi sei riempie due righe
+// piene mentre cinque lascia un buco in basso a destra che sembra un errore di
+// caricamento. Se un giorno le recensioni diventano molte, il numero giusto
+// resta un multiplo di tre.
+const MAX = 6
 
 function Stars({ rating }) {
   if (!rating) return null
