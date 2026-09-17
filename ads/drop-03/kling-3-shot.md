@@ -6,18 +6,13 @@ card finale in Remotion.
 | Shot | Durata | `start_image` | `end_image` | Elements |
 |---|---|---|---|---|
 | 1 | 4s | trittico su petrolio | Ditto rosa su petrolio | — |
-| 2 | 4s | Slowpoke azzurra su terracotta | **macro colletto AZZURRO** ⚠️ da generare | — |
+| 2 | 4s | Slowpoke azzurra su terracotta | — | `slopoke-t-shirt` |
 | 3 | 6s | Kangaskhan sabbia su prugna | macro colletto sabbia su prugna | `kanghaskan-t-shirt` |
 
-**Elements solo nello shot 3.** Negli altri due dai a Kling sia il frame di
-partenza sia quello d'arrivo: sta interpolando fra due immagini che hai già
-verificato, il setup più vincolato che esista. L'Element serve nel 3 perché la
-rotazione porta in campo il colletto, che nel frame di partenza non c'è.
-
-⚠️ **Lo shot 2 richiede un frame nuovo.** Il macro colletto che hai è sabbia su
-prugna: usato come `end_image` di uno shot che parte dalla Slowpoke azzurra
-farebbe cambiare colore alla maglietta a metà clip. Il prompt NBP è in fondo,
-costa zero.
+**Niente Element nello shot 1**: lì dai a Kling sia il frame di partenza sia
+quello d'arrivo, e interpolare fra due immagini già verificate è il setup più
+vincolato che esista. Negli shot 2 e 3 l'`end_image` non c'è, quindi è
+l'Element a tenere colore e stampa per tutta la clip.
 
 Costo: 7,5 + 7,5 + ~9 = **circa 24 crediti** il giro completo.
 
@@ -51,32 +46,35 @@ POSITIVE LOCKS
 The pink tee's printed graphic stays sharp and fully readable from the first frame to the last. The garments are the only objects in frame. The pink tee keeps its colour and its print unchanged as it comes forward. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
 ```
 
-## Shot 2 · 4s — Slowpoke, salita sul logo
+## Shot 2 · 4s — Slowpoke, zoom leggero sulla stampa
 
 ```
 SCENE
-A light blue cotton t-shirt floats in a burnt-terracotta void. The camera closes on the black wordmark under its collar.
+A light blue cotton t-shirt floats in a burnt-terracotta void. The camera eases in on its printed graphic.
+
+ACTIVE REFERENCES
+<<<378096c0-b97d-46d5-be5b-07c9ec8e7d87>>> light blue tee, printed back showing a round character wearing dark round sunglasses on a violet disc. Colour and print exactly as in the reference.
 
 FIRST FRAME
 Identical to the start image: the light blue tee turned three quarters away, printed back to camera, already twisting, one sleeve swinging forward.
 
 CAMERA
-Single continuous shot, one axis, no roll, no shake, 47 degrees easing to 12. The camera does not cut.
+Single continuous shot, one axis, no roll, no shake, 47 degrees easing to 29. The camera does not cut.
 
 ACTION
-The tee rotates 15 degrees at 2 km/h while the camera rises and pushes in at 3 km/h toward the neck, the printed back sliding out of frame below as the collar fills the frame and the black JAYL wordmark settles centred, the fabric coming to rest.
+The tee rotates 12 degrees at 2 km/h, one sleeve swinging toward camera and the hem trailing behind the turn, while the camera eases in at 2 km/h until the printed character sits large in the centre of frame, its sunglasses catching the key light.
 
 PHYSICS
-Heavy cotton: folds fall under their own weight, the hem swings half a beat behind the body, the ribbed collar keeps its shape.
+Heavy cotton: folds fall under their own weight, the hem swings half a beat behind the body, the fabric holds its shape.
 
 LIGHTING
-One hard key from upper left at 5600K, raking across the weave so every fold edge and every rib catches a bright line. The terracotta background stays clean, unlit and fully saturated.
+One hard key from upper left at 5600K, raking across the weave so every fold edge catches a bright line, the lit shoulder burning bright while the receding half stays in deep shadow. The terracotta background stays clean, unlit and fully saturated.
 
 STYLE
-Photoreal product film, fine grain, shallow depth of field as the camera closes in.
+Photoreal product film, fine grain.
 
 POSITIVE LOCKS
-The tee keeps its light blue colour throughout. The printed ink sits inside the cotton weave. The black JAYL wordmark stays legible and in focus through the final frame. One garment only in frame. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
+The tee keeps its light blue colour and its print exactly as in the reference throughout. The printed graphic stays sharp and fully readable from the first frame to the last. The printed ink sits inside the cotton weave. One garment only in frame. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
 ```
 
 ## Shot 3 · 6s — Kangaskhan, macro, rotazione, logo
@@ -112,20 +110,3 @@ POSITIVE LOCKS
 The printed ink sits inside the cotton weave in the macro. Through the turn the tee keeps the sand colour, the collar and the JAYL wordmark of its reference. The black JAYL wordmark stays legible and in focus through the final frame. One garment only in frame. The garment stays inside the central vertical band, the top 13 percent and bottom 21 percent of frame stay clear.
 ```
 
----
-
-## Frame mancante · macro colletto sull'azzurra (Nano Banana Pro, gratis)
-
-Stesso trattamento del macro sabbia, con capo azzurro e cuneo di terracotta.
-
-```
-Vertical 9:16 extreme macro photograph, shot from very close. Almost the whole frame is filled by pale sky-blue cotton jersey fabric — a detail shot at thread level. In the top-left corner, past the edge of the shoulder, a small wedge of burnt-terracotta backdrop shows through, thrown completely out of focus into a soft field of colour, taking up roughly a sixth of the frame and reading as depth behind the garment.
-
-Across the upper third runs the ribbed collar band and its double-needle stitch line, curving down from upper left toward the right, the ribbing reading as deep parallel grooves with individual stitch loops visible. Below it, printed flat onto the cotton in matte black ink, the wordmark JAYL: four geometric sans-serif letters with the A drawn as a plain triangle with no crossbar, exactly as in the reference. The wordmark spans roughly one third of the frame width and sits centered. The ink has soaked slightly into the weave, its edges showing tiny fiber texture where the black meets the fabric rather than a clean vector edge.
-
-Shallow depth of field: the wordmark and the stitch line are tack sharp, the fabric falls softly out of focus toward the bottom of the frame, and the terracotta corner is fully diffused.
-
-Hard raking light from upper left at 5600K skimming across the weave, so every cotton fiber and every rib throws a fine shadow and the matte black print stays dead flat against the lit fabric. A faint terracotta bounce touches the fabric along the edge nearest the backdrop.
-
-Photoreal, extreme detail, fine grain, no text other than the wordmark.
-```
