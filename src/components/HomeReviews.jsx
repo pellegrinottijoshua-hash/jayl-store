@@ -80,9 +80,6 @@ export default function HomeReviews() {
 
               <p className="text-2xs font-sans tracking-label uppercase text-ink-muted">
                 {r.author}
-                {/* L'origine va detta. Una recensione guadagnata su Etsy resta
-                    una recensione vera, ma spacciarla per raccolta qui no. */}
-                {r.source === 'etsy' && ' · via Etsy'}
               </p>
             </li>
           ))}

@@ -46,14 +46,6 @@ export default function DropPanels() {
   const head  = showingCurrent ? cfg.current : (cfg.previous || cfg.current)
   const items = shown.map(getProductById).filter(Boolean)
 
-  // La riga d'intestazione può nominare la dimensione dell'edizione solo se è
-  // la stessa per tutti e tre i pezzi; i cap sono per-prodotto e l'admin può
-  // differenziarli, e in quel caso "Editions of 20" sarebbe falso per uno dei
-  // tre. Stessa fonte del badge sulla card (status, con fallback a capFor) così
-  // le due non possono dichiarare numeri diversi.
-  const caps = items.map((p) => status?.products?.[p.id]?.cap ?? capFor(p.id, cfg))
-  const uniformCap = caps.length && caps.every((c) => c && c === caps[0]) ? caps[0] : null
-
   // Quale card è centrata nel track — guida sia il testo mostrato sotto
   // (solo quello del pezzo attivo, su mobile) sia i puntini indicatore.
   // IntersectionObserver invece di leggere scrollLeft: resta corretto a
@@ -116,7 +108,7 @@ export default function DropPanels() {
         </div>
         {state === LIVE && (
           <p className="mt-2 text-[11px] sm:text-xs tracking-[0.14em] uppercase text-white/55">
-            {uniformCap ? `Editions of ${uniformCap}` : 'Limited editions'} · when the drop
+            Limited editions · when the drop
             closes, what's left moves to the archive at {formatPrice(cfg.archivePrice)}
           </p>
         )}
