@@ -81,7 +81,7 @@ export const drop = {
         "cool-vileplume-back-t-shirt"
       ],
       "startsAt": "2026-09-19T16:00:00Z",
-      "endsAt": "2026-09-22T16:00:00Z",
+      "endsAt": "2026-09-24T16:00:00Z",
       "cap": 20,
       "caps": {},
       "dropPrice": 2200,
