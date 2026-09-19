@@ -1,5 +1,21 @@
 [
   {
+    "id": "cart_1789795105885",
+    "email": "bryceloveschipotle@gmail.com",
+    "cartItems": [
+      {
+        "name": "Cool Snorlax back T-Shirt",
+        "image": "/images/cool-snorlax-back-t-shirt/hf_20260626_113736_1628fcc8-cd30-4c13-8ce9-85a5beaa729b.png",
+        "color": "sand",
+        "size": "M",
+        "quantity": 1
+      }
+    ],
+    "capturedAt": "2026-09-19T05:18:25.885Z",
+    "sent": false,
+    "converted": false
+  },
+  {
     "id": "cart_1779415147135",
     "email": "pellegrinottijoshua@gmail.com",
     "cartItems": [
