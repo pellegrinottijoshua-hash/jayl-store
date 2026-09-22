@@ -31,3 +31,7 @@ public/sitemap.xml
 .env
 .env.local
 .env.production
+
+# Gli export degli ad: si rigenerano con scripts/build-ad.sh dai clip Kling,
+# che stanno fuori dal repo. Committarli significherebbe 8MB a versione.
+ads/**/*.mp4

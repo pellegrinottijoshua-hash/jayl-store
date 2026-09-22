@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProductById } from '@/data/products'
 import { getDrop, capFor } from '../../../api/_lib/drop.js'
@@ -29,7 +29,6 @@ import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
 export default function DropPanels() {
   const cfg = getDrop()
   const { status } = useDropStatus()
-  const [activeIdx, setActiveIdx] = useState(0)
   const trackRef = useRef(null)
   const cardRefs = useRef([])
 
@@ -45,6 +44,25 @@ export default function DropPanels() {
   const shown = showingCurrent ? currentIds : (cfg.previous?.productIds || [])
   const head  = showingCurrent ? cfg.current : (cfg.previous || cfg.current)
   const items = shown.map(getProductById).filter(Boolean)
+
+  // Su mobile si entra sulla card di mezzo, non sulla prima. Aperto sulla
+  // prima, il carosello si legge come un hero singolo con una striscia di
+  // colore a destra; aperto al centro si vedono due peek, e i tre pezzi si
+  // annunciano come una scelta da fare. Con due soli pezzi resta la prima.
+  const initialIdx = Math.floor((items.length - 1) / 2)
+  const [activeIdx, setActiveIdx] = useState(initialIdx)
+
+  // Lo scroll iniziale, prima del primo paint per non far vedere il salto.
+  // Solo se il track e' davvero scrollabile (sotto sm) e solo se il browser
+  // non ha gia' ripristinato una posizione tornando indietro dalla scheda
+  // prodotto — in quel caso la posizione dell'utente vale piu' della nostra.
+  useLayoutEffect(() => {
+    const track = trackRef.current
+    const card  = cardRefs.current[initialIdx]
+    if (!track || !card || initialIdx === 0) return
+    if (track.scrollWidth <= track.clientWidth || track.scrollLeft !== 0) return
+    track.scrollLeft = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2
+  }, [initialIdx])
 
   // Quale card è centrata nel track — guida sia il testo mostrato sotto
   // (solo quello del pezzo attivo, su mobile) sia i puntini indicatore.
@@ -82,15 +100,12 @@ export default function DropPanels() {
     // the vw-based peek math on the track further down is relative to the
     // viewport, not this wrapper).
     <div className="sm:max-w-7xl sm:mx-auto">
-      {/* Due scarsità convivono qui — la quantità (edizione di N) e il tempo
-          (la finestra del drop) — e se il countdown resta l'unica cosa in
-          evidenza si annullano a vicenda: un timer nudo si legge come una
-          scadenza di prezzo, e allora la quantità non conta più. Quindi il
-          timer dice cosa *chiude* (non "ends", che non nomina nessun evento) e
-          la riga sotto enuncia per esteso il patto: quante copie esistono, e
-          cosa succede a zero. Il prezzo d'archivio è scritto lì perché è
-          l'unico posto in home dove la conseguenza del countdown è dichiarata
-          invece che sottintesa. */}
+      {/* Solo il nome del drop e il countdown. La riga che spiegava il patto
+          per esteso (quante copie, e il prezzo d'archivio dopo la chiusura)
+          stava qui sotto in 11px uppercase spaziato al 55% di opacita': il
+          testo meno leggibile della pagina, proprio mentre chiedeva la lettura
+          piu' attenta. Toglierla alza di ~75px l'invito alla lista d'attesa,
+          che e' l'unica conversione disponibile a chi non compra oggi. */}
       <div className="px-5 sm:px-6 lg:px-8 pt-[88px] pb-3 sm:pb-6 text-cream">
         <div className="flex items-center justify-between">
           <span className="text-xs tracking-[0.2em] uppercase">
@@ -106,12 +121,6 @@ export default function DropPanels() {
             <DropCountdown to={target} label="next drop in" className="text-xs tabular-nums" />
           )}
         </div>
-        {state === LIVE && (
-          <p className="mt-2 text-[11px] sm:text-xs tracking-[0.14em] uppercase text-white/55">
-            Limited editions · when the drop
-            closes, what's left moves to the archive at {formatPrice(cfg.archivePrice)}
-          </p>
-        )}
       </div>
 
       {/* Mobile: flex row, scroll-snap, peek ~10vw on each side (padding 13vw
@@ -139,14 +148,14 @@ export default function DropPanels() {
                 <img
                   src={cfg.current.heroImages?.[p.id] ?? p.heroImage ?? p.image}
                   alt={p.altText || p.name}
-                  // Screen 1, above the fold — the first card is the LCP candidate the
-                  // old full-bleed hero used to be eager for. Only the first: the rest
-                  // can still defer, no reason to fight the browser for all of them.
-                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  // Screen 1, above the fold — la card su cui si entra e' il candidato
+                  // LCP che era il vecchio hero a tutta pagina. Solo quella: le altre
+                  // possono differire, non c'e' motivo di litigare col browser per tutte.
+                  loading={idx === initialIdx ? 'eager' : 'lazy'}
                   // fetchpriority isn't in this React 18.3 runtime's known-DOM-property
                   // table yet — set the real attribute imperatively via the ref instead
                   // of the fetchPriority prop, which logs a dev warning.
-                  ref={idx === 0 ? (el) => { if (el) el.setAttribute('fetchpriority', 'high') } : undefined}
+                  ref={idx === initialIdx ? (el) => { if (el) el.setAttribute('fetchpriority', 'high') } : undefined}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -193,12 +202,6 @@ export default function DropPanels() {
             />
           ))}
         </div>
-      )}
-
-      {state === LIVE && items.length === 3 && (
-        <p className="px-5 sm:px-6 lg:px-8 pt-4 text-center text-xs tracking-[0.2em] uppercase text-white/60">
-          all three · {formatPrice(cfg.current.bundlePrice)}
-        </p>
       )}
     </div>
   )
