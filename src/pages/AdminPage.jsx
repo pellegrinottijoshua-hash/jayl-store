@@ -11,6 +11,17 @@ import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 import { SOCIAL_CHANNELS, socialPlaceholder } from '../../api/_lib/social-links.js'
 
+// Scheda tecnica standard per un capo Gelato su Gildan 64000 — è quella che
+// finisce su ogni prodotto quando non se ne scrive una diversa a mano.
+const DEFAULT_PRODUCT_DETAILS = [
+  'Gildan 64000 Softstyle — premium ring-spun cotton tee',
+  'Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester',
+  'Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut',
+  'Side-seamed construction, twin-needle stitching, tear-away label',
+  'DTG print — made to order, fulfilled via Gelato',
+  'Machine wash cold inside-out, tumble dry low',
+]
+
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -873,7 +884,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         currency: 'eur',
         description: description.trim() || `${title.trim()} from the ${finalCollection} collection.`,
         altText: altText.trim() || '',
-        details: ['Printed and fulfilled via Gelato'],
+        // La scheda tecnica standard Gelato/Gildan 64000. Va bene per l'85%+ dei
+        // capi (tutti quelli su Gildan 64000): meglio un default corretto che un
+        // placeholder da ricordarsi di sostituire ogni volta — sei prodotti prima
+        // di questa riga sono rimasti con "Printed and fulfilled via Gelato" per
+        // mesi prima che qualcuno se ne accorgesse. Un capo su un blank diverso
+        // resta un'eccezione da editare a mano nel pannello Dettagli.
+        details: DEFAULT_PRODUCT_DETAILS,
         sizes,
         image:       heroDesktopPath || finalImages[0] || '',
         heroImage:   heroMobilePath  || null,

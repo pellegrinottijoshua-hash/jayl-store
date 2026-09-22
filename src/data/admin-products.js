@@ -16197,7 +16197,12 @@ export const adminProducts = [
     "description": "For that friend who always lets their love for nature shine, the Meganium Back Print Shirt captures the gentle spirit of this beloved grass Pokémon. In a vibrant retro 90s anime style, this unisex cotton tee offers a large back design that transforms everyday wear into a life-filled tribute to your favorite calming creature. Gildan’s premium tee and advanced DTG print quality ensure that every detail pops with color. This t-shirt makes for a thoughtful gift that resonates with anyone who has felt the embrace of Meganium's nurturing energy.",
     "altText": "Gentle Meganium looking regal in a lush green landscape, artfully designed in retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -16611,7 +16616,12 @@ export const adminProducts = [
     "description": "Electric as a thunderstorm, Raikou captures the essence of raw power wrapped in fur. This Gildan premium cotton tee showcases a bold retro 90s anime graphic with an oversized back print that boldly proclaims your affinity for this electric Pokémon icon. The vibrant colors pop, making it an essential statement piece in any streetwear collection. It also makes for a memorable gift for fans who appreciate the electrifying presence of Raikou. With its DTG print quality, you can trust that this tee stands the test of time in both style and comfort.",
     "altText": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -17025,7 +17035,12 @@ export const adminProducts = [
     "description": "Radiating a vibe of fluid elegance, this Suicune shirt showcases the water Pokémon in a striking pose, with waves and energy swirling around its majestic form. The bold retro 90s anime graphic on this Gildan premium tee delivers crisp DTG print quality that refuses to fade into the background. The design captures the essence of Suicune’s grace while vibrating with rebellious spirit—perfect for those who dare to stand out. Gift it to those who cherish quirky anime flair and channel their inner water warrior.",
     "altText": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -17480,7 +17495,12 @@ export const adminProducts = [
     "description": "Ignite your wardrobe with the fierce spirit of Entei, captured in a dynamic back print that radiates retro vibes. The fiery orange and black hues bring this legendary Pokémon to life, embodying its untamed power and confidence. This Gildan premium tee showcases top-notch DTG print quality, ensuring every detail pops with nostalgic flair. Perfect as a birthday or holiday gift for that special someone who appreciates unique anime fashion.",
     "altText": "Fierce Entei depicted mid-roar with vibrant fire elements on a retro 90s-themed Gildan tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -17934,7 +17954,12 @@ export const adminProducts = [
     "description": "Charging through the smoky battleground, Arcanine's fierce loyalty and fiery spirit glint in the retro colors of this graphic tee. This unisex Gildan premium cotton shirt showcases a large back design that captures the essence of your favorite fire Pokémon perfectly—reminiscent of those carefree '90s anime vibes. Whether you're battling it out with pals or just cruising on a lazy Sunday, this tee makes a solid addition to your wardrobe. Makes an excellent gift for any fire-type trainer in your life who knows how to keep it chill amidst all that heat.",
     "altText": "Arcanine charging forward with flames flaring against a retro 90s anime backdrop on a Gildan premium tee.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
@@ -18348,7 +18373,12 @@ export const adminProducts = [
     "description": "For that friend who was always the Charizard kid, this shiny Charizard back print shirt captures the nostalgic essence of Saturday morning cartoons. With a large and vibrant design showcasing the iconic fire-breathing Dragon, it's a tribute to those epic battles in childhood. Made from soft Gildan premium cotton with top-notch DTG print quality, this unisex tee offers comfort and style in spades. It's an excellent gift for birthdays or just because—anyone who grew up loving Pokémon will appreciate wearing a piece of their childhood.",
     "altText": "Dynamic Charizard exhaling flames in retro 90s anime style on a premium JAYL tee with a large back print.",
     "details": [
-      "Printed and fulfilled via Gelato"
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
       {
