@@ -151,6 +151,30 @@ export function validateDropEntry(c, label = 'current') {
     }
   }
 
+  // defaults è opzionale, come heroImages: per ogni pezzo del drop, colore e
+  // taglia con cui si apre la pagina prodotto. Serve perché chi arriva da un
+  // ad ha visto UN colore preciso: se la scheda apre su un altro (il primo
+  // dell'elenco Gelato, quasi mai quello del drop) il visitatore pensa di aver
+  // sbagliato pagina, oppure compra il colore sbagliato senza accorgersene.
+  // Ogni voce è un oggetto con color e/o size, stringhe non vuote — la
+  // coerenza con le varianti reali del prodotto la controlla ProductPage, che
+  // ricade sul comportamento di sempre se il valore non esiste.
+  if (c.defaults !== undefined) {
+    if (!isPlainObject(c.defaults)) {
+      return { ok: false, error: `${label}.defaults must be an object` }
+    }
+    for (const [productId, d] of Object.entries(c.defaults)) {
+      if (!isPlainObject(d)) {
+        return { ok: false, error: `${label}.defaults.${productId} must be an object` }
+      }
+      for (const key of ['color', 'size']) {
+        if (d[key] !== undefined && (typeof d[key] !== 'string' || !d[key].trim())) {
+          return { ok: false, error: `${label}.defaults.${productId}.${key} must be a non-empty string` }
+        }
+      }
+    }
+  }
+
   return { ok: true }
 }
 

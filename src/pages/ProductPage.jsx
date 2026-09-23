@@ -580,8 +580,25 @@ export default function ProductPage() {
     priceCurrency: 'EUR',
   } : {})
 
-  const defaultSize  = product?.sizes?.[isArt ? 1 : 0]?.id
-  const defaultColor = product?.colors?.[0]?.id
+  // Colore e taglia con cui si apre la scheda. Chi arriva da un ad ha visto un
+  // colore preciso: se la pagina apre sul primo dell'elenco Gelato (Navy per
+  // Blastoise, White per Vileplume, con l'ad che mostrava Royal e verde) pensa
+  // di aver sbagliato pagina, o compra il colore sbagliato senza accorgersene.
+  // Il valore lo sceglie l'admin per ogni pezzo del drop (tab Drop →
+  // current.defaults); se manca, o non esiste fra le varianti del prodotto,
+  // resta il comportamento di sempre. Solo per i pezzi del drop CORRENTE: fuori
+  // dal drop nessuno ha visto un colore da rispettare.
+  const dropDefaults = dropCfg.current?.productIds?.includes(product?.id)
+    ? dropCfg.current.defaults?.[product.id]
+    : null
+  const pickDefault = (list, wanted) => (wanted && list?.some((x) => x.id === wanted) ? wanted : null)
+  // Senza scelta esplicita la taglia d'apertura e' M, non la prima della lista:
+  // Gelato le ordina dalla XL, e chi tocca "Add to cart" al volo compra XL.
+  const fallbackSize = isArt
+    ? product?.sizes?.[1]?.id
+    : (product?.sizes?.some((x) => x.id === 'M') ? 'M' : product?.sizes?.[0]?.id)
+  const defaultSize  = pickDefault(product?.sizes,  dropDefaults?.size)  ?? fallbackSize
+  const defaultColor = pickDefault(product?.colors, dropDefaults?.color) ?? product?.colors?.[0]?.id
   const videoInfo    = parseVideoUrl(product?.videoUrl)
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
@@ -744,11 +761,21 @@ export default function ProductPage() {
   // displayImages is what the main carousel shows
   const displayImages = heroImages ?? productImages
 
-  // Random starting image — shuffle on every product open (not on re-render)
+  // Random starting image — shuffle on every product open (not on re-render).
+  //
+  // Solo fra le immagini NEUTRE (hero, macro, mockup senza colore nel nome):
+  // l'effetto "immagine → swatch" più su cambia il colore selezionato in quello
+  // dell'immagine mostrata, quindi un salto casuale su "…-black-01.jpg" apriva
+  // la scheda con Black selezionato — e chi tocca "Add to cart" al volo
+  // comprava un colore a caso. Se il drop ha scelto un colore d'apertura, non
+  // si mescola niente: l'effetto sul colore ha già portato la galleria su
+  // quell'immagine, ed e' il punto — chi viene dall'ad vede lo stesso capo.
   useEffect(() => {
-    if (!product || videoInfo) return
-    const count = displayImages.length
-    if (count > 1) setActiveImage(Math.floor(Math.random() * count))
+    if (!product || videoInfo || dropDefaults?.color) return
+    const neutral = displayImages
+      .map((_, i) => i)
+      .filter((i) => !findImageColor(i, product.colors || [], displayImages))
+    if (neutral.length > 1) setActiveImage(neutral[Math.floor(Math.random() * neutral.length)])
   }, [product?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Mobile gallery: video slot (index -1) + images (0..n-1)

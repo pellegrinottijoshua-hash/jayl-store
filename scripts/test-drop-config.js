@@ -130,6 +130,22 @@ if (cfg) {
   check('heroImages non-oggetto (array) → rifiutato',
     validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: ['not', 'an', 'object'] } }).ok === false)
 
+  // ── defaults — opzionale, {productId: {color?, size?}} ──────────────────
+  check('defaults assente → valido (retrocompatibilità)',
+    validateDropConfig(validCfg).ok === true)
+  check('defaults con color e size → valido',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, defaults: { aaa: { color: 'royal', size: 'M' } } } }).ok === true)
+  check('defaults con solo color → valido',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, defaults: { aaa: { color: 'royal' } } } }).ok === true)
+  check('defaults con color vuoto → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, defaults: { aaa: { color: '' } } } }).ok === false)
+  check('defaults con size non-stringa → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, defaults: { aaa: { size: 5 } } } }).ok === false)
+  check('defaults con voce non-oggetto → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, defaults: { aaa: 'royal' } } }).ok === false)
+  check('defaults non-oggetto (array) → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, defaults: ['royal'] } }).ok === false)
+
   // ── scheduled — i drop futuri in attesa di promozione ────────────────────
   // Ogni voce ha ESATTAMENTE la forma di `current` perché il cron la promuove
   // copiandola lì così com'è (api/_lib/drop-schedule.js). Se le regole delle

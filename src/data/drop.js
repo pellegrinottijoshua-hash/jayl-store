@@ -33,6 +33,11 @@ export const drop = {
       "cool-arcanine-back-shirt": "/images/cool-arcanine-back-shirt/hf_20260904_142002_f3b2b89e-4334-4afa-8016-d2931d2d5310.png",
       "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260904_152245_967412b1-adc0-4cd5-8815-9b66ad07fe4a.png",
       "cool-vileplume-back-t-shirt": "/images/cool-vileplume-back-t-shirt/hf_20260907_115923_f5785daa-be32-4143-953c-c74549e04aa4.png"
+    },
+    "defaults": {
+      "cool-arcanine-back-shirt": { "color": "red", "size": "M" },
+      "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": { "color": "royal", "size": "M" },
+      "cool-vileplume-back-t-shirt": { "color": "military-green", "size": "M" }
     }
   },
   "previous": {

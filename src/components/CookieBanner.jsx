@@ -59,12 +59,16 @@ export default function CookieBanner() {
       className="fixed bottom-0 left-0 right-0 z-[200] border-t"
       style={{ backgroundColor: '#111111', borderColor: 'rgba(255,255,255,0.08)' }}
     >
-      <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      {/* Compatto anche su telefono: testo breve a sinistra, i due bottoni sulla
+          stessa riga a destra. Prima il testo intero (5 righe a 375px) e i
+          bottoni impilati occupavano ~40% dello schermo e coprivano prezzo,
+          taglie e "Add to cart" della scheda prodotto — proprio a chi arriva
+          da un ad e non ha ancora deciso se accettare. */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-5 py-3 flex items-center gap-3 sm:gap-4">
         {/* Text */}
-        <p className="flex-1 text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
-          We use essential cookies (cart, session) and, with your consent, analytics (Google
-          Analytics) and marketing cookies (Meta, Pinterest) to improve the site and show you
-          relevant content. You can decline them at any time.{' '}
+        <p className="flex-1 text-[11px] sm:text-xs leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+          Essential cookies always. Analytics and marketing (Google, Meta, Pinterest) only if you
+          accept.{' '}
           <Link
             to="/cookies"
             onClick={decline}
@@ -79,7 +83,7 @@ export default function CookieBanner() {
         <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={decline}
-            className="text-xs px-4 py-2 border transition-colors"
+            className="text-xs px-3 sm:px-4 py-2 border transition-colors"
             style={{
               borderColor: 'rgba(255,255,255,0.15)',
               color: 'rgba(255,255,255,0.45)',
@@ -89,7 +93,7 @@ export default function CookieBanner() {
           </button>
           <button
             onClick={accept}
-            className="text-xs px-5 py-2 font-medium transition-colors"
+            className="text-xs px-4 sm:px-5 py-2 font-medium transition-colors"
             style={{ backgroundColor: '#C4A35A', color: '#111111' }}
           >
             Accept

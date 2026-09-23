@@ -75,7 +75,16 @@ function sanitizeEntry(entry) {
     Object.entries(entry.heroImages || {}).filter(([, url]) => typeof url === 'string' && url.trim()),
   )
 
-  return { ...entry, cap: safeCap, caps: safeCaps, heroImages: safeHeroImages }
+  // defaults: una voce vuota (colore e taglia entrambi "automatico") non ha
+  // senso scriverla — l'assenza della chiave e' lo stesso significato, e il
+  // server rifiuta una stringa vuota.
+  const safeDefaults = Object.fromEntries(
+    Object.entries(entry.defaults || {})
+      .map(([id, d]) => [id, Object.fromEntries(Object.entries(d || {}).filter(([, v]) => typeof v === 'string' && v.trim()))])
+      .filter(([, d]) => Object.keys(d).length > 0),
+  )
+
+  return { ...entry, cap: safeCap, caps: safeCaps, heroImages: safeHeroImages, defaults: safeDefaults }
 }
 
 const field = (label, value, onChange, type = 'text') => (
@@ -205,6 +214,19 @@ export default function DropTab() {
     return { heroImages }
   })
 
+  // Colore/taglia con cui si apre la pagina prodotto. '' = "automatico" e
+  // rimuove la chiave, come setProductCap: il default di ProductPage e' il
+  // primo colore Gelato, taglia M.
+  const setProductDefault = (patchEntry) => (productId, key, v) => patchEntry((entry) => {
+    const defaults = { ...(entry.defaults || {}) }
+    const d = { ...(defaults[productId] || {}) }
+    if (v) d[key] = v
+    else delete d[key]
+    if (Object.keys(d).length) defaults[productId] = d
+    else delete defaults[productId]
+    return { defaults }
+  })
+
   // ── Drop programmati ─────────────────────────────────────────────────────
   // Stessa forma di `current`, perché il cron promuove una voce copiandola lì
   // così com'è (api/_lib/drop-schedule.js).
@@ -266,6 +288,7 @@ export default function DropTab() {
       dropPrice:   c.current?.dropPrice   ?? 2200,
       bundlePrice: c.current?.bundlePrice ?? 5700,
       heroImages:  {},
+      defaults:    {},
     }
     return { ...c, scheduled: [...list, entry] }
   })
@@ -397,8 +420,10 @@ export default function DropTab() {
               product={p}
               heroUrl={cfg.current.heroImages?.[id]}
               capOverride={cfg.current.caps?.[id]}
+              defaults={cfg.current.defaults?.[id]}
               onSetHero={(url) => setHeroImage(setCurrent)(id, url)}
               onSetCap={(v) => setProductCap(setCurrent)(id, v)}
+              onSetDefault={(key, v) => setProductDefault(setCurrent)(id, key, v)}
             />
           )
         })}
@@ -459,8 +484,10 @@ export default function DropTab() {
                       product={p}
                       heroUrl={entry.heroImages?.[id]}
                       capOverride={entry.caps?.[id]}
+                      defaults={entry.defaults?.[id]}
                       onSetHero={(url) => setHeroImage(patchScheduled(i))(id, url)}
                       onSetCap={(v) => setProductCap(patchScheduled(i))(id, v)}
+                      onSetDefault={(key, v) => setProductDefault(patchScheduled(i))(id, key, v)}
                     />
                   )
                 })}
@@ -556,7 +583,7 @@ export default function DropTab() {
 // altre immagini del prodotto (pool, gallery) restano nell'editor prodotto —
 // qui elencarle tutte come thumbnail (9-14 per prodotto) non aiutava a
 // scegliere, affollava soltanto la scheda.
-function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap }) {
+function ProductHeroPicker({ product, heroUrl, capOverride, defaults, onSetHero, onSetCap, onSetDefault }) {
   const fileRef = useRef(null)
   const [uploading, setUploading]   = useState(false)
   const [progress, setProgress]     = useState(null) // { phase, pct? }
@@ -695,6 +722,37 @@ function ProductHeroPicker({ product, heroUrl, capOverride, onSetHero, onSetCap 
           <input ref={fileRef} type="file" accept="image/*" className="hidden"
             onChange={(e) => doUpload(e.target.files)} />
         </div>
+
+        {/* Cosa vede chi apre la scheda prodotto. Chi arriva da un ad ha visto
+            un colore preciso: senza scelta la pagina apre sul primo colore
+            dell'elenco Gelato, quasi mai quello del drop. */}
+        <div className="flex items-center gap-3 flex-wrap mt-3">
+          <label className="flex items-center gap-1.5 text-xs text-gray-400">
+            Colore all'apertura
+            <select value={defaults?.color ?? ''} onChange={(e) => onSetDefault('color', e.target.value)}
+              className="bg-gray-900 border border-gray-700 rounded px-2 py-1 text-white text-xs">
+              <option value="">automatico ({product.colors?.[0]?.label || '—'})</option>
+              {(product.colors || []).map((c) => (
+                <option key={c.id} value={c.id}>{c.label}</option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-1.5 text-xs text-gray-400">
+            Taglia
+            <select value={defaults?.size ?? ''} onChange={(e) => onSetDefault('size', e.target.value)}
+              className="bg-gray-900 border border-gray-700 rounded px-2 py-1 text-white text-xs">
+              <option value="">automatica (M)</option>
+              {(product.sizes || []).map((sz) => (
+                <option key={sz.id} value={sz.id}>{sz.label}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+        {!defaults?.color && (product.colors?.length || 0) > 1 && (
+          <p className="text-xs text-amber-400 mt-1.5">
+            Colore non scelto: la scheda apre su «{product.colors[0].label}». Scegli quello mostrato nell'ad.
+          </p>
+        )}
 
         <p className="text-xs text-gray-600 mt-1.5">
           {isOverride
