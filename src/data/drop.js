@@ -35,9 +35,18 @@ export const drop = {
       "cool-vileplume-back-t-shirt": "/images/cool-vileplume-back-t-shirt/hf_20260907_115923_f5785daa-be32-4143-953c-c74549e04aa4.png"
     },
     "defaults": {
-      "cool-arcanine-back-shirt": { "color": "red", "size": "M" },
-      "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": { "color": "royal", "size": "M" },
-      "cool-vileplume-back-t-shirt": { "color": "military-green", "size": "M" }
+      "cool-arcanine-back-shirt": {
+        "color": "red",
+        "size": "M"
+      },
+      "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000": {
+        "color": "royal",
+        "size": "M"
+      },
+      "cool-vileplume-back-t-shirt": {
+        "color": "military-green",
+        "size": "M"
+      }
     }
   },
   "previous": {
@@ -87,7 +96,40 @@ export const drop = {
       "endsAt": "2026-09-19T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-05",
+      "number": 5,
+      "title": "LEGENDARY",
+      "productIds": [
+        "entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him",
+        "cool-suicune-back-shirt",
+        "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him"
+      ],
+      "startsAt": "2026-09-24T16:00:00Z",
+      "endsAt": "2026-09-29T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 2200,
+      "bundlePrice": 5700,
+      "heroImages": {
+        "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_162124_925c2ff3-1afd-4c4c-a1d4-69599a07afbb.png",
+        "cool-suicune-back-shirt": "/images/cool-suicune-back-shirt/hf_20260829_174020_a35373b4-93e5-4e12-bb52-2093515ecfa8.png",
+        "entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him": "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_225151_b4573516-1cd4-4a9b-a6e1-0b61620876d9.png"
+      },
+      "defaults": {
+        "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him": {
+          "color": "black"
+        },
+        "cool-suicune-back-shirt": {
+          "color": "navy"
+        },
+        "entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him": {
+          "color": "cardinal-red"
+        }
+      }
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
