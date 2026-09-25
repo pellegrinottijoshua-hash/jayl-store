@@ -8789,7 +8789,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/cool-snorlax-back-t-shirt/hf_20260626_113736_1628fcc8-cd30-4c13-8ce9-85a5beaa729b.png",
-    "heroImage": "/images/cool-snorlax-back-t-shirt/hf_20260626_121424_593e8fb3-bb55-43db-bb2e-258b6376819a.jpeg",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-snorlax-back-t-shirt/hf_20260626_112548_bad54308-60d8-4331-b1eb-ad344f9a73a9.png",
     "detailImage": "/images/cool-snorlax-back-t-shirt/hf_20260626_121523_60f0d981-0dc2-4df2-95a4-26bce5045a0f.png",
     "images": [
       "/images/cool-snorlax-back-t-shirt/hf_20260626_114025_c69996c2-a7f5-418c-99c4-d61a7b9f8f03.jpeg",
@@ -9079,7 +9079,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88c51c10-06b9-4d81-ac8b-ea49d23d9db2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T131507Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=555d6961abfa6a2a033c395311bfcb20e33411f568c31df3700e190c5445fb05"
     ],
     "createdAt": "2026-06-26T13:25:03.416Z",
-    "updatedAt": "2026-07-15T13:21:05.098Z",
+    "updatedAt": "2026-09-25T14:33:02.387Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-snorlax-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
