@@ -49,17 +49,17 @@ function StatusTimeline({ status }) {
               <div className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-colors ${
                 done    ? 'bg-green-500 border-green-500'    :
                 current ? 'bg-cream border-cream'           :
-                          'bg-transparent border-white/20'
+                          'bg-transparent border-fg/20'
               }`}>
                 {done    && <Check size={12} className="text-black" strokeWidth={3} />}
                 {current && <span className="w-2 h-2 rounded-full bg-off-black" />}
               </div>
               {i < STATUS_STEPS.length - 1 && (
-                <div className={`w-0.5 h-8 mt-0.5 ${done ? 'bg-green-500/50' : 'bg-white/10'}`} />
+                <div className={`w-0.5 h-8 mt-0.5 ${done ? 'bg-green-500/50' : 'bg-fg/10'}`} />
               )}
             </div>
             <div className="pb-8">
-              <p className={`text-sm font-medium leading-6 ${current ? 'text-cream' : done ? 'text-green-400' : 'text-white/30'}`}>
+              <p className={`text-sm font-medium leading-6 ${current ? 'text-cream' : done ? 'text-green-400' : 'text-fg/30'}`}>
                 {STATUS_LABEL[step]}
               </p>
               {current && (
@@ -126,7 +126,7 @@ export default function TrackPage() {
             value={orderId}
             onChange={e => setOrderId(e.target.value)}
             placeholder="Enter your order ID…"
-            className="flex-1 bg-gray-900 border border-border text-cream px-4 py-3 text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
+            className="flex-1 bg-surface border border-border text-cream px-4 py-3 text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
           />
           <button
             type="submit"
@@ -148,7 +148,7 @@ export default function TrackPage() {
         {order && (
           <div className="space-y-6">
             {/* Order summary card */}
-            <div className="bg-gray-900/50 border border-border p-5 space-y-3">
+            <div className="bg-surface/50 border border-border p-5 space-y-3">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Order</p>
@@ -205,7 +205,7 @@ export default function TrackPage() {
             </div>
 
             {/* Status timeline */}
-            <div className="bg-gray-900/50 border border-border p-5">
+            <div className="bg-surface/50 border border-border p-5">
               <p className="text-xs text-text-muted uppercase tracking-widest mb-6">Status</p>
               <StatusTimeline status={order.status} />
             </div>

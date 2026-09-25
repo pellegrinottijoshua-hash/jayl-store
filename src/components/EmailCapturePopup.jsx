@@ -146,7 +146,7 @@ export default function EmailCapturePopup() {
                   onChange={e => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="w-full bg-gray-900 border border-border text-cream px-4 py-2.5 text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
+                  className="w-full bg-surface border border-border text-cream px-4 py-2.5 text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
                 />
                 {error && <p className="text-red-400 text-xs">{error}</p>}
                 <button

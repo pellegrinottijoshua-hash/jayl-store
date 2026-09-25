@@ -33,6 +33,12 @@
 // coppia di nomi colore che si sovrappongano, non solo quelli già noti.
 // Ogni immagine finisce assegnata a UN SOLO colore (o a nessuno); un colore
 // può avere più immagini.
+//
+// ── I mockup Gelato senza colore nel nome ───────────────────────────────────
+// I file "{titolo}-gelato-NN.jpg" non hanno slug colore. Per quelli il
+// build legge il colore dai pixel (scripts/mockup-colors.js) e lo passa come
+// `product.imageColors` (path → id colore): conta solo dove il nome del file
+// non dice niente, mai contro uno slug trovato nel path.
 
 /** Stessa normalizzazione di ProductPage.jsx / catalog.js — un'unica fonte. */
 export function colorToSlug(c) {
@@ -46,9 +52,10 @@ export function colorToSlug(c) {
  *
  * @param {Array<{id?:string, label?:string}>} colors
  * @param {string[]} images
+ * @param {Record<string,string>} [imageColors] path → id colore, per i file senza slug
  * @returns {Map<string, {id:string,label:string}|null>} path → colore proprietario
  */
-export function buildImageOwnership(colors, images) {
+export function buildImageOwnership(colors, images, imageColors) {
   const owners = new Map()
   const entries = (colors || [])
     .map((c) => ({ color: c, slug: colorToSlug(c.label || c.id) }))
@@ -64,7 +71,10 @@ export function buildImageOwnership(colors, images) {
       // perché `colors` ha sempre lo stesso ordine.
       if (!best || e.slug.length > best.slug.length) best = e
     }
-    owners.set(img, best ? best.color : null)
+    const byPixels = !best && imageColors?.[img]
+      ? (colors || []).find((c) => c.id === imageColors[img])
+      : null
+    owners.set(img, best ? best.color : (byPixels || null))
   }
   return owners
 }
@@ -73,9 +83,9 @@ export function buildImageOwnership(colors, images) {
  * L'indice, in `images`, della prima foto assegnata a `color` — o -1.
  * Usata da ProductPage.jsx per lo scatto "seleziona colore → salta alla foto".
  */
-export function findColorImageIndex(color, colors, images) {
+export function findColorImageIndex(color, colors, images, imageColors) {
   if (!color) return -1
-  const owners = buildImageOwnership(colors, images)
+  const owners = buildImageOwnership(colors, images, imageColors)
   const wantedSlug = colorToSlug(color.label || color.id)
   for (let i = 0; i < (images || []).length; i++) {
     const owner = owners.get(images[i])
@@ -89,8 +99,8 @@ export function findColorImageIndex(color, colors, images) {
  * ProductPage.jsx per lo scatto inverso "cambia foto in galleria →
  * evidenzia lo swatch corrispondente".
  */
-export function findImageColor(index, colors, images) {
+export function findImageColor(index, colors, images, imageColors) {
   const img = (images || [])[index]
   if (!img) return null
-  return buildImageOwnership(colors, images).get(img) || null
+  return buildImageOwnership(colors, images, imageColors).get(img) || null
 }

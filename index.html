@@ -5,6 +5,17 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <!-- Versione panna: applicata prima del primo paint, altrimenti chi l'ha
+         scelta vede un lampo nero a ogni caricamento. Stessa chiave che
+         persiste src/store/themeStore.js; mai sull'admin. -->
+    <script>
+      try {
+        var s = JSON.parse(localStorage.getItem('jayl-mode') || '{}').state || {};
+        if (s.siteTheme === 'cream' && location.pathname.indexOf('/admin') !== 0) {
+          document.documentElement.setAttribute('data-site-theme', 'cream');
+        }
+      } catch (e) {}
+    </script>
     <meta name="description" content="JAYL — Premium art prints and wearable art. AI-reinterpreted art movements meet contemporary culture." />
     <meta property="og:site_name" content="JAYL" />
     <meta property="og:type" content="website" />

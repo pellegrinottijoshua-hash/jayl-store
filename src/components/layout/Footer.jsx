@@ -1,26 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useThemeStore } from '@/store/themeStore'
+import { useEffectiveTheme } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
-function JaylLogoPng({ isLight, height = 12, style }) {
-  const src = isLight ? '/logo-light.svg' : '/logo-dark.svg'
-  const [failed, setFailed] = useState(false)
-  if (failed) {
-    return (
-      <span
-        className="font-display tracking-widest select-none"
-        style={{ fontSize: height * 0.7, lineHeight: 1, color: isLight ? '#1a1a1a' : '#f5f0e8', ...style }}
-      >
-        JAYL
-      </span>
-    )
-  }
-  return (
-    <img src={src} alt="JAYL"
-      style={{ height, width: 'auto', display: 'block', ...style }}
-      onError={() => setFailed(true)} />
-  )
-}
+import JaylMark from '@/components/JaylMark'
 
 function NewsletterForm({ t, isLight }) {
   const [email,  setEmail]  = useState('')
@@ -45,7 +27,7 @@ function NewsletterForm({ t, isLight }) {
     }
   }
 
-  const inputBorder = isLight ? 'border-ink/20 text-ink placeholder:text-ink-muted/50 focus:border-ink/50' : 'border-white/15 text-cream placeholder:text-white/25 focus:border-white/40'
+  const inputBorder = isLight ? 'border-ink/20 text-ink placeholder:text-ink-muted/50 focus:border-ink/50' : 'border-fg/15 text-cream placeholder:text-fg/25 focus:border-fg/40'
 
   return (
     <div className="mb-14">
@@ -81,8 +63,7 @@ function NewsletterForm({ t, isLight }) {
 }
 
 export default function Footer() {
-  const { pageTheme } = useThemeStore()
-  const isLight = pageTheme === 'light'
+  const isLight = useEffectiveTheme() === 'light'
 
   const t = isLight
     ? {
@@ -213,7 +194,7 @@ export default function Footer() {
             {/* Left: logo + copyright */}
             <div className="flex items-center gap-4">
               <Link to="/" aria-label="JAYL — Home">
-                <JaylLogoPng isLight={isLight} height={36} style={{ opacity: 0.85 }} />
+                <JaylMark size={30} className={cn('block opacity-85 transition-colors hover:text-accent', isLight ? 'text-ink' : 'text-jayl-cream')} />
               </Link>
               <span className={cn(t.muted, 'text-xs')}>© 2026 JAYL. All rights reserved.</span>
             </div>

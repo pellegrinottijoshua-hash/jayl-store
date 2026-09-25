@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { readFileSync } from 'fs'
 import path from 'path'
 import { drop } from './src/data/drop.js'
+import { classifyMockupColors } from './scripts/mockup-colors.js'
 
 /**
  * Fields the storefront never reads — Etsy copy, Pinterest bookkeeping, Gelato
@@ -26,7 +27,7 @@ function storefrontProducts() {
   return {
     name: 'storefront-products',
     resolveId: (id) => (id === VIRTUAL_ID ? '\0' + VIRTUAL_ID : null),
-    load(id) {
+    async load(id) {
       if (id !== '\0' + VIRTUAL_ID) return null
       this.addWatchFile(source)
       const raw = readFileSync(source, 'utf-8')
@@ -41,6 +42,14 @@ function storefrontProducts() {
           for (const field of ADMIN_ONLY_FIELDS) delete out[field]
           return out
         })
+      // Colore dei mockup Gelato senza colore nel nome — letto dai pixel, qui
+      // e non nel browser, cosi' la scheda prodotto sa gia' al primo paint
+      // quali foto appartengono ai colori che non mostra.
+      const publicDir = path.resolve(__dirname, 'public')
+      for (const product of stripped) {
+        const imageColors = await classifyMockupColors(product, publicDir)
+        if (Object.keys(imageColors).length) product.imageColors = imageColors
+      }
       return `export const adminProducts = ${JSON.stringify(stripped)}\n`
     },
   }

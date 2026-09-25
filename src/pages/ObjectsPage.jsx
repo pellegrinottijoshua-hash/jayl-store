@@ -56,7 +56,7 @@ export default function ObjectsPage() {
           className={[
             'flex-shrink-0 text-2xs font-sans tracking-label uppercase px-3 py-1.5 border transition-colors',
             activeCollection === null
-              ? 'bg-cream text-black border-cream'
+              ? 'bg-cream text-off-black border-cream'
               : 'bg-transparent text-text-muted border-border hover:border-cream/60 hover:text-cream',
           ].join(' ')}
         >
@@ -69,7 +69,7 @@ export default function ObjectsPage() {
             className={[
               'flex-shrink-0 text-2xs font-sans tracking-label uppercase px-3 py-1.5 border transition-colors',
               activeCollection === name
-                ? 'bg-cream text-black border-cream'
+                ? 'bg-cream text-off-black border-cream'
                 : 'bg-transparent text-text-muted border-border hover:border-cream/60 hover:text-cream',
             ].join(' ')}
           >
@@ -101,7 +101,7 @@ export default function ObjectsPage() {
                   style={{ aspectRatio: '1 / 1' }}
                 >
                   {isNewProduct(product) && (
-                    <span className="absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase bg-cream text-black px-2 py-0.5">
+                    <span className="absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase bg-cream text-off-black px-2 py-0.5">
                       New
                     </span>
                   )}

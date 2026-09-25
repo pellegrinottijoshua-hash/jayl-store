@@ -7,6 +7,7 @@ import { useCartStore } from '@/store/cartStore'
 import { trackGA4, cartToGaItems, toMajor, trackTikTok, cartToTtContents } from '@/lib/analytics'
 import { formatPrice, cn } from '@/lib/utils'
 import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
+import JaylMark from '@/components/JaylMark'
 
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
@@ -855,7 +856,7 @@ export default function CheckoutPage() {
             Continue Shopping
           </Link>
           <Link to="/" aria-label="JAYL — Home">
-            <img src="/logo-dark.svg" alt="JAYL" style={{ height: 40, width: 'auto', display: 'block', opacity: 0.9 }} />
+            <JaylMark size={30} className="block text-cream opacity-90" />
           </Link>
           <div className="flex items-center gap-1.5 text-xs text-text-muted">
             <Lock size={12} />

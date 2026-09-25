@@ -67,7 +67,7 @@ export default function ProductCard({ product, className, light = false }) {
           <span
             className={cn(
               'flex items-center gap-1.5 text-2xs font-bold tracking-widest uppercase px-3 py-2',
-              light ? 'bg-ink text-white' : 'bg-cream text-black'
+              light ? 'bg-ink text-white' : 'bg-cream text-off-black'
             )}
           >
             <Plus size={10} />

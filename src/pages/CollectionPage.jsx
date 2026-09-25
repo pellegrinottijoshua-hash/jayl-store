@@ -132,7 +132,7 @@ export default function CollectionPage() {
             <Link key={product.id} to={`/product/${product.id}`} className="group">
               <div className={`relative w-full overflow-hidden ${cardBg} mb-3`} style={{ aspectRatio: imgAspect }}>
                 {isNewProduct(product) && (
-                  <span className={`absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase px-2 py-0.5 ${isDark ? 'bg-cream text-black' : 'bg-ink text-paper'}`}>
+                  <span className={`absolute top-2 left-2 z-10 text-[9px] font-sans tracking-label uppercase px-2 py-0.5 ${isDark ? 'bg-cream text-off-black' : 'bg-ink text-paper'}`}>
                     New
                   </span>
                 )}

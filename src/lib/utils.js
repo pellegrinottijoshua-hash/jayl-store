@@ -20,6 +20,15 @@ export function formatPrice(cents, currency = 'eur') {
 /**
  * Capitalize the first letter of a string
  */
+/**
+ * "Cool Suicune Back Shirt" → "Cool Suicune": in vetrina (home, archivio)
+ * conta il soggetto — che e' una maglia con la stampa dietro lo dice la foto.
+ * Il nome intero resta in scheda prodotto, alt text e SEO.
+ */
+export function shortProductName(name = '') {
+  return name.replace(/\s+back\b.*$/i, '').replace(/\s+t[\s-]?shirt\b.*$/i, '').trim() || name
+}
+
 export function capitalize(str) {
   if (!str) return ''
   return str.charAt(0).toUpperCase() + str.slice(1)

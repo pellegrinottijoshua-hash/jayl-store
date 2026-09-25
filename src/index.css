@@ -19,10 +19,46 @@
     --jayl-gold:   #C4A35A;
     --jayl-white:  #FFFFFF;
 
+    /* Palette scura dello shop, come canali RGB (tailwind.config.js le usa
+       con <alpha-value>). Sotto, la stessa palette invertita per la
+       versione panna. */
+    --c-off-black:      10 10 10;
+    --c-surface:        17 17 17;
+    --c-surface-2:      26 26 26;
+    --c-surface-3:      34 34 34;
+    --c-border:         42 42 42;
+    --c-border-light:   58 58 58;
+    --c-cream:          245 240 232;
+    --c-cream-muted:    200 192 176;
+    --c-fg:             255 255 255;
+    --c-text-primary:   240 236 228;
+    --c-text-secondary: 138 138 133;
+    --c-text-muted:     90 85 80;
+
     /* Letter-spacing */
     --ls-display: 0.08em;
     --ls-label:   0.15em;
     --ls-label-xl:0.20em;
+  }
+
+  /* Versione panna: stesso layout, palette capovolta. L'attributo lo mette
+     App.jsx (e lo script in index.html prima del primo paint), mai
+     sull'admin. Il "muted" resta muted: sul nero e' un grigio scuro vicino
+     allo sfondo, sulla panna un grigio chiaro vicino allo sfondo. */
+  :root[data-site-theme="cream"] {
+    --c-off-black:      245 240 232;
+    --c-surface:        237 232 223;
+    --c-surface-2:      230 224 213;
+    --c-surface-3:      221 216 208;
+    --c-border:         221 216 208;
+    --c-border-light:   201 194 182;
+    --c-cream:          17 17 17;
+    --c-cream-muted:    68 68 68;
+    --c-fg:             17 17 17;
+    --c-text-primary:   17 17 17;
+    --c-text-secondary: 90 85 80;
+    --c-text-muted:     138 138 133;
+    color-scheme: light;
   }
 
   * {
@@ -127,7 +163,7 @@
   /* ── Buttons — dark page (Objects, Cart, Admin) ──────────────────────────── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3
-           bg-cream text-black text-xs font-sans font-medium tracking-label uppercase
+           bg-cream text-off-black text-xs font-sans font-medium tracking-label uppercase
            transition-all duration-300 hover:bg-accent active:scale-[0.98];
     letter-spacing: var(--ls-label);
   }
@@ -264,9 +300,10 @@
     line-height: 1.5;
   }
 
-  /* Light-page force (stays cream regardless of OS dark mode) */
+  /* Light-page force (stays cream regardless of OS dark mode). Not .bg-cream
+     under the cream site theme: there cream is the ink of a dark button. */
   @media (prefers-color-scheme: dark) {
-    .bg-paper, .bg-cream, [data-theme="light"] {
+    .bg-paper, :root:not([data-site-theme="cream"]) .bg-cream, [data-theme="light"] {
       background-color: var(--jayl-cream) !important;
       color: var(--jayl-black) !important;
     }
@@ -280,4 +317,38 @@
   0%   { box-shadow: 0 0 0px 0px rgba(212,168,83,0);     border-color: rgba(212,168,83,0.3);  opacity: 0.5; transform: scale(1);    }
   50%  { box-shadow: 0 0 14px 4px rgba(212,168,83,0.35); border-color: rgba(212,168,83,1);    opacity: 1;   transform: scale(1.04); }
   100% { box-shadow: 0 0 0px 0px rgba(212,168,83,0);     border-color: rgba(212,168,83,0.3);  opacity: 0.5; transform: scale(1);    }
+}
+
+/* Home — "NEW": lama d'oro che attraversa le lettere. La lettera resta in
+   tinta piena (sempre visibile); la luce e' una copia sovrapposta via ::after
+   con background-clip: text, sfasata per lettera con animation-delay
+   (DropHero.jsx) cosi' sembra una sola lama sull'intera parola. Se un
+   browser non dipinge il clip, resta la parola piena, non un buco. */
+.new-letter {
+  position: relative;
+  color: rgb(var(--c-cream));
+}
+.new-letter::after {
+  content: attr(data-letter);
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(100deg,
+    transparent 0%, transparent 40%,
+    var(--jayl-gold) 50%,
+    transparent 60%, transparent 100%);
+  background-size: 320% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: newShimmer 6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  animation-delay: inherit;
+  pointer-events: none;
+}
+@keyframes newShimmer {
+  0%        { background-position: 100% 0; }
+  30%, 100% { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .new-letter::after { animation: none; opacity: 0; }
 }

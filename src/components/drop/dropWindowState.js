@@ -7,7 +7,7 @@ export const CLOSED = 'closed'
 
 /**
  * Stato a tre valori della finestra del drop corrente. Usato sia da
- * `DropPanels` sia dalla sezione lista d'attesa in `HomePage`, così le due
+ * `DropHero` sia dalla sezione lista d'attesa in `HomePage`, così le due
  * non possono mai raccontare date diverse per lo stesso drop.
  *
  * - BEFORE: prima di `current.startsAt` — i pezzi si vedono in anteprima, non

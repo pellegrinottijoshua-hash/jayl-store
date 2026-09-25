@@ -12,6 +12,7 @@ import ProductPage from '@/pages/ProductPage'
 import CollectionPage from '@/pages/CollectionPage'
 import EmailCapturePopup from '@/components/EmailCapturePopup'
 import CookieBanner from '@/components/CookieBanner'
+import { useThemeStore } from '@/store/themeStore'
 
 // Admin panel is owner-only + heavy (generate-assets, big editors) — lazy-load it
 // so its code and deps stay OUT of the storefront's main bundle.
@@ -65,11 +66,24 @@ function ScrollToTop() {
   return null
 }
 
+// Mirrors the persisted site theme onto <html data-site-theme>, which flips the
+// palette tokens in index.css. Never on /admin: the panel is built on the same
+// tokens and stays dark.
+function useSiteThemeAttribute(isAdmin) {
+  const siteTheme = useThemeStore((s) => s.siteTheme)
+  useLayoutEffect(() => {
+    const html = document.documentElement
+    if (siteTheme === 'cream' && !isAdmin) html.setAttribute('data-site-theme', 'cream')
+    else html.removeAttribute('data-site-theme')
+  }, [siteTheme, isAdmin])
+}
+
 export default function App() {
   const { pathname } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
 
   useGA4PageTracking()
+  useSiteThemeAttribute(isAdmin)
 
   return (
     <>

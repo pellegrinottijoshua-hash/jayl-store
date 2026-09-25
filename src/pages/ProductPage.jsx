@@ -11,11 +11,13 @@ import { useThemeStore } from '@/store/themeStore'
 import { useSwipe } from '@/hooks/useSwipe'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { findColorImageIndex, findImageColor } from '@/lib/colorImageMatch'
+import { resolveSwatchHex } from '@/lib/apparelColors'
+import { shownColors, imagesForShownColors } from '@/lib/shownColors'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import DropCountdown from '@/components/drop/DropCountdown'
 import DropBadge from '@/components/drop/DropBadge'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
-import { getDrop, productState, capFor, basePriceFor, DROP, LISTINO, VAULT } from '../../api/_lib/drop.js'
+import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -32,130 +34,6 @@ function parseVideoUrl(url) {
 /** Normalise a color label/id to a slug — mirrors catalog.js */
 const colorToSlug = (c) =>
   (c ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-
-/** Common apparel/art color names → hex. Used to resolve swatches when .hex is missing or generic */
-const APPAREL_COLOR_HEX = {
-  // ── Blacks & near-blacks ──────────────────────────────────────────────────
-  'black': '#1a1a1a', 'washed black': '#1a1a1a', 'jet black': '#111111',
-  'solid black triblend': '#1a1a1a', 'solid-black-triblend': '#1a1a1a',
-  'triblend black heather': '#2d2d2d', 'triblend-black-heather': '#2d2d2d',
-  'black heather': '#2d2d2d', 'black-heather': '#2d2d2d',
-  'vintage black': '#2a2a2a', 'faded black': '#333333',
-
-  // ── Whites & off-whites ───────────────────────────────────────────────────
-  'white': '#f5f5f5', 'off white': '#f0ece4', 'off-white': '#f0ece4',
-  'solid white triblend': '#f0f0f0', 'solid-white-triblend': '#f0f0f0',
-  'white heather': '#f2f2f2', 'natural white': '#f8f4ee',
-  'ivory': '#fffff0', 'snow': '#fffafa',
-
-  // ── Grays & charcoals ─────────────────────────────────────────────────────
-  'gray': '#888888', 'grey': '#888888', 'light gray': '#c8c8c8', 'light grey': '#c8c8c8',
-  'heather gray': '#aaaaaa', 'heather-gray': '#aaaaaa', 'heather grey': '#aaaaaa',
-  'sport grey': '#a0a0a0', 'sport gray': '#a0a0a0',
-  'charcoal': '#3d3d3d', 'dark heather': '#4a4a4a', 'graphite': '#555555',
-  'smoke': '#707070', 'ash': '#b8b8b8', 'silver': '#c0c0c0',
-  'carbon': '#3b3b3b', 'slate gray': '#708090', 'slate grey': '#708090',
-  'deep heather': '#585858', 'tri blend charcoal': '#4a4a4a',
-
-  // ── Reds & pinks ──────────────────────────────────────────────────────────
-  'red': '#cc2200', 'true red': '#cc2200', 'fire red': '#bf0a0a',
-  'cardinal': '#c41230', 'crimson': '#dc143c', 'cherry red': '#de3163',
-  'maroon': '#800000', 'burgundy': '#6e0a1e', 'wine': '#722f37',
-  'pink': '#f5a0c0', 'hot pink': '#e82a8a', 'light pink': '#ffb6c1',
-  'neon pink': '#ff6eb4', 'coral': '#ff6b6b', 'salmon': '#fa8072',
-  'dusty rose': '#dcb0b0', 'mauve': '#c5a0b0',
-  'raspberry': '#e30b5c', 'rose': '#ff007f',
-
-  // ── Blues & navys ─────────────────────────────────────────────────────────
-  'blue': '#1a3c8c', 'navy': '#1f2d5c', 'navy blue': '#1f2d5c', 'dark navy': '#0f1a3a',
-  'royal blue': '#4169e1', 'heather royal': '#4169e1', 'heather-royal': '#4169e1',
-  'triblend navy': '#3a5280', 'triblend-navy': '#3a5280',
-  'blue triblend': '#5272b0', 'blue-triblend': '#5272b0',
-  'light blue': '#6ba4d4', 'light-blue': '#6ba4d4', 'sky blue': '#87ceeb',
-  'carolina blue': '#56a0d3', 'columbia blue': '#9ecee1',
-  'cobalt': '#0047ab', 'indigo': '#3f00ff', 'denim': '#1560bd',
-  'steel blue': '#4682b4', 'slate': '#3a3f4a', 'slate blue': '#6a5acd',
-  'midnight': '#191970', 'midnight navy': '#0a0f3c', 'ocean blue': '#006994',
-  'teal': '#008080', 'dark teal': '#005f60', 'heather blue': '#4f7bbb',
-  'heather navy': '#2a3a6a', 'heather-navy': '#2a3a6a',
-
-  // ── Greens ────────────────────────────────────────────────────────────────
-  'green': '#228b22', 'forest green': '#228b22', 'forest-green': '#228b22',
-  'dark green': '#165a16', 'hunter green': '#355e3b',
-  'kelly green': '#4cbb17', 'lime green': '#32cd32', 'lime': '#00ff00',
-  'olive': '#6b7c2c', 'army green': '#4b5320', 'military green': '#4a5240',
-  'sage': '#8faf79', 'mint': '#98ff98', 'mint green': '#98ff98',
-  'emerald': '#50c878', 'seafoam': '#70e4b4',
-  'moss': '#8a9a5b', 'fern': '#4f7942', 'camo green': '#78866b',
-  'heather green': '#5a8a60', 'military olive': '#5a5a28',
-
-  // ── Yellows & golds ───────────────────────────────────────────────────────
-  'yellow': '#e8c41a', 'bright yellow': '#ffe135', 'daisy': '#f5d842',
-  'gold': '#c8a42c', 'antique gold': '#c9ae5d', 'metallic gold': '#d4af37',
-  'mustard': '#e1ad01', 'sunflower': '#ffb300',
-
-  // ── Oranges & earthy tones ────────────────────────────────────────────────
-  'orange': '#cc5500', 'burnt orange': '#cc5500', 'deep orange': '#b84200',
-  'neon orange': '#ff6600', 'tangerine': '#f28500',
-  'rust': '#b54a22', 'terracotta': '#c16a4e', 'copper': '#b87333',
-  'pumpkin': '#ff7518', 'amber': '#ffbf00',
-
-  // ── Purples & violets ─────────────────────────────────────────────────────
-  'purple': '#6b2d8b', 'dark purple': '#4b0082', 'violet': '#7f00ff',
-  'lavender': '#c084fc', 'light lavender': '#d8b4fe',
-  'heather purple': '#9b59b6', 'plum': '#8e4585', 'grape': '#6f2da8',
-  'lilac': '#c8a2c8', 'orchid': '#da70d6',
-
-  // ── Browns & naturals ─────────────────────────────────────────────────────
-  'brown': '#795548', 'chocolate': '#5d3c1e',
-  'cream': '#f0ece4', 'bone': '#d4cdc0',
-  'tan': '#c4a882', 'khaki': '#c3b091',
-  'beige': '#d9c9a3', 'camel': '#c19a6b', 'linen': '#faf0e6',
-  'stone': '#b0a090', 'hemp': '#c7b08b',
-
-  // ── Gelato compound color names (exact strings from the API) ─────────────
-  // Only names not already covered above — a repeated key would silently shadow
-  // the earlier one, so every entry here must be new.
-  'cardinal red': '#c41230', 'dtg white': '#f5f5f5', 'dtg black': '#1a1a1a',
-  'heather ice blue': '#c5dce8', 'heather mint': '#b5e0d0',
-  'heather peach': '#f5c6a0', 'heather red': '#c05050',
-  'heather forest': '#4a7a50', 'heather midnight navy': '#2a3a6a',
-  'heather true royal': '#4169e1', 'heather cardinal': '#9b2335',
-  'heather maroon': '#6e2233', 'heather dark chocolate': '#5a3020',
-  'heather sport dark navy': '#1a2a4a', 'sport dark navy': '#1a2a4a',
-  'sport dark green': '#1e4d2b',
-  'athletic heather': '#b0b0b8', 'heather athletic': '#b0b0b8',
-  'dark heather gray': '#585858', 'dark heather grey': '#585858',
-  'vintage heather navy': '#3a4a6a', 'vintage heather black': '#3a3a3a',
-  'navy heather': '#3a4a72', 'charcoal gray': '#3d3d3d',
-
-  // ── Gelato / Gildan catalog names (incl. "RS …" brand-prefixed) ────────────
-  // Gildan's own swatches for 'sand', 'natural' and 'dark chocolate' are warmer
-  // than the generic names above, so the catalog values are the ones we keep.
-  'royal': '#3a5dae', 'rs royal': '#3a5dae',
-  'rs sport grey': '#a0a0a0', 'rs sport gray': '#a0a0a0',
-  'sportgrey': '#a0a0a0', 'graphite heather': '#5b5f63',
-  'irish green': '#00a651', 'rs irish green': '#00a651',
-  'azalea': '#f25f9c', 'heliconia': '#db3e79', 'antique heliconia': '#c84e7a',
-  'safety pink': '#ff5fa2', 'cornsilk': '#f5e6a8',
-  'old gold': '#b8923a', 'tweed': '#5a5750',
-  'sand': '#d8c9a3', 'natural': '#e8ddc4', 'sapphire': '#0f52ba',
-  'antique sapphire': '#0b6e8f', 'tropical blue': '#0073cf', 'indigo blue': '#3b4a8c',
-  'antique cherry red': '#9e1b32', 'safety green': '#c8e600', 'safety orange': '#ff5a1f',
-  'dark chocolate': '#3a2820', 'kiwi': '#8fbf3f',
-}
-
-/** Resolve best hex for a color object — falls back to label name lookup, then null */
-function resolveSwatchHex(c) {
-  if (c.hex && c.hex !== '#888888') return c.hex
-  const raw = (c.label || c.id || '').toLowerCase().trim()
-  const key = raw.replace(/^rs\s+/, '')          // strip Gelato "RS " brand prefix
-  return APPAREL_COLOR_HEX[raw]
-    ?? APPAREL_COLOR_HEX[key]
-    ?? APPAREL_COLOR_HEX[key.replace(/-/g, ' ')]
-    ?? APPAREL_COLOR_HEX[key.replace(/\s+/g, ' ')]
-    ?? null
-}
 
 function Accordion({ title, children, light, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen)
@@ -303,8 +181,10 @@ function UrgencyBadge({ text, isLight }) {
 
 // ── Drop block ────────────────────────────────────────────────────────────────
 // Buy-box readout of the current drop's state for one product: label,
-// countdown, availability badge, and — once the product has moved to the
-// permanent archive — the listino line. Mirrors DropPanels.jsx (home page,
+// countdown, availability badge. Archive (listino) products get nothing: the
+// old "Drop NN · sold out — now in the permanent archive" line under Add to
+// Cart printed the CURRENT drop's number on pieces from earlier drops, and
+// said "sold out" right under a button that sells it. Mirrors DropHero.jsx (home page,
 // Task 8) state-for-state: both call the same `dropWindowState` and never
 // recompute the window, so the two surfaces can't disagree about where it
 // stands. `status` is passed down from the parent's own `useDropStatus()`
@@ -312,16 +192,7 @@ function UrgencyBadge({ text, isLight }) {
 // Add to Cart always read the same snapshot.
 function DropBlock({ productId, isLight, status }) {
   const cfg   = getDrop()
-  const state = productState(productId, cfg)
-  if (state === VAULT) return null
-
-  if (state === LISTINO) {
-    return (
-      <p className={`text-xs tracking-[0.15em] uppercase mb-3 ${isLight ? 'text-ink-muted' : 'text-white/60'}`}>
-        Drop {String(cfg.current?.number ?? 1).padStart(2, '0')} · sold out — now in the permanent archive
-      </p>
-    )
-  }
+  if (productState(productId, cfg) !== DROP) return null
 
   const { state: winState, target } = dropWindowState(cfg)
   const s   = status?.products?.[productId]
@@ -410,7 +281,7 @@ function SizeGuideModal({ open, onClose, section, isLight }) {
       onClick={onClose}
     >
       <div
-        className={`w-full max-w-md mx-4 mb-0 sm:mb-0 rounded-t-2xl sm:rounded-2xl p-6 shadow-2xl ${isLight ? 'bg-paper text-ink' : 'bg-gray-900 text-cream'}`}
+        className={`w-full max-w-md mx-4 mb-0 sm:mb-0 rounded-t-2xl sm:rounded-2xl p-6 shadow-2xl ${isLight ? 'bg-paper text-ink' : 'bg-surface text-cream'}`}
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-5">
@@ -426,7 +297,7 @@ function SizeGuideModal({ open, onClose, section, isLight }) {
               ))}
             </tr>
           </thead>
-          <tbody className={`divide-y ${isLight ? 'divide-paper-border' : 'divide-white/10'}`}>
+          <tbody className={`divide-y ${isLight ? 'divide-paper-border' : 'divide-fg/10'}`}>
             {guide.rows.map(row => (
               <tr key={row[0]}>
                 {row.map((cell, i) => (
@@ -463,7 +334,7 @@ function StarRating({ value, onChange, isLight }) {
           className={`text-xl leading-none transition-colors ${
             n <= (hover ?? value)
               ? 'text-yellow-400'
-              : isLight ? 'text-ink-muted/30' : 'text-white/20'
+              : isLight ? 'text-ink-muted/30' : 'text-fg/20'
           } ${onChange ? 'cursor-pointer' : 'cursor-default'}`}
         >★</button>
       ))}
@@ -599,6 +470,9 @@ export default function ProductPage() {
     : (product?.sizes?.some((x) => x.id === 'M') ? 'M' : product?.sizes?.[0]?.id)
   const defaultSize  = pickDefault(product?.sizes,  dropDefaults?.size)  ?? fallbackSize
   const defaultColor = pickDefault(product?.colors, dropDefaults?.color) ?? product?.colors?.[0]?.id
+  // Tre colori, non sette: quello d'apertura, poi nero e bianco (vedi
+  // src/lib/shownColors.js). Gli altri restano su Gelato, solo non si vedono.
+  const colors       = shownColors(product?.colors, defaultColor)
   const videoInfo    = parseVideoUrl(product?.videoUrl)
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
@@ -624,12 +498,13 @@ export default function ProductPage() {
   const [reviewSubmitted,  setReviewSubmitted]  = useState(false)
   const [reviewError,    setReviewError]    = useState('')
 
-  // Viewer count — random on mount, drifts slightly every 5 min for "live" feel
+  // Viewer count — random on mount, drifts slightly every 5 min for "live" feel.
+  // Kept to 3-7: a two-digit crowd on a brand this size reads as invented.
   useEffect(() => {
-    const base = 4 + Math.floor(Math.random() * 14) // 4-17
+    const base = 3 + Math.floor(Math.random() * 5) // 3-7
     setViewerCount(base)
     const id = setInterval(() => {
-      setViewerCount(n => Math.max(2, n + (Math.random() > 0.5 ? 1 : -1)))
+      setViewerCount(n => Math.min(7, Math.max(3, n + (Math.random() > 0.5 ? 1 : -1))))
     }, 300_000)
     return () => clearInterval(id)
   }, [])
@@ -695,8 +570,12 @@ export default function ProductPage() {
   // Ref on the in-flow "Add to Cart" button — sticky bar shows when it leaves viewport
   const addToCartBtnRef = useRef(null)
 
-  // Whichever image array is actually shown in the gallery (hero gallery takes priority)
-  const galleryImages = product?.heroImages?.length > 0 ? product.heroImages : product?.images
+  // Whichever image array is actually shown in the gallery (hero gallery takes
+  // priority), minus the photos of the colors the swatches no longer offer.
+  const galleryImages = imagesForShownColors(
+    product?.heroImages?.length > 0 ? product.heroImages : product?.images,
+    product?.colors, colors, product?.imageColors,
+  )
 
   // Jump to color image when color changes.
   //
@@ -715,14 +594,14 @@ export default function ProductPage() {
     if (!selectedColor || !product?.colors || !galleryImages) return
     const colorObj = product.colors.find(c => c.id === selectedColor)
     if (!colorObj) return
-    const idx = findColorImageIndex(colorObj, product.colors, galleryImages)
+    const idx = findColorImageIndex(colorObj, product.colors, galleryImages, product.imageColors)
     if (idx >= 0 && idx !== activeImage) setActiveImage(idx)
   }, [selectedColor])
 
   // Reverse sync: when the active gallery image is a color variant, highlight its swatch
   useEffect(() => {
     if (activeImage < 0 || !product?.colors || !galleryImages) return
-    const match = findImageColor(activeImage, product.colors, galleryImages)
+    const match = findImageColor(activeImage, product.colors, galleryImages, product.imageColors)
     if (match && match.id !== selectedColor) setSelectedColor(match.id)
   }, [activeImage])
 
@@ -758,8 +637,9 @@ export default function ProductPage() {
 
   // Hero mode: admin-selected editorial images override the default gallery
   const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
-  // displayImages is what the main carousel shows
-  const displayImages = heroImages ?? productImages
+  // displayImages is what the main carousel shows — same color filter as
+  // galleryImages above, so the two can't disagree about an index.
+  const displayImages = imagesForShownColors(heroImages ?? productImages, product?.colors, colors, product?.imageColors)
 
   // Random starting image — shuffle on every product open (not on re-render).
   //
@@ -774,7 +654,7 @@ export default function ProductPage() {
     if (!product || videoInfo || dropDefaults?.color) return
     const neutral = displayImages
       .map((_, i) => i)
-      .filter((i) => !findImageColor(i, product.colors || [], displayImages))
+      .filter((i) => !findImageColor(i, product.colors || [], displayImages, product.imageColors))
     if (neutral.length > 1) setActiveImage(neutral[Math.floor(Math.random() * neutral.length)])
   }, [product?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -919,9 +799,9 @@ export default function ProductPage() {
   if (!product) {
     return (
       <div className="min-h-screen bg-off-black flex flex-col items-center justify-center text-center px-6">
-        <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-3">Coming soon</p>
+        <p className="text-xs tracking-[0.3em] uppercase text-fg/50 mb-3">Coming soon</p>
         <h1 className="text-cream text-2xl mb-6">This piece hasn't dropped yet.</h1>
-        <p className="text-white/60 text-sm mb-8 max-w-sm">
+        <p className="text-fg/60 text-sm mb-8 max-w-sm">
           Join the waitlist — we'll let you know when it enters a drop.
         </p>
         <Link to="/" className="text-cream underline text-sm">See the current drop</Link>
@@ -984,18 +864,18 @@ export default function ProductPage() {
         badge: 'text-accent',
         selectorLabel: 'text-text-primary',
         selectorSub: 'text-text-muted',
-        btnActive: 'border-cream text-black bg-cream',
+        btnActive: 'border-cream text-off-black bg-cream',
         btnInactive: 'border-border text-text-secondary hover:border-border-light',
         btnDisabled: 'border-border text-text-muted/30 cursor-not-allowed',
         colorActive: 'border-cream ring-1 ring-cream',
         colorInactive: 'border-border hover:border-border-light',
-        pillActive: 'border-cream bg-cream text-black',
+        pillActive: 'border-cream bg-cream text-off-black',
         pillInactive: 'border-border text-text-secondary',
         addBtn: added
           ? 'bg-success text-white'
-          : 'bg-cream text-black hover:bg-accent hover:scale-[1.01] active:scale-[0.99]',
+          : 'bg-cream text-off-black hover:bg-accent hover:scale-[1.01] active:scale-[0.99]',
         stickyBg: 'bg-surface border-border',
-        stickyBtn: 'bg-cream text-black',
+        stickyBtn: 'bg-cream text-off-black',
         stickyBtnDisabled: 'bg-surface-3 text-text-muted',
         relatedBorder: 'border-t border-border',
         relatedTitle: 'text-cream',
@@ -1185,7 +1065,7 @@ export default function ProductPage() {
               {heroImages ? (
                 <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
                   <div className="flex gap-3 pb-1 w-max">
-                    {product.colors.map(c => (
+                    {colors.map(c => (
                       <button
                         key={c.id}
                         onClick={() => setSelectedColor(c.id)}
@@ -1218,7 +1098,7 @@ export default function ProductPage() {
               ) : (
                 <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
                   <div className="flex gap-2 pb-1 w-max">
-                    {product.colors.map(c => (
+                    {colors.map(c => (
                       <button
                         key={c.id}
                         onClick={() => setSelectedColor(c.id)}
@@ -1634,7 +1514,7 @@ export default function ProductPage() {
                     {/* In hero mode: show Gelato variant thumbnails; otherwise: color circles */}
                     {heroImages ? (
                       <div className="flex gap-2 flex-wrap">
-                        {product.colors.map(c => (
+                        {colors.map(c => (
                           <button
                             key={c.id}
                             onClick={() => setSelectedColor(c.id)}
@@ -1666,7 +1546,7 @@ export default function ProductPage() {
                       </div>
                     ) : (
                       <div className="flex gap-3 flex-wrap">
-                        {product.colors.map(c => (
+                        {colors.map(c => (
                           <button
                             key={c.id}
                             onClick={() => setSelectedColor(c.id)}
@@ -1738,7 +1618,7 @@ export default function ProductPage() {
               <UrgencyBadge text={product.urgency} isLight={isLight} />
 
               {/* Trust signals */}
-              <div className={cn('mt-4 pt-4 border-t space-y-2.5', isLight ? 'border-ink/10' : 'border-white/10')}>
+              <div className={cn('mt-4 pt-4 border-t space-y-2.5', isLight ? 'border-ink/10' : 'border-fg/10')}>
                 <div className="flex items-center gap-2.5 text-xs">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={isLight ? 'text-ink-muted' : 'text-text-secondary'}>
                     <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><circle cx="8.5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>
@@ -1763,7 +1643,7 @@ export default function ProductPage() {
                     {['Visa', 'MC', 'PayPal', 'Apple Pay', 'Google Pay'].map(p => (
                       <span key={p} className={cn(
                         'px-1.5 py-0.5 text-[10px] font-medium border rounded',
-                        isLight ? 'border-ink/20 text-ink-muted' : 'border-white/15 text-text-secondary'
+                        isLight ? 'border-ink/20 text-ink-muted' : 'border-fg/15 text-text-secondary'
                       )}>{p}</span>
                     ))}
                   </div>
@@ -1894,7 +1774,7 @@ export default function ProductPage() {
 
             {/* Review form */}
             {showReviewForm && !reviewSubmitted && (
-              <form onSubmit={handleReviewSubmit} className={cn('mb-8 p-5 border space-y-4', isLight ? 'border-paper-border bg-paper' : 'border-border bg-gray-900/40')}>
+              <form onSubmit={handleReviewSubmit} className={cn('mb-8 p-5 border space-y-4', isLight ? 'border-paper-border bg-paper' : 'border-border bg-surface/40')}>
                 <div className="space-y-3">
                   <div>
                     <label className={cn('block text-xs mb-1.5', isLight ? 'text-ink-muted' : 'text-text-muted')}>Your rating</label>
@@ -1908,7 +1788,7 @@ export default function ProductPage() {
                       placeholder="Jane D."
                       required
                       maxLength={80}
-                      className={cn('w-full px-3 py-2 text-sm focus:outline-none transition-colors', isLight ? 'bg-paper border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
+                      className={cn('w-full px-3 py-2 text-sm focus:outline-none transition-colors', isLight ? 'bg-paper border border-paper-border text-ink focus:border-ink-muted' : 'bg-surface border border-border text-cream focus:border-border-light')}
                     />
                   </div>
                   <div>
@@ -1920,7 +1800,7 @@ export default function ProductPage() {
                       required
                       maxLength={1000}
                       rows={4}
-                      className={cn('w-full px-3 py-2 text-sm resize-none focus:outline-none transition-colors', isLight ? 'bg-paper border border-paper-border text-ink focus:border-ink-muted' : 'bg-gray-900 border border-border text-cream focus:border-border-light')}
+                      className={cn('w-full px-3 py-2 text-sm resize-none focus:outline-none transition-colors', isLight ? 'bg-paper border border-paper-border text-ink focus:border-ink-muted' : 'bg-surface border border-border text-cream focus:border-border-light')}
                     />
                   </div>
                 </div>

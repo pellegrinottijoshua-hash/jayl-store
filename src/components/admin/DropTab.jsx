@@ -206,7 +206,7 @@ export default function DropTab() {
   // la chiave invece di scrivere un valore vuoto: un heroImages.<id> presente
   // ma vuoto passerebbe la forma minima se non fosse per il controllo dedicato
   // in validateDropConfig, ma non ha senso — "nessun hero" è l'assenza della
-  // chiave, che fa ricadere DropPanels su `heroImage ?? image`.
+  // chiave, che fa ricadere DropHero su `heroImage ?? image`.
   const setHeroImage = (patchEntry) => (productId, url) => patchEntry((entry) => {
     const heroImages = { ...(entry.heroImages || {}) }
     if (url) heroImages[productId] = url
@@ -614,7 +614,7 @@ function ProductHeroPicker({ product, heroUrl, capOverride, defaults, onSetHero,
   useEffect(() => () => { if (localPreview) URL.revokeObjectURL(localPreview) }, [localPreview])
 
   const isOverride = Boolean(heroUrl)
-  // Stesso fallback di DropPanels sulla home (heroImage ?? image) — così
+  // Stesso fallback di DropHero sulla home (heroImage ?? image) — così
   // l'anteprima mostra davvero cosa vedrebbe uno shopper senza override.
   const previewUrl = localPreview || heroUrl || product.heroImage || product.image
 

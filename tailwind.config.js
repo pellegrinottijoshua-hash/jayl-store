@@ -23,15 +23,24 @@ export default {
         'paper-border': '#DDD8D0',
 
         // ── Dark theme (store dark sections / admin) ─────────────────────
+        // Variabili CSS, non hex: la versione panna del sito
+        // (html[data-site-theme="cream"], vedi index.css) le inverte tutte in
+        // un colpo — sfondo scuro → panna, testo panna → nero — senza toccare
+        // le classi delle pagine. Il valore di default e' identico agli hex
+        // di prima; l'admin non riceve mai l'attributo e resta scuro.
         black:          '#000000',
-        'off-black':    '#0a0a0a',
-        'surface':      '#111111',   // jayl-black
-        'surface-2':    '#1a1a1a',
-        'surface-3':    '#222222',
-        'border':       '#2a2a2a',
-        'border-light': '#3a3a3a',
-        cream:          '#F5F0E8',   // jayl-cream
-        'cream-muted':  '#C8C0B0',
+        'off-black':    'rgb(var(--c-off-black) / <alpha-value>)',
+        'surface':      'rgb(var(--c-surface) / <alpha-value>)',
+        'surface-2':    'rgb(var(--c-surface-2) / <alpha-value>)',
+        'surface-3':    'rgb(var(--c-surface-3) / <alpha-value>)',
+        'border':       'rgb(var(--c-border) / <alpha-value>)',
+        'border-light': 'rgb(var(--c-border-light) / <alpha-value>)',
+        cream:          'rgb(var(--c-cream) / <alpha-value>)',
+        'cream-muted':  'rgb(var(--c-cream-muted) / <alpha-value>)',
+        // Primo piano generico: bianco sul nero, nero sulla panna. Per i
+        // testi/linee a opacita' (text-fg/60, bg-fg/10) che prima erano
+        // text-white/60 — il bianco vero resta per il testo sopra le foto.
+        'fg':           'rgb(var(--c-fg) / <alpha-value>)',
 
         // ── Accent → JAYL Gold ───────────────────────────────────────────
         'accent':       '#C4A35A',   // jayl-gold (primary accent)
@@ -40,9 +49,9 @@ export default {
         'accent-cool':  '#7eb8c4',   // kept for legacy uses
 
         // ── Dark text ────────────────────────────────────────────────────
-        'text-primary':   '#F0ECE4',
-        'text-secondary': '#8A8A85', // jayl-gray
-        'text-muted':     '#5A5550',
+        'text-primary':   'rgb(var(--c-text-primary) / <alpha-value>)',
+        'text-secondary': 'rgb(var(--c-text-secondary) / <alpha-value>)',
+        'text-muted':     'rgb(var(--c-text-muted) / <alpha-value>)',
 
         // ── Status ───────────────────────────────────────────────────────
         'success': '#4a9e6e',

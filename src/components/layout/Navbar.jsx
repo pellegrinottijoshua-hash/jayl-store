@@ -3,22 +3,45 @@ import { Link, useLocation } from 'react-router-dom'
 import { ShoppingBag, Menu, X, Heart } from 'lucide-react'
 import { useWishlistStore } from '@/store/wishlistStore'
 import { useCartStore } from '@/store/cartStore'
-import { useThemeStore } from '@/store/themeStore'
+import { useThemeStore, useEffectiveTheme } from '@/store/themeStore'
 import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
 import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
-// Logo: uses PNG files /public/logo-light.svg (dark logo, light bg) and /public/logo-dark.svg (light logo, dark bg)
-// Place your logo PNG files in /public/ with those names.
-function JaylLogoPng({ isLight, height = 16 }) {
-  const src = isLight ? '/logo-light.svg' : '/logo-dark.svg'
+import JaylMark from '@/components/JaylMark'
+
+// Il logo V2 segue lo sfondo: panna sul nero, nero sulla panna, oro in hover.
+// Un solo SVG a currentColor invece di un file per variante.
+function NavLogo({ isLight, size }) {
   return (
-    <img
-      src={src}
-      alt="JAYL"
-      height={height}
-      style={{ height, width: 'auto', display: 'block' }}
-      onError={e => { e.currentTarget.style.display = 'none' }}
+    <JaylMark
+      size={size}
+      className={cn(
+        'block transition-colors duration-500 hover:text-accent',
+        isLight ? 'text-ink' : 'text-jayl-cream'
+      )}
     />
+  )
+}
+
+// Nero ↔ panna. Un cerchio meta' pieno: il chiaroscuro del brand, e non il
+// solito sole/luna che direbbe "modalita' notte" a un sito che nasce nero.
+function ThemeToggle({ className }) {
+  const siteTheme       = useThemeStore((s) => s.siteTheme)
+  const toggleSiteTheme = useThemeStore((s) => s.toggleSiteTheme)
+  const toCream = siteTheme !== 'cream'
+  return (
+    <button
+      type="button"
+      onClick={toggleSiteTheme}
+      aria-label={toCream ? 'Switch to cream version' : 'Switch to dark version'}
+      title={toCream ? 'Cream' : 'Dark'}
+      className={cn('transition-opacity duration-200 hover:opacity-60', className)}
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+        <circle cx="8" cy="8" r="6.75" fill="none" stroke="currentColor" strokeWidth="1.3" />
+        <path d="M8 1.25a6.75 6.75 0 0 1 0 13.5z" fill="currentColor" />
+      </svg>
+    </button>
   )
 }
 
@@ -129,17 +152,22 @@ const OBJECTS_DROPDOWN = [
 
 export default function Navbar() {
   const { items, toggleCart } = useCartStore()
-  const { pageTheme, activeSection } = useThemeStore()
+  const activeSection = useThemeStore((s) => s.activeSection)
+  const effectiveTheme = useEffectiveTheme()
 
   useLocation() // trigger re-render on navigation
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  // Appena si scorre, la barra prende uno sfondo: trasparente sopra il primo
+  // schermo, ma sopra l'archivio a foto piene della home (e le gallery) il
+  // testo chiaro su una foto chiara sparisce.
+  const [scrolled, setScrolled] = useState(false)
   const [hoveredNav, setHoveredNav]         = useState(null)
   const closeTimer = useRef(null)
 
   const itemCount    = items.reduce((s, i) => s + i.quantity, 0)
   const wishlistIds  = useWishlistStore(s => s.ids)
-  const isLight      = pageTheme === 'light'
+  const isLight      = effectiveTheme === 'light'
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -150,6 +178,13 @@ export default function Navbar() {
   }, [mobileMenuOpen])
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setMobileMenuOpen(false) }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -157,8 +192,8 @@ export default function Navbar() {
 
   // Text colours adapt to whatever page is behind the transparent nav
   const textBase  = isLight ? 'text-ink'       : 'text-cream'
-  const textMuted = isLight ? 'text-ink-muted'  : 'text-white/40'
-  const pipeFade  = isLight ? 'text-ink-muted/30' : 'text-white/15'
+  const textMuted = isLight ? 'text-ink-muted'  : 'text-fg/40'
+  const pipeFade  = isLight ? 'text-ink-muted/30' : 'text-fg/15'
 
   // Dropdown panel colours
   const dropBg    = isLight ? 'bg-paper border-paper-border' : 'bg-surface border-border'
@@ -197,12 +232,17 @@ export default function Navbar() {
         </div>
 
         {/* Navbar row */}
-        <div className="h-14 flex items-center justify-between px-5 sm:px-8">
+        <div
+          className={cn(
+            'h-14 flex items-center justify-between px-5 sm:px-8 transition-colors duration-300',
+            scrolled && (isLight ? 'bg-paper/90 backdrop-blur-md' : 'bg-off-black/85 backdrop-blur-md')
+          )}
+        >
 
           {/* ── Left: JAYL logo ───────────────────────────────────────── */}
           <div className="w-24 sm:w-36 pointer-events-auto">
-            <Link to="/" aria-label="JAYL — Home">
-              <JaylLogoPng isLight={isLight} height={40} />
+            <Link to="/" aria-label="JAYL — Home" className="inline-block">
+              <NavLogo isLight={isLight} size={30} />
             </Link>
           </div>
 
@@ -342,6 +382,8 @@ export default function Navbar() {
               )}
             </Link>
 
+            <ThemeToggle className={textBase} />
+
             <button
               onClick={toggleCart}
               className={cn(
@@ -385,7 +427,7 @@ export default function Navbar() {
         {/* Close row */}
         <div className="flex items-center justify-between px-5 pt-5 h-14">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} aria-label="JAYL — Home">
-            <JaylLogoPng isLight={isLight} height={32} />
+            <NavLogo isLight={isLight} size={28} />
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
