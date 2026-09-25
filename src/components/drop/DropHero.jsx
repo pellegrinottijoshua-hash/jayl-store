@@ -168,8 +168,8 @@ export default function DropHero() {
   const mobile   = stage.w < 640
   // Piu' alte che larghe: crescono in altezza fino a riempire il palco, e la
   // larghezza resta quella che lascia vedere le due laterali ai bordi.
-  const ratio    = mobile ? 0.62 : 0.78
-  const W        = Math.min(stage.w * (mobile ? 0.74 : 0.27), stage.h * 1.0 * ratio, 460)
+  const ratio    = mobile ? 0.6 : 0.78
+  const W        = Math.min(stage.w * (mobile ? 0.82 : 0.27), stage.h * 1.04 * ratio, 460)
   const H        = W / ratio
   const thetaDeg = mobile ? 44 : 40              // passo angolare fra una scheda e l'altra
   const alphaDeg = thetaDeg - (mobile ? 5 : 4)   // quanto arco occupa la scheda
@@ -223,13 +223,13 @@ export default function DropHero() {
     <div className="relative flex-1 min-h-0 flex flex-col pt-[62px]">
       <NewMark />
 
-      {/* Palco: prospettiva con l'occhio sopra il bordo alto, cosi' sia il
+      {/* Palco: occhio all'altezza del bordo alto (che resta dritto), cosi' curva solo il bordo basso. Prima: occhio sopra il bordo alto, cosi' sia il
           bordo alto sia quello basso delle schede curvano verso il basso al
           centro — l'arco del cilindro visto da sopra. */}
       <motion.div
         ref={stageRef}
         className="relative flex-1 min-h-[240px] mt-2 outline-none"
-        style={{ perspective: mobile ? 1100 : 1500, perspectiveOrigin: '50% -15%', touchAction: 'pan-y' }}
+        style={{ perspective: mobile ? 1100 : 1500, perspectiveOrigin: `50% ${stage.h / 2 - H / 2}px`, touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
         // Un click nuovo non deve ereditare il "moved" di uno swipe finito

@@ -27,7 +27,7 @@ const MAX = 8
 // Quanto resta a schermo ogni recensione: un attimo per le brevi, di più per
 // le lunghe — a tempo fisso di un secondo una frase da cento caratteri non si
 // finisce di leggere prima che sparisca.
-const holdMs = (text = '') => Math.min(5000, 2000 + text.length * 30)
+const holdMs = (text = '') => Math.min(4000, 1600 + text.length * 25)
 
 function Stars({ rating }) {
   if (!rating) return null
