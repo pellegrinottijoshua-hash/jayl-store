@@ -38,13 +38,13 @@ const EASE_OUT_EXPO    = [0.16, 1, 0.3, 1]
 const EASE_IN_QUART    = [0.5, 0, 0.75, 0]
 
 const letterVariants = {
-  hidden: (i) => ({
+  hidden: ({ i, o }) => ({
     opacity: 0,
     filter: 'blur(12px)',
-    x: `${(i - 1) * 0.22}em`,
+    x: `${o * 0.22}em`,
     transition: { duration: NEW_OUT * 0.8, delay: i * 0.07, ease: EASE_IN_QUART },
   }),
-  shown: (i) => ({
+  shown: ({ i }) => ({
     opacity: 1,
     filter: 'blur(0px)',
     x: '0em',
@@ -55,7 +55,7 @@ const letterVariants = {
 // Il carattere di NEW, in un posto solo. Deve essere caricato in index.html.
 const NEW_FONT = { family: "'Tenor Sans', 'Space Grotesk', sans-serif", weight: 400, tracking: '0.18em' }
 
-function NewMark() {
+function NewMark({ word = 'NEW' }) {
   const reduce = useReducedMotion()
   const [shown, setShown] = useState(false)
 
@@ -72,14 +72,14 @@ function NewMark() {
 
   return (
     <motion.h1
-      aria-label="New"
+      aria-label={word}
       className="relative leading-[0.9] flex justify-center select-none mb-3 text-accent [[data-site-theme=cream]_&]:text-ink"
       style={{ fontFamily: NEW_FONT.family, fontWeight: NEW_FONT.weight, fontSize: 'clamp(4.25rem, 21vw, 8.5rem)', letterSpacing: NEW_FONT.tracking, paddingLeft: `calc(${NEW_FONT.tracking} + 0.04em)` }}
       initial="hidden"
       animate={shown ? 'shown' : 'hidden'}
     >
-      {['N', 'E', 'W'].map((l, i) => (
-        <motion.span key={l} aria-hidden custom={i} variants={letterVariants} className="inline-block will-change-transform">
+      {word.split('').map((l, i) => (
+        <motion.span key={i} aria-hidden custom={{ i, o: i - (word.length - 1) / 2 }} variants={letterVariants} className="inline-block will-change-transform">
           {l}
         </motion.span>
       ))}
@@ -222,7 +222,7 @@ export default function DropHero() {
 
   return (
     <div className="relative flex-1 min-h-0 flex flex-col pt-[62px]">
-      <NewMark />
+      <NewMark word={(showingCurrent && cfg.current.headline) || 'NEW'} />
 
       {/* Palco: occhio all'altezza del bordo alto (che resta dritto), cosi' curva solo il bordo basso. Prima: occhio sopra il bordo alto, cosi' sia il
           bordo alto sia quello basso delle schede curvano verso il basso al
@@ -358,6 +358,12 @@ export default function DropHero() {
       <div className="pt-3 pb-3 text-center text-cream">
         <p className="font-display font-light leading-none" style={{ fontSize: 'clamp(4.25rem, 20vw, 6.5rem)' }}>
           <span className="relative inline-block">
+            {/* Drop di pezzi d'archivio in promo: il vecchio prezzo barrato. */}
+            {showingCurrent && cfg.archivePrice > price && (
+              <span className="absolute right-full top-[0.15em] mr-[0.12em] text-[0.3em] line-through text-cream/45">
+                {formatPrice(cfg.archivePrice).replace(/[^\d.,]/g, '')}
+              </span>
+            )}
             {formatPrice(price).replace(/[^\d.,]/g, '')}
             <span className="absolute left-full top-[0.1em] ml-[0.05em] text-[0.34em]"><SwapSymbol /></span>
           </span>

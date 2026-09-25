@@ -5,7 +5,11 @@ import { useSwapSymbol, amountOnly } from '@/lib/money'
 export function SwapSymbol({ className = '' }) {
   const sym = useSwapSymbol()
   return (
-    <span className={`relative inline-grid ${className}`}>
+    <span className={`relative inline-grid justify-items-center ${className}`}>
+      {/* Tiene la larghezza del simbolo piu' largo: € e $ non hanno la stessa
+          larghezza, e senza questo il testo accanto andava a capo al cambio. */}
+      <span aria-hidden className="col-start-1 row-start-1 invisible">€</span>
+      <span aria-hidden className="col-start-1 row-start-1 invisible">$</span>
       <AnimatePresence initial={false}>
         <motion.span
           key={sym}

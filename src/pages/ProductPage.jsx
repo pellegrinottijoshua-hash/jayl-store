@@ -1104,7 +1104,7 @@ export default function ProductPage() {
                       selectedFrame === f.id ? t.btnActive : t.btnInactive
                     )}
                   >
-                    {f.label}{f.price > 0 && ` +$<Money cents={f.price} />`}
+                    {f.label}{f.price > 0 && <> +<Money cents={f.price} /></>}
                   </button>
                 ))}
               </div>
@@ -1233,7 +1233,7 @@ export default function ProductPage() {
               : isSoldOut
               ? 'Sold Out'
               : canAddToCart
-              ? `Add · $<Money cents={totalPrice} />`
+              ? <>Add · <Money cents={totalPrice} /></>
               : 'Select Size'}
           </button>
         </div>
@@ -1514,7 +1514,7 @@ export default function ProductPage() {
                             selectedFrame === f.id ? t.btnActive : t.btnInactive
                           )}
                         >
-                          {f.label}{f.price > 0 && ` +$<Money cents={f.price} />`}
+                          {f.label}{f.price > 0 && <> +<Money cents={f.price} /></>}
                         </button>
                       ))}
                     </div>

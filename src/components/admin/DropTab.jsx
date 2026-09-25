@@ -118,6 +118,23 @@ function DropEntryFields({ entry, onChange }) {
       {field('Prezzo drop (cent)', entry.dropPrice, (v) => onChange({ dropPrice: parseInt(v, 10) || 0 }), 'number')}
       {field('Prezzo bundle (cent)', entry.bundlePrice, (v) => onChange({ bundlePrice: parseInt(v, 10) || 0 }), 'number')}
       {field('ID drop (unico)', entry.id, (v) => onChange({ id: v }))}
+      {/* La parola animata in home. NEW per pezzi nuovi; per un drop di pezzi
+          gia' in archivio rimessi in promo (prezzo drop sotto quello
+          d'archivio) ENCORE o SALE: la home mostra anche il vecchio prezzo
+          barrato. */}
+      <label className="block mb-3">
+        <span className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1">Scritta in home</span>
+        <select
+          value={entry.headline || 'NEW'}
+          onChange={(e) => onChange({ headline: e.target.value })}
+          className="w-full bg-[#111] border border-[#1e1e1e] text-[#e8dcc8] px-3 py-2 text-sm"
+        >
+          <option value="NEW">NEW — pezzi nuovi</option>
+          <option value="ENCORE">ENCORE — ritorno dall'archivio</option>
+          <option value="SALE">SALE — archivio scontato</option>
+          <option value="BACK">BACK — di nuovo disponibili</option>
+        </select>
+      </label>
     </div>
   )
 }
