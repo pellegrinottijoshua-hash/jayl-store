@@ -858,6 +858,8 @@ export default function AdminProductPage() {
   const [gelatoCdnImages, setGelatoCdnImages] = useState([])
   // Gelato mockups the user removed for this product (persisted)
   const [excludedGelato, setExcludedGelato] = useState([])
+  // Colori mostrati in negozio (vuoto = regola automatica di src/lib/shownColors.js)
+  const [storeColors,    setStoreColors]    = useState([])
   const [syncing,  setSyncing]  = useState(false)
   const [syncMsg,  setSyncMsg]  = useState('')
 
@@ -888,6 +890,7 @@ export default function AdminProductPage() {
       setSequenza(Array.isArray(p.images) ? p.images : [])
       setGelatoCdnImages(Array.isArray(p.gelatoCdnImages) ? p.gelatoCdnImages : [])
       setExcludedGelato(Array.isArray(p.excludedGelato) ? p.excludedGelato : [])
+      setStoreColors(Array.isArray(p.storeColors) ? p.storeColors : [])
       setPinterestPins(Array.isArray(p.pinterestPins) ? p.pinterestPins : [])
       setPinterestPublishedImages(Array.isArray(p.pinterestPublishedImages) ? p.pinterestPublishedImages : [])
       setImageAlts(p.imageAlts && typeof p.imageAlts === 'object' ? p.imageAlts : {})
@@ -1278,6 +1281,7 @@ export default function AdminProductPage() {
         ...(gelatoCdnImages.length > 0 ? { gelatoCdnImages } : {}),
       }
       updated.excludedGelato = excludedGelato.length ? excludedGelato : undefined
+      updated.storeColors    = storeColors.length    ? storeColors    : undefined
       updated.pinterestPins  = pinterestPins.length  ? pinterestPins  : undefined
       updated.pinterestPublishedImages = pinterestPublishedImages.length ? pinterestPublishedImages : undefined
       // Fresh AI values (passed by the generators) take precedence over stale React state
@@ -1791,6 +1795,33 @@ export default function AdminProductPage() {
             </Section>
 
             {/* ── 2. Prezzi & Categoria ── */}
+            {product.colors?.length > 0 && (
+              <Section title="Colori in negozio" icon="🎨" color="gray">
+                <p className="text-[11px] text-gray-500 mb-3">
+                  Scegli fino a 3 colori da mostrare nella scheda (il primo scelto è quello d'apertura, salvo il colore del drop).
+                  Nessuno selezionato = automatico: colore d'apertura, nero, bianco. Gli altri restano su Gelato, solo nascosti.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {product.colors.map(c => {
+                    const on = storeColors.includes(c.id)
+                    const full = !on && storeColors.length >= 3
+                    return (
+                      <button
+                        key={c.id}
+                        type="button"
+                        disabled={full}
+                        onClick={() => setStoreColors(on ? storeColors.filter(x => x !== c.id) : [...storeColors, c.id])}
+                        className={`px-3 py-1 text-xs border transition-colors disabled:opacity-30 ${on ? 'border-amber-500 text-amber-300 bg-amber-900/30' : 'border-[#252525] text-[#999] hover:border-[#444]'}`}
+                      >
+                        {on ? `${storeColors.indexOf(c.id) + 1}· ` : ''}{c.label || c.id}
+                      </button>
+                    )
+                  })}
+                </div>
+                <p className="text-[10px] text-gray-600 mt-2">Ricorda di salvare il prodotto.</p>
+              </Section>
+            )}
+
             <Section title="Prezzi & Categoria" icon="💶" color="emerald">
               <div className="grid grid-cols-2 gap-4">
                 <Field label="Prezzo (€)">

@@ -18,9 +18,17 @@ const PREFERRED = ['black', 'white']
  * I colori da mostrare, al massimo MAX_SHOWN_COLORS: prima quello d'apertura
  * (il colore del drop, o il primo), poi nero e bianco, poi l'ordine di Gelato.
  */
-export function shownColors(colors, openingColorId) {
+export function shownColors(colors, openingColorId, storeColors) {
   if (!colors || colors.length <= MAX_SHOWN_COLORS) return colors
   const picked = []
+  // Scelta a mano dall'admin (product.storeColors): vince sulla regola, ma il
+  // colore d'apertura del drop resta sempre visibile e primo.
+  const chosen = (storeColors || []).map((id) => colors.find((c) => c.id === id)).filter(Boolean)
+  if (chosen.length) {
+    const opening = colors.find((c) => c.id === openingColorId)
+    const list = opening && !chosen.includes(opening) ? [opening, ...chosen] : chosen
+    return list.slice(0, MAX_SHOWN_COLORS)
+  }
   const add = (c) => {
     if (c && !picked.includes(c) && picked.length < MAX_SHOWN_COLORS) picked.push(c)
   }

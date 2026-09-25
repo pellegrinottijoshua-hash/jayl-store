@@ -389,10 +389,12 @@ export default function ProductPage() {
     ? product?.sizes?.[1]?.id
     : (product?.sizes?.some((x) => x.id === 'M') ? 'M' : product?.sizes?.[0]?.id)
   const defaultSize  = pickDefault(product?.sizes,  dropDefaults?.size)  ?? fallbackSize
-  const defaultColor = pickDefault(product?.colors, dropDefaults?.color) ?? product?.colors?.[0]?.id
+  const defaultColor = pickDefault(product?.colors, dropDefaults?.color)
+    ?? pickDefault(product?.colors, product?.storeColors?.[0])
+    ?? product?.colors?.[0]?.id
   // Tre colori, non sette: quello d'apertura, poi nero e bianco (vedi
   // src/lib/shownColors.js). Gli altri restano su Gelato, solo non si vedono.
-  const colors       = shownColors(product?.colors, defaultColor)
+  const colors       = shownColors(product?.colors, defaultColor, product?.storeColors)
   // Guida taglie dal blank Gelato (src/data/sizeGuides.js): nessun campo da
   // compilare per prodotto, un capo nuovo sullo stesso blank la riceve da solo.
   const sizeGuide    = guideFor(product)
