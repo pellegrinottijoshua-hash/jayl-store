@@ -172,7 +172,7 @@ export default function DropHero() {
   const ratio    = mobile ? 0.61 : 0.78
   const W        = Math.min(stage.w * (mobile ? 0.68 : 0.27), stage.h * 1.1 * ratio, 460)
   const H        = W / ratio
-  const thetaDeg = mobile ? 44 : 40              // passo angolare fra una scheda e l'altra
+  const thetaDeg = mobile ? 40 : 40              // passo angolare fra una scheda e l'altra
   const alphaDeg = thetaDeg - (mobile ? 3 : 4)   // quanto arco occupa la scheda
   const R        = W / ((alphaDeg * Math.PI) / 180)
 
@@ -230,7 +230,7 @@ export default function DropHero() {
       <motion.div
         ref={stageRef}
         className="relative flex-1 min-h-[240px] mt-2 outline-none"
-        style={{ perspective: mobile ? 1800 : 1500, perspectiveOrigin: '50% -220%', touchAction: 'pan-y' }}
+        style={{ perspective: mobile ? 1800 : 1500, perspectiveOrigin: '50% -150%', touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
         // Un click nuovo non deve ereditare il "moved" di uno swipe finito

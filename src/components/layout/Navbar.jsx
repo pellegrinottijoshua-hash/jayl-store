@@ -9,15 +9,18 @@ import { SOCIAL_LINKS } from '@/data/social-links'
 import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
 import JaylMark from '@/components/JaylMark'
 
-// Il logo V2 segue lo sfondo e respira verso l'oro: panna ↔ oro sul nero,
-// nero ↔ oro sulla panna (.logo-breathe in index.css).
+// Il logo V2 segue lo sfondo: sulla panna resta nero, sul nero respira
+// panna ↔ oro (.logo-breathe in index.css).
 // Un solo SVG a currentColor invece di un file per variante.
 function NavLogo({ isLight, size }) {
   return (
     <JaylMark
       size={size}
-      className="block logo-breathe"
-      style={{ '--logo-base': isLight ? '#111111' : '#F5F0E8' }}
+      // key: le keyframes con var() si fissano all'avvio dell'animazione; senza
+      // ripartire, il logo restava sul nero del primo render anche sul fondo nero.
+      key={isLight ? 'light' : 'dark'}
+      className={isLight ? 'block text-ink' : 'block logo-breathe'}
+      style={isLight ? undefined : { '--logo-base': '#F5F0E8' }}
     />
   )
 }
