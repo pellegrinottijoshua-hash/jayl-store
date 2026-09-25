@@ -16227,7 +16227,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
-    "heroImage": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143112_ace27a54-b576-4f58-bd4d-46d82f045f0b.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143112_ace27a54-b576-4f58-bd4d-46d82f045f0b.png",
     "detailImage": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143144_418a7a3e-676b-4495-a852-e84076f64725.png",
     "images": [
       "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143107_fc9e2bd0-608d-4647-8f13-7ca74d9d348d.png",
@@ -16602,7 +16602,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260816_113516_3f2f58d0-ecea-4083-a650-2517b66eddc6-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:44:50.914Z",
-    "updatedAt": "2026-09-08T14:50:03.780Z",
+    "updatedAt": "2026-09-25T14:41:43.853Z",
     "relatedProducts": []
   },
   {
