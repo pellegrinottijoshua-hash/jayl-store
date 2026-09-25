@@ -10017,7 +10017,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/cool-ditto-back-t-shirt/hf_20260626_145015_a7cd799e-df6e-483d-abd7-a48669f572c4.png",
-    "heroImage": "/images/cool-ditto-back-t-shirt/hf_20260626_145021_d64d9936-5038-4e94-8060-0910e953a4b0.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_142104_51fd3914-71b6-44bd-b480-be172ddf67e1.png",
     "detailImage": "/images/cool-ditto-back-t-shirt/hf_20260626_142237_bdba374a-2155-4071-9277-7b81eb2e0a8e.jpeg",
     "images": [
       "/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg",
@@ -10271,7 +10271,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/546dbc41-26a6-4970-ba5b-45f8fc23318f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T145932Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d36531bff1a342b65c6a83f6f18779e1ba48cc2523699390509ad006aea9d671"
     ],
     "createdAt": "2026-06-26T15:05:11.927Z",
-    "updatedAt": "2026-07-15T13:27:06.422Z",
+    "updatedAt": "2026-09-25T14:34:27.243Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-ditto-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
