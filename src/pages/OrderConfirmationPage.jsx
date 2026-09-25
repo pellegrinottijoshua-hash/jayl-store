@@ -1,6 +1,7 @@
 import { useLocation, useParams, Link } from 'react-router-dom'
 import { CheckCircle, ArrowRight, Package, MailOpen } from 'lucide-react'
-import { formatPrice } from '@/lib/utils'
+import { useCurrencyStore, SYMBOL } from '@/store/currencyStore'
+import { amountOnly } from '@/lib/money'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import TrustBox from '@/components/TrustBox'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
@@ -24,6 +25,9 @@ export default function OrderConfirmationPage() {
 
   const order = state?.order  // null if user refreshed — show graceful fallback
   const cfg   = getDrop()
+  // La valuta con cui si e' appena pagato (scelta al checkout): niente €/$
+  // alternati qui, e' una ricevuta — il simbolo deve dire quello che e' stato addebitato.
+  const money = (cents) => SYMBOL[useCurrencyStore.getState().currency] + amountOnly(cents)
 
   usePageMeta({ title: 'Order Confirmed' })
 
@@ -69,7 +73,7 @@ export default function OrderConfirmationPage() {
                       <p className="text-xs text-text-muted">Qty {item.quantity}</p>
                     </div>
                     <span className="text-sm text-text-primary">
-                      {formatPrice(livePriceFor(item, cfg) * item.quantity)}
+                      {money(livePriceFor(item, cfg) * item.quantity)}
                     </span>
                   </li>
                 ))}
@@ -85,12 +89,12 @@ export default function OrderConfirmationPage() {
               ) : (
                 <div className="flex justify-between text-sm">
                   <span className="text-text-secondary">Shipping</span>
-                  <span className="text-text-primary">{formatPrice(order.shipping)}</span>
+                  <span className="text-text-primary">{money(order.shipping)}</span>
                 </div>
               )}
               <div className="flex justify-between">
                 <span className="text-sm font-semibold text-text-primary">Total</span>
-                <span className="font-bold text-cream">{formatPrice(order.total)}</span>
+                <span className="font-bold text-cream">{money(order.total)}</span>
               </div>
             </div>
           </div>
