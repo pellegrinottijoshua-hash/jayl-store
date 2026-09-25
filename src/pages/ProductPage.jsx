@@ -13,9 +13,8 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { findColorImageIndex, findImageColor } from '@/lib/colorImageMatch'
 import { resolveSwatchHex } from '@/lib/apparelColors'
 import { shownColors, imagesForShownColors } from '@/lib/shownColors'
+import { sizeGuideFor, bySize } from '@/data/sizeGuides'
 import { useDropStatus } from '@/hooks/useDropStatus'
-import DropCountdown from '@/components/drop/DropCountdown'
-import DropBadge from '@/components/drop/DropBadge'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
 
@@ -81,15 +80,6 @@ function ShareButton({ title, isLight, onCopy, copied }) {
     onCopy(); setOpen(false)
   }
 
-  const nativeShare = async () => {
-    if (navigator.share) {
-      try { await navigator.share({ title, text, url }) } catch {}
-      setOpen(false)
-    } else {
-      copyLink()
-    }
-  }
-
   const btnCls  = isLight
     ? 'border-paper-border text-ink-muted hover:border-ink hover:text-ink'
     : 'border-border text-text-muted hover:border-border-light hover:text-cream'
@@ -100,12 +90,11 @@ function ShareButton({ title, isLight, onCopy, copied }) {
     ? 'hover:bg-paper-2 text-ink-secondary hover:text-ink'
     : 'hover:bg-surface-2 text-text-secondary hover:text-cream'
 
+  // Solo i due gesti che si fanno davvero da una scheda prodotto: mandarla in
+  // chat, o copiarne il link. Facebook/X/Pinterest/"Share via…" erano righe
+  // che nessuno toccava, e Instagram non accetta link condivisi da web.
   const SHARE_ITEMS = [
-    { label: 'WhatsApp',   href: `https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`, icon: '💬' },
-    { label: 'Facebook',   href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, icon: '𝒇' },
-    { label: 'Instagram',  href: `https://www.instagram.com/`, icon: '◎', hint: 'Opens Instagram — paste link in story/bio' },
-    { label: 'X',          href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, icon: '𝕏' },
-    { label: 'Pinterest',  href: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(text)}`, icon: '𝓟' },
+    { label: 'WhatsApp', href: `https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`, icon: '💬' },
   ]
 
   return (
@@ -133,32 +122,17 @@ function ShareButton({ title, isLight, onCopy, copied }) {
             <span>Copy link</span>
           </button>
 
-          {/* Native share (mobile) */}
-          {typeof navigator !== 'undefined' && navigator.share && (
-            <button
-              onClick={nativeShare}
-              className={cn('w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors text-left', itemCls)}
-            >
-              <span className="text-base leading-none">⬆</span>
-              <span>Share via…</span>
-            </button>
-          )}
-
-          <div className={cn('h-px', isLight ? 'bg-paper-border' : 'bg-border')} />
-
-          {SHARE_ITEMS.map(({ label, href, icon, hint }) => (
+          {SHARE_ITEMS.map(({ label, href, icon }) => (
             <a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              title={hint}
               onClick={() => setOpen(false)}
               className={cn('flex items-center gap-3 px-4 py-3 text-sm transition-colors', itemCls)}
             >
-              <span className="text-base leading-none w-5 text-center">{icon}</span>
+              <span className="text-base leading-none">{icon}</span>
               <span>{label}</span>
-              {hint && <span className="text-xs opacity-50 ml-auto">↗</span>}
             </a>
           ))}
         </div>
@@ -179,101 +153,71 @@ function UrgencyBadge({ text, isLight }) {
   )
 }
 
-// ── Drop block ────────────────────────────────────────────────────────────────
-// Buy-box readout of the current drop's state for one product: label,
-// countdown, availability badge. Archive (listino) products get nothing: the
-// old "Drop NN · sold out — now in the permanent archive" line under Add to
-// Cart printed the CURRENT drop's number on pieces from earlier drops, and
-// said "sold out" right under a button that sells it. Mirrors DropHero.jsx (home page,
-// Task 8) state-for-state: both call the same `dropWindowState` and never
-// recompute the window, so the two surfaces can't disagree about where it
-// stands. `status` is passed down from the parent's own `useDropStatus()`
-// call rather than fetched again here, so the badge and the sold-out gate on
-// Add to Cart always read the same snapshot.
-function DropBlock({ productId, isLight, status }) {
-  const cfg   = getDrop()
-  if (productState(productId, cfg) !== DROP) return null
+// ── Size guide modal ───────────────────────────────────────────────────────────
 
-  const { state: winState, target } = dropWindowState(cfg)
-  const s   = status?.products?.[productId]
-  const cap = capFor(productId, cfg)
-  const hrs = s?.lastAt ? Math.floor((Date.now() - Date.parse(s.lastAt)) / 3_600_000) : null
+// Le stampe art hanno la loro tabella; i capi la ricavano dal blank Gelato
+// (src/data/sizeGuides.js), cosi' ogni caricamento nuovo la riceve da solo.
+const ART_PRINT_GUIDE = {
+  garment: 'Print sizes',
+  cols: ['Width', 'Height'],
+  rows: [
+    ['8×10"',   '20 cm', '25 cm'],
+    ['12×16"',  '30 cm', '40 cm'],
+    ['18×24"',  '46 cm', '61 cm'],
+    ['24×36"',  '61 cm', '91 cm'],
+  ],
+  notes: ['All prints include a 5 mm white border. Frames add ~2 cm to each side.'],
+}
 
+function guideFor(product) {
+  return product?.section === 'art' ? ART_PRINT_GUIDE : sizeGuideFor(product)
+}
+
+function SizeChart({ guide, isLight }) {
+  const unit = guide.unit ? ` (${guide.unit})` : ''
   return (
-    <div className={`mb-4 space-y-1 ${isLight ? 'text-ink' : 'text-cream'}`}>
-      <p className="text-xs tracking-[0.2em] uppercase">
-        Drop {String(cfg.current.number).padStart(2, '0')} · {cfg.current.title}
-      </p>
-      {winState === BEFORE && (
-        <DropCountdown to={target} label="opens in" className="block text-sm tabular-nums" />
+    <div>
+      <table className="w-full text-sm tabular-nums">
+        <thead>
+          <tr className={`text-[10px] uppercase tracking-[0.15em] ${isLight ? 'text-ink-muted' : 'text-text-muted'}`}>
+            <th className="text-left pb-2 font-medium pr-3">Size</th>
+            {guide.cols.map(c => (
+              <th key={c} className="text-left pb-2 font-medium pr-3">{c}{unit}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className={`divide-y ${isLight ? 'divide-paper-border' : 'divide-border'}`}>
+          {guide.rows.map(row => (
+            <tr key={row[0]}>
+              {row.map((cell, i) => (
+                <td key={i} className={`py-2 pr-3 ${i === 0 ? 'font-medium' : ''} ${isLight ? 'text-ink' : 'text-text-primary'}`}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {guide.notes?.length > 0 && (
+        <ul className={`mt-4 space-y-1 text-xs leading-relaxed ${isLight ? 'text-ink-muted' : 'text-text-secondary'}`}>
+          {guide.notes.map(n => <li key={n}>{n}</li>)}
+        </ul>
       )}
-      {winState === LIVE && (
-        <DropCountdown to={target} label="closes in" className="block text-sm tabular-nums" />
-      )}
-      {winState === CLOSED && target && (
-        <DropCountdown to={target} label="next drop in" className="block text-sm tabular-nums" />
-      )}
-      {winState === BEFORE && (
-        <span className="block text-xs tracking-widest uppercase opacity-60">
-          Preview · not on sale yet
-        </span>
-      )}
-      {winState === LIVE && (
-        <DropBadge sold={s?.sold ?? 0} cap={s?.cap ?? cap} className="block" />
-      )}
-      {winState === CLOSED && (
-        <span className="block text-xs tracking-widest uppercase opacity-60">
-          Drop closed · now in the archive
-        </span>
-      )}
-      {winState === LIVE && hrs !== null && hrs < 48 && (
-        <p className="text-xs opacity-60">
-          last piece claimed {hrs === 0 ? 'less than an hour ago' : `${hrs} ${hrs === 1 ? 'hour' : 'hours'} ago`}
-        </p>
+      {guide.unit && (
+        <p className={`mt-3 text-[10px] uppercase tracking-[0.15em] ${isLight ? 'text-ink-muted' : 'text-text-muted'}`}>{guide.garment}</p>
       )}
     </div>
   )
 }
 
-// ── Size guide modal ───────────────────────────────────────────────────────────
-
-const SIZE_GUIDE = {
-  art: {
-    title: 'Print Sizes',
-    cols: ['Size', 'Width', 'Height'],
-    rows: [
-      ['8×10"',   '20 cm', '25 cm'],
-      ['12×16"',  '30 cm', '40 cm'],
-      ['18×24"',  '46 cm', '61 cm'],
-      ['24×36"',  '61 cm', '91 cm'],
-    ],
-    note: 'All prints include a 5 mm white border. Frames add ~2 cm to each side.',
-  },
-  objects: {
-    title: 'Apparel Size Guide',
-    cols: ['Size', 'Chest', 'Body length'],
-    rows: [
-      ['XS', '86–91 cm',   '66 cm'],
-      ['S',  '91–96 cm',   '69 cm'],
-      ['M',  '99–104 cm',  '72 cm'],
-      ['L',  '107–112 cm', '74 cm'],
-      ['XL', '117–122 cm', '77 cm'],
-      ['2XL','127–132 cm', '79 cm'],
-      ['3XL','137–142 cm', '81 cm'],
-    ],
-    note: 'Measurements are of the garment, not the body. Oversized styles run large — size down if unsure.',
-  },
-}
-
-function SizeGuideModal({ open, onClose, section, isLight }) {
+function SizeGuideModal({ open, onClose, guide, isLight }) {
   useEffect(() => {
     const fn = e => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', fn)
     return () => window.removeEventListener('keydown', fn)
   }, [onClose])
 
-  if (!open) return null
-  const guide = SIZE_GUIDE[section] || SIZE_GUIDE.objects
+  if (!open || !guide) return null
 
   return (
     <div
@@ -285,34 +229,10 @@ function SizeGuideModal({ open, onClose, section, isLight }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-5">
-          <h2 className={`text-base font-semibold ${isLight ? 'text-ink' : 'text-cream'}`}>{guide.title}</h2>
-          <button onClick={onClose} className={`text-xl leading-none transition-opacity hover:opacity-60 ${isLight ? 'text-ink-muted' : 'text-cream/50'}`}>×</button>
+          <h2 className={`text-base font-semibold ${isLight ? 'text-ink' : 'text-cream'}`}>Size Guide</h2>
+          <button onClick={onClose} aria-label="Close size guide" className={`text-xl leading-none transition-opacity hover:opacity-60 ${isLight ? 'text-ink-muted' : 'text-cream/50'}`}>×</button>
         </div>
-
-        <table className="w-full text-sm">
-          <thead>
-            <tr className={`text-xs uppercase tracking-wider ${isLight ? 'text-ink-muted' : 'text-cream/40'}`}>
-              {guide.cols.map(c => (
-                <th key={c} className="text-left pb-2 font-medium pr-4">{c}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className={`divide-y ${isLight ? 'divide-paper-border' : 'divide-fg/10'}`}>
-            {guide.rows.map(row => (
-              <tr key={row[0]}>
-                {row.map((cell, i) => (
-                  <td key={i} className={`py-2 pr-4 ${i === 0 ? 'font-semibold' : ''} ${isLight ? 'text-ink' : 'text-cream/80'}`}>
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {guide.note && (
-          <p className={`mt-4 text-xs leading-relaxed ${isLight ? 'text-ink-muted' : 'text-cream/40'}`}>{guide.note}</p>
-        )}
+        <SizeChart guide={guide} isLight={isLight} />
       </div>
     </div>
   )
@@ -473,6 +393,9 @@ export default function ProductPage() {
   // Tre colori, non sette: quello d'apertura, poi nero e bianco (vedi
   // src/lib/shownColors.js). Gli altri restano su Gelato, solo non si vedono.
   const colors       = shownColors(product?.colors, defaultColor)
+  // Guida taglie dal blank Gelato (src/data/sizeGuides.js): nessun campo da
+  // compilare per prodotto, un capo nuovo sullo stesso blank la riceve da solo.
+  const sizeGuide    = guideFor(product)
   const videoInfo    = parseVideoUrl(product?.videoUrl)
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
@@ -1130,15 +1053,15 @@ export default function ProductPage() {
             <div>
               <div className="flex items-center justify-between mb-3">
                 <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Size</p>
-                <button
+                {sizeGuide && <button
                   onClick={() => setSizeGuideOpen(true)}
                   className={cn('text-xs underline underline-offset-2 transition-opacity hover:opacity-60', isLight ? 'text-ink-muted' : 'text-text-muted')}
                 >
                   Size guide
-                </button>
+                </button>}
               </div>
               <div className="grid grid-cols-4 gap-2">
-                {product.sizes.map(s => {
+                {[...product.sizes].sort(bySize).map(s => {
                   const available = !availableSizesForColor || availableSizesForColor.has(s.id)
                   const isSelected = selectedSize === s.id
                   return (
@@ -1212,7 +1135,6 @@ export default function ProductPage() {
               <>Add to Cart · {formatPrice(totalPrice)}</>
             )}
           </button>
-          <DropBlock productId={product.id} isLight={isLight} status={dropStatus} />
           <UrgencyBadge text={product.urgency} isLight={isLight} />
         </div>
 
@@ -1236,6 +1158,11 @@ export default function ProductPage() {
               ))}
             </ul>
           </Accordion>
+          {sizeGuide && (
+            <Accordion title="Size Guide" light={isLight}>
+              <SizeChart guide={sizeGuide} isLight={isLight} />
+            </Accordion>
+          )}
           <Accordion title="Shipping & Fulfillment" light={isLight}>
             <div className="space-y-3">
               <p>
@@ -1469,16 +1396,16 @@ export default function ProductPage() {
                             {sizeObj.label} · {formatPrice(basePriceFor(product.id, sizeObj, product, dropCfg))}
                           </p>
                         )}
-                        <button
+                        {sizeGuide && <button
                           onClick={() => setSizeGuideOpen(true)}
                           className={cn('text-xs underline underline-offset-2 transition-opacity hover:opacity-60', isLight ? 'text-ink-muted' : 'text-text-muted')}
                         >
                           Size guide
-                        </button>
+                        </button>}
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {product.sizes.map(s => {
+                      {[...product.sizes].sort(bySize).map(s => {
                         const available = !availableSizesForColor || availableSizesForColor.has(s.id)
                         return (
                           <button
@@ -1614,7 +1541,6 @@ export default function ProductPage() {
                   <>Add to Cart · {formatPrice(totalPrice)}</>
                 )}
               </button>
-              <DropBlock productId={product.id} isLight={isLight} status={dropStatus} />
               <UrgencyBadge text={product.urgency} isLight={isLight} />
 
               {/* Trust signals */}
@@ -1668,6 +1594,11 @@ export default function ProductPage() {
                     ))}
                   </ul>
                 </Accordion>
+                {sizeGuide && (
+                  <Accordion title="Size Guide" light={isLight}>
+                    <SizeChart guide={sizeGuide} isLight={isLight} />
+                  </Accordion>
+                )}
                 <Accordion title="Shipping & Fulfillment" light={isLight}>
                   <div className="space-y-3">
                     <p>
@@ -1862,7 +1793,7 @@ export default function ProductPage() {
       <SizeGuideModal
         open={sizeGuideOpen}
         onClose={() => setSizeGuideOpen(false)}
-        section={product.section}
+        guide={sizeGuide}
         isLight={isLight}
       />
 

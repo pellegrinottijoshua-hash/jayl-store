@@ -155,7 +155,10 @@ export default function Navbar() {
   const activeSection = useThemeStore((s) => s.activeSection)
   const effectiveTheme = useEffectiveTheme()
 
-  useLocation() // trigger re-render on navigation
+  const { pathname } = useLocation()
+  // "Free worldwide shipping" solo sulla scheda prodotto: e' li' che decide.
+  // In home il prezzo dice gia' "shipped", e la barra rubava 28px al drop.
+  const showShippingBar = pathname.startsWith('/product/')
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   // Appena si scorre, la barra prende uno sfondo: trasparente sopra il primo
@@ -214,11 +217,11 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Fixed header: announcement bar + navbar ───────────────────── */}
+      {/* ── Fixed header: announcement bar (product pages) + navbar ───── */}
       <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
 
         {/* Announcement bar */}
-        <div
+        {showShippingBar && <div
           className={cn(
             'w-full h-7 flex items-center justify-center pointer-events-auto transition-colors duration-500',
             isLight
@@ -229,7 +232,7 @@ export default function Navbar() {
           <p className="font-sans font-light text-[9px] uppercase select-none" style={{ letterSpacing: '0.20em' }}>
             Free worldwide shipping on all orders
           </p>
-        </div>
+        </div>}
 
         {/* Navbar row */}
         <div
@@ -241,7 +244,10 @@ export default function Navbar() {
 
           {/* ── Left: JAYL logo ───────────────────────────────────────── */}
           <div className="w-24 sm:w-36 pointer-events-auto">
-            <Link to="/" aria-label="JAYL — Home" className="inline-block">
+            {/* translate-y: centrato sulla riga, il segno stava ~4px sopra
+                l'occhio della "o" di objects (misurato sui metrici di Space
+                Grotesk 12px: la x-height siede sotto il centro della riga). */}
+            <Link to="/" aria-label="JAYL — Home" className="inline-block translate-y-[4px]">
               <NavLogo isLight={isLight} size={30} />
             </Link>
           </div>

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
@@ -11,68 +11,137 @@ import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
 /**
  * Il drop in home: NEW, tre schede curve, nome e prezzo. Nient'altro.
  *
- * Tutto quello che c'era prima (titolo del drop, badge copie, "Preview · not
- * on sale yet", la riga d'archivio) chiedeva di essere letto prima di
- * lasciar guardare le maglie. Qui restano le quattro cose che servono a
- * decidere: che e' nuovo, cos'e', quanto costa (spedizione compresa), quanto
- * manca. Il resto vive nella scheda prodotto.
- *
- * Le tre schede stanno su un arco (coverflow leggero): quella al centro e'
- * dritta, le laterali ruotano verso il centro. Si cambia con swipe/drag,
- * frecce, tastiera o toccando una laterale; toccare quella al centro apre il
- * prodotto.
+ * Le schede stanno sulla faccia esterna di un cilindro visto un filo
+ * dall'alto: quella davanti e' piena, le laterali girano via verso i bordi, e
+ * i bordi alti e bassi di tutte e tre disegnano un arco. Ogni scheda e' fatta
+ * di strisce verticali (STRIPS), ognuna ruotata del suo spicchio: e' cosi'
+ * che l'immagine si curva davvero invece di restare un rettangolo inclinato.
+ * Si gira con swipe/drag, frecce, tastiera o toccando una laterale; toccare
+ * quella davanti apre il prodotto. Nessun movimento da solo.
  */
 
-// Posizione di una scheda rispetto a quella attiva, sull'anello: -1 a sinistra,
-// 0 al centro, 1 a destra. Con tre pezzi sono sempre visibili tutti e tre.
-function ringOffset(idx, active, n) {
-  let o = (((idx - active) % n) + n) % n
-  if (o > n / 2) o -= n
-  return o
+const STRIPS = 16
+const SPRING = { type: 'spring', stiffness: 170, damping: 26, mass: 1 }
+
+// ── NEW ──────────────────────────────────────────────────────────────────────
+// Un ciclo, non un'insegna accesa: le lettere arrivano sfocate e larghe e si
+// stringono a fuoco, un filo d'oro si apre sotto, la parola tiene, poi se ne
+// va in dissolvenza e per un attimo non c'e' niente. Il vuoto fa parte
+// dell'animazione: e' quello che fa tornare a guardare.
+const NEW_IN    = 1.4  // entrata (s)
+const NEW_HOLD  = 2.6  // parola ferma
+const NEW_OUT   = 0.9  // uscita
+const NEW_REST  = 0.9  // vuoto prima del giro dopo
+
+const EASE_IN_OUT_EXPO = [0.87, 0, 0.13, 1]
+const EASE_OUT_EXPO    = [0.16, 1, 0.3, 1]
+const EASE_IN_QUART    = [0.5, 0, 0.75, 0]
+
+const letterVariants = {
+  hidden: (i) => ({
+    opacity: 0,
+    filter: 'blur(12px)',
+    x: `${(i - 1) * 0.22}em`,
+    transition: { duration: NEW_OUT * 0.8, delay: i * 0.07, ease: EASE_IN_QUART },
+  }),
+  shown: (i) => ({
+    opacity: 1,
+    filter: 'blur(0px)',
+    x: '0em',
+    transition: { duration: NEW_IN - 0.2, delay: 0.1 + i * 0.1, ease: EASE_OUT_EXPO },
+  }),
 }
 
-const SWIPE_FRACTION = 0.18 // della larghezza scheda: oltre, lo swipe cambia pezzo
+const ruleVariants = {
+  hidden: { scaleX: 0, opacity: 0, transition: { duration: NEW_OUT * 0.7, ease: EASE_IN_QUART } },
+  shown:  { scaleX: 1, opacity: 1, transition: { duration: 1.1, delay: 0.55, ease: EASE_IN_OUT_EXPO } },
+}
 
 function NewMark() {
   const reduce = useReducedMotion()
-  const letters = ['N', 'E', 'W']
+  const [shown, setShown] = useState(false)
+
+  useEffect(() => {
+    if (reduce) { setShown(true); return }
+    let t
+    const step = (next) => {
+      setShown(next)
+      t = setTimeout(() => step(!next), (next ? NEW_IN + NEW_HOLD : NEW_OUT + NEW_REST) * 1000)
+    }
+    t = setTimeout(() => step(true), 200)
+    return () => clearTimeout(t)
+  }, [reduce])
+
   return (
-    <h1
+    <motion.h1
       aria-label="New"
-      className="font-display font-light leading-[0.85] flex justify-center select-none"
-      style={{ fontSize: 'clamp(4.5rem, 22vw, 8.5rem)', letterSpacing: '0.06em' }}
+      className="relative font-display font-light leading-[0.9] flex justify-center select-none text-cream"
+      style={{ fontSize: 'clamp(5.25rem, 26vw, 10rem)', letterSpacing: '0.08em' }}
+      initial="hidden"
+      animate={shown ? 'shown' : 'hidden'}
     >
-      {letters.map((l, i) => (
-        <span key={l} aria-hidden className="inline-block overflow-hidden px-[0.02em] pb-[0.06em]">
-          {/* Entrata: ogni lettera sale dalla sua maschera, in sequenza. */}
-          <motion.span
-            className="inline-block"
-            initial={reduce ? false : { y: '105%' }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.1 + i * 0.09, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Poi un'onda lenta che la attraversa, e una lama d'oro che passa
-                da sinistra a destra (.new-letter in index.css). */}
-            <motion.span
-              className="inline-block new-letter"
-              data-letter={l}
-              style={{ animationDelay: `${1.4 + i * 0.14}s`, transformOrigin: '50% 100%' }}
-              animate={reduce ? undefined : { y: [0, -5, 0], scaleY: [1, 1.07, 1] }}
-              transition={{ delay: 1.2 + i * 0.16, duration: 2.6, repeat: Infinity, repeatDelay: 1.2, ease: 'easeInOut' }}
-            >
-              {l}
-            </motion.span>
-          </motion.span>
-        </span>
+      {['N', 'E', 'W'].map((l, i) => (
+        <motion.span key={l} aria-hidden custom={i} variants={letterVariants} className="inline-block will-change-transform">
+          {l}
+        </motion.span>
       ))}
-    </h1>
+      <motion.span
+        aria-hidden
+        variants={ruleVariants}
+        className="absolute left-1/2 -bottom-[0.08em] h-px w-[1.9em] -ml-[0.95em] bg-accent origin-center"
+      />
+    </motion.h1>
+  )
+}
+
+// ── Carosello curvo ──────────────────────────────────────────────────────────
+
+// Le schede che girano dietro spariscono nel fondo quasi di taglio. Solo
+// l'opacita' della striscia (un nodo foglia: li' non appiattisce il 3D) e solo
+// oltre i 68°: prima, due strisce semitrasparenti sovrapposte di un soffio
+// disegnerebbero una riga su ogni giunta. La luce che cala verso i fianchi la
+// fa una sfumatura continua sul palco (sotto), non la singola striscia: una
+// luminosita' per striscia fa gradini visibili.
+function edgeFade(deg) {
+  const d = Math.abs(deg)
+  return d <= 68 ? 1 : d >= 86 ? 0 : 1 - (d - 68) / 18
+}
+
+function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager }) {
+  const dA = alphaDeg / STRIPS
+  const a = slotDeg - alphaDeg / 2 + dA * (j + 0.5)
+  const chord = 2 * R * Math.sin(((dA / 2) * Math.PI) / 180)
+  const opacity = useTransform(rot, (r) => edgeFade(a + r))
+  return (
+    <motion.div
+      className="absolute overflow-hidden"
+      style={{
+        width: chord + 0.8, // +0.8px: niente fessure fra una striscia e l'altra
+        height: H,
+        left: -(chord + 0.8) / 2,
+        top: -H / 2,
+        transform: `rotateY(${a}deg) translateZ(${R}px)`,
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        opacity,
+      }}
+    >
+      <img
+        src={src}
+        alt=""
+        draggable={false}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        className="absolute top-0 max-w-none select-none pointer-events-none object-cover"
+        style={{ width: W, height: H, left: -(j * W) / STRIPS, objectPosition: '50% 30%' }}
+      />
+    </motion.div>
   )
 }
 
 export default function DropHero() {
   const cfg = getDrop()
   const navigate = useNavigate()
-  const reduce = useReducedMotion()
   const { state, target } = dropWindowState(cfg)
 
   // `current.productIds` resta popolato finche' l'admin non chiude il drop,
@@ -86,14 +155,9 @@ export default function DropHero() {
   const n = items.length
   const price = showingCurrent ? cfg.current.dropPrice : cfg.archivePrice
 
-  // Si entra sul pezzo di mezzo: con due laterali visibili i tre pezzi si
-  // annunciano come una scelta, non come un hero singolo.
-  const [active, setActive] = useState(() => Math.floor((n - 1) / 2))
-  const go = useCallback((dir) => setActive((a) => (((a + dir) % n) + n) % n), [n])
-
   // Misura del palco: le schede si dimensionano sull'altezza disponibile, non
-  // solo sulla larghezza — su un telefono basso un 4:5 largo il 70% spingerebbe
-  // prezzo e subscribe sotto la piega.
+  // solo sulla larghezza — su un telefono basso spingerebbero prezzo e
+  // subscribe sotto la piega.
   const stageRef = useRef(null)
   const [stage, setStage] = useState({ w: 0, h: 0 })
   useLayoutEffect(() => {
@@ -105,72 +169,76 @@ export default function DropHero() {
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
-  // Su telefono la scheda e' piu' alta di un 4:5 (le foto nascono 9:16): cosi'
-  // riempie il palco invece di lasciare una fascia vuota sopra e sotto.
-  const mobile = stage.w < 640
-  const ratio  = mobile ? 0.7 : 0.8
-  const cardW  = Math.min(stage.w * (mobile ? 0.68 : 0.3), stage.h * 0.96 * ratio, 500)
-  const cardH  = cardW / ratio
+  const mobile   = stage.w < 640
+  const ratio    = mobile ? 0.7 : 0.78
+  const W        = Math.min(stage.w * (mobile ? 0.66 : 0.27), stage.h * 0.9 * ratio, 460)
+  const H        = W / ratio
+  const thetaDeg = mobile ? 58 : 40              // passo angolare fra una scheda e l'altra
+  const alphaDeg = thetaDeg - (mobile ? 5 : 4)   // quanto arco occupa la scheda
+  const R        = W / ((alphaDeg * Math.PI) / 180)
 
-  // Drag/swipe: le schede seguono il dito, al rilascio si sceglie il pezzo.
-  const [dragDx, setDragDx] = useState(0)
-  const dragging = useRef(false)
+  // `pos` non ha limiti (…, -1, 0, 1, 2, …): il pezzo mostrato e' pos mod n.
+  // Cosi' andando sempre avanti il cilindro gira sempre nello stesso verso,
+  // senza il salto all'indietro di chi riparte da zero.
+  const [pos, setPos] = useState(() => Math.floor((n - 1) / 2))
+  const rot = useMotionValue(0)
+  const posRef = useRef(pos)
+  useLayoutEffect(() => { rot.set(-posRef.current * thetaDeg) }, [thetaDeg, rot])
+
+  const goTo = useCallback((next) => {
+    posRef.current = next
+    setPos(next)
+    animate(rot, -next * thetaDeg, SPRING)
+  }, [rot, thetaDeg])
+  const go = useCallback((dir) => goTo(posRef.current + dir), [goTo])
+
+  // Drag/swipe: il cilindro segue il dito, al rilascio si ferma sul pezzo
+  // piu' vicino (con un colpo veloce si passa al successivo).
   const moved = useRef(false)
-  const onPanStart = () => { dragging.current = true; moved.current = false }
+  const degPerPx = thetaDeg / (W * 1.1 || 1)
   const onPan = (_, info) => {
     if (Math.abs(info.offset.x) > 6) moved.current = true
-    setDragDx(info.offset.x)
+    const drag = Math.max(-thetaDeg * 1.2, Math.min(thetaDeg * 1.2, info.offset.x * degPerPx))
+    rot.set(-posRef.current * thetaDeg + drag)
   }
   const onPanEnd = (_, info) => {
-    dragging.current = false
-    const dx = info.offset.x + info.velocity.x * 0.15
-    if (dx < -cardW * SWIPE_FRACTION) go(1)
-    else if (dx > cardW * SWIPE_FRACTION) go(-1)
-    setDragDx(0)
+    const flick = info.velocity.x * degPerPx * 0.12
+    const landed = Math.round(-(rot.get() + flick) / thetaDeg)
+    const clamped = Math.max(posRef.current - 1, Math.min(posRef.current + 1, landed))
+    goTo(clamped)
   }
 
   const onKeyDown = (e) => {
     if (e.key === 'ArrowRight') { e.preventDefault(); go(1) }
     if (e.key === 'ArrowLeft')  { e.preventDefault(); go(-1) }
-    if (e.key === 'Enter' && items[active]) navigate(`/product/${items[active].id}`)
+    if (e.key === 'Enter' && items.length) navigate(`/product/${items[((posRef.current % n) + n) % n].id}`)
   }
-
-  // Suggerimento una tantum: se nessuno tocca il carosello, dopo un attimo le
-  // schede accennano uno spostamento — si capisce che si scorrono senza
-  // scriverlo da nessuna parte.
-  const [nudge, setNudge] = useState(0)
-  const touched = useRef(false)
-  useEffect(() => {
-    if (reduce || n < 2) return
-    const t1 = setTimeout(() => { if (!touched.current) setNudge(-cardW * 0.12) }, 2600)
-    const t2 = setTimeout(() => setNudge(0), 3150)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
-  }, [reduce, n, cardW])
 
   if (n === 0) return null
 
+  const mod = (k) => ((k % n) + n) % n
+  const current = items[mod(pos)]
+  const slots = [-2, -1, 0, 1, 2].map((o) => pos + o)
   const countdownCls = 'text-[10px] sm:text-xs tracking-[0.18em] uppercase tabular-nums text-cream/70'
-  const current = items[active]
 
   return (
     <div className="flex-1 min-h-0 flex flex-col">
       {/* Countdown in alto a destra — l'unica informazione sul drop che resta. */}
-      <div className="flex justify-end px-5 sm:px-8 pt-[92px] sm:pt-[96px] h-[112px] sm:h-[118px]">
+      <div className="flex justify-end px-5 sm:px-8 pt-[64px] h-[84px]">
         {state === BEFORE && <DropCountdown to={target} label="opens in" className={countdownCls} />}
         {state === LIVE && <DropCountdown to={target} label="closes in" className={countdownCls} />}
         {state === CLOSED && target && <DropCountdown to={target} label="next drop in" className={countdownCls} />}
       </div>
 
-      <div className="text-cream -mt-1">
-        <NewMark />
-      </div>
+      <NewMark />
 
-      {/* Palco del carosello */}
+      {/* Palco: prospettiva con l'occhio sopra il bordo alto, cosi' sia il
+          bordo alto sia quello basso delle schede curvano verso il basso al
+          centro — l'arco del cilindro visto da sopra. */}
       <motion.div
         ref={stageRef}
-        className="relative flex-1 min-h-[240px] mt-2 sm:mt-4 outline-none"
-        style={{ perspective: mobile ? 760 : 1300, touchAction: 'pan-y' }}
-        onPanStart={(e, i) => { touched.current = true; onPanStart(e, i) }}
+        className="relative flex-1 min-h-[240px] mt-3 sm:mt-5 outline-none"
+        style={{ perspective: mobile ? 620 : 1500, perspectiveOrigin: '50% -45%', touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
         // Un click nuovo non deve ereditare il "moved" di uno swipe finito
@@ -182,106 +250,105 @@ export default function DropHero() {
         aria-roledescription="carousel"
         aria-label="Drop pieces"
       >
-        {stage.w > 0 && items.map((p, idx) => {
-          const o = ringOffset(idx, active, n)
-          const hidden = Math.abs(o) > 1
-          const isCenter = o === 0
-          const live = dragging.current || dragDx !== 0
-          return (
-            <motion.div
-              key={p.id}
-              className="absolute left-1/2 top-1/2"
-              style={{
-                width: cardW,
-                height: cardH,
-                marginLeft: -cardW / 2,
-                marginTop: -cardH / 2,
-                zIndex: 10 - Math.abs(o),
-                transformStyle: 'preserve-3d',
-                pointerEvents: hidden ? 'none' : 'auto',
-              }}
-              initial={false}
-              animate={{
-                x: o * cardW * (mobile ? 0.9 : 0.98) + dragDx + nudge,
-                rotateY: -o * (mobile ? 42 : 30),
-                scale: isCenter ? 1 : 0.9,
-                opacity: hidden ? 0 : isCenter ? 1 : 0.7,
-              }}
-              transition={live
-                ? { duration: 0 }
-                : { type: 'spring', stiffness: 240, damping: 30, mass: 0.9 }}
-            >
-              <Link
-                to={`/product/${p.id}`}
-                draggable={false}
-                aria-label={shortName(p.name)}
-                tabIndex={isCenter ? 0 : -1}
-                onClick={(e) => {
-                  touched.current = true
-                  if (moved.current) { e.preventDefault(); moved.current = false; return }
-                  // Una laterale non apre il prodotto: lo porta al centro.
-                  if (!isCenter) { e.preventDefault(); setActive(idx) }
-                }}
-                className="group block w-full h-full overflow-hidden bg-surface-2"
-              >
-                <img
-                  src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
-                  alt={p.altText || p.name}
+        {stage.w > 0 && (
+          <motion.div
+            className="absolute left-1/2 top-1/2"
+            style={{ transformStyle: 'preserve-3d', z: -R, rotateY: rot }}
+          >
+            {slots.map((s) => {
+              const p = items[mod(s)]
+              const isCenter = s === pos
+              return (
+                <Link
+                  key={s}
+                  to={`/product/${p.id}`}
                   draggable={false}
-                  loading="eager"
-                  ref={isCenter ? (el) => { if (el) el.setAttribute('fetchpriority', 'high') } : undefined}
-                  className="w-full h-full object-cover select-none transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                {/* La curva: un'ombra morbida sui bordi, come carta piegata
-                    verso chi guarda. */}
-                <span
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'linear-gradient(90deg, rgba(0,0,0,0.28), transparent 16%, transparent 84%, rgba(0,0,0,0.28))' }}
-                />
-              </Link>
-            </motion.div>
-          )
-        })}
+                  aria-label={shortName(p.name)}
+                  aria-hidden={isCenter ? undefined : true}
+                  tabIndex={-1}
+                  onClick={(e) => {
+                    if (moved.current) { e.preventDefault(); moved.current = false; return }
+                    // Una laterale non apre il prodotto: la porta davanti.
+                    if (!isCenter) { e.preventDefault(); goTo(s) }
+                  }}
+                  className="absolute left-0 top-0"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  {Array.from({ length: STRIPS }, (_, j) => (
+                    <Strip
+                      key={j}
+                      j={j}
+                      slotDeg={s * thetaDeg}
+                      rot={rot}
+                      W={W}
+                      H={H}
+                      R={R}
+                      alphaDeg={alphaDeg}
+                      src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
+                      eager={Math.abs(s - pos) <= 1}
+                    />
+                  ))}
+                </Link>
+              )
+            })}
+          </motion.div>
+        )}
+
+        {/* Chiaroscuro: i fianchi del cilindro affondano nel fondo della pagina
+            (nero sul nero, panna sulla panna), in continuo. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            background: 'linear-gradient(90deg, rgb(var(--c-off-black) / 0.7) 0%, rgb(var(--c-off-black) / 0.3) 10%, rgb(var(--c-off-black) / 0) 22%, rgb(var(--c-off-black) / 0) 78%, rgb(var(--c-off-black) / 0.3) 90%, rgb(var(--c-off-black) / 0.7) 100%)',
+          }}
+        />
 
         {n > 1 && (
           <>
             <button
               type="button"
-              onClick={() => { touched.current = true; go(-1) }}
+              onClick={() => go(-1)}
               aria-label="Previous piece"
-              className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center text-cream/60 hover:text-cream transition-colors"
+              className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center text-cream/50 hover:text-cream transition-colors"
             >
-              <ChevronLeft size={22} strokeWidth={1.25} />
+              <ChevronLeft size={22} strokeWidth={1.1} />
             </button>
             <button
               type="button"
-              onClick={() => { touched.current = true; go(1) }}
+              onClick={() => go(1)}
               aria-label="Next piece"
-              className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center text-cream/60 hover:text-cream transition-colors"
+              className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center text-cream/50 hover:text-cream transition-colors"
             >
-              <ChevronRight size={22} strokeWidth={1.25} />
+              <ChevronRight size={22} strokeWidth={1.1} />
             </button>
           </>
         )}
       </motion.div>
 
-      {/* Nome e prezzo del pezzo al centro. "Shipped": la spedizione e' gratis
-          ovunque, il prezzo e' gia' quello finale. */}
-      <div className="h-[92px] sm:h-[116px] pt-3 sm:pt-4 text-center text-cream" aria-live="polite">
+      {/* Nome, poi il prezzo come protagonista. "Shipped": la spedizione e'
+          gratis ovunque, quello e' il prezzo finale. */}
+      <div className="pt-2 sm:pt-3 pb-4 sm:pb-5 text-center text-cream" aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={current.id}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.22 }}
+            initial={{ opacity: 0, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, filter: 'blur(6px)' }}
+            transition={{ duration: 0.28 }}
           >
-            <p className="font-sans text-sm sm:text-base tracking-[0.12em] leading-tight">{shortName(current.name)}</p>
-            <p className="font-display text-3xl sm:text-4xl leading-none mt-1.5">{formatPrice(price)}</p>
-            <p className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-cream/55 mt-1">shipped</p>
+            <p className="font-sans text-[11px] sm:text-xs tracking-[0.32em] uppercase text-cream/70">{shortName(current.name)}</p>
           </motion.div>
         </AnimatePresence>
+        <p className="font-display font-light leading-none mt-1 sm:mt-2" style={{ fontSize: 'clamp(3.75rem, 17vw, 6rem)' }}>
+          <span className="align-top text-[0.42em] mr-[0.06em] relative top-[0.28em]">€</span>
+          {formatPrice(price).replace(/[^\d.,]/g, '')}
+        </p>
+        <p className="flex items-center justify-center gap-3 mt-1 text-[10px] sm:text-[11px] tracking-[0.42em] uppercase text-cream/60">
+          <span className="h-px w-8 bg-accent/70" aria-hidden />
+          shipped
+          <span className="h-px w-8 bg-accent/70" aria-hidden />
+        </p>
       </div>
     </div>
   )

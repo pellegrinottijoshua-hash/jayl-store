@@ -318,37 +318,3 @@
   50%  { box-shadow: 0 0 14px 4px rgba(212,168,83,0.35); border-color: rgba(212,168,83,1);    opacity: 1;   transform: scale(1.04); }
   100% { box-shadow: 0 0 0px 0px rgba(212,168,83,0);     border-color: rgba(212,168,83,0.3);  opacity: 0.5; transform: scale(1);    }
 }
-
-/* Home — "NEW": lama d'oro che attraversa le lettere. La lettera resta in
-   tinta piena (sempre visibile); la luce e' una copia sovrapposta via ::after
-   con background-clip: text, sfasata per lettera con animation-delay
-   (DropHero.jsx) cosi' sembra una sola lama sull'intera parola. Se un
-   browser non dipinge il clip, resta la parola piena, non un buco. */
-.new-letter {
-  position: relative;
-  color: rgb(var(--c-cream));
-}
-.new-letter::after {
-  content: attr(data-letter);
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(100deg,
-    transparent 0%, transparent 40%,
-    var(--jayl-gold) 50%,
-    transparent 60%, transparent 100%);
-  background-size: 320% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: newShimmer 6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
-  animation-delay: inherit;
-  pointer-events: none;
-}
-@keyframes newShimmer {
-  0%        { background-position: 100% 0; }
-  30%, 100% { background-position: 0% 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .new-letter::after { animation: none; opacity: 0; }
-}
