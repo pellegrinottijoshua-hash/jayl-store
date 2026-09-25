@@ -9,7 +9,10 @@ import { cn } from '@/lib/utils'
  * iscritto. Sotto il drop basta il campo: stesso endpoint di
  * EmailCapturePopup (/api/capture-email), nessun codice server nuovo.
  */
-export default function SubscribeForm({ className }) {
+// variant "bar": la riga unica sotto il drop su mobile. "waitlist": il form
+// del blocco "Never miss a drop" su desktop, campo e bottone separati.
+export default function SubscribeForm({ className, variant = 'bar' }) {
+  const waitlist = variant === 'waitlist'
   const [email,     setEmail]     = useState('')
   const [loading,   setLoading]   = useState(false)
   const [error,     setError]     = useState('')
@@ -41,9 +44,37 @@ export default function SubscribeForm({ className }) {
 
   if (submitted) {
     return (
-      <p className={cn('text-center text-xs tracking-[0.2em] uppercase text-cream/70 py-3', className)}>
+      <p className={cn(waitlist ? 'text-cream text-sm' : 'text-center text-xs tracking-[0.2em] uppercase text-cream/70 py-3', className)}>
         You're on the list.
       </p>
+    )
+  }
+
+  if (waitlist) {
+    return (
+      <div className={className}>
+        <form onSubmit={onSubmit} className="flex gap-2.5">
+          <label htmlFor="waitlist-email" className="sr-only">Email</label>
+          <input
+            id="waitlist-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="your@email.com"
+            required
+            autoComplete="email"
+            className="flex-1 min-w-0 bg-surface border border-border text-cream px-4 py-3 text-sm focus:outline-none focus:border-border-light transition-colors placeholder:text-text-muted"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="shrink-0 bg-cream text-off-black px-6 py-3 text-xs font-sans tracking-label uppercase disabled:opacity-40 transition-opacity hover:opacity-90"
+          >
+            {loading ? 'Just a sec…' : 'Join the waitlist'}
+          </button>
+        </form>
+        {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
+      </div>
     )
   }
 

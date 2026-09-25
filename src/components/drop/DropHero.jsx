@@ -25,15 +25,14 @@ const SPRING = { type: 'spring', stiffness: 170, damping: 26, mass: 1 }
 
 // ── NEW ──────────────────────────────────────────────────────────────────────
 // Un ciclo, non un'insegna accesa: le lettere arrivano sfocate e larghe e si
-// stringono a fuoco, un filo d'oro si apre sotto, la parola tiene, poi se ne
-// va in dissolvenza e per un attimo non c'e' niente. Il vuoto fa parte
-// dell'animazione: e' quello che fa tornare a guardare.
+// stringono a fuoco, la parola tiene, poi se ne va in dissolvenza e per un
+// attimo non c'e' niente. Il vuoto fa parte dell'animazione: e' quello che fa
+// tornare a guardare.
 const NEW_IN    = 1.4  // entrata (s)
 const NEW_HOLD  = 2.6  // parola ferma
 const NEW_OUT   = 0.9  // uscita
 const NEW_REST  = 0.9  // vuoto prima del giro dopo
 
-const EASE_IN_OUT_EXPO = [0.87, 0, 0.13, 1]
 const EASE_OUT_EXPO    = [0.16, 1, 0.3, 1]
 const EASE_IN_QUART    = [0.5, 0, 0.75, 0]
 
@@ -52,10 +51,8 @@ const letterVariants = {
   }),
 }
 
-const ruleVariants = {
-  hidden: { scaleX: 0, opacity: 0, transition: { duration: NEW_OUT * 0.7, ease: EASE_IN_QUART } },
-  shown:  { scaleX: 1, opacity: 1, transition: { duration: 1.1, delay: 0.55, ease: EASE_IN_OUT_EXPO } },
-}
+// Il carattere di NEW, in un posto solo. Deve essere caricato in index.html.
+const NEW_FONT = { family: "'Cormorant Garamond', Georgia, serif", weight: 300, tracking: '0.08em' }
 
 function NewMark() {
   const reduce = useReducedMotion()
@@ -75,8 +72,8 @@ function NewMark() {
   return (
     <motion.h1
       aria-label="New"
-      className="relative font-display font-light leading-[0.9] flex justify-center select-none text-cream"
-      style={{ fontSize: 'clamp(5.25rem, 26vw, 10rem)', letterSpacing: '0.08em' }}
+      className="relative leading-[0.9] flex justify-center select-none text-cream"
+      style={{ fontFamily: NEW_FONT.family, fontWeight: NEW_FONT.weight, fontSize: 'clamp(5.25rem, 26vw, 10rem)', letterSpacing: NEW_FONT.tracking }}
       initial="hidden"
       animate={shown ? 'shown' : 'hidden'}
     >
@@ -85,11 +82,6 @@ function NewMark() {
           {l}
         </motion.span>
       ))}
-      <motion.span
-        aria-hidden
-        variants={ruleVariants}
-        className="absolute left-1/2 -bottom-[0.08em] h-px w-[1.9em] -ml-[0.95em] bg-accent origin-center"
-      />
     </motion.h1>
   )
 }
@@ -135,6 +127,10 @@ function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager }) {
         className="absolute top-0 max-w-none select-none pointer-events-none object-cover"
         style={{ width: W, height: H, left: -(j * W) / STRIPS, objectPosition: '50% 30%' }}
       />
+      {/* Ombre in basso (nome) e in alto (countdown): identiche su ogni
+          striscia perche' verticali, quindi niente giunte. */}
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-black/45 to-transparent" />
     </motion.div>
   )
 }
@@ -170,8 +166,10 @@ export default function DropHero() {
     return () => ro.disconnect()
   }, [])
   const mobile   = stage.w < 640
-  const ratio    = mobile ? 0.7 : 0.78
-  const W        = Math.min(stage.w * (mobile ? 0.66 : 0.27), stage.h * 0.9 * ratio, 460)
+  // Piu' alte che larghe: crescono in altezza fino a riempire il palco, e la
+  // larghezza resta quella che lascia vedere le due laterali ai bordi.
+  const ratio    = mobile ? 0.62 : 0.78
+  const W        = Math.min(stage.w * (mobile ? 0.68 : 0.27), stage.h * 0.97 * ratio, 460)
   const H        = W / ratio
   const thetaDeg = mobile ? 58 : 40              // passo angolare fra una scheda e l'altra
   const alphaDeg = thetaDeg - (mobile ? 5 : 4)   // quanto arco occupa la scheda
@@ -219,17 +217,10 @@ export default function DropHero() {
   const mod = (k) => ((k % n) + n) % n
   const current = items[mod(pos)]
   const slots = [-2, -1, 0, 1, 2].map((o) => pos + o)
-  const countdownCls = 'text-[10px] sm:text-xs tracking-[0.18em] uppercase tabular-nums text-cream/70'
+  const countdownCls = 'text-[9px] tracking-[0.2em] uppercase tabular-nums text-white/75'
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col">
-      {/* Countdown in alto a destra — l'unica informazione sul drop che resta. */}
-      <div className="flex justify-end px-5 sm:px-8 pt-[64px] h-[84px]">
-        {state === BEFORE && <DropCountdown to={target} label="opens in" className={countdownCls} />}
-        {state === LIVE && <DropCountdown to={target} label="closes in" className={countdownCls} />}
-        {state === CLOSED && target && <DropCountdown to={target} label="next drop in" className={countdownCls} />}
-      </div>
-
+    <div className="relative flex-1 min-h-0 flex flex-col pt-[62px]">
       <NewMark />
 
       {/* Palco: prospettiva con l'occhio sopra il bordo alto, cosi' sia il
@@ -237,7 +228,7 @@ export default function DropHero() {
           centro — l'arco del cilindro visto da sopra. */}
       <motion.div
         ref={stageRef}
-        className="relative flex-1 min-h-[240px] mt-3 sm:mt-5 outline-none"
+        className="relative flex-1 min-h-[240px] mt-2 outline-none"
         style={{ perspective: mobile ? 620 : 1500, perspectiveOrigin: '50% -45%', touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
@@ -304,6 +295,40 @@ export default function DropHero() {
           }}
         />
 
+        {/* Il countdown dentro la scheda davanti, in cima alla foto: piccolo e
+            senza una riga sua, cosi' non spinge giu' le schede. */}
+        {stage.w > 0 && (
+          <div
+            className="absolute inset-x-0 z-20 pointer-events-none text-center"
+            style={{ top: `calc(50% - ${H / 2 - 4}px)` }}
+          >
+            {state === BEFORE && <DropCountdown to={target} label="opens in" className={countdownCls} />}
+            {state === LIVE && <DropCountdown to={target} label="closes in" className={countdownCls} />}
+            {state === CLOSED && target && <DropCountdown to={target} label="next drop in" className={countdownCls} />}
+          </div>
+        )}
+
+        {/* Il nome dentro la scheda davanti, sul fondo della foto. */}
+        {stage.w > 0 && (
+          <div
+            className="absolute inset-x-0 z-20 pointer-events-none text-center"
+            style={{ top: `calc(50% + ${H / 2 - 38}px)` }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                key={current.id}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="text-white text-[11px] tracking-[0.32em] uppercase pl-[0.32em]"
+              >
+                {shortName(current.name)}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        )}
+
         {n > 1 && (
           <>
             <button
@@ -326,29 +351,19 @@ export default function DropHero() {
         )}
       </motion.div>
 
-      {/* Nome, poi il prezzo come protagonista. "Shipped": la spedizione e'
-          gratis ovunque, quello e' il prezzo finale. */}
-      <div className="pt-2 sm:pt-3 pb-4 sm:pb-5 text-center text-cream" aria-live="polite">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, filter: 'blur(6px)' }}
-            transition={{ duration: 0.28 }}
-          >
-            <p className="font-sans text-[11px] sm:text-xs tracking-[0.32em] uppercase text-cream/70">{shortName(current.name)}</p>
-          </motion.div>
-        </AnimatePresence>
-        <p className="font-display font-light leading-none mt-1 sm:mt-2" style={{ fontSize: 'clamp(3.75rem, 17vw, 6rem)' }}>
-          <span className="align-top text-[0.42em] mr-[0.06em] relative top-[0.28em]">€</span>
-          {formatPrice(price).replace(/[^\d.,]/g, '')}
+      {/* Il prezzo come protagonista: 22 centrato da solo, l'euro in apice
+          fuori dal centro (absolute), "shipped" centrato sotto. La spedizione
+          e' gratis ovunque: quello e' il prezzo finale. */}
+      <div className="pt-3 pb-3 text-center text-cream">
+        <p className="font-display font-light leading-none" style={{ fontSize: 'clamp(4.25rem, 20vw, 6.5rem)' }}>
+          <span className="relative inline-block">
+            {formatPrice(price).replace(/[^\d.,]/g, '')}
+            <span className="absolute left-full top-[0.1em] ml-[0.05em] text-[0.34em]">€</span>
+          </span>
         </p>
-        <p className="flex items-center justify-center gap-3 mt-1 text-[10px] sm:text-[11px] tracking-[0.42em] uppercase text-cream/60">
-          <span className="h-px w-8 bg-accent/70" aria-hidden />
-          shipped
-          <span className="h-px w-8 bg-accent/70" aria-hidden />
-        </p>
+        {/* pl pari al tracking: la spaziatura dopo l'ultima lettera sposterebbe
+            la parola a sinistra del centro. */}
+        <p className="mt-1.5 text-[10px] tracking-[0.42em] pl-[0.42em] uppercase text-cream/60">shipped</p>
       </div>
     </div>
   )

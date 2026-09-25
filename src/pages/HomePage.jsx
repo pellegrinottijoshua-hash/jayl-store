@@ -7,6 +7,7 @@ import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 import DropHero from '@/components/drop/DropHero'
+import DropDesktop from '@/components/drop/DropDesktop'
 import SubscribeForm from '@/components/SubscribeForm'
 import HomeReviews from '@/components/HomeReviews'
 
@@ -19,6 +20,22 @@ const archiveProducts = (dropCfg.released || [])
   .map((id) => objectsProducts.find((p) => p.id === id))
   .filter(Boolean)
   .reverse()
+
+// Il drop ha due composizioni: il ridisegno (NEW, cilindro, prezzo
+// "shipped") e' pensato per il telefono, su desktop restano le tre schede
+// affiancate di prima. Una sola delle due viene montata — con due montate e
+// una nascosta via CSS il browser scaricherebbe comunque le foto di entrambe.
+const DESKTOP_QUERY = '(min-width: 640px)'
+function useIsDesktop() {
+  const [desktop, setDesktop] = useState(() => window.matchMedia(DESKTOP_QUERY).matches)
+  useEffect(() => {
+    const mq = window.matchMedia(DESKTOP_QUERY)
+    const onChange = () => setDesktop(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return desktop
+}
 
 function FallingS() {
   return (
@@ -167,6 +184,7 @@ export default function HomePage() {
   })
   const navigate = useNavigate()
   const rootRef  = useRef(null)
+  const desktop  = useIsDesktop()
 
   useEffect(() => {
     setPageTheme(navTheme)
@@ -208,14 +226,20 @@ export default function HomePage() {
       </section>
       ════════════════════════════════════════════════════════════════════════ */}
 
-      {/* ════ SCREEN 1 — Il drop: NEW, tre schede, prezzo, subscribe. Uno
-          schermo esatto (svh: la barra del browser mobile non taglia il
-          subscribe), con un minimo sotto il quale si scorre invece di
-          schiacciare le foto. ════ */}
-      <section data-nav-theme="dark" className="h-[100svh] min-h-[640px] w-screen bg-off-black flex flex-col overflow-hidden">
-        <DropHero />
-        <SubscribeForm className="px-5 pb-6 sm:pb-8" />
-      </section>
+      {/* ════ SCREEN 1 — Il drop. Mobile: NEW, tre schede curve, prezzo,
+          subscribe, in uno schermo esatto (svh: la barra del browser non
+          taglia il subscribe). Desktop: le tre schede affiancate e la lista
+          d'attesa, come prima. ════ */}
+      {desktop ? (
+        <section data-nav-theme="dark" className="min-h-screen w-screen bg-off-black flex flex-col">
+          <DropDesktop />
+        </section>
+      ) : (
+        <section data-nav-theme="dark" className="h-[100svh] min-h-[640px] w-screen bg-off-black flex flex-col overflow-hidden">
+          <DropHero />
+          <SubscribeForm className="px-5 pb-3" />
+        </section>
+      )}
 
       {/* ════ SCREEN 2 — L'archivio, una foto a schermo intero alla volta ════ */}
       <ArchiveReel items={archiveProducts} />
