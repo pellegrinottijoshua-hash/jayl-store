@@ -14324,7 +14324,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_131934_f59b2a52-4ed8-47aa-a0c6-cff329170b65.png",
-    "heroImage": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132411_91169ddf-d023-4498-8189-882dc549ad0a.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_131913_c1b73103-aee1-4528-a1b4-1e390a396fe2.png",
     "detailImage": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132441_82e21641-d6b4-46c9-a416-f1bfa9d9fe22.png",
     "images": [
       "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png",
@@ -14573,7 +14573,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f68f5fd8-bd43-4091-8969-22f35047a570/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150005Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b161dbd528190e04ba46c23504567f85bc397971b88a6c245fb670e149560e80"
     ],
     "createdAt": "2026-06-29T13:31:44.943Z",
-    "updatedAt": "2026-07-08T15:23:39.852Z",
+    "updatedAt": "2026-09-25T14:40:21.678Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
