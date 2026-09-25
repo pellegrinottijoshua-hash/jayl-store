@@ -17065,7 +17065,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-mockup-01.jpg",
-    "heroImage": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_174053_aad0c01a-a7a7-4c6e-88e8-71ce35cc6380.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-suicune-back-shirt/hf_20260829_222710_035ca641-a705-4c04-bdea-bfff51ace613.png",
     "detailImage": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_190549_3ba92051-a224-4398-b847-a7001ae058e3.png",
     "images": [
       "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_174020_a35373b4-93e5-4e12-bb52-2093515ecfa8.png",
@@ -17482,7 +17482,8 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260824_104412_247bb58f-40de-477e-ba5e-b07330fae62a-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:59:15.309Z",
-    "updatedAt": "2026-09-08T14:59:15.309Z"
+    "updatedAt": "2026-09-25T14:42:18.714Z",
+    "relatedProducts": []
   },
   {
     "id": "entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him",
