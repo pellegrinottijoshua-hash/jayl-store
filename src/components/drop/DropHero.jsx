@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
 import DropCountdown from './DropCountdown'
+import { SwapSymbol } from '@/components/Money'
 import { formatPrice, shortProductName as shortName } from '@/lib/utils'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
 
@@ -229,7 +230,7 @@ export default function DropHero() {
       <motion.div
         ref={stageRef}
         className="relative flex-1 min-h-[240px] mt-2 outline-none"
-        style={{ perspective: mobile ? 800 : 1500, perspectiveOrigin: '50% 50%', touchAction: 'pan-y' }}
+        style={{ perspective: mobile ? 1800 : 1500, perspectiveOrigin: '50% -220%', touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
         // Un click nuovo non deve ereditare il "moved" di uno swipe finito
@@ -358,7 +359,7 @@ export default function DropHero() {
         <p className="font-display font-light leading-none" style={{ fontSize: 'clamp(4.25rem, 20vw, 6.5rem)' }}>
           <span className="relative inline-block">
             {formatPrice(price).replace(/[^\d.,]/g, '')}
-            <span className="absolute left-full top-[0.1em] ml-[0.05em] text-[0.34em]">€</span>
+            <span className="absolute left-full top-[0.1em] ml-[0.05em] text-[0.34em]"><SwapSymbol /></span>
           </span>
         </p>
         {/* pl pari al tracking: la spaziatura dopo l'ultima lettera sposterebbe

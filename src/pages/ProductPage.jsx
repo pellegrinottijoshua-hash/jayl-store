@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-rea
 import { getProductById, products } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
 import { trackGA4, gaItem, toMajor, trackTikTok, ttContent } from '@/lib/analytics'
-import { formatPrice, slugToTitle, cn } from '@/lib/utils'
+import { slugToTitle, cn } from '@/lib/utils'
 import TrustBox from '@/components/TrustBox'
 import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
@@ -17,6 +17,7 @@ import { sizeGuideFor, bySize } from '@/data/sizeGuides'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
+import Money from '@/components/Money'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -955,7 +956,7 @@ export default function ProductPage() {
           )}
 
           <p className={cn('text-xl font-semibold', t.price)}>
-            {formatPrice(totalPrice)}
+            <Money cents={totalPrice} />
           </p>
 
           <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
@@ -1103,7 +1104,7 @@ export default function ProductPage() {
                       selectedFrame === f.id ? t.btnActive : t.btnInactive
                     )}
                   >
-                    {f.label}{f.price > 0 && ` +${formatPrice(f.price)}`}
+                    {f.label}{f.price > 0 && ` +$<Money cents={f.price} />`}
                   </button>
                 ))}
               </div>
@@ -1134,7 +1135,7 @@ export default function ProductPage() {
             ) : isSoldOut ? (
               'Sold Out'
             ) : (
-              <>Add to Cart · {formatPrice(totalPrice)}</>
+              <>Add to Cart · <Money cents={totalPrice} /></>
             )}
           </button>
           <UrgencyBadge text={product.urgency} isLight={isLight} />
@@ -1232,7 +1233,7 @@ export default function ProductPage() {
               : isSoldOut
               ? 'Sold Out'
               : canAddToCart
-              ? `Add · ${formatPrice(totalPrice)}`
+              ? `Add · $<Money cents={totalPrice} />`
               : 'Select Size'}
           </button>
         </div>
@@ -1364,7 +1365,7 @@ export default function ProductPage() {
               )}
 
               <p className={cn('text-2xl font-semibold', t.price)}>
-                {formatPrice(totalPrice)}
+                <Money cents={totalPrice} />
                 {selectedFrame && selectedFrame !== 'none' && (
                   <span className={cn('text-sm font-normal ml-2', t.priceSub)}>(incl. frame)</span>
                 )}
@@ -1395,7 +1396,7 @@ export default function ProductPage() {
                                 totalPrice above: a drop has one price, not a per-size scale,
                                 and this label sits right next to the Add to Cart button that
                                 already shows the drop price. */}
-                            {sizeObj.label} · {formatPrice(basePriceFor(product.id, sizeObj, product, dropCfg))}
+                            {sizeObj.label} · <Money cents={basePriceFor(product.id, sizeObj, product, dropCfg)} />
                           </p>
                         )}
                         {sizeGuide && <button
@@ -1500,7 +1501,7 @@ export default function ProductPage() {
                     <div className="flex items-center justify-between mb-3">
                       <p className={cn('text-xs font-semibold tracking-widest uppercase', t.selectorLabel)}>Frame</p>
                       {frameObj?.price > 0 && (
-                        <p className={cn('text-xs', t.selectorSub)}>+{formatPrice(frameObj.price)}</p>
+                        <p className={cn('text-xs', t.selectorSub)}>+<Money cents={frameObj.price} /></p>
                       )}
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -1513,7 +1514,7 @@ export default function ProductPage() {
                             selectedFrame === f.id ? t.btnActive : t.btnInactive
                           )}
                         >
-                          {f.label}{f.price > 0 && ` +${formatPrice(f.price)}`}
+                          {f.label}{f.price > 0 && ` +$<Money cents={f.price} />`}
                         </button>
                       ))}
                     </div>
@@ -1540,7 +1541,7 @@ export default function ProductPage() {
                 ) : isSoldOut ? (
                   'Sold Out'
                 ) : (
-                  <>Add to Cart · {formatPrice(totalPrice)}</>
+                  <>Add to Cart · <Money cents={totalPrice} /></>
                 )}
               </button>
               <UrgencyBadge text={product.urgency} isLight={isLight} />

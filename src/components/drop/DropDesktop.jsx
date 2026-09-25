@@ -6,8 +6,8 @@ import { useDropStatus } from '@/hooks/useDropStatus'
 import DropCountdown from './DropCountdown'
 import DropBadge from './DropBadge'
 import SubscribeForm from '@/components/SubscribeForm'
-import { formatPrice } from '@/lib/utils'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
+import Money from '@/components/Money'
 
 /**
  * Il drop su desktop (da sm: in su): tre schede affiancate, nome/prezzo/stato
@@ -66,7 +66,7 @@ export default function DropDesktop() {
                     <div className="px-5 pt-4 pb-1">
                       <h2 className="text-cream text-lg leading-tight">{p.name}</h2>
                       <p className="text-fg/70 text-sm mb-1">
-                        {formatPrice(showingCurrent ? cfg.current.dropPrice : cfg.archivePrice)}
+                        <Money cents={showingCurrent ? cfg.current.dropPrice : cfg.archivePrice} />
                       </p>
                       {state === LIVE && <DropBadge sold={s?.sold ?? 0} cap={s?.cap ?? capFor(p.id, cfg)} />}
                       {state === BEFORE && (

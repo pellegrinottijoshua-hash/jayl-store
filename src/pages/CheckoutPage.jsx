@@ -5,9 +5,11 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
 import { trackGA4, cartToGaItems, toMajor, trackTikTok, cartToTtContents } from '@/lib/analytics'
-import { formatPrice, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
 import JaylMark from '@/components/JaylMark'
+import { useCurrencyStore, SYMBOL } from '@/store/currencyStore'
+import { amountOnly } from '@/lib/money'
 
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
@@ -62,6 +64,11 @@ function livePriceFor(item, cfg) {
 }
 
 function CheckoutForm() {
+  // Valuta scelta dal cliente: stesso numero, si paga esattamente quello che
+  // si legge (niente conversione a sorpresa sull'estratto conto).
+  const payCurrency    = useCurrencyStore((s) => s.currency)
+  const setPayCurrency = useCurrencyStore((s) => s.setCurrency)
+  const formatPrice    = (cents) => SYMBOL[payCurrency] + amountOnly(cents)
   const { items, clearCart } = useCartStore()
   const navigate = useNavigate()
   const stripe = useStripe()
@@ -111,13 +118,13 @@ function CheckoutForm() {
     if (beginCheckoutFired.current || items.length === 0) return
     beginCheckoutFired.current = true
     trackGA4('begin_checkout', {
-      currency: 'EUR',
+      currency: payCurrency.toUpperCase(),
       value:    toMajor(subtotal),
       items:    cartToGaItems(items, (i) => livePriceFor(i, cfg)),
     })
     // TikTok Pixel — InitiateCheckout (nome standard TikTok, non begin_checkout)
     trackTikTok('InitiateCheckout', {
-      currency: 'EUR',
+      currency: payCurrency.toUpperCase(),
       value:    toMajor(subtotal),
       contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
     })
@@ -196,7 +203,7 @@ function CheckoutForm() {
     if (!stripe || !localTotal) return
     const pr = stripe.paymentRequest({
       country: 'IT',
-      currency: 'eur',
+      currency: payCurrency,
       // `localTotal` is already in cents (it's the sum of livePriceFor(item),
       // itself in cents — see formatPrice in src/lib/utils.js). Multiplying by
       // 100 again is what turned a 23.99€ tee into a 2,399.00€ line in the
@@ -239,6 +246,7 @@ function CheckoutForm() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            currency: payCurrency,
             items: items.map((i) => ({
               productId: i.product.id,
               size:     i.size  || null,
@@ -306,7 +314,7 @@ function CheckoutForm() {
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Purchase', {
             value: total / 100,
-            currency: 'EUR',
+            currency: payCurrency.toUpperCase(),
             content_ids: items.map(i => i.product?.id),
             content_type: 'product',
             num_items: items.reduce((s, i) => s + (i.quantity || 1), 0),
@@ -316,20 +324,20 @@ function CheckoutForm() {
           window.pintrk('track', 'checkout', {
             value: total / 100,
             order_quantity: items.reduce((s, i) => s + (i.quantity || 1), 0),
-            currency: 'EUR',
+            currency: payCurrency.toUpperCase(),
           })
         }
         // GA4 — purchase
         trackGA4('purchase', {
           transaction_id: orderId,
-          currency:       'EUR',
+          currency:       payCurrency.toUpperCase(),
           value:          toMajor(total),
           shipping:       toMajor(shipping),
           items:          cartToGaItems(items, (i) => livePriceFor(i, cfg)),
         })
         // TikTok Pixel — CompletePayment (nome standard TikTok, non purchase)
         trackTikTok('CompletePayment', {
-          currency: 'EUR',
+          currency: payCurrency.toUpperCase(),
           value:    toMajor(total),
           contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
         })
@@ -353,7 +361,7 @@ function CheckoutForm() {
         e.complete('fail')
       }
     })
-  }, [stripe, localTotal]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [stripe, localTotal, payCurrency]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
@@ -396,6 +404,7 @@ function CheckoutForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          currency: payCurrency,
           items: items.map((i) => ({
             productId: i.product.id,
             size:     i.size  || null,
@@ -472,7 +481,7 @@ function CheckoutForm() {
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Purchase', {
           value: total / 100,
-          currency: 'EUR',
+          currency: payCurrency.toUpperCase(),
           content_ids: items.map(i => i.product?.id),
           content_type: 'product',
           num_items: items.reduce((s, i) => s + (i.quantity || 1), 0),
@@ -483,20 +492,20 @@ function CheckoutForm() {
         window.pintrk('track', 'checkout', {
           value: total / 100,
           order_quantity: items.reduce((s, i) => s + (i.quantity || 1), 0),
-          currency: 'EUR',
+          currency: payCurrency.toUpperCase(),
         })
       }
       // GA4 — purchase
       trackGA4('purchase', {
         transaction_id: orderId,
-        currency:       'EUR',
+        currency:       payCurrency.toUpperCase(),
         value:          toMajor(total),
         shipping:       toMajor(shipping),
         items:          cartToGaItems(items, (i) => livePriceFor(i, cfg)),
       })
       // TikTok Pixel — CompletePayment (nome standard TikTok, non purchase)
       trackTikTok('CompletePayment', {
-        currency: 'EUR',
+        currency: payCurrency.toUpperCase(),
         value:    toMajor(total),
         contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
       })
@@ -686,6 +695,24 @@ function CheckoutForm() {
               <p className="text-xs text-error mt-3">{errors.payment}</p>
             )}
           </FormSection>
+
+          {/* Pay in € or $ — same number, charged exactly as shown. */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs tracking-widest uppercase text-text-muted">Pay in</span>
+            <div className="flex border border-border">
+              {['eur', 'usd'].map((c) => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setPayCurrency(c)}
+                  className={cn('px-4 py-2 text-xs tracking-widest uppercase transition-colors',
+                    payCurrency === c ? 'bg-cream text-off-black' : 'text-text-secondary hover:text-cream')}
+                >
+                  {SYMBOL[c]} {c}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <button
             type="submit"

@@ -9,16 +9,15 @@ import { SOCIAL_LINKS } from '@/data/social-links'
 import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
 import JaylMark from '@/components/JaylMark'
 
-// Il logo V2 segue lo sfondo: panna sul nero, nero sulla panna, oro in hover.
+// Il logo V2 segue lo sfondo e respira verso l'oro: panna ↔ oro sul nero,
+// nero ↔ oro sulla panna (.logo-breathe in index.css).
 // Un solo SVG a currentColor invece di un file per variante.
 function NavLogo({ isLight, size }) {
   return (
     <JaylMark
       size={size}
-      className={cn(
-        'block transition-colors duration-500 hover:text-accent',
-        isLight ? 'text-ink' : 'text-jayl-cream'
-      )}
+      className="block logo-breathe"
+      style={{ '--logo-base': isLight ? '#111111' : '#F5F0E8' }}
     />
   )
 }

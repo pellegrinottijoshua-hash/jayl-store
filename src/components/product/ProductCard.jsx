@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { Plus, Heart } from 'lucide-react'
-import { formatPrice, slugToTitle } from '@/lib/utils'
+import { slugToTitle } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 import { useWishlistStore } from '@/store/wishlistStore'
 import { getDrop, basePriceFor } from '../../../api/_lib/drop.js'
+import Money from '@/components/Money'
 
 export default function ProductCard({ product, className, light = false }) {
   const { toggle, isWishlisted } = useWishlistStore()
@@ -111,7 +112,7 @@ export default function ProductCard({ product, className, light = false }) {
               light ? 'text-ink' : 'text-text-primary'
             )}
           >
-            {formatPrice(displayPrice)}
+            <Money cents={displayPrice} />
           </span>
         </div>
       </div>

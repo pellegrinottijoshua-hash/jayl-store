@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { products } from '@/data/products'
-import { formatPrice, shortProductName as shortName } from '@/lib/utils'
+import { shortProductName as shortName } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
@@ -10,6 +10,7 @@ import DropHero from '@/components/drop/DropHero'
 import DropDesktop from '@/components/drop/DropDesktop'
 import SubscribeForm from '@/components/SubscribeForm'
 import HomeReviews from '@/components/HomeReviews'
+import Money from '@/components/Money'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
 const dropCfg          = getDrop()
@@ -128,7 +129,7 @@ function ArchiveReel({ items }) {
                 <div className="absolute inset-x-0 bottom-0 px-6 pb-14 pt-28 text-center bg-gradient-to-t from-black/70 via-black/25 to-transparent">
                   <p className="text-white text-[11px] tracking-[0.32em] uppercase">{shortName(p.name)}</p>
                   <p className="font-display font-light text-white text-4xl leading-none mt-2">
-                    {formatPrice(basePriceFor(p.id, null, p, dropCfg))}
+                    <Money cents={basePriceFor(p.id, null, p, dropCfg)} />
                   </p>
                 </div>
               </div>

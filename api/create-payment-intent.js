@@ -141,7 +141,10 @@ export default async function handler(req, res) {
   console.log('[create-payment-intent] called — key prefix:', keyPrefix)
 
   try {
-    const { items: rawItems, shippingAddress, discountCode } = req.body || {}
+    const { items: rawItems, shippingAddress, discountCode, currency: wantedCurrency } = req.body || {}
+    // Stesso numero in euro o in dollari: il sito mostra €22 / $22, e chi
+    // sceglie i dollari al checkout paga 22 dollari, non 22 euro convertiti.
+    const currency = ['eur', 'usd'].includes(wantedCurrency) ? wantedCurrency : CURRENCY
 
     // Server-side price lookup — never trust client-supplied unitPrice/total.
     const priced = priceItems(rawItems)
@@ -215,7 +218,7 @@ export default async function handler(req, res) {
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount:   total,
-      currency: CURRENCY,
+      currency,
       automatic_payment_methods: { enabled: true },
       receipt_email: addr.email,
       metadata: {
@@ -224,7 +227,7 @@ export default async function handler(req, res) {
         shippingAddress: shippingEncoded,
         items:           itemsEncoded,
         total:           String(total),
-        currency:        CURRENCY,
+        currency,
         ...(discountLabel ? {
           discountLabel,
           discountAmount: String(discountAmount),

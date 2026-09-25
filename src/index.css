@@ -318,3 +318,16 @@
   50%  { box-shadow: 0 0 14px 4px rgba(212,168,83,0.35); border-color: rgba(212,168,83,1);    opacity: 1;   transform: scale(1.04); }
   100% { box-shadow: 0 0 0px 0px rgba(212,168,83,0);     border-color: rgba(212,168,83,0.3);  opacity: 0.5; transform: scale(1);    }
 }
+
+/* Logo in navbar: dal colore del fondo all'oro e ritorno, di continuo. */
+.logo-breathe {
+  color: var(--logo-base);
+  animation: logoBreathe 6s ease-in-out infinite;
+}
+@keyframes logoBreathe {
+  0%, 30%, 100% { color: var(--logo-base); }
+  50%, 80%      { color: var(--jayl-gold); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-breathe { animation: none; }
+}

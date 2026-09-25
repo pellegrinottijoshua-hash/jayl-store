@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { X, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
-import { formatPrice, slugToTitle } from '@/lib/utils'
+import { slugToTitle } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 import { getDrop, basePriceFor, bundleDiscount } from '../../../api/_lib/drop.js'
+import Money from '@/components/Money'
 
 // cartStore persists the whole product object at add-to-cart time, so a tee
 // added before a drop opens (or before the admin edits src/data/drop.js)
@@ -176,7 +177,7 @@ export default function CartDrawer() {
                       </div>
 
                       <span className="text-sm font-semibold text-text-primary">
-                        {formatPrice(price * item.quantity)}
+                        <Money cents={price * item.quantity} />
                       </span>
                     </div>
                   </div>
@@ -188,12 +189,12 @@ export default function CartDrawer() {
 
           {dropIds.length === 3 && missing.length > 0 && missing.length < 3 && saving > 0 && (
             <p className="text-xs text-amber-300 px-4 py-2">
-              add {missing.length === 1 ? "the last piece" : `${missing.length} more pieces`} from the drop → save {formatPrice(saving)}
+              add {missing.length === 1 ? "the last piece" : `${missing.length} more pieces`} from the drop → save <Money cents={saving} />
             </p>
           )}
           {dropIds.length === 3 && missing.length === 0 && items.length > 0 && (
             <p className="text-xs text-amber-300 px-4 py-2">
-              bundle discount applied — save {formatPrice(saving)}
+              bundle discount applied — save <Money cents={saving} />
             </p>
           )}
         </div>
@@ -203,7 +204,7 @@ export default function CartDrawer() {
           <div className="px-6 py-6 border-t border-border space-y-4">
             <div className="flex items-center justify-between text-sm">
               <span className="text-text-secondary">Subtotal</span>
-              <span className="font-semibold text-text-primary">{formatPrice(subtotal)}</span>
+              <span className="font-semibold text-text-primary"><Money cents={subtotal} /></span>
             </div>
             <p className="text-xs text-success">
               Free shipping worldwide.

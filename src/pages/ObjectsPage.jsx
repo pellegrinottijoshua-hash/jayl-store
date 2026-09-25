@@ -1,10 +1,11 @@
 import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
-import { formatPrice, isNewProduct } from '@/lib/utils'
+import { isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+import Money from '@/components/Money'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
 const dropCfg = getDrop()
@@ -115,7 +116,7 @@ export default function ObjectsPage() {
                   />
                 </div>
                 <h3 className="font-display text-base text-cream leading-tight mb-1">{product.name}</h3>
-                <p className="text-sm text-text-muted">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
+                <p className="text-sm text-text-muted">from <Money cents={basePriceFor(product.id, null, product, dropCfg)} /></p>
               </Link>
             ))}
           </div>
@@ -165,7 +166,7 @@ export default function ObjectsPage() {
                     <h3 className="font-display text-base sm:text-lg text-cream leading-tight mb-1">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-text-muted">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
+                    <p className="text-sm text-text-muted">from <Money cents={basePriceFor(product.id, null, product, dropCfg)} /></p>
                   </div>
                 </Link>
               ))}

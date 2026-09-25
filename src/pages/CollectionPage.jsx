@@ -2,10 +2,11 @@ import { useState, useMemo, useEffect } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { products } from '@/data/products'
-import { formatPrice, slugToTitle, isNewProduct } from '@/lib/utils'
+import { slugToTitle, isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+import Money from '@/components/Money'
 
 const dropCfg = getDrop()
 
@@ -151,7 +152,7 @@ export default function CollectionPage() {
                 </p>
               )}
               <h3 className={`font-display text-base ${textCls} leading-tight mb-1`}>{product.name}</h3>
-              <p className={`text-sm ${mutedCls}`}>from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
+              <p className={`text-sm ${mutedCls}`}>from <Money cents={basePriceFor(product.id, null, product, dropCfg)} /></p>
             </Link>
           ))}
         </div>

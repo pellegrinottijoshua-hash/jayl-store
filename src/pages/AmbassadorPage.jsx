@@ -3,10 +3,10 @@ import { Link, useParams, Navigate } from 'react-router-dom'
 import { ArrowLeft, Instagram, Youtube } from 'lucide-react'
 import personas from '@/data/personas.json'
 import { products } from '@/data/products'
-import { formatPrice } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+import Money from '@/components/Money'
 
 const dropCfg = getDrop()
 
@@ -215,7 +215,7 @@ export default function AmbassadorPage() {
                 />
               </div>
               <h3 className="font-display text-sm text-ink leading-tight truncate">{product.name}</h3>
-              <p className="text-xs text-ink-muted mt-0.5">from {formatPrice(basePriceFor(product.id, null, product, dropCfg))}</p>
+              <p className="text-xs text-ink-muted mt-0.5">from <Money cents={basePriceFor(product.id, null, product, dropCfg)} /></p>
             </Link>
           ))}
         </div>

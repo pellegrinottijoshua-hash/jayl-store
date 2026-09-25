@@ -1,9 +1,10 @@
 import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
-import { formatPrice, slugToTitle, isNewProduct } from '@/lib/utils'
+import { slugToTitle, isNewProduct } from '@/lib/utils'
 import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import Money from '@/components/Money'
 
 const artProducts = products.filter((p) => p.section === 'art')
 
@@ -129,7 +130,7 @@ export default function ArtPage() {
                   {slugToTitle(product.movement)}
                 </p>
                 <h3 className="font-display text-base text-ink leading-tight mb-1">{product.name}</h3>
-                <p className="text-sm text-ink-muted">from {formatPrice(product.price)}</p>
+                <p className="text-sm text-ink-muted">from <Money cents={product.price} /></p>
               </Link>
             ))}
           </div>
@@ -182,7 +183,7 @@ export default function ArtPage() {
                     <h3 className="font-display text-base sm:text-lg text-ink leading-tight mb-1">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-ink-muted">from {formatPrice(product.price)}</p>
+                    <p className="text-sm text-ink-muted">from <Money cents={product.price} /></p>
                   </div>
                 </Link>
               ))}
