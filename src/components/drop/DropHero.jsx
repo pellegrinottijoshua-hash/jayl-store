@@ -52,7 +52,7 @@ const letterVariants = {
 }
 
 // Il carattere di NEW, in un posto solo. Deve essere caricato in index.html.
-const NEW_FONT = { family: "'Cormorant Garamond', Georgia, serif", weight: 300, tracking: '0.08em' }
+const NEW_FONT = { family: "'Tenor Sans', 'Space Grotesk', sans-serif", weight: 400, tracking: '0.18em' }
 
 function NewMark() {
   const reduce = useReducedMotion()
@@ -73,7 +73,7 @@ function NewMark() {
     <motion.h1
       aria-label="New"
       className="relative leading-[0.9] flex justify-center select-none text-cream"
-      style={{ fontFamily: NEW_FONT.family, fontWeight: NEW_FONT.weight, fontSize: 'clamp(5.25rem, 26vw, 10rem)', letterSpacing: NEW_FONT.tracking }}
+      style={{ fontFamily: NEW_FONT.family, fontWeight: NEW_FONT.weight, fontSize: 'clamp(4.25rem, 21vw, 8.5rem)', letterSpacing: NEW_FONT.tracking }}
       initial="hidden"
       animate={shown ? 'shown' : 'hidden'}
     >
@@ -169,9 +169,9 @@ export default function DropHero() {
   // Piu' alte che larghe: crescono in altezza fino a riempire il palco, e la
   // larghezza resta quella che lascia vedere le due laterali ai bordi.
   const ratio    = mobile ? 0.62 : 0.78
-  const W        = Math.min(stage.w * (mobile ? 0.68 : 0.27), stage.h * 0.97 * ratio, 460)
+  const W        = Math.min(stage.w * (mobile ? 0.74 : 0.27), stage.h * 1.0 * ratio, 460)
   const H        = W / ratio
-  const thetaDeg = mobile ? 58 : 40              // passo angolare fra una scheda e l'altra
+  const thetaDeg = mobile ? 44 : 40              // passo angolare fra una scheda e l'altra
   const alphaDeg = thetaDeg - (mobile ? 5 : 4)   // quanto arco occupa la scheda
   const R        = W / ((alphaDeg * Math.PI) / 180)
 
@@ -229,7 +229,7 @@ export default function DropHero() {
       <motion.div
         ref={stageRef}
         className="relative flex-1 min-h-[240px] mt-2 outline-none"
-        style={{ perspective: mobile ? 620 : 1500, perspectiveOrigin: '50% -45%', touchAction: 'pan-y' }}
+        style={{ perspective: mobile ? 1100 : 1500, perspectiveOrigin: '50% -15%', touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
         // Un click nuovo non deve ereditare il "moved" di uno swipe finito
