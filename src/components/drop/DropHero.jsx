@@ -72,7 +72,7 @@ function NewMark() {
   return (
     <motion.h1
       aria-label="New"
-      className="relative leading-[0.9] flex justify-center select-none text-cream"
+      className="relative leading-[0.9] flex justify-center select-none mb-3 text-accent [[data-site-theme=cream]_&]:text-ink"
       style={{ fontFamily: NEW_FONT.family, fontWeight: NEW_FONT.weight, fontSize: 'clamp(4.25rem, 21vw, 8.5rem)', letterSpacing: NEW_FONT.tracking, paddingLeft: `calc(${NEW_FONT.tracking} + 0.04em)` }}
       initial="hidden"
       animate={shown ? 'shown' : 'hidden'}
@@ -229,7 +229,7 @@ export default function DropHero() {
       <motion.div
         ref={stageRef}
         className="relative flex-1 min-h-[240px] mt-2 outline-none"
-        style={{ perspective: mobile ? 800 : 1500, perspectiveOrigin: `50% ${stage.h / 2 - H / 2 - 70}px`, touchAction: 'pan-y' }}
+        style={{ perspective: mobile ? 800 : 1500, perspectiveOrigin: '50% 50%', touchAction: 'pan-y' }}
         onPan={onPan}
         onPanEnd={onPanEnd}
         // Un click nuovo non deve ereditare il "moved" di uno swipe finito
