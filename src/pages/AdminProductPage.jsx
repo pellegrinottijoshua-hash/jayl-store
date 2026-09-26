@@ -1342,7 +1342,10 @@ export default function AdminProductPage() {
       const paths = importData.paths || []
       setGelatoCdnImages(cdnUrls)
       setPoolRefreshKey(k => k + 1)
-      if (sequenza.length === 0) setSequenza(paths)
+      // I mockup nuovi vanno in coda alla sequenza anche se una sequenza c'e'
+      // gia': prima entravano solo in una sequenza vuota, e un fronte aggiunto
+      // su Gelato dopo il primo sync restava nel pool senza mai arrivare al sito.
+      setSequenza(prev => [...prev, ...paths.filter(p => !prev.includes(p))])
 
       if (withSave) {
         // Patch only gelatoCdnImages — pass cdnUrls directly to avoid stale closure
