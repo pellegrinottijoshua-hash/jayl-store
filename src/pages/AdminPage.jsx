@@ -10,6 +10,7 @@ import DropTab from '@/components/admin/DropTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 import { SOCIAL_CHANNELS, socialPlaceholder } from '../../api/_lib/social-links.js'
+import { resolveSwatchHex } from '@/lib/apparelColors'
 
 // Scheda tecnica standard per un capo Gelato su Gildan 64000 — è quella che
 // finisce su ogni prodotto quando non se ne scrive una diversa a mano.
@@ -1894,6 +1895,49 @@ function BottomSheet({ open, onClose, title, children, fullHeight = false }) {
 
 // ── Product Admin Card ────────────────────────────────────────────────────────
 
+// Colori in negozio, direttamente dalla lista: tocchi fino a 3 pallini (il
+// primo toccato e' quello d'apertura) e si salva da solo. Nessuno scelto =
+// regola automatica (colore d'apertura, nero, bianco — src/lib/shownColors.js).
+function QuickColors({ product }) {
+  const [chosen, setChosen] = useState(Array.isArray(product.storeColors) ? product.storeColors : [])
+  const [state, setState]   = useState('') // '' | 'saving' | 'saved' | 'error'
+  if (!product.colors?.length || product.colors.length <= 3) return null
+  const save = async (next) => {
+    setChosen(next); setState('saving')
+    try {
+      const updated = { ...product, storeColors: next.length ? next : undefined }
+      if (!next.length) delete updated.storeColors
+      await api('save-product', { product: updated })
+      product.storeColors = updated.storeColors
+      setState('saved'); setTimeout(() => setState(''), 1500)
+    } catch { setState('error') }
+  }
+  return (
+    <div className="flex items-center gap-1.5 flex-wrap mt-1.5" onClick={e => e.stopPropagation()}>
+      {product.colors.map(c => {
+        const on = chosen.includes(c.id)
+        const full = !on && chosen.length >= 3
+        return (
+          <button
+            key={c.id}
+            type="button"
+            title={c.label || c.id}
+            disabled={full || state === 'saving'}
+            onClick={() => save(on ? chosen.filter(x => x !== c.id) : [...chosen, c.id])}
+            className={`relative w-5 h-5 rounded-full border transition-all disabled:opacity-25 ${on ? 'border-amber-400 ring-2 ring-amber-400/60' : 'border-gray-600 hover:border-gray-300'}`}
+            style={{ background: resolveSwatchHex(c) || '#888' }}
+          >
+            {on && <span className="absolute -top-2 -right-2 text-[9px] font-bold text-amber-300">{chosen.indexOf(c.id) + 1}</span>}
+          </button>
+        )
+      })}
+      <span className="text-[10px] ml-1 text-gray-500">
+        {state === 'saving' ? 'salvo…' : state === 'saved' ? '✓ salvato' : state === 'error' ? '⚠ errore' : chosen.length ? `${chosen.length}/3` : 'auto'}
+      </span>
+    </div>
+  )
+}
+
 function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deleting }) {
   const navigate = useNavigate()
   const status   = getProductStatus(p)
@@ -1923,6 +1967,7 @@ function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deletin
         <p className="text-gray-500 text-xs truncate">
           {p.section}{p.collection ? ` · ${p.collection}` : ''} · {fmt(p.price)}
         </p>
+        <QuickColors product={p} />
       </div>
       {/* Actions */}
       <div className="flex items-center flex-shrink-0" onClick={e => e.stopPropagation()}>
