@@ -24,7 +24,7 @@ import { existsSync } from 'node:fs'
 import { resolveSwatchHex } from '../src/lib/apparelColors.js'
 import { buildImageOwnership, colorToSlug } from '../src/lib/colorImageMatch.js'
 
-const MOCKUP_RE = /-(gelato|mockup)-\d+\.(jpe?g|png|webp)$/i
+const MOCKUP_RE = /-(gelato|mockup|front|collar)-\d+\.(jpe?g|png|webp)$/i
 
 // Due toppe di tessuto: fondo maglia, a sinistra e a destra della stampa.
 // Coordinate in frazioni del lato, tarate sui mockup Gelato Gildan 64000.

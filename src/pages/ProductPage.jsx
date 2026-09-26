@@ -10,7 +10,7 @@ import ProductCard from '@/components/product/ProductCard'
 import { useThemeStore } from '@/store/themeStore'
 import { useSwipe } from '@/hooks/useSwipe'
 import { usePageMeta } from '@/hooks/usePageMeta'
-import { findColorImageIndex, findImageColor } from '@/lib/colorImageMatch'
+import { findColorImageIndex, findImageColor, buildImageOwnership } from '@/lib/colorImageMatch'
 import { resolveSwatchHex } from '@/lib/apparelColors'
 import { shownColors, imagesForShownColors } from '@/lib/shownColors'
 import { sizeGuideFor, bySize } from '@/data/sizeGuides'
@@ -263,6 +263,31 @@ function StarRating({ value, onChange, isLight }) {
   )
 }
 
+// ── Fronte · retro · colletto ─────────────────────────────────────────────────
+// Le tre viste dello stesso colore insieme, invece che sparse in una
+// gallery da sfogliare: si capisce subito che davanti la maglia e' liscia,
+// com'e' la stampa dietro e com'e' finito il colletto. Desktop: retro grande
+// a sinistra, fronte e colletto impilati a destra. Mobile: retro sopra,
+// fronte e colletto affiancati sotto.
+function ColorLook({ look, isLight, onOpen, className = '' }) {
+  if (!look?.front || !look?.back) return null
+  const bg = 'bg-white' // i mockup Gelato sono su fondo bianco
+  const tile = (src, label, cls) => src && (
+    <button type="button" onClick={() => onOpen(src)} className={cn('relative overflow-hidden group', bg, cls)} aria-label={label}>
+      <img src={src} alt={label} loading="lazy" className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]" />
+      <span className="absolute left-2 bottom-2 text-[9px] tracking-[0.25em] uppercase text-ink/55">{label}</span>
+    </button>
+  )
+  return (
+    <div className={cn('grid grid-cols-2 md:grid-rows-2 gap-px', isLight ? 'bg-paper-border' : 'bg-border', className)}>
+      {tile(look.back, 'Back', 'col-span-2 md:col-span-1 md:row-span-2 aspect-square md:aspect-auto')}
+      {/* Senza colletto su Gelato il fronte prende tutta la colonna. */}
+      {tile(look.front, 'Front', look.collar ? 'aspect-square md:aspect-auto' : 'col-span-2 md:col-span-1 md:row-span-2 aspect-square md:aspect-auto')}
+      {look.collar && tile(look.collar, 'Collar', 'aspect-square md:aspect-auto')}
+    </div>
+  )
+}
+
 // ── Main Component ────────────────────────────────────────────────────────────
 
 export default function ProductPage() {
@@ -403,6 +428,19 @@ export default function ProductPage() {
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
+  // Fronte/retro/colletto del colore scelto (vedi ColorLook). Il tipo lo dice
+  // il nome del file (scripts/import-gelato-fronts.mjs), il colore i pixel.
+  const look = (() => {
+    const imgs = product?.images || []
+    if (!imgs.some((u) => /-front-\d+\./.test(u))) return null
+    const owners = buildImageOwnership(product.colors, imgs, product.imageColors)
+    const mine = (u) => owners.get(u)?.id === selectedColor
+    return {
+      back:   imgs.find((u) => mine(u) && !/-(front|collar)-\d+\./.test(u) && !/\/hf_/.test(u)),
+      front:  imgs.find((u) => mine(u) && /-front-\d+\./.test(u)),
+      collar: imgs.find((u) => mine(u) && /-collar-\d+\./.test(u)) ?? imgs.find((u) => /-collar-\d+\./.test(u)),
+    }
+  })()
   const [selectedFrame, setSelectedFrame] = useState('none')
   const [activeImage,   setActiveImage]   = useState(videoInfo ? -1 : 0)
   const [added,         setAdded]         = useState(false)
@@ -894,6 +932,8 @@ export default function ProductPage() {
           </div>
         )}
 
+        <ColorLook look={look} isLight={isLight} onOpen={openLightbox} className="mx-4 mb-2" />
+
         {/* ── Product info ───────────────────────────────────────────────── */}
         <div className="px-4 pt-5 pb-4 relative">
           {/* ── Hold to reveal — square button, absolute top-right ─── */}
@@ -1263,6 +1303,7 @@ export default function ProductPage() {
 
             {/* ── Images / Video ── */}
             <div className="space-y-3">
+              <ColorLook look={look} isLight={isLight} onOpen={openLightbox} className="aspect-[4/3] mb-6" />
               {activeImage === -1 && videoInfo ? (
                 <div className="aspect-[4/5] overflow-hidden bg-black">
                   {videoInfo.type === 'mp4' ? (

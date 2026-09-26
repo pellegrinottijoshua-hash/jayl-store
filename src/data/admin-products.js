@@ -7611,14 +7611,7 @@ export const adminProducts = [
       "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-cardinal-red-01.jpg",
       "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-light-blue-01.jpg",
       "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-black-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-red-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-black-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-cardinal-red-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-light-blue-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-mockup-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-mockup-02.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-red-01.jpg",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-charizard-back-t-shirt-white-01.jpg"
+      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-red-01.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_154142_fdba9a41-65a6-491c-969a-d16a29360963.png": "Dynamic Charizard illustration on a Gildan shirt, showcasing contemporary art's playful style.",
@@ -8028,12 +8021,12 @@ export const adminProducts = [
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-carolina-blue-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-gelato-01.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-gelato-02.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-gelato-03.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-gelato-04.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-gelato-05.jpg",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-gelato-06.jpg"
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-02.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-03.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-04.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-collar-01.jpg",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-psyduck-back-t-shirt-front-05.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_105617_aa3298eb-d63e-42d4-9562-ab261152a7a2.png": "Vibrant Psyduck in retro style, bringing contemporary art flair to a nostalgic 90s theme.",
@@ -8816,7 +8809,14 @@ export const adminProducts = [
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-sand-01.jpg",
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg",
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-rs-sport-grey-01.jpg",
-      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-military-green-01.jpg"
+      "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-military-green-01.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-front-01.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-front-02.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-front-03.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-front-04.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-front-05.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-front-06.jpg",
+      "/images/cool-snorlax-back-t-shirt/cool-snorlax-back-t-shirt-collar-01.jpg"
     ],
     "imageAlts": {
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-mockup-01.jpg": "Snorlax slumped and snoozing with a lazy smile in retro 90s anime style on a premium JAYL tee.",
@@ -9222,7 +9222,14 @@ export const adminProducts = [
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-military-green-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-azalea-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-irish-green-01.jpg",
-      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-black-01.jpg"
+      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-black-01.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-front-01.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-front-02.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-front-03.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-collar-01.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-front-04.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-front-05.jpg",
+      "/images/cool-vileplume-back-t-shirt/cool-vileplume-back-t-shirt-front-06.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130147_8c434956-4fa4-4a43-b4f1-a18041f7571e.jpeg": "Bright back view of a Cool Vileploom Pokémon T-shirt showcasing retro anime art in vibrant colors.",
@@ -9632,7 +9639,14 @@ export const adminProducts = [
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-navy-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-navy-01.jpg",
-      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-purple-01.jpg"
+      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-purple-01.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-front-01.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-front-02.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-collar-01.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-front-03.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-front-04.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-front-05.jpg",
+      "/images/cool-mewtwo-back-t-shirt/cool-mewtwo-back-t-shirt-front-06.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_133224_a1409471-8ad2-48de-b617-371ce03d39ac.jpeg": "Mewtwo artwork showcased on a contemporary-style T-shirt, depicting vibrant shades of purple.",
@@ -10043,7 +10057,13 @@ export const adminProducts = [
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-azalea-01.jpg",
-      "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
+      "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg",
+      "/images/cool-ditto-back-t-shirt/cool-ditto-back-t-shirt-front-01.jpg",
+      "/images/cool-ditto-back-t-shirt/cool-ditto-back-t-shirt-front-02.jpg",
+      "/images/cool-ditto-back-t-shirt/cool-ditto-back-t-shirt-front-03.jpg",
+      "/images/cool-ditto-back-t-shirt/cool-ditto-back-t-shirt-collar-01.jpg",
+      "/images/cool-ditto-back-t-shirt/cool-ditto-back-t-shirt-front-04.jpg",
+      "/images/cool-ditto-back-t-shirt/cool-ditto-back-t-shirt-front-05.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_145015_a7cd799e-df6e-483d-abd7-a48669f572c4.png": "Front view of a Cool Ditto back T-Shirt with vibrant contemporary art on a relaxed fit.",
@@ -11200,7 +11220,14 @@ export const adminProducts = [
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-navy-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-carolina-blue-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-royal-01.jpg",
-      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-black-01.jpg"
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-black-01.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-front-01.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-front-02.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-collar-01.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-front-03.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-front-04.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-front-05.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-blastoise-back-t-shirt-front-06.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_114535_40929378-0ff1-41cd-b470-be404a24079a.jpg": "Blastoise artwork dominates this retro 90s style T-shirt in vibrant blue tones.",
@@ -11589,7 +11616,14 @@ export const adminProducts = [
       "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-natural-01.jpg",
       "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-rs-sport-grey-01.jpg",
       "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-sand-01.jpg",
-      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg"
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-black-01.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-front-01.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-front-02.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-front-03.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-collar-01.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-front-04.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-front-05.jpg",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-kangaskhan-back-t-shirt-front-06.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_122957_baf157f7-40d7-4b20-a7be-2c6209ef311f.png": "A vibrant Kangaskhan graphic dominates the back of this contemporary-style T-shirt.",
@@ -14350,7 +14384,13 @@ export const adminProducts = [
       "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-01.jpg",
       "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-02.jpg",
       "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-03.jpg",
-      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-04.jpg"
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-04.jpg",
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-front-01.jpg",
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-front-02.jpg",
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-front-03.jpg",
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-collar-01.jpg",
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-front-04.jpg",
+      "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-front-05.jpg"
     ],
     "imageAlts": {
       "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/slowpoke-pok-mon-back-t-shirt-cool-anime-fan--mockup-01.jpg": "Slowpoke lounging with its signature dopey grin in retro 90s anime style on a Gildan premium tee.",
@@ -14719,7 +14759,17 @@ export const adminProducts = [
       "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-07.jpg",
       "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-08.jpg",
       "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-09.jpg",
-      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-10.jpg"
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-10.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-01.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-02.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-03.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-04.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-05.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-06.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-07.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-08.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-09.jpg",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/cool-altaria-back-t-shirt-front-10.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_205355_b6ed0e0d-1629-439a-be6b-c33d1606a02f.png": "A vibrant Altaria back print shirt showcasing a large, colorful anime design in a contemporary art style.",
@@ -15759,7 +15809,17 @@ export const adminProducts = [
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-07.jpg",
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-08.jpg",
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-09.jpg",
-      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-10.jpg"
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-10.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-01.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-02.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-03.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-04.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-05.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-06.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-07.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-08.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-09.jpg",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-ursaring-back-t-shirt-front-10.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_143851_905e0306-d981-4989-bc3e-053c05dfc660-copia.png": "Bold Ursaring back print on a graphic tee showcasing contemporary art vibes.",
@@ -16676,7 +16736,15 @@ export const adminProducts = [
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-05.jpg",
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-06.jpg",
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-07.jpg",
-      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-08.jpg"
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-08.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-01.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-02.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-03.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-04.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-05.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-06.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-07.jpg",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/cool-raikou-back-shirt-front-08.jpg"
     ],
     "imageAlts": {
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-mockup-01.jpg": "Dynamic Raikou charged with electricity, captured mid-pounce in retro 90s anime style, on a premium JAYL tee.",
@@ -17096,7 +17164,16 @@ export const adminProducts = [
       "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-06.jpg",
       "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-07.jpg",
       "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-08.jpg",
-      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-09.jpg"
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-09.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-01.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-02.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-03.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-04.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-05.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-06.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-07.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-08.jpg",
+      "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-front-09.jpg"
     ],
     "imageAlts": {
       "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/suicune-back-print-shirt-funny-retro-90s-anim-mockup-01.jpg": "Majestic Suicune leaping gracefully among splashes of blue and white, illustrated in vibrant retro 90s anime style on a premium JAYL tee.",
@@ -17556,7 +17633,17 @@ export const adminProducts = [
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-06.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-07.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-08.jpg",
-      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-09.jpg"
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-09.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-01.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-02.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-03.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-04.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-05.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-06.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-07.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-08.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-front-09.jpg",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/cool-entei-back-t-shirt-collar-01.jpg"
     ],
     "imageAlts": {
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170349_6731594b-1b20-4d97-b354-3317511a3cd5.png": "The Entei Back Print Shirt showcases a vibrant retro 90s anime design on a classic tee.",
@@ -18015,7 +18102,15 @@ export const adminProducts = [
       "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-05.jpg",
       "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-06.jpg",
       "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-07.jpg",
-      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-08.jpg"
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-08.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-01.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-02.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-03.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-04.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-05.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-06.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-07.jpg",
+      "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-front-08.jpg"
     ],
     "imageAlts": {
       "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/arcanine-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg": "Arcanine charging forward with flames flaring against a retro 90s anime backdrop on a Gildan premium tee.",
