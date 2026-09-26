@@ -1087,7 +1087,7 @@ export const adminProducts = [
     ],
     "printCost": 705,
     "createdAt": "2026-05-09T16:02:13.381Z",
-    "updatedAt": "2026-07-09T13:35:32.075Z",
+    "updatedAt": "2026-09-26T14:38:24.860Z",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_144449_8431fe74-1527-4968-ac80-50317d204177.jpg",
     "relatedProducts": [],
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg",
@@ -1202,6 +1202,9 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260511_132107_a61ef880-509a-41c4-97e0-f53b13745350.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260522_010742_9ea159da-6b3e-4715-8069-c2834938f23d.jpg"
+    ],
+    "storeColors": [
+      "black"
     ]
   },
   {
