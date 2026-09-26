@@ -358,12 +358,6 @@ export default function DropHero() {
       <div className="pt-3 pb-3 text-center text-cream">
         <p className="font-display font-light leading-none" style={{ fontSize: 'clamp(4.25rem, 20vw, 6.5rem)' }}>
           <span className="relative inline-block">
-            {/* Drop di pezzi d'archivio in promo: il vecchio prezzo barrato. */}
-            {showingCurrent && cfg.archivePrice > price && (
-              <span className="absolute right-full top-[0.15em] mr-[0.12em] text-[0.3em] line-through text-cream/45">
-                {formatPrice(cfg.archivePrice).replace(/[^\d.,]/g, '')}
-              </span>
-            )}
             {formatPrice(price).replace(/[^\d.,]/g, '')}
             <span className="absolute left-full top-[0.1em] ml-[0.05em] text-[0.34em]"><SwapSymbol /></span>
           </span>

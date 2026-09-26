@@ -173,6 +173,103 @@ function ArchiveReel({ items }) {
   )
 }
 
+// Desktop: tre pezzi dell'archivio affiancati, a tutta altezza, che scorrono
+// piano verso sinistra da soli; si fermano sotto il mouse e si trascinano
+// (o si scorrono col trackpad). La lista e' duplicata: a meta' strada si torna
+// all'inizio senza salto visibile.
+function ArchiveStrip({ items }) {
+  const ref  = useRef(null)
+  const drag = useRef({ active: false, hovered: false, startX: 0, startScroll: 0, moved: false })
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const SPEED = 28 // px/s
+    let last = null
+    let pos = el.scrollLeft
+    let raf
+    const tick = (now) => {
+      const d = drag.current
+      if (!d.active && !d.hovered) {
+        const dt = last !== null ? now - last : 0
+        pos += (SPEED / 1000) * dt
+        if (pos >= el.scrollWidth / 2) pos -= el.scrollWidth / 2
+        el.scrollLeft = pos
+      } else {
+        pos = el.scrollLeft
+      }
+      last = now
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  if (!items.length) return null
+
+  const onDown = (e) => {
+    drag.current = { ...drag.current, active: true, startX: e.clientX, startScroll: ref.current.scrollLeft, moved: false }
+    e.preventDefault()
+  }
+  const onMove = (e) => {
+    const d = drag.current
+    if (!d.active) return
+    const dx = e.clientX - d.startX
+    if (Math.abs(dx) > 4) d.moved = true
+    let next = d.startScroll - dx
+    const half = ref.current.scrollWidth / 2
+    if (next < 0) next += half
+    if (next >= half) next -= half
+    ref.current.scrollLeft = next
+  }
+  const stop = () => { drag.current.active = false }
+
+  return (
+    <section data-nav-theme="dark" className="relative h-[100svh] min-h-[560px] w-screen bg-off-black overflow-hidden" aria-label="The Archive">
+      <div
+        ref={ref}
+        className="flex h-full overflow-x-scroll scrollbar-hide select-none cursor-grab active:cursor-grabbing"
+        onMouseEnter={() => { drag.current.hovered = true }}
+        onMouseLeave={() => { drag.current.hovered = false; stop() }}
+        onMouseDown={onDown}
+        onMouseMove={onMove}
+        onMouseUp={stop}
+      >
+        {[...items, ...items].map((p, i) => {
+          const clone = i >= items.length
+          return (
+            <Link
+              key={`${p.id}-${i}`}
+              to={`/product/${p.id}`}
+              draggable={false}
+              aria-hidden={clone || undefined}
+              tabIndex={clone ? -1 : undefined}
+              onClick={(e) => { if (drag.current.moved) e.preventDefault() }}
+              className="group relative shrink-0 w-[33.3333vw] h-full overflow-hidden border-r border-off-black"
+            >
+              <img
+                src={p.heroImage ?? p.image}
+                alt={clone ? '' : (p.altText || p.name)}
+                loading="lazy"
+                draggable={false}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] pointer-events-none"
+                style={{ objectPosition: '50% 30%' }}
+              />
+              <div className="absolute inset-x-0 bottom-0 px-6 pb-12 pt-28 text-center bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none">
+                <p className="text-white text-[11px] tracking-[0.32em] uppercase">{shortName(p.name)}</p>
+                <p className="font-display font-light text-white text-4xl leading-none mt-2">
+                  <Money cents={basePriceFor(p.id, null, p, dropCfg)} />
+                </p>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+      <p className="pointer-events-none absolute left-8 top-[72px] text-[10px] tracking-[0.32em] uppercase text-white/80">The Archive</p>
+    </section>
+  )
+}
+
 export default function HomePage() {
   const [navTheme, setNavTheme] = useState('dark')
   const { setPageTheme, setActiveSection } = useThemeStore()
@@ -243,7 +340,7 @@ export default function HomePage() {
       )}
 
       {/* ════ SCREEN 2 — L'archivio, una foto a schermo intero alla volta ════ */}
-      <ArchiveReel items={archiveProducts} />
+      {desktop ? <ArchiveStrip items={archiveProducts} /> : <ArchiveReel items={archiveProducts} />}
 
       {/* ════ Recensioni — subito sotto l'archivio, una alla volta.
           Si nasconde da sola finché reviews.json è vuoto. ════ */}
