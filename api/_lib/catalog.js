@@ -10,6 +10,7 @@
 // Server code wants the full records anyway. See scripts/check-api-imports.js.
 import { adminProducts as products } from '../../src/data/admin-products.js'
 import { basePriceFor, bundleDiscount, productState, DROP } from './drop.js'
+import { sidesFor, mainSide } from '../../src/lib/printSides.js'
 
 const productMap = new Map(products.map((p) => [p.id, p]))
 
@@ -83,6 +84,17 @@ export function priceItem(raw) {
   // sizes[].price: un drop ha un prezzo unico, non una scala per taglia.
   const unitPrice = basePriceFor(productId, sizeObj, product) + (frameObj?.price ?? 0)
 
+  // Lato di stampa scelto (maglie back con anche il fronte, vedi
+  // src/lib/printSides.js). Stesso prezzo; qui si rifiuta solo un lato che il
+  // prodotto non offre, cosi' il pagamento non parte per un capo non stampabile.
+  let print = null
+  if (raw.print != null && raw.print !== '') {
+    if (!sidesFor(product, colorObj?.id ?? null).includes(raw.print)) {
+      return { ok: false, error: `Invalid print side for ${productId}` }
+    }
+    print = raw.print === mainSide(product) ? null : raw.print
+  }
+
   return {
     ok: true,
     item: {
@@ -93,6 +105,7 @@ export function priceItem(raw) {
       variantObj,  // null for non-variant products; used by create-order to resolve gelatoVariantId
       quantity:  quantityNum,
       unitPrice,
+      print,
       product,  // attached for server-side use; never serialise this whole thing back to clients
     },
   }
@@ -202,9 +215,11 @@ export function bundleAdjustment(items, cfg) {
 
 /** Encode the canonical, server-priced item list for storage in Stripe metadata. */
 export function encodeItemsForMetadata(items) {
-  // Compact form: pid|size|frame|color|qty|unitPrice
+  // Compact form: pid|size|frame|color|qty|unitPrice[|print] — il 7° campo
+  // solo quando il cliente ha scelto l'altro lato, cosi' i metadata degli
+  // ordini di prima si leggono identici.
   return items
-    .map((i) => [i.productId, i.size || '-', i.frame || 'none', i.color || '-', i.quantity, i.unitPrice].join('|'))
+    .map((i) => [i.productId, i.size || '-', i.frame || 'none', i.color || '-', i.quantity, i.unitPrice, ...(i.print ? [i.print] : [])].join('|'))
     .join(';')
 }
 
@@ -212,7 +227,7 @@ export function encodeItemsForMetadata(items) {
 export function decodeItemsFromMetadata(encoded) {
   if (!encoded || typeof encoded !== 'string') return []
   return encoded.split(';').filter(Boolean).map((part) => {
-    const [productId, size, frame, color, qty, unitPrice] = part.split('|')
+    const [productId, size, frame, color, qty, unitPrice, print] = part.split('|')
     return {
       productId,
       size:  size === '-' ? null : size,
@@ -220,6 +235,7 @@ export function decodeItemsFromMetadata(encoded) {
       color: color === '-' ? null : color,
       quantity:  parseInt(qty, 10) || 1,
       unitPrice: parseInt(unitPrice, 10) || 0,
+      print:     print || null,
       product:   productMap.get(productId) || null,
     }
   })

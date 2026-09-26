@@ -14,6 +14,9 @@ import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
+// Nome fisso per il file del secondo lato: rigenerarlo sovrascrive, non accumula.
+const ALT_FILENAME = 'design-front.png'
+
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png'
 
@@ -779,6 +782,8 @@ export default function AdminProductPage() {
   const [videoUrl, setVideoUrl]     = useState('')
   const [gelatoUid, setGelatoUid]   = useState('')
   const [printFileUrl,    setPrintFileUrl]    = useState('')
+  // Secondo lato di stampa (fronte di una maglia back): opzione "Print" in negozio.
+  const [altPrintFileUrl, setAltPrintFileUrl] = useState('')
   const [neckLabelUrl,    setNeckLabelUrl]    = useState('')
   const [uploadingDesign, setUploadingDesign] = useState(false)
   const [designUploadErr, setDesignUploadErr] = useState('')
@@ -880,6 +885,7 @@ export default function AdminProductPage() {
       setVideoUrl(p.videoUrl || '')
       setGelatoUid(p.gelatoProductId || '')
       setPrintFileUrl(p.printFileUrl || '')
+      setAltPrintFileUrl(p.altPrintFileUrl || '')
       setNeckLabelUrl(p.neckLabelUrl || '')
       setFeatured(p.featured === 1 ? 1 : p.featured === 2 ? 2 : false)
       setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
@@ -1260,6 +1266,7 @@ export default function AdminProductPage() {
         relatedProducts: relatedProducts.filter(Boolean),
         gelatoProductId: gelatoUid.trim() || null,
         ...(printFileUrl.trim() ? { printFileUrl: printFileUrl.trim() } : {}),
+        altPrintFileUrl: altPrintFileUrl.trim() || undefined,
         ...(neckLabelUrl.trim() ? { neckLabelUrl: neckLabelUrl.trim() } : {}),
         adminManaged: true,
         // ── media (unified save — no need to press a separate button) ──
@@ -1367,6 +1374,9 @@ export default function AdminProductPage() {
   // Which side this product prints on. Derived from the Gelato productUid exactly
   // like api/_lib/placement.js does, so the preview matches what Gelato receives.
   const placement = useMemo(() => detectPlacement(product), [product])
+  // Il lato opposto: per una maglia back e' il fronte (piccolo, petto sinistro).
+  const altType = placement.type === 'back' ? 'default' : 'back'
+  const typeFor = (target) => (target === 'alt' ? altType : placement.type)
 
   /**
    * Step 1 — pick a file. When auto-fit is on we do NOT upload yet: the artwork
@@ -1376,20 +1386,20 @@ export default function AdminProductPage() {
    * Uploading straight away was how wrongly-placed designs used to reach the
    * repo unnoticed.
    */
-  const handlePickDesign = async (file) => {
+  const handlePickDesign = async (file, target = 'main') => {
     if (!file) return
     setDesignUploadErr(''); setRepositionErr('')
     const isRaster = /^image\/(png|jpeg|webp)$/.test(file.type)
     if (!autoFitDesign || !isRaster) {
       // PDFs and SVGs cannot be measured on a canvas — upload them untouched.
-      return handleUploadDesign(file)
+      return handleUploadDesign(file, target)
     }
     setFittingDesign(true)
     try {
-      const { art, transform } = await prepareDesignForPlacement(file, placement.type)
+      const { art, transform } = await prepareDesignForPlacement(file, typeFor(target))
       setDesignEditor({
-        art, transform,
-        filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png'),
+        art, transform, target,
+        filename: target === 'alt' ? ALT_FILENAME : sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png'),
         mode: 'new',
       })
     } catch (e) {
@@ -1408,19 +1418,20 @@ export default function AdminProductPage() {
    * file non lo fa saltare alla posizione di default perdendo un aggiustamento
    * fatto in una sessione precedente.
    */
-  const handleRepositionExisting = async () => {
-    if (!printFileUrl) return
+  const handleRepositionExisting = async (target = 'main') => {
+    const url = target === 'alt' ? altPrintFileUrl : printFileUrl
+    if (!url) return
     setRepositionErr(''); setDesignUploadErr('')
     setFittingDesign(true)
     try {
-      const img = await loadImageFromUrl(printFileUrl)
+      const img = await loadImageFromUrl(url)
       const art = extractArt(img)
       const artAspect = art.height / art.width
       const measured = measurePlacement(img)
-      const transform = clampTransform(measured || defaultTransform(placement.type, artAspect))
+      const transform = clampTransform(measured || defaultTransform(typeFor(target), artAspect))
       setDesignEditor({
-        art, transform,
-        filename: printFileUrl.split('/').pop() || 'design.png',
+        art, transform, target,
+        filename: target === 'alt' ? ALT_FILENAME : (url.split('/').pop() || 'design.png'),
         mode: 'existing',
       })
     } catch (e) {
@@ -1433,14 +1444,38 @@ export default function AdminProductPage() {
     }
   }
 
+  /**
+   * Il fronte dallo stesso disegno del retro: ritaglia l'arte dal file di
+   * stampa principale e apre l'editor con la posizione di default del lato
+   * opposto (petto sinistro). Stesso disegno, niente file da ricaricare.
+   */
+  const handleAltFromMain = async () => {
+    if (!printFileUrl) return
+    setRepositionErr(''); setDesignUploadErr('')
+    setFittingDesign(true)
+    try {
+      const img = await loadImageFromUrl(printFileUrl)
+      const art = extractArt(img)
+      setDesignEditor({
+        art, target: 'alt', mode: 'new', filename: ALT_FILENAME,
+        transform: clampTransform(defaultTransform(altType, art.height / art.width)),
+      })
+    } catch (e) {
+      setRepositionErr(`${e.message} — non riesco a leggere il file di stampa del retro.`)
+    } finally {
+      setFittingDesign(false)
+    }
+  }
+
   /** Step 2 — confirm the edited placement and commit it. */
   const handleConfirmDesign = async (transform) => {
     if (!designEditor) return
-    const { blob } = await renderPrintFile(designEditor.art, transform, placement.type)
+    const target = designEditor.target || 'main'
+    const { blob } = await renderPrintFile(designEditor.art, transform, typeFor(target))
     const file = new File([blob], designEditor.filename, { type: 'image/png' })
     // Keep the editor open on failure so the operator can retry without
     // re-picking/re-measuring the source file and losing their adjustment.
-    if (await handleUploadDesign(file)) setDesignEditor(null)
+    if (await handleUploadDesign(file, target)) setDesignEditor(null)
   }
 
   /**
@@ -1452,8 +1487,9 @@ export default function AdminProductPage() {
    * deadline is enforced with an explicit race, and each step names itself so a
    * stall is attributable instead of mysterious.
    */
-  const handleUploadDesign = async (file) => {
+  const handleUploadDesign = async (file, target = 'main') => {
     if (!file) return false
+    const setUrl = target === 'alt' ? setAltPrintFileUrl : setPrintFileUrl
     const ctrl = new AbortController()
     const deadline = (promise, ms, phase) => Promise.race([
       promise,
@@ -1484,7 +1520,7 @@ export default function AdminProductPage() {
         api('upload-design', { productId: id, filename: sanitized, blobUrl: blob.url }, ctrl.signal),
         180_000, 'commit su GitHub',
       )
-      setPrintFileUrl(result.url)
+      setUrl(result.url)
       if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
       setDesignProgress(null)
       return true
@@ -1503,7 +1539,7 @@ export default function AdminProductPage() {
           api('upload-design', { productId: id, filename: sanitized, dataUrl }),
           120_000, 'upload base64',
         )
-        setPrintFileUrl(result.url)
+        setUrl(result.url)
         if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
         setDesignProgress(null)
         return true
@@ -2455,7 +2491,7 @@ export default function AdminProductPage() {
                     </label>
 
                     {/* Editor di posizionamento — sposta/ridimensiona prima di caricare */}
-                    {designEditor && (
+                    {designEditor && (designEditor.target || 'main') === 'main' && (
                       <PrintPlacementEditor
                         art={designEditor.art}
                         initialTransform={designEditor.transform}
@@ -2501,7 +2537,7 @@ export default function AdminProductPage() {
                           {printFileUrl.split('/').pop()}
                         </a>
                         <button
-                          onClick={handleRepositionExisting}
+                          onClick={() => handleRepositionExisting('main')}
                           disabled={fittingDesign || uploadingDesign}
                           className="border border-indigo-800/60 hover:border-indigo-600 text-indigo-400 text-xs px-2 py-1 whitespace-nowrap disabled:opacity-40 transition-colors"
                           title="Sposta o ridimensiona questo file di stampa"
@@ -2543,6 +2579,66 @@ export default function AdminProductPage() {
                         </p>
                       </div>
                     )}
+                  </div>
+                </Field>
+
+                {/* Secondo lato: il fronte della maglia back (opzione "Print" in negozio) */}
+                <Field
+                  label={altType === 'default' ? 'File di stampa FRONTE (opzione Front in negozio)' : 'File di stampa RETRO (opzione Back in negozio)'}
+                  hint="Stesso disegno, sull'altro lato. Con questo file la scheda prodotto offre la scelta Back / Front allo stesso prezzo; senza, resta solo il lato principale."
+                >
+                  <div className="space-y-2">
+                    {designEditor && designEditor.target === 'alt' && (
+                      <PrintPlacementEditor
+                        art={designEditor.art}
+                        initialTransform={designEditor.transform}
+                        placementType={altType}
+                        busy={uploadingDesign}
+                        onConfirm={handleConfirmDesign}
+                        onCancel={() => setDesignEditor(null)}
+                      />
+                    )}
+                    {altPrintFileUrl ? (
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="shrink-0 border border-gray-800 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:12px_12px]"
+                          style={{ width: 54, height: 54 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
+                        >
+                          <img src={altPrintFileUrl} alt="File di stampa del secondo lato" className="w-full h-full object-contain" />
+                        </div>
+                        <a href={altPrintFileUrl} target="_blank" rel="noreferrer"
+                           className="text-indigo-400 text-xs font-mono truncate max-w-xs hover:underline">
+                          {altPrintFileUrl.split('/').pop()}
+                        </a>
+                        <button
+                          onClick={() => handleRepositionExisting('alt')}
+                          disabled={fittingDesign || uploadingDesign}
+                          className="border border-indigo-800/60 hover:border-indigo-600 text-indigo-400 text-xs px-2 py-1 whitespace-nowrap disabled:opacity-40 transition-colors"
+                        >
+                          🎯 Riposiziona
+                        </button>
+                        <button onClick={() => setAltPrintFileUrl('')} className="text-gray-600 hover:text-red-400 text-xs" title="Togli l'opzione dal negozio">✕</button>
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 text-xs italic">Nessun file — in negozio c'e' solo il lato principale.</p>
+                    )}
+                    <div className="flex gap-2 flex-wrap">
+                      <button
+                        onClick={handleAltFromMain}
+                        disabled={!printFileUrl || fittingDesign || uploadingDesign}
+                        className="bg-indigo-800 hover:bg-indigo-700 disabled:opacity-40 text-white text-xs px-3 py-1.5 transition-colors"
+                      >
+                        ✨ {altPrintFileUrl ? 'Rigenera' : 'Genera'} dal disegno principale
+                      </button>
+                      <label className={`cursor-pointer ${uploadingDesign || fittingDesign ? 'opacity-50 pointer-events-none' : ''}`}>
+                        <input type="file" accept="image/png,image/jpeg" className="hidden"
+                          onChange={e => { handlePickDesign(e.target.files?.[0], 'alt'); e.target.value = '' }} />
+                        <span className="inline-block border border-indigo-800/60 hover:border-indigo-600 text-indigo-400 text-xs px-3 py-1.5 transition-colors">
+                          ⬆ Carica un disegno diverso
+                        </span>
+                      </label>
+                    </div>
+                    <p className="text-[11px] text-gray-600">Ricorda di salvare il prodotto.</p>
                   </div>
                 </Field>
 

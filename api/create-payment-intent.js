@@ -8,7 +8,7 @@ import {
   bundleAdjustment,
   CURRENCY,
 } from './_lib/catalog.js'
-import { resolvePlacement, assertPrintable } from './_lib/placement.js'
+import { resolveItemPrint } from './_lib/placement.js'
 import { applyCors } from './_lib/cors.js'
 import { productState, isDropOpen, capFor, getDrop, VAULT, DROP } from './_lib/drop.js'
 import { readSales } from './_lib/drop-sales.js'
@@ -163,7 +163,7 @@ export default async function handler(req, res) {
       // than repeating the matching rules and risking a different answer here.
       const productUid = item.variantObj?.gelatoVariantId ?? item.product?.gelatoProductId
       try {
-        assertPrintable(item.product, resolvePlacement(item.product, productUid))
+        resolveItemPrint(item.product, productUid, item.print)
       } catch (err) {
         console.error('[create-payment-intent] unfulfillable item blocked:', err.message)
         return res.status(409).json({

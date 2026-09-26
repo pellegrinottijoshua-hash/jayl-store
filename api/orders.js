@@ -21,7 +21,7 @@ import {
   buildWelcomeEmail,
   STORE_EMAIL_ADDRESS,
 } from './_lib/email.js'
-import { resolvePlacement, assertPrintable } from './_lib/placement.js'
+import { resolveItemPrint } from './_lib/placement.js'
 import { ghGet, ghPut } from './_lib/github.js'
 import { getDrop, capFor, productState, basePriceFor, isDropOpen, VAULT, DROP } from './_lib/drop.js'
 import { readSales, recordDropSale } from './_lib/drop-sales.js'
@@ -105,7 +105,7 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
         v.size?.toUpperCase() === item.size?.toUpperCase()
       return colorMatch && sizeMatch
     })
-    const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
+    const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}${item.print ? `__${item.print}` : ''}`
     return { item, gelatoVariant, itemRef }
   })
 
@@ -113,13 +113,13 @@ async function createGelatoOrder({ paymentIntent, items, shippingAddress, email 
   const mappedItems = resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
     // gelatoVariantId is the full productUid (e.g. apparel_product_gca_t-shirt_..._gco_sand_...)
     // gelatoProductId is the fallback (either the same uid or a store product UUID)
-    const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+    const baseUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
     // Which side prints is decided by Gelato's own gpr_<front>-<back> segment in
-    // the productUid, NOT by the collection name. See api/_lib/placement.js.
-    const placement = resolvePlacement(item.product, productUid)
-    // Throws when the print file is missing or is a mockup photo — front and back
-    // alike. Never fall back to item.product.image: that is a photograph.
-    const printFileUrl = assertPrintable(item.product, placement)
+    // the productUid, NOT by the collection name — and, when the customer picked
+    // the other side (item.print), by the same uid with gpr swapped plus the
+    // alternate print file. Throws when the print file is missing or is a
+    // mockup photo. See api/_lib/placement.js.
+    const { productUid, placement, printFileUrl } = resolveItemPrint(item.product, baseUid, item.print)
     console.log('[create-order] item', item.productId,
       'color:', item.color, 'size:', item.size,
       '→ productUid:', productUid?.slice(0, 80),

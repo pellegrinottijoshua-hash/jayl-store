@@ -252,6 +252,8 @@ function CheckoutForm() {
               size:     i.size  || null,
               frame:    i.frame || 'none',
               color:    i.color || null,
+            print:    i.print || null,
+              print:    i.print || null,
               quantity: i.quantity,
             })),
             shippingAddress: {
@@ -410,6 +412,7 @@ function CheckoutForm() {
             size:     i.size  || null,
             frame:    i.frame || 'none',
             color:    i.color || null,
+            print:    i.print || null,
             quantity: i.quantity,
           })),
           shippingAddress: {

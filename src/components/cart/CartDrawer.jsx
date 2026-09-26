@@ -138,6 +138,9 @@ export default function CartDrawer() {
                           {item.color && (
                             <span className="text-xs text-text-muted capitalize">{item.color}</span>
                           )}
+                          {item.print && (
+                            <span className="text-xs text-accent">{item.print === 'front' ? 'Front print' : 'Back print'}</span>
+                          )}
                           {item.frame && item.frame !== 'none' && (
                             <span className="text-xs text-text-muted capitalize">
                               {slugToTitle(item.frame)} frame

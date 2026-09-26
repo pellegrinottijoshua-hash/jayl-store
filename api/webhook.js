@@ -1,7 +1,7 @@
 import Stripe from 'stripe'
 import { decodeItemsFromMetadata, colorToSlug, CURRENCY } from './_lib/catalog.js'
 import { sendEmail, buildOrderConfirmationEmail, TRUSTPILOT_AFS_BCC } from './_lib/email.js'
-import { resolvePlacement, assertPrintable } from './_lib/placement.js'
+import { resolveItemPrint } from './_lib/placement.js'
 import { recordDropSale } from './_lib/drop-sales.js'
 
 // Disable Vercel's default body parser — Stripe needs the raw body to verify the signature
@@ -104,7 +104,7 @@ export async function fulfillIfNeeded(paymentIntent) {
         v.size?.toUpperCase() === item.size?.toUpperCase()
       return colorMatch && sizeMatch
     })
-    const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}`
+    const itemRef = `${item.productId}__${item.size || '-'}__${item.frame || 'none'}__${item.color || '-'}${item.print ? `__${item.print}` : ''}`
     return { item, gelatoVariant, itemRef }
   })
 
@@ -121,11 +121,11 @@ export async function fulfillIfNeeded(paymentIntent) {
     customerReferenceId: paymentIntent.metadata?.email || 'unknown',
     currency:            CURRENCY.toUpperCase(),
     items: resolvedItems.map(({ item, gelatoVariant, itemRef }) => {
-      const productUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
-      // Placement comes from Gelato's gpr_<front>-<back> uid segment, not from the
-      // collection name. Shared with create-order so the two can never drift.
-      const placement    = resolvePlacement(item.product, productUid)
-      const printFileUrl = assertPrintable(item.product, placement)
+      const baseUid = gelatoVariant?.gelatoVariantId ?? item.product.gelatoProductId
+      // Placement comes from Gelato's gpr_<front>-<back> uid segment (swapped when
+      // the customer picked the other side). Shared with create-order so the two
+      // can never drift.
+      const { productUid, placement, printFileUrl } = resolveItemPrint(item.product, baseUid, item.print)
       console.log('[webhook] item', item.productId,
         'color:', item.color, 'size:', item.size,
         '→ productUid:', productUid?.slice(0, 80),

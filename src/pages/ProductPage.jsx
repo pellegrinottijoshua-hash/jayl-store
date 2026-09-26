@@ -14,6 +14,7 @@ import { findColorImageIndex, findImageColor, buildImageOwnership } from '@/lib/
 import { resolveSwatchHex } from '@/lib/apparelColors'
 import { shownColors, imagesForShownColors } from '@/lib/shownColors'
 import { sizeGuideFor, bySize } from '@/data/sizeGuides'
+import { sidesFor, mainSide } from '@/lib/printSides'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
@@ -269,20 +270,73 @@ function StarRating({ value, onChange, isLight }) {
 // com'e' la stampa dietro e com'e' finito il colletto. Desktop: retro grande
 // a sinistra, fronte e colletto impilati a destra. Mobile: retro sopra,
 // fronte e colletto affiancati sotto.
+// Area di stampa del fronte sul mockup Gelato Gildan 64000 (misurata sui
+// loro render: busto 20"≈59% della larghezza, area 12×16" centrata, ~3" sotto
+// lo scollo). Il file di stampa del fronte e' il canvas intero di quest'area,
+// quindi appoggiarlo qui lo mette esattamente dove Gelato stampa.
+const FRONT_PRINT_AREA = { left: 0.3225, top: 0.19, width: 0.354, height: 0.472 }
+
 function ColorLook({ look, onOpen, className = '' }) {
-  if (!look?.front || !look?.back) return null
-  const tile = (src, label, cls) => src && (
-    <button type="button" onClick={() => onOpen(src)} className={cn('relative overflow-hidden group bg-white', cls)} aria-label={label}>
-      <img src={src} alt={label} loading="lazy" className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]" />
+  if (!look?.front || (!look?.back && !look?.frontPrint)) return null
+  const tile = (src, label, cls, overlay) => src && (
+    <button type="button" onClick={() => onOpen(src)} className={cn('relative overflow-hidden group bg-white', cls)} aria-label={label}
+      style={{ containerType: 'size' }}>
+      <span className="absolute inset-0 flex items-center justify-center">
+        {/* quadrato come il mockup (lato = il minore della cella), cosi' l'area
+            di stampa resta allineata alla maglia qualunque forma abbia la cella */}
+        <span className="relative transition-transform duration-500 group-hover:scale-[1.03]"
+          style={{ width: 'min(100cqw, 100cqh)', height: 'min(100cqw, 100cqh)' }}>
+          <img src={src} alt={label} loading="lazy" className="absolute inset-0 w-full h-full object-contain" />
+          {overlay && (
+            <img src={overlay} alt="" aria-hidden className="absolute pointer-events-none"
+              style={{ left: `${FRONT_PRINT_AREA.left * 100}%`, top: `${FRONT_PRINT_AREA.top * 100}%`, width: `${FRONT_PRINT_AREA.width * 100}%`, height: `${FRONT_PRINT_AREA.height * 100}%` }} />
+          )}
+        </span>
+      </span>
       <span className="absolute left-2 bottom-2 text-[9px] tracking-[0.25em] uppercase text-ink/55">{label}</span>
     </button>
   )
+  if (look.frontPrint) {
+    // Stampa davanti: il fronte con il disegno e' il protagonista, accanto il colletto.
+    return (
+      <div className={cn('grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
+        {tile(look.front, 'Front', look.collar ? 'row-span-2' : 'col-span-2 row-span-2', look.frontPrint)}
+        {look.collar && tile(look.collar, 'Collar', 'row-span-2')}
+      </div>
+    )
+  }
   return (
     <div className={cn('grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
       {tile(look.back, 'Back', 'row-span-2')}
       {/* Senza colletto il fronte prende tutta la colonna. */}
       {tile(look.front, 'Front', look.collar ? '' : 'row-span-2')}
       {look.collar && tile(look.collar, 'Collar', '')}
+    </div>
+  )
+}
+
+// Davanti o dietro: la scelta piu' importante sulla maglia, quindi grande e in
+// cima ai selettori, non un'opzione fra le altre.
+function PrintPicker({ sides, value, onChange, isLight }) {
+  if (sides.length < 2) return null
+  const opts = { back: ['Back', 'Large print on the back'], front: ['Front', 'Small print on the chest'] }
+  return (
+    <div>
+      <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', isLight ? 'text-ink' : 'text-text-primary')}>Print</p>
+      <div className="grid grid-cols-2 gap-2">
+        {sides.map((side) => {
+          const on = value === side
+          return (
+            <button key={side} type="button" onClick={() => onChange(side)}
+              className={cn('px-4 py-3 border text-left transition-colors',
+                on ? (isLight ? 'border-ink bg-ink text-white' : 'border-cream bg-cream text-off-black')
+                   : (isLight ? 'border-paper-border text-ink hover:border-ink' : 'border-border text-text-secondary hover:border-border-light'))}>
+              <span className="block text-sm font-semibold tracking-widest uppercase">{opts[side][0]}</span>
+              <span className={cn('block text-[11px] mt-0.5', on ? 'opacity-70' : 'opacity-60')}>{opts[side][1]}</span>
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -427,6 +481,12 @@ export default function ProductPage() {
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
+  // Lato di stampa (null = quello principale). Si torna al principale se il
+  // colore scelto non offre l'altro lato.
+  const [printSide, setPrintSide] = useState(null)
+  const printSides = sidesFor(product, selectedColor)
+  const activeSide = printSides.includes(printSide) ? printSide : printSides[0] ?? null
+  const altPrint = activeSide && activeSide !== mainSide(product)
   // Fronte e colletto di un colore (vedi ColorLook). Il tipo lo dice il nome
   // del file (scripts/import-gelato-fronts.mjs), il colore i pixel.
   const isDetail = (u) => /-(front|collar)-\d+\./.test(u)
@@ -438,6 +498,11 @@ export default function ProductPage() {
     const mine = (u) => allOwners.get(u)?.id === color
     return {
       back,
+      // Il file di stampa sta anche in public/: lo si serve dal sito stesso
+      // invece che da raw.githubusercontent (piu' veloce, stessa versione del deploy).
+      frontPrint: altPrint && activeSide === 'front'
+        ? product.altPrintFileUrl.replace(/^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public/, '')
+        : null,
       front:  imgs.find((u) => mine(u) && /-front-\d+\./.test(u)),
       collar: imgs.find((u) => mine(u) && /-collar-\d+\./.test(u)) ?? imgs.find((u) => /-collar-\d+\./.test(u)),
     }
@@ -705,7 +770,7 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     if (!canAddToCart) return
-    addItem(product, { size: selectedSize, color: selectedColor, frame: selectedFrame })
+    addItem(product, { size: selectedSize, color: selectedColor, frame: selectedFrame, print: altPrint ? activeSide : null })
     setAdded(true)
     openCart()
     setTimeout(() => setAdded(false), 2000)
@@ -1030,6 +1095,8 @@ export default function ProductPage() {
 
         {/* ── Variant Selectors ──────────────────────────────────────────── */}
         <div className="px-4 pt-4 space-y-5">
+
+          <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} />
 
           {/* Color pills / thumbnails */}
           {product.colors && (
@@ -1489,6 +1556,7 @@ export default function ProductPage() {
                   </div>
                 )}
 
+                <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} />
                 {product.colors && (
                   <div>
                     <div className="flex items-center justify-between mb-3">

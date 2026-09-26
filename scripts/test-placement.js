@@ -6,7 +6,8 @@
 // physically prints the wrong side of a shirt that a customer paid for. Run with:
 //   node scripts/test-placement.js
 
-import { resolvePlacement, assertPrintable, GPR_RE } from '../api/_lib/placement.js'
+import { resolvePlacement, assertPrintable, resolveItemPrint, GPR_RE } from '../api/_lib/placement.js'
+import { uidForSide, sidesFor, mainSide } from '../src/lib/printSides.js'
 
 let passed = 0
 const failures = []
@@ -101,6 +102,25 @@ check('printFileUrl valido → nessun errore, ritorna l’url',
 
 // ── Regex sanity ────────────────────────────────────────────────────────────
 check('GPR_RE estrae il codice', GPR_RE.exec(uid('0-4'))?.[1], '0-4')
+
+// ── Lato scelto dal cliente (maglia back stampata davanti) ────────────────────
+const two = { id: 'x', collection: 'cool back', variants: [{ gelatoVariantId: uid('0-4') }],
+  printFileUrl: 'https://raw/public/designs/x/design.png', altPrintFileUrl: 'https://raw/public/designs/x/design-front.png' }
+check('uidForSide front inverte il gpr', uidForSide(uid('0-4'), 'front'), uid('4-0'))
+check('uidForSide back lascia il retro', uidForSide(uid('0-4'), 'back'), uid('0-4'))
+check('mainSide da gpr 0-4', mainSide(two), 'back')
+check('sidesFor con file fronte e colore ok', sidesFor(two, 'black'), ['back', 'front'])
+check('sidesFor senza file fronte', sidesFor({ ...two, altPrintFileUrl: undefined }, 'black'), ['back'])
+check('sidesFor colore non verificato', sidesFor(two, 'gold'), ['back'])
+check('nessuna scelta = retro come prima',
+  resolveItemPrint(two, uid('0-4'), null),
+  { productUid: uid('0-4'), placement: { type: 'back', source: 'uid', gpr: '0-4' }, printFileUrl: two.printFileUrl })
+check('scelta front = gpr 4-0 + file fronte',
+  resolveItemPrint(two, uid('0-4'), 'front'),
+  { productUid: uid('4-0'), placement: { type: 'default', source: 'uid', gpr: '4-0' }, printFileUrl: two.altPrintFileUrl })
+throws('front senza file fronte → rifiuta', () => resolveItemPrint({ ...two, altPrintFileUrl: undefined }, uid('0-4'), 'front'), /altPrintFileUrl/)
+throws('front con file fronte che e\' un mockup → rifiuta',
+  () => resolveItemPrint({ ...two, altPrintFileUrl: 'https://x/public/images/x/mockup.jpg' }, uid('0-4'), 'front'), /mockup/)
 
 // ── Report ──────────────────────────────────────────────────────────────────
 if (failures.length) {

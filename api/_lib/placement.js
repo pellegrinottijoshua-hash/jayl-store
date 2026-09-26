@@ -20,6 +20,8 @@
 // We trust that first and fall back to the collection string only when the UID
 // cannot decide (4-4, or a store-UUID style id with no gpr segment).
 
+import { FRONT_OK_COLORS, uidForSide } from '../../src/lib/printSides.js'
+
 export const GPR_RE = /_gpr_(\d+-\d+)_/
 
 /** Legacy heuristic. Kept as the fallback, never as the primary signal. */
@@ -80,4 +82,25 @@ export function assertPrintable(product, placement) {
     )
   }
   return url
+}
+
+/**
+ * Lato di stampa scelto dal cliente (item.print) → codice Gelato, placement e
+ * file di stampa. Senza scelta, o con la scelta uguale al lato principale, e'
+ * esattamente il comportamento di prima (resolvePlacement + assertPrintable).
+ * Con l'altro lato: gpr invertito e altPrintFileUrl, con gli stessi controlli.
+ */
+export function resolveItemPrint(product, productUid, print) {
+  const main = resolvePlacement(product, productUid)
+  const mainSide = main.type === 'back' ? 'back' : 'front'
+  if (!print || print === mainSide) {
+    return { productUid, placement: main, printFileUrl: assertPrintable(product, main) }
+  }
+  const color = /_gco_(.+?)_gpr_/.exec(productUid || '')?.[1]
+  if (!product?.altPrintFileUrl) throw new Error(`Product "${product?.id}" has no ${print} print file (altPrintFileUrl)`)
+  if (color && !FRONT_OK_COLORS.has(color)) throw new Error(`Color "${color}" is not verified for ${print} print on "${product?.id}"`)
+  const uid = uidForSide(productUid, print)
+  const placement = resolvePlacement(product, uid)
+  const printFileUrl = assertPrintable({ ...product, printFileUrl: product.altPrintFileUrl }, placement)
+  return { productUid: uid, placement, printFileUrl }
 }

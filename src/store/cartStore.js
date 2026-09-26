@@ -12,9 +12,10 @@ export const useCartStore = create(
       toggleCart: () => set((s) => ({ isOpen: !s.isOpen })),
 
       addItem: (product, options = {}) => {
-        const { size, color, frame } = options
-        // Build a unique key from product + variant selection
-        const variantKey = `${product.id}__${size || 'default'}__${color || 'default'}__${frame || 'none'}`
+        const { size, color, frame, print } = options
+        // Build a unique key from product + variant selection (+ print side
+        // when the customer picked the non-default one).
+        const variantKey = `${product.id}__${size || 'default'}__${color || 'default'}__${frame || 'none'}${print ? `__${print}` : ''}`
 
         set((state) => {
           const existing = state.items.find((i) => i.variantKey === variantKey)
@@ -40,6 +41,7 @@ export const useCartStore = create(
                 size,
                 color,
                 frame,
+                print: print || null,
                 quantity: 1,
                 unitPrice,
               },
