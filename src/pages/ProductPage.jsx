@@ -269,21 +269,20 @@ function StarRating({ value, onChange, isLight }) {
 // com'e' la stampa dietro e com'e' finito il colletto. Desktop: retro grande
 // a sinistra, fronte e colletto impilati a destra. Mobile: retro sopra,
 // fronte e colletto affiancati sotto.
-function ColorLook({ look, isLight, onOpen, className = '' }) {
+function ColorLook({ look, onOpen, className = '' }) {
   if (!look?.front || !look?.back) return null
-  const bg = 'bg-white' // i mockup Gelato sono su fondo bianco
   const tile = (src, label, cls) => src && (
-    <button type="button" onClick={() => onOpen(src)} className={cn('relative overflow-hidden group', bg, cls)} aria-label={label}>
+    <button type="button" onClick={() => onOpen(src)} className={cn('relative overflow-hidden group bg-white', cls)} aria-label={label}>
       <img src={src} alt={label} loading="lazy" className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]" />
       <span className="absolute left-2 bottom-2 text-[9px] tracking-[0.25em] uppercase text-ink/55">{label}</span>
     </button>
   )
   return (
-    <div className={cn('grid grid-cols-2 md:grid-rows-2 gap-px', isLight ? 'bg-paper-border' : 'bg-border', className)}>
-      {tile(look.back, 'Back', 'col-span-2 md:col-span-1 md:row-span-2 aspect-square md:aspect-auto')}
-      {/* Senza colletto su Gelato il fronte prende tutta la colonna. */}
-      {tile(look.front, 'Front', look.collar ? 'aspect-square md:aspect-auto' : 'col-span-2 md:col-span-1 md:row-span-2 aspect-square md:aspect-auto')}
-      {look.collar && tile(look.collar, 'Collar', 'aspect-square md:aspect-auto')}
+    <div className={cn('grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
+      {tile(look.back, 'Back', 'row-span-2')}
+      {/* Senza colletto il fronte prende tutta la colonna. */}
+      {tile(look.front, 'Front', look.collar ? '' : 'row-span-2')}
+      {look.collar && tile(look.collar, 'Collar', '')}
     </div>
   )
 }
@@ -428,19 +427,33 @@ export default function ProductPage() {
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
-  // Fronte/retro/colletto del colore scelto (vedi ColorLook). Il tipo lo dice
-  // il nome del file (scripts/import-gelato-fronts.mjs), il colore i pixel.
-  const look = (() => {
+  // Fronte e colletto di un colore (vedi ColorLook). Il tipo lo dice il nome
+  // del file (scripts/import-gelato-fronts.mjs), il colore i pixel.
+  const isDetail = (u) => /-(front|collar)-\d+\./.test(u)
+  const allOwners = buildImageOwnership(product?.colors, product?.images || [], product?.imageColors)
+  const lookFor = (back) => {
+    const color = back && allOwners.get(back)?.id
     const imgs = product?.images || []
-    if (!imgs.some((u) => /-front-\d+\./.test(u))) return null
-    const owners = buildImageOwnership(product.colors, imgs, product.imageColors)
-    const mine = (u) => owners.get(u)?.id === selectedColor
+    if (!color || !imgs.some((u) => /-front-\d+\./.test(u))) return null
+    const mine = (u) => allOwners.get(u)?.id === color
     return {
-      back:   imgs.find((u) => mine(u) && !/-(front|collar)-\d+\./.test(u) && !/\/hf_/.test(u)),
+      back,
       front:  imgs.find((u) => mine(u) && /-front-\d+\./.test(u)),
       collar: imgs.find((u) => mine(u) && /-collar-\d+\./.test(u)) ?? imgs.find((u) => /-collar-\d+\./.test(u)),
     }
-  })()
+  }
+  // In galleria: le foto hero e un solo retro per colore. Fronte e colletto non
+  // hanno una miniatura propria: compaiono insieme al retro del loro colore.
+  const galleryFilter = (list) => {
+    const seen = new Set()
+    return (list || []).filter((u) => {
+      if (isDetail(u)) return false
+      const c = allOwners.get(u)?.id
+      if (!c) return true
+      if (seen.has(c)) return false
+      seen.add(c); return true
+    })
+  }
   const [selectedFrame, setSelectedFrame] = useState('none')
   const [activeImage,   setActiveImage]   = useState(videoInfo ? -1 : 0)
   const [added,         setAdded]         = useState(false)
@@ -536,10 +549,10 @@ export default function ProductPage() {
 
   // Whichever image array is actually shown in the gallery (hero gallery takes
   // priority), minus the photos of the colors the swatches no longer offer.
-  const galleryImages = imagesForShownColors(
+  const galleryImages = galleryFilter(imagesForShownColors(
     product?.heroImages?.length > 0 ? product.heroImages : product?.images,
     product?.colors, colors, product?.imageColors,
-  )
+  ))
 
   // Jump to color image when color changes.
   //
@@ -603,7 +616,7 @@ export default function ProductPage() {
   const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
   // displayImages is what the main carousel shows — same color filter as
   // galleryImages above, so the two can't disagree about an index.
-  const displayImages = imagesForShownColors(heroImages ?? productImages, product?.colors, colors, product?.imageColors)
+  const displayImages = galleryFilter(imagesForShownColors(heroImages ?? productImages, product?.colors, colors, product?.imageColors))
 
   // Random starting image — shuffle on every product open (not on re-render).
   //
@@ -892,7 +905,11 @@ export default function ProductPage() {
               </div>
             )}
             {/* Image slides */}
-            {displayImages.map((src, i) => (
+            {displayImages.map((src, i) => lookFor(src) ? (
+              <div key={i} className="w-full h-full flex-shrink-0">
+                <ColorLook look={lookFor(src)} onOpen={openLightbox} className="w-full h-full" />
+              </div>
+            ) : (
               <div key={i} className={cn('w-full h-full flex-shrink-0', t.imgBg)}>
                 <img
                   src={src}
@@ -931,8 +948,6 @@ export default function ProductPage() {
             ))}
           </div>
         )}
-
-        <ColorLook look={look} isLight={isLight} onOpen={openLightbox} className="mx-4 mb-2" />
 
         {/* ── Product info ───────────────────────────────────────────────── */}
         <div className="px-4 pt-5 pb-4 relative">
@@ -1303,7 +1318,6 @@ export default function ProductPage() {
 
             {/* ── Images / Video ── */}
             <div className="space-y-3">
-              <ColorLook look={look} isLight={isLight} onOpen={openLightbox} className="aspect-[4/3] mb-6" />
               {activeImage === -1 && videoInfo ? (
                 <div className="aspect-[4/5] overflow-hidden bg-black">
                   {videoInfo.type === 'mp4' ? (
@@ -1322,6 +1336,9 @@ export default function ProductPage() {
                     />
                   )}
                 </div>
+              ) : lookFor(displayImages[Math.max(0, activeImage)]) ? (
+                // Retro di un colore: retro, fronte e colletto insieme, grandi.
+                <ColorLook look={lookFor(displayImages[Math.max(0, activeImage)])} onOpen={openLightbox} className="aspect-square" />
               ) : (
                 <div
                   className={cn('aspect-[4/5] overflow-hidden cursor-zoom-in', t.imgBg)}

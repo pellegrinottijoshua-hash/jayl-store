@@ -121,6 +121,14 @@ if (template) {
   const { data, info } = await img.raw().toBuffer({ resolveWithObject: true })
   const fL = lum(...template.rgb)
   const W = info.width, H = info.height
+  // L'etichetta JAYL e' sempre nera. Dove sta la si legge da un colletto
+  // bianco vero (nero su bianco, inequivocabile), allineato allo stampo.
+  const whiteRef = allCollars.find((c) => lum(...c.rgb) > 200)
+  let labelMask = null
+  if (whiteRef) {
+    const { data: w } = await sharp(whiteRef.file).removeAlpha().resize(W, H, { fit: 'fill' }).greyscale().raw().toBuffer({ resolveWithObject: true })
+    labelMask = w.map((v) => (v < 110 ? 1 : 0))
+  }
   for (const p of targets) {
     const mine = allCollars.filter((c) => c.product === p)
     const has = new Set(mine.map((c) => nearest(c.rgb)))
@@ -135,9 +143,9 @@ if (template) {
         const r = data[i], g = data[i + 1], b = data[i + 2]
         const L = lum(r, g, b)
         const isBg = r > 225 && g > 225 && b > 225
-        // etichetta: nettamente piu' scura del tessuto dello stampo
-        const isLabel = !isBg && L < fL * 0.55
-        if (isBg || isLabel) { out[i] = r; out[i + 1] = g; out[i + 2] = b; continue }
+        const isLabel = labelMask ? labelMask[i / 3] === 1 : (!isBg && L < fL * 0.55)
+        if (isLabel) { out[i] = 17; out[i + 1] = 17; out[i + 2] = 17; continue }
+        if (isBg) { out[i] = r; out[i + 1] = g; out[i + 2] = b; continue }
         const k = Math.min(1.25, L / fL)
         out[i] = Math.min(255, rgb[0] * k); out[i + 1] = Math.min(255, rgb[1] * k); out[i + 2] = Math.min(255, rgb[2] * k)
       }
