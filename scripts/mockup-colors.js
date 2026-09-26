@@ -40,7 +40,7 @@ const GRID = 64
 // piu' lontano dal rosso reale del mockup di quanto lo sia "Cardinal Red", e
 // le due tinte convivono su Arcanine ed Entei. Un colore che manca qui ripiega
 // sull'hex dello swatch.
-const MOCKUP_RGB = {
+export const MOCKUP_RGB = {
   'white':          [234, 234, 234],
   'black':          [29, 33, 35],
   'navy':           [25, 34, 57],
