@@ -15,6 +15,7 @@ import { resolveSwatchHex } from '@/lib/apparelColors'
 import { shownColors, imagesForShownColors } from '@/lib/shownColors'
 import { sizeGuideFor, bySize } from '@/data/sizeGuides'
 import { sidesFor, mainSide } from '@/lib/printSides'
+import { plainMockup } from '@/data/mockupLibrary'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
@@ -270,23 +271,34 @@ function StarRating({ value, onChange, isLight }) {
 // com'e' la stampa dietro e com'e' finito il colletto. Desktop: retro grande
 // a sinistra, fronte e colletto impilati a destra. Mobile: retro sopra,
 // fronte e colletto affiancati sotto.
-// Area di stampa del fronte sul mockup Gelato Gildan 64000 (misurata sui
-// loro render: busto 20"≈59% della larghezza, area 12×16" centrata, ~3" sotto
-// lo scollo). Il file di stampa del fronte e' il canvas intero di quest'area,
-// quindi appoggiarlo qui lo mette esattamente dove Gelato stampa.
-const FRONT_PRINT_AREA = { left: 0.3225, top: 0.19, width: 0.354, height: 0.472 }
+// Area di stampa del fronte sul mockup Gelato Gildan 64000, ricavata da
+// maglie front vere (file di stampa ↔ dove Gelato lo mostra nel suo render):
+// il canvas 3661×4843 copre x 32,5→67,5% e y 24,4→71,5% dell'immagine.
+const FRONT_PRINT_AREA = { left: 0.325, top: 0.244, width: 0.35, height: 0.471 }
+// Colletto: una fascia su scollo e spalle, tagliata sopra l'area di stampa
+// (che parte al 24,4%), cosi' il logo del petto non entra mai
+// nell'inquadratura. Stesso taglio del dettaglio colletto di Gelato.
+const COLLAR_CROP = { x: 0.2, y: 0.035, w: 0.6, h: 0.2 }
 
-function ColorLook({ look, onOpen, className = '' }) {
-  if (!look?.front || (!look?.back && !look?.frontPrint)) return null
-  const tile = (src, label, cls, overlay) => src && (
-    <button type="button" onClick={() => onOpen(src)} className={cn('relative overflow-hidden group bg-white', cls)} aria-label={label}
-      style={{ containerType: 'size' }}>
+function ColorLook({ look, className = '' }) {
+  if (!look?.main) return null
+  const tile = (src, label, cls, { overlay, crop } = {}) => src && (
+    <div className={cn('relative overflow-hidden bg-white', cls)} style={{ containerType: 'size' }}>
       <span className="absolute inset-0 flex items-center justify-center">
-        {/* quadrato come il mockup (lato = il minore della cella), cosi' l'area
-            di stampa resta allineata alla maglia qualunque forma abbia la cella */}
-        <span className="relative transition-transform duration-500 group-hover:scale-[1.03]"
-          style={{ width: 'min(100cqw, 100cqh)', height: 'min(100cqw, 100cqh)' }}>
-          <img src={src} alt={label} loading="lazy" className="absolute inset-0 w-full h-full object-contain" />
+        {/* quadrato come il mockup (lato = il minore della cella): l'area di
+            stampa e il ritaglio del colletto restano allineati alla maglia */}
+        <span className="relative overflow-hidden" style={{ width: 'min(100cqw, 100cqh)', height: 'min(100cqw, 100cqh)' }}>
+          {crop ? (
+            // fascia larga quanto la cella, alta in proporzione, al centro
+            <span className="absolute left-0 right-0 overflow-hidden"
+              style={{ height: `${(crop.h / crop.w) * 100}%`, top: `${(1 - crop.h / crop.w) * 50}%` }}>
+              <img src={src} alt={label} loading="lazy" className="absolute max-w-none"
+                style={{ width: `${100 / crop.w}%`, left: `${(-crop.x / crop.w) * 100}%`, top: `${(-crop.y / crop.h) * 100}%` }} />
+            </span>
+          ) : (
+            <img src={src} alt={label} loading="lazy" className="absolute max-w-none"
+              style={{ inset: 0, width: '100%', height: '100%', objectFit: 'contain' }} />
+          )}
           {overlay && (
             <img src={overlay} alt="" aria-hidden className="absolute pointer-events-none"
               style={{ left: `${FRONT_PRINT_AREA.left * 100}%`, top: `${FRONT_PRINT_AREA.top * 100}%`, width: `${FRONT_PRINT_AREA.width * 100}%`, height: `${FRONT_PRINT_AREA.height * 100}%` }} />
@@ -294,23 +306,14 @@ function ColorLook({ look, onOpen, className = '' }) {
         </span>
       </span>
       <span className="absolute left-2 bottom-2 text-[9px] tracking-[0.25em] uppercase text-ink/55">{label}</span>
-    </button>
+    </div>
   )
-  if (look.frontPrint) {
-    // Stampa davanti: il fronte con il disegno e' il protagonista, accanto il colletto.
-    return (
-      <div className={cn('grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
-        {tile(look.front, 'Front', look.collar ? 'row-span-2' : 'col-span-2 row-span-2', look.frontPrint)}
-        {look.collar && tile(look.collar, 'Collar', 'row-span-2')}
-      </div>
-    )
-  }
+  const [mainLabel, sideLabel] = look.frontMode ? ['Front', 'Back'] : ['Back', 'Front']
   return (
     <div className={cn('grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
-      {tile(look.back, 'Back', 'row-span-2')}
-      {/* Senza colletto il fronte prende tutta la colonna. */}
-      {tile(look.front, 'Front', look.collar ? '' : 'row-span-2')}
-      {look.collar && tile(look.collar, 'Collar', '')}
+      {tile(look.main, mainLabel, 'row-span-2', { overlay: look.overlay })}
+      {tile(look.side, sideLabel, '')}
+      {tile(look.collar, 'Collar', '', { crop: COLLAR_CROP })}
     </div>
   )
 }
@@ -320,23 +323,79 @@ function ColorLook({ look, onOpen, className = '' }) {
 function PrintPicker({ sides, value, onChange, isLight }) {
   if (sides.length < 2) return null
   const opts = { back: ['Back', 'Large print on the back'], front: ['Front', 'Small print on the chest'] }
+  const btn = (side) => {
+    const on = value === side
+    return (
+      <button key={side} type="button" onClick={() => onChange(side)}
+        className={cn('px-4 py-3 border text-left transition-colors',
+          on ? (isLight ? 'border-ink bg-ink text-white' : 'border-cream bg-cream text-off-black')
+             : (isLight ? 'border-paper-border text-ink hover:border-ink' : 'border-border text-text-secondary hover:border-border-light'))}>
+        <span className="flex items-baseline gap-1.5">
+          <span className="text-[10px] tracking-[0.15em] lowercase opacity-60">on the</span>
+          <span className="text-sm font-semibold tracking-widest uppercase">{opts[side][0]}</span>
+        </span>
+        <span className={cn('block text-[11px] mt-0.5', on ? 'opacity-70' : 'opacity-60')}>{opts[side][1]}</span>
+      </button>
+    )
+  }
   return (
     <div>
       <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', isLight ? 'text-ink' : 'text-text-primary')}>Print</p>
-      <div className="grid grid-cols-2 gap-2">
-        {sides.map((side) => {
-          const on = value === side
-          return (
-            <button key={side} type="button" onClick={() => onChange(side)}
-              className={cn('px-4 py-3 border text-left transition-colors',
-                on ? (isLight ? 'border-ink bg-ink text-white' : 'border-cream bg-cream text-off-black')
-                   : (isLight ? 'border-paper-border text-ink hover:border-ink' : 'border-border text-text-secondary hover:border-border-light'))}>
-              <span className="block text-sm font-semibold tracking-widest uppercase">{opts[side][0]}</span>
-              <span className={cn('block text-[11px] mt-0.5', on ? 'opacity-70' : 'opacity-60')}>{opts[side][1]}</span>
-            </button>
-          )
-        })}
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+        {btn(sides[0])}
+        <span className={cn('text-[10px] tracking-[0.2em] lowercase', isLight ? 'text-ink-muted' : 'text-text-muted')}>or</span>
+        {btn(sides[1])}
       </div>
+    </div>
+  )
+}
+
+// ── Tieni premuto per vedere il dettaglio ──────────────────────────────────────
+// Un cerchio con dentro il dettaglio sfocato (si intravede, e viene voglia di
+// vederlo bene), un anello d'oro che respira da fermo e si riempie mentre lo
+// tieni premuto, una vibrazione breve quando si apre. Si apre appena l'anello
+// e' pieno (~0,35 s): abbastanza per sentire il gesto, non per spazientirsi.
+const HOLD_MS = 350
+function HoldToReveal({ image, open, onChange }) {
+  const [holding, setHolding] = useState(false)
+  const timer = useRef(null)
+  const start = (e) => {
+    e?.preventDefault?.()
+    setHolding(true)
+    timer.current = setTimeout(() => {
+      onChange(true)
+      try { navigator.vibrate?.(12) } catch {}
+    }, HOLD_MS)
+  }
+  const stop = () => {
+    clearTimeout(timer.current)
+    setHolding(false)
+    onChange(false)
+  }
+  const R = 30, C = 2 * Math.PI * R
+  return (
+    <div className="flex flex-col items-center gap-1 select-none" style={{ WebkitTouchCallout: 'none' }}>
+      <button
+        type="button"
+        aria-label="Hold to reveal the detail"
+        onContextMenu={(e) => e.preventDefault()}
+        onMouseDown={start} onMouseUp={stop} onMouseLeave={() => holding && stop()}
+        onTouchStart={start} onTouchEnd={(e) => { e.preventDefault(); stop() }} onTouchCancel={stop}
+        className={cn('relative w-16 h-16 rounded-full overflow-hidden transition-transform duration-200', holding ? 'scale-95' : 'hold-idle')}
+        style={{ touchAction: 'none' }}
+      >
+        <img src={image} alt="" aria-hidden draggable={false}
+          className="absolute inset-0 w-full h-full object-cover scale-150 pointer-events-none"
+          style={{ filter: holding || open ? 'blur(0px)' : 'blur(3px) brightness(0.75)', transition: 'filter 0.35s' }} />
+        <svg viewBox="0 0 64 64" className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" aria-hidden>
+          <circle cx="32" cy="32" r={R} fill="none" stroke="rgba(196,163,90,0.35)" strokeWidth="1.5" />
+          <circle cx="32" cy="32" r={R} fill="none" stroke="#C4A35A" strokeWidth="2.5" strokeLinecap="round"
+            strokeDasharray={C} strokeDashoffset={holding ? 0 : C}
+            style={{ transition: holding ? `stroke-dashoffset ${HOLD_MS}ms linear` : 'stroke-dashoffset 0.2s ease-out' }} />
+        </svg>
+        <span className="absolute inset-0 flex items-center justify-center text-[#F5F0E8] text-sm pointer-events-none drop-shadow">✦</span>
+      </button>
+      <span className="text-[8px] tracking-[0.22em] uppercase text-accent/80">Hold to reveal</span>
     </div>
   )
 }
@@ -491,20 +550,25 @@ export default function ProductPage() {
   // del file (scripts/import-gelato-fronts.mjs), il colore i pixel.
   const isDetail = (u) => /-(front|collar)-\d+\./.test(u)
   const allOwners = buildImageOwnership(product?.colors, product?.images || [], product?.imageColors)
+  // Il trittico di un colore. Il retro stampato e' il render Gelato vero;
+  // fronte, retro liscio e colletto vengono dalla libreria dei mockup lisci
+  // (src/data/mockupLibrary.js), la stessa inquadratura di Gelato.
+  // Con "Front": fronte + disegno sul petto, retro liscio, colletto.
   const lookFor = (back) => {
     const color = back && allOwners.get(back)?.id
-    const imgs = product?.images || []
-    if (!color || !imgs.some((u) => /-front-\d+\./.test(u))) return null
-    const mine = (u) => allOwners.get(u)?.id === color
+    const plainFront = plainMockup(color, 'front')
+    if (!color || !plainFront) return null
+    const frontMode = altPrint && activeSide === 'front'
     return {
-      back,
+      frontMode,
+      main:   frontMode ? plainFront : back,
+      side:   frontMode ? plainMockup(color, 'back') : plainFront,
+      collar: plainFront,
       // Il file di stampa sta anche in public/: lo si serve dal sito stesso
-      // invece che da raw.githubusercontent (piu' veloce, stessa versione del deploy).
-      frontPrint: altPrint && activeSide === 'front'
+      // (piu' veloce, stessa versione del deploy).
+      overlay: frontMode
         ? product.altPrintFileUrl.replace(/^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public/, '')
         : null,
-      front:  imgs.find((u) => mine(u) && /-front-\d+\./.test(u)),
-      collar: imgs.find((u) => mine(u) && /-collar-\d+\./.test(u)) ?? imgs.find((u) => /-collar-\d+\./.test(u)),
     }
   }
   // In galleria: le foto hero e un solo retro per colore. Fronte e colletto non
@@ -972,7 +1036,7 @@ export default function ProductPage() {
             {/* Image slides */}
             {displayImages.map((src, i) => lookFor(src) ? (
               <div key={i} className="w-full h-full flex-shrink-0">
-                <ColorLook look={lookFor(src)} onOpen={openLightbox} className="w-full h-full" />
+                <ColorLook look={lookFor(src)} className="w-full h-full" />
               </div>
             ) : (
               <div key={i} className={cn('w-full h-full flex-shrink-0', t.imgBg)}>
@@ -1016,49 +1080,17 @@ export default function ProductPage() {
 
         {/* ── Product info ───────────────────────────────────────────────── */}
         <div className="px-4 pt-5 pb-4 relative">
-          {/* ── Hold to reveal — square button, absolute top-right ─── */}
+          {/* ── Hold to reveal — top-right ─── */}
           {product.detailImage && (
-            <button
-              style={{
-                position: 'absolute',
-                top: 8,
-                right: 16,
-                width: 56,
-                height: 56,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 3,
-                border: `1px solid ${showDetail ? '#d4a853' : 'rgba(212,168,83,0.45)'}`,
-                backgroundColor: showDetail ? 'rgba(212,168,83,0.1)' : 'transparent',
-                color: showDetail ? '#d4a853' : 'rgba(212,168,83,0.7)',
-                cursor: 'pointer',
-                transition: 'border-color 0.12s, background-color 0.12s, color 0.12s, box-shadow 0.12s, opacity 0.12s',
-                animation: showDetail ? 'none' : 'holdPulse 2.8s ease-in-out infinite',
-                WebkitUserSelect: 'none',
-                userSelect: 'none',
-                WebkitTouchCallout: 'none',
-                touchAction: 'none',
-                zIndex: 10,
-              }}
-              onContextMenu={e => e.preventDefault()}
-              onMouseDown={() => setShowDetail(true)}
-              onMouseUp={() => setShowDetail(false)}
-              onMouseLeave={() => setShowDetail(false)}
-              onTouchStart={e => { e.preventDefault(); setShowDetail(true) }}
-              onTouchEnd={e => { e.preventDefault(); setShowDetail(false) }}
-              onTouchCancel={() => setShowDetail(false)}
-            >
-              <span style={{ fontSize: 11, letterSpacing: '0.04em', lineHeight: 1 }}>✦</span>
-              <span style={{ fontSize: 8, letterSpacing: '0.14em', textTransform: 'uppercase', lineHeight: 1, textAlign: 'center' }}>HOLD</span>
-            </button>
+            <div className="absolute top-2 right-4 z-10">
+              <HoldToReveal image={product.detailImage} open={showDetail} onChange={setShowDetail} />
+            </div>
           )}
 
           {/* Badge row */}
           <div className="flex items-center gap-2 mb-2">
             <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.badge)}>
-              {slugToTitle(product.movement)}
+              {slugToTitle(product.movement).replace(/\s*back$/i, '')}
             </span>
             <span className={cn('text-2xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
             <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.sectionTag)}>
@@ -1405,7 +1437,7 @@ export default function ProductPage() {
                 </div>
               ) : lookFor(displayImages[Math.max(0, activeImage)]) ? (
                 // Retro di un colore: retro, fronte e colletto insieme, grandi.
-                <ColorLook look={lookFor(displayImages[Math.max(0, activeImage)])} onOpen={openLightbox} className="aspect-square" />
+                <ColorLook look={lookFor(displayImages[Math.max(0, activeImage)])} className="aspect-square" />
               ) : (
                 <div
                   className={cn('aspect-[4/5] overflow-hidden cursor-zoom-in', t.imgBg)}
@@ -1472,7 +1504,7 @@ export default function ProductPage() {
             <div className="lg:pt-4">
               <div className="flex items-center gap-3 mb-4">
                 <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.movement)}>
-                  {slugToTitle(product.movement)}
+                  {slugToTitle(product.movement).replace(/\s*back$/i, '')}
                 </span>
                 <span className={cn(isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
                 <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.sectionTag)}>
