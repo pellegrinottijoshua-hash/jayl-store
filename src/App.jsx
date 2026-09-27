@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, Link, useLocation, useParams } from 'react-router-dom'
 import { useLayoutEffect, useEffect, lazy, Suspense } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -78,6 +78,14 @@ function useSiteThemeAttribute(isAdmin) {
   }, [siteTheme, isAdmin])
 }
 
+// Una scheda nuova per ogni prodotto: senza key, passando da una maglia
+// all'altra (miniature "You may also like") React riusava la stessa pagina e
+// si portava dietro colore, taglia e lato scelti sul prodotto precedente.
+function ProductPageFresh() {
+  const { id } = useParams()
+  return <ProductPage key={id} />
+}
+
 export default function App() {
   const { pathname } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
@@ -106,7 +114,7 @@ export default function App() {
               <Route path="/art"                            element={<ArtPage />} />
               <Route path="/objects"                        element={<ObjectsPage />} />
               <Route path="/artist"                         element={<ArtistPage />} />
-              <Route path="/product/:id"                    element={<ProductPage />} />
+              <Route path="/product/:id"                    element={<ProductPageFresh />} />
               <Route path="/checkout"                       element={<CheckoutPage />} />
               <Route path="/order-confirmation/:orderId"    element={<OrderConfirmationPage />} />
               <Route path="/wishlist"  element={<WishlistPage />} />

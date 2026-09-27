@@ -327,13 +327,10 @@ function PrintPicker({ sides, value, onChange, isLight }) {
     const on = value === side
     return (
       <button key={side} type="button" onClick={() => onChange(side)}
-        className={cn('px-4 py-3 border text-left transition-colors',
+        className={cn('px-4 py-3 border text-center transition-colors',
           on ? (isLight ? 'border-ink bg-ink text-white' : 'border-cream bg-cream text-off-black')
              : (isLight ? 'border-paper-border text-ink hover:border-ink' : 'border-border text-text-secondary hover:border-border-light'))}>
-        <span className="flex items-baseline gap-1.5">
-          <span className="text-[10px] tracking-[0.15em] lowercase opacity-60">on the</span>
-          <span className="text-sm font-semibold tracking-widest uppercase">{opts[side][0]}</span>
-        </span>
+        <span className="block text-sm font-semibold tracking-widest uppercase">{opts[side][0]}</span>
         <span className={cn('block text-[11px] mt-0.5', on ? 'opacity-70' : 'opacity-60')}>{opts[side][1]}</span>
       </button>
     )
@@ -351,12 +348,12 @@ function PrintPicker({ sides, value, onChange, isLight }) {
 }
 
 // ── Tieni premuto per vedere il dettaglio ──────────────────────────────────────
-// Un cerchio con dentro il dettaglio sfocato (si intravede, e viene voglia di
-// vederlo bene), un anello d'oro che respira da fermo e si riempie mentre lo
-// tieni premuto, una vibrazione breve quando si apre. Si apre appena l'anello
+// Un cerchio con dentro l'anteprima del dettaglio, nitida: si vede cosa c'e'
+// e viene voglia di vederlo grande. Premendo compare un anello d'oro che si
+// riempie, poi il dettaglio si apre con una vibrazione breve. Si apre appena l'anello
 // e' pieno (~0,35 s): abbastanza per sentire il gesto, non per spazientirsi.
 const HOLD_MS = 350
-function HoldToReveal({ image, open, onChange }) {
+function HoldToReveal({ image, onChange }) {
   const [holding, setHolding] = useState(false)
   const timer = useRef(null)
   const start = (e) => {
@@ -386,14 +383,12 @@ function HoldToReveal({ image, open, onChange }) {
       >
         <img src={image} alt="" aria-hidden draggable={false}
           className="absolute inset-0 w-full h-full object-cover scale-150 pointer-events-none"
-          style={{ filter: holding || open ? 'blur(0px)' : 'blur(3px) brightness(0.75)', transition: 'filter 0.35s' }} />
+          />
         <svg viewBox="0 0 64 64" className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" aria-hidden>
-          <circle cx="32" cy="32" r={R} fill="none" stroke="rgba(196,163,90,0.35)" strokeWidth="1.5" />
           <circle cx="32" cy="32" r={R} fill="none" stroke="#C4A35A" strokeWidth="2.5" strokeLinecap="round"
             strokeDasharray={C} strokeDashoffset={holding ? 0 : C}
             style={{ transition: holding ? `stroke-dashoffset ${HOLD_MS}ms linear` : 'stroke-dashoffset 0.2s ease-out' }} />
         </svg>
-        <span className="absolute inset-0 flex items-center justify-center text-[#F5F0E8] text-sm pointer-events-none drop-shadow">✦</span>
       </button>
       <span className="text-[8px] tracking-[0.22em] uppercase text-accent/80">Hold to reveal</span>
     </div>
@@ -1001,7 +996,7 @@ export default function ProductPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           MOBILE LAYOUT  (hidden on md+)
       ══════════════════════════════════════════════════════════════════════ */}
-      <div className="md:hidden pt-16">
+      <div className="md:hidden pt-[88px]">
 
         {/* ── Swipe Gallery ─────────────────────────────────────────────── */}
         <div
@@ -1083,7 +1078,7 @@ export default function ProductPage() {
           {/* ── Hold to reveal — top-right ─── */}
           {product.detailImage && (
             <div className="absolute top-2 right-4 z-10">
-              <HoldToReveal image={product.detailImage} open={showDetail} onChange={setShowDetail} />
+              <HoldToReveal image={product.detailImage} onChange={setShowDetail} />
             </div>
           )}
 

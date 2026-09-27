@@ -332,11 +332,12 @@
   .logo-breathe { animation: none; }
 }
 
-/* Scheda prodotto — "Hold to reveal": respiro d'oro da fermo. */
+/* Scheda prodotto — "Hold to reveal": un respiro leggero da fermo, senza oro
+   (l'oro arriva solo quando lo si preme). */
 .hold-idle { animation: holdIdle 2.6s ease-in-out infinite; }
 @keyframes holdIdle {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196,163,90,0); transform: scale(1); }
-  50%      { box-shadow: 0 0 18px 3px rgba(196,163,90,0.35); transform: scale(1.04); }
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
 }
 @media (prefers-reduced-motion: reduce) { .hold-idle { animation: none; } }
 
