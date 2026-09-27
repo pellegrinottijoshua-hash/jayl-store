@@ -340,7 +340,7 @@ function PrintPicker({ sides, value, onChange, isLight }) {
       <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', isLight ? 'text-ink' : 'text-text-primary')}>Print</p>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
         {btn(sides[0])}
-        <span className={cn('text-[10px] tracking-[0.2em] lowercase', isLight ? 'text-ink-muted' : 'text-text-muted')}>or</span>
+        <span className={cn('text-[10px] tracking-[0.2em] lowercase font-semibold', isLight ? 'text-ink-muted' : 'text-accent')}>or</span>
         {btn(sides[1])}
       </div>
     </div>
@@ -1074,24 +1074,13 @@ export default function ProductPage() {
         )}
 
         {/* ── Product info ───────────────────────────────────────────────── */}
-        <div className="px-4 pt-5 pb-4 relative">
+        <div className="px-4 pt-3 pb-4 relative">
           {/* ── Hold to reveal — top-right ─── */}
           {product.detailImage && (
-            <div className="absolute top-2 right-4 z-10">
+            <div className="absolute top-0 right-4 z-10">
               <HoldToReveal image={product.detailImage} onChange={setShowDetail} />
             </div>
           )}
-
-          {/* Badge row */}
-          <div className="flex items-center gap-2 mb-2">
-            <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.badge)}>
-              {slugToTitle(product.movement).replace(/\s*back$/i, '')}
-            </span>
-            <span className={cn('text-2xs', isLight ? 'text-ink-muted' : 'text-text-muted')}>·</span>
-            <span className={cn('text-2xs font-sans tracking-label-xl uppercase', t.sectionTag)}>
-              {sectionLabel}
-            </span>
-          </div>
 
           <h1 className={cn('font-display text-2xl leading-tight mb-1', t.title)}>
             {product.name}
@@ -1116,17 +1105,9 @@ export default function ProductPage() {
             </p>
           )}
 
-        </div>
-
-        <div className={cn('border-t mx-4', t.divider)} />
-
-        {/* ── Variant Selectors ──────────────────────────────────────────── */}
-        <div className="px-4 pt-4 space-y-5">
-
-          <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} />
-
-          {/* Color pills / thumbnails */}
-          {product.colors && (
+          {/* Colore: subito visibile nella prima schermata, senza scorrere. */}
+          <div className="mt-4">
+            {product.colors && (
             <div>
               <p className={cn('text-xs font-semibold tracking-widest uppercase mb-3', t.selectorLabel)}>
                 Color
@@ -1199,6 +1180,18 @@ export default function ProductPage() {
               )}
             </div>
           )}
+
+          </div>
+
+        </div>
+
+        <div className={cn('border-t mx-4', t.divider)} />
+
+        {/* ── Variant Selectors ──────────────────────────────────────────── */}
+        <div className="px-4 pt-4 space-y-5">
+
+          <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} />
+
 
           {/* Size grid */}
           {product.sizes && (
