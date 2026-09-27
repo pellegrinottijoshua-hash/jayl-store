@@ -52,6 +52,10 @@ check('drop → dropPrice, non il prezzo per taglia',
   basePriceFor('aaa', size, prod, cfg), 2200)
 check('listino → archivePrice',
   basePriceFor('ddd', size, { id: 'ddd', price: 2399 }, cfg), 2500)
+check('LISTINO con archivePrice del prodotto → quello del prodotto',
+  basePriceFor('ddd', size, { id: 'ddd', price: 2399, archivePrice: 2800 }, cfg), 2800)
+check('LISTINO con archivePrice non valido → quello globale',
+  basePriceFor('ddd', size, { id: 'ddd', archivePrice: 0 }, cfg), 2500)
 
 const vaultSize = { id: 'M', price: 1999 }
 const vaultProd = { id: 'zzz', price: 2599 }

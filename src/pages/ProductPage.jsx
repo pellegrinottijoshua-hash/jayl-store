@@ -278,7 +278,7 @@ const FRONT_PRINT_AREA = { left: 0.325, top: 0.244, width: 0.35, height: 0.471 }
 // Colletto: una fascia su scollo e spalle, tagliata sopra l'area di stampa
 // (che parte al 24,4%), cosi' il logo del petto non entra mai
 // nell'inquadratura. Stesso taglio del dettaglio colletto di Gelato.
-const COLLAR_CROP = { x: 0.2, y: 0.035, w: 0.6, h: 0.2 }
+const COLLAR_CROP = { x: 0.29, y: 0.035, w: 0.42, h: 0.21 }
 
 function ColorLook({ look, className = '' }) {
   if (!look?.main) return null
@@ -546,8 +546,8 @@ export default function ProductPage() {
   const printSides = sidesFor(product, selectedColor)
   const activeSide = printSides.includes(printSide) ? printSide : printSides[0] ?? null
   const altPrint = activeSide && activeSide !== mainSide(product)
-  // Fronte e colletto di un colore (vedi ColorLook). Il tipo lo dice il nome
-  // del file (scripts/import-gelato-fronts.mjs), il colore i pixel.
+  // File "-front-NN"/"-collar-NN": dettagli che non vanno in galleria come
+  // miniature (il trittico li prende dalla libreria dei mockup lisci).
   const isDetail = (u) => /-(front|collar)-\d+\./.test(u)
   const allOwners = buildImageOwnership(product?.colors, product?.images || [], product?.imageColors)
   // Il trittico di un colore. Il retro stampato e' il render Gelato vero;

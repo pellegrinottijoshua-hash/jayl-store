@@ -37,7 +37,10 @@ export function isDropOpen(now = new Date(), cfg = dropConfig) {
 export function basePriceFor(productId, sizeObj, product, cfg = dropConfig) {
   const state = productState(productId, cfg)
   if (state === DROP)    return cfg.current.dropPrice
-  if (state === LISTINO) return cfg.archivePrice
+  // Prezzo d'archivio per singolo prodotto (impostato dalla lista admin);
+  // senza, vale quello globale del drop. Stesso numero su sito e checkout,
+  // perche' entrambi passano di qui.
+  if (state === LISTINO) return Number.isInteger(product?.archivePrice) && product.archivePrice > 0 ? product.archivePrice : cfg.archivePrice
   return sizeObj?.price ?? product?.price ?? 0
 }
 

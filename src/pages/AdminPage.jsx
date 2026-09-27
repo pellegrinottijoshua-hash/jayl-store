@@ -1938,6 +1938,143 @@ function QuickColors({ product }) {
   )
 }
 
+// ── Controlli rapidi sulla riga del prodotto ─────────────────────────────────
+// Stato (archivio/nascosto), prezzo d'archivio, SEO in un tocco e avvisi,
+// senza entrare nella scheda. La config del drop si legge una volta sola e si
+// condivide fra tutte le righe (una sola sha: due salvataggi in fila non si
+// pestano i piedi).
+const dropStore = { cfg: null, sha: null, loading: null, subs: new Set() }
+function loadDrop() {
+  dropStore.loading ??= api('get-drop').then((d) => {
+    dropStore.cfg = d.drop; dropStore.sha = d.sha
+    dropStore.subs.forEach((f) => f())
+  }).catch(() => { dropStore.loading = null })
+  return dropStore.loading
+}
+function useDropCfg() {
+  const [, force] = useState(0)
+  useEffect(() => {
+    const f = () => force((n) => n + 1)
+    dropStore.subs.add(f); loadDrop()
+    return () => dropStore.subs.delete(f)
+  }, [])
+  return dropStore.cfg
+}
+async function saveDrop(next) {
+  const r = await api('save-drop', { drop: next, sha: dropStore.sha })
+  dropStore.cfg = next; dropStore.sha = r.sha
+  dropStore.subs.forEach((f) => f())
+}
+
+function warningsFor(p) {
+  const w = []
+  const isBack = /_gpr_0-\d+_/.test(p.variants?.[0]?.gelatoVariantId || '')
+  if (!p.printFileUrl) w.push(['stampa', 'Manca il file di stampa: l\'ordine verrebbe rifiutato'])
+  if (isBack && !p.altPrintFileUrl) w.push(['fronte', 'Niente file del fronte: in negozio solo Back'])
+  if (!p.seoTitle?.trim() || !p.seoDescription?.trim()) w.push(['SEO', 'SEO mancante'])
+  if (!p.heroImage && !(p.heroImages?.length)) w.push(['foto', 'Nessuna foto hero'])
+  if (!(p.colors?.length)) w.push(['colori', 'Nessun colore'])
+  return w
+}
+
+function QuickTools({ product }) {
+  const cfg = useDropCfg()
+  const [busy, setBusy] = useState('')
+  const [msg, setMsg]   = useState('')
+  const [price, setPrice] = useState(product.archivePrice ? String(product.archivePrice / 100) : '')
+  const flash = (m) => { setMsg(m); setTimeout(() => setMsg(''), 2000) }
+
+  const inDrop    = !!cfg?.current?.productIds?.includes(product.id)
+  const inArchive = !!cfg?.released?.includes(product.id)
+  const status    = !cfg ? 'loading' : inDrop ? 'drop' : inArchive ? 'archive' : 'hidden'
+
+  const setStatus = async (next) => {
+    if (!cfg || next === status) return
+    if (next === 'hidden' && !confirm(`Nascondere "${product.name}" dal negozio?`)) return
+    setBusy('status')
+    try {
+      const released = next === 'archive'
+        ? [...new Set([...(cfg.released || []), product.id])]
+        : (cfg.released || []).filter((id) => id !== product.id)
+      await saveDrop({ ...cfg, released })
+      flash('✓ stato salvato')
+    } catch (e) { flash(`⚠ ${e.message}`) }
+    finally { setBusy('') }
+  }
+
+  const savePrice = async () => {
+    const cents = price.trim() === '' ? null : Math.round(parseFloat(price.replace(',', '.')) * 100)
+    if (cents !== null && !(cents > 0)) { flash('⚠ prezzo non valido'); return }
+    if ((cents ?? null) === (product.archivePrice ?? null)) return
+    setBusy('price')
+    try {
+      const updated = { ...product }
+      if (cents) updated.archivePrice = cents; else delete updated.archivePrice
+      await api('save-product', { product: updated })
+      product.archivePrice = updated.archivePrice
+      flash('✓ prezzo salvato')
+    } catch (e) { flash(`⚠ ${e.message}`) }
+    finally { setBusy('') }
+  }
+
+  const doSeo = async () => {
+    if (product.seoTitle && !confirm('Rigenerare la SEO? Sostituisce quella attuale.')) return
+    setBusy('seo')
+    try {
+      const d = await api('generate-seo', {
+        productId: product.id, productName: product.name, productType: product.section,
+        collection: product.collection, description: product.seoDescription || product.description, tags: product.tags,
+      })
+      const seo = d.seo || {}
+      const updated = { ...product, ...seo, tags: Array.isArray(seo.etsyTags) ? seo.etsyTags : product.tags }
+      await api('save-product', { product: updated })
+      Object.assign(product, updated)
+      flash('✓ SEO generata')
+    } catch (e) { flash(`⚠ ${e.message}`) }
+    finally { setBusy('') }
+  }
+
+  const warns = warningsFor(product)
+  const globalArchive = cfg?.archivePrice
+  return (
+    <div className="flex items-center gap-2 flex-wrap mt-1.5" onClick={(e) => e.stopPropagation()}>
+      <select
+        value={status}
+        disabled={status === 'loading' || status === 'drop' || !!busy}
+        onChange={(e) => setStatus(e.target.value)}
+        title={status === 'drop' ? 'Nel drop in corso: si cambia dalla scheda Drop' : 'Stato in negozio'}
+        className="bg-gray-900 border border-gray-700 text-[11px] text-gray-300 px-1.5 py-0.5 disabled:opacity-60"
+      >
+        {status === 'loading' && <option value="loading">…</option>}
+        {status === 'drop' && <option value="drop">● nel drop</option>}
+        <option value="archive">archivio</option>
+        <option value="hidden">nascosto</option>
+      </select>
+      <label className="flex items-center gap-1 text-[11px] text-gray-500" title="Prezzo in archivio (vuoto = quello globale del drop)">
+        €
+        <input
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          onBlur={savePrice}
+          onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur() }}
+          placeholder={globalArchive ? String(globalArchive / 100) : '—'}
+          disabled={busy === 'price'}
+          inputMode="decimal"
+          className="w-12 bg-gray-900 border border-gray-700 text-gray-200 px-1 py-0.5 text-[11px]"
+        />
+      </label>
+      <button type="button" onClick={doSeo} disabled={!!busy}
+        className="text-[11px] border border-indigo-800/70 text-indigo-300 px-1.5 py-0.5 hover:border-indigo-500 disabled:opacity-40">
+        {busy === 'seo' ? 'SEO…' : 'SEO ✦'}
+      </button>
+      {warns.map(([k, why]) => (
+        <span key={k} title={why} className="text-[10px] px-1.5 py-0.5 bg-red-900/40 text-red-300 border border-red-900/60">⚠ {k}</span>
+      ))}
+      {msg && <span className="text-[10px] text-gray-400">{msg}</span>}
+    </div>
+  )
+}
+
 function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deleting }) {
   const navigate = useNavigate()
   const status   = getProductStatus(p)
@@ -1968,6 +2105,7 @@ function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deletin
           {p.section}{p.collection ? ` · ${p.collection}` : ''} · {fmt(p.price)}
         </p>
         <QuickColors product={p} />
+        <QuickTools product={p} />
       </div>
       {/* Actions */}
       <div className="flex items-center flex-shrink-0" onClick={e => e.stopPropagation()}>
