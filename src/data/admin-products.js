@@ -18768,10 +18768,11 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260824_162533_c541bde0-c2ac-41ff-98dd-2a2290193ec2-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
-    "updatedAt": "2026-09-28T14:10:23.181Z",
+    "updatedAt": "2026-09-28T14:10:32.757Z",
     "relatedProducts": [],
     "storeColors": [
-      "black"
+      "black",
+      "cardinal-red"
     ]
   }
 ]
