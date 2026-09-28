@@ -10667,7 +10667,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f54dbe6e-829a-441d-813e-cc90d035c5a6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T160942Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7076c36759976fab1f245b23e971d39b5d64217f18f7db7bbad6e2efd835884"
     ],
     "createdAt": "2026-06-26T15:54:23.790Z",
-    "updatedAt": "2026-09-25T14:34:54.821Z",
+    "updatedAt": "2026-09-28T14:13:33.053Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charmander-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -10740,7 +10740,10 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153613_d59bbb39-cc69-4791-bdf6-aeff026df7f9.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "storeColors": [
+      "cardinal-red"
+    ]
   },
   {
     "id": "cool-alakazam-back-t-shirt",
