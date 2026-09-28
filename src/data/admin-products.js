@@ -15801,8 +15801,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "Ursaring embodies the playful spirit of those who take life as it comes, mixing mischief with a hint of bear-y charm. This t-shirt showcases Ursaring's goofy confidence in vibrant detail on a Gildan premium tee, enhanced by direct-to-garment print quality that ensures the colors pop and last. It’s the perfect way to share your love for this classic Pokémon while relaxing or going out. Slide this fun shirt into your gift list for friends who appreciate that nostalgic Pokémon vibe.",
-    "altText": "Cheeky Ursaring striking a playful pose in bright colors on a small chest print of a Gildan tee.",
+    "description": "This Ursaring Back Print Shirt is a must for the friend who lives the nostalgia of the 90s anime boom. With its large graphic design showcasing a playful Ursaring in a vintage aesthetic, this unisex cotton tee channels both comfort and style. Crafted from Gildan's premium material with cutting-edge DTG print quality, it's made to withstand the adventures of any Pokémon trainer. Gift it to your buddy who still remembers the thrill of catching 'em all, or treat yourself to a bold throwback look that says you appreciate both art and fun.",
+    "altText": "Ursaring depicted striking a playful pose in vibrant colors on a retro 90s anime-inspired JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -15862,47 +15862,47 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fce8fde1-2a3f-4468-a930-c4c0e502fddb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260902%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260902T200114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d6920b9104c86f0110b960b89b418e8e9e7a02ab751cdb2f8f5618f6177bf6c4": "Another angle displaying the playful Ursaring design in vivid red hues."
     },
     "tags": [
-      "ursaring",
-      "pokemon",
-      "cool shirt",
-      "anime apparel",
-      "gaming fashion",
-      "trendy t-shirt",
-      "geek culture",
-      "nostalgic wear",
-      "meme clothing",
-      "pop culture",
-      "graphic tee",
-      "vintage style",
-      "fan merchandise"
+      "ursaring shirt",
+      "pokemon t-shirt",
+      "anime graphic tee",
+      "retro apparel",
+      "90s fashion",
+      "gift for gamers",
+      "funny t-shirt",
+      "unisex clothing",
+      "anime gift",
+      "cotton t-shirt",
+      "pokemon gift",
+      "graphic design tee",
+      "large back print"
     ],
     "featured": false,
     "gelatoProductId": "27cdfcde-de9f-4617-859b-4174bb249b1b",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "ursaring t-shirt",
-      "pokemon shirt",
-      "graphic tee",
-      "gaming apparel",
-      "anime clothing"
+      "ursaring shirt",
+      "retro t-shirt",
+      "anime graphic tee",
+      "pokemon apparel",
+      "funny t-shirt"
     ],
     "longTailKeywords": [
-      "cool ursaring graphic t-shirt",
-      "unique pokemon fan apparel",
-      "playful anime inspired shirt",
-      "retro pokemon character tee",
-      "fun gaming themed clothing",
-      "gift ideas for pokemon lovers",
-      "quirky ursaring meme shirt",
-      "stylish cartoon bear t-shirt",
-      "Gildan direct-to-garment print design shirt",
-      "vibrant art pokemon clothing online"
+      "ursaring pokemon graphic tee",
+      "retro anime style shirt for men",
+      "90s nostalgic apparel gift for him",
+      "funny graphic tees for pokemon fans",
+      "large back design anime shirt",
+      "\"unisex cotton pokémon tee\"",
+      "\"gildan premium organic t-shirt\"",
+      "\"vintage ursaring artwork shirt\"",
+      "unique gifts for gamers",
+      "best regalos para amigos"
     ],
-    "hashtags": "#ursaring #pokemontshirt #gamersfashion #animeapparel #coolshirts #fanmerch #wholesomecontent #nostalgia #memes #popculture #urusingbear #gamerstyle #uniquecollection #retrostyle #tshirtsforlife #trendyclothing #artdesigns #loveforanime #creativewears #onlinefashionstore #diyfashionline #urbanstyle #fandomclothes #igivtorememberingyou #affordablefashion #styleinspo #everydaywears #streetstylelookbook #premiummaterialshoutout ##instacoolteeshirts ",
-    "instagramCaption": "\"Just when you thought it couldn't get any cuter! 🐻✨ Rock this Ursaring tee and channel your inner fun! Get yours now and join the squad. 😎👕#ursaringmeme#pokemonfan#streetwear\" ",
-    "pinterestCaption": "\"Celebrate your favorite Pokémon with our Cool Ursaring T-Shirt! Perfectly blending playful vibes with retro art style, this unique piece makes an excellent addition to any collection or wardrobe. Don't miss out on snagging one today!\" ",
-    "seoTitle": "Ursaring T-Shirt | Meme Culture Vibe | Playful Gift Idea",
+    "hashtags": "#ursaring #pokemon #graphictee #retrofashion #90sanime #vintageclothing #cottonshirt #geekwear #fanapparel #unisexfashion #giftforhim #animeartwork #nostalgia #animelover #shoplocal #streetwearstyle #trendytshirts #creativegifts #originalartwork #popculturefashion #quirkytshirt #customteeshirts #madeinusa #funnypokemonshirts #summerfashion2023 #coolshirtsforkids #stylishapparel #collectibleshirt#fanmerchandise#creativewearing#tshirtdesigns#casualoutfit#uniquetoddlershirts#funnygiftideas#nostalgicclothing#artistmerchandising#styleinspiration",
+    "instagramCaption": "\"When adventure calls, will you answer? Get ready to embrace your inner Pokémon master with our Ursaring Back Print Tee! Don't miss out—grab yours now! 🔥🎮💥\" #ursaring #retrofashion #gamerstyle",
+    "pinterestCaption": "\"Channel your inner Pokémon master with our Ursaring Back Print Shirt that captures the whimsical spirit of retro anime. Made from soft cotton, this unique piece offers both comfort and nostalgia. Shop now to find the perfect gift for fans of all ages!\"",
+    "seoTitle": "Ursaring Back Print Shirt | Retro 90s Anime Gift | For Him",
     "variants": [
       {
         "uid": "7ed5cf71-9a2f-4864-b7dd-d50dbdb458e2",
@@ -16290,12 +16290,74 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_132204_dfcb2d9a-1c30-4cc5-9725-7e93cf47ec87-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-02T20:04:27.469Z",
-    "updatedAt": "2026-09-28T14:32:43.719Z",
+    "updatedAt": "2026-09-28T14:32:48.058Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
     "storeColors": [
       "black",
       "sand"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Level Up Your Wardrobe with Cool Ursaring T-Shirt",
+        "description": "Embrace your love for Pokémon with the Cool Ursaring T-Shirt, perfect for showcasing your fandom! Made from premium materials, this stylish tee is ideal for everyday wear or special Pokémon events. Don’t miss out on adding this must-have piece to your collection – save it to your wish list today!",
+        "tags": [
+          "ursaring",
+          "pokemon",
+          "fandom",
+          "apparel",
+          "cool t-shirt",
+          "gift idea"
+        ]
+      },
+      {
+        "title": "Stylish Cool Ursaring T-Shirt for Pokémon Fans",
+        "description": "Show off your unique style with this Cool Ursaring T-Shirt, designed specifically for Pokémon enthusiasts! Its eye-catching design and comfortable fit make it perfect for casual outings, conventions, or even lazy days at home. Save this pin and elevate your Pokémon wardrobe now!",
+        "tags": [
+          "pokemon style",
+          "ursaring",
+          "t-shirt",
+          "cool aesthetics",
+          "fan gear",
+          "collectible"
+        ]
+      },
+      {
+        "title": "The Perfect Gift: Cool Ursaring T-Shirt",
+        "description": "Looking for a fantastic gift for a Pokémon lover? The Cool Ursaring T-Shirt is a stylish choice that combines comfort and fandom. This tee is sure to put a smile on anyone's face, making it a thoughtful present for birthdays or any special occasion. Pin this idea for your next gift-giving event!",
+        "tags": [
+          "gift for her",
+          "gift for him",
+          "pokemon gift",
+          "ursaring",
+          "apparel",
+          "fan merchandise"
+        ]
+      },
+      {
+        "title": "Rock the Cool Ursaring T-Shirt Look",
+        "description": "Step into the world of Pokémon fashion with our Cool Ursaring T-Shirt! This trendy tee is a bold statement piece that pairs perfectly with your favorite jeans or shorts, ensuring you stand out in any crowd. Don’t forget to save this pin for inspo on your next stylish outfit selection!",
+        "tags": [
+          "pokemon fashion",
+          "cool t-shirt",
+          "ursaring",
+          "aesthetic",
+          "wearable art",
+          "style"
+        ]
+      },
+      {
+        "title": "Casual Vibes with the Cool Ursaring T-Shirt",
+        "description": "Elevate your casual attire with the Cool Ursaring T-Shirt, a must-have for fans of cool Pokémon art! Perfect for hangouts, gaming sessions, or simply lounging at home, this tee brings a fun twist to your everyday look. Save this pin to your collection for effortless casual style inspiration!",
+        "tags": [
+          "casual wear",
+          "pokemon",
+          "ursaring",
+          "lounge wear",
+          "fan apparel",
+          "everyday style"
+        ]
+      }
     ]
   },
   {
