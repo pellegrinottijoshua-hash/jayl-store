@@ -14378,7 +14378,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Slowpoke T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "Slowpoke's gentle nature truly shines in this cozy tee, capturing that laid-back vibe we all crave. With a charming illustration of our favorite Water/Psychic type, it perfectly reflects those moments when you feel like taking it slow and embracing the daydreaming spirit. Made from Gildan’s premium fabric with direct-to-garment print quality, this t-shirt ensures comfort while showcasing your love for Pokémon culture. It makes a thoughtful gift for fans who appreciate the soothing energy of Slowpoke.",
@@ -14663,7 +14663,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f68f5fd8-bd43-4091-8969-22f35047a570/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150005Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b161dbd528190e04ba46c23504567f85bc397971b88a6c245fb670e149560e80"
     ],
     "createdAt": "2026-06-29T13:31:44.943Z",
-    "updatedAt": "2026-09-28T14:12:25.422Z",
+    "updatedAt": "2026-09-28T15:00:03.498Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -14704,7 +14704,8 @@ export const adminProducts = [
           "pokemon",
           "chill",
           "fashion"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Stand Out with Our Cool Slowpoke Back T-Shirt",
@@ -14733,7 +14734,8 @@ export const adminProducts = [
     ],
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_132411_91169ddf-d023-4498-8189-882dc549ad0a.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_131913_c1b73103-aee1-4528-a1b4-1e390a396fe2.png"
     ],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-slowpoke-back-t-shirt/design-front.png",
     "storeColors": [
