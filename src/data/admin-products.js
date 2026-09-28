@@ -18508,7 +18508,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Shiny Charizard t-shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
     "description": "For that friend who was always the Charizard kid, this shiny Charizard back print shirt captures the nostalgic essence of Saturday morning cartoons. With a large and vibrant design showcasing the iconic fire-breathing Dragon, it's a tribute to those epic battles in childhood. Made from soft Gildan premium cotton with top-notch DTG print quality, this unisex tee offers comfort and style in spades. It's an excellent gift for birthdays or just because—anyone who grew up loving Pokémon will appreciate wearing a piece of their childhood.",
@@ -18607,10 +18607,10 @@ export const adminProducts = [
       "Pokemon fan retro graphic tees sale",
       "90s anime inspired clothing for fans"
     ],
-    "hashtags": "#pokemon #charizard #90sAnime #animeMerch #geekwear #graphictee #unisexfashion #cottontee #retrostyle #animeApparel #edgyFashion #giftIdeas #nerdCulture #fandomFashion #coolGifts #JAYLstore #artwear #jaylart #premiumprint #wearableart #popCulture #animeLifestyle #fashionInspo #trendyTees #streetwear #vintageVibes #styleInspo #animeCommunity #uniqueApparel #fanMerch #coolCollectibles",
-    "instagramCaption": "Unleash your inner fire with our shiny charizard Back Print Shirt! 🔥 This retro 90s anime tee is not just a shirt, it's a statement. Perfect for the Pokémon master in your life! #Pokemon #90sNostalgia #AnimeStyle #CoolTees #GiftForHim. Link in bio 🔗",
-    "pinterestCaption": "Step back into the 90s with our shiny charizard Back Print Shirt. This unisex cotton tee boasts a large, eye-catching design that captures the essence of retro anime culture. Perfect for gifting or elevating your own wardrobe—add it to your collection today!",
-    "tiktokCaption": "this charizard tee is straight fire 🔥 who’s ready to catch ‘em all? #fyp #forhome #anime #pokemon #trending",
+    "hashtags": "#PokemonFan #Charizard #GeekChic #AnimeApparel #Cosplay #GraphicTees #Streetwear #FashionGoals #CasualStyle #GiftForHim #NerdCulture #EdgyStyle #WearableArt #ArtFashion #UniqueTees #GiftIdeas #ArtCollectors #TrendyFashion #PopCulture #GeekWear #JAYLStore #ArtWear #JaylArt #PremiumPrint #WearableArt #CoolTees #CharizardMerch #PokemonLovers #FanArt #Collectibles #JAYL",
+    "instagramCaption": "Unleash your inner fire with our Shiny Charizard t-shirt! 🔥 Perfect for trainers who dare to stand out. Get yours now and let the world know you’re not playing around! #PokemonStyle #CharizardVibes #EdgyFashion #WearableArt #JAYL 🔗",
+    "pinterestCaption": "Elevate your wardrobe with the Shiny Charizard t-shirt, a must-have for any Pokémon fan. This striking piece combines edgy design with cultural flair, making it perfect for casual outings or conventions. Start planning your next look and add this gem to your collection!",
+    "tiktokCaption": "Bro, this Charizard hits different 🔥 Catch it before it flies away! #fyp #foryou #pokemon #anime #coolfashion",
     "seoTitle": "Charizard Back Print Shirt | Retro 90s Anime Gift | Fire Pokémon",
     "variants": [
       {
@@ -18882,7 +18882,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260824_162533_c541bde0-c2ac-41ff-98dd-2a2290193ec2-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
-    "updatedAt": "2026-09-28T14:10:36.209Z",
+    "updatedAt": "2026-09-28T14:25:10.075Z",
     "relatedProducts": [],
     "storeColors": [
       "black",
