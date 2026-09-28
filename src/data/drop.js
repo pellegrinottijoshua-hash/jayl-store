@@ -24,7 +24,7 @@ export const drop = {
       "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him"
     ],
     "startsAt": "2026-09-24T16:00:00Z",
-    "endsAt": "2026-09-29T16:00:00Z",
+    "endsAt": "2026-10-01T16:00:00Z",
     "cap": 20,
     "caps": {},
     "dropPrice": 2200,
