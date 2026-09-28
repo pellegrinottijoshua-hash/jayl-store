@@ -17617,7 +17617,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Entei T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
     "description": "Ignite your wardrobe with the fierce spirit of Entei, captured in a dynamic back print that radiates retro vibes. The fiery orange and black hues bring this legendary Pokémon to life, embodying its untamed power and confidence. This Gildan premium tee showcases top-notch DTG print quality, ensuring every detail pops with nostalgic flair. Perfect as a birthday or holiday gift for that special someone who appreciates unique anime fashion.",
@@ -18067,7 +18067,7 @@ export const adminProducts = [
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T15:05:44.591Z",
-    "updatedAt": "2026-09-28T14:11:09.070Z",
+    "updatedAt": "2026-09-28T14:28:54.029Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_123253_b366555c-9df2-4833-ae17-0f7a807798a9-gelato-front-350.png",
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
@@ -18075,6 +18075,68 @@ export const adminProducts = [
       "heather-maroon",
       "black",
       "white"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Elevate Your Look with Our Cool Entei T-Shirt!",
+        "description": "Show off your love for Pokemon in style with our Cool Entei T-Shirt. Perfect for casual outings or conventions, this shirt combines comfort with a unique design that every fan will appreciate. Add this must-have piece to your wardrobe and turn heads wherever you go!",
+        "tags": [
+          "entei",
+          "pokemon",
+          "cool shirt",
+          "fandom fashion",
+          "casual wear",
+          "anime apparel"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokemon Fans: Cool Entei T-Shirt",
+        "description": "Searching for the ideal gift for a Pokemon enthusiast? Look no further! Our Cool Entei T-Shirt is a fantastic choice for birthdays, holidays, or just because. Delight your loved ones with this stylish and trendy addition to their collection, ensuring they stand out in any crowd.",
+        "tags": [
+          "gift idea",
+          "pokemon lover",
+          "unique t-shirt",
+          "entei",
+          "fandom gift",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Express Your Style with Our Cool Entei T-Shirt",
+        "description": "Unleash your personality with our Cool Entei T-Shirt that perfectly blends comfort and style. This trendy tee is designed for those who want to showcase their love for Pokemon while staying fashionable. Save this pin to keep your wardrobe fresh and exciting!",
+        "tags": [
+          "streetwear",
+          "pokemon fashion",
+          "entei style",
+          "trendy t-shirt",
+          "cool apparel",
+          "fandom"
+        ]
+      },
+      {
+        "title": "Level Up Your Collection: Cool Entei T-Shirt",
+        "description": "Add a standout piece to your Pokemon merch collection with our Cool Entei T-Shirt. This eye-catching shirt not only celebrates your favorite character, but it also enhances your everyday outfits. Pin this now and be among the first to flaunt it at your next Pokemon meetup!",
+        "tags": [
+          "pokemon merchandise",
+          "cool t-shirt",
+          "entei",
+          "fan apparel",
+          "collection piece",
+          "anime fashion"
+        ]
+      },
+      {
+        "title": "Casual Comfort Meets Pokemon Pride: Entei T-Shirt",
+        "description": "Upgrade your casual wear with our Cool Entei T-Shirt that captures the spirit of Pokemon. Great for lounging at home or hanging out with friends, this shirt offers both ease and style. Keep it in mind for your next shopping spree and add some flair to your everyday looks!",
+        "tags": [
+          "pokemon attire",
+          "entei",
+          "casual fashion",
+          "comfortable tee",
+          "fan style",
+          "pocket monster"
+        ]
+      }
     ]
   },
   {
