@@ -11873,7 +11873,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4c1b0bb-284d-47d5-9f55-157b3c90152f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=76be87cc19db879cd713435e2953dd1c4494035d962db9d376c21d085b269102"
     ],
     "createdAt": "2026-06-27T13:23:00.895Z",
-    "updatedAt": "2026-09-28T14:13:14.057Z",
+    "updatedAt": "2026-09-28T14:13:16.901Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -11950,7 +11950,8 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design-front.png",
     "storeColors": [
       "sand",
-      "black"
+      "black",
+      "rs-sport-grey"
     ]
   },
   {
