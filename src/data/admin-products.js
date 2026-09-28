@@ -18881,12 +18881,74 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260824_162533_c541bde0-c2ac-41ff-98dd-2a2290193ec2-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
-    "updatedAt": "2026-09-28T14:25:36.374Z",
+    "updatedAt": "2026-09-28T14:27:02.330Z",
     "relatedProducts": [],
     "storeColors": [
       "black",
       "cardinal-red",
       "navy"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Elevate Your Wardrobe with Our Shiny Charizard T-Shirt",
+        "description": "Unleash your inner Pokemon master with this stunning Shiny Charizard t-shirt. Perfect for casual outings or as a unique statement piece, this shirt combines comfort with style. Whether you're a dedicated fan or just love cool graphic tees, this is a must-have addition to your collection. Save it for your next shopping spree!",
+        "tags": [
+          "charizard",
+          "pokemon",
+          "graphic tee",
+          "fandom",
+          "cool style",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokemon Lovers: Shiny Charizard Tee",
+        "description": "Searching for a thoughtful gift for the Pokemon enthusiast in your life? Our Shiny Charizard t-shirt is an ideal choice! Featuring vibrant artwork, this tee is both stylish and nostalgic, making it perfect for birthdays, holidays, or just because. Don’t forget to pin it for future gifting inspiration!",
+        "tags": [
+          "gift idea",
+          "pokemon",
+          "charizard",
+          "fandom",
+          "apparel",
+          "nostalgic"
+        ]
+      },
+      {
+        "title": "Chic & Cool: Shiny Charizard T-Shirt for Every Occasion",
+        "description": "Add a touch of flair to your everyday outfit with our Shiny Charizard t-shirt. This stylish tee is perfect for any occasion, from casual meetups to themed events. It effortlessly combines comfort with an eye-catching design that every Pokemon fan will love. Plan your next outfit and pin it now!",
+        "tags": [
+          "casual fashion",
+          "charizard",
+          "pokemon",
+          "style",
+          "everyday wear",
+          "cool aesthetic"
+        ]
+      },
+      {
+        "title": "Stand Out with the Shiny Charizard T-Shirt - For True Fans",
+        "description": "Make a statement among your friends with the Shiny Charizard t-shirt, designed for true Pokemon fans. This tee not only showcases your passion but also fits seamlessly into your wardrobe. Show off your love for Pokemon in a stylish way. Don't forget to save it for your next outfit inspiration!",
+        "tags": [
+          "pokemon",
+          "charizard",
+          "fan apparel",
+          "unique style",
+          "graphic tee",
+          "statement piece"
+        ]
+      },
+      {
+        "title": "Fashion Meets Fandom: Shiny Charizard T-Shirt Awaits!",
+        "description": "Experience the perfect blend of fashion and fandom with our Shiny Charizard t-shirt. This artfully designed tee boasts vibrant colors and unique graphics, making it a standout piece in any closet. Ideal for conventions or casual outings, it’s a must-have for any Pokemon lover. Bookmark it for your next shopping list!",
+        "tags": [
+          "fashion",
+          "charizard",
+          "pokemon",
+          "cool apparel",
+          "graphic design",
+          "fan gear"
+        ]
+      }
     ]
   }
 ]
