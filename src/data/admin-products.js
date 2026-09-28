@@ -18881,7 +18881,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260824_162533_c541bde0-c2ac-41ff-98dd-2a2290193ec2-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
-    "updatedAt": "2026-09-28T14:27:02.330Z",
+    "updatedAt": "2026-09-28T14:27:14.440Z",
     "relatedProducts": [],
     "storeColors": [
       "black",
@@ -18899,7 +18899,8 @@ export const adminProducts = [
           "fandom",
           "cool style",
           "casual wear"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "The Perfect Gift for Pokemon Lovers: Shiny Charizard Tee",
@@ -18949,6 +18950,9 @@ export const adminProducts = [
           "fan gear"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_154902_f13cd7c6-daac-4398-84f0-54c8da282ed3.png"
     ]
   }
 ]
