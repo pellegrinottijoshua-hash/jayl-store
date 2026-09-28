@@ -16726,7 +16726,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Raikou T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
     "description": "Electric as a thunderstorm, Raikou captures the essence of raw power wrapped in fur. This Gildan premium cotton tee showcases a bold retro 90s anime graphic with an oversized back print that boldly proclaims your affinity for this electric Pokémon icon. The vibrant colors pop, making it an essential statement piece in any streetwear collection. It also makes for a memorable gift for fans who appreciate the electrifying presence of Raikou. With its DTG print quality, you can trust that this tee stands the test of time in both style and comfort.",
@@ -17137,12 +17137,74 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_113839_3651409f-d368-400f-9dbf-72a8d002ff8a-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:47:54.039Z",
-    "updatedAt": "2026-09-28T14:11:31.509Z",
+    "updatedAt": "2026-09-28T14:30:54.456Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/design-front.png",
     "storeColors": [
       "black",
       "daisy"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Style with Our Cool Raikou T-Shirt",
+        "description": "Show off your love for Pokemon with our Cool Raikou T-Shirt! This stylish and comfortable tee features a vibrant Raikou design that captures the spirit of adventure. Perfect for everyday wear or special occasions, it's a must-have for any Pokemon fan. Elevate your wardrobe and make a statement—add this tee to your collection today!",
+        "tags": [
+          "raikou",
+          "pokemon",
+          "graphic tee",
+          "cool style",
+          "fandom",
+          "fashion"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokemon Lovers: Cool Raikou T-Shirt",
+        "description": "Searching for the ideal gift for a Pokemon enthusiast? Our Cool Raikou T-Shirt is the answer! This unique and eye-catching tee is not just stylish; it's a celebration of the beloved Pokemon. Surprise your friends or family with a gift they'll cherish—bookmark this item for the next special occasion!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "raikou",
+          "fandom",
+          "apparel",
+          "unique gift"
+        ]
+      },
+      {
+        "title": "Stand Out with Our Aesthetic Cool Raikou T-Shirt",
+        "description": "Embrace the Pokemon aesthetic with our Cool Raikou T-Shirt! This trendy shirt combines comfort and style, making it perfect for any casual outing or creative event. Let your personality shine through while showing your love for Raikou—save this pin and shop now to enhance your wardrobe with this standout piece!",
+        "tags": [
+          "aesthetic",
+          "pokemon",
+          "raikou",
+          "fashion",
+          "trendy",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "Join the Pokemon Fandom with Our Cool Raikou Tee",
+        "description": "Become a part of the Pokemon community with our Cool Raikou T-Shirt! Ideal for conventions, meetups, or just hanging out with friends, this shirt showcases your passion for Pokemon. Celebrate your fandom in style—plan your look and grab yours now!",
+        "tags": [
+          "fandom",
+          "pokemon",
+          "raikou",
+          "convention",
+          "apparel",
+          "graphic shirt"
+        ]
+      },
+      {
+        "title": "Casual Coolness: Raikou T-Shirt for Every Occasion",
+        "description": "Elevate your everyday style with our Cool Raikou T-Shirt! This versatile piece is perfect for any occasion, whether you're chilling at home or out with friends. Showcase your love for Pokemon effortlessly—save this pin and secure your new favorite tee today!",
+        "tags": [
+          "casual",
+          "raikou",
+          "pokemon",
+          "everyday wear",
+          "apparel",
+          "stylish tee"
+        ]
+      }
     ]
   },
   {
