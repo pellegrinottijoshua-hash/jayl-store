@@ -14849,8 +14849,8 @@ export const adminProducts = [
       "exclusive pokemon character merchandise online",
       "must-see altaria art on apparel"
     ],
-    "hashtags": "#pokemon #altaria #streetwear #animefashion #graphictee #hypebeast #tshirt #apparel #retroart #dtgprint #collectibles #gildanshirts #pokemergear #fanmerchandise #trendyclothing #vintageanimeart #stylishshirts #reviewfashion #animelover #pokedexlifestyle #cloudypokemon #dragontypepower #kidsattitude #creativeoutfits #shoponline #fashioninspo #uniquestyleoftheday #trendsettinglooks #gamecharacterstyle ##crazyprints ",
-    "instagramCaption": "'Catch flights, not feelings'—that’s the vibe with our Cool Altaria T-Shirt. Elevate your wardrobe game with fresh designs inspired by your favorite Pokémon. Don’t sleep on this one! 🌤️✨#altariashirt#streetwear#pokevibes ",
+    "hashtags": "#pokemon #altaria #streetwear #animefashion #graphictee #hypebeast #tshirt #apparel #retroart #dtgprint #collectibles #gildanshirts #pokemergear #fanmerchandise #trendyclothing #vintageanimeart #stylishshirts #reviewfashion #animelover #pokedexlifestyle #cloudypokemon #dragontypepower #kidsattitude #creativeoutfits #shoponline #fashioninspo #uniquestyleoftheday #trendsettinglooks #gamecharacterstyle ##crazyprints",
+    "instagramCaption": "'Catch flights, not feelings'—that’s the vibe with our Cool Altaria T-Shirt. Elevate your wardrobe game with fresh designs inspired by your favorite Pokémon. Don’t sleep on this one! 🌤️✨#altariashirt#streetwear#pokevibes",
     "pinterestCaption": "'Cool Altaria T-Shirt' brings vibrant nostalgia straight from the Pokémon world into your closet with cutting-edge style. Perfect for everyday wear or as an unforgettable gift—a must-have addition to your anime-inspired collection.",
     "seoTitle": "Altaria T-Shirt | Trendy Pokémon Apparel | Streetwear Style",
     "variants": [
@@ -15232,7 +15232,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e815a9b8-8482-46b8-bb9c-3aab36eea795/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c9af108d50fdb958d02e63ca205ed2dc203be4ecf29420e25c13949994d6c280"
     ],
     "createdAt": "2026-08-31T12:06:04.035Z",
-    "updatedAt": "2026-09-28T14:57:45.425Z",
+    "updatedAt": "2026-09-28T14:58:01.735Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260820_231831_884ada2e-cc49-49a2-897a-2200e25a506a-corr-1s4nnvk4-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -15241,6 +15241,79 @@ export const adminProducts = [
       "light-blue",
       "white",
       "azalea"
+    ],
+    "tiktokCaption": "This shirt? A total Poké power move! 💥 #pokemon #fyp #foryou #anime #streetwear",
+    "pinterestPins": [
+      {
+        "title": "Elevate Your Style with the Cool Altaria T-Shirt!",
+        "description": "Show off your love for Pokémon with the Cool Altaria T-Shirt, perfect for any fan. This stylish tee features a unique design that captures the essence of Altaria, making it a must-have addition to your wardrobe. Whether you're out and about or chilling at home, this shirt is sure to turn heads. Don’t miss out on the chance to express your fandom in style—save it for your next outfit inspiration!",
+        "tags": [
+          "altaria",
+          "pokemon",
+          "fandom",
+          "style",
+          "apparel",
+          "gift",
+          "cool shirt",
+          "trendy tee",
+          "anime fashion"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Fans: Cool Altaria T-Shirt",
+        "description": "Searching for a memorable gift for a Pokémon lover? Look no further than the Cool Altaria T-Shirt! This premium tee combines comfort and style, making it great for any occasion, from birthdays to holidays. Delight your friends or family with this unique piece that showcases their favorite Pokémon. Pin it now to gift something truly special!",
+        "tags": [
+          "gift",
+          "pokemon",
+          "fandom",
+          "altaria",
+          "apparel",
+          "cool t-shirt",
+          "birthday gift",
+          "holiday present"
+        ]
+      },
+      {
+        "title": "Stand Out with the Aesthetic Cool Altaria T-Shirt",
+        "description": "Embrace the cool aesthetic with the Altaria T-Shirt, designed for those who appreciate both style and Pokémon. This eye-catching design captures the ethereal beauty of Altaria, making it a standout piece in any collection. Perfect for casual outings or cozy nights in, this shirt defines unique fashion. Don’t forget to save it for your creative outfit ideas!",
+        "tags": [
+          "aesthetic",
+          "pokemon",
+          "altaria",
+          "style",
+          "trendy",
+          "apparel",
+          "cool fashion",
+          "unique design"
+        ]
+      },
+      {
+        "title": "Cool Altaria T-Shirt: The Ultimate Casual Wear for Pokémon Lovers",
+        "description": "Step up your casual wear with the Cool Altaria T-Shirt, ideal for Pokémon fans who appreciate comfort without compromising on style. This versatile tee pairs perfectly with jeans, shorts, or skirts, making it suitable for any laid-back occasion. Showcase your Pokémon pride effortlessly. Pin it to your style board now and start planning your next casual ensemble!",
+        "tags": [
+          "casual wear",
+          "pokemon",
+          "altaria",
+          "apparel",
+          "comfortable",
+          "everyday outfit",
+          "trendy t-shirt"
+        ]
+      },
+      {
+        "title": "Game Day Ready: Cool Altaria T-Shirt for Pokémon Events",
+        "description": "Get ready for your next Pokémon event with the Cool Altaria T-Shirt! This stylish tee is not just comfortable but is also a conversation starter among fellow fans. Perfect for conventions, game nights, or casual meet-ups, this shirt lets you show off your passion for Pokémon. Don’t forget to save this pin for your event outfit planning!",
+        "tags": [
+          "event",
+          "pokemon",
+          "altaria",
+          "apparel",
+          "game day",
+          "fan gear",
+          "casual style",
+          "convention outfit"
+        ]
+      }
     ]
   },
   {
