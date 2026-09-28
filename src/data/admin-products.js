@@ -17963,10 +17963,13 @@ export const adminProducts = [
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T15:05:44.591Z",
-    "updatedAt": "2026-09-10T10:38:55.208Z",
+    "updatedAt": "2026-09-28T14:10:55.084Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_123253_b366555c-9df2-4833-ae17-0f7a807798a9-gelato-front-350.png",
-    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png"
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
+    "storeColors": [
+      "heather-maroon"
+    ]
   },
   {
     "id": "cool-arcanine-back-shirt",
