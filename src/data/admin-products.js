@@ -14750,8 +14750,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
-    "description": "If you ever felt like a majestic cloud drifted right out of the sky and decided to chill, that’s Altaria for you. This shirt captures that dreamy vibe with a unique design inspired by its whimsical nature. Made on a Gildan premium tee and printed using top-notch DTG quality, it ensures comfort while maintaining that striking aesthetic. An effortless choice for those who appreciate Pokémon's softer side – your friends will envy your laid-back style when you gift this to them.",
-    "altText": "Soaring Altaria in a serene pose, illustrated in retro 90s anime style with a small chest print on a premium JAYL tee.",
+    "description": "Soaring through the skies, Altaria radiates ethereal vibes with its soft, cloud-like body glistening in hues of blue and white. This Gildan premium tee showcases a dynamic design that captures the free-spirited nature of this dragon-type wonder. Crafted with top-notch DTG print quality, it guarantees a vivid display that blends seamlessly into your streetwear rotation. Whether you're lounging or hitting the town, gifting it to fellow trainers will surely spark joy and nostalgia for those iconic battles.",
+    "altText": "Dramatic Altaria mid-flight with wings spread wide in a blue and white palette, illustrated in retro 90s anime style on a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -14813,46 +14813,46 @@ export const adminProducts = [
     },
     "tags": [
       "altaria",
-      "pokemon",
-      "cool pokemon",
-      "art t-shirt",
-      "anime apparel",
-      "fan art",
-      "gamer clothing",
+      "pokemon t-shirt",
+      "cool pokemon back",
+      "streetwear",
+      "hype-beast",
+      "anime fashion",
       "graphic tee",
-      "trendy fashion",
-      "geek wear",
-      "retro shirts",
-      "unique gifts",
-      "casual wear"
+      "pokemon art",
+      "Gildan shirt",
+      "fan apparel",
+      "anime t-shirt",
+      "trendy clothing",
+      "collectible merch"
     ],
     "featured": false,
     "gelatoProductId": "44fd6624-b70f-4b00-95f1-5933809ec29e",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "Altaria shirt",
-      "Pokemon tee",
+      "altaria shirt",
+      "pokemon apparel",
       "anime t-shirt",
-      "graphic art tee",
-      "cool apparel"
+      "graphic tee",
+      "trendy clothes"
     ],
     "longTailKeywords": [
-      "Altaria t-shirt for adults",
-      "unique Pokemon graphic tees",
-      "retro anime style clothing",
-      "trendy casual gamer apparel",
-      "gift ideas for Pokemon fans",
-      "premium t-shirt prints online",
-      "artistic Pokemon fan merchandise",
-      "'cool' theme fashion items",
-      "'90s nostalgia graphic shirts for sale'",
-      "'laid-back aesthetic Pokemon gear'"
+      "cool altaria t-shirt for fans",
+      "stylish pokemon graphic shirts online",
+      "unique altaria fan apparel gift",
+      "premium pokemon t-shirts for collectors",
+      "trendy streetwear anime shirts online",
+      "dragon-type pokemon clothing for casual wear",
+      "gildan print-on-demand graphic tees style",
+      "retro anime designs for cool outfits",
+      "exclusive pokemon character merchandise online",
+      "must-see altaria art on apparel"
     ],
-    "hashtags": "#pokemon #pokedex #pokefans #altaria #animelover #tshirt #streetwear #graphictee #coolclothes #fashion #edgy #wearableart #artwear #jaylstore #premiumprint #style #vintage #giftideas #coolgifts #occasions #fashiongram #trendsetter #creative #unique #artistic #jaylart #jaysquad #instafashion #instaart #fun #expressyourself",
-    "instagramCaption": "Unleash your inner trainer with the Cool Altaria T-Shirt! 🌌 Perfect for those who dare to stand out in the crowd. Get yours and vibe on another level. #CoolPokemonBack #AltariaVibes #StreetwearCulture #PokemonLove #EdgyFashion. Link in bio 🔗",
-    "pinterestCaption": "Elevate your wardrobe with the Cool Altaria T-Shirt, a perfect blend of edgy style and cultural flair. This unique piece is ideal for Pokemon fans looking to showcase their love for the game while making a fashion statement. Explore your style possibilities today!",
-    "seoTitle": "Altaria T-Shirt | Cool Pokemon Back Art | Trendy Gift",
+    "hashtags": "#pokemon #altaria #streetwear #animefashion #graphictee #hypebeast #tshirt #apparel #retroart #dtgprint #collectibles #gildanshirts #pokemergear #fanmerchandise #trendyclothing #vintageanimeart #stylishshirts #reviewfashion #animelover #pokedexlifestyle #cloudypokemon #dragontypepower #kidsattitude #creativeoutfits #shoponline #fashioninspo #uniquestyleoftheday #trendsettinglooks #gamecharacterstyle ##crazyprints ",
+    "instagramCaption": "'Catch flights, not feelings'—that’s the vibe with our Cool Altaria T-Shirt. Elevate your wardrobe game with fresh designs inspired by your favorite Pokémon. Don’t sleep on this one! 🌤️✨#altariashirt#streetwear#pokevibes ",
+    "pinterestCaption": "'Cool Altaria T-Shirt' brings vibrant nostalgia straight from the Pokémon world into your closet with cutting-edge style. Perfect for everyday wear or as an unforgettable gift—a must-have addition to your anime-inspired collection.",
+    "seoTitle": "Altaria T-Shirt | Trendy Pokémon Apparel | Streetwear Style",
     "variants": [
       {
         "uid": "8b3355cc-3184-476b-9013-13ba23241b89",
@@ -15232,7 +15232,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e815a9b8-8482-46b8-bb9c-3aab36eea795/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c9af108d50fdb958d02e63ca205ed2dc203be4ecf29420e25c13949994d6c280"
     ],
     "createdAt": "2026-08-31T12:06:04.035Z",
-    "updatedAt": "2026-09-28T14:57:41.892Z",
+    "updatedAt": "2026-09-28T14:57:45.425Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260820_231831_884ada2e-cc49-49a2-897a-2200e25a506a-corr-1s4nnvk4-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -15241,8 +15241,7 @@ export const adminProducts = [
       "light-blue",
       "white",
       "azalea"
-    ],
-    "tiktokCaption": "This shirt? A total Poké power move! 💥 #pokemon #fyp #foryou #anime #streetwear"
+    ]
   },
   {
     "id": "elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
