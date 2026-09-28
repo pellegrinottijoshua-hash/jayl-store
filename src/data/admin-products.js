@@ -17137,7 +17137,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_113839_3651409f-d368-400f-9dbf-72a8d002ff8a-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:47:54.039Z",
-    "updatedAt": "2026-09-28T14:30:54.456Z",
+    "updatedAt": "2026-09-28T14:31:01.715Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/design-front.png",
     "storeColors": [
@@ -17155,7 +17155,8 @@ export const adminProducts = [
           "cool style",
           "fandom",
           "fashion"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Perfect Gift for Pokemon Lovers: Cool Raikou T-Shirt",
@@ -17205,6 +17206,9 @@ export const adminProducts = [
           "stylish tee"
         ]
       }
+    ],
+    "pinterestPublishedImages": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_161010_b788e2d8-f2ea-4145-92e3-1299aac1e293.png"
     ]
   },
   {
