@@ -18606,10 +18606,10 @@ export const adminProducts = [
       "vintage style pokemon clothing online store",
       "trendy gamer shirts featuring charizard"
     ],
-    "hashtags": "#charizard #pokemon #shirt #gamerapparel #animestyle #artshirt #geekwear #nostalgia #firetype #coolshirts #collectible #pokemerch #animefashion #premiumtees #pocketmonsters #retrostyle #designertshirt #giftideas #casualwear #fanart #gaminglife #otakucommunity #clothingbrand #comicconfashion #styleinspo #popcultureclothing #illustrationartwork #creativetees #merchstore",
-    "instagramCaption": "\"Nothing like Charizard igniting memories! Ready to embody the OG spirit? 🔥 Rock this look! 🔥#charizard#pokemon#tshirt\" ",
-    "pinterestCaption": "\"Ignite your wardrobe with our striking Charizard t-shirt! Perfectly designed to celebrate nostalgia with a minimalist touch, it's a tribute to all fans of this iconic character. Check it out today!\" ",
-    "tiktokCaption": "this charizard tee is straight fire 🔥 who’s ready to catch ‘em all? #fyp #forhome #anime #pokemon #trending",
+    "hashtags": "#pokemon #charizard #graphictee #streetwear #coolapparel #premiumprint #wearableart #artwear #fashionista #giftideas #geekwear #nerdstyle #cultured #edgyfashion #pokemontshirts #trendy #collectibles #uniqueclothing #casualwear #outfitinspo #jaysquad #jaylstore #jaylart #premiumprint #wearableart #artcollectors #fashionforward #styleinspo #geekchic #animefashion #coolpokemonback",
+    "instagramCaption": "Unleash your inner fire with the Shiny Charizard t-shirt. 🔥 This isn't just a tee; it's a statement. Get yours and let the world know you mean business. #Charizard #PokemonArt #StreetWear #CoolVibes #GraphicTees 🔗 Link in bio.",
+    "pinterestCaption": "Elevate your wardrobe with the Shiny Charizard t-shirt, a perfect blend of nostalgia and modern style. This striking design is ideal for Pokemon fans looking to express their unique flair. Add it to your collection and stand out effortlessly!",
+    "tiktokCaption": "When you rock the Shiny Charizard, the vibe is unmatched! 🔥🕶️ #pokemon #fyp #foryou #anime #coolfashion",
     "seoTitle": "Charizard T-Shirt | Cool Pokemon Fan Apparel | Gift Idea",
     "variants": [
       {
@@ -18881,7 +18881,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260824_162533_c541bde0-c2ac-41ff-98dd-2a2290193ec2-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
-    "updatedAt": "2026-09-28T14:25:12.309Z",
+    "updatedAt": "2026-09-28T14:25:36.374Z",
     "relatedProducts": [],
     "storeColors": [
       "black",
