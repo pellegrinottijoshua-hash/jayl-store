@@ -13498,7 +13498,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8287d08-c891-4cb2-888d-ee4e7675697e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150227Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7c9fdab963f8248bf7fa3e55f07ad937e38a17ec1b93eac4a92ebcfc1ebaab02"
     ],
     "createdAt": "2026-06-29T12:43:34.046Z",
-    "updatedAt": "2026-09-28T14:12:41.195Z",
+    "updatedAt": "2026-09-28T14:12:43.061Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-mew-back-t-shirt/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -13571,7 +13571,8 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260628_233416_377fc29b-7c4c-4ce6-a3f4-cd79e2f38db0.png"
     ],
     "storeColors": [
-      "black"
+      "black",
+      "azalea"
     ]
   },
   {
