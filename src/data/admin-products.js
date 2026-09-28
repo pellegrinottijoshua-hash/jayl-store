@@ -15199,25 +15199,25 @@ export const adminProducts = [
         "image": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-08.jpg"
       }
     ],
-    "etsyTitle": "Altaria Back Print Shirt, 90s Anime Vibe, Gift For Retro Lovers",
+    "etsyTitle": "Altaria T-Shirt, Retro Pokémon Vibes, Gift for Gamers",
     "etsyTags": [
-      "altaria shirt",
-      "anime graphic tee",
-      "gift for him",
-      "pokemon fan gift",
-      "otaku apparel",
-      "retro style shirt",
-      "unisex t-shirt"
+      "altaria t-shirt",
+      "pokemon clothing",
+      "birthday gift",
+      "gamer apparel",
+      "otaku culture",
+      "retro style",
+      "unisex fit"
     ],
-    "etsyDescription": "Hey there! If you know a guy who loves dragons and retro vibes, this Altaria back print shirt is just what he needs.\n\nPicture this: Altaria soaring through the skies, its wings embracing freedom. This design captures that raw, whimsical energy, making it an instant favorite for anyone who recognizes the beauty of dragon Pokémon. Crafted from soft, 100% cotton with premium DTG printing, we ensure every detail pops beautifully against your skin. Plus, it’s unisex and available in sizes S-3XL — perfectly versatile for any wardrobe!\n\nThinking about a birthday surprise or a just-because gift? This tee is perfect for your anime-loving friend who values both comfort and standout style.\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
+    "etsyDescription": "Breathe in the cool breeze as Altaria soars through the clouds — this Altaria T-Shirt captures that thrill perfectly. The design encapsulates the whimsical spirit of this beloved Pokémon, radiating a sense of freedom and adventure that fans can't resist.\n\nCrafted from soft, cozy 100% cotton, this unisex tee is a daily reminder of your favorite sky-high battles. With sizes ranging from S to 3XL, it fits like a dream whether you're lounging at home or out on an adventure.\n\nLooking for a special gift? Perfect for birthdays or just because — any trainer will light up at the sight of their beloved Altaria gracing their wardrobe.\n\nMachine wash cold, tumble dry low.\n\nMade to order — ships in 3-5 business days.",
     "etsyImageAlts": [
-      "Front mockup of model wearing Altaria back print shirt showcasing vibrant colors.",
-      "Back view of model in Altaria back print shirt highlighting large design detail.",
-      "Close-up of the Altaria back print showing intricate design features.",
-      "Flat lay of Altaria back print shirt on a clean surface with styled elements.",
-      "Lifestyle shot of individual enjoying day out in Altaria back print shirt.",
-      "Size guide displayed alongside Altaria back print t-shirt detailing size options.",
-      "Gift-wrapped package of Altaria back print shirt set up for presentation."
+      "Front view mockup of Altaria t-shirt worn by model outdoors with lush background.",
+      "Back view mockup of Altaria t-shirt on model highlighting the design's detail.",
+      "Close-up detail showcasing vibrant Altaria artwork printed on soft fabric.",
+      "Flat lay arrangement of Altaria t-shirt with contrasting accessories for styling inspiration.",
+      "Lifestyle shot featuring person wearing Altaria t-shirt while enjoying outdoor activities.",
+      "Size guide display showing various measurements for choosing the right fit on shirt.",
+      "Gift-ready presentation of Altaria t-shirt wrapped beautifully in eco-friendly packaging."
     ],
     "gelatoCdnImages": [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4308e950-a457-4958-a1b9-86053164312f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d8509ccb7d1eabecb6c406ba38b77e3faf560a5eca2f96f2530831be7b0076e1",
@@ -15232,7 +15232,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e815a9b8-8482-46b8-bb9c-3aab36eea795/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T113436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c9af108d50fdb958d02e63ca205ed2dc203be4ecf29420e25c13949994d6c280"
     ],
     "createdAt": "2026-08-31T12:06:04.035Z",
-    "updatedAt": "2026-09-28T14:58:06.666Z",
+    "updatedAt": "2026-09-28T14:59:07.362Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260820_231831_884ada2e-cc49-49a2-897a-2200e25a506a-corr-1s4nnvk4-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
