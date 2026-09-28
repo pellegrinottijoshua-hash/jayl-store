@@ -16203,11 +16203,12 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260816_132204_dfcb2d9a-1c30-4cc5-9725-7e93cf47ec87-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-02T20:04:27.469Z",
-    "updatedAt": "2026-09-28T14:11:48.264Z",
+    "updatedAt": "2026-09-28T14:11:51.363Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
     "storeColors": [
-      "black"
+      "black",
+      "sand"
     ]
   },
   {
