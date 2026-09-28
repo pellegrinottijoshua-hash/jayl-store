@@ -18082,7 +18082,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Arcanine T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
     "description": "Charging through the smoky battleground, Arcanine's fierce loyalty and fiery spirit glint in the retro colors of this graphic tee. This unisex Gildan premium cotton shirt showcases a large back design that captures the essence of your favorite fire Pokémon perfectly—reminiscent of those carefree '90s anime vibes. Whether you're battling it out with pals or just cruising on a lazy Sunday, this tee makes a solid addition to your wardrobe. Makes an excellent gift for any fire-type trainer in your life who knows how to keep it chill amidst all that heat.",
@@ -18494,13 +18494,75 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260421_003408_f400cda1-654e-4711-9bb7-82af5759ed4a-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T15:08:25.427Z",
-    "updatedAt": "2026-09-28T14:10:52.142Z",
+    "updatedAt": "2026-09-28T14:28:03.005Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/design-front.png",
     "storeColors": [
       "cardinal-red",
       "black",
       "white"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Style with the Cool Arcanine T-Shirt",
+        "description": "Embrace your love for Pokémon with our striking Cool Arcanine T-Shirt. Perfect for casual outings or lounging at home, this tee combines comfort and style, showcasing your favorite character in a fashionable way. Add this unique piece to your wardrobe and let your Pokémon fandom shine—save it for later!",
+        "tags": [
+          "arcanine",
+          "pokemon",
+          "apparel",
+          "fandom",
+          "style",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "Perfect Gift for Pokémon Lovers: Cool Arcanine T-Shirt",
+        "description": "Searching for the ideal gift for a Pokémon fan? Our Cool Arcanine T-Shirt is a fantastic choice for birthdays, holidays, or just because! With its eye-catching design and comfortable fit, this shirt will delight any fan. Plan ahead and make someone's day special by saving this gift idea!",
+        "tags": [
+          "gift",
+          "arcanine",
+          "pokemon",
+          "fandom",
+          "special occasion",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Elevate Your Aesthetic with the Cool Arcanine T-Shirt",
+        "description": "Add a touch of cool to your aesthetic with our Cool Arcanine T-Shirt. This tee not only showcases your favorite Pokémon but also fits effortlessly into your everyday style. Perfect for layering or wearing solo, it's an essential addition to any Pokémon lover's wardrobe. Pin it now to elevate your look!",
+        "tags": [
+          "aesthetic",
+          "arcanine",
+          "fashion",
+          "pokemon",
+          "style",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Cool Arcanine T-Shirt: The Ultimate Everyday Wear",
+        "description": "Looking for a versatile tee for your everyday adventures? The Cool Arcanine T-Shirt is designed for comfort while making a statement. Its unique design celebrates your passion for Pokémon, making it a perfect choice for any casual occasion. Save this must-have for your next shopping spree!",
+        "tags": [
+          "everyday wear",
+          "arcanine",
+          "pokemon",
+          "fashion",
+          "lifestyle",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Rock Your Pokémon Passion with the Cool Arcanine T-Shirt",
+        "description": "Show off your Pokémon passion in style with our Cool Arcanine T-Shirt. This eye-catching shirt is perfect for conventions, meetups, or just hanging out with friends. Wear it proudly and let everyone know who your favorite Pokémon is! Don't forget to pin this stylish option for your next adventure!",
+        "tags": [
+          "fandom",
+          "arcanine",
+          "pokemon",
+          "convention",
+          "apparel",
+          "style"
+        ]
+      }
     ]
   },
   {
