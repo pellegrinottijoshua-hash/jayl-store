@@ -7903,7 +7903,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/598d76ab-b65a-4738-9478-58cd4398ba35/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260926%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260926T123831Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e086f1def6caa76c57c064a13c8d9569a929fcecae66f396b8acbb73c51222bc"
     ],
     "createdAt": "2026-06-26T10:58:00.689Z",
-    "updatedAt": "2026-09-26T12:33:21.615Z",
+    "updatedAt": "2026-09-28T14:14:28.648Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -7975,7 +7975,10 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_155630_8758b7f8-e590-4094-9c06-3acdc66c05a2.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
-    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design-front.png"
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design-front.png",
+    "storeColors": [
+      "cardinal-red"
+    ]
   },
   {
     "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
