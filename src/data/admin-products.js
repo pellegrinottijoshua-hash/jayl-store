@@ -16303,7 +16303,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Meganium T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
     "description": "Bounding through vibrant forests, Meganium exudes a chill vibe, channeling the carefree spirit of nature's beauty. This Gildan premium tee showcases a dynamic design with direct-to-garment print quality that captures the essence of this beloved Grass-type in motion. Whether you're reminiscing about your early adventures or simply enjoying life’s quirks, this shirt brings that playful energy to your wardrobe. Looking for a fun gift for a friend who vibes with Meganium's laid-back style? Your search ends here, as this tee balances comfort and creativity perfectly.",
@@ -16714,11 +16714,73 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260816_113516_3f2f58d0-ecea-4083-a650-2517b66eddc6-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:44:50.914Z",
-    "updatedAt": "2026-09-28T14:11:44.018Z",
+    "updatedAt": "2026-09-28T14:31:39.003Z",
     "relatedProducts": [],
     "storeColors": [
       "purple",
       "black"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Stylish Meganium T-Shirt for Pokémon Lovers",
+        "description": "Elevate your casual wear with our Cool Meganium T-Shirt, designed for true Pokémon enthusiasts. This shirt is perfect for everyday adventures or Pokémon-themed gatherings. Don't miss the chance to add this stylish piece to your collection—save it now for your next outfit inspiration!",
+        "tags": [
+          "meganium",
+          "pokemon fan",
+          "cool apparel",
+          "casual style",
+          "gift idea",
+          "pokemon shirt"
+        ]
+      },
+      {
+        "title": "Perfect Gift: Cool Meganium T-Shirt for Pokémon Fans",
+        "description": "Looking for the ultimate gift for a Pokémon fan? Our Cool Meganium T-Shirt is a fantastic choice that combines comfort with fandom. Ideal for birthdays or special occasions, this shirt will surely delight any Pokémon lover. Pin it now for the perfect gift idea!",
+        "tags": [
+          "gift for him",
+          "pokemon merchandise",
+          "meganium",
+          "fandom fashion",
+          "birthday gift",
+          "cool shirt"
+        ]
+      },
+      {
+        "title": "Trendy Pokémon Aesthetic: Cool Meganium T-Shirt",
+        "description": "Embrace the Pokémon aesthetic with our trendy Cool Meganium T-Shirt. This shirt not only showcases your love for Pokémon but also keeps you stylishly comfortable. Perfect for layering or standalone wear, this tee is a must-have for collectors and casual fans alike. Plan your look and save it today!",
+        "tags": [
+          "pokemon aesthetic",
+          "trendy apparel",
+          "meganium",
+          "casual wear",
+          "cool t-shirt",
+          "fashion statement"
+        ]
+      },
+      {
+        "title": "Celebrate Pokémon Day in Style with Meganium Tee",
+        "description": "Make a statement this Pokémon Day with our Cool Meganium T-Shirt! This vibrant tee will have you celebrating your favorite Pokémon in ultimate style. Perfect for parties, events, or simply hanging out. Be sure to save this pin for your Pokémon Day outfit inspiration!",
+        "tags": [
+          "pokemon day",
+          "meganium",
+          "event outfit",
+          "stylish shirt",
+          "pokemon apparel",
+          "cool design"
+        ]
+      },
+      {
+        "title": "Stay Cozy and Cool with Meganium T-Shirt",
+        "description": "Snuggle up in style with our Cool Meganium T-Shirt, the ideal blend of comfort and fandom. Whether you're lounging at home or out with friends, this shirt will keep you looking cool and feeling cozy. Don’t forget to pin this to your fashion board for laid-back styling ideas!",
+        "tags": [
+          "cozy apparel",
+          "pokemon style",
+          "meganium",
+          "lounge wear",
+          "cool t-shirt",
+          "fashion inspiration"
+        ]
+      }
     ]
   },
   {
