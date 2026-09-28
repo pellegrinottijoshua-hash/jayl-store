@@ -17150,7 +17150,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Suicune T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
     "description": "Radiating a vibe of fluid elegance, this Suicune shirt showcases the water Pokémon in a striking pose, with waves and energy swirling around its majestic form. The bold retro 90s anime graphic on this Gildan premium tee delivers crisp DTG print quality that refuses to fade into the background. The design captures the essence of Suicune’s grace while vibrating with rebellious spirit—perfect for those who dare to stand out. Gift it to those who cherish quirky anime flair and channel their inner water warrior.",
@@ -17603,13 +17603,75 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260824_104412_247bb58f-40de-477e-ba5e-b07330fae62a-gelato-front-350.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T14:59:15.309Z",
-    "updatedAt": "2026-09-28T14:11:18.091Z",
+    "updatedAt": "2026-09-28T14:29:58.139Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/design-front.png",
     "storeColors": [
       "navy",
       "black",
       "white"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Style with Our Cool Suicune T-Shirt",
+        "description": "Elevate your wardrobe with the Cool Suicune T-Shirt, perfect for Pokemon enthusiasts who crave unique fashion. This shirt features a stunning design that showcases your love for Suicune, making it a must-have for your collection. Perfect for casual outings or conventions, save this pin and stand out with your fandom style!",
+        "tags": [
+          "suicune",
+          "pokemon",
+          "fan apparel",
+          "cool t-shirt",
+          "unique design",
+          "casual style"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokemon Fans: Cool Suicune T-Shirt",
+        "description": "Searching for the ideal gift for a Pokemon lover? Look no further than our Cool Suicune T-Shirt! This stylish tee is not only a comfortable wear but also a fantastic way to express one's love for the legendary Pokemon. Pin this for upcoming birthdays or special occasions to surprise your favorite fan!",
+        "tags": [
+          "pokemon gifts",
+          "suicune",
+          "fan merchandise",
+          "apparel",
+          "gift ideas",
+          "cool t-shirt"
+        ]
+      },
+      {
+        "title": "Show Off Your Aesthetic with the Cool Suicune T-Shirt",
+        "description": "Express your unique aesthetic with our Cool Suicune T-Shirt, designed for those who appreciate cool Pokemon art. This shirt is a fantastic way to bring a touch of creativity and personality to your outfit. Pin it now and embrace your fandom in style every day!",
+        "tags": [
+          "pokemon aesthetic",
+          "suicune",
+          "creative fashion",
+          "cool t-shirt",
+          "artistic style",
+          "fandom fashion"
+        ]
+      },
+      {
+        "title": "Level Up Your Casual Wardrobe with Suicune T-Shirt",
+        "description": "Take your casual wear to the next level with our Cool Suicune T-Shirt, featuring an eye-catching design that Pokemon fans will adore. Ideal for relaxed days or Pokemon community events, this tee allows you to flaunt your fandom effortlessly. Don’t forget to save this pin for your next stylish upgrade!",
+        "tags": [
+          "casual style",
+          "suicune",
+          "pokemon apparel",
+          "cool t-shirt",
+          "everyday wear",
+          "fandom merchandise"
+        ]
+      },
+      {
+        "title": "Join the Pokemon Craze with Our Cool Suicune T-Shirt",
+        "description": "Dive into the world of Pokemon with our Cool Suicune T-Shirt! Perfect for conventions, casual meetups, or simply showing off your love for Pokemon, this tee is a statement piece every fan should own. Pin this now and let your style reflect your passion for the Pokémon universe!",
+        "tags": [
+          "suicune",
+          "pokemon fandom",
+          "cool t-shirt",
+          "event wear",
+          "fan style",
+          "apparel"
+        ]
+      }
     ]
   },
   {
