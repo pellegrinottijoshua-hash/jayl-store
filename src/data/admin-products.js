@@ -15355,8 +15355,8 @@ export const adminProducts = [
       "Popular limited edition Pokemon shirts",
       "Trendy shirts featuring cool Pokemon"
     ],
-    "hashtags": "#elekid #pokemontshirt #coolpokemon #animemerch #fanart #collectorshirt #retrodesign #gildantee #uniqueapparel #pokemoncollectors #vintagestyle #graphictee #artisticclothing #electrictype #pokegifts #nerdwear #coolshirts #mangaart #animationstyle #aquaticcreatures #kawaiioutfit #urbanfashion #customtshirts #geekstreetwear #gamingmerchandise #pocketmonstersfunnycartoons #pokemania2023 #occlothingbranddesigns #stylishdesignshopnowunder50 dollarsdollarsdollarsdollarsdollars ",
-    "instagramCaption": "#Elekid's electric charm is here to power up your wardrobe! ⚡️ Rock this retro design and show that you're not just any trainer—you've got collector status! 💥🔥 Grab yours now! 🌟#PokémonFanArt #AnimeStyleCollection#ElectricVibes ",
+    "hashtags": "#elekid #pokemontshirt #coolpokemon #animemerch #fanart #collectorshirt #retrodesign #gildantee #uniqueapparel #pokemoncollectors #vintagestyle #graphictee #artisticclothing #electrictype #pokegifts #nerdwear #coolshirts #mangaart #animationstyle #aquaticcreatures #kawaiioutfit #urbanfashion #customtshirts #geekstreetwear #gamingmerchandise #pocketmonstersfunnycartoons #pokemania2023 #occlothingbranddesigns #stylishdesignshopnowunder50 dollarsdollarsdollarsdollarsdollars",
+    "instagramCaption": "#Elekid's electric charm is here to power up your wardrobe! ⚡️ Rock this retro design and show that you're not just any trainer—you've got collector status! 💥🔥 Grab yours now! 🌟#PokémonFanArt #AnimeStyleCollection#ElectricVibes",
     "pinterestCaption": "Add some electric flair to your wardrobe with our Cool Elekid T-Shirt, echoing classic retro anime vibes. This stylish piece captures the energy of one of Pokémon's dynamic characters perfectly. Don’t miss out on elevating your collection!",
     "seoTitle": "Elekid T-Shirt | Retro Cool Pokemon Collector Gift",
     "variants": [
@@ -15783,7 +15783,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/07faf2ee-b274-468b-a724-e7cd08e1013c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260831%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260831T163754Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ac0f7c25e88dbc733ef458ecaf3289130f8bcf3be32c1941a70accc9b6482c1a"
     ],
     "createdAt": "2026-08-31T16:40:55.281Z",
-    "updatedAt": "2026-09-28T14:33:23.851Z",
+    "updatedAt": "2026-09-28T14:33:36.745Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260816_133035_531b4c22-ed29-4cfc-b4d1-df3ce4226aab-gela-wdkvn19t-gelato-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -15791,6 +15791,73 @@ export const adminProducts = [
       "black",
       "daisy",
       "white"
+    ],
+    "pinterestPins": [
+      {
+        "title": "Unleash Your Inner Trainer with Our Cool Elekid T-Shirt",
+        "description": "Step into the spotlight with this stylish Cool Elekid T-Shirt, perfect for every Pokémon fan. Made with high-quality materials, this tee combines comfort and fandom, making it a must-have for your wardrobe. Elevate your style and showcase your love for Pokémon today—add it to your collection now!",
+        "tags": [
+          "elekid",
+          "pokemon",
+          "fandom",
+          "apparel",
+          "style",
+          "t-shirt",
+          "cool fashion"
+        ]
+      },
+      {
+        "title": "The Perfect Gift for Pokémon Lovers: Cool Elekid T-Shirt",
+        "description": "Looking for a unique gift for the Pokémon enthusiast in your life? Our Cool Elekid T-Shirt is a fantastic choice that combines fun and style, making it a hit for birthdays or special occasions. Surprise your loved ones with a gift they'll adore—make it yours today!",
+        "tags": [
+          "gift",
+          "elekid",
+          "pokemon",
+          "fandom",
+          "apparel",
+          "t-shirt",
+          "special occasion"
+        ]
+      },
+      {
+        "title": "Elevate Your Casual Style with a Cool Elekid T-Shirt",
+        "description": "Transform your everyday look with the Cool Elekid T-Shirt, a perfect blend of casual comfort and cool Pokémon aesthetics. Whether you're out with friends or just relaxing at home, this tee is sure to turn heads. Start planning your next outfit with this must-have piece!",
+        "tags": [
+          "style",
+          "elekid",
+          "pokemon",
+          "aesthetic",
+          "apparel",
+          "t-shirt",
+          "casual wear"
+        ]
+      },
+      {
+        "title": "Stand Out in the Crowd: Cool Elekid T-Shirt Design",
+        "description": "Make a statement with our Cool Elekid T-Shirt, designed for those who love to express their passion for Pokémon. This eye-catching design is perfect for conventions, meetups, or just casual days out. Don't miss the chance to showcase your unique style—save it for later!",
+        "tags": [
+          "elekid",
+          "pokemon",
+          "design",
+          "fashion",
+          "t-shirt",
+          "statement piece",
+          "apparel"
+        ]
+      },
+      {
+        "title": "Cool Elekid T-Shirt: A Must-Have for Pokémon Collectors",
+        "description": "Attention Pokémon collectors! Our Cool Elekid T-Shirt is not just a piece of clothing; it's a testament to your passion. Show off your fandom in style and add this essential item to your collection. Plan your next outfit with us and grab yours today!",
+        "tags": [
+          "elekid",
+          "pokemon",
+          "collectors",
+          "fandom",
+          "apparel",
+          "t-shirt",
+          "must-have"
+        ]
+      }
     ]
   },
   {
