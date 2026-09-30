@@ -8278,7 +8278,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85f6016-3845-4820-a9d5-e3153c1bae05/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260926%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260926T123833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ea7a781b37d71fd720d050b0b2241a1b477a2579f365508831c29eb87aac12c5"
     ],
     "createdAt": "2026-06-26T12:23:42.147Z",
-    "updatedAt": "2026-09-28T14:14:22.104Z",
+    "updatedAt": "2026-09-30T12:34:01.927Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -8355,7 +8355,8 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design-front.png",
     "storeColors": [
       "daisy",
-      "black"
+      "black",
+      "white"
     ]
   },
   {
