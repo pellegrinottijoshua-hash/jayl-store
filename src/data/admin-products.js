@@ -19957,7 +19957,7 @@ export const adminProducts = [
     "id": "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Gyarados Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  water Pokemon Gift for Him",
+    "name": "Cool Shiny Gyarados T shirt",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
@@ -20343,6 +20343,8 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260825_103326_7edb6a8b-24f0-422f-97e3-d45ea42374cc-copia-zack-1.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-30T12:30:09.703Z",
-    "updatedAt": "2026-09-30T12:30:09.703Z"
+    "updatedAt": "2026-09-30T12:48:36.100Z",
+    "relatedProducts": [],
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/design-front.png"
   }
 ]
