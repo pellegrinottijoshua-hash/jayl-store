@@ -19053,12 +19053,12 @@ export const adminProducts = [
     "id": "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Shiny Charizard t-shirt",
+    "name": "shiny charizard Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  fire Pokemon Gift for Him",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
-    "description": "Charizard soars through the air, flames licking at its wings, embodying the fierce spirit of a childhood legend. Every detail in this minimalist design captures that fiery energy, showcasing Charizard as the ultimate flex for those who remember picking Charmander. The Gildan premium tee combines comfort and durability, emblazoned with high-quality DTG print that showcases the art's richness in color. An excellent gift choice for anyone who appreciates nostalgia and style.",
-    "altText": "Charizard blazing across the sky with dynamic wings spread wide in this retro 90s anime-inspired, small chest print on a premium JAYL tee.",
+    "description": "Charizard isn’t just a Pokémon; it’s the ultimate original flex. Sporting a fiery demeanor and an iconic design, this shiny Charizard back print shirt captures the essence of nostalgia while embodying that 'I chose Charmander' coolness. Made from Gildan’s premium cotton, the direct-to-garment print quality ensures your love for this fire dragon burns bright—and doesn’t fade away. This unisex tee makes for a quirky gift that says, 'I see your inner trainer.' And let’s be honest, who doesn't need more Pokémon in their wardrobe?",
+    "altText": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -19068,11 +19068,6 @@ export const adminProducts = [
       "Machine wash cold inside-out, tumble dry low"
     ],
     "sizes": [
-      {
-        "id": "S",
-        "label": "S",
-        "price": 2500
-      },
       {
         "id": "L",
         "label": "L",
@@ -19087,77 +19082,128 @@ export const adminProducts = [
         "id": "M",
         "label": "M",
         "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
       }
     ],
     "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--mockup-01.jpg",
-    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_154902_f13cd7c6-daac-4398-84f0-54c8da282ed3.png",
-    "detailImage": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260908_151538_2e81eca7-bffe-4c77-a469-48b54786a0bb-1.png",
+    "heroImage": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_154902_f13cd7c6-daac-4398-84f0-54c8da282ed3.png",
+    "detailImage": null,
     "images": [
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_150141_6e082536-eb5d-47f3-80fd-6c336952925a.png",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_151847_1fe0766f-a3a6-456b-b616-340b13a8ce6e.png",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4ed6f646-c204-4b05-b3a6-47a6662c9ed3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c0dafc5930d69ba9fcbe38af98d509cb9eab2c58742f6368dc0170f125f1c5ec",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fb85512-040b-47e1-93bf-16e17b5f6039/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2b2fa80498b85a7f4070c8eb43019add35a6e31eb2e20a37f397acca023d59f0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c7c4c1a6-7a3f-469e-be0d-ef72f2ef5aab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8cdd5aedc62fb330e90764f84b6f67e26e521d38f39363f945ecf8b5a8bcf0c1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/38ca86ca-5852-40a6-baad-8f612368d5a7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c44b1159273b0e13349877680c794cbb61c1d910d5e3bc5e543e270fb7f803b7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/791e4c80-d3cb-4f4c-859c-539a39abbe47/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c24c9bff32e695cfa15fc94047438a465f2d9a21e05c7b1783db386977eef947",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f2be277b-4ba9-42f3-97fe-1a34ebfe92b6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6bb431d0f384240419fb860d25ea88e818fe744e8cd52108685f3e590c20cd16",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3fb934f7-205c-4cc8-9172-adf6661ae4af/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cd4b3b56cfb62b8a28b667f9c4b44f31f903a7df7631d1c3c532c75774e09a02",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0a38abfc-1bb2-4867-ac8a-7145e39f2d78/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a3dcd5de582442c9a4109e6e34110223f34f5b43e244a56f634ee58884450fb1",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-01.jpg",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-02.jpg",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-03.jpg",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-04.jpg",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-05.jpg",
       "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-06.jpg",
-      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-07.jpg"
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--gelato-07.jpg",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260908_151538_2e81eca7-bffe-4c77-a469-48b54786a0bb-1.png"
     ],
     "imageAlts": {
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_154902_f13cd7c6-daac-4398-84f0-54c8da282ed3.png": "A vibrant Charizard graphic dominates the back of this unisex cotton T-shirt in a contemporary art style.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260908_151538_2e81eca7-bffe-4c77-a469-48b54786a0bb-1.png": "Close-up of the Charizard design, showcasing intricate details and vibrant colors on soft cotton fabric.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_150141_6e082536-eb5d-47f3-80fd-6c336952925a.png": "The Charizard shirt displayed on a model, highlighting its large back design and retro vibe.",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_151847_1fe0766f-a3a6-456b-b616-340b13a8ce6e.png": "A side view of the Charizard shirt, emphasizing its stylish cut and playful graphic design.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f6689af-4219-4c1c-a9a5-e5beccae1aad/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=152b8915fcb6c4fef72906e700b64f4197b143e7cc12df6be09da56357f6da36": "The Charizard shirt in red, showcasing its bold back graphic and contemporary art influence.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b41f0b46-c30e-499b-bc84-2aed88d0c7e2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ede6b3f53397b233f6635687077c5bb87c00d9f4f4a814d70e2a74a297ebd2a": "Another angle of the red Charizard shirt, highlighting its playful and nostalgic aesthetic.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fdec464e-6ae8-455e-86e9-97ec686a10d2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0a3050d1ae4584744913893dbdce3eca0e6f153e5b4eb7352521ec00a759669f": "A detailed view of the vibrant red Charizard shirt, emphasizing its quality cotton texture.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/155089b8-a788-4ffd-9a0c-164da1b44913/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5034ed358e5eec6159d7d8a58dec87ad1a996ab0e98e2e9b647a43000ef582db": "The red Charizard shirt laid flat, showcasing its large back print and contemporary design.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b3596fbe-80e8-4bce-9c01-ab934eb3e13e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3e32f076a6083e5796b7ef82147663fc39e927651663409ad0bcfe61c19c28cb": "A close-up of the red Charizard shirt's fabric, highlighting its softness and quality craftsmanship.",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/96b2da08-7817-4a39-996d-e8a9f6dca78c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=05eddac46b2953807d7682a0fcd88a09e1301827d8a1b63ec3fec98f542aa651": "The red Charizard shirt displayed from above, capturing its unique design and contemporary flair."
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--mockup-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--cardinal-red-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--red-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--purple-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--white-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--black-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print.",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--navy-01.jpg": "Shiny Charizard roaring with flames in vibrant retro 90s anime style on a Gildan premium tee with large back print."
     },
     "tags": [
       "charizard",
       "pokemon",
-      "t-shirt",
-      "gamer apparel",
-      "anime style",
-      "art shirt",
-      "geek wear",
-      "nostalgia",
-      "fire type",
-      "cool shirts",
-      "collectible",
-      "poke merch"
+      "anime",
+      "graphic tee",
+      "back print",
+      "funny shirt",
+      "retro t-shirt",
+      "unisex apparel",
+      "fire pokemon",
+      "90s style",
+      "gift for him",
+      "cotton t-shirt",
+      "cool clothes"
     ],
     "featured": false,
     "gelatoProductId": "1f879928-f50c-4bbc-9d3e-27cd55535fdc",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "charizard t-shirt",
+      "charizard shirt",
       "pokemon apparel",
-      "cool shirts",
-      "anime fashion",
-      "gamer tees"
+      "anime graphic tee",
+      "funny t-shirt",
+      "back print shirt"
     ],
     "longTailKeywords": [
-      "charizard graphic t-shirt for adults",
-      "unique pokemon shirt for collectors",
-      "retro charizard fan apparel online",
-      "premium pokemon clothing gift ideas",
-      "artistic charizard t-shirts for fans",
-      "comfortable anime-themed graphic tees",
-      "stylish charizard merchandise to buy now",
-      "fun gifts for pokemon enthusiasts",
-      "vintage style pokemon clothing online store",
-      "trendy gamer shirts featuring charizard"
+      "shiny charizard t-shirt for men",
+      "retro anime graphic tees online",
+      "funny pokemon gift for him",
+      "large back design shirts for fans",
+      "cotton pokemon apparel unisex size",
+      "90s anime inspired clothing shop",
+      "Gildan premium t-shirts available now",
+      "'I chose Charmander' meme shirt gift idea",
+      "'Fire type' pokemon graphic tshirt buy now",
+      "'Cool charizard' retro art shirt purchase"
     ],
-    "hashtags": "#pokemon #charizard #graphictee #streetwear #coolapparel #premiumprint #wearableart #artwear #fashionista #giftideas #geekwear #nerdstyle #cultured #edgyfashion #pokemontshirts #trendy #collectibles #uniqueclothing #casualwear #outfitinspo #jaysquad #jaylstore #jaylart #premiumprint #wearableart #artcollectors #fashionforward #styleinspo #geekchic #animefashion #coolpokemonback",
-    "instagramCaption": "Unleash your inner fire with the Shiny Charizard t-shirt. 🔥 This isn't just a tee; it's a statement. Get yours and let the world know you mean business. #Charizard #PokemonArt #StreetWear #CoolVibes #GraphicTees 🔗 Link in bio.",
-    "pinterestCaption": "Elevate your wardrobe with the Shiny Charizard t-shirt, a perfect blend of nostalgia and modern style. This striking design is ideal for Pokemon fans looking to express their unique flair. Add it to your collection and stand out effortlessly!",
-    "tiktokCaption": "When you rock the Shiny Charizard, the vibe is unmatched! 🔥🕶️ #pokemon #fyp #foryou #anime #coolfashion",
-    "seoTitle": "Charizard T-Shirt | Cool Pokemon Fan Apparel | Gift Idea",
+    "hashtags": "#charizard #pokemon #anime #graphictee #backprint #funnyshirt #retrotshirt #unisexapparel #firepokemon #90sstyle #giftforhim #cottontshirt #coolclothes #gamerfashion #vintageanimeart #nostalgicfashion #pokemongift #tshirtdesign #fanmerchandise #kawaiiapparel #pocketmonsters #geekchicstyle #stylishtees #comfywearables #artteeprints #casualstyle#trendyshirts#streetwearfashion#animelovers#30daysofgeek",
+    "instagramCaption": "'The OG flex of Pokémon,' as they say. Grab this shiny Charizard back print shirt and wear your pride. 🔥👕#charizard#pokemon#90sanime.",
+    "pinterestCaption": "'Wear your nostalgia loud!' This shiny Charizard back print shirt is a must-have for any fan looking to bring some retro style into their wardrobe. Stylish and funny, it's an ideal gift for friends who are passionate about Pokémon.",
+    "seoTitle": "Charizard Back Print Shirt | Retro 90s Anime Gift | Fire Pokemon",
     "variants": [
+      {
+        "uid": "e50f8c88-8a99-4de4-8c10-e24d4a7c2abe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c3bb6c9b-83c1-4f33-a975-0e43960e93fa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a15ae637-eeef-44c4-8937-200e74d113d3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "31353aa3-1431-4211-b10f-ba5dd178fc8f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "56fd9e0c-24b2-4111-b63a-982b7e4e05d2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
       {
         "uid": "32fb17d9-a29b-4587-b9df-6af7ee2f970b",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_0-4_inlbl_gildan_64000",
@@ -19207,14 +19253,6 @@ export const adminProducts = [
         "currency": null
       },
       {
-        "uid": "e50f8c88-8a99-4de4-8c10-e24d4a7c2abe",
-        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
-        "color": "Navy",
-        "size": "L",
-        "price": null,
-        "currency": null
-      },
-      {
         "uid": "d38d6d8b-f164-42cf-b9c1-ca57454c1075",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_0-4_inlbl_gildan_64000",
         "color": "Red",
@@ -19223,34 +19261,10 @@ export const adminProducts = [
         "currency": null
       },
       {
-        "uid": "c3bb6c9b-83c1-4f33-a975-0e43960e93fa",
-        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
-        "color": "Black",
-        "size": "XL",
-        "price": null,
-        "currency": null
-      },
-      {
-        "uid": "a15ae637-eeef-44c4-8937-200e74d113d3",
-        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
-        "color": "Navy",
-        "size": "XL",
-        "price": null,
-        "currency": null
-      },
-      {
         "uid": "c1abdc2f-8cbe-4ab8-966d-9a42f0717e11",
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
         "color": "Purple",
         "size": "L",
-        "price": null,
-        "currency": null
-      },
-      {
-        "uid": "31353aa3-1431-4211-b10f-ba5dd178fc8f",
-        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_0-4_inlbl_gildan_64000",
-        "color": "Red",
-        "size": "XL",
         "price": null,
         "currency": null
       },
@@ -19291,14 +19305,6 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
         "color": "Black",
         "size": "S",
-        "price": null,
-        "currency": null
-      },
-      {
-        "uid": "56fd9e0c-24b2-4111-b63a-982b7e4e05d2",
-        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
-        "color": "Cardinal Red",
-        "size": "M",
         "price": null,
         "currency": null
       },
@@ -19353,22 +19359,10 @@ export const adminProducts = [
     ],
     "colors": [
       {
-        "id": "red",
-        "label": "Red",
-        "hex": "#888888",
-        "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--red-01.jpg"
-      },
-      {
         "id": "navy",
         "label": "Navy",
         "hex": "#888888",
         "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--navy-01.jpg"
-      },
-      {
-        "id": "white",
-        "label": "White",
-        "hex": "#888888",
-        "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--white-01.jpg"
       },
       {
         "id": "black",
@@ -19377,128 +19371,42 @@ export const adminProducts = [
         "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--black-01.jpg"
       },
       {
-        "id": "purple",
-        "label": "Purple",
+        "id": "red",
+        "label": "Red",
         "hex": "#888888",
-        "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--purple-01.jpg"
+        "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--red-01.jpg"
       },
       {
         "id": "cardinal-red",
         "label": "Cardinal Red",
         "hex": "#888888",
         "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--cardinal-red-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--white-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/shiny-charizard-back-print-shirt-funny-retro--purple-01.jpg"
       }
     ],
-    "etsyTitle": "Shiny Charizard Back Print Shirt, Retro 90s Anime Vibe, Birthday Gift for Him",
-    "etsyTags": [
-      "shiny charizard",
-      "retro anime shirt",
-      "birthday gift ideas",
-      "gift for him",
-      "otaku merch",
-      "90s aesthetic",
-      "unisex t-shirt",
-      "geek fashion",
-      "fire pokemon tee",
-      "fan apparel",
-      "casual wear",
-      "nostalgic clothing",
-      "anime graphic tee"
-    ],
-    "etsyDescription": "\"Can you hear the roar? Charizard’s ready to light up your style!\" This isn’t just another tee; it’s a fire-breathing explosion of nostalgia. Our Shiny Charizard back print shirt captures that epic moment when this iconic Pokémon bursts into action, emboldened by its fierce spirit and playful sass. Every glance reveals a burst of color and energy that’ll make fans catch their breath — like you just stepped out of an epic battle in the '90s! \n\nCrafted from soft, breathable 100% cotton with a premium direct-to-garment print, this unisex fit t-shirt is not only comfy but also offers sizes S-3XL to cater to everyone’s vibe.\n\nPicture gifting this fiery legend for birthdays or just because — perfect for that friend who collects all things Pokémon or someone who thrives on nostalgic anime. They’ll appreciate your thoughtfulness while sporting their favorite childhood character with pride!\n\nMachine wash cold, tumble dry low.\nMade to order — ships in 3-5 business days.",
-    "etsyImageAlts": [
-      "Front mockup of model wearing shiny charizard back print shirt in outdoor setting.",
-      "Back view of model showcasing shiny charizard design on t-shirt outdoors.",
-      "Close-up detail of vibrant shiny charizard graphic printed on the shirt's back.",
-      "Flat lay shot of shiny charizard back print t-shirt displayed on light surface.",
-      "Lifestyle photo of person casually wearing shiny charizard shirt while hanging out.",
-      "Size guide image showing measurements and details for shiny charizard unisex t-shirt.",
-      "\"Fire-breathing package\" - beautifully wrapped shiny charizard shirt ready as a gift."
-    ],
     "gelatoCdnImages": [
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f6689af-4219-4c1c-a9a5-e5beccae1aad/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=152b8915fcb6c4fef72906e700b64f4197b143e7cc12df6be09da56357f6da36",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b41f0b46-c30e-499b-bc84-2aed88d0c7e2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ede6b3f53397b233f6635687077c5bb87c00d9f4f4a814d70e2a74a297ebd2a",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fdec464e-6ae8-455e-86e9-97ec686a10d2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0a3050d1ae4584744913893dbdce3eca0e6f153e5b4eb7352521ec00a759669f",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/155089b8-a788-4ffd-9a0c-164da1b44913/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5034ed358e5eec6159d7d8a58dec87ad1a996ab0e98e2e9b647a43000ef582db",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b3596fbe-80e8-4bce-9c01-ab934eb3e13e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3e32f076a6083e5796b7ef82147663fc39e927651663409ad0bcfe61c19c28cb",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5985a291-9e63-4cbc-a07c-72e09648e57b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8ebfc3e122b91df1e6f9790775bad647b7e85cb9986f403b3be903fe985d8046",
-      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/96b2da08-7817-4a39-996d-e8a9f6dca78c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260908%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260908T160630Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=05eddac46b2953807d7682a0fcd88a09e1301827d8a1b63ec3fec98f542aa651"
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/95f4aeee-a79e-4400-b2c5-e22ac079f771/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f2168abc9b427340b1900c01d4e64aef21a21ec3b8b83771fa6f24feb9ce144e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/62b5f329-1826-4875-abc9-2f49071fe287/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8e38b9ab7c43cc7c509dc4b46bda1add150b6f1e73d42a6dba59505a69e93857",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/27773068-ab89-46a7-9158-64c28765331d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=807676101cdb91d0d34f44290f99271056d3efc55ad565d09a65b372cf595d67",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c3c831aa-f674-4d27-833f-6b0a56b14cc2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f66b1a2531bd943c5bbb0c99522f4e55836f9012bbbef9974ae7fb2af707ce5c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3815039b-8325-4a88-9f37-8546d323d590/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3801fa1ca1a509b06c4414b06ed392e8e7c294e67ac342475817bb5a08594cf4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/226467e9-47f6-4764-a1aa-83633c669e2a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=27252e26ba022db1e161dea8559b8dace05019e8a451ae2d77d9bb7e8a2ccf38",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/66c0ba21-d015-4513-bae4-c9cfc73acfce/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=849094e790a140ae9053c64bb491554403c0989eabb8293387acddcc187c0f48"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260824_162533_c541bde0-c2ac-41ff-98dd-2a2290193ec2-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
-    "updatedAt": "2026-09-28T14:27:14.440Z",
-    "relatedProducts": [],
-    "storeColors": [
-      "black",
-      "cardinal-red",
-      "navy"
-    ],
-    "pinterestPins": [
-      {
-        "title": "Elevate Your Wardrobe with Our Shiny Charizard T-Shirt",
-        "description": "Unleash your inner Pokemon master with this stunning Shiny Charizard t-shirt. Perfect for casual outings or as a unique statement piece, this shirt combines comfort with style. Whether you're a dedicated fan or just love cool graphic tees, this is a must-have addition to your collection. Save it for your next shopping spree!",
-        "tags": [
-          "charizard",
-          "pokemon",
-          "graphic tee",
-          "fandom",
-          "cool style",
-          "casual wear"
-        ],
-        "published": true
-      },
-      {
-        "title": "The Perfect Gift for Pokemon Lovers: Shiny Charizard Tee",
-        "description": "Searching for a thoughtful gift for the Pokemon enthusiast in your life? Our Shiny Charizard t-shirt is an ideal choice! Featuring vibrant artwork, this tee is both stylish and nostalgic, making it perfect for birthdays, holidays, or just because. Don’t forget to pin it for future gifting inspiration!",
-        "tags": [
-          "gift idea",
-          "pokemon",
-          "charizard",
-          "fandom",
-          "apparel",
-          "nostalgic"
-        ]
-      },
-      {
-        "title": "Chic & Cool: Shiny Charizard T-Shirt for Every Occasion",
-        "description": "Add a touch of flair to your everyday outfit with our Shiny Charizard t-shirt. This stylish tee is perfect for any occasion, from casual meetups to themed events. It effortlessly combines comfort with an eye-catching design that every Pokemon fan will love. Plan your next outfit and pin it now!",
-        "tags": [
-          "casual fashion",
-          "charizard",
-          "pokemon",
-          "style",
-          "everyday wear",
-          "cool aesthetic"
-        ]
-      },
-      {
-        "title": "Stand Out with the Shiny Charizard T-Shirt - For True Fans",
-        "description": "Make a statement among your friends with the Shiny Charizard t-shirt, designed for true Pokemon fans. This tee not only showcases your passion but also fits seamlessly into your wardrobe. Show off your love for Pokemon in a stylish way. Don't forget to save it for your next outfit inspiration!",
-        "tags": [
-          "pokemon",
-          "charizard",
-          "fan apparel",
-          "unique style",
-          "graphic tee",
-          "statement piece"
-        ]
-      },
-      {
-        "title": "Fashion Meets Fandom: Shiny Charizard T-Shirt Awaits!",
-        "description": "Experience the perfect blend of fashion and fandom with our Shiny Charizard t-shirt. This artfully designed tee boasts vibrant colors and unique graphics, making it a standout piece in any closet. Ideal for conventions or casual outings, it’s a must-have for any Pokemon lover. Bookmark it for your next shopping list!",
-        "tags": [
-          "fashion",
-          "charizard",
-          "pokemon",
-          "cool apparel",
-          "graphic design",
-          "fan gear"
-        ]
-      }
-    ],
-    "pinterestPublishedImages": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_154902_f13cd7c6-daac-4398-84f0-54c8da282ed3.png"
-    ]
+    "updatedAt": "2026-09-30T12:06:28.664Z"
   }
 ]
