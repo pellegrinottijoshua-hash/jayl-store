@@ -11,7 +11,6 @@ import {
   loadImageFromUrl, extractArt, measurePlacement, defaultTransform, clampTransform,
 } from '@/lib/printCanvas'
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
-import SequenzaOrdine from '@/components/admin/SequenzaOrdine'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
 import SocialShareButtons from '@/components/SocialShareButtons'
@@ -416,13 +415,13 @@ function ImagePool({
   )
 }
 
-// ── Media Panel — Hero + Sequenza (controlled) ───────────────────────────────
+// ── Media Panel — Hero + dettaglio (controlled) ──────────────────────────────
 // Purely display: all state lives in AdminProductPage.
-// Assignment happens from PoolThumb hover buttons; this panel shows the result
-// and lets the user reorder the sequenza (SequenzaOrdine: trascina, clicca in
-// ordine, "1°", ‹ ›).
+// Assignment happens from PoolThumb hover buttons; this panel shows the result.
+// Niente più riordino della sequenza (30/9): la scheda mostra le 2 hero e il
+// trittico dei mockup, l'ordine di product.images non si vede più.
 
-function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onReorderSequenza, onSave, saving, msg }) {
+function MediaPanel({ desktopHero, mobileHero, detailImage, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onSave, saving, msg }) {
 
   const HeroSlot = ({ url, label, aspect, color, onClear }) => {
     const isVideo = url && /\.(mp4|mov|webm)$/i.test(url)
@@ -457,7 +456,7 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, onSetDeskt
 
       {/* Header */}
       <div className="px-4 py-3 border-b border-gray-800 flex items-center justify-between gap-3">
-        <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">🎬 Hero & Sequenza</h3>
+        <h3 className="text-gray-400 text-xs font-mono uppercase tracking-widest">🎬 Hero</h3>
         <div className="flex items-center gap-3">
           {msg && <span className={`text-xs ${msg.startsWith('✓') ? 'text-green-400' : 'text-red-400'}`}>{msg}</span>}
           <button onClick={onSave} disabled={saving} className={`${btnPrimary} text-xs py-1`}>
@@ -495,14 +494,6 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, onSetDeskt
               {detailImage && <span className="text-amber-400">✓ Dettaglio impostato</span>}
             </div>
           </div>
-        </div>
-
-        {/* ── SEQUENZA ── */}
-        <div>
-          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">
-            Sequenza{sequenza.length > 0 ? ` · ${sequenza.length} immagini` : ''}
-          </p>
-          <SequenzaOrdine sequenza={sequenza} onChange={onReorderSequenza} desktopHero={desktopHero} mobileHero={mobileHero} />
         </div>
 
       </div>
@@ -1733,7 +1724,10 @@ export default function AdminProductPage() {
           </div>
         )}
 
-        <div className="grid lg:grid-cols-[340px_1fr] gap-8 items-start">
+        {/* minmax(0,1fr), non 1fr: una colonna 1fr non scende sotto la larghezza
+            del suo contenuto, e una fila di miniature (asset social, sequenza)
+            allargava la pagina oltre lo schermo — striscia chiara a destra. */}
+        <div className="grid lg:grid-cols-[340px_minmax(0,1fr)] gap-8 items-start">
 
           {/* ── Left: image gallery ── */}
           <div className="lg:sticky lg:top-24 space-y-4">
@@ -1769,18 +1763,15 @@ export default function AdminProductPage() {
           {/* ── Right: edit form ── */}
           <div className="space-y-8">
 
-            {/* ── Hero & Sequenza ── */}
+            {/* ── Hero ── */}
             {isEditable && (
               <MediaPanel
                 desktopHero={desktopHero}
                 mobileHero={mobileHero}
                 detailImage={detailImage}
-                sequenza={sequenza}
-                allImages={allPoolImages}
                 onSetDesktopHero={setDesktopHero}
                 onSetMobileHero={setMobileHero}
                 onSetDetailImage={setDetailImage}
-                onReorderSequenza={setSequenza}
                 onSave={handleSaveMedia}
                 saving={savingMedia}
                 msg={mediaMsg}

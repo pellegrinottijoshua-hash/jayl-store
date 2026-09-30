@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import { detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS, prepareDesignForPlacement, renderPrintFile, loadImageFromUrl, extractArt, defaultTransform, clampTransform } from '@/lib/printCanvas'
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
-import SequenzaOrdine from '@/components/admin/SequenzaOrdine'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -1818,13 +1817,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                   </div>
                 )}
                 {sequenza.length > 0 && (
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-emerald-400 w-24 flex-shrink-0">Sequenza:</span>
-                      <span className="text-gray-400 text-[10px]">{sequenza.length} immagini · ordine mockup</span>
-                      <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
-                    </div>
-                    <SequenzaOrdine sequenza={sequenza} onChange={setSequenza} desktopHero={desktopHero} mobileHero={mobileHero} />
+                  <div className="flex items-center gap-2">
+                    <span className="text-emerald-400 w-24 flex-shrink-0">Mockup:</span>
+                    <span className="text-gray-400 text-[10px]">{sequenza.length} immagini</span>
+                    <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
                   </div>
                 )}
               </div>
