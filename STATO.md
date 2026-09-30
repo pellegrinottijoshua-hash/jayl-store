@@ -12,12 +12,12 @@ Aggiornato: 2026-09-30 notte da Troy (Umami verificato, hero Kling, ricetta Ditt
 - **Velocità:** foto in WebP. Home da 8,6 MB a 330 KB, scheda da 8,7 MB a 430 KB.
 - **Kit** (in `~/Desktop/jayl streetwear/`):
   - `pokemon prompts /KIT-SCATTI.md`: 6 prompt NBP e 16 test Pomelli.
-  - `pokemon prompts /HERO-MAGLIA-VIVA.md`: Kling 3 s, dalla maglia al Pokémon vero, a 3,75 crediti. Test in `drop 6/kling/`: il Gyarados va rifatto con Kling v2.
+  - `pokemon prompts /HERO-MAGLIA-VIVA.md`: hero Kling 3 s (Kling v3), eccezione ai crediti approvata. Hero del drop 6 in `drop 6/kling/` (versioni leggere in `web/`); ad con motion design in `drop 6/_ditto/2026-09-30/`.
   - Ditto: `~/jayl-motion/monta <cartella drop>`, istruzioni in `KIT-VIDEO.md`. Manca la scelta della firma sonora.
 
 ## Prossimi 3 passi
-1. **Drop 6:** prodotti e drop programmato in admin prima delle 18:00 del 1/10. Testi "€22 until {giorno}".
-2. **Video:** rifare il Gyarados, poi `monta` su `drop 6/video.json` (3 formati A + 1 D). Pomelli: giorno 1 del test.
+1. **Drop 6:** prodotti e drop programmato in admin prima delle 18:00 del 1/10; in ogni scheda "Carica MP4" col video hero da `drop 6/kling/web/`.
+2. **Pushare** il video hero in scheda e la correzione di sicurezza del token Blob (commit locale del 30/9). Poi pubblicare l'ad e fare il giorno 1 del test Pomelli.
 3. **UTM ovunque:** link in bio `?utm_source=instagram&utm_medium=bio`; ads con `utm_content` = formato e link alla scheda.
 
 ## Bloccato da
