@@ -1,25 +1,37 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-09-30 da Troy (analitica, velocità, pixel).
+Aggiornato: 2026-09-30 notte da Troy (Umami acceso, drop 6, kit scatti).
 
 ## A che punto siamo
-- **Negozio:** online su www.jayl.store (Vercel), admin su `/admin`, Gelato e Stripe. Spedizione gratuita. Le maglie costano 23,99-25 €, la stampa circa 7 €.
-- **Drop:** ne sono usciti 5. Vendite a clienti reali: 0.
-- **Ads Meta** (9-30 settembre): circa 31 € per circa 160 clic, circa 0,19 € a clic. I link portano alla home, non alla scheda.
+- **Negozio:** online su www.jayl.store. Drop a 22 € (3 insieme 57 €), archivio a 25 € per tutti. Spedizione gratuita.
+- **Drop:** 5 usciti, 0 vendite reali. Il drop 5 chiude il **1/10 alle 18:00**.
+- **Drop 6 SHINY** (Gyarados, Charizard, Dragonite) parte il 1/10.
+  - Joshua carica i prodotti e lo programma nel tab Drop.
+  - Oggi a catalogo c'è solo lo Shiny Charizard.
+- **Ads Meta** (9-30/9): circa 31 € per circa 160 clic, 0,19 € a clic. Portavano alla home.
 - **Cosa misura il sito:**
-  - **Umami** conta tutti, senza cookie. Eventi: `view-product`, `add-to-cart`, `checkout`, `purchase`, più le UTM. Il codice è pronto ma è **spento finché non si inserisce il Website ID** (`window.__jaylUmamiId` in `index.html`). I numeri si leggono su cloud.umami.is: Events, UTM, Attribution.
-  - **GA4** conta solo chi accetta il banner.
-  - **Pixel Meta** (ViewContent, AddToCart, InitiateCheckout, Purchase): funziona solo dopo il consenso.
-- **Velocità** (30/09): le foto passano in WebP alla build. Home da ~8,6 MB a ~330 KB di immagini, scheda da ~8,7 MB a ~430 KB.
-- **Fiducia:** è stato tolto il contatore finto "N people viewing right now".
+  - **Umami** (cloud.umami.is, piano gratuito), senza cookie. Eventi `view-product`, `add-to-cart`, `checkout`, `purchase` e UTM. Il codice è live.
+  - ⚠️ La CSP in `vercel.json` bloccava lo script: la correzione è committata ma va pushata.
+  - **GA4** e il **pixel Meta** contano solo chi accetta il banner.
+- **Velocità:** foto in WebP. La home è passata da 8,6 MB a 330 KB, la scheda da 8,7 MB a 430 KB.
+- **Kit:**
+  - `~/Desktop/jayl streetwear/pokemon prompts /KIT-SCATTI.md`: 6 master prompt NBP e 16 test Pomelli;
+  - `HERO-MAGLIA-VIVA.md`: video Kling di 3 s, dalla maglia al Pokémon vero.
 
 ## Prossimi 3 passi
-1. **Accendere Umami:** Joshua crea l'account gratuito e passa il Website ID a Troy.
-2. **Nelle ads Meta, parametri URL:** `utm_source=meta&utm_medium=paid&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`.
-3. **Provare 3 angoli creativi** da 5 € l'uno (piano di Brandy, da approvare). Valutare anche di mandare le ads sulla scheda e non sulla home.
+1. **Pushare la CSP e verificare** su Umami che arrivino visite ed eventi.
+2. **Drop 6:** prodotti in admin, testi con "€22 until {giorno}" (niente "closes" né "only 20").
+   - Test Kling: HERO sul Dragonite.
+   - Pomelli: giorno 1 del test.
+3. **UTM ovunque:**
+   - link in bio `?utm_source=instagram&utm_medium=bio`;
+   - ads con `utm_content` uguale al formato, e link diretto alla scheda.
 
 ## Bloccato da
-- Il Website ID di Umami: senza, il percorso dopo il clic non si vede.
+- **Metriche social:** l'admin pubblica ma non le legge.
+  - Serve una lettura degli insights di Instagram (lavoro tecnico).
+  - Nel frattempo: screenshot degli insights da Joshua.
 
 ## Numeri
-- Drop usciti: 5. Vendite reali: 0. Ads: circa 31 € per circa 160 clic.
+- Drop usciti: 5. Vendite reali: 0. Instagram @jayl_store: 37 follower (30/9).
+- Umami: da leggere la prima domenica dopo il drop 6.
