@@ -19923,5 +19923,397 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-30T12:19:08.085Z",
     "updatedAt": "2026-09-30T12:19:08.085Z"
+  },
+  {
+    "id": "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Gyarados Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  water Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Emerging from the depths, Gyarados rises with an intensity that captures its chaotic spirit. This retro 90s anime graphic tee flaunts a large back design showcasing the serpentine Pokemon in all its fiery glory, perfectly suited for adventurers who appreciate a dash of humor. Made from a soft Gildan premium cotton blend and featuring vibrant direct-to-garment print quality, this shirt ensures comfort while making an unforgettable impression. As a gift, it’s sure to delight anyone who channels their inner water-type powerhouse on both casual outings and epic battles alike.",
+    "altText": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
+    "heroImage": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_150400_1fcf9fab-d01f-4132-aad0-26ec0e14db7d.png",
+    "detailImage": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_151502_31ce8c02-4d0d-452a-b98a-735cac9c16c3.png",
+    "images": [
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144227_7e949289-f0d2-4d14-a254-cefc98f78b2f.png",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144245_ac0cfb2e-d314-4f39-af40-3111bdf8532f.png",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-04.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-05.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-06.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-07.jpg",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-08.jpg"
+    ],
+    "imageAlts": {
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-red-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-white-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-heather-royal-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-black-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-royal-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-carolina-blue-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-navy-01.jpg": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style."
+    },
+    "tags": [
+      "gyarados",
+      "pokemon t-shirt",
+      "anime apparel",
+      "retro shirt",
+      "graphic tee",
+      "funny pokemon",
+      "90s anime",
+      "unisex clothing",
+      "gift for him",
+      "cotton t-shirt",
+      "water pokemon",
+      "vintage style",
+      "cool graphic"
+    ],
+    "featured": false,
+    "gelatoProductId": "3ccb8e90-61cb-4d7e-8090-e4e917637cd9",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "gyarados shirt",
+      "pokemon tee",
+      "anime graphic t-shirt",
+      "vintage pokemon shirt",
+      "90s anime t-shirt"
+    ],
+    "longTailKeywords": [
+      "funny gyarados graphic tee",
+      "retro anime t-shirt for men",
+      "large back design shirt for gamers",
+      "premium cotton gyarados apparel",
+      "unique pokemon gift for boyfriend",
+      "soft cotton t-shirt featuring gyarados",
+      "vintage water type pokemon clothing",
+      "stylish unisex graphic tees online",
+      "1990s inspired anime merchandise",
+      "funny retro gaming shirts for him"
+    ],
+    "hashtags": "#gyarados #pokemon #anime #graphictee #retrovintage #tshirt #apparel #giftsforhim #cottonfashion #waterpokemon #funkyshirt #80sanime #90sfashion #nerdstyle #geekclothing #teelovers #fanart #gamingmerchandise #pokehumor #nerdyshirts #collectibleshirts #popculturewear #animegraphics #fashiontrends #ootd #retrogaminggear #stylishclothing #japanesestyle #unisexfashion",
+    "instagramCaption": "\"When you know chaos is coming…\" Gear up with this Gyarados shirt, perfect for those who channel that water type vibe. Dive into vintage style and rep your favorite Pokemon! 🌊🐉#gyarados#retroanime#pokemontshirts",
+    "pinterestCaption": "\"Unleash your playful side with this Gyarados back print shirt! Showcasing vibrant artwork and retro vibes, it's the ultimate addition to any anime lover's wardrobe. Perfect as a gift or personal treat—grab yours today!\"",
+    "seoTitle": "Gyarados Back Print Shirt | Retro 90s Anime Gift | Pokémon Apparel",
+    "variants": [
+      {
+        "uid": "b89b58ef-71c7-4fa4-8a41-3cb1b444b06c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3909cf32-2f5b-4956-9843-baa570b4f532",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f4858ee7-afa4-481d-9a84-d6d5051defb6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c8952b3c-7f4d-48db-b3da-7e07ae73fdce",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f8e000a8-7079-4d3b-8117-b9c795bcf0af",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "683b153d-8186-49e1-8d82-096b8388f2a8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cce19098-83e2-4c5e-9f84-771e0ad9ffe2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9504444c-3ddc-45b0-ad5d-63f7f2d7bbcb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3bcc5a01-4254-47f6-9e2a-d2fa4e0723a0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "989b8ef3-a110-472f-abb7-1548403cd819",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7a040982-6327-4104-a79a-1bd5e58e2eda",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9b8cb356-3f56-4191-9bd6-a52d8f3dca65",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "769bff91-9999-459f-b4df-50b83eca2aed",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "685f857e-bb8a-4eff-8786-da6b52af0a5d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b7799810-4da3-4c42-9e7a-16fc6c4303a0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "849da0a2-7184-4796-912e-d64bd53ca217",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f0f243df-21c7-48f1-8128-62705f40c6f0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ae312c59-820f-411b-80df-a574fefee7e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "60ad255c-d584-4710-99c7-b2ca6949593b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2e81c5b4-71b8-41f1-846c-f675db063c98",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8736fc38-6713-4e96-8488-d3aab53e0540",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "07673db0-188c-470c-af66-1f0c03329bc1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4760afee-8906-45e6-828e-8a4a510d3e29",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "04e586e7-58d9-4b34-807a-b2b5792b82df",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a07d1b8e-c387-4449-9368-3c3711f16bdc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "380053a5-3552-4323-a441-bea6aa0267a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "904d8a72-54e0-4cff-9e50-32afc63b7f41",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7bc60b0a-1f3b-4247-ace3-af4748bc4012",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "carolina-blue",
+        "label": "Carolina Blue",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-carolina-blue-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-black-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-red-01.jpg"
+      },
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-royal-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-white-01.jpg"
+      },
+      {
+        "id": "heather-royal",
+        "label": "Heather Royal",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-heather-royal-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-navy-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c77a072f-a04c-44a5-94e9-3f4c51398da0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ff244ce6409418a0f029b412b42128afdd52044dcc24a03b218454355f746dea",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c23044d4-b7be-4a4f-b4ce-8bf6f3054f06/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6e55fe9adaa2300fa0ebf6465d457d074555435d569a58670697fc9edfa87c54",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6962257a-2fc7-4f61-9f45-6ac88d0c2d33/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d4586707c409934844fb31dcb36cc63b1677cd5bbc7a69d033f9ade002d14033",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b813c1ea-760d-4ff8-bfd0-5c3e8552ba3d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f64dcd2d6a5f578fdb21c4bf0401ee325334b92c181b54f2acb53cad06b53cc2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/148e1913-3999-4b96-9ca5-8dd00ed1209e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0c447102a57cf40588fe1d5796d0afea465243d0b84f89533bde69ee4574431e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0d428565-e1d1-4625-a4d4-ef684741e1be/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ce86e347c13a6ba746fac389a22b21d85b114dbc358377d10a00d2766dbbf8f1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/36e64d96-9316-49ad-a5a1-4ce570f8e9db/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e067f02ad44897f928fea13f8434d88e28a49356154ea8900e210fcc18eebdf0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8899ef0c-7bfa-44eb-b7da-191e8811af6c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T122406Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=25a2cc7d8e26ad8c8f1bb2dd46aeb8a22f575593ebd6f09bc40b3076e26f83e7"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260825_103326_7edb6a8b-24f0-422f-97e3-d45ea42374cc-copia-zack-1.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-09-30T12:30:09.703Z",
+    "updatedAt": "2026-09-30T12:30:09.703Z"
   }
 ]
