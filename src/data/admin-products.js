@@ -13649,7 +13649,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Gengar T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "Wearing this Gengar back T-shirt brings back that warm nostalgia of Saturday mornings spent glued to the screen, watching your favorite Pokémon adventures unfold. With its playful and mischievous spirit, Gengar is all about being a little spooky yet undeniably fun, making this tee the perfect companion for playdates or casual hangouts. Made from a premium Gildan tee with high-quality DTG print, it’s as comfy as it is eye-catching. This shirt is also a unique gift idea for fellow Pokémon enthusiasts who appreciate that classic look. Let memories of the 90s come alive in your wardrobe.",
@@ -13934,7 +13934,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80c69b9-3c96-413c-916c-4dba2db14a53/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150138Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7dd8fcc6dda4e9a0e9c6b959fb87f0e2001239b37bbddabd015418629c08c2dc"
     ],
     "createdAt": "2026-06-29T12:52:31.776Z",
-    "updatedAt": "2026-09-30T12:33:20.626Z",
+    "updatedAt": "2026-09-30T12:38:46.998Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -13978,7 +13978,8 @@ export const adminProducts = [
           "fashion",
           "print-on-demand",
           "unique apparel"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Cool Gengar T-Shirt: The Perfect Gift for Pokémon Fans!",
@@ -14009,7 +14010,8 @@ export const adminProducts = [
     ],
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_120624_5a9063e2-aee5-4565-8bde-64fca4f9df3d.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122614_d5f65d4c-120d-4bf7-94ab-2b8bea5ef9f4.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122614_d5f65d4c-120d-4bf7-94ab-2b8bea5ef9f4.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_113323_087c3708-f102-4128-b1a9-7adb3f0710aa.png"
     ],
     "storeColors": [
       "purple",
