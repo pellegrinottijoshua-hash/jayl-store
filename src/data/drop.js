@@ -27,8 +27,8 @@ export const drop = {
     "endsAt": "2026-10-01T16:00:00Z",
     "cap": 20,
     "caps": {},
-    "dropPrice": 2200,
-    "bundlePrice": 5700,
+    "dropPrice": 1999,
+    "bundlePrice": 4999,
     "heroImages": {
       "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_162124_925c2ff3-1afd-4c4c-a1d4-69599a07afbb.png",
       "cool-suicune-back-shirt": "/images/cool-suicune-back-shirt/hf_20260829_174020_a35373b4-93e5-4e12-bb52-2093515ecfa8.png",
@@ -121,5 +121,5 @@ export const drop = {
     "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
     "cool-vileplume-back-t-shirt"
   ],
-  "archivePrice": 2500
+  "archivePrice": 2499
 }

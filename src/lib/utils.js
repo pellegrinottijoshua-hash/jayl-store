@@ -9,11 +9,15 @@ export function cn(...inputs) {
  * e.g. 8900 → "$89.00"
  */
 export function formatPrice(cents, currency = 'eur') {
+  // Senza decimali solo i prezzi tondi: 2200 → "€22", 1999 → "€19.99".
+  // Arrotondare sempre all'intero mostrava €20 (anche nel checkout) dove
+  // Stripe addebitava €19,99.
+  const digits = Math.round(Number(cents) || 0) % 100 === 0 ? 0 : 2
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
     currency: currency.toUpperCase(),
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
   }).format(cents / 100)
 }
 

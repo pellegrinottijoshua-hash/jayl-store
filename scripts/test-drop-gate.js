@@ -139,9 +139,9 @@ const item = (productId, quantity, name) => ({ productId, quantity, product: { n
     /9 September/.test(r?.error || ''), false)
   // Il drop non ha ancora aperto: non è "chiuso" e non è "il prossimo" — è
   // QUESTO drop. Guardia contro la regressione al testo sbagliato fissato
-  // nel commento di checkDropGate ("This drop is closed. The next one opens on…").
+  // nel commento di checkDropGate ("The launch price has ended. The next new designs arrive on…").
   checkMatch('6: messaggio dice che QUESTO drop apre (non "chiuso", non "il prossimo")',
-    r?.error, /^This drop opens on 5 September\.$/)
+    r?.error, /^These designs go on sale on 5 September\.$/)
   check('6: messaggio NON contiene "chiuso" prima dell\'apertura',
     /chiuso/.test(r?.error || ''), false)
   check('6: messaggio NON contiene "prossimo" prima dell\'apertura',

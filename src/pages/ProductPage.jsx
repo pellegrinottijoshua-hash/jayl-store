@@ -1270,7 +1270,7 @@ export default function ProductPage() {
             ) : isDropBefore ? (
               dropOpensLabel
             ) : isDropClosed ? (
-              'Drop chiuso'
+              'Back soon'
             ) : isSoldOut ? (
               'Sold Out'
             ) : (
@@ -1368,7 +1368,7 @@ export default function ProductPage() {
               : isDropBefore
               ? dropOpensLabel
               : isDropClosed
-              ? 'Drop chiuso'
+              ? 'Back soon'
               : isSoldOut
               ? 'Sold Out'
               : canAddToCart
@@ -1674,7 +1674,7 @@ export default function ProductPage() {
                 ) : isDropBefore ? (
                   dropOpensLabel
                 ) : isDropClosed ? (
-                  'Drop chiuso'
+                  'Back soon'
                 ) : isSoldOut ? (
                   'Sold Out'
                 ) : (

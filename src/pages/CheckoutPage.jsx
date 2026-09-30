@@ -100,8 +100,8 @@ function CheckoutForm() {
   const localBundleDiscount = bundleDiscount(items.map((i) => ({ productId: i.product.id })), cfg)
   const localDiscountAmount = (appliedCode?.amount ?? 0) + localBundleDiscount
   const localDiscountLabel  = appliedCode
-    ? (localBundleDiscount > 0 ? `${appliedCode.label} + Bundle drop` : appliedCode.label)
-    : (localBundleDiscount > 0 ? 'Bundle drop — all three' : null)
+    ? (localBundleDiscount > 0 ? `${appliedCode.label} + All-three bundle` : appliedCode.label)
+    : (localBundleDiscount > 0 ? 'All-three bundle' : null)
   const localTotal = Math.max(subtotal - localDiscountAmount, 0)
 
   const discountAmount = serverPricing?.discountAmount ?? localDiscountAmount

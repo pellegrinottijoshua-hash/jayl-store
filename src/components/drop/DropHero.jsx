@@ -240,7 +240,7 @@ export default function DropHero() {
         onKeyDown={onKeyDown}
         role="region"
         aria-roledescription="carousel"
-        aria-label="Drop pieces"
+        aria-label="New pieces"
       >
         {stage.w > 0 && (
           <motion.div
@@ -304,8 +304,8 @@ export default function DropHero() {
             style={{ top: `calc(50% - ${H / 2 - 4}px)` }}
           >
             {state === BEFORE && <DropCountdown to={target} label="opens in" className={countdownCls} />}
-            {state === LIVE && <DropCountdown to={target} label="closes in" className={countdownCls} />}
-            {state === CLOSED && target && <DropCountdown to={target} label="next drop in" className={countdownCls} />}
+            {state === LIVE && <DropCountdown to={target} label="launch price ends in" className={countdownCls} />}
+            {state === CLOSED && target && <DropCountdown to={target} label="next release in" className={countdownCls} />}
           </div>
         )}
 

@@ -192,7 +192,7 @@ export default function CartDrawer() {
 
           {dropIds.length === 3 && missing.length > 0 && missing.length < 3 && saving > 0 && (
             <p className="text-xs text-amber-300 px-4 py-2">
-              add {missing.length === 1 ? "the last piece" : `${missing.length} more pieces`} from the drop → save <Money cents={saving} />
+              add {missing.length === 1 ? "the last piece" : `${missing.length} more pieces`} from this release → save <Money cents={saving} />
             </p>
           )}
           {dropIds.length === 3 && missing.length === 0 && items.length > 0 && (

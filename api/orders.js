@@ -719,7 +719,10 @@ function handlePrerender(req, res) {
         brand:      { '@type': 'Brand', name: 'JAYL' },
         offers: {
           '@type':        'Offer',
-          price:          ((p.price ?? 0) / 100).toFixed(2),
+          // Il prezzo che il checkout addebita davvero (drop o archivio), come
+          // nel feed gmf qui sopra: p.price e' il vecchio listino e i Rich Pin
+          // di Pinterest mostravano 23,99-25 € mentre il sito chiedeva altro.
+          price:          ((basePriceFor(p.id, null, p) ?? 0) / 100).toFixed(2),
           priceCurrency:  'EUR',
           availability:   'https://schema.org/InStock',
           url,

@@ -28,7 +28,6 @@ export default function DropDesktop() {
   const currentIds     = cfg.current?.productIds || []
   const showingCurrent = currentIds.length > 0
   const shown = showingCurrent ? currentIds : (cfg.previous?.productIds || [])
-  const head  = showingCurrent ? cfg.current : (cfg.previous || cfg.current)
   const items = shown.map(getProductById).filter(Boolean)
 
   // Prima che il drop apra, "il prossimo drop" e' questo: un secondo
@@ -43,11 +42,12 @@ export default function DropDesktop() {
           <div className="px-6 lg:px-8 pt-[64px] pb-6 text-cream">
             <div className="flex items-center justify-between">
               <span className="text-xs tracking-[0.2em] uppercase">
-                Drop {String(head.number).padStart(2, '0')} · {head.title}
+                {/* Niente "Drop 05 · titolo": ai clienti si dice NEW (come il NewMark mobile). */}
+                {(showingCurrent && cfg.current?.headline) || 'New'}
               </span>
               {state === BEFORE && <DropCountdown to={target} label="opens in" className="text-xs tabular-nums" />}
-              {state === LIVE && <DropCountdown to={target} label="closes in" className="text-xs tabular-nums" />}
-              {state === CLOSED && target && <DropCountdown to={target} label="next drop in" className="text-xs tabular-nums" />}
+              {state === LIVE && <DropCountdown to={target} label="launch price ends in" className="text-xs tabular-nums" />}
+              {state === CLOSED && target && <DropCountdown to={target} label="next release in" className="text-xs tabular-nums" />}
             </div>
           </div>
 
@@ -85,7 +85,7 @@ export default function DropDesktop() {
                         <span className="text-xs tracking-widest uppercase text-fg/60">Preview · not on sale yet</span>
                       )}
                       {state === CLOSED && (
-                        <span className="text-xs tracking-widest uppercase text-fg/60">Drop closed · now in the archive</span>
+                        <span className="text-xs tracking-widest uppercase text-fg/60">Launch price ended · now in the collection</span>
                       )}
                     </div>
                   </Link>
@@ -110,16 +110,16 @@ export default function DropDesktop() {
               Get notified
             </p>
             <h2 className="font-display text-4xl text-cream leading-tight mb-4">
-              Never miss a drop.
+              Never miss a new release.
             </h2>
             <p className="text-fg/60 text-sm leading-relaxed mb-6">
-              Every drop is a limited edition — once it closes, the pieces go back to the
-              archive at full price. Join the list for early access to the next one.
+              New designs land every few days at a launch price. After that they stay in
+              the collection at full price. Join the list and get the next ones first.
             </p>
             {state === BEFORE ? (
               <DropCountdown to={target} label="opens in" className="block text-xs tracking-widest uppercase text-fg/50 tabular-nums mb-8" />
             ) : nextStartsAt && (
-              <DropCountdown to={nextStartsAt} label="next drop in" className="block text-xs tracking-widest uppercase text-fg/50 tabular-nums mb-8" />
+              <DropCountdown to={nextStartsAt} label="next release in" className="block text-xs tracking-widest uppercase text-fg/50 tabular-nums mb-8" />
             )}
             <SubscribeForm variant="waitlist" />
           </div>

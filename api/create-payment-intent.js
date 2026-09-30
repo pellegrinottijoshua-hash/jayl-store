@@ -74,8 +74,9 @@ export function checkDropGate(items, cfg, now, soldByProduct) {
       // corretto. Riusa `beforeOpen` calcolato sopra, nessun ricalcolo della
       // finestra.
       const error = beforeOpen
-        ? (label ? `This drop opens on ${label}.` : 'This drop is not open yet.')
-        : (label ? `This drop is closed. The next one opens on ${label}.` : 'This drop is closed.')
+        // Ai clienti non si dice "drop": sono design nuovi a prezzo di lancio.
+        ? (label ? `These designs go on sale on ${label}.` : 'These designs are not on sale yet.')
+        : (label ? `The launch price has ended. The next new designs arrive on ${label}.` : 'The launch price has ended.')
       return { status: 409, error }
     }
 

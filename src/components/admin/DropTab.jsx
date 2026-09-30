@@ -302,8 +302,8 @@ export default function DropTab() {
       endsAt:   endsAt.toISOString().replace(/\.\d{3}Z$/, 'Z'),
       cap:         c.current?.cap         ?? 20,
       caps:        {},
-      dropPrice:   c.current?.dropPrice   ?? 2200,
-      bundlePrice: c.current?.bundlePrice ?? 5700,
+      dropPrice:   c.current?.dropPrice   ?? 1999,
+      bundlePrice: c.current?.bundlePrice ?? 4999,
       heroImages:  {},
       defaults:    {},
     }

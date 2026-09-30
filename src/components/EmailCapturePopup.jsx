@@ -15,8 +15,9 @@ const CONSENT_KEY = 'jayl_cookie_consent'
 // reappearing — one signup, not two.
 function nextDropTitle(cfg) {
   const next = cfg?.next
-  if (!next?.number) return 'Next drop'
-  const number = `Drop ${String(next.number).padStart(2, '0')}`
+  // Ai clienti non si parla di "drop" ne' di numeri: e' la prossima novita'.
+  if (!next?.number) return 'New designs, soon'
+  const number = 'New designs'
   if (!next.startsAt) return number
   const date = new Date(next.startsAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
   return `${number} · ${date}`
@@ -105,7 +106,7 @@ export default function EmailCapturePopup() {
     <div
       className={`fixed z-[60] bottom-4 right-4 left-4 sm:left-auto sm:w-[370px] transition-all duration-300 ${enter ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
       role="dialog"
-      aria-label="Lista d'attesa drop"
+      aria-label="Waitlist"
     >
       <div className="relative bg-off-black border border-border rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
         <button
@@ -119,25 +120,25 @@ export default function EmailCapturePopup() {
         <div className="p-6">
           {submitted ? (
             <div className="text-center space-y-3">
-              <h2 className="font-display text-xl text-cream">Sei in lista.</h2>
+              <h2 className="font-display text-xl text-cream">You're on the list.</h2>
               <p className="text-text-muted text-xs">
-                Ti avvisiamo appena il drop apre.
+                We'll email you the moment the new ones are live.
               </p>
               <button
                 onClick={dismiss}
                 className="text-xs text-text-muted hover:text-cream underline underline-offset-2 transition-colors"
               >
-                Continua a guardare →
+                Keep browsing →
               </button>
             </div>
           ) : (
             <div className="space-y-4">
               <div>
-                <p className="text-[10px] text-text-muted uppercase tracking-widest mb-1.5">Next drop</p>
+                <p className="text-[10px] text-text-muted uppercase tracking-widest mb-1.5">Coming next</p>
                 <h2 className="font-display text-xl text-cream leading-tight">{title}</h2>
               </div>
               <p className="text-text-secondary text-xs leading-relaxed">
-                join the list: each design is limited to 20 pieces
+                join the list: new designs start at a launch price, only for a few days
               </p>
               <form onSubmit={handleSubmit} className="space-y-2.5">
                 <input
@@ -154,7 +155,7 @@ export default function EmailCapturePopup() {
                   disabled={loading || !email.trim()}
                   className="w-full bg-cream text-off-black py-2.5 text-sm font-semibold tracking-wide disabled:opacity-40 transition-opacity hover:opacity-90"
                 >
-                  {loading ? 'Just a sec…' : 'AVVISAMI'}
+                  {loading ? 'Just a sec…' : 'NOTIFY ME'}
                 </button>
               </form>
               <p className="text-text-muted text-[10px] text-center">No spam. Unsubscribe any time.</p>
