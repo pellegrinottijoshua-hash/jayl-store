@@ -1,9 +1,9 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-09-30 notte da Troy (prezzi nuovi, via "drop" dal sito, archivio motion).
+Aggiornato: 2026-09-30 sera da Troy (admin: Front e video hero in Add product, niente doppioni). Dettagli e passi: `RIPRENDI-QUI.md`.
 
 ## A che punto siamo
-- **Negozio:** www.jayl.store. Prezzi dal 30/9: 19,99 € al lancio, 24,99 € in collezione, i 3 insieme 49,99 € (commit locale, da pushare). Sul sito niente più "drop": NEW, "launch price ends in". Spedizione gratuita. 5 drop usciti, 0 vendite reali.
+- **Negozio:** www.jayl.store. Prezzi dal 30/9: 19,99 € al lancio, 24,99 € in collezione, i 3 insieme 49,99 € Sul sito niente più "drop": NEW, "launch price ends in". Spedizione gratuita. 5 drop usciti, 0 vendite reali.
 - **Drop 6 SHINY** (Gyarados, Charizard, Dragonite) il 1/10, quando il drop 5 chiude alle 18:00. A catalogo c'è solo lo Shiny Charizard.
 - **Ads Meta** (9-30/9): circa 31 € per circa 160 clic, 0,19 € a clic. Portavano alla home.
 - **Cosa misura il sito:**
