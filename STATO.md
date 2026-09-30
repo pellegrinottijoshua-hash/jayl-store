@@ -1,9 +1,9 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-09-30 notte da Troy (video hero live, token Blob chiuso, ad v2).
+Aggiornato: 2026-09-30 notte da Troy (prezzi nuovi, via "drop" dal sito, archivio motion).
 
 ## A che punto siamo
-- **Negozio:** www.jayl.store. Drop a 22 € (3 insieme 57 €), archivio a 25 €. Spedizione gratuita. 5 drop usciti, 0 vendite reali.
+- **Negozio:** www.jayl.store. Prezzi dal 30/9: 19,99 € al lancio, 24,99 € in collezione, i 3 insieme 49,99 € (commit locale, da pushare). Sul sito niente più "drop": NEW, "launch price ends in". Spedizione gratuita. 5 drop usciti, 0 vendite reali.
 - **Drop 6 SHINY** (Gyarados, Charizard, Dragonite) il 1/10, quando il drop 5 chiude alle 18:00. A catalogo c'è solo lo Shiny Charizard.
 - **Ads Meta** (9-30/9): circa 31 € per circa 160 clic, 0,19 € a clic. Portavano alla home.
 - **Cosa misura il sito:**
@@ -17,7 +17,7 @@ Aggiornato: 2026-09-30 notte da Troy (video hero live, token Blob chiuso, ad v2)
 
 ## Prossimi 3 passi
 1. **Drop 6:** prodotti e drop programmato in admin prima delle 18:00 del 1/10; in ogni scheda "Carica MP4" col video hero da `drop 6/kling/web/`.
-2. **Prezzo:** l'ad v2 dice "only €19.99 shipped". Se si conferma, nel tab Drop va messo `dropPrice` 1999 e rivisto il prezzo dei 3 insieme (margine circa 2 € in meno a pezzo). Poi scegliere lo stile delle parole e pubblicare.
+2. **Video:** scegliere dall'archivio (`jayl streetwear/ARCHIVIO-MOTION.md`, preferite C e D) e rifare l'ad; font nuovi da scaricare col suo ok.
 3. **UTM ovunque:** link in bio `?utm_source=instagram&utm_medium=bio`; ads con `utm_content` = formato e link alla scheda.
 
 ## Bloccato da
