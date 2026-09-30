@@ -11496,7 +11496,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4f1cee6f-f658-41fa-87b2-87d45c73ac40/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T122851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c494621889ac14119a0230f843c0eeccd71f791e71a37397832b9d062f8eaf3"
     ],
     "createdAt": "2026-06-27T13:00:11.484Z",
-    "updatedAt": "2026-09-28T14:13:22.470Z",
+    "updatedAt": "2026-09-30T12:33:36.805Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -11578,7 +11578,8 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design-front.png",
     "storeColors": [
       "royal",
-      "navy"
+      "navy",
+      "black"
     ]
   },
   {
