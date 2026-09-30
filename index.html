@@ -77,8 +77,8 @@
          eventi custom partono da src/lib/analytics.js (trackUmami). -->
     <script>
       /* Website ID — Umami Cloud → Settings → Websites → Edit → Website ID.
-         Finché resta null lo script NON si carica e trackUmami() è un no-op. */
-      window.__jaylUmamiId = null;
+         Con null lo script NON si carica e trackUmami() è un no-op. */
+      window.__jaylUmamiId = '3b187707-e34c-4148-90b9-ae7b4ff9d002';
       /* Filtro prima di ogni invio:
          - /admin non si conta, e il browser che lo apre smette di essere
            contato (umami.disabled). Idem aprendo il sito con ?notrack.
