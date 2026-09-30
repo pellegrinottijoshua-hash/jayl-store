@@ -11593,7 +11593,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Kangaskhan T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "If you're shopping for someone who appreciates a blend of nostalgia and style, look no further than this Cool Kangaskhan back T-Shirt. This design captures Kangaskhan's nurturing spirit with its minimalist approach, reflecting a playful yet understated vibe that resonates with modern aesthetics. Constructed from Gildan premium tee fabric, it boasts top-notch DTG print quality that ensures durability while staying soft to the touch. A thoughtful gift for birthdays or casual gatherings, it celebrates the charm of this beloved Pokémon without overpowering your wardrobe.",
@@ -11923,7 +11923,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4c1b0bb-284d-47d5-9f55-157b3c90152f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T130541Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=76be87cc19db879cd713435e2953dd1c4494035d962db9d376c21d085b269102"
     ],
     "createdAt": "2026-06-27T13:23:00.895Z",
-    "updatedAt": "2026-09-28T14:13:16.901Z",
+    "updatedAt": "2026-09-30T12:42:29.183Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -11976,7 +11976,8 @@ export const adminProducts = [
           "pokemon",
           "events",
           "conversation starter"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Stylish Kangaskhan T-Shirt for Every Occasion",
@@ -11994,7 +11995,8 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_123012_3dc13ed8-ee97-4278-be2a-798f1db9799b.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124544_d0dd4376-f19e-4956-bc14-97b912f6a029.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_122938_fa781b8c-5218-4a15-bd0c-b0d785209d1d-1.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design-front.png",
