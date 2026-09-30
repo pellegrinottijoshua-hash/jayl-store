@@ -19408,5 +19408,520 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T16:18:00.610Z",
     "updatedAt": "2026-09-30T12:06:28.664Z"
+  },
+  {
+    "id": "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "shiny dragonite Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  dragon Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Roaring through the skies, Dragonite embodies that gentle spirit wrapped in raw power — effortlessly delivering packages and leveling mountains with a flick of its tail. This unisex cotton T-shirt features an eye-catching large back design, showcasing the majestic Pokémon in all its glory against a retro 90s anime backdrop. Made on a Gildan premium tee with high-resolution DTG print quality, this shirt holds up to your adventurous spirit. It makes for a unique gift that captures the essence of this gentle giant while bringing a dose of nostalgia to any wardrobe.",
+    "altText": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--mockup-01.jpg",
+    "heroImage": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/3c.png",
+    "detailImage": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_151025_ae6f7935-5b1f-4be9-a336-cecc71e9e1d5.png",
+    "images": [
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_131811_55c1408e-ba2b-4970-8ee9-5706268bb0f3.png",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_131821_b01ba608-5ae0-4985-a7da-892c6b0b401a.png",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-01.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-02.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-03.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-04.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-05.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-06.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-07.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-08.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-09.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-10.jpg",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-11.jpg"
+    ],
+    "imageAlts": {
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--mockup-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--red-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gold-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--irish-green-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--natural-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--navy-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--heather-maroon-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--black-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--purple-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--cardinal-red-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print.",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--white-01.jpg": "Dynamic Dragonite soaring with fierce determination, illustrated in retro 90s anime style on a premium JAYL tee with large back print."
+    },
+    "tags": [
+      "dragonite",
+      "anime shirt",
+      "90s retro",
+      "funny t-shirt",
+      "dragon pokemon",
+      "graphic tee",
+      "unisex apparel",
+      "cotton shirt",
+      "anime graphic",
+      "gift for him",
+      "pokemon gift",
+      "large back design",
+      "premium clothing"
+    ],
+    "featured": false,
+    "gelatoProductId": "d454577d-9f18-4941-a231-21bbd982ac1a",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "dragonite shirt",
+      "anime t-shirt",
+      "retro graphic tee",
+      "funny apparel",
+      "pokemon t-shirt"
+    ],
+    "longTailKeywords": [
+      "shiny dragonite t-shirt design",
+      "retro anime graphic wear for men",
+      "funny dragon Pokemon gift idea",
+      "large back print shirt for adults",
+      "unisex cotton vintage tee online",
+      "unique gifts for Pokemon fans",
+      "stylish retro clothing for men and women",
+      "vintage anime art apparel shop",
+      "cool dragonite shirts unisex style",
+      "high-quality funny graphic tees"
+    ],
+    "hashtags": "#Dragonite #AnimeShirt #Retro90s #GraphicTee #FunnyClothing #PokemonGift #UnisexApparel #CottonTee #AnimeArt #DragonPokemon #GeekFashion #NostalgiaTees #FanArtWear #TeesOfInstagram #GamerGiftIdeas #CasualStyle #AnimeLifestyle #NerdyTees #EpicOutfit #CollectorsItem #UniqueThreads #PopCultureWear #StreetwearFashion #StyleInspo #VibesOnPoint #FandomFashion #DragoniteLove #ArtisticTees #TrendyApparel #BoldStatementTee",
+    "instagramCaption": "*Soaring high or just chilling out? Either way, Dragonite has you covered. Rock this bold tee and let everyone know who’s the real champion! 🐉✨#DragoniteLove#RetroAnime#BoldFashion* Check it out now!",
+    "pinterestCaption": "*Experience the adventure of nostalgia with our shiny Dragonite Back Print Shirt, featuring a strikingly bold design from classic anime days. Perfect as a unique gift or for expressing your love of Pokémon culture.*",
+    "seoTitle": "Dragonite Back Print Shirt | Retro 90s Anime Gift | Unisex Tee",
+    "variants": [
+      {
+        "uid": "7d509d1e-37d6-497f-a648-8bfb7bd542e8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e4459074-2a6a-463f-aa04-e6bb115d9c27",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8e495f04-f9ee-4d57-872a-c5046d6036f2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e94b077f-cba8-41a1-91e7-24a611e57106",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f3d805e8-8c8f-4542-8d37-f1560fe656a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8bce1a23-7fa4-4038-b37f-7b7267c9641d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea1fa6e1-323c-4878-9ea3-aa3589160c77",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8705f18e-3f7f-465d-b62f-ab8470e06841",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d4729862-f211-4747-b19b-889dcbf6fb5f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f9cad6f6-1fe8-4e77-96d4-0a8c378ddfd2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "36edd9c9-1611-45e2-8b7a-e93e13b8f12f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "04f2df7f-51f9-4a38-8ac0-dfe84cc1f5d7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "484e78de-05d4-4386-94b7-4b0e8b7fbe3f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "87bb0b19-f184-49e1-af76-c2291bd6c403",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a59824a6-a849-4936-969d-e0e7bf307190",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "410f456d-17c0-47b6-a73d-b67dae749b9d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e1e19f99-7272-46bc-9b8d-d87ddc67db1e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_gold_gpr_0-4_inlbl_gildan_64000",
+        "color": "Gold",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5e822208-e4f5-46cb-b0f2-0dad9a9ff2e6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b29dafe2-aefd-44ad-924b-03ff438ccac9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e30f71e8-ce7f-48b9-a990-ecba5d36b294",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "283d8057-2cd3-4e92-a8a2-7687a2d9ac45",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9354c9d6-5173-4118-bb3c-d3b4288f4ba8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "881fcca3-43be-4160-8005-5161798acbdf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9be07fdd-5467-47cb-bc0d-998c20ff6cf2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "72ff8ddc-1a17-4776-ac9b-2f8d538f7e31",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "932d6b4e-70c6-4ebc-ab8d-8ac9683b8858",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9f50ce40-c1b1-4f78-8786-bc5e8865f887",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "66308587-515e-4762-8f44-6cf722412ffe",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "77ccdd7e-62a9-49b6-9a70-9bff01d4f9a1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "60398990-92bd-4d0c-b603-5defd22a1e63",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9c0a72a9-c8ef-46c7-8ad4-ec3093de7948",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4354d15a-baa2-460b-91e2-6518305ede90",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "29320619-4c45-4d77-b043-8c2d666214b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d5f0cffb-8c50-488f-871a-a0d1f59bb25c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_cardinal-red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Cardinal Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c051277b-fd74-470b-9a37-3576da711f36",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "96efc664-c2d7-4d25-bca8-cef35656d782",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_0-4_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bd9b65bc-654c-449c-a9f1-840b7944cc98",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "13ea5c67-a142-4c05-b44a-18e1afc7a127",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4fc03c68-c76b-4ea2-b746-25f2b703dd3f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "00228fb1-2245-4f4c-9d9b-18203e1783a1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--navy-01.jpg"
+      },
+      {
+        "id": "gold",
+        "label": "Gold",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gold-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--white-01.jpg"
+      },
+      {
+        "id": "irish-green",
+        "label": "Irish Green",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--irish-green-01.jpg"
+      },
+      {
+        "id": "cardinal-red",
+        "label": "Cardinal Red",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--cardinal-red-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--purple-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--red-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--natural-01.jpg"
+      },
+      {
+        "id": "heather-maroon",
+        "label": "Heather Maroon",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--heather-maroon-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a0523092-6f8b-4fa6-b570-f6481ae00381/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6334277ac31866c69b63e8b0e5107cb8b915c04db9c025615fc4ebfac6241166",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/db291487-8acf-4df6-9bb7-82e7bfaa1784/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ec41041cf81a181dcdf6c3ae3b95b6d8bdd3a9b8dae157aaf2ec1cf5cb7d2e0e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ef38eaf2-7496-4015-a3fd-23b70048a4f6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c0dac8145e3ca54bb3686f428d59e2b981c3b7407399d60ec11f7bb23b26f14e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/24c4be97-94d8-4b43-9490-47a1d5e5f0e1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=62c24d3cac8b926d7ddcf66689eeb5138895826c9fcdcc79388b57090854f0ad",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4b3c3485-3af7-4314-86a5-6d767ab9201e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=33b4ffb5b3e9dbdcb0f86d5eda65e9566fe0bb30fcafdfe823144c75b20ec6d3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d23aeb04-3ad0-4346-a762-c3177386bc7c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=15b9b746c701f8ab64b290c1b4600e87bea8b521382242d4949770cacff54dc7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ffc5db5-24fe-43e2-a456-2fdfbc9de246/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1f6127d628c5fed20c922ad87821c45c4c309161a197d63c71e29aa884227ae",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4d247458-a5f0-44ca-9f11-1c7eb0259920/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8450d70612d5916d2b0c9e403f5567c6f8e6c90f3abf9fed9bb494e962ea4bb7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/48c72bb3-e79f-4269-901d-859dc13d1a46/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=22d00bcc13456e7af32fd40f702a8a311b7f9d70b08a8c97277dcd9f171b6677",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6af0d530-d54f-4621-9a9f-069c3c89d2fd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3dfabd63809dbe11abfbfc09dc7a263a3a9874335d16fbbf17a8c48dd2e4c536",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/79153708-6605-4b95-9bb4-2c6ee600f434/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=810937f6464d29571388aa89f36ad3e352587cfa21675b48e082e3d1842e92d9"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260824_171328_71be31a7-67d2-41bd-88a6-0e7ab6157de1-zack-1.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-09-30T12:19:08.085Z",
+    "updatedAt": "2026-09-30T12:19:08.085Z"
   }
 ]
