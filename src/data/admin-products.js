@@ -12009,7 +12009,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Machop T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "Machop embodies the fight against conformity with a fierce spirit and relentless ambition. Wearing this bold t-shirt is like carrying a piece of that rebellious fire, channeling Machop's journey from humble beginnings to muscular power. Printed on a Gildan premium tee with DTG quality, the art pops with raw energy and detail, making it more than just a shirt—it's camaraderie in fabric form. It’s a great gift for those ready to challenge the norm and embrace their inner fighter.",
@@ -12335,7 +12335,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/127b88c4-5de9-4348-b80f-b23b5b557ea1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260627%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260627T132343Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fe1beefa53765a92361f398d971f3682a2ceba8b18b7c02fec62ecedb51998b1"
     ],
     "createdAt": "2026-06-27T13:31:16.749Z",
-    "updatedAt": "2026-09-30T12:33:31.747Z",
+    "updatedAt": "2026-09-30T12:41:56.013Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-machop-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -12388,7 +12388,8 @@ export const adminProducts = [
           "fan style",
           "trendy t-shirt",
           "casual outfit"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Cool Machop Back T-Shirt: The Ultimate Pokémon Statement Piece",
@@ -12406,7 +12407,8 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131557_d047a67f-39b7-4864-b8e2-1e59ab897add.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131622_52aef132-ee97-4a63-834f-a5aa803119d6.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_132102_34903f27-842e-419e-bb97-619f6dd97964.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_132102_34903f27-842e-419e-bb97-619f6dd97964.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131125_7f19b816-9a72-4c69-89e5-96e15df37ad3.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "storeColors": [
