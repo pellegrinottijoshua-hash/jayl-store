@@ -11,7 +11,9 @@ import {
   loadImageFromUrl, extractArt, measurePlacement, defaultTransform, clampTransform,
 } from '@/lib/printCanvas'
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
+import SequenzaOrdine from '@/components/admin/SequenzaOrdine'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
+import { gelatoNonCopiati } from '@/lib/gelatoPool'
 import SocialShareButtons from '@/components/SocialShareButtons'
 
 // Nome fisso per il file del secondo lato: rigenerarlo sovrascrive, non accumula.
@@ -417,12 +419,10 @@ function ImagePool({
 // ── Media Panel — Hero + Sequenza (controlled) ───────────────────────────────
 // Purely display: all state lives in AdminProductPage.
 // Assignment happens from PoolThumb hover buttons; this panel shows the result
-// and lets the user reorder the sequenza with ‹ › arrows.
+// and lets the user reorder the sequenza (SequenzaOrdine: trascina, clicca in
+// ordine, "1°", ‹ ›).
 
-function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, allImages, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onReorderSequenza, onSave, saving, msg }) {
-  const moveLeft  = i => { if (i === 0) return; const s = [...sequenza]; [s[i-1],s[i]]=[s[i],s[i-1]]; onReorderSequenza(s) }
-  const moveRight = i => { if (i === sequenza.length-1) return; const s = [...sequenza]; [s[i],s[i+1]]=[s[i+1],s[i]]; onReorderSequenza(s) }
-  const getImg    = url => allImages?.find(i => i.url === url) || { url, name: url.split('/').pop().split('?')[0] || 'image' }
+function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onReorderSequenza, onSave, saving, msg }) {
 
   const HeroSlot = ({ url, label, aspect, color, onClear }) => {
     const isVideo = url && /\.(mp4|mov|webm)$/i.test(url)
@@ -502,57 +502,7 @@ function MediaPanel({ desktopHero, mobileHero, sequenza, detailImage, allImages,
           <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">
             Sequenza{sequenza.length > 0 ? ` · ${sequenza.length} immagini` : ''}
           </p>
-          {sequenza.length === 0 ? (
-            <p className="text-gray-600 text-xs py-2">Nessuna immagine — usa + nel pool per aggiungere.</p>
-          ) : (
-            <div className="flex gap-2 overflow-x-auto pb-2" style={{ scrollbarWidth: 'thin' }}>
-              {sequenza.map((url, i) => {
-                const img       = getImg(url)
-                const isDesktop = desktopHero === url
-                const isMobile  = mobileHero  === url
-                const isVideo   = /\.(mp4|mov|webm)$/i.test(url)
-                return (
-                  <div key={url} className="flex-shrink-0 relative group">
-                    <div className={`w-20 h-20 border-2 overflow-hidden transition-all ${
-                      isDesktop && isMobile ? 'border-indigo-500'
-                        : isDesktop ? 'border-blue-600'
-                        : isMobile  ? 'border-purple-600'
-                        : 'border-gray-700'
-                    }`}>
-                      {isVideo
-                        ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
-                        : <img src={url} alt={img.name} className="w-full h-full object-cover"
-                            onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-                      }
-                    </div>
-                    {/* Position badge */}
-                    <div className={`absolute -top-1.5 -left-1.5 w-4 h-4 flex items-center justify-center text-[9px] font-bold rounded-sm ${
-                      i === 0 ? 'bg-gray-500 text-white' : 'bg-gray-800 text-gray-400'
-                    }`}>{i + 1}</div>
-                    {/* Hero badges */}
-                    {isDesktop && <div className="absolute top-0.5 right-0.5 bg-blue-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">🖥</div>}
-                    {isMobile  && <div className="absolute bottom-0.5 right-0.5 bg-purple-600/90 text-white text-[8px] px-0.5 py-0.5 leading-none pointer-events-none">📱</div>}
-                    {/* Remove button */}
-                    <button
-                      onClick={() => onReorderSequenza(sequenza.filter((_, j) => j !== i))}
-                      className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-700 hover:bg-red-500 text-white rounded-full flex items-center justify-center text-[9px] leading-none opacity-0 group-hover:opacity-100 transition-opacity z-20"
-                      title="Rimuovi dalla sequenza"
-                    >×</button>
-                    {/* Reorder controls */}
-                    <div className="absolute bottom-0 inset-x-0 flex opacity-0 group-hover:opacity-100 transition-opacity bg-black/70">
-                      <button onClick={() => moveLeft(i)} disabled={i === 0}
-                        className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a sinistra">‹</button>
-                      <button onClick={() => moveRight(i)} disabled={i === sequenza.length - 1}
-                        className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a destra">›</button>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
-          {sequenza.length > 0 && (
-            <p className="text-gray-700 text-[10px] mt-2">Hover → ‹ › riordina · 🖥 hero desktop · 📱 hero mobile</p>
-          )}
+          <SequenzaOrdine sequenza={sequenza} onChange={onReorderSequenza} desktopHero={desktopHero} mobileHero={mobileHero} />
         </div>
 
       </div>
@@ -948,8 +898,10 @@ export default function AdminProductPage() {
       if (product?.heroImage && !product.heroImage.includes('raw.githubusercontent.com')) add(product.heroImage)
     }
     const excl = new Set(excludedGelato)
-    return [...urls].filter(u => !excl.has(u)).map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
-  }, [product, gelatoCdnImages, excludedGelato])
+    const originali = [...urls].filter(u => !excl.has(u)).map(url => ({ url, name: url.split('/').pop().split('?')[0] || 'image' }))
+    // Se le copie nel repo ci sono gia', gli originali (che scadono) non si mostrano: vedi src/lib/gelatoPool.js
+    return gelatoNonCopiati(originali, githubImages)
+  }, [product, gelatoCdnImages, excludedGelato, githubImages])
 
   const uploadedImages  = useMemo(() => githubImages.filter(img => !img.path?.includes('/generated/')), [githubImages])
   const generatedImages = useMemo(() => githubImages.filter(img =>  img.path?.includes('/generated/')), [githubImages])

@@ -1,8 +1,9 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
-import { detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS, prepareDesignForPlacement, renderPrintFile } from '@/lib/printCanvas'
+import { detectPlacement, PRINT_CANVAS, PLACEMENT_SPECS, prepareDesignForPlacement, renderPrintFile, loadImageFromUrl, extractArt, defaultTransform, clampTransform } from '@/lib/printCanvas'
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
+import SequenzaOrdine from '@/components/admin/SequenzaOrdine'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -11,6 +12,11 @@ import SocialShareButtons from '@/components/SocialShareButtons'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 import { SOCIAL_CHANNELS, socialPlaceholder } from '../../api/_lib/social-links.js'
 import { resolveSwatchHex } from '@/lib/apparelColors'
+import { gelatoNonCopiati } from '@/lib/gelatoPool'
+
+// Nome fisso per il file del secondo lato, come in AdminProductPage.jsx:
+// rigenerarlo sovrascrive, non accumula.
+const ALT_FILENAME = 'design-front.png'
 
 // Scheda tecnica standard per un capo Gelato su Gildan 64000 — è quella che
 // finisce su ogni prodotto quando non se ne scrive una diversa a mano.
@@ -292,6 +298,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     Array.isArray(editingProduct?.tags) ? editingProduct.tags.join(', ') : (editingProduct?.tags || '')
   )
   const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
+  const [videoUpload, setVideoUpload] = useState(null) // null = fermo, numero = % caricata
+  const [videoUploadErr, setVideoUploadErr] = useState('')
   const [printCost,        setPrintCost]        = useState(editingProduct?.printCost ? (editingProduct.printCost / 100).toString() : '')
   const [urgency,          setUrgency]          = useState(editingProduct?.urgency          || '')
 
@@ -299,6 +307,10 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   // product can get its print file at creation time instead of only after saving.
   const [printFileUrl,    setPrintFileUrl]    = useState(editingProduct?.printFileUrl || '')
   const [neckLabelUrl,    setNeckLabelUrl]    = useState(editingProduct?.neckLabelUrl || '')
+  // Secondo lato (il fronte di una maglia back): senza, in negozio c'e' solo
+  // il lato principale. Prima esisteva solo nell'editor completo della scheda,
+  // e ogni prodotto creato da qui nasceva senza l'opzione Front.
+  const [altPrintFileUrl, setAltPrintFileUrl] = useState(editingProduct?.altPrintFileUrl || '')
   const [uploadingDesign, setUploadingDesign] = useState(false)
   const [designUploadErr, setDesignUploadErr] = useState('')
   const [designEditor,    setDesignEditor]    = useState(null)  // {art, transform, filename}
@@ -714,18 +726,20 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   // like api/_lib/placement.js — so the preview matches what fulfillment will do.
   // Falls back to the collection string, which is why the banner below can be amber.
   const designPlacement = detectPlacement({ collection: finalCollection, variants, gelatoProductId: gelatoUid })
+  // Il lato opposto: per una maglia back e' il fronte (piccolo, petto sinistro).
+  const altType = designPlacement.type === 'back' ? 'default' : 'back'
 
-  const handlePickDesign = async (file) => {
+  const handlePickDesign = async (file, target = 'main') => {
     if (!file) return
     setDesignUploadErr('')
     const isRaster = /^image\/(png|jpeg|webp)$/.test(file.type)
     if (!autoFitDesign || !isRaster) {
-      return handleUploadDesign(file)
+      return handleUploadDesign(file, target)
     }
     setFittingDesign(true)
     try {
-      const { art, transform } = await prepareDesignForPlacement(file, designPlacement.type)
-      setDesignEditor({ art, transform, filename: sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
+      const { art, transform } = await prepareDesignForPlacement(file, target === 'alt' ? altType : designPlacement.type)
+      setDesignEditor({ art, transform, target, filename: target === 'alt' ? ALT_FILENAME : sanitizeFilename(file.name.replace(/\.[^.]+$/, '') + '.png') })
     } catch (e) {
       setDesignUploadErr(e.message || 'Impossibile leggere il file')
     } finally {
@@ -735,9 +749,49 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
   const handleConfirmDesign = async (transform) => {
     if (!designEditor) return
-    const { blob } = await renderPrintFile(designEditor.art, transform, designPlacement.type)
+    const target = designEditor.target || 'main'
+    const { blob } = await renderPrintFile(designEditor.art, transform, target === 'alt' ? altType : designPlacement.type)
     const file = new File([blob], designEditor.filename, { type: 'image/png' })
-    if (await handleUploadDesign(file)) setDesignEditor(null)
+    if (await handleUploadDesign(file, target)) setDesignEditor(null)
+  }
+
+  // Video hero: l'mp4 va sul Blob (videos/<id>/hero-<ora>.mp4) e il suo url in
+  // Video URL, poi si salva col prodotto. Stesso flusso dell'editor completo.
+  const handleUploadVideo = async (file) => {
+    if (!file) return
+    if (!productId) { setVideoUploadErr('Scrivi prima un titolo — serve per l\'id del prodotto.'); return }
+    if (file.type !== 'video/mp4' && !/\.mp4$/i.test(file.name)) { setVideoUploadErr('Serve un file .mp4'); return }
+    setVideoUpload(0); setVideoUploadErr('')
+    try {
+      const blob = await blobDirectUpload(`videos/${productId}/hero-${Date.now()}.mp4`, file, {
+        clientPayload: JSON.stringify({ password: getAdminPassword(), productId }),
+        onProgress: (pct) => setVideoUpload(Math.round(pct)),
+      })
+      setVideoUrl(blob.url)
+    } catch (e) {
+      setVideoUploadErr(`Upload non riuscito: ${e.message || e}`)
+    } finally {
+      setVideoUpload(null)
+    }
+  }
+
+  // Il fronte dallo stesso disegno del retro: apre l'editor gia' impostato sul
+  // petto sinistro. Stesso flusso dell'editor completo (AdminProductPage).
+  const handleAltFromMain = async () => {
+    if (!printFileUrl) return
+    setDesignUploadErr('')
+    setFittingDesign(true)
+    try {
+      const art = extractArt(await loadImageFromUrl(printFileUrl))
+      setDesignEditor({
+        art, target: 'alt', filename: ALT_FILENAME,
+        transform: clampTransform(defaultTransform(altType, art.height / art.width)),
+      })
+    } catch (e) {
+      setDesignUploadErr(`${e.message} — non riesco a leggere il file di stampa principale.`)
+    } finally {
+      setFittingDesign(false)
+    }
   }
 
   /**
@@ -751,8 +805,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
    * id; if the title changes afterward the operator should re-upload, same as
    * every other per-id asset (images, gelatoCdnImages) already behaves.
    */
-  const handleUploadDesign = async (file) => {
+  const handleUploadDesign = async (file, target = 'main') => {
     if (!file) return false
+    const setUrl = target === 'alt' ? setAltPrintFileUrl : setPrintFileUrl
     if (!productId) { setDesignUploadErr('Scrivi prima un titolo — serve per generare l’id del prodotto.'); return false }
 
     const ctrl = new AbortController()
@@ -785,7 +840,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         api('upload-design', { productId, filename: sanitized, blobUrl: blob.url }, ctrl.signal),
         180_000, 'commit su GitHub',
       )
-      setPrintFileUrl(result.url)
+      setUrl(result.url)
       if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
       setDesignProgress(null)
       return true
@@ -802,7 +857,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           api('upload-design', { productId, filename: sanitized, dataUrl }),
           120_000, 'upload base64',
         )
-        setPrintFileUrl(result.url)
+        setUrl(result.url)
         if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
         setDesignProgress(null)
         return true
@@ -932,6 +987,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         ...(etsyImageAlts.length > 0 ? { etsyImageAlts }                           : {}),
         ...(savedGelatoCdnImages.length > 0 ? { gelatoCdnImages: savedGelatoCdnImages } : {}),
         ...(printFileUrl.trim() ? { printFileUrl: printFileUrl.trim() } : {}),
+        ...(altPrintFileUrl.trim() ? { altPrintFileUrl: altPrintFileUrl.trim() } : {}),
         ...(neckLabelUrl.trim() ? { neckLabelUrl: neckLabelUrl.trim() } : {}),
       }
 
@@ -1481,12 +1537,22 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           </div>
         )}
 
-        {/* ── Video URL embed ─────────────────────────────────────────────── */}
+        {/* ── Video hero ──────────────────────────────────────────────────── */}
         <div className="border-t border-gray-800 pt-3">
-          <Field label="🎬 Video URL (YouTube / Vimeo / .mp4)" hint="Mostrato come hero sulla pagina prodotto. Alternativa all'upload diretto.">
-            <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
-              placeholder="https://www.youtube.com/watch?v=… oppure https://vimeo.com/…"
-              className={inputCls} />
+          <Field label="🎬 Video hero (mp4) o URL YouTube / Vimeo" hint="Il video hero Kling: muto, in loop, prima slide della scheda e nella griglia della home desktop.">
+            <div className="flex flex-wrap items-center gap-2">
+              <label className={'inline-flex items-center px-3 py-1.5 text-xs bg-indigo-800 text-white ' +
+                (videoUpload !== null ? 'opacity-60 cursor-wait' : 'hover:bg-indigo-700 cursor-pointer')}>
+                {videoUpload !== null ? `Caricamento… ${videoUpload}%` : '⬆ Carica MP4 (video hero)'}
+                <input type="file" accept="video/mp4" className="hidden" disabled={videoUpload !== null}
+                  onChange={e => { handleUploadVideo(e.target.files?.[0]); e.target.value = '' }} />
+              </label>
+              <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
+                placeholder="oppure incolla URL (.mp4, YouTube, Vimeo)…"
+                className={`${inputCls} text-xs flex-1`} />
+            </div>
+            <p className="text-gray-600 text-[11px] mt-1">Usa la versione leggera (circa 500 KB). Serve il titolo: il file va nella cartella del prodotto.</p>
+            {videoUploadErr && <p className="text-red-400 text-xs mt-1">{videoUploadErr}</p>}
           </Field>
           {videoInfo && (
             <div className="mt-2">
@@ -1507,7 +1573,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 </div>
               )}
               {videoInfo.type === 'mp4' && (
-                <p className="text-gray-400 text-xs bg-gray-800 border border-gray-700 px-3 py-2 inline-block">MP4 · {videoUrl.split('/').pop()}</p>
+                <video src={videoInfo.src} muted loop playsInline autoPlay
+                  className="w-28 aspect-[9/16] object-cover border border-gray-700 bg-black" />
               )}
             </div>
           )}
@@ -1558,7 +1625,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 Adatta automaticamente al canvas di stampa (consigliato)
               </label>
 
-              {designEditor && (
+              {designEditor && (designEditor.target || 'main') === 'main' && (
                 <PrintPlacementEditor
                   art={designEditor.art}
                   initialTransform={designEditor.transform}
@@ -1633,6 +1700,58 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             </div>
           </Field>
 
+          <Field
+            label={altType === 'default' ? 'File di stampa FRONTE (opzione Front in negozio)' : 'File di stampa RETRO (opzione Back in negozio)'}
+            hint="Stesso disegno, sull'altro lato. Con questo file la scheda offre la scelta Back / Front allo stesso prezzo; senza, resta solo il lato principale."
+          >
+            <div className="space-y-2">
+              {designEditor && designEditor.target === 'alt' && (
+                <PrintPlacementEditor
+                  art={designEditor.art}
+                  initialTransform={designEditor.transform}
+                  placementType={altType}
+                  busy={uploadingDesign}
+                  onConfirm={handleConfirmDesign}
+                  onCancel={() => setDesignEditor(null)}
+                />
+              )}
+              {altPrintFileUrl ? (
+                <div className="flex items-center gap-3">
+                  <div
+                    className="shrink-0 border border-gray-800 bg-[repeating-conic-gradient(#222_0_25%,#2c2c2c_0_50%)] bg-[length:12px_12px]"
+                    style={{ width: 54, height: 54 * (PRINT_CANVAS.h / PRINT_CANVAS.w) }}
+                  >
+                    <img src={altPrintFileUrl} alt="File di stampa del secondo lato" className="w-full h-full object-contain" />
+                  </div>
+                  <a href={altPrintFileUrl} target="_blank" rel="noreferrer"
+                     className="text-indigo-400 text-xs font-mono truncate max-w-xs hover:underline">
+                    {altPrintFileUrl.split('/').pop()}
+                  </a>
+                  <button onClick={() => setAltPrintFileUrl('')} className="text-gray-600 hover:text-red-400 text-xs" title="Togli l'opzione dal negozio">✕</button>
+                </div>
+              ) : (
+                <p className="text-gray-500 text-xs italic">Nessun file — in negozio c'è solo il lato principale.</p>
+              )}
+              <div className="flex gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={handleAltFromMain}
+                  disabled={!printFileUrl || fittingDesign || uploadingDesign}
+                  className="bg-indigo-800 hover:bg-indigo-700 disabled:opacity-40 text-white text-xs px-3 py-1.5 transition-colors"
+                >
+                  ✨ {altPrintFileUrl ? 'Rigenera' : 'Genera'} dal disegno principale
+                </button>
+                <label className={`cursor-pointer ${uploadingDesign || fittingDesign ? 'opacity-50 pointer-events-none' : ''}`}>
+                  <input type="file" accept="image/png,image/jpeg" className="hidden"
+                    onChange={e => { handlePickDesign(e.target.files?.[0], 'alt'); e.target.value = '' }} />
+                  <span className="inline-block border border-indigo-800/60 hover:border-indigo-600 text-indigo-400 text-xs px-3 py-1.5 transition-colors">
+                    ⬆ Carica un disegno diverso
+                  </span>
+                </label>
+              </div>
+            </div>
+          </Field>
+
           <Field label="Neck Label (colletto)" hint="Etichetta interna — richiesta per prodotti con 'inlbl' nel productUid.">
             <div className="space-y-2">
               <div className="flex gap-2">
@@ -1700,29 +1819,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                       <span className="text-gray-400 text-[10px]">{sequenza.length} immagini · ordine mockup</span>
                       <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
                     </div>
-                    {/* Ordered reorder strip — ‹ › riordina la sequenza dei mockup (come in Edit Product) */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {sequenza.map((url, i) => (
-                        <div key={url} className="relative w-14 group/seq border border-emerald-900/40 bg-black">
-                          <span className="absolute top-0 left-0 z-10 bg-emerald-600 text-white text-[8px] px-1 leading-tight">{i + 1}</span>
-                          {/\.(mp4|mov|webm)$/i.test(url)
-                            ? <div className="w-14 h-14 flex items-center justify-center text-base">🎬</div>
-                            : <img src={url} alt={`seq ${i + 1}`} className="w-14 h-14 object-cover" />}
-                          <button
-                            onClick={() => setSequenza(prev => prev.filter(u => u !== url))}
-                            title="Rimuovi dalla sequenza"
-                            className="absolute top-0 right-0 z-10 bg-black/70 text-white text-[10px] leading-none px-1 opacity-0 group-hover/seq:opacity-100 hover:text-red-400 transition-opacity"
-                          >×</button>
-                          <div className="absolute bottom-0 inset-x-0 flex bg-black/60 opacity-0 group-hover/seq:opacity-100 transition-opacity">
-                            <button onClick={() => setSequenza(prev => { if (i === 0) return prev; const s = [...prev]; [s[i-1],s[i]] = [s[i],s[i-1]]; return s })} disabled={i === 0}
-                              className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a sinistra">‹</button>
-                            <button onClick={() => setSequenza(prev => { if (i === prev.length - 1) return prev; const s = [...prev]; [s[i],s[i+1]] = [s[i+1],s[i]]; return s })} disabled={i === sequenza.length - 1}
-                              className="flex-1 text-white text-sm py-0.5 disabled:opacity-20 hover:bg-white/20 transition-colors" title="Sposta a destra">›</button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="text-gray-700 text-[10px]">Riordina con ‹ › — è l'ordine in cui le immagini appaiono sulla scheda prodotto.</p>
+                    <SequenzaOrdine sequenza={sequenza} onChange={setSequenza} desktopHero={desktopHero} mobileHero={mobileHero} />
                   </div>
                 )}
               </div>
@@ -1737,8 +1834,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                   onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
                 />
               ))}
-              {/* Gelato CDN mockups — shown even when GitHub pool is populated */}
-              {gelatoImages.filter(g => !poolImages.some(p => p.url === g.src)).map((g, i) => (
+              {/* Originali Gelato (CDN) solo finche' non ci sono le copie nel repo: vedi src/lib/gelatoPool.js */}
+              {gelatoNonCopiati(gelatoImages, poolImages).filter(g => !poolImages.some(p => p.url === g.src)).map((g, i) => (
                 <PoolThumb key={g.src} img={{ url: g.src, name: g.src.split('/').pop().split('?')[0] || `gelato-${i + 1}` }}
                   desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza} detailImage={detailImage}
                   onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
