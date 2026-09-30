@@ -105,7 +105,37 @@ export const drop = {
       "endsAt": "2026-09-24T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-06",
+      "number": 6,
+      "title": "SHINY",
+      "productIds": [
+        "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
+        "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
+        "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him"
+      ],
+      "startsAt": "2026-10-01T16:00:00Z",
+      "endsAt": "2026-10-04T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 1999,
+      "bundlePrice": 4999,
+      "heroImages": {
+        "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260930_024526_175b7d84-34ca-4cd7-b4c9-1a99639af5d8.png",
+        "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260930_021558_1497fbd7-a25c-4bd8-a457-27d1977be2f8.png",
+        "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260930_024603_3b6bdc09-3834-44ed-88e9-30c4f14d17a1.png"
+      },
+      "defaults": {
+        "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him": {
+          "color": "cardinal-red"
+        },
+        "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him": {
+          "color": "black"
+        }
+      }
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
