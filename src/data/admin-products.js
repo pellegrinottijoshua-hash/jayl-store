@@ -12832,7 +12832,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Dugtrio T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "In a world where three become one, the trio that burrows together creates underground legends. Channeling Dugtrio's earth-shaking energy, this shirt boasts a striking back print that resonates with fans who live on the wild side of Pokémon battles. Made from Gildan premium cotton, this tee ensures comfort and style, while vivid DTG print brings Dugtrio’s dynamic essence to life. It’s not just apparel; it's a celebration of unity among trainers and their favorite Pokémon. A great gift for that friend who wears their Pokédex pride on their sleeve — or in this case, on their back.",
@@ -13155,7 +13155,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/23795f92-4fc7-499e-a15a-4051981a3040/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4f1af26c883d5f8d91b64c937c2f09d834a5eee00f66331a3fd474a76a1c7e74"
     ],
     "createdAt": "2026-06-29T12:35:13.001Z",
-    "updatedAt": "2026-09-30T12:33:25.871Z",
+    "updatedAt": "2026-09-30T12:40:03.677Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -13195,7 +13195,8 @@ export const adminProducts = [
           "cool t-shirt",
           "everyday fashion",
           "aesthetic"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Express Your Pokémon Fandom: Dugtrio Back T-Shirt",
@@ -13224,7 +13225,8 @@ export const adminProducts = [
     ],
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180753_5db2d9c4-6e69-4cd0-9e37-7efe52f8cecc.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_210438_e94729a8-d41f-4e10-8a1e-e99dcddb16aa.png"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "storeColors": [
