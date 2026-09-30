@@ -8,6 +8,12 @@
       "port": 5176
     },
     {
+      "name": "jayl-store-build",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "4179", "--strictPort"],
+      "port": 4179
+    },
+    {
       "name": "jayl-studio",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "/Users/jpelle/jayl-studio", "run", "dev"],
