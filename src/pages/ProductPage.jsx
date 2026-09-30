@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { getProductById, products } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
-import { trackGA4, gaItem, toMajor, trackTikTok, ttContent } from '@/lib/analytics'
+import { trackGA4, gaItem, toMajor, trackTikTok, ttContent, trackUmami } from '@/lib/analytics'
 import { slugToTitle, cn } from '@/lib/utils'
 import TrustBox from '@/components/TrustBox'
 import ProductCard from '@/components/product/ProductCard'
@@ -582,7 +582,6 @@ export default function ProductPage() {
   const [activeImage,   setActiveImage]   = useState(videoInfo ? -1 : 0)
   const [added,         setAdded]         = useState(false)
   const [showStickyBar, setShowStickyBar] = useState(false)
-  const [viewerCount,   setViewerCount]   = useState(null)
   const [copied,        setCopied]        = useState(false)
   const [lightboxOpen,   setLightboxOpen]   = useState(false)
   const [lightboxSrc,    setLightboxSrc]    = useState(null)
@@ -598,17 +597,6 @@ export default function ProductPage() {
   const [reviewSubmitting, setReviewSubmitting] = useState(false)
   const [reviewSubmitted,  setReviewSubmitted]  = useState(false)
   const [reviewError,    setReviewError]    = useState('')
-
-  // Viewer count — random on mount, drifts slightly every 5 min for "live" feel.
-  // Kept to 3-7: a two-digit crowd on a brand this size reads as invented.
-  useEffect(() => {
-    const base = 3 + Math.floor(Math.random() * 5) // 3-7
-    setViewerCount(base)
-    const id = setInterval(() => {
-      setViewerCount(n => Math.min(7, Math.max(3, n + (Math.random() > 0.5 ? 1 : -1))))
-    }, 300_000)
-    return () => clearInterval(id)
-  }, [])
 
   // Recently viewed — save current product; load others from localStorage
   useEffect(() => {
@@ -650,6 +638,8 @@ export default function ProductPage() {
       value:    toMajor(productBasePrice),
       contents: [ttContent(product, productBasePrice)],
     })
+    // Umami — primo passo del funnel, senza consenso
+    trackUmami('view-product', { product: product.id })
   }, [product?.id])
 
   // Load approved reviews for this product
@@ -866,6 +856,8 @@ export default function ProductPage() {
       value:    toMajor(productBasePrice),
       contents: [ttContent(product, productBasePrice)],
     })
+    // Umami — AddToCart
+    trackUmami('add-to-cart', { product: product.id })
   }
 
   const handleCopy = () => {
@@ -1096,14 +1088,6 @@ export default function ProductPage() {
           </p>
 
           <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
-
-          {/* Social proof */}
-          {viewerCount && (
-            <p className={cn('flex items-center gap-1.5 text-xs mt-2', isLight ? 'text-ink-muted' : 'text-text-muted')}>
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-              {viewerCount} people viewing right now
-            </p>
-          )}
 
           {/* Colore: subito visibile nella prima schermata, senza scorrere. */}
           <div className="mt-4">
@@ -1516,17 +1500,7 @@ export default function ProductPage() {
                 )}
               </p>
 
-              <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
-
-              {/* Social proof */}
-              <div className="mb-8">
-                {viewerCount && (
-                  <p className={cn('flex items-center gap-1.5 text-xs mt-2', isLight ? 'text-ink-muted' : 'text-text-muted')}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-                    {viewerCount} people viewing right now
-                  </p>
-                )}
-              </div>
+              <TrustBox variant="micro" className="mt-2 mb-8" theme={isLight ? 'light' : 'dark'} />
 
               {/* Variant selectors */}
               <div className="space-y-6 mb-8">

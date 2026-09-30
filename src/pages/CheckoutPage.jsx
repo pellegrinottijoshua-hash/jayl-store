@@ -4,8 +4,9 @@ import { ArrowLeft, Lock } from 'lucide-react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store/cartStore'
-import { trackGA4, cartToGaItems, toMajor, trackTikTok, cartToTtContents } from '@/lib/analytics'
+import { trackGA4, cartToGaItems, toMajor, trackTikTok, cartToTtContents, trackUmami } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
+import { originalImage } from '@/lib/optimizedImage'
 import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
 import JaylMark from '@/components/JaylMark'
 import { useCurrencyStore, SYMBOL } from '@/store/currencyStore'
@@ -127,6 +128,22 @@ function CheckoutForm() {
       currency: payCurrency.toUpperCase(),
       value:    toMajor(subtotal),
       contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
+    })
+    // Meta Pixel — InitiateCheckout. fbq esiste solo dopo il consenso ai
+    // cookie marketing (index.html), quindi senza consenso non parte niente.
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'InitiateCheckout', {
+        content_ids:  items.map((i) => i.product.id),
+        content_type: 'product',
+        num_items:    items.reduce((s, i) => s + (i.quantity || 1), 0),
+        value:        toMajor(subtotal),
+        currency:     payCurrency.toUpperCase(),
+      })
+    }
+    // Umami — checkout iniziato
+    trackUmami('checkout', {
+      items: items.reduce((s, i) => s + (i.quantity || 1), 0),
+      value: toMajor(subtotal),
     })
   }, [items, subtotal, cfg])
 
@@ -252,7 +269,6 @@ function CheckoutForm() {
               size:     i.size  || null,
               frame:    i.frame || 'none',
               color:    i.color || null,
-            print:    i.print || null,
               print:    i.print || null,
               quantity: i.quantity,
             })),
@@ -343,6 +359,8 @@ function CheckoutForm() {
           value:    toMajor(total),
           contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
         })
+        // Umami — purchase (revenue + currency alimentano il report Revenue)
+        trackUmami('purchase', { revenue: toMajor(total), currency: payCurrency.toUpperCase() })
         clearCart()
         navigate(`/order-confirmation/${orderId}`, {
           state: {
@@ -512,6 +530,8 @@ function CheckoutForm() {
         value:    toMajor(total),
         contents: cartToTtContents(items, (i) => livePriceFor(i, cfg)),
       })
+      // Umami — purchase (revenue + currency alimentano il report Revenue)
+      trackUmami('purchase', { revenue: toMajor(total), currency: payCurrency.toUpperCase() })
       clearCart()
       navigate(`/order-confirmation/${orderId}`, {
         state: {
@@ -561,7 +581,11 @@ function CheckoutForm() {
                     email:     em,
                     cartItems: items.map(it => ({
                       name:  it.product?.name  || it.productId,
-                      image: it.product?.image || null,
+                      // L'originale, non il WebP del sito: va in un'email, e
+                      // Outlook desktop il WebP non lo mostra.
+                      image: it.product?.image
+                        ? new URL(originalImage(it.product.image), window.location.origin).href
+                        : null,
                       color: it.color || null,
                       size:  it.size  || null,
                       quantity: it.quantity,

@@ -71,6 +71,57 @@
       gtag('config', 'G-SZQ80GDTJ0', { send_page_view: false });
     </script>
 
+    <!-- Umami — analitica SENZA cookie (niente consenso: niente cookie, niente
+         localStorage, niente IP salvati). Conta tutti, anche chi rifiuta il
+         banner. Pageview, cambi di pagina della SPA e UTM sono automatici; gli
+         eventi custom partono da src/lib/analytics.js (trackUmami). -->
+    <script>
+      /* Website ID — Umami Cloud → Settings → Websites → Edit → Website ID.
+         Finché resta null lo script NON si carica e trackUmami() è un no-op. */
+      window.__jaylUmamiId = null;
+      /* Filtro prima di ogni invio:
+         - /admin non si conta, e il browser che lo apre smette di essere
+           contato (umami.disabled). Idem aprendo il sito con ?notrack.
+         - dell'URL restano solo i parametri utm_*: via fbclid, session id e
+           client secret di Stripe, qualunque altro identificativo.
+         - l'id ordine nella pagina di conferma diventa un percorso generico.
+         - del referrer esterno restano dominio e percorso, non la query. */
+      window.__jaylUmamiBeforeSend = function (type, payload) {
+        try {
+          if (location.pathname.indexOf('/admin') === 0 || /[?&]notrack\b/.test(location.search)) {
+            localStorage.setItem('umami.disabled', '1');
+            return false;
+          }
+        } catch (e) {}
+        try {
+          var u = new URL(payload.url, location.origin), keep = new URLSearchParams();
+          u.searchParams.forEach(function (v, k) { if (/^utm_/.test(k)) keep.append(k, v); });
+          u.search = keep.toString();
+          u.hash = '';
+          u.pathname = u.pathname.replace(/^\/order-confirmation\/.*/, '/order-confirmation');
+          payload.url = u.toString();
+        } catch (e) {}
+        try {
+          if (payload.referrer && /^https?:/.test(payload.referrer)) {
+            var r = new URL(payload.referrer);
+            payload.referrer = r.origin + r.pathname;
+          }
+        } catch (e) {}
+        return payload;
+      };
+      if (window.__jaylUmamiId) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.id = 'jayl-umami';
+        s.src = 'https://cloud.umami.is/script.js';
+        s.setAttribute('data-website-id', window.__jaylUmamiId);
+        s.setAttribute('data-domains', 'jayl.store,www.jayl.store');
+        s.setAttribute('data-before-send', '__jaylUmamiBeforeSend');
+        s.setAttribute('data-performance', 'true');
+        document.head.appendChild(s);
+      }
+    </script>
+
     <!-- Marketing pixels (Meta Pixel + Pinterest Tag + TikTok Pixel) — GDPR/ePrivacy:
          nothing is loaded or fired until the user accepts marketing cookies in
          the banner. __jaylLoadMarketing() is called by CookieBanner on accept,

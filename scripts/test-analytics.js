@@ -11,6 +11,7 @@ import assert from 'node:assert'
 import {
   toMajor, gaItem, cartToGaItems,
   trackTikTok, ttContent, cartToTtContents,
+  trackUmami,
 } from '../src/lib/analytics.js'
 
 let passed = 0
@@ -180,6 +181,62 @@ check('i nomi evento TikTok non sono quelli GA4', () => {
   const ga4    = ['view_item', 'add_to_cart', 'begin_checkout', 'purchase']
   assert.ok(tiktok.every((n) => !ga4.includes(n)))
   assert.ok(tiktok.every((n) => /^[A-Z]/.test(n)), 'gli eventi TikTok sono in PascalCase')
+})
+
+// ── Umami ───────────────────────────────────────────────────────────────────
+check('trackUmami non lancia mai, con o senza window/umami/script', () => {
+  const hadWindow = 'window' in globalThis
+  const hadDocument = 'document' in globalThis
+  if (!hadWindow) globalThis.window = {}
+  delete globalThis.window.umami
+
+  // Script non configurato (id null in index.html): nessun elemento, no-op.
+  globalThis.document = { getElementById: () => null }
+  assert.doesNotThrow(() => trackUmami('view-product', { product: 'x' }))
+
+  // umami presente ma rotto: l'errore resta dentro.
+  globalThis.window.umami = { track() { throw new Error('umami rotto') } }
+  assert.doesNotThrow(() => trackUmami('add-to-cart', { product: 'x' }))
+
+  // umami sano: l'evento passa con i dati intatti.
+  const seen = []
+  globalThis.window.umami = { track: (e, d) => seen.push([e, d]) }
+  trackUmami('checkout', { items: 2, value: 44 })
+  assert.deepStrictEqual(seen, [['checkout', { items: 2, value: 44 }]])
+
+  delete globalThis.window.umami
+  if (!hadWindow) delete globalThis.window
+  if (!hadDocument) delete globalThis.document
+})
+
+check('trackUmami mette in coda finché lo script non è carico', () => {
+  // Il caso delle ads: si atterra sulla scheda, la pagina monta e lancia
+  // view-product prima che lo script async di Umami abbia finito.
+  const hadWindow = 'window' in globalThis
+  const hadDocument = 'document' in globalThis
+  if (!hadWindow) globalThis.window = {}
+  delete globalThis.window.umami
+  const script = new EventTarget()
+  globalThis.document = { getElementById: (id) => (id === 'jayl-umami' ? script : null) }
+
+  trackUmami('view-product', { product: 'a' })
+  trackUmami('add-to-cart', { product: 'a' })
+
+  const seen = []
+  globalThis.window.umami = { track: (e, d) => seen.push([e, d]) }
+  script.dispatchEvent(new Event('load'))
+  assert.deepStrictEqual(seen, [
+    ['view-product', { product: 'a' }],
+    ['add-to-cart', { product: 'a' }],
+  ], 'gli eventi in coda partono al load, nell\'ordine')
+
+  // Dopo il load si va diretti, niente doppioni.
+  trackUmami('checkout', { items: 1, value: 22 })
+  assert.strictEqual(seen.length, 3)
+
+  delete globalThis.window.umami
+  if (!hadWindow) delete globalThis.window
+  if (!hadDocument) delete globalThis.document
 })
 
 console.log(`✓ analytics: ${passed} controlli passati`)

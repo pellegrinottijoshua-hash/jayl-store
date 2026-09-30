@@ -123,3 +123,54 @@ export function ttContent(product, priceCents, quantity = 1) {
 export function cartToTtContents(items, priceOf) {
   return (items || []).map((i) => ttContent(i.product, priceOf(i), i.quantity || 1))
 }
+
+// ── Umami (analitica senza cookie) ──────────────────────────────────────────
+//
+// GA4 e i pixel vedono solo chi accetta il banner: dei ~160 clic delle ads di
+// settembre GA4 ne ha contati una manciata. Umami non usa cookie né
+// localStorage e non salva IP, quindi gira per tutti senza consenso ed è
+// l'unico posto in cui il percorso dopo il clic (scheda → carrello →
+// checkout) si vede per intero, diviso per utm_campaign/utm_content.
+//
+// Lo script si carica da index.html solo se __jaylUmamiId è valorizzato, ed è
+// `async`: su un atterraggio diretto da un'ad la scheda prodotto monta PRIMA
+// che window.umami esista. Gli eventi di quel momento finiscono in coda e
+// partono al `load` dello script, invece di perdersi proprio sulla visita che
+// conta di più. NON si definisce uno stub window.umami: il tracker si
+// inizializza solo se window.umami non esiste ancora.
+//
+// I dati degli eventi restano minimi: id prodotto, conteggi, importi. Niente
+// che identifichi una persona.
+
+const umamiQueue = []
+let umamiListening = false
+
+function flushUmami() {
+  const umami = window.umami
+  if (typeof umami?.track !== 'function') return
+  while (umamiQueue.length) {
+    const [event, data] = umamiQueue.shift()
+    try { umami.track(event, data) } catch { /* evento perso, pagina salva */ }
+  }
+}
+
+/** Invia un evento a Umami; se lo script non è ancora carico lo mette in coda. */
+export function trackUmami(event, data) {
+  if (typeof window === 'undefined') return
+  try {
+    if (typeof window.umami?.track === 'function') {
+      window.umami.track(event, data)
+      return
+    }
+    // Script non configurato (id null) o bloccato: non accumulare niente.
+    const script = typeof document !== 'undefined' && document.getElementById('jayl-umami')
+    if (!script) return
+    umamiQueue.push([event, data])
+    if (!umamiListening) {
+      umamiListening = true
+      script.addEventListener('load', flushUmami, { once: true })
+    }
+  } catch {
+    // Come per GA4: un evento perso non vale un checkout rotto.
+  }
+}
