@@ -512,28 +512,38 @@ export default async function handler(req, res) {
           headers: { get: (n) => headerMap[n.toLowerCase()] ?? null },
         },
         token:   blobToken,
-        onBeforeGenerateToken: async () => ({
-          allowedContentTypes: [
-            'image/jpeg', 'image/jpg', 'image/png', 'image/webp',
-            'image/gif', 'image/avif',
-            'video/mp4', 'video/quicktime', 'video/webm',
-          ],
-          maximumSizeInBytes: 500 * 1024 * 1024, // 500 MB
-          // Baked into the signed clientToken now, not sent as a client
-          // header (see blobDirectUpload.js — `x-allow-overwrite` used to
-          // live there and the browser's CORS preflight now rejects it,
-          // since blob.vercel-storage.com stopped listing it in
-          // Access-Control-Allow-Headers). Every caller here uses a
-          // deterministic pathname on purpose (see blobDirectUpload.js
-          // header comment on allowOverwrite) — a re-upload of the same
-          // file for the same product replaces what's there.
-          allowOverwrite: true,
-        }),
+        // Questo ramo gira PRIMA del controllo password qui sotto: senza
+        // questa verifica chiunque otteneva un token di upload con
+        // allowOverwrite, cioe' poteva sostituire i file di stampa in
+        // designs/ che finiscono da Gelato. Tutti i chiamanti
+        // (blobDirectUpload) mandano gia' la password in clientPayload.
+        onBeforeGenerateToken: async (_pathname, clientPayload) => {
+          let pw = null
+          try { pw = JSON.parse(clientPayload || '{}').password } catch { /* payload non JSON */ }
+          if (!ADMIN_PASSWORD || pw !== ADMIN_PASSWORD) throw new Error('Unauthorized')
+          return {
+            allowedContentTypes: [
+              'image/jpeg', 'image/jpg', 'image/png', 'image/webp',
+              'image/gif', 'image/avif',
+              'video/mp4', 'video/quicktime', 'video/webm',
+            ],
+            maximumSizeInBytes: 500 * 1024 * 1024, // 500 MB
+            // Baked into the signed clientToken now, not sent as a client
+            // header (see blobDirectUpload.js — `x-allow-overwrite` used to
+            // live there and the browser's CORS preflight now rejects it,
+            // since blob.vercel-storage.com stopped listing it in
+            // Access-Control-Allow-Headers). Every caller here uses a
+            // deterministic pathname on purpose (see blobDirectUpload.js
+            // header comment on allowOverwrite) — a re-upload of the same
+            // file for the same product replaces what's there.
+            allowOverwrite: true,
+          }
+        },
         // No onUploadCompleted — skips the server callback entirely
       })
       return res.status(200).json(jsonResponse)
     } catch (e) {
-      return res.status(400).json({ error: e.message })
+      return res.status(e.message === 'Unauthorized' ? 401 : 400).json({ error: e.message })
     }
   }
 

@@ -780,6 +780,8 @@ export default function AdminProductPage() {
   const [altText, setAltText]       = useState('')
   const [tags, setTags]             = useState('')
   const [videoUrl, setVideoUrl]     = useState('')
+  const [videoUpload, setVideoUpload] = useState(null) // null = fermo, numero = % caricata
+  const [videoUploadErr, setVideoUploadErr] = useState('')
   const [gelatoUid, setGelatoUid]   = useState('')
   const [printFileUrl,    setPrintFileUrl]    = useState('')
   // Secondo lato di stampa (fronte di una maglia back): opzione "Print" in negozio.
@@ -1476,6 +1478,33 @@ export default function AdminProductPage() {
     // Keep the editor open on failure so the operator can retry without
     // re-picking/re-measuring the source file and losing their adjustment.
     if (await handleUploadDesign(file, target)) setDesignEditor(null)
+  }
+
+  /**
+   * Carica il video hero (.mp4) su Blob e mette il suo url in Video URL.
+   * Niente commit su GitHub: il video resta sul Blob, il catalogo tiene solo
+   * l'url, e lo salva il pulsante Salva come ogni altro campo. Il nome del
+   * file cambia a ogni caricamento: con un nome fisso la CDN del Blob
+   * continuerebbe a servire per un po' il video vecchio.
+   */
+  const handleUploadVideo = async (file) => {
+    if (!file) return
+    if (file.type !== 'video/mp4' && !/\.mp4$/i.test(file.name)) {
+      setVideoUploadErr('Serve un file .mp4')
+      return
+    }
+    setVideoUpload(0); setVideoUploadErr('')
+    try {
+      const blob = await blobDirectUpload(`videos/${id}/hero-${Date.now()}.mp4`, file, {
+        clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
+        onProgress: (pct) => setVideoUpload(Math.round(pct)),
+      })
+      setVideoUrl(blob.url)
+    } catch (e) {
+      setVideoUploadErr(`Upload non riuscito: ${e.message || e}`)
+    } finally {
+      setVideoUpload(null)
+    }
   }
 
   /**
@@ -2420,6 +2449,26 @@ export default function AdminProductPage() {
                 />
               </Field>
 
+              {/* Video hero Kling: muto, in loop, a tutto riquadro nella scheda
+                  e nella griglia del drop su desktop (src/components/HeroVideo.jsx). */}
+              {isEditable && (
+                <div className="flex flex-wrap items-center gap-3 mt-2">
+                  <label className={'inline-flex items-center px-3 py-1.5 text-xs border border-gray-600 text-gray-200 ' +
+                    (videoUpload !== null ? 'opacity-60 cursor-wait' : 'hover:bg-gray-800 cursor-pointer')}>
+                    {videoUpload !== null ? `Caricamento… ${videoUpload}%` : '⬆ Carica MP4 (video hero)'}
+                    <input
+                      type="file"
+                      accept="video/mp4"
+                      className="hidden"
+                      disabled={videoUpload !== null}
+                      onChange={e => { handleUploadVideo(e.target.files?.[0]); e.target.value = '' }}
+                    />
+                  </label>
+                  <span className="text-gray-500 text-xs">Muto, 9:16, meglio sotto 1 MB. Poi salva il prodotto.</span>
+                </div>
+              )}
+              {videoUploadErr && <p className="text-red-400 text-xs mt-1">{videoUploadErr}</p>}
+
               {videoInfo?.type === 'youtube' && (
                 <div className="relative w-48 mt-2">
                   <img
@@ -2438,9 +2487,8 @@ export default function AdminProductPage() {
                 </p>
               )}
               {videoInfo?.type === 'mp4' && (
-                <p className="text-gray-400 text-xs bg-gray-800 border border-gray-700 px-3 py-2 inline-block mt-2">
-                  MP4 video linked
-                </p>
+                <video src={videoInfo.src} muted loop playsInline autoPlay
+                  className="w-32 aspect-[9/16] object-cover border border-gray-700 mt-2 bg-black" />
               )}
               {videoUrl && !videoInfo && (
                 <p className="text-yellow-500 text-xs mt-1">⚠ URL not recognised as YouTube, Vimeo, or .mp4</p>

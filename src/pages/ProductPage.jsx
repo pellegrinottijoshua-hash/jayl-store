@@ -20,6 +20,7 @@ import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
 import Money from '@/components/Money'
+import HeroVideo from '@/components/HeroVideo'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -681,7 +682,16 @@ export default function ProductPage() {
   // matches — same algorithm scripts/test-color-image-match.js runs against
   // the whole catalog before every deploy, so a future reimport that
   // reintroduces a collision fails the build instead of shipping quietly.
+  // Col video hero la scheda si apre sul video: il colore d'apertura non
+  // sposta la galleria, solo un colore scelto dopo dal cliente. Confronto col
+  // colore d'apertura e non un flag "prima volta": in sviluppo StrictMode
+  // esegue l'effetto due volte e il flag verrebbe consumato dal primo giro.
+  const openingColor = useRef(videoInfo ? selectedColor : null)
   useEffect(() => {
+    if (openingColor.current !== null) {
+      if (selectedColor === openingColor.current) return
+      openingColor.current = null
+    }
     if (!selectedColor || !product?.colors || !galleryImages) return
     const colorObj = product.colors.find(c => c.id === selectedColor)
     if (!colorObj) return
@@ -1004,7 +1014,10 @@ export default function ProductPage() {
             {videoInfo && (
               <div className="w-full h-full flex-shrink-0 bg-black">
                 {videoInfo.type === 'mp4' ? (
-                  <video src={videoInfo.src} controls className="w-full h-full object-contain" />
+                  // Riquadro quadrato, video 9:16: si tiene la fascia alta,
+                  // dove stanno la stampa e poi la faccia del Pokémon.
+                  <HeroVideo src={videoInfo.src} poster={displayImages[0]} label={product.name}
+                    objectPosition="50% 38%" className="w-full h-full object-cover" />
                 ) : (
                   <iframe
                     src={
@@ -1392,7 +1405,8 @@ export default function ProductPage() {
               {activeImage === -1 && videoInfo ? (
                 <div className="aspect-[4/5] overflow-hidden bg-black">
                   {videoInfo.type === 'mp4' ? (
-                    <video src={videoInfo.src} controls className="w-full h-full object-contain" />
+                    <HeroVideo src={videoInfo.src} poster={displayImages[0]} label={product.name}
+                      className="w-full h-full object-cover" />
                   ) : (
                     <iframe
                       src={
@@ -1445,6 +1459,9 @@ export default function ProductPage() {
                           alt="Video"
                           className="w-full h-full object-cover"
                         />
+                      ) : videoInfo.type === 'mp4' ? (
+                        <video src={`${videoInfo.src}#t=0.001`} muted playsInline preload="metadata"
+                          aria-hidden className="w-full h-full object-cover" />
                       ) : null}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40">
                         <span className="text-white text-xl leading-none">▶</span>

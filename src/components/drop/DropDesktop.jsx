@@ -8,6 +8,8 @@ import DropBadge from './DropBadge'
 import SubscribeForm from '@/components/SubscribeForm'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
 import Money from '@/components/Money'
+import HeroVideo from '@/components/HeroVideo'
+import { heroVideoSrc } from '@/lib/heroVideo'
 
 /**
  * Il drop su desktop (da sm: in su): tre schede affiancate, nome/prezzo/stato
@@ -55,13 +57,23 @@ export default function DropDesktop() {
                 const s = status?.products?.[p.id]
                 return (
                   <Link key={p.id} to={`/product/${p.id}`} className="group bg-off-black">
-                    <div className="aspect-[4/5] w-full overflow-hidden">
-                      <img
-                        src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
-                        alt={p.altText || p.name}
-                        loading={idx === 1 ? 'eager' : 'lazy'}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
+                    <div className="aspect-[4/5] w-full overflow-hidden bg-black">
+                      {heroVideoSrc(p) ? (
+                        // Il video hero del prodotto, se c'e': stesso riquadro della foto.
+                        <HeroVideo
+                          src={heroVideoSrc(p)}
+                          poster={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
+                          label={p.altText || p.name}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <img
+                          src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
+                          alt={p.altText || p.name}
+                          loading={idx === 1 ? 'eager' : 'lazy'}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      )}
                     </div>
                     <div className="px-5 pt-4 pb-1">
                       <h2 className="text-cream text-lg leading-tight">{p.name}</h2>
