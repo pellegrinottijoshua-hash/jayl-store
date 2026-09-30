@@ -19414,7 +19414,7 @@ export const adminProducts = [
     "id": "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "shiny dragonite Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  dragon Pokemon Gift for Him",
+    "name": "Cool shiny Dragonite T shirt",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
@@ -19923,7 +19923,8 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260824_171328_71be31a7-67d2-41bd-88a6-0e7ab6157de1-zack-1.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-30T12:19:08.085Z",
-    "updatedAt": "2026-09-30T12:19:08.085Z"
+    "updatedAt": "2026-09-30T12:31:43.249Z",
+    "relatedProducts": []
   },
   {
     "id": "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
