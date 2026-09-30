@@ -14022,7 +14022,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Lickitung T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "Likitung, the embodiment of playful chaos and endless appetite, is here to spice up your wardrobe! With a quirky charm that speaks to those who love a good meme, this Gildan premium tee showcases a vibrant direct-to-garment print capturing his dynamic energy. It’s not just a shirt; it’s a conversation starter and a perfect gift for anyone who appreciates humor in their fashion. Whether you’re wandering through conventions or chilling with friends, rep this character with pride!",
@@ -14306,7 +14306,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ee4d82-b562-496f-aea2-384c5ef9cebd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260630%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260630T150046Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3471e6613f3bcd2123c69cfea7bed976eb043072c237e521e446f82e7d633e4e"
     ],
     "createdAt": "2026-06-29T13:01:53.101Z",
-    "updatedAt": "2026-09-30T12:33:15.871Z",
+    "updatedAt": "2026-09-30T12:37:53.531Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-likitung-back-t-shirt/design.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
@@ -14347,7 +14347,8 @@ export const adminProducts = [
           "unique gift",
           "fandom",
           "friends"
-        ]
+        ],
+        "published": true
       },
       {
         "title": "Stay Cozy and Cool with Lickitung T-Shirt",
@@ -14376,7 +14377,8 @@ export const adminProducts = [
     ],
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/hf_20260629_125011_05a3ffb9-e616-4a59-a67b-656a03c1f249.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/hf_20260629_125032_85cfdebc-e139-41be-8e5d-20b8cf64b762.png"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/hf_20260629_125032_85cfdebc-e139-41be-8e5d-20b8cf64b762.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/hf_20260629_125352_d7eb9d57-22c7-43ab-90c4-0b75feff9db5.png"
     ],
     "storeColors": [
       "azalea",
