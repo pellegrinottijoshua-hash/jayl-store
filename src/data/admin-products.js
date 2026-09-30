@@ -11108,7 +11108,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1bf5482b-d85d-4f96-964f-211cb4aeb01c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260626%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T161532Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=08c18def25e89a934e05186ef5aa825399b9f2313152ed86eafa74afe3ac093f"
     ],
     "createdAt": "2026-06-26T16:31:53.176Z",
-    "updatedAt": "2026-09-28T14:13:29.496Z",
+    "updatedAt": "2026-09-30T12:33:44.529Z",
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-alakazam-back-t-shirt/design.png",
     "relatedProducts": [],
     "pinterestPins": [
@@ -11184,7 +11184,8 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "storeColors": [
       "black",
-      "daisy"
+      "daisy",
+      "natural"
     ]
   },
   {
