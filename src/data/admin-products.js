@@ -19965,8 +19965,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
-    "description": "Emerging from the depths, Gyarados rises with an intensity that captures its chaotic spirit. This retro 90s anime graphic tee flaunts a large back design showcasing the serpentine Pokemon in all its fiery glory, perfectly suited for adventurers who appreciate a dash of humor. Made from a soft Gildan premium cotton blend and featuring vibrant direct-to-garment print quality, this shirt ensures comfort while making an unforgettable impression. As a gift, it’s sure to delight anyone who channels their inner water-type powerhouse on both casual outings and epic battles alike.",
-    "altText": "Gyarados unleashing a fierce roar, illustrated in vibrant colors on a Gildan premium tee with retro 90s anime style.",
+    "description": "Gyarados is the embodiment of intensity and power, transforming from a humble Magikarp into a formidable force. This Cool Shiny Gyarados T-shirt captures that electric personality with striking visuals that demand attention. Printed on a Gildan premium tee using DTG technology, it promises vibrant colors and comfort all day long. Whether you're dressing for your next gaming session or surprising a fellow collector, this shirt speaks to the champion within. Make waves in style wherever you go!",
+    "altText": "Fierce Gyarados coiled in attack mode with bright shades of blue and gold on premium JAYL tee in retro 90s anime art style.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -20024,46 +20024,46 @@ export const adminProducts = [
     },
     "tags": [
       "gyarados",
-      "pokemon t-shirt",
-      "anime apparel",
-      "retro shirt",
-      "graphic tee",
-      "funny pokemon",
-      "90s anime",
-      "unisex clothing",
-      "gift for him",
-      "cotton t-shirt",
-      "water pokemon",
-      "vintage style",
-      "cool graphic"
+      "pokemon",
+      "t-shirt",
+      "collectibles",
+      "fan-art",
+      "cool shirts",
+      "anime fashion",
+      "gaming gear",
+      "merchandise",
+      "shiny pokemon",
+      "graphic tees",
+      "pop culture",
+      "anime apparel"
     ],
     "featured": false,
     "gelatoProductId": "3ccb8e90-61cb-4d7e-8090-e4e917637cd9",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "gyarados shirt",
-      "pokemon tee",
-      "anime graphic t-shirt",
-      "vintage pokemon shirt",
-      "90s anime t-shirt"
+      "gyarados t-shirt",
+      "pokemon apparel",
+      "anime shirt",
+      "cool graphics",
+      "fan merchandise"
     ],
     "longTailKeywords": [
-      "funny gyarados graphic tee",
-      "retro anime t-shirt for men",
-      "large back design shirt for gamers",
-      "premium cotton gyarados apparel",
-      "unique pokemon gift for boyfriend",
-      "soft cotton t-shirt featuring gyarados",
-      "vintage water type pokemon clothing",
-      "stylish unisex graphic tees online",
-      "1990s inspired anime merchandise",
-      "funny retro gaming shirts for him"
+      "buy gyarados t-shirt online",
+      "shiny gyarados graphic tee for sale",
+      "retro anime pokemon shirt purchase",
+      "collectible gyarados fan apparel buy",
+      "unique pokemon gifts for collectors",
+      "best gyarados merch for fans",
+      "high-quality anime tees store",
+      "DTG printed cool shirts online",
+      "$30 pokemon t-shirt for sale",
+      "$25 gyarados fan shirt deal"
     ],
-    "hashtags": "#gyarados #pokemon #anime #graphictee #retrovintage #tshirt #apparel #giftsforhim #cottonfashion #waterpokemon #funkyshirt #80sanime #90sfashion #nerdstyle #geekclothing #teelovers #fanart #gamingmerchandise #pokehumor #nerdyshirts #collectibleshirts #popculturewear #animegraphics #fashiontrends #ootd #retrogaminggear #stylishclothing #japanesestyle #unisexfashion",
-    "instagramCaption": "\"When you know chaos is coming…\" Gear up with this Gyarados shirt, perfect for those who channel that water type vibe. Dive into vintage style and rep your favorite Pokemon! 🌊🐉#gyarados#retroanime#pokemontshirts",
-    "pinterestCaption": "\"Unleash your playful side with this Gyarados back print shirt! Showcasing vibrant artwork and retro vibes, it's the ultimate addition to any anime lover's wardrobe. Perfect as a gift or personal treat—grab yours today!\"",
-    "seoTitle": "Gyarados Back Print Shirt | Retro 90s Anime Gift | Pokémon Apparel",
+    "hashtags": "#gyarados #pokemon #tshirt #anime #collectors #fanart #gaming #apparel #merch #shinygyarados #otaku #geekfashion #graphictees #retroanime #pokemongifts #animefashion #coolshirts #gamergear #stylishwears #japaneseanime #pocketmonsters #artworkdesigns #geekculture #vintagefashion #comfortwears #streetstylefashion #comicconproducts #nerdgiftsstore #fusionartwork ",
+    "instagramCaption": "#Gyarados flexing those shiny scales in our exclusive tee—are you ready to join the league? ⚡ Get yours now before they're gone! 💥#pokemonmerchandiseforfans #gamersunite #retrofashion  ",
+    "pinterestCaption": "Unleash your inner trainer with our Cool Shiny Gyarados T-shirt featuring epic designs from retro anime art! Perfect for collectors looking to add unique pieces to their wardrobe. Check it out now!",
+    "seoTitle": "Gyarados T-Shirt | Cool Pokémon Collector Gear | Gaming Gift",
     "variants": [
       {
         "uid": "b89b58ef-71c7-4fa4-8a41-3cb1b444b06c",
@@ -20347,8 +20347,14 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260825_103326_7edb6a8b-24f0-422f-97e3-d45ea42374cc-copia-zack-1.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-30T12:30:09.703Z",
-    "updatedAt": "2026-09-30T12:48:36.100Z",
+    "updatedAt": "2026-09-30T13:07:14.659Z",
     "relatedProducts": [],
-    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/design-front.png"
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/design-front.png",
+    "videoUrl": "https://mechqubtfziek2h5.private.blob.vercel-storage.com/videos/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hero-1790773220779.mp4",
+    "storeColors": [
+      "navy",
+      "carolina-blue",
+      "red"
+    ]
   }
 ]
