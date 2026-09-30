@@ -732,6 +732,7 @@ export default function AdminProductPage() {
   const [videoUrl, setVideoUrl]     = useState('')
   const [videoUpload, setVideoUpload] = useState(null) // null = fermo, numero = % caricata
   const [videoUploadErr, setVideoUploadErr] = useState('')
+  const [videoPreview, setVideoPreview] = useState(null) // file appena caricato, finché il deploy non lo serve
   const [gelatoUid, setGelatoUid]   = useState('')
   const [printFileUrl,    setPrintFileUrl]    = useState('')
   // Secondo lato di stampa (fronte di una maglia back): opzione "Print" in negozio.
@@ -1447,11 +1448,17 @@ export default function AdminProductPage() {
     }
     setVideoUpload(0); setVideoUploadErr('')
     try {
-      const blob = await blobDirectUpload(`videos/${id}/hero-${Date.now()}.mp4`, file, {
+      // Il Blob è privato: l'url del blob risponde 403 a chiunque. Il server
+      // copia il video nel repo e rende il path che il sito servirà dopo il
+      // deploy; fino ad allora l'anteprima usa il file locale.
+      const filename = `hero-${Date.now()}.mp4`
+      const blob = await blobDirectUpload(`videos/${id}/${filename}`, file, {
         clientPayload: JSON.stringify({ password: getAdminPassword(), productId: id }),
         onProgress: (pct) => setVideoUpload(Math.round(pct)),
       })
-      setVideoUrl(blob.url)
+      const saved = await api('upload-image', { productId: id, filename, blobUrl: blob.url, isVideo: true })
+      setVideoPreview(URL.createObjectURL(file))
+      setVideoUrl(saved.path)
     } catch (e) {
       setVideoUploadErr(`Upload non riuscito: ${e.message || e}`)
     } finally {
@@ -2394,7 +2401,7 @@ export default function AdminProductPage() {
               <Field label="Video URL" hint="YouTube, Vimeo, or direct .mp4 — shown as hero on the product page">
                 <input
                   value={videoUrl}
-                  onChange={e => setVideoUrl(e.target.value)}
+                  onChange={e => { setVideoUrl(e.target.value); setVideoPreview(null) }}
                   disabled={!isEditable}
                   placeholder="https://www.youtube.com/watch?v=… or https://vimeo.com/…"
                   className={inputCls + (!isEditable ? ' opacity-50 cursor-not-allowed' : '')}
@@ -2439,7 +2446,7 @@ export default function AdminProductPage() {
                 </p>
               )}
               {videoInfo?.type === 'mp4' && (
-                <video src={videoInfo.src} muted loop playsInline autoPlay
+                <video src={videoPreview || videoInfo.src} muted loop playsInline autoPlay
                   className="w-32 aspect-[9/16] object-cover border border-gray-700 mt-2 bg-black" />
               )}
               {videoUrl && !videoInfo && (

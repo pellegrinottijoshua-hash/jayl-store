@@ -19437,7 +19437,7 @@ export const adminProducts = [
     "updatedAt": "2026-09-30T12:56:50.951Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/design-front.png",
-    "videoUrl": "https://mechqubtfziek2h5.private.blob.vercel-storage.com/videos/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hero-1790772966450.mp4"
+    "videoUrl": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hero.mp4"
   },
   {
     "id": "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
@@ -19955,7 +19955,7 @@ export const adminProducts = [
     "updatedAt": "2026-09-30T12:58:09.125Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/design-front.png",
-    "videoUrl": "https://mechqubtfziek2h5.private.blob.vercel-storage.com/videos/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hero-1790773043014.mp4"
+    "videoUrl": "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hero.mp4"
   },
   {
     "id": "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
@@ -20350,7 +20350,7 @@ export const adminProducts = [
     "updatedAt": "2026-09-30T13:07:14.659Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/design-front.png",
-    "videoUrl": "https://mechqubtfziek2h5.private.blob.vercel-storage.com/videos/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hero-1790773220779.mp4",
+    "videoUrl": "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hero.mp4",
     "storeColors": [
       "navy",
       "carolina-blue",

@@ -667,8 +667,9 @@ export default async function handler(req, res) {
 
     // ── upload-image ──────────────────────────────────────────────────────────
     // Accepts either a Vercel Blob URL (`blobUrl`) or a legacy base64 `dataUrl`.
-    // Videos are kept in Vercel Blob and registered in _videos.json; images are
-    // downloaded from the blob (if applicable) and pushed to GitHub.
+    // Images AND videos end up in the repo (public/images/<id>/), downloaded
+    // from the blob first when that is how they arrived. Videos are also
+    // registered in _videos.json.
     if (action === 'upload-image') {
       const { productId, filename, dataUrl, blobUrl, isVideo } = data
       if (!productId || !filename) {
@@ -681,46 +682,41 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid productId or filename' })
       }
 
-      // Videos: store on GitHub via base64 (compressed client-side) or Vercel Blob as fallback
+      // Videos: always into the repo. They used to stay on Blob when they came
+      // in that way, with the blob url saved as the video's url — but the store
+      // is PRIVATE (see blobToBase64), so every such url answered 403: black
+      // preview in the admin, no hero video on the site (drop 6, 30/9).
       if (isVideo || /\.(mp4|mov|webm)$/i.test(filename)) {
-        if (dataUrl) {
-          // Client compressed video → push directly to GitHub
-          const base64 = dataUrl.replace(/^data:[^;]+;base64,/, '')
-          const filePath = `public/images/${productId}/${filename}`
-          let existingSha = null
-          try { const ex = await ghGet(filePath, githubToken); existingSha = ex.sha } catch {}
-          const ghRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`, {
-            method: 'PUT',
-            headers: {
-              Authorization: `Bearer ${githubToken}`,
-              Accept: 'application/vnd.github+json',
-              'Content-Type': 'application/json',
-              'X-GitHub-Api-Version': '2022-11-28',
-            },
-            body: JSON.stringify({
-              message: `admin: upload video ${filename} for ${productId}`,
-              content: base64,
-              branch: GITHUB_BRANCH,
-              ...(existingSha ? { sha: existingSha } : {}),
-            }),
-          })
-          if (!ghRes.ok) {
-            const err = await ghRes.json().catch(() => ({}))
-            throw new Error(`Video upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
-          }
-          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
-          await addToVideosManifest(productId, { url: rawUrl, name: filename, path: filePath, isVideo: true }, githubToken)
-          return res.status(200).json({ ok: true, url: rawUrl })
+        const base64 = blobUrl
+          ? await blobToBase64(blobUrl, 'video')
+          : dataUrl.replace(/^data:[^;]+;base64,/, '')
+        const filePath = `public/images/${productId}/${filename}`
+        let existingSha = null
+        try { const ex = await ghGet(filePath, githubToken); existingSha = ex.sha } catch {}
+        const ghRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${githubToken}`,
+            Accept: 'application/vnd.github+json',
+            'Content-Type': 'application/json',
+            'X-GitHub-Api-Version': '2022-11-28',
+          },
+          body: JSON.stringify({
+            message: `admin: upload video ${filename} for ${productId}`,
+            content: base64,
+            branch: GITHUB_BRANCH,
+            ...(existingSha ? { sha: existingSha } : {}),
+          }),
+        })
+        if (!ghRes.ok) {
+          const err = await ghRes.json().catch(() => ({}))
+          throw new Error(`Video upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
         }
-        // Fallback: Blob (if blobUrl provided)
-        const finalUrl = blobUrl || dataUrl
-        await addToVideosManifest(productId, {
-          url:     finalUrl,
-          name:    filename,
-          path:    `blob/${filename}`,
-          isVideo: true,
-        }, githubToken)
-        return res.status(200).json({ ok: true, url: finalUrl })
+        const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${filePath}`
+        await addToVideosManifest(productId, { url: rawUrl, name: filename, path: filePath, isVideo: true }, githubToken)
+        // `path` is what the site serves after the deploy this commit starts:
+        // the one to save as a product's videoUrl.
+        return res.status(200).json({ ok: true, path: `/${filePath.replace(/^public\//, '')}`, url: rawUrl })
       }
 
       // Images: get base64 content (from blob download or from data URL)

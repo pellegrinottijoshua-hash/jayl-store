@@ -300,6 +300,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [videoUrl, setVideoUrl]     = useState(editingProduct?.videoUrl || '')
   const [videoUpload, setVideoUpload] = useState(null) // null = fermo, numero = % caricata
   const [videoUploadErr, setVideoUploadErr] = useState('')
+  const [videoPreview, setVideoPreview] = useState(null) // file appena caricato, finché il deploy non lo serve
   const [printCost,        setPrintCost]        = useState(editingProduct?.printCost ? (editingProduct.printCost / 100).toString() : '')
   const [urgency,          setUrgency]          = useState(editingProduct?.urgency          || '')
 
@@ -755,19 +756,23 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     if (await handleUploadDesign(file, target)) setDesignEditor(null)
   }
 
-  // Video hero: l'mp4 va sul Blob (videos/<id>/hero-<ora>.mp4) e il suo url in
-  // Video URL, poi si salva col prodotto. Stesso flusso dell'editor completo.
+  // Video hero: l'mp4 passa dal Blob, il server lo copia nel repo
+  // (public/images/<id>/hero-<ora>.mp4) e il suo path va in Video URL, poi si
+  // salva col prodotto. Stesso flusso dell'editor completo.
   const handleUploadVideo = async (file) => {
     if (!file) return
     if (!productId) { setVideoUploadErr('Scrivi prima un titolo — serve per l\'id del prodotto.'); return }
     if (file.type !== 'video/mp4' && !/\.mp4$/i.test(file.name)) { setVideoUploadErr('Serve un file .mp4'); return }
     setVideoUpload(0); setVideoUploadErr('')
     try {
-      const blob = await blobDirectUpload(`videos/${productId}/hero-${Date.now()}.mp4`, file, {
+      const filename = `hero-${Date.now()}.mp4`
+      const blob = await blobDirectUpload(`videos/${productId}/${filename}`, file, {
         clientPayload: JSON.stringify({ password: getAdminPassword(), productId }),
         onProgress: (pct) => setVideoUpload(Math.round(pct)),
       })
-      setVideoUrl(blob.url)
+      const saved = await api('upload-image', { productId, filename, blobUrl: blob.url, isVideo: true })
+      setVideoPreview(URL.createObjectURL(file))
+      setVideoUrl(saved.path)
     } catch (e) {
       setVideoUploadErr(`Upload non riuscito: ${e.message || e}`)
     } finally {
@@ -1547,7 +1552,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 <input type="file" accept="video/mp4" className="hidden" disabled={videoUpload !== null}
                   onChange={e => { handleUploadVideo(e.target.files?.[0]); e.target.value = '' }} />
               </label>
-              <input value={videoUrl} onChange={e => setVideoUrl(e.target.value)}
+              <input value={videoUrl} onChange={e => { setVideoUrl(e.target.value); setVideoPreview(null) }}
                 placeholder="oppure incolla URL (.mp4, YouTube, Vimeo)…"
                 className={`${inputCls} text-xs flex-1`} />
             </div>
@@ -1573,7 +1578,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 </div>
               )}
               {videoInfo.type === 'mp4' && (
-                <video src={videoInfo.src} muted loop playsInline autoPlay
+                <video src={videoPreview || videoInfo.src} muted loop playsInline autoPlay
                   className="w-28 aspect-[9/16] object-cover border border-gray-700 bg-black" />
               )}
             </div>
