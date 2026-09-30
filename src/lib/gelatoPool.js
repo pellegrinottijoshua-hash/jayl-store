@@ -15,11 +15,14 @@ const nome = (img) => {
   return (img?.name || img?.path || img?.url || '').split('/').pop().split('?')[0]
 }
 
+/** Un mockup Gelato copiato nel repo (`…-gelato-01.jpg`, `…-<colore>-01.jpg`)? */
+export function isGelatoCopy(img) {
+  const n = nome(img)
+  return COPIA.test(n) && !/^hf_/i.test(n)
+}
+
 /** Gli originali Gelato ancora da mostrare, dati quelli del repo. */
 export function gelatoNonCopiati(originali, immaginiRepo) {
-  const copie = (immaginiRepo || []).filter((img) => {
-    const n = nome(img)
-    return COPIA.test(n) && !/^hf_/i.test(n)
-  }).length
+  const copie = (immaginiRepo || []).filter(isGelatoCopy).length
   return copie >= (originali || []).length ? [] : originali
 }

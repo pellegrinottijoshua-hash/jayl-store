@@ -116,7 +116,7 @@ La generazione dei testi usa l'helper di `api/ai.js` estratto in
   non è una Pagina si prova come account Instagram.
 - `debug_token` (best effort): tipo, scadenza, permessi mancanti fra
   `pages_manage_posts`, `pages_read_engagement`, `instagram_content_publish`.
-- Graph API `v23.0`.
+- Graph API `v25.0` (la più recente è v26.0; v25.0 vale fino al 2028).
 - Instagram: post `image_url` (JPEG) → `media_publish`; reel `media_type=REELS`
   + `share_to_feed`; storia `media_type=STORIES` (img o video). Per i video si
   attende `status_code=FINISHED`.
