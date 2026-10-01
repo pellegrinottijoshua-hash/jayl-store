@@ -5,10 +5,12 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
 import DropCountdown from './DropCountdown'
-import { SwapSymbol } from '@/components/Money'
-import { formatPrice, shortProductName as shortName } from '@/lib/utils'
+import { shortProductName as shortName } from '@/lib/utils'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
 import { homeVideoSrc, stripSourceRect } from '@/lib/heroVideo'
+import NewMark from './NewMark'
+import ShippedPrice from './ShippedPrice'
+import { VIDEO_VIGNETTE } from './videoVignette'
 
 /**
  * Il drop in home: NEW, tre schede curve, nome e prezzo. Nient'altro.
@@ -31,82 +33,12 @@ import { homeVideoSrc, stripSourceRect } from '@/lib/heroVideo'
  * sfumatura nel nero della pagina sui bordi della scheda video toglie
  * l'effetto riquadro (lo sfondo dei video Kling non e' il nostro nero).
  *
- * Lo stesso cilindro, piu' grande, e' il primo schermo anche su desktop
- * (DropDesktop).
+ * Su desktop la home e' un'altra (DropDesktop: le tre schede affiancate); NEW,
+ * prezzo e sfumatura sono gli stessi (NewMark, ShippedPrice, videoVignette).
  */
-
-// Bordi della scheda video che sfumano nel fondo della pagina: ai lati
-// (orizzontale, affettata striscia per striscia) e in alto e in basso.
-const VIDEO_VIGNETTE = [
-  'linear-gradient(90deg, rgb(var(--c-off-black)) 0%, rgb(var(--c-off-black) / 0) 14%, rgb(var(--c-off-black) / 0) 86%, rgb(var(--c-off-black)) 100%)',
-  'linear-gradient(180deg, rgb(var(--c-off-black)) 0%, rgb(var(--c-off-black) / 0) 16%, rgb(var(--c-off-black) / 0) 78%, rgb(var(--c-off-black)) 100%)',
-].join(', ')
 
 const STRIPS = 16
 const SPRING = { type: 'spring', stiffness: 170, damping: 26, mass: 1 }
-
-// ── NEW ──────────────────────────────────────────────────────────────────────
-// Un ciclo, non un'insegna accesa: le lettere arrivano sfocate e larghe e si
-// stringono a fuoco, la parola tiene, poi se ne va in dissolvenza e per un
-// attimo non c'e' niente. Il vuoto fa parte dell'animazione: e' quello che fa
-// tornare a guardare.
-const NEW_IN    = 1.4  // entrata (s)
-const NEW_HOLD  = 2.6  // parola ferma
-const NEW_OUT   = 0.9  // uscita
-const NEW_REST  = 0.9  // vuoto prima del giro dopo
-
-const EASE_OUT_EXPO    = [0.16, 1, 0.3, 1]
-const EASE_IN_QUART    = [0.5, 0, 0.75, 0]
-
-const letterVariants = {
-  hidden: ({ i, o }) => ({
-    opacity: 0,
-    filter: 'blur(12px)',
-    x: `${o * 0.22}em`,
-    transition: { duration: NEW_OUT * 0.8, delay: i * 0.07, ease: EASE_IN_QUART },
-  }),
-  shown: ({ i }) => ({
-    opacity: 1,
-    filter: 'blur(0px)',
-    x: '0em',
-    transition: { duration: NEW_IN - 0.2, delay: 0.1 + i * 0.1, ease: EASE_OUT_EXPO },
-  }),
-}
-
-// Il carattere di NEW, in un posto solo. Deve essere caricato in index.html.
-const NEW_FONT = { family: "'Tenor Sans', 'Space Grotesk', sans-serif", weight: 400, tracking: '0.18em' }
-
-function NewMark({ word = 'NEW' }) {
-  const reduce = useReducedMotion()
-  const [shown, setShown] = useState(false)
-
-  useEffect(() => {
-    if (reduce) { setShown(true); return }
-    let t
-    const step = (next) => {
-      setShown(next)
-      t = setTimeout(() => step(!next), (next ? NEW_IN + NEW_HOLD : NEW_OUT + NEW_REST) * 1000)
-    }
-    t = setTimeout(() => step(true), 200)
-    return () => clearTimeout(t)
-  }, [reduce])
-
-  return (
-    <motion.h1
-      aria-label={word}
-      className="relative leading-[0.9] flex justify-center select-none mb-3 text-accent [[data-site-theme=cream]_&]:text-ink"
-      style={{ fontFamily: NEW_FONT.family, fontWeight: NEW_FONT.weight, fontSize: 'clamp(4.25rem, 21vw, 8.5rem)', letterSpacing: NEW_FONT.tracking, paddingLeft: `calc(${NEW_FONT.tracking} + 0.04em)` }}
-      initial="hidden"
-      animate={shown ? 'shown' : 'hidden'}
-    >
-      {word.split('').map((l, i) => (
-        <motion.span key={i} aria-hidden custom={{ i, o: i - (word.length - 1) / 2 }} variants={letterVariants} className="inline-block will-change-transform">
-          {l}
-        </motion.span>
-      ))}
-    </motion.h1>
-  )
-}
 
 // ── Carosello curvo ──────────────────────────────────────────────────────────
 
@@ -305,7 +237,7 @@ export default function DropHero() {
 
   const mod = (k) => ((k % n) + n) % n
   const current = items[mod(pos)]
-  // Su desktop solo le tre davanti: con schede grandi e la vista dall'alto,
+  // Su schermi larghi (tablet) solo le tre davanti: con schede grandi e la vista dall'alto,
   // quelle a ±80° salivano sopra le altre e disegnavano una banda scura in
   // cima al palco. Quella che entra girando compare al bordo, nel buio dei fianchi.
   const slots = (mobile ? [-2, -1, 0, 1, 2] : [-1, 0, 1]).map((o) => pos + o)
@@ -473,20 +405,7 @@ export default function DropHero() {
         )}
       </motion.div>
 
-      {/* Il prezzo come protagonista: 22 centrato da solo, l'euro in apice
-          fuori dal centro (absolute), "shipped" centrato sotto. La spedizione
-          e' gratis ovunque: quello e' il prezzo finale. */}
-      <div className="pt-3 pb-3 text-center text-cream">
-        <p className="font-display font-light leading-none" style={{ fontSize: 'clamp(4.25rem, 20vw, 6.5rem)' }}>
-          <span className="relative inline-block">
-            {formatPrice(price).replace(/[^\d.,]/g, '')}
-            <span className="absolute left-full top-[0.1em] ml-[0.05em] text-[0.34em]"><SwapSymbol /></span>
-          </span>
-        </p>
-        {/* pl pari al tracking: la spaziatura dopo l'ultima lettera sposterebbe
-            la parola a sinistra del centro. */}
-        <p className="mt-1.5 text-[10px] tracking-[0.42em] pl-[0.42em] uppercase text-cream/60">shipped</p>
-      </div>
+      <ShippedPrice cents={price} />
     </div>
   )
 }

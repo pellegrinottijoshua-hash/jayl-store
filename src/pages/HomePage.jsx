@@ -326,8 +326,9 @@ export default function HomePage() {
 
       {/* ════ SCREEN 1 — Il drop. Mobile: NEW, tre schede curve, prezzo,
           subscribe, in uno schermo esatto (svh: la barra del browser non
-          taglia il subscribe). Desktop: lo stesso cilindro a tutta altezza,
-          poi la lista d'attesa (DropDesktop). ════ */}
+          taglia il subscribe). Desktop: NEW, le tre schede affiancate coi
+          video che partono insieme, il prezzo, poi la lista d'attesa
+          (DropDesktop). ════ */}
       {desktop ? (
         <section data-nav-theme="dark" className="min-h-screen w-screen bg-off-black flex flex-col">
           <DropDesktop />
