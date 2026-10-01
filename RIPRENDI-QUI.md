@@ -3,6 +3,22 @@
 Apri Claude Code in `~/jayl-store/` e scrivi:
 > **Troy, leggi RIPRENDI-QUI.md e STATO.md e riprendiamo.**
 
+## Novità del 1/10
+- **Video hero sistemati.** "Carica MP4" metteva l'URL del Blob privato, che risponde 403, quindi niente video. Ora il server copia il video in `public/images/<id>/`. I 3 del drop 6 sono online (`hero.mp4`).
+- **Admin più largo senza striscia chiara** a destra. Tolto il riordino della "Sequenza": la scheda mostra le 2 hero e il trittico.
+- **Pubblicazione social rapida** nella lista prodotti e nella sezione Social della scheda. Spec e piano: `docs/superpowers/specs|plans/2026-09-30-social-*`.
+  - Funziona così: miniatura dell'asset (foto o video importati, niente mockup Gelato), poi l'icona del social, poi l'anteprima (formato, testo AI mai usato, "↻ altro testo"), poi **Pubblica** o **Apri e copia**.
+  - Pallino verde = 1 clic via API. Grigio = apre e copia. Rosso = da sistemare (il tooltip dice cosa).
+  - Pinterest: nella scheda → Social scegli la board una volta.
+  - **Meta (Instagram e Facebook: post, reel, storie):** servono questi 2 env. Ogni comando chiede il valore: incollalo nel terminale, mai in chat. Poi serve un redeploy (Vercel → Deployments → Redeploy, o il prossimo push).
+    ```
+    cd ~/jayl-store && vercel env add FACEBOOK_PAGE_TOKEN production
+    cd ~/jayl-store && vercel env add FACEBOOK_PAGE_ID production
+    ```
+    Il token può essere utente o di Pagina, l'id della Pagina o di Instagram: il server capisce da solo. Il pannello "Cosa fa ogni social" mostra Pagina, account IG, scadenza del token e permessi mancanti.
+  - **Per un agente (Haiku):** `POST https://www.jayl.store/api/publish-social` con `{ "password": <admin>, "action": "assets" }` per l'elenco, poi `{ "action": "publish", "productId", "asset": "/images/<id>/<file>", "platform": "pinterest|instagram|facebook", "format": "pin|post|reel|story" }`. Il testo lo sceglie il server, mai lo stesso due volte.
+  - Pool dei testi e storico: `src/data/social.json`, commit con `[skip ci]`.
+
 ## Cosa è live su jayl.store (verificato)
 - **Prezzi:** 19,99 € al lancio, 24,99 € in collezione, i 3 insieme 49,99 €.
   - I decimali ora si vedono (prima il sito arrotondava a €20, anche nel checkout).
