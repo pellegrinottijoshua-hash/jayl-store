@@ -151,6 +151,20 @@ export function validateDropEntry(c, label = 'current') {
     }
   }
 
+  // heroVideos è opzionale come heroImages: il video della home per pezzo,
+  // caricato dal tab Drop. Solo .mp4: DropHero lo disegna nel cilindro e
+  // DropDesktop lo mette in un <video>, un'immagine qui sarebbe un riquadro nero.
+  if (c.heroVideos !== undefined) {
+    if (!isPlainObject(c.heroVideos)) {
+      return { ok: false, error: `${label}.heroVideos must be an object` }
+    }
+    for (const [productId, url] of Object.entries(c.heroVideos)) {
+      if (typeof url !== 'string' || !/\.mp4$/i.test(url.trim())) {
+        return { ok: false, error: `${label}.heroVideos.${productId} must be an .mp4 path` }
+      }
+    }
+  }
+
   // defaults è opzionale, come heroImages: per ogni pezzo del drop, colore e
   // taglia con cui si apre la pagina prodotto. Serve perché chi arriva da un
   // ad ha visto UN colore preciso: se la scheda apre su un altro (il primo

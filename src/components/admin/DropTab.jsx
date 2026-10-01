@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { products as allProducts } from '@/data/products-full'
 import { getAdminPassword } from '@/components/generate-assets/constants'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
+import { heroVideoSrc } from '@/lib/heroVideo'
 
 // Stato in chiaro di una voce drop, dalle sue sole date. Il pannello mostrava
 // "DROP CORRENTE" identico sopra un drop che vendeva e sopra uno finito da
@@ -75,6 +76,11 @@ function sanitizeEntry(entry) {
     Object.entries(entry.heroImages || {}).filter(([, url]) => typeof url === 'string' && url.trim()),
   )
 
+  // Solo .mp4: il server rifiuta qualunque altra cosa in heroVideos.
+  const safeHeroVideos = Object.fromEntries(
+    Object.entries(entry.heroVideos || {}).filter(([, url]) => typeof url === 'string' && /\.mp4$/i.test(url.trim())),
+  )
+
   // defaults: una voce vuota (colore e taglia entrambi "automatico") non ha
   // senso scriverla — l'assenza della chiave e' lo stesso significato, e il
   // server rifiuta una stringa vuota.
@@ -84,7 +90,7 @@ function sanitizeEntry(entry) {
       .filter(([, d]) => Object.keys(d).length > 0),
   )
 
-  return { ...entry, cap: safeCap, caps: safeCaps, heroImages: safeHeroImages, defaults: safeDefaults }
+  return { ...entry, cap: safeCap, caps: safeCaps, heroImages: safeHeroImages, heroVideos: safeHeroVideos, defaults: safeDefaults }
 }
 
 const field = (label, value, onChange, type = 'text') => (
@@ -229,6 +235,15 @@ export default function DropTab() {
     if (url) heroImages[productId] = url
     else delete heroImages[productId]
     return { heroImages }
+  })
+
+  // Video della home per un pezzo del drop (lo spazio dedicato). null rimuove
+  // la chiave: la home ricade sul video hero della scheda, se c'è.
+  const setHeroVideo = (patchEntry) => (productId, url) => patchEntry((entry) => {
+    const heroVideos = { ...(entry.heroVideos || {}) }
+    if (url) heroVideos[productId] = url
+    else delete heroVideos[productId]
+    return { heroVideos }
   })
 
   // Colore/taglia con cui si apre la pagina prodotto. '' = "automatico" e
@@ -436,9 +451,11 @@ export default function DropTab() {
               key={id}
               product={p}
               heroUrl={cfg.current.heroImages?.[id]}
+              homeVideo={cfg.current.heroVideos?.[id]}
               capOverride={cfg.current.caps?.[id]}
               defaults={cfg.current.defaults?.[id]}
               onSetHero={(url) => setHeroImage(setCurrent)(id, url)}
+              onSetVideo={(url) => setHeroVideo(setCurrent)(id, url)}
               onSetCap={(v) => setProductCap(setCurrent)(id, v)}
               onSetDefault={(key, v) => setProductDefault(setCurrent)(id, key, v)}
             />
@@ -500,9 +517,11 @@ export default function DropTab() {
                       key={id}
                       product={p}
                       heroUrl={entry.heroImages?.[id]}
+                      homeVideo={entry.heroVideos?.[id]}
                       capOverride={entry.caps?.[id]}
                       defaults={entry.defaults?.[id]}
                       onSetHero={(url) => setHeroImage(patchScheduled(i))(id, url)}
+                      onSetVideo={(url) => setHeroVideo(patchScheduled(i))(id, url)}
                       onSetCap={(v) => setProductCap(patchScheduled(i))(id, v)}
                       onSetDefault={(key, v) => setProductDefault(patchScheduled(i))(id, key, v)}
                     />
@@ -600,7 +619,7 @@ export default function DropTab() {
 // altre immagini del prodotto (pool, gallery) restano nell'editor prodotto —
 // qui elencarle tutte come thumbnail (9-14 per prodotto) non aiutava a
 // scegliere, affollava soltanto la scheda.
-function ProductHeroPicker({ product, heroUrl, capOverride, defaults, onSetHero, onSetCap, onSetDefault }) {
+function ProductHeroPicker({ product, heroUrl, homeVideo, capOverride, defaults, onSetHero, onSetVideo, onSetCap, onSetDefault }) {
   const fileRef = useRef(null)
   const [uploading, setUploading]   = useState(false)
   const [progress, setProgress]     = useState(null) // { phase, pct? }
@@ -740,6 +759,8 @@ function ProductHeroPicker({ product, heroUrl, capOverride, defaults, onSetHero,
             onChange={(e) => doUpload(e.target.files)} />
         </div>
 
+        <HomeVideoSlot product={product} homeVideo={homeVideo} onSetVideo={onSetVideo} />
+
         {/* Cosa vede chi apre la scheda prodotto. Chi arriva da un ad ha visto
             un colore preciso: senza scelta la pagina apre sul primo colore
             dell'elenco Gelato, quasi mai quello del drop. */}
@@ -783,6 +804,101 @@ function ProductHeroPicker({ product, heroUrl, capOverride, defaults, onSetHero,
           </p>
         )}
         {uploadErr && <p className="text-xs text-red-400 mt-1">{uploadErr}</p>}
+      </div>
+    </div>
+  )
+}
+
+// Lo spazio dedicato al video della home per un pezzo del drop: lo mostrano il
+// cilindro sul telefono (scheda davanti) e la griglia su desktop. Senza video
+// dedicato la home usa il video hero della scheda prodotto, se c'è.
+// Il file passa da Blob e il server lo copia nel repo (upload-image con
+// isVideo): l'URL del Blob è privato e risponderebbe 403 a chiunque.
+function HomeVideoSlot({ product, homeVideo, onSetVideo }) {
+  const fileRef = useRef(null)
+  const [busy, setBusy] = useState(null) // null | percentuale | 'commit'
+  const [err, setErr] = useState('')
+  const [localPreview, setLocalPreview] = useState(null)
+  useEffect(() => () => { if (localPreview) URL.revokeObjectURL(localPreview) }, [localPreview])
+
+  const productVideo = heroVideoSrc(product)
+  const shown = localPreview || homeVideo || productVideo
+
+  const upload = async (file) => {
+    if (!file) return
+    if (file.type !== 'video/mp4' && !/\.mp4$/i.test(file.name)) { setErr('Serve un file .mp4'); return }
+    setErr('')
+    setLocalPreview(URL.createObjectURL(file))
+    const filename = `home-${Date.now()}.mp4`
+    setBusy(0)
+    try {
+      const blob = await blobDirectUpload(`videos/${product.id}/${filename}`, file, {
+        clientPayload: JSON.stringify({ password: getAdminPassword(), productId: product.id }),
+        onProgress: (pct) => setBusy(pct),
+      })
+      setBusy('commit')
+      const r = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'upload-image', password: getAdminPassword(),
+          productId: product.id, filename, blobUrl: blob.url, isVideo: true,
+        }),
+      }).then((res) => res.json())
+      if (!r.ok || !r.path) throw new Error(r.error || 'upload fallito')
+      onSetVideo(r.path)
+    } catch (e) {
+      setErr(e.message || 'errore upload')
+    } finally {
+      setBusy(null)
+      if (fileRef.current) fileRef.current.value = ''
+    }
+  }
+
+  return (
+    <div className="flex gap-3 items-start mt-3 pt-3 border-t border-gray-800">
+      <div className="relative w-16 aspect-[9/16] shrink-0 overflow-hidden rounded border border-gray-700 bg-gray-900">
+        {shown
+          ? <video key={shown} src={shown} muted loop playsInline autoPlay className="w-full h-full object-cover" />
+          : <span className="absolute inset-0 flex items-center justify-center text-center text-[9px] text-gray-600 px-1">nessun video</span>}
+        {shown && (
+          <span className={`absolute bottom-0 left-0 right-0 text-center text-[8px] py-0.5 leading-none ${
+            homeVideo || localPreview ? 'bg-emerald-600 text-white' : 'bg-gray-800/90 text-gray-400'
+          }`}>
+            {homeVideo || localPreview ? 'HOME' : 'SCHEDA'}
+          </span>
+        )}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs text-gray-300 mb-1.5">Video home <span className="text-gray-600">· muto, 9:16, meglio sotto 1 MB</span></p>
+        <div className="flex items-center gap-3 flex-wrap">
+          <button type="button" onClick={() => fileRef.current?.click()} disabled={busy !== null}
+            className="px-3 py-1.5 border border-gray-700 hover:border-gray-500 rounded text-xs text-gray-300 disabled:opacity-40 disabled:cursor-not-allowed">
+            {busy === null ? 'Carica video home (MP4)' : busy === 'commit' ? 'Commit su GitHub…' : `Upload… ${busy}%`}
+          </button>
+          {!homeVideo && productVideo && (
+            <button type="button" onClick={() => onSetVideo(productVideo)} disabled={busy !== null}
+              className="text-xs text-gray-400 underline hover:text-white disabled:opacity-40">
+              Usa il video della scheda
+            </button>
+          )}
+          {homeVideo && (
+            <button type="button" onClick={() => { setLocalPreview(null); onSetVideo(null) }} disabled={busy !== null}
+              className="text-xs text-gray-400 underline hover:text-white disabled:opacity-40">
+              Rimuovi
+            </button>
+          )}
+          <input ref={fileRef} type="file" accept="video/mp4" className="hidden"
+            onChange={(e) => upload(e.target.files?.[0])} />
+        </div>
+        <p className="text-xs text-gray-600 mt-1.5">
+          {homeVideo
+            ? 'In home gira questo video. Ricorda di salvare il drop.'
+            : productVideo
+              ? 'Nessun video dedicato: la home usa il video hero della scheda.'
+              : 'Nessun video: la home mostra la foto hero.'}
+        </p>
+        {err && <p className="text-xs text-red-400 mt-1">{err}</p>}
       </div>
     </div>
   )

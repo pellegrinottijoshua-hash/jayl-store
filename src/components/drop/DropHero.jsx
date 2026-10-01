@@ -8,6 +8,7 @@ import DropCountdown from './DropCountdown'
 import { SwapSymbol } from '@/components/Money'
 import { formatPrice, shortProductName as shortName } from '@/lib/utils'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
+import { homeVideoSrc, stripSourceRect } from '@/lib/heroVideo'
 
 /**
  * Il drop in home: NEW, tre schede curve, nome e prezzo. Nient'altro.
@@ -19,6 +20,12 @@ import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
  * che l'immagine si curva davvero invece di restare un rettangolo inclinato.
  * Si gira con swipe/drag, frecce, tastiera o toccando una laterale; toccare
  * quella davanti apre il prodotto. Nessun movimento da solo.
+ *
+ * Video: la scheda davanti, se il pezzo ha un video home (tab Drop) o un video
+ * hero, si muove. Un solo <video> muto, quello del pezzo davanti, e ogni
+ * striscia ne ridisegna la sua fetta su un <canvas> a ogni fotogramma: cosi'
+ * il video si curva come la foto. La foto resta sotto la canvas: finche' il
+ * video non ha dati, o se il telefono blocca l'autoplay, si vede lei.
  */
 
 const STRIPS = 16
@@ -100,18 +107,49 @@ function edgeFade(deg) {
   return d <= 68 ? 1 : d >= 86 ? 0 : 1 - (d - 68) / 18
 }
 
-function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager }) {
+function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video }) {
   const dA = alphaDeg / STRIPS
   const a = slotDeg - alphaDeg / 2 + dA * (j + 0.5)
   const chord = 2 * R * Math.sin(((dA / 2) * Math.PI) / 180)
+  const stripW = chord + 0.8 // +0.8px: niente fessure fra una striscia e l'altra
   const opacity = useTransform(rot, (r) => edgeFade(a + r))
+
+  // La fetta del video che cade su questa striscia, a ogni fotogramma nuovo
+  // (requestVideoFrameCallback dove c'e', altrimenti a ogni frame di schermo).
+  const canvasRef = useRef(null)
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!video || !canvas) return
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    canvas.width = Math.ceil(stripW * dpr)
+    canvas.height = Math.ceil(H * dpr)
+    const ctx = canvas.getContext('2d')
+    const byFrame = typeof video.requestVideoFrameCallback === 'function'
+    let handle = 0
+    let stopped = false
+    const draw = () => {
+      if (stopped) return
+      if (video.readyState >= 2 && video.videoWidth) {
+        const r = stripSourceRect({ videoW: video.videoWidth, videoH: video.videoHeight, W, H, x: (j * W) / STRIPS, w: stripW })
+        ctx.drawImage(video, r.sx, r.sy, r.sw, r.sh, 0, 0, canvas.width, canvas.height)
+      }
+      handle = byFrame ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw)
+    }
+    draw()
+    return () => {
+      stopped = true
+      if (byFrame) video.cancelVideoFrameCallback(handle)
+      else cancelAnimationFrame(handle)
+    }
+  }, [video, W, H, j, stripW])
+
   return (
     <motion.div
       className="absolute overflow-hidden"
       style={{
-        width: chord + 0.8, // +0.8px: niente fessure fra una striscia e l'altra
+        width: stripW,
         height: H,
-        left: -(chord + 0.8) / 2,
+        left: -stripW / 2,
         top: -H / 2,
         transform: `rotateY(${a}deg) translateZ(${R}px)`,
         backfaceVisibility: 'hidden',
@@ -128,6 +166,9 @@ function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager }) {
         className="absolute top-0 max-w-none select-none pointer-events-none object-cover"
         style={{ width: W, height: H, left: -(j * W) / STRIPS, objectPosition: '50% 30%' }}
       />
+      {video && (
+        <canvas ref={canvasRef} aria-hidden className="absolute top-0 left-0 pointer-events-none" style={{ width: stripW, height: H }} />
+      )}
       {/* Ombre in basso (nome) e in alto (countdown): identiche su ogni
           striscia perche' verticali, quindi niente giunte. */}
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
@@ -213,6 +254,31 @@ export default function DropHero() {
     if (e.key === 'Enter' && items.length) navigate(`/product/${items[((posRef.current % n) + n) % n].id}`)
   }
 
+  // ── Video della scheda davanti ─────────────────────────────────────────────
+  // Niente video con "riduci movimento" o il risparmio dati: restano le foto.
+  const reduceMotion = useReducedMotion()
+  const [saveData] = useState(() => typeof navigator !== 'undefined' && Boolean(navigator.connection?.saveData))
+  const front = n ? items[((pos % n) + n) % n] : null
+  const videoSrc = front && !reduceMotion && !saveData
+    ? homeVideoSrc(showingCurrent ? cfg.current : null, front)
+    : null
+  // Il <video> del pezzo davanti, appena ha un fotogramma da disegnare.
+  const [videoEl, setVideoEl] = useState(null)
+  // Gira solo mentre il cilindro e' sullo schermo.
+  useEffect(() => {
+    const stageEl = stageRef.current
+    if (!videoEl || !stageEl || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) videoEl.play().catch(() => {})
+      else videoEl.pause()
+    }, { threshold: 0.25 })
+    io.observe(stageEl)
+    return () => io.disconnect()
+  }, [videoEl])
+  // Dopo un giro il pezzo davanti cambia: le strisce ricevono un video solo
+  // quando e' davvero il suo, mai per un frame quello del pezzo precedente.
+  const frontVideo = videoEl && videoEl.dataset.src === videoSrc ? videoEl : null
+
   if (n === 0) return null
 
   const mod = (k) => ((k % n) + n) % n
@@ -242,6 +308,36 @@ export default function DropHero() {
         aria-roledescription="carousel"
         aria-label="New pieces"
       >
+        {/* Il video del pezzo davanti: lo leggono le strisce, lui resta sotto le
+            schede quasi trasparente. Non del tutto invisibile: iOS non fa
+            partire l'autoplay di un video che considera nascosto. */}
+        {stage.w > 0 && videoSrc && (
+          <video
+            key={videoSrc}
+            data-src={videoSrc}
+            ref={(el) => {
+              if (!el) return
+              // React non scrive `muted` come attributo: senza, Safari iOS
+              // rifiuta l'autoplay. E iOS non scarica niente finche' non si
+              // chiede play(): aspettare loadeddata prima di play() bloccherebbe.
+              el.muted = true
+              el.defaultMuted = true
+              el.play?.().catch(() => {})
+            }}
+            src={videoSrc}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="auto"
+            disablePictureInPicture
+            aria-hidden
+            onLoadedData={(e) => setVideoEl(e.currentTarget)}
+            className="absolute left-1/2 top-1/2 pointer-events-none object-cover"
+            style={{ width: W, height: H, marginLeft: -W / 2, marginTop: -H / 2, opacity: 0.01 }}
+          />
+        )}
+
         {stage.w > 0 && (
           <motion.div
             className="absolute left-1/2 top-1/2"
@@ -278,6 +374,7 @@ export default function DropHero() {
                       alphaDeg={alphaDeg}
                       src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
                       eager={Math.abs(s - pos) <= 1}
+                      video={isCenter ? frontVideo : null}
                     />
                   ))}
                 </Link>

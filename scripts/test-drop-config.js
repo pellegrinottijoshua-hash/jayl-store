@@ -130,6 +130,18 @@ if (cfg) {
   check('heroImages non-oggetto (array) → rifiutato',
     validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroImages: ['not', 'an', 'object'] } }).ok === false)
 
+  // ── heroVideos — opzionale, il video della home per pezzo (solo .mp4) ────
+  check('heroVideos assente → valido (retrocompatibilità)',
+    validateDropConfig(validCfg).ok === true)
+  check('heroVideos con un .mp4 → valido',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroVideos: { aaa: '/images/aaa/home-1.mp4' } } }).ok === true)
+  check('heroVideos con un\'immagine → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroVideos: { aaa: '/images/aaa/macro.jpg' } } }).ok === false)
+  check('heroVideos con stringa vuota → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroVideos: { aaa: '' } } }).ok === false)
+  check('heroVideos non-oggetto (array) → rifiutato',
+    validateDropConfig({ ...validCfg, current: { ...validCfg.current, heroVideos: ['/a.mp4'] } }).ok === false)
+
   // ── defaults — opzionale, {productId: {color?, size?}} ──────────────────
   check('defaults assente → valido (retrocompatibilità)',
     validateDropConfig(validCfg).ok === true)
