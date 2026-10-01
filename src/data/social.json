@@ -1,6 +1,41 @@
 {
  "version": 1,
  "settings": {},
- "captions": {},
+ "captions": {
+  "mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift": {
+   "pinterest": [
+    {
+     "id": "cmupl0wwl0whk",
+     "title": "Chill Vibes Only: Cool Mewtwo T-Shirt for Casual Days",
+     "text": "Keep it cool and stylish with our Mewtwo T-Shirt, perfect for laid-back days and Pokémon fan gatherings. This comfortable tee features a striking design that complements your relaxed aesthetic while showcasing your favorite character. Don’t let this stylish piece slip away—pin it to your inspiration board!",
+     "tags": [
+      "chill outfit",
+      "casual wear",
+      "pokemon fan",
+      "mewtwo lover",
+      "everyday fashion",
+      "graphic t-shirt"
+     ],
+     "createdAt": "2026-10-01T13:40:49.173Z",
+     "usedAt": null
+    },
+    {
+     "id": "cmupl0wwl14vw",
+     "title": "Celebrate Pokémon Day in Style with Our Mewtwo T-Shirt!",
+     "text": "Get ready for Pokémon Day with our Cool Mewtwo T-Shirt! This trendy tee is designed for fans who want to flaunt their love for Mewtwo while staying comfortable. It's the perfect piece for any celebration or themed event. Make sure to save this pin and wear it with pride—join the Pokémon fandom in style!",
+     "tags": [
+      "pokemon day",
+      "event outfit",
+      "mewtwo design",
+      "fan apparel",
+      "celebration fashion",
+      "cool t-shirt"
+     ],
+     "createdAt": "2026-10-01T13:40:49.173Z",
+     "usedAt": null
+    }
+   ]
+  }
+ },
  "log": []
 }
