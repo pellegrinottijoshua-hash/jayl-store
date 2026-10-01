@@ -34,6 +34,15 @@ check('lo schema degli URL è reversibile', () => {
   }
 })
 
+check('varianti social: miniatura WebP e JPEG per Instagram, reversibili', () => {
+  const p = '/images/cool-snorlax/hf_20260626_1.png'
+  assert.strictEqual(optimizedPath(p, 'thumb'), '/_img/thumb/images/cool-snorlax/hf_20260626_1.png.webp')
+  assert.strictEqual(optimizedPath(p, 'ig'), '/_img/ig/images/cool-snorlax/hf_20260626_1.png.jpg')
+  assert.strictEqual(originalImage(optimizedPath(p, 'thumb')), p)
+  assert.strictEqual(originalImage(optimizedPath(p, 'ig')), p)
+  assert.strictEqual(originalImage(optimizedPath(p)), p)
+})
+
 check('ogni foto WebP resta del colore dell\'originale, su tutto il catalogo', () => {
   const visible = new Set([...(drop.current?.productIds || []), ...(drop.released || [])])
   const RAW = /^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public(?=\/)/

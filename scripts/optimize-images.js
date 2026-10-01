@@ -21,14 +21,20 @@ import { existsSync, statSync } from 'fs'
 import path from 'path'
 import { optimizedPath } from '../src/lib/optimizedImage.js'
 
-const MAX_WIDTH = 1000
-const QUALITY = 80
+// web: le foto del negozio. thumb: le miniature dell'admin (lista prodotti,
+// pubblicazione social). ig: JPEG per Instagram, che accetta solo JPEG —
+// sempre emesso, anche quando non è più leggero dell'originale.
+const VARIANTS = {
+  web:   { width: 1000, encode: (img) => img.webp({ quality: 80 }), mustEmit: false },
+  thumb: { width: 240,  encode: (img) => img.webp({ quality: 70 }), mustEmit: false },
+  ig:    { width: 1080, encode: (img) => img.flatten({ background: '#ffffff' }).jpeg({ quality: 90, mozjpeg: true }), mustEmit: true },
+}
 // Le foto Gelato arrivano a 2000×2000: decodificarne troppe insieme occupa
 // gigabyte di RAM sulla macchina di build.
 const CONCURRENCY = 4
 
 const RAW_GITHUB_PUBLIC = /^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public(?=\/)/
-const RASTER = /\.(png|jpe?g)$/i
+const RASTER = /\.(png|jpe?g|webp)$/i
 
 /** Il file sotto public/ a cui punta un URL del catalogo, o null. */
 function localPathOf(url) {
@@ -39,11 +45,11 @@ function localPathOf(url) {
 
 /**
  * @param {{publicDir: string}} opts
- * @returns {(url: string, emitFile: (asset: object) => void) => Promise<string>}
- *   url del catalogo → url della versione WebP (o l'url com'era)
+ * @returns {(url: string, emitFile: (asset: object) => void, variant?: 'web'|'thumb'|'ig') => Promise<string>}
+ *   url del catalogo → url della versione ottimizzata (o l'url com'era)
  */
 export function createImageOptimizer({ publicDir }) {
-  const done = new Map() // path decodificato → Promise<string|null>
+  const done = new Map() // "<variante>:<path decodificato>" → Promise<string|null>
   const queue = []
   let running = 0
   let sharpPromise
@@ -59,34 +65,32 @@ export function createImageOptimizer({ publicDir }) {
     next()
   })
 
-  return async function optimize(url, emitFile) {
+  return async function optimize(url, emitFile, variant = 'web') {
+    const v = VARIANTS[variant] || VARIANTS.web
     const local = localPathOf(url)
     if (!local) return url
     let decoded
     try { decoded = decodeURIComponent(local) } catch { return url }
 
-    if (!done.has(decoded)) {
-      done.set(decoded, limit(async () => {
+    const key = `${variant}:${decoded}`
+    if (!done.has(key)) {
+      done.set(key, limit(async () => {
         const file = path.join(publicDir, decoded)
         if (!existsSync(file)) return null
         sharpPromise ??= import('sharp').then((m) => m.default).catch(() => null)
         const sharp = await sharpPromise
         if (!sharp) return null
         try {
-          const webp = await sharp(file)
-            .rotate()
-            .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-            .webp({ quality: QUALITY })
-            .toBuffer()
-          if (webp.length >= statSync(file).size) return null
-          emitFile({ type: 'asset', fileName: optimizedPath(decoded).slice(1), source: webp })
-          return optimizedPath(local)
+          const out = await v.encode(sharp(file).rotate().resize({ width: v.width, withoutEnlargement: true })).toBuffer()
+          if (!v.mustEmit && out.length >= statSync(file).size) return null
+          emitFile({ type: 'asset', fileName: optimizedPath(decoded, variant).slice(1), source: out })
+          return optimizedPath(local, variant)
         } catch {
           return null
         }
       }))
     }
-    return (await done.get(decoded)) ?? url
+    return (await done.get(key)) ?? url
   }
 }
 
