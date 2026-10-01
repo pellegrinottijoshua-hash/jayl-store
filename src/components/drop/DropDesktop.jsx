@@ -1,34 +1,21 @@
-import { Link } from 'react-router-dom'
-import { getProductById } from '@/data/products'
-import { getDrop, capFor } from '../../../api/_lib/drop.js'
+import { getDrop } from '../../../api/_lib/drop.js'
 import { nextDropStartsAt } from '../../../api/_lib/drop-schedule.js'
-import { useDropStatus } from '@/hooks/useDropStatus'
 import DropCountdown from './DropCountdown'
-import DropBadge from './DropBadge'
+import DropHero from './DropHero'
 import SubscribeForm from '@/components/SubscribeForm'
-import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
-import Money from '@/components/Money'
-import HeroVideo from '@/components/HeroVideo'
-import { homeVideoSrc } from '@/lib/heroVideo'
+import { dropWindowState, BEFORE } from './dropWindowState'
 
 /**
- * Il drop su desktop (da sm: in su): tre schede affiancate, nome/prezzo/stato
- * sotto ciascuna, e sotto la lista d'attesa — come prima del ridisegno.
- * Il ridisegno (NEW, cilindro, prezzo "shipped") e' solo mobile, in
- * DropHero: su uno schermo largo le tre schede ci stanno gia' tutte intere,
- * e un carosello nasconderebbe due pezzi su tre senza motivo.
+ * Il drop su desktop: lo stesso primo schermo del telefono (DropHero: NEW, il
+ * cilindro col pezzo davanti in video, prezzo "shipped"), a tutta altezza, e
+ * sotto la lista d'attesa.
+ *
+ * Prima qui c'erano tre schede affiancate con tre video in loop insieme:
+ * nessun pezzo protagonista, NEW e prezzo minuscoli negli angoli (1/10).
  */
 export default function DropDesktop() {
   const cfg = getDrop()
-  const { status } = useDropStatus()
   const { state, target } = dropWindowState(cfg)
-
-  // Stesse regole di DropHero: i pezzi di `current` finche' ci sono, poi quelli
-  // del drop appena chiuso — lo schermo non resta mai vuoto.
-  const currentIds     = cfg.current?.productIds || []
-  const showingCurrent = currentIds.length > 0
-  const shown = showingCurrent ? currentIds : (cfg.previous?.productIds || [])
-  const items = shown.map(getProductById).filter(Boolean)
 
   // Prima che il drop apra, "il prossimo drop" e' questo: un secondo
   // countdown verso cfg.next metterebbe due date diverse per la stessa
@@ -37,64 +24,9 @@ export default function DropDesktop() {
 
   return (
     <>
-      {items.length > 0 && (
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="px-6 lg:px-8 pt-[64px] pb-6 text-cream">
-            <div className="flex items-center justify-between">
-              <span className="text-xs tracking-[0.2em] uppercase">
-                {/* Niente "Drop 05 · titolo": ai clienti si dice NEW (come il NewMark mobile). */}
-                {(showingCurrent && cfg.current?.headline) || 'New'}
-              </span>
-              {state === BEFORE && <DropCountdown to={target} label="opens in" className="text-xs tabular-nums" />}
-              {state === LIVE && <DropCountdown to={target} label="launch price ends in" className="text-xs tabular-nums" />}
-              {state === CLOSED && target && <DropCountdown to={target} label="next release in" className="text-xs tabular-nums" />}
-            </div>
-          </div>
-
-          <div className="px-6 lg:px-8">
-            <div className="grid grid-cols-3 gap-px bg-fg/10">
-              {items.map((p, idx) => {
-                const s = status?.products?.[p.id]
-                return (
-                  <Link key={p.id} to={`/product/${p.id}`} className="group bg-off-black">
-                    <div className="aspect-[4/5] w-full overflow-hidden bg-black">
-                      {homeVideoSrc(cfg.current, p) ? (
-                        // Il video hero del prodotto, se c'e': stesso riquadro della foto.
-                        <HeroVideo
-                          src={homeVideoSrc(cfg.current, p)}
-                          poster={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
-                          label={p.altText || p.name}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      ) : (
-                        <img
-                          src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
-                          alt={p.altText || p.name}
-                          loading={idx === 1 ? 'eager' : 'lazy'}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      )}
-                    </div>
-                    <div className="px-5 pt-4 pb-1">
-                      <h2 className="text-cream text-lg leading-tight">{p.name}</h2>
-                      <p className="text-fg/70 text-sm mb-1">
-                        <Money cents={showingCurrent ? cfg.current.dropPrice : cfg.archivePrice} />
-                      </p>
-                      {state === LIVE && <DropBadge sold={s?.sold ?? 0} cap={s?.cap ?? capFor(p.id, cfg)} />}
-                      {state === BEFORE && (
-                        <span className="text-xs tracking-widest uppercase text-fg/60">Preview · not on sale yet</span>
-                      )}
-                      {state === CLOSED && (
-                        <span className="text-xs tracking-widest uppercase text-fg/60">Launch price ended · now in the collection</span>
-                      )}
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="h-[100svh] min-h-[640px] flex flex-col">
+        <DropHero />
+      </div>
 
       <div className="flex-1 flex flex-col justify-center pt-8 pb-16">
         <div className="relative overflow-hidden px-12">

@@ -810,7 +810,7 @@ function ProductHeroPicker({ product, heroUrl, homeVideo, capOverride, defaults,
 }
 
 // Lo spazio dedicato al video della home per un pezzo del drop: lo mostrano il
-// cilindro sul telefono (scheda davanti) e la griglia su desktop. Senza video
+// cilindro della home, telefono e desktop (scheda davanti). Senza video
 // dedicato la home usa il video hero della scheda prodotto, se c'è.
 // Il file passa da Blob e il server lo copia nel repo (upload-image con
 // isVideo): l'URL del Blob è privato e risponderebbe 403 a chiunque.

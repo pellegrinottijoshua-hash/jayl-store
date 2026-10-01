@@ -26,7 +26,21 @@ import { homeVideoSrc, stripSourceRect } from '@/lib/heroVideo'
  * striscia ne ridisegna la sua fetta su un <canvas> a ogni fotogramma: cosi'
  * il video si curva come la foto. La foto resta sotto la canvas: finche' il
  * video non ha dati, o se il telefono blocca l'autoplay, si vede lei.
+ * Il video gira una volta e resta sul fotogramma finale: chi l'ha visto gira
+ * il cilindro per gli altri, o torna indietro e lo rivede dall'inizio. Una
+ * sfumatura nel nero della pagina sui bordi della scheda video toglie
+ * l'effetto riquadro (lo sfondo dei video Kling non e' il nostro nero).
+ *
+ * Lo stesso cilindro, piu' grande, e' il primo schermo anche su desktop
+ * (DropDesktop).
  */
+
+// Bordi della scheda video che sfumano nel fondo della pagina: ai lati
+// (orizzontale, affettata striscia per striscia) e in alto e in basso.
+const VIDEO_VIGNETTE = [
+  'linear-gradient(90deg, rgb(var(--c-off-black)) 0%, rgb(var(--c-off-black) / 0) 14%, rgb(var(--c-off-black) / 0) 86%, rgb(var(--c-off-black)) 100%)',
+  'linear-gradient(180deg, rgb(var(--c-off-black)) 0%, rgb(var(--c-off-black) / 0) 16%, rgb(var(--c-off-black) / 0) 78%, rgb(var(--c-off-black)) 100%)',
+].join(', ')
 
 const STRIPS = 16
 const SPRING = { type: 'spring', stiffness: 170, damping: 26, mass: 1 }
@@ -167,7 +181,10 @@ function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video }) {
         style={{ width: W, height: H, left: -(j * W) / STRIPS, objectPosition: '50% 30%' }}
       />
       {video && (
-        <canvas ref={canvasRef} aria-hidden className="absolute top-0 left-0 pointer-events-none" style={{ width: stripW, height: H }} />
+        <>
+          <canvas ref={canvasRef} aria-hidden className="absolute top-0 left-0 pointer-events-none" style={{ width: stripW, height: H }} />
+          <div aria-hidden className="absolute top-0 pointer-events-none" style={{ width: W, height: H, left: -(j * W) / STRIPS, background: VIDEO_VIGNETTE }} />
+        </>
       )}
       {/* Ombre in basso (nome) e in alto (countdown): identiche su ogni
           striscia perche' verticali, quindi niente giunte. */}
@@ -210,8 +227,12 @@ export default function DropHero() {
   const mobile   = stage.w < 640
   // Piu' alte che larghe: crescono in altezza fino a riempire il palco, e la
   // larghezza resta quella che lascia vedere le due laterali ai bordi.
-  const ratio    = mobile ? 0.61 : 0.78
-  const W        = Math.min(stage.w * (mobile ? 0.68 : 0.27), stage.h * 1.1 * ratio, 460)
+  // Su desktop la scheda e' piu' grande e piu' verticale di prima: ora e'
+  // il primo schermo anche li', e i video hero sono 9:16.
+  const ratio    = mobile ? 0.61 : 0.66
+  const W        = mobile
+    ? Math.min(stage.w * 0.68, stage.h * 1.1 * ratio, 460)
+    : Math.min(stage.w * 0.3, stage.h * 0.86 * ratio, 600)
   const H        = W / ratio
   const thetaDeg = mobile ? 40 : 40              // passo angolare fra una scheda e l'altra
   const alphaDeg = thetaDeg - (mobile ? 3 : 4)   // quanto arco occupa la scheda
@@ -269,8 +290,9 @@ export default function DropHero() {
     const stageEl = stageRef.current
     if (!videoEl || !stageEl || typeof IntersectionObserver === 'undefined') return
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) videoEl.play().catch(() => {})
-      else videoEl.pause()
+      // Finito resta finito: si rivede tornando sul pezzo, non scorrendo la pagina.
+      if (e.isIntersecting && !videoEl.ended) videoEl.play().catch(() => {})
+      else if (!e.isIntersecting) videoEl.pause()
     }, { threshold: 0.25 })
     io.observe(stageEl)
     return () => io.disconnect()
@@ -283,7 +305,10 @@ export default function DropHero() {
 
   const mod = (k) => ((k % n) + n) % n
   const current = items[mod(pos)]
-  const slots = [-2, -1, 0, 1, 2].map((o) => pos + o)
+  // Su desktop solo le tre davanti: con schede grandi e la vista dall'alto,
+  // quelle a ±80° salivano sopra le altre e disegnavano una banda scura in
+  // cima al palco. Quella che entra girando compare al bordo, nel buio dei fianchi.
+  const slots = (mobile ? [-2, -1, 0, 1, 2] : [-1, 0, 1]).map((o) => pos + o)
   const countdownCls = 'text-[9px] tracking-[0.2em] uppercase tabular-nums text-white/75'
 
   return (
@@ -326,7 +351,6 @@ export default function DropHero() {
             }}
             src={videoSrc}
             muted
-            loop
             playsInline
             autoPlay
             preload="auto"
