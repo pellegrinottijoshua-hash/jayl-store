@@ -44,7 +44,8 @@ export const drop = {
       "entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him": {
         "color": "cardinal-red"
       }
-    }
+    },
+    "heroVideos": {}
   },
   "previous": {
     "number": 4,
@@ -132,8 +133,12 @@ export const drop = {
         },
         "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him": {
           "color": "black"
+        },
+        "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him": {
+          "color": "carolina-blue"
         }
-      }
+      },
+      "heroVideos": {}
     }
   ],
   "next": null,
