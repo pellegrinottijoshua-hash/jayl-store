@@ -13,7 +13,8 @@ import {
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
-import SocialShareButtons from '@/components/SocialShareButtons'
+import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
+import SocialStatusPanel from '@/components/admin/SocialStatusPanel'
 
 // Nome fisso per il file del secondo lato: rigenerarlo sovrascrive, non accumula.
 const ALT_FILENAME = 'design-front.png'
@@ -1107,24 +1108,6 @@ export default function AdminProductPage() {
       setAltsMsg('⚠ ' + m)
     } finally {
       setGeneratingAlts(false)
-    }
-  }
-
-  // Called by the redirect "Condividi sui social" Pinterest button after opening
-  // the pin-builder — marks the used pin + image as published and persists it.
-  const markPinterestPublished = ({ pinIndex, imageUrl }) => {
-    let nextPins = pinterestPins
-    if (pinIndex != null && pinterestPins[pinIndex] && !pinterestPins[pinIndex].published) {
-      nextPins = pinterestPins.map((p, j) => (j === pinIndex ? { ...p, published: true } : p))
-      setPinterestPins(nextPins)
-    }
-    let nextImgs = pinterestPublishedImages
-    if (imageUrl && !pinterestPublishedImages.includes(imageUrl)) {
-      nextImgs = [...pinterestPublishedImages, imageUrl]
-      setPinterestPublishedImages(nextImgs)
-    }
-    if ((nextPins !== pinterestPins || nextImgs !== pinterestPublishedImages) && name.trim() && price) {
-      saveWith({ pinterestPins: nextPins, pinterestPublishedImages: nextImgs })
     }
   }
 
@@ -2320,20 +2303,10 @@ export default function AdminProductPage() {
 
             {/* ── 7. Social ── */}
             <Section title="Social" icon="📱" color="fuchsia">
-              <SocialShareButtons
-                productUrl={`https://jayl.store/product/${id}`}
-                assets={[
-                  ...allPoolImages.map(i => ({ url: i.url || i.src, type: 'image', alt: imageAlts[i.url || i.src] || '' })),
-                  ...(videoUrl.trim() ? [{ url: videoUrl.trim(), type: 'video' }] : []),
-                ]}
-                title={seoTitle || name}
-                tags={tags}
-                altText={imageAlts[desktopHero] || imageAlts[mobileHero] || ''}
-                captions={{ pinterest: pinterestCaption, instagram: instagramCaption, tiktok: tiktokCaption }}
-                pins={pinterestPins}
-                publishedImages={pinterestPublishedImages}
-                onPinPublished={markPinterestPublished}
-              />
+              {/* Solo foto e video importati (niente mockup Gelato): scegli
+                  l'asset, poi il social. Stesso componente della lista prodotti. */}
+              <SocialStatusPanel />
+              <SocialQuickPublish productId={id} />
               <Field label="Instagram Caption">
                 <div className="relative">
                   <textarea

@@ -41,7 +41,7 @@ function graph(fetchImpl) {
 /**
  * @returns {Promise<{ ok: boolean, error?: string, pageId: string|null, pageName: string|null,
  *   pageToken: string|null, igUserId: string|null, igUsername: string|null,
- *   tokenType: string|null, expiresAt: string|null, missingScopes: string[] }>}
+ *   tokenType: string|null, expiresAt: string|'never'|null, missingScopes: string[] }>}
  */
 export async function resolveMeta({ env = process.env, fetchImpl = fetch } = {}) {
   const token = (env.FACEBOOK_PAGE_TOKEN || env.INSTAGRAM_ACCESS_TOKEN || '').trim()
@@ -95,7 +95,8 @@ export async function resolveMeta({ env = process.env, fetchImpl = fetch } = {})
     igUserId: igOverride || igAccount?.id || null,
     igUsername: igAccount?.username || null,
     tokenType: dbg?.type || (page?.access_token && page.access_token !== token ? 'USER' : page ? 'PAGE' : null),
-    expiresAt: dbg?.expires_at ? new Date(dbg.expires_at * 1000).toISOString() : null,
+    // 'never' = token che non scade; null = scadenza non verificabile (debug_token muto).
+    expiresAt: !dbg ? null : dbg.expires_at ? new Date(dbg.expires_at * 1000).toISOString() : 'never',
     missingScopes: scopes ? META_SCOPES.filter((s) => !scopes.includes(s)) : [],
   }
   cache = { key, at: Date.now(), value }

@@ -8,6 +8,7 @@ import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import DropTab from '@/components/admin/DropTab'
 import SocialShareButtons from '@/components/SocialShareButtons'
+import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 import { SOCIAL_CHANNELS, socialPlaceholder } from '../../api/_lib/social-links.js'
 import { resolveSwatchHex } from '@/lib/apparelColors'
@@ -2204,6 +2205,7 @@ function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deletin
         </p>
         <QuickColors product={p} />
         <QuickTools product={p} />
+        <SocialQuickPublish productId={p.id} />
       </div>
       {/* Actions */}
       <div className="flex items-center flex-shrink-0" onClick={e => e.stopPropagation()}>
