@@ -81,3 +81,18 @@ export async function ghPut(path, content, sha, message, token) {
   }
   return res.json()
 }
+
+/**
+ * Tutti i file del repo (albero Git ricorsivo di main) in una sola chiamata.
+ * Lo usa la pubblicazione social per elencare gli asset di ogni prodotto
+ * senza una chiamata per cartella.
+ */
+export async function ghTreePaths(token) {
+  const res = await fetch(
+    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`,
+    { headers: ghHeaders(token) },
+  )
+  if (!res.ok) throw new Error(`GitHub tree: ${res.status}`)
+  const json = await res.json()
+  return (json.tree || []).filter((e) => e.type === 'blob').map((e) => e.path)
+}
