@@ -4,9 +4,9 @@ import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, use
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
-import DropCountdown from './DropCountdown'
+import GoldenTrail from './GoldenTrail'
 import { shortProductName as shortName } from '@/lib/utils'
-import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
+import { dropWindowState, LIVE } from './dropWindowState'
 import { homeVideoSrc, stripSourceRect } from '@/lib/heroVideo'
 import NewMark from './NewMark'
 import ShippedPrice from './ShippedPrice'
@@ -241,10 +241,9 @@ export default function DropHero() {
   // quelle a ±80° salivano sopra le altre e disegnavano una banda scura in
   // cima al palco. Quella che entra girando compare al bordo, nel buio dei fianchi.
   const slots = (mobile ? [-2, -1, 0, 1, 2] : [-1, 0, 1]).map((o) => pos + o)
-  const countdownCls = 'text-[9px] tracking-[0.2em] uppercase tabular-nums text-white/75'
 
   return (
-    <div className="relative flex-1 min-h-0 flex flex-col pt-[62px]">
+    <div className="relative flex-1 min-h-0 flex flex-col pt-[84px]">
       <NewMark word={(showingCurrent && cfg.current.headline) || 'NEW'} />
 
       {/* Palco: occhio all'altezza del bordo alto (che resta dritto), cosi' curva solo il bordo basso. Prima: occhio sopra il bordo alto, cosi' sia il
@@ -349,16 +348,14 @@ export default function DropHero() {
           }}
         />
 
-        {/* Il countdown dentro la scheda davanti, in cima alla foto: piccolo e
-            senza una riga sua, cosi' non spinge giu' le schede. */}
-        {stage.w > 0 && (
+        {/* Il tempo del prezzo di lancio, dentro la scheda davanti in cima
+            alla foto: la scia dorata di Zack, niente numeri. */}
+        {stage.w > 0 && state === LIVE && (
           <div
-            className="absolute inset-x-0 z-20 pointer-events-none text-center"
-            style={{ top: `calc(50% - ${H / 2 - 4}px)` }}
+            className="absolute inset-x-0 z-20 pointer-events-none flex justify-center"
+            style={{ top: `calc(50% - ${H / 2 - 10}px)` }}
           >
-            {state === BEFORE && <DropCountdown to={target} label="opens in" className={countdownCls} />}
-            {state === LIVE && <DropCountdown to={target} label="launch price ends in" className={countdownCls} />}
-            {state === CLOSED && target && <DropCountdown to={target} label="next release in" className={countdownCls} />}
+            <GoldenTrail startsAt={cfg.current.startsAt} endsAt={target} width={`${Math.round(W * 0.5)}px`} />
           </div>
         )}
 

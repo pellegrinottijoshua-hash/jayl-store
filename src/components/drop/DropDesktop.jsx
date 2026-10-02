@@ -5,16 +5,18 @@ import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
 import { nextDropStartsAt } from '../../../api/_lib/drop-schedule.js'
 import DropCountdown from './DropCountdown'
+import GoldenTrail from './GoldenTrail'
 import NewMark from './NewMark'
 import ShippedPrice from './ShippedPrice'
 import { VIDEO_VIGNETTE } from './videoVignette'
 import SubscribeForm from '@/components/SubscribeForm'
-import { dropWindowState, BEFORE, LIVE, CLOSED } from './dropWindowState'
+import { dropWindowState, BEFORE, LIVE } from './dropWindowState'
 import { homeVideoSrc } from '@/lib/heroVideo'
 import { shortProductName as shortName } from '@/lib/utils'
 
 /**
- * Il drop su desktop: NEW animato come sul telefono, le tre schede affiancate
+ * Il drop su desktop: NEW animato come sul telefono, la scia dorata del tempo
+ * (GoldenTrail), le tre schede affiancate
  * e tutte visibili, il prezzo grande "shipped" sotto, poi la lista d'attesa.
  *
  * I tre video partono insieme (quando tutti e tre hanno dati, o comunque dopo
@@ -82,13 +84,12 @@ export default function DropDesktop() {
   return (
     <>
       {items.length > 0 && (
-        <div className="min-h-[100svh] flex flex-col pt-[72px] pb-6">
+        <div className="min-h-[100svh] flex flex-col pt-[94px] pb-6">
           <NewMark word={(showingCurrent && cfg.current?.headline) || 'NEW'} fontSize="clamp(4rem, 8vw, 7.5rem)" />
 
-          <div className="text-center text-[10px] tracking-[0.3em] uppercase tabular-nums text-cream/70 mb-6">
-            {state === BEFORE && <DropCountdown to={target} label="opens in" />}
-            {state === LIVE && <DropCountdown to={target} label="launch price ends in" />}
-            {state === CLOSED && target && <DropCountdown to={target} label="next release in" />}
+          {/* Il tempo del prezzo di lancio: la scia dorata di Zack, niente numeri. */}
+          <div className="min-h-[24px] mb-4 flex justify-center">
+            {state === LIVE && <GoldenTrail startsAt={cfg.current.startsAt} endsAt={target} width="min(280px, 30vw)" />}
           </div>
 
           <div className="flex-1 flex items-center justify-center gap-6 xl:gap-10 px-8">

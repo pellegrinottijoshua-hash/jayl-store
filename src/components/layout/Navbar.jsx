@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ShoppingBag, Menu, X, Heart } from 'lucide-react'
 import { useWishlistStore } from '@/store/wishlistStore'
 import { useCartStore } from '@/store/cartStore'
@@ -157,11 +157,6 @@ export default function Navbar() {
   const activeSection = useThemeStore((s) => s.activeSection)
   const effectiveTheme = useEffectiveTheme()
 
-  const { pathname } = useLocation()
-  // "Free worldwide shipping" solo sulla scheda prodotto: e' li' che decide.
-  // In home il prezzo dice gia' "shipped", e la barra rubava 28px al drop.
-  const showShippingBar = pathname.startsWith('/product/')
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   // Appena si scorre, la barra prende uno sfondo: trasparente sopra il primo
   // schermo, ma sopra l'archivio a foto piene della home (e le gallery) il
@@ -219,22 +214,21 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Fixed header: announcement bar (product pages) + navbar ───── */}
+      {/* ── Fixed header: free shipping bar + navbar ─────────────────── */}
       <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
 
-        {/* Announcement bar */}
-        {showShippingBar && <div
+        {/* Free shipping: una riga sottile sempre in alto, su ogni pagina.
+            24px: le pagine lasciano gia' 84px all'header (56 + 24 + aria). */}
+        <div
           className={cn(
-            'w-full h-7 flex items-center justify-center pointer-events-auto transition-colors duration-500',
-            isLight
-              ? 'bg-paper-2 text-ink-muted'
-              : 'bg-surface text-cream-muted'
+            'w-full h-6 flex items-center justify-center pointer-events-auto transition-colors duration-500',
+            isLight ? 'bg-paper-2' : 'bg-off-black'
           )}
         >
-          <p className="font-sans font-light text-[9px] uppercase select-none" style={{ letterSpacing: '0.20em' }}>
-            Free worldwide shipping on all orders
+          <p className="font-sans font-light text-[9px] uppercase select-none pl-[0.32em]" style={{ letterSpacing: '0.32em', color: '#C4A35A' }}>
+            Free worldwide shipping
           </p>
-        </div>}
+        </div>
 
         {/* Navbar row */}
         <div
@@ -249,9 +243,22 @@ export default function Navbar() {
             {/* translate-y: centrato sulla riga, il segno stava ~4px sopra
                 l'occhio della "o" di objects (misurato sui metrici di Space
                 Grotesk 12px: la x-height siede sotto il centro della riga). */}
-            <Link to="/" aria-label="JAYL — Home" className="inline-block translate-y-[4px]">
-              <NavLogo isLight={isLight} size={30} />
-            </Link>
+            <div className="flex items-center gap-3.5">
+              <Link to="/" aria-label="JAYL — Home" className="inline-block translate-y-[4px]">
+                <NavLogo isLight={isLight} size={30} />
+              </Link>
+              {/* Instagram e TikTok anche sul telefono, accanto al logo: a
+                  destra (tema, carrello, menu) non c'e' posto senza spostare
+                  il menu centrale. Dal tablet in su stanno con gli altri. */}
+              <div className="flex sm:hidden items-center gap-2.5 translate-y-[2px]">
+                {SOCIAL_ICONS.filter(({ key }) => (key === 'instagram' || key === 'tiktok') && SOCIAL_LINKS[key]).map(({ key, Icon, label }) => (
+                  <a key={key} href={SOCIAL_LINKS[key]} target="_blank" rel="noopener noreferrer" aria-label={label}
+                    className={cn('transition-opacity duration-200 hover:opacity-60', textMuted)}>
+                    <Icon size={14} />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* ── Center: section links ─────────────────────────────────── */}
