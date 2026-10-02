@@ -22,7 +22,7 @@ import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_li
 import Money from '@/components/Money'
 import HeroVideo from '@/components/HeroVideo'
 import { galleryBaseFor } from '@/lib/productMedia'
-import { finishedColorFor } from '@/lib/scarcity'
+import { finishedColorFor, lowStockFor } from '@/lib/scarcity'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -583,7 +583,9 @@ export default function ProductPage() {
   const sizeGuide    = guideFor(product)
   const videoInfo    = parseVideoUrl(product?.videoUrl)
   // Il colore finito questa settimana (src/lib/scarcity.js), mai nel drop.
-  const finishedColor = finishedColorFor(product, colors, { inDrop: productState(product?.id, dropCfg) === DROP })
+  const inDropNow     = productState(product?.id, dropCfg) === DROP
+  const finishedColor = finishedColorFor(product, colors, { inDrop: inDropNow })
+  const lowStock      = lowStockFor(product, colors, { inDrop: inDropNow, finished: finishedColor })
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
@@ -1188,6 +1190,11 @@ export default function ProductPage() {
                   </span>
                 )}
               </p>
+              {lowStock && (
+                <p className="-mt-1 mb-3 text-[11px] tracking-[0.12em] uppercase" style={{ color: '#E5484D' }}>
+                  {colors.find(c => c.id === lowStock.colorId)?.label} · only {lowStock.left} left
+                </p>
+              )}
               {/* In hero mode: square image thumbnails; otherwise: pill buttons */}
               {heroImages ? (
                 <div className="-mx-4 px-4 overflow-x-auto scrollbar-hide">
@@ -1658,6 +1665,11 @@ export default function ProductPage() {
                         </p>
                       )}
                     </div>
+                    {lowStock && (
+                      <p className="-mt-1 mb-3 text-[11px] tracking-[0.12em] uppercase" style={{ color: '#E5484D' }}>
+                        {colors.find(c => c.id === lowStock.colorId)?.label} · only {lowStock.left} left
+                      </p>
+                    )}
                     {/* In hero mode: show Gelato variant thumbnails; otherwise: color circles */}
                     {heroImages ? (
                       <div className="flex gap-2 flex-wrap">
