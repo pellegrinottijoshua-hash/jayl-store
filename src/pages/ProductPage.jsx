@@ -22,6 +22,7 @@ import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_li
 import Money from '@/components/Money'
 import HeroVideo from '@/components/HeroVideo'
 import { galleryBaseFor } from '@/lib/productMedia'
+import { finishedColorFor } from '@/lib/scarcity'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -312,11 +313,58 @@ function ColorLook({ look, className = '' }) {
   )
   const [mainLabel, sideLabel] = look.frontMode ? ['Front', 'Back'] : ['Back', 'Front']
   return (
-    <div className={cn('grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
+    <div className={cn('relative grid grid-cols-2 grid-rows-2 gap-px bg-paper-border', className)}>
       {tile(look.main, mainLabel, 'row-span-2', { overlay: look.overlay })}
       {tile(look.side, sideLabel, '')}
       {tile(look.collar, 'Collar', '', { crop: COLLAR_CROP })}
+      {look.finished && <FinishedStamp />}
     </div>
+  )
+}
+
+// Il cartello sul colore finito questa settimana (src/lib/scarcity.js).
+function OfferBadge({ text }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 border px-2 py-0.5 text-[10px] font-normal uppercase tracking-[0.2em]"
+      style={{ borderColor: 'rgba(196,163,90,0.5)', color: '#C4A35A' }}>
+      <span aria-hidden className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#C4A35A' }} />
+      {text}
+    </span>
+  )
+}
+
+function SwatchCross() {
+  return (
+    <svg viewBox="0 0 32 32" className="absolute inset-0 w-full h-full" aria-hidden>
+      <line x1="5" y1="5" x2="27" y2="27" stroke="#E5484D" strokeWidth="3" strokeLinecap="round" />
+      <line x1="27" y1="5" x2="5" y2="27" stroke="#E5484D" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function FinishedStamp({ small = false }) {
+  return (
+    <span aria-label="Finished" className="absolute inset-0 flex items-center justify-center pointer-events-none bg-white/35">
+      <span className={cn('border-2 border-ink text-ink bg-paper/90 uppercase font-semibold -rotate-12',
+        small ? 'text-[8px] tracking-[0.2em] px-1 py-0.5' : 'text-xl tracking-[0.4em] pl-[0.4em] px-6 py-2')}>
+        Finished
+      </span>
+    </span>
+  )
+}
+
+// Miniatura della galleria: col lato Front, il fronte liscio col disegno sul petto.
+function GalleryThumb({ src, look }) {
+  if (!look) return <img src={src} alt="" className="w-full h-full object-cover" onError={e => { e.currentTarget.style.display = 'none' }} />
+  return (
+    <span className="relative block w-full h-full bg-white">
+      <img src={look.main} alt="" className="absolute inset-0 w-full h-full object-contain" />
+      {look.overlay && (
+        <img src={look.overlay} alt="" aria-hidden className="absolute"
+          style={{ left: `${FRONT_PRINT_AREA.left * 100}%`, top: `${FRONT_PRINT_AREA.top * 100}%`, width: `${FRONT_PRINT_AREA.width * 100}%`, height: `${FRONT_PRINT_AREA.height * 100}%` }} />
+      )}
+      {look.finished && <FinishedStamp small />}
+    </span>
   )
 }
 
@@ -534,12 +582,15 @@ export default function ProductPage() {
   // compilare per prodotto, un capo nuovo sullo stesso blank la riceve da solo.
   const sizeGuide    = guideFor(product)
   const videoInfo    = parseVideoUrl(product?.videoUrl)
+  // Il colore finito questa settimana (src/lib/scarcity.js), mai nel drop.
+  const finishedColor = finishedColorFor(product, colors, { inDrop: productState(product?.id, dropCfg) === DROP })
 
   const [selectedSize,  setSelectedSize]  = useState(defaultSize)
   const [selectedColor, setSelectedColor] = useState(defaultColor)
   // Lato di stampa (null = quello principale). Si torna al principale se il
   // colore scelto non offre l'altro lato.
-  const [printSide, setPrintSide] = useState(null)
+  // Aperta da un vecchio link di una maglia front (formerIds): parte da Front.
+  const [printSide, setPrintSide] = useState(() => (product && product.id !== id ? 'front' : null))
   const printSides = sidesFor(product, selectedColor)
   const activeSide = printSides.includes(printSide) ? printSide : printSides[0] ?? null
   const altPrint = activeSide && activeSide !== mainSide(product)
@@ -558,6 +609,7 @@ export default function ProductPage() {
     const frontMode = altPrint && activeSide === 'front'
     return {
       frontMode,
+      finished: color === finishedColor,
       main:   frontMode ? plainFront : back,
       side:   frontMode ? plainMockup(color, 'back') : plainFront,
       collar: plainFront,
@@ -736,7 +788,18 @@ export default function ProductPage() {
   const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
   // displayImages is what the main carousel shows — same color filter as
   // galleryImages above, so the two can't disagree about an index.
-  const displayImages = galleryFilter(imagesForShownColors(galleryBaseFor(product, Boolean(videoInfo)), product?.colors, colors, product?.imageColors))
+  const baseImages = galleryFilter(imagesForShownColors(galleryBaseFor(product, Boolean(videoInfo)), product?.colors, colors, product?.imageColors))
+  // Con "Front" la galleria mostra solo i mockup col disegno sul petto: il
+  // video e le foto di schiena raccontano l'altra maglia.
+  const frontGallery  = altPrint && activeSide === 'front'
+  const displayImages = frontGallery ? baseImages.filter((u) => lookFor(u)) : baseImages
+  const galleryVideo  = frontGallery ? null : videoInfo
+  // Cambiando lato si riparte dalla prima vista di quel lato.
+  const sideSwitched = useRef(false)
+  useEffect(() => {
+    if (!sideSwitched.current) { sideSwitched.current = true; return }
+    setActiveImage(frontGallery || !videoInfo ? 0 : -1)
+  }, [frontGallery]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Random starting image — shuffle on every product open (not on re-render).
   //
@@ -761,11 +824,11 @@ export default function ProductPage() {
   const onHeroVideoEnd = () => setActiveImage((i) => (i === -1 && displayImages.length > 0 ? 0 : i))
 
   // Mobile gallery: video slot (index -1) + images (0..n-1)
-  const minSlide = videoInfo ? -1 : 0
+  const minSlide = galleryVideo ? -1 : 0
   const maxSlide = displayImages.length - 1
   // Map activeImage to a 0-based mobile index
-  const mobileSlideIdx    = videoInfo ? activeImage + 1 : activeImage
-  const totalMobileSlides = (videoInfo ? 1 : 0) + displayImages.length
+  const mobileSlideIdx    = galleryVideo ? activeImage + 1 : activeImage
+  const totalMobileSlides = (galleryVideo ? 1 : 0) + displayImages.length
 
   // Which sizes are available for the selected color (when variants exist)
   const availableSizesForColor = (product?.variants?.length && selectedColor)
@@ -796,6 +859,14 @@ export default function ProductPage() {
   const isSoldOut          = dropProductState === DROP && dropWin.state === LIVE && dropCap > 0
     && (dropSale?.sold ?? 0) >= (dropSale?.cap ?? dropCap)
   const dropWindowBlocked = isDropBefore || isDropClosed || isSoldOut
+  // Al posto del countdown in home: quanti giorni restano al prezzo di lancio.
+  const offerLeft = (() => {
+    if (dropProductState !== DROP || dropWin.state !== LIVE) return null
+    const ms = Date.parse(dropWin.target) - Date.now()
+    if (!(ms > 0)) return null
+    const days = Math.ceil(ms / 86400000)
+    return days <= 1 ? 'offer · last day' : `offer · ${days} days`
+  })()
 
   // "Opens 5 September" — derived from the real startsAt (never hardcoded),
   // so it can't drift from the countdown DropBlock shows for the same date.
@@ -803,7 +874,7 @@ export default function ProductPage() {
     ? `Opens ${new Date(dropCfg.current.startsAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })}`
     : 'Coming soon'
 
-  const canAddToCart = (!!selectedSize || !product?.sizes?.length) && !dropWindowBlocked
+  const canAddToCart = (!!selectedSize || !product?.sizes?.length) && !dropWindowBlocked && selectedColor !== finishedColor
 
   // ── Event handlers ───────────────────────────────────────────────────────────
 
@@ -1012,20 +1083,20 @@ export default function ProductPage() {
             style={{ transform: `translateX(-${mobileSlideIdx * 100}%)` }}
           >
             {/* Video slide */}
-            {videoInfo && (
+            {galleryVideo && (
               <div className="w-full h-full flex-shrink-0 bg-black">
-                {videoInfo.type === 'mp4' ? (
+                {galleryVideo.type === 'mp4' ? (
                   // Riquadro quadrato, video 9:16: si tiene la fascia alta,
                   // dove stanno la stampa e poi la faccia del Pokémon.
-                  <HeroVideo src={videoInfo.src} poster={displayImages[0]} label={product.name}
+                  <HeroVideo src={galleryVideo.src} poster={displayImages[0]} label={product.name}
                     loop={false} onEnded={onHeroVideoEnd}
                     objectPosition="50% 38%" className="w-full h-full object-cover" />
                 ) : (
                   <iframe
                     src={
-                      videoInfo.type === 'youtube'
-                        ? `https://www.youtube.com/embed/${videoInfo.id}?autoplay=0&rel=0`
-                        : `https://player.vimeo.com/video/${videoInfo.id}`
+                      galleryVideo.type === 'youtube'
+                        ? `https://www.youtube.com/embed/${galleryVideo.id}?autoplay=0&rel=0`
+                        : `https://player.vimeo.com/video/${galleryVideo.id}`
                     }
                     className="w-full h-full border-0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1068,7 +1139,7 @@ export default function ProductPage() {
             {Array.from({ length: totalMobileSlides }).map((_, i) => (
               <button
                 key={i}
-                onClick={() => setActiveImage(videoInfo ? i - 1 : i)}
+                onClick={() => setActiveImage(galleryVideo ? i - 1 : i)}
                 className={cn(
                   'rounded-full transition-all duration-200',
                   i === mobileSlideIdx
@@ -1098,8 +1169,9 @@ export default function ProductPage() {
             </p>
           )}
 
-          <p className={cn('text-xl font-semibold', t.price)}>
+          <p className={cn('text-xl font-semibold flex items-center gap-3', t.price)}>
             <Money cents={totalPrice} />
+            {offerLeft && <OfferBadge text={offerLeft} />}
           </p>
 
           <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
@@ -1156,10 +1228,12 @@ export default function ProductPage() {
                     {colors.map(c => (
                       <button
                         key={c.id}
-                        onClick={() => setSelectedColor(c.id)}
+                        onClick={() => c.id !== finishedColor && setSelectedColor(c.id)}
+                        disabled={c.id === finishedColor}
                         className={cn(
                           'flex items-center gap-1.5 pl-2 pr-3 py-1.5 border text-xs font-medium rounded-full whitespace-nowrap transition-all duration-150',
-                          selectedColor === c.id ? t.pillActive : t.pillInactive
+                          selectedColor === c.id ? t.pillActive : t.pillInactive,
+                          c.id === finishedColor && 'opacity-45 line-through cursor-not-allowed'
                         )}
                       >
                         <span
@@ -1318,6 +1392,13 @@ export default function ProductPage() {
                 time and carbon footprint. Typical production time is 2–4 business days.
               </p>
               <p>Shipping is always free, worldwide.</p>
+              <p className="pt-2 text-[11px] leading-relaxed opacity-70">
+                <strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
+                Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
+                merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
+                related names are trademarks of their respective owners. We make them to celebrate what
+                Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.
+              </p>
             </div>
           </Accordion>
         </div>
@@ -1404,18 +1485,18 @@ export default function ProductPage() {
 
             {/* ── Images / Video ── */}
             <div className="space-y-3">
-              {activeImage === -1 && videoInfo ? (
+              {activeImage === -1 && galleryVideo ? (
                 <div className="aspect-[4/5] overflow-hidden bg-black">
-                  {videoInfo.type === 'mp4' ? (
-                    <HeroVideo src={videoInfo.src} poster={displayImages[0]} label={product.name}
+                  {galleryVideo.type === 'mp4' ? (
+                    <HeroVideo src={galleryVideo.src} poster={displayImages[0]} label={product.name}
                       loop={false} onEnded={onHeroVideoEnd}
                       className="w-full h-full object-cover" />
                   ) : (
                     <iframe
                       src={
-                        videoInfo.type === 'youtube'
-                          ? `https://www.youtube.com/embed/${videoInfo.id}?autoplay=0&rel=0`
-                          : `https://player.vimeo.com/video/${videoInfo.id}`
+                        galleryVideo.type === 'youtube'
+                          ? `https://www.youtube.com/embed/${galleryVideo.id}?autoplay=0&rel=0`
+                          : `https://player.vimeo.com/video/${galleryVideo.id}`
                       }
                       className="w-full h-full border-0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1446,9 +1527,9 @@ export default function ProductPage() {
               )}
 
               {/* Thumbnail strip */}
-              {(videoInfo || displayImages.length > 1) && (
+              {(galleryVideo || displayImages.length > 1) && (
                 <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
-                  {videoInfo && (
+                  {galleryVideo && (
                     <button
                       onClick={() => setActiveImage(-1)}
                       className={cn(
@@ -1456,14 +1537,14 @@ export default function ProductPage() {
                         activeImage === -1 ? t.thumbnailActive : t.thumbnailInactive
                       )}
                     >
-                      {videoInfo.type === 'youtube' ? (
+                      {galleryVideo.type === 'youtube' ? (
                         <img
-                          src={`https://img.youtube.com/vi/${videoInfo.id}/mqdefault.jpg`}
+                          src={`https://img.youtube.com/vi/${galleryVideo.id}/mqdefault.jpg`}
                           alt="Video"
                           className="w-full h-full object-cover"
                         />
-                      ) : videoInfo.type === 'mp4' ? (
-                        <video src={`${videoInfo.src}#t=0.001`} muted playsInline preload="metadata"
+                      ) : galleryVideo.type === 'mp4' ? (
+                        <video src={`${galleryVideo.src}#t=0.001`} muted playsInline preload="metadata"
                           aria-hidden className="w-full h-full object-cover" />
                       ) : null}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40">
@@ -1480,12 +1561,7 @@ export default function ProductPage() {
                         i === activeImage ? t.thumbnailActive : t.thumbnailInactive
                       )}
                     >
-                      <img
-                        src={img}
-                        alt=""
-                        className="w-full h-full object-cover"
-                        onError={e => { e.currentTarget.style.display = 'none' }}
-                      />
+                      <GalleryThumb src={img} look={lookFor(img)} />
                     </button>
                   ))}
                 </div>
@@ -1513,8 +1589,9 @@ export default function ProductPage() {
                 </p>
               )}
 
-              <p className={cn('text-2xl font-semibold', t.price)}>
+              <p className={cn('text-2xl font-semibold flex items-center gap-3', t.price)}>
                 <Money cents={totalPrice} />
+                {offerLeft && <OfferBadge text={offerLeft} />}
                 {selectedFrame && selectedFrame !== 'none' && (
                   <span className={cn('text-sm font-normal ml-2', t.priceSub)}>(incl. frame)</span>
                 )}
@@ -1619,17 +1696,21 @@ export default function ProductPage() {
                         {colors.map(c => (
                           <button
                             key={c.id}
-                            onClick={() => setSelectedColor(c.id)}
-                            title={c.label}
+                            onClick={() => c.id !== finishedColor && setSelectedColor(c.id)}
+                            disabled={c.id === finishedColor}
+                            title={c.id === finishedColor ? `${c.label} — finished` : c.label}
                             className={cn(
-                              'w-8 h-8 rounded-full border-2 transition-all duration-200',
-                              selectedColor === c.id ? t.colorActive : t.colorInactive
+                              'relative w-8 h-8 rounded-full border-2 transition-all duration-200 overflow-hidden',
+                              selectedColor === c.id ? t.colorActive : t.colorInactive,
+                              c.id === finishedColor && 'opacity-45 cursor-not-allowed'
                             )}
                             style={{
                               background: resolveSwatchHex(c)
                                 ?? 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)',
                             }}
-                          />
+                          >
+                            {c.id === finishedColor && <SwatchCross />}
+                          </button>
                         ))}
                       </div>
                     )}
@@ -1753,6 +1834,13 @@ export default function ProductPage() {
                       transit time and carbon footprint. Typical production time is 2–4 business days.
                     </p>
                     <p>Shipping is always free, worldwide.</p>
+                    <p className="pt-2 text-[11px] leading-relaxed opacity-70">
+                      <strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
+                      Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
+                      merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
+                      related names are trademarks of their respective owners. We make them to celebrate what
+                      Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.
+                    </p>
                   </div>
                 </Accordion>
               </div>

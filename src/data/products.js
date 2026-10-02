@@ -39,4 +39,7 @@ export const products = [...adminProducts]
 
 export const getFeaturedProducts  = () => products.filter((p) => p.featured)
 export const getProductsBySection = (section) => products.filter((p) => p.section === section)
+// `formerIds`: le vecchie maglie front, ora dentro la back (stampa Front):
+// i link gia' in giro (Pinterest, Etsy) aprono la back invece di un 404.
 export const getProductById       = (id) => products.find((p) => p.id === id)
+  ?? products.find((p) => p.formerIds?.includes(id))

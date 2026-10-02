@@ -4,9 +4,7 @@ import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, use
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
-import GoldenTrail from './GoldenTrail'
 import { shortProductName as shortName } from '@/lib/utils'
-import { dropWindowState, LIVE } from './dropWindowState'
 import { homeVideoSrc, stripSourceRect } from '@/lib/heroVideo'
 import NewMark from './NewMark'
 import ShippedPrice from './ShippedPrice'
@@ -129,7 +127,6 @@ function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video }) {
 export default function DropHero() {
   const cfg = getDrop()
   const navigate = useNavigate()
-  const { state, target } = dropWindowState(cfg)
 
   // `current.productIds` resta popolato finche' l'admin non chiude il drop,
   // anche dopo endsAt — quindi CLOSED arriva sia da li' sia da un current gia'
@@ -348,16 +345,6 @@ export default function DropHero() {
           }}
         />
 
-        {/* Il tempo del prezzo di lancio, dentro la scheda davanti in cima
-            alla foto: la scia dorata di Zack, niente numeri. */}
-        {stage.w > 0 && state === LIVE && (
-          <div
-            className="absolute inset-x-0 z-20 pointer-events-none flex justify-center"
-            style={{ top: `calc(50% - ${H / 2 - 10}px)` }}
-          >
-            <GoldenTrail startsAt={cfg.current.startsAt} endsAt={target} width={`${Math.round(W * 0.5)}px`} />
-          </div>
-        )}
 
         {/* Il nome dentro la scheda davanti, sul fondo della foto. */}
         {stage.w > 0 && (
