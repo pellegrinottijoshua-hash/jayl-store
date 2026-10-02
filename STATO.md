@@ -7,13 +7,13 @@ Aggiornato: 2026-10-02 notte da Troy (home nuova, ruoli degli asset, SEO, 3 vide
 - **Drop 6 SHINY** (Gyarados, Charizard, Dragonite) live fino al 6/10 alle 18:00.
 - **Home (2/10):**
   - desktop: 3 schede affiancate, video insieme una volta, hover riparte; telefono: cilindro;
-  - al posto del countdown la **scia dorata di Zack**, che si consuma ("last call" nelle ultime 12 h, "almost gone" nell'ultima ora);
+  - niente countdown in home; nelle schede del drop "offer · N days". Ogni settimana: metà prodotti col 3° colore FINISHED, un'altra metà "only N left" (`src/lib/scarcity.js`).
   - cookie "Who doesn't like cookies?"; barra free shipping su ogni pagina; IG e TikTok accanto al logo su mobile.
 - **Asset prodotto (2/10)**, assegnati in admin (★ hero, # mockup, 🔍 dettaglio, 🏠 lifestyle home, vedi `src/lib/productMedia.js`):
   - **hero** = video da 3 s, oppure le 2 foto di schiena (uomo e donna, `heroShots`);
   - in scheda il video gira una volta e passa al mockup 1; su Objects si vede il video hero.
   - "+" sotto la miniatura nella lista prodotti: carica nella galleria del prodotto.
-- **SEO:** descrizione meta su tutte le 48 maglie. **Misure:** Umami senza cookie; GA4 e pixel Meta solo con consenso.
+- **Front dentro le back** (link vecchi aprono la back su Front); 23 video hero da `heros/`. **SEO:** meta su tutte. **Misure:** Umami senza cookie; GA4 e pixel Meta solo con consenso.
 - **Social dall'admin:** 1 clic per Pinterest, IG, FB; "apri e copia" per X, TikTok, YT.
 - **Pubblicazione:** `~/Desktop/jayl streetwear/pubblicazione/` (`da-joshua/`, `da-troy/bozze|approvati/`, `pubblicati/`, `LEGGIMI.md`).
   - **3 bozze da 10 s** in `da-troy/bozze/` (Screenshot, Pack opening, Stacco) con caption; 15 formati in `da-troy/FORMATI.md`; codice in `~/jayl-motion/src/Virali.tsx`.
