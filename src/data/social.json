@@ -51,7 +51,7 @@
       "casual style"
      ],
      "createdAt": "2026-10-02T01:07:41.946Z",
-     "usedAt": null
+     "usedAt": "2026-10-02T01:07:47.131Z"
     },
     {
      "id": "cmuq9k8vv1z23",
@@ -86,5 +86,17 @@
    ]
   }
  },
- "log": []
+ "log": [
+  {
+   "at": "2026-10-02T01:07:47.131Z",
+   "productId": "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+   "platform": "pinterest",
+   "format": "pin",
+   "captionId": "cmuq9k8vv0m8s",
+   "asset": "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_155630_8758b7f8-e590-4094-9c06-3acdc66c05a2.png",
+   "mode": "manual",
+   "postId": null,
+   "url": null
+  }
+ ]
 }
