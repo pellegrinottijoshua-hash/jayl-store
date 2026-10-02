@@ -16657,7 +16657,8 @@ export const adminProducts = [
     "heroShots": [
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163620_69d19933-1c25-4b78-87de-eb72b3524d44.png",
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163629_a0d06d87-770e-4187-8d59-2d570a5001d1.png"
-    ]
+    ],
+    "seoDescription": "Ursaring back-print T-shirt: mischief with a big bear heart. Large original JAYL artwork on premium cotton. Free worldwide shipping."
   },
   {
     "id": "meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him",
