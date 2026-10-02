@@ -7,6 +7,7 @@ import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 import Money from '@/components/Money'
+import CardMedia from '@/components/product/CardMedia'
 
 const dropCfg = getDrop()
 
@@ -137,14 +138,7 @@ export default function CollectionPage() {
                     New
                   </span>
                 )}
-                <img
-                  src={product.images?.[0] || product.image}
-                  alt={product.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  draggable={false}
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
-                />
+                <CardMedia product={product} imgClassName="transition-transform duration-500 group-hover:scale-[1.03]" />
               </div>
               {product.movement && (
                 <p className={`text-2xs font-sans tracking-label-xl uppercase ${mutedCls} mb-1`}>

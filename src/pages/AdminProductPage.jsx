@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { FFmpeg } from '@ffmpeg/ffmpeg'
-import { fetchFile, toBlobURL } from '@ffmpeg/util'
 // Full catalog incl. Etsy/Pinterest/Gelato fields — the storefront copy is stripped
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
@@ -12,6 +10,7 @@ import {
 } from '@/lib/printCanvas'
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
+import { fileToBase64, compressImage, compressVideo, sanitizeFilename } from '@/lib/adminUpload'
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
 import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
 import SocialStatusPanel from '@/components/admin/SocialStatusPanel'
@@ -25,7 +24,6 @@ const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijosh
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const fmt = cents => `€${(cents / 100).toFixed(2)}`
-const sanitizeFilename = name => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
 
 function parseVideoUrl(url) {
   if (!url) return null
@@ -51,123 +49,6 @@ async function api(action, data, signal) {
   return json
 }
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader()
-    r.onload  = () => resolve(r.result)
-    r.onerror = reject
-    r.readAsDataURL(file)
-  })
-}
-
-// Compress an image file so it fits inside the 3.5 MB base64 limit.
-// Videos are returned unchanged (can't compress in the browser).
-// Falls back to the original file on any error.
-function compressImage(file, maxMB = 3.2) {
-  if (!file.type.startsWith('image/')) return Promise.resolve(file)
-  if (file.size <= maxMB * 1024 * 1024) return Promise.resolve(file)
-  return new Promise(resolve => {
-    const img = new Image()
-    const url = URL.createObjectURL(file)
-    img.onload = () => {
-      URL.revokeObjectURL(url)
-      const { width, height } = img
-      const canvas = document.createElement('canvas')
-      const tryCompress = (quality, scale) => {
-        canvas.width  = Math.round(width  * scale)
-        canvas.height = Math.round(height * scale)
-        const ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        canvas.toBlob(blob => {
-          if (!blob) { resolve(file); return }
-          if (blob.size <= maxMB * 1024 * 1024 || quality <= 0.25) {
-            const baseName = file.name.replace(/\.[^.]+$/, '')
-            resolve(new File([blob], baseName + '.jpg', { type: 'image/jpeg' }))
-          } else if (quality > 0.45) {
-            tryCompress(quality - 0.15, scale)
-          } else {
-            tryCompress(quality - 0.1, scale * 0.8)
-          }
-        }, 'image/jpeg', quality)
-      }
-      tryCompress(0.85, 1)
-    }
-    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
-    img.src = url
-  })
-}
-
-// ── Video compression (ffmpeg.wasm single-threaded, no COOP/COEP needed) ─────
-// Lazily loads the WASM core from CDN on first use.
-let _ffmpeg = null
-let _ffmpegLoading = false
-let _ffmpegCallbacks = []
-
-async function ensureFFmpeg(onLog) {
-  if (_ffmpeg) return _ffmpeg
-  if (_ffmpegLoading) {
-    return new Promise((resolve, reject) => {
-      _ffmpegCallbacks.push({ resolve, reject })
-    })
-  }
-  _ffmpegLoading = true
-  try {
-    const ff = new FFmpeg()
-    if (onLog) ff.on('log', ({ message }) => onLog(message))
-    const baseURL = 'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/esm'
-    await ff.load({
-      coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`,   'text/javascript'),
-      wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-    })
-    _ffmpeg = ff
-    _ffmpegCallbacks.forEach(cb => cb.resolve(ff))
-    return ff
-  } catch (err) {
-    _ffmpegCallbacks.forEach(cb => cb.reject(err))
-    throw err
-  } finally {
-    _ffmpegLoading = false
-    _ffmpegCallbacks = []
-  }
-}
-
-async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
-  if (!/\.(mp4|mov|webm|avi|mkv|m4v)$/i.test(file.name)) return file
-  if (file.size <= maxMB * 1024 * 1024) return file
-
-  onStatus?.('Caricamento codec video…')
-  const ff = await ensureFFmpeg()
-
-  const ext   = file.name.match(/\.[^.]+$/)?.[0] ?? '.mp4'
-  const inFile  = `input${ext}`
-  const outFile = 'output.mp4'
-
-  ff.on('progress', ({ progress }) => onProgress?.(Math.round(progress * 100)))
-
-  onStatus?.('Compressione video…')
-  await ff.writeFile(inFile, await fetchFile(file))
-  await ff.exec([
-    '-i', inFile,
-    '-vf', 'scale=w=1280:h=720:force_original_aspect_ratio=decrease,pad=ceil(iw/2)*2:ceil(ih/2)*2',
-    '-c:v', 'libx264', '-preset', 'fast', '-crf', '30',
-    '-c:a', 'aac', '-b:a', '96k',
-    '-movflags', '+faststart',
-    '-y', outFile,
-  ])
-
-  const data = await ff.readFile(outFile)
-  await ff.deleteFile(inFile).catch(() => {})
-  await ff.deleteFile(outFile).catch(() => {})
-  ff.off('progress')
-
-  const blob = new Blob([data.buffer], { type: 'video/mp4' })
-  const baseName = file.name.replace(/\.[^.]+$/, '')
-  const result   = new File([blob], `${baseName}.mp4`, { type: 'video/mp4' })
-
-  onStatus?.(`Compresso: ${(result.size / 1024 / 1024).toFixed(1)} MB`)
-  // Return compressed only if smaller
-  return result.size < file.size ? result : file
-}
 
 // ── Shared UI ─────────────────────────────────────────────────────────────────
 
@@ -212,59 +93,68 @@ function Section({ title, icon, color = 'gray', children }) {
 
 // ── Image Pool — left column ───────────────────────────────────────────────────
 // Shows ALL image sources: Gelato defaults, uploaded externals, AI-generated.
-// Hover each thumbnail to assign it as Hero Desktop/Mobile or add to Sequenza.
+// Hover a thumbnail to give it a role (src/lib/productMedia.js):
+//   ★ Hero      — video hero (videoUrl) o foto hero (heroShots, max 2): Objects + apertura scheda
+//   # Mockup    — galleria del catalogo, in ordine (mockup 1 = dopo il video)
+//   🔍 Dettaglio — "hold to reveal"
+//   🏠 Lifestyle — solo nelle sezioni a foto piena della home (heroImage)
 
-function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage }) {
+const MAX_HERO_SHOTS = 2
+
+function PoolThumb({ img, heroShots, heroVideo, mobileHero, sequenza, detailImage, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage }) {
   const url      = img.url
-  const isDesk   = desktopHero  === url
-  const isMob    = mobileHero   === url
+  const isVid    = /\.(mp4|mov|webm)$/i.test(url)
+  const shotIdx  = heroShots.indexOf(url)
+  const isHero   = isVid ? heroVideo === url : shotIdx !== -1
+  const isLife   = mobileHero   === url
   const isDetail = detailImage  === url
   const seqIdx   = sequenza.indexOf(url)
   const inSeq    = seqIdx !== -1
-  const isVid    = /\.(mp4|mov|webm)$/i.test(url)
   const canDel   = !!img.path  // only GitHub-stored images (uploaded/generated) can be deleted
+  const heroFull = !isVid && !isHero && heroShots.length >= MAX_HERO_SHOTS
+  const btn = (on, onCls) => `w-7 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
+    on ? onCls : 'bg-gray-900 border-gray-600 hover:border-gray-400 text-gray-300'
+  }`
   return (
     <div className="relative group flex-shrink-0 w-16 h-16">
       <div className={`w-full h-full border-2 overflow-hidden transition-all ${
-        isDetail ? 'border-amber-400' : isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
+        isHero ? 'border-yellow-400' : isDetail ? 'border-amber-600' : isLife ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
       }`}>
         {isVid
-          ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
+          ? <video src={`${url}#t=0.5`} muted playsInline preload="metadata" className="w-full h-full object-cover" />
           : <img src={url} alt={img.name} className="w-full h-full object-cover"
               onError={e => { e.currentTarget.style.opacity = '0.3' }} />
         }
       </div>
       {/* Role badges */}
-      {isDesk   && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
-      {isMob    && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
+      {isHero   && <div className="absolute top-0 left-0 bg-yellow-400 text-black text-[8px] px-0.5 py-px font-bold leading-none pointer-events-none z-10">★{isVid ? ' 🎬' : shotIdx + 1}</div>}
+      {isLife   && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🏠</div>}
       {isDetail && <div className="absolute bottom-0 right-0 bg-amber-500 text-black text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🔍</div>}
-      {inSeq    && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
-      {/* Hover action overlay — 2 rows: top (assign) + bottom (delete) */}
+      {inSeq    && <div className="absolute bottom-0 left-0 bg-emerald-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
+      {isVid && !isHero && <div className="absolute bottom-0 left-0 bg-gray-800 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🎬</div>}
+      {/* Hover action overlay — role buttons + delete */}
       <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-between py-1 z-20">
-        {/* 2×2 grid of assign buttons — fits any thumbnail width */}
-        <div className="grid grid-cols-2 gap-0.5">
-          <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
-            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
-              isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
-            }`}>🖥</button>
-          <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
-            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
-              isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
-            }`}>📱</button>
-          <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
-            className={`w-7 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
-              inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
-            }`}>{inSeq ? '✓' : '+'}</button>
-          <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio (Hold to reveal)"
-            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
-              isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
-            }`}>🔍</button>
-        </div>
+        {isVid ? (
+          <button onClick={() => onSetHeroVideo(isHero ? '' : url)} title={isHero ? 'Togli come video hero' : 'Video hero (Objects + apertura scheda)'}
+            className={`${btn(isHero, 'bg-yellow-400 border-yellow-300 text-black')} w-14`}>★ hero</button>
+        ) : (
+          <div className="grid grid-cols-2 gap-0.5">
+            <button onClick={() => !heroFull && onToggleHeroShot(url)} disabled={heroFull}
+              title={heroFull ? `Già ${MAX_HERO_SHOTS} foto hero` : isHero ? 'Togli dalle foto hero' : 'Foto hero (senza video: apre la scheda e sta su Objects)'}
+              className={`${btn(isHero, 'bg-yellow-400 border-yellow-300 text-black')} ${heroFull ? 'opacity-30' : ''}`}>★</button>
+            <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Togli dai mockup' : 'Aggiungi ai mockup (galleria)'}
+              className={btn(inSeq, 'bg-emerald-700 border-emerald-600 text-white')}>{inSeq ? seqIdx + 1 : '#'}</button>
+            <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Dettaglio (hold to reveal)"
+              className={btn(isDetail, 'bg-amber-500 border-amber-400 text-black')}>🔍</button>
+            <button onClick={() => onSetMobileHero(isLife ? null : url)} title="Lifestyle home (sezioni a foto piena)"
+              className={btn(isLife, 'bg-purple-600 border-purple-500')}>🏠</button>
+          </div>
+        )}
         {/* Row 2: delete (only for GitHub images) */}
         {canDel && (
           <button
             onClick={() => onDeleteImage(img)}
-            title="Elimina immagine"
+            title="Elimina"
             className="w-full text-[9px] font-bold text-red-400 hover:bg-red-900/40 transition-colors py-0.5 text-center border-t border-gray-700/50"
           >✕ elimina</button>
         )}
@@ -275,8 +165,8 @@ function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetD
 
 function ImagePool({
   gelatoImages, uploadedImages, generatedImages,
-  desktopHero, mobileHero, sequenza, detailImage,
-  onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage,
+  heroShots, heroVideo, mobileHero, sequenza, detailImage,
+  onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage,
   productId, onUploaded, loading, onExcludeGelato,
 }) {
   const [uploading,   setUploading]   = useState(false)
@@ -331,7 +221,8 @@ function ImagePool({
     // Gelato / external images have no GitHub path → they can't be deleted, only excluded from this product
     if (!img.path) {
       if (!window.confirm(`Rimuovere "${img.name}" dai mockup Gelato di questo prodotto?`)) return
-      if (desktopHero === img.url)  onSetDesktopHero(null)
+      if (heroShots.includes(img.url)) onToggleHeroShot(img.url)
+      if (heroVideo   === img.url)  onSetHeroVideo('')
       if (mobileHero  === img.url)  onSetMobileHero(null)
       if (detailImage === img.url)  onSetDetailImage(null)
       if (sequenza.includes(img.url)) onToggleSequenza(img.url)
@@ -341,7 +232,8 @@ function ImagePool({
     if (!window.confirm(`Eliminare "${img.name}"? L'azione è irreversibile.`)) return
     try {
       // Unassign from all roles before deleting
-      if (desktopHero === img.url)  onSetDesktopHero(null)
+      if (heroShots.includes(img.url)) onToggleHeroShot(img.url)
+      if (heroVideo   === img.url)  onSetHeroVideo('')
       if (mobileHero  === img.url)  onSetMobileHero(null)
       if (detailImage === img.url)  onSetDetailImage(null)
       if (sequenza.includes(img.url)) onToggleSequenza(img.url)
@@ -350,9 +242,9 @@ function ImagePool({
     } catch (e) {
       alert('Errore eliminazione: ' + e.message)
     }
-  }, [desktopHero, mobileHero, detailImage, sequenza, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded, onExcludeGelato])
+  }, [heroShots, heroVideo, mobileHero, detailImage, sequenza, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded, onExcludeGelato])
 
-  const thumbProps = { desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
+  const thumbProps = { heroShots, heroVideo, mobileHero, sequenza, detailImage, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
 
   const PoolSection = ({ label, images, emptyMsg }) => {
     if (!images?.length) return emptyMsg ? <p className="text-gray-700 text-[10px] italic">{emptyMsg}</p> : null
@@ -410,7 +302,7 @@ function ImagePool({
       )}
 
       <p className="text-[9px] text-gray-700 leading-relaxed border-t border-gray-800 pt-2">
-        Hover → 🖥 Hero Desktop &nbsp;·&nbsp; 📱 Hero Mobile &nbsp;·&nbsp; + Sequenza
+        Hover → ★ Hero (video, o fino a 2 foto) &nbsp;·&nbsp; # Mockup &nbsp;·&nbsp; 🔍 Dettaglio &nbsp;·&nbsp; 🏠 Lifestyle home
       </p>
     </div>
   )
@@ -419,10 +311,9 @@ function ImagePool({
 // ── Media Panel — Hero + dettaglio (controlled) ──────────────────────────────
 // Purely display: all state lives in AdminProductPage.
 // Assignment happens from PoolThumb hover buttons; this panel shows the result.
-// Niente più riordino della sequenza (30/9): la scheda mostra le 2 hero e il
-// trittico dei mockup, l'ordine di product.images non si vede più.
+// Ruoli: vedi src/lib/productMedia.js.
 
-function MediaPanel({ desktopHero, mobileHero, detailImage, onSetDesktopHero, onSetMobileHero, onSetDetailImage, onSave, saving, msg }) {
+function MediaPanel({ heroVideo, heroShots, mobileHero, detailImage, onSetHeroVideo, onToggleHeroShot, onSetMobileHero, onSetDetailImage, onSave, saving, msg }) {
 
   const HeroSlot = ({ url, label, aspect, color, onClear }) => {
     const isVideo = url && /\.(mp4|mov|webm)$/i.test(url)
@@ -431,7 +322,7 @@ function MediaPanel({ desktopHero, mobileHero, detailImage, onSetDesktopHero, on
         <p className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${color}`}>{label}</p>
         <div className={`w-full overflow-hidden border-2 flex items-center justify-center ${aspect} ${
           url
-            ? (color === 'text-blue-400' ? 'border-blue-700' : 'border-purple-700')
+            ? (color === 'text-yellow-400' ? 'border-yellow-600' : color === 'text-amber-400' ? 'border-amber-600' : 'border-purple-700')
             : 'border-dashed border-gray-700'
         }`}>
           {url ? (
@@ -470,11 +361,34 @@ function MediaPanel({ desktopHero, mobileHero, detailImage, onSetDesktopHero, on
 
         {/* ── HERO ── */}
         <div>
-          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-3">Hero</p>
-          <div className="grid grid-cols-2 gap-4">
-            <HeroSlot url={desktopHero} label="🖥 Desktop · 16:9" aspect="aspect-video" color="text-blue-400"
-              onClear={() => onSetDesktopHero(null)} />
-            <HeroSlot url={mobileHero} label="📱 Mobile · 9:16" aspect="aspect-[9/16] max-h-48" color="text-purple-400"
+          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-1">★ Hero — Objects e apertura scheda</p>
+          <p className="text-[10px] text-gray-700 mb-3">
+            Col video: gira una volta e la scheda passa al mockup 1; le foto hero restano per Objects e la miniatura.
+            Senza video: le foto hero aprono la galleria.
+          </p>
+          <div className="grid grid-cols-3 gap-3">
+            {heroVideo ? (
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-wider mb-2 text-yellow-400">🎬 Video</p>
+                <video src={heroVideo} muted playsInline loop autoPlay className="w-full aspect-[9/16] max-h-48 object-cover border-2 border-yellow-500" />
+                <button onClick={() => onSetHeroVideo('')} className="text-[10px] text-gray-600 hover:text-red-400 mt-1 transition-colors">rimuovi</button>
+              </div>
+            ) : (
+              <HeroSlot url={null} label="🎬 Video" aspect="aspect-[9/16] max-h-48" color="text-yellow-400" onClear={() => {}} />
+            )}
+            {[0, 1].map(i => (
+              <HeroSlot key={i} url={heroShots[i] || null} label={`★ Foto ${i + 1}`} aspect="aspect-[9/16] max-h-48" color="text-yellow-400"
+                onClear={() => heroShots[i] && onToggleHeroShot(heroShots[i])} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── LIFESTYLE HOME ── */}
+        <div>
+          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-1">🏠 Lifestyle home</p>
+          <p className="text-[10px] text-gray-700 mb-3">Solo nelle sezioni a foto piena in fondo alla home.</p>
+          <div className="w-32">
+            <HeroSlot url={mobileHero} label="" aspect="aspect-[9/16] max-h-48" color="text-purple-400"
               onClear={() => onSetMobileHero(null)} />
           </div>
         </div>
@@ -794,7 +708,10 @@ export default function AdminProductPage() {
   const [altsMsg,          setAltsMsg]          = useState('')
 
   // ── Lifted media state ────────────────────────────────────────────────────────
+  // `image` (miniatura per carrello, checkout, anteprime social): non e' piu'
+  // un ruolo da assegnare, si ricava dalla prima foto hero o dal mockup 1.
   const [desktopHero,    setDesktopHero]    = useState(null)
+  const [heroShots,      setHeroShots]      = useState([])   // foto hero (max 2)
   const [mobileHero,     setMobileHero]     = useState(null)
   const [detailImage,    setDetailImage]    = useState(null)
   const [sequenza,       setSequenza]       = useState([])   // ordered array of URLs
@@ -836,6 +753,7 @@ export default function AdminProductPage() {
       setRelatedProducts(Array.isArray(p.relatedProducts) ? p.relatedProducts : [])
       // media
       setDesktopHero(p.image     || null)
+      setHeroShots(Array.isArray(p.heroShots) ? p.heroShots : [])
       setMobileHero(p.heroImage   || null)
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
@@ -902,24 +820,38 @@ export default function AdminProductPage() {
 
   // ── Media handlers ────────────────────────────────────────────────────────
   const toggleSequenza = useCallback(url => {
-    setSequenza(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url])
+    setSequenza(prev => {
+      if (prev.includes(url)) return prev.filter(u => u !== url)
+      setHeroShots(h => h.filter(u => u !== url))
+      return [...prev, url]
+    })
+  }, [])
+  // Una foto e' hero oppure mockup: diventare hero la toglie dai mockup.
+  const toggleHeroShot = useCallback(url => {
+    setHeroShots(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url].slice(0, MAX_HERO_SHOTS))
+    setSequenza(prev => prev.filter(u => u !== url))
   }, [])
 
   const handleSaveMedia = useCallback(async () => {
     if (!id) return
     setSavingMedia(true); setMediaMsg('')
     try {
+      const thumb = heroShots[0] || desktopHero || sequenza[0] || null
       await api('update-product-images', {
         productId:   id,
         images:      sequenza,
+        heroShots,
+        videoUrl:    videoUrl.trim(),
         heroImage:   mobileHero   || null,
-        image:       desktopHero  || sequenza[0] || null,
+        image:       thumb,
         detailImage: detailImage  || null,
       })
       setProduct(prev => prev ? {
         ...prev,
         images:      sequenza,
-        image:       desktopHero  || sequenza[0] || prev.image,
+        heroShots,
+        videoUrl:    videoUrl.trim() || undefined,
+        image:       thumb || prev.image,
         heroImage:   mobileHero   || prev.heroImage,
         detailImage: detailImage  || null,
       } : prev)
@@ -930,7 +862,7 @@ export default function AdminProductPage() {
     } finally {
       setSavingMedia(false)
     }
-  }, [id, sequenza, desktopHero, mobileHero, detailImage])
+  }, [id, sequenza, heroShots, videoUrl, desktopHero, mobileHero, detailImage])
 
   const videoInfo = parseVideoUrl(videoUrl)
 
@@ -1200,7 +1132,8 @@ export default function AdminProductPage() {
         adminManaged: true,
         // ── media (unified save — no need to press a separate button) ──
         images:      sequenza,
-        image:       desktopHero  || sequenza[0] || product.image  || null,
+        heroShots,
+        image:       heroShots[0] || desktopHero  || sequenza[0] || product.image  || null,
         heroImage:   mobileHero   || product.heroImage || null,
         detailImage: detailImage  || null,
         imageAlts:   Object.keys(imageAlts).length > 0 ? imageAlts : undefined,
@@ -1718,11 +1651,13 @@ export default function AdminProductPage() {
               gelatoImages={gelatoImages}
               uploadedImages={uploadedImages}
               generatedImages={generatedImages}
-              desktopHero={desktopHero}
+              heroShots={heroShots}
+              heroVideo={videoUrl.trim()}
               mobileHero={mobileHero}
               sequenza={sequenza}
               detailImage={detailImage}
-              onSetDesktopHero={setDesktopHero}
+              onToggleHeroShot={toggleHeroShot}
+              onSetHeroVideo={setVideoUrl}
               onSetMobileHero={setMobileHero}
               onToggleSequenza={toggleSequenza}
               onSetDetailImage={setDetailImage}
@@ -1734,12 +1669,13 @@ export default function AdminProductPage() {
 
             {/* Image status summary */}
             <div className="bg-[#0a0a0a] border border-gray-800/60 px-3 py-2 space-y-1 text-[11px] text-gray-600">
-              {desktopHero && <div className="flex items-center gap-1.5"><span className="text-blue-400">🖥</span><span className="text-gray-500 truncate">Hero desktop assegnato</span></div>}
-              {mobileHero  && <div className="flex items-center gap-1.5"><span className="text-purple-400">📱</span><span className="text-gray-500 truncate">Hero mobile assegnato</span></div>}
+              {videoInfo?.type === 'mp4' && <div className="flex items-center gap-1.5"><span className="text-yellow-400">★</span><span className="text-gray-500 truncate">Video hero</span></div>}
+              {heroShots.length > 0 && <div className="flex items-center gap-1.5"><span className="text-yellow-400">★</span><span className="text-gray-500 truncate">{heroShots.length} foto hero{videoInfo ? ' (col video non vanno in galleria)' : ''}</span></div>}
+              {sequenza.length > 0 && <div className="flex items-center gap-1.5"><span className="text-emerald-500">#</span><span className="text-gray-500">{sequenza.length} mockup in galleria</span></div>}
               {detailImage && <div className="flex items-center gap-1.5"><span className="text-amber-400">🔍</span><span className="text-gray-500 truncate">Dettaglio assegnato</span></div>}
-              {sequenza.length > 0 && <div className="flex items-center gap-1.5"><span>🖼</span><span className="text-gray-500">{sequenza.length} immagini in sequenza</span></div>}
+              {mobileHero  && <div className="flex items-center gap-1.5"><span className="text-purple-400">🏠</span><span className="text-gray-500 truncate">Lifestyle home assegnata</span></div>}
               {Object.keys(imageAlts).length > 0 && <div className="flex items-center gap-1.5"><span className="text-amber-400">✨</span><span className="text-gray-500">{Object.keys(imageAlts).length} alt text pronti</span></div>}
-              {!desktopHero && !mobileHero && !sequenza.length && <span className="text-gray-700 italic">Nessuna immagine assegnata</span>}
+              {!heroShots.length && !videoInfo && !mobileHero && !sequenza.length && <span className="text-gray-700 italic">Nessuna immagine assegnata</span>}
             </div>
           </div>
 
@@ -1749,10 +1685,12 @@ export default function AdminProductPage() {
             {/* ── Hero ── */}
             {isEditable && (
               <MediaPanel
-                desktopHero={desktopHero}
+                heroVideo={videoInfo?.type === 'mp4' ? videoInfo.src : null}
+                heroShots={heroShots}
                 mobileHero={mobileHero}
                 detailImage={detailImage}
-                onSetDesktopHero={setDesktopHero}
+                onSetHeroVideo={setVideoUrl}
+                onToggleHeroShot={toggleHeroShot}
                 onSetMobileHero={setMobileHero}
                 onSetDetailImage={setDetailImage}
                 onSave={handleSaveMedia}

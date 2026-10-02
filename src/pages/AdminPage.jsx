@@ -1994,6 +1994,49 @@ function BottomSheet({ open, onClose, title, children, fullHeight = false }) {
 
 // ── Product Admin Card ────────────────────────────────────────────────────────
 
+// "+" sotto la miniatura: carica un'immagine o un video nella galleria del
+// prodotto ("Importate" nella scheda), dove poi gli si da' un ruolo (hero,
+// mockup, dettaglio, lifestyle). Stesso caricamento della scheda (adminUpload).
+function QuickAddAsset({ product }) {
+  const navigate = useNavigate()
+  const fileRef = useRef(null)
+  const [state, setState] = useState('') // '' | testo di stato | 'done' | '⚠ …'
+  const upload = async (files) => {
+    if (!files?.length) return
+    try {
+      const { prepareProductAsset } = await import('@/lib/adminUpload')
+      let n = 0
+      for (const raw of Array.from(files)) {
+        setState(`⏫ ${++n}/${files.length}`)
+        const asset = await prepareProductAsset(raw, { onStatus: (m) => setState(m) })
+        await api('upload-image', { productId: product.id, ...asset })
+      }
+      setState('done')
+    } catch (e) {
+      setState(`⚠ ${e.message}`)
+    } finally {
+      if (fileRef.current) fileRef.current.value = ''
+    }
+  }
+  return (
+    <div onClick={(e) => e.stopPropagation()} className="flex flex-col items-center">
+      <input ref={fileRef} type="file" accept="image/*,video/mp4,video/quicktime,video/webm" multiple className="hidden"
+        onChange={(e) => upload(e.target.files)} />
+      {state === 'done' ? (
+        <button onClick={() => navigate(`/admin/product/${product.id}`)} title="Caricato: apri la scheda e dagli un ruolo"
+          className="mt-1 text-[9px] leading-tight text-emerald-400 hover:text-emerald-300 text-center">✓ ruolo ›</button>
+      ) : state ? (
+        <span className={`mt-1 text-[9px] leading-tight text-center max-w-[44px] ${state.startsWith('⚠') ? 'text-red-400' : 'text-amber-400 animate-pulse'}`} title={state}>
+          {state.startsWith('⚠') ? '⚠' : state.slice(0, 8)}
+        </span>
+      ) : (
+        <button onClick={() => fileRef.current?.click()} title="Aggiungi immagine o video alla galleria del prodotto"
+          className="mt-1 w-11 h-6 border border-dashed border-gray-700 hover:border-amber-500 text-gray-500 hover:text-amber-400 text-sm leading-none transition-colors">+</button>
+      )}
+    </div>
+  )
+}
+
 // Colori in negozio, direttamente dalla lista: tocchi fino a 3 pallini (il
 // primo toccato e' quello d'apertura) e si salva da solo. Nessuno scelto =
 // regola automatica (colore d'apertura, nero, bianco — src/lib/shownColors.js).
@@ -2183,16 +2226,19 @@ function ProductAdminCard({ product: p, onGenerate, onGallery, onDelete, deletin
       className="flex items-center gap-3 px-4 py-3 border-b border-gray-800/50 active:bg-gray-800/40 cursor-pointer transition-colors"
       onClick={() => navigate(`/admin/product/${p.id}`)}
     >
-      {/* Thumbnail */}
-      <div className="w-11 h-11 flex-shrink-0 bg-gray-800 overflow-hidden">
-        {thumb ? (
-          <img src={thumb} alt="" className="w-full h-full object-cover"
-            onError={e => { e.currentTarget.style.display = 'none' }} />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-700 text-lg">
-            {p.section === 'art' ? '🖼' : '👕'}
-          </div>
-        )}
+      {/* Thumbnail + aggiungi asset */}
+      <div className="flex flex-col items-center flex-shrink-0 self-start">
+        <div className="w-11 h-11 bg-gray-800 overflow-hidden">
+          {thumb ? (
+            <img src={thumb} alt="" className="w-full h-full object-cover"
+              onError={e => { e.currentTarget.style.display = 'none' }} />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-700 text-lg">
+              {p.section === 'art' ? '🖼' : '👕'}
+            </div>
+          )}
+        </div>
+        <QuickAddAsset product={p} />
       </div>
       {/* Info */}
       <div className="flex-1 min-w-0">

@@ -6,6 +6,7 @@ import { useThemeStore } from '@/store/themeStore'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
 import Money from '@/components/Money'
+import CardMedia from '@/components/product/CardMedia'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
 const dropCfg = getDrop()
@@ -106,14 +107,7 @@ export default function ObjectsPage() {
                       New
                     </span>
                   )}
-                  <img
-                    src={product.images?.[0] || product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    draggable={false}
-                    onError={(e) => { e.currentTarget.style.display = 'none' }}
-                  />
+                  <CardMedia product={product} imgClassName="transition-transform duration-500 group-hover:scale-[1.03]" />
                 </div>
                 <h3 className="font-display text-base text-cream leading-tight mb-1">{product.name}</h3>
                 <p className="text-sm text-text-muted">from <Money cents={basePriceFor(product.id, null, product, dropCfg)} /></p>
@@ -153,14 +147,7 @@ export default function ObjectsPage() {
                     className="w-full overflow-hidden bg-surface"
                     style={{ aspectRatio: '1 / 1' }}
                   >
-                    <img
-                      src={product.images?.[0] || product.image}
-                      alt={product.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                      draggable={false}
-                      onError={(e) => { e.currentTarget.style.display = 'none' }}
-                    />
+                    <CardMedia product={product} imgClassName="transition-transform duration-500 group-hover:scale-[1.03]" />
                   </div>
                   <div className="mt-3">
                     <h3 className="font-display text-base sm:text-lg text-cream leading-tight mb-1">

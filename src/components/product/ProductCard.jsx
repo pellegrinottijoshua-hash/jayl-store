@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { useWishlistStore } from '@/store/wishlistStore'
 import { getDrop, basePriceFor } from '../../../api/_lib/drop.js'
 import Money from '@/components/Money'
+import CardMedia from '@/components/product/CardMedia'
 
 export default function ProductCard({ product, className, light = false }) {
   const { toggle, isWishlisted } = useWishlistStore()
@@ -36,15 +37,7 @@ export default function ProductCard({ product, className, light = false }) {
           light ? 'bg-paper' : 'bg-surface-2'
         )}
       >
-        <img
-          src={product.images?.[0] || product.image}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none'
-          }}
-        />
+        <CardMedia product={product} imgClassName="transition-transform duration-700 group-hover:scale-105" />
 
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />

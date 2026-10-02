@@ -21,6 +21,7 @@ import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWin
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
 import Money from '@/components/Money'
 import HeroVideo from '@/components/HeroVideo'
+import { galleryBaseFor } from '@/lib/productMedia'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -665,7 +666,7 @@ export default function ProductPage() {
   // Whichever image array is actually shown in the gallery (hero gallery takes
   // priority), minus the photos of the colors the swatches no longer offer.
   const galleryImages = galleryFilter(imagesForShownColors(
-    product?.heroImages?.length > 0 ? product.heroImages : product?.images,
+    galleryBaseFor(product, Boolean(videoInfo)),
     product?.colors, colors, product?.imageColors,
   ))
 
@@ -731,16 +732,11 @@ export default function ProductPage() {
   // what checkout actually charges.
   const totalPrice = basePriceFor(product?.id, sizeObj, product, dropCfg) + (frameObj?.price ?? 0)
 
-  // Normalise image list (fallback to product.image)
-  const productImages = product?.images?.length > 0
-    ? product.images
-    : (product?.image ? [product.image] : [])
-
   // Hero mode: admin-selected editorial images override the default gallery
   const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
   // displayImages is what the main carousel shows — same color filter as
   // galleryImages above, so the two can't disagree about an index.
-  const displayImages = galleryFilter(imagesForShownColors(heroImages ?? productImages, product?.colors, colors, product?.imageColors))
+  const displayImages = galleryFilter(imagesForShownColors(galleryBaseFor(product, Boolean(videoInfo)), product?.colors, colors, product?.imageColors))
 
   // Random starting image — shuffle on every product open (not on re-render).
   //
@@ -758,6 +754,11 @@ export default function ProductPage() {
       .filter((i) => !findImageColor(i, product.colors || [], displayImages, product.imageColors))
     if (neutral.length > 1) setActiveImage(neutral[Math.floor(Math.random() * neutral.length)])
   }, [product?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Il video hero gira una volta, poi la galleria passa da sola al mockup 1
+  // (solo se chi guarda e' ancora sul video: non si strappa via chi sta
+  // sfogliando altro).
+  const onHeroVideoEnd = () => setActiveImage((i) => (i === -1 && displayImages.length > 0 ? 0 : i))
 
   // Mobile gallery: video slot (index -1) + images (0..n-1)
   const minSlide = videoInfo ? -1 : 0
@@ -1017,6 +1018,7 @@ export default function ProductPage() {
                   // Riquadro quadrato, video 9:16: si tiene la fascia alta,
                   // dove stanno la stampa e poi la faccia del Pokémon.
                   <HeroVideo src={videoInfo.src} poster={displayImages[0]} label={product.name}
+                    loop={false} onEnded={onHeroVideoEnd}
                     objectPosition="50% 38%" className="w-full h-full object-cover" />
                 ) : (
                   <iframe
@@ -1406,6 +1408,7 @@ export default function ProductPage() {
                 <div className="aspect-[4/5] overflow-hidden bg-black">
                   {videoInfo.type === 'mp4' ? (
                     <HeroVideo src={videoInfo.src} poster={displayImages[0]} label={product.name}
+                      loop={false} onEnded={onHeroVideoEnd}
                       className="w-full h-full object-cover" />
                   ) : (
                     <iframe

@@ -43,8 +43,6 @@ export const adminProducts = [
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_185824_47c3c077-709d-49e7-935b-cb8e7c4dc3a8.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_171150_003a1a1d-422c-4ba3-8c83-fe6c0aa46318.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154757_0d8efbc0-13e5-4001-8beb-6f302fa3158d.jpg",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-navy-01.jpg",
       "/images/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-t-shirt-cool-anime-fan-art-gif-heather-navy-01.jpg",
@@ -403,7 +401,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260522_011343_a643d839-7cbe-4c09-b7fa-a2d74d1a8ee8.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_182947_a31835ef-1315-4672-95f2-2697b92ee003.jpg"
     ],
-    "seoDescription": "Mewtwo T-shirt: created, never tamed. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Mewtwo T-shirt: created, never tamed. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_171150_003a1a1d-422c-4ba3-8c83-fe6c0aa46318.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154757_0d8efbc0-13e5-4001-8beb-6f302fa3158d.jpg"
+    ]
   },
   {
     "id": "dragonite-pok-mon-t-shirt-retro-90s-style-gift",
@@ -828,8 +830,6 @@ export const adminProducts = [
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260518_190604_a5c54573-8690-4ad5-8881-f15ef0c8be84.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260509_170917_5ed4801e-f905-4bab-9085-25c690a37d71.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260521_172147_3c9e077b-0257-46d6-a9cb-acef277ee3e4.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-daisy-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/cool-zapdos-t-shirt-light-blue-01.jpg",
@@ -1210,7 +1210,11 @@ export const adminProducts = [
       "daisy",
       "white"
     ],
-    "seoDescription": "Zapdos T-shirt with pure electric-chaos energy. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Zapdos T-shirt with pure electric-chaos energy. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260509_170917_5ed4801e-f905-4bab-9085-25c690a37d71.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-retro-90s-style-fan-art-gift/hf_20260521_172147_3c9e077b-0257-46d6-a9cb-acef277ee3e4.png"
+    ]
   },
   {
     "id": "snorlax-pok-mon-t-shirt",
@@ -1255,8 +1259,6 @@ export const adminProducts = [
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260518_190615_ac9b2961-6e40-43e0-adaa-4bc8577d1701.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260509_165315_d47b49f3-14fb-40c6-84a5-32550463b110.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260521_172235_6d19c307-bc02-4329-9d47-46a2c1a266b6.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
       "/images/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-t-shirt-cool-anime-fan-art-gi-white-01.jpg",
@@ -1611,7 +1613,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260511_163703_f6356d48-4977-4e12-9e84-5dc4cc7c7147.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260522_010620_5a00065b-76e1-4b6f-b4c3-59475c678acb.jpg"
     ],
-    "seoDescription": "Snorlax T-shirt for the patron saint of selective effort. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Snorlax T-shirt for the patron saint of selective effort. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260509_165315_d47b49f3-14fb-40c6-84a5-32550463b110.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/snorlax-pok-mon-t-shirt/hf_20260521_172235_6d19c307-bc02-4329-9d47-46a2c1a266b6.jpg"
+    ]
   },
   {
     "id": "psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift",
@@ -1656,8 +1662,6 @@ export const adminProducts = [
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260518_192416_2dc0c732-f0fc-412e-b4ca-f07c0ae7bd67.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_172823_ee813e19-9e39-425b-b888-114bd4cb13e5.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154543_1d6c53f7-b82f-411d-a7c1-8d6c1f763c52.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-carolina-blue-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/cool-psyduck-t-shirt-daisy-01.jpg",
@@ -1995,7 +1999,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260511_163529_91b7602a-5d6c-47ed-89e3-f229aaf8c71b.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_235330_df7490f5-6f53-4f84-8e4f-c7820cef98df.jpg"
     ],
-    "seoDescription": "Psyduck T-shirt: chronic confusion, rendered as art. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Psyduck T-shirt: chronic confusion, rendered as art. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260509_172823_ee813e19-9e39-425b-b888-114bd4cb13e5.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift/hf_20260521_154543_1d6c53f7-b82f-411d-a7c1-8d6c1f763c52.jpg"
+    ]
   },
   {
     "id": "charizard-pok-mon-t-shirt-gildan-9400-premium-artwear",
@@ -2040,8 +2048,6 @@ export const adminProducts = [
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260514_154107_28fd7343-c224-4650-84b7-07a7d8aa9380-1.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260509_172850_28d257b2-9461-4aa6-9fa9-a4d9ae7b8363.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_154450_1c4848b8-ee7c-4944-a19a-e603d331730f.jpg",
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--mockup-01.jpg",
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--red-01.jpg",
       "/images/charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charizard-pok-mon-t-shirt-cool-anime-fan-art--cardinal-red-01.jpg",
@@ -2374,7 +2380,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260511_163429_83c9111e-1ad1-4c28-bf01-06d71fae515b.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_135755_d5df6a0e-a745-46c0-9727-f5cf27b83edc-1.jpg"
     ],
-    "seoDescription": "Charizard T-shirt, the original flex. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Charizard T-shirt, the original flex. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260509_172850_28d257b2-9461-4aa6-9fa9-a4d9ae7b8363.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charizard-pok-mon-t-shirt-gildan-9400-premium-artwear/hf_20260521_154450_1c4848b8-ee7c-4944-a19a-e603d331730f.jpg"
+    ]
   },
   {
     "id": "cool-vileploom-pok-mon-t-shirt",
@@ -2420,8 +2430,6 @@ export const adminProducts = [
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161225_b9c7ab1f-949f-49df-8568-042c2955f48e.jpg",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161254_eac8fb5e-ade2-4ac2-b286-712c701c321b.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-military-green-01.jpg",
       "/images/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-t-shirt-cool-anime-fan-azalea-01.jpg",
@@ -2749,7 +2757,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161844_c5268fbe-0978-4fa2-b669-1e95228a4365.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161159_50a0ea14-0e69-4dd4-98e7-bbfbbd685ffe.jpg"
     ],
-    "seoDescription": "Vileplume T-shirt: underestimated, quietly stunning. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Vileplume T-shirt: underestimated, quietly stunning. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_162035_4fe35aed-76fe-4b1c-877d-204e90eed810.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileploom-pok-mon-t-shirt/hf_20260523_161131_b94dabc6-a79a-4ee6-b53f-2c585c5d9c51.png"
+    ]
   },
   {
     "id": "cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
@@ -2795,8 +2807,6 @@ export const adminProducts = [
     "heroImage": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134155_3afdc6bc-f4d7-4acd-aea1-77be7adc7093.jpg",
     "detailImage": "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_135540_06b04568-bc43-4428-9c77-cf4fc56e10fb.jpg",
     "images": [
-      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133713_1937144e-4ee2-4c33-b15b-5d728a6c1bd3.jpg",
-      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png",
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-azalea-01.jpg",
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-black-01.jpg",
       "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-ditto-t-shirt-light-blue-01.jpg",
@@ -3116,7 +3126,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_134701_2d332a79-b942-4c1a-b8bd-8f1b13fae294.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_135540_06b04568-bc43-4428-9c77-cf4fc56e10fb.jpg"
     ],
-    "seoDescription": "Ditto T-shirt for the master of awkward disguises. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Ditto T-shirt for the master of awkward disguises. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133713_1937144e-4ee2-4c33-b15b-5d728a6c1bd3.jpg",
+      "/images/cool-ditto-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260526_133727_a7e89e31-02e7-45be-a615-1b44ef4cd86e.png"
+    ]
   },
   {
     "id": "cool-mew-t-shirt",
@@ -3162,8 +3176,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_152008_02510406-554f-4910-ae03-c62e57d7fc79.jpg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150844_7b534456-85ed-49d5-8c85-ac45085e1354.jpg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151352_8488033c-40cf-465a-bd5e-a4e233095d83.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150917_12fc3d01-97b0-48a9-b714-2bd298e8dc31.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-01.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-02.jpg",
       "/images/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mew-pok-mon-t-shirt-cool-anime-fan-art-gift-r-mockup-03.jpg",
@@ -3522,7 +3534,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151956_fcd76b49-5f9f-42bf-a7a4-9ccceae3f791.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150844_7b534456-85ed-49d5-8c85-ac45085e1354.jpg"
     ],
-    "seoDescription": "Mew T-shirt: the elusive one, in minimalist style. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Mew T-shirt: the elusive one, in minimalist style. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_151352_8488033c-40cf-465a-bd5e-a4e233095d83.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-t-shirt/hf_20260526_150917_12fc3d01-97b0-48a9-b714-2bd298e8dc31.jpg"
+    ]
   },
   {
     "id": "charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
@@ -3568,8 +3584,6 @@ export const adminProducts = [
     "heroImage": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161113_0b51cfba-b3bd-475d-9cb2-756b10469ea4.jpg",
     "detailImage": "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155615_03094b9c-a4a1-4877-98e7-a5f43c7dbb41.jpg",
     "images": [
-      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155727_74a6f63e-f0c6-4d81-b047-52e1cec4659d.jpg",
-      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161233_eccb40ff-b6b3-4649-8313-fb3c4693e6b7.jpg",
       "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-black-01.jpg",
       "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-cardinal-red-01.jpg",
       "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-t-shirt-cool-anime-fan-art-light-blue-01.jpg",
@@ -3932,7 +3946,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161258_b8f7274d-b69d-4e9e-b44d-0d223766e45b.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155615_03094b9c-a4a1-4877-98e7-a5f43c7dbb41.jpg"
     ],
-    "seoDescription": "Charmander T-shirt for the ones who always picked it first. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Charmander T-shirt for the ones who always picked it first. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_155727_74a6f63e-f0c6-4d81-b047-52e1cec4659d.jpg",
+      "/images/charmender-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260617_161233_eccb40ff-b6b3-4649-8313-fb3c4693e6b7.jpg"
+    ]
   },
   {
     "id": "gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
@@ -3978,8 +3996,6 @@ export const adminProducts = [
     "heroImage": "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161430_1580cc71-5f60-4166-acec-2bc3fd07782c.jpg",
     "detailImage": "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160547_e7d18961-8280-4d43-a203-5b3d64d58417.jpg",
     "images": [
-      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160634_324dc0f8-bad7-4c24-8b47-8018ff933456.jpg",
-      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161504_a1b1a277-e9c7-43b0-bd8c-a333987d153d.jpg",
       "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg",
       "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-t-shirt-cool-anime-fan-art-gif-heather-navy-01.jpg",
       "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/gengar-pok-mon-t-shirt-cool-anime-fan-art-gif-navy-01.jpg",
@@ -4337,7 +4353,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161407_e8cb1d8e-85f2-40cf-a455-0a0c55aeb4d5.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160547_e7d18961-8280-4d43-a203-5b3d64d58417.jpg"
     ],
-    "seoDescription": "Gengar T-shirt with that mischievous shadow grin. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Gengar T-shirt with that mischievous shadow grin. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_160634_324dc0f8-bad7-4c24-8b47-8018ff933456.jpg",
+      "/images/gengar-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260618_161504_a1b1a277-e9c7-43b0-bd8c-a333987d153d.jpg"
+    ]
   },
   {
     "id": "alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
@@ -4383,8 +4403,6 @@ export const adminProducts = [
     "heroImage": "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144237_3d879994-a852-4653-a8a0-75804539c419.jpeg",
     "detailImage": "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_143730_eedeafd4-cc3d-4d00-ae3c-6f85f113ff44.jpg",
     "images": [
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_142533_09f66a3c-f0dd-4cab-a959-dcccf7abb8a9.jpg",
-      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144716_2d65147a-13eb-41d7-806c-e2b66687d14e.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-white-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-natural-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-alakazam-t-shirt-mockup-01.jpg",
@@ -4742,7 +4760,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144003_14e95902-bc4e-4577-a28a-4a6d18007f83.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_143730_eedeafd4-cc3d-4d00-ae3c-6f85f113ff44.jpg"
     ],
-    "seoDescription": "Alakazam T-shirt: psychic focus and a hint of mischief. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Alakazam T-shirt: psychic focus and a hint of mischief. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_142533_09f66a3c-f0dd-4cab-a959-dcccf7abb8a9.jpg",
+      "/images/alakazam-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_144716_2d65147a-13eb-41d7-806c-e2b66687d14e.jpg"
+    ]
   },
   {
     "id": "cool-blastoise-t-shirt",
@@ -4788,8 +4810,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_153948_f9b299ef-8d18-4fe3-aac7-3c882910a8a6.jpeg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151026_c7915ddb-7ee0-4c64-a3ea-eaa64489a819.jpeg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152259_1a8cb389-82bd-426c-9b36-abc6cfdc49fb.jpeg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151712_a692b117-5031-4085-9de7-1d3bde44c964.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/cool-blastoise-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/cool-blastoise-t-shirt-carolina-blue-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/cool-blastoise-t-shirt-navy-01.jpg",
@@ -5148,7 +5168,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151417_95f0280d-55f3-4d28-b681-62cdb32a53f7.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151026_c7915ddb-7ee0-4c64-a3ea-eaa64489a819.jpeg"
     ],
-    "seoDescription": "Blastoise T-shirt for the collector who remembers every battle. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Blastoise T-shirt for the collector who remembers every battle. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_152259_1a8cb389-82bd-426c-9b36-abc6cfdc49fb.jpeg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-blastoise-t-shirt/hf_20260622_151712_a692b117-5031-4085-9de7-1d3bde44c964.jpg"
+    ]
   },
   {
     "id": "cool-kangaskhan-t-shirt",
@@ -5194,8 +5218,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_154739_774027c0-5d89-42ff-add7-0b4c73516773.jpeg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_153858_a6507b54-d299-4a0f-a74c-7b82af071af1.jpeg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_154818_5cc55565-d423-408f-a665-e4e439214a9d.jpeg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155205_d3e9bf1a-e6fd-42f7-9c94-de65b65ed06f.jpeg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/cool-kangaskhan-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/cool-kangaskhan-t-shirt-mockup-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/cool-kangaskhan-t-shirt-rs-sport-grey-01.jpg",
@@ -5553,7 +5575,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155713_17b75f2f-f79c-4e0a-804d-6ec4fe1c5339.jpeg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_153858_a6507b54-d299-4a0f-a74c-7b82af071af1.jpeg"
     ],
-    "seoDescription": "Kangaskhan T-shirt for trainers with a soft spot for the classics. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Kangaskhan T-shirt for trainers with a soft spot for the classics. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_154818_5cc55565-d423-408f-a665-e4e439214a9d.jpeg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kangaskhan-t-shirt/hf_20260622_155205_d3e9bf1a-e6fd-42f7-9c94-de65b65ed06f.jpeg"
+    ]
   },
   {
     "id": "machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000",
@@ -5599,8 +5625,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160818_692892a6-b8c5-4476-bc06-50e751e309ac.jpeg",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160745_4c2a5a20-258b-47c2-8e22-43ebefd31c46.jpeg",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161352_bd07ae2a-9d10-4d54-87fc-c7d8d6057037.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161048_6d181c47-8945-4d16-8378-fad8580d1ee9.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-machop-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-machop-t-shirt-heather-royal-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/cool-machop-t-shirt-military-green-01.jpg",
@@ -5933,7 +5957,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161831_82cc856d-214c-4b37-a2e1-054f7ccb0cf8.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_160745_4c2a5a20-258b-47c2-8e22-43ebefd31c46.jpeg"
     ],
-    "seoDescription": "Machop T-shirt: pure grit, minimalist style. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Machop T-shirt: pure grit, minimalist style. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161352_bd07ae2a-9d10-4d54-87fc-c7d8d6057037.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/machop-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-94000/hf_20260622_161048_6d181c47-8945-4d16-8378-fad8580d1ee9.jpg"
+    ]
   },
   {
     "id": "slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -5979,8 +6007,6 @@ export const adminProducts = [
     "heroImage": "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_052857_4ed173b3-5d47-45bd-b13b-a4e3cd787e44.jpg",
     "detailImage": "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_052817_0d130b69-1672-42eb-b0bc-8ee01bea5004.jpg",
     "images": [
-      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053850_6068f400-90b6-4967-93bb-43e250e59629.jpg",
-      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053859_a7fdd974-41fa-4bab-a6f7-33a473ddebf8.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-azalea-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-slowpoke-t-shirt-carolina-blue-01.jpg",
@@ -6341,7 +6367,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053306_0da0ec11-e252-47e9-86d9-11acb8a274f3.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_052817_0d130b69-1672-42eb-b0bc-8ee01bea5004.jpg"
     ],
-    "seoDescription": "Slowpoke T-shirt: blissful indifference in soft pastels. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Slowpoke T-shirt: blissful indifference in soft pastels. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053850_6068f400-90b6-4967-93bb-43e250e59629.jpg",
+      "/images/slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260623_053859_a7fdd974-41fa-4bab-a6f7-33a473ddebf8.jpg"
+    ]
   },
   {
     "id": "cool-drowsee-t-shirt",
@@ -6387,8 +6417,6 @@ export const adminProducts = [
     "heroImage": "/images/cool-drowsee-t-shirt/hf_20260623_055111_cf87b556-8575-498c-8566-301966cfff8f.jpg",
     "detailImage": "/images/cool-drowsee-t-shirt/hf_20260623_054817_5e5cb90e-e340-428c-b171-08c6dd2c6a4f.jpg",
     "images": [
-      "/images/cool-drowsee-t-shirt/hf_20260623_055534_dd11d480-f56c-4967-b773-9a7c2b0ecc75.jpg",
-      "/images/cool-drowsee-t-shirt/hf_20260623_055214_90712159-8890-4645-9a1a-562ab05cbee2.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-daisy-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/cool-drowsee-t-shirt-mockup-01.jpg",
@@ -6804,7 +6832,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-t-shirt/hf_20260623_054817_5e5cb90e-e340-428c-b171-08c6dd2c6a4f.jpg"
     ],
-    "seoDescription": "Drowzee T-shirt with Saturday-morning nap energy. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Drowzee T-shirt with Saturday-morning nap energy. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-drowsee-t-shirt/hf_20260623_055534_dd11d480-f56c-4967-b773-9a7c2b0ecc75.jpg",
+      "/images/cool-drowsee-t-shirt/hf_20260623_055214_90712159-8890-4645-9a1a-562ab05cbee2.jpg"
+    ]
   },
   {
     "id": "dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
@@ -6850,8 +6882,6 @@ export const adminProducts = [
     "heroImage": "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_062953_fc40fb2d-d57f-4e89-bb20-ce56cde15e17.jpg",
     "detailImage": "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_063003_39cb69f1-796a-4499-b78b-10b41f8672a5.jpg",
     "images": [
-      "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_065030_d493a9ea-964a-4847-bfaf-cdf20ee93839.jpg",
-      "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_063338_6ab0ec93-ecfc-4550-9b10-e72832fcdd5b.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-maroon-01.jpg",
       "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gi-military-green-01.jpg",
@@ -7218,7 +7248,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_063821_5f816078-56a2-45db-835d-77c5638c9900.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_063003_39cb69f1-796a-4499-b78b-10b41f8672a5.jpg"
     ],
-    "seoDescription": "Dugtrio T-shirt: three heads, one mischievous plan. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Dugtrio T-shirt: three heads, one mischievous plan. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_065030_d493a9ea-964a-4847-bfaf-cdf20ee93839.jpg",
+      "/images/dugtrio-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_063338_6ab0ec93-ecfc-4550-9b10-e72832fcdd5b.jpg"
+    ]
   },
   {
     "id": "likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift",
@@ -7264,8 +7298,6 @@ export const adminProducts = [
     "heroImage": "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_070518_f437bdcd-041d-4dbd-9e1c-0967b1ec2806.jpg",
     "detailImage": "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_070536_080c72be-e143-483c-b878-d7067f5006a7.jpg",
     "images": [
-      "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071437_b7c4d7d3-4d5f-4828-951b-86ec16a7c6b8.jpg",
-      "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071359_7947574c-30db-470f-8bae-4c0164a0e778.jpg",
       "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-t-shirt-cool-anime-fan-art-g-azalea-01.jpg",
       "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-t-shirt-cool-anime-fan-art-g-black-01.jpg",
       "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/likitung-pok-mon-t-shirt-cool-anime-fan-art-g-light-blue-01.jpg",
@@ -7583,7 +7615,11 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071457_49eca5d8-07e7-486a-a267-4551cd9c4b3e.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_070536_080c72be-e143-483c-b878-d7067f5006a7.jpg"
     ],
-    "seoDescription": "Lickitung T-shirt with playful, hungry charm. Original JAYL art, chest print on premium cotton. Free worldwide shipping."
+    "seoDescription": "Lickitung T-shirt with playful, hungry charm. Original JAYL art, chest print on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071437_b7c4d7d3-4d5f-4828-951b-86ec16a7c6b8.jpg",
+      "/images/likitung-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260623_071359_7947574c-30db-470f-8bae-4c0164a0e778.jpg"
+    ]
   },
   {
     "id": "cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -7629,8 +7665,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_164126_048cf004-faa0-4aab-a7f6-87f45468b3b0.png",
     "detailImage": "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_154843_5f32d1f8-8350-4b1c-a2f8-fb3adb0d9eda.png",
     "images": [
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_160158_208b8337-cc3b-446c-842c-c33acc394714.png",
-      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_155630_8758b7f8-e590-4094-9c06-3acdc66c05a2.png",
       "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-mockup-01.jpg",
       "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-cardinal-red-01.jpg",
       "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-charizard-pok-mon-t-shirt-cool-anime-fan-light-blue-01.jpg",
@@ -8000,7 +8034,11 @@ export const adminProducts = [
       "black",
       "red"
     ],
-    "seoDescription": "Charizard back-print T-shirt: bold, untamed, fiery. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Charizard back-print T-shirt: bold, untamed, fiery. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_160158_208b8337-cc3b-446c-842c-c33acc394714.png",
+      "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_155630_8758b7f8-e590-4094-9c06-3acdc66c05a2.png"
+    ]
   },
   {
     "id": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -8046,8 +8084,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163702_2f8a607b-0025-455c-bb27-db570f8b7bb0.png",
     "detailImage": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163042_4bd654b5-24fd-4623-810d-70737455f9df.png",
     "images": [
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163132_23f1184e-a260-4913-bf5f-689d53d9a342.png",
-      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163149_f5c92604-c671-4bbb-b38d-dc55fc979363.png",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-mockup-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-black-01.jpg",
       "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gi-daisy-01.jpg",
@@ -8378,7 +8414,11 @@ export const adminProducts = [
       "black",
       "white"
     ],
-    "seoDescription": "Psyduck back-print T-shirt for everyone with a permanent headache. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Psyduck back-print T-shirt for everyone with a permanent headache. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163132_23f1184e-a260-4913-bf5f-689d53d9a342.png",
+      "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163149_f5c92604-c671-4bbb-b38d-dc55fc979363.png"
+    ]
   },
   {
     "id": "zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -8424,8 +8464,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102821_62c23eb9-6915-42af-9343-e96159151ea8.png",
     "detailImage": "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102345_71624aa9-7571-4afc-a65b-e5f2b7881e63.png",
     "images": [
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102439_57c9eeb0-16bf-441c-953b-65045193da22.png",
-      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png",
       "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-mockup-01.jpg",
       "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-black-01.jpg",
       "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gif-daisy-01.jpg",
@@ -8795,7 +8833,11 @@ export const adminProducts = [
       "daisy",
       "white"
     ],
-    "seoDescription": "Zapdos back-print T-shirt: a thunderstorm of nostalgia. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Zapdos back-print T-shirt: a thunderstorm of nostalgia. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102439_57c9eeb0-16bf-441c-953b-65045193da22.png",
+      "/images/zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_102927_fe4e0077-fcab-4471-9175-8883f14c5a95.png"
+    ]
   },
   {
     "id": "cool-snorlax-back-t-shirt",
@@ -8841,8 +8883,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-snorlax-back-t-shirt/hf_20260626_112548_bad54308-60d8-4331-b1eb-ad344f9a73a9.png",
     "detailImage": "/images/cool-snorlax-back-t-shirt/hf_20260626_121523_60f0d981-0dc2-4df2-95a4-26bce5045a0f.png",
     "images": [
-      "/images/cool-snorlax-back-t-shirt/hf_20260626_114025_c69996c2-a7f5-418c-99c4-d61a7b9f8f03.jpeg",
-      "/images/cool-snorlax-back-t-shirt/hf_20260626_121455_9160de3b-30c7-49ea-996d-85a0eebc2d36.png",
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-mockup-01.jpg",
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-sand-01.jpg",
       "/images/snorlax-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/snorlax-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg",
@@ -9208,7 +9248,11 @@ export const adminProducts = [
       "rs-sport-grey",
       "sand"
     ],
-    "seoDescription": "Snorlax back-print T-shirt, the art of relaxation worn big. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Snorlax back-print T-shirt, the art of relaxation worn big. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-snorlax-back-t-shirt/hf_20260626_114025_c69996c2-a7f5-418c-99c4-d61a7b9f8f03.jpeg",
+      "/images/cool-snorlax-back-t-shirt/hf_20260626_121455_9160de3b-30c7-49ea-996d-85a0eebc2d36.png"
+    ]
   },
   {
     "id": "cool-vileplume-back-t-shirt",
@@ -9254,8 +9298,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vileplume-back-t-shirt/hf_20260626_125023_bbb9377a-ba52-450c-a770-27015e8ff992.jpeg",
     "detailImage": "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125712_50554d29-3092-4c4e-b505-8b11189e1286.jpeg",
     "images": [
-      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg",
-      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130321_c898440c-a8bc-4d8f-9d47-f34142f478b2.jpeg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-mockup-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-military-green-01.jpg",
       "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-vileploom-pok-mon-back-t-shirt-cool-anim-azalea-01.jpg",
@@ -9625,7 +9667,11 @@ export const adminProducts = [
       "black",
       "irish-green"
     ],
-    "seoDescription": "Vileplume back-print T-shirt for those who caught 'em all. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Vileplume back-print T-shirt for those who caught 'em all. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_125732_2e0ba9e6-ad04-481d-a9a6-c5f1663427f8.jpeg",
+      "/images/cool-vileploom-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_130321_c898440c-a8bc-4d8f-9d47-f34142f478b2.jpeg"
+    ]
   },
   {
     "id": "cool-mewtwo-back-t-shirt",
@@ -9671,8 +9717,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mewtwo-back-t-shirt/hf_20260626_141458_7364063a-15e5-4376-aa22-4b9e4b9a8bbb.png",
     "detailImage": null,
     "images": [
-      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png",
-      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-navy-01.jpg",
       "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg",
@@ -10044,7 +10088,11 @@ export const adminProducts = [
       "black",
       "white"
     ],
-    "seoDescription": "Mewtwo back-print T-shirt: the anti-hero, drawn big. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Mewtwo back-print T-shirt: the anti-hero, drawn big. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133303_3bc7245e-e51f-4504-b636-ee4060904511.png",
+      "/images/mewtwo-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_133835_29074ec7-4ba9-4a5d-8b4c-5e97b08d7a66.jpeg"
+    ]
   },
   {
     "id": "cool-ditto-back-t-shirt",
@@ -10090,8 +10138,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-ditto-back-t-shirt/hf_20260626_142104_51fd3914-71b6-44bd-b480-be172ddf67e1.png",
     "detailImage": "/images/cool-ditto-back-t-shirt/hf_20260626_142237_bdba374a-2155-4071-9277-7b81eb2e0a8e.jpeg",
     "images": [
-      "/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg",
-      "/images/cool-ditto-back-t-shirt/hf_20260626_144403_5d461f84-f80e-46fe-8902-fe257616b310.jpeg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg",
       "/images/cool-ditto-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/cool-ditto-pok-mon-back-t-shirt-cool-anime-fa-azalea-01.jpg",
@@ -10421,7 +10467,11 @@ export const adminProducts = [
       "black",
       "white"
     ],
-    "seoDescription": "Ditto back-print T-shirt in bright, whimsical lavender. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Ditto back-print T-shirt in bright, whimsical lavender. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-ditto-back-t-shirt/hf_20260626_145010_416bd1a8-a3b0-4921-9eaf-7905f6b90118.jpeg",
+      "/images/cool-ditto-back-t-shirt/hf_20260626_144403_5d461f84-f80e-46fe-8902-fe257616b310.jpeg"
+    ]
   },
   {
     "id": "cool-charmander-back-t-shirt",
@@ -10467,8 +10517,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-charmander-back-t-shirt/hf_20260626_161653_ab22b00d-d4c4-4a3e-a840-1b6a2511be47.png",
     "detailImage": "/images/cool-charmander-back-t-shirt/hf_20260626_153556_90422635-996e-4bf9-b392-8c2cd4761bd0.png",
     "images": [
-      "/images/cool-charmander-back-t-shirt/hf_20260626_153613_d59bbb39-cc69-4791-bdf6-aeff026df7f9.png",
-      "/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-light-blue-01.jpg",
       "/images/charmender-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/charmender-pok-mon-back-t-shirt-cool-anime-fa-red-01.jpg",
@@ -10807,7 +10855,11 @@ export const adminProducts = [
       "red",
       "white"
     ],
-    "seoDescription": "Charmander back-print T-shirt with a bold, fiery design. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Charmander back-print T-shirt with a bold, fiery design. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-charmander-back-t-shirt/hf_20260626_153613_d59bbb39-cc69-4791-bdf6-aeff026df7f9.png",
+      "/images/cool-charmander-back-t-shirt/hf_20260626_153605_6366227f-9b4a-42aa-90cb-5f3aa17e5ac0.png"
+    ]
   },
   {
     "id": "cool-alakazam-back-t-shirt",
@@ -10853,8 +10905,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-alakazam-back-t-shirt/hf_20260626_161708_91c86649-11d4-4339-9bba-ee98753ef3cc.png",
     "detailImage": "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161725_e0ba5edd-4da4-4788-a4fc-141e486be559.png",
     "images": [
-      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161741_ee168f87-8b30-4711-835e-fccbbe776aed.png",
-      "/images/cool-alakazam-back-t-shirt/hf_20260626_162219_4fd80bc6-177d-4047-bedd-3008189819e5.png",
       "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--mockup-01.jpg",
       "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--daisy-01.jpg",
       "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/alakazam-pok-mon-back-t-shirt-cool-anime-fan--natural-01.jpg",
@@ -11219,7 +11269,11 @@ export const adminProducts = [
       "daisy",
       "natural"
     ],
-    "seoDescription": "Alakazam back-print T-shirt for the deep thinkers. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Alakazam back-print T-shirt for the deep thinkers. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/alakazam-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260626_161741_ee168f87-8b30-4711-835e-fccbbe776aed.png",
+      "/images/cool-alakazam-back-t-shirt/hf_20260626_162219_4fd80bc6-177d-4047-bedd-3008189819e5.png"
+    ]
   },
   {
     "id": "blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -11265,8 +11319,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_164557_95d1f871-6ec7-4d8c-a400-d0513517cbc1.jpg",
     "detailImage": "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_165024_41aa74b7-c282-484a-a9b2-184f0cfc303d.jpg",
     "images": [
-      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_165038_b3691bdb-5942-4adc-bc09-e0c9bdf6954e.jpg",
-      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_111841_cb9072c5-0c7d-4736-8e3c-80f29071b9fd.png",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-mockup-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-navy-01.jpg",
       "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/blastoise-pok-mon-back-t-shirt-cool-anime-fan-carolina-blue-01.jpg",
@@ -11617,7 +11669,11 @@ export const adminProducts = [
       "navy",
       "black"
     ],
-    "seoDescription": "Blastoise back-print T-shirt: Hydro Pump energy, worn big. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Blastoise back-print T-shirt: Hydro Pump energy, worn big. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260626_165038_b3691bdb-5942-4adc-bc09-e0c9bdf6954e.jpg",
+      "/images/blastoise-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_111841_cb9072c5-0c7d-4736-8e3c-80f29071b9fd.png"
+    ]
   },
   {
     "id": "kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -11663,8 +11719,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_122938_fa781b8c-5218-4a15-bd0c-b0d785209d1d-1.png",
     "detailImage": "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124522_3c6720d5-b94d-4c28-866d-4abbc6a8acfb.png",
     "images": [
-      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png",
-      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124544_d0dd4376-f19e-4956-bc14-97b912f6a029.png",
       "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-mockup-01.jpg",
       "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-natural-01.jpg",
       "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/kangaskhan-pok-mon-back-t-shirt-cool-anime-fa-rs-sport-grey-01.jpg",
@@ -12036,7 +12090,11 @@ export const adminProducts = [
       "black",
       "rs-sport-grey"
     ],
-    "seoDescription": "Kangaskhan back-print T-shirt mixing nostalgia and style. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Kangaskhan back-print T-shirt mixing nostalgia and style. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124534_56e228ad-e02a-4435-b391-5a8452d2f1d7.png",
+      "/images/kangaskhan-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_124544_d0dd4376-f19e-4956-bc14-97b912f6a029.png"
+    ]
   },
   {
     "id": "cool-machop-back-t-shirt",
@@ -12082,8 +12140,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-machop-back-t-shirt/hf_20260627_131125_7f19b816-9a72-4c69-89e5-96e15df37ad3.png",
     "detailImage": "/images/cool-machop-back-t-shirt/hf_20260627_131610_c72b0182-fc89-4f04-a7a8-1de37e0eae77.png",
     "images": [
-      "/images/cool-machop-back-t-shirt/hf_20260627_131622_52aef132-ee97-4a63-834f-a5aa803119d6.png",
-      "/images/cool-machop-back-t-shirt/hf_20260627_132102_34903f27-842e-419e-bb97-619f6dd97964.png",
       "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-mockup-01.jpg",
       "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-black-01.jpg",
       "/images/machop-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/machop-pok-mon-back-t-shirt-cool-anime-fan-ar-heather-royal-01.jpg",
@@ -12450,7 +12506,11 @@ export const adminProducts = [
       "black",
       "rs-sport-grey"
     ],
-    "seoDescription": "Machop back-print T-shirt: fierce spirit, zero conformity. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Machop back-print T-shirt: fierce spirit, zero conformity. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-machop-back-t-shirt/hf_20260627_131622_52aef132-ee97-4a63-834f-a5aa803119d6.png",
+      "/images/cool-machop-back-t-shirt/hf_20260627_132102_34903f27-842e-419e-bb97-619f6dd97964.png"
+    ]
   },
   {
     "id": "cool-drowsee-back-t-shirt",
@@ -12496,8 +12556,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-drowsee-back-t-shirt/hf_20260627_135244_5755ebaf-9624-411f-be56-15a628068808.png",
     "detailImage": "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135854_54f5f780-5ddd-4293-a58d-cdfea1c86695.png",
     "images": [
-      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135836_1c1a6c7d-7602-4fd4-8238-1da5a96b097e.png",
-      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135307_82146959-9e93-4c4c-8763-98e117a21a56.png",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-mockup-01.jpg",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-black-01.jpg",
       "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/drowsee-pok-mon-back-t-shirt-cool-anime-fan-a-natural-01.jpg",
@@ -12865,7 +12923,11 @@ export const adminProducts = [
       "natural",
       "black"
     ],
-    "seoDescription": "Drowzee back-print T-shirt for the sleepy but cool. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Drowzee back-print T-shirt for the sleepy but cool. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135836_1c1a6c7d-7602-4fd4-8238-1da5a96b097e.png",
+      "/images/drowsee-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_135307_82146959-9e93-4c4c-8763-98e117a21a56.png"
+    ]
   },
   {
     "id": "dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -12911,8 +12973,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260627_210438_e94729a8-d41f-4e10-8a1e-e99dcddb16aa.png",
     "detailImage": "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_180956_0f721d92-2979-4e14-8495-cc37056d9964.png",
     "images": [
-      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png",
-      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115550_e9bbe324-06e2-4167-be37-04e830f034b6.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-maroon-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-dugtrio-back-t-shirt-military-green-01.jpg",
@@ -13274,7 +13334,11 @@ export const adminProducts = [
       "black",
       "natural"
     ],
-    "seoDescription": "Dugtrio back-print T-shirt: three become one. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Dugtrio back-print T-shirt: three become one. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115540_5536c9c2-85b0-4d12-ab49-ef6fa7d3e878.png",
+      "/images/dugtrio-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260628_115550_e9bbe324-06e2-4167-be37-04e830f034b6.png"
+    ]
   },
   {
     "id": "cool-mew-back-t-shirt",
@@ -13320,8 +13384,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/hf_20260628_231918_745f3045-9ca3-45f0-a611-42ac48342f33.png",
     "detailImage": "/images/cool-mew-back-t-shirt/hf_20260628_232315_4a6e6eda-f90a-45ce-a840-8f77a068bcd8.png",
     "images": [
-      "/images/cool-mew-back-t-shirt/hf_20260628_233432_8e159e90-a48d-44b4-a14d-8dc1e70ed8bf.png",
-      "/images/cool-mew-back-t-shirt/hf_20260628_233416_377fc29b-7c4c-4ce6-a3f4-cd79e2f38db0.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/cool-mew-back-t-shirt-azalea-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/cool-mew-back-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-mew-back-t-shirt/cool-mew-back-t-shirt-cardinal-red-01.jpg",
@@ -13688,7 +13750,11 @@ export const adminProducts = [
       "black",
       "azalea"
     ],
-    "seoDescription": "Mew back-print T-shirt, a playful spirit caught mid-leap. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Mew back-print T-shirt, a playful spirit caught mid-leap. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/cool-mew-back-t-shirt/hf_20260628_233432_8e159e90-a48d-44b4-a14d-8dc1e70ed8bf.png",
+      "/images/cool-mew-back-t-shirt/hf_20260628_233416_377fc29b-7c4c-4ce6-a3f4-cd79e2f38db0.png"
+    ]
   },
   {
     "id": "gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
@@ -13734,8 +13800,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_113323_087c3708-f102-4128-b1a9-7adb3f0710aa.png",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_120720_3226fbca-8dc3-4372-827c-9457fb486dd4.png",
     "images": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122614_d5f65d4c-120d-4bf7-94ab-2b8bea5ef9f4.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122625_a32417ca-6861-4a6b-8d3a-2b85c3afad18.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-gengar-back-t-shirt-mockup-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-gengar-back-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/cool-gengar-back-t-shirt-navy-01.jpg",
@@ -14064,7 +14128,11 @@ export const adminProducts = [
       "black",
       "white"
     ],
-    "seoDescription": "Gengar back-print T-shirt full of Saturday-morning nostalgia. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Gengar back-print T-shirt full of Saturday-morning nostalgia. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122614_d5f65d4c-120d-4bf7-94ab-2b8bea5ef9f4.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gengar-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_122625_a32417ca-6861-4a6b-8d3a-2b85c3afad18.png"
+    ]
   },
   {
     "id": "cool-likitung-back-t-shirt",
@@ -14110,8 +14178,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/hf_20260629_125352_d7eb9d57-22c7-43ab-90c4-0b75feff9db5.png",
     "detailImage": "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125019_551982ff-c83c-4e47-b92b-934b9db81b61.png",
     "images": [
-      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125032_85cfdebc-e139-41be-8e5d-20b8cf64b762.png",
-      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125422_29ab1e41-ff6b-491c-bfcb-4aad8a775f5b.png",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-azalea-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-black-01.jpg",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-likitung-back-t-shirt/cool-likitung-back-t-shirt-light-blue-01.jpg",
@@ -14434,7 +14500,11 @@ export const adminProducts = [
       "light-blue",
       "white"
     ],
-    "seoDescription": "Lickitung back-print T-shirt: playful chaos, endless appetite. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Lickitung back-print T-shirt: playful chaos, endless appetite. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125032_85cfdebc-e139-41be-8e5d-20b8cf64b762.png",
+      "/images/likitung-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260629_125422_29ab1e41-ff6b-491c-bfcb-4aad8a775f5b.png"
+    ]
   },
   {
     "id": "cool-slowpoke-back-t-shirt",
@@ -14480,8 +14550,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-slowpoke-back-t-shirt/hf_20260629_131913_c1b73103-aee1-4528-a1b4-1e390a396fe2.png",
     "detailImage": "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132441_82e21641-d6b4-46c9-a416-f1bfa9d9fe22.png",
     "images": [
-      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png",
-      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132433_9bb4598e-f909-4e52-ac51-82ef4640ac0f.png",
       "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-01.jpg",
       "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-02.jpg",
       "/images/cool-slowpoke-back-t-shirt/cool-slowpoke-back-t-shirt-gelato-03.jpg",
@@ -14806,7 +14874,11 @@ export const adminProducts = [
       "black",
       "white"
     ],
-    "seoDescription": "Slowpoke back-print T-shirt with the laid-back vibe we all crave. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Slowpoke back-print T-shirt with the laid-back vibe we all crave. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132425_8752fc27-6a40-4d68-a195-83653a2d5790.png",
+      "/images/slowpoke-pok-mon-back-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift/hf_20260629_132433_9bb4598e-f909-4e52-ac51-82ef4640ac0f.png"
+    ]
   },
   {
     "id": "altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
@@ -14852,8 +14924,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204157_2b8a72f2-3ee7-44bf-aac3-4a3bd238ecff.png",
     "detailImage": "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_211721_06dbc278-17a2-40c0-986c-621cf312c39c.png",
     "images": [
-      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204805_f1761fd9-8362-44ab-b83d-501dfd2f9c02.png",
-      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204749_0067d549-2a19-4873-ade5-48f42ca1080b.png",
       "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-01.jpg",
       "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-02.jpg",
       "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/altaria-back-print-shirt-funny-retro-90s-anim-gelato-03.jpg",
@@ -15385,7 +15455,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204157_2b8a72f2-3ee7-44bf-aac3-4a3bd238ecff.png"
     ],
-    "seoDescription": "Altaria back-print T-shirt: soft, cloud-like, ethereal. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Altaria back-print T-shirt: soft, cloud-like, ethereal. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204805_f1761fd9-8362-44ab-b83d-501dfd2f9c02.png",
+      "/images/altaria-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260826_204749_0067d549-2a19-4873-ade5-48f42ca1080b.png"
+    ]
   },
   {
     "id": "elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
@@ -15431,8 +15505,6 @@ export const adminProducts = [
     "heroImage": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115140_b4ebe8f3-5e8e-470e-929e-c64540464d6a.png",
     "detailImage": "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_120239_c1842783-115f-4fc9-9911-eb5be2170641.png",
     "images": [
-      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115831_29d8ff92-6d2f-49e3-b8bc-af07e25533b0.png",
-      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115840_8206e7eb-7196-4eb0-87d7-af9592428daa.png",
       "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-01.jpg",
       "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-02.jpg",
       "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/elekid-back-print-shirt-funny-retro-90s-anime-gelato-03.jpg",
@@ -16007,7 +16079,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115140_b4ebe8f3-5e8e-470e-929e-c64540464d6a.png"
     ],
-    "seoDescription": "Elekid back-print T-shirt crackling with color. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Elekid back-print T-shirt crackling with color. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115831_29d8ff92-6d2f-49e3-b8bc-af07e25533b0.png",
+      "/images/elekid-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_115840_8206e7eb-7196-4eb0-87d7-af9592428daa.png"
+    ]
   },
   {
     "id": "ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him",
@@ -16053,8 +16129,6 @@ export const adminProducts = [
     "heroImage": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_143851_905e0306-d981-4989-bc3e-053c05dfc660-copia.png",
     "detailImage": "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_154042_4a7d1814-c830-4a5c-8812-03b9351ebab3.png",
     "images": [
-      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163620_69d19933-1c25-4b78-87de-eb72b3524d44.png",
-      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163629_a0d06d87-770e-4187-8d59-2d570a5001d1.png",
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg",
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg",
       "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/ursaring-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg",
@@ -16579,6 +16653,10 @@ export const adminProducts = [
     ],
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_143851_905e0306-d981-4989-bc3e-053c05dfc660-copia.png"
+    ],
+    "heroShots": [
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163620_69d19933-1c25-4b78-87de-eb72b3524d44.png",
+      "/images/ursaring-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260831_163629_a0d06d87-770e-4187-8d59-2d570a5001d1.png"
     ]
   },
   {
@@ -16625,8 +16703,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143112_ace27a54-b576-4f58-bd4d-46d82f045f0b.png",
     "detailImage": "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143144_418a7a3e-676b-4495-a852-e84076f64725.png",
     "images": [
-      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143107_fc9e2bd0-608d-4647-8f13-7ca74d9d348d.png",
-      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_142645_d2704574-e6a1-4588-85fc-80c1f50fbb48.png",
       "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg",
       "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg",
       "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/meganium-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg",
@@ -17069,7 +17145,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143112_ace27a54-b576-4f58-bd4d-46d82f045f0b.png"
     ],
-    "seoDescription": "Meganium back-print T-shirt with a chill, carefree spirit. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Meganium back-print T-shirt with a chill, carefree spirit. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_143107_fc9e2bd0-608d-4647-8f13-7ca74d9d348d.png",
+      "/images/meganium-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-grass-pokemon-gift-for-him/hf_20260827_142645_d2704574-e6a1-4588-85fc-80c1f50fbb48.png"
+    ]
   },
   {
     "id": "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
@@ -17115,8 +17195,6 @@ export const adminProducts = [
     "heroImage": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_161010_b788e2d8-f2ea-4145-92e3-1299aac1e293.png",
     "detailImage": "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_161445_98afd869-1323-41e4-82d5-5109a81c0bda.png",
     "images": [
-      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_155948_1e952fd4-e02e-4ee3-b910-94465b46446b.png",
-      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_155932_29f9e404-6e65-471c-9890-3e5dc948a965.png",
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-01.jpg",
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-02.jpg",
       "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/raikou-back-print-shirt-funny-retro-90s-anime-gelato-03.jpg",
@@ -17560,7 +17638,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_161010_b788e2d8-f2ea-4145-92e3-1299aac1e293.png"
     ],
-    "seoDescription": "Raikou back-print T-shirt: raw electric power wrapped in fur. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Raikou back-print T-shirt: raw electric power wrapped in fur. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_155948_1e952fd4-e02e-4ee3-b910-94465b46446b.png",
+      "/images/raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him/hf_20260827_155932_29f9e404-6e65-471c-9890-3e5dc948a965.png"
+    ]
   },
   {
     "id": "cool-suicune-back-shirt",
@@ -17606,8 +17688,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-suicune-back-shirt/hf_20260829_222710_035ca641-a705-4c04-bdea-bfff51ace613.png",
     "detailImage": "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_190549_3ba92051-a224-4398-b847-a7001ae058e3.png",
     "images": [
-      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_174020_a35373b4-93e5-4e12-bb52-2093515ecfa8.png",
-      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_173908_24827162-ff37-416a-8b8a-52d5b5c62b98.png",
       "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-01.jpg",
       "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-02.jpg",
       "/images/cool-suicune-back-shirt/cool-suicune-back-shirt-gelato-03.jpg",
@@ -18094,7 +18174,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-suicune-back-shirt/hf_20260829_174053_aad0c01a-a7a7-4c6e-88e8-71ce35cc6380.png"
     ],
-    "seoDescription": "Suicune back-print T-shirt in fluid, elegant water tones. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Suicune back-print T-shirt in fluid, elegant water tones. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_174020_a35373b4-93e5-4e12-bb52-2093515ecfa8.png",
+      "/images/suicune-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260829_173908_24827162-ff37-416a-8b8a-52d5b5c62b98.png"
+    ]
   },
   {
     "id": "entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him",
@@ -18140,8 +18224,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170349_6731594b-1b20-4d97-b354-3317511a3cd5.png",
     "detailImage": "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170419_c044d201-c33c-45d0-b3a2-90b533daa1a0.png",
     "images": [
-      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_225151_b4573516-1cd4-4a9b-a6e1-0b61620876d9.png",
-      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170323_9056807b-1600-4469-b84b-5077b38b5e7c.png",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-01.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-02.jpg",
       "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/entei-back-print-shirt-funny-retro-90s-anime--gelato-04.jpg",
@@ -18626,7 +18708,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170349_6731594b-1b20-4d97-b354-3317511a3cd5.png"
     ],
-    "seoDescription": "Entei back-print T-shirt with the fierce spirit of fire. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Entei back-print T-shirt with the fierce spirit of fire. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_225151_b4573516-1cd4-4a9b-a6e1-0b61620876d9.png",
+      "/images/entei-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260828_170323_9056807b-1600-4469-b84b-5077b38b5e7c.png"
+    ]
   },
   {
     "id": "cool-arcanine-back-shirt",
@@ -18672,8 +18758,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-arcanine-back-shirt/hf_20260904_140941_cf0d5c8b-6332-4e0f-8f81-f8570c6f99a5.png",
     "detailImage": "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_141130_fcd43e7d-50b1-471b-b1ce-d4d51925c08d.png",
     "images": [
-      "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140130_4f74e681-4294-4b28-8e98-707c11d4f82c.png",
-      "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140927_4c48a42a-4c15-4540-a873-06f261a19445.png",
       "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-01.jpg",
       "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-02.jpg",
       "/images/cool-arcanine-back-shirt/cool-arcanine-back-shirt-gelato-03.jpg",
@@ -19119,7 +19203,11 @@ export const adminProducts = [
     "pinterestPublishedImages": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-arcanine-back-shirt/hf_20260904_140941_cf0d5c8b-6332-4e0f-8f81-f8570c6f99a5.png"
     ],
-    "seoDescription": "Arcanine back-print T-shirt: loyal, fiery, retro. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Arcanine back-print T-shirt: loyal, fiery, retro. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140130_4f74e681-4294-4b28-8e98-707c11d4f82c.png",
+      "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140927_4c48a42a-4c15-4540-a873-06f261a19445.png"
+    ]
   },
   {
     "id": "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him",
@@ -19165,8 +19253,6 @@ export const adminProducts = [
     "heroImage": "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_154902_f13cd7c6-daac-4398-84f0-54c8da282ed3.png",
     "detailImage": null,
     "images": [
-      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_150141_6e082536-eb5d-47f3-80fd-6c336952925a.png",
-      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_151847_1fe0766f-a3a6-456b-b616-340b13a8ce6e.png",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4ed6f646-c204-4b05-b3a6-47a6662c9ed3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c0dafc5930d69ba9fcbe38af98d509cb9eab2c58742f6368dc0170f125f1c5ec",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7fb85512-040b-47e1-93bf-16e17b5f6039/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2b2fa80498b85a7f4070c8eb43019add35a6e31eb2e20a37f397acca023d59f0",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c7c4c1a6-7a3f-469e-be0d-ef72f2ef5aab/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260930%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260930T120110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8cdd5aedc62fb330e90764f84b6f67e26e521d38f39363f945ecf8b5a8bcf0c1",
@@ -19488,7 +19574,11 @@ export const adminProducts = [
       "cardinal-red",
       "white"
     ],
-    "seoDescription": "Shiny Charizard back-print T-shirt, the rare flex. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Shiny Charizard back-print T-shirt, the rare flex. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_150141_6e082536-eb5d-47f3-80fd-6c336952925a.png",
+      "/images/shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260907_151847_1fe0766f-a3a6-456b-b616-340b13a8ce6e.png"
+    ]
   },
   {
     "id": "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
@@ -19534,8 +19624,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/3c.png",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_151025_ae6f7935-5b1f-4be9-a336-cecc71e9e1d5.png",
     "images": [
-      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_131811_55c1408e-ba2b-4970-8ee9-5706268bb0f3.png",
-      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_131821_b01ba608-5ae0-4985-a7da-892c6b0b401a.png",
       "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-01.jpg",
       "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-02.jpg",
       "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/shiny-dragonite-back-print-shirt-funny-retro--gelato-03.jpg",
@@ -20012,7 +20100,11 @@ export const adminProducts = [
       "black",
       "purple"
     ],
-    "seoDescription": "Shiny Dragonite back-print T-shirt: gentle spirit, raw power. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Shiny Dragonite back-print T-shirt: gentle spirit, raw power. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_131811_55c1408e-ba2b-4970-8ee9-5706268bb0f3.png",
+      "/images/shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him/hf_20260908_131821_b01ba608-5ae0-4985-a7da-892c6b0b401a.png"
+    ]
   },
   {
     "id": "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
@@ -20058,8 +20150,6 @@ export const adminProducts = [
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_150400_1fcf9fab-d01f-4132-aad0-26ec0e14db7d.png",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_151502_31ce8c02-4d0d-452a-b98a-735cac9c16c3.png",
     "images": [
-      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144227_7e949289-f0d2-4d14-a254-cefc98f78b2f.png",
-      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144245_ac0cfb2e-d314-4f39-af40-3111bdf8532f.png",
       "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-01.jpg",
       "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-02.jpg",
       "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/gyarados-back-print-shirt-funny-retro-90s-ani-gelato-03.jpg",
@@ -20415,6 +20505,10 @@ export const adminProducts = [
       "carolina-blue",
       "red"
     ],
-    "seoDescription": "Gyarados back-print T-shirt: from Magikarp to pure intensity. Large original JAYL artwork on premium cotton. Free worldwide shipping."
+    "seoDescription": "Gyarados back-print T-shirt: from Magikarp to pure intensity. Large original JAYL artwork on premium cotton. Free worldwide shipping.",
+    "heroShots": [
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144227_7e949289-f0d2-4d14-a254-cefc98f78b2f.png",
+      "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144245_ac0cfb2e-d314-4f39-af40-3111bdf8532f.png"
+    ]
   }
 ]
