@@ -5,6 +5,7 @@ import { cardImageOf, cardVideoOf } from '@/lib/productMedia'
  * La faccia di un prodotto nel catalogo (Objects, collezioni): il video hero
  * se c'e', altrimenti la foto hero.
  *
+ * Se c'e' il video la foto non si mostra: niente doppia immagine.
  * Il video si carica solo quando la scheda entra in vista, gira una volta e
  * resta sul fotogramma finale (il Pokémon); passando col mouse riparte.
  * Con "riduci movimento" o il risparmio dati resta la foto.
@@ -27,7 +28,7 @@ export default function CardMedia({ product, className = '', imgClassName = '' }
     const io = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { setInView(true); v.play().catch(() => {}) }
       else v.pause()
-    }, { threshold: 0.5 })
+    }, { threshold: 0.5, rootMargin: '200px 0px' })
     io.observe(v)
     return () => io.disconnect()
   }, [withVideo])
@@ -46,7 +47,7 @@ export default function CardMedia({ product, className = '', imgClassName = '' }
 
   return (
     <div className={`relative w-full h-full ${className}`} onMouseEnter={withVideo ? replay : undefined}>
-      {photo && (
+      {photo && !withVideo && (
         <img
           src={photo}
           alt={product.altText || product.name}
@@ -69,7 +70,7 @@ export default function CardMedia({ product, className = '', imgClassName = '' }
           preload="none"
           disablePictureInPicture
           aria-hidden
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover bg-black"
           style={{ objectPosition: '50% 38%' }}
         />
       )}

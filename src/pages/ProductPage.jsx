@@ -1399,14 +1399,15 @@ export default function ProductPage() {
                 time and carbon footprint. Typical production time is 2–4 business days.
               </p>
               <p>Shipping is always free, worldwide.</p>
-              <p className="pt-2 text-[11px] leading-relaxed opacity-70">
-                <strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
+
+            </div>
+          </Accordion>
+          <Accordion title="Fan Art Disclaimer" light={isLight}>
+            <p><strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
                 Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
                 merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
                 related names are trademarks of their respective owners. We make them to celebrate what
-                Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.
-              </p>
-            </div>
+                Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.</p>
           </Accordion>
         </div>
       </div>
@@ -1846,14 +1847,15 @@ export default function ProductPage() {
                       transit time and carbon footprint. Typical production time is 2–4 business days.
                     </p>
                     <p>Shipping is always free, worldwide.</p>
-                    <p className="pt-2 text-[11px] leading-relaxed opacity-70">
-                      <strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
-                      Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
-                      merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
-                      related names are trademarks of their respective owners. We make them to celebrate what
-                      Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.
-                    </p>
+
                   </div>
+                </Accordion>
+                <Accordion title="Fan Art Disclaimer" light={isLight}>
+                  <p><strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
+                Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
+                merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
+                related names are trademarks of their respective owners. We make them to celebrate what
+                Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.</p>
                 </Accordion>
               </div>
             </div>

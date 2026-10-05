@@ -146,7 +146,15 @@ export async function handleSocialAction(body, deps) {
           }
         }
       }
-      return reply(200, { captions, log: (state.log || []).slice(-30).reverse(), settings: state.settings || {} })
+      // Asset gia' usciti: { productId: { asset: [social…] } }, dallo storico intero.
+      const posted = {}
+      for (const e of state.log || []) {
+        if (!e.asset || !e.platform) continue
+        const byAsset = (posted[e.productId] ||= {})
+        const list = (byAsset[e.asset] ||= [])
+        if (!list.includes(e.platform)) list.push(e.platform)
+      }
+      return reply(200, { captions, posted, log: (state.log || []).slice(-30).reverse(), settings: state.settings || {} })
     }
 
     case 'caption': {
@@ -174,6 +182,17 @@ export async function handleSocialAction(body, deps) {
         `[social] ${body.platform} ${body.format} ${body.productId} (manuale)`,
       )
       return reply(200, { ok: true, unused: unusedCount(next, body.productId, body.platform) })
+    }
+
+    // Toglie il segno "gia' pubblicato" (asset + social) dallo storico.
+    case 'unmark-used': {
+      const v = validate(body, deps, { needsFormat: false })
+      if (v.error) return v.error
+      await deps.store.update(
+        (s) => ({ ...s, log: (s.log || []).filter((e) => !(e.productId === body.productId && e.platform === body.platform && e.asset === body.asset)) }),
+        `[social] ${body.platform} ${body.productId}: tolto segno pubblicato`,
+      )
+      return reply(200, { ok: true })
     }
 
     case 'settings': {

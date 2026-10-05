@@ -33,6 +33,22 @@ export default function SocialQuickPublish({ productId }) {
   const mode = pStatus?.mode || 'manual'
   const needsText = !!format && usesCaption(format)
   const unused = (open && state?.captions?.[productId]?.[open]?.unused) ?? null
+  // Dove e' gia' uscito ogni asset (storico dell'admin + segni a mano).
+  const postedOn = (src) => state?.posted?.[productId]?.[src] || []
+  const alreadyHere = open ? postedOn(asset.src).includes(open) : false
+
+  const togglePosted = async () => {
+    setBusy('mark'); setMsg(null)
+    try {
+      if (alreadyHere) await socialCall('unmark-used', { productId, asset: asset.src, platform: open })
+      else await socialCall('mark-used', { productId, asset: asset.src, platform: open, format: format || formatsFor(open, asset.type)[0] })
+      refreshState()
+    } catch (e) {
+      setMsg({ ok: false, text: e.message })
+    } finally {
+      setBusy('')
+    }
+  }
 
   const pickCaption = async (key, after = null) => {
     setBusy('caption'); setMsg(null)
@@ -128,6 +144,13 @@ export default function SocialQuickPublish({ productId }) {
               ) : (
                 <img src={a.thumb} alt="" loading="lazy" className="w-full h-full object-cover" />
               )}
+              {postedOn(a.src).length > 0 && (
+                <span className="absolute bottom-0 inset-x-0 flex justify-center gap-px bg-black/70 py-px">
+                  {postedOn(a.src).map((k) => (
+                    <span key={k} className="w-1.5 h-1.5 rounded-full" style={{ background: platformOf(k)?.color }} />
+                  ))}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -138,6 +161,7 @@ export default function SocialQuickPublish({ productId }) {
             const s = status?.platforms?.[p.key]
             const m = SOCIAL_MODES[s?.mode] || null
             const can = formatsFor(p.key, asset.type).length > 0
+            const done = postedOn(asset.src).includes(p.key)
             return (
               <button
                 key={p.key}
@@ -146,11 +170,11 @@ export default function SocialQuickPublish({ productId }) {
                 onClick={() => openPlatform(p.key)}
                 title={!can
                   ? `${p.label}: non accetta ${asset.type === 'video' ? 'video' : 'immagini'}`
-                  : `${p.label} · ${m ? m.label : (error ? 'stato non disponibile' : 'controllo…')}${s?.detail ? ` · ${s.detail}` : ''}`}
+                  : `${p.label}${done ? ' · GIA\' PUBBLICATO con questo asset' : ''} · ${m ? m.label : (error ? 'stato non disponibile' : 'controllo…')}${s?.detail ? ` · ${s.detail}` : ''}`}
                 className={`relative w-8 h-8 text-[10px] font-bold border transition-colors disabled:opacity-20 ${open === p.key ? 'bg-gray-800' : 'hover:bg-gray-900'}`}
                 style={{ borderColor: p.color + '88', color: p.color }}
               >
-                {p.short}
+                {done ? '✓' : p.short}
                 <span className={`absolute -top-1 -right-1 w-2 h-2 rounded-full ${m ? m.dot : 'bg-gray-800'}`} />
               </button>
             )
@@ -165,6 +189,7 @@ export default function SocialQuickPublish({ productId }) {
             <span className="text-[10px] text-gray-500">
               {SOCIAL_MODES[mode]?.label}{pStatus?.detail ? ` · ${pStatus.detail}` : ''}
             </span>
+            {alreadyHere && <span className="text-[10px] font-semibold text-amber-400">✓ già pubblicato con questo asset</span>}
             <button type="button" onClick={() => setOpen(null)} className="ml-auto text-gray-500 hover:text-white text-xs" title="Chiudi">✕</button>
           </div>
 
@@ -200,6 +225,11 @@ export default function SocialQuickPublish({ productId }) {
                 className="text-[11px] text-gray-400 hover:text-white disabled:opacity-40">↻ altro testo</button>
             )}
             {needsText && unused !== null && <span className="text-[10px] text-gray-600">{unused} non usati</span>}
+            <button type="button" onClick={togglePosted} disabled={!!busy}
+              className="text-[11px] text-gray-400 hover:text-white disabled:opacity-40"
+              title="Per i post fatti fuori dall'admin">
+              {alreadyHere ? '✕ togli segno' : '✓ segna già pubblicato'}
+            </button>
             {mode === 'api' ? (
               <button type="button" onClick={publish} disabled={!!busy || (needsText && !caption)}
                 className="ml-auto bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white text-xs font-semibold px-3 py-1.5">
