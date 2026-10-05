@@ -433,7 +433,7 @@
       "apparel"
      ],
      "createdAt": "2026-10-05T16:14:09.748Z",
-     "usedAt": null
+     "usedAt": "2026-10-05T16:14:14.123Z"
     },
     {
      "id": "cmuvg9is41l40",
@@ -502,6 +502,17 @@
    "format": "story",
    "captionId": null,
    "asset": "/images/cool-charizard-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/c-post-1.png",
+   "mode": "manual",
+   "postId": null,
+   "url": null
+  },
+  {
+   "at": "2026-10-05T16:14:14.123Z",
+   "productId": "cool-arcanine-back-shirt",
+   "platform": "pinterest",
+   "format": "pin",
+   "captionId": "cmuvg9is40b3h",
+   "asset": "/images/cool-arcanine-back-shirt/hf_20260904_140941_cf0d5c8b-6332-4e0f-8f81-f8570c6f99a5.png",
    "mode": "manual",
    "postId": null,
    "url": null
