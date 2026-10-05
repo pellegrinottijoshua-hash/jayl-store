@@ -14,7 +14,7 @@ Aggiornato: 2026-10-02 notte da Troy (home nuova, ruoli degli asset, SEO, 3 vide
   - in scheda il video gira una volta e passa al mockup 1; su Objects si vede il video hero.
   - "+" sotto la miniatura nella lista prodotti: carica nella galleria del prodotto.
 - **Front dentro le back** (link vecchi aprono la back su Front); 23 video hero da `heros/`. **SEO:** meta su tutte. **Misure:** Umami senza cookie; GA4 e pixel Meta solo con consenso.
-- **Social dall'admin:** 1 clic per Pinterest, IG, FB; "apri e copia" per X, TikTok, YT.
+- **Social dall'admin:** 1 clic per Pinterest, IG, FB; "apri e copia" per X, TikTok, YT. Ogni asset mostra dove è già uscito (pallini, ✓ sul social); "segna già pubblicato" per i post fatti fuori.
 - **Pubblicazione:** `~/Desktop/jayl streetwear/pubblicazione/` (`da-joshua/`, `da-troy/bozze|approvati/`, `pubblicati/`, `LEGGIMI.md`).
   - **3 bozze da 10 s** in `da-troy/bozze/` (Screenshot, Pack opening, Stacco) con caption; 15 formati in `da-troy/FORMATI.md`; codice in `~/jayl-motion/src/Virali.tsx`.
 
