@@ -24,7 +24,7 @@ export const drop = {
       "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him"
     ],
     "startsAt": "2026-10-01T16:00:00Z",
-    "endsAt": "2026-10-06T16:00:00Z",
+    "endsAt": "2026-10-07T16:00:00Z",
     "cap": 20,
     "caps": {},
     "dropPrice": 1999,
