@@ -129,7 +129,7 @@ export const drop = {
         "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him"
       ],
       "startsAt": "2026-10-07T16:00:00Z",
-      "endsAt": "2026-10-10T16:00:00Z",
+      "endsAt": "2026-10-12T16:00:00Z",
       "cap": 20,
       "caps": {},
       "dropPrice": 1999,
