@@ -20597,5 +20597,403 @@ export const adminProducts = [
       "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144227_7e949289-f0d2-4d14-a254-cefc98f78b2f.png",
       "/images/gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him/hf_20260908_144245_ac0cfb2e-d314-4f39-af40-3111bdf8532f.png"
     ]
+  },
+  {
+    "id": "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Aerodactyl Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  Rock Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "The Aerodactyl Back Print Shirt captures the thrill of adventure with its dynamic depiction of the iconic flying Pokémon in mid-soar. Its large back design highlights Aerodactyl's fierce energy and nostalgic retro 90s anime aesthetic, embodying a spirit that resonates with fans of classic adventures. Made from a soft Gildan premium cotton tee and printed using durable direct-to-garment (DTG) technology, this shirt offers both comfort and style for everyday wear. Consider it a unique gift for those who appreciate the charm of vintage anime and cherished gaming moments.",
+    "altText": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-01.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-02.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-03.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-04.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-05.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-06.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-07.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-08.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-09.jpg",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-10.jpg"
+    ],
+    "imageAlts": {
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-mockup-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-sand-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-black-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-mockup-02.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-mockup-03.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-white-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-natural-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-heather-maroon-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-rs-sport-grey-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee.",
+      "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-graphite-heather-01.jpg": "Dynamic Aerodactyl soaring with fierce determination in retro 90s anime style on a premium JAYL tee."
+    },
+    "tags": [
+      "pokemon",
+      "aerodactyl",
+      "anime shirt",
+      "retro t-shirt",
+      "funny graphic tee",
+      "gift for him",
+      "geek apparel",
+      "vintage clothing",
+      "90s nostalgia",
+      "unisex fashion",
+      "cotton t-shirt",
+      "gaming gift",
+      "cartoon art"
+    ],
+    "featured": false,
+    "gelatoProductId": "0e004fdb-d6e2-4517-82b0-a34c7648d0d4",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "videoUrl": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hero-1791381637715.mp4",
+    "primaryKeywords": [
+      "aerodactyl shirt",
+      "pokemon tee",
+      "graphic t-shirt",
+      "retro apparel",
+      "anime clothing"
+    ],
+    "longTailKeywords": [
+      "aerodactyl back print shirt",
+      "funny retro pokemon t-shirt",
+      "unisex cotton graphic tee",
+      "large design anime shirt",
+      "90s anime fan gift for him",
+      "unique pokemon gifts for men",
+      "premium quality graphic t-shirts",
+      "comfortable unisex anime apparel",
+      "nostalgic pokemon vintage tee",
+      "stylish aerodactyl graphic top"
+    ],
+    "hashtags": "#pokemon #aerodactyl #graphictee #retrotshirt #animefashion #90sanime #vintageclothing #unisexstyle #funnypokemon #teeshirt #giftforhim #geekstyle #cottontee #animeart #tshirtdesign #gamingfashion #collectibleshirt #nostalgiawear #artisticapparel #giftsforfans #fanarttee #popculturefashion #trendyshirts #uniquegiftsforhim #pokemongifts #quirkyfashion #streetwearstyle #casualclothing #limitededitiontee #retromerchandise",
+    "instagramCaption": "*Soar through your day like Aero!* 🦕 Rock this retro Aerodactyl T-shirt designed to capture that vibrant vintage vibe. Don't miss out—grab yours now! 🤘#aerodactyl#retroanime#pokemontshirt",
+    "pinterestCaption": "*Elevate your wardrobe with the Aerodactyl Back Print Shirt, showcasing bold retro vibes perfect for any Pokémon enthusiast.* This stylish unisex tee blends nostalgic anime art with supreme comfort, making it a remarkable choice for gifts or personal wear.",
+    "seoTitle": "Aerodactyl Back Print Shirt | Retro 90s Anime Gift | Pokémon",
+    "variants": [
+      {
+        "uid": "2ff91dbf-2e70-4b1f-a3a7-2395f29d30ac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "40621fe3-95c6-46e9-accc-59593f6ef748",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "145ec49c-bdce-4360-b54d-037c1a7a000c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5694b7c-6ce2-4eed-a61c-13ab8fa9286d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a317ad18-8714-474f-bf43-9bca4eae7ff5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "97315ed3-e4ec-4609-878f-8daba91afb09",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4bfd576b-606c-415c-a707-b2c10cc36746",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c45928ca-1cba-46f7-b869-588ce89b74fc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2f856f26-ccea-4104-826d-177753d48a35",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7f050dec-f089-4f63-b71e-8025d62b3ba1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "be6de1c1-51fd-44d8-9757-75e61a1d7547",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8091b834-8f49-4dc5-a457-6273fd94c6bc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "079c7890-eee8-487a-8120-de70f300bf72",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f2791273-1291-4a7a-ae51-a9357af0de11",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0a4b4b37-4035-4f07-9ff7-7f0a30ce6f08",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "72ef3073-4933-4f2c-97e0-773c0f9f2cca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "60645622-b2d5-4290-9aed-e76236d1f6ac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1b465afd-49fc-4679-9a29-d12d296e29b1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0fea2134-d20a-447c-8e0f-60cc96dc86e2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7e372f27-3e34-44cc-9a01-69e4e037d32c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4bbfc68a-45a3-49d0-8d65-059f6b1175a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3735d7f7-d5f4-4c5a-b873-d871618006ee",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "abaed260-be62-4020-9069-5eeef3f90649",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8902c6b3-2e8c-4178-9998-ea8e4ae583c2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_rs-sport-grey_gpr_0-4_inlbl_gildan_64000",
+        "color": "Rs Sport Grey",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "507e8c3b-a485-451a-9237-a141e257ed3c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "873ff773-758b-45ee-8292-9d02da31f0b6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "79e5bcf9-d2a9-4076-b1f8-92478feba720",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fa509503-4867-4280-8d8d-4688fcbf468d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-natural-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-white-01.jpg"
+      },
+      {
+        "id": "graphite-heather",
+        "label": "Graphite Heather",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-graphite-heather-01.jpg"
+      },
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-sand-01.jpg"
+      },
+      {
+        "id": "rs-sport-grey",
+        "label": "Rs Sport Grey",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-rs-sport-grey-01.jpg"
+      },
+      {
+        "id": "heather-maroon",
+        "label": "Heather Maroon",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-heather-maroon-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/51acc71f-a5bf-40dc-9dba-c7c6a71bb794/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9b24149b4b8bfc60dd90cea54a96b0788dbcfffb5757050c61791a3189211205",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c128d7a4-9d82-4682-9f26-d4b180a15d33/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=26dd6c74fa0680c20cf58ff42c65fc3496d33aaa266de0cae7d56ce2b9df1e3d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1428104e-f30b-4b23-a36a-a5922ca14470/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cbb674353046c3cecd66131864c2d7669e9ba165084759fdef76faea92030a31",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a27d81e6-b5cd-4b86-af44-7f5cacca57d2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=94cf3ca7f2c176cd15ad7fc156a3db0466027202e335274ee853e656e4b403e2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d9a6a000-64e9-4225-b509-17d804808405/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6a0fc0b2eaed0e5a0940c5e03441a8a85594f3af7925ca86538ae5022297e34e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d53d7819-ada9-4f33-82d5-9549afbcc170/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f38ca70462d670ac26b947570d486fdfc69272fc3a2493715256f8bb9f73ca98",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8a610f3a-8a20-4fcf-be66-c804e6012fcd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c71dcab477a52203b1c27a19acc9ee2b9b13a312c7148e420145cee55a8f2fad",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/160822bf-40d9-4918-9666-ca9076813515/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bbaf8b929f5c157bc34c2fd53dc2bae177ffc8c18b5d93abb5179af2aabaf101",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/af444eb4-30b8-4761-b691-9f61e8de9255/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=42f172d9410e8822b568d133236782411a5584908d8bc68c1988fb3785d57743",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4dc2c6dc-4f61-4556-ac19-09da6d1a55bc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T135920Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0b140177a7fd102b8730721a0d44f0eca88e7656843e887a81a0efe48fefdaa6"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hf_20260903_002248_9879ec5b-43f3-4c27-8d11-44c45f2efd58-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-07T14:03:46.331Z",
+    "updatedAt": "2026-10-07T14:03:46.331Z"
   }
 ]
