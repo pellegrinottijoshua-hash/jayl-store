@@ -27,7 +27,16 @@ const source = fs.readFileSync(path.join(root, 'src/data/drop.js'), 'utf8')
 // test deve girare anche se drop.js venisse rifiutato dal parser a valle.
 const refs = [...new Set((source.match(/"\/images\/[^"]+"/g) || []).map((s) => s.slice(1, -1)))]
 
-assert.ok(refs.length > 0, 'nessun hero trovato in drop.js — il match è da aggiornare')
+// Un drop senza hero personalizzati è legittimo: la home usa le foto di
+// catalogo (drop-07, 07/10, partito con heroImages vuoto: questa assert faceva
+// fallire la build). Il match è "da aggiornare" solo se qualche heroImages ha
+// delle voci ma la regex non ne trova nessuna.
+if (refs.length === 0) {
+  const pieni = [...source.matchAll(/"heroImages":\s*\{([^}]*)\}/g)].some((m) => m[1].trim().length > 0)
+  assert.ok(!pieni, 'heroImages non vuoti ma nessun path "/images/…" trovato in drop.js — il match è da aggiornare')
+  console.log('✓ drop heroes: nessun hero personalizzato nel drop (la home usa le foto di catalogo)')
+  process.exit(0)
+}
 
 const missing = []
 const wrongCase = []
