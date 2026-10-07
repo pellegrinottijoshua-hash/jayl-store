@@ -21391,5 +21391,361 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:06:28.408Z",
     "updatedAt": "2026-10-07T14:06:28.408Z"
+  },
+  {
+    "id": "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Rampardos Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  rock Pokemon Gift for Him",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Rampardos isn’t just a powerhouse; he’s the embodiment of ancient strength with a head that could probably knock down a building. This retro 90s anime graphic tee, made from Gildan premium cotton, displays a large back design showcasing Rampardos in all his glory, perfect for those days when you want to channel your inner brawler. The DTG print quality ensures clear, vibrant colors that won't fade when you wear it repeatedly. Whether you're treating yourself or gifting it to someone who appreciates dinosaurs and all things Pokémon, this shirt brings a nostalgic vibe while keeping comfort front and center.",
+    "altText": "Powerful Rampardos charging forward with determination in retro 90s anime art on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      }
+    ],
+    "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-01.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-02.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-03.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-04.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-05.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-06.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-07.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-08.jpg",
+      "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-09.jpg"
+    ],
+    "imageAlts": {
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3c5e5538-6109-4dee-85ba-0349082aa13b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c947f1e331874165a8ed455d45903b4d5790b35c510703767c6b1bffc982b74b": "A vibrant red t-shirt showcasing a large Rampardos graphic in a retro 90s anime style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dad9da5c-7fac-4342-84dc-656b7a74420b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=234eb4db2714ceb8b7e61e3be86683195843b6a9d496caf81704e89e6580e554": "Close-up of the Rampardos design on a red t-shirt, highlighting the retro 90s anime art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eef288a5-20ec-4bfa-8a0f-e15988a77ddd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=572e416a8af49ca917faaa9e6456244cb527e43dec71a7138306d6aba3428595": "The back of a red t-shirt featuring a large Rampardos graphic, embodying contemporary art flair.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fa528bd8-951b-476e-b1d5-6b23e9f4302c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b3f1d5c32d795604107e368ef856a1dc77527608194425a3338623f27e15b8dc": "A dynamic angle of a red t-shirt showcasing the bold Rampardos graphic in a playful retro style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e9b8cca5-1f36-4bf6-ad69-18a8b6a0d44f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=86decc6de6df5f2269fec8f1eb9617cbe25aeff4989d89694581b4f0a16f149a": "The Rampardos graphic in a playful pose on a red t-shirt, capturing the essence of 90s anime.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f2c754a2-a0ab-45f3-b5f1-cd761758a5b3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=44162aee29dc71b7abd1435e2bc2aa9fa08cce34ec62a1d3d5f2ae269d2b4cca": "A vibrant red t-shirt displayed flat, showcasing the large Rampardos graphic in contemporary art style.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d9b84689-82e6-4bc7-bf9d-3f1a7baca862/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1f3d9dc1550c24c272cf7b80bd760795a81f7045e512bde36654ce7ef6dbf2cd": "The back of a red t-shirt with a large Rampardos design, exuding a fun retro 90s vibe.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5ed387c0-a4df-4ff0-907d-83cd03c9a930/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=735541a5327b6056a38faa50c5326f9a44fa47e529b9905b9df37e9e423e8ad5": "An artistic view of the Rampardos graphic on a red t-shirt, highlighting its retro charm."
+    },
+    "tags": [
+      "rampardos",
+      "pokemon shirt",
+      "anime t-shirt",
+      "funny graphic tee",
+      "retro style",
+      "gift for him",
+      "unisex apparel",
+      "cotton t-shirt",
+      "90s anime",
+      "rock pokemon",
+      "back print shirt",
+      "geek fashion",
+      "fan merchandise"
+    ],
+    "featured": false,
+    "gelatoProductId": "bc548899-5564-41c3-94ae-5e052de9d782",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "videoUrl": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hero-1791382196437.mp4",
+    "primaryKeywords": [
+      "Rampardos shirt",
+      "Pokemon t-shirt",
+      "anime graphic tee",
+      "retro shirt",
+      "funny tee"
+    ],
+    "longTailKeywords": [
+      "funny rampardos graphic t-shirt",
+      "large back design pokemon shirt",
+      "retro anime tee gift for him",
+      "unisex cotton rampardos t-shirt",
+      "90s style pokemon apparel",
+      "unique pokemon themed gift",
+      "premium quality graphic tee",
+      "comic-con rampardos shirt",
+      "lightweight cotton anime t-shirt",
+      "fun retro pokemon clothing"
+    ],
+    "hashtags": "#rampardos #pokemon #anime #fashion #geekstyle #teeshirt #graphictee #retrofashion #90sanime #giftsforhim #unisexclothing #pokemergear #comics #nerdwear #popupshop #cooltshirt #fanart #dtgprint #vintageapparel #rockpokemon #characterdesign #artwears #cutevintageoutfit #teenapparel #throwbackstyle #quarantinefashion #nerdshrts #epicmerchandise #collectibleshirts#cottagecorefashion",
+    "instagramCaption": "'Not all heroes wear capes... some wear Rampardos.' Show your true power without saying a word. Grab yours now! ⚡️💥#retroaesthetic#pokemergear#graphictee",
+    "pinterestCaption": "'Step into battle mode with our Rampardos Back Print Shirt, a must-have for any fan of retro Pokemon culture. Crafted from soft Gildan cotton and featuring bold graphics, this is sure to be your new favorite tee.' Explore our collection today!",
+    "seoTitle": "Rampardos Back Print Shirt | Retro Anime Gift | Rock Pokemon Style",
+    "variants": [
+      {
+        "uid": "56fafd4c-6a62-46b0-9336-a7b8d9415852",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0fddd0a8-25a6-4882-86da-bb09db2d0555",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0aee9391-c8f3-408d-8a90-ce6422591e02",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7661f30e-d47d-48a6-9925-34ad62da50f0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "77d9ab52-0305-40bd-b26b-6d6732b4df0d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f7094956-77ff-40ff-af34-7d0ed5f4cbce",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "51e45881-0c4c-45f7-880e-26e9c3091864",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9e3271f8-c25b-4908-92a4-78ef89b39ed1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "00c2f27e-3c20-429d-9152-5bbdad36b3c8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "43d605f0-d2cb-445d-8eb5-40fa3dca3dea",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "19e61aea-70f4-47b6-9ae3-9fc4742a5999",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d0425ebe-820f-4a2e-bf80-814b77ebf319",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7f102608-770e-4d07-8be2-a67f52bd2506",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cb6c7619-d34e-4c34-b49e-db04201e2925",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4483171b-5f80-4465-921a-36037bff7828",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bf41cf30-0aac-4d36-86a7-f0931069baed",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bfea0897-9a5c-46b2-8cd1-a50f9c22737a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1cd20166-2226-4e06-b079-d507bdbcb6ab",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d00c3d5a-09ed-4b1f-883a-432c7640e9c3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c504a5e2-3edb-4734-852c-3975ee85d5b1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a7d6bd3a-adbd-4eb4-ac50-8323e9734e76",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0c7f17f9-a595-4dad-b048-7c4bac2f24df",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4b34275c-f542-43b8-9df3-a1bf894cb531",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bc0f1197-e9d8-4830-8ec9-cc2a84ab03c7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-sand-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-natural-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-white-01.jpg"
+      },
+      {
+        "id": "graphite-heather",
+        "label": "Graphite Heather",
+        "hex": "#888888",
+        "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-graphite-heather-01.jpg"
+      },
+      {
+        "id": "heather-maroon",
+        "label": "Heather Maroon",
+        "hex": "#888888",
+        "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-heather-maroon-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3c5e5538-6109-4dee-85ba-0349082aa13b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c947f1e331874165a8ed455d45903b4d5790b35c510703767c6b1bffc982b74b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dad9da5c-7fac-4342-84dc-656b7a74420b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=234eb4db2714ceb8b7e61e3be86683195843b6a9d496caf81704e89e6580e554",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eef288a5-20ec-4bfa-8a0f-e15988a77ddd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=572e416a8af49ca917faaa9e6456244cb527e43dec71a7138306d6aba3428595",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fa528bd8-951b-476e-b1d5-6b23e9f4302c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b3f1d5c32d795604107e368ef856a1dc77527608194425a3338623f27e15b8dc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e9b8cca5-1f36-4bf6-ad69-18a8b6a0d44f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=86decc6de6df5f2269fec8f1eb9617cbe25aeff4989d89694581b4f0a16f149a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f2c754a2-a0ab-45f3-b5f1-cd761758a5b3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=44162aee29dc71b7abd1435e2bc2aa9fa08cce34ec62a1d3d5f2ae269d2b4cca",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d9b84689-82e6-4bc7-bf9d-3f1a7baca862/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1f3d9dc1550c24c272cf7b80bd760795a81f7045e512bde36654ce7ef6dbf2cd",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5ed387c0-a4df-4ff0-907d-83cd03c9a930/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=735541a5327b6056a38faa50c5326f9a44fa47e529b9905b9df37e9e423e8ad5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5f56ebab-5619-4488-a8d3-861c7274d6e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb0a87b3bcfdab179ed883ead1555d819849b32485547f05c96d209724032e1a"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hf_20260824_102818_90e6bb26-4cd7-4f71-b5ee-96f106c42e02-zack-1.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-07T14:14:12.124Z",
+    "updatedAt": "2026-10-07T14:14:12.124Z"
   }
 ]
