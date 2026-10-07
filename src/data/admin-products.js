@@ -21397,11 +21397,12 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:06:28.408Z",
-    "updatedAt": "2026-10-07T14:25:31.543Z",
+    "updatedAt": "2026-10-07T14:25:35.237Z",
     "relatedProducts": [],
     "heroShots": [],
     "storeColors": [
-      "sand"
+      "sand",
+      "black"
     ]
   },
   {
