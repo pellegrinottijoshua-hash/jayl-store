@@ -20995,5 +20995,401 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:03:46.331Z",
     "updatedAt": "2026-10-07T14:03:46.331Z"
+  },
+  {
+    "id": "cool-kabutops-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Kabutops T shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Step into the realm of nostalgia with our Kabutops back print shirt, where every detail screams rebellion. This fierce, scythe-handed Pokémon embodies the essence of the anti-establishment spirit, lurking in the shadows of an iconic era. Made from Gildan’s premium cotton blend and featuring DTG print quality, this tee showcases a large retro design that captures Kabutops’ chilling vibe perfectly. Whether you’re rocking it at a convention or just vibing with friends, consider this bold piece an ode to your inner misfit. It also makes for a killer gift for the rebel in your life!",
+    "altText": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      }
+    ],
+    "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-01.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-02.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-03.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-04.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-05.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-06.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-07.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-08.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-09.jpg",
+      "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-10.jpg"
+    ],
+    "imageAlts": {
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-heather-maroon-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-natural-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-graphite-heather-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-mockup-02.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-navy-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-sand-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-black-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-white-01.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee.",
+      "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-mockup-03.jpg": "Kabutops with scythes poised menacingly in vibrant colors on a retro 90s anime style JAYL tee."
+    },
+    "tags": [
+      "kabutops",
+      "pokemon shirt",
+      "anime graphic tee",
+      "retro t-shirt",
+      "funny apparel",
+      "gifting ideas",
+      "unisex fashion",
+      "90s nostalgia",
+      "cotton t-shirt",
+      "geek clothing",
+      "pop culture",
+      "fan merchandise",
+      "anime lovers"
+    ],
+    "featured": false,
+    "gelatoProductId": "3a188405-b58b-48d8-9ea9-3f12f89eb57c",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "videoUrl": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hero-1791381936856.mp4",
+    "primaryKeywords": [
+      "kabutops shirt",
+      "pokemon apparel",
+      "anime t-shirt",
+      "retro shirt",
+      "graphic tee"
+    ],
+    "longTailKeywords": [
+      "funny pokemon graphic tee",
+      "retro anime t-shirts for men",
+      "unisex kabutops cotton shirt",
+      "gift ideas for anime fans",
+      "large back design shirts online",
+      "90s style graphic tees for women",
+      "cool pokemon gifts for him",
+      "unique anime gift ideas for her",
+      "popular retro shirts online shop",
+      "print on demand anime clothing"
+    ],
+    "hashtags": "#kabutops #pokemontshirt #anime #retrotshirt #vintagefashion #geekfashion #comiccon #nerdlife #cosplay #pokemoncartoon #90sfashion #graphictee #retrogaming #nostalgia #uniqueclothing #animeart #popculturemerchandise #cottontee #unisexstyle #funnypokemon #giftingideas #collectibleshirt #apparelstyle #weartheartistswork #fandomlife #retroanimeartwork #expressyourself #quirkytshirts #fashionstatement #originalartwears",
+    "seoTitle": "Kabutops Back Print Shirt | Retro 90s Anime Fan Gift",
+    "variants": [
+      {
+        "uid": "b9e255d6-5475-4cfa-9c73-5eb7cb1b6ee9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4348adad-3e58-4708-827f-3455ecb1c2cd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "adaa2d93-c43b-4191-b077-30203ea92b72",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "280d4d20-ddde-40e8-97c2-db1d627ab72a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1da20690-915f-4cbe-b50a-683234a7e398",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2ce3f04d-7460-44b4-9f5a-6b53a8bbb01c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "564758f3-9c5a-4322-9d81-65dd464c49b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "94603a04-bd43-492f-a6cd-2fd525719490",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d60209be-e22f-4021-962c-9d3f5276f750",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "731de17e-3670-49f8-ae84-e4a545ce2873",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "284788c2-3c9d-46ee-aea4-1d62bb26969d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ae9d0294-1733-4399-9fb4-1f95ef7b5005",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4e140c5e-b35e-4159-bd10-43254caa22e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "54216a47-b9cf-4ced-b68d-ece8278a0ed5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2b04ff54-5433-49f1-aeff-8465602e35e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b9330cca-937d-4009-9abd-18c53517cba5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "37481ca5-cedc-49ce-9596-c6accb0a43ec",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1e206496-2cd2-4bed-a60e-554b737ae00a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8ad15965-c284-47b0-a360-60f4ef963373",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6e62a95c-df3f-44f0-b2b8-289fc94e0bf9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6d63add3-5575-4d9f-80e9-79e9138aae47",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b6b1f059-adfc-48d3-951a-a94f623584fa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d5f37c41-adff-42ae-a2c4-7dbd721203b6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_sand_gpr_0-4_inlbl_gildan_64000",
+        "color": "Sand",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "de2921bb-f150-4f7e-b791-46ea2c6ca191",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "78d64006-dd92-4c96-89ac-9718e9ac0e0c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f812afec-2171-4496-a11b-1747d6c2c9eb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e42e2acd-bed4-4ea6-9851-35e0d76b3cdc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-maroon_gpr_0-4_inlbl_gildan_64000",
+        "color": "Heather Maroon",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3d1f521b-387c-4175-a12c-043a81e78e50",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_graphite-heather_gpr_0-4_inlbl_gildan_64000",
+        "color": "Graphite Heather",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-white-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-natural-01.jpg"
+      },
+      {
+        "id": "graphite-heather",
+        "label": "Graphite Heather",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-graphite-heather-01.jpg"
+      },
+      {
+        "id": "heather-maroon",
+        "label": "Heather Maroon",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-heather-maroon-01.jpg"
+      },
+      {
+        "id": "sand",
+        "label": "Sand",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-sand-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-navy-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/68f8034b-4c80-410b-8054-8848aac56dd7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0f69bd5baff93892e7fae8b771363b543a4d262c88b3535f66b03a034d2e338b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/af4865df-7db6-43af-8064-5e6cbe55cb74/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0d13d1cf41ef98fb6960816d0d237c58909ea5d200ff6c41fccbd031da531c45",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e903b05c-abbe-4063-a2dd-00025737877e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1084ebe9e5b06710074b08c19d01c65b23b8524ce5875e59ad5089f987f2210e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/81b2d067-cb1a-4853-8755-7b0c08658e7e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f1336c9766b1d56789f017641a048c5f18d0b03d591110f24507f44ad1a9cf50",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/95bbb301-10d6-4cce-9d45-826e747942d8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bfd75d109ba84013802bdc82e764ecfd75b3b699e562e0a1452aa68baf131803",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f380a904-671f-47c1-80e3-3e924b14511b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d3ecd2153f1bba9bb83148ad4bd5401d1575cbe61852e74940c518302b32135c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9e08e4d6-b57a-47c2-8a77-d0aed52e390f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8d1b39d335f544b4d176991fe0193ddcc7f427c32ab0543af5f4bc9bf485ff69",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ef225f1e-f78e-4f25-aa01-6ee09aacbfb9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=13975cdab4063c852141719d33f86667d583c14a2e09429f77624f614df6fac4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a0c25e85-bd4d-417e-8ffa-ab7ad9eb7b24/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4208b41616367ebcec025a7a97cc3a705a44a133c94a0e4b4ac92d5c75c60308",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/42542434-7e5d-432f-b65d-62a18de40b18/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140359Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3eb07446ddb08209e3c0a998f84a7e0767e4a202035dbf99bd9d4a5d0990e813"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/hf_20260421_015333_b360b15f-859a-4001-afde-266bf72c9855-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-07T14:06:28.408Z",
+    "updatedAt": "2026-10-07T14:06:28.408Z"
   }
 ]
