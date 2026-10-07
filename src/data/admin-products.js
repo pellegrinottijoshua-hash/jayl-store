@@ -20602,7 +20602,7 @@ export const adminProducts = [
     "id": "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Aerodactyl Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  Rock Pokemon Gift for Him",
+    "name": "Cool Aerodactyl T Shirt",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
@@ -20639,8 +20639,8 @@ export const adminProducts = [
       }
     ],
     "image": "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hf_20260909_002716_dcc5cc58-78e4-4512-9cb4-e4c0f7b1ffb7.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hf_20260909_003609_06e8bc72-822b-4552-a874-7601816e15b2.png",
     "images": [
       "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-01.jpg",
       "/images/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/aerodactyl-back-print-shirt-funny-retro-90s-a-gelato-02.jpg",
@@ -20994,7 +20994,14 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:03:46.331Z",
-    "updatedAt": "2026-10-07T14:03:46.331Z"
+    "updatedAt": "2026-10-07T14:19:14.601Z",
+    "relatedProducts": [],
+    "heroShots": [],
+    "storeColors": [
+      "rs-sport-grey",
+      "black",
+      "graphite-heather"
+    ]
   },
   {
     "id": "cool-kabutops-t-shirt",
