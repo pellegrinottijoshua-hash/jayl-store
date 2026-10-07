@@ -11,15 +11,15 @@ Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, h
   - cookie "Who doesn't like cookies?"; barra free shipping su ogni pagina; IG e TikTok accanto al logo su mobile.
 - **Asset prodotto (2/10)**, assegnati in admin (★ hero, # mockup, 🔍 dettaglio, 🏠 lifestyle home, vedi `src/lib/productMedia.js`):
   - **hero** = video da 3 s, oppure le 2 foto di schiena (uomo e donna, `heroShots`);
-  - in scheda il video gira una volta e passa al mockup 1; su Objects si vede il video hero.
-  - "+" sotto la miniatura nella lista prodotti: carica nella galleria del prodotto.
+  - in scheda il video gira una volta e passa al mockup 1; su Objects si vede il video hero. "+" sotto la miniatura nella lista prodotti: carica nella galleria.
 - **Front dentro le back** (link vecchi aprono la back su Front); 23 video hero da `heros/`. **SEO:** meta su tutte. **Misure:** Umami senza cookie; GA4 e pixel Meta solo con consenso.
 - **Social dall'admin:** 1 clic per Pinterest, IG, FB; "apri e copia" per X, TikTok, YT. Ogni asset mostra dove è già uscito (pallini, ✓ sul social); "segna già pubblicato" per i post fatti fuori.
 - **Pubblicazione:** `~/Desktop/jayl streetwear/pubblicazione/` (`da-joshua/`, `da-troy/bozze|approvati/`, `pubblicati/`, `LEGGIMI.md`).
-  - **Bozze** in `da-troy/bozze/`, caption e ordine di uscita in `captions.txt`: 3 del 2/10 (Virali.tsx), 2 hero rewind (shiny e fossili, `~/jayl-motion/kit/hero-virale.sh shiny|fossili`), 4 statici del Drop 7 rimontati su brani Flow (piani in `12/video static/_ditto/2026-10-07/`). I brani famosi non si mettono nei file: su un profilo aziendale vengono silenziati.
+  - **Bozze** in `da-troy/bozze/`, caption e ordine di uscita in `captions.txt`: 3 del 2/10 (Virali.tsx), hero rewind shiny (`kit/hero-virale.sh`), SPECIMEN fossili (museo, `src/Museo.tsx`, `kit/social.sh Museo …`), 4 statici del Drop 7 su brani Flow. Ogni drop: 5 video, ognuno in un formato nuovo.
+  - **Musica:** 9 brani Flow nuovi in `marketing music/` col BPM reale nel nome, `tagli 15s/` e `firme/` (da ascoltare); BPM con `~/.claude/skills/video-statico/bpm.py`. Effetti Mixkit (uso commerciale libero) in `sfx marketing/`.
 
 ## Prossimi 3 passi
-1. **Joshua:** guardare i 5 video del Drop 7 e approvarli (→ `approvati/`); il primo (hero rewind fossili) esce stasera dopo le 18:00.
+1. **Joshua:** approvare i 5 video del Drop 7 (→ `approvati/`); SPECIMEN esce stasera dopo le 18:00. Ascoltare le 5 firme e il Lo-fi.
 2. **Admin:** ricaricare la pagina prima di salvare. Con la pagina vecchia un salvataggio ha cancellato la SEO di Ursaring (ripristinata).
 3. **Piano editoriale:** 1 video al giorno da `approvati/`, con UTM verso la scheda. Domenica 5/10 si legge Umami.
 
