@@ -21405,7 +21405,7 @@ export const adminProducts = [
     "id": "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Rampardos Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  rock Pokemon Gift for Him",
+    "name": "Cool Rampardos T Shirt",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
@@ -21442,8 +21442,8 @@ export const adminProducts = [
       }
     ],
     "image": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hf_20260909_005532_999ccb3f-376d-4da1-b715-f8e14ddd8218.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hf_20260908_173514_d40ee1a8-6765-4044-a5ed-fa00265de3e6.png",
     "images": [
       "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-01.jpg",
       "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/rampardos-back-print-shirt-funny-retro-90s-an-gelato-02.jpg",
@@ -21755,6 +21755,8 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:14:12.124Z",
-    "updatedAt": "2026-10-07T14:14:12.124Z"
+    "updatedAt": "2026-10-07T14:25:17.390Z",
+    "relatedProducts": [],
+    "heroShots": []
   }
 ]
