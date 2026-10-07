@@ -21760,9 +21760,10 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:14:12.124Z",
-    "updatedAt": "2026-10-07T14:25:43.710Z",
+    "updatedAt": "2026-10-07T14:25:46.553Z",
     "storeColors": [
-      "graphite-heather"
+      "graphite-heather",
+      "black"
     ]
   }
 ]
