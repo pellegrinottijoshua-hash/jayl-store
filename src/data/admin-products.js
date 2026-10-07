@@ -21044,8 +21044,8 @@ export const adminProducts = [
       }
     ],
     "image": "/images/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/kabutops-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kabutops-t-shirt/hf_20260909_005102_919d3a87-8805-4488-bf1e-14e8b6e9a005.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-kabutops-t-shirt/hf_20260908_155651_962b309b-0284-4852-a3d6-eee1c85b660c.png",
     "images": [
       "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-01.jpg",
       "/images/cool-kabutops-t-shirt/cool-kabutops-t-shirt-gelato-02.jpg",
@@ -21397,7 +21397,9 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/kabutops-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:06:28.408Z",
-    "updatedAt": "2026-10-07T14:06:28.408Z"
+    "updatedAt": "2026-10-07T14:20:14.671Z",
+    "relatedProducts": [],
+    "heroShots": []
   },
   {
     "id": "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
