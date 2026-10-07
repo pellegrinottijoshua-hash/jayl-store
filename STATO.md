@@ -1,10 +1,10 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-10-02 notte da Troy (home nuova, ruoli degli asset, SEO, 3 video bozza, cartella pubblicazione). Dettagli e passi: `RIPRENDI-QUI.md`.
+Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, hero rewind per serie). Dettagli e passi: `RIPRENDI-QUI.md`.
 
 ## A che punto siamo
-- **Negozio:** www.jayl.store. 19,99 € al lancio, 24,99 € in collezione, i 3 a 49,99 €. Niente "drop" ai clienti: NEW. 6 drop, 0 vendite reali.
-- **Drop 6 SHINY** (Gyarados, Charizard, Dragonite) live fino al 6/10 alle 18:00.
+- **Negozio:** www.jayl.store. 19,99 € al lancio, 24,99 € in collezione, i 3 a 49,99 €. Niente "drop" ai clienti: NEW. 7 drop, 0 vendite reali.
+- **Drop 7 ANCIENT** (Rampardos, Kabutops, Aerodactyl) dal 7/10 alle 18:00 al 12/10 alle 18:00, a 19,99 €.
 - **Home (2/10):**
   - desktop: 3 schede affiancate, video insieme una volta, hover riparte; telefono: cilindro;
   - niente countdown in home; nelle schede del drop "offer · N days". Ogni settimana: metà prodotti col 3° colore FINISHED, un'altra metà "only N left" (`src/lib/scarcity.js`).
@@ -16,10 +16,10 @@ Aggiornato: 2026-10-02 notte da Troy (home nuova, ruoli degli asset, SEO, 3 vide
 - **Front dentro le back** (link vecchi aprono la back su Front); 23 video hero da `heros/`. **SEO:** meta su tutte. **Misure:** Umami senza cookie; GA4 e pixel Meta solo con consenso.
 - **Social dall'admin:** 1 clic per Pinterest, IG, FB; "apri e copia" per X, TikTok, YT. Ogni asset mostra dove è già uscito (pallini, ✓ sul social); "segna già pubblicato" per i post fatti fuori.
 - **Pubblicazione:** `~/Desktop/jayl streetwear/pubblicazione/` (`da-joshua/`, `da-troy/bozze|approvati/`, `pubblicati/`, `LEGGIMI.md`).
-  - **3 bozze da 10 s** in `da-troy/bozze/` (Screenshot, Pack opening, Stacco) con caption; 15 formati in `da-troy/FORMATI.md`; codice in `~/jayl-motion/src/Virali.tsx`.
+  - **Bozze** in `da-troy/bozze/`, caption e ordine di uscita in `captions.txt`: 3 del 2/10 (Virali.tsx), 2 hero rewind (shiny e fossili, `~/jayl-motion/kit/hero-virale.sh shiny|fossili`), 4 statici del Drop 7 rimontati su brani Flow (piani in `12/video static/_ditto/2026-10-07/`). I brani famosi non si mettono nei file: su un profilo aziendale vengono silenziati.
 
 ## Prossimi 3 passi
-1. **Joshua:** guardare le 3 bozze, approvarle (→ `approvati/`) e scegliere i formati da `FORMATI.md`.
+1. **Joshua:** guardare i 5 video del Drop 7 e approvarli (→ `approvati/`); il primo (hero rewind fossili) esce stasera dopo le 18:00.
 2. **Admin:** ricaricare la pagina prima di salvare. Con la pagina vecchia un salvataggio ha cancellato la SEO di Ursaring (ripristinata).
 3. **Piano editoriale:** 1 video al giorno da `approvati/`, con UTM verso la scheda. Domenica 5/10 si legge Umami.
 
@@ -27,4 +27,4 @@ Aggiornato: 2026-10-02 notte da Troy (home nuova, ruoli degli asset, SEO, 3 vide
 - **TikTok a 1 clic:** serve l'app TikTok approvata, oppure la pubblicazione via Higgsfield (un clic tuo per post).
 
 ## Numeri
-- Drop: 6. Vendite reali: 0. Instagram @jayl_store: 37 follower (30/9).
+- Drop: 7. Vendite reali: 0. Instagram @jayl_store: 37 follower (30/9).
