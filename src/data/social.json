@@ -1173,7 +1173,7 @@
       "fan apparel"
      ],
      "createdAt": "2026-10-05T16:36:17.602Z",
-     "usedAt": null
+     "usedAt": "2026-10-07T01:55:44.474Z"
     }
    ]
   },
@@ -1632,6 +1632,17 @@
    "format": "pin",
    "captionId": "cmuvh1l35lq3e",
    "asset": "/images/cool-slowpoke-back-t-shirt/hf_20260629_131913_c1b73103-aee1-4528-a1b4-1e390a396fe2.png",
+   "mode": "manual",
+   "postId": null,
+   "url": null
+  },
+  {
+   "at": "2026-10-07T01:55:44.474Z",
+   "productId": "cool-likitung-back-t-shirt",
+   "platform": "pinterest",
+   "format": "pin",
+   "captionId": "cmuvh1zcy1abl",
+   "asset": "/images/cool-likitung-back-t-shirt/hf_20260629_125352_d7eb9d57-22c7-43ab-90c4-0b75feff9db5.png",
    "mode": "manual",
    "postId": null,
    "url": null
