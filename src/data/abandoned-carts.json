@@ -1,5 +1,21 @@
 [
   {
+    "id": "cart_1791556495933",
+    "email": "giacomodecolve@gmail.com",
+    "cartItems": [
+      {
+        "name": "Cool Mewtwo T-Shirt",
+        "image": "https://www.jayl.store/images/cool-mewtwo-back-t-shirt/hf_20260626_133224_a1409471-8ad2-48de-b617-371ce03d39ac.jpeg",
+        "color": "purple",
+        "size": "XL",
+        "quantity": 1
+      }
+    ],
+    "capturedAt": "2026-10-09T14:34:55.933Z",
+    "sent": false,
+    "converted": false
+  },
+  {
     "id": "cart_1789795105885",
     "email": "bryceloveschipotle@gmail.com",
     "cartItems": [
