@@ -18,6 +18,8 @@ Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, h
   - **Bozze** in `da-troy/bozze/`, caption e ordine di uscita in `captions.txt`: 3 del 2/10 (Virali.tsx), hero rewind shiny (`kit/hero-virale.sh`), SPECIMEN fossili (museo, `src/Museo.tsx`, `kit/social.sh Museo …`), 4 statici del Drop 7 su brani Flow. Ogni drop: 5 video, ognuno in un formato nuovo.
   - **Musica:** 9 brani Flow nuovi in `marketing music/` col BPM reale nel nome, `tagli 15s/` e `firme/` (da ascoltare); BPM con `~/.claude/skills/video-statico/bpm.py`. Effetti Mixkit (uso commerciale libero) in `sfx marketing/`.
 
+- **Mockup (12/10):** i fronti lisci di Gelato diventano retro + disegno; i disegni leggeri stanno in `dist/prints/` (`scripts/web-prints.js`). Se a un prodotto in vendita manca il file di stampa, la build si ferma.
+
 ## Prossimi 3 passi
 1. **Joshua:** approvare i 5 video del Drop 7 (→ `approvati/`); SPECIMEN esce stasera dopo le 18:00. Ascoltare le 5 firme e il Lo-fi.
 2. **Admin:** ricaricare la pagina prima di salvare. Con la pagina vecchia un salvataggio ha cancellato la SEO di Ursaring (ripristinata).

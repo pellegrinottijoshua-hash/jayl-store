@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { readFileSync, readdirSync, existsSync, statSync } from 'fs'
 import path from 'path'
 import { drop } from './src/data/drop.js'
-import { classifyMockupColors } from './scripts/mockup-colors.js'
+import { classifyMockupColors, findBlankMockups } from './scripts/mockup-colors.js'
 import { createImageOptimizer, optimizeProductImages, IMAGE_LITERAL } from './scripts/optimize-images.js'
 import { isSocialAsset, mediaTypeOf } from './src/lib/socialAssets.js'
 
@@ -78,6 +78,10 @@ function storefrontProducts() {
       for (const product of stripped) {
         const imageColors = await classifyMockupColors(product, publicDir)
         if (Object.keys(imageColors).length) product.imageColors = imageColors
+        // Fronti lisci importati da Gelato: la scheda mette al loro posto il
+        // retro liscio col disegno sopra (public/prints, scripts/web-prints.js).
+        const blank = await findBlankMockups(product, publicDir)
+        if (blank.length) product.blankImages = blank
       }
       // Dopo classifyMockupColors, che legge i pixel dai file originali.
       const { optimize } = images

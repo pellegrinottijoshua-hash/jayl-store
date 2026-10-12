@@ -278,6 +278,10 @@ function StarRating({ value, onChange, isLight }) {
 // maglie front vere (file di stampa ↔ dove Gelato lo mostra nel suo render):
 // il canvas 3661×4843 copre x 32,5→67,5% e y 24,4→71,5% dell'immagine.
 const FRONT_PRINT_AREA = { left: 0.325, top: 0.244, width: 0.35, height: 0.471 }
+// Stesso calcolo per il retro, misurato su un render Gelato stampato
+// (Kabutops sand) contro il retro liscio dello stesso colore.
+const BACK_PRINT_AREA = { left: 0.348, top: 0.175, width: 0.301, height: 0.396 }
+const areaStyle = (a) => ({ left: `${a.left * 100}%`, top: `${a.top * 100}%`, width: `${a.width * 100}%`, height: `${a.height * 100}%` })
 // Colletto: una fascia su scollo e spalle, tagliata sopra l'area di stampa
 // (che parte al 24,4%), cosi' il logo del petto non entra mai
 // nell'inquadratura. Stesso taglio del dettaglio colletto di Gelato.
@@ -303,8 +307,7 @@ function ColorLook({ look, className = '' }) {
               style={{ inset: 0, width: '100%', height: '100%', objectFit: 'contain' }} />
           )}
           {overlay && (
-            <img src={overlay} alt="" aria-hidden className="absolute pointer-events-none"
-              style={{ left: `${FRONT_PRINT_AREA.left * 100}%`, top: `${FRONT_PRINT_AREA.top * 100}%`, width: `${FRONT_PRINT_AREA.width * 100}%`, height: `${FRONT_PRINT_AREA.height * 100}%` }} />
+            <img src={overlay.src} alt="" aria-hidden className="absolute pointer-events-none" style={areaStyle(overlay.area)} />
           )}
         </span>
       </span>
@@ -360,8 +363,7 @@ function GalleryThumb({ src, look }) {
     <span className="relative block w-full h-full bg-white">
       <img src={look.main} alt="" className="absolute inset-0 w-full h-full object-contain" />
       {look.overlay && (
-        <img src={look.overlay} alt="" aria-hidden className="absolute"
-          style={{ left: `${FRONT_PRINT_AREA.left * 100}%`, top: `${FRONT_PRINT_AREA.top * 100}%`, width: `${FRONT_PRINT_AREA.width * 100}%`, height: `${FRONT_PRINT_AREA.height * 100}%` }} />
+        <img src={look.overlay.src} alt="" aria-hidden className="absolute" style={areaStyle(look.overlay.area)} />
       )}
       {look.finished && <FinishedStamp small />}
     </span>
@@ -609,16 +611,20 @@ export default function ProductPage() {
     const plainFront = plainMockup(color, 'front')
     if (!color || !plainFront) return null
     const frontMode = altPrint && activeSide === 'front'
+    // Mockup Gelato senza stampa (fronte liscio, vedi findBlankMockups): al suo
+    // posto il retro liscio con il disegno sopra.
+    const blankBack = !frontMode && product.blankImages?.includes(back) && !!plainMockup(color, 'back')
+    // Disegni leggeri generati alla build (scripts/web-prints.js): public/designs
+    // non va nel deploy.
+    const print = (side) => `/prints/${product.id}/${side}.webp`
     return {
       frontMode,
       finished: color === finishedColor,
-      main:   frontMode ? plainFront : back,
+      main:   frontMode ? plainFront : blankBack ? plainMockup(color, 'back') : back,
       side:   frontMode ? plainMockup(color, 'back') : plainFront,
       collar: plainFront,
-      // Il file di stampa sta anche in public/: lo si serve dal sito stesso
-      // (piu' veloce, stessa versione del deploy).
-      overlay: frontMode
-        ? product.altPrintFileUrl.replace(/^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public/, '')
+      overlay: frontMode ? { src: print('front'), area: FRONT_PRINT_AREA }
+        : blankBack ? { src: print('back'), area: BACK_PRINT_AREA }
         : null,
     }
   }

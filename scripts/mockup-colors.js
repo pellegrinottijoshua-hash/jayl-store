@@ -159,3 +159,39 @@ export async function classifyMockupColors(product, publicDir) {
   }
   return out
 }
+
+// Area della stampa sul retro (dove Gelato appoggia il disegno) e due toppe
+// di tessuto sicuro per il confronto. Un mockup "gelato" che li' e' tutto
+// tessuto e' un fronte liscio senza stampa: Gelato ne importa uno per colore e
+// ne renderizza stampato solo uno (bug del 12/10: "Back" senza disegno).
+const PRINT_ZONE = { x0: 0.38, x1: 0.62, y0: 0.22, y1: 0.50 }
+
+/** Mockup senza stampa (fronti lisci): la scheda li sostituisce col retro composto. */
+export async function findBlankMockups(product, publicDir) {
+  const images = (product.images || []).filter((img) => /-(gelato|mockup)-\d+\.(jpe?g|png|webp)$/i.test(img))
+  if (!images.length) return []
+  const sharp = await loadSharp()
+  if (!sharp) return []
+  const out = []
+  for (const img of images) {
+    const file = path.join(publicDir, img)
+    if (!existsSync(file)) continue
+    try {
+      const fabric = await sampleFabric(sharp, file)
+      const { data } = await sharp(file).removeAlpha().resize(GRID, GRID, { fit: 'fill' }).raw()
+        .toBuffer({ resolveWithObject: true })
+      let off = 0, n = 0
+      for (let y = Math.floor(PRINT_ZONE.y0 * GRID); y < Math.ceil(PRINT_ZONE.y1 * GRID); y++) {
+        for (let x = Math.floor(PRINT_ZONE.x0 * GRID); x < Math.ceil(PRINT_ZONE.x1 * GRID); x++) {
+          const i = (y * GRID + x) * 3
+          if (Math.abs(data[i] - fabric[0]) + Math.abs(data[i + 1] - fabric[1]) + Math.abs(data[i + 2] - fabric[2]) > 45) off++
+          n++
+        }
+      }
+      if (off / n < 0.02) out.push(img)
+    } catch {
+      // illeggibile: resta com'e'
+    }
+  }
+  return out
+}

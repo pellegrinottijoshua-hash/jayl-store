@@ -27,7 +27,9 @@ export function galleryBaseFor(product, hasVideo) {
 
 /** La foto della scheda nel catalogo (e poster del video hero). */
 export function cardImageOf(product) {
-  return heroShotsOf(product)[0] || product?.images?.[0] || product?.image
+  // Mai un mockup liscio senza stampa (blankImages, calcolati alla build).
+  const blank = new Set(product?.blankImages || [])
+  return heroShotsOf(product)[0] || product?.images?.find((u) => !blank.has(u)) || product?.image
 }
 
 /** Il video hero da mostrare nel catalogo, se c'e'. */
