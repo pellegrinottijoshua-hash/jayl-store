@@ -19,11 +19,10 @@ Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, h
   - **Musica:** 9 brani Flow nuovi in `marketing music/` col BPM reale nel nome, `tagli 15s/` e `firme/` (da ascoltare); BPM con `~/.claude/skills/video-statico/bpm.py`. Effetti Mixkit (uso commerciale libero) in `sfx marketing/`.
 
 - **Mockup (12/10):** i fronti lisci di Gelato diventano retro + disegno; i disegni leggeri stanno in `dist/prints/` (`scripts/web-prints.js`). Se a un prodotto in vendita manca il file di stampa, la build si ferma.
-
 ## Prossimi 3 passi
 1. **Joshua:** approvare i 5 video del Drop 7 (→ `approvati/`); SPECIMEN esce stasera dopo le 18:00. Ascoltare le 5 firme e il Lo-fi.
 2. **Admin:** ricaricare la pagina prima di salvare. Con la pagina vecchia un salvataggio ha cancellato la SEO di Ursaring (ripristinata).
-3. **Piano editoriale:** 1 video al giorno da `approvati/`, con UTM verso la scheda. Domenica 5/10 si legge Umami.
+3. **Piano editoriale:** 1 video al giorno da `approvati/`, con UTM verso la scheda. 
 
 ## Bloccato da
 - **TikTok a 1 clic:** serve l'app TikTok approvata, oppure la pubblicazione via Higgsfield (un clic tuo per post).
