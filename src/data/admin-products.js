@@ -21410,7 +21410,7 @@ export const adminProducts = [
     "id": "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Rampardos Back Print Shirt, Funny Retro 90s Anime Graphic Tee, Large Back Design, Unisex Cotton T-Shirt,  rock Pokemon Gift for Him",
+    "name": "Cool rapardos T shirt",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
@@ -21760,10 +21760,12 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:14:12.124Z",
-    "updatedAt": "2026-10-07T14:25:46.553Z",
+    "updatedAt": "2026-10-12T23:34:20.172Z",
     "storeColors": [
       "graphite-heather",
       "black"
-    ]
+    ],
+    "relatedProducts": [],
+    "heroShots": []
   }
 ]
