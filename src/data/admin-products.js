@@ -22075,9 +22075,10 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-sylveon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:07:59.232Z",
-    "updatedAt": "2026-10-13T15:27:34.637Z",
+    "updatedAt": "2026-10-13T15:27:37.769Z",
     "storeColors": [
-      "azalea"
+      "azalea",
+      "light-blue"
     ]
   },
   {
