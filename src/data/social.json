@@ -1715,7 +1715,7 @@
       "gift ideas"
      ],
      "createdAt": "2026-10-13T17:28:07.688Z",
-     "usedAt": null
+     "usedAt": "2026-10-13T17:28:11.500Z"
     },
     {
      "id": "cmv6yfgg96hwn",
@@ -2217,6 +2217,17 @@
    "format": "pin",
    "captionId": "cmv6yeyuo0kvv",
    "asset": "/images/cool-glaceon-t-shirt/hf_20261012_224920_075d8dcd-8096-4a77-838b-76db77bd24d6.png",
+   "mode": "manual",
+   "postId": null,
+   "url": null
+  },
+  {
+   "at": "2026-10-13T17:28:11.500Z",
+   "productId": "cool-leafeon-t-shirt",
+   "platform": "pinterest",
+   "format": "pin",
+   "captionId": "cmv6yfgg952by",
+   "asset": "/images/cool-leafeon-t-shirt/hf_20261012_215412_7e485d0f-af4d-4c34-a64a-59d27ae3f443.png",
    "mode": "manual",
    "postId": null,
    "url": null
