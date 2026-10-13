@@ -22455,8 +22455,8 @@ export const adminProducts = [
       "trendy pokemon fashion ideas online",
       "body positive anime inspired clothing"
     ],
-    "hashtags": "#glaceon #pokemon #tshirt #art #apparel #cool #icetype #fanart #anime #geekfashion #edgystyle #trendyshirts #nerdstuff #pokemongifts #styleinspo #collectorsitem #japaneseanime #gamingmerchandise #uniqueclothing #fashionforward #streetwearstyle #unisexfashion #limitededitiontees #alternativeapparel #instastyle #fashionblogger #cartoonartwork #teeshirtsdesigns #supportartists ",
-    "instagramCaption": "*Dare to chill with Glaceon?* 📸 This isn’t just another Pokémon tee; it’s an attitude. Rock that Ice-type vibe and break from the ordinary! 🔥✨#glaceon#anime#streetwear ",
+    "hashtags": "#glaceon #pokemon #tshirt #art #apparel #cool #icetype #fanart #anime #geekfashion #edgystyle #trendyshirts #nerdstuff #pokemongifts #styleinspo #collectorsitem #japaneseanime #gamingmerchandise #uniqueclothing #fashionforward #streetwearstyle #unisexfashion #limitededitiontees #alternativeapparel #instastyle #fashionblogger #cartoonartwork #teeshirtsdesigns #supportartists",
+    "instagramCaption": "*Dare to chill with Glaceon?* 📸 This isn’t just another Pokémon tee; it’s an attitude. Rock that Ice-type vibe and break from the ordinary! 🔥✨#glaceon#anime#streetwear",
     "pinterestCaption": "*Stand out in your next battle with this edgy Glaceon T-Shirt.* Whether you’re hanging at home or out in the wild, this shirt brings together cool design and ultimate comfort. Check it out for your unique Pokémon collection!",
     "seoTitle": "Glaceon T-Shirt | Ice Type Style | Edgy Pokemon Apparel",
     "variants": [
@@ -22704,7 +22704,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-glaceon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:20:04.806Z",
-    "updatedAt": "2026-10-13T15:38:04.935Z",
+    "updatedAt": "2026-10-13T15:56:29.851Z",
     "storeColors": [
       "navy",
       "royal"
