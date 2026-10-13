@@ -126,7 +126,29 @@ export const drop = {
       "endsAt": "2026-10-07T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-08",
+      "number": 8,
+      "title": "EEVEES",
+      "productIds": [
+        "cool-sylveon-t-shirt",
+        "cool-leafeon-t-shirt",
+        "cool-glaceon-t-shirt"
+      ],
+      "startsAt": "2026-10-12T16:00:00Z",
+      "endsAt": "2026-10-19T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 1999,
+      "bundlePrice": 4999,
+      "heroImages": {},
+      "defaults": {},
+      "heroVideos": {
+        "cool-sylveon-t-shirt": "/images/cool-sylveon-t-shirt/home-1791907067310.mp4"
+      }
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
