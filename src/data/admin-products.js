@@ -22396,8 +22396,8 @@ export const adminProducts = [
       }
     ],
     "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-glaceon-t-shirt/hf_20261012_225418_b8aa6200-2f27-44e9-af99-c70ecde4e18d.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-glaceon-t-shirt/hf_20261013_152303_9645076d-41e2-4354-a532-bf3cf48a45fb.png",
     "images": [
       "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-01.jpg",
       "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-02.jpg",
@@ -22704,11 +22704,12 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-glaceon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:20:04.806Z",
-    "updatedAt": "2026-10-13T15:28:01.626Z",
+    "updatedAt": "2026-10-13T15:37:54.048Z",
     "storeColors": [
       "navy",
-      "royal",
-      "carolina-blue"
-    ]
+      "royal"
+    ],
+    "relatedProducts": [],
+    "heroShots": []
   }
 ]
