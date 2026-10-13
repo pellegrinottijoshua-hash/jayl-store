@@ -21414,8 +21414,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
-    "description": "Meet Cool Rapardos, the laid-back fusion of style and chill vibes. This character embodies a rare mix of cool confidence and playful energy, making it a standout in any collection. Printed on a Gildan premium tee using top-notch DTG quality, this shirt captures every detail of Rapardos’ unique design with precision. Whether you’re battling your way through the day or just vibing with friends, this tee is an unbeatable pick. It’s also a perfect gift for any fellow collector who appreciates the rare gems in their wardrobe.",
-    "altText": "Laid-back Cool Rapardos lounging casually with bright colors in retro 90s anime fan-art on a premium JAYL tee.",
+    "description": "If Rampardos had a motto, it would surely be 'headfirst into battle!' With its fierce attitude and rock-solid design, this tee captures the spirit of the mighty fossil Pokémon. The bold graphic showcases Rampardos' dynamic pose, perfectly complimenting the Gildan premium tee's soft fabric that’s ideal for everyday wear. Quality Direct-to-Garment printing ensures the vivid colors pop and withstand the test of time. This shirt makes a thoughtful gift for trainers who appreciate both style and ferocity in their wardrobe.",
+    "altText": "Rampardos charging forward with its fierce expression on a retro 90s anime small chest print on a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -21471,19 +21471,19 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5ed387c0-a4df-4ff0-907d-83cd03c9a930/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261007%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T140904Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=735541a5327b6056a38faa50c5326f9a44fa47e529b9905b9df37e9e423e8ad5": "An artistic view of the Rampardos graphic on a red t-shirt, highlighting its retro charm."
     },
     "tags": [
-      "cool rapardos",
-      "pokemon t-shirt",
-      "anime apparel",
-      "art print",
-      "retro style",
-      "collectors item",
-      "gamer fashion",
-      "fan art shirt",
-      "unique design",
-      "graphic tee",
-      "cartoon merch",
-      "stylish clothing",
-      "premium fabric"
+      "rampardos",
+      "pokemon shirt",
+      "cool apparel",
+      "fan art",
+      "gildan t-shirt",
+      "anime style",
+      "gift for gamers",
+      "collectibles",
+      "retro fashion",
+      "unique gifts",
+      "gaming merchandise",
+      "stylish tees",
+      "pokemon lovers"
     ],
     "featured": false,
     "gelatoProductId": "bc548899-5564-41c3-94ae-5e052de9d782",
@@ -21491,28 +21491,28 @@ export const adminProducts = [
     "adminManaged": true,
     "videoUrl": "/images/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/hero-1791382196437.mp4",
     "primaryKeywords": [
-      "rapardos t-shirt",
-      "pokemon shirt",
+      "rampardos shirt",
+      "pokemon apparel",
+      "cool t-shirt",
       "anime clothing",
-      "graphic tee",
-      "collectible apparel"
+      "fan art tee"
     ],
     "longTailKeywords": [
-      "cool rapardos graphic tee",
-      "pokemon themed apparel for collectors",
-      "vintage pokemon t-shirts online",
-      "unique shirts for anime fans",
-      "premium quality pokemon clothing",
-      "trendy rapardos merchandise store",
-      "limited edition pokemon tees sale",
-      "retro style anime fashion items",
-      "best gifts for pokemon fans",
-      "eye-catching graphic tees for collectors"
+      "cool rampardos t-shirt for fans",
+      "gifts for pokemon enthusiasts",
+      "stylish apparel featuring rampardos",
+      "unique gaming merchandise gifts",
+      "soft t-shirts for everyday wear",
+      "pokemon fan art clothing online",
+      "premium geeky tees for collectors",
+      "vivid graphics rampardos shirt buy online",
+      "wearable art from popular games",
+      "high-quality pokemon merchandise"
     ],
-    "hashtags": "#coolrapardos #pokemontshirt #animeapparel #artprint #retrostyle #collectorsitem #gamerfashion #fanartshirt #uniquedesign #graphictee #cartoonmerch #stylishclothing #premiumfabric #pokedexcollector #vintageanimefashion #gamersunite #teamawesome #pokecrewlife #epicshirts #pokeculture #animecollector #trendsettertee #collaborativeartwork #inspiredbyanime #retroclothesdesigns #pokedexlove #geekwearables ##artistsspotlight#funandfashion#streetwearstyle",
+    "hashtags": "#rampardos #pokemontshirt #animefashion #fanshirts #pokedex #coolapparel #funkytee #giftideas #gamerwear #themedclothing #collectorsitem #retrostyle #gamerlife #pocketmonsters #geekmerchandise #trendytshirts #fossilpokemon #artistictees #expressyourself #uniqueapparel #pokemongifts #nerdfashion #musthavegear #fashionstatement #colorfulprints #expressivewear #limitededitiontshirt #gameonfolkstyle ##teelove",
     "instagramCaption": "\"Chillin' like Cool Rapardos – unbothered and ready to collect! Why fit in when you can stand out? 🐉💥 Grab yours now!#coolrapardos#pokemoncollection#animeapparel\" ",
     "pinterestCaption": "\"Discover the exclusive Cool Rapardos T-Shirt that every true collector needs. With its vibrant colors and iconic design, this shirt captures the essence of Pokémon culture. Perfect as a gift or for showcasing your unique style.\" ",
-    "seoTitle": "Cool Rapardos T-Shirt | Pokemon Collector Grail | Retro Style",
+    "seoTitle": "Rampardos T-Shirt | Cool Pokémon Gift | Retro Style Apparel",
     "variants": [
       {
         "uid": "56fafd4c-6a62-46b0-9336-a7b8d9415852",
@@ -21760,7 +21760,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-07T14:14:12.124Z",
-    "updatedAt": "2026-10-13T15:27:20.688Z",
+    "updatedAt": "2026-10-13T15:27:30.593Z",
     "storeColors": [
       "graphite-heather",
       "black"
