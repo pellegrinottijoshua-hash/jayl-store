@@ -22076,5 +22076,274 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:07:59.232Z",
     "updatedAt": "2026-10-13T15:07:59.232Z"
+  },
+  {
+    "id": "cool-leafeon-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Leafeon T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Wearing this Leafeon t-shirt is like wrapping yourself in a vibrant blanket of nature's chill. The laid-back vibe of this Grass-type Pokémon captures that easygoing spirit we all crave, combining the mischievousness and grace of Leafeon into one stylish piece. Printed on a Gildan premium tee using DTG quality, it feels as good as it looks and can handle whatever adventure you embark on. For those moments when you're just vibing with friends or sending a perfect gift to an Eeveelution enthusiast, this shirt hits the mark without ever trying too hard.",
+    "altText": "Leafeon with playful eyes and leafy tail art in retro style, small chest print on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      }
+    ],
+    "image": "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-mockup-01.jpg",
+    "heroImage": "/images/cool-leafeon-t-shirt/hf_20261012_215921_d24be811-e3b3-4c72-876b-3f3bf18af51e.png",
+    "detailImage": "/images/cool-leafeon-t-shirt/hf_20261012_215349_a4c7128d-79c5-4c59-9677-0802b8781443.png",
+    "images": [
+      "/images/cool-leafeon-t-shirt/cool-leafeon-t-shirt-gelato-01.jpg",
+      "/images/cool-leafeon-t-shirt/cool-leafeon-t-shirt-gelato-02.jpg",
+      "/images/cool-leafeon-t-shirt/cool-leafeon-t-shirt-gelato-03.jpg",
+      "/images/cool-leafeon-t-shirt/cool-leafeon-t-shirt-gelato-04.jpg",
+      "/images/cool-leafeon-t-shirt/cool-leafeon-t-shirt-gelato-05.jpg"
+    ],
+    "imageAlts": {
+      "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-mockup-01.jpg": "Leafeon with playful eyes and leafy tail art in retro style, small chest print on a premium JAYL tee.",
+      "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-white-01.jpg": "Leafeon with playful eyes and leafy tail art in retro style, small chest print on a premium JAYL tee.",
+      "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-military-green-01.jpg": "Leafeon with playful eyes and leafy tail art in retro style, small chest print on a premium JAYL tee.",
+      "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-black-01.jpg": "Leafeon with playful eyes and leafy tail art in retro style, small chest print on a premium JAYL tee.",
+      "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-irish-green-01.jpg": "Leafeon with playful eyes and leafy tail art in retro style, small chest print on a premium JAYL tee."
+    },
+    "tags": [
+      "leafeon",
+      "pokemon",
+      "t-shirt",
+      "fan-art",
+      "eeveelution",
+      "grass-type",
+      "apparel",
+      "gift-ideas",
+      "anime-merch",
+      "casual-wear",
+      "vintage-style",
+      "print-on-demand",
+      "trendy"
+    ],
+    "featured": false,
+    "gelatoProductId": "e7aca3cc-c570-4ad3-b338-f3e52ba4a735",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "videoUrl": "/images/cool-leafeon-t-shirt/hero-1791904275226.mp4",
+    "primaryKeywords": [
+      "Leafeon t-shirt",
+      "Pokemon apparel",
+      "Eevee evolution",
+      "grass pokemon",
+      "fan art tee"
+    ],
+    "longTailKeywords": [
+      "Leafeon fan art shirt for adults",
+      "grass pokemon fan merchandise online",
+      "unique gifts for pokemon lovers",
+      "stylish Pokemon themed apparel",
+      "retro anime Leafeon t-shirt design",
+      "best Eeveelution gifts for friends",
+      "premium cotton Pokemon tees for collectors",
+      "cool grass type Pokemon clothing options",
+      "funny gift ideas for Eevee fans",
+      "limited edition Pokémon graphic tees"
+    ],
+    "hashtags": "#Leafeon #Pokemon #Eeveelutions #GrassType #AnimeMerch #FanArt #Apparel #GiftIdeas #CasualWear #StylishTees #CuteDesigns #PrintOnDemand #TrendyFashion #VibeCheck #GeekyStyle #RetroAnime #NatureVibes #CollectorTees #Fashionista #AnimeFans #NerdSwag #GiftShopping #UniqueFinds #PopCultureFashion #CharacterTees #GameOnWearableArt #StylishComforts #NatureInspiredFashion #TrendyOutfits",
+    "instagramCaption": "$POV: You're wandering through your favorite park, rocking this Leafeon tee without even trying. It's the vibe we all need! 🥳🌿#naturevibes#Eeveelutions#CasualWear",
+    "pinterestCaption": "Explore our Leafeon T-Shirt, designed for the true Grass Pokémon aficionado. Made with comfort and creativity in mind, it's time to add some flair to your collection!",
+    "seoTitle": "Leafeon T-Shirt | Grass Pokémon Fan Art Tee | Eeveelution Gift",
+    "variants": [
+      {
+        "uid": "6567a962-a0c8-4aec-8cb1-e9d6a990faca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f4d09f32-359e-450f-a8e0-f7678d1df75d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0d7e4e00-cd62-41e8-ab24-5783ee65477f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7300afd5-bbbf-467c-9909-0d333eff8b76",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d3cccc18-a86d-436e-ad30-eecfb31c7217",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e33b5806-aa8c-49fc-bcd7-0e30874d11b7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9b47c6f4-6f97-4176-b596-366229e9f662",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "59d034bd-7e47-4050-b84c-86f16eb4bc7e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cdb2294f-d468-4636-97a8-b580c95a3c31",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b24d8843-1505-46fa-aa3c-6664d92032ed",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_irish-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "977ad899-33f6-4fda-924d-cd5c97f41daa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "036afeb6-17da-433b-bd12-604936915275",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "24877b7b-0cb5-4c30-8555-ab4460c454e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c931b665-430b-4a7c-9841-9145430c0468",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cda2fc23-3967-4ef3-9114-0a6040ed453d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_0-4_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "243a0672-1b46-4e7d-bc35-58d650d4519d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "irish-green",
+        "label": "Irish Green",
+        "hex": "#888888",
+        "image": "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-irish-green-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-military-green-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eeveelution-gift/leafeon-t-shirt-grass-pok-mon-fan-art-tee-eev-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/64d34321-99ca-4df7-83e3-cafe1fbf3fcc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T150814Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1d23a54cece2ef2762fbd82d4e8221a5d0504e885260c18f097bf844cbb7ea5e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0bb86fd8-0be5-4c61-84da-1c0a00c822fa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T150814Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c1686065463bd4c743470106a7b9c0ae80d140c554164623799acaf82c6865d1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/becc926e-ed65-4a6e-a2ed-2f8c2067bb61/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T150814Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=853b4def8cc2482448a751903ed3e3d44a4669fecdd3b0faf0e94a0c26b00295",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1a27cc74-2634-4276-9100-cea83699d767/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T150814Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cd9bb387f818372b1d45b86f9c83290d564724ae8f13381b707aaba03d7a9773",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/59f5fe2a-af10-43e6-b6fd-9987137673d9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T150814Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=66215c3d92ffb1db48ce7ef36cab0d4de2ef9c60c0fa55f23cea7b57e85d0829"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-leafeon-t-shirt/hf_20260822_194118_f8037271-fd7d-43d3-92e0-e04c18be54a0-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-leafeon-t-shirt/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-13T15:14:32.449Z",
+    "updatedAt": "2026-10-13T15:14:32.449Z"
   }
 ]
