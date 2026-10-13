@@ -22363,8 +22363,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
-    "description": "In a world where fire and lightning reign, Glaceon glides in like the icy breath of an arctic wind. This tee captures the elegance of the Ice Type Pokémon in all its chilly glory, emblazoned on a Gildan premium tee using top-notch direct-to-garment print quality. With its frosty colors and sleek design, it’s not just attire; it’s a vibe that speaks to true collectors. Gift this to your fellow trainers or keep it as your ultimate treasure in your gamer closet.",
-    "altText": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+    "description": "In a world where cool reigns, Glaceon struts its icy persona like an indie rebel at a summer festival. This tee captures the sharp elegance of the Ice-type evolution – graceful yet fierce, it’s the kind of vibe that says, 'I don’t play by the rules.' Made with Gildan premium fabric and quality DTG print, this shirt stands out while keeping you comfy. Perfect for gifting to fellow trainers who dare to be different.",
+    "altText": "Glaceon striking a sleek pose with ice-blue fur in retro 90s anime style, small chest print on a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -22419,17 +22419,17 @@ export const adminProducts = [
     "tags": [
       "glaceon",
       "pokemon",
+      "t-shirt",
+      "art",
+      "apparel",
+      "cool",
       "ice type",
       "fan art",
-      "anime shirt",
-      "gamer gift",
-      "collectible",
-      "tees",
-      "apparel",
-      "vintage style",
-      "t-shirt design",
-      "print on demand",
-      "limited edition"
+      "anime",
+      "geek fashion",
+      "edgy style",
+      "teens",
+      "gifts"
     ],
     "featured": false,
     "gelatoProductId": "2466da4e-3cce-441e-b399-6ba9e033ca02",
@@ -22437,28 +22437,28 @@ export const adminProducts = [
     "adminManaged": true,
     "videoUrl": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/hero-1791904621198.mp4",
     "primaryKeywords": [
-      "glaceon shirt",
+      "glaceon t-shirt",
       "pokemon apparel",
-      "ice type t-shirt",
-      "fan art clothing",
-      "gamer gifts"
+      "ice type shirt",
+      "anime t-shirt",
+      "fan art clothing"
     ],
     "longTailKeywords": [
-      "buy glaceon t-shirt online",
-      "premium ice type pokemon tee",
-      "unique gamer gifts for her",
-      "retro pokemon fan apparel",
-      "best gifts for pokemon fans",
-      "Gildan quality t-shirts for gamers",
-      "collectible glaceon fan merchandise",
-      "artistic pokemon shirts for collectors",
-      "stylish anime tees for casual wear",
-      "trendy game-inspired clothing"
+      "glaceon ice type t-shirt for adults",
+      "unique pokemon fan apparel online",
+      "retro anime clothing for collectors",
+      "edgy glaceon graphic tee gifts",
+      "premium quality pokemon shirts shop",
+      "cool designs for pokemon lovers",
+      "ice type merchandise for sale",
+      "stylish t-shirts for gamers and geeks",
+      "trendy pokemon fashion ideas online",
+      "body positive anime inspired clothing"
     ],
-    "hashtags": "#glaceon #pokemon #icetype #fanart #gamertshirt #retroanime #collectibles #apparel #giftsforher #animefans #tshirtdesign #printsondemand #limitededition #nerdwear #gamersunited #pokemongift #chillyfashion #frozenvibes #trendingnow #hypedcollector #80sanime #geekwear #printelements #CardCaptorsEnergy #coolmerchandise #characterfashion #pokedexlife #fashiongoals #artshirts ##gamingcommunity",
-    "instagramCaption": "\"Ice cold and always fierce!🧊 Glaceon's ready to freeze the competition with style. Who's trying to add this gem to their collection? 🥶❄️#glaceon#gamertshirt#fanart\"",
-    "pinterestCaption": "\"Chill out with our Glaceon T-Shirt, featuring stunning ice-type Pokémon fan art. Perfect for any dedicated gamer looking to elevate their wardrobe or find that unique gift. Explore more and embrace your love for nostalgia!\"",
-    "seoTitle": "Glaceon T-Shirt | Ice Type Pokémon Fan Art | Gamer Gift",
+    "hashtags": "#glaceon #pokemon #tshirt #art #apparel #cool #icetype #fanart #anime #geekfashion #edgystyle #trendyshirts #nerdstuff #pokemongifts #styleinspo #collectorsitem #japaneseanime #gamingmerchandise #uniqueclothing #fashionforward #streetwearstyle #unisexfashion #limitededitiontees #alternativeapparel #instastyle #fashionblogger #cartoonartwork #teeshirtsdesigns #supportartists ",
+    "instagramCaption": "*Dare to chill with Glaceon?* 📸 This isn’t just another Pokémon tee; it’s an attitude. Rock that Ice-type vibe and break from the ordinary! 🔥✨#glaceon#anime#streetwear ",
+    "pinterestCaption": "*Stand out in your next battle with this edgy Glaceon T-Shirt.* Whether you’re hanging at home or out in the wild, this shirt brings together cool design and ultimate comfort. Check it out for your unique Pokémon collection!",
+    "seoTitle": "Glaceon T-Shirt | Ice Type Style | Edgy Pokemon Apparel",
     "variants": [
       {
         "uid": "a43d1c2a-1e56-4234-af69-6564c494b173",
@@ -22704,7 +22704,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-glaceon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:20:04.806Z",
-    "updatedAt": "2026-10-13T15:37:54.048Z",
+    "updatedAt": "2026-10-13T15:38:04.935Z",
     "storeColors": [
       "navy",
       "royal"
