@@ -22345,5 +22345,356 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:14:32.449Z",
     "updatedAt": "2026-10-13T15:14:32.449Z"
+  },
+  {
+    "id": "cool-glaceon-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Glaceon T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "In a world where fire and lightning reign, Glaceon glides in like the icy breath of an arctic wind. This tee captures the elegance of the Ice Type Pokémon in all its chilly glory, emblazoned on a Gildan premium tee using top-notch direct-to-garment print quality. With its frosty colors and sleek design, it’s not just attire; it’s a vibe that speaks to true collectors. Gift this to your fellow trainers or keep it as your ultimate treasure in your gamer closet.",
+    "altText": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-01.jpg",
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-02.jpg",
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-03.jpg",
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-04.jpg",
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-05.jpg",
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-06.jpg",
+      "/images/cool-glaceon-t-shirt/cool-glaceon-t-shirt-gelato-07.jpg"
+    ],
+    "imageAlts": {
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--mockup-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--white-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--royal-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--black-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--carolina-blue-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--light-blue-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee.",
+      "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--navy-01.jpg": "Glaceon gracefully posed with shimmering ice shards in a retro 90s anime fan-art style on a premium JAYL tee."
+    },
+    "tags": [
+      "glaceon",
+      "pokemon",
+      "ice type",
+      "fan art",
+      "anime shirt",
+      "gamer gift",
+      "collectible",
+      "tees",
+      "apparel",
+      "vintage style",
+      "t-shirt design",
+      "print on demand",
+      "limited edition"
+    ],
+    "featured": false,
+    "gelatoProductId": "2466da4e-3cce-441e-b399-6ba9e033ca02",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "videoUrl": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/hero-1791904621198.mp4",
+    "primaryKeywords": [
+      "glaceon shirt",
+      "pokemon apparel",
+      "ice type t-shirt",
+      "fan art clothing",
+      "gamer gifts"
+    ],
+    "longTailKeywords": [
+      "buy glaceon t-shirt online",
+      "premium ice type pokemon tee",
+      "unique gamer gifts for her",
+      "retro pokemon fan apparel",
+      "best gifts for pokemon fans",
+      "Gildan quality t-shirts for gamers",
+      "collectible glaceon fan merchandise",
+      "artistic pokemon shirts for collectors",
+      "stylish anime tees for casual wear",
+      "trendy game-inspired clothing"
+    ],
+    "hashtags": "#glaceon #pokemon #icetype #fanart #gamertshirt #retroanime #collectibles #apparel #giftsforher #animefans #tshirtdesign #printsondemand #limitededition #nerdwear #gamersunited #pokemongift #chillyfashion #frozenvibes #trendingnow #hypedcollector #80sanime #geekwear #printelements #CardCaptorsEnergy #coolmerchandise #characterfashion #pokedexlife #fashiongoals #artshirts ##gamingcommunity",
+    "instagramCaption": "\"Ice cold and always fierce!🧊 Glaceon's ready to freeze the competition with style. Who's trying to add this gem to their collection? 🥶❄️#glaceon#gamertshirt#fanart\"",
+    "pinterestCaption": "\"Chill out with our Glaceon T-Shirt, featuring stunning ice-type Pokémon fan art. Perfect for any dedicated gamer looking to elevate their wardrobe or find that unique gift. Explore more and embrace your love for nostalgia!\"",
+    "seoTitle": "Glaceon T-Shirt | Ice Type Pokémon Fan Art | Gamer Gift",
+    "variants": [
+      {
+        "uid": "a43d1c2a-1e56-4234-af69-6564c494b173",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0264f789-33a5-4458-9795-7b462a57de75",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6899b214-16f7-410f-a471-3f19ac60ff4a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "31480b25-d466-4ec4-a0d2-bc62d4d472a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3b12cfa4-8cb2-476c-9c6e-027f0f71e690",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "20aa8570-128c-4291-95de-4942891ec5d1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "60d97180-1499-4f02-a96e-1d3057f7ca47",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "94250df3-27fd-45e3-a51c-8d7f310b2391",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "68787cee-4ad2-4ff9-8fba-75562225a179",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8e11a71b-7297-466f-a19f-f48375b5a161",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "50a4bcca-41cb-4d45-be05-93bf87696157",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e1e80feb-13e7-48cd-90bd-db2d14cbc51f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b73a4b9e-763d-4aed-9cbb-e009a4d96ec5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "667a4914-db61-4cd3-9fda-5a3a4a15f175",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5393b116-79bb-456f-adfd-ad65c97797e9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c8546762-f13d-450a-93f5-2d262c2e0095",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0c8bbc64-e52b-4183-bd5d-8310a7dcec04",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8b8f6b81-85ed-46e6-8827-883d0c7f10d7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5a8930c8-e45d-4afa-b2da-522d419933b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9847b388-d777-4a80-b68d-3dde8691eb6a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_0-4_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "daeef11c-4ed3-4c5f-87f9-06a3ceb8de02",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_0-4_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "576bc40f-237c-4302-8927-d5d8d6c21dc6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "300e6bcd-8bc7-4920-8c49-9a2838d58ed1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5dc39ca7-4452-441a-baec-c2628a173949",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "carolina-blue",
+        "label": "Carolina Blue",
+        "hex": "#888888",
+        "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--carolina-blue-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--navy-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--light-blue-01.jpg"
+      },
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--royal-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee-gamer-gift/glaceon-t-shirt-ice-type-pok-mon-fan-art-tee--black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/25d398da-b831-4893-aea3-0c6c516b0e6e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8e780a2f74f607933062e7b82a2b2d25176e60637c118f5ece6e1e8c939bff39",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bcde1064-f69d-4ec4-997a-085f44e2877f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ece8a7206768f1963eb75843ecaf9aaa84aa96538083e389ca43e03660b3f23f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e62afc9e-d8a6-46c7-a97c-a0fef8f5f406/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a94d30d79c110292d2d9745da67b1991ba6a1a132e79536a9fbcdbd32c64f330",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fe28b7e5-86aa-4b3b-90f5-2e219a9d428f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7ac109b774e95d0dfb0f5ce88c395689b6953c7d81428ec7a87f48e5d58193d8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/abf42503-1041-452b-8061-8cbf8e3e8d99/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8717623d0990b5f9b7e43e6b368c77b45d76c74aa1d55b7be9f52a98731e739e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6ccb945c-3bea-4e13-8140-f0da7c28d51e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dd5b98f2a69087eb781d7f088def8cec6ee9050c337a4fdfce2962842fd9993a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9f1860b0-eaf9-47c5-afe0-960738af99f9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T151512Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7f9878e1e0d8e1edc2c712459d91551e0b2345eb6bfa17e09bd791595437bddc"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-glaceon-t-shirt/hf_20261012_213337_b52a1da3-7bbf-4822-856b-3557691c5c76-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-glaceon-t-shirt/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-13T15:20:04.806Z",
+    "updatedAt": "2026-10-13T15:20:04.806Z"
   }
 ]
