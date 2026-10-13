@@ -21767,5 +21767,314 @@ export const adminProducts = [
     ],
     "relatedProducts": [],
     "heroShots": []
+  },
+  {
+    "id": "cool-sylveon-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Sylveon T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "In a soft ballet of pastel colors, Sylveon twirls gracefully, her ribbon-like appendages dancing through the air like whispers of magic. This tee captures her playful spirit, radiating warmth and joy for those enchanted by the world of Pokémon. The Gildan premium tee combines comfort and breathability with vibrant direct-to-garment print quality that brings this beloved Fairy-type to life. A heartfelt gift for anyone who cherishes the gentle charm of Sylveon, it’s an invitation to celebrate your favorite character in style.",
+    "altText": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-mockup-01.jpg",
+    "heroImage": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/hf_20261012_164316_3ed4cf15-38d8-4620-b70b-5ff299e0c9e4.png",
+    "detailImage": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/hf_20261012_163855_0e78cf51-29d5-4021-8770-389da0fd87cd.png",
+    "images": [
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-01.jpg",
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-02.jpg",
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-03.jpg",
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-04.jpg",
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-05.jpg",
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-06.jpg"
+    ],
+    "imageAlts": {
+      "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-mockup-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
+      "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-black-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
+      "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-carolina-blue-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
+      "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-azalea-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
+      "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-light-blue-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
+      "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-white-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee."
+    },
+    "tags": [
+      "sylveon",
+      "pokemon shirt",
+      "anime apparel",
+      "cute t-shirt",
+      "fairy type pokemon",
+      "fan art clothing",
+      "cozy graphic tee",
+      "wholesome art",
+      "gift for her",
+      "pokemon fan gift",
+      "limited edition tee",
+      "kawaii merch",
+      "game creature shirt"
+    ],
+    "featured": false,
+    "gelatoProductId": "2a5aeee3-c1d4-4b75-b7a8-fccd25bd2b49",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "sylveon t-shirt",
+      "pokemon apparel",
+      "fairy pokemon shirt",
+      "fan art tee",
+      "cute anime shirt"
+    ],
+    "longTailKeywords": [
+      "cute sylveon graphic t-shirt",
+      "fairy type pokemon fan art shirt",
+      "soft anime character apparel for gifts",
+      "Gildan premium t-shirt with print",
+      "adorable sylveon clothing option online",
+      "unique gifts for pokemon fans",
+      "vibrant cute fairy t-shirts for women",
+      "cozy fan art tees featuring pokemon characters",
+      "stylish presents for anime lovers this season",
+      "sylveon-inspired fashion top"
+    ],
+    "hashtags": "#sylveon #pokemon #tshirt #anime #fanart #cuteshirt #gifts #apparel #cozyfashion #kawaii #pokemongift #freetoedit #merchandise #fashionista #teegram #graphictee #pokemonlove #pastelart #gildanshirts #cuteclothing #pokedexdesigns #wholesomestyle #subtlefashionstatement #artapparel #casualwearstyle #animefashionjapan #trendyoutfitideas #giftsforher#uniqueclothingdesigns",
+    "instagramCaption": "#Sylveon is here to add a touch of magic to your wardrobe! 🌼 Twirl into cozy vibes with this adorable tee. Tag someone who needs this in their life! 💖✨#pokemonfanart#cuteapparel#cozyvibes",
+    "pinterestCaption": "\"Embrace the magical world of Pokémon with our Sylveon T-Shirt! Featuring a captivating fan-art design, this cozy tee is perfect for gifting or adding some cuteness to your own collection. Discover the charm today!",
+    "seoTitle": "Sylveon T-Shirt | Cozy Pokémon Fan Gift | Cute Art Tee",
+    "variants": [
+      {
+        "uid": "16d620ea-3fda-4b78-9561-3117a9d1b1bf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "95f96b24-c623-45db-b061-f76a67b61e6e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3a1de8be-c31d-4dc1-b6ab-cc01ad1ac1bf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a76185ed-66b0-4ac3-b080-cac2df1497a2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cd35a785-ebfe-4c24-9935-172065199f68",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "197373fa-53d9-42ea-9c59-9c6acf96249f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "31985694-cf58-4e1d-b64e-7012e4ef4e6f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4f00e891-4a34-4907-a1bc-7b70367ad875",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4abc14f4-0713-407d-a1d9-2707cf574c6a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "af8cbe20-e2b6-4bfa-acf0-19e15f651d34",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "631269c1-ae2c-4289-ba26-30f9b29668cb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cde507f5-a8a2-4ac8-ba62-f01cfb155839",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d6539cc8-ed31-47e4-893d-6d58b2684fbb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8df55be8-705d-4531-9a21-b685bd7ed45f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fb38512c-40da-4b07-91af-0240f8c54875",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f2e5cc9d-354f-4d75-bea2-e2f1c06fdc80",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3fffdde9-0bc1-472f-927e-3cb9c295ab09",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_carolina-blue_gpr_0-4_inlbl_gildan_64000",
+        "color": "Carolina Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "723e2e6c-707d-4313-8328-142536e6e6c9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "60f609e0-063c-4bc8-8308-250ef14a04e9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_0-4_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "943fcc29-84ca-4ebf-8e0e-0647d4f5f617",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-azalea-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-white-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-light-blue-01.jpg"
+      },
+      {
+        "id": "carolina-blue",
+        "label": "Carolina Blue",
+        "hex": "#888888",
+        "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-carolina-blue-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cdc6f32c-fd96-4e10-8ad9-1be92fc515fe/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T144319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9b7c0c35aad8c77bb50de4ca9885636dd4efbaa3434dd7ee01df7528970c46e0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d351c36b-ff48-426f-98a8-935b4a956e29/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T144319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2d5ff23799db535b55c145cdf168056ea5413508f973d734b11ae557ffcf3560",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b2629504-f4ff-4b8f-ab66-b831eca882a2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T144319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=306592bc845ad22b4d79e4d8d567cbc1ab83a02597ccc7f5297f8ee2412b05f7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4101e500-75e9-4a32-8b2f-e8abf0f4adde/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T144319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c169aa14bb2a97e49d8ac379269c87874970232b3901d5a7475500f39823290b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/37d10ce1-5fb3-45a1-85f0-7e8325396501/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T144319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9b87939d1770cbd0885cba198cb3615e3daa43d492467889cd4e7b19e58ee7b2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c5fcbb4d-52d5-4bfb-8be9-868b29b2565b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261013%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261013T144319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=810b04645e62a823795d6da795c407d07b27a5b8759c38956bacbe754a621078"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/hf_20260822_113909_7c6be9f3-edec-4db8-82e4-529224a227e6-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-sylveon-t-shirt/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-13T15:07:59.232Z",
+    "updatedAt": "2026-10-13T15:07:59.232Z"
   }
 ]
