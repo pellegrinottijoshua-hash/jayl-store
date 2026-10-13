@@ -22704,6 +22704,9 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-glaceon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:20:04.806Z",
-    "updatedAt": "2026-10-13T15:20:04.806Z"
+    "updatedAt": "2026-10-13T15:27:53.032Z",
+    "storeColors": [
+      "navy"
+    ]
   }
 ]
