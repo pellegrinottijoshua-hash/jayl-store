@@ -15,41 +15,33 @@
 // scripts/test-drop-config.js.
 export const drop = {
   "current": {
-    "id": "drop-07",
+    "id": "drop-08",
+    "number": 8,
+    "title": "EEVEES",
+    "productIds": [
+      "cool-sylveon-t-shirt",
+      "cool-leafeon-t-shirt",
+      "cool-glaceon-t-shirt"
+    ],
+    "startsAt": "2026-10-12T16:00:00Z",
+    "endsAt": "2026-10-19T16:00:00Z",
+    "cap": 20,
+    "caps": {},
+    "dropPrice": 1999,
+    "bundlePrice": 4999,
+    "heroImages": {},
+    "defaults": {},
+    "heroVideos": {
+      "cool-sylveon-t-shirt": "/images/cool-sylveon-t-shirt/home-1791907067310.mp4"
+    }
+  },
+  "previous": {
     "number": 7,
     "title": "ANCIENT",
     "productIds": [
       "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
       "cool-kabutops-t-shirt",
       "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him"
-    ],
-    "startsAt": "2026-10-07T16:00:00Z",
-    "endsAt": "2026-10-12T16:00:00Z",
-    "cap": 20,
-    "caps": {},
-    "dropPrice": 1999,
-    "bundlePrice": 4999,
-    "heroImages": {},
-    "defaults": {
-      "cool-kabutops-t-shirt": {
-        "color": "sand"
-      },
-      "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him": {
-        "color": "graphite-heather"
-      },
-      "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him": {
-        "color": "rs-sport-grey"
-      }
-    },
-    "heroVideos": {}
-  },
-  "previous": {
-    "number": 6,
-    "title": "SHINY",
-    "productIds": [
-      "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
-      "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
-      "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him"
     ]
   },
   "past": [
@@ -124,31 +116,21 @@ export const drop = {
       ],
       "startsAt": "2026-10-01T16:00:00Z",
       "endsAt": "2026-10-07T16:00:00Z"
-    }
-  ],
-  "scheduled": [
+    },
     {
-      "id": "drop-08",
-      "number": 8,
-      "title": "EEVEES",
+      "id": "drop-07",
+      "number": 7,
+      "title": "ANCIENT",
       "productIds": [
-        "cool-sylveon-t-shirt",
-        "cool-leafeon-t-shirt",
-        "cool-glaceon-t-shirt"
+        "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
+        "cool-kabutops-t-shirt",
+        "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him"
       ],
-      "startsAt": "2026-10-12T16:00:00Z",
-      "endsAt": "2026-10-19T16:00:00Z",
-      "cap": 20,
-      "caps": {},
-      "dropPrice": 1999,
-      "bundlePrice": 4999,
-      "heroImages": {},
-      "defaults": {},
-      "heroVideos": {
-        "cool-sylveon-t-shirt": "/images/cool-sylveon-t-shirt/home-1791907067310.mp4"
-      }
+      "startsAt": "2026-10-07T16:00:00Z",
+      "endsAt": "2026-10-12T16:00:00Z"
     }
   ],
+  "scheduled": [],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
@@ -168,7 +150,10 @@ export const drop = {
     "raikou-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-electric-pokemon-gift-for-him",
     "gyarados-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-water-pokemon-gift-for-him",
     "shiny-dragonite-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-dragon-pokemon-gift-for-him",
-    "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him"
+    "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him",
+    "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
+    "cool-kabutops-t-shirt",
+    "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him"
   ],
   "archivePrice": 2499
 }
