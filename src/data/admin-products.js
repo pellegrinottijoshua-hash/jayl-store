@@ -22349,9 +22349,10 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-leafeon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:14:32.449Z",
-    "updatedAt": "2026-10-13T15:27:44.007Z",
+    "updatedAt": "2026-10-13T15:27:48.051Z",
     "storeColors": [
-      "white"
+      "white",
+      "irish-green"
     ]
   },
   {
