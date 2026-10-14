@@ -1408,7 +1408,7 @@ export default function ProductPage() {
 
             </div>
           </Accordion>
-          <Accordion title="Fan Art Disclaimer" light={isLight}>
+          <Accordion title="Fan Art" light={isLight}>
             <p><strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
                 Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
                 merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
@@ -1856,7 +1856,7 @@ export default function ProductPage() {
 
                   </div>
                 </Accordion>
-                <Accordion title="Fan Art Disclaimer" light={isLight}>
+                <Accordion title="Fan Art" light={isLight}>
                   <p><strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
                 Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
                 merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
