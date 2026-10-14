@@ -8049,7 +8049,7 @@ export const adminProducts = [
     "section": "objects",
     "collection": "cool pokemon back",
     "name": "Cool Psyduck T-Shirt",
-    "subtitle": "cool pokemon",
+    "subtitle": "cool pokemon back",
     "price": 2399,
     "currency": "eur",
     "description": "For the friend who always seems to relate their day-to-day struggles to that lovable, headache-prone water bird—Psyduck! This retro tee channels the essence of those Saturday morning cartoon vibes, reminding you that it’s okay to feel a bit dazed and confused. Made from a Gildan premium tee with direct-to-garment print quality, this shirt showcases Psyduck looking adorably perplexed in vivid colors. This makes a thoughtful gift for anyone who appreciates nostalgia or loves sharing laughs over their own daily dilemmas.",
@@ -8084,7 +8084,7 @@ export const adminProducts = [
         "price": 2399
       }
     ],
-    "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_162149_cffc15ac-a18b-4f8c-89ec-c5031a9fcb6c.png",
+    "image": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163132_23f1184e-a260-4913-bf5f-689d53d9a342.png",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163702_2f8a607b-0025-455c-bb27-db570f8b7bb0.png",
     "detailImage": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hf_20260625_163042_4bd654b5-24fd-4623-810d-70737455f9df.png",
     "images": [
@@ -8338,7 +8338,7 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b85f6016-3845-4820-a9d5-e3153c1bae05/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20260926%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260926T123833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ea7a781b37d71fd720d050b0b2241a1b477a2579f365508831c29eb87aac12c5"
     ],
     "createdAt": "2026-06-26T12:23:42.147Z",
-    "updatedAt": "2026-09-30T12:34:01.927Z",
+    "updatedAt": "2026-10-14T13:39:09.042Z",
     "relatedProducts": [],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/design.png",
     "pinterestPins": [
@@ -8426,7 +8426,7 @@ export const adminProducts = [
     "formerIds": [
       "psyduck-pok-mon-t-shirt-retro-90s-style-anime-gift"
     ],
-    "videoUrl": "/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/hero.mp4"
+    "videoUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000/psyduck2.mp4"
   },
   {
     "id": "zapdos-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
