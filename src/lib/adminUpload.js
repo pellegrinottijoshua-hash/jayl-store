@@ -70,7 +70,9 @@ async function ensureFFmpeg(onLog) {
   try {
     const ff = new FFmpeg()
     if (onLog) ff.on('log', ({ message }) => onLog(message))
-    const baseURL = 'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/esm'
+    // @ffmpeg/core e' gia' la versione a thread singolo (core-mt e' l'altra):
+    // "core-st@0.12.6" non esiste, e il caricamento falliva con "Failed to fetch".
+    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm'
     await ff.load({
       coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`,   'text/javascript'),
       wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
@@ -92,7 +94,12 @@ export async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
   if (file.size <= maxMB * 1024 * 1024) return file
 
   onStatus?.('Caricamento codec video…')
-  const ff = await ensureFFmpeg()
+  let ff
+  try {
+    ff = await ensureFFmpeg()
+  } catch {
+    throw new Error(`Codec video non caricato: comprimi il video sotto ${maxMB} MB prima di importarlo`)
+  }
 
   const ext   = file.name.match(/\.[^.]+$/)?.[0] ?? '.mp4'
   const inFile  = `input${ext}`
@@ -102,16 +109,21 @@ export async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
 
   onStatus?.('Compressione video…')
   await ff.writeFile(inFile, await fetchFile(file))
-  await ff.exec([
-    '-i', inFile,
-    '-vf', 'scale=w=1280:h=720:force_original_aspect_ratio=decrease,pad=ceil(iw/2)*2:ceil(ih/2)*2',
-    '-c:v', 'libx264', '-preset', 'fast', '-crf', '30',
-    '-c:a', 'aac', '-b:a', '96k',
-    '-movflags', '+faststart',
-    '-y', outFile,
-  ])
-
-  const data = await ff.readFile(outFile)
+  // Due tentativi: 720p, poi piu' piccolo se non basta. Il caricamento passa
+  // in base64 da una funzione Vercel (limite 4,5 MB): sopra maxMB non arriva.
+  let data
+  for (const [h, crf] of [[720, 30], [540, 36]]) {
+    await ff.exec([
+      '-i', inFile,
+      '-vf', `scale=w=-2:h='min(${h},ih)',pad=ceil(iw/2)*2:ceil(ih/2)*2`,
+      '-c:v', 'libx264', '-preset', 'fast', '-crf', String(crf),
+      '-c:a', 'aac', '-b:a', '96k',
+      '-movflags', '+faststart',
+      '-y', outFile,
+    ])
+    data = await ff.readFile(outFile)
+    if (data.byteLength <= maxMB * 1024 * 1024) break
+  }
   await ff.deleteFile(inFile).catch(() => {})
   await ff.deleteFile(outFile).catch(() => {})
   ff.off('progress')
@@ -121,8 +133,11 @@ export async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
   const result   = new File([blob], `${baseName}.mp4`, { type: 'video/mp4' })
 
   onStatus?.(`Compresso: ${(result.size / 1024 / 1024).toFixed(1)} MB`)
-  // Return compressed only if smaller
-  return result.size < file.size ? result : file
+  const best = result.size < file.size ? result : file
+  if (best.size > 3.2 * 1024 * 1024) {
+    throw new Error(`Video troppo pesante anche compresso (${(best.size / 1024 / 1024).toFixed(1)} MB): accorcialo o esportalo piu' leggero`)
+  }
+  return best
 }
 
 /** Comprime e prepara un file per `upload-image`: { filename, dataUrl, isVideo }. */

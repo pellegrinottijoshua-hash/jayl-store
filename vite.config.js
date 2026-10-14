@@ -149,6 +149,8 @@ function socialAssets() {
 
 export default defineConfig({
   plugins: [react(), storefrontProducts(), socialAssets()],
+  // ffmpeg.wasm avvia un proprio worker: il pre-bundle di Vite lo rompe.
+  optimizeDeps: { exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util'] },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
