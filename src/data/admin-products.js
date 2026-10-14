@@ -18841,7 +18841,7 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/arcanine-back-print-shirt-funny-retro-90s-ani-mockup-01.jpg",
+    "image": "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140130_4f74e681-4294-4b28-8e98-707c11d4f82c.png",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-arcanine-back-shirt/hf_20260904_140941_cf0d5c8b-6332-4e0f-8f81-f8570c6f99a5.png",
     "detailImage": "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_141130_fcd43e7d-50b1-471b-b1ce-d4d51925c08d.png",
     "images": [
@@ -19216,7 +19216,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260421_003408_f400cda1-654e-4711-9bb7-82af5759ed4a-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-09-08T15:08:25.427Z",
-    "updatedAt": "2026-09-28T14:28:07.833Z",
+    "updatedAt": "2026-10-14T13:39:51.054Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/design-front.png",
     "storeColors": [
@@ -19294,7 +19294,8 @@ export const adminProducts = [
     "heroShots": [
       "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140130_4f74e681-4294-4b28-8e98-707c11d4f82c.png",
       "/images/arcanine-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him/hf_20260904_140927_4c48a42a-4c15-4540-a873-06f261a19445.png"
-    ]
+    ],
+    "videoUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-arcanine-back-shirt/arcanine.mp4"
   },
   {
     "id": "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him",
