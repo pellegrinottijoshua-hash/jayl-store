@@ -1,5 +1,7 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
+import { blobDirectUpload } from '@/lib/blobDirectUpload'
+import { getAdminPassword } from '@/components/generate-assets/constants'
 
 // Caricamento di immagini e video nella galleria di un prodotto (azione admin
 // `upload-image`): compressione nel browser, poi base64. Usato dalla scheda
@@ -140,9 +142,31 @@ export async function compressVideo(file, maxMB = 2.5, onProgress, onStatus) {
   return best
 }
 
-/** Comprime e prepara un file per `upload-image`: { filename, dataUrl, isVideo }. */
-export async function prepareProductAsset(raw, { onProgress, onStatus } = {}) {
+/**
+ * Prepara un file per `upload-image`: { filename, dataUrl | blobUrl, isVideo }.
+ *
+ * I video vanno su Vercel Blob cosi' come sono, senza passare dal codec nel
+ * browser: ffmpeg.wasm in produzione non partiva ("Codec video non caricato",
+ * 14/10) e in base64 una funzione Vercel non regge piu' di 4,5 MB. Il server
+ * copia il blob nel repo (upload-image con blobUrl).
+ */
+export async function prepareProductAsset(raw, { productId, onProgress, onStatus, signal } = {}) {
   const isRawVideo = /\.(mp4|mov|webm|avi|mkv|m4v)$/i.test(raw.name)
+  if (isRawVideo && /\.(mp4|mov|webm)$/i.test(raw.name)) {
+    if (raw.size > 45 * 1024 * 1024) throw new Error(`Video troppo grande (${(raw.size / 1024 / 1024).toFixed(0)} MB): massimo 45 MB`)
+    const filename = sanitizeFilename(raw.name)
+    if (raw.size > 2.5 * 1024 * 1024) {
+      if (!productId) throw new Error('productId mancante per il caricamento video')
+      onStatus?.('Upload video…')
+      const blob = await blobDirectUpload(`videos/${productId}/${filename}`, raw, {
+        clientPayload: JSON.stringify({ password: getAdminPassword(), productId }),
+        onProgress: (pct) => onProgress?.(Math.round(pct)),
+        signal,
+      })
+      return { filename, blobUrl: blob.url, isVideo: true }
+    }
+    return { filename, dataUrl: await fileToBase64(raw), isVideo: true }
+  }
   const file = isRawVideo ? await compressVideo(raw, 2.5, onProgress, onStatus) : await compressImage(raw)
   const filename = sanitizeFilename(file.name)
   return { filename, dataUrl: await fileToBase64(file), isVideo: /\.(mp4|mov|webm)$/i.test(filename) }

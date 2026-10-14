@@ -2008,7 +2008,7 @@ function QuickAddAsset({ product }) {
       let n = 0
       for (const raw of Array.from(files)) {
         setState(`⏫ ${++n}/${files.length}`)
-        const asset = await prepareProductAsset(raw, { onStatus: (m) => setState(m) })
+        const asset = await prepareProductAsset(raw, { productId: product.id, onStatus: (m) => setState(m) })
         await api('upload-image', { productId: product.id, ...asset })
       }
       setState('done')

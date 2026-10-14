@@ -10,7 +10,7 @@ import {
 } from '@/lib/printCanvas'
 import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { blobDirectUpload } from '@/lib/blobDirectUpload'
-import { fileToBase64, compressImage, compressVideo, sanitizeFilename } from '@/lib/adminUpload'
+import { fileToBase64, compressImage, sanitizeFilename, prepareProductAsset } from '@/lib/adminUpload'
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
 import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
 import SocialStatusPanel from '@/components/admin/SocialStatusPanel'
@@ -183,25 +183,13 @@ function ImagePool({
     const timer = setTimeout(() => ctrl.abort(new Error('Timeout — operazione troppo lenta (>120s)')), 120_000)
     try {
       for (const raw of Array.from(files)) {
-        const isRawVideo = /\.(mp4|mov|webm|avi|mkv|m4v)$/i.test(raw.name)
-        let file
-
-        if (isRawVideo) {
-          // Compress video with ffmpeg.wasm if > 2.5 MB → store on GitHub via base64
-          file = await compressVideo(
-            raw, 2.5,
-            pct => setVideoProgress(pct),
-            msg => setVideoStatus(msg),
-          )
-        } else {
-          file = await compressImage(raw)
-        }
+        const asset = await prepareProductAsset(raw, {
+          productId, signal: ctrl.signal,
+          onProgress: pct => setVideoProgress(pct),
+          onStatus: msg => setVideoStatus(msg),
+        })
         setVideoProgress(0); setVideoStatus('')
-
-        const filename = sanitizeFilename(file.name)
-        const isVideo  = /\.(mp4|mov|webm)$/i.test(filename)
-        const dataUrl  = await fileToBase64(file)
-        await api('upload-image', { productId, filename, dataUrl, isVideo }, ctrl.signal)
+        await api('upload-image', { productId, ...asset }, ctrl.signal)
       }
       onUploaded?.()
     } catch (e) {
