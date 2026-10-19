@@ -24,7 +24,7 @@ export const drop = {
       "cool-glaceon-t-shirt"
     ],
     "startsAt": "2026-10-12T16:00:00Z",
-    "endsAt": "2026-10-19T16:00:00Z",
+    "endsAt": "2026-10-22T16:00:00Z",
     "cap": 20,
     "caps": {},
     "dropPrice": 1999,
