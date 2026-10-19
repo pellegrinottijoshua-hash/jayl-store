@@ -99,7 +99,8 @@ export default function DropDesktop() {
                   className="group relative block overflow-hidden bg-off-black"
                   style={{ height: 'min(56vh, 640px)', aspectRatio: '2 / 3' }}
                 >
-                  <img src={photo} alt={p.altText || p.name} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '50% 30%' }} />
+                  {/* Col video niente foto sotto: si vedeva per un attimo prima del primo fotogramma. */}
+                  {!src && <img src={photo} alt={p.altText || p.name} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '50% 30%' }} />}
                   {src && (
                     <video
                       ref={(el) => {

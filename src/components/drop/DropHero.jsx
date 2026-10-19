@@ -51,7 +51,7 @@ function edgeFade(deg) {
   return d <= 68 ? 1 : d >= 86 ? 0 : 1 - (d - 68) / 18
 }
 
-function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video }) {
+function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video, noPhoto }) {
   const dA = alphaDeg / STRIPS
   const a = slotDeg - alphaDeg / 2 + dA * (j + 0.5)
   const chord = 2 * R * Math.sin(((dA / 2) * Math.PI) / 180)
@@ -101,7 +101,9 @@ function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video }) {
         opacity,
       }}
     >
-      <img
+      {/* La scheda davanti col video non mostra la foto: si vedeva per un
+          attimo prima del primo fotogramma. */}
+      {!noPhoto && <img
         src={src}
         alt=""
         draggable={false}
@@ -109,7 +111,7 @@ function Strip({ j, slotDeg, rot, W, H, R, alphaDeg, src, eager, video }) {
         decoding="async"
         className="absolute top-0 max-w-none select-none pointer-events-none object-cover"
         style={{ width: W, height: H, left: -(j * W) / STRIPS, objectPosition: '50% 30%' }}
-      />
+      />}
       {video && (
         <>
           <canvas ref={canvasRef} aria-hidden className="absolute top-0 left-0 pointer-events-none" style={{ width: stripW, height: H }} />
@@ -327,6 +329,7 @@ export default function DropHero() {
                       src={cfg.current?.heroImages?.[p.id] ?? p.heroImage ?? p.image}
                       eager={Math.abs(s - pos) <= 1}
                       video={isCenter ? frontVideo : null}
+                      noPhoto={isCenter && !!videoSrc}
                     />
                   ))}
                 </Link>
