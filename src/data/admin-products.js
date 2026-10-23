@@ -23149,5 +23149,238 @@ export const adminProducts = [
     ],
     "instagramCaption": "*Unleash your inner shadow.* 🌑 This Umbreon T-shirt is not just an outfit; it’s a lifestyle choice. Wear it loud and proud! ✨#umbreon#pokemon#grungewear ",
     "pinterestCaption": "*Elevate your wardrobe with our cool Umbreon T-Shirt.* Its edgy design speaks volumes about your style. Get ready to rock some unique looks with this must-have piece!"
+  },
+  {
+    "id": "cool-espeon-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Espeon T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Feel the psychic energy radiate as you wear this Espeon T-shirt, embodying the elegance and mystery of this beloved Pokémon. The vibrant artwork captures Espeon's sleek form nestled among swirling auras, reflecting its role as a powerful psychic type. Crafted from Gildan's premium tee material with direct-to-garment (DTG) print quality, this shirt promises both comfort and style. Gift it to that special gamer in your life who appreciates the charm of strategy and agility in every battle.",
+    "altText": "Espeon poised gracefully with shimmering purple and teal hues, illustrated in retro 90s anime fan-art on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/espeon-t-shirt-psychic-type-pok-mon-fan-art-tee-gamer-gift/espeon-t-shirt-psychic-type-pok-mon-fan-art-t-mockup-01.jpg",
+    "heroImage": "/images/cool-espeon-t-shirt/hf_20261014_164200_1eb59c08-dabb-4658-b7db-2aa0c98fd4ca.png",
+    "detailImage": "/images/cool-espeon-t-shirt/hf_20261014_163209_c4dfe117-1824-4750-abea-d8e5a4944af5.png",
+    "images": [
+      "/images/cool-espeon-t-shirt/cool-espeon-t-shirt-gelato-01.jpg",
+      "/images/cool-espeon-t-shirt/cool-espeon-t-shirt-gelato-02.jpg",
+      "/images/cool-espeon-t-shirt/cool-espeon-t-shirt-gelato-03.jpg",
+      "/images/cool-espeon-t-shirt/cool-espeon-t-shirt-gelato-04.jpg",
+      "/images/cool-espeon-t-shirt/hf_20261014_164623_a08c25e0-fc37-4041-8685-9e9f1162e04b.png",
+      "/images/cool-espeon-t-shirt/hf_20261020_163450_0e64fed6-de97-4ac7-a13d-3bec95726e12.png"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_164200_1eb59c08-dabb-4658-b7db-2aa0c98fd4ca.png": "A vibrant Espeon in a contemporary art style, lounging against a soft blue background.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_163209_c4dfe117-1824-4750-abea-d8e5a4944af5.png": "Close-up of Espeon's face on the T-shirt, highlighting intricate details and soft textures.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/13221ece-0889-420e-af37-89509306f75d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=31a53fd7426685584ab64f2309b316e764737dc951a69b5cd0e6f03f07c250d8": "A red version of the Espeon T-shirt displayed from a front angle, showcasing its playful design.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/05811924-b2db-408d-b8c6-b4aa5caeceb5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e0f8e657dde4be5d7065be297567751a4596860ea23083741159e8fa6d38882b": "Another angle of the red Espeon T-shirt, emphasizing its bold graphic print against deep colors.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a6b5c732-a065-4ab7-9d6d-608124eaa25c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=41f360c9a5d0acb68d47852f2de958643126426d4e0f938d12cea269c6b84e67": "A dynamic shot showing the red T-shirt's sleeve detail with intricate stitching and quality fabric.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e4db6f70-d79c-4121-8e87-ff69c17896d4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=868f0aaa699a5441f92880718ee4e8d11fc0f6103ab55cc3a0e886d3d9568cec": "From below, the red Espeon T-shirt displays vibrant colors and modern designs in stunning detail.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_164623_a08c25e0-fc37-4041-8685-9e9f1162e04b.png": "An overhead view showcasing the smooth texture and vivid graphic design of the Espeon T-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261020_163450_0e64fed6-de97-4ac7-a13d-3bec95726e12.png": "The shirt’s back reveals bold contemporary artwork with contrasting colors for eye-catching appeal."
+    },
+    "tags": [
+      "espeon",
+      "pokemon",
+      "gamer gift",
+      "fan art",
+      "t-shirt",
+      "psychic type",
+      "anime merch",
+      "apparel",
+      "vintage style",
+      "collectibles",
+      "lifestyle",
+      "graphic tee",
+      "casual wear"
+    ],
+    "featured": false,
+    "gelatoProductId": "aec8bc62-463f-4c93-be9b-1a1565c689a5",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "espeon t-shirt",
+      "pokemon apparel",
+      "fan art t-shirt",
+      "gamer gift shirt",
+      "psychic pokemon"
+    ],
+    "longTailKeywords": [
+      "espeon graphic t-shirt for fans",
+      "unique pokemon gifts for gamers",
+      "retro style espeon shirt online",
+      "premium pokemon fan art apparel",
+      "special edition pokemon shirts for collectors",
+      "best gifts for espyon lovers",
+      "direct-to-garment printing tees for gamers",
+      "comfortable anime merchandise for all seasons",
+      "stylish fandom clothing for everyday wear",
+      "vibrant pokemon tees perfect for cosplay"
+    ],
+    "hashtags": "#espeon #pokemon #gamer #fanart #tshirt #apparel #anime #collectibles #graphictee #fashion #retrostyle #merchandise #lifestyle #gamingmerch #pokemongifts #otaku #nostalgia #geekculture #artapparel #pokedex #animefanart #tshirtdesigns #popcultureclothing #giftideasforher #giftideasforhim #casualwear #trendyclothes #stylishshirts #uniqueclothingdesigns #geekystyle",
+    "instagramCaption": "#Espeon energy is here! Dive into the world of psychic powers with our exclusive T-shirt. Get yours now! 💜✨#PokemonFanArt#GamerStyle#EspeonVibes",
+    "pinterestCaption": "\"Unlock your love for Pokémon with our exclusive Espeon T-shirt, showcasing beautiful artwork that embodies psychic elegance. A must-have piece for gamers and collectors alike! Check it out now!",
+    "seoTitle": "Espeon T-Shirt | Psychic Type Pokémon Fan Art Tee | Gamer Gift",
+    "variants": [
+      {
+        "uid": "d079537a-bd04-4980-9a64-cc0c3e1fceb5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cd59cc5f-ba06-42e9-bb2a-72cbdc4c271c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5d4acede-13c8-4135-9557-94f6e91cf054",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7a907036-14a0-4935-8d46-e8795d0ea9f2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c5aa1461-99fa-4154-9b57-ba71a5e45dc0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cb60eeca-581a-4ce9-8d95-bdf39b41bb6a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0e9df108-15a0-4735-a552-6bed68050034",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "564d5783-8a86-49cf-ac9c-ec10144c4898",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_purple_gpr_0-4_inlbl_gildan_64000",
+        "color": "Purple",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ef5ba006-7600-4f0a-87ae-e3489a5578ac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1894958d-5572-49d5-a938-8912cdb826d8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2f414f10-a88a-492e-8534-668099f32008",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0a79c68f-b05b-4632-bb44-70f2087e80c7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/espeon-t-shirt-psychic-type-pok-mon-fan-art-tee-gamer-gift/espeon-t-shirt-psychic-type-pok-mon-fan-art-t-black-01.jpg"
+      },
+      {
+        "id": "purple",
+        "label": "Purple",
+        "hex": "#888888",
+        "image": "/images/espeon-t-shirt-psychic-type-pok-mon-fan-art-tee-gamer-gift/espeon-t-shirt-psychic-type-pok-mon-fan-art-t-purple-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/espeon-t-shirt-psychic-type-pok-mon-fan-art-tee-gamer-gift/espeon-t-shirt-psychic-type-pok-mon-fan-art-t-white-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/13221ece-0889-420e-af37-89509306f75d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=31a53fd7426685584ab64f2309b316e764737dc951a69b5cd0e6f03f07c250d8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/05811924-b2db-408d-b8c6-b4aa5caeceb5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e0f8e657dde4be5d7065be297567751a4596860ea23083741159e8fa6d38882b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a6b5c732-a065-4ab7-9d6d-608124eaa25c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=41f360c9a5d0acb68d47852f2de958643126426d4e0f938d12cea269c6b84e67",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e4db6f70-d79c-4121-8e87-ff69c17896d4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T132907Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=868f0aaa699a5441f92880718ee4e8d11fc0f6103ab55cc3a0e886d3d9568cec"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-espeon-t-shirt/hf_20260823_170434_d924a048-c750-4439-ba1d-5f170eece9b7-zack-1.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-espeon-t-shirt/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-23T13:37:06.156Z",
+    "updatedAt": "2026-10-23T13:37:06.156Z"
   }
 ]
