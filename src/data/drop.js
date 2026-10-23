@@ -140,7 +140,7 @@ export const drop = {
         "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
         "cool-espeon-t-shirt"
       ],
-      "startsAt": "2026-10-22T16:00:00Z",
+      "startsAt": "2026-10-23T16:00:00Z",
       "endsAt": "2026-10-28T16:00:00Z",
       "cap": 20,
       "caps": {},
