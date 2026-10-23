@@ -22714,5 +22714,238 @@ export const adminProducts = [
     ],
     "relatedProducts": [],
     "heroShots": []
+  },
+  {
+    "id": "cool-eevee-t-shirt",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Cool Eevee T-Shirt",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Nestled in the cozy curls of its fur, this art captures Eevee's laid-back charm and playful spirit with a touch of whimsical flair. The wry smile and soft, sandy tones evoke the gentle nature of our favorite evolving Pokémon. Crafted on a Gildan premium tee, the direct-to-garment print ensures your shirt stays vibrant after countless adventures—just like Eevee itself. This tee makes a fantastic gift for friends who appreciate both cute aesthetics and the possibilities of evolution in life—or just want to be comfortable while feeling adorable.",
+    "altText": "Eevee with a mischievous smile against pastel colors, small chest print on a premium JAYL tee in fan-art style.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      }
+    ],
+    "image": "/images/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveelution-gift/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveel-mockup-01.jpg",
+    "heroImage": "/images/cool-eevee-t-shirt/hf_20261014_231038_92ee7520-ce5c-491f-9a5e-731f5474b1ec.png",
+    "detailImage": "/images/cool-eevee-t-shirt/hf_20261014_234000_0f1fbe41-1a59-4908-aa85-e2874ecbea95.png",
+    "images": [
+      "/images/cool-eevee-t-shirt/cool-eevee-t-shirt-gelato-01.jpg",
+      "/images/cool-eevee-t-shirt/cool-eevee-t-shirt-gelato-02.jpg",
+      "/images/cool-eevee-t-shirt/cool-eevee-t-shirt-gelato-03.jpg",
+      "/images/cool-eevee-t-shirt/cool-eevee-t-shirt-gelato-04.jpg",
+      "/images/cool-eevee-t-shirt/hf_20261014_233955_51f578aa-286d-4e13-954b-284210e42f20.png",
+      "/images/cool-eevee-t-shirt/hf_20261020_161515_eaeea0ff-013e-445f-b23d-8ee5627837a3.png"
+    ],
+    "imageAlts": {
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-eevee-t-shirt/hf_20261014_231038_92ee7520-ce5c-491f-9a5e-731f5474b1ec.png": "A vibrant Eevee graphic in a bold contemporary art style on a soft T-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-eevee-t-shirt/hf_20261014_234000_0f1fbe41-1a59-4908-aa85-e2874ecbea95.png": "Close-up showing the rich texture of the Cool Eevee T-Shirt's fabric.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/74e86416-c895-44c6-a499-79739380bc11/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=518a51a6d66a2a8105e19046f9d0b51827f497dceef680a32f2ac9ba57a0646c": "Front view of the Cool Eevee T-Shirt with a striking red background.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4b8b9f1d-f5e0-40b3-b77f-0bf26cf40c1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=61bf656b16f8236b902a49633e903ae7e48e457438f8e2a11b5784c558ac4f84": "Side angle of the Cool Eevee T-Shirt showcasing its dynamic red hue.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4fb5f3cd-089f-41b4-880d-c0617ba5c9f7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=25d5cc872a13190e6b1800af171f5161a76a8aab0629312577526dc189448f0e": "Another view reveals the energetic design of the Cool Eevee T-Shirt against a red backdrop.",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/90ca665a-7711-466a-b50b-dd2421441ebe/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=235a9bba9ebd82fee97aac45b02b4057f0aaceb4828afc49363b21287338b355": "Back view illustrating the playful vibe of the Cool Eevee T-Shirt in bright red.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-eevee-t-shirt/hf_20261014_233955_51f578aa-286d-4e13-954b-284210e42f20.png": "Angled detail capturing the unique print quality on the Cool Eevee T-Shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-eevee-t-shirt/hf_20261020_161515_eaeea0ff-013e-445f-b23d-8ee5627837a3.png": "Detailed view highlighting the craftsmanship and fabric softness of the Cool Eevee T-Shirt."
+    },
+    "tags": [
+      "eevee",
+      "pokemon",
+      "fan art",
+      "t-shirt",
+      "apparel",
+      "cute",
+      "anime",
+      "gifts",
+      "tee",
+      "geeky",
+      "merchandise",
+      "collectibles",
+      "fashion"
+    ],
+    "featured": false,
+    "gelatoProductId": "e03a3225-4203-45fa-8fdd-513f0d063ce7",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "eevee t-shirt",
+      "pokemon apparel",
+      "cute tee",
+      "fan art shirt",
+      "eeveelution gift"
+    ],
+    "longTailKeywords": [
+      "eevee t-shirt for fans",
+      "cute pokemon fan shirt",
+      "gift ideas for eevee lovers",
+      "pokémon graphic tee online",
+      "affordable eeveelution t-shirts",
+      "unique gifts for gamers",
+      "best anime fan apparel option",
+      "humorous pokemon-themed clothing.",
+      "stylish and comfy tees available",
+      "official licensed pokemon merchandise"
+    ],
+    "hashtags": "#eevee #pokemon #fanart #tshirt #apparel #cute #anime #gifts #tee #geeky #merchandise #collectibles #fashion #pokemongifts #pocketmonsters #animefashion #cartoonclothing #nerdytees #lovepokemon #animeclothes #toycaptain ##iloveanime  ##funnyshirts ##playfuldesigns  ##whimsicalart  ##artwear  ##pokedex  ##ottawaartists  ##kawaiifashion   ##creativetees",
+    "instagramCaption": "\"Why evolve when you can chill?\" Rock this Eevee tee and let your casual vibes shine bright. Grab yours now! 🐾✨#eeveefans#teeshirt#pokemonlove",
+    "pinterestCaption": "\"Catch them all!\" Our Eevee T-Shirt brings together comfort and style with adorable fan-art flair. Perfect for Pokémon enthusiasts looking to express their love through fashion—check it out now!",
+    "seoTitle": "Eevee T-Shirt | Cute Pokémon Fan Art Tee | Eeveelution Gift",
+    "variants": [
+      {
+        "uid": "cb2ff2d4-c46a-4795-9b86-70bf2002c174",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "88c940d2-3a43-4986-9b16-03930dd194ac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "40c0ba59-eb98-4603-a1c1-88a5ebc1df37",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fa242269-67a8-45a1-b4b0-f19da9c20daa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bcb69838-3f4f-4e26-96d7-fafc17eba9f4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "238f474c-06a1-40ba-adc2-cc47c5b9e09b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b97cc5c8-13f3-4678-85d4-f3b45da963b7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4d77f247-2f1d-4205-b177-de1a4471db3b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4b459d3d-1e79-466f-9919-70d5efeae0fb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b23c362d-2a45-49cc-85ad-d4d0f1b37de6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "17e98202-115a-4f5d-ac01-f16ac4d120dc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cfdef39e-a21c-45da-985c-6836b42c5e65",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_natural_gpr_0-4_inlbl_gildan_64000",
+        "color": "Natural",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveelution-gift/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveel-white-01.jpg"
+      },
+      {
+        "id": "natural",
+        "label": "Natural",
+        "hex": "#888888",
+        "image": "/images/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveelution-gift/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveel-natural-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveelution-gift/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveel-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/74e86416-c895-44c6-a499-79739380bc11/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=518a51a6d66a2a8105e19046f9d0b51827f497dceef680a32f2ac9ba57a0646c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4b8b9f1d-f5e0-40b3-b77f-0bf26cf40c1a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=61bf656b16f8236b902a49633e903ae7e48e457438f8e2a11b5784c558ac4f84",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4fb5f3cd-089f-41b4-880d-c0617ba5c9f7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=25d5cc872a13190e6b1800af171f5161a76a8aab0629312577526dc189448f0e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/90ca665a-7711-466a-b50b-dd2421441ebe/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T122230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=235a9bba9ebd82fee97aac45b02b4057f0aaceb4828afc49363b21287338b355"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-eevee-t-shirt/hf_20260822_200805_73e646f1-cee1-4884-861a-a1b58476090e-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-eevee-t-shirt/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-23T12:34:38.183Z",
+    "updatedAt": "2026-10-23T12:34:38.183Z"
   }
 ]
