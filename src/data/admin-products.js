@@ -22946,9 +22946,14 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-eevee-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T12:34:38.183Z",
-    "updatedAt": "2026-10-23T13:20:21.242Z",
+    "updatedAt": "2026-10-23T13:20:41.284Z",
     "relatedProducts": [],
-    "heroShots": []
+    "heroShots": [],
+    "storeColors": [
+      "white",
+      "black",
+      "natural"
+    ]
   },
   {
     "id": "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
