@@ -22947,5 +22947,189 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T12:34:38.183Z",
     "updatedAt": "2026-10-23T12:34:38.183Z"
+  },
+  {
+    "id": "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
+    "section": "objects",
+    "collection": "cool pokemon back",
+    "name": "Umbreon T-Shirt – Dark Type Pokémon Fan Art Tee, Gamer Gift",
+    "subtitle": "cool pokemon back",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Shadowy and cool, Umbreon embodies the subtle allure of the dark type—mysterious yet fiercely loyal. Wearing this tee isn’t just a nod to a beloved character from the Pokemon universe; it’s about capturing that 90s nostalgia and connecting with the playful spirit of gaming nights. The Gildan premium tee showcases vibrant, high-resolution DTG print quality that brings this iconic design to life across its small chest print. This shirt makes for a fun gift that every gamer or Pokemon aficionado can cherish.",
+    "altText": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-mockup-01.jpg",
+    "heroImage": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_165340_caf8f4c7-7820-416b-8765-de4eb6951c4d.png",
+    "detailImage": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_161855_c7f8d00b-5459-47c3-9e52-eb383db5ca45.png",
+    "images": [
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-01.jpg",
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-02.jpg",
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-03.jpg",
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png"
+    ],
+    "imageAlts": {
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-mockup-01.jpg": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee.",
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-black-01.jpg": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee.",
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-white-01.jpg": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee."
+    },
+    "tags": [
+      "umbreon",
+      "pokemon t-shirt",
+      "gamer gift",
+      "dark type",
+      "fan art",
+      "anime apparel",
+      "retro style",
+      "90s nostalgia",
+      "quirky t-shirt",
+      "gift for gamers",
+      "graphic tee",
+      "casual wear",
+      "collectible clothing"
+    ],
+    "featured": false,
+    "gelatoProductId": "c2226bb8-908a-4dff-978b-11bce8130603",
+    "movement": "cool pokemon back",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "umbreon shirt",
+      "pokemon apparel",
+      "dark type t-shirt",
+      "fan art tee",
+      "gamer merchandise"
+    ],
+    "longTailKeywords": [
+      "umbreon pokemon fan art shirt",
+      "dark type pokemon t-shirt design",
+      "unique gifts for pokemon fans",
+      "retro style pokemon clothing",
+      "gamer gifts for her or him",
+      "premium graphic tees for fans",
+      "stylish pokemon themed apparel",
+      "vintage anime inspired shirts",
+      "fan art pokemon merchandise online",
+      "limited edition gamer t-shirts"
+    ],
+    "hashtags": "#umbreon #pokemontshirt #gamergift #darktype #fanart #animeapparel #retrostylestyle #90snostalgia #quirkytshirt #giftforgamers #graphictee #casualwear #collectibleclothing #gameover #nostalgictees #geekchic #animeforever #pokedexlove #pokemonlife #giftingmadeeasy #fashionablefans #kidultstyle #gamingmerchandise #popculturefashion #nerdlife #affordableartwear #artandstyleonline#pixelartlove#cartoonclassic#makeitepic#playhard",
+    "seoTitle": "Umbreon T-Shirt | Dark Type Pokémon Fan Art | Gamer Gift",
+    "variants": [
+      {
+        "uid": "6d4372a5-e132-4375-bfa5-bf783d75875d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "37513972-cfde-47e4-9268-2d85464ca2a4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c5d556ed-1157-473d-81c7-2b49a700d288",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "03e702fd-38b7-4fc9-8e75-9df3d9710f49",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "692922c5-3f48-4668-a0f6-46de5aa39f35",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "05eddabb-d45b-4f2d-9a07-19ee39a6df70",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_0-4_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "38529be2-e5bd-4a68-a2d4-fda77e345036",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f5aaca4a-bc73-4604-b442-9dd03e320a18",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_0-4_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3f67ee8a-bf53-4be7-912f-c60626c5a41e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T130144Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e7bc1ebd950292ccad19108708ea8d0a599a2239c53ebc6ed31814410cf108ef",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/88420e8b-a1e3-4de3-b80c-de525856f566/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T130144Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ed4928655545d79c099e8b002264aaa7e5785e361851f40eb28af66be2d20a41",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e390d60b-e7ad-48cc-b9a6-10aeec6dc33e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261023%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261023T130144Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=56e8a234a4555211421d7856245adff95d5e33ccaee59f30165f6d0e36d6a735"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20260822_111206_6900ba1d-eccc-485d-9563-76f887e424c4-zack.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-23T13:09:54.845Z",
+    "updatedAt": "2026-10-23T13:09:54.845Z"
   }
 ]
