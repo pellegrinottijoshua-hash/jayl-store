@@ -22756,8 +22756,8 @@ export const adminProducts = [
       }
     ],
     "image": "/images/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveelution-gift/eevee-t-shirt-cute-pok-mon-fan-art-tee-eeveel-mockup-01.jpg",
-    "heroImage": "/images/cool-eevee-t-shirt/hf_20261014_231038_92ee7520-ce5c-491f-9a5e-731f5474b1ec.png",
-    "detailImage": "/images/cool-eevee-t-shirt/hf_20261014_234000_0f1fbe41-1a59-4908-aa85-e2874ecbea95.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-eevee-t-shirt/hf_20261014_231038_92ee7520-ce5c-491f-9a5e-731f5474b1ec.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-eevee-t-shirt/hf_20261014_234000_0f1fbe41-1a59-4908-aa85-e2874ecbea95.png",
     "images": [
       "/images/cool-eevee-t-shirt/cool-eevee-t-shirt-gelato-01.jpg",
       "/images/cool-eevee-t-shirt/cool-eevee-t-shirt-gelato-02.jpg",
@@ -22946,7 +22946,9 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-eevee-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T12:34:38.183Z",
-    "updatedAt": "2026-10-23T12:34:38.183Z"
+    "updatedAt": "2026-10-23T13:20:21.242Z",
+    "relatedProducts": [],
+    "heroShots": []
   },
   {
     "id": "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
