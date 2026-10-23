@@ -22959,7 +22959,7 @@ export const adminProducts = [
     "id": "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
     "section": "objects",
     "collection": "cool pokemon back",
-    "name": "Umbreon T-Shirt – Dark Type Pokémon Fan Art Tee, Gamer Gift",
+    "name": "Cool Umbreon T-Shirt",
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
@@ -22996,13 +22996,15 @@ export const adminProducts = [
       }
     ],
     "image": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-mockup-01.jpg",
-    "heroImage": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_165340_caf8f4c7-7820-416b-8765-de4eb6951c4d.png",
-    "detailImage": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_161855_c7f8d00b-5459-47c3-9e52-eb383db5ca45.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_165340_caf8f4c7-7820-416b-8765-de4eb6951c4d.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_161855_c7f8d00b-5459-47c3-9e52-eb383db5ca45.png",
     "images": [
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-01.jpg",
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-02.jpg",
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-03.jpg",
-      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png"
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261020_161523_18744638-04ca-4d73-89e5-2319c817b923.png"
     ],
     "imageAlts": {
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-mockup-01.jpg": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee.",
@@ -23137,6 +23139,13 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20260822_111206_6900ba1d-eccc-485d-9563-76f887e424c4-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:09:54.845Z",
-    "updatedAt": "2026-10-23T13:09:54.845Z"
+    "updatedAt": "2026-10-23T13:23:10.419Z",
+    "relatedProducts": [],
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/design-front.png",
+    "heroShots": [],
+    "storeColors": [
+      "black",
+      "white"
+    ]
   }
 ]
