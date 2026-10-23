@@ -130,7 +130,38 @@ export const drop = {
       "endsAt": "2026-10-12T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-09",
+      "number": 9,
+      "title": "DAY & NIGHT",
+      "productIds": [
+        "cool-eevee-t-shirt",
+        "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
+        "cool-espeon-t-shirt"
+      ],
+      "startsAt": "2026-10-22T16:00:00Z",
+      "endsAt": "2026-10-28T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 2000,
+      "bundlePrice": 4999,
+      "heroImages": {},
+      "defaults": {
+        "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift": {
+          "color": "black"
+        },
+        "cool-eevee-t-shirt": {
+          "color": "white"
+        },
+        "cool-espeon-t-shirt": {
+          "color": "black"
+        }
+      },
+      "defaultSide": "front",
+      "heroVideos": {}
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
