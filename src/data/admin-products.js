@@ -22963,8 +22963,8 @@ export const adminProducts = [
     "subtitle": "cool pokemon back",
     "price": 2500,
     "currency": "eur",
-    "description": "Shadowy and cool, Umbreon embodies the subtle allure of the dark type—mysterious yet fiercely loyal. Wearing this tee isn’t just a nod to a beloved character from the Pokemon universe; it’s about capturing that 90s nostalgia and connecting with the playful spirit of gaming nights. The Gildan premium tee showcases vibrant, high-resolution DTG print quality that brings this iconic design to life across its small chest print. This shirt makes for a fun gift that every gamer or Pokemon aficionado can cherish.",
-    "altText": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee.",
+    "description": "In the glow of a midnight moon, Umbreon prowls, its sleek silhouette perfectly capturing an electric tension between nobility and rebellion. This Gildan premium tee showcases detailed DTG print quality that brings this enigmatic creature’s dark elegance to life on soft fabric. With its striking design, you channel the spirit of a Pokémon that embodies both allure and mystery—who cares about the rules? Give this shirt as a rebellious gift for someone who dares to embrace the shadowy side of fandom.",
+    "altText": "Bold Umbreon in mid-pounce with bright yellow rings, captured in retro 90s fan-art style on a small chest print of a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -23013,44 +23013,44 @@ export const adminProducts = [
     },
     "tags": [
       "umbreon",
-      "pokemon t-shirt",
-      "gamer gift",
+      "pokemon",
+      "t-shirt",
+      "cool art",
+      "anime fashion",
       "dark type",
-      "fan art",
-      "anime apparel",
-      "retro style",
-      "90s nostalgia",
-      "quirky t-shirt",
-      "gift for gamers",
       "graphic tee",
-      "casual wear",
-      "collectible clothing"
+      "rebel style",
+      "geek wear",
+      "nerdy apparel",
+      "unique gifts",
+      "print-on-demand",
+      "premium quality"
     ],
     "featured": false,
     "gelatoProductId": "c2226bb8-908a-4dff-978b-11bce8130603",
     "movement": "cool pokemon back",
     "adminManaged": true,
     "primaryKeywords": [
-      "umbreon shirt",
-      "pokemon apparel",
-      "dark type t-shirt",
-      "fan art tee",
-      "gamer merchandise"
+      "umbreon t-shirt",
+      "pokemon shirt",
+      "anime apparel",
+      "graphic t-shirt",
+      "cool pokemon"
     ],
     "longTailKeywords": [
-      "umbreon pokemon fan art shirt",
-      "dark type pokemon t-shirt design",
-      "unique gifts for pokemon fans",
-      "retro style pokemon clothing",
-      "gamer gifts for her or him",
-      "premium graphic tees for fans",
-      "stylish pokemon themed apparel",
-      "vintage anime inspired shirts",
-      "fan art pokemon merchandise online",
-      "limited edition gamer t-shirts"
+      "buy umbreon t-shirt online",
+      "unique pokemon graphic tee",
+      "dark type pokemon apparel",
+      "anime inspired clothing for fans",
+      "cool tees for anime lovers",
+      "trendy pokemon t-shirts for adults",
+      "retro style umbrella t-shirt buy now",
+      "pokemon fan art clothing options",
+      "DTG print quality shirts online",
+      "gift ideas for pokemon fans"
     ],
-    "hashtags": "#umbreon #pokemontshirt #gamergift #darktype #fanart #animeapparel #retrostylestyle #90snostalgia #quirkytshirt #giftforgamers #graphictee #casualwear #collectibleclothing #gameover #nostalgictees #geekchic #animeforever #pokedexlove #pokemonlife #giftingmadeeasy #fashionablefans #kidultstyle #gamingmerchandise #popculturefashion #nerdlife #affordableartwear #artandstyleonline#pixelartlove#cartoonclassic#makeitepic#playhard",
-    "seoTitle": "Umbreon T-Shirt | Dark Type Pokémon Fan Art | Gamer Gift",
+    "hashtags": "#umbreon #pokemon #tshirt #coolart #animefashion #darktype #graphictee #rebelstyle #geekwear #nerdyapparel #uniquegifts #printondemand #premiumquality #pokemergear #fanartshirt #pokedaydreams #blazingleather #rebelliouswear #mysticalcreatures #nightvibes #popculturefashion #stylishrenters ##urbanoutfittersartist   ",
+    "seoTitle": "Umbreon T-Shirt | Dark Type Pokemon Vibe | Unique Gift Idea",
     "variants": [
       {
         "uid": "6d4372a5-e132-4375-bfa5-bf783d75875d",
@@ -23139,13 +23139,15 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20260822_111206_6900ba1d-eccc-485d-9563-76f887e424c4-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:09:54.845Z",
-    "updatedAt": "2026-10-23T13:23:10.419Z",
+    "updatedAt": "2026-10-23T13:23:18.678Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "heroShots": [],
     "storeColors": [
       "black",
       "white"
-    ]
+    ],
+    "instagramCaption": "*Unleash your inner shadow.* 🌑 This Umbreon T-shirt is not just an outfit; it’s a lifestyle choice. Wear it loud and proud! ✨#umbreon#pokemon#grungewear ",
+    "pinterestCaption": "*Elevate your wardrobe with our cool Umbreon T-Shirt.* Its edgy design speaks volumes about your style. Get ready to rock some unique looks with this must-have piece!"
   }
 ]
