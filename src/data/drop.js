@@ -15,33 +15,42 @@
 // scripts/test-drop-config.js.
 export const drop = {
   "current": {
-    "id": "drop-08",
+    "id": "drop-09",
+    "number": 9,
+    "title": "DAY & NIGHT",
+    "productIds": [
+      "cool-eevee-t-shirt",
+      "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
+      "cool-espeon-t-shirt"
+    ],
+    "startsAt": "2026-10-23T16:00:00Z",
+    "endsAt": "2026-10-28T16:00:00Z",
+    "cap": 20,
+    "caps": {},
+    "dropPrice": 2000,
+    "bundlePrice": 4999,
+    "heroImages": {},
+    "defaults": {
+      "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift": {
+        "color": "black"
+      },
+      "cool-eevee-t-shirt": {
+        "color": "white"
+      },
+      "cool-espeon-t-shirt": {
+        "color": "black"
+      }
+    },
+    "defaultSide": "front",
+    "heroVideos": {}
+  },
+  "previous": {
     "number": 8,
     "title": "EEVEES",
     "productIds": [
       "cool-sylveon-t-shirt",
       "cool-leafeon-t-shirt",
       "cool-glaceon-t-shirt"
-    ],
-    "startsAt": "2026-10-12T16:00:00Z",
-    "endsAt": "2026-10-22T16:00:00Z",
-    "cap": 20,
-    "caps": {},
-    "dropPrice": 1999,
-    "bundlePrice": 4999,
-    "heroImages": {},
-    "defaults": {},
-    "heroVideos": {
-      "cool-sylveon-t-shirt": "/images/cool-sylveon-t-shirt/home-1791907067310.mp4"
-    }
-  },
-  "previous": {
-    "number": 7,
-    "title": "ANCIENT",
-    "productIds": [
-      "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
-      "cool-kabutops-t-shirt",
-      "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him"
     ]
   },
   "past": [
@@ -128,40 +137,21 @@ export const drop = {
       ],
       "startsAt": "2026-10-07T16:00:00Z",
       "endsAt": "2026-10-12T16:00:00Z"
-    }
-  ],
-  "scheduled": [
+    },
     {
-      "id": "drop-09",
-      "number": 9,
-      "title": "DAY & NIGHT",
+      "id": "drop-08",
+      "number": 8,
+      "title": "EEVEES",
       "productIds": [
-        "cool-eevee-t-shirt",
-        "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
-        "cool-espeon-t-shirt"
+        "cool-sylveon-t-shirt",
+        "cool-leafeon-t-shirt",
+        "cool-glaceon-t-shirt"
       ],
-      "startsAt": "2026-10-23T16:00:00Z",
-      "endsAt": "2026-10-28T16:00:00Z",
-      "cap": 20,
-      "caps": {},
-      "dropPrice": 2000,
-      "bundlePrice": 4999,
-      "heroImages": {},
-      "defaults": {
-        "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift": {
-          "color": "black"
-        },
-        "cool-eevee-t-shirt": {
-          "color": "white"
-        },
-        "cool-espeon-t-shirt": {
-          "color": "black"
-        }
-      },
-      "defaultSide": "front",
-      "heroVideos": {}
+      "startsAt": "2026-10-12T16:00:00Z",
+      "endsAt": "2026-10-22T16:00:00Z"
     }
   ],
+  "scheduled": [],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
@@ -184,7 +174,10 @@ export const drop = {
     "shiny-charizard-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-fire-pokemon-gift-for-him",
     "rampardos-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
     "cool-kabutops-t-shirt",
-    "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him"
+    "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
+    "cool-sylveon-t-shirt",
+    "cool-leafeon-t-shirt",
+    "cool-glaceon-t-shirt"
   ],
   "archivePrice": 2499
 }
