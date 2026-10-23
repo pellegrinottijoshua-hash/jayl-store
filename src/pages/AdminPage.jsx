@@ -314,6 +314,21 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [altPrintFileUrl, setAltPrintFileUrl] = useState(editingProduct?.altPrintFileUrl || '')
   const [uploadingDesign, setUploadingDesign] = useState(false)
   const [designUploadErr, setDesignUploadErr] = useState('')
+  // Caricamento riuscito ma CDN GitHub non ancora aggiornata: non e' un errore.
+  // Si ricontrolla da qui finche' il file risponde, poi la nota diventa verde.
+  const [designNote, setDesignNote] = useState(null) // null | { url, ok }
+  const watchCdn = (url) => {
+    setDesignNote({ url, ok: false })
+    let n = 0
+    const tick = async () => {
+      try {
+        const r = await fetch(`${url}?v=${Date.now()}`, { method: 'HEAD', cache: 'no-store' })
+        if (r.ok) { setDesignNote({ url, ok: true }); return }
+      } catch { /* riprova */ }
+      if (++n < 12) setTimeout(tick, 10_000)
+    }
+    setTimeout(tick, 10_000)
+  }
   const [designEditor,    setDesignEditor]    = useState(null)  // {art, transform, filename}
   const [fittingDesign,   setFittingDesign]   = useState(false)
   const [autoFitDesign,   setAutoFitDesign]   = useState(true)
@@ -824,7 +839,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       }, ms)),
     ])
 
-    setUploadingDesign(true); setDesignUploadErr('')
+    setUploadingDesign(true); setDesignUploadErr(''); setDesignNote(null)
     setDesignProgress({ phase: 'Preparazione…' })
     const sanitized = sanitizeFilename(file.name)
     const mb = (file.size / 1024 / 1024).toFixed(1)
@@ -846,7 +861,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         180_000, 'commit su GitHub',
       )
       setUrl(result.url)
-      if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
+      if (result.warning) watchCdn(result.url)
       setDesignProgress(null)
       return true
     } catch (e1) {
@@ -863,7 +878,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           120_000, 'upload base64',
         )
         setUrl(result.url)
-        if (result.warning) setDesignUploadErr(`⚠ ${result.warning}`)
+        if (result.warning) watchCdn(result.url)
         setDesignProgress(null)
         return true
       } catch (e2) {
@@ -1696,6 +1711,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                   className={`${inputCls} text-xs flex-1`}
                 />
               </div>
+              {designNote && (
+                <p className={`text-xs ${designNote.ok ? 'text-emerald-400' : 'text-amber-400'}`}>
+                  {designNote.ok
+                    ? '✓ Design caricato e online. Ricordati di salvare il prodotto.'
+                    : '✓ Design caricato. GitHub lo sta mettendo online (30-60 s): salva pure il prodotto, aspetta il verde solo prima di un ordine vero.'}
+                </p>
+              )}
               {designUploadErr && (
                 <div className="rounded border border-red-900/60 bg-red-950/20 p-2">
                   <p className="text-red-400 text-xs break-words">⚠ {designUploadErr}</p>

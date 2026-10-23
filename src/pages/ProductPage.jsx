@@ -594,7 +594,13 @@ export default function ProductPage() {
   // Lato di stampa (null = quello principale). Si torna al principale se il
   // colore scelto non offre l'altro lato.
   // Aperta da un vecchio link di una maglia front (formerIds): parte da Front.
-  const [printSide, setPrintSide] = useState(() => (product && product.id !== id ? 'front' : null))
+  // Il drop in corso sceglie il lato con cui si apre la scheda (admin → Drop →
+  // "Scheda prodotto parte da"); senza scelta, il lato principale (Back).
+  const [printSide, setPrintSide] = useState(() => (
+    product && product.id !== id ? 'front'
+      : inDropNow && dropCfg?.current?.defaultSide === 'front' ? 'front'
+      : null
+  ))
   const printSides = sidesFor(product, selectedColor)
   const activeSide = printSides.includes(printSide) ? printSide : printSides[0] ?? null
   const altPrint = activeSide && activeSide !== mainSide(product)

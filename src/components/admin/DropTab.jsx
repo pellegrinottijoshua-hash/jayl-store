@@ -141,6 +141,23 @@ function DropEntryFields({ entry, onChange }) {
           <option value="BACK">BACK — di nuovo disponibili</option>
         </select>
       </label>
+      {/* Con quale lato si apre la scheda dei pezzi di questo drop: immagini
+          e bottone Back/Front gia' su quel lato. Vale solo se il pezzo ha
+          anche il file dell'altro lato. */}
+      <div className="block mb-3">
+        <span className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1">Scheda prodotto parte da</span>
+        <div className="grid grid-cols-2 gap-1">
+          {[['back', 'BACK'], ['front', 'FRONT']].map(([v, label]) => {
+            const on = (entry.defaultSide || 'back') === v
+            return (
+              <button key={v} type="button" onClick={() => onChange({ defaultSide: v })}
+                className={`px-3 py-2 text-sm border ${on ? 'border-[#e8dcc8] bg-[#e8dcc8] text-black font-semibold' : 'border-[#1e1e1e] text-gray-400 hover:text-white'}`}>
+                {label}
+              </button>
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }
