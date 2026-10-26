@@ -23002,9 +23002,7 @@ export const adminProducts = [
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-01.jpg",
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-02.jpg",
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gelato-03.jpg",
-      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261020_161523_18744638-04ca-4d73-89e5-2319c817b923.png"
+      "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_153848_5e244e26-dd59-4328-8ed2-faae1b8314a6.png"
     ],
     "imageAlts": {
       "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-mockup-01.jpg": "Mysterious Umbreon poised coolly against a night backdrop, depicted in retro 90s anime style on a premium JAYL tee.",
@@ -23139,7 +23137,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20260822_111206_6900ba1d-eccc-485d-9563-76f887e424c4-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:09:54.845Z",
-    "updatedAt": "2026-10-23T13:23:18.678Z",
+    "updatedAt": "2026-10-26T14:02:59.295Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "heroShots": [],
