@@ -612,7 +612,11 @@ export default function ProductPage() {
   // fronte, retro liscio e colletto vengono dalla libreria dei mockup lisci
   // (src/data/mockupLibrary.js), la stessa inquadratura di Gelato.
   // Con "Front": fronte + disegno sul petto, retro liscio, colletto.
+  // Lato scelto in admin per ogni foto (B/F): 'front' | 'back' | assente.
+  const sideOf = (u) => product?.imageSides?.[u] || null
   const lookFor = (back) => {
+    // Una foto marcata Front si mostra cosi' com'e', mai come trittico.
+    if (back && sideOf(back) === 'front') return null
     const color = back && allOwners.get(back)?.id
     const plainFront = plainMockup(color, 'front')
     if (!color || !plainFront) return null
@@ -759,17 +763,19 @@ export default function ProductPage() {
       if (selectedColor === openingColor.current) return
       openingColor.current = null
     }
-    if (!selectedColor || !product?.colors || !galleryImages) return
+    // Sulla lista MOSTRATA: con "Front" e' piu' corta, e un indice preso da
+    // un'altra lista apriva un'immagine sbagliata (retro su Front, 23/10).
+    if (!selectedColor || !product?.colors || !displayImages) return
     const colorObj = product.colors.find(c => c.id === selectedColor)
     if (!colorObj) return
-    const idx = findColorImageIndex(colorObj, product.colors, galleryImages, product.imageColors)
+    const idx = findColorImageIndex(colorObj, product.colors, displayImages, product.imageColors)
     if (idx >= 0 && idx !== activeImage) setActiveImage(idx)
   }, [selectedColor])
 
   // Reverse sync: when the active gallery image is a color variant, highlight its swatch
   useEffect(() => {
-    if (activeImage < 0 || !product?.colors || !galleryImages) return
-    const match = findImageColor(activeImage, product.colors, galleryImages, product.imageColors)
+    if (activeImage < 0 || !product?.colors || !displayImages) return
+    const match = findImageColor(activeImage, product.colors, displayImages, product.imageColors)
     if (match && match.id !== selectedColor) setSelectedColor(match.id)
   }, [activeImage])
 
@@ -802,17 +808,26 @@ export default function ProductPage() {
   const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
   // displayImages is what the main carousel shows — same color filter as
   // galleryImages above, so the two can't disagree about an index.
-  const baseImages = galleryFilter(imagesForShownColors(galleryBaseFor(product, Boolean(videoInfo)), product?.colors, colors, product?.imageColors))
-  // Con "Front" la galleria mostra solo i mockup col disegno sul petto: il
-  // video e le foto di schiena raccontano l'altra maglia.
+  const shownBase = imagesForShownColors(galleryBaseFor(product, Boolean(videoInfo)), product?.colors, colors, product?.imageColors)
+  // Le foto marcate F in admin stanno solo su "Front"; tutte le altre su "Back".
+  const frontTagged = shownBase.filter((u) => sideOf(u) === 'front')
+  const baseImages  = galleryFilter(shownBase.filter((u) => sideOf(u) !== 'front'))
+  // Con "Front": le foto marcate F; se non ce ne sono, i mockup composti col
+  // disegno sul petto. Il video e le foto di schiena raccontano l'altra maglia.
   const frontGallery  = altPrint && activeSide === 'front'
-  const displayImages = frontGallery ? baseImages.filter((u) => lookFor(u)) : baseImages
+  const displayImages = !frontGallery ? baseImages
+    : frontTagged.length ? frontTagged
+    : baseImages.filter((u) => lookFor(u))
   const galleryVideo  = frontGallery ? null : videoInfo
   // Cambiando lato si riparte dalla prima vista di quel lato.
   const sideSwitched = useRef(false)
   useEffect(() => {
     if (!sideSwitched.current) { sideSwitched.current = true; return }
-    setActiveImage(frontGallery || !videoInfo ? 0 : -1)
+    if (!frontGallery && videoInfo) { setActiveImage(-1); return }
+    // Resta sul colore scelto, nella lista del nuovo lato.
+    const colorObj = product?.colors?.find(c => c.id === selectedColor)
+    const idx = colorObj ? findColorImageIndex(colorObj, product.colors, displayImages, product.imageColors) : -1
+    setActiveImage(idx >= 0 ? idx : 0)
   }, [frontGallery]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Random starting image — shuffle on every product open (not on re-render).

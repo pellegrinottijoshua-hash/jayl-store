@@ -626,7 +626,7 @@ export default async function handler(req, res) {
     // Lightweight action: updates only the images/image fields of an existing product.
     // Used by the Review panel "Pubblica su jayl.store" without requiring the full product object.
     if (action === 'update-product-images') {
-      const { productId, images: newImages, heroImage, image: explicitImage, detailImage, heroShots, videoUrl } = data
+      const { productId, images: newImages, heroImage, image: explicitImage, detailImage, heroShots, videoUrl, imageSides } = data
       if (!productId || !Array.isArray(newImages)) {
         return res.status(400).json({ error: 'productId and images[] required' })
       }
@@ -649,6 +649,12 @@ export default async function handler(req, res) {
         // videoUrl vuoto toglie il video (undefined sparisce dal JSON).
         ...(Array.isArray(heroShots) ? { heroShots: heroShots.filter(Boolean).map(fixUrl) } : {}),
         ...(videoUrl !== undefined ? { videoUrl: (typeof videoUrl === 'string' && videoUrl.trim()) || undefined } : {}),
+        // Lato di ogni foto in scheda: 'front' | 'back' (senza voce = lato principale).
+        ...(imageSides && typeof imageSides === 'object' ? {
+          imageSides: Object.fromEntries(Object.entries(imageSides)
+            .filter(([u, v]) => u && (v === 'front' || v === 'back'))
+            .map(([u, v]) => [fixUrl(u), v])),
+        } : {}),
         updatedAt: new Date().toISOString(),
       }
       await writeAdminProducts(products, sha, `admin: update images order for ${productId}`, githubToken, previousCount)

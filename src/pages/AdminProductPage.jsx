@@ -101,13 +101,14 @@ function Section({ title, icon, color = 'gray', children }) {
 
 const MAX_HERO_SHOTS = 2
 
-function PoolThumb({ img, heroShots, heroVideo, mobileHero, sequenza, detailImage, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage }) {
+function PoolThumb({ img, heroShots, heroVideo, mobileHero, sequenza, detailImage, imageSides = {}, onSetImageSide, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage }) {
   const url      = img.url
   const isVid    = /\.(mp4|mov|webm)$/i.test(url)
   const shotIdx  = heroShots.indexOf(url)
   const isHero   = isVid ? heroVideo === url : shotIdx !== -1
   const isLife   = mobileHero   === url
   const isDetail = detailImage  === url
+  const side     = imageSides[url] || null  // 'front' | 'back' | null
   const seqIdx   = sequenza.indexOf(url)
   const inSeq    = seqIdx !== -1
   const canDel   = !!img.path  // only GitHub-stored images (uploaded/generated) can be deleted
@@ -131,6 +132,7 @@ function PoolThumb({ img, heroShots, heroVideo, mobileHero, sequenza, detailImag
       {isLife   && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🏠</div>}
       {isDetail && <div className="absolute bottom-0 right-0 bg-amber-500 text-black text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🔍</div>}
       {inSeq    && <div className="absolute bottom-0 left-0 bg-emerald-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
+      {side && <div className={`absolute top-1/2 -translate-y-1/2 left-0 text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10 ${side === 'front' ? 'bg-sky-500 text-black' : 'bg-orange-500 text-black'}`}>{side === 'front' ? 'F' : 'B'}</div>}
       {isVid && !isHero && <div className="absolute bottom-0 left-0 bg-gray-800 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🎬</div>}
       {/* Hover action overlay — role buttons + delete */}
       <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-between py-1 z-20">
@@ -148,6 +150,11 @@ function PoolThumb({ img, heroShots, heroVideo, mobileHero, sequenza, detailImag
               className={btn(isDetail, 'bg-amber-500 border-amber-400 text-black')}>🔍</button>
             <button onClick={() => onSetMobileHero(isLife ? null : url)} title="Lifestyle home (sezioni a foto piena)"
               className={btn(isLife, 'bg-purple-600 border-purple-500')}>🏠</button>
+            {/* Lato in scheda: B = solo con "Back", F = solo con "Front". */}
+            <button onClick={() => onSetImageSide?.(url, side === 'back' ? null : 'back')} title={side === 'back' ? 'Togli: mostra su entrambi i lati' : 'Solo su Back'}
+              className={btn(side === 'back', 'bg-orange-500 border-orange-400 text-black')}>B</button>
+            <button onClick={() => onSetImageSide?.(url, side === 'front' ? null : 'front')} title={side === 'front' ? 'Togli: mostra su entrambi i lati' : 'Solo su Front'}
+              className={btn(side === 'front', 'bg-sky-500 border-sky-400 text-black')}>F</button>
           </div>
         )}
         {/* Row 2: delete (only for GitHub images) */}
@@ -165,7 +172,7 @@ function PoolThumb({ img, heroShots, heroVideo, mobileHero, sequenza, detailImag
 
 function ImagePool({
   gelatoImages, uploadedImages, generatedImages,
-  heroShots, heroVideo, mobileHero, sequenza, detailImage,
+  heroShots, heroVideo, mobileHero, sequenza, detailImage, imageSides, onSetImageSide,
   onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage,
   productId, onUploaded, loading, onExcludeGelato,
 }) {
@@ -232,7 +239,7 @@ function ImagePool({
     }
   }, [heroShots, heroVideo, mobileHero, detailImage, sequenza, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onSetDetailImage, onToggleSequenza, onUploaded, onExcludeGelato])
 
-  const thumbProps = { heroShots, heroVideo, mobileHero, sequenza, detailImage, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
+  const thumbProps = { heroShots, heroVideo, mobileHero, sequenza, detailImage, imageSides, onSetImageSide, onToggleHeroShot, onSetHeroVideo, onSetMobileHero, onToggleSequenza, onSetDetailImage, onDeleteImage: handleDeleteImage }
 
   const PoolSection = ({ label, images, emptyMsg }) => {
     if (!images?.length) return emptyMsg ? <p className="text-gray-700 text-[10px] italic">{emptyMsg}</p> : null
@@ -700,6 +707,7 @@ export default function AdminProductPage() {
   // un ruolo da assegnare, si ricava dalla prima foto hero o dal mockup 1.
   const [desktopHero,    setDesktopHero]    = useState(null)
   const [heroShots,      setHeroShots]      = useState([])   // foto hero (max 2)
+  const [imageSides,     setImageSides]     = useState({})   // { url: 'front' | 'back' }
   const [mobileHero,     setMobileHero]     = useState(null)
   const [detailImage,    setDetailImage]    = useState(null)
   const [sequenza,       setSequenza]       = useState([])   // ordered array of URLs
@@ -742,6 +750,7 @@ export default function AdminProductPage() {
       // media
       setDesktopHero(p.image     || null)
       setHeroShots(Array.isArray(p.heroShots) ? p.heroShots : [])
+      setImageSides(p.imageSides && typeof p.imageSides === 'object' ? p.imageSides : {})
       setMobileHero(p.heroImage   || null)
       setDetailImage(p.detailImage || null)
       setSequenza(Array.isArray(p.images) ? p.images : [])
@@ -829,6 +838,7 @@ export default function AdminProductPage() {
         productId:   id,
         images:      sequenza,
         heroShots,
+        imageSides,
         videoUrl:    videoUrl.trim(),
         heroImage:   mobileHero   || null,
         image:       thumb,
@@ -838,6 +848,7 @@ export default function AdminProductPage() {
         ...prev,
         images:      sequenza,
         heroShots,
+        imageSides,
         videoUrl:    videoUrl.trim() || undefined,
         image:       thumb || prev.image,
         heroImage:   mobileHero   || prev.heroImage,
@@ -850,7 +861,16 @@ export default function AdminProductPage() {
     } finally {
       setSavingMedia(false)
     }
-  }, [id, sequenza, heroShots, videoUrl, desktopHero, mobileHero, detailImage])
+  }, [id, sequenza, heroShots, imageSides, videoUrl, desktopHero, mobileHero, detailImage])
+
+  const handleSetImageSide = useCallback((url, side) => {
+    setImageSides(prev => {
+      const next = { ...prev }
+      if (side) next[url] = side
+      else delete next[url]
+      return next
+    })
+  }, [])
 
   const videoInfo = parseVideoUrl(videoUrl)
 
@@ -1644,6 +1664,8 @@ export default function AdminProductPage() {
               mobileHero={mobileHero}
               sequenza={sequenza}
               detailImage={detailImage}
+              imageSides={imageSides}
+              onSetImageSide={handleSetImageSide}
               onToggleHeroShot={toggleHeroShot}
               onSetHeroVideo={setVideoUrl}
               onSetMobileHero={setMobileHero}

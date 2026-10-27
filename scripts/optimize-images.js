@@ -114,6 +114,12 @@ export async function optimizeProductImages(product, optimize) {
     product.colors = product.colors.map((c, i) => (c.image ? { ...c, image: colorImages[i] } : c))
   }
   if (Array.isArray(product.blankImages)) product.blankImages = await many(product.blankImages)
+  if (product.imageSides) {
+    const entries = await Promise.all(
+      Object.entries(product.imageSides).map(async ([img, side]) => [await optimize(img), side]),
+    )
+    product.imageSides = Object.fromEntries(entries)
+  }
   // imageColors è indicizzato per path: le chiavi seguono le foto.
   if (product.imageColors) {
     const entries = await Promise.all(

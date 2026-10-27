@@ -18,7 +18,7 @@ Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, h
   - **Bozze** in `da-troy/bozze/`, caption e ordine di uscita in `captions.txt`: 3 del 2/10 (Virali.tsx), hero rewind shiny (`kit/hero-virale.sh`), SPECIMEN fossili (museo, `src/Museo.tsx`, `kit/social.sh Museo …`), 4 statici del Drop 7 su brani Flow. Ogni drop: 5 video, ognuno in un formato nuovo.
   - **Musica:** 9 brani Flow nuovi in `marketing music/` col BPM reale nel nome, `tagli 15s/` e `firme/` (da ascoltare); BPM con `~/.claude/skills/video-statico/bpm.py`. Effetti Mixkit (uso commerciale libero) in `sfx marketing/`.
 
-- **Mockup (12/10):** i fronti lisci di Gelato diventano retro + disegno; i disegni leggeri stanno in `dist/prints/` (`scripts/web-prints.js`). Se a un prodotto in vendita manca il file di stampa, la build si ferma.
+- **Mockup (12/10):** i fronti lisci di Gelato diventano retro + disegno; i disegni leggeri stanno in `dist/prints/` (`scripts/web-prints.js`). Se a un prodotto in vendita manca il file di stampa, la build si ferma. Admin: tasti B/F su ogni foto (solo Back / solo Front in scheda).
 ## Prossimi 3 passi
 1. **Joshua:** approvare i 5 video del Drop 7 (→ `approvati/`); SPECIMEN esce stasera dopo le 18:00. Ascoltare le 5 firme e il Lo-fi.
 2. **Admin:** ricaricare la pagina prima di salvare. Con la pagina vecchia un salvataggio ha cancellato la SEO di Ursaring (ripristinata).
@@ -29,3 +29,9 @@ Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, h
 
 ## Numeri
 - Drop: 7. Vendite reali: 0. Instagram @jayl_store: 37 follower (30/9).
+- **Ads del Drop 8 (Umami, 14-20/10), circa 10 €:**
+  - 81 visitatori: Meta circa 50, tutti USA e da Facebook Android; TikTok 20, Italia;
+  - 77 arrivati sulla home, 7 sulle schede, 1 carrello.
+  - Regole nuove e piano del Drop 9 in `~/Desktop/jayl streetwear/drop 9/ADS-DROP9.md`.
+  - **22/10:** approvati 4 ad del fronte (Umbreon, Espeon, Eevee, trio), in `pubblicazione/da-troy/approvati/`. Critiche e passi strategici in `drop 9/RIPRENDI-QUI.md`.
+  - GA conta solo chi accetta i cookie: per le ads si legge Umami.

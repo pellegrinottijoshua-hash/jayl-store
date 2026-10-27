@@ -75,6 +75,24 @@ function storefrontProducts() {
       // e non nel browser, cosi' la scheda prodotto sa gia' al primo paint
       // quali foto appartengono ai colori che non mostra.
       const publicDir = path.resolve(__dirname, 'public')
+      // Foto che puntano a file inesistenti (o doppioni raw/locale dello
+      // stesso file) fuori dal negozio: in scheda erano riquadri neri, simili
+      // a un video vuoto (Umbreon, 23/10). Stessa normalizzazione per i lati.
+      const RAW_PUBLIC = /^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/main\/public/
+      const local = (u) => (typeof u === 'string' ? u.replace(RAW_PUBLIC, '') : u)
+      for (const product of stripped) {
+        if (Array.isArray(product.images)) {
+          const seen = new Set()
+          product.images = product.images.map(local).filter((u) => {
+            if (!u || seen.has(u)) return false
+            seen.add(u)
+            return !u.startsWith("/") || existsSync(path.join(publicDir, decodeURIComponent(u)))
+          })
+        }
+        if (product.imageSides) {
+          product.imageSides = Object.fromEntries(Object.entries(product.imageSides).map(([u, v]) => [local(u), v]))
+        }
+      }
       for (const product of stripped) {
         const imageColors = await classifyMockupColors(product, publicDir)
         if (Object.keys(imageColors).length) product.imageColors = imageColors
