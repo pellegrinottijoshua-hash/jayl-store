@@ -23380,5 +23380,361 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:37:06.156Z",
     "updatedAt": "2026-10-23T13:37:06.156Z"
+  },
+  {
+    "id": "cool-vaporeon-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool Vaporeon T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Splashing onto the scene with a playful charm, our Vaporeon T-Shirt captures the essence of this beloved Water Type Pokémon. Known for its graceful flow and soothing presence, Vaporeon embodies tranquility, just like those serene moments at the beach or a lazy Sunday afternoon. This cozy tee is made from a Gildan premium cotton blend, featuring high-quality DTG print that brings this water sprite to life. Whether it's for yourself or as a thoughtful gift for fellow Eeveelution fans, it’s a delightful way to wear your love for the world of Pokémon.",
+    "altText": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-mockup-01.jpg",
+    "heroImage": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004414_78d39549-dd18-4de6-806d-358b71518df2.png",
+    "detailImage": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_224751_05678e68-12a9-4369-9268-b49379940380.png",
+    "images": [
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-01.jpg",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-02.jpg",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-03.jpg",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-04.jpg",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-05.jpg",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-06.jpg",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_230304_43f0afe0-88db-4f34-baf3-d0848c1710b7.png"
+    ],
+    "imageAlts": {
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-mockup-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-navy-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-light-blue-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-white-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-black-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-royal-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee."
+    },
+    "tags": [
+      "vaporeon",
+      "pokemon",
+      "t-shirt",
+      "fan-art",
+      "eeveelution",
+      "water-type",
+      "apparel",
+      "anime",
+      "gift",
+      "cute",
+      "artwear",
+      "graphic-tees",
+      "gamer"
+    ],
+    "featured": false,
+    "gelatoProductId": "dff8590e-2bf2-4d00-b935-f9a1eb87f37a",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "vaporeon shirt",
+      "pokemon t-shirt",
+      "fan art tee",
+      "water type shirt",
+      "eeveelution apparel"
+    ],
+    "longTailKeywords": [
+      "vaporeon t-shirt for fans",
+      "unique pokemon fan shirt",
+      "water type plush merchandise",
+      "soft vaporeon graphic tee",
+      "gifts for eeveelution lovers",
+      "fan art pokemon clothing online",
+      "limited edition vaporeon apparel",
+      "buy cute pokemon t-shirts now",
+      "stylish water type shirts available",
+      "comfortable anime tees for collectors"
+    ],
+    "hashtags": "#vaporeon #pokemon #tshirt #fanart #eeveelutions #waterpokemon #animeart #animeclothing #cuteclothes #giftsforher #giftsforhim #geekfashion #gamergirl #lavenderclouds #creativelife #uniquestyle #artisanalapparel #cottontee #graphicsartwear #collectorsedition #boutiquefashion #customshirts #whimsicalfashion #cozystyle #casualwearing #trendyclothingline #premiumtees #dtgprintquality ##ecofriendlyfashion",
+    "instagramCaption": "\"Water you doing?\" Dive into comfort with our Vaporeon Tee! Perfect for those lazy days or epic adventures—who knew lounging could be so stylish? Grab yours today! 🐾💧#vaporeon#pokemontshirt#fanartteeshirt",
+    "pinterestCaption": "Introducing our captivating Vaporeon T-Shirt, designed exclusively for Pokémon enthusiasts. This lovely piece showcases detailed fan art celebrating this iconic Water Type Pokémon. Check it out now and bring some cozy joy to your wardrobe!",
+    "seoTitle": "Vaporeon T-Shirt | Water Type Pokémon Fan Art Gift",
+    "variants": [
+      {
+        "uid": "38e04e8a-f9d7-4768-9d4b-7cf583b11b30",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9e6bfb43-6736-43f2-9f6d-bfecdf303020",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ab56dc67-dd54-4e0d-804f-ef5bc129b7db",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8dcd14ab-7267-4d04-b021-fe3596a8b0df",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c3b14b9a-35cb-4308-8771-4d790de0e209",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b9494a08-07fc-4605-84d9-50fc2692404e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9905d433-ce98-49be-aad3-e546b5fd8c0d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6029ce3e-182e-425b-b88d-4e1850bbf27e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6a7e71f0-00cf-40ba-b9fb-21c1b662278f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2bc3e395-86cf-436c-bcd6-033b19fde531",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d348fe1a-4401-40e2-96a7-ad24dff4b2a0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bc8896c0-aae2-4343-b528-d6342786eda6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ac51573a-6bfb-4a74-9261-203ced9d5e5c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "04597c3b-105b-4f28-a7cf-06d2d872d7f9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0c42fab1-2687-4737-98dc-eca8e8ab22bf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "69e4bc61-fd30-468f-97cc-6646ef48abb3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6dc2c586-25c2-4ab3-b44e-fd579fd7f570",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "06c0957d-e708-46d6-aa88-ef7bc86d7f0d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "accf8f72-9393-4daa-b520-860eb32a110d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "90242a29-a0cc-4e73-8c43-19420e5564f3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45e4326b-e248-4759-838c-622824ae1f56",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "dab8e024-65a0-44af-a787-72694f485a6b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b01d7059-1ccd-4f64-b2c8-1a776906236c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_light-blue_gpr_4-0_inlbl_gildan_64000",
+        "color": "Light Blue",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4458558b-e90e-468b-8e67-68253aa6bc89",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_navy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Navy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "486e17ee-ad59-4713-a460-24fb818336a6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-white-01.jpg"
+      },
+      {
+        "id": "light-blue",
+        "label": "Light Blue",
+        "hex": "#888888",
+        "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-light-blue-01.jpg"
+      },
+      {
+        "id": "royal",
+        "label": "Royal",
+        "hex": "#888888",
+        "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-royal-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-black-01.jpg"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "hex": "#888888",
+        "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-navy-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a3357b4b-df5e-4d90-a502-7ac8861f665c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261030%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261030T175103Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=19404931b163198837876eb483b6b29c123648678f9237c29eedca06fed2bf95",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9568dd9e-7ce3-4b8a-9216-3457036f1af6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261030%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261030T175103Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cdaa7f0a05905806e1bbb3f8b1d73b610987ec27a7ea301229f9b1e0ce3bacff",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/337c3788-4742-476c-b94a-ec94c502f0c8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261030%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261030T175103Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0cd26ddc882859394b1890fa6c656174daf64ae4784ec59ca004cf8adfcefd22",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e5dcb95b-4aa4-44be-aa35-64f113b696b5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261030%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261030T175103Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0d3af9ed6317b84f0212e25beb9821831c7ccc69e7a46b46b12296c7d0dd7726",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e57f6d70-1c94-424e-a841-9ce6228150b0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261030%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261030T175103Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=425ff9c393d95b2048e3e3ead47e10a90fbef469a0421dd1d87d6dd87329fcfd",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6912a943-f8a0-45fc-87d7-c702cc64f458/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261030%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261030T175103Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c1c5d923ff2bc71a7a55c542d3781b56c80317ab9f6893f875754d0884fee675"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20260822_194059_6491dc3e-5419-49d1-b546-89239409bebc-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-10-30T17:54:49.821Z",
+    "updatedAt": "2026-10-30T17:54:49.821Z"
   }
 ]
