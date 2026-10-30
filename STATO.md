@@ -1,37 +1,28 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-10-07 pomeriggio da Troy (5 video del Drop 7 con musica Flow, hero rewind per serie). Dettagli e passi: `RIPRENDI-QUI.md`.
+Aggiornato: 2026-10-30 da Troy (diagnosi Umami di ottobre e master per foto vere). Dettagli: `~/Desktop/jayl streetwear/DIAGNOSI-STORE-2026-10-30.md`.
 
 ## A che punto siamo
-- **Negozio:** www.jayl.store. 19,99 € al lancio, 24,99 € in collezione, i 3 a 49,99 €. Niente "drop" ai clienti: NEW. 7 drop, 0 vendite reali.
-- **Drop 7 ANCIENT** (Rampardos, Kabutops, Aerodactyl) dal 7/10 alle 18:00 al 12/10 alle 18:00, a 19,99 €.
-- **Home (2/10):**
-  - desktop: 3 schede affiancate, video insieme una volta, hover riparte; telefono: cilindro;
-  - niente countdown in home; nelle schede del drop "offer · N days". Ogni settimana: metà prodotti col 3° colore FINISHED, un'altra metà "only N left" (`src/lib/scarcity.js`).
-  - cookie "Who doesn't like cookies?"; barra free shipping su ogni pagina; IG e TikTok accanto al logo su mobile.
-- **Asset prodotto (2/10)**, assegnati in admin (★ hero, # mockup, 🔍 dettaglio, 🏠 lifestyle home, vedi `src/lib/productMedia.js`):
-  - **hero** = video da 3 s, oppure le 2 foto di schiena (uomo e donna, `heroShots`);
-  - in scheda il video gira una volta e passa al mockup 1; su Objects si vede il video hero. "+" sotto la miniatura nella lista prodotti: carica nella galleria.
-- **Front dentro le back** (link vecchi aprono la back su Front); 23 video hero da `heros/`. **SEO:** meta su tutte. **Misure:** Umami senza cookie; GA4 e pixel Meta solo con consenso.
-- **Social dall'admin:** 1 clic per Pinterest, IG, FB; "apri e copia" per X, TikTok, YT. Ogni asset mostra dove è già uscito (pallini, ✓ sul social); "segna già pubblicato" per i post fatti fuori.
-- **Pubblicazione:** `~/Desktop/jayl streetwear/pubblicazione/` (`da-joshua/`, `da-troy/bozze|approvati/`, `pubblicati/`, `LEGGIMI.md`).
-  - **Bozze** in `da-troy/bozze/`, caption e ordine di uscita in `captions.txt`: 3 del 2/10 (Virali.tsx), hero rewind shiny (`kit/hero-virale.sh`), SPECIMEN fossili (museo, `src/Museo.tsx`, `kit/social.sh Museo …`), 4 statici del Drop 7 su brani Flow. Ogni drop: 5 video, ognuno in un formato nuovo.
-  - **Musica:** 9 brani Flow nuovi in `marketing music/` col BPM reale nel nome, `tagli 15s/` e `firme/` (da ascoltare); BPM con `~/.claude/skills/video-statico/bpm.py`. Effetti Mixkit (uso commerciale libero) in `sfx marketing/`.
+- **Negozio:** www.jayl.store. 19,99 al lancio, poi 24,99 in collezione, i 3 a 49,99. Niente "drop" ai clienti: NEW. 9 drop. Il Drop 9 ha `dropPrice` 2000, cioè $20 invece di $19.99.
+- **Drop 9 DAY & NIGHT** (Eevee, Umbreon, Espeon, fronti): 23-28/10, chiuso.
+  - Finché il drop resta "current" le schede dicono BACK SOON.
+  - Passano alla collezione solo quando in admin si apre il drop nuovo o si chiude questo (`isDropClosed` in `ProductPage.jsx`): con le ads accese va fatto subito.
+- **Scheda:** le maglie fronte mostrano un riquadro BACK vuoto e la dicitura "cool pokemon back".
+- **Misure:** Umami senza cookie, letto via API dalla sessione di cloud.umami.is in Chrome. GA4 e pixel Meta solo con consenso.
+- **Social e video:** 1 clic per Pinterest, IG e FB dall'admin. Kit `~/jayl-motion` (`src/drop8/`, `src/drop9/`), musica Flow in `marketing music/`.
+- **Foto per le ads:** `~/Desktop/jayl streetwear/MASTER-FOTO-REALI.md`.
+  - 10 master per i fronti e 10 per i retro: direzioni fotografiche libere (luogo, posa e persona cambiano a ogni generazione), tecnica bloccata.
+  - Ci sono anche i dadi per variare. Valgono anche per Zack.
 
-- **Mockup (12/10):** i fronti lisci di Gelato diventano retro + disegno; i disegni leggeri stanno in `dist/prints/` (`scripts/web-prints.js`). Se a un prodotto in vendita manca il file di stampa, la build si ferma. Admin: tasti B/F su ogni foto (solo Back / solo Front in scheda).
+## Numeri (Umami, ottobre)
+- 300 visitatori (USA 184, Italia 100), 138 schede viste, 4 carrelli, 3 checkout, 1 acquisto (era un test). Vendite vere: 0.
+- **Test A 19-22/10** (ads verso la home): 148 visitatori, 6 s a visita, 4 schede viste.
+- **Test B 25-29/10** (Umbreon verso la scheda): 75 sessioni, 30 s a visita, 1 carrello abbandonato al checkout. 56 visite su 75 da Facebook; 13 arrivate dopo la chiusura, su BACK SOON.
+
 ## Prossimi 3 passi
-1. **Joshua:** approvare i 5 video del Drop 7 (→ `approvati/`); SPECIMEN esce stasera dopo le 18:00. Ascoltare le 5 firme e il Lo-fi.
-2. **Admin:** ricaricare la pagina prima di salvare. Con la pagina vecchia un salvataggio ha cancellato la SEO di Ursaring (ripristinata).
-3. **Piano editoriale:** 1 video al giorno da `approvati/`, con UTM verso la scheda. 
+1. **Joshua:** il drop nuovo a 19,99 dall'admin, con la chiusura del Drop 9; scegliere la maglia eroe del test di novembre.
+2. **Troy:** scheda dal telefono e checkout. Prima immagine = il gancio dell'ad; via il BACK vuoto; riga con consegna e "Designed in Venice".
+3. **Test di novembre:** 3 ganci dai master più il trio (B10) per il Black Friday (27/11). Solo IG Storie e Reels, si legge in Umami.
 
 ## Bloccato da
-- **TikTok a 1 clic:** serve l'app TikTok approvata, oppure la pubblicazione via Higgsfield (un clic tuo per post).
-
-## Numeri
-- Drop: 7. Vendite reali: 0. Instagram @jayl_store: 37 follower (30/9).
-- **Ads del Drop 8 (Umami, 14-20/10), circa 10 €:**
-  - 81 visitatori: Meta circa 50, tutti USA e da Facebook Android; TikTok 20, Italia;
-  - 77 arrivati sulla home, 7 sulle schede, 1 carrello.
-  - Regole nuove e piano del Drop 9 in `~/Desktop/jayl streetwear/drop 9/ADS-DROP9.md`.
-  - **22/10:** approvati 4 ad del fronte (Umbreon, Espeon, Eevee, trio), in `pubblicazione/da-troy/approvati/`. Critiche e passi strategici in `drop 9/RIPRENDI-QUI.md`.
-  - GA conta solo chi accetta i cookie: per le ads si legge Umami.
+- TikTok a 1 clic: serve l'app TikTok approvata.

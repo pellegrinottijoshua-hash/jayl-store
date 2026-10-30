@@ -739,28 +739,35 @@ export default async function handler(req, res) {
       }
 
       const filePath = `public/images/${productId}/${filename}`
-      let existingSha = null
-      try {
-        const existing = await ghGet(filePath, githubToken)
-        existingSha = existing.sha
-      } catch {}
-
       const ghUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`
-      const ghRes = await fetch(ghUrl, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${githubToken}`,
-          Accept: 'application/vnd.github+json',
-          'Content-Type': 'application/json',
-          'X-GitHub-Api-Version': '2022-11-28',
-        },
-        body: JSON.stringify({
-          message: `admin: upload image ${filename} for ${productId}`,
-          content: base64,
-          branch: GITHUB_BRANCH,
-          ...(existingSha ? { sha: existingSha } : {}),
-        }),
-      })
+      // Più immagini caricate insieme = più commit su main nello stesso
+      // istante: GitHub risponde 409 ("is at X but expected Y") a chi arriva
+      // secondo. Si rilegge lo sha e si riprova, con un'attesa crescente.
+      let ghRes
+      for (let tentativo = 0; tentativo < 5; tentativo++) {
+        let existingSha = null
+        try {
+          const existing = await ghGet(filePath, githubToken)
+          existingSha = existing.sha
+        } catch {}
+        ghRes = await fetch(ghUrl, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${githubToken}`,
+            Accept: 'application/vnd.github+json',
+            'Content-Type': 'application/json',
+            'X-GitHub-Api-Version': '2022-11-28',
+          },
+          body: JSON.stringify({
+            message: `admin: upload image ${filename} for ${productId}`,
+            content: base64,
+            branch: GITHUB_BRANCH,
+            ...(existingSha ? { sha: existingSha } : {}),
+          }),
+        })
+        if (ghRes.status !== 409 && ghRes.status !== 422) break
+        await new Promise(r => setTimeout(r, 400 * (tentativo + 1) + Math.random() * 400))
+      }
       if (!ghRes.ok) {
         const err = await ghRes.json().catch(() => ({}))
         throw new Error(`Image upload failed: ${ghRes.status} — ${JSON.stringify(err.message || '')}`)
