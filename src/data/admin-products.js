@@ -23767,5 +23767,261 @@ export const adminProducts = [
       "white",
       "navy"
     ]
+  },
+  {
+    "id": "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Jolteon T-Shirt – Electric Type Pokémon Fan Art Tee, Eeveelution Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "For the Pokémon master in your life who can’t resist a little electric flair, this Jolteon T-Shirt captures the spirit of the electrifying Eeveelution! With its playful design, this tee radiates confidence and energy, mirroring Jolteon's zappy personality. Made from Gildan's premium fabric with top-notch DTG print quality, it’s as comfortable as it is eye-catching. Gift it to a friend or treat yourself – either way, it's sure to bring out smiles and sparking conversations!",
+    "altText": "Excited Jolteon leaping with electric sparks in retro fan-art style on a small chest print of a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-gelato-01.jpg",
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-gelato-02.jpg",
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-gelato-03.jpg",
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-gelato-04.jpg"
+    ],
+    "imageAlts": {
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-mockup-01.jpg": "Excited Jolteon leaping with electric sparks in retro fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-black-01.jpg": "Excited Jolteon leaping with electric sparks in retro fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-white-01.jpg": "Excited Jolteon leaping with electric sparks in retro fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-daisy-01.jpg": "Excited Jolteon leaping with electric sparks in retro fan-art style on a small chest print of a premium JAYL tee."
+    },
+    "tags": [
+      "jolteon shirt",
+      "pokemon apparel",
+      "eeveelution gift",
+      "electric type tee",
+      "fan art clothing",
+      "cute pokemon wear",
+      "anime graphic tee",
+      "trendy t-shirt",
+      "stylish pokemon",
+      "geeky fashion",
+      "casual pokemon wear",
+      "gift for trainers",
+      "playful art tee"
+    ],
+    "featured": false,
+    "gelatoProductId": "4f1080fa-b3ec-465e-9fb1-af4a6a7e63ac",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "jolteon shirt",
+      "pokemon t-shirt",
+      "electric type shirts",
+      "fan art apparel",
+      "eeveelutions gift"
+    ],
+    "longTailKeywords": [
+      "buy jolteon t-shirt online",
+      "unique pokemon fan gift ideas",
+      "colorful eeveelution clothing items",
+      "premium graphic tees for pokemon fans",
+      "stylish electric type apparel options",
+      "retro anime style pokemon merchandise",
+      "comfortable t-shirts for everyday wear",
+      "trendy gifts for pokemon enthusiasts",
+      "fun art tees for casual outfits",
+      "collectible clothing for pokemon lovers"
+    ],
+    "hashtags": "#jolteon #pokemontshirt #eeveelution #electrictype #pokemonmerch #fanarttee #animefashion #giftsforhim #giftideas #coolshirts #stylishwear #pokedex #geekculture #tshirtdesigns #vintageanimeart #wheretobuytee #clothingbrand #nerdlife #cosplayinspo #lovepokemongames #trainerstyle #cartoonfashionista #collectibleshirts #originaldesigns #fashionabletees #gamingapparel #fandomclothing #graphicteeaddict #colorfuloutfits #trendyandfun",
+    "instagramCaption": "#Jolteon vibes only! ⚡️ This electrifying tee brings comfort and style to your everyday outfit. Tag your favorite Poké buddy to show off your trainer looks! 🌟🔥#PokemonFashion #EeveelutionLove#CasualStyle",
+    "pinterestCaption": "\"Shockingly stylish\" best describes our Jolteon T-Shirt that combines vibrant fan art and comfy fabric. Perfect for adding some fun flair to any outfit, snag yours before they’re gone!",
+    "seoTitle": "Jolteon T-Shirt | Electric Pokémon Fan Art Gift | Fun Apparel",
+    "variants": [
+      {
+        "uid": "8c39759f-ce4c-415b-bd4e-0e12762f8813",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ff3fa72f-a623-4fb4-bbab-740b36984d83",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a9d52d75-8973-4474-8dad-11c2569ab3c6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ee145f50-98bf-4d0d-93e8-2c7e27bd33ed",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "58270441-3bb8-4252-a962-3a630fdeb815",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ac576e1a-cee1-4584-a6cd-e45e4e96257d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a7c13187-8c9c-43fa-a72c-148fade65098",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b564337b-0dde-49f9-88e4-1cc2c157adca",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "967b3597-9b44-404d-8cb2-70cca68dfc78",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "183f066a-c0be-4dcf-88d6-d94acd2ec49e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ccc4f37c-bdf9-471f-b346-e07205f06104",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "c271b991-c84c-43f1-a776-e2a5759fc0dc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e536d417-24f3-4c70-9ff6-fb7376638c52",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5cbcea1c-5682-4a32-bd47-02a5c2f8fdcf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "cd348e56-6004-42a2-832a-53ca44ebf09c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-white-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-daisy-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6e18fdd3-3d2a-46a2-a17d-608e57df7fae/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141014Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6666443bd0e02fb22701478d22c7f5114f2049d32b1e7ad035541fa496a4baf8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b701835e-431a-4b3e-b8eb-a38119bb85b4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141014Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6d975506fee625b24d13fc4df6ca541fdaf41d502e4104d776591c0382b4aa11",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b6bad99d-fa69-479d-a864-2ad6c52fc871/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141014Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9f6f0e6988e1fbf7ff1cd4a9d2ac54249466728b2313ef7643325a6d9adfd43d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/36b95efd-74f7-4cf4-bd06-c5e71ab64842/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141014Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d7a49732d1e0bbb6ebe77f46e965dd46d8e8e34bbeeb454979bebfac5a7bc399"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20260823_115456_ca355497-8d45-49bf-827b-39ebee64dba1-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-03T14:13:02.991Z",
+    "updatedAt": "2026-11-03T14:13:02.991Z"
   }
 ]
