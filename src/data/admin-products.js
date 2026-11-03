@@ -23757,7 +23757,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-30T17:54:49.821Z",
-    "updatedAt": "2026-11-03T14:08:32.832Z",
+    "updatedAt": "2026-11-03T14:09:45.820Z",
     "relatedProducts": [],
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png"
