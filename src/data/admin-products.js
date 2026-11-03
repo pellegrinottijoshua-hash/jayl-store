@@ -23778,8 +23778,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
-    "description": "In a burst of electric hues, Jolteon zips into your wardrobe with vibrant energy. This striking artwork captures the essence of the Lightning Pokémon, showcasing its playful yet fierce nature as thunderous sparks dance around its powerful frame. Crafted on a Gildan premium tee with direct-to-garment print quality, this shirt not only feels soft against your skin but also highlights Jolteon's dynamic personality. Whether it's a birthday surprise or just because, gifting this standout piece to a fellow fan can ignite nostalgia for childhood Pokémon adventures.",
-    "altText": "Energetic Jolteon poised mid-leap with crackling electricity in retro anime art style on a small chest print of a JAYL tee.",
+    "description": "Electric yellow sparks crackle around Jolteon, capturing the wild spirit of this rebellious Pokémon. As a symbol of untamed energy and fierce independence, this tee is an ode to those who don’t conform to the ordinary. Made with Gildan premium fabric and direct-to-garment print quality, it’s not just a shirt; it’s a bold declaration of your uniqueness. Whether you’re hitting the streets or lounging at home, this t-shirt captures the edgy essence of Jolteon's electrifying personality. It makes an unforgettable gift for trainers who thrive on individuality.",
+    "altText": "Dynamic Jolteon with electric fur in mid-leap, retro 90s anime art style on a small chest print of a premium JAYL tee.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -23833,45 +23833,45 @@ export const adminProducts = [
     "tags": [
       "jolteon",
       "pokemon",
-      "t-shirt",
-      "art",
-      "apparel",
-      "anime",
-      "fanart",
-      "electricity",
-      "graphictee",
-      "style",
+      "cool shirt",
+      "electric type",
+      "anime fashion",
+      "gamer apparel",
+      "fan art",
       "collectible",
-      "gifts",
-      "cool"
+      "print on demand",
+      "streetwear",
+      "vintage vibes",
+      "unique design",
+      "artistic tee"
     ],
     "featured": false,
     "gelatoProductId": "4f1080fa-b3ec-465e-9fb1-af4a6a7e63ac",
     "movement": "cool Pokèmon",
     "adminManaged": true,
     "primaryKeywords": [
-      "jolteon t-shirt",
-      "pokemon apparel",
-      "anime shirt",
-      "electric pokemon",
-      "graphic tee"
+      "Jolteon shirt",
+      "Pokemon t-shirt",
+      "electric Pokemon",
+      "anime apparel",
+      "cool graphic tee"
     ],
     "longTailKeywords": [
-      "vintage jolteon t-shirt design",
-      "cool pokemon graphic tee gift",
-      "unique jolteon fan apparel",
-      "retro pokemon t-shirt for collectors",
-      "stylish pokemon clothing for fans",
-      "electric supercharged jolteon shirt",
-      "soft fabric pokemon themed tees",
-      "limited edition jolteon merchandise online",
-      "bright color jolteon anime art shirt",
-      "comfortable fit electric type t-shirts"
+      "Jolteon t-shirt for collectors",
+      "electric type Pokemon shirt design",
+      "unique anime fan apparel online",
+      "cool Pokemon shirts for trainers",
+      "stylish jolteon graphic tee gifts",
+      "bold Pokemon clothing for fans",
+      "retail Pokemon merchandise buy now",
+      "limited edition Jolteon t-shirt sale",
+      "Gildan tees with unique prints online ",
+      "'90s anime inspired Pokemon attire "
     ],
-    "hashtags": "#jolteon #pokemon #tshirt #art #apparel #anime #fanart #electricity #graphictee #style #collectible #gifts #cool #pokemongift #retrooart #animeshirt #vintageclothing #geekfashion #nerdwear #pocketmonsters #instacool #igfashion #shirtstyle #pokemontoys #fandomshirts #cuteclothesforher #fashionbloggerstyle #coolteesforguys #shopthelook ##onlinepurchaseinspo ",
+    "hashtags": "#jolteon #pokemon #coolshirt #electrictype #animefashion #gamerapparel #fanart #collectible #printondemand #streetwear #vintagevibes #uniquedesign #artistictee #pokemonfanart #pokemergear #geekstyle #giftsfornerds #trendingfashion #retroaesthetic #animeclothing #pokemontshirts #tshirtcollection #casualoutfit #edgyfashion #comicconmerchandise #pokeditiontees#stylishapparel#tshirtoftheday#graphictees2023#cuteanime",
     "instagramCaption": "#Jolteon's here to make your style *shockingly* cool! ⚡️ Embrace your inner trainer and grab one now! 🌀✨#PokémonFashion#AnimeInspired#WearableArt ",
     "pinterestCaption": "#Jolteon electrifies this premium tee with a burst of colors and energy. Perfect as a standout piece or an unforgettable gift for Pokémon enthusiasts. Check it out!",
-    "seoTitle": "Jolteon T-Shirt | Electric Vibe Apparel | Cool Pokémon Gift",
+    "seoTitle": "Cool Jolteon T-Shirt | Electric Type Vibe | Gift for Trainers",
     "variants": [
       {
         "uid": "8c39759f-ce4c-415b-bd4e-0e12762f8813",
@@ -24024,10 +24024,15 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-03T14:13:02.991Z",
-    "updatedAt": "2026-11-03T14:22:29.589Z",
+    "updatedAt": "2026-11-03T14:30:39.104Z",
     "relatedProducts": [],
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_234307_9e63ea4d-e916-4f15-83ec-ec17aa34e329.png"
+    ],
+    "storeColors": [
+      "daisy",
+      "black",
+      "white"
     ]
   },
   {
