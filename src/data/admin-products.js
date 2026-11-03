@@ -23774,7 +23774,7 @@ export const adminProducts = [
     "id": "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Jolteon T-Shirt – Electric Type Pokémon Fan Art Tee, Eeveelution Gift",
+    "name": "Cool Jolteon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
@@ -23815,9 +23815,9 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_234307_9e63ea4d-e916-4f15-83ec-ec17aa34e329.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_234307_9e63ea4d-e916-4f15-83ec-ec17aa34e329.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_232908_1d45ba0c-aae8-4b9d-aaa4-387958cc1a3a.png",
     "images": [
       "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-gelato-01.jpg",
       "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/jolteon-t-shirt-electric-type-pok-mon-fan-art-gelato-02.jpg",
@@ -24024,7 +24024,11 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-03T14:13:02.991Z",
-    "updatedAt": "2026-11-03T14:13:02.991Z"
+    "updatedAt": "2026-11-03T14:22:18.982Z",
+    "relatedProducts": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_234307_9e63ea4d-e916-4f15-83ec-ec17aa34e329.png"
+    ]
   },
   {
     "id": "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift",
