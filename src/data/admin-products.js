@@ -23426,9 +23426,9 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-mockup-01.jpg",
-    "heroImage": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004414_78d39549-dd18-4de6-806d-358b71518df2.png",
-    "detailImage": "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_224751_05678e68-12a9-4369-9268-b49379940380.png",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_225229_5e381bee-0a01-487f-86e1-9eab35b511fa.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_224751_05678e68-12a9-4369-9268-b49379940380.png",
     "images": [
       "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-01.jpg",
       "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-02.jpg",
@@ -23440,12 +23440,34 @@ export const adminProducts = [
       "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_230304_43f0afe0-88db-4f34-baf3-d0848c1710b7.png"
     ],
     "imageAlts": {
-      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-mockup-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-mockup-01.jpg": "A vibrant Vaporeon in action, showcasing cool Pokémon art on a stylish t-shirt against a soft backdrop.",
       "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-navy-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
       "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-light-blue-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
       "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-white-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
       "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-black-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
-      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-royal-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee."
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/vaporeon-t-shirt-water-type-pok-mon-fan-art-t-royal-01.jpg": "Vaporeon joyfully splashing with flowing fins in striking fan-art style on a small chest print of a premium JAYL tee.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_225229_5e381bee-0a01-487f-86e1-9eab35b511fa.png": "The Vaporeon t-shirt is elegantly displayed, capturing the essence of cool Pokémon art in a dynamic pose.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_224751_05678e68-12a9-4369-9268-b49379940380.png": "Close-up of the fabric texture highlighting the intricate details of the Vaporeon design inspired by cool Pokémon.",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-01.jpg": "Front view of the Vaporeon t-shirt, displaying its cool Pokémon design in vibrant colors and artistic flair.",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-02.jpg": "Side angle showcasing the stylish cut of the Vaporeon t-shirt adorned with striking cool Pokémon graphics.",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-03.jpg": "Back view revealing the full design of the Vaporeon artwork, emphasizing its unique and cool Pokémon style.",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-04.jpg": "Vaporeon playfully leaps through a splash of cool blues, embodying the essence of Pokémon art.",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-05.jpg": "A vivid side view highlights Vaporeon's elegant form, surrounded by a halo of soft, pastel hues.",
+      "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-06.jpg": "Vaporeon's dynamic pose captures its playful spirit, enhanced by shades of vibrant aqua and lavender.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png": "In an enchanting close-up, Vaporeon showcases intricate details and shimmering blues evocative of water themes.",
+      "/images/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261021_230304_43f0afe0-88db-4f34-baf3-d0848c1710b7.png": "Vaporeon stands majestically against a pale backdrop, with artistic strokes highlighting its water-type beauty.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-01.jpg": "An engaging frontal view displays Vaporeon's charm, with an array of eye-catching colors celebrating Pokémon art.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-02.jpg": "A vibrant Vaporeon print pops against the pastel gelato background on this stylish t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-03.jpg": "Bright, playful colors accentuate the charming Vaporeon design in this cool Pokémon-inspired t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-04.jpg": "Close-up view reveals the intricate details and soft texture of the Vaporeon artwork on this tee.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-05.jpg": "The gelato-inspired color scheme enhances the whimsical Vaporeon illustration on this trendy shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-06.jpg": "Artfully designed, the Vaporeon's playful expression stands out amidst a soft gelato palette on this t-shirt.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png": "Dynamic angle showcases the colorful Vaporeon art, capturing its fun essence in a stylish tee.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230304_43f0afe0-88db-4f34-baf3-d0848c1710b7.png": "A dynamic Vaporeon leaps energetically against a blue backdrop, showcasing the cool Pokémon style.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_233833_b57edbfe-5028-4d50-a73d-4d9145cbde66.png": "Boldly colored Vaporeon outlined in white stands on a light background, capturing the essence of cool Pokémon art.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261022_004414_78d39549-dd18-4de6-806d-358b71518df2.png": "Close-up of Vaporeon's flowing fins and vibrant colors highlight its playful personality in this cool Pokémon design.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261103_114051_44671c81-c97d-471d-b11f-7bb53398d084.png": "The Vaporeon t-shirt showcases bold colors emanating a vibe of coolness, perfect for Pokémon enthusiasts.",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261103_114125_471f3563-37af-43e9-bd89-e8de823e8271.png": "Side view of the t-shirt highlights intricate details in the Vaporeon artwork, embodying the cool Pokémon theme."
     },
     "tags": [
       "vaporeon",
@@ -23735,6 +23757,15 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-30T17:54:49.821Z",
-    "updatedAt": "2026-10-30T17:54:49.821Z"
+    "updatedAt": "2026-11-03T14:08:32.832Z",
+    "relatedProducts": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png"
+    ],
+    "storeColors": [
+      "royal",
+      "white",
+      "navy"
+    ]
   }
 ]
