@@ -151,7 +151,42 @@ export const drop = {
       "endsAt": "2026-10-22T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-10",
+      "number": 10,
+      "title": "CLASSIC",
+      "productIds": [
+        "cool-vaporeon-t-shirt",
+        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
+        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
+      ],
+      "startsAt": "2026-11-03T16:00:00Z",
+      "endsAt": "2026-11-10T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 2000,
+      "bundlePrice": 4999,
+      "heroImages": {
+        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_000157_38e33cc7-7d6d-4093-94b8-eb1701298974.png",
+        "cool-vaporeon-t-shirt": "/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
+        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
+      },
+      "defaults": {
+        "cool-vaporeon-t-shirt": {
+          "color": "royal"
+        },
+        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": {
+          "color": "daisy"
+        },
+        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": {
+          "color": "red"
+        }
+      },
+      "defaultSide": "front",
+      "heroVideos": {}
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
