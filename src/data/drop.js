@@ -15,42 +15,46 @@
 // scripts/test-drop-config.js.
 export const drop = {
   "current": {
-    "id": "drop-09",
-    "number": 9,
-    "title": "DAY & NIGHT",
+    "id": "drop-10",
+    "number": 10,
+    "title": "CLASSIC",
     "productIds": [
-      "cool-eevee-t-shirt",
-      "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
-      "cool-espeon-t-shirt"
+      "cool-vaporeon-t-shirt",
+      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
+      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
     ],
-    "startsAt": "2026-10-23T16:00:00Z",
-    "endsAt": "2026-10-28T16:00:00Z",
+    "startsAt": "2026-11-03T16:00:00Z",
+    "endsAt": "2026-11-10T16:00:00Z",
     "cap": 20,
     "caps": {},
     "dropPrice": 2000,
     "bundlePrice": 4999,
-    "heroImages": {},
+    "heroImages": {
+      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_000157_38e33cc7-7d6d-4093-94b8-eb1701298974.png",
+      "cool-vaporeon-t-shirt": "/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
+      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
+    },
     "defaults": {
-      "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift": {
-        "color": "black"
+      "cool-vaporeon-t-shirt": {
+        "color": "royal"
       },
-      "cool-eevee-t-shirt": {
-        "color": "white"
+      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": {
+        "color": "daisy"
       },
-      "cool-espeon-t-shirt": {
-        "color": "black"
+      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": {
+        "color": "red"
       }
     },
     "defaultSide": "front",
     "heroVideos": {}
   },
   "previous": {
-    "number": 8,
-    "title": "EEVEES",
+    "number": 9,
+    "title": "DAY & NIGHT",
     "productIds": [
-      "cool-sylveon-t-shirt",
-      "cool-leafeon-t-shirt",
-      "cool-glaceon-t-shirt"
+      "cool-eevee-t-shirt",
+      "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
+      "cool-espeon-t-shirt"
     ]
   },
   "past": [
@@ -149,44 +153,21 @@ export const drop = {
       ],
       "startsAt": "2026-10-12T16:00:00Z",
       "endsAt": "2026-10-22T16:00:00Z"
-    }
-  ],
-  "scheduled": [
+    },
     {
-      "id": "drop-10",
-      "number": 10,
-      "title": "CLASSIC",
+      "id": "drop-09",
+      "number": 9,
+      "title": "DAY & NIGHT",
       "productIds": [
-        "cool-vaporeon-t-shirt",
-        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
-        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
+        "cool-eevee-t-shirt",
+        "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
+        "cool-espeon-t-shirt"
       ],
-      "startsAt": "2026-11-03T16:00:00Z",
-      "endsAt": "2026-11-10T16:00:00Z",
-      "cap": 20,
-      "caps": {},
-      "dropPrice": 2000,
-      "bundlePrice": 4999,
-      "heroImages": {
-        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_000157_38e33cc7-7d6d-4093-94b8-eb1701298974.png",
-        "cool-vaporeon-t-shirt": "/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
-        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
-      },
-      "defaults": {
-        "cool-vaporeon-t-shirt": {
-          "color": "royal"
-        },
-        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": {
-          "color": "daisy"
-        },
-        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": {
-          "color": "red"
-        }
-      },
-      "defaultSide": "front",
-      "heroVideos": {}
+      "startsAt": "2026-10-23T16:00:00Z",
+      "endsAt": "2026-10-28T16:00:00Z"
     }
   ],
+  "scheduled": [],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
@@ -212,7 +193,10 @@ export const drop = {
     "aerodactyl-back-print-shirt-funny-retro-90s-anime-graphic-tee-large-back-design-unisex-cotton-t-shirt-rock-pokemon-gift-for-him",
     "cool-sylveon-t-shirt",
     "cool-leafeon-t-shirt",
-    "cool-glaceon-t-shirt"
+    "cool-glaceon-t-shirt",
+    "cool-eevee-t-shirt",
+    "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
+    "cool-espeon-t-shirt"
   ],
   "archivePrice": 2499
 }
