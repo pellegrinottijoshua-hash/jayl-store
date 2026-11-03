@@ -24060,7 +24060,7 @@ export const adminProducts = [
     "id": "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Flareon T-Shirt – Fire Type Pokémon Fan Art Tee, Eeveelution Gift",
+    "name": "Cool Flareon T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
@@ -24101,9 +24101,9 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-mockup-01.jpg",
-    "heroImage": null,
-    "detailImage": null,
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_003240_814c8b30-4d2f-47c6-8538-d5f6f35c548f.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_001912_e089c919-988b-4990-b899-34520ee599a0.png",
     "images": [
       "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-gelato-01.jpg",
       "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-gelato-02.jpg",
@@ -24310,6 +24310,10 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-03T14:15:47.132Z",
-    "updatedAt": "2026-11-03T14:15:47.132Z"
+    "updatedAt": "2026-11-03T14:34:06.805Z",
+    "relatedProducts": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
+    ]
   }
 ]
