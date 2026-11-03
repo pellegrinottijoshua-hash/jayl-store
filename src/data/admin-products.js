@@ -22995,7 +22995,7 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-mockup-01.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261020_161523_18744638-04ca-4d73-89e5-2319c817b923.png",
     "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_165340_caf8f4c7-7820-416b-8765-de4eb6951c4d.png",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261014_161855_c7f8d00b-5459-47c3-9e52-eb383db5ca45.png",
     "images": [
@@ -23137,10 +23137,12 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20260822_111206_6900ba1d-eccc-485d-9563-76f887e424c4-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:09:54.845Z",
-    "updatedAt": "2026-10-26T14:03:17.888Z",
+    "updatedAt": "2026-11-03T14:19:32.140Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/design-front.png",
-    "heroShots": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20261020_161523_18744638-04ca-4d73-89e5-2319c817b923.png"
+    ],
     "storeColors": [
       "black",
       "white"
