@@ -24023,5 +24023,261 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-03T14:13:02.991Z",
     "updatedAt": "2026-11-03T14:13:02.991Z"
+  },
+  {
+    "id": "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Flareon T-Shirt – Fire Type Pokémon Fan Art Tee, Eeveelution Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Frolicking through fields of flames, Flareon radiates warmth and energy, embodying the fiery spirit that every trainer knows. In this dynamic design, our favorite fire type is caught mid-leap, its vibrant orange and yellow hues igniting excitement. Styled on a Gildan premium tee with DTG print quality that brings out every detail, this shirt captures the essence of playful battle vibes with a nostalgic touch. Perfect for gifting to fellow Pokémon fans who appreciate both style and nostalgia—watch their faces light up like a Fire Stone!",
+    "altText": "Energetic Flareon leaping joyfully with fiery fur on a Gildan premium tee in retro 90s anime art style.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-gelato-01.jpg",
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-gelato-02.jpg",
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-gelato-03.jpg",
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-gelato-04.jpg"
+    ],
+    "imageAlts": {
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-mockup-01.jpg": "Energetic Flareon leaping joyfully with fiery fur on a Gildan premium tee in retro 90s anime art style.",
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-white-01.jpg": "Energetic Flareon leaping joyfully with fiery fur on a Gildan premium tee in retro 90s anime art style.",
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-red-01.jpg": "Energetic Flareon leaping joyfully with fiery fur on a Gildan premium tee in retro 90s anime art style.",
+      "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-black-01.jpg": "Energetic Flareon leaping joyfully with fiery fur on a Gildan premium tee in retro 90s anime art style."
+    },
+    "tags": [
+      "flareon",
+      "pokemon",
+      "t-shirt",
+      "fan art",
+      "eeveelution",
+      "fire type",
+      "anime shirts",
+      "gifting",
+      "kawaii",
+      "geek fashion",
+      "vintage style",
+      "cartoon tee",
+      "cool apparel"
+    ],
+    "featured": false,
+    "gelatoProductId": "4f96d300-56cd-4654-a7b1-898ce77d107e",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "flareon t-shirt",
+      "pokemon fan art",
+      "fire type shirt",
+      "eeveelution gift",
+      "anime apparel"
+    ],
+    "longTailKeywords": [
+      "flareon pokemon t-shirt for sale",
+      "funny eeveelution graphic tee",
+      "retro anime pokemon apparel",
+      "gift ideas for pokemon fans",
+      "unique fire type t-shirts online",
+      "cute flareon merchandise shop",
+      "collectible pokemon fan clothing",
+      "best gifts for fire type lovers",
+      "stylish anime shirts for men women",
+      "high-quality pokemon tees"
+    ],
+    "hashtags": "#flareon #pokemon #tshirt #fanart #eeveelution #firetype #animeshirts #gifting #kawaii #geekfashion #vintagestyle #cartoontee #coolapparel #nerdstuff #pokemergear #animefanart #pokedexlove #battlevibes #naturallyfiery #yummypiesofdata #printondemandartwork #shirtartistry #coolgiftsforher #pixelpowerhouse #quirkyclothesforeveryone #flaminghotfashionista #adventurawearables #stylishandfunnyshirts #colorfulprintsforlife",
+    "instagramCaption": "#Flareon is here to warm your wardrobe! 🔥 Whether you're a trainer or just love cozy vibes, this design's got you covered. Grab yours now and let's get fiery! 🔥#pokemonfanart #geekwear🌟#flamingstyle",
+    "pinterestCaption": "\"Ignite your passion for Pokémon with our Flareon T-Shirt featuring eye-catching artwork that captures this beloved fire-type’s energy. This unique tee is perfect as a thoughtful gift or statement piece in any fan's collection.",
+    "seoTitle": "Flareon T-Shirt | Fiery Eeveelution Fan Apparel | Gift for Trainers",
+    "variants": [
+      {
+        "uid": "c5fd2d73-571e-4745-a4ba-3a03173f61af",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "eb0dd135-7d97-46ed-85ea-2723cc2ab906",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "65261b41-958b-45d1-a641-1eab28b095cf",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b9f658ec-8527-412f-b0d2-23b04ea5b28a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "204f5147-36eb-453e-b51e-e459b50eda27",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6c000d4e-676d-4c7f-91e8-1c7284275502",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "93691a86-368d-4b7c-b846-2f33e0338429",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea729a6a-bdf0-4987-8e66-5132dafa07c5",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "830df8dc-73d6-4dca-a24c-66ed6e7907c4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6d4031ed-66e5-4ac6-a78a-4fafd7aa105b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "43fcaa73-5fb7-4060-8806-90e255af98f1",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8d6c2f18-20b9-490a-8197-54d55b26f5bd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "afcc7eea-7f97-4bca-9502-e1b967f223c6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e0b43e0a-ebd0-4860-bacb-99027c4ac7af",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "693b9346-946a-48c2-b9b6-35172fec4116",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-black-01.jpg"
+      },
+      {
+        "id": "red",
+        "label": "Red",
+        "hex": "#888888",
+        "image": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-red-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-white-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8f1a93b6-45ea-48c2-a42c-6334d0799603/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141338Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f87d75a2d82932dbdaa8e84bd9aeffc01842da42db07e0fa6d7965bd2d3c9a67",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3a1fc196-921b-490c-8f62-712fdd046699/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141338Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5638e3ae0f7e56dfcff82c9bc200184c5d8389f5f98feb457eefd0580dc584b7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/26d4ca83-7a3d-4a14-96b0-b6dba60d890b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141338Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ffecbe9676440c8f58e53cfc454bc408d30a6e32d6d6097f128c8518062715cc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/327dd6db-3eb6-4cca-82fe-f2b87a5679cd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261103%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261103T141338Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ba6446965bd0994ad720d0b17f8791206cc7b91d72c9ee43705df406960da4f5"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20260825_112018_656f3d9f-e16a-4ae5-96ce-e7cdb33ffcbb-zack.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-03T14:15:47.132Z",
+    "updatedAt": "2026-11-03T14:15:47.132Z"
   }
 ]
