@@ -1,6 +1,6 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-11-03 da Troy (4 ad del drop 10). Diagnosi di ottobre: `~/Desktop/jayl streetwear/DIAGNOSI-STORE-2026-10-30.md`.
+Aggiornato: 2026-11-04 da Troy (video Etsy). Diagnosi di ottobre: `~/Desktop/jayl streetwear/DIAGNOSI-STORE-2026-10-30.md`.
 
 ## A che punto siamo
 - **Negozio:** www.jayl.store. 19,99 al lancio, poi 24,99 in collezione, i 3 a 49,99. Niente "drop" ai clienti: NEW. 9 drop. Il Drop 9 ha `dropPrice` 2000, cioè $20 invece di $19.99.
@@ -11,6 +11,7 @@ Aggiornato: 2026-11-03 da Troy (4 ad del drop 10). Diagnosi di ottobre: `~/Deskt
 - **Misure:** Umami senza cookie, letto via API dalla sessione di cloud.umami.is in Chrome. GA4 e pixel Meta solo con consenso.
 - **Social e video:** 1 clic per Pinterest, IG e FB dall'admin. Kit `~/jayl-motion` (`src/drop8/`, `src/drop9/`, `src/drop10/`), musica Flow in `marketing music/`.
 - **Drop 10, fronti Vaporeon, Jolteon, Flareon:** 4 ad pronti in `pubblicazione/da-troy/bozze/2026-11-03_ad_*.mp4`, testi in `captions.txt`. Un elemento per maglia (acqua, corrente, fuoco). Si rifanno con `kit/drop10.sh`. Nello store per ora c'è solo Vaporeon, a $25 e fuori dai drop.
+- **Video Etsy (4/11):** front, back e tazze (14,7 s, quadrati, muti) in `etsy video/_ditto/2026-11-04/`. Le maglie aprono con la stamperia Seedance (`PROMPT-STAMPERIA.md`); si rifanno con `~/jayl-motion/kit/etsy.sh front|back|tazze-nov`.
 - **Foto per le ads:** `~/Desktop/jayl streetwear/MASTER-FOTO-REALI.md`.
   - 10 master per i fronti e 10 per i retro: direzioni fotografiche libere (luogo, posa e persona cambiano a ogni generazione), tecnica bloccata.
   - Ci sono anche i dadi per variare. Valgono anche per Zack.
