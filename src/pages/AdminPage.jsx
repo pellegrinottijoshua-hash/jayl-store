@@ -369,6 +369,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   // lifestyle home (= mobileHero / heroImage), dettaglio, mockup, e il lato
   // in scheda di ogni foto (B = solo Back, F = solo Front).
   const [heroShots,      setHeroShots]      = useState(isEdit && Array.isArray(editingProduct?.heroShots) ? editingProduct.heroShots : [])
+  const [pickUrl,        setPickUrl]        = useState(null)   // miniatura scelta nel pool, per assegnarle un ruolo
   const [imageSides,     setImageSides]     = useState(isEdit && editingProduct?.imageSides && typeof editingProduct.imageSides === 'object' ? editingProduct.imageSides : {})
   const [poolImages,     setPoolImages]     = useState([])   // { url, name } loaded from GitHub
   const [poolLoading,    setPoolLoading]    = useState(false)
@@ -1799,55 +1800,84 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               <span><span className="inline-block w-2 h-2 bg-sky-500 rounded-sm mr-1" />F solo Front</span>
             </div>
 
-            {(heroShots.length > 0 || mobileHero || detailImage || sequenza.length > 0 || Object.keys(imageSides).length > 0) && (
-              <div className="bg-[#111]/50 border border-gray-700 p-2 text-xs space-y-1">
-                {heroShots.length > 0 && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-yellow-400 w-24 flex-shrink-0">★ Hero:</span>
-                    <span className="text-gray-300 truncate font-mono text-[10px]">{heroShots.map(u => u.split('/').pop()).join(', ')}</span>
-                    <button onClick={() => setHeroShots([])} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+            {/* ── Dove va ogni immagine: clic su una miniatura, poi un pulsante ── */}
+            <div className="border border-gray-700 bg-[#0d0d0f] p-3 space-y-3">
+              <p className="text-xs text-gray-300 font-semibold">1 · Clicca una foto qui sotto &nbsp; 2 · Scegli dove va</p>
+              {pickUrl ? (
+                <div className="flex flex-wrap items-center gap-2">
+                  <img src={pickUrl} alt="" className="w-12 h-12 object-cover border-2 border-indigo-500" />
+                  {[
+                    { k: 'hero',   label: '★ Hero',          on: heroShots.includes(pickUrl) || videoUrl === pickUrl, act: () => (/\.(mp4|mov|webm)$/i.test(pickUrl) ? setVideoUrl(videoUrl === pickUrl ? '' : pickUrl) : toggleHeroShot(pickUrl)), cls: 'bg-yellow-400 text-black' },
+                    { k: 'mock',   label: '# Mockup',        on: sequenza.includes(pickUrl), act: () => toggleSequenza(pickUrl), cls: 'bg-emerald-700 text-white' },
+                    { k: 'detail', label: '🔍 Dettaglio',    on: detailImage === pickUrl, act: () => setDetailImage(detailImage === pickUrl ? null : pickUrl), cls: 'bg-amber-500 text-black' },
+                    { k: 'life',   label: '🏠 Lifestyle',    on: mobileHero === pickUrl, act: () => setMobileHero(mobileHero === pickUrl ? null : pickUrl), cls: 'bg-purple-600 text-white' },
+                    { k: 'back',   label: 'Solo scheda Back',  on: imageSides[pickUrl] === 'back',  act: () => setImageSide(pickUrl, imageSides[pickUrl] === 'back' ? null : 'back'),   cls: 'bg-orange-500 text-black' },
+                    { k: 'front',  label: 'Solo scheda Front', on: imageSides[pickUrl] === 'front', act: () => setImageSide(pickUrl, imageSides[pickUrl] === 'front' ? null : 'front'), cls: 'bg-sky-500 text-black' },
+                  ].map(b => (
+                    <button key={b.k} onClick={b.act}
+                      className={`px-3 py-1.5 text-xs font-medium border rounded-sm transition-colors ${b.on ? `${b.cls} border-transparent` : 'bg-gray-900 border-gray-600 text-gray-300 hover:border-gray-400'}`}>
+                      {b.on ? '✓ ' : ''}{b.label}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-600 text-xs">Nessuna foto scelta. «Solo scheda Back/Front» la mostra solo con quel lato; senza, compare su entrambi.</p>
+              )}
+
+              {/* Riepilogo a slot: cosa c'è ora in ogni posto */}
+              {(() => {
+                const Slot = ({ url, onClear }) => url ? (
+                  <div className="relative w-14 h-14 flex-shrink-0">
+                    <img src={url} alt="" className="w-full h-full object-cover border border-gray-600" onClick={() => setPickUrl(url)} />
+                    <button onClick={onClear} className="absolute -top-1 -right-1 bg-red-600 text-white w-4 h-4 rounded-full text-[10px] leading-none">×</button>
                   </div>
-                )}
-                {mobileHero && (
+                ) : <div className="w-14 h-14 border border-dashed border-gray-700 flex-shrink-0" />
+                const Row = ({ label, children }) => (
                   <div className="flex items-center gap-2">
-                    <span className="text-purple-400 w-24 flex-shrink-0">🏠 Lifestyle:</span>
-                    <span className="text-gray-300 truncate font-mono text-[10px]">{mobileHero.split('/').pop()}</span>
-                    <button onClick={() => setMobileHero(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+                    <span className="w-28 flex-shrink-0 text-[11px] text-gray-400">{label}</span>
+                    <div className="flex flex-wrap gap-1.5">{children}</div>
                   </div>
-                )}
-                {detailImage && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-amber-400 w-24 flex-shrink-0">🔍 Dettaglio:</span>
-                    <span className="text-gray-300 truncate font-mono text-[10px]">{detailImage.split('/').pop()}</span>
-                    <button onClick={() => setDetailImage(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+                )
+                const sideList = side => Object.keys(imageSides).filter(u => imageSides[u] === side)
+                return (
+                  <div className="space-y-2 border-t border-gray-800 pt-3">
+                    <Row label="★ Hero (max 2)">
+                      <Slot url={heroShots[0]} onClear={() => toggleHeroShot(heroShots[0])} />
+                      <Slot url={heroShots[1]} onClear={() => toggleHeroShot(heroShots[1])} />
+                      {videoUrl && /\.(mp4|mov|webm)$/i.test(videoUrl) && <span className="text-[10px] text-yellow-400 self-center">+ video 🎬</span>}
+                    </Row>
+                    <Row label="# Mockup in galleria">
+                      {sequenza.length === 0 && <Slot />}
+                      {sequenza.map(u => <Slot key={u} url={u} onClear={() => toggleSequenza(u)} />)}
+                    </Row>
+                    <Row label="🔍 Dettaglio"><Slot url={detailImage} onClear={() => setDetailImage(null)} /></Row>
+                    <Row label="🏠 Lifestyle home"><Slot url={mobileHero} onClear={() => setMobileHero(null)} /></Row>
+                    <Row label="Solo scheda Back">
+                      {sideList('back').length === 0 && <Slot />}
+                      {sideList('back').map(u => <Slot key={u} url={u} onClear={() => setImageSide(u, null)} />)}
+                    </Row>
+                    <Row label="Solo scheda Front">
+                      {sideList('front').length === 0 && <Slot />}
+                      {sideList('front').map(u => <Slot key={u} url={u} onClear={() => setImageSide(u, null)} />)}
+                    </Row>
                   </div>
-                )}
-                {sequenza.length > 0 && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-emerald-400 w-24 flex-shrink-0">Mockup:</span>
-                    <span className="text-gray-400 text-[10px]">{sequenza.length} immagini</span>
-                    <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
-                  </div>
-                )}
-                {Object.keys(imageSides).length > 0 && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-sky-400 w-24 flex-shrink-0">Lati B/F:</span>
-                    <span className="text-gray-400 text-[10px]">{Object.values(imageSides).filter(v => v === 'back').length} Back · {Object.values(imageSides).filter(v => v === 'front').length} Front</span>
-                    <button onClick={() => setImageSides({})} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
-                  </div>
-                )}
-              </div>
-            )}
+                )
+              })()}
+            </div>
 
             {poolLoading && <p className="text-gray-600 text-xs">Aggiornamento…</p>}
-            <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono">Hover per assegnare</p>
+            <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono">Clic su una foto per scegliere dove va (oppure hover)</p>
             <div className="flex flex-wrap gap-1.5">
               {poolImages.map(img => (
-                <PoolThumb key={img.url} img={img} {...thumbProps} />
+                <div key={img.url} onClick={() => setPickUrl(img.url)} className={`cursor-pointer ${pickUrl === img.url ? 'ring-2 ring-indigo-400' : ''}`}>
+                  <PoolThumb img={img} {...thumbProps} />
+                </div>
               ))}
               {/* Originali Gelato (CDN) solo finche' non ci sono le copie nel repo: vedi src/lib/gelatoPool.js */}
               {gelatoNonCopiati(gelatoImages, poolImages).filter(g => !poolImages.some(p => p.url === g.src)).map((g, i) => (
-                <PoolThumb key={g.src} img={{ url: g.src, name: g.src.split('/').pop().split('?')[0] || `gelato-${i + 1}` }} {...thumbProps} />
+                <div key={g.src} onClick={() => setPickUrl(g.src)} className={`cursor-pointer ${pickUrl === g.src ? 'ring-2 ring-indigo-400' : ''}`}>
+                  <PoolThumb img={{ url: g.src, name: g.src.split('/').pop().split('?')[0] || `gelato-${i + 1}` }} {...thumbProps} />
+                </div>
               ))}
             </div>
 
