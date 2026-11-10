@@ -23381,7 +23381,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-espeon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:37:06.156Z",
-    "updatedAt": "2026-11-10T16:30:08.966Z",
+    "updatedAt": "2026-11-10T16:30:38.907Z",
     "relatedProducts": [],
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_164623_a08c25e0-fc37-4041-8685-9e9f1162e04b.png"
