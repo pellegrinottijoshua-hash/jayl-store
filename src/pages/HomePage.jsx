@@ -10,6 +10,7 @@ import DropHero from '@/components/drop/DropHero'
 import DropDesktop from '@/components/drop/DropDesktop'
 import SubscribeForm from '@/components/SubscribeForm'
 import HomeReviews from '@/components/HomeReviews'
+import EtsyRating from '@/components/EtsyRating'
 import Money from '@/components/Money'
 
 const objectsProducts = products.filter((p) => p.section === 'objects')
@@ -339,6 +340,9 @@ export default function HomePage() {
           <SubscribeForm className="px-5 pb-3" />
         </section>
       )}
+
+      {/* Punteggio Etsy: subito sotto il primo schermo. */}
+      <EtsyRating />
 
       {/* ════ SCREEN 2 — L'archivio, una foto a schermo intero alla volta ════ */}
       {desktop ? <ArchiveStrip items={archiveProducts} /> : <ArchiveReel items={archiveProducts} />}

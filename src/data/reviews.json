@@ -1,5 +1,75 @@
 [
   {
+    "id": "etsy-neil",
+    "productId": null,
+    "author": "Neil",
+    "rating": 5,
+    "body": "Arrived quickly and well-protected! Seller even checked in to see if it arrived okay! One of my favorite items ever! Thank you!!",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-11-09T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-saris",
+    "productId": "psyduck-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "author": "Saris",
+    "rating": 5,
+    "body": "Great Shirt! Fast shipping and really cool design!",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-11-06T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-melanie",
+    "productId": null,
+    "author": "Melanie",
+    "rating": 5,
+    "body": "Item arrived very quickly! Looks great",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-11-01T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-jasmin",
+    "productId": "slowpoke-pok-mon-t-shirt-cool-anime-fan-art-gift-retro-90s-style-funny-pok-mon-lover-gift-gildan-64000",
+    "author": "Jasmin",
+    "rating": 5,
+    "body": "Es hat so eine schöne Verarbeitung! Die Farben und alles wie beschrieben 😍",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-10-28T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-alexis",
+    "productId": null,
+    "author": "Alexis",
+    "rating": 5,
+    "body": "Great quality! Very happy with this purchase!",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-10-15T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-jenny",
+    "productId": "cool-slowpoke-back-t-shirt",
+    "author": "Jenny",
+    "rating": 5,
+    "body": "Great item. Quick postage. Got it for a birthday present and they love it",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-10-03T00:00:00.000Z"
+  },
+  {
+    "id": "etsy-rebecca",
+    "productId": "mewtwo-pok-mon-t-shirt-retro-90s-style-anime-gift",
+    "author": "Rebecca",
+    "rating": 5,
+    "body": "Alles war super, gute Qualität und das Geschenk kam sehr gut an.",
+    "status": "approved",
+    "source": "etsy",
+    "createdAt": "2026-09-27T00:00:00.000Z"
+  },
+  {
     "id": "etsy-filippo-p",
     "productId": null,
     "author": "filippo p",

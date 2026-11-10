@@ -22,12 +22,12 @@ import reviews from '@/data/reviews.json'
  *    pagina recensioni possa dare, e una critica vera fa credere alle altre.
  */
 
-const MAX = 8
+const MAX = 20
 
 // Quanto resta a schermo ogni recensione: un attimo per le brevi, di più per
 // le lunghe — a tempo fisso di un secondo una frase da cento caratteri non si
 // finisce di leggere prima che sparisca.
-const holdMs = (text = '') => Math.min(4000, 1600 + text.length * 25)
+const holdMs = (text = '') => Math.min(3400, 1300 + text.length * 20)
 
 function Stars({ rating }) {
   if (!rating) return null
