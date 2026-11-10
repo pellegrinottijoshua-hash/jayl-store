@@ -24310,7 +24310,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-03T14:15:47.132Z",
-    "updatedAt": "2026-11-03T14:34:06.805Z",
+    "updatedAt": "2026-11-10T16:29:36.709Z",
     "relatedProducts": [],
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
