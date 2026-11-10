@@ -24902,7 +24902,7 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-mockup-01.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-lugia-t-shirt/hf_20261026_171616_3cb6f2d4-8d10-45da-85e8-92cc046306e7.png",
     "imageSides": {
       "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170244_ef38c9a1-ff72-4d3e-84d6-ddd65ad493df.png": "front",
       "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170904_070cbe30-283f-41e1-9f5d-306f3de31a81.png": "back",
@@ -24912,8 +24912,8 @@ export const adminProducts = [
       "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_173033_52fd4cba-9efc-4cac-8747-1f0bc0c60178.png": "front",
       "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261110_155559_675783da-7b40-44fc-989b-ea16f92f2a87.png": "front"
     },
-    "heroImage": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170915_f891c22a-c01c-4bec-ba05-11e0fd3d5318.png",
-    "detailImage": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170244_ef38c9a1-ff72-4d3e-84d6-ddd65ad493df.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-lugia-t-shirt/hf_20261026_170915_f891c22a-c01c-4bec-ba05-11e0fd3d5318.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-lugia-t-shirt/hf_20261026_170244_ef38c9a1-ff72-4d3e-84d6-ddd65ad493df.png",
     "images": [
       "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-01.jpg",
       "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-02.jpg",
@@ -25122,6 +25122,11 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20260816_213802_e9406211-af06-4bab-a2a8-115e993ed6e9-mx2n90h6-copia.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T16:26:01.756Z",
-    "updatedAt": "2026-11-10T16:26:01.756Z"
+    "updatedAt": "2026-11-10T16:36:58.876Z",
+    "relatedProducts": [],
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-lugia-t-shirt/design-front.png",
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-lugia-t-shirt/hf_20261026_171616_3cb6f2d4-8d10-45da-85e8-92cc046306e7.png"
+    ]
   }
 ]
