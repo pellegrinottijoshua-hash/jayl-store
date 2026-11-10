@@ -24315,5 +24315,264 @@ export const adminProducts = [
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
     ]
+  },
+  {
+    "id": "cool-celebi-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool Celebi T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Searching for a heartfelt gift for your favorite Pokémon aficionado? This Celebi T-Shirt is inspired by the mischievous and endearing time-traveling Pokémon, radiating warmth and nostalgia. The design captures Celebi in a playful pose, embodying its gentle spirit and love for adventure. Made from Gildan premium fabric with direct-to-garment print quality, this tee ensures a soft touch that feels as cozy as cuddling up with a beloved game. Whether it’s for a birthday or just because, this shirt brings smiles to those who treasure the magic of gaming.",
+    "altText": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      }
+    ],
+    "image": "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-mockup-01.jpg",
+    "heroImage": null,
+    "detailImage": null,
+    "images": [
+      "/images/cool-celebi-t-shirt/cool-celebi-t-shirt-gelato-01.jpg",
+      "/images/cool-celebi-t-shirt/cool-celebi-t-shirt-gelato-02.jpg",
+      "/images/cool-celebi-t-shirt/cool-celebi-t-shirt-gelato-03.jpg",
+      "/images/cool-celebi-t-shirt/cool-celebi-t-shirt-gelato-04.jpg",
+      "/images/cool-celebi-t-shirt/cool-celebi-t-shirt-gelato-05.jpg"
+    ],
+    "imageAlts": {
+      "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-mockup-01.jpg": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee.",
+      "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-irish-green-01.jpg": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee.",
+      "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-mockup-02.jpg": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee.",
+      "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-white-01.jpg": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee.",
+      "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-black-01.jpg": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee."
+    },
+    "tags": [
+      "celebi",
+      "pokemon",
+      "t-shirt",
+      "fan art",
+      "gamer gift",
+      "anime apparel",
+      "art tee",
+      "cozy fashion",
+      "wholesome style",
+      "geek wear",
+      "gift idea",
+      "cute clothing",
+      "mythical creature"
+    ],
+    "featured": false,
+    "gelatoProductId": "74b9ad02-f240-400f-9d80-97c8b6a87e17",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "celebi t-shirt",
+      "pokemon shirt",
+      "gamer gift tee",
+      "fan art apparel",
+      "anime t-shirt"
+    ],
+    "longTailKeywords": [
+      "celebi t-shirt for gamers",
+      "mythical pokemon fan art tee",
+      "soft and cozy pokemon shirt",
+      "gift ideas for pokemon fans",
+      "unique anime apparel online",
+      "direct-to-garment t-shirt print",
+      "comfortable gaming t-shirts online",
+      "high-quality anime fan shirts",
+      "wholesome gifts for gamers",
+      "cute pokemon shirts for friends"
+    ],
+    "hashtags": "#celebitee #pokemonfanart #giftingideas #gamingwear #animeapparel #cozyclothes #fandshirts #gamerfashion #pokemontshirt #mythicalcreatures #vintageanimeart #dtgprinting #fashionforsocials #geekstyle #wholesomestyle #tshirtdesigns #artwear #gamergifts #nintendostyle #retroanimefashion #cuteoutfits #trendymeetscozy #artisticwearables #giftgivingseason #playfuldesigns #pokefashionista #softtee #creativeattire #nostalgiacoolness",
+    "instagramCaption": "\"When you need to turn back time just to catch 'em all 👾✨! Our Celebi T-Shirt channels those cozy vibes you crave while repping your favorite forest guardian. Grab yours today and let the adventures begin! 💚#celebitshirt#gamingstyle#pokefashion\"",
+    "pinterestCaption": "\"Elevate your wardrobe with our Celebi T-Shirt, an enchanting blend of comfort and nostalgic charm. This unique fan-art piece brings warmth not just to your outfit but to every moment shared with fellow gamers. Explore the magic today!\"",
+    "seoTitle": "Celebi T-Shirt | Enchanting Gift for Gamers | Cozy Art Tee",
+    "variants": [
+      {
+        "uid": "403f6cba-3ea0-4552-9ee2-3b213478b401",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0cc81a02-5e83-4f66-b911-997336f04f22",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2a393d65-a1d5-43c5-870f-d1eff0484072",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "284259da-0e3a-4f48-8753-c1712049aeac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ac965392-bf0f-4f8e-8762-f40ff4443696",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1b9a91bc-aeb2-4200-8764-3973ae5976e6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "53e171b0-78d6-4012-b443-4e8bf0d40139",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b6f2aebd-20dc-42dc-be1d-597926378768",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "51fdb544-09db-4342-98e7-985bcde14388",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bcfc54e1-428b-4289-9ae3-b0f804ccafcd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d822c4e5-ebf7-4ae2-a9b8-b077fdacd173",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4b9fae95-f6b8-4cfa-a11e-803c638a59bb",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_irish-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Irish Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6d4dbba0-616e-455e-a777-02b100138821",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3fde1361-a5b9-439d-b928-32ee80ca2393",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "fb0b387d-c967-4a86-8883-6479e546f219",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-white-01.jpg"
+      },
+      {
+        "id": "irish-green",
+        "label": "Irish Green",
+        "hex": "#888888",
+        "image": "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-irish-green-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b7ae1a36-4af0-4810-ad86-53f2fc0715ec/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T140058Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3052bb683c3325e6b42108c1daa3688273a6388443f6f45be0245e8b6c890e6b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c0b36ba4-f610-4c2d-b0b5-f0ebdc2daecc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T140058Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=36b07f1dee064e77dbc4b888bd1a0d7896d6c5d6f48a214ca3d471641ac91bdb",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2978e02b-4d86-4992-88f0-d10e5ae48bd0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T140058Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=51bc926435022ce8f7d8d23fcc1694eb8d02035be02e6161309dc95076f57d47",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ffaed91-9225-4e1c-920c-ef7535a0d31e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T140058Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f79277067f3f3a260af5aa50994176e31eb2918439298dfeb3a25408db844b7d",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5987f4d0-e9cb-48e9-912e-16bca80ce3a8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T140058Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7f7c2b6983d0dfb35f7cff01e7b28b4748705bcab077c6580e52286c1c5b780a"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/hf_20260821_190929_29ba417c-ded3-4c72-875a-321bdb3974e9-zack-1-copia.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-10T14:03:46.645Z",
+    "updatedAt": "2026-11-10T14:03:46.645Z"
   }
 ]
