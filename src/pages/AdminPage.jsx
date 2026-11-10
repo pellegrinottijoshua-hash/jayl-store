@@ -7,6 +7,7 @@ import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import DropTab from '@/components/admin/DropTab'
+import PoolThumb, { MAX_HERO_SHOTS } from '@/components/admin/PoolThumb'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
 import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
@@ -203,58 +204,6 @@ function ImageUploader({ files, onChange }) {
   )
 }
 
-// ── Pool Thumbnail (for MediaPool) ───────────────────────────────────────────
-
-function PoolThumb({ img, desktopHero, mobileHero, sequenza, detailImage, onSetDesktopHero, onSetMobileHero, onToggleSequenza, onSetDetailImage }) {
-  const url      = img.url
-  const isDesk   = desktopHero === url
-  const isMob    = mobileHero  === url
-  const isDetail = detailImage === url
-  const seqIdx   = sequenza.indexOf(url)
-  const inSeq    = seqIdx !== -1
-  const isVid    = /\.(mp4|mov|webm)$/i.test(url)
-  return (
-    <div className="relative group flex-shrink-0 w-16 h-16">
-      <div className={`w-full h-full border-2 overflow-hidden transition-all ${
-        isDetail ? 'border-amber-400' : isDesk ? 'border-blue-500' : isMob ? 'border-purple-500' : inSeq ? 'border-emerald-700' : 'border-gray-700'
-      }`}>
-        {isVid
-          ? <div className="w-full h-full bg-gray-800 flex items-center justify-center text-xl">🎬</div>
-          : <img src={url} alt={img.name} className="w-full h-full object-cover"
-              onError={e => { e.currentTarget.style.opacity = '0.3' }} />
-        }
-      </div>
-      {isDesk   && <div className="absolute top-0 left-0 bg-blue-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🖥</div>}
-      {isMob    && <div className="absolute top-0 right-0 bg-purple-600 text-white text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">📱</div>}
-      {isDetail && <div className="absolute bottom-0 right-0 bg-amber-500 text-black text-[8px] px-0.5 py-px leading-none pointer-events-none z-10">🔍</div>}
-      {inSeq    && <div className="absolute bottom-0 left-0 bg-gray-700 text-white text-[8px] px-1 py-px font-bold leading-none pointer-events-none z-10">{seqIdx + 1}</div>}
-      {/* 2×2 grid of assign buttons */}
-      <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
-        <div className="grid grid-cols-2 gap-0.5">
-          <button onClick={() => onSetDesktopHero(isDesk ? null : url)} title="Hero Desktop 16:9"
-            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
-              isDesk ? 'bg-blue-600 border-blue-500' : 'bg-gray-900 border-gray-600 hover:border-blue-500'
-            }`}>🖥</button>
-          <button onClick={() => onSetMobileHero(isMob ? null : url)} title="Hero Mobile 9:16"
-            className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
-              isMob ? 'bg-purple-600 border-purple-500' : 'bg-gray-900 border-gray-600 hover:border-purple-500'
-            }`}>📱</button>
-          <button onClick={() => onToggleSequenza(url)} title={inSeq ? 'Rimuovi da sequenza' : 'Aggiungi a sequenza'}
-            className={`w-7 h-5 text-[9px] font-bold flex items-center justify-center rounded-sm border transition-colors ${
-              inSeq ? 'bg-emerald-700 border-emerald-600 text-white' : 'bg-gray-900 border-gray-600 hover:border-emerald-600 text-gray-300'
-            }`}>{inSeq ? '✓' : '+'}</button>
-          {onSetDetailImage && (
-            <button onClick={() => onSetDetailImage(isDetail ? null : url)} title="Immagine dettaglio"
-              className={`w-7 h-5 text-[9px] flex items-center justify-center rounded-sm border transition-colors ${
-                isDetail ? 'bg-amber-500 border-amber-400 text-black' : 'bg-gray-900 border-gray-600 hover:border-amber-400 text-gray-300'
-              }`}>🔍</button>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // ── Collapsible ───────────────────────────────────────────────────────────────
 
 function Collapsible({ label, defaultOpen = false, children }) {
@@ -412,10 +361,15 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const [savedProductId, setSavedProductId] = useState(isEdit ? editingProduct.id : null)
 
   // ── Media pool (hero + sequenza) ─────────────────────────────────────────────
-  const [desktopHero,    setDesktopHero]    = useState(isEdit ? (editingProduct?.image       || null) : null)
+  const [desktopHero]                       = useState(isEdit ? (editingProduct?.image       || null) : null)
   const [mobileHero,     setMobileHero]     = useState(isEdit ? (editingProduct?.heroImage   || null) : null)
   const [detailImage,    setDetailImage]    = useState(isEdit ? (editingProduct?.detailImage || null) : null)
   const [sequenza,       setSequenza]       = useState(isEdit ? (editingProduct?.images      || [])   : [])
+  // Ruoli come in Modify Product (src/lib/productMedia.js): foto hero (max 2),
+  // lifestyle home (= mobileHero / heroImage), dettaglio, mockup, e il lato
+  // in scheda di ogni foto (B = solo Back, F = solo Front).
+  const [heroShots,      setHeroShots]      = useState(isEdit && Array.isArray(editingProduct?.heroShots) ? editingProduct.heroShots : [])
+  const [imageSides,     setImageSides]     = useState(isEdit && editingProduct?.imageSides && typeof editingProduct.imageSides === 'object' ? editingProduct.imageSides : {})
   const [poolImages,     setPoolImages]     = useState([])   // { url, name } loaded from GitHub
   const [poolLoading,    setPoolLoading]    = useState(false)
   const [poolRefreshKey, setPoolRefreshKey] = useState(0)
@@ -428,6 +382,14 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   const finalCollection = newColl.trim() || collection
 
   const videoInfo = parseVideoUrl(videoUrl)
+
+  // Props comuni di ogni miniatura del pool (stessa miniatura di Modify Product).
+  const thumbProps = {
+    heroShots, heroVideo: videoUrl, mobileHero, sequenza, detailImage, imageSides,
+    onSetImageSide: setImageSide, onToggleHeroShot: toggleHeroShot,
+    onSetHeroVideo: u => { setVideoUrl(u || ''); setVideoPreview(null) },
+    onSetMobileHero: setMobileHero, onToggleSequenza: toggleSequenza, onSetDetailImage: setDetailImage,
+  }
 
   // Map variantId → color label for grouping images
   const variantColorMap = Object.fromEntries(
@@ -539,7 +501,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     const seen = new Set()
     const add = (url, role) => { if (url && !seen.has(url)) { seen.add(url); entries.push({ url, role }) } }
     add(desktopHero, 'hero-desktop')
-    add(mobileHero,  'hero-mobile')
+    heroShots.forEach((url, i) => add(url, `hero-${i + 1}`))
+    add(mobileHero,  'lifestyle-home')
     add(detailImage, 'detail-reveal')
     sequenza.forEach((url, i) => add(url, `gallery-${i + 1}`))
     poolImages.forEach(img => add(img.url, 'pool'))
@@ -661,6 +624,19 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
   const toggleSequenza = useCallback(url => {
     setSequenza(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url])
+  }, [])
+  // Una foto e' hero oppure mockup: diventare hero la toglie dai mockup.
+  const toggleHeroShot = useCallback(url => {
+    setHeroShots(prev => prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url].slice(0, MAX_HERO_SHOTS))
+    setSequenza(prev => prev.filter(u => u !== url))
+  }, [])
+  const setImageSide = useCallback((url, side) => {
+    setImageSides(prev => {
+      const next = { ...prev }
+      if (side) next[url] = side
+      else delete next[url]
+      return next
+    })
   }, [])
 
   const fetchVariants = async () => {
@@ -922,6 +898,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       const heroDesktopPath  = desktopHero  ? toRelPath(desktopHero)  : (uploadedPaths[0] || '')
       const heroMobilePath   = mobileHero   ? toRelPath(mobileHero)   : null
       const detailImagePath  = detailImage  ? toRelPath(detailImage)  : null
+      const heroShotPaths   = [...new Set(heroShots.map(toRelPath))]
+      const sidePaths       = Object.fromEntries(Object.entries(imageSides)
+        .filter(([u, v]) => u && (v === 'front' || v === 'back')).map(([u, v]) => [toRelPath(u), v]))
       const finalImages     = sequenza.length > 0
         ? [...new Set(sequenza.map(toRelPath))]
         : uploadedPaths
@@ -968,7 +947,9 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         // resta un'eccezione da editare a mano nel pannello Dettagli.
         details: DEFAULT_PRODUCT_DETAILS,
         sizes,
-        image:       heroDesktopPath || finalImages[0] || '',
+        image:       heroShotPaths[0] || heroDesktopPath || finalImages[0] || '',
+        ...(heroShotPaths.length > 0 ? { heroShots: heroShotPaths } : {}),
+        ...(Object.keys(sidePaths).length > 0 ? { imageSides: sidePaths } : {}),
         heroImage:   heroMobilePath  || null,
         detailImage: detailImagePath || null,
         images:      finalImages,
@@ -1810,24 +1791,26 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
         {poolImages.length > 0 && (
           <div className="border-t border-gray-800 pt-3 space-y-3">
             <div className="flex flex-wrap gap-3 text-[10px] text-gray-600">
-              <span><span className="inline-block w-2 h-2 bg-blue-500 rounded-sm mr-1" />🖥 Hero Desktop</span>
-              <span><span className="inline-block w-2 h-2 bg-purple-500 rounded-sm mr-1" />📱 Hero Mobile</span>
-              <span><span className="inline-block w-2 h-2 bg-emerald-700 rounded-sm mr-1" />+ Sequenza</span>
+              <span><span className="inline-block w-2 h-2 bg-yellow-400 rounded-sm mr-1" />★ Hero</span>
+              <span><span className="inline-block w-2 h-2 bg-emerald-700 rounded-sm mr-1" /># Mockup</span>
               <span><span className="inline-block w-2 h-2 bg-amber-500 rounded-sm mr-1" />🔍 Dettaglio</span>
+              <span><span className="inline-block w-2 h-2 bg-purple-600 rounded-sm mr-1" />🏠 Lifestyle</span>
+              <span><span className="inline-block w-2 h-2 bg-orange-500 rounded-sm mr-1" />B solo Back</span>
+              <span><span className="inline-block w-2 h-2 bg-sky-500 rounded-sm mr-1" />F solo Front</span>
             </div>
 
-            {(desktopHero || mobileHero || detailImage || sequenza.length > 0) && (
+            {(heroShots.length > 0 || mobileHero || detailImage || sequenza.length > 0 || Object.keys(imageSides).length > 0) && (
               <div className="bg-[#111]/50 border border-gray-700 p-2 text-xs space-y-1">
-                {desktopHero && (
+                {heroShots.length > 0 && (
                   <div className="flex items-center gap-2">
-                    <span className="text-blue-400 w-24 flex-shrink-0">🖥 Desktop:</span>
-                    <span className="text-gray-300 truncate font-mono text-[10px]">{desktopHero.split('/').pop()}</span>
-                    <button onClick={() => setDesktopHero(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
+                    <span className="text-yellow-400 w-24 flex-shrink-0">★ Hero:</span>
+                    <span className="text-gray-300 truncate font-mono text-[10px]">{heroShots.map(u => u.split('/').pop()).join(', ')}</span>
+                    <button onClick={() => setHeroShots([])} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
                   </div>
                 )}
                 {mobileHero && (
                   <div className="flex items-center gap-2">
-                    <span className="text-purple-400 w-24 flex-shrink-0">📱 Mobile:</span>
+                    <span className="text-purple-400 w-24 flex-shrink-0">🏠 Lifestyle:</span>
                     <span className="text-gray-300 truncate font-mono text-[10px]">{mobileHero.split('/').pop()}</span>
                     <button onClick={() => setMobileHero(null)} className="text-gray-600 hover:text-red-400 ml-auto">×</button>
                   </div>
@@ -1846,6 +1829,13 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                     <button onClick={() => setSequenza([])} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
                   </div>
                 )}
+                {Object.keys(imageSides).length > 0 && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-sky-400 w-24 flex-shrink-0">Lati B/F:</span>
+                    <span className="text-gray-400 text-[10px]">{Object.values(imageSides).filter(v => v === 'back').length} Back · {Object.values(imageSides).filter(v => v === 'front').length} Front</span>
+                    <button onClick={() => setImageSides({})} className="text-gray-600 hover:text-red-400 ml-auto">reset</button>
+                  </div>
+                )}
               </div>
             )}
 
@@ -1853,17 +1843,11 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             <p className="text-[10px] text-gray-600 uppercase tracking-wider font-mono">Hover per assegnare</p>
             <div className="flex flex-wrap gap-1.5">
               {poolImages.map(img => (
-                <PoolThumb key={img.url} img={img}
-                  desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza} detailImage={detailImage}
-                  onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
-                />
+                <PoolThumb key={img.url} img={img} {...thumbProps} />
               ))}
               {/* Originali Gelato (CDN) solo finche' non ci sono le copie nel repo: vedi src/lib/gelatoPool.js */}
               {gelatoNonCopiati(gelatoImages, poolImages).filter(g => !poolImages.some(p => p.url === g.src)).map((g, i) => (
-                <PoolThumb key={g.src} img={{ url: g.src, name: g.src.split('/').pop().split('?')[0] || `gelato-${i + 1}` }}
-                  desktopHero={desktopHero} mobileHero={mobileHero} sequenza={sequenza} detailImage={detailImage}
-                  onSetDesktopHero={setDesktopHero} onSetMobileHero={setMobileHero} onToggleSequenza={toggleSequenza} onSetDetailImage={setDetailImage}
-                />
+                <PoolThumb key={g.src} img={{ url: g.src, name: g.src.split('/').pop().split('?')[0] || `gelato-${i + 1}` }} {...thumbProps} />
               ))}
             </div>
 

@@ -7,7 +7,7 @@ export const SOCIAL_LINKS = {
   "instagram": "https://www.instagram.com/jayl_store/",
   "tiktok": "https://www.tiktok.com/@jayl.store",
   "youtube": "",
-  "pinterest": "https://it.pinterest.com/jaylstore/",
-  "x": "https://x.com/Jayl_store",
+  "pinterest": "", // nascosto (0 follower): https://it.pinterest.com/jaylstore/
+  "x": "", // nascosto (0 follower): https://x.com/Jayl_store
   "facebook": ""
 }
