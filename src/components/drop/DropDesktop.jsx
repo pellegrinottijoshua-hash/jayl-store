@@ -75,8 +75,8 @@ export default function DropDesktop() {
   return (
     <>
       {items.length > 0 && (
-        <div className="h-[calc(100svh-120px)] min-h-[560px] flex flex-col pt-[94px] pb-3">
-          <NewMark word={(showingCurrent && cfg.current?.headline) || 'NEW'} fontSize="clamp(4rem, 8vw, 7.5rem)" />
+        <div className="h-full min-h-[600px] flex flex-col pt-[78px] pb-4">
+          <NewMark word={(showingCurrent && cfg.current?.headline) || 'NEW'} fontSize="clamp(2.5rem, 4vw, 3.75rem)" />
 
 
           <div className="flex-1 flex items-center justify-center gap-6 xl:gap-10 px-8">
@@ -89,7 +89,7 @@ export default function DropDesktop() {
                   to={`/product/${p.id}`}
                   onMouseEnter={() => replay(i)}
                   className="group relative block overflow-hidden bg-off-black"
-                  style={{ height: 'min(39vh, 520px)', aspectRatio: '2 / 3' }}
+                  style={{ height: 'min(calc(100svh - 295px), 820px)', aspectRatio: '2 / 3' }}
                 >
                   {/* Col video niente foto sotto: si vedeva per un attimo prima del primo fotogramma. */}
                   {!src && <img src={photo} alt={p.altText || p.name} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '50% 30%' }} />}
@@ -122,7 +122,7 @@ export default function DropDesktop() {
             })}
           </div>
 
-          <ShippedPrice cents={price} className="pt-6" fontSize="clamp(3.5rem, 6vw, 5.5rem)" />
+          <ShippedPrice cents={price} className="pt-4" fontSize="clamp(2.25rem, 3.6vw, 3.25rem)" />
         </div>
       )}
     </>

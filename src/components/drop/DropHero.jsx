@@ -239,7 +239,9 @@ export default function DropHero() {
   // Su schermi larghi (tablet) solo le tre davanti: con schede grandi e la vista dall'alto,
   // quelle a ±80° salivano sopra le altre e disegnavano una banda scura in
   // cima al palco. Quella che entra girando compare al bordo, nel buio dei fianchi.
-  const slots = (mobile ? [-2, -1, 0, 1, 2] : [-1, 0, 1]).map((o) => pos + o)
+  // Anche sul telefono solo le tre davanti: le due a ±2 sporgevano ai bordi come
+  // sagome scure senza contenuto (i "rimasugli" di riquadri ai lati).
+  const slots = [-1, 0, 1].map((o) => pos + o)
 
   return (
     <div className="relative flex-1 min-h-0 flex flex-col pt-[84px]">

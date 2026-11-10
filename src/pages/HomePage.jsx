@@ -331,11 +331,11 @@ export default function HomePage() {
           video che partono insieme, il prezzo, poi la lista d'attesa
           (DropDesktop). ════ */}
       {desktop ? (
-        <section data-nav-theme="dark" className="h-[calc(100svh-110px)] min-h-[560px] w-screen bg-off-black flex flex-col">
+        <section data-nav-theme="dark" className="h-[100svh] min-h-[600px] w-screen bg-off-black flex flex-col">
           <DropDesktop />
         </section>
       ) : (
-        <section data-nav-theme="dark" className="h-[calc(100svh-110px)] min-h-[520px] w-screen bg-off-black flex flex-col overflow-hidden">
+        <section data-nav-theme="dark" className="h-[100svh] min-h-[640px] w-screen bg-off-black flex flex-col overflow-hidden">
           <DropHero />
         </section>
       )}
