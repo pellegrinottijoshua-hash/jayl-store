@@ -15,46 +15,46 @@
 // scripts/test-drop-config.js.
 export const drop = {
   "current": {
-    "id": "drop-10",
-    "number": 10,
-    "title": "CLASSIC",
+    "id": "drop-11",
+    "number": 11,
+    "title": "LEGENDARY ",
     "productIds": [
-      "cool-vaporeon-t-shirt",
-      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
-      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
+      "cool-celebi-t-shirt",
+      "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift",
+      "cool-lugia-t-shirt"
     ],
-    "startsAt": "2026-11-03T16:00:00Z",
-    "endsAt": "2026-11-10T16:00:00Z",
+    "startsAt": "2026-11-10T16:00:00Z",
+    "endsAt": "2026-11-17T16:00:00Z",
     "cap": 20,
     "caps": {},
     "dropPrice": 2000,
     "bundlePrice": 4999,
     "heroImages": {
-      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_000157_38e33cc7-7d6d-4093-94b8-eb1701298974.png",
-      "cool-vaporeon-t-shirt": "/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
-      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": "/images/flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift/hf_20261022_004442_f0218e81-dbc4-4b8d-8a6a-00a95319f82d.png"
+      "cool-celebi-t-shirt": "/images/cool-celebi-t-shirt/hf_20261026_155624_1dc4c099-fe9a-4cad-9f53-0d542f8a9566.png",
+      "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163750_3fb501ee-e21c-4c3e-a82f-0c43740b7d11.png",
+      "cool-lugia-t-shirt": "/images/cool-lugia-t-shirt/hf_20261026_172739_58da609c-d4d0-4825-b8f8-674c2c7cbcd3.png"
     },
     "defaults": {
-      "cool-vaporeon-t-shirt": {
-        "color": "royal"
+      "cool-lugia-t-shirt": {
+        "color": "heather-royal"
       },
-      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift": {
-        "color": "daisy"
+      "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift": {
+        "color": "heather-red"
       },
-      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift": {
-        "color": "red"
+      "cool-celebi-t-shirt": {
+        "color": "irish-green"
       }
     },
     "defaultSide": "front",
     "heroVideos": {}
   },
   "previous": {
-    "number": 9,
-    "title": "DAY & NIGHT",
+    "number": 10,
+    "title": "CLASSIC",
     "productIds": [
-      "cool-eevee-t-shirt",
-      "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
-      "cool-espeon-t-shirt"
+      "cool-vaporeon-t-shirt",
+      "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
+      "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
     ]
   },
   "past": [
@@ -165,44 +165,21 @@ export const drop = {
       ],
       "startsAt": "2026-10-23T16:00:00Z",
       "endsAt": "2026-10-28T16:00:00Z"
-    }
-  ],
-  "scheduled": [
+    },
     {
-      "id": "drop-11",
-      "number": 11,
-      "title": "LEGENDARY ",
+      "id": "drop-10",
+      "number": 10,
+      "title": "CLASSIC",
       "productIds": [
-        "cool-celebi-t-shirt",
-        "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift",
-        "cool-lugia-t-shirt"
+        "cool-vaporeon-t-shirt",
+        "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
+        "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
       ],
-      "startsAt": "2026-11-10T16:00:00Z",
-      "endsAt": "2026-11-17T16:00:00Z",
-      "cap": 20,
-      "caps": {},
-      "dropPrice": 2000,
-      "bundlePrice": 4999,
-      "heroImages": {
-        "cool-celebi-t-shirt": "/images/cool-celebi-t-shirt/hf_20261026_155624_1dc4c099-fe9a-4cad-9f53-0d542f8a9566.png",
-        "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163750_3fb501ee-e21c-4c3e-a82f-0c43740b7d11.png",
-        "cool-lugia-t-shirt": "/images/cool-lugia-t-shirt/hf_20261026_172739_58da609c-d4d0-4825-b8f8-674c2c7cbcd3.png"
-      },
-      "defaults": {
-        "cool-lugia-t-shirt": {
-          "color": "heather-royal"
-        },
-        "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift": {
-          "color": "heather-red"
-        },
-        "cool-celebi-t-shirt": {
-          "color": "irish-green"
-        }
-      },
-      "defaultSide": "front",
-      "heroVideos": {}
+      "startsAt": "2026-11-03T16:00:00Z",
+      "endsAt": "2026-11-10T16:00:00Z"
     }
   ],
+  "scheduled": [],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
@@ -231,7 +208,10 @@ export const drop = {
     "cool-glaceon-t-shirt",
     "cool-eevee-t-shirt",
     "umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift",
-    "cool-espeon-t-shirt"
+    "cool-espeon-t-shirt",
+    "cool-vaporeon-t-shirt",
+    "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
+    "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
   ],
   "archivePrice": 2499
 }
