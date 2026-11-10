@@ -213,6 +213,32 @@ const at = (iso) => new Date(iso)
     nextDropStartsAt(cfg(), at('2026-02-05T08:00:00Z')) === null)
 }
 
+// ── Drop "auto": parte appena il precedente è chiuso ────────────────────────
+{
+  const auto = entry({ auto: true, startsAt: '2026-03-01T16:00:00Z', endsAt: '2026-03-04T16:00:00Z' })
+  const afterEnd = at('2026-02-04T16:07:30Z')
+
+  check('auto: con il corrente scaduto parte anche se le date segnaposto sono lontane',
+    pickDueDrop(cfg({ scheduled: [auto] }), afterEnd).entry?.id === 'drop-02-test')
+
+  check('auto: con il corrente ancora aperto NON parte',
+    pickDueDrop(cfg({ scheduled: [auto] }), at('2026-02-03T08:00:00Z')).entry === null)
+
+  const manuallyClosed = cfg({ scheduled: [auto] })
+  manuallyClosed.current.productIds = []
+  check('auto: chiuso a mano (nessun pezzo) parte subito',
+    pickDueDrop(manuallyClosed, at('2026-02-02T08:00:00Z')).entry !== null)
+
+  check('senza auto il comportamento resta quello di sempre (fuori finestra = no)',
+    pickDueDrop(cfg({ scheduled: [{ ...auto, auto: undefined }] }), afterEnd).entry === null)
+
+  const out = promoteDrop(cfg({ scheduled: [auto] }), 0, afterEnd)
+  check('auto: apre adesso (al minuto)', out.current.startsAt === '2026-02-04T16:07:00Z')
+  check('auto: mantiene la durata scelta (72h)', out.current.endsAt === '2026-02-07T16:07:00Z')
+  check('auto: il flag non resta nel drop corrente', !('auto' in out.current))
+  check('auto: la config risultante è valida', validateDropConfig({ ...out, archivePrice: 2500 }).ok)
+}
+
 // ── Report ──────────────────────────────────────────────────────────────────
 if (failures.length) {
   console.error(`\n✗ ${failures.length} controlli falliti (${passed} passati) su drop-schedule:\n`)

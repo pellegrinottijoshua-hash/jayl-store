@@ -107,7 +107,7 @@ const field = (label, value, onChange, type = 'text') => (
 // (api/_lib/drop-schedule.js), quindi due form diversi qui vorrebbero dire
 // due forme diverse per la stessa cosa — e un campo che si può impostare solo
 // dopo la promozione, quando ormai il drop è in vetrina.
-function DropEntryFields({ entry, onChange }) {
+function DropEntryFields({ entry, onChange, scheduled = false }) {
   // Uno 0 esplicito su cap NON significa "chiuso": capFor() lo ritorna com'è, e
   // il gate del checkout legge `if (cap && ...)`, quindi 0 = illimitato con il
   // contatore nascosto — l'opposto di quel che un admin probabilmente intende.
@@ -118,8 +118,32 @@ function DropEntryFields({ entry, onChange }) {
     <div className="grid grid-cols-2 gap-x-4">
       {field('Numero', entry.number, (v) => onChange({ number: parseInt(v, 10) || 1 }), 'number')}
       {field('Titolo', entry.title, (v) => onChange({ title: v }))}
-      {field('Apre (ISO UTC)',  entry.startsAt, (v) => onChange({ startsAt: v }))}
-      {field('Chiude (ISO UTC)', entry.endsAt,  (v) => onChange({ endsAt: v }))}
+      {scheduled && (
+        <label className="col-span-2 flex items-start gap-2 mb-3 p-3 border border-emerald-800/60 bg-emerald-900/20 rounded cursor-pointer">
+          <input type="checkbox" checked={entry.auto === true} className="mt-0.5"
+            onChange={(e) => onChange({ auto: e.target.checked })} />
+          <span className="text-sm text-emerald-100">
+            Parte da solo appena chiude il drop precedente
+            <span className="block text-xs text-emerald-200/70">
+              Niente date da calcolare: quando quello prima è chiuso, questo apre subito.
+            </span>
+          </span>
+        </label>
+      )}
+      {scheduled && entry.auto === true ? (() => {
+        const span = Date.parse(entry.endsAt) - Date.parse(entry.startsAt)
+        const hours = Number.isFinite(span) && span > 0 ? Math.round(span / 3600000) : 72
+        return field('Durata (ore)', hours, (v) => {
+          const h = Math.max(1, parseInt(v, 10) || 1)
+          const start = Date.parse(entry.startsAt)
+          onChange({ endsAt: new Date((Number.isFinite(start) ? start : Date.now()) + h * 3600000).toISOString().replace(/\.\d{3}Z$/, 'Z') })
+        }, 'number')
+      })() : (
+        <>
+          {field('Apre (ISO UTC)',  entry.startsAt, (v) => onChange({ startsAt: v }))}
+          {field('Chiude (ISO UTC)', entry.endsAt,  (v) => onChange({ endsAt: v }))}
+        </>
+      )}
       {field('Cap per pezzo (mai 0 — vedi nota sotto)', entry.cap, setCap, 'number')}
       {field('Prezzo drop (cent)', entry.dropPrice, (v) => onChange({ dropPrice: parseInt(v, 10) || 0 }), 'number')}
       {field('Prezzo bundle (cent)', entry.bundlePrice, (v) => onChange({ bundlePrice: parseInt(v, 10) || 0 }), 'number')}
@@ -202,11 +226,32 @@ export default function DropTab() {
   // disabilitare i bottoni mentre una richiesta è in volo lo previene a monte.
   const [busy, setBusy]     = useState(false)
 
+  const advanced = useRef(false)
+
   const loadDrop = () =>
-    post('get-drop').then((r) => {
+    post('get-drop').then(async (r) => {
       if (!r.ok) { setMsg(r.error || 'errore nel caricamento'); return }
       setCfg(r.drop)
       setSha(r.sha)
+
+      // Drop chiuso con un drop "auto" in coda: lo faccio partire io, una sola
+      // volta per apertura del pannello (stessa regola del cron, stessa azione
+      // di "Chiudi drop"). Evita di aspettare il giro delle 16:00 del giorno dopo.
+      const d = r.drop
+      const closed = !(d.current?.productIds || []).length || Date.now() >= Date.parse(d.current?.endsAt)
+      const hasAuto = (d.scheduled || []).some((e) => e.auto === true)
+      if (!advanced.current && closed && hasAuto) {
+        advanced.current = true
+        setMsg('Drop chiuso: faccio partire il successivo…')
+        const c = await post('close-drop')
+        if (c.ok && c.chained) {
+          setMsg(`Drop ${c.chained.number} partito. Il deploy parte da solo.`)
+          const fresh = await post('get-drop')
+          if (fresh.ok) { setCfg(fresh.drop); setSha(fresh.sha) }
+        } else if (!c.ok) {
+          setMsg(c.error || 'errore nell\'avvio del drop successivo')
+        }
+      }
     })
 
   useEffect(() => {
@@ -329,6 +374,7 @@ export default function DropTab() {
       id: `drop-${String(number).padStart(2, '0')}`,
       number,
       title: '',
+      auto: true,
       productIds: [],
       startsAt: startsAt.toISOString().replace(/\.\d{3}Z$/, 'Z'),
       endsAt:   endsAt.toISOString().replace(/\.\d{3}Z$/, 'Z'),
@@ -378,15 +424,16 @@ export default function DropTab() {
   }
 
   const closeDrop = async () => {
-    if (busy || cfg.current.productIds.length === 0) return
-    if (!confirm('Chiudere il drop? I pezzi passano in listino a prezzo pieno.')) return
+    const alreadyClosed = cfg.current.productIds.length === 0
+    if (busy || (alreadyClosed && !scheduled.some((e) => e.auto === true))) return
+    if (!alreadyClosed && !confirm('Chiudere il drop? I pezzi passano in listino a prezzo pieno.')) return
     setBusy(true)
     setMsg('Chiusura…')
     const r = await post('close-drop')
     setBusy(false)
     if (!r.ok) { setMsg(r.error || 'errore'); return }
     if (r.sha) setSha(r.sha)
-    setMsg(r.noop ? 'Drop già chiuso' : 'Drop chiuso')
+    setMsg(r.chained ? `Drop ${r.chained.number} partito` : r.noop ? 'Drop già chiuso' : 'Drop chiuso')
     loadDrop()
   }
 
@@ -412,6 +459,29 @@ export default function DropTab() {
 
   return (
     <div className="space-y-8 text-white">
+      {(currentState.key === 'closed' || currentState.key === 'empty') && (
+        scheduled.length > 0 ? (
+          <div className="border border-emerald-700 bg-emerald-900/30 rounded p-4 text-sm flex flex-wrap items-center justify-between gap-3">
+            <span className="text-emerald-100">
+              Il drop {cfg.current.number} è chiuso. Subentra il drop {scheduled[0].number}
+              {scheduled[0].title ? ` «${scheduled[0].title}»` : ''}
+              {scheduled[0].auto === true ? ' da solo, senza date da impostare.' : ` il ${scheduled[0].startsAt}.`}
+            </span>
+            {scheduled[0].auto === true && (
+              <button type="button" onClick={closeDrop} disabled={busy}
+                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs disabled:opacity-40">
+                Avvia ora
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="border border-red-700 bg-red-900/30 rounded p-4 text-sm text-red-100">
+            Il drop {cfg.current.number} è chiuso e non c'è nessun drop in coda: la home resta ferma su «DROP CLOSED».
+            Programma il prossimo qui sotto («+ Programma un drop»): parte da solo appena lo salvi.
+          </div>
+        )
+      )}
+
       <section>
         <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
           <h3 className="text-sm uppercase tracking-widest text-gray-400">
@@ -427,7 +497,7 @@ export default function DropTab() {
           {currentState.key === 'closed' && (
             <>
               Chiuso {relTime(cfg.current.endsAt)}. {scheduled.length > 0
-                ? `Il prossimo programmato apre il ${scheduled[0].startsAt}.`
+                ? (scheduled[0].auto === true ? 'Il prossimo in coda parte da solo.' : `Il prossimo programmato apre il ${scheduled[0].startsAt}.`)
                 : 'Nessun drop programmato: la home resta senza drop attivo finché non ne programmi uno qui sotto.'}
             </>
           )}
@@ -485,8 +555,8 @@ export default function DropTab() {
           Prossimi drop — {scheduled.length} programmati
         </h3>
         <p className="text-xs text-gray-500 mb-4">
-          Un drop programmato subentra da solo in due momenti: quando premi <em>Chiudi drop</em>
-          {' '}(subentra nello stesso salvataggio, senza buchi in vetrina) e col cron delle 16:00,
+          Spunta <em>Parte da solo appena chiude il precedente</em> e non devi calcolare nessun orario: quando il corrente chiude (anche a mano) questo apre subito. Subentra da solo in tre momenti: quando premi <em>Chiudi drop</em>
+          {' '}(subentra nello stesso salvataggio, senza buchi in vetrina), appena apri questo pannello a drop chiuso, e col cron delle 16:00,
           allineato all'ora in cui i tuoi drop cambiano. In entrambi i casi chiude il corrente
           (i pezzi passano in listino), mette questo al suo posto e committa — il commit fa
           partire il deploy. Fino a <em>Apre</em> il drop resta in anteprima: si vede in home,
@@ -505,7 +575,7 @@ export default function DropTab() {
           <div key={i} className="border border-gray-800 rounded p-4 mb-4">
             <div className="flex justify-between items-center mb-3">
               <span className="text-xs uppercase tracking-widest text-gray-500">
-                Drop {entry.number} — apre il {entry.startsAt}
+                Drop {entry.number} — {entry.auto === true ? 'parte da solo appena chiude il precedente' : `apre il ${entry.startsAt}`}
               </span>
               <button type="button" onClick={() => removeScheduled(i)} disabled={busy}
                 className="text-xs text-red-400 underline hover:text-red-300 disabled:opacity-40">
@@ -513,7 +583,7 @@ export default function DropTab() {
               </button>
             </div>
 
-            <DropEntryFields entry={entry} onChange={patchScheduled(i)} />
+            <DropEntryFields entry={entry} onChange={patchScheduled(i)} scheduled />
 
             <h4 className="text-xs uppercase tracking-widest text-gray-500 mt-2 mb-1">
               I pezzi — {entry.productIds.length}/3

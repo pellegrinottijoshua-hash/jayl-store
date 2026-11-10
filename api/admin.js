@@ -448,7 +448,7 @@ export default async function handler(req, res) {
       promotionReason = reason
 
       if (entry) {
-        const nextCfg = promoteDrop(dropCfg, index)
+        const nextCfg = promoteDrop(dropCfg, index, now)
 
         // Ultimo cancello prima di scrivere. save-drop valida già ogni voce
         // programmata al salvataggio, ma questo commit lo fa una macchina di
@@ -1888,7 +1888,10 @@ Return JSON with these exact keys:
         return res.status(500).json({ error: e.message })
       }
       const ids = cfg.current?.productIds || []
-      if (ids.length === 0) {
+      // Drop già chiuso ma con un drop "auto" in coda: non è un no-op, è il
+      // momento di far partire il successivo.
+      const pending = ids.length === 0 ? pickDueDrop(cfg, new Date()) : null
+      if (ids.length === 0 && !pending?.entry) {
         // Già chiuso — un doppio click, un retry su una richiesta lenta, o
         // una seconda scheda admin rimasta aperta. Non scrivere: sovrascrivere
         // `previous` qui lo svuoterebbe, distruggendo l'unico motivo per cui
@@ -1896,12 +1899,14 @@ Return JSON with these exact keys:
         // più mai vuoto). No-op idempotente.
         return res.status(200).json({ ok: true, released: cfg.released || [], sha: file.sha, noop: true })
       }
-      cfg.released = [...new Set([...(cfg.released || []), ...ids])]
-      // Conserva il drop chiuso: fra un drop e l'altro la home lo mostra
-      // marcato invece di svuotarsi. Senza questo, DropPanels non renderizza niente.
-      cfg.previous = { number: cfg.current?.number, title: cfg.current?.title, productIds: ids }
-      cfg.past     = archiveDrop(cfg, cfg.current)
-      cfg.current  = { ...cfg.current, productIds: [] }
+      if (ids.length > 0) {
+        cfg.released = [...new Set([...(cfg.released || []), ...ids])]
+        // Conserva il drop chiuso: fra un drop e l'altro la home lo mostra
+        // marcato invece di svuotarsi. Senza questo, DropPanels non renderizza niente.
+        cfg.previous = { number: cfg.current?.number, title: cfg.current?.title, productIds: ids }
+        cfg.past     = archiveDrop(cfg, cfg.current)
+        cfg.current  = { ...cfg.current, productIds: [] }
+      }
 
       // Subentro immediato del programmato, quando ce n'è uno dovuto.
       // Chiudere un drop e lasciare la vetrina vuota fino al prossimo giro di
@@ -1913,7 +1918,7 @@ Return JSON with these exact keys:
       let chained = null
       const due = pickDueDrop(cfg, new Date())
       if (due.entry) {
-        const nextCfg = promoteDrop(cfg, due.index)
+        const nextCfg = promoteDrop(cfg, due.index, new Date())
         const check = validateDropConfig(nextCfg)
         if (check.ok) {
           cfg = nextCfg

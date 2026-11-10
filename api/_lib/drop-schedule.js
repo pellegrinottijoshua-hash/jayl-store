@@ -45,6 +45,17 @@
 export const PROMOTION_LEAD_MS = 24 * 60 * 60 * 1000
 
 /**
+ * Il drop corrente è finito: senza pezzi (chiuso a mano) oppure scaduto.
+ * Nessun `current` affatto conta come chiuso.
+ */
+export function isDropClosed(cfg, t = Date.now()) {
+  const ids = cfg?.current?.productIds || []
+  if (ids.length === 0) return true
+  const ends = Date.parse(cfg?.current?.endsAt)
+  return Number.isFinite(ends) && t >= ends
+}
+
+/**
  * La voce di `scheduled` da promuovere adesso, se ce n'è una.
  *
  * Ritorna sempre un `reason` leggibile anche quando non promuove nulla: il
@@ -75,6 +86,22 @@ export function pickDueDrop(cfg, now = new Date()) {
       entry: null,
       index: -1,
       reason: `drop corrente ancora in corso fino a ${cfg.current.endsAt} — promozione rimandata`,
+    }
+  }
+
+  // ── Drop "auto": parte appena il precedente è chiuso ──────────────────────
+  // Una voce con `auto: true` non ha un orario da calcolare: l'admin la mette
+  // in coda e basta. Appena il corrente è chiuso (scaduto, o chiuso a mano)
+  // subentra la prima voce auto, senza guardare finestre di anticipo né le
+  // date segnaposto che porta con sé — promoteDrop le ricalcola da adesso.
+  if (isDropClosed(cfg, t)) {
+    const autos = scheduled
+      .map((entry, index) => ({ entry, index, startsAt: Date.parse(entry?.startsAt) }))
+      .filter((c) => c.entry?.auto === true)
+      .sort((a, b) => (a.startsAt || 0) - (b.startsAt || 0))
+    if (autos.length) {
+      const first = autos[0]
+      return { entry: first.entry, index: first.index, reason: `${first.entry.id} parte subito: il drop precedente è chiuso` }
     }
   }
 
@@ -148,12 +175,27 @@ export function archiveDrop(cfg, outgoing) {
  *      trasformazione, nessun campo inventato al volo
  *   5. esce da `scheduled`
  */
-export function promoteDrop(cfg, index) {
+export function promoteDrop(cfg, index, now = new Date()) {
   const scheduled = Array.isArray(cfg.scheduled) ? cfg.scheduled : []
   const entry = scheduled[index]
   if (!entry) throw new Error(`promoteDrop: nessuna voce programmata all'indice ${index}`)
 
   const outgoingIds = cfg.current?.productIds || []
+
+  // Voce auto: apre ADESSO e dura quanto aveva deciso l'admin (endsAt-startsAt,
+  // 72 ore se illeggibile). Le date che portava in coda erano segnaposto.
+  let incoming = entry
+  if (entry.auto === true) {
+    const span = Date.parse(entry.endsAt) - Date.parse(entry.startsAt)
+    const durationMs = Number.isFinite(span) && span >= 3600000 ? span : 72 * 3600000
+    const start = Math.floor(now.getTime() / 60000) * 60000
+    const { auto: _auto, ...rest } = entry
+    incoming = {
+      ...rest,
+      startsAt: new Date(start).toISOString().replace(/\.\d{3}Z$/, 'Z'),
+      endsAt:   new Date(start + durationMs).toISOString().replace(/\.\d{3}Z$/, 'Z'),
+    }
+  }
 
   return {
     ...cfg,
@@ -166,7 +208,7 @@ export function promoteDrop(cfg, index) {
       : (cfg.previous ?? null),
     past: archiveDrop(cfg, cfg.current),
     released: [...new Set([...(cfg.released || []), ...outgoingIds])],
-    current: entry,
+    current: incoming,
     scheduled: scheduled.filter((_, i) => i !== index),
   }
 }
