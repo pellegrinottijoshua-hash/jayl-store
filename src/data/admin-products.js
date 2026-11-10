@@ -24852,5 +24852,272 @@ export const adminProducts = [
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163547_13642ed5-114a-4995-9b76-c3258be7d15c.png"
     ]
+  },
+  {
+    "id": "cool-lugia-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Cool Lugia T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "With wings unfurled, Lugia glides through the skies, a guardian of the deep sea and the embodiment of calm. This Gildan premium tee captures its majestic spirit in a striking design that rests over your heart, showcasing top-notch DTG print quality. It’s like wearing a piece of the ocean breeze—mysterious yet serene. Toss this on for casual outings or cozy nights in while you reminisce about legendary battles. A thoughtful gift for someone who appreciates both style and nostalgia without trying too hard.",
+    "altText": "Majestic Lugia soaring above waves, depicted in retro 90s anime style with small chest print on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      }
+    ],
+    "image": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-mockup-01.jpg",
+    "imageSides": {
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170244_ef38c9a1-ff72-4d3e-84d6-ddd65ad493df.png": "front",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170904_070cbe30-283f-41e1-9f5d-306f3de31a81.png": "back",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_171616_3cb6f2d4-8d10-45da-85e8-92cc046306e7.png": "back",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170915_f891c22a-c01c-4bec-ba05-11e0fd3d5318.png": "back",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_172739_58da609c-d4d0-4825-b8f8-674c2c7cbcd3.png": "front",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_173033_52fd4cba-9efc-4cac-8747-1f0bc0c60178.png": "front",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261110_155559_675783da-7b40-44fc-989b-ea16f92f2a87.png": "front"
+    },
+    "heroImage": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170915_f891c22a-c01c-4bec-ba05-11e0fd3d5318.png",
+    "detailImage": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20261026_170244_ef38c9a1-ff72-4d3e-84d6-ddd65ad493df.png",
+    "images": [
+      "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-01.jpg",
+      "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-02.jpg",
+      "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-03.jpg",
+      "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-04.jpg",
+      "/images/cool-lugia-t-shirt/cool-lugia-t-shirt-gelato-05.jpg"
+    ],
+    "imageAlts": {
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-mockup-01.jpg": "Majestic Lugia soaring above waves, depicted in retro 90s anime style with small chest print on a premium JAYL tee.",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-black-01.jpg": "Majestic Lugia soaring above waves, depicted in retro 90s anime style with small chest print on a premium JAYL tee.",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-mockup-02.jpg": "Majestic Lugia soaring above waves, depicted in retro 90s anime style with small chest print on a premium JAYL tee.",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-heather-royal-01.jpg": "Majestic Lugia soaring above waves, depicted in retro 90s anime style with small chest print on a premium JAYL tee.",
+      "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-white-01.jpg": "Majestic Lugia soaring above waves, depicted in retro 90s anime style with small chest print on a premium JAYL tee."
+    },
+    "tags": [
+      "lugia",
+      "pokemon",
+      "t-shirt",
+      "gamer gear",
+      "anime merch",
+      "apparel",
+      "fantasy art",
+      "winged creature",
+      "retro style",
+      "collectibles",
+      "cool designs",
+      "art prints",
+      "gift ideas"
+    ],
+    "featured": false,
+    "gelatoProductId": "343635cf-0345-4861-b976-30ea5ce15900",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "lugia t-shirt",
+      "pokemon apparel",
+      "anime shirt",
+      "gamer clothing",
+      "cool tees"
+    ],
+    "longTailKeywords": [
+      "buy lugia pokemon shirt online",
+      "premium pokemon graphic tee",
+      "unique anime merchandise gifts",
+      "retro lugia t-shirt design",
+      "best apparel for gamers online",
+      "collectible pokémon shirts available",
+      "stylish anime t-shirts for sale",
+      "limited edition pokemon clothing",
+      "comfortable graphic tees for men",
+      "trendy designs for pokemon fans"
+    ],
+    "hashtags": "#lugia #pokemon #tshirt #anime #apparel #gamergear #fanart #retrostyling #coolclothes #fashiongram #collectibles #graphictee #tees #styleinspo #medialore #artprints #giftideas #legendarypokemon #vintageanimeart #geekchic #illustrationart #pocketprintshirt #nostalgiaartwork #cartoonmerchandise #wearableart #pokemonswag #stylishwears #casualoutfits #streetwearstyle #creativemindset",
+    "instagramCaption": "\"Just because it's mythological doesn't mean it can't be stylish\" – at least that's what Lugia says when it sweeps by! Grab yours today and show some love to this ocean guardian. 🐉🌊😎#gamingapparel #pokemontshirts#retrostyle",
+    "pinterestCaption": "Discover the magic of Lugia with our unique t-shirt that perfectly embodies its serene strength. Crafted with premium materials and printed with vibrant details, it’s a fantastic addition to any fan's wardrobe or collection.",
+    "seoTitle": "Lugia T-Shirt | Cool Pokémon Apparel | Gift for Collectors",
+    "variants": [
+      {
+        "uid": "a71b7846-d7ee-42b4-93d8-d3b89059cf7b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_heather-royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0d37f270-8d0d-456f-98fa-10c8ea53a713",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7eb9599c-b2b9-44bd-b5ec-70110accbc79",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bccd018f-922a-45c4-b5c0-4fdc5134ce0b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "74810fae-d04e-4624-8e16-07a5cf2f75dc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "10614d1b-e513-485e-8536-85684df833d6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8af813ff-e19f-48b0-a1b1-88e2e4558afd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "59b5d19b-b936-47ee-9318-6a4f4ca88215",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a2865b27-a137-4c00-912c-4eb813c4e623",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d43a87d5-1029-49fb-943a-cfb2a6eb0937",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "48a31bdd-056b-41ff-aac9-47f1d5e1fbac",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6c1ccedd-063f-4390-bc61-421a7d962d2e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "b9ceeadd-954a-4b05-b5b3-4fbeca6b066a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "65e4f770-732d-4718-be15-4ae0db9e5ea6",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-royal_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Royal",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a0b74077-7c47-4f33-9607-20eb9c3d063c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "heather-royal",
+        "label": "Heather Royal",
+        "hex": "#888888",
+        "image": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-heather-royal-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/lugia-t-shirt-pok-mon-fan-art-tee-legendary-p-white-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8b99c2d3-e01c-4263-9e90-840b2824bad5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T155246Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9187dc43fac89bba9f3e7c10c59fd4eaff7aa9519be2fe64f902383ee4855275",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5c9e32b8-0943-4176-9fa5-9ea9f9f44a00/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T155246Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6bcbc05aa451d63101dbdd3b1f10ec0d956eb722cffd5a8dfd420b719e2a87a6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e6569b38-6141-4ecc-9059-445f4f9d4f6e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T155246Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=de2132426b80875b2a2f291100448872ded1c2883eda8a096efe353fd2b00333",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/82152563-a2ba-4119-b171-187c0b872ae2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T155246Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=29af253cbe2fa4bc3ea1e61c0c622231e707b8d7b1909dfc90e41e880581f1a1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/29ac21c8-d0df-4b9c-8799-51c6c9ca17c6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T155246Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=75c13290c03f58dad8eae5aa5d801b6a4e6fbc1943beb23692e6e3296b00f234"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20260816_213802_e9406211-af06-4bab-a2a8-115e993ed6e9-mx2n90h6-copia.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-10T16:26:01.756Z",
+    "updatedAt": "2026-11-10T16:26:01.756Z"
   }
 ]
