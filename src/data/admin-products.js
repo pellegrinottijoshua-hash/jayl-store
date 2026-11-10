@@ -24573,7 +24573,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T14:03:46.645Z",
-    "updatedAt": "2026-11-10T14:23:44.901Z",
+    "updatedAt": "2026-11-10T14:24:41.992Z",
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-celebi-t-shirt/hf_20261026_155635_964b9773-eb85-481d-8127-0360fc7fd96f.png"
     ],
@@ -24583,7 +24583,8 @@ export const adminProducts = [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-celebi-t-shirt/hf_20261026_153332_5ea2d9dc-4685-45e2-abfa-38842b511ed0.png": "back",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-celebi-t-shirt/hf_20261026_155624_1dc4c099-fe9a-4cad-9f53-0d542f8a9566.png": "front",
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-celebi-t-shirt/hf_20261026_154638_b41197f5-732b-4c2a-9ad3-43a38033cec5.png": "front"
-    }
+    },
+    "relatedProducts": []
   },
   {
     "id": "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift",
