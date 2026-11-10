@@ -78,14 +78,10 @@ export default function HomeReviews() {
   return (
     <section
       data-nav-theme="dark"
-      className="w-screen bg-off-black py-16 sm:py-24 overflow-hidden"
+      className="w-screen bg-off-black py-8 sm:py-12 overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <p className="text-center text-2xs font-sans tracking-label-xl uppercase text-text-muted mb-8">
-        what people say
-      </p>
-
       <div className="relative px-6 sm:px-12 max-w-2xl mx-auto min-h-[160px] sm:min-h-[180px]" aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
           <motion.figure

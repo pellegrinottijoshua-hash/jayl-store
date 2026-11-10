@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import { getProductById } from '@/data/products'
 import { getDrop } from '../../../api/_lib/drop.js'
-import { nextDropStartsAt } from '../../../api/_lib/drop-schedule.js'
-import DropCountdown from './DropCountdown'
 import NewMark from './NewMark'
 import ShippedPrice from './ShippedPrice'
 import { VIDEO_VIGNETTE } from './videoVignette'
-import SubscribeForm from '@/components/SubscribeForm'
-import { dropWindowState, BEFORE } from './dropWindowState'
 import { homeVideoSrc } from '@/lib/heroVideo'
 import { shortProductName as shortName } from '@/lib/utils'
 
 /**
  * Il drop su desktop: NEW animato come sul telefono, la scia dorata del tempo
  * le tre schede affiancate
- * e tutte visibili, il prezzo grande "shipped" sotto, poi la lista d'attesa.
+ * e tutte visibili, il prezzo grande "shipped" sotto. Badge Etsy, recensioni e
+ * iscrizione stanno sotto, in HomePage.
  *
  * I tre video partono insieme (quando tutti e tre hanno dati, o comunque dopo
  * un attimo), girano una volta e restano sul fotogramma finale: tre Pokémon
@@ -31,7 +28,6 @@ const START_TIMEOUT_MS = 2500
 
 export default function DropDesktop() {
   const cfg = getDrop()
-  const { state, target } = dropWindowState(cfg)
   const reduceMotion = useReducedMotion()
   const [saveData] = useState(() => typeof navigator !== 'undefined' && Boolean(navigator.connection?.saveData))
 
@@ -45,10 +41,6 @@ export default function DropDesktop() {
   const price = showingCurrent ? cfg.current.dropPrice : cfg.archivePrice
   const withVideo = !reduceMotion && !saveData
 
-  // Prima che il drop apra, "il prossimo drop" e' questo: un secondo
-  // countdown verso cfg.next metterebbe due date diverse per la stessa
-  // apertura. Aperto o chiuso, torna a voler dire il drop successivo.
-  const nextStartsAt = nextDropStartsAt(cfg)
 
   // I tre video partono insieme: si aspetta che abbiano tutti dati.
   const videos = useRef([])
@@ -83,7 +75,7 @@ export default function DropDesktop() {
   return (
     <>
       {items.length > 0 && (
-        <div className="min-h-[100svh] flex flex-col pt-[94px] pb-6">
+        <div className="h-[calc(100svh-120px)] min-h-[560px] flex flex-col pt-[94px] pb-3">
           <NewMark word={(showingCurrent && cfg.current?.headline) || 'NEW'} fontSize="clamp(4rem, 8vw, 7.5rem)" />
 
 
@@ -97,7 +89,7 @@ export default function DropDesktop() {
                   to={`/product/${p.id}`}
                   onMouseEnter={() => replay(i)}
                   className="group relative block overflow-hidden bg-off-black"
-                  style={{ height: 'min(56vh, 640px)', aspectRatio: '2 / 3' }}
+                  style={{ height: 'min(39vh, 520px)', aspectRatio: '2 / 3' }}
                 >
                   {/* Col video niente foto sotto: si vedeva per un attimo prima del primo fotogramma. */}
                   {!src && <img src={photo} alt={p.altText || p.name} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '50% 30%' }} />}
@@ -133,36 +125,6 @@ export default function DropDesktop() {
           <ShippedPrice cents={price} className="pt-6" fontSize="clamp(3.5rem, 6vw, 5.5rem)" />
         </div>
       )}
-
-      <div className="flex-1 flex flex-col justify-center pt-8 pb-16">
-        <div className="relative overflow-hidden px-12">
-          {/* La J decorativa a filo destro, come negli altri blocchi del sito */}
-          <span
-            aria-hidden="true"
-            className="absolute right-[-0.05em] top-1/2 -translate-y-1/2 font-display leading-none select-none pointer-events-none"
-            style={{ fontSize: 'clamp(8rem, 20vw, 20rem)', color: '#C4A35A', opacity: 0.04, letterSpacing: '-0.05em' }}
-          >J</span>
-
-          <div className="relative max-w-md mx-auto w-full text-center">
-            <p className="text-[10px] font-sans tracking-[0.25em] uppercase mb-4" style={{ color: '#C4A35A', opacity: 0.7 }}>
-              Get notified
-            </p>
-            <h2 className="font-display text-4xl text-cream leading-tight mb-4">
-              Never miss a new release.
-            </h2>
-            <p className="text-fg/60 text-sm leading-relaxed mb-6">
-              New designs land every few days at a launch price. After that they stay in
-              the collection at full price. Join the list and get the next ones first.
-            </p>
-            {state === BEFORE ? (
-              <DropCountdown to={target} label="opens in" className="block text-xs tracking-widest uppercase text-fg/50 tabular-nums mb-8" />
-            ) : nextStartsAt && (
-              <DropCountdown to={nextStartsAt} label="next release in" className="block text-xs tracking-widest uppercase text-fg/50 tabular-nums mb-8" />
-            )}
-            <SubscribeForm variant="waitlist" />
-          </div>
-        </div>
-      </div>
     </>
   )
 }

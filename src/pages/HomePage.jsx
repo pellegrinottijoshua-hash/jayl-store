@@ -331,25 +331,32 @@ export default function HomePage() {
           video che partono insieme, il prezzo, poi la lista d'attesa
           (DropDesktop). ════ */}
       {desktop ? (
-        <section data-nav-theme="dark" className="min-h-screen w-screen bg-off-black flex flex-col">
+        <section data-nav-theme="dark" className="h-[calc(100svh-110px)] min-h-[560px] w-screen bg-off-black flex flex-col">
           <DropDesktop />
         </section>
       ) : (
-        <section data-nav-theme="dark" className="h-[100svh] min-h-[640px] w-screen bg-off-black flex flex-col overflow-hidden">
+        <section data-nav-theme="dark" className="h-[calc(100svh-110px)] min-h-[520px] w-screen bg-off-black flex flex-col overflow-hidden">
           <DropHero />
-          <SubscribeForm className="px-5 pb-3" />
         </section>
       )}
 
-      {/* Punteggio Etsy: subito sotto il primo schermo. */}
+      {/* Sotto il prezzo: punteggio Etsy, recensioni a rotazione, iscrizione.
+          Poi l'archivio. Le recensioni si nascondono da sole se reviews.json è vuoto. */}
       <EtsyRating />
+      <HomeReviews />
+      <section data-nav-theme="dark" className="w-screen bg-off-black px-6 pb-12 sm:pb-16">
+        {desktop ? (
+          <div className="max-w-md mx-auto text-center">
+            <h2 className="font-display text-3xl sm:text-4xl text-cream leading-tight mb-6">Never miss a new release.</h2>
+            <SubscribeForm variant="waitlist" />
+          </div>
+        ) : (
+          <SubscribeForm />
+        )}
+      </section>
 
       {/* ════ SCREEN 2 — L'archivio, una foto a schermo intero alla volta ════ */}
       {desktop ? <ArchiveStrip items={archiveProducts} /> : <ArchiveReel items={archiveProducts} />}
-
-      {/* ════ Recensioni — subito sotto l'archivio, una alla volta.
-          Si nasconde da sola finché reviews.json è vuoto. ════ */}
-      <HomeReviews />
 
       {/* ════ Artist's (cream) ════════════════════════════════════════ */}
       <section
