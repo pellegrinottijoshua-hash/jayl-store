@@ -23137,7 +23137,7 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/hf_20260822_111206_6900ba1d-eccc-485d-9563-76f887e424c4-zack.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:09:54.845Z",
-    "updatedAt": "2026-11-03T14:19:32.140Z",
+    "updatedAt": "2026-11-10T16:32:20.461Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/umbreon-t-shirt-dark-type-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "heroShots": [
