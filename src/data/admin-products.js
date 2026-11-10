@@ -24574,5 +24574,268 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T14:03:46.645Z",
     "updatedAt": "2026-11-10T14:03:46.645Z"
+  },
+  {
+    "id": "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Ho Oh T-Shirt – Legendary Pokémon Fan Art Tee, Gamer Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "For the dedicated gamer who knows how to spell ‘legendary’ with a capital 'L' – meet your new favorite tee: the Ho Oh T-Shirt! This homage to the mythical firebird captures Ho Oh in its splendid array of vibrant colors, echoing its majestic aura. Made from Gildan premium cotton, it features crisp DTG print quality that brings this fan art to life on your chest. Whether you're heading out for a gaming session or chilling at home, this shirt is a playful nod to those epic Pokémon adventures. Gift it to your bestie who's always buzzing about Pokémon lore and watch their face light up!",
+    "altText": "Majestic Ho Oh soaring with vibrant plumage captured in retro anime style on a small chest print of a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-mockup-01.jpg",
+    "heroImage": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_161708_d3dcdd17-c905-4a96-aa21-850e3f40de53.png",
+    "detailImage": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_161230_94d42585-d57d-4afd-89b3-39b7178c4f5d.png",
+    "images": [
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-01.jpg",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-02.jpg",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-03.jpg",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-04.jpg",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-05.jpg",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_161658_856bee6f-6914-4c2f-b8f8-199eaaf66624.png",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163547_13642ed5-114a-4995-9b76-c3258be7d15c.png",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163434_a8caa158-3639-4c72-87f1-809525aaa761.png",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163750_3fb501ee-e21c-4c3e-a82f-0c43740b7d11.png"
+    ],
+    "imageAlts": {
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-mockup-01.jpg": "Majestic Ho Oh soaring with vibrant plumage captured in retro anime style on a small chest print of a premium JAYL tee.",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-heather-red-01.jpg": "Majestic Ho Oh soaring with vibrant plumage captured in retro anime style on a small chest print of a premium JAYL tee.",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-mockup-02.jpg": "Majestic Ho Oh soaring with vibrant plumage captured in retro anime style on a small chest print of a premium JAYL tee.",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-black-01.jpg": "Majestic Ho Oh soaring with vibrant plumage captured in retro anime style on a small chest print of a premium JAYL tee.",
+      "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-white-01.jpg": "Majestic Ho Oh soaring with vibrant plumage captured in retro anime style on a small chest print of a premium JAYL tee."
+    },
+    "tags": [
+      "ho oh",
+      "pokemon shirt",
+      "gamer gift",
+      "fan art",
+      "anime apparel",
+      "retro t-shirt",
+      "pokémon fan",
+      "artistic tee",
+      "print on demand",
+      "vidya fashion",
+      "legendary bird",
+      "gildan shirt",
+      "gaming clothes"
+    ],
+    "featured": false,
+    "gelatoProductId": "e47130a0-35d8-422d-a717-744443fe9da7",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "Ho Oh shirt",
+      "Pokemon tee",
+      "gamer art",
+      "fan art t-shirt",
+      "retro anime"
+    ],
+    "longTailKeywords": [
+      "Ho Oh Pokemon fan shirt",
+      "legendary bird gamer gift",
+      "unique Pokemon apparel online",
+      "best gifts for gamers 2023",
+      "anime inspired clothing store",
+      "custom print on demand tees",
+      "vintage style Pokemon shirts",
+      "gift ideas for Pokemon fans",
+      "\"I choose you\" t-shirt design",
+      "colorful fantasy character t-shirts"
+    ],
+    "hashtags": "#hooh #pokemon #gamerlife #fanart #apparel #anime #retrogaming #artshirt #teegram #geekfashion #gamingclothes #pokemontshirt #memecommunity #collectibles #graphictee #nerdlife #mythicalcreatures #creativefashion #cozywears #streetstyle #pocketfandoms #popculturefashion #artlover #artistsoninstagram #igfashion #tshirtcollection #playfuldesigns #boldprints #premiumqualityapparel ##vidyagameshop#giftofgaming#staystylish#trendingtees#funmerch",
+    "instagramCaption": "\"Catchin’ vibes faster than I catch Pokémon! 🎮🌈 Rockin’ my Ho Oh tee while diving into legendary battles. Who’s ready? Let’s go! 🔥✨✨#hooh#pokemonfans#gaminglife#quirkyfashion\"",
+    "pinterestCaption": "\"Unleash your inner gamer with the vibrant Ho Oh T-Shirt! This playful piece merges retro anime aesthetics with comfortable wear, perfect for any gaming adventure. Check it out today and add some flair to your wardrobe!\"",
+    "seoTitle": "Ho Oh T-Shirt | Legendary Firebird Gamer Gift | Retro Art",
+    "variants": [
+      {
+        "uid": "af71cb93-cc48-4f96-bbe8-ec9ec0125e88",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7418bb7f-cef0-4a32-8af7-9e8fc6c2743d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ef3e8cad-fa60-498d-86a5-278f16cf239c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "848541bd-7f34-43f1-9776-ab881e11d75f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_heather-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Red",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "361d84f0-4b3e-4356-85ca-fe740dff1014",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2d95e968-a150-43a2-bec3-5921c5d7f42c",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6448ef83-043a-4f04-84b0-f428d630b959",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_heather-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Red",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "50ab12e3-9472-41e8-976a-735e5d173692",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_heather-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Red",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "92abc38f-90c1-41d2-9824-7dcf0f9f08a0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "0946298e-5ae3-4960-aaa5-126eaa82b4b4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d9cd0326-6148-41cd-85b6-b1f78badb30e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_heather-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Red",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bd0512ec-d0e1-4107-9967-dc2835fb92e4",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_heather-red_gpr_4-0_inlbl_gildan_64000",
+        "color": "Heather Red",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "989db5fc-7897-410d-8347-11f43f07e8dd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e461b396-4e40-409d-908a-82609a2cb437",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7b04564a-89d5-4260-b9a9-e8b19ff34355",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-white-01.jpg"
+      },
+      {
+        "id": "heather-red",
+        "label": "Heather Red",
+        "hex": "#888888",
+        "image": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-heather-red-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-black-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bed50524-f284-46f8-8c90-8ba05a973b60/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T141137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f24d7c13335a318210d9e906d8404d5afca4e314f06bf21dc61410c88f5b5b1b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/796b2fa3-221c-4ada-a965-14344c5b1856/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T141137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3dc3a4de9220c93121b1ffa67fa582cbe835c542e2f077ba8860edcf1e9a45b1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a8766816-3c4c-4992-af7d-16d6606ba828/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T141137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1ae1af537fdcb8c215f979d159ed851982af875537a25f615df6c1814d79389e",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c9c428de-f4db-4c85-955b-3aee5e7d6331/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T141137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=534aa306ace4685e624c6f8bd67dd2813e35d6c92a96b8053c3f931183826fd5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f86453ed-ca27-431c-af16-cb817b51a26c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261110%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261110T141137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e221489df62d0da91afa03573e3bd709cf0a607f4193a944e5d57311ae77e8b"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20260825_112113_426210fe-c190-42b3-9fdb-ce45aa6abc50-zack-1-copia.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-10T14:21:29.945Z",
+    "updatedAt": "2026-11-10T14:21:29.945Z"
   }
 ]
