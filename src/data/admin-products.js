@@ -23190,9 +23190,9 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/espeon-t-shirt-psychic-type-pok-mon-fan-art-tee-gamer-gift/espeon-t-shirt-psychic-type-pok-mon-fan-art-t-mockup-01.jpg",
-    "heroImage": "/images/cool-espeon-t-shirt/hf_20261014_164200_1eb59c08-dabb-4658-b7db-2aa0c98fd4ca.png",
-    "detailImage": "/images/cool-espeon-t-shirt/hf_20261014_163209_c4dfe117-1824-4750-abea-d8e5a4944af5.png",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_164623_a08c25e0-fc37-4041-8685-9e9f1162e04b.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_164200_1eb59c08-dabb-4658-b7db-2aa0c98fd4ca.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_163209_c4dfe117-1824-4750-abea-d8e5a4944af5.png",
     "images": [
       "/images/cool-espeon-t-shirt/cool-espeon-t-shirt-gelato-01.jpg",
       "/images/cool-espeon-t-shirt/cool-espeon-t-shirt-gelato-02.jpg",
@@ -23381,7 +23381,11 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-espeon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-23T13:37:06.156Z",
-    "updatedAt": "2026-10-23T13:37:06.156Z"
+    "updatedAt": "2026-11-10T16:30:08.966Z",
+    "relatedProducts": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-espeon-t-shirt/hf_20261014_164623_a08c25e0-fc37-4041-8685-9e9f1162e04b.png"
+    ]
   },
   {
     "id": "cool-vaporeon-t-shirt",
