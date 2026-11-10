@@ -24590,7 +24590,7 @@ export const adminProducts = [
     "id": "ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Ho Oh T-Shirt – Legendary Pokémon Fan Art Tee, Gamer Gift",
+    "name": "Cool Ho Oh T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
@@ -24631,9 +24631,9 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-mockup-01.jpg",
-    "heroImage": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_161708_d3dcdd17-c905-4a96-aa21-850e3f40de53.png",
-    "detailImage": "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_161230_94d42585-d57d-4afd-89b3-39b7178c4f5d.png",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163547_13642ed5-114a-4995-9b76-c3258be7d15c.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163547_13642ed5-114a-4995-9b76-c3258be7d15c.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_161230_94d42585-d57d-4afd-89b3-39b7178c4f5d.png",
     "images": [
       "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-01.jpg",
       "/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-g-gelato-02.jpg",
@@ -24847,6 +24847,10 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T14:21:29.945Z",
-    "updatedAt": "2026-11-10T14:21:29.945Z"
+    "updatedAt": "2026-11-10T14:36:25.845Z",
+    "relatedProducts": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163547_13642ed5-114a-4995-9b76-c3258be7d15c.png"
+    ]
   }
 ]
