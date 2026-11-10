@@ -23429,7 +23429,7 @@ export const adminProducts = [
       }
     ],
     "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png",
-    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_225229_5e381bee-0a01-487f-86e1-9eab35b511fa.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261022_004414_78d39549-dd18-4de6-806d-358b71518df2.png",
     "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_224751_05678e68-12a9-4369-9268-b49379940380.png",
     "images": [
       "/images/cool-vaporeon-t-shirt/cool-vaporeon-t-shirt-gelato-01.jpg",
@@ -23759,7 +23759,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/vaporeon-t-shirt-water-type-pok-mon-fan-art-tee-eeveelution-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-30T17:54:49.821Z",
-    "updatedAt": "2026-11-03T14:09:45.820Z",
+    "updatedAt": "2026-11-10T16:29:10.753Z",
     "relatedProducts": [],
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-vaporeon-t-shirt/hf_20261021_230253_f1451a1c-cee2-47f6-8471-e74b3822a9aa.png"
