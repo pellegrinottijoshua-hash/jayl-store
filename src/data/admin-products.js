@@ -24324,8 +24324,8 @@ export const adminProducts = [
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
-    "description": "Searching for a heartfelt gift for your favorite Pokémon aficionado? This Celebi T-Shirt is inspired by the mischievous and endearing time-traveling Pokémon, radiating warmth and nostalgia. The design captures Celebi in a playful pose, embodying its gentle spirit and love for adventure. Made from Gildan premium fabric with direct-to-garment print quality, this tee ensures a soft touch that feels as cozy as cuddling up with a beloved game. Whether it’s for a birthday or just because, this shirt brings smiles to those who treasure the magic of gaming.",
-    "altText": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee.",
+    "description": "Imagine the vibrant hues of Celebi’s green and pink radiating from your chest, a guardian of time stirring within this artwork. The mystique of Celebi captures its essence as a symbol of hope and renewal, flitting between worlds with grace and wisdom. This Gildan premium tee showcases direct-to-garment print quality that brings the lively character to life, making it a true centerpiece. Whether you're exploring the wilderness or just hanging out with friends, this shirt serves as a delightful gift that resonates with adventure.",
+    "altText": "Celebi gliding gracefully in soft greens and pinks on a small chest print on a premium JAYL tee in fan-art style.",
     "details": [
       "Gildan 64000 Softstyle — premium ring-spun cotton tee",
       "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
@@ -24379,19 +24379,19 @@ export const adminProducts = [
       "/images/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/celebi-t-shirt-mythical-pok-mon-fan-art-tee-g-black-01.jpg": "Playful Celebi flying joyfully with vibrant green hues on a small chest print of the JAYL tee."
     },
     "tags": [
-      "celebi",
-      "pokemon",
-      "t-shirt",
-      "fan art",
-      "gamer gift",
+      "cool pokemon",
+      "celebi t-shirt",
       "anime apparel",
-      "art tee",
-      "cozy fashion",
-      "wholesome style",
-      "geek wear",
-      "gift idea",
-      "cute clothing",
-      "mythical creature"
+      "pokemon art",
+      "gifts for fans",
+      "retro t-shirt",
+      "graphic tee",
+      "casual wear",
+      "pokemon clothing",
+      "animated fashion",
+      "geek culture",
+      "artistic prints",
+      "pop culture"
     ],
     "featured": false,
     "gelatoProductId": "74b9ad02-f240-400f-9d80-97c8b6a87e17",
@@ -24399,27 +24399,27 @@ export const adminProducts = [
     "adminManaged": true,
     "primaryKeywords": [
       "celebi t-shirt",
-      "pokemon shirt",
-      "gamer gift tee",
-      "fan art apparel",
-      "anime t-shirt"
+      "pokemon apparel",
+      "anime tees",
+      "graphic shirts",
+      "fan art"
     ],
     "longTailKeywords": [
-      "celebi t-shirt for gamers",
-      "mythical pokemon fan art tee",
-      "soft and cozy pokemon shirt",
-      "gift ideas for pokemon fans",
-      "unique anime apparel online",
-      "direct-to-garment t-shirt print",
-      "comfortable gaming t-shirts online",
-      "high-quality anime fan shirts",
-      "wholesome gifts for gamers",
-      "cute pokemon shirts for friends"
+      "cool celebi graphic t-shirt",
+      "premium pokemon apparel online",
+      "unique anime gift ideas for fans",
+      "stylish pokemon themed clothing",
+      "Gildan quality anime tees for adults",
+      "celebrate your love for celebi shirt ",
+      "popular designs in pokemon tees",
+      "collectible poke-themed fashion items ",
+      "'90s retro pokemon shirts for adults ",
+      "'90s anime inspired clothing collection"
     ],
-    "hashtags": "#celebitee #pokemonfanart #giftingideas #gamingwear #animeapparel #cozyclothes #fandshirts #gamerfashion #pokemontshirt #mythicalcreatures #vintageanimeart #dtgprinting #fashionforsocials #geekstyle #wholesomestyle #tshirtdesigns #artwear #gamergifts #nintendostyle #retroanimefashion #cuteoutfits #trendymeetscozy #artisticwearables #giftgivingseason #playfuldesigns #pokefashionista #softtee #creativeattire #nostalgiacoolness",
-    "instagramCaption": "\"When you need to turn back time just to catch 'em all 👾✨! Our Celebi T-Shirt channels those cozy vibes you crave while repping your favorite forest guardian. Grab yours today and let the adventures begin! 💚#celebitshirt#gamingstyle#pokefashion\"",
-    "pinterestCaption": "\"Elevate your wardrobe with our Celebi T-Shirt, an enchanting blend of comfort and nostalgic charm. This unique fan-art piece brings warmth not just to your outfit but to every moment shared with fellow gamers. Explore the magic today!\"",
-    "seoTitle": "Celebi T-Shirt | Enchanting Gift for Gamers | Cozy Art Tee",
+    "hashtags": "#coolpokemon #celebiteeshirt #animeapparel #pokeart #graphictee #fashionstatement #casualwear #animefans #pokemongifts #retropokemon #animefashion #artisticprints #popcultureteez #clothingdesigns #trendyclothes #pokedexlove #mysticalcreatures #vintageanime #distinctivestyle #collectorsitemeetup #exclusivefashioncollection #geekchicstyle #whimsicalwearables #trendsettersunited #printondemandfashion #adventurewearableart ##retrotees ##teelove ##yearroundstyle ",
+    "instagramCaption": "\"Whispers of time found in every stitch.✨ Rock this Celebi tee and let everyone know you’re ready for an adventure! 🌌 Grab yours now!#coolpokemon#celebitshirt#uniquestyle\" ",
+    "pinterestCaption": "\"Unveiling a captivating take on Celebi that speaks to both nostalgia and fashion forward sensibilities. With its fresh design showcased on a premium fabric, this is not just a shirt but an experience waiting to be worn.\" Enjoy the look today.",
+    "seoTitle": "Celebi T-Shirt | Cool Pokemon Apparel | Gift for Fans",
     "variants": [
       {
         "uid": "403f6cba-3ea0-4552-9ee2-3b213478b401",
@@ -24573,7 +24573,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/celebi-t-shirt-mythical-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T14:03:46.645Z",
-    "updatedAt": "2026-11-10T14:24:41.992Z",
+    "updatedAt": "2026-11-10T14:24:55.573Z",
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-celebi-t-shirt/hf_20261026_155635_964b9773-eb85-481d-8127-0360fc7fd96f.png"
     ],
