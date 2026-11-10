@@ -384,14 +384,6 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
 
   const videoInfo = parseVideoUrl(videoUrl)
 
-  // Props comuni di ogni miniatura del pool (stessa miniatura di Modify Product).
-  const thumbProps = {
-    heroShots, heroVideo: videoUrl, mobileHero, sequenza, detailImage, imageSides,
-    onSetImageSide: setImageSide, onToggleHeroShot: toggleHeroShot,
-    onSetHeroVideo: u => { setVideoUrl(u || ''); setVideoPreview(null) },
-    onSetMobileHero: setMobileHero, onToggleSequenza: toggleSequenza, onSetDetailImage: setDetailImage,
-  }
-
   // Map variantId → color label for grouping images
   const variantColorMap = Object.fromEntries(
     variants.filter(v => v.uid && v.color).map(v => [v.uid, v.color])
@@ -639,6 +631,15 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
       return next
     })
   }, [])
+
+  // Props comuni di ogni miniatura del pool (stessa miniatura di Modify Product).
+  // Va DOPO le tre funzioni qui sopra: const non si puo' leggere prima della dichiarazione.
+  const thumbProps = {
+    heroShots, heroVideo: videoUrl, mobileHero, sequenza, detailImage, imageSides,
+    onSetImageSide: setImageSide, onToggleHeroShot: toggleHeroShot,
+    onSetHeroVideo: u => { setVideoUrl(u || ''); setVideoPreview(null) },
+    onSetMobileHero: setMobileHero, onToggleSequenza: toggleSequenza, onSetDetailImage: setDetailImage,
+  }
 
   const fetchVariants = async () => {
     if (!gelatoUid.trim()) return
