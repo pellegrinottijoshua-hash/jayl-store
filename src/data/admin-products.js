@@ -21810,15 +21810,16 @@ export const adminProducts = [
       }
     ],
     "image": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-mockup-01.jpg",
-    "heroImage": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/hf_20261012_164316_3ed4cf15-38d8-4620-b70b-5ff299e0c9e4.png",
-    "detailImage": "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/hf_20261012_163855_0e78cf51-29d5-4021-8770-389da0fd87cd.png",
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-sylveon-t-shirt/hf_20261012_164316_3ed4cf15-38d8-4620-b70b-5ff299e0c9e4.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-sylveon-t-shirt/hf_20261012_163855_0e78cf51-29d5-4021-8770-389da0fd87cd.png",
     "images": [
       "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-01.jpg",
       "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-02.jpg",
       "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-03.jpg",
       "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-04.jpg",
       "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-05.jpg",
-      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-06.jpg"
+      "/images/cool-sylveon-t-shirt/cool-sylveon-t-shirt-gelato-06.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-sylveon-t-shirt/hf_20261012_164316_3ed4cf15-38d8-4620-b70b-5ff299e0c9e4.png"
     ],
     "imageAlts": {
       "/images/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-tee-gift/sylveon-t-shirt-cute-fairy-pok-mon-fan-art-te-mockup-01.jpg": "Sylveon dancing playfully with flowing ribbons in pastel colors on a small chest print of a premium JAYL tee.",
@@ -22076,7 +22077,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-sylveon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:07:59.232Z",
-    "updatedAt": "2026-11-11T18:27:11.727Z",
+    "updatedAt": "2026-11-11T18:27:41.266Z",
     "storeColors": [
       "azalea",
       "light-blue",
