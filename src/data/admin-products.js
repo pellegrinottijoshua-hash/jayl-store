@@ -25122,11 +25122,16 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/lugia-t-shirt-pok-mon-fan-art-tee-legendary-pok-mon-gift/hf_20260816_213802_e9406211-af06-4bab-a2a8-115e993ed6e9-mx2n90h6-copia.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T16:26:01.756Z",
-    "updatedAt": "2026-11-11T17:13:48.864Z",
+    "updatedAt": "2026-11-11T17:13:58.773Z",
     "relatedProducts": [],
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-lugia-t-shirt/design-front.png",
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-lugia-t-shirt/hf_20261026_171616_3cb6f2d4-8d10-45da-85e8-92cc046306e7.png"
+    ],
+    "storeColors": [
+      "heather-royal",
+      "black",
+      "white"
     ]
   }
 ]
