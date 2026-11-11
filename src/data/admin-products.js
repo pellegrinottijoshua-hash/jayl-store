@@ -24851,10 +24851,15 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-10T14:21:29.945Z",
-    "updatedAt": "2026-11-10T16:26:52.697Z",
+    "updatedAt": "2026-11-11T17:17:12.193Z",
     "relatedProducts": [],
     "heroShots": [
       "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/ho-oh-t-shirt-legendary-pok-mon-fan-art-tee-gamer-gift/hf_20261026_163547_13642ed5-114a-4995-9b76-c3258be7d15c.png"
+    ],
+    "storeColors": [
+      "heather-red",
+      "white",
+      "black"
     ]
   },
   {
