@@ -22076,14 +22076,15 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/cool-sylveon-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-10-13T15:07:59.232Z",
-    "updatedAt": "2026-10-13T17:29:10.042Z",
+    "updatedAt": "2026-11-11T18:27:11.727Z",
     "storeColors": [
       "azalea",
       "light-blue",
       "carolina-blue"
     ],
     "relatedProducts": [],
-    "heroShots": []
+    "heroShots": [],
+    "videoUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/cool-sylveon-t-shirt/home-1791907067310.mp4"
   },
   {
     "id": "cool-leafeon-t-shirt",
