@@ -90,7 +90,34 @@ function storefrontProducts() {
           })
         }
         if (product.imageSides) {
-          product.imageSides = Object.fromEntries(Object.entries(product.imageSides).map(([u, v]) => [local(u), v]))
+          // Le chiavi dei lati possono puntare a un'altra cartella o a un URL
+          // raw dello stesso file (prodotto rinominato): si riallineano ai path
+          // di `images` per nome file, cosi' Front/Back si ritrovano.
+          const name = (u) => String(u || '').split('?')[0].split('/').pop()
+          const byName = new Map((product.images || []).map((u) => [name(u), u]))
+          product.imageSides = Object.fromEntries(Object.entries(product.imageSides).map(([u, v]) => [byName.get(name(u)) ?? local(u), v]))
+
+          // Foto Front/Back che non sono mockup: la scheda le mostra sotto il
+          // lato giusto. Mai la copertina (hero), la lifestyle o il dettaglio:
+          // hanno un posto loro. Il file deve esistere nel deploy.
+          const taken = new Set([...(product.heroShots || []), product.heroImage, product.detailImage, ...(product.images || [])]
+            .filter(Boolean).map(name))
+          const sidePhotos = { front: [], back: [] }
+          const seen = new Set()
+          for (const [u, side] of Object.entries(product.imageSides)) {
+            const n = name(u)
+            if ((side !== 'front' && side !== 'back') || taken.has(n) || seen.has(n)) continue
+            const found = [u, `/images/${product.id}/${n}`, `/images/${product.id}/generated/${n}`]
+              .find((c) => typeof c === 'string' && c.startsWith('/') && existsSync(path.join(publicDir, decodeURIComponent(c))))
+            if (!found) continue
+            seen.add(n)
+            sidePhotos[side].push(found)
+          }
+          product.sidePhotos = sidePhotos
+          // Prodotto con i lati scelti: le foto AI (hf_…) senza lato non hanno
+          // un posto in galleria, solo i mockup semplici e le foto B/F.
+          const tagged = new Set(Object.keys(product.imageSides).map(name))
+          product.images = (product.images || []).filter((u) => !(name(u).startsWith('hf_') && !tagged.has(name(u))))
         }
       }
       for (const product of stripped) {

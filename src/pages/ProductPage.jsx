@@ -615,8 +615,8 @@ export default function ProductPage() {
   // Lato scelto in admin per ogni foto (B/F): 'front' | 'back' | assente.
   const sideOf = (u) => product?.imageSides?.[u] || null
   const lookFor = (back) => {
-    // Una foto marcata Front si mostra cosi' com'e', mai come trittico.
-    if (back && sideOf(back) === 'front') return null
+    // Una foto con un lato scelto in admin (B/F) si mostra cosi' com'e', mai come trittico.
+    if (back && sideOf(back)) return null
     const color = back && allOwners.get(back)?.id
     const plainFront = plainMockup(color, 'front')
     if (!color || !plainFront) return null
@@ -736,7 +736,7 @@ export default function ProductPage() {
   // Whichever image array is actually shown in the gallery (hero gallery takes
   // priority), minus the photos of the colors the swatches no longer offer.
   const galleryImages = galleryFilter(imagesForShownColors(
-    galleryBaseFor(product, Boolean(videoInfo)),
+    galleryBaseFor(product),
     product?.colors, colors, product?.imageColors,
   ))
 
@@ -808,16 +808,20 @@ export default function ProductPage() {
   const heroImages    = product?.heroImages?.length > 0 ? product.heroImages : null
   // displayImages is what the main carousel shows — same color filter as
   // galleryImages above, so the two can't disagree about an index.
-  const shownBase = imagesForShownColors(galleryBaseFor(product, Boolean(videoInfo)), product?.colors, colors, product?.imageColors)
-  // Le foto marcate F in admin stanno solo su "Front"; tutte le altre su "Back".
-  const frontTagged = shownBase.filter((u) => sideOf(u) === 'front')
-  const baseImages  = galleryFilter(shownBase.filter((u) => sideOf(u) !== 'front'))
-  // Con "Front": le foto marcate F; se non ce ne sono, i mockup composti col
-  // disegno sul petto. Il video e le foto di schiena raccontano l'altra maglia.
+  const shownBase = imagesForShownColors(galleryBaseFor(product), product?.colors, colors, product?.imageColors)
+  // Lati scelti in admin (B/F). Sotto "Front" o "Back" vanno: i tre mockup
+  // semplici (uno per colore, col disegno di quel lato) + le foto marcate con
+  // quel lato. Le foto dell'altro lato non compaiono; copertina e lifestyle mai.
+  const sideExtras = (side) => [
+    ...shownBase.filter((u) => sideOf(u) === side),
+    ...(product?.sidePhotos?.[side] || []),
+  ]
+  const neutral = galleryFilter(shownBase.filter((u) => !sideOf(u)))
   const frontGallery  = altPrint && activeSide === 'front'
-  const displayImages = !frontGallery ? baseImages
-    : frontTagged.length ? frontTagged
-    : baseImages.filter((u) => lookFor(u))
+  const displayImages = [
+    ...(frontGallery ? neutral.filter((u) => lookFor(u)) : neutral),
+    ...(activeSide ? sideExtras(activeSide) : []),
+  ]
   const galleryVideo  = frontGallery ? null : videoInfo
   // Cambiando lato si riparte dalla prima vista di quel lato.
   const sideSwitched = useRef(false)

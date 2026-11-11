@@ -16,13 +16,18 @@ export function heroShotsOf(product) {
   return Array.isArray(product?.heroShots) ? product.heroShots.filter(Boolean) : []
 }
 
-/** Le immagini della galleria della scheda, dopo l'eventuale video. */
-export function galleryBaseFor(product, hasVideo) {
+/**
+ * I mockup della galleria della scheda. Mai la copertina (hero), la lifestyle
+ * o il dettaglio: hanno un posto loro (catalogo, home, "hold to reveal").
+ * Le foto Front/Back che sceglie l'admin arrivano da `sidePhotos`.
+ */
+export function galleryBaseFor(product) {
   if (product?.heroImages?.length > 0) return product.heroImages // vecchio campo, oggi vuoto
-  const shots = heroShotsOf(product)
+  const name = (u) => String(u || '').split('?')[0].split('/').pop()
+  const own = new Set([...heroShotsOf(product), product?.heroImage, product?.detailImage].filter(Boolean).map(name))
   const all = product?.images?.length > 0 ? product.images : (product?.image ? [product.image] : [])
-  const mockups = all.filter((u) => !shots.includes(u))
-  return hasVideo && mockups.length > 0 ? mockups : [...shots, ...mockups]
+  const mockups = all.filter((u) => !own.has(name(u)))
+  return mockups.length > 0 || product?.images?.length > 0 ? mockups : all
 }
 
 /** La foto della scheda nel catalogo (e poster del video hero). */

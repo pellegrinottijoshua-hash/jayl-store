@@ -120,6 +120,12 @@ export async function optimizeProductImages(product, optimize) {
     )
     product.imageSides = Object.fromEntries(entries)
   }
+  if (product.sidePhotos) {
+    product.sidePhotos = {
+      front: await many(product.sidePhotos.front),
+      back:  await many(product.sidePhotos.back),
+    }
+  }
   // imageColors è indicizzato per path: le chiavi seguono le foto.
   if (product.imageColors) {
     const entries = await Promise.all(

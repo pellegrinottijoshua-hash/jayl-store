@@ -15,7 +15,7 @@ export const FRONT_OK_COLORS = new Set([
   'purple', 'black', 'white', 'navy', 'heather-navy', 'daisy', 'natural',
   'light-blue', 'red', 'military-green', 'sand', 'rs-sport-grey',
   'carolina-blue', 'cardinal-red', 'irish-green', 'azalea', 'royal',
-  'heather-royal', 'maroon',
+  'heather-royal', 'maroon', 'heather-red',
 ])
 
 const GPR = /_gpr_(\d+)-(\d+)_/

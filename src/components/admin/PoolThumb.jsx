@@ -1,3 +1,4 @@
+import { sideOfMedia } from '@/lib/mediaKey'
 // ── Miniatura del pool immagini — condivisa da Add Product (AdminPage) e Modify Product (AdminProductPage).
 // Hover a thumbnail to give it a role (src/lib/productMedia.js):
 //   ★ Hero      — video hero (videoUrl) o foto hero (heroShots, max 2): Objects + apertura scheda
@@ -14,7 +15,7 @@ export default function PoolThumb({ img, heroShots, heroVideo, mobileHero, seque
   const isHero   = isVid ? heroVideo === url : shotIdx !== -1
   const isLife   = mobileHero   === url
   const isDetail = detailImage  === url
-  const side     = imageSides[url] || null  // 'front' | 'back' | null
+  const side     = sideOfMedia(imageSides, url)  // 'front' | 'back' | null
   const seqIdx   = sequenza.indexOf(url)
   const inSeq    = seqIdx !== -1
   const canDel   = !!img.path && !!onDeleteImage  // only GitHub-stored images (uploaded/generated) can be deleted

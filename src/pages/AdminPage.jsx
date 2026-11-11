@@ -7,6 +7,7 @@ import PrintPlacementEditor from '@/components/admin/PrintPlacementEditor'
 import { products as allProducts } from '@/data/products-full'
 import GenerateAssetsTab from '@/components/GenerateAssetsTab'
 import DropTab from '@/components/admin/DropTab'
+import { withSide, sideOfMedia } from '@/lib/mediaKey'
 import PoolThumb, { MAX_HERO_SHOTS } from '@/components/admin/PoolThumb'
 import SocialShareButtons from '@/components/SocialShareButtons'
 import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
@@ -624,12 +625,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
     setSequenza(prev => prev.filter(u => u !== url))
   }, [])
   const setImageSide = useCallback((url, side) => {
-    setImageSides(prev => {
-      const next = { ...prev }
-      if (side) next[url] = side
-      else delete next[url]
-      return next
-    })
+    setImageSides(prev => withSide(prev, url, side))
   }, [])
 
   // Props comuni di ogni miniatura del pool (stessa miniatura di Modify Product).
@@ -1812,8 +1808,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                     { k: 'mock',   label: '# Mockup',        on: sequenza.includes(pickUrl), act: () => toggleSequenza(pickUrl), cls: 'bg-emerald-700 text-white' },
                     { k: 'detail', label: '🔍 Dettaglio',    on: detailImage === pickUrl, act: () => setDetailImage(detailImage === pickUrl ? null : pickUrl), cls: 'bg-amber-500 text-black' },
                     { k: 'life',   label: '🏠 Lifestyle',    on: mobileHero === pickUrl, act: () => setMobileHero(mobileHero === pickUrl ? null : pickUrl), cls: 'bg-purple-600 text-white' },
-                    { k: 'back',   label: 'Solo scheda Back',  on: imageSides[pickUrl] === 'back',  act: () => setImageSide(pickUrl, imageSides[pickUrl] === 'back' ? null : 'back'),   cls: 'bg-orange-500 text-black' },
-                    { k: 'front',  label: 'Solo scheda Front', on: imageSides[pickUrl] === 'front', act: () => setImageSide(pickUrl, imageSides[pickUrl] === 'front' ? null : 'front'), cls: 'bg-sky-500 text-black' },
+                    { k: 'back',   label: 'Solo scheda Back',  on: sideOfMedia(imageSides, pickUrl) === 'back',  act: () => setImageSide(pickUrl, sideOfMedia(imageSides, pickUrl) === 'back' ? null : 'back'),   cls: 'bg-orange-500 text-black' },
+                    { k: 'front',  label: 'Solo scheda Front', on: sideOfMedia(imageSides, pickUrl) === 'front', act: () => setImageSide(pickUrl, sideOfMedia(imageSides, pickUrl) === 'front' ? null : 'front'), cls: 'bg-sky-500 text-black' },
                   ].map(b => (
                     <button key={b.k} onClick={b.act}
                       className={`px-3 py-1.5 text-xs font-medium border rounded-sm transition-colors ${b.on ? `${b.cls} border-transparent` : 'bg-gray-900 border-gray-600 text-gray-300 hover:border-gray-400'}`}>

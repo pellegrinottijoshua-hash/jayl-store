@@ -14,6 +14,7 @@ import { fileToBase64, compressImage, sanitizeFilename, prepareProductAsset } fr
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
 import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
 import SocialStatusPanel from '@/components/admin/SocialStatusPanel'
+import { withSide } from '@/lib/mediaKey'
 import PoolThumb, { MAX_HERO_SHOTS } from '@/components/admin/PoolThumb'
 
 // Nome fisso per il file del secondo lato: rigenerarlo sovrascrive, non accumula.
@@ -787,12 +788,7 @@ export default function AdminProductPage() {
   }, [id, sequenza, heroShots, imageSides, videoUrl, desktopHero, mobileHero, detailImage])
 
   const handleSetImageSide = useCallback((url, side) => {
-    setImageSides(prev => {
-      const next = { ...prev }
-      if (side) next[url] = side
-      else delete next[url]
-      return next
-    })
+    setImageSides(prev => withSide(prev, url, side))
   }, [])
 
   const videoInfo = parseVideoUrl(videoUrl)
