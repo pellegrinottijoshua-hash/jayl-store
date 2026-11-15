@@ -25157,8 +25157,41 @@ export const adminProducts = [
     "storeColors": [
       "black"
     ],
-    "gelatoProductId": null,
-    "variants": [],
+    "gelatoProductId": "21178c71-24f8-4296-a94a-ead145d8f8c2",
+    "variants": [
+      {
+        "uid": "401f46ee-ce95-4177-b098-8968a62c9769",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": 2500,
+        "currency": "eur"
+      },
+      {
+        "uid": "213e7e1b-f240-4e85-80ea-e55719c34037",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": 2500,
+        "currency": "eur"
+      },
+      {
+        "uid": "475b8aba-dafb-47f6-90e8-9635c3f02d64",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": 2500,
+        "currency": "eur"
+      },
+      {
+        "uid": "eb667533-f7ea-4fbf-9fb9-a550d7235a34",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": 2500,
+        "currency": "eur"
+      }
+    ],
     "relatedProducts": [],
     "heroShots": [],
     "tags": [
@@ -25171,23 +25204,24 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-15T21:33:39.025Z",
+    "updatedAt": "2026-11-15T22:36:32.110Z",
     "id": "zack-the-duck-tee",
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
     "seoTitle": "Zack the Duck Tee | Deadpan Duck Streetwear | JAYL",
     "price": 2500,
     "archivePrice": 2500,
-    "description": "Zack doesn't smile. He doesn't need to. His eyes and beak, printed big on the chest of a heavyweight black tee. No words, no logo soup. Just the look.",
+    "description": "Zack doesn't smile. He doesn't need to. His eyes and beak, printed big on the chest of a soft black tee. No words, no logo soup. Just the look.",
     "altText": "Zack the Duck Tee in black with Zack's cream eyes and beak printed on the front",
     "details": [
-      "Gildan 5000 Heavy Cotton — 100% cotton, 180 g/m²",
-      "Classic unisex fit",
+      "Gildan 64000 Softstyle — 100% ring-spun cotton, soft and light",
+      "Unisex, slightly fitted cut",
       "Front print: Zack's eyes and beak, cream on black",
+      "ZACK THE DUCK printed inside the collar",
       "Printed on demand near you (DTG)",
       "Free worldwide shipping"
     ],
-    "blank": "Gildan 5000 Heavy Cotton",
+    "blank": "Gildan 64000 Softstyle",
     "sizes": [
       {
         "id": "S",
@@ -25208,20 +25242,23 @@ export const adminProducts = [
         "id": "XL",
         "label": "XL",
         "price": 2500
-      },
-      {
-        "id": "2XL",
-        "label": "2XL",
-        "price": 2500
       }
     ],
     "image": "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
+      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-front.jpg",
+      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-front-2.jpg",
+      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg",
       "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg"
     ],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png",
+    "homeImages": [
+      "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
+      "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg"
+    ],
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png"
   },
   {
     "section": "zack",
@@ -25241,8 +25278,57 @@ export const adminProducts = [
     "storeColors": [
       "black"
     ],
-    "gelatoProductId": null,
-    "variants": [],
+    "gelatoProductId": "a9f73a56-0b9b-4cb1-92bc-5a71aae6a9c2",
+    "variants": [
+      {
+        "uid": "220e30e0-7c30-49ad-ade1-fe853406d016",
+        "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_18500",
+        "color": "Black",
+        "size": "S",
+        "price": 4900,
+        "currency": "eur"
+      },
+      {
+        "uid": "e047498d-a917-4973-9cd8-62468ad4442a",
+        "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_18500",
+        "color": "Black",
+        "size": "M",
+        "price": 4900,
+        "currency": "eur"
+      },
+      {
+        "uid": "9ddfc73a-678c-43eb-965f-646c51d6b9d6",
+        "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_18500",
+        "color": "Black",
+        "size": "L",
+        "price": 4900,
+        "currency": "eur"
+      },
+      {
+        "uid": "86e0ea2e-fdd7-49fc-ba06-29929870bf5b",
+        "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_18500",
+        "color": "Black",
+        "size": "XL",
+        "price": 4900,
+        "currency": "eur"
+      },
+      {
+        "uid": "a7aaa60c-33ad-4d3a-b4cc-816e0b135173",
+        "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_18500",
+        "color": "Black",
+        "size": "2XL",
+        "price": 4900,
+        "currency": "eur"
+      },
+      {
+        "uid": "f29863ae-022d-400d-bb8e-352b02aebff4",
+        "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_3xl_gco_black_gpr_4-0_inlbl_gildan_18500",
+        "color": "Black",
+        "size": "3XL",
+        "price": 4900,
+        "currency": "eur"
+      }
+    ],
     "relatedProducts": [],
     "heroShots": [],
     "tags": [
@@ -25255,7 +25341,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-15T21:33:39.025Z",
+    "updatedAt": "2026-11-15T22:36:32.113Z",
     "id": "zack-the-duck-hoodie",
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
@@ -25268,6 +25354,7 @@ export const adminProducts = [
       "Gildan 18500 Heavy Blend — 50% cotton, 50% polyester",
       "Pullover with kangaroo pocket and drawstring hood",
       "Front print: Zack's eyes and beak, cream on black",
+      "ZACK THE DUCK printed inside the collar",
       "Printed on demand near you (DTG)",
       "Free worldwide shipping"
     ],
@@ -25297,6 +25384,11 @@ export const adminProducts = [
         "id": "2XL",
         "label": "2XL",
         "price": 4900
+      },
+      {
+        "id": "3XL",
+        "label": "3XL",
+        "price": 4900
       }
     ],
     "image": "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
@@ -25305,7 +25397,12 @@ export const adminProducts = [
       "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
       "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg"
     ],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png",
+    "homeImages": [
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg"
+    ],
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png"
   },
   {
     "section": "zack",
@@ -25325,8 +25422,73 @@ export const adminProducts = [
     "storeColors": [
       "black"
     ],
-    "gelatoProductId": null,
-    "variants": [],
+    "gelatoProductId": "683f685f-417b-48b1-af04-961a1b3028c1",
+    "variants": [
+      {
+        "uid": "3b53576d-1d1e-4c5b-ad43-d5baf9d2b60b",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "S",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "a0c06163-1445-45d7-85c3-97294ca4df06",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "M",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "9d8b43e2-1c9b-4900-9fca-41b0c22d940b",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "L",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "3d8951ba-a2ca-423d-bbfb-ae1a436cd121",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "XL",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "191f533e-5d69-482e-8fca-6983bbafc5b0",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "2XL",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "4ac26d8a-369d-41e0-ad69-e242288e14c7",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_3xl_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "3XL",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "ebd8d30e-d335-42ef-892e-c741f4e2f30e",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_4xl_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "4XL",
+        "price": 3900,
+        "currency": "eur"
+      },
+      {
+        "uid": "e134e314-711b-497e-9405-ed79a1381d66",
+        "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_5xl_gco_black_gpr_4-0_inlbl_gildan_18000",
+        "color": "Black",
+        "size": "5XL",
+        "price": 3900,
+        "currency": "eur"
+      }
+    ],
     "relatedProducts": [],
     "heroShots": [],
     "tags": [
@@ -25339,7 +25501,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-15T21:33:39.025Z",
+    "updatedAt": "2026-11-15T22:36:32.112Z",
     "id": "zack-the-duck-crewneck",
     "name": "Zack the Duck Crewneck",
     "shortName": "Crewneck",
@@ -25352,6 +25514,7 @@ export const adminProducts = [
       "Gildan 18000 Heavy Blend — 50% cotton, 50% polyester",
       "Crewneck sweatshirt, ribbed cuffs and waistband",
       "Front print: Zack's eyes and beak, cream on black",
+      "ZACK THE DUCK printed inside the collar",
       "Printed on demand near you (DTG)",
       "Free worldwide shipping"
     ],
@@ -25381,14 +25544,35 @@ export const adminProducts = [
         "id": "2XL",
         "label": "2XL",
         "price": 3900
+      },
+      {
+        "id": "3XL",
+        "label": "3XL",
+        "price": 3900
+      },
+      {
+        "id": "4XL",
+        "label": "4XL",
+        "price": 3900
+      },
+      {
+        "id": "5XL",
+        "label": "5XL",
+        "price": 3900
       }
     ],
     "image": "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
+      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-gelato-front.jpg",
       "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-print-01.jpg"
     ],
-    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-crewneck/design.png"
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-crewneck/design.png",
+    "homeImages": [
+      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
+      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-print-01.jpg"
+    ],
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png"
   }
 ]

@@ -11,18 +11,17 @@ import { cn } from '@/lib/utils'
 
 const ICONS = { instagram: InstagramIcon, youtube: YouTubeIcon, tiktok: TikTokIcon }
 
-// glintAt: secondi del primo passaggio del velo d'oro (solo nell'header);
-// le icone si accendono una dopo l'altra, da sinistra a destra.
-export function ZackSocials({ size = 15, className, glintAt }) {
+// lit: la chiave del social che in questo momento si accende d'oro (header).
+export function ZackSocials({ size = 15, className, lit }) {
   return (
     <div className={cn('flex items-center', className)}>
-      {ZACK_SOCIAL.map(({ key, label, href }, i) => {
+      {ZACK_SOCIAL.map(({ key, label, href }) => {
         const Icon = ICONS[key]
         return (
           <a key={key} href={href} target="_blank" rel="noopener noreferrer"
             aria-label={`Zack the Duck on ${label}`}
-            className={cn('transition-opacity duration-200 opacity-70 hover:opacity-100', glintAt != null && 'zk-glint')}
-            style={{ color: Z.cream, ...(glintAt != null && { animationDelay: `${glintAt + i * 0.15}s` }) }}>
+            className={cn('transition-opacity duration-200 opacity-70 hover:opacity-100', lit === key && 'zk-glint-once')}
+            style={{ color: Z.cream }}>
             <Icon size={size} />
           </a>
         )
@@ -58,8 +57,27 @@ export function JaylDoor({ className, children, onEnter }) {
   )
 }
 
+// Chi si accende d'oro, uno alla volta: la scritta, poi Instagram, YouTube e
+// TikTok, ognuno 3-4 s (a caso) dopo il precedente, poi si ricomincia.
+const GOLD_TURNS = ['logo', 'instagram', 'youtube', 'tiktok']
+function useGoldTurn() {
+  const [lit, setLit] = useState(null)
+  useEffect(() => {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    let i = 0, t
+    const next = () => {
+      setLit(GOLD_TURNS[i % GOLD_TURNS.length]); i += 1
+      t = setTimeout(() => { setLit(null); t = setTimeout(next, 3000 + Math.random() * 1000 - 1300) }, 1300)
+    }
+    t = setTimeout(next, 2500)
+    return () => clearTimeout(t)
+  }, [])
+  return lit
+}
+
 export default function ZackNavbar() {
   const { items, toggleCart } = useCartStore()
+  const lit = useGoldTurn()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const count = items.reduce((s, i) => s + i.quantity, 0)
@@ -97,23 +115,22 @@ export default function ZackNavbar() {
 
           {/* Sinistra: hamburger + social */}
           <div className="flex items-center gap-4">
-            {/* Il velo d'oro parte da qui e attraversa l'header ogni 8 s. */}
-            <button onClick={() => setOpen(true)} aria-label="Open menu" style={{ color: Z.cream, animationDelay: '1.8s' }}
-              className="transition-opacity hover:opacity-70 zk-glint">
+            <button onClick={() => setOpen(true)} aria-label="Open menu" style={{ color: Z.cream }}
+              className="transition-opacity hover:opacity-70">
               <Menu size={20} strokeWidth={1.5} />
             </button>
-            <ZackSocials size={15} className="gap-3" glintAt={1.95} />
+            <ZackSocials size={15} className="gap-3" lit={lit} />
           </div>
 
           {/* Centro: la scritta */}
           <Link to="/" aria-label="Zack the Duck — Home" className="block">
-            <span role="img" aria-label="Zack the Duck" className="zk-sheen h-9 sm:h-10"
-              style={{ aspectRatio: '876 / 438', animationDelay: '2.35s' }} />
+            <span role="img" aria-label="Zack the Duck" className={cn('zk-sheen h-9 sm:h-10', lit === 'logo' && 'is-lit')}
+              style={{ aspectRatio: '876 / 438' }} />
           </Link>
 
           {/* Destra: carrello */}
           <div className="flex justify-end">
-            <button onClick={toggleCart} className="relative transition-opacity hover:opacity-70 zk-glint" style={{ color: Z.cream, animationDelay: '3.2s' }}
+            <button onClick={toggleCart} className="relative transition-opacity hover:opacity-70" style={{ color: Z.cream }}
               aria-label={`Cart — ${count} item${count !== 1 ? 's' : ''}`}>
               <ShoppingBag size={19} strokeWidth={1.5} />
               {count > 0 && (

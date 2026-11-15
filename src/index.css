@@ -369,13 +369,13 @@
   60% { transform: translateX(2%) rotate(1.5deg); }
   75% { transform: translateX(-1%) rotate(-.5deg); }
 }
-/* Velo d'oro nell'header Zack: passa da sinistra a destra ogni 8 s (menu,
-   social, scritta, carrello, con piccoli ritardi). Stesso ciclo per tutti,
-   cosi' restano in fase. */
-.zk-glint { animation: zk-glint 8s ease-in-out infinite; }
-@keyframes zk-glint {
-  0%, 7%, 100% { color: #F5F0E8; }
-  2.5% { color: #C4A35A; opacity: 1; }
+/* Luccichio d'oro nell'header Zack, una cosa alla volta (ZackNavbar decide
+   chi e quando): la scritta, poi Instagram, YouTube, TikTok, a 3-4 s l'uno
+   dall'altro. Mai menu e carrello. */
+.zk-glint-once { animation: zk-glint-once 1s ease-in-out; }
+@keyframes zk-glint-once {
+  0%, 100% { color: #F5F0E8; }
+  45% { color: #C4A35A; opacity: 1; }
 }
 .zk-sheen {
   display: block;
@@ -384,10 +384,10 @@
   background-position: 100% 0;
   -webkit-mask: url(/zack/zack-scritta.svg) center / contain no-repeat;
           mask: url(/zack/zack-scritta.svg) center / contain no-repeat;
-  animation: zk-sheen 8s ease-in-out infinite;
 }
-@keyframes zk-sheen {
-  0% { background-position: 100% 0; }
-  15%, 100% { background-position: 0% 0; }
+.zk-sheen.is-lit { animation: zk-sheen-once 1.3s ease-in-out; }
+@keyframes zk-sheen-once {
+  from { background-position: 100% 0; }
+  to   { background-position: 0% 0; }
 }
-@media (prefers-reduced-motion: reduce) { .zk-shake, .zk-glint, .zk-sheen { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .zk-shake, .zk-glint-once, .zk-sheen.is-lit { animation: none; } }

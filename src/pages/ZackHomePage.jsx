@@ -8,6 +8,7 @@ import Money from '@/components/Money'
 import EtsyRating from '@/components/EtsyRating'
 import ZackEyes from '@/components/zack/ZackEyes'
 import { cn } from '@/lib/utils'
+import { Volume2, VolumeX } from 'lucide-react'
 
 // La facciata di jayl.store: Zack the Duck.
 // 1. Gli occhi, grandi: sono la testa di Zack.
@@ -16,7 +17,7 @@ import { cn } from '@/lib/utils'
 //    lato, dopo 3 swipe di fila si confondono e scuotono la testa.
 //    I mockup del capo (product.images) scorrono veloci: al passaggio del
 //    mouse su desktop, una volta quando il capo arriva al centro su mobile.
-// 3. Badge Etsy, poi i video.
+// 3. Badge Etsy, poi un solo video 9:16 coi tre clip in fila.
 // Mai Pokémon qui dentro: il negozio JAYL e' dietro la porta nei menu.
 
 const ORDER = ['zack-the-duck-hoodie', 'zack-the-duck-tee', 'zack-the-duck-crewneck']
@@ -28,11 +29,8 @@ const N = zackProducts.length
 const LOOP = N > 1 ? [...zackProducts, ...zackProducts, ...zackProducts] : zackProducts
 const START = N > 1 ? N : 0
 
-const VIDEOS = [
-  { src: '/zack/video/A_night-drop.mp4', poster: '/zack/video/A_night-drop.jpg', label: 'Night shift' },
-  { src: '/zack/video/C_eyes-everywhere.mp4', poster: '/zack/video/C_eyes-everywhere.jpg', label: 'Eyes everywhere' },
-  { src: '/zack/video/D_skate-day.mp4', poster: '/zack/video/D_skate-day.jpg', label: 'Skate day' },
-]
+// Un solo video verticale: i tre clip (notte, occhi ovunque, skate) in fila.
+const VIDEO = { src: '/zack/video/zack-spotted.mp4', poster: '/zack/video/zack-spotted.jpg' }
 
 const ROTATE_MS = 4200
 const FLASH_MS = 110          // un fotogramma del flash
@@ -40,7 +38,8 @@ const CONFUSED_SWIPES = 3     // swipe ravvicinati che confondono Zack
 const label = 'font-sans text-[10px] uppercase'
 
 const framesOf = (p) => {
-  const list = [p.heroImage, p.image, ...(p.images || [])].filter(Boolean)
+  // Solo foto su fondo nero (homeImages): i mockup Gelato bianchi farebbero un riquadro.
+  const list = [p.image, ...(p.homeImages || [])].filter(Boolean)
   return [...new Set(list)]
 }
 
@@ -125,6 +124,7 @@ function Collection({ eyesRef }) {
   }
   const leftFor = (k) => {
     const el = scroller.current, card = cards.current[k]
+    if (!card) return el.scrollLeft
     return card.offsetLeft - (el.clientWidth - card.clientWidth) / 2
   }
   const nearest = () => {
@@ -188,20 +188,26 @@ function Collection({ eyesRef }) {
     settleTimer.current = setTimeout(settle, 130)
   }
 
-  // Rotazione: ogni ~4 s il capo dopo, finche' nessuno tocca.
+  // Rotazione: ogni ~4 s il capo dopo, finche' nessuno tocca. Il passo sta
+  // in una ref, cosi' l'intervallo (montato una volta) usa sempre quello attuale.
+  const rotate = useRef(null)
+  rotate.current = () => {
+    if (Date.now() - touched.current < 7000) return
+    if (scrollable()) {
+      // Se si e' sull'ultima copia (lo scroll non ha ancora riallineato),
+      // prima si torna in silenzio alla copia centrale.
+      let k = nearest()
+      if (k + 1 >= LOOP.length) { k = (k % N) + N; jumpTo(k) }
+      scroller.current.scrollTo({ left: leftFor(k + 1), behavior: 'smooth' })
+    } else {
+      // Desktop: i tre capi sono tutti in vista, si accende il successivo.
+      setActiveK((k) => ((k - START + 1) % N) + START)
+      setFlashKey((f) => f + 1)
+    }
+  }
   useEffect(() => {
     if (N < 2) return
-    const id = setInterval(() => {
-      if (Date.now() - touched.current < 7000) return
-      if (scrollable()) {
-        const k = nearest() + 1
-        scroller.current.scrollTo({ left: leftFor(k), behavior: 'smooth' })
-      } else {
-        // Desktop: i tre capi sono tutti in vista, si accende il successivo.
-        setActiveK((k) => ((k - START + 1) % N) + START)
-        setFlashKey((f) => f + 1)
-      }
-    }, ROTATE_MS)
+    const id = setInterval(() => rotate.current(), ROTATE_MS)
     return () => clearInterval(id)
   }, [])
 
@@ -254,31 +260,40 @@ function Collection({ eyesRef }) {
   )
 }
 
-function Videos() {
+function Spotted() {
+  const ref = useRef(null)
+  const [muted, setMuted] = useState(true)
+  const toggle = () => {
+    const v = ref.current
+    if (!v) return
+    v.muted = !v.muted
+    setMuted(v.muted)
+    if (!v.muted) v.play().catch(() => {})
+  }
   return (
+    // A tutto schermo sul telefono (9:16), alto quasi quanto la finestra su desktop.
     <section className="pt-14 pb-24">
-      <p className={cn(label, 'text-center mb-8')} style={{ letterSpacing: '0.42em', color: Z.gold }}>
+      <p className={cn(label, 'text-center mb-6')} style={{ letterSpacing: '0.42em', color: Z.gold }}>
         Spotted.
       </p>
-      <div className="zk-noscrollbar flex gap-3 sm:gap-5 overflow-x-auto snap-x snap-mandatory px-6 sm:justify-center">
-        {VIDEOS.map((v) => (
-          <figure key={v.src} className="snap-center shrink-0 w-[58vw] sm:w-[240px]">
-            <video
-              src={v.src}
-              poster={v.poster}
-              muted
-              loop
-              autoPlay
-              playsInline
-              preload="metadata"
-              className="w-full rounded-[2px] block"
-              style={{ aspectRatio: '9 / 16', objectFit: 'cover', background: '#0b0b0b' }}
-            />
-            <figcaption className={cn(label, 'mt-3')} style={{ letterSpacing: '0.2em', color: 'rgba(245,240,232,0.45)' }}>
-              {v.label}
-            </figcaption>
-          </figure>
-        ))}
+      <div className="relative mx-auto w-full sm:w-auto sm:h-[86vh] sm:max-h-[900px]" style={{ aspectRatio: '9 / 16' }}>
+        <video
+          ref={ref}
+          src={VIDEO.src}
+          poster={VIDEO.poster}
+          muted
+          loop
+          autoPlay
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ background: '#0b0b0b' }}
+        />
+        <button onClick={toggle} aria-label={muted ? 'Sound on' : 'Sound off'}
+          className="absolute bottom-4 right-4 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm"
+          style={{ background: 'rgba(17,17,17,0.55)', color: Z.cream }}>
+          {muted ? <VolumeX size={16} strokeWidth={1.6} /> : <Volume2 size={16} strokeWidth={1.6} />}
+        </button>
       </div>
     </section>
   )
@@ -328,7 +343,7 @@ export default function ZackHomePage() {
       <Collection eyesRef={eyesRef} />
       {/* Il voto Etsy: dopo i capi, prima dei video, non in faccia. */}
       <EtsyRating className="flex justify-center px-5 pt-10" />
-      <Videos />
+      <Spotted />
 
       <section className="pb-20 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center border-t pt-12" style={{ borderColor: 'rgba(245,240,232,0.1)' }}>
