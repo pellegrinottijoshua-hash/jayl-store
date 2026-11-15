@@ -359,3 +359,35 @@
 @media (prefers-reduced-motion: reduce) { .zk-rise, .zk-door, .zk-door-eyes { animation: none; opacity: 1; transform: none; } }
 .zk-noscrollbar { scrollbar-width: none; }
 .zk-noscrollbar::-webkit-scrollbar { display: none; }
+/* Occhi confusi: la testa scuote (swipe ripetuti nel carosello). */
+.zk-shake { animation: zk-shake 700ms cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes zk-shake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  15% { transform: translateX(-4%) rotate(-3deg); }
+  30% { transform: translateX(3.5%) rotate(2.5deg); }
+  45% { transform: translateX(-3%) rotate(-2deg); }
+  60% { transform: translateX(2%) rotate(1.5deg); }
+  75% { transform: translateX(-1%) rotate(-.5deg); }
+}
+/* Velo d'oro nell'header Zack: passa da sinistra a destra ogni 8 s (menu,
+   social, scritta, carrello, con piccoli ritardi). Stesso ciclo per tutti,
+   cosi' restano in fase. */
+.zk-glint { animation: zk-glint 8s ease-in-out infinite; }
+@keyframes zk-glint {
+  0%, 7%, 100% { color: #F5F0E8; }
+  2.5% { color: #C4A35A; opacity: 1; }
+}
+.zk-sheen {
+  display: block;
+  background: linear-gradient(100deg, #F5F0E8 34%, #C4A35A 45%, #E9CB82 50%, #C4A35A 55%, #F5F0E8 66%);
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-mask: url(/zack/zack-scritta.svg) center / contain no-repeat;
+          mask: url(/zack/zack-scritta.svg) center / contain no-repeat;
+  animation: zk-sheen 8s ease-in-out infinite;
+}
+@keyframes zk-sheen {
+  0% { background-position: 100% 0; }
+  15%, 100% { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) { .zk-shake, .zk-glint, .zk-sheen { animation: none; } }

@@ -11,16 +11,18 @@ import { cn } from '@/lib/utils'
 
 const ICONS = { instagram: InstagramIcon, youtube: YouTubeIcon, tiktok: TikTokIcon }
 
-export function ZackSocials({ size = 15, className }) {
+// glintAt: secondi del primo passaggio del velo d'oro (solo nell'header);
+// le icone si accendono una dopo l'altra, da sinistra a destra.
+export function ZackSocials({ size = 15, className, glintAt }) {
   return (
     <div className={cn('flex items-center', className)}>
-      {ZACK_SOCIAL.map(({ key, label, href }) => {
+      {ZACK_SOCIAL.map(({ key, label, href }, i) => {
         const Icon = ICONS[key]
         return (
           <a key={key} href={href} target="_blank" rel="noopener noreferrer"
             aria-label={`Zack the Duck on ${label}`}
-            className="transition-opacity duration-200 opacity-70 hover:opacity-100"
-            style={{ color: Z.cream }}>
+            className={cn('transition-opacity duration-200 opacity-70 hover:opacity-100', glintAt != null && 'zk-glint')}
+            style={{ color: Z.cream, ...(glintAt != null && { animationDelay: `${glintAt + i * 0.15}s` }) }}>
             <Icon size={size} />
           </a>
         )
@@ -95,21 +97,23 @@ export default function ZackNavbar() {
 
           {/* Sinistra: hamburger + social */}
           <div className="flex items-center gap-4">
-            <button onClick={() => setOpen(true)} aria-label="Open menu" style={{ color: Z.cream }}
-              className="transition-opacity hover:opacity-70">
+            {/* Il velo d'oro parte da qui e attraversa l'header ogni 8 s. */}
+            <button onClick={() => setOpen(true)} aria-label="Open menu" style={{ color: Z.cream, animationDelay: '1.8s' }}
+              className="transition-opacity hover:opacity-70 zk-glint">
               <Menu size={20} strokeWidth={1.5} />
             </button>
-            <ZackSocials size={15} className="gap-3" />
+            <ZackSocials size={15} className="gap-3" glintAt={1.95} />
           </div>
 
           {/* Centro: la scritta */}
           <Link to="/" aria-label="Zack the Duck — Home" className="block">
-            <img src="/zack/zack-scritta.svg" alt="Zack the Duck" className="h-9 sm:h-10 w-auto" draggable={false} />
+            <span role="img" aria-label="Zack the Duck" className="zk-sheen h-9 sm:h-10"
+              style={{ aspectRatio: '876 / 438', animationDelay: '2.35s' }} />
           </Link>
 
           {/* Destra: carrello */}
           <div className="flex justify-end">
-            <button onClick={toggleCart} className="relative transition-opacity hover:opacity-70" style={{ color: Z.cream }}
+            <button onClick={toggleCart} className="relative transition-opacity hover:opacity-70 zk-glint" style={{ color: Z.cream, animationDelay: '3.2s' }}
               aria-label={`Cart — ${count} item${count !== 1 ? 's' : ''}`}>
               <ShoppingBag size={19} strokeWidth={1.5} />
               {count > 0 && (

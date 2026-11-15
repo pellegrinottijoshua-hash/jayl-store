@@ -55,6 +55,7 @@ function startEngine(svg, onReact) {
   let idleIdx = 0, idleNext = 0, clicks = []
   let blinkT = -1, nextBlink = performance.now() + 2500
   let prev = performance.now(), raf = 0, running = false
+  let boostUntil = 0   // per un attimo le pupille scattano (balzo allo swipe)
 
   const toSvg = (x, y) => {
     const m = svg.getScreenCTM()
@@ -119,7 +120,7 @@ function startEngine(svg, onReact) {
     if (mode === 'track') {
       exprName = 'originale'
       tgt = pointer ? trackPupils(toVec('originale')) : toVec('originale')
-      speed = 7
+      speed = now < boostUntil ? 18 : 7
       if (now - lastMove > IDLE_AFTER) { mode = 'idle'; idleNext = 0 }
     }
     if (mode === 'idle') {
@@ -157,8 +158,23 @@ function startEngine(svg, onReact) {
   io.observe(svg)
   play()
 
+  // Swipe del carosello: le pupille saltano verso il lato (dir -1 sinistra,
+  // +1 destra), oltre il bordo, e poi tornano dove le manda look().
+  const glance = (dir) => {
+    const r = svg.getBoundingClientRect()
+    look(r.left + r.width / 2 + dir * r.width * 1.4, r.bottom + r.height * 0.5)
+    boostUntil = performance.now() + 320
+  }
+  // Un'espressione per ms millisecondi (es. 'spirale' = confuso).
+  const react = (expr, ms = 1200) => {
+    if (!D.espr[expr]) return
+    reactExpr = expr; mode = 'react'; reactUntil = performance.now() + ms; blinkT = -1
+  }
+
   return {
     look,
+    glance,
+    react,
     stop() {
       pause(); io.disconnect()
       window.removeEventListener('pointermove', onMove)
@@ -180,6 +196,14 @@ const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact }, ref
 
   useImperativeHandle(ref, () => ({
     lookAt: (x, y) => engine.current?.look(x, y),
+    glance: (dir) => engine.current?.glance(dir),
+    react: (expr, ms) => engine.current?.react(expr, ms),
+    // Testa che scuote: la classe riparte da capo anche se e' gia' applicata.
+    shake: () => {
+      const el = svgRef.current
+      if (!el) return
+      el.classList.remove('zk-shake'); void el.getBoundingClientRect(); el.classList.add('zk-shake')
+    },
   }), [])
 
   return (
