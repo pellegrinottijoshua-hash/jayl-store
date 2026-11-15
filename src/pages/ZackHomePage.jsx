@@ -47,7 +47,9 @@ const framesOf = (p) => {
 // nero (anche se non e' esattamente #111111) non mostrano un riquadro.
 const FEATHER = 'radial-gradient(130% 100% at 50% 42%, #000 62%, transparent 100%)'
 
-function ProductSlide({ product, active, innerRef, clone, flashKey }) {
+// className: sostituisce la misura del carosello (la scena desktop ne passa
+// una sua). onEnter: il mouse entra nel capo (desktop: occhiolino di Zack).
+function ProductSlide({ product, active, innerRef, clone, flashKey, className, onEnter }) {
   const frames = framesOf(product)
   const [frame, setFrame] = useState(0)
   const timer = useRef(null)
@@ -73,11 +75,11 @@ function ProductSlide({ product, active, innerRef, clone, flashKey }) {
     <Link
       ref={innerRef}
       to={`/product/${product.id}`}
-      className={cn('snap-center shrink-0 w-[74vw] sm:w-[44vw] lg:w-auto lg:flex-1 group block', clone && 'lg:hidden')}
+      className={cn('group block', className || 'snap-center shrink-0 w-[74vw] sm:w-[44vw]')}
       aria-label={product.name}
       aria-hidden={clone || undefined}
       tabIndex={clone ? -1 : undefined}
-      onPointerEnter={(e) => { if (e.pointerType === 'mouse') flash(true) }}
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse') { flash(true); onEnter?.() } }}
       onPointerLeave={(e) => { if (e.pointerType === 'mouse') stop() }}
     >
       <div
@@ -113,7 +115,7 @@ function Collection({ eyesRef }) {
   const [flashKey, setFlashKey] = useState(0)
   const touched = useRef(0)
   const lastLeft = useRef(0)
-  const lastGlance = useRef(0)
+  const follow = useRef(0)
   const swipes = useRef([])
   const settleTimer = useRef(null)
   const jumping = useRef(false)   // lo scroll del salto silenzioso non e' uno swipe
@@ -176,13 +178,17 @@ function Collection({ eyesRef }) {
     const el = scroller.current
     if (!el) return
     if (jumping.current) { jumping.current = false; lastLeft.current = el.scrollLeft; return }
-    // Balzo degli occhi verso la direzione dello swipe (solo se e' il dito).
-    const dx = el.scrollLeft - lastLeft.current
     lastLeft.current = el.scrollLeft
-    const now = Date.now()
-    if (Math.abs(dx) > 2 && now - touched.current < 1500 && now - lastGlance.current > 380) {
-      lastGlance.current = now
-      eyesRef.current?.glance(dx > 0 ? 1 : -1)
+    // Gli occhi seguono, fluidi, il capo piu' vicino al centro mentre scorre
+    // (un solo calcolo per frame). Prima erano balzi verso il lato: a scatti.
+    if (!follow.current) {
+      follow.current = requestAnimationFrame(() => {
+        follow.current = 0
+        const card = cards.current[nearest()]
+        if (!card) return
+        const r = card.getBoundingClientRect()
+        eyesRef.current?.lookAt(r.left + r.width / 2, r.top + r.height * 0.3)
+      })
     }
     clearTimeout(settleTimer.current)
     settleTimer.current = setTimeout(settle, 130)
@@ -236,7 +242,7 @@ function Collection({ eyesRef }) {
         onTouchStart={() => { touched.current = Date.now() }}
         onTouchMove={() => { touched.current = Date.now() }}
         onWheel={() => { touched.current = Date.now() }}
-        className="zk-noscrollbar flex gap-3 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-[13vw] sm:px-[28vw] lg:px-10 lg:overflow-visible max-w-3xl mx-auto"
+        className="zk-noscrollbar flex gap-3 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-[13vw] sm:px-[28vw]"
       >
         {LOOP.map((p, i) => (
           <ProductSlide
@@ -255,6 +261,34 @@ function Collection({ eyesRef }) {
           <span key={p.id} className="h-[3px] rounded-full transition-all duration-500"
             style={{ width: i === active ? 22 : 8, background: i === active ? Z.gold : 'rgba(245,240,232,0.25)' }} />
         ))}
+      </div>
+    </section>
+  )
+}
+
+// Desktop: gli occhi in alto al centro, un capo sotto (il corpo) e gli altri
+// due ai lati, all'altezza della faccia. Il mouse guida le pupille verso il
+// capo che stai per guardare; quando ci entri, Zack fa l'occhiolino.
+const pick = (id) => zackProducts.find((p) => p.id === id)
+const DESK = {
+  center: pick('zack-the-duck-tee') || zackProducts[0],
+  left:   pick('zack-the-duck-hoodie') || zackProducts[1],
+  right:  pick('zack-the-duck-crewneck') || zackProducts[2],
+}
+
+function DesktopStage() {
+  const eyesRef = useRef(null)
+  const wink = () => eyesRef.current?.wink(1)
+  const side = 'w-full max-w-[300px] mt-[22vh]'
+  return (
+    <section className="hidden lg:block px-10 pt-[84px] pb-6">
+      <div className="max-w-[1320px] mx-auto grid grid-cols-[1fr_minmax(420px,560px)_1fr] gap-12 items-start">
+        {DESK.left && <div className="flex justify-end"><ProductSlide product={DESK.left} active className={side} onEnter={wink} /></div>}
+        <div className="flex flex-col items-center">
+          <ZackEyes ref={eyesRef} className="w-full h-auto block cursor-pointer" />
+          {DESK.center && <ProductSlide product={DESK.center} active className="w-full max-w-[280px] mt-6" onEnter={wink} />}
+        </div>
+        {DESK.right && <div className="flex justify-start"><ProductSlide product={DESK.right} active className={side} onEnter={wink} /></div>}
       </div>
     </section>
   )
@@ -336,11 +370,15 @@ export default function ZackHomePage() {
   return (
     <div style={{ background: Z.black, color: Z.cream }} className="min-h-screen">
       {/* La testa: gli occhi, grandi, in alto. Sotto, subito il corpo (i capi). */}
-      <section className="flex justify-center px-3 pt-[92px] sm:pt-[100px] pb-5 sm:pb-7">
-        <ZackEyes ref={eyesRef} className="w-[94vw] max-w-[640px] h-auto block cursor-pointer" />
-      </section>
-
-      <Collection eyesRef={eyesRef} />
+      {/* Telefono e tablet: gli occhi, poi il carosello infinito. */}
+      <div className="lg:hidden">
+        <section className="flex justify-center px-3 pt-[92px] sm:pt-[100px] pb-5 sm:pb-7">
+          <ZackEyes ref={eyesRef} className="w-[94vw] max-w-[640px] h-auto block cursor-pointer" />
+        </section>
+        <Collection eyesRef={eyesRef} />
+      </div>
+      {/* Desktop: la scena con i capi attorno alla testa. */}
+      <DesktopStage />
       {/* Il voto Etsy: dopo i capi, prima dei video, non in faccia. */}
       <EtsyRating className="flex justify-center px-5 pt-10" />
       <Spotted />

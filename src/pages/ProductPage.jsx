@@ -373,9 +373,12 @@ function GalleryThumb({ src, look }) {
 
 // Davanti o dietro: la scelta piu' importante sulla maglia, quindi grande e in
 // cima ai selettori, non un'opzione fra le altre.
-function PrintPicker({ sides, value, onChange, isLight }) {
+function PrintPicker({ sides, value, onChange, isLight, zack }) {
   if (sides.length < 2) return null
-  const opts = { back: ['Back', 'Large print on the back'], front: ['Front', 'Small print on the chest'] }
+  // Zack: davanti la stampa e' grande anche lei (felpa Front / Back).
+  const opts = zack
+    ? { back: ['Back', 'Large print on the back'], front: ['Front', 'Print on the chest'] }
+    : { back: ['Back', 'Large print on the back'], front: ['Front', 'Small print on the chest'] }
   const btn = (side) => {
     const on = value === side
     return (
@@ -1308,7 +1311,7 @@ export default function ProductPage() {
         {/* ── Variant Selectors ──────────────────────────────────────────── */}
         <div className="px-4 pt-4 space-y-5">
 
-          <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} />
+          <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} zack={isZack} />
 
 
           {/* Size grid */}
@@ -1693,7 +1696,7 @@ export default function ProductPage() {
                   </div>
                 )}
 
-                <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} />
+                <PrintPicker sides={printSides} value={activeSide} onChange={setPrintSide} isLight={isLight} zack={isZack} />
                 {product.colors && (
                   <div>
                     <div className="flex items-center justify-between mb-3">

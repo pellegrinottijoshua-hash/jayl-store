@@ -56,6 +56,7 @@ function startEngine(svg, onReact) {
   let blinkT = -1, nextBlink = performance.now() + 2500
   let prev = performance.now(), raf = 0, running = false
   let boostUntil = 0   // per un attimo le pupille scattano (balzo allo swipe)
+  let winkT = -1, winkEye = 1   // occhiolino: una palpebra sola (1 = occhio destro)
 
   const toSvg = (x, y) => {
     const m = svg.getScreenCTM()
@@ -69,7 +70,10 @@ function startEngine(svg, onReact) {
     pointer = p; lastMove = performance.now()
     if (mode === 'idle') mode = 'track'
   }
-  const onMove = (ev) => look(ev.clientX, ev.clientY)
+  // Il dito che trascina (carosello, scroll) non e' un cursore: su mobile le
+  // pupille seguono il capo che scorre (look() dal carosello), non il dito,
+  // se no saltano fra i due. I tocchi sugli occhi restano (onDown).
+  const onMove = (ev) => { if (ev.pointerType !== 'touch') look(ev.clientX, ev.clientY) }
   const onDown = (ev) => {
     look(ev.clientX, ev.clientY)
     const now = performance.now()
@@ -111,6 +115,14 @@ function startEngine(svg, onReact) {
     return Math.sin(Math.PI * t) ** 0.8
   }
 
+  const WINK = 460
+  const winkAmt = (now) => {
+    if (winkT < 0) return 0
+    const t = (now - winkT) / WINK
+    if (t >= 1) { winkT = -1; return 0 }
+    return Math.sin(Math.PI * t) ** 0.55
+  }
+
   const frame = (now) => {
     const dt = Math.min(0.05, (now - prev) / 1000); prev = now
     if (mode === 'react') {
@@ -133,9 +145,10 @@ function startEngine(svg, onReact) {
     const k = 1 - Math.exp(-speed * dt)
     for (let j = 0; j < cur.length; j++) cur[j] += (tgt[j] - cur[j]) * k
 
-    const b = blinkAmt(now), CL = 288
+    const bl = blinkAmt(now), w = winkAmt(now), CL = 288
     for (let i = 0; i < 2; i++) {
       const o = i * 6
+      const b = i === winkEye ? Math.max(bl, w) : bl
       const a = cur[o] + (CL - cur[o]) * b, c = cur[o + 1] + (CL - cur[o + 1]) * b, low = cur[o + 2]
       const x0 = i ? 688 : 230, x1 = i ? 970 : 512
       poly[i].setAttribute('points',
@@ -171,9 +184,16 @@ function startEngine(svg, onReact) {
     reactExpr = expr; mode = 'react'; reactUntil = performance.now() + ms; blinkT = -1
   }
 
+  // Occhiolino (eye 0 = sinistro, 1 = destro). Non riparte se e' gia' in corso.
+  const wink = (eye = 1) => {
+    if (winkT >= 0 || mode === 'react') return
+    winkEye = eye; winkT = performance.now()
+  }
+
   return {
     look,
     glance,
+    wink,
     react,
     stop() {
       pause(); io.disconnect()
@@ -197,6 +217,7 @@ const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact }, ref
   useImperativeHandle(ref, () => ({
     lookAt: (x, y) => engine.current?.look(x, y),
     glance: (dir) => engine.current?.glance(dir),
+    wink: (eye) => engine.current?.wink(eye),
     react: (expr, ms) => engine.current?.react(expr, ms),
     // Testa che scuote: la classe riparte da capo anche se e' gia' applicata.
     shake: () => {
