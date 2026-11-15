@@ -134,7 +134,6 @@ export default function ZackNavbar() {
 
         <nav className="flex-1 flex flex-col justify-center px-8 gap-5">
           {[
-            { label: 'Shop', to: '/#shop' },
             { label: 'Tee', to: '/product/zack-the-duck-tee' },
             { label: 'Hoodie', to: '/product/zack-the-duck-hoodie' },
             { label: 'Crewneck', to: '/product/zack-the-duck-crewneck' },
@@ -147,22 +146,25 @@ export default function ZackNavbar() {
               {label}
             </Link>
           ))}
-          <div className="flex gap-5 mt-4 font-sans text-xs uppercase" style={{ letterSpacing: '0.18em', color: 'rgba(245,240,232,0.55)' }}>
+
+          {/* La porta verso JAYL: stessa famiglia di caratteri, in oro, col segno JAYL. */}
+          <div className="h-px w-16 mt-3" style={{ background: Z.gold, opacity: 0.35 }} />
+          <JaylDoor onEnter={close}
+            className="flex items-center gap-3 font-sans font-bold uppercase leading-none transition-opacity hover:opacity-75"
+          >
+            <span style={{ color: Z.gold, fontSize: 'clamp(1.4rem, 6vw, 2.2rem)', letterSpacing: '-0.01em' }}>What else?</span>
+            <JaylMark size={30} style={{ color: Z.gold }} title="JAYL" />
+          </JaylDoor>
+
+          <div className="flex gap-5 mt-6 font-sans text-xs uppercase" style={{ letterSpacing: '0.18em', color: 'rgba(245,240,232,0.55)' }}>
             <Link to="/track" onClick={close}>Track order</Link>
             <Link to="/shipping" onClick={close}>Shipping</Link>
             <Link to="/contact" onClick={close}>Contact</Link>
           </div>
         </nav>
 
-        <div className="px-8 pb-10 flex items-end justify-between">
+        <div className="px-8 pb-10">
           <ZackSocials size={20} className="gap-6" />
-          {/* La porta: piccola, in fondo. */}
-          <JaylDoor onEnter={close}
-            className="flex items-center gap-2 font-sans text-[10px] uppercase transition-opacity opacity-60 hover:opacity-100"
-          >
-            <span style={{ color: Z.gold, letterSpacing: '0.2em' }}>JAYL Art Collection</span>
-            <JaylMark size={16} style={{ color: Z.gold }} />
-          </JaylDoor>
         </div>
       </div>
     </>

@@ -9,6 +9,7 @@ import { SOCIAL_LINKS } from '@/data/social-links'
 import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
 import JaylMark from '@/components/JaylMark'
 import { JAYL_HOME } from '@/lib/world'
+import ZackMark from '@/components/zack/ZackMark'
 
 // Il logo V2 segue lo sfondo: sulla panna resta nero, sul nero respira
 // panna ↔ oro (.logo-breathe in index.css).
@@ -135,6 +136,9 @@ const NAV_ITEMS = [
   // HIDDEN - re-enable for Art launch
   // { id: 'art',    label: 'art',    to: '/art' },
   { id: 'objects',label: 'objects',to: '/objects' },
+  // Zack the Duck: la sua home e' "/" (src/lib/world.js). Stesso carattere
+  // delle altre voci, col suo segno davanti.
+  { id: 'zack',   label: 'zack',   to: '/' },
   { id: 'artist', label: null,     to: '/artist' },  // uses FallingS render
 ]
 
@@ -274,7 +278,9 @@ export default function Navbar() {
               return (
                 <span
                   key={item.id}
-                  className="flex items-baseline relative"
+                  // zack: sul telefono la riga centrale non ha posto (tocca le
+                  // icone ai lati); li' Zack sta nel menu a tendina.
+                  className={cn('items-baseline relative', item.id === 'zack' ? 'hidden sm:flex' : 'flex')}
                   onMouseEnter={() => hasDropdown && openDropdown(item.id)}
                   onMouseLeave={() => hasDropdown && scheduleClose()}
                 >
@@ -307,6 +313,11 @@ export default function Navbar() {
                   >
                     {item.id === 'artist' ? (
                       <>artist'<FallingS /></>
+                    ) : item.id === 'zack' ? (
+                      <span className="inline-flex items-center gap-[0.45em]" aria-label="Zack the Duck">
+                        <ZackMark height="0.95em" className="-translate-y-[0.05em]" />
+                        zack
+                      </span>
                     ) : (
                       item.label
                     )}
@@ -464,6 +475,7 @@ export default function Navbar() {
             // HIDDEN - re-enable for Art launch
             // { id: 'art',    label: 'art',     to: '/art' },
             { id: 'objects',label: 'objects',  to: '/objects' },
+            { id: 'zack',   label: 'zack',     to: '/' },
             { id: 'artist', label: null,       to: '/artist' },
           ].map(({ id, label, to }) => (
             <Link
@@ -478,7 +490,9 @@ export default function Navbar() {
               onMouseEnter={e => { e.currentTarget.style.color = 'var(--jayl-gold)' }}
               onMouseLeave={e => { e.currentTarget.style.color = '' }}
             >
-              {id === 'artist' ? <>artist'<FallingS /></> : label}
+              {id === 'artist' ? <>artist'<FallingS /></>
+                : id === 'zack' ? <span className="inline-flex items-center gap-[0.3em]">{label}<ZackMark height="0.62em" className="translate-y-[0.06em]" /></span>
+                : label}
             </Link>
           ))}
 

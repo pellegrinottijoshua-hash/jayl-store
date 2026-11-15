@@ -5,6 +5,7 @@ import { isZackProduct, Z } from '@/lib/world'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useThemeStore } from '@/store/themeStore'
 import Money from '@/components/Money'
+import EtsyRating from '@/components/EtsyRating'
 import ZackEyes from '@/components/zack/ZackEyes'
 import { cn } from '@/lib/utils'
 
@@ -45,7 +46,7 @@ function ProductSlide({ product, active, innerRef }) {
           'relative overflow-hidden rounded-[2px] transition-all duration-700',
           active ? 'opacity-100 scale-100' : 'opacity-55 scale-[0.96]'
         )}
-        style={{ aspectRatio: '4 / 5.6', background: '#0b0b0b' }}
+        style={{ aspectRatio: '4 / 5.3', background: '#0b0b0b' }}
       >
         <img
           src={cover(product)}
@@ -118,28 +119,22 @@ function Collection({ eyesRef }) {
   if (!zackProducts.length) return null
 
   return (
-    <section id="shop" className="pt-6 pb-24 scroll-mt-24">
-      <div className="text-center mb-10 px-6">
-        <p className={cn(label, 'zk-rise')} style={{ letterSpacing: '0.32em', color: Z.gold }}>Christmas collection</p>
-        <h2 className="mt-3 font-sans font-bold uppercase leading-[0.95] zk-rise"
-          style={{ color: Z.cream, fontSize: 'clamp(2rem, 7vw, 3.6rem)', animationDelay: '120ms', letterSpacing: '-0.01em' }}>
-          Wear the look.
-        </h2>
-      </div>
-
+    // Subito sotto gli occhi, senza titoli: il capo al centro ben visibile,
+    // gli altri due che spuntano ai lati e si scorrono.
+    <section id="shop" className="pt-2 pb-6 scroll-mt-24 zk-rise" style={{ animationDelay: '150ms' }}>
       <div
         ref={scroller}
         onScroll={onScroll}
         onPointerDown={() => { touched.current = Date.now() }}
         onWheel={() => { touched.current = Date.now() }}
-        className="zk-noscrollbar flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-[12vw] sm:px-[27vw] lg:px-10 lg:overflow-visible max-w-6xl mx-auto"
+        className="zk-noscrollbar flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-[12vw] sm:px-[27vw] lg:px-10 lg:overflow-visible max-w-4xl mx-auto"
       >
         {zackProducts.map((p, i) => (
           <ProductSlide key={p.id} product={p} active={i === active} innerRef={(el) => { cards.current[i] = el }} />
         ))}
       </div>
 
-      <div className="flex justify-center gap-2 mt-8" aria-hidden>
+      <div className="flex justify-center gap-2 mt-6" aria-hidden>
         {zackProducts.map((p, i) => (
           <span key={p.id} className="h-[3px] rounded-full transition-all duration-500"
             style={{ width: i === active ? 22 : 8, background: i === active ? Z.gold : 'rgba(245,240,232,0.25)' }} />
@@ -151,9 +146,9 @@ function Collection({ eyesRef }) {
 
 function Videos() {
   return (
-    <section className="pb-24">
-      <p className={cn(label, 'text-center mb-8')} style={{ letterSpacing: '0.32em', color: 'rgba(245,240,232,0.5)' }}>
-        Seen in the wild
+    <section className="pt-14 pb-24">
+      <p className={cn(label, 'text-center mb-8')} style={{ letterSpacing: '0.42em', color: Z.gold }}>
+        Spotted.
       </p>
       <div className="zk-noscrollbar flex gap-3 sm:gap-5 overflow-x-auto snap-x snap-mandatory px-6 sm:justify-center">
         {VIDEOS.map((v) => (
@@ -206,22 +201,14 @@ export default function ZackHomePage() {
 
   return (
     <div style={{ background: Z.black, color: Z.cream }} className="min-h-screen">
-      {/* Hero: gli occhi */}
-      <section className="relative flex flex-col items-center justify-center px-5 pt-28 pb-12" style={{ minHeight: '78svh' }}>
-        <ZackEyes ref={eyesRef} className="w-[88vw] max-w-[860px] h-auto block cursor-pointer" />
-        <p className={cn(label, 'mt-10 zk-rise')} style={{ letterSpacing: '0.42em', color: 'rgba(245,240,232,0.55)', animationDelay: '300ms' }}>
-          He&rsquo;s watching.
-        </p>
-        <a href="#shop" aria-label="Shop the collection"
-          className="mt-8 zk-rise font-sans text-[11px] uppercase px-7 py-3 border transition-colors"
-          style={{ letterSpacing: '0.28em', borderColor: 'rgba(196,163,90,0.6)', color: Z.gold, animationDelay: '500ms' }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = Z.gold; e.currentTarget.style.color = Z.black }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = Z.gold }}>
-          Shop
-        </a>
+      {/* Hero: gli occhi, in alto, e subito i capi sotto. Niente scritte. */}
+      <section className="flex justify-center px-5 pt-[100px] sm:pt-[108px] pb-7 sm:pb-9">
+        <ZackEyes ref={eyesRef} className="w-[84vw] max-w-[480px] h-auto block cursor-pointer" />
       </section>
 
       <Collection eyesRef={eyesRef} />
+      {/* Il voto Etsy: dopo i capi, prima dei video, non in faccia. */}
+      <EtsyRating className="flex justify-center px-5 pt-10" />
       <Videos />
 
       <section className="pb-20 px-6">

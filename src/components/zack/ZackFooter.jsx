@@ -13,8 +13,8 @@ export default function ZackFooter() {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col items-center text-center gap-6">
           <img src="/zack/zack-simbolo.svg" alt="" className="w-24 opacity-90" draggable={false} />
-          <p className="font-sans text-sm" style={{ color: 'rgba(245,240,232,0.6)' }}>
-            Deadpan duck. Watch him on
+          <p className="font-sans font-bold uppercase text-base sm:text-lg" style={{ letterSpacing: '0.04em' }}>
+            Watch Zack on
           </p>
           <ZackSocials size={20} className="gap-7" />
         </div>

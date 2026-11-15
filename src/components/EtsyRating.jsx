@@ -10,9 +10,11 @@ const RATING = 4.9
 const SHOP_URL = 'https://www.etsy.com/shop/JaylArtStore'
 const ETSY_ORANGE = '#E0693A'
 
-export default function EtsyRating() {
+// className: il contenitore. La home Zack passa il suo (niente w-screen ne'
+// bg-off-black di JAYL, il fondo resta il nero di Zack).
+export default function EtsyRating({ className = 'w-screen bg-off-black px-5 pt-8 pb-3 sm:pt-10 flex justify-center' }) {
   return (
-    <section data-nav-theme="dark" className="w-screen bg-off-black px-5 pt-8 pb-3 sm:pt-10 flex justify-center">
+    <section data-nav-theme="dark" className={className}>
       <a
         href={SHOP_URL}
         target="_blank"
