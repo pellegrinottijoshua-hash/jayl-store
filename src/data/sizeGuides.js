@@ -33,7 +33,37 @@ export const SIZE_GUIDES = {
   },
 }
 
-export const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL']
+// Capi Zack the Duck (15/11). Lunghezza e larghezza del corpo dalle schede
+// Gildan (pollici → cm, arrotondati); la manica non c'e' finche' non la
+// leggiamo da una fonte. DA RICONTROLLARE sulla scheda Gelato prima del lancio.
+const GILDAN_NOTES = [
+  'Garment measured flat. Chest is side to side — double it for the full circumference.',
+  'Length from the highest point of the shoulder.',
+  'Classic unisex fit. Between sizes, take your usual size.',
+]
+SIZE_GUIDES.gildan_5000 = {
+  garment: 'Gildan 5000 Heavy Cotton',
+  cols: ['Length', 'Chest'],
+  unit: 'cm',
+  rows: { S: [71, 46], M: [74, 51], L: [76, 56], XL: [79, 61], '2XL': [81, 66] },
+  notes: GILDAN_NOTES,
+}
+SIZE_GUIDES.gildan_18500 = {
+  garment: 'Gildan 18500 Heavy Blend Hoodie',
+  cols: ['Length', 'Chest'],
+  unit: 'cm',
+  rows: { S: [69, 51], M: [71, 56], L: [74, 61], XL: [76, 66], '2XL': [79, 71] },
+  notes: GILDAN_NOTES,
+}
+SIZE_GUIDES.gildan_18000 = {
+  garment: 'Gildan 18000 Heavy Blend Crewneck',
+  cols: ['Length', 'Chest'],
+  unit: 'cm',
+  rows: { S: [69, 51], M: [71, 56], L: [74, 61], XL: [76, 66], '2XL': [79, 71] },
+  notes: GILDAN_NOTES,
+}
+
+export const SIZE_ORDER =['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL']
 
 /** Ordina per taglia (XS → 5XL): Gelato le consegna in ordine sparso (S, L, M, XL). */
 export function bySize(a, b) {

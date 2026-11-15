@@ -632,7 +632,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
   // Va DOPO le tre funzioni qui sopra: const non si puo' leggere prima della dichiarazione.
   const thumbProps = {
     heroShots, heroVideo: videoUrl, mobileHero, sequenza, detailImage, imageSides,
-    onSetImageSide: setImageSide, onToggleHeroShot: toggleHeroShot,
+    // Zack: un solo lato (davanti), niente ruoli B/F.
+    onSetImageSide: section === 'zack' ? undefined : setImageSide, onToggleHeroShot: toggleHeroShot,
     onSetHeroVideo: u => { setVideoUrl(u || ''); setVideoPreview(null) },
     onSetMobileHero: setMobileHero, onToggleSequenza: toggleSequenza, onSetDetailImage: setDetailImage,
   }
@@ -1197,6 +1198,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             <select value={section} onChange={e => setSection(e.target.value)} className={inputCls}>
               <option value="objects">objects</option>
               <option value="art">art</option>
+              <option value="zack">zack (Zack the Duck)</option>
             </select>
           </Field>
 
@@ -1206,6 +1208,8 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
               onChange={e => {
                 if (e.target.value === '__new__') return
                 setCollection(e.target.value); setNewColl('')
+                // I capi Zack vivono nel mondo Zack (src/lib/world.js).
+                if (e.target.value === 'Zack the Duck') setSection('zack')
               }}
               className={inputCls}
             >
@@ -1849,6 +1853,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                     </Row>
                     <Row label="🔍 Dettaglio"><Slot url={detailImage} onClear={() => setDetailImage(null)} /></Row>
                     <Row label="🏠 Lifestyle home"><Slot url={mobileHero} onClear={() => setMobileHero(null)} /></Row>
+                    {section !== 'zack' && <>
                     <Row label="Solo scheda Back">
                       {sideList('back').length === 0 && <Slot />}
                       {sideList('back').map(u => <Slot key={u} url={u} onClear={() => setImageSide(u, null)} />)}
@@ -1857,6 +1862,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                       {sideList('front').length === 0 && <Slot />}
                       {sideList('front').map(u => <Slot key={u} url={u} onClear={() => setImageSide(u, null)} />)}
                     </Row>
+                    </>}
                   </div>
                 )
               })()}

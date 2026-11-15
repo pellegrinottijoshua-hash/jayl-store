@@ -164,6 +164,10 @@ export default async function handler(req, res) {
       // than repeating the matching rules and risking a different answer here.
       const productUid = item.variantObj?.gelatoVariantId ?? item.product?.gelatoProductId
       try {
+        // Senza prodotto Gelato il webhook salterebbe l'ordine dopo l'incasso
+        // ("Missing gelatoProductId — skipping"): capi nuovi non ancora
+        // collegati in admin (es. Zack prima del "Fetch variants").
+        if (!productUid) throw new Error(`Product "${item.productId}" has no Gelato product linked`)
         resolveItemPrint(item.product, productUid, item.print)
       } catch (err) {
         console.error('[create-payment-intent] unfulfillable item blocked:', err.message)

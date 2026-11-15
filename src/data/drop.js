@@ -211,7 +211,10 @@ export const drop = {
     "cool-espeon-t-shirt",
     "cool-vaporeon-t-shirt",
     "jolteon-t-shirt-electric-type-pok-mon-fan-art-tee-eeveelution-gift",
-    "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift"
+    "flareon-t-shirt-fire-type-pok-mon-fan-art-tee-eeveelution-gift",
+    "zack-the-duck-hoodie",
+    "zack-the-duck-tee",
+    "zack-the-duck-crewneck"
   ],
   "archivePrice": 2499
 }

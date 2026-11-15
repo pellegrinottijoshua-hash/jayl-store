@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
 import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
 import JaylMark from '@/components/JaylMark'
+import { JAYL_HOME } from '@/lib/world'
 
 // Il logo V2 segue lo sfondo: sulla panna resta nero, sul nero respira
 // panna ↔ oro (.logo-breathe in index.css).
@@ -48,7 +49,7 @@ function ThemeToggle({ className }) {
 }
 
 // ── Social icons (inline SVG, 16×16 viewBox) ─────────────────────────────────
-function InstagramIcon({ size = 16 }) {
+export function InstagramIcon({ size = 16 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -57,7 +58,7 @@ function InstagramIcon({ size = 16 }) {
     </svg>
   )
 }
-function TikTokIcon({ size = 16 }) {
+export function TikTokIcon({ size = 16 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.74a4.85 4.85 0 01-1.01-.05z"/>
@@ -72,7 +73,7 @@ function PinterestIcon({ size = 16 }) {
   )
 }
 
-function YouTubeIcon({ size = 16 }) {
+export function YouTubeIcon({ size = 16 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M23.5 6.9a3 3 0 00-2.12-2.12C19.5 4.27 12 4.27 12 4.27s-7.5 0-9.38.51A3 3 0 00.5 6.9C0 8.78 0 12 0 12s0 3.22.5 5.1a3 3 0 002.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3 3 0 002.12-2.12C24 15.22 24 12 24 12s0-3.22-.5-5.1zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>
@@ -244,7 +245,7 @@ export default function Navbar() {
                 l'occhio della "o" di objects (misurato sui metrici di Space
                 Grotesk 12px: la x-height siede sotto il centro della riga). */}
             <div className="flex items-center gap-3.5">
-              <Link to="/" aria-label="JAYL — Home" className="inline-block translate-y-[4px]">
+              <Link to={JAYL_HOME} aria-label="JAYL — Home" className="inline-block translate-y-[4px]">
                 <NavLogo isLight={isLight} size={30} />
               </Link>
               {/* Instagram e TikTok anche sul telefono, accanto al logo: a
@@ -441,7 +442,7 @@ export default function Navbar() {
       >
         {/* Close row */}
         <div className="flex items-center justify-between px-5 pt-5 h-14">
-          <Link to="/" onClick={() => setMobileMenuOpen(false)} aria-label="JAYL — Home">
+          <Link to={JAYL_HOME} onClick={() => setMobileMenuOpen(false)} aria-label="JAYL — Home">
             <NavLogo isLight={isLight} size={28} />
           </Link>
           <button

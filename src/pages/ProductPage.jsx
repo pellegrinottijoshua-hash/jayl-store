@@ -15,6 +15,7 @@ import { resolveSwatchHex } from '@/lib/apparelColors'
 import { shownColors, imagesForShownColors } from '@/lib/shownColors'
 import { sizeGuideFor, bySize } from '@/data/sizeGuides'
 import { sidesFor, mainSide } from '@/lib/printSides'
+import { isZackProduct } from '@/lib/world'
 import { plainMockup } from '@/data/mockupLibrary'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
@@ -475,6 +476,9 @@ export default function ProductPage() {
   const productBasePrice = product ? basePriceFor(product.id, null, product, dropCfg) : undefined
 
   const isArt = product?.section === 'art'
+  // Zack the Duck: niente lati Back/Front, niente mockup lisci 64000, niente
+  // disclaimer fan art. Vedi src/lib/world.js.
+  const isZack = isZackProduct(product)
   const isLight = isArt
 
   useEffect(() => {
@@ -616,7 +620,8 @@ export default function ProductPage() {
   const sideOf = (u) => product?.imageSides?.[u] || null
   const lookFor = (back) => {
     // Una foto con un lato scelto in admin (B/F) si mostra cosi' com'e', mai come trittico.
-    if (back && sideOf(back)) return null
+    // I capi Zack (felpe comprese) non usano la libreria della tee 64000.
+    if (isZack || (back && sideOf(back))) return null
     const color = back && allOwners.get(back)?.id
     const plainFront = plainMockup(color, 'front')
     if (!color || !plainFront) return null
@@ -678,7 +683,9 @@ export default function ProductPage() {
       const prev = JSON.parse(localStorage.getItem(KEY) || '[]')
       const next = [product.id, ...prev.filter(i => i !== product.id)].slice(0, 12)
       localStorage.setItem(KEY, JSON.stringify(next))
-      const others = next.slice(1).map(i => getProductById(i)).filter(Boolean).slice(0, 4)
+      // Solo dello stesso mondo: mai Pokémon sotto una scheda Zack, e viceversa.
+      const others = next.slice(1).map(i => getProductById(i))
+        .filter(p => p && isZackProduct(p) === isZackProduct(product)).slice(0, 4)
       setRecentlyViewed(others)
     } catch {}
     // Meta Pixel — ViewContent. `productBasePrice` è in CENTESIMI: le
@@ -1012,7 +1019,7 @@ export default function ProductPage() {
         <p className="text-fg/60 text-sm mb-8 max-w-sm">
           Join the waitlist — we'll let you know when it enters a drop.
         </p>
-        <Link to="/" className="text-cream underline text-sm">See the current drop</Link>
+        <Link to="/jayl" className="text-cream underline text-sm">See the current drop</Link>
       </div>
     )
   }
@@ -1021,7 +1028,7 @@ export default function ProductPage() {
     .filter((p) => p.section === product.section && p.id !== product.id)
     .slice(0, 4)
 
-  const sectionLabel = isArt ? 'Fine Art Print' : 'Object'
+  const sectionLabel = isArt ? 'Fine Art Print' : isZack ? 'Zack the Duck' : 'Object'
 
   // ── Theme tokens ─────────────────────────────────────────────────────────────
 
@@ -1433,13 +1440,13 @@ export default function ProductPage() {
 
             </div>
           </Accordion>
-          <Accordion title="Fan Art" light={isLight}>
+          {!isZack && <Accordion title="Fan Art" light={isLight}>
             <p><strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
                 Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
                 merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
                 related names are trademarks of their respective owners. We make them to celebrate what
                 Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.</p>
-          </Accordion>
+          </Accordion>}
         </div>
       </div>
 
@@ -1881,13 +1888,13 @@ export default function ProductPage() {
 
                   </div>
                 </Accordion>
-                <Accordion title="Fan Art" light={isLight}>
+                {!isZack && <Accordion title="Fan Art" light={isLight}>
                   <p><strong>Fan art, made with love.</strong> JAYL deeply respects and supports The Pokémon Company,
                 Nintendo and Game Freak. These designs are original fan-made artworks: they are not official
                 merchandise and are not affiliated with, endorsed or sponsored by them. Pokémon and all
                 related names are trademarks of their respective owners. We make them to celebrate what
                 Pokémon means to the world and to its community, and to give its fans a bit of that feeling to wear.</p>
-                </Accordion>
+                </Accordion>}
               </div>
             </div>
           </div>

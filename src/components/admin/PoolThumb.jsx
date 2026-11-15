@@ -57,11 +57,14 @@ export default function PoolThumb({ img, heroShots, heroVideo, mobileHero, seque
               className={btn(isDetail, 'bg-amber-500 border-amber-400 text-black')}>🔍</button>
             <button onClick={() => onSetMobileHero(isLife ? null : url)} title="Lifestyle home (sezioni a foto piena)"
               className={btn(isLife, 'bg-purple-600 border-purple-500')}>🏠</button>
-            {/* Lato in scheda: B = solo con "Back", F = solo con "Front". */}
+            {/* Lato in scheda: B = solo con "Back", F = solo con "Front". Senza
+                onSetImageSide (capi Zack, un solo lato) i due bottoni spariscono. */}
+            {onSetImageSide && <>
             <button onClick={() => onSetImageSide?.(url, side === 'back' ? null : 'back')} title={side === 'back' ? 'Togli: mostra su entrambi i lati' : 'Solo su Back'}
               className={btn(side === 'back', 'bg-orange-500 border-orange-400 text-black')}>B</button>
             <button onClick={() => onSetImageSide?.(url, side === 'front' ? null : 'front')} title={side === 'front' ? 'Togli: mostra su entrambi i lati' : 'Solo su Front'}
               className={btn(side === 'front', 'bg-sky-500 border-sky-400 text-black')}>F</button>
+            </>}
           </div>
         )}
         {/* Row 2: delete (only for GitHub images) */}

@@ -193,7 +193,7 @@ export default function Footer() {
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Left: logo + copyright */}
             <div className="flex items-center gap-4">
-              <Link to="/" aria-label="JAYL — Home">
+              <Link to="/jayl" aria-label="JAYL — Home">
                 <JaylMark size={30} className={cn('block opacity-85 transition-colors hover:text-accent', isLight ? 'text-ink' : 'text-jayl-cream')} />
               </Link>
               <span className={cn(t.muted, 'text-xs')}>© 2026 JAYL. All rights reserved.</span>

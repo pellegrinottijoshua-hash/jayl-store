@@ -51,7 +51,7 @@ export default function JaylLogo({
 
   if (asLink) {
     return (
-      <Link to="/" aria-label="JAYL — Home" className="inline-flex items-center">
+      <Link to="/jayl" aria-label="JAYL — Home" className="inline-flex items-center">
         {logoEl}
       </Link>
     )

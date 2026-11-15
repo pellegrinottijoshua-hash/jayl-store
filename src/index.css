@@ -341,3 +341,21 @@
 }
 @media (prefers-reduced-motion: reduce) { .hold-idle { animation: none; } }
 
+
+/* ── Zack the Duck ───────────────────────────────────────────────────────────
+   La porta verso JAYL: gli occhi di Zack si chiudono (battito lungo). */
+.zk-door { animation: zk-door-in 160ms ease-out both; }
+.zk-door-eyes { transform-origin: 50% 40%; animation: zk-blink-shut 420ms cubic-bezier(.6,0,.4,1) 80ms both; }
+@keyframes zk-door-in { from { opacity: 0 } to { opacity: 1 } }
+@keyframes zk-blink-shut {
+  0%   { transform: scaleY(1); }
+  45%  { transform: scaleY(0.06); }
+  60%  { transform: scaleY(0.12); }
+  100% { transform: scaleY(0.02); opacity: 0; }
+}
+/* Entrata della home Zack: le parole salgono una alla volta. */
+.zk-rise { opacity: 0; transform: translateY(14px); animation: zk-rise 700ms cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes zk-rise { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .zk-rise, .zk-door, .zk-door-eyes { animation: none; opacity: 1; transform: none; } }
+.zk-noscrollbar { scrollbar-width: none; }
+.zk-noscrollbar::-webkit-scrollbar { display: none; }

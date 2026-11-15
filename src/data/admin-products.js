@@ -25138,5 +25138,257 @@ export const adminProducts = [
       "black",
       "white"
     ]
+  },
+  {
+    "section": "zack",
+    "collection": "Zack the Duck",
+    "subtitle": "Zack the Duck",
+    "currency": "eur",
+    "movement": "Zack the Duck",
+    "adminManaged": true,
+    "featured": false,
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "storeColors": [
+      "black"
+    ],
+    "gelatoProductId": null,
+    "variants": [],
+    "relatedProducts": [],
+    "heroShots": [],
+    "tags": [
+      "zack the duck",
+      "duck",
+      "deadpan",
+      "cartoon",
+      "streetwear",
+      "black",
+      "minimal"
+    ],
+    "createdAt": "2026-11-15T21:29:10.234Z",
+    "updatedAt": "2026-11-15T21:33:39.025Z",
+    "id": "zack-the-duck-tee",
+    "name": "Zack the Duck Tee",
+    "shortName": "Tee",
+    "seoTitle": "Zack the Duck Tee | Deadpan Duck Streetwear | JAYL",
+    "price": 2500,
+    "archivePrice": 2500,
+    "description": "Zack doesn't smile. He doesn't need to. His eyes and beak, printed big on the chest of a heavyweight black tee. No words, no logo soup. Just the look.",
+    "altText": "Zack the Duck Tee in black with Zack's cream eyes and beak printed on the front",
+    "details": [
+      "Gildan 5000 Heavy Cotton — 100% cotton, 180 g/m²",
+      "Classic unisex fit",
+      "Front print: Zack's eyes and beak, cream on black",
+      "Printed on demand near you (DTG)",
+      "Free worldwide shipping"
+    ],
+    "blank": "Gildan 5000 Heavy Cotton",
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
+    "heroImage": null,
+    "images": [
+      "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
+      "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png"
+  },
+  {
+    "section": "zack",
+    "collection": "Zack the Duck",
+    "subtitle": "Zack the Duck",
+    "currency": "eur",
+    "movement": "Zack the Duck",
+    "adminManaged": true,
+    "featured": false,
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "storeColors": [
+      "black"
+    ],
+    "gelatoProductId": null,
+    "variants": [],
+    "relatedProducts": [],
+    "heroShots": [],
+    "tags": [
+      "zack the duck",
+      "duck",
+      "deadpan",
+      "cartoon",
+      "streetwear",
+      "black",
+      "minimal"
+    ],
+    "createdAt": "2026-11-15T21:29:10.234Z",
+    "updatedAt": "2026-11-15T21:33:39.025Z",
+    "id": "zack-the-duck-hoodie",
+    "name": "Zack the Duck Hoodie",
+    "shortName": "Hoodie",
+    "seoTitle": "Zack the Duck Hoodie | Deadpan Duck Streetwear | JAYL",
+    "price": 4900,
+    "archivePrice": 4900,
+    "description": "The hood up, the eyes on. A black pullover hoodie with Zack staring out from the chest. Warm, heavy, mildly judgmental.",
+    "altText": "Zack the Duck Hoodie in black with Zack's cream eyes and beak printed on the front",
+    "details": [
+      "Gildan 18500 Heavy Blend — 50% cotton, 50% polyester",
+      "Pullover with kangaroo pocket and drawstring hood",
+      "Front print: Zack's eyes and beak, cream on black",
+      "Printed on demand near you (DTG)",
+      "Free worldwide shipping"
+    ],
+    "blank": "Gildan 18500 Heavy Blend",
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 4900
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 4900
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 4900
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 4900
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 4900
+      }
+    ],
+    "image": "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
+    "heroImage": null,
+    "images": [
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png"
+  },
+  {
+    "section": "zack",
+    "collection": "Zack the Duck",
+    "subtitle": "Zack the Duck",
+    "currency": "eur",
+    "movement": "Zack the Duck",
+    "adminManaged": true,
+    "featured": false,
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "storeColors": [
+      "black"
+    ],
+    "gelatoProductId": null,
+    "variants": [],
+    "relatedProducts": [],
+    "heroShots": [],
+    "tags": [
+      "zack the duck",
+      "duck",
+      "deadpan",
+      "cartoon",
+      "streetwear",
+      "black",
+      "minimal"
+    ],
+    "createdAt": "2026-11-15T21:29:10.234Z",
+    "updatedAt": "2026-11-15T21:33:39.025Z",
+    "id": "zack-the-duck-crewneck",
+    "name": "Zack the Duck Crewneck",
+    "shortName": "Crewneck",
+    "seoTitle": "Zack the Duck Crewneck | Deadpan Duck Streetwear | JAYL",
+    "price": 3900,
+    "archivePrice": 3900,
+    "description": "A long-sleeve black crewneck sweatshirt with one job: carrying Zack's unimpressed stare wherever you go.",
+    "altText": "Zack the Duck Crewneck in black with Zack's cream eyes and beak printed on the front",
+    "details": [
+      "Gildan 18000 Heavy Blend — 50% cotton, 50% polyester",
+      "Crewneck sweatshirt, ribbed cuffs and waistband",
+      "Front print: Zack's eyes and beak, cream on black",
+      "Printed on demand near you (DTG)",
+      "Free worldwide shipping"
+    ],
+    "blank": "Gildan 18000 Heavy Blend",
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 3900
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 3900
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 3900
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 3900
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 3900
+      }
+    ],
+    "image": "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
+    "heroImage": null,
+    "images": [
+      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
+      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-print-01.jpg"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-crewneck/design.png"
   }
 ]

@@ -1,32 +1,23 @@
 # STATO — jayl.store
 
-Aggiornato: 2026-11-10 da Troy (video Etsy dalle cartelle scelte). Diagnosi di ottobre: `~/Desktop/jayl streetwear/DIAGNOSI-STORE-2026-10-30.md`.
+Aggiornato: 2026-11-15 da Troy (Zack the Duck diventa la facciata). Diagnosi di ottobre: `~/Desktop/jayl streetwear/DIAGNOSI-STORE-2026-10-30.md`.
 
 ## A che punto siamo
-- **Negozio:** www.jayl.store. 19,99 al lancio, poi 24,99 in collezione, i 3 a 49,99. Niente "drop" ai clienti: NEW. 9 drop. Il Drop 9 ha `dropPrice` 2000, cioè $20 invece di $19.99.
-- **Drop 9 DAY & NIGHT** (Eevee, Umbreon, Espeon, fronti): 23-28/10, chiuso.
-  - Finché il drop resta "current" le schede dicono BACK SOON.
-  - Passano alla collezione solo quando in admin si apre il drop nuovo o si chiude questo (`isDropClosed` in `ProductPage.jsx`): con le ads accese va fatto subito.
-- **Scheda:** le maglie fronte mostrano un riquadro BACK vuoto e la dicitura "cool pokemon back".
-- **Misure:** Umami senza cookie, letto via API dalla sessione di cloud.umami.is in Chrome. GA4 e pixel Meta solo con consenso.
-- **Social e video:** 1 clic per Pinterest, IG e FB dall'admin. Kit `~/jayl-motion` (`src/drop8/`, `src/drop9/`, `src/drop10/`), musica Flow in `marketing music/`.
-- **Drop 10, fronti Vaporeon, Jolteon, Flareon:** 4 ad pronti in `pubblicazione/da-troy/bozze/2026-11-03_ad_*.mp4`, testi in `captions.txt`. Un elemento per maglia (acqua, corrente, fuoco). Si rifanno con `kit/drop10.sh`. Nello store per ora c'è solo Vaporeon, a $25 e fuori dai drop.
-- **Video Etsy (10/11):** 4 video dalle foto scelte da Joshua (`jayl streetwear/nuovo video back/`): back 1, back 2, front, tazze, in `etsy video/_ditto/2026-11-10/`. Le maglie aprono con la stamperia v2 (3,6 s). Si rifanno con `~/jayl-motion/kit/etsy.sh nuovo-back-1|nuovo-back-2|nuovo-front|nuovo-tazze`.
-- **Recensioni (10/11):** 14 in `src/data/reviews.json`, testo originale (DE/EN/IT), a rotazione in home (~2,5 s). Striscia Etsy 4.9 sotto il primo schermo (`EtsyRating.jsx`, valore a mano). Trustpilot: ID azienda c'è, template widget vuoti.
-- **Admin (10/11):** Add Product ha gli stessi ruoli di Modify (★ hero, # mockup, 🔍 dettaglio, 🏠 lifestyle, solo Back/Front): clic su una foto, poi il pulsante, e un riepilogo a slot (`PoolThumb.jsx` condiviso). Libreria mockup lisci: 28 colori già completi in `public/mockups/gildan-64000/`; le cartelle «nuovi colori» sono copie identiche, niente da importare. Home: badge Etsy 4.9 sotto il prezzo; Pinterest e X nascosti (link vuoti in `social-links.js`, file solo nel formato del pannello).
-- **Foto per le ads:** `~/Desktop/jayl streetwear/MASTER-FOTO-REALI.md`.
-  - 10 master per i fronti e 10 per i retro: direzioni fotografiche libere (luogo, posa e persona cambiano a ogni generazione), tecnica bloccata.
-  - Ci sono anche i dadi per variare. Valgono anche per Zack.
+- **Due mondi (15/11, branch locale `zack-natale`, NON pushato):** `/` = Zack the Duck (header, footer e palette nero/panna/oro suoi), `/jayl` = lo store JAYL di prima (drop, NEW, Pokémon). Porta neutra: «JAYL Art Collection» nell'hamburger e il segno JAYL in fondo al footer, aperta con un battito degli occhi. Logica in `src/lib/world.js`; il mondo segue l'indirizzo e, per le schede, `section: 'zack'`.
+- **Home Zack** (`src/pages/ZackHomePage.jsx`): gli occhi della home-occhi (`src/components/zack/ZackEyes.jsx`, dati rigenerabili con `node scripts/zack-eyes-sync.mjs`), poi i 3 capi su nero in rotazione (gli occhi guardano il capo attivo), poi i video A/C/D muti in loop. IG, YT e TikTok di Zack nell'header. Meta e anteprima OG di `/` ora sono Zack (`public/zack/og-zack.jpg`).
+- **Capi Zack:** `zack-the-duck-tee` (Gildan 5000, 25), `-crewneck` (18000, 39), `-hoodie` (18500, 49). Stesso numero in € e $ come il resto dello store. Rilasciati in `drop.js` (`archivePrice`). Stampa solo davanti: simbolo panna #F5F0E8 largo ~24 cm, file 3661×4843 in `public/designs/zack-the-duck-*/design.png`. Foto provvisorie da `zack the duck/merch/video-14nov/` (C3, A6, A7) + una foto della stampa.
+- **Protezioni:** finché un capo non ha il prodotto Gelato collegato, il checkout lo rifiuta (409, `create-payment-intent.js`) e `npm run build` si ferma (`check-print-files`). Niente Pokémon nelle schede Zack (via lati Back/Front, disclaimer fan art, «Recently viewed» filtrato per mondo).
+- **Admin:** sezione `zack` (si imposta da sola scegliendo la collezione «Zack the Duck»); per i capi Zack spariscono i ruoli B/F. Guide taglie Gildan 5000/18500/18000 in `sizeGuides.js` (lunghezza e petto, da ricontrollare sulla scheda Gelato).
+- **Drop JAYL:** drop 11 (Lugia, Celebi, Ho-Oh) fino al 17/11, ora su `/jayl`. Ad pronti in `pubblicazione/da-troy/bozze/`. Video Etsy in `etsy video/_ditto/2026-11-10/`.
+- **Misure:** Umami senza cookie (via API da cloud.umami.is in Chrome). GA4 e pixel Meta solo con consenso.
 
 ## Numeri (Umami, ottobre)
-- 300 visitatori (USA 184, Italia 100), 138 schede viste, 4 carrelli, 3 checkout, 1 acquisto (era un test). Vendite vere: 0.
-- **Test A 19-22/10** (ads verso la home): 148 visitatori, 6 s a visita, 4 schede viste.
-- **Test B 25-29/10** (Umbreon verso la scheda): 75 sessioni, 30 s a visita, 1 carrello abbandonato al checkout. 56 visite su 75 da Facebook; 13 arrivate dopo la chiusura, su BACK SOON.
+- 300 visitatori (USA 184, Italia 100), 4 carrelli, 3 checkout, vendite vere 0. Test B (ads verso la scheda) meglio del test A (verso la home): 30 s contro 6 s a visita.
 
-## Prossimi 3 passi
-1. **Joshua:** caricare Jolteon e Flareon; aprire il drop 10 a 19,99 (`dropPrice` 1999) chiudendo il Drop 9; solo dopo accendere gli ad.
-2. **Troy:** scheda dal telefono e checkout. Prima immagine = il gancio dell'ad; via il BACK vuoto; riga con consegna e "Designed in Venice".
-3. **Test di novembre:** 3 ganci dai master più il trio (B10) per il Black Friday (27/11). Solo IG Storie e Reels, si legge in Umami.
+## Prossimi passi
+1. **Joshua, 16/11:** crea su Gelato i 3 capi neri (Gildan 5000, 18500, 18000, solo davanti, file `design.png` del capo) e passa a Troy i 3 UUID. I capi non sono ancora su main, quindi l'admin di produzione non li vede: Troy collega varianti e mockup in locale (serve `GELATO_API_KEY`, da `vercel env pull` in un file a parte, con l'ok di Joshua).
+2. **Troy:** dopo il punto 1, prova di checkout con le chiavi Stripe **test** (in `.env.local` oggi ci sono le live) e `vercel dev`; controllo prezzi Gelato sul nero e margini; `npm run build` deve passare.
+3. **Joshua decide:** sconto Black Friday −20% (codice o prezzo), poi ok a merge, push e deploy (`/sync-main`, `/verify-live`). Ads Zack separate da quelle Pokémon, solo verso `/`.
 
 ## Bloccato da
 - TikTok a 1 clic: serve l'app TikTok approvata.

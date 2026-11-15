@@ -3,6 +3,11 @@ import { useLayoutEffect, useEffect, lazy, Suspense } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
+import ZackNavbar from '@/components/zack/ZackNavbar'
+import ZackFooter from '@/components/zack/ZackFooter'
+import ZackHomePage from '@/pages/ZackHomePage'
+import { getProductById } from '@/data/products'
+import { worldFor, ZACK } from '@/lib/world'
 // Eager: the pages on the browse-to-buy path. Anything a first-time visitor is
 // likely to hit before deciding, so no chunk waterfall where it hurts.
 import HomePage from '@/pages/HomePage'
@@ -69,13 +74,14 @@ function ScrollToTop() {
 // Mirrors the persisted site theme onto <html data-site-theme>, which flips the
 // palette tokens in index.css. Never on /admin: the panel is built on the same
 // tokens and stays dark.
-function useSiteThemeAttribute(isAdmin) {
+// Nel mondo Zack mai: la sua palette e' fissa (nero, panna, oro).
+function useSiteThemeAttribute(skip) {
   const siteTheme = useThemeStore((s) => s.siteTheme)
   useLayoutEffect(() => {
     const html = document.documentElement
-    if (siteTheme === 'cream' && !isAdmin) html.setAttribute('data-site-theme', 'cream')
+    if (siteTheme === 'cream' && !skip) html.setAttribute('data-site-theme', 'cream')
     else html.removeAttribute('data-site-theme')
-  }, [siteTheme, isAdmin])
+  }, [siteTheme, skip])
 }
 
 // Una scheda nuova per ogni prodotto: senza key, passando da una maglia
@@ -89,14 +95,16 @@ function ProductPageFresh() {
 export default function App() {
   const { pathname } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
+  // Zack e' la facciata ("/"); il negozio JAYL sta su /jayl. Vedi src/lib/world.js.
+  const isZack = !isAdmin && worldFor(pathname, getProductById) === ZACK
 
   useGA4PageTracking()
-  useSiteThemeAttribute(isAdmin)
+  useSiteThemeAttribute(isAdmin || isZack)
 
   return (
     <>
       <ScrollToTop />
-      {!isAdmin && <Navbar />}
+      {!isAdmin && (isZack ? <ZackNavbar /> : <Navbar />)}
       {!isAdmin && <CartDrawer />}
       {!isAdmin && <EmailCapturePopup />}
 
@@ -110,7 +118,9 @@ export default function App() {
         <Route path="*" element={
           <main>
             <Routes>
-              <Route path="/"                               element={<HomePage />} />
+              <Route path="/"                               element={<ZackHomePage />} />
+              <Route path="/jayl"                           element={<HomePage />} />
+              <Route path="/zack"                           element={<Navigate to="/" replace />} />
               <Route path="/art"                            element={<ArtPage />} />
               <Route path="/objects"                        element={<ObjectsPage />} />
               <Route path="/artist"                         element={<ArtistPage />} />
@@ -136,7 +146,7 @@ export default function App() {
       </Routes>
       </Suspense>
 
-      {!isAdmin && <Footer />}
+      {!isAdmin && (isZack ? <ZackFooter /> : <Footer />)}
       {!isAdmin && <CookieBanner />}
     </>
   )

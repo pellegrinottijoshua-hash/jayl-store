@@ -1584,7 +1584,7 @@ export default function AdminProductPage() {
               sequenza={sequenza}
               detailImage={detailImage}
               imageSides={imageSides}
-              onSetImageSide={handleSetImageSide}
+              onSetImageSide={section === 'zack' ? undefined : handleSetImageSide}
               onToggleHeroShot={toggleHeroShot}
               onSetHeroVideo={setVideoUrl}
               onSetMobileHero={setMobileHero}
@@ -1714,6 +1714,7 @@ export default function AdminProductPage() {
                     <option value="wall-art">wall-art</option>
                     <option value="accessories">accessories</option>
                     <option value="art">art</option>
+                    <option value="zack">zack (Zack the Duck)</option>
                   </select>
                 </Field>
 
