@@ -25206,7 +25206,7 @@ export const adminProducts = [
       "gift"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T00:36:27.343Z",
+    "updatedAt": "2026-11-16T02:46:27.183Z",
     "id": "zack-the-duck-tee",
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
