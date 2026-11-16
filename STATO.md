@@ -15,9 +15,9 @@ Aggiornato: 2026-11-16 da Troy (Zack online: «Zack si veste», mockup reali, fo
 - 300 visitatori (USA 184, Italia 100), 4 carrelli, 3 checkout, vendite vere 0. Test B (ads verso la scheda) meglio del test A (verso la home): 30 s contro 6 s a visita.
 
 ## Prossimi passi
-1. **Joshua:** mockup NBP con `docs/zack-mockup-prompts.md` (REF-3 colletto solo in 01, 06, 07) → `jayl streetwear/zack mockup/<capo>/01..10.png`; Troy li mette in `homeImages` e in galleria. Felpa nera su Gelato.
-2. **Prova d'acquisto vera** (chiavi Stripe live): un ordine Zack e rimborso, poi controllare in Gelato codice nero, stampa davanti, etichetta colletto.
-3. **Joshua decide:** sconto Black Friday −20% (codice o prezzo); ads Zack separate dalle Pokémon, verso `/`.
+1. **Nuova sessione:** parte da `docs/RIPRENDI-QUI-ZACK-STORE.md` (build deciso il 16/11: occhiolino vero con 3 prove video, occhiolino al clic, home pulita «T-SHIRT €25», felpa dal retro, swipe a due dita e cambio in profondità su desktop, 7 presentazioni 3D + sigla, banner «Order by 12 Dec», cookie alla Zack). Controllo ordini: `node scripts/check-zack-orders.mjs`.
+2. **Joshua:** mockup R1–R4 (lati lisci) con `docs/zack-mockup-prompts.md`; sconto Black Friday; dominio `zacktheduck.com`.
+3. **Strategia (16/11):** Natale = prime 20–50 vendite (ads piccole verso le schede, regalo «per l'amico mai impressionato», BF −20%, scadenza 12/12, mail, Zack anche su Etsy). Futuro = zacktheduck.com casa della IP: guarda (corti e cast), gioca (mondo 3D), compra.
 
 ## Bloccato da
 - TikTok a 1 clic: serve l'app TikTok approvata.

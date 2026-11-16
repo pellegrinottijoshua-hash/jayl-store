@@ -205,3 +205,36 @@ A premium editorial portrait in a dark old interior in Venice and its lagoon isl
 ```
 A premium candid night photo with direct on-camera flash, the look of a cult streetwear lookbook: two or three friends at night in Venice and its lagoon islands (a bridge, a kiosk, a stairwell), the subject in front, the friends half out of frame; hard flash, crisp shadow on the wall behind, the background falling to black. Deadpan attitude, nobody smiles at the camera, turned away or seen over the shoulder so the back print is the hero of the frame. 35mm, 28mm lens at f/8, slight grain; a hand or a jacket hem caught in motion (it moves on its own). THE GARMENT (do not change): REF-2 shows the garment: a JET BLACK (#111111) pullover hoodie, Gildan 18500 heavy blend, even if REF-2 looks brown: drawstring hood, kangaroo front pocket, ribbed cuffs and waistband, no zipper, plain front with nothing printed on it; no extra seams, no visible tags, no other logos or text anywhere. REF-1 is the only print: Zack's eyes and beak, cream #F5F0E8 on the black fabric, nothing around it. It sits on the BACK only, large and centred between the shoulder blades, its top about 7 cm below the hood seam, about 75% of the back width, identical to REF-1 in drawing, proportions and colour, flat and sharp like a real DTG print with the cotton texture showing through, never covered, never cropped, never warped. The inside of the collar is not visible in this shot. CASTING: a new real-looking person every time (vary gender, ethnicity, age 18-35, build, hair), styled in black, cream or denim pieces that never compete with the garment. PALETTE: blacks, cream and one warm gold light, coherent with a black website. REALISM: an untouched photograph: pores, flyaway hairs, real fabric weight and wrinkles; no retouching, no plastic skin, no CGI, no text, no watermark. Vertical 4:5 (for Stories, ask 9:16), highest resolution.
 ```
+
+---
+
+## Lati lisci (R1–R4): la seconda foto di ogni scheda
+
+Scritti il 2026-11-16. Servono a far capire subito che **chi compra il fronte ha il retro liscio, e viceversa**: in scheda vanno subito dopo la copertina.
+- Stesso fondo, stessa luce e stessa inquadratura del manichino M1 di quella versione: affiancati devono sembrare la stessa foto girata.
+- **REF-2** = il tuo manichino M1 della versione (indicato sotto). REF-3 (colletto) solo in R4.
+- Salvali in `~/Desktop/jayl streetwear/zack mockup/<versione>/R.png` (o caricali in admin e dimmelo).
+
+### R1 · Tee: retro liscio · REF-2
+REF-2 = il tuo M1 manichino della tee.
+```
+An invisible-mannequin (ghost) product shot of the BACK of this exact black t-shirt (REF-2 shows its front): Gildan 64000 Softstyle, short sleeves, crew neck. The back is completely plain black: no print, no logo, no text, no label visible from the outside; only the real back neckline and shoulder seams. FRAME FOR A WEBSITE (do not change): vertical 4:5. Seamless matte black studio backdrop, flat #111111, no gradient, texture, floor line or vignette. The garment is centred, the shoulders spanning about 80% of the frame width, exactly the same framing, scale and light as the M1 ghost shot of the other side (REF-2), so the two images sit side by side as a pair. One soft key light from the front and above plus a thin rim light that separates the black fabric from the black background. Medium-format product photography, 90mm at f/8, cotton texture tack-sharp, true blacks with detail, real weight and creases, no CGI sheen, no text, no watermark.
+```
+
+### R2 · Girocollo: retro liscio · REF-2
+REF-2 = il tuo M1 manichino del girocollo.
+```
+An invisible-mannequin (ghost) product shot of the BACK of this exact black crewneck sweatshirt (REF-2 shows its front): Gildan 18000 heavy blend, long sleeves, ribbed collar, cuffs and waistband. The back is completely plain black: no print, no logo, no text; only real seams and ribbing. FRAME FOR A WEBSITE (do not change): vertical 4:5. Seamless matte black studio backdrop, flat #111111, no gradient, texture, floor line or vignette. The garment is centred, the shoulders spanning about 80% of the frame width, exactly the same framing, scale and light as the M1 ghost shot of the other side (REF-2), so the two images sit side by side as a pair. One soft key light from the front and above plus a thin rim light that separates the black fabric from the black background. Medium-format product photography, 90mm at f/8, cotton texture tack-sharp, true blacks with detail, real weight and creases, no CGI sheen, no text, no watermark.
+```
+
+### R3 · Felpa (stampa davanti): retro liscio · REF-2
+REF-2 = il tuo M1 manichino della felpa davanti.
+```
+An invisible-mannequin (ghost) product shot of the BACK of this exact jet black pullover hoodie (REF-2 shows its front): Gildan 18500 heavy blend, hood lying down on the back, ribbed cuffs and waistband. The back and the hood are completely plain black: no print, no logo, no text. FRAME FOR A WEBSITE (do not change): vertical 4:5. Seamless matte black studio backdrop, flat #111111, no gradient, texture, floor line or vignette. The garment is centred, the shoulders spanning about 80% of the frame width, exactly the same framing, scale and light as the M1 ghost shot of the other side (REF-2), so the two images sit side by side as a pair. One soft key light from the front and above plus a thin rim light that separates the black fabric from the black background. Medium-format product photography, 90mm at f/8, cotton texture tack-sharp, true blacks with detail, real weight and creases, no CGI sheen, no text, no watermark.
+```
+
+### R4 · Felpa (stampa dietro): davanti liscio · REF-2 + REF-3
+REF-2 = il tuo M1 manichino della felpa retro.
+```
+An invisible-mannequin (ghost) product shot of the FRONT of this exact jet black pullover hoodie (REF-2 shows its back with the print): Gildan 18500 heavy blend, drawstring hood lying down, kangaroo front pocket, ribbed cuffs and waistband. The front is completely plain black: no print, no logo, no text, nothing on the chest or the pocket; the empty neckline shows the inside back of the collar with the small cream ZACK THE DUCK print from REF-3. FRAME FOR A WEBSITE (do not change): vertical 4:5. Seamless matte black studio backdrop, flat #111111, no gradient, texture, floor line or vignette. The garment is centred, the shoulders spanning about 80% of the frame width, exactly the same framing, scale and light as the M1 ghost shot of the other side (REF-2), so the two images sit side by side as a pair. One soft key light from the front and above plus a thin rim light that separates the black fabric from the black background. Medium-format product photography, 90mm at f/8, cotton texture tack-sharp, true blacks with detail, real weight and creases, no CGI sheen, no text, no watermark.
+```
