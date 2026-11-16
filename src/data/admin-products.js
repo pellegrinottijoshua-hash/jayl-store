@@ -25374,7 +25374,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T02:49:20.726Z",
+    "updatedAt": "2026-11-16T03:24:01.604Z",
     "id": "zack-the-duck-hoodie",
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
@@ -25425,7 +25425,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
-    "heroImage": null,
+    "heroImage": "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
     "images": [
       "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg",
@@ -25437,7 +25437,7 @@ export const adminProducts = [
       "/images/zack-the-duck-hoodie/hf_20261116_000918_5c4750a2-60c7-4a17-b8e3-2362f67c9473.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001357_9866e669-1f42-4f9c-8137-f07a0e5f8330.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg",
-      "/images/zack-the-duck-hoodie/hf_20261116_023733_b76c0cae-8f20-4506-b097-81e7538ce688.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_022833_0843ad8e-75c0-484f-a8b4-7e2764069820.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001453_5afaa4a3-77a8-4b61-808a-d7f5ca2362be.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001746_fbb9038e-958c-47a3-bd17-07699e468593.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001758_e2464592-aae0-4766-90ec-1a16ba0430e4.jpg",
@@ -25484,7 +25484,7 @@ export const adminProducts = [
       "/images/zack-the-duck-hoodie/hf_20261116_002520_cce72a06-ee9a-4ff6-9cd1-606db6d27f03.jpg": "back",
       "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg": "back",
       "/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg": "front",
-      "/images/zack-the-duck-hoodie/hf_20261116_023733_b76c0cae-8f20-4506-b097-81e7538ce688.jpg": "back"
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_022833_0843ad8e-75c0-484f-a8b4-7e2764069820.jpg": "back"
     }
   },
   {
