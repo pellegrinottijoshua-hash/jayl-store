@@ -604,7 +604,9 @@ export default function ProductPage() {
   // Il drop in corso sceglie il lato con cui si apre la scheda (admin → Drop →
   // "Scheda prodotto parte da"); senza scelta, il lato principale (Back).
   const [printSide, setPrintSide] = useState(() => (
-    product && product.id !== id ? 'front'
+    // ?side=back: dalla home Zack con la felpa girata si arriva sul retro.
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('side') === 'back' ? 'back'
+    : product && product.id !== id ? 'front'
       : inDropNow && dropCfg?.current?.defaultSide === 'front' ? 'front'
       : null
   ))
@@ -854,7 +856,8 @@ export default function ProductPage() {
   // si mescola niente: l'effetto sul colore ha già portato la galleria su
   // quell'immagine, ed e' il punto — chi viene dall'ad vede lo stesso capo.
   useEffect(() => {
-    if (!product || videoInfo || dropDefaults?.color) return
+    // Zack: si parte sempre dal manichino (la copertina), mai da una foto a caso.
+    if (!product || videoInfo || dropDefaults?.color || isZackProduct(product)) return
     const neutral = displayImages
       .map((_, i) => i)
       .filter((i) => !findImageColor(i, product.colors || [], displayImages, product.imageColors))

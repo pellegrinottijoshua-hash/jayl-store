@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Volume2, VolumeX, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react'
 import { products } from '@/data/products'
 import { isZackProduct, Z } from '@/lib/world'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -8,287 +10,238 @@ import Money from '@/components/Money'
 import EtsyRating from '@/components/EtsyRating'
 import ZackEyes from '@/components/zack/ZackEyes'
 import { cn } from '@/lib/utils'
-import { Volume2, VolumeX } from 'lucide-react'
 
 // La facciata di jayl.store: Zack the Duck.
-// 1. Gli occhi, grandi: sono la testa di Zack.
-// 2. Subito sotto, i tre capi: il corpo. Carosello infinito (a destra dopo
-//    l'ultimo torna il primo); a ogni swipe gli occhi fanno un balzo verso il
-//    lato, dopo 3 swipe di fila si confondono e scuotono la testa.
-//    I mockup del capo (product.images) scorrono veloci: al passaggio del
-//    mouse su desktop, una volta quando il capo arriva al centro su mobile.
-// 3. Badge Etsy, poi un solo video 9:16 coi tre clip in fila.
-// Mai Pokémon qui dentro: il negozio JAYL e' dietro la porta nei menu.
+// «Zack si veste»: gli occhi sono la testa, il capo sotto e' il corpo (il
+// manichino su fondo nero). Swipe (o frecce, o i capi ai lati su desktop) e
+// Zack cambia vestito, all'infinito: gli occhi seguono il capo che scorre e
+// fanno l'occhiolino quando arriva; dopo 3 cambi di fila si confondono.
+// Sulla felpa il tasto ↺ gira Zack: si vede il retro e gli occhi si chiudono.
+// Sotto: badge Etsy e un solo video 9:16. Mai Pokémon qui dentro.
 
-const ORDER = ['zack-the-duck-hoodie', 'zack-the-duck-tee', 'zack-the-duck-crewneck']
+const ORDER = ['zack-the-duck-tee', 'zack-the-duck-hoodie', 'zack-the-duck-crewneck']
 const rank = (p) => { const k = ORDER.indexOf(p.id); return k === -1 ? 99 : k }
 const zackProducts = products.filter(isZackProduct).sort((a, b) => rank(a) - rank(b))
 const N = zackProducts.length
-// Tre copie in fila: si parte dalla centrale e, quando ci si ferma su una
-// copia laterale, si salta in silenzio alla stessa scheda della centrale.
-const LOOP = N > 1 ? [...zackProducts, ...zackProducts, ...zackProducts] : zackProducts
-const START = N > 1 ? N : 0
 
-// Un solo video verticale: i tre clip (notte, occhi ovunque, skate) in fila.
 const VIDEO = { src: '/zack/video/zack-spotted.mp4', poster: '/zack/video/zack-spotted.jpg' }
-
-const ROTATE_MS = 4200
-const FLASH_MS = 110          // un fotogramma del flash
-const CONFUSED_SWIPES = 3     // swipe ravvicinati che confondono Zack
+const FLASH_MS = 110          // un fotogramma del flash dei mockup
+const CONFUSED_SWIPES = 3     // cambi ravvicinati che confondono Zack
 const label = 'font-sans text-[10px] uppercase'
-
-const framesOf = (p) => {
-  // Solo foto su fondo nero (homeImages): i mockup Gelato bianchi farebbero un riquadro.
-  const list = [p.image, ...(p.homeImages || [])].filter(Boolean)
-  return [...new Set(list)]
-}
-
-// I bordi dell'immagine sfumano nel nero della pagina: i mockup su fondo
-// nero (anche se non e' esattamente #111111) non mostrano un riquadro.
+// I bordi dell'immagine sfumano nel nero della pagina.
 const FEATHER = 'radial-gradient(130% 100% at 50% 42%, #000 62%, transparent 100%)'
 
-// className: sostituisce la misura del carosello (la scena desktop ne passa
-// una sua). onEnter: il mouse entra nel capo (desktop: occhiolino di Zack).
-function ProductSlide({ product, active, innerRef, clone, flashKey, className, onEnter }) {
-  const frames = framesOf(product)
-  const [frame, setFrame] = useState(0)
-  const timer = useRef(null)
+const sideOf = (p, u) => p.imageSides?.[u] || null
+// I mockup su nero del lato davanti (o unici) e del retro, la copertina per prima.
+const frontFrames = (p) => [...new Set([p.image, ...(p.homeImages || [])].filter((u) => u && sideOf(p, u) !== 'back'))]
+const backFrames = (p) => (p.homeImages || []).filter((u) => sideOf(p, u) === 'back')
+const shortName = (p) => p.shortName || p.name.replace(/^Zack the Duck\s*/i, '')
 
-  const stop = useCallback(() => { clearInterval(timer.current); timer.current = null; setFrame(0) }, [])
-  const flash = useCallback((loop) => {
-    if (frames.length < 2 || timer.current) return
-    let i = 0
-    timer.current = setInterval(() => {
-      i += 1
-      if (!loop && i >= frames.length) { stop(); return }
-      setFrame(i % frames.length)
-    }, FLASH_MS)
-  }, [frames.length, stop])
-  useEffect(() => stop, [stop])
-
-  // Mobile: quando il capo arriva al centro, un giro di flash.
-  useEffect(() => {
-    if (flashKey && active && window.matchMedia?.('(hover: none)').matches) flash(false)
-  }, [flashKey, active, flash])
-
+function Preview({ product, onClick, side }) {
+  // Desktop: il capo prima / dopo, piccolo e spento ai lati; il mouse lo accende.
   return (
-    <Link
-      ref={innerRef}
-      to={`/product/${product.id}`}
-      className={cn('group block', className || 'snap-center shrink-0 w-[74vw] sm:w-[44vw]')}
-      aria-label={product.name}
-      aria-hidden={clone || undefined}
-      tabIndex={clone ? -1 : undefined}
-      onPointerEnter={(e) => { if (e.pointerType === 'mouse') { flash(true); onEnter?.() } }}
-      onPointerLeave={(e) => { if (e.pointerType === 'mouse') stop() }}
-    >
-      <div
-        className={cn('relative overflow-hidden transition-all duration-700',
-          active ? 'opacity-100 scale-100' : 'opacity-50 scale-[0.94]')}
-        style={{ aspectRatio: '4 / 5', background: Z.black, WebkitMaskImage: FEATHER, maskImage: FEATHER }}
-      >
-        <img
-          src={frames[frame] || frames[0]}
-          alt={product.altText || product.name}
-          loading={clone ? 'lazy' : 'eager'}
-          className="absolute inset-0 w-full h-full object-cover"
-          draggable={false}
-        />
+    <button type="button" onClick={onClick} aria-label={`Show ${product.name}`}
+      className={cn('group hidden lg:flex flex-col items-center gap-3 w-[200px] opacity-40 hover:opacity-100 transition-opacity duration-300 mt-[18vh]',
+        side === 'left' ? 'justify-self-end' : 'justify-self-start')}>
+      <div className="w-full" style={{ aspectRatio: '4 / 5', WebkitMaskImage: FEATHER, maskImage: FEATHER }}>
+        <img src={product.image} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" draggable={false} />
       </div>
-      <div className="mt-3 flex items-baseline justify-between gap-3 px-1">
-        <p className="font-sans font-bold uppercase text-[15px] sm:text-base" style={{ color: Z.cream, letterSpacing: '0.02em' }}>
-          {product.shortName || product.name.replace(/^Zack the Duck\s*/i, '')}
-        </p>
-        <span style={{ color: Z.cream }}><Money cents={product.price} className="font-sans text-[15px]" /></span>
-      </div>
-      <p className={cn(label, 'mt-1.5 px-1')} style={{ letterSpacing: '0.2em', color: active ? Z.gold : 'rgba(245,240,232,0.35)' }}>
-        Shop →
-      </p>
-    </Link>
+      <span className="flex items-center gap-1 font-sans font-bold uppercase text-xs" style={{ color: Z.cream, letterSpacing: '0.12em' }}>
+        {side === 'left' && <ChevronLeft size={14} />}{shortName(product)}{side === 'right' && <ChevronRight size={14} />}
+      </span>
+    </button>
   )
 }
 
-function Collection({ eyesRef }) {
-  const scroller = useRef(null)
-  const cards = useRef([])
-  const [activeK, setActiveK] = useState(START)   // indice nella fila LOOP
-  const [flashKey, setFlashKey] = useState(0)
-  const touched = useRef(0)
-  const lastLeft = useRef(0)
-  const follow = useRef(0)
+function DressUp() {
+  const eyesRef = useRef(null)
+  const bodyRef = useRef(null)
+  const navigate = useNavigate()
+  const [idx, setIdx] = useState(0)
+  const [dir, setDir] = useState(1)
+  const [back, setBack] = useState(false)
+  const [frame, setFrame] = useState(0)
   const swipes = useRef([])
-  const settleTimer = useRef(null)
-  const jumping = useRef(false)   // lo scroll del salto silenzioso non e' uno swipe
+  const flashTimer = useRef(null)
+  const winkTimer = useRef(null)
+  const dragged = useRef(false)
 
-  const scrollable = () => {
-    const el = scroller.current
-    return !!el && el.scrollWidth > el.clientWidth + 4
-  }
-  const leftFor = (k) => {
-    const el = scroller.current, card = cards.current[k]
-    if (!card) return el.scrollLeft
-    return card.offsetLeft - (el.clientWidth - card.clientWidth) / 2
-  }
-  const nearest = () => {
-    const el = scroller.current
-    const mid = el.getBoundingClientRect().left + el.clientWidth / 2
-    let best = START, bestD = Infinity
-    cards.current.forEach((c, i) => {
-      if (!c) return
-      const r = c.getBoundingClientRect()
-      const d = Math.abs(r.left + r.width / 2 - mid)
-      if (d < bestD) { bestD = d; best = i }
-    })
-    return best
-  }
-  // Salto istantaneo (snap spento per un frame), senza che si veda.
-  const jumpTo = (k) => {
-    const el = scroller.current
-    el.style.scrollSnapType = 'none'
-    jumping.current = true
-    el.scrollLeft = leftFor(k)
-    lastLeft.current = el.scrollLeft
-    requestAnimationFrame(() => { el.style.scrollSnapType = '' })
+  const p = zackProducts[idx]
+  const frames = back ? backFrames(p) : frontFrames(p)
+  const canTurn = !!p.altPrintFileUrl && backFrames(p).length > 0
+  const href = `/product/${p.id}${back ? '?side=back' : ''}`
+
+  const stopFlash = () => { clearInterval(flashTimer.current); flashTimer.current = null }
+  // Un giro veloce sui mockup, poi si torna alla copertina.
+  const flash = useCallback((count) => {
+    stopFlash()
+    if (count < 2) return
+    let i = 0
+    flashTimer.current = setInterval(() => {
+      i += 1
+      if (i >= count) { stopFlash(); setFrame(0); return }
+      setFrame(i)
+    }, FLASH_MS)
+  }, [])
+  useEffect(() => () => { stopFlash(); clearTimeout(winkTimer.current) }, [])
+
+  // Gli occhi guardano il corpo: un po' sotto il centro.
+  const lookAtBody = (dx = 0) => {
+    const r = bodyRef.current?.getBoundingClientRect()
+    if (r) eyesRef.current?.lookAt(r.left + r.width / 2 + dx, r.top + r.height * 0.35)
   }
 
-  // Si parte dalla copia centrale.
-  useEffect(() => { if (scrollable()) jumpTo(START) }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const settle = () => {
-    let k = nearest()
-    if (N > 1 && (k < N || k >= 2 * N)) {
-      k = (k % N) + N
-      jumpTo(k)
-    }
-    setActiveK(k)
-    setFlashKey((f) => f + 1)
-    // Swipe dell'utente: dopo 3 ravvicinati Zack si confonde.
-    if (Date.now() - touched.current < 1500) {
+  const go = (delta, byUser = true) => {
+    if (!N) return
+    setDir(delta > 0 ? 1 : -1)
+    setIdx((i) => (i + delta + N) % N)
+    setBack(false)
+    setFrame(0)
+    eyesRef.current?.hold(null)
+    clearTimeout(winkTimer.current)
+    let confused = false
+    if (byUser) {
       const now = Date.now()
       swipes.current = [...swipes.current.filter((t) => now - t < 3500), now]
       if (swipes.current.length >= CONFUSED_SWIPES) {
         swipes.current = []
+        confused = true
         eyesRef.current?.react('spirale', 1500)
         eyesRef.current?.shake()
       }
     }
+    // Arrivato il capo: occhiolino (se non e' confuso) e flash dei mockup.
+    winkTimer.current = setTimeout(() => {
+      lookAtBody()
+      if (!confused) eyesRef.current?.wink(1)
+    }, 420)
   }
+  const goTo = (k) => { if (k !== idx) { const d = (k - idx + N) % N; go(d <= N / 2 ? d : d - N) } }
 
-  const onScroll = () => {
-    const el = scroller.current
-    if (!el) return
-    if (jumping.current) { jumping.current = false; lastLeft.current = el.scrollLeft; return }
-    lastLeft.current = el.scrollLeft
-    // Gli occhi seguono, fluidi, il capo piu' vicino al centro mentre scorre
-    // (un solo calcolo per frame). Prima erano balzi verso il lato: a scatti.
-    if (!follow.current) {
-      follow.current = requestAnimationFrame(() => {
-        follow.current = 0
-        const card = cards.current[nearest()]
-        if (!card) return
-        const r = card.getBoundingClientRect()
-        eyesRef.current?.lookAt(r.left + r.width / 2, r.top + r.height * 0.3)
-      })
-    }
-    clearTimeout(settleTimer.current)
-    settleTimer.current = setTimeout(settle, 130)
-  }
-
-  // Rotazione: ogni ~4 s il capo dopo, finche' nessuno tocca. Il passo sta
-  // in una ref, cosi' l'intervallo (montato una volta) usa sempre quello attuale.
-  const rotate = useRef(null)
-  rotate.current = () => {
-    if (Date.now() - touched.current < 7000) return
-    if (scrollable()) {
-      // Se si e' sull'ultima copia (lo scroll non ha ancora riallineato),
-      // prima si torna in silenzio alla copia centrale.
-      let k = nearest()
-      if (k + 1 >= LOOP.length) { k = (k % N) + N; jumpTo(k) }
-      scroller.current.scrollTo({ left: leftFor(k + 1), behavior: 'smooth' })
-    } else {
-      // Desktop: i tre capi sono tutti in vista, si accende il successivo.
-      setActiveK((k) => ((k - START + 1) % N) + START)
-      setFlashKey((f) => f + 1)
-    }
-  }
+  // Flash a ogni capo nuovo (e quando Zack si gira).
   useEffect(() => {
-    if (N < 2) return
-    const id = setInterval(() => rotate.current(), ROTATE_MS)
-    return () => clearInterval(id)
-  }, [])
-
-  // Gli occhi guardano il capo attivo (dopo il balzo, tornano qui).
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const card = cards.current[activeK]
-      if (!card) return
-      const r = card.getBoundingClientRect()
-      eyesRef.current?.lookAt(r.left + r.width / 2, r.top + r.height * 0.3)
-    }, 260)
+    const t = setTimeout(() => flash(frames.length), 520)
     return () => clearTimeout(t)
-  }, [activeK, eyesRef])
+  }, [idx, back, flash, frames.length])
+
+  const turn = () => {
+    const b = !back
+    setBack(b)
+    setFrame(0)
+    // Di spalle non ti guarda: occhi chiusi finche' non si rigira.
+    eyesRef.current?.hold(b ? 'chiusi' : null)
+  }
+
+  // Desktop: frecce della tastiera.
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target?.closest?.('input, textarea')) return
+      if (e.key === 'ArrowRight') go(1)
+      if (e.key === 'ArrowLeft') go(-1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }) // si riaggancia a ogni render: usa sempre idx attuale
 
   if (!N) return null
-  const active = activeK % N
+  const prev = zackProducts[(idx - 1 + N) % N]
+  const next = zackProducts[(idx + 1) % N]
+  const variants = {
+    enter: (d) => ({ x: d > 0 ? '70%' : '-70%', opacity: 0, scale: 0.9, rotate: d > 0 ? 4 : -4 }),
+    center: { x: 0, opacity: 1, scale: 1, rotate: 0 },
+    exit: (d) => ({ x: d > 0 ? '-70%' : '70%', opacity: 0, scale: 0.9, rotate: d > 0 ? -4 : 4 }),
+  }
 
   return (
-    // Subito sotto gli occhi, senza titoli: il capo al centro ben visibile,
-    // gli altri che spuntano ai lati e si scorrono all'infinito.
-    <section id="shop" className="pb-6 scroll-mt-24 zk-rise" style={{ animationDelay: '150ms' }}>
-      <div
-        ref={scroller}
-        onScroll={onScroll}
-        onPointerDown={() => { touched.current = Date.now() }}
-        onTouchStart={() => { touched.current = Date.now() }}
-        onTouchMove={() => { touched.current = Date.now() }}
-        onWheel={() => { touched.current = Date.now() }}
-        className="zk-noscrollbar flex gap-3 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-[13vw] sm:px-[28vw]"
-      >
-        {LOOP.map((p, i) => (
-          <ProductSlide
-            key={i}
-            product={p}
-            clone={N > 1 && (i < N || i >= 2 * N)}
-            active={i === activeK}
-            flashKey={i === activeK ? flashKey : 0}
-            innerRef={(el) => { cards.current[i] = el }}
-          />
-        ))}
-      </div>
+    <section id="shop" className="pt-[88px] lg:pt-[84px] pb-4 scroll-mt-24">
+      <div className="lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-14 lg:max-w-[1200px] lg:mx-auto lg:px-10 items-start">
+        {N > 1 && <Preview product={prev} side="left" onClick={() => go(-1)} />}
 
-      <div className="flex justify-center gap-2 mt-5" aria-hidden>
-        {zackProducts.map((p, i) => (
-          <span key={p.id} className="h-[3px] rounded-full transition-all duration-500"
-            style={{ width: i === active ? 22 : 8, background: i === active ? Z.gold : 'rgba(245,240,232,0.25)' }} />
-        ))}
-      </div>
-    </section>
-  )
-}
-
-// Desktop: gli occhi in alto al centro, un capo sotto (il corpo) e gli altri
-// due ai lati, all'altezza della faccia. Il mouse guida le pupille verso il
-// capo che stai per guardare; quando ci entri, Zack fa l'occhiolino.
-const pick = (id) => zackProducts.find((p) => p.id === id)
-const DESK = {
-  center: pick('zack-the-duck-tee') || zackProducts[0],
-  left:   pick('zack-the-duck-hoodie') || zackProducts[1],
-  right:  pick('zack-the-duck-crewneck') || zackProducts[2],
-}
-
-function DesktopStage() {
-  const eyesRef = useRef(null)
-  const wink = () => eyesRef.current?.wink(1)
-  const side = 'w-full max-w-[300px] mt-[22vh]'
-  return (
-    <section className="hidden lg:block px-10 pt-[84px] pb-6">
-      <div className="max-w-[1320px] mx-auto grid grid-cols-[1fr_minmax(420px,560px)_1fr] gap-12 items-start">
-        {DESK.left && <div className="flex justify-end"><ProductSlide product={DESK.left} active className={side} onEnter={wink} /></div>}
         <div className="flex flex-col items-center">
-          <ZackEyes ref={eyesRef} className="w-full h-auto block cursor-pointer" />
-          {DESK.center && <ProductSlide product={DESK.center} active className="w-full max-w-[280px] mt-6" onEnter={wink} />}
+          {/* La testa */}
+          <ZackEyes ref={eyesRef} className="relative z-10 w-[90vw] max-w-[480px] h-auto block cursor-pointer" />
+
+          {/* Il corpo: il capo che Zack indossa. Si trascina a destra e a sinistra. */}
+          <div ref={bodyRef} className="relative w-[80vw] max-w-[360px] lg:w-[300px] -mt-[1vw] lg:-mt-2"
+            style={{ aspectRatio: '4 / 5', touchAction: 'pan-y' }}>
+            <AnimatePresence custom={dir} initial={false}>
+              <motion.div
+                key={p.id}
+                custom={dir}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ type: 'spring', stiffness: 260, damping: 28, opacity: { duration: 0.2 } }}
+                drag={N > 1 ? 'x' : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.7}
+                onDragStart={() => { dragged.current = true; stopFlash(); setFrame(0) }}
+                onDrag={(e, info) => lookAtBody(info.offset.x * 2.2)}
+                onDragEnd={(e, info) => {
+                  setTimeout(() => { dragged.current = false }, 60)
+                  if (info.offset.x < -60 || info.velocity.x < -450) go(1)
+                  else if (info.offset.x > 60 || info.velocity.x > 450) go(-1)
+                  else lookAtBody()
+                }}
+                onTap={() => { if (!dragged.current) navigate(href) }}
+                onHoverStart={() => { if (window.matchMedia?.('(hover: hover)').matches) flash(frames.length) }}
+                className="absolute inset-0 cursor-pointer select-none"
+                style={{ WebkitMaskImage: FEATHER, maskImage: FEATHER }}
+                role="link"
+                aria-label={`${p.name}${back ? ' — back print' : ''}`}
+              >
+                <motion.img
+                  key={back ? 'back' : 'front'}
+                  src={frames[frame] || frames[0]}
+                  alt={p.altText || p.name}
+                  initial={{ rotateY: 80, opacity: 0.4 }}
+                  animate={{ rotateY: 0, opacity: 1 }}
+                  transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }}
+                  className="w-full h-full object-cover pointer-events-none"
+                  draggable={false}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {canTurn && (
+              <button type="button" onClick={turn} aria-label={back ? 'Show the front' : 'Turn around: back print'}
+                className="absolute z-10 bottom-3 right-1 flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-sm font-sans font-bold text-[10px] uppercase"
+                style={{ background: 'rgba(17,17,17,0.6)', color: Z.gold, letterSpacing: '0.14em', border: '1px solid rgba(196,163,90,0.45)' }}>
+                <RotateCcw size={12} /> {back ? 'Front' : 'Back'}
+              </button>
+            )}
+          </div>
+
+          {/* Nome, prezzo, compra */}
+          <div className="mt-4 w-[80vw] max-w-[360px] lg:w-[300px] flex items-baseline justify-between gap-3">
+            <p className="font-sans font-extrabold uppercase text-lg" style={{ color: Z.cream }}>
+              {shortName(p)}{back && <span className="ml-2 text-[10px] tracking-[0.2em]" style={{ color: Z.gold }}>BACK</span>}
+            </p>
+            <span style={{ color: Z.cream }}><Money cents={p.price} className="font-sans font-semibold text-lg" /></span>
+          </div>
+          <Link to={href}
+            className="mt-3 w-[80vw] max-w-[360px] lg:w-[300px] text-center py-3 font-sans font-bold text-xs uppercase transition-colors"
+            style={{ background: Z.cream, color: Z.black, letterSpacing: '0.22em' }}>
+            Shop {shortName(p)}
+          </Link>
+
+          {/* Il guardaroba: un tocco e Zack si cambia */}
+          <div className="mt-5 flex items-center gap-5" role="tablist" aria-label="Pieces">
+            {zackProducts.map((q, k) => (
+              <button key={q.id} type="button" role="tab" aria-selected={k === idx} onClick={() => goTo(k)}
+                className="font-sans font-bold uppercase text-[11px] pb-1 border-b-2 transition-colors"
+                style={{ letterSpacing: '0.18em', color: k === idx ? Z.cream : 'rgba(245,240,232,0.38)', borderColor: k === idx ? Z.gold : 'transparent' }}>
+                {shortName(q)}
+              </button>
+            ))}
+          </div>
+          <p className={cn(label, 'mt-3 lg:hidden')} style={{ letterSpacing: '0.2em', color: 'rgba(245,240,232,0.3)' }}>
+            Swipe to change his outfit
+          </p>
         </div>
-        {DESK.right && <div className="flex justify-start"><ProductSlide product={DESK.right} active className={side} onEnter={wink} /></div>}
+
+        {N > 1 && <Preview product={next} side="right" onClick={() => go(1)} />}
       </div>
     </section>
   )
@@ -340,7 +293,6 @@ const PERKS = [
 ]
 
 export default function ZackHomePage() {
-  const eyesRef = useRef(null)
   const { hash } = useLocation()
   // "/#shop": dopo il salto in cima di ScrollToTop, giu' ai capi.
   useEffect(() => {
@@ -355,8 +307,8 @@ export default function ZackHomePage() {
   // il primo schermo.
   useEffect(() => {
     const t = setTimeout(() => {
-      zackProducts.flatMap(framesOf).forEach((src) => { const im = new Image(); im.src = src })
-    }, 1800)
+      zackProducts.flatMap((p) => [...frontFrames(p), ...backFrames(p)]).forEach((src) => { const im = new Image(); im.src = src })
+    }, 1500)
     return () => clearTimeout(t)
   }, [])
 
@@ -368,18 +320,9 @@ export default function ZackHomePage() {
   })
 
   return (
-    <div style={{ background: Z.black, color: Z.cream }} className="min-h-screen">
-      {/* La testa: gli occhi, grandi, in alto. Sotto, subito il corpo (i capi). */}
-      {/* Telefono e tablet: gli occhi, poi il carosello infinito. */}
-      <div className="lg:hidden">
-        <section className="flex justify-center px-3 pt-[92px] sm:pt-[100px] pb-5 sm:pb-7">
-          <ZackEyes ref={eyesRef} className="w-[94vw] max-w-[640px] h-auto block cursor-pointer" />
-        </section>
-        <Collection eyesRef={eyesRef} />
-      </div>
-      {/* Desktop: la scena con i capi attorno alla testa. */}
-      <DesktopStage />
-      {/* Il voto Etsy: dopo i capi, prima dei video, non in faccia. */}
+    <div style={{ background: Z.black, color: Z.cream }} className="min-h-screen overflow-x-hidden">
+      <DressUp />
+      {/* Il voto Etsy: dopo i capi, prima del video, non in faccia. */}
       <EtsyRating className="flex justify-center px-5 pt-10" />
       <Spotted />
 

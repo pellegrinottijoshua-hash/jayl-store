@@ -27,7 +27,9 @@ function nextDropTitle(cfg) {
 // short delay for returning visitors — never a fullscreen overlay, so it can't
 // intercept clicks on products. Held back until the cookie banner is dismissed
 // so the two never stack.
-export default function EmailCapturePopup() {
+// zack: nel mondo Zack la stessa card parla come lui (deadpan) e i suoi occhi
+// spuntano dal bordo. Stessa lista, stessi tempi, stesso invio.
+export default function EmailCapturePopup({ zack = false }) {
   const [visible,   setVisible]   = useState(false)
   const [enter,     setEnter]     = useState(false)
   const [email,     setEmail]     = useState('')
@@ -101,6 +103,68 @@ export default function EmailCapturePopup() {
   }
 
   if (!visible) return null
+
+  if (zack) return (
+    <div
+      className={`fixed z-[60] bottom-4 right-4 left-4 sm:left-auto sm:w-[360px] transition-all duration-300 ${enter ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
+      role="dialog"
+      aria-label="Zack's list"
+    >
+      {/* Gli occhi di Zack che sbucano da dietro la card. */}
+      <img src="/zack/zack-simbolo.svg" alt="" aria-hidden
+        className="absolute left-1/2 -translate-x-1/2 -top-9 w-24 zk-peek pointer-events-none select-none" />
+      <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border"
+        style={{ background: '#111111', borderColor: 'rgba(245,240,232,0.12)', color: '#F5F0E8' }}>
+        <button onClick={dismiss} aria-label="Close"
+          className="absolute top-3 right-3 z-10 transition-opacity opacity-50 hover:opacity-100">
+          <X size={18} />
+        </button>
+        <div className="p-6 pt-8">
+          {submitted ? (
+            <div className="text-center space-y-3">
+              <h2 className="font-display text-xl uppercase">Noted.</h2>
+              <p className="text-xs" style={{ color: 'rgba(245,240,232,0.6)' }}>
+                He'll write when there's something new. Rarely. He's busy staring.
+              </p>
+              <button onClick={dismiss} className="text-xs underline underline-offset-2" style={{ color: '#C4A35A' }}>
+                Back to the duck →
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-4 text-center">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] mb-2" style={{ color: '#C4A35A' }}>Zack noticed you.</p>
+                <h2 className="font-display text-xl uppercase leading-tight">Leave your email.<br />He'll pretend not to care.</h2>
+              </div>
+              <p className="text-xs leading-relaxed" style={{ color: 'rgba(245,240,232,0.6)' }}>
+                New Zack pieces, before anyone else. No spam: he's far too lazy for that.
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-2.5">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  className="w-full bg-transparent border px-4 py-2.5 text-sm text-center focus:outline-none transition-colors"
+                  style={{ borderColor: 'rgba(245,240,232,0.2)', color: '#F5F0E8' }}
+                />
+                {error && <p className="text-red-400 text-xs">{error}</p>}
+                <button
+                  type="submit"
+                  disabled={loading || !email.trim()}
+                  className="w-full py-2.5 text-sm font-bold tracking-[0.15em] disabled:opacity-40 transition-opacity hover:opacity-90"
+                  style={{ background: '#F5F0E8', color: '#111111' }}
+                >
+                  {loading ? '…' : 'FINE.'}
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <div

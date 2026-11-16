@@ -100,13 +100,19 @@ export default function App() {
 
   useGA4PageTracking()
   useSiteThemeAttribute(isAdmin || isZack)
+  // <html data-world="zack">: il font di Zack (Montserrat, come la scritta del
+  // logo) al posto di quelli JAYL, solo nel mondo Zack. Vedi index.css.
+  useLayoutEffect(() => {
+    if (isZack) document.documentElement.setAttribute('data-world', 'zack')
+    else document.documentElement.removeAttribute('data-world')
+  }, [isZack])
 
   return (
     <>
       <ScrollToTop />
       {!isAdmin && (isZack ? <ZackNavbar /> : <Navbar />)}
       {!isAdmin && <CartDrawer />}
-      {!isAdmin && <EmailCapturePopup />}
+      {!isAdmin && <EmailCapturePopup zack={isZack} />}
 
       <Suspense fallback={null}>
       <Routes>

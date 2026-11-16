@@ -57,6 +57,7 @@ function startEngine(svg, onReact) {
   let prev = performance.now(), raf = 0, running = false
   let boostUntil = 0   // per un attimo le pupille scattano (balzo allo swipe)
   let winkT = -1, winkEye = 1   // occhiolino: una palpebra sola (1 = occhio destro)
+  let holdExpr = null           // posa fissa (es. 'chiusi' quando Zack si gira)
 
   const toSvg = (x, y) => {
     const m = svg.getScreenCTM()
@@ -125,6 +126,7 @@ function startEngine(svg, onReact) {
 
   const frame = (now) => {
     const dt = Math.min(0.05, (now - prev) / 1000); prev = now
+    if (holdExpr) { tgt = toVec(holdExpr); speed = 9 } else {
     if (mode === 'react') {
       if (now > reactUntil) { mode = 'track'; lastMove = now }
       tgt = toVec(reactExpr); speed = 14; exprName = reactExpr
@@ -142,10 +144,11 @@ function startEngine(svg, onReact) {
       }
       tgt = toVec(exprName); speed = 2.6
     }
+    }
     const k = 1 - Math.exp(-speed * dt)
     for (let j = 0; j < cur.length; j++) cur[j] += (tgt[j] - cur[j]) * k
 
-    const bl = blinkAmt(now), w = winkAmt(now), CL = 288
+    const bl = holdExpr ? 0 : blinkAmt(now), w = winkAmt(now), CL = 288
     for (let i = 0; i < 2; i++) {
       const o = i * 6
       const b = i === winkEye ? Math.max(bl, w) : bl
@@ -190,10 +193,14 @@ function startEngine(svg, onReact) {
     winkEye = eye; winkT = performance.now()
   }
 
+  // Posa fissa finche' non si toglie (null): niente sguardo, niente idle.
+  const hold = (expr) => { holdExpr = expr && D.espr[expr] ? expr : null; lastMove = performance.now() }
+
   return {
     look,
     glance,
     wink,
+    hold,
     react,
     stop() {
       pause(); io.disconnect()
@@ -218,6 +225,7 @@ const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact }, ref
     lookAt: (x, y) => engine.current?.look(x, y),
     glance: (dir) => engine.current?.glance(dir),
     wink: (eye) => engine.current?.wink(eye),
+    hold: (expr) => engine.current?.hold(expr),
     react: (expr, ms) => engine.current?.react(expr, ms),
     // Testa che scuote: la classe riparte da capo anche se e' gia' applicata.
     shake: () => {

@@ -33,34 +33,33 @@ export const SIZE_GUIDES = {
   },
 }
 
-// Capi Zack the Duck (15/11). Lunghezza e larghezza del corpo dalle schede
-// Gildan (pollici → cm, arrotondati); la manica non c'e' finche' non la
-// leggiamo da una fonte. DA RICONTROLLARE sulla scheda Gelato prima del lancio.
-const GILDAN_NOTES = [
-  'Garment measured flat. Chest is side to side — double it for the full circumference.',
-  'Length from the highest point of the shoulder.',
-  'Classic unisex fit. Between sizes, take your usual size.',
-]
-SIZE_GUIDES.gildan_5000 = {
-  garment: 'Gildan 5000 Heavy Cotton',
-  cols: ['Length', 'Chest'],
-  unit: 'cm',
-  rows: { S: [71, 46], M: [74, 51], L: [76, 56], XL: [79, 61], '2XL': [81, 66] },
-  notes: GILDAN_NOTES,
+// Capi Zack the Duck. Felpa 18500 e girocollo 18000: stesso corpo Gildan
+// (larghezza 20-34", lunghezza 27-34" da S a 5XL), dalle schede tecniche
+// SanMar/Gildan 18500 e dai rivenditori della 18000 (verificato il 16/11);
+// pollici -> cm arrotondati. La manica non c'e': le fonti non coincidono.
+// La tee Zack e' una Gildan 64000: usa la guida qui sopra.
+const GILDAN_HEAVY_BLEND_ROWS = {
+  S: [69, 51], M: [71, 56], L: [74, 61], XL: [76, 66],
+  '2XL': [79, 71], '3XL': [81, 76], '4XL': [84, 81], '5XL': [86, 86],
 }
+const GILDAN_HEAVY_BLEND_NOTES = [
+  'Garment measured flat. Chest is side to side, 2.5 cm below the armhole — double it for the full circumference.',
+  'Length from the highest point of the shoulder to the hem, at the back.',
+  'Classic unisex fit, roomy. Between sizes, take your usual size.',
+]
 SIZE_GUIDES.gildan_18500 = {
   garment: 'Gildan 18500 Heavy Blend Hoodie',
   cols: ['Length', 'Chest'],
   unit: 'cm',
-  rows: { S: [69, 51], M: [71, 56], L: [74, 61], XL: [76, 66], '2XL': [79, 71] },
-  notes: GILDAN_NOTES,
+  rows: GILDAN_HEAVY_BLEND_ROWS,
+  notes: GILDAN_HEAVY_BLEND_NOTES,
 }
 SIZE_GUIDES.gildan_18000 = {
   garment: 'Gildan 18000 Heavy Blend Crewneck',
   cols: ['Length', 'Chest'],
   unit: 'cm',
-  rows: { S: [69, 51], M: [71, 56], L: [74, 61], XL: [76, 66], '2XL': [79, 71] },
-  notes: GILDAN_NOTES,
+  rows: GILDAN_HEAVY_BLEND_ROWS,
+  notes: GILDAN_HEAVY_BLEND_NOTES,
 }
 
 export const SIZE_ORDER =['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL']

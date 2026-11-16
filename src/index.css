@@ -391,3 +391,19 @@
   to   { background-position: 0% 0; }
 }
 @media (prefers-reduced-motion: reduce) { .zk-shake, .zk-glint-once, .zk-sheen.is-lit { animation: none; } }
+/* Il font di Zack: la scritta del logo e' un bold geometrico, Montserrat e' il
+   gemello libero. Solo nel mondo Zack (App.jsx mette data-world="zack"). */
+html[data-world="zack"] body,
+html[data-world="zack"] .font-sans { font-family: 'Montserrat', 'Space Grotesk', system-ui, sans-serif; }
+html[data-world="zack"] .font-display {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: -0.01em;
+}
+html[data-world="zack"] h1.font-display { text-transform: uppercase; line-height: 1.02; }
+/* Popup email Zack: gli occhi salgono da dietro la card, poi sbattono le palpebre. */
+.zk-peek { transform-origin: 50% 100%; animation: zk-peek-up 700ms cubic-bezier(.2,.8,.2,1) 350ms both, zk-peek-blink 4.5s ease-in-out 1.6s infinite; }
+@keyframes zk-peek-up { from { transform: translate(-50%, 70%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+@keyframes zk-peek-blink { 0%, 92%, 100% { scale: 1 1; } 95% { scale: 1 0.1; } }
+@media (prefers-reduced-motion: reduce) { .zk-peek { animation: none; } }
