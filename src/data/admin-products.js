@@ -25367,7 +25367,9 @@ export const adminProducts = [
       }
     ],
     "relatedProducts": [],
-    "heroShots": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg"
+    ],
     "tags": [
       "zack the duck",
       "duck",
@@ -25378,7 +25380,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-15T22:36:32.113Z",
+    "updatedAt": "2026-11-16T00:39:35.710Z",
     "id": "zack-the-duck-hoodie",
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
@@ -25428,18 +25430,32 @@ export const adminProducts = [
         "price": 4900
       }
     ],
-    "image": "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg",
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg"
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg",
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-mockup-01.jpg",
+      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-dark-chocolate-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261115_232034_491aa778-ade9-4715-b0b9-427ead07b92e.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000518_042967f1-57ba-4ca7-913d-989448ae6d98.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000606_d73aadfa-2449-422c-bdb8-d99a4fd1dd01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000840_b5434f8a-afb0-463a-b54c-a2930b332b47.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000918_5c4750a2-60c7-4a17-b8e3-2362f67c9473.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001327_4e2fc3d6-c320-44ba-bfaa-e7011435390d.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001357_9866e669-1f42-4f9c-8137-f07a0e5f8330.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png",
     "homeImages": [
       "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
       "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
+    "detailImage": null,
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/981393ac-ba19-4089-a834-f9ed5ac05a35/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261116T003652Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e1d388ec97200ec3bd302117872e1e9c1fd791d59734691d42e5334ac645129",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/852f0a59-7246-488f-9dac-7647f45b0ec3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261116T003652Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=583d815d5ceb188c716ac699536856f2f351cef43a94d9a7a3ccc0975722ebb2"
+    ]
   },
   {
     "section": "zack",
