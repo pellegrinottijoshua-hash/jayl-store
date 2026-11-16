@@ -25579,7 +25579,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-15T22:36:32.112Z",
+    "updatedAt": "2026-11-16T02:47:33.395Z",
     "id": "zack-the-duck-crewneck",
     "name": "Zack the Duck Crewneck",
     "shortName": "Crewneck",
