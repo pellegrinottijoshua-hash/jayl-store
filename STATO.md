@@ -14,7 +14,7 @@ Aggiornato: 2026-11-16 notte da Troy (giro di rifinitura Zack: occhiolino vero, 
 
 ## Prossimi 3 passi
 1. **Push** del giro 16/11 con l'ok di Joshua (`/sync-main`, poi `/verify-live`).
-2. **Joshua:** sconto Black Friday −20% (27/11–1/12); dominio `zacktheduck.com`; R1–R4 su fondo #111111 pieno (oggi si vede un leggero riquadro).
+2. **Joshua:** sconto Black Friday −20% (27/11–1/12); dominio `zacktheduck.com`. (Fondo delle R1–R4 portato a #111111 il 16/11: niente più riquadro in home.)
 3. **Natale:** prime 20–50 vendite: ads piccole verso le schede, regalo «per l'amico mai impressionato», scadenza 12/12, mail, Zack anche su Etsy.
 
 ## Bloccato da
