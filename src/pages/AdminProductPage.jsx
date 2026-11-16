@@ -14,8 +14,9 @@ import { fileToBase64, compressImage, sanitizeFilename, prepareProductAsset } fr
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
 import SocialQuickPublish from '@/components/admin/SocialQuickPublish'
 import SocialStatusPanel from '@/components/admin/SocialStatusPanel'
-import { withSide } from '@/lib/mediaKey'
+import { withSide, mediaKey } from '@/lib/mediaKey'
 import PoolThumb, { MAX_HERO_SHOTS } from '@/components/admin/PoolThumb'
+import GalleryOrder from '@/components/admin/GalleryOrder'
 
 // Nome fisso per il file del secondo lato: rigenerarlo sovrascrive, non accumula.
 const ALT_FILENAME = 'design-front.png'
@@ -146,7 +147,7 @@ function ImagePool({
       if (heroVideo   === img.url)  onSetHeroVideo('')
       if (mobileHero  === img.url)  onSetMobileHero(null)
       if (detailImage === img.url)  onSetDetailImage(null)
-      if (sequenza.includes(img.url)) onToggleSequenza(img.url)
+      if (sequenza.some(u => mediaKey(u) === mediaKey(img.url))) onToggleSequenza(img.url)
       onExcludeGelato?.(img.url)
       return
     }
@@ -157,7 +158,7 @@ function ImagePool({
       if (heroVideo   === img.url)  onSetHeroVideo('')
       if (mobileHero  === img.url)  onSetMobileHero(null)
       if (detailImage === img.url)  onSetDetailImage(null)
-      if (sequenza.includes(img.url)) onToggleSequenza(img.url)
+      if (sequenza.some(u => mediaKey(u) === mediaKey(img.url))) onToggleSequenza(img.url)
       await api('delete-image', { path: img.path, sha: img.sha })
       onUploaded() // refresh pool
     } catch (e) {
@@ -234,7 +235,7 @@ function ImagePool({
 // Assignment happens from PoolThumb hover buttons; this panel shows the result.
 // Ruoli: vedi src/lib/productMedia.js.
 
-function MediaPanel({ heroVideo, heroShots, mobileHero, detailImage, onSetHeroVideo, onToggleHeroShot, onSetMobileHero, onSetDetailImage, onSave, saving, msg }) {
+function MediaPanel({ heroVideo, heroShots, mobileHero, detailImage, sequenza = [], imageSides = {}, onReorderSequenza, onToggleSequenza, onSetHeroVideo, onToggleHeroShot, onSetMobileHero, onSetDetailImage, onSave, saving, msg }) {
 
   const HeroSlot = ({ url, label, aspect, color, onClear }) => {
     const isVideo = url && /\.(mp4|mov|webm)$/i.test(url)
@@ -302,6 +303,16 @@ function MediaPanel({ heroVideo, heroShots, mobileHero, detailImage, onSetHeroVi
                 onClear={() => heroShots[i] && onToggleHeroShot(heroShots[i])} />
             ))}
           </div>
+        </div>
+
+        {/* ── GALLERIA: l'ordine dei mockup in scheda ── */}
+        <div>
+          <p className="text-[10px] text-gray-600 font-mono uppercase tracking-widest mb-1"># Galleria — ordine in scheda</p>
+          <p className="text-[10px] text-gray-700 mb-3">
+            Trascina una foto su un'altra, o passa sopra e usa ◀ 2ª ▶. La 1ª è la copertina; la 2ª è anche il lato
+            che la home Zack mostra col tasto ↺. Con F/B i numeri contano per lato (F2, B2). Poi 💾 Salva.
+          </p>
+          <GalleryOrder sequenza={sequenza} imageSides={imageSides} onReorder={onReorderSequenza} onRemove={onToggleSequenza} />
         </div>
 
         {/* ── LIFESTYLE HOME ── */}
@@ -742,9 +753,12 @@ export default function AdminProductPage() {
   const allPoolImages   = useMemo(() => [...gelatoImages, ...uploadedImages, ...generatedImages], [gelatoImages, uploadedImages, generatedImages])
 
   // ── Media handlers ────────────────────────────────────────────────────────
+  // Per nome file: la stessa foto puo' stare come link raw (pool) o come path
+  // locale (/images/…); senza questo risultava fuori sequenza e "#" la doppiava.
   const toggleSequenza = useCallback(url => {
     setSequenza(prev => {
-      if (prev.includes(url)) return prev.filter(u => u !== url)
+      const k = mediaKey(url)
+      if (prev.some(u => mediaKey(u) === k)) return prev.filter(u => mediaKey(u) !== k)
       setHeroShots(h => h.filter(u => u !== url))
       return [...prev, url]
     })
@@ -1586,7 +1600,8 @@ export default function AdminProductPage() {
               sequenza={sequenza}
               detailImage={detailImage}
               imageSides={imageSides}
-              onSetImageSide={section === 'zack' ? undefined : handleSetImageSide}
+              // Capi Zack: F/B solo se hanno due versioni (la felpa: stampa davanti o dietro).
+              onSetImageSide={section === 'zack' && !altPrintFileUrl ? undefined : handleSetImageSide}
               onToggleHeroShot={toggleHeroShot}
               onSetHeroVideo={setVideoUrl}
               onSetMobileHero={setMobileHero}
@@ -1620,6 +1635,10 @@ export default function AdminProductPage() {
                 heroShots={heroShots}
                 mobileHero={mobileHero}
                 detailImage={detailImage}
+                sequenza={sequenza}
+                imageSides={imageSides}
+                onReorderSequenza={setSequenza}
+                onToggleSequenza={toggleSequenza}
                 onSetHeroVideo={setVideoUrl}
                 onToggleHeroShot={toggleHeroShot}
                 onSetMobileHero={setMobileHero}

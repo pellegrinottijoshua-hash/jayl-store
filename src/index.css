@@ -359,6 +359,19 @@
 @media (prefers-reduced-motion: reduce) { .zk-rise, .zk-door, .zk-door-eyes { animation: none; opacity: 1; transform: none; } }
 .zk-noscrollbar { scrollbar-width: none; }
 .zk-noscrollbar::-webkit-scrollbar { display: none; }
+/* Home Zack, desktop: le presentazioni del cast scorrono piano ai lati del
+   video (la lista e' ripetuta due volte: -50% = un giro esatto). */
+.zk-marquee-up   { animation: zk-marquee-y 42s linear infinite; }
+.zk-marquee-down { animation: zk-marquee-y 42s linear infinite reverse; }
+.zk-marquee:hover .zk-marquee-up, .zk-marquee:hover .zk-marquee-down { animation-play-state: paused; }
+@keyframes zk-marquee-y { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+/* La sigla in corso: tre barrette che ballano. */
+.zk-eq { display: flex; align-items: flex-end; gap: 2px; height: 12px; }
+.zk-eq span { width: 2px; height: 100%; background: currentColor; transform-origin: bottom; animation: zk-eq 0.9s ease-in-out infinite; }
+.zk-eq span:nth-child(2) { animation-delay: -0.3s; }
+.zk-eq span:nth-child(3) { animation-delay: -0.6s; }
+@keyframes zk-eq { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .zk-marquee-up, .zk-marquee-down, .zk-eq span { animation: none; } }
 /* Occhi confusi: la testa scuote (swipe ripetuti nel carosello). */
 .zk-shake { animation: zk-shake 700ms cubic-bezier(.36,.07,.19,.97) both; }
 @keyframes zk-shake {

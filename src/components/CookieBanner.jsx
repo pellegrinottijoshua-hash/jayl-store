@@ -5,7 +5,15 @@ import { CONSENT_EVENT } from '@/lib/trustpilot'
 
 const STORAGE_KEY = 'jayl_cookie_consent'
 
-export default function CookieBanner() {
+// zack: nel mondo Zack parla come lui (deadpan) e al posto del biscotto ci
+// sono i suoi occhi, che al «Fine.» si chiudono.
+const COPY = {
+  jayl: { title: 'Who doesn’t like cookies?', sub: 'Analytics & ads, only if you say yes.', yes: 'Feed me' },
+  zack: { title: 'Zack doesn’t care about cookies.', sub: 'We do. Analytics & ads, only if you say yes.', yes: 'Fine.' },
+}
+
+export default function CookieBanner({ zack = false }) {
+  const copy = zack ? COPY.zack : COPY.jayl
   const [visible, setVisible] = useState(false)
   const [biting, setBiting]   = useState(false)
   const [bitten, setBitten]   = useState(false)
@@ -79,12 +87,13 @@ export default function CookieBanner() {
           style={{ backgroundColor: '#111111', borderColor: 'rgba(196,163,90,0.22)' }}
         >
           <div className="flex items-center gap-3 pl-3 pr-2.5 py-2.5">
-            <CookieMark bite={biting} />
+            {zack ? <ZackLook shut={biting} /> : <CookieMark bite={biting} />}
 
             <div className="flex-1 min-w-0">
-              <p className="font-display text-[15px] leading-tight text-cream">Who doesn&apos;t like cookies?</p>
+              <p className={zack ? 'font-sans font-bold text-[13px] leading-tight' : 'font-display text-[15px] leading-tight text-cream'}
+                style={zack ? { color: '#F5F0E8' } : undefined}>{copy.title}</p>
               <p className="text-[10px] leading-snug mt-0.5" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                Analytics &amp; ads, only if you say yes.{' '}
+                {copy.sub}{' '}
                 <Link to="/cookies" onClick={decline} className="underline" style={{ color: 'rgba(255,255,255,0.6)' }}>
                   Policy
                 </Link>
@@ -105,13 +114,26 @@ export default function CookieBanner() {
                 className="text-[11px] px-3.5 py-2 rounded-full font-medium transition-transform active:scale-95"
                 style={{ backgroundColor: '#C4A35A', color: '#111111' }}
               >
-                Feed me
+                {copy.yes}
               </button>
             </div>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
+  )
+}
+
+// Zack: gli occhi a mezz'asta; al «Fine.» si chiudono (un battito lungo).
+function ZackLook({ shut }) {
+  return (
+    <motion.img
+      src="/zack/zack-simbolo.svg" alt="" aria-hidden width="44" height="19"
+      className="flex-shrink-0 w-11 h-auto"
+      style={{ transformOrigin: '50% 40%' }}
+      animate={shut ? { scaleY: [1, 0.08, 0.08] } : { scaleY: [1, 1, 0.1, 1] }}
+      transition={shut ? { duration: 0.45, times: [0, 0.4, 1] } : { duration: 0.3, delay: 2.2, repeat: Infinity, repeatDelay: 4.5, times: [0, 0.4, 0.6, 1] }}
+    />
   )
 }
 

@@ -153,7 +153,7 @@ export default function App() {
       </Suspense>
 
       {!isAdmin && (isZack ? <ZackFooter /> : <Footer />)}
-      {!isAdmin && <CookieBanner />}
+      {!isAdmin && <CookieBanner zack={isZack} />}
     </>
   )
 }

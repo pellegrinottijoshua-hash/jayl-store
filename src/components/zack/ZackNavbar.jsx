@@ -1,24 +1,60 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, useNavigate } from 'react-router-dom'
 import { ShoppingBag, Menu, X } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
 import { InstagramIcon, TikTokIcon, YouTubeIcon } from '@/components/layout/Navbar'
 import JaylMark from '@/components/JaylMark'
+import ZackEyes from '@/components/zack/ZackEyes'
 import { ZACK_SOCIAL, JAYL_HOME, Z } from '@/lib/world'
 import { cn } from '@/lib/utils'
 
 
 const ICONS = { instagram: InstagramIcon, youtube: YouTubeIcon, tiktok: TikTokIcon }
 
+// Al clic su un social: schermo nero (come la porta JAYL), Zack guarda in
+// camera e fa l'occhiolino veloce dal lato del clic, poi si apre il link.
+// Se il browser blocca la finestra nuova, si apre nella stessa.
+function SocialWink({ href, eye, onDone }) {
+  const eyes = useRef(null)
+  useEffect(() => {
+    let t1, t2
+    const raf = requestAnimationFrame(() => {
+      const ms = eyes.current?.wink(eye, { style: 'A', lead: 80 }) ?? 0
+      t1 = setTimeout(() => {
+        const w = window.open(href, '_blank')
+        if (w) w.opener = null; else window.location.href = href
+        t2 = setTimeout(onDone, 120)
+      }, Math.max(0, ms - 40))
+    })
+    return () => { cancelAnimationFrame(raf); clearTimeout(t1); clearTimeout(t2) }
+  }, [href, eye, onDone])
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-center justify-center zk-door" style={{ background: Z.black }} onClick={onDone}>
+      <ZackEyes ref={eyes} className="w-[72vw] max-w-[520px] h-auto" />
+    </div>,
+    document.body
+  )
+}
+
 // lit: la chiave del social che in questo momento si accende d'oro (header).
 export function ZackSocials({ size = 15, className, lit }) {
+  const [winking, setWinking] = useState(null)
+  const done = useCallback(() => setWinking(null), [])
+  const onClick = (e, href) => {
+    // Cmd/Ctrl-clic, tasto centrale, movimento ridotto: il link e basta.
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    e.preventDefault()
+    setWinking({ href, eye: e.clientX < window.innerWidth / 2 ? 0 : 1 })
+  }
   return (
     <div className={cn('flex items-center', className)}>
       {ZACK_SOCIAL.map(({ key, label, href }) => {
         const Icon = ICONS[key]
         return (
           <a key={key} href={href} target="_blank" rel="noopener noreferrer"
+            onClick={(e) => onClick(e, href)}
             aria-label={`Zack the Duck on ${label}`}
             className={cn('transition-opacity duration-200 opacity-70 hover:opacity-100', lit === key && 'zk-glint-once')}
             style={{ color: Z.cream }}>
@@ -26,6 +62,7 @@ export function ZackSocials({ size = 15, className, lit }) {
           </a>
         )
       })}
+      {winking && <SocialWink href={winking.href} eye={winking.eye} onDone={done} />}
     </div>
   )
 }
@@ -57,6 +94,21 @@ export function JaylDoor({ className, children, onEnter }) {
   )
 }
 
+// Natale: la riga d'oro «Order by 12 Dec» sotto Free shipping, fino alla fine
+// del 12/12 (ora di Roma), poi sparisce da sola. Finche' c'e', l'header e' piu'
+// alto di XMAS_PX: le pagine lo leggono da --zk-xmas (home, schede, collezione).
+const XMAS_END = Date.parse('2026-12-13T00:00:00+01:00')
+const XMAS_PX = 18
+function useXmasBar() {
+  const on = Date.now() < XMAS_END
+  useLayoutEffect(() => {
+    const root = document.documentElement
+    root.style.setProperty('--zk-xmas', on ? `${XMAS_PX}px` : '0px')
+    return () => root.style.removeProperty('--zk-xmas')
+  }, [on])
+  return on
+}
+
 // Chi si accende d'oro, uno alla volta: la scritta, poi Instagram, YouTube e
 // TikTok, ognuno 3-4 s (a caso) dopo il precedente, poi si ricomincia.
 const GOLD_TURNS = ['logo', 'instagram', 'youtube', 'tiktok']
@@ -78,6 +130,7 @@ function useGoldTurn() {
 export default function ZackNavbar() {
   const { items, toggleCart } = useCartStore()
   const lit = useGoldTurn()
+  const xmas = useXmasBar()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const count = items.reduce((s, i) => s + i.quantity, 0)
@@ -108,6 +161,13 @@ export default function ZackNavbar() {
             Free worldwide shipping
           </p>
         </div>
+        {xmas && (
+          <div className="w-full flex items-center justify-center" style={{ height: XMAS_PX, background: Z.gold }}>
+            <p className="font-sans font-bold text-[8.5px] uppercase select-none pl-[0.3em]" style={{ letterSpacing: '0.3em', color: Z.black }}>
+              Order by 12 Dec for Christmas
+            </p>
+          </div>
+        )}
 
         <div className={cn('h-14 grid grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-8 transition-colors duration-300',
           scrolled && 'backdrop-blur-md')}

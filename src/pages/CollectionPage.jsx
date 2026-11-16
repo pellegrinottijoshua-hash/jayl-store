@@ -96,7 +96,7 @@ export default function CollectionPage() {
 
   return (
     <div
-      className={`min-h-screen w-screen ${bgCls} pt-[84px]`}
+      className={`min-h-screen w-screen ${bgCls} pt-[calc(84px_+_var(--zk-xmas,0px))]`}
       style={!isDark ? { colorScheme: 'light', backgroundColor: '#f5f0e8', color: '#111111' } : {}}
     >
       {/* ── Header ───────────────────────────────────────── */}

@@ -5,7 +5,7 @@ Scritto da Troy il 2026-11-16, a fine di una sessione lunga. Una sessione nuova 
 ## In una riga
 Da 15–16/11 jayl.store apre su **Zack the Duck** (la IP di punta di JAYL): home «Zack si veste» con 3 capi (tee, felpa Front/Back, girocollo) collegati a Gelato e vendibili. Lo store JAYL (Pokémon, drop) è su `/jayl`. Obiettivo: vendere per Natale e far crescere Zack come brand.
 
-## Cosa è online (main, ultimo push `f72a7653`)
+## Cosa è online (main; il giro del 16/11 sotto è pushato dopo l'ok di Joshua)
 - **Due mondi** (`src/lib/world.js`): `/` e schede `section: 'zack'` = Zack (header, footer, palette #111111 / #F5F0E8 / #C4A35A, font Montserrat via `html[data-world=zack]`); il resto = JAYL. Porte nei menu: «What else?» + segno JAYL oro (Zack → `/jayl`), voce «zack» col simbolo (JAYL → `/`).
 - **Home** `src/pages/ZackHomePage.jsx`: occhi (`src/components/zack/ZackEyes.jsx`, motore della home-occhi; dati da `node scripts/zack-eyes-sync.mjs`) = testa; manichino del capo = corpo; swipe/tab/frecce cambiano capo; felpa ↺. Poi badge Etsy, video unico 9:16 (`public/zack/video/zack-spotted.mp4`), perks.
 - **Header**: luccichio d'oro uno alla volta (scritta, poi IG, YT, TikTok, 3–4 s), mai menu/carrello (`useGoldTurn` in `ZackNavbar.jsx`).
@@ -26,16 +26,18 @@ Da 15–16/11 jayl.store apre su **Zack the Duck** (la IP di punta di JAYL): hom
 - Push solo con l'ok di Joshua; prima `/sync-main` (l'admin committa su main: risolvere `admin-products.js` tenendo il remoto e riapplicando), dopo `/verify-live`.
 - Mai Pokémon nel mondo Zack. Ai clienti mai «drop»: «new». Ads Zack separate dalle Pokémon, verso le schede.
 
-## PROSSIMO BUILD (deciso il 16/11, da fare in quest'ordine)
-1. **Occhiolino nuovo**: prima guarda in camera (pupille al centro), poi le due palpebre di UN occhio si chiudono verso il centro (sopra giù, sotto su), come un vero occhiolino. **Fare 3 prove in video** (es. A palpebre al centro; B + l'altro occhio socchiude; C + piccolo rimbalzo della testa), Joshua sceglie. Poi in `ZackEyes.jsx` (`wink`).
-2. **Occhiolino solo al clic su un capo** (home): Zack guarda in camera, occhiolino, poi si apre la scheda (~600 ms). **Non** allo swipe: allo swipe gli occhi seguono e basta. Dopo il cambio, l'espressione successiva parte subito (oggi >1 s: togliere i ritardi in `go()`/`lookAtBody`).
-3. **Mobile, sotto il capo solo una riga**: `T-SHIRT  €25` (HOODIE, CREWNECK). Via: bottone Shop, tab, «Swipe to change his outfit», flash dei mockup. Solo il manichino. **La felpa parte dal retro**, con ↺ per girarla.
-4. **Desktop**: niente bottoni (come Nike): si clicca il capo; sotto solo `CREWNECK  €39`. Swipe a **due dita** (wheel `deltaX`, con soglia e pausa). Cambio capo **fluido in profondità**: il capo nuovo viene avanti dal lato al centro (cresce), quello vecchio torna indietro al lato (rimpicciolisce): tre posizioni che si scambiano, non un fade.
-5. **Animazioni occhi ai click**: sui social occhiolino (o occhi che si accendono d'oro / fascio d'oro) prima di aprire il link. Fare proposte nel video del punto 1.
-6. **Schede**: la 2ª foto è il lato liscio (R1–R4) quando Joshua li genera, così si capisce che fronte e retro sono separati.
-7. **Video**: desktop = video del brand al centro e ai lati le 7 presentazioni 3D scorrevoli; mobile = fila sotto il video. Ordine: Zack, gabbiano, gatto, piccione, tartaruga, falena, formica (`~/Desktop/zack the duck/EPISODI FINITI/Ep3d/presentazioni/presentazione_*.mp4`, da comprimere 480p). **Icona musica** che fa partire la sigla (`~/Desktop/zack the duck/music/sigla.mp3`, 1:46).
-8. **Banner «Order by 12 Dec for Christmas»** (sottile, oro, sotto Free shipping).
-9. **Cookie banner con una frase alla Zack** nel mondo Zack.
+## BUILD DEL 16/11 — FATTO (verificato in locale su telefono e desktop; push solo con l'ok di Joshua)
+1. **Occhiolino vero** (`ZackEyes.jsx`, `wink(eye, { style, slow })`): pupille in camera, poi le due palpebre di UN occhio al centro. Prove video e script in `runs/zack-occhiolino/` (`node render.mjs`). Joshua: «usiamo tutti e tre», destro o sinistro dal lato del clic. Regola: **veloce (~0,5 s) quando l'utente aspetta** (clic su capo = B, social = A), **lento (~1 s) quando non aspetta niente** (saluto all'arrivo = C con rimbalzo della testa, 1 volta a visita; da fermo, ogni 5 espressioni).
+2. **Occhiolino solo al clic sul capo**, poi la scheda (~0,5 s). Allo swipe gli occhi seguono subito (glance + sguardo sul capo a 220 ms), niente occhiolino.
+3. **Mobile:** sotto il capo solo `T-SHIRT €25` (via Shop, tab, scritta swipe, flash). Felpa parte dal retro (`backFrames[0]`), ↺ la gira; occhi aperti anche di spalle.
+4. **Desktop:** niente bottoni; clic sul capo al centro, clic sui lati = cambio. Tre posizioni in profondità (centro scala 1, lati 0,6; chi passa da un lato all'altro va dietro al centro). Swipe a due dita (wheel `deltaX`, soglia 60, fermo finché la scia d'inerzia non si spegne). Occhi e capo scalano con l'altezza della finestra.
+5. **Social** (`ZackSocials` in `ZackNavbar.jsx`, vale anche per footer e menu): schermo nero, occhiolino veloce dal lato del clic, poi `window.open` (se bloccato, stessa scheda). Cmd-clic e movimento ridotto: link diretto.
+7. **Video:** brand al centro, cast ai lati che scorre (`zk-marquee`), mobile fila sotto; parte solo ciò che si vede; tocco = voce. ♪ = sigla. File: `public/zack/video/cast/*.mp4|jpg` (480p), `public/zack/audio/sigla.mp3`.
+8. **Banner Natale** in `ZackNavbar.jsx` (`XMAS_END` = 13/12 00:00 Roma), altezza in `--zk-xmas`.
+9. **Cookie Zack** (`CookieBanner` prop `zack`): «Zack doesn't care about cookies.» / «Fine.», occhi che sbattono.
+6. **Lati lisci R1–R4** (Joshua li ha caricati in admin il 16/11): 2ª foto di ogni scheda (felpa: R3 = F2, R4 = B2). In home ↺ su ogni capo mostra la 2ª foto della scheda (si cambia in admin); felpa con pillola «PRINT FRONT · BACK» (parte da BACK): 4 viste. La scheda si apre sempre sulla copertina. La home legge tutto da `images` + `imageSides` (non da `homeImages`, che alla build non viene rinominato).
+- **Admin:** `src/components/admin/GalleryOrder.jsx` nel pannello Hero: ordine della galleria (trascina, ◀ 2ª ▶). La sequenza si confronta per nome file (`mediaKey`).
+- Nota per le prove: nel pannello browser nascosto `requestAnimationFrame` è fermo (occhi e framer immobili): verificare le animazioni nel Chrome di chrome-devtools.
 
 ## Aperto (Joshua)
 - Mockup R1–R4 (lati lisci). Sconto Black Friday −20% (27/11–1/12): codice o prezzo. Dominio `zacktheduck.com`: si collega allo stesso progetto Vercel e apre Zack (porta JAYL nascosta su quel dominio).

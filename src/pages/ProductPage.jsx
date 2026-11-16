@@ -1116,7 +1116,7 @@ export default function ProductPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           MOBILE LAYOUT  (hidden on md+)
       ══════════════════════════════════════════════════════════════════════ */}
-      <div className="md:hidden pt-[88px]">
+      <div className="md:hidden pt-[calc(88px_+_var(--zk-xmas,0px))]">
 
         {/* ── Swipe Gallery ─────────────────────────────────────────────── */}
         <div
@@ -1516,7 +1516,7 @@ export default function ProductPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           DESKTOP LAYOUT  (hidden on mobile)
       ══════════════════════════════════════════════════════════════════════ */}
-      <div className="hidden md:block pt-24">
+      <div className="hidden md:block pt-[calc(6rem_+_var(--zk-xmas,0px))]">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
           <button

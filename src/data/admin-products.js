@@ -25250,6 +25250,7 @@ export const adminProducts = [
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
+      "/images/zack-the-duck-tee/hf_20261116_022143_21078676-6ab1-44e7-8074-1c2dbc72b903.jpg",
       "/images/zack-the-duck-tee/hf_20261115_234652_2508990d-a3d1-427b-88cd-2ceca391ae04.jpg",
       "/images/zack-the-duck-tee/hf_20261115_234714_bf3f9b16-509f-4fe0-8251-2530f18c68ac.jpg",
       "/images/zack-the-duck-tee/hf_20261115_225829_dcd0ace5-0e97-4ea6-b478-01a6b0fa3ff2.jpg",
@@ -25257,8 +25258,7 @@ export const adminProducts = [
       "/images/zack-the-duck-tee/hf_20261115_235024_32734cde-8e5b-4caf-81d7-0c88bcaa37ab.jpg",
       "/images/zack-the-duck-tee/hf_20261115_235317_868717a8-ed56-4c3e-a1b0-49ecb87c1f1d.jpg",
       "/images/zack-the-duck-tee/hf_20261115_235109_e2530a5a-7fdf-4096-b684-a01ac7217108.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261116_022143_21078676-6ab1-44e7-8074-1c2dbc72b903.jpg"
+      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png",
     "homeImages": [
@@ -25428,6 +25428,7 @@ export const adminProducts = [
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg",
       "/images/zack-the-duck-hoodie/hf_20261115_232034_491aa778-ade9-4715-b0b9-427ead07b92e.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_000840_b5434f8a-afb0-463a-b54c-a2930b332b47.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_000518_042967f1-57ba-4ca7-913d-989448ae6d98.jpg",
@@ -25436,15 +25437,14 @@ export const adminProducts = [
       "/images/zack-the-duck-hoodie/hf_20261116_000918_5c4750a2-60c7-4a17-b8e3-2362f67c9473.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001357_9866e669-1f42-4f9c-8137-f07a0e5f8330.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_023733_b76c0cae-8f20-4506-b097-81e7538ce688.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001453_5afaa4a3-77a8-4b61-808a-d7f5ca2362be.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001746_fbb9038e-958c-47a3-bd17-07699e468593.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001758_e2464592-aae0-4766-90ec-1a16ba0430e4.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001815_30b8e0a9-4174-4dd8-b30b-c52b73d81875.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001830_f91a6dfd-28fe-437a-ab08-92d51a8f3f4f.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_002520_cce72a06-ee9a-4ff6-9cd1-606db6d27f03.jpg",
-      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_023733_b76c0cae-8f20-4506-b097-81e7538ce688.jpg"
+      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png",
     "homeImages": [
@@ -25482,7 +25482,9 @@ export const adminProducts = [
       "/images/zack-the-duck-hoodie/hf_20261116_001815_30b8e0a9-4174-4dd8-b30b-c52b73d81875.jpg": "back",
       "/images/zack-the-duck-hoodie/hf_20261116_001830_f91a6dfd-28fe-437a-ab08-92d51a8f3f4f.jpg": "back",
       "/images/zack-the-duck-hoodie/hf_20261116_002520_cce72a06-ee9a-4ff6-9cd1-606db6d27f03.jpg": "back",
-      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg": "back"
+      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_023733_b76c0cae-8f20-4506-b097-81e7538ce688.jpg": "back"
     }
   },
   {
@@ -25646,14 +25648,14 @@ export const adminProducts = [
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-crewneck/hf_20261115_234255_59768112-9605-4940-9b0c-f2865b989940.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261116_022107_71af7efb-b2a8-48b9-9116-6badd45c753f.jpg",
       "/images/zack-the-duck-crewneck/hf_20261115_235219_67a0ad3a-bb47-402b-9738-1003b7268be9.jpg",
       "/images/zack-the-duck-crewneck/hf_20261115_235800_50d49f72-d584-4cd1-b4e0-9dbb2b897dab.jpg",
       "/images/zack-the-duck-crewneck/hf_20261115_235845_cfd2549c-c436-405b-be61-35e6cd8a0d43.jpg",
       "/images/zack-the-duck-crewneck/hf_20261115_235917_f97221ed-70dc-462a-90e4-e86a3e96252b.jpg",
       "/images/zack-the-duck-crewneck/hf_20261115_235933_faef0a99-6ae3-42b1-b7f6-6cfa80e7796d.jpg",
       "/images/zack-the-duck-crewneck/hf_20261116_000228_96a080a2-abd4-49d3-b9b7-2fa249b58265.jpg",
-      "/images/zack-the-duck-crewneck/hf_20261116_000239_96fa3bb6-fb88-4e60-a630-5d11046bf349.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-crewneck/hf_20261116_022107_71af7efb-b2a8-48b9-9116-6badd45c753f.jpg"
+      "/images/zack-the-duck-crewneck/hf_20261116_000239_96fa3bb6-fb88-4e60-a630-5d11046bf349.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-crewneck/design.png",
     "homeImages": [
