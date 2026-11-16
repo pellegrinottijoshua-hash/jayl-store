@@ -25193,26 +25193,34 @@ export const adminProducts = [
       }
     ],
     "relatedProducts": [],
-    "heroShots": [],
+    "heroShots": [
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg"
+    ],
     "tags": [
-      "zack the duck",
+      "zack",
       "duck",
-      "deadpan",
-      "cartoon",
-      "streetwear",
-      "black",
-      "minimal"
+      "tee",
+      "apparel",
+      "art",
+      "wholesome",
+      "cozy",
+      "nostalgia",
+      "gift",
+      "premium",
+      "cute",
+      "playful",
+      "fun"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-15T22:36:32.110Z",
+    "updatedAt": "2026-11-16T00:34:59.478Z",
     "id": "zack-the-duck-tee",
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
-    "seoTitle": "Zack the Duck Tee | Deadpan Duck Streetwear | JAYL",
+    "seoTitle": "Zack the Duck Tee | Wholesome Art Apparel | Cozy Gift",
     "price": 2500,
     "archivePrice": 2500,
-    "description": "Zack doesn't smile. He doesn't need to. His eyes and beak, printed big on the chest of a soft black tee. No words, no logo soup. Just the look.",
-    "altText": "Zack the Duck Tee in black with Zack's cream eyes and beak printed on the front",
+    "description": "Slipping into the Zack the Duck Tee brings an immediate warmth, like a gentle hug from your favorite childhood friend. This cozy garment captures Zack's playful spirit with a bright, cheerful design that instantly uplifts your day. Made from Gildan's premium materials, the soft fabric and detailed direct-to-garment print ensure you feel comfortable while expressing your unique style. A delightful gift for someone special, this tee is a perfect way to share the joy of childhood nostalgia.",
+    "altText": "Joyful Zack the Duck in vibrant colors, mid-quack on a premium JAYL tee with small chest print.",
     "details": [
       "Gildan 64000 Softstyle — 100% ring-spun cotton, soft and light",
       "Unisex, slightly fitted cut",
@@ -25244,21 +25252,50 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
+    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
     "heroImage": null,
     "images": [
       "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-front.jpg",
       "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-front-2.jpg",
       "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg"
+      "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_234652_2508990d-a3d1-427b-88cd-2ceca391ae04.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_234714_bf3f9b16-509f-4fe0-8251-2530f18c68ac.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225406_48022e9d-3ebb-4d12-adcd-b4b3fd901ef0.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225829_dcd0ace5-0e97-4ea6-b478-01a6b0fa3ff2.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_235024_32734cde-8e5b-4caf-81d7-0c88bcaa37ab.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_235109_e2530a5a-7fdf-4096-b684-a01ac7217108.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_235317_868717a8-ed56-4c3e-a1b0-49ecb87c1f1d.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png",
     "homeImages": [
       "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
       "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
+    "detailImage": null,
+    "instagramCaption": "\"Feeling cozy yet? The Zack the Duck Tee is here to brighten even the cloudiest days! 🦆✨ Grab one today and let’s spread some joy together. 🌈💛#zackducky#graphictees#cozyvibes\" ",
+    "pinterestCaption": "\"Brighten up your wardrobe with the Zack the Duck Tee! This cozy top combines playful charm with high-quality materials for a truly comforting experience. Explore our collection today and add a sprinkle of nostalgia to your day!\"",
+    "hashtags": "#zack #duck #tee #apparel #art #wholesome #cozy #nostalgia #gift #premium #cute #playful #fun #graphictee #characterapparel #artlovers #giftingideas #cottontee #vintageartwork #expressyourself #loveyourlook #fashionstatement #uniqueclothing #dailyoutfitinspiration #colorfulstyle #casualwearfashion #shoplocalartists #handcrafteddesigns #tshirtdesigns #makeitpersonal#teeshirtsaleloverofshirts#mallroadshoppinginspiration ",
+    "primaryKeywords": [
+      "zack duck tee",
+      "art apparel",
+      "cozy t-shirt",
+      "childhood nostalgia",
+      "graphic tee"
+    ],
+    "longTailKeywords": [
+      "buy zack the duck shirt online",
+      "wholesome art t-shirts for fans",
+      "soft tees for nostalgic gifts",
+      "Gildan quality graphic t-shirts",
+      "funny cute duck apparel for kids",
+      "unique gifts for art lovers",
+      "comfortable everyday wear shirts",
+      "premium cotton graphic tees",
+      "adorable character themed shirts",
+      "vibrant prints for casual outfits"
+    ]
   },
   {
     "section": "zack",
