@@ -25373,7 +25373,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T00:42:31.429Z",
+    "updatedAt": "2026-11-16T02:49:20.726Z",
     "id": "zack-the-duck-hoodie",
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
@@ -25441,7 +25441,9 @@ export const adminProducts = [
       "/images/zack-the-duck-hoodie/hf_20261116_001815_30b8e0a9-4174-4dd8-b30b-c52b73d81875.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_001830_f91a6dfd-28fe-437a-ab08-92d51a8f3f4f.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_002520_cce72a06-ee9a-4ff6-9cd1-606db6d27f03.jpg",
-      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg"
+      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_023733_b76c0cae-8f20-4506-b097-81e7538ce688.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png",
     "homeImages": [
