@@ -25212,7 +25212,7 @@ export const adminProducts = [
       "fun"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T00:34:59.478Z",
+    "updatedAt": "2026-11-16T00:36:19.461Z",
     "id": "zack-the-duck-tee",
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
@@ -25274,9 +25274,9 @@ export const adminProducts = [
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
     "detailImage": null,
-    "instagramCaption": "\"Feeling cozy yet? The Zack the Duck Tee is here to brighten even the cloudiest days! 🦆✨ Grab one today and let’s spread some joy together. 🌈💛#zackducky#graphictees#cozyvibes\" ",
+    "instagramCaption": "\"Feeling cozy yet? The Zack the Duck Tee is here to brighten even the cloudiest days! 🦆✨ Grab one today and let’s spread some joy together. 🌈💛#zackducky#graphictees#cozyvibes\"",
     "pinterestCaption": "\"Brighten up your wardrobe with the Zack the Duck Tee! This cozy top combines playful charm with high-quality materials for a truly comforting experience. Explore our collection today and add a sprinkle of nostalgia to your day!\"",
-    "hashtags": "#zack #duck #tee #apparel #art #wholesome #cozy #nostalgia #gift #premium #cute #playful #fun #graphictee #characterapparel #artlovers #giftingideas #cottontee #vintageartwork #expressyourself #loveyourlook #fashionstatement #uniqueclothing #dailyoutfitinspiration #colorfulstyle #casualwearfashion #shoplocalartists #handcrafteddesigns #tshirtdesigns #makeitpersonal#teeshirtsaleloverofshirts#mallroadshoppinginspiration ",
+    "hashtags": "#zack #duck #tee #apparel #art #wholesome #cozy #nostalgia #gift #premium #cute #playful #fun #graphictee #characterapparel #artlovers #giftingideas #cottontee #vintageartwork #expressyourself #loveyourlook #fashionstatement #uniqueclothing #dailyoutfitinspiration #colorfulstyle #casualwearfashion #shoplocalartists #handcrafteddesigns #tshirtdesigns #makeitpersonal#teeshirtsaleloverofshirts#mallroadshoppinginspiration",
     "primaryKeywords": [
       "zack duck tee",
       "art apparel",
