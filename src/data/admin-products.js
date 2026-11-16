@@ -25380,7 +25380,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T00:39:35.710Z",
+    "updatedAt": "2026-11-16T00:42:31.429Z",
     "id": "zack-the-duck-hoodie",
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
@@ -25455,7 +25455,8 @@ export const adminProducts = [
     "gelatoCdnImages": [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/981393ac-ba19-4089-a834-f9ed5ac05a35/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261116T003652Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e1d388ec97200ec3bd302117872e1e9c1fd791d59734691d42e5334ac645129",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/852f0a59-7246-488f-9dac-7647f45b0ec3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261116T003652Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=583d815d5ceb188c716ac699536856f2f351cef43a94d9a7a3ccc0975722ebb2"
-    ]
+    ],
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design-front.png"
   },
   {
     "section": "zack",
