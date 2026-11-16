@@ -25206,7 +25206,7 @@ export const adminProducts = [
       "gift"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T02:46:27.183Z",
+    "updatedAt": "2026-11-16T02:49:50.940Z",
     "id": "zack-the-duck-tee",
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
@@ -25257,7 +25257,8 @@ export const adminProducts = [
       "/images/zack-the-duck-tee/hf_20261115_235024_32734cde-8e5b-4caf-81d7-0c88bcaa37ab.jpg",
       "/images/zack-the-duck-tee/hf_20261115_235317_868717a8-ed56-4c3e-a1b0-49ecb87c1f1d.jpg",
       "/images/zack-the-duck-tee/hf_20261115_235109_e2530a5a-7fdf-4096-b684-a01ac7217108.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg"
+      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261116_022143_21078676-6ab1-44e7-8074-1c2dbc72b903.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png",
     "homeImages": [
