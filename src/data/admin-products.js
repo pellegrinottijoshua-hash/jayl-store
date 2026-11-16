@@ -25579,7 +25579,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T02:47:33.395Z",
+    "updatedAt": "2026-11-16T02:49:01.954Z",
     "id": "zack-the-duck-crewneck",
     "name": "Zack the Duck Crewneck",
     "shortName": "Crewneck",
@@ -25649,7 +25649,8 @@ export const adminProducts = [
       "/images/zack-the-duck-crewneck/hf_20261115_235917_f97221ed-70dc-462a-90e4-e86a3e96252b.jpg",
       "/images/zack-the-duck-crewneck/hf_20261115_235933_faef0a99-6ae3-42b1-b7f6-6cfa80e7796d.jpg",
       "/images/zack-the-duck-crewneck/hf_20261116_000228_96a080a2-abd4-49d3-b9b7-2fa249b58265.jpg",
-      "/images/zack-the-duck-crewneck/hf_20261116_000239_96fa3bb6-fb88-4e60-a630-5d11046bf349.jpg"
+      "/images/zack-the-duck-crewneck/hf_20261116_000239_96fa3bb6-fb88-4e60-a630-5d11046bf349.jpg",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-crewneck/hf_20261116_022107_71af7efb-b2a8-48b9-9116-6badd45c753f.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-crewneck/design.png",
     "homeImages": [
