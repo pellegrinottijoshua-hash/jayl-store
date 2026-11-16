@@ -25374,7 +25374,7 @@ export const adminProducts = [
       "minimal"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
-    "updatedAt": "2026-11-16T03:24:01.604Z",
+    "updatedAt": "2026-11-16T03:26:12.510Z",
     "id": "zack-the-duck-hoodie",
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
@@ -25425,7 +25425,7 @@ export const adminProducts = [
       }
     ],
     "image": "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
-    "heroImage": "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
+    "heroImage": null,
     "images": [
       "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
       "/images/zack-the-duck-hoodie/hf_20261116_022731_733b93ee-a510-4c9e-9260-93e5832901fd.jpg",
