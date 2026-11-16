@@ -22,6 +22,8 @@ const ALT_FILENAME = 'design-front.png'
 
 const getAdminPassword = () => sessionStorage.getItem('jaylAdminPw') || ''
 const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png'
+// Etichetta del colletto dei capi Zack the Duck: la scritta panna su trasparente.
+const ZACK_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -2491,6 +2493,12 @@ export default function AdminProductPage() {
                       >
                         👕 Logo JAYL
                       </button>
+                      <button
+                        onClick={() => setNeckLabelUrl(ZACK_NECK_LABEL_URL)}
+                        className="bg-stone-800/60 hover:bg-stone-700/60 border border-stone-600/60 text-stone-200 text-xs px-3 py-1.5 transition-colors whitespace-nowrap"
+                      >
+                        🦆 Logo Zack
+                      </button>
                       <input
                         type="text"
                         value={neckLabelUrl}
@@ -2503,7 +2511,7 @@ export default function AdminProductPage() {
                       )}
                     </div>
                     {neckLabelUrl && (
-                      <p className="text-green-500 text-xs">✓ {neckLabelUrl === JAYL_NECK_LABEL_URL ? 'Logo JAYL preimpostato' : 'Custom URL'}</p>
+                      <p className="text-green-500 text-xs">✓ {neckLabelUrl === JAYL_NECK_LABEL_URL ? 'Logo JAYL preimpostato' : neckLabelUrl === ZACK_NECK_LABEL_URL ? 'Logo Zack preimpostato' : 'Custom URL'}</p>
                     )}
                   </div>
                 </Field>

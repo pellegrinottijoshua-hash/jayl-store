@@ -25193,34 +25193,28 @@ export const adminProducts = [
       }
     ],
     "relatedProducts": [],
-    "heroShots": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg"
-    ],
+    "heroShots": [],
     "tags": [
-      "zack",
+      "zack the duck",
       "duck",
-      "tee",
-      "art apparel",
-      "print on demand",
-      "animal lover",
-      "quirky art",
+      "deadpan",
+      "cartoon",
+      "streetwear",
+      "black tee",
       "graphic tee",
-      "fun fashion",
-      "premium quality",
-      "whimsical design",
-      "unisex clothing",
-      "gifting"
+      "minimal",
+      "gift"
     ],
     "createdAt": "2026-11-15T21:29:10.234Z",
     "updatedAt": "2026-11-16T00:36:27.343Z",
     "id": "zack-the-duck-tee",
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
-    "seoTitle": "Zack the Duck Tee | Quirky Animal Apparel | Gifts for Animal Lovers",
+    "seoTitle": "Zack the Duck Tee | Deadpan Duck Streetwear | JAYL",
     "price": 2500,
     "archivePrice": 2500,
-    "description": "A whimsical Zack the Duck perches on the soft fabric, its playful expression captured in vibrant hues. The Gildan premium tee showcases high-quality DTG print, ensuring that every brushstroke pops with life. This design captures the quirky charm of Zack, embodying a carefree spirit that's perfect for anyone who resonates with whimsy and fun. Gifting this shirt is an artful way to share personality and flair with a friend or loved one.",
-    "altText": "Playful Zack the Duck mid-quack, perched cheerfully on a Gildan premium tee in vibrant colours, showcasing small chest art.",
+    "description": "Zack doesn't smile. He doesn't need to. His eyes and beak, printed big on the chest of a soft black tee, ZACK THE DUCK inside the collar. No words, no logo soup. Just the look.",
+    "altText": "Zack the Duck Tee in black with Zack's cream eyes and beak printed on the front",
     "details": [
       "Gildan 64000 Softstyle — 100% ring-spun cotton, soft and light",
       "Unisex, slightly fitted cut",
@@ -25252,31 +25246,32 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
+    "image": "/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
     "heroImage": null,
     "images": [
-      "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-front-2.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_234652_2508990d-a3d1-427b-88cd-2ceca391ae04.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_234714_bf3f9b16-509f-4fe0-8251-2530f18c68ac.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225406_48022e9d-3ebb-4d12-adcd-b4b3fd901ef0.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_225829_dcd0ace5-0e97-4ea6-b478-01a6b0fa3ff2.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_235024_32734cde-8e5b-4caf-81d7-0c88bcaa37ab.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_235109_e2530a5a-7fdf-4096-b684-a01ac7217108.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-tee/hf_20261115_235317_868717a8-ed56-4c3e-a1b0-49ecb87c1f1d.jpg"
+      "/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_234652_2508990d-a3d1-427b-88cd-2ceca391ae04.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_234714_bf3f9b16-509f-4fe0-8251-2530f18c68ac.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_225829_dcd0ace5-0e97-4ea6-b478-01a6b0fa3ff2.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_225406_48022e9d-3ebb-4d12-adcd-b4b3fd901ef0.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_235024_32734cde-8e5b-4caf-81d7-0c88bcaa37ab.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_235317_868717a8-ed56-4c3e-a1b0-49ecb87c1f1d.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_235109_e2530a5a-7fdf-4096-b684-a01ac7217108.jpg",
+      "/images/zack-the-duck-tee/zack-the-duck-tee-gelato-collar.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-tee/design.png",
     "homeImages": [
-      "/images/zack-the-duck-tee/zack-the-duck-tee-lifestyle-01.jpg",
-      "/images/zack-the-duck-tee/zack-the-duck-tee-print-01.jpg"
+      "/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_234652_2508990d-a3d1-427b-88cd-2ceca391ae04.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_234714_bf3f9b16-509f-4fe0-8251-2530f18c68ac.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_225829_dcd0ace5-0e97-4ea6-b478-01a6b0fa3ff2.jpg",
+      "/images/zack-the-duck-tee/hf_20261115_225406_48022e9d-3ebb-4d12-adcd-b4b3fd901ef0.jpg"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
     "detailImage": null,
     "instagramCaption": "\"Feeling cozy yet? The Zack the Duck Tee is here to brighten even the cloudiest days! 🦆✨ Grab one today and let’s spread some joy together. 🌈💛#zackducky#graphictees#cozyvibes\"",
     "pinterestCaption": "\"Brighten up your wardrobe with the Zack the Duck Tee! This cozy top combines playful charm with high-quality materials for a truly comforting experience. Explore our collection today and add a sprinkle of nostalgia to your day!\"",
-    "hashtags": "#zacktheduck #quacky #animalapparel #printondemand #graphictee #funfashion #artwear #teesforthought #unisexstyle #casualwear #giftideas #vibrantart #ducklovers #smilesforstyle #expressyourself #fashionstatement #instafashion #colorfultees #trendyshirts #quirkystyle #shoplocalart #madewithpassion #loveyourlook #exclusivedesigns #tshirtlove #wearableart #streetstylefashion #customclothinglove #[yourbrandname] ##creativewear",
+    "hashtags": "#zacktheduck #deadpan #streetwear #blacktee #graphictee #minimalstreetwear #cartoonduck #undergroundstyle",
     "primaryKeywords": [
       "zack the duck",
       "duck tee shirt",
@@ -25367,9 +25362,7 @@ export const adminProducts = [
       }
     ],
     "relatedProducts": [],
-    "heroShots": [
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg"
-    ],
+    "heroShots": [],
     "tags": [
       "zack the duck",
       "duck",
@@ -25392,7 +25385,7 @@ export const adminProducts = [
     "details": [
       "Gildan 18500 Heavy Blend — 50% cotton, 50% polyester",
       "Pullover with kangaroo pocket and drawstring hood",
-      "Front print: Zack's eyes and beak, cream on black",
+      "Print on the chest or large on the back: Zack's eyes and beak, cream on black",
       "ZACK THE DUCK printed inside the collar",
       "Printed on demand near you (DTG)",
       "Free worldwide shipping"
@@ -25430,25 +25423,38 @@ export const adminProducts = [
         "price": 4900
       }
     ],
-    "image": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg",
+    "image": "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
     "heroImage": null,
     "images": [
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg",
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-mockup-01.jpg",
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-dark-chocolate-01.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261115_232034_491aa778-ade9-4715-b0b9-427ead07b92e.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000518_042967f1-57ba-4ca7-913d-989448ae6d98.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000606_d73aadfa-2449-422c-bdb8-d99a4fd1dd01.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000840_b5434f8a-afb0-463a-b54c-a2930b332b47.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_000918_5c4750a2-60c7-4a17-b8e3-2362f67c9473.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001327_4e2fc3d6-c320-44ba-bfaa-e7011435390d.jpg",
-      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/zack-the-duck-hoodie/hf_20261116_001357_9866e669-1f42-4f9c-8137-f07a0e5f8330.jpg"
+      "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261115_232034_491aa778-ade9-4715-b0b9-427ead07b92e.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000840_b5434f8a-afb0-463a-b54c-a2930b332b47.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000518_042967f1-57ba-4ca7-913d-989448ae6d98.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000606_d73aadfa-2449-422c-bdb8-d99a4fd1dd01.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001327_4e2fc3d6-c320-44ba-bfaa-e7011435390d.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000918_5c4750a2-60c7-4a17-b8e3-2362f67c9473.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001357_9866e669-1f42-4f9c-8137-f07a0e5f8330.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001453_5afaa4a3-77a8-4b61-808a-d7f5ca2362be.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001746_fbb9038e-958c-47a3-bd17-07699e468593.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001758_e2464592-aae0-4766-90ec-1a16ba0430e4.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001815_30b8e0a9-4174-4dd8-b30b-c52b73d81875.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001830_f91a6dfd-28fe-437a-ab08-92d51a8f3f4f.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_002520_cce72a06-ee9a-4ff6-9cd1-606db6d27f03.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design.png",
     "homeImages": [
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-lifestyle-01.jpg",
-      "/images/zack-the-duck-hoodie/zack-the-duck-hoodie-print-01.jpg"
+      "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261115_232034_491aa778-ade9-4715-b0b9-427ead07b92e.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001453_5afaa4a3-77a8-4b61-808a-d7f5ca2362be.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000840_b5434f8a-afb0-463a-b54c-a2930b332b47.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001746_fbb9038e-958c-47a3-bd17-07699e468593.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000518_042967f1-57ba-4ca7-913d-989448ae6d98.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001758_e2464592-aae0-4766-90ec-1a16ba0430e4.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_000606_d73aadfa-2449-422c-bdb8-d99a4fd1dd01.jpg",
+      "/images/zack-the-duck-hoodie/hf_20261116_001815_30b8e0a9-4174-4dd8-b30b-c52b73d81875.jpg"
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
     "detailImage": null,
@@ -25456,7 +25462,25 @@ export const adminProducts = [
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/981393ac-ba19-4089-a834-f9ed5ac05a35/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261116T003652Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2e1d388ec97200ec3bd302117872e1e9c1fd791d59734691d42e5334ac645129",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/852f0a59-7246-488f-9dac-7647f45b0ec3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261116T003652Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=583d815d5ceb188c716ac699536856f2f351cef43a94d9a7a3ccc0975722ebb2"
     ],
-    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design-front.png"
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-hoodie/design-front.png",
+    "imageSides": {
+      "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261115_232034_491aa778-ade9-4715-b0b9-427ead07b92e.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_000840_b5434f8a-afb0-463a-b54c-a2930b332b47.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_000518_042967f1-57ba-4ca7-913d-989448ae6d98.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_000606_d73aadfa-2449-422c-bdb8-d99a4fd1dd01.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_001327_4e2fc3d6-c320-44ba-bfaa-e7011435390d.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_000918_5c4750a2-60c7-4a17-b8e3-2362f67c9473.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_001357_9866e669-1f42-4f9c-8137-f07a0e5f8330.jpg": "front",
+      "/images/zack-the-duck-hoodie/hf_20261116_001425_ee9d005a-7f8b-4099-8172-c0bec6612a17.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_001453_5afaa4a3-77a8-4b61-808a-d7f5ca2362be.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_001746_fbb9038e-958c-47a3-bd17-07699e468593.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_001758_e2464592-aae0-4766-90ec-1a16ba0430e4.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_001815_30b8e0a9-4174-4dd8-b30b-c52b73d81875.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_001830_f91a6dfd-28fe-437a-ab08-92d51a8f3f4f.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_002520_cce72a06-ee9a-4ff6-9cd1-606db6d27f03.jpg": "back",
+      "/images/zack-the-duck-hoodie/hf_20261116_002126_a03fd429-70ea-49cc-babc-cb7ea1d5477d.jpg": "back"
+    }
   },
   {
     "section": "zack",
@@ -25615,18 +25639,27 @@ export const adminProducts = [
         "price": 3900
       }
     ],
-    "image": "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
+    "image": "/images/zack-the-duck-crewneck/hf_20261115_234255_59768112-9605-4940-9b0c-f2865b989940.jpg",
     "heroImage": null,
     "images": [
-      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
-      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-gelato-front.jpg",
-      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-print-01.jpg"
+      "/images/zack-the-duck-crewneck/hf_20261115_234255_59768112-9605-4940-9b0c-f2865b989940.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235219_67a0ad3a-bb47-402b-9738-1003b7268be9.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235800_50d49f72-d584-4cd1-b4e0-9dbb2b897dab.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235845_cfd2549c-c436-405b-be61-35e6cd8a0d43.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235917_f97221ed-70dc-462a-90e4-e86a3e96252b.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235933_faef0a99-6ae3-42b1-b7f6-6cfa80e7796d.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261116_000228_96a080a2-abd4-49d3-b9b7-2fa249b58265.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261116_000239_96fa3bb6-fb88-4e60-a630-5d11046bf349.jpg"
     ],
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-the-duck-crewneck/design.png",
     "homeImages": [
-      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-lifestyle-01.jpg",
-      "/images/zack-the-duck-crewneck/zack-the-duck-crewneck-print-01.jpg"
+      "/images/zack-the-duck-crewneck/hf_20261115_234255_59768112-9605-4940-9b0c-f2865b989940.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235219_67a0ad3a-bb47-402b-9738-1003b7268be9.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235800_50d49f72-d584-4cd1-b4e0-9dbb2b897dab.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235845_cfd2549c-c436-405b-be61-35e6cd8a0d43.jpg",
+      "/images/zack-the-duck-crewneck/hf_20261115_235917_f97221ed-70dc-462a-90e4-e86a3e96252b.jpg"
     ],
-    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png"
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
+    "detailImage": null
   }
 ]

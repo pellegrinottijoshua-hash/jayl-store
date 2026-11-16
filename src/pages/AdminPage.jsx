@@ -39,6 +39,8 @@ const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/
 const fmt = cents => `€${(cents / 100).toFixed(2)}`
 const sanitizeFilename = name => name.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9._-]/g, '')
 const JAYL_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png'
+// Etichetta del colletto dei capi Zack the Duck: la scritta panna su trasparente.
+const ZACK_NECK_LABEL_URL = 'https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png'
 
 export function parseVideoUrl(url) {
   if (!url) return null
@@ -1771,6 +1773,12 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 >
                   👕 Logo JAYL
                 </button>
+                <button
+                  onClick={() => setNeckLabelUrl(ZACK_NECK_LABEL_URL)}
+                  className="bg-stone-800/60 hover:bg-stone-700/60 border border-stone-600/60 text-stone-200 text-xs px-3 py-1.5 transition-colors whitespace-nowrap"
+                >
+                  🦆 Logo Zack
+                </button>
                 <input
                   type="text"
                   value={neckLabelUrl}
@@ -1783,7 +1791,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
                 )}
               </div>
               {neckLabelUrl && (
-                <p className="text-green-500 text-xs">✓ {neckLabelUrl === JAYL_NECK_LABEL_URL ? 'Logo JAYL preimpostato' : 'Custom URL'}</p>
+                <p className="text-green-500 text-xs">✓ {neckLabelUrl === JAYL_NECK_LABEL_URL ? 'Logo JAYL preimpostato' : neckLabelUrl === ZACK_NECK_LABEL_URL ? 'Logo Zack preimpostato' : 'Custom URL'}</p>
               )}
             </div>
           </Field>
