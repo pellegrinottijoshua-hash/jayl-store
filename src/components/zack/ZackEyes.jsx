@@ -3,7 +3,12 @@ import { VIEWBOX, MARKUP, D, IDLE_CYCLE } from './zackEyesData'
 
 // Gli occhi di Zack: lo stesso motore di motion-lab/home-occhi, portato in
 // React. Le pupille seguono mouse e dito su tutta la pagina; da fermo gira
-// fra le espressioni; tocchi sugli occhi: 1 sorpreso, 2 stelle, 3+ KO.
+// fra le espressioni e le mosse; tocchi sugli occhi: si arrabbia a scalini
+// (1 sorpreso, 2 infastidito, 3 stizzito, 4 fessura, 5+ furioso e scuote).
+// Espressioni legate alle azioni (Joshua 17/11, solo palpebre e pupille tonde):
+//  - troppi swipe: confuso (react con una lista); hamburger: lo guarda, scettico;
+//  - torni dopo aver scrollato via: scettico; il mouse esce dalla finestra: side-eye;
+//  - chiunque puo' chiedere una reazione: window 'zk-eyes' {react, ms} o {look:[x,y]}.
 // In piu' rispetto alla home-occhi:
 //  - ref.lookAt(clientX, clientY): guarda un punto (il capo nel carosello);
 //  - ref.wink(eye, { style, slow }): l'occhiolino (vedi sotto);
@@ -32,6 +37,25 @@ const CAM = [[371, 212], [829, 212]]
 const WINKS = { fast: { close: 150, hold: 70, open: 200 }, slow: { close: 260, hold: 300, open: 340 } }
 const CAM_LEAD = 110            // ms: le pupille arrivano in camera, poi chiude
 const SLOW_WINK_EVERY = 5       // da fermo: un occhiolino lento ogni 5 espressioni
+const MOSSA_EVERY = 3           // da fermo: una mossa ogni 3 passi
+// Tocchi ripetuti sugli occhi (finestra di 3 s): la pazienza finisce a scalini.
+const TAP_LADDER = [['sorpreso', 650], ['infastidito-a', 1100], ['stizzito-b', 1300], ['arrabbiato-fessura', 1400], ['arrabbiato-forte', 1800]]
+// Le mosse semplici (motion-lab/home-occhi): passi {e, ms, sp, dx, lid, giro}.
+const MOSSE = {
+  'sguardo-in-giro': [{ e: 'annoiato', ms: 400 }, { e: 'guarda-sx', ms: 700 }, { e: 'guarda-dx', ms: 800 }, { e: 'annoiato', ms: 500 }],
+  'occhi-al-cielo': [{ e: 'annoiato', ms: 300 }, { e: 'annoiato', ms: 1400, lid: 4, giro: true, sp: 14 }, { e: 'annoiato', ms: 500 }],
+  'doppio-sguardo': [{ e: 'guarda-dx', ms: 650 }, { e: 'annoiato', ms: 450, sp: 14 }, { e: 'sorpreso', ms: 850, sp: 30 }, { e: 'annoiato', ms: 500 }],
+  'colpo-di-sonno': [{ e: 'assonnato', ms: 1100, sp: 2 }, { e: 'chiusi', ms: 1000, sp: 2 }, { e: 'sorpreso', ms: 750, sp: 30 }, { e: 'annoiato', ms: 500 }],
+  'strabico': [{ e: 'strabico', ms: 1300, sp: 3 }, { e: 'annoiato', ms: 500 }],
+  'sospetto': [{ e: 'fessura', ms: 700 }, { e: 'fessura', dx: -45, ms: 650 }, { e: 'fessura', dx: 45, ms: 650 }, { e: 'annoiato', ms: 500 }],
+}
+const MOSSE_ORDINE = Object.keys(MOSSE)
+const stepVec = (st) => {
+  const v = toVec(st.e)
+  if (st.dx) { v[3] += st.dx; v[9] += st.dx }
+  if (st.lid) { v[0] += st.lid; v[1] += st.lid; v[6] += st.lid; v[7] += st.lid }
+  return v
+}
 const f2 = (n) => n.toFixed(2)
 const lerp = (a, b, t) => a + (b - a) * t
 const seg = (t, a, b) => Math.max(0, Math.min(1, (t - a) / (b - a)))
@@ -75,6 +99,8 @@ function startEngine(svg, prefix, onReact) {
   let mode = 'track', exprName = 'originale'
   let pointer = null, lastMove = performance.now(), reactUntil = 0, reactExpr = 'sorpreso'
   let idleIdx = 0, idleNext = 0, clicks = []
+  let mossaIdx = 0, queue = [], step = null, stepStart = 0, stepEnd = 0
+  let seqTimer = 0, hiddenSince = 0
   let blinkT = -1, nextBlink = performance.now() + 2500
   let prev = performance.now(), raf = 0, running = false
   let boostUntil = 0   // per un attimo le pupille scattano (balzo allo swipe)
@@ -94,7 +120,7 @@ function startEngine(svg, prefix, onReact) {
     const p = toSvg(x, y)
     if (!p) return
     pointer = p; lastMove = performance.now()
-    if (mode === 'idle') mode = 'track'
+    if (mode === 'idle') { mode = 'track'; step = null; queue = [] }
   }
   // Il dito che trascina (carosello, scroll) non e' un cursore: su mobile le
   // pupille seguono il capo che scorre (look() dal carosello), non il dito,
@@ -103,10 +129,11 @@ function startEngine(svg, prefix, onReact) {
   const onDown = (ev) => {
     look(ev.clientX, ev.clientY)
     const now = performance.now()
-    clicks = clicks.filter((t) => now - t < 1400); clicks.push(now)
-    reactExpr = clicks.length >= 3 ? 'ko' : clicks.length === 2 ? 'stelle' : 'sorpreso'
-    mode = 'react'; reactUntil = now + (reactExpr === 'ko' ? 1800 : reactExpr === 'stelle' ? 1000 : 650)
-    blinkT = -1
+    clicks = clicks.filter((t) => now - t < 3000); clicks.push(now)
+    const [expr, ms] = TAP_LADDER[Math.min(clicks.length, TAP_LADDER.length) - 1]
+    reactExpr = expr; mode = 'react'; reactUntil = now + ms
+    blinkT = -1; clearTimeout(seqTimer)
+    if (clicks.length >= TAP_LADDER.length) shake()
     onReact?.(reactExpr)
   }
 
@@ -201,8 +228,25 @@ function startEngine(svg, prefix, onReact) {
       speed = now < boostUntil ? 18 : 7
       if (now - lastMove > IDLE_AFTER) { mode = 'idle'; idleNext = 0 }
     }
-    if (mode === 'idle') {
-      if (now > idleNext) {
+    if (mode === 'idle' && step && now > stepEnd) {
+      step = queue.length ? queue.shift() : null; stepStart = now; stepEnd = step ? now + step.ms : 0
+      if (!step) idleNext = now
+    }
+    if (mode === 'idle' && step) {
+      tgt = stepVec(step); speed = step.sp || 9
+      if (step.giro) {        // occhi al cielo: sinistra -> su -> destra, sempre un po' visibili
+        const u = Math.min(1, (now - stepStart) / step.ms), a = Math.sin(Math.PI * u) ** 0.6
+        const th = Math.PI + Math.PI * (u * u * (3 - 2 * u))
+        tgt[3] += 62 * a * Math.cos(th); tgt[9] += 62 * a * Math.cos(th)
+        tgt[4] += 16 * a * Math.sin(th); tgt[10] += 16 * a * Math.sin(th)
+      }
+    } else if (mode === 'idle') {
+      if (now > idleNext && idleIdx > 0 && idleIdx % MOSSA_EVERY === 2) {
+        const m = MOSSE_ORDINE[mossaIdx++ % MOSSE_ORDINE.length]
+        queue = MOSSE[m].map((x) => ({ ...x })); step = queue.shift(); stepStart = now; stepEnd = now + step.ms
+        exprName = 'mossa:' + m; idleIdx += 1
+        tgt = stepVec(step); speed = step.sp || 9
+      } else if (now > idleNext) {
         // Ogni tanto, da fermo, un occhiolino lento (nessuno sta aspettando).
         if (idleIdx > 0 && idleIdx % SLOW_WINK_EVERY === 0) {
           exprName = 'originale'
@@ -211,7 +255,7 @@ function startEngine(svg, prefix, onReact) {
         idleIdx += 1
         idleNext = now + IDLE_HOLD[0] + Math.random() * (IDLE_HOLD[1] - IDLE_HOLD[0])
       }
-      tgt = toVec(exprName); speed = 2.6
+      if (!step) { tgt = toVec(exprName.startsWith('mossa:') ? 'annoiato' : exprName); speed = 2.6 }
     }
     }
     const k = 1 - Math.exp(-speed * dt)
@@ -250,7 +294,14 @@ function startEngine(svg, prefix, onReact) {
 
   window.addEventListener('pointermove', onMove, { passive: true })
   svg.addEventListener('pointerdown', onDown)
-  const io = new IntersectionObserver(([e]) => (e.isIntersecting ? play() : pause()))
+  // Torni dopo aver scrollato via per un po': «ah, sei tornato».
+  const io = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      play()
+      if (hiddenSince && performance.now() - hiddenSince > 3000) react('scettico', 1100)
+      hiddenSince = 0
+    } else { hiddenSince = performance.now(); pause() }
+  })
   io.observe(svg)
   play()
 
@@ -261,11 +312,32 @@ function startEngine(svg, prefix, onReact) {
     look(r.left + r.width / 2 + dir * r.width * 1.4, r.bottom + r.height * 0.5)
     boostUntil = performance.now() + 320
   }
-  // Un'espressione per ms millisecondi (es. 'spirale' = confuso).
+  // Un'espressione per ms millisecondi; con una lista le fa in fila (ms divisi in parti uguali).
   const react = (expr, ms = 1200) => {
-    if (!D.espr[expr]) return
-    reactExpr = expr; mode = 'react'; reactUntil = performance.now() + ms; blinkT = -1
+    clearTimeout(seqTimer)
+    const list = (Array.isArray(expr) ? expr : [expr]).filter((x) => D.espr[x])
+    if (!list.length) return
+    const part = ms / list.length
+    const next = (i) => {
+      reactExpr = list[i]; mode = 'react'; reactUntil = performance.now() + part; blinkT = -1; step = null; queue = []
+      if (i + 1 < list.length) seqTimer = setTimeout(() => next(i + 1), part)
+    }
+    next(0)
   }
+  function shake() {
+    svg.classList.remove('zk-shake'); void svg.getBoundingClientRect(); svg.classList.add('zk-shake')
+  }
+  // Reazioni chieste da altre parti della pagina (menu, capi): window 'zk-eyes'.
+  const onBus = (ev) => {
+    const d = ev.detail || {}
+    if (d.look) look(d.look[0], d.look[1])
+    if (d.react) react(d.react, d.ms)
+    if (d.shake) shake()
+  }
+  // Il mouse esce dalla finestra (desktop): «dove vai?»
+  const onLeave = (ev) => { if (!ev.relatedTarget && mode !== 'react') react('side-eye', 1600) }
+  window.addEventListener('zk-eyes', onBus)
+  document.addEventListener('mouseout', onLeave)
 
   // Posa fissa finche' non si toglie (null): niente sguardo, niente idle.
   const hold = (expr) => { holdExpr = expr && D.espr[expr] ? expr : null; lastMove = performance.now() }
@@ -279,6 +351,9 @@ function startEngine(svg, prefix, onReact) {
     stop() {
       pause(); io.disconnect()
       window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('zk-eyes', onBus)
+      document.removeEventListener('mouseout', onLeave)
+      clearTimeout(seqTimer)
       svg.removeEventListener('pointerdown', onDown)
     },
   }

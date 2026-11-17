@@ -126,7 +126,7 @@ function DressUp() {
     swipes.current = [...swipes.current.filter((t) => now - t < 3500), now]
     if (swipes.current.length >= CONFUSED_SWIPES) {
       swipes.current = []
-      eyesRef.current?.react('spirale', 1500)
+      eyesRef.current?.react(['confuso-a', 'confuso-b'], 1800)   // troppi swipe: confuso (Joshua 17/11)
       eyesRef.current?.shake()
     }
   }
@@ -148,6 +148,7 @@ function DressUp() {
   const turn = () => setFlipped((f) => ({ ...f, [p.id]: !f[p.id] }))
   // Cambiando versione si torna sul lato stampato.
   const pickVersion = (v) => {
+    eyesRef.current?.react('concentrato', 800)   // controlla la stampa
     setVersions((s) => ({ ...s, [p.id]: v }))
     setFlipped((f) => ({ ...f, [p.id]: false }))
   }

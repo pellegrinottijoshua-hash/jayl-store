@@ -175,7 +175,7 @@ export default function ZackNavbar() {
 
           {/* Sinistra: hamburger + social */}
           <div className="flex items-center gap-4">
-            <button onClick={() => setOpen(true)} aria-label="Open menu" style={{ color: Z.cream }}
+            <button onClick={(e) => { window.dispatchEvent(new CustomEvent('zk-eyes', { detail: { look: [e.clientX, e.clientY], react: 'scettico', ms: 900 } })); setOpen(true) }} aria-label="Open menu" style={{ color: Z.cream }}
               className="transition-opacity hover:opacity-70">
               <Menu size={20} strokeWidth={1.5} />
             </button>
