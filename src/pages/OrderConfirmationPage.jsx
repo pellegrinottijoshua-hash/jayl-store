@@ -5,6 +5,7 @@ import { amountOnly } from '@/lib/money'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import TrustBox from '@/components/TrustBox'
 import { getDrop, basePriceFor } from '../../api/_lib/drop.js'
+import { SHOP_HOME } from '@/lib/world'
 
 // `order.items` is the cart's own item list, carried straight through from
 // checkout — it still has the cartStore-snapshot `unitPrice` (see
@@ -158,7 +159,7 @@ export default function OrderConfirmationPage() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/art" className="btn-primary">
+          <Link to={SHOP_HOME} className="btn-primary">
             Continue Shopping
             <ArrowRight size={16} />
           </Link>

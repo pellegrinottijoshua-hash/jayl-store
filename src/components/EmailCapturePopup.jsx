@@ -89,7 +89,7 @@ export default function EmailCapturePopup({ zack = false }) {
       const res  = await fetch('/api/capture-email', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email: email.trim() }),
+        body:    JSON.stringify({ email: email.trim(), site: zack ? 'zack' : 'jayl' }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Something went wrong')

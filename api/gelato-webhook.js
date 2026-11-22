@@ -86,15 +86,17 @@ export default async function handler(req, res) {
   }
 
   // ── Send shipping email ───────────────────────────────────────────────────
-  const { subject, html } = buildShippingEmail({
+  const { subject, html, from } = buildShippingEmail({
     orderId,
+    // itemReferenceId comincia col productId (api/orders.js): da li' il marchio.
+    itemRefs: (data.items || []).map(it => it.itemReferenceId),
     customerName: '',     // Gelato doesn't pass the name here; leave empty = "Hi there"
     trackingCode,
     trackingUrl,
     shipmentMethod,
   })
 
-  const result = await sendEmail({ to: customerEmail, subject, html })
+  const result = await sendEmail({ to: customerEmail, subject, html, from })
   console.log('[gelato-webhook] shipping email sent to', customerEmail, '— result:', result)
 
   // Also notify store owner (optional — remove if noisy)

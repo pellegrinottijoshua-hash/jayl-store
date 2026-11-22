@@ -11,6 +11,7 @@ import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
 import JaylMark from '@/components/JaylMark'
 import { useCurrencyStore, SYMBOL } from '@/store/currencyStore'
 import { amountOnly } from '@/lib/money'
+import { SITE, SHOP_HOME } from '@/lib/world'
 
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
@@ -228,7 +229,7 @@ function CheckoutForm() {
       // the local bundle-discount estimate) — the only number available before
       // create-payment-intent has run, so it has to already be right: it's what
       // the Apple/Google Pay sheet shows the customer before any server call.
-      total: { label: 'JAYL', amount: Math.round(localTotal) },
+      total: { label: SITE === 'zack' ? 'Zack the Duck' : 'JAYL', amount: Math.round(localTotal) },
       requestPayerName: true,
       requestPayerEmail: true,
     })
@@ -579,7 +580,10 @@ function CheckoutForm() {
                   body: JSON.stringify({
                     action:    'cart',
                     email:     em,
+                    // Il carrello vive su questo dominio: la mail ci deve tornare.
+                    site:      SITE || undefined,
                     cartItems: items.map(it => ({
+                      productId: it.productId,
                       name:  it.product?.name  || it.productId,
                       // L'originale, non il WebP del sito: va in un'email, e
                       // Outlook desktop il WebP non lo mostra.
@@ -892,7 +896,7 @@ export default function CheckoutPage() {
       <div className="min-h-screen pt-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="font-display text-4xl text-cream mb-4">Your cart is empty</h1>
         <p className="text-text-secondary mb-8">Add some works before checking out.</p>
-        <Link to="/art" className="btn-primary">Browse the Shop</Link>
+        <Link to={SHOP_HOME} className="btn-primary">Browse the Shop</Link>
       </div>
     )
   }
@@ -903,7 +907,7 @@ export default function CheckoutPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <Link
-            to="/art"
+            to={SHOP_HOME}
             className="flex items-center gap-2 text-xs text-text-muted hover:text-text-primary transition-colors tracking-widest uppercase"
           >
             <ArrowLeft size={12} />

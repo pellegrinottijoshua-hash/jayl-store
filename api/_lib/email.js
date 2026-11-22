@@ -14,15 +14,32 @@ const FROM_ADDRESS = 'JAYL <orders@jayl.store>'
 const STORE_EMAIL  = 'thejaylstore@gmail.com'
 const SITE_URL     = 'https://jayl.store'
 
+// Due marchi, un solo mittente verificato (orders@jayl.store): cambiano nome,
+// link e firma. Un ordine fatto solo di capi Zack parla da Zack the Duck e
+// rimanda a zacktheduck.com (dove sta anche il suo carrello: localStorage e'
+// per dominio). Vedi src/lib/world.js.
+const BRANDS = {
+  jayl: { name: 'JAYL', url: SITE_URL, host: 'jayl.store', from: FROM_ADDRESS, sign: 'JAYL · Venice, Italy', team: 'The JAYL team' },
+  zack: { name: 'Zack the Duck', url: 'https://zacktheduck.com', host: 'zacktheduck.com', from: 'Zack the Duck <orders@jayl.store>', sign: 'Zack the Duck · a JAYL character · Venice, Italy', team: 'Zack (who is not impressed)' },
+}
+const isZackId = (id) => /^zack-/.test(String(id || '').split('__')[0])
+/** 'zack' se tutti gli id (productId o itemReferenceId) sono capi Zack, se no 'jayl'. */
+export function brandOfIds(ids = []) {
+  const list = ids.filter(Boolean)
+  return list.length && list.every(isZackId) ? 'zack' : 'jayl'
+}
+const brandOf = (b) => BRANDS[b] || BRANDS.jayl
+
 // ── Shared HTML wrapper ───────────────────────────────────────────────────────
 
-function htmlWrapper(body) {
+function htmlWrapper(body, brand = 'jayl') {
+  const B = brandOf(brand)
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>JAYL</title>
+  <title>${B.name}</title>
 </head>
 <body style="margin:0;padding:0;background:#0c0c0c;font-family:Georgia,'Times New Roman',serif;color:#e8e0d0">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0c0c0c;padding:40px 20px">
@@ -32,8 +49,8 @@ function htmlWrapper(body) {
         <!-- Logo -->
         <tr>
           <td style="padding-bottom:28px;border-bottom:1px solid rgba(184,151,74,0.22)">
-            <a href="${SITE_URL}" style="text-decoration:none">
-              <span style="font-family:Georgia,serif;letter-spacing:0.35em;text-transform:uppercase;font-size:13px;color:#b8974a;font-weight:400">JAYL</span>
+            <a href="${B.url}" style="text-decoration:none">
+              <span style="font-family:Georgia,serif;letter-spacing:0.35em;text-transform:uppercase;font-size:13px;color:#b8974a;font-weight:400">${B.name}</span>
             </a>
           </td>
         </tr>
@@ -46,7 +63,7 @@ function htmlWrapper(body) {
           <td style="padding-top:28px;border-top:1px solid #1a1a1a">
             <p style="margin:0;font-size:11px;color:#4a4a4a;line-height:1.9">
               Questions? <a href="mailto:${STORE_EMAIL}" style="color:#b8974a;text-decoration:none">${STORE_EMAIL}</a><br>
-              JAYL · Venice, Italy &nbsp;·&nbsp; <a href="${SITE_URL}" style="color:#b8974a;text-decoration:none">jayl.store</a>
+              ${B.sign} &nbsp;·&nbsp; <a href="${B.url}" style="color:#b8974a;text-decoration:none">${B.host}</a>
             </p>
           </td>
         </tr>
@@ -61,6 +78,8 @@ function htmlWrapper(body) {
 // ── Template: order confirmation ──────────────────────────────────────────────
 
 export function buildOrderConfirmationEmail({ orderId, items = [], total = 0, shipping = 0, shippingAddress = {} }) {
+  const brand = brandOfIds(items.map(it => it.productId))
+  const B = brandOf(brand)
   const fmt = cents => `€${(Math.max(0, cents) / 100).toFixed(2)}`
   const firstName = shippingAddress.firstName || ''
 
@@ -218,7 +237,7 @@ export function buildOrderConfirmationEmail({ orderId, items = [], total = 0, sh
 
     <!-- ── Track order CTA ── -->
     <tr><td style="padding:28px 0 24px">
-      <a href="${SITE_URL}/track?id=${encodeURIComponent(orderId)}"
+      <a href="${B.url}/track?id=${encodeURIComponent(orderId)}"
          style="display:inline-block;background:#b8974a;color:#0c0c0c;font-size:11px;font-weight:bold;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:14px 32px">
         Track your order →
       </a>
@@ -243,7 +262,8 @@ export function buildOrderConfirmationEmail({ orderId, items = [], total = 0, sh
 
   return {
     subject: `Order confirmed — ${orderId}`,
-    html:    htmlWrapper(body),
+    html:    htmlWrapper(body, brand),
+    from:    B.from,
   }
 }
 
@@ -305,27 +325,32 @@ export function buildContactAutoReplyEmail({ name }) {
   }
 }
 
-export function buildWelcomeEmail() {
+export function buildWelcomeEmail({ site } = {}) {
+  const brand = site === 'zack' ? 'zack' : 'jayl'
+  const B = brandOf(brand)
+  const pitch = brand === 'zack'
+    ? 'Zack the Duck. Deadpan, unimpressed, on a black tee, hoodie and crewneck.'
+    : 'JAYL is a Venice-based label doing limited drops — small runs, gone for good once\n        they sell out.'
   const body = `
     <tr><td style="padding:28px 0 8px">
       <h1 style="margin:0;font-weight:400;font-size:26px;color:#e8e0d0">You're on the list.</h1>
     </td></tr>
     <tr><td style="padding:0 0 28px">
       <p style="margin:0 0 14px;font-size:15px;color:#9a9587;line-height:1.75">
-        JAYL is a Venice-based label doing limited drops — small runs, gone for good once
-        they sell out.
+        ${pitch}
       </p>
       <p style="margin:0 0 14px;font-size:15px;color:#9a9587;line-height:1.75">
-        You'll hear from us when the next one opens.
+        ${brand === 'zack' ? "You'll hear from him when there's something new. He won't be excited about it." : "You'll hear from us when the next one opens."}
       </p>
       <p style="margin:0;font-size:13px;color:#4a4a4a">
-        — The JAYL team
+        — ${B.team}
       </p>
     </td></tr>`
 
   return {
-    subject: 'You’re on the list — JAYL',
-    html:    htmlWrapper(body),
+    subject: `You’re on the list — ${B.name}`,
+    html:    htmlWrapper(body, brand),
+    from:    B.from,
   }
 }
 
@@ -336,7 +361,7 @@ export function buildWelcomeEmail() {
  * Returns { ok: true } on success, { ok: false, error } on failure.
  * Never throws — email failures must not break the main order flow.
  */
-export async function sendEmail({ to, subject, html, replyTo, bcc }) {
+export async function sendEmail({ to, subject, html, replyTo, bcc, from }) {
   const apiKey = (process.env.RESEND_API_KEY || '').trim()
   if (!apiKey) {
     console.warn('[email] RESEND_API_KEY not set — skipping email to', to)
@@ -351,7 +376,7 @@ export async function sendEmail({ to, subject, html, replyTo, bcc }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from:     FROM_ADDRESS,
+        from:     from || FROM_ADDRESS,
         to:       Array.isArray(to) ? to : [to],
         subject,
         html,
@@ -376,7 +401,11 @@ export async function sendEmail({ to, subject, html, replyTo, bcc }) {
 
 // ── Template: abandoned cart ──────────────────────────────────────────────────
 
-export function buildAbandonedCartEmail({ cartItems = [] }) {
+export function buildAbandonedCartEmail({ cartItems = [], site } = {}) {
+  // Il carrello vive nel localStorage del sito dove e' stato fatto: il link
+  // deve tornare li', sulla cassa (/cart non e' mai esistita: era un 404).
+  const brand = site === 'zack' || site === 'jayl' ? site : brandOfIds(cartItems.map(it => it.productId))
+  const B = brandOf(brand)
   const itemsHtml = cartItems.length > 0 ? `
     <tr><td style="padding:20px 0 16px">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
@@ -412,7 +441,7 @@ export function buildAbandonedCartEmail({ cartItems = [] }) {
     </td></tr>
     ${itemsHtml}
     <tr><td style="padding:20px 0 28px">
-      <a href="${SITE_URL}/cart"
+      <a href="${B.url}/checkout"
          style="display:inline-block;background:#b8974a;color:#0c0c0c;font-size:11px;font-weight:bold;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;padding:13px 28px">
         Complete your order
       </a>
@@ -424,8 +453,9 @@ export function buildAbandonedCartEmail({ cartItems = [] }) {
     </td></tr>`
 
   return {
-    subject: 'Your JAYL cart is waiting',
-    html:    htmlWrapper(body),
+    subject: `Your ${B.name} cart is waiting`,
+    html:    htmlWrapper(body, brand),
+    from:    B.from,
   }
 }
 
@@ -483,7 +513,9 @@ export function buildReviewRequestEmail({ customerName, orderId, productNames = 
 
 // ── Template: shipping notification ──────────────────────────────────────────
 
-export function buildShippingEmail({ orderId, customerName, trackingCode, trackingUrl, shipmentMethod }) {
+export function buildShippingEmail({ orderId, customerName, trackingCode, trackingUrl, shipmentMethod, itemRefs = [] }) {
+  const brand = brandOfIds(itemRefs)
+  const B = brandOf(brand)
   const body = `
     <tr><td style="padding:28px 0 8px">
       <h1 style="margin:0;font-weight:400;font-size:26px;color:#e8e0d0">Your order is on its way!</h1>
@@ -491,7 +523,7 @@ export function buildShippingEmail({ orderId, customerName, trackingCode, tracki
     <tr><td style="padding:0 0 24px">
       <p style="margin:0;font-size:15px;color:#9a9587;line-height:1.75">
         Hi ${customerName || 'there'},<br><br>
-        Great news — your JAYL order has been shipped${shipmentMethod ? ` via <strong style="color:#e8e0d0">${shipmentMethod}</strong>` : ''}.
+        Great news — your ${B.name} order has been shipped${shipmentMethod ? ` via <strong style="color:#e8e0d0">${shipmentMethod}</strong>` : ''}.
         You can track it below.
       </p>
     </td></tr>
@@ -522,8 +554,9 @@ export function buildShippingEmail({ orderId, customerName, trackingCode, tracki
     </td></tr>`
 
   return {
-    subject: `Your JAYL order has shipped${trackingCode ? ` · ${trackingCode}` : ''}`,
-    html:    htmlWrapper(body),
+    subject: `Your ${B.name} order has shipped${trackingCode ? ` · ${trackingCode}` : ''}`,
+    html:    htmlWrapper(body, brand),
+    from:    B.from,
   }
 }
 

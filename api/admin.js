@@ -398,11 +398,12 @@ export default async function handler(req, res) {
       )
 
       for (const cart of eligible) {
-        const { subject, html } = buildAbandonedCartEmail({
+        const { subject, html, from } = buildAbandonedCartEmail({
           email:     cart.email,
           cartItems: cart.cartItems || [],
+          site:      cart.site,
         })
-        const result = await sendEmail({ to: cart.email, subject, html })
+        const result = await sendEmail({ to: cart.email, subject, html, from })
         cart.sent   = true
         cart.sentAt = new Date().toISOString()
         if (!result.ok) cart.sendError = result.error

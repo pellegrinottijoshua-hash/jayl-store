@@ -268,9 +268,10 @@ async function handleCreateOrder(req, res) {
     if (customerEmail) {
       let shippingAddrForEmail = {}
       try { shippingAddrForEmail = JSON.parse(pi.metadata?.shippingAddress || '{}') } catch {}
-      const { subject, html } = buildOrderConfirmationEmail({
+      const { subject, html, from } = buildOrderConfirmationEmail({
         orderId:         gelatoOrder.id || `jayl-${pi.id}`,
         items:           items.map(it => ({
+          productId: it.productId,
           name:      it.product?.name  || it.productId,
           image:     it.product?.image || null,
           color:     it.color          || null,
@@ -282,7 +283,7 @@ async function handleCreateOrder(req, res) {
         shipping:        0,
         shippingAddress: shippingAddrForEmail,
       })
-      sendEmail({ to: customerEmail, subject, html }) // fire-and-forget
+      sendEmail({ to: customerEmail, subject, html, from }) // fire-and-forget
     }
 
     return res.status(200).json({
@@ -398,7 +399,7 @@ async function handleCaptureEmail(req, res) {
 
   // ── Cart capture ────────────────────────────────────────────────────────────
   if (action === 'cart') {
-    const { cartItems } = req.body || {}
+    const { cartItems, site } = req.body || {}
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!email?.trim() || !emailRegex.test(email.trim())) {
       return res.status(400).json({ ok: false })
@@ -413,6 +414,7 @@ async function handleCaptureEmail(req, res) {
         id: idx >= 0 ? carts[idx].id : `cart_${Date.now()}`,
         email:      normalised,
         cartItems:  cartItems || [],
+        site:       site === 'zack' || site === 'jayl' ? site : undefined,
         capturedAt: new Date().toISOString(),
         sent:       false,
         converted:  false,
@@ -484,8 +486,8 @@ async function handleCaptureEmail(req, res) {
     // che la fetch verso Resend completi — vale per ogni invio che non ha,
     // come questo, un secondo percorso che lo ripete (a differenza della
     // conferma d'ordine, doppiata dal webhook Stripe).
-    const { subject, html } = buildWelcomeEmail()
-    await sendEmail({ to: normalised, subject, html })
+    const { subject, html, from } = buildWelcomeEmail({ site: req.body?.site })
+    await sendEmail({ to: normalised, subject, html, from })
     return res.status(200).json({ ok: true })
   } catch (err) {
     console.error('[capture-email]', err.message)
@@ -590,7 +592,7 @@ export async function handleGmf(req, res, now = new Date()) {
       availability = (dropOpenNow && !soldOut) ? 'in_stock' : 'out_of_stock'
     }
     const imageUrl   = p.image || (p.images?.[0] ?? '')
-    const link       = `https://jayl.store/product/${p.id}`
+    const link       = `${siteOf(p)}/product/${p.id}`
     const extraImgs  = (p.images || []).slice(0, 10).filter(u => u && u !== imageUrl)
       .map(u => `    <g:additional_image_link>${escapeXml(u)}</g:additional_image_link>`).join('\n')
     const sizes      = (p.sizes || []).map(s => s.id || s.label).filter(Boolean)

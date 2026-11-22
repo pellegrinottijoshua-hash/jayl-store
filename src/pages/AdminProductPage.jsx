@@ -17,6 +17,7 @@ import SocialStatusPanel from '@/components/admin/SocialStatusPanel'
 import { withSide, mediaKey } from '@/lib/mediaKey'
 import PoolThumb, { MAX_HERO_SHOTS } from '@/components/admin/PoolThumb'
 import GalleryOrder from '@/components/admin/GalleryOrder'
+import { publicProductUrl } from '@/lib/world'
 
 // Nome fisso per il file del secondo lato: rigenerarlo sovrascrive, non accumula.
 const ALT_FILENAME = 'design-front.png'
@@ -1003,7 +1004,7 @@ export default function AdminProductPage() {
           title:       name.trim(),
           description: pinterestEditCaption || pinterestCaption || description.slice(0, 500),
           imageUrl,
-          link:        `https://jayl.store/product/${product?.id || ''}`,
+          link:        publicProductUrl(product?.id),
           altText:     altText || name,
         }),
       })

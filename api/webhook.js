@@ -173,9 +173,10 @@ export async function fulfillIfNeeded(paymentIntent) {
   const customerEmail = paymentIntent.metadata?.email || paymentIntent.receipt_email
   if (customerEmail) {
     try {
-      const { subject, html } = buildOrderConfirmationEmail({
+      const { subject, html, from } = buildOrderConfirmationEmail({
         orderId:         order.id || `jayl-${paymentIntent.id}`,
         items:           items.map(it => ({
+          productId: it.productId,
           name:      it.product?.name      || it.productId,
           image:     it.product?.image     || null,
           color:     it.color              || null,
@@ -192,7 +193,7 @@ export async function fulfillIfNeeded(paymentIntent) {
       // può venire congelato prima che la fetch parta (è la stessa classe di
       // bug che aveva zittito l'email di benvenuto). Un invito a recensire
       // che parte a volte è peggio di uno che parte sempre da un posto solo.
-      await sendEmail({ to: customerEmail, subject, html, bcc: TRUSTPILOT_AFS_BCC })
+      await sendEmail({ to: customerEmail, subject, html, from, bcc: TRUSTPILOT_AFS_BCC })
     } catch (e) {
       console.error('[webhook] sendEmail failed:', e.message)
     }

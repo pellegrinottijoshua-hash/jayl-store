@@ -35,6 +35,9 @@ export const ZACK_COLLECTION = 'Zack the Duck'
 // (react-router lo apre come pagina nuova).
 export const JAYL_HOME = SITE === 'zack' ? `${JAYL_ORIGIN}/` : SITE === 'jayl' ? '/' : '/jayl'
 export const ZACK_HOME = SITE === 'jayl' ? `${ZACK_ORIGIN}/` : '/'
+// "Continua a comprare" dalle pagine neutre (cassa, conferma): su zacktheduck.com
+// e' la home di Zack, altrimenti lo shop JAYL di sempre.
+export const SHOP_HOME = SITE === 'zack' ? '/' : '/art'
 export const isExternal = (href) => /^https?:\/\//.test(href)
 
 /**
@@ -66,6 +69,10 @@ export const ZACK_SOCIAL = [
 ]
 
 export const isZackProduct = (p) => p?.section === ZACK_SECTION
+
+/** L'URL pubblico di una scheda, sul dominio del suo mondo (admin, condivisioni). */
+export const publicProductUrl = (id) =>
+  `${/^zack-/.test(String(id || '')) ? ZACK_ORIGIN : JAYL_ORIGIN}/product/${id || ''}`
 
 // Pagine che non appartengono a nessuno dei due mondi.
 const NEUTRAL = /^\/(checkout|order-confirmation|wishlist|track|contact|shipping|returns|terms|privacy|cookies)(\/|$)/

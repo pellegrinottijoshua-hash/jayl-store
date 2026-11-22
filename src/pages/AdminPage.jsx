@@ -15,6 +15,7 @@ import { SOCIAL_LINKS as SOCIAL_LINKS_DEFAULT } from '@/data/social-links'
 import { SOCIAL_CHANNELS, socialPlaceholder } from '../../api/_lib/social-links.js'
 import { resolveSwatchHex } from '@/lib/apparelColors'
 import { gelatoNonCopiati } from '@/lib/gelatoPool'
+import { publicProductUrl } from '@/lib/world'
 
 // Nome fisso per il file del secondo lato, come in AdminProductPage.jsx:
 // rigenerarlo sovrascrive, non accumula.
@@ -552,7 +553,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
           title: title.trim(),
           description: pinterestCaption || description.slice(0, 500),
           imageUrl,
-          link: `https://jayl.store/product/${productId || ''}`,
+          link: publicProductUrl(productId),
           altText: altText || title,
         }),
       })
@@ -1331,7 +1332,7 @@ function AddProductTab({ editingProduct, onSaved, onCancel }) {
             )}
           </Field>
           <SocialShareButtons
-            productUrl={`https://jayl.store/product/${productId}`}
+            productUrl={publicProductUrl(productId)}
             assets={[
               ...poolImages.map(i => ({ url: i.url, type: 'image', alt: altText })),
               ...gelatoImages.map(i => ({ url: i.src, type: 'image', alt: i.alt || altText })),

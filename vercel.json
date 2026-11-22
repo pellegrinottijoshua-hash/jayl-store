@@ -269,8 +269,23 @@
       "destination": "/api/orders?handler=prerender&path=/"
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*"
+        },
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "/api/orders?handler=prerender&path=/&site=zack"
+    },
+    {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/app.html"
     }
   ],
   "headers": [
