@@ -25667,5 +25667,284 @@ export const adminProducts = [
     ],
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/zack-neck-label.png",
     "detailImage": null
+  },
+  {
+    "id": "sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Sudowoodo T-Shirt – Pokémon Fan Art Tee, Funny Pokémon Gift",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "In the heart of a bustling forest, Sudowoodo stands tall, mimicking trees with an air of determination. With limbs outstretched, its expressions fluctuate between stoic resilience and playful mischief, embodying the essence of camouflage and misdirection. This Gildan premium tee utilizes top-notch DTG print quality to faithfully capture Sudowoodo's charm, ensuring that every detail from its bark-like texture to its quirky smile is vividly rendered. A fantastic gift for those who resonate with this whimsical character or just love a good pun in their wardrobe.",
+    "altText": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150033_5af1b9d9-0519-4017-b930-556dac704aa3.png",
+    "heroShots": [
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150033_5af1b9d9-0519-4017-b930-556dac704aa3.png",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150737_dc4942e3-8359-481f-81cb-18aba2cbf41c.png"
+    ],
+    "imageSides": {
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_145836_9a7b00e6-ed50-4de3-b8a4-6deb4b86ac92.png": "front",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_145809_5434c6cc-540c-4be1-ba72-f97a0caeadeb.png": "front",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_151249_27ebef3f-1648-4817-bb61-bcdb40275073.png": "back",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_151205_04a5f5e2-552f-478f-a835-b27e8bdf47ea.png": "back",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150704_dd8e7634-f6d5-42c0-aad6-50f3e77d71ba.png": "back",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150724_80f5b5d1-6d8a-4270-9ce9-0a917831b801.png": "back",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150033_5af1b9d9-0519-4017-b930-556dac704aa3.png": "front",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150024_b65e7311-5905-4ae5-9a3e-46b22c1ef6a2.png": "front"
+    },
+    "heroImage": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_150724_80f5b5d1-6d8a-4270-9ce9-0a917831b801.png",
+    "detailImage": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_151303_212ed25a-4342-4d2a-99c3-d644f9cfb871.png",
+    "images": [
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-01.jpg",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-02.jpg",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-03.jpg",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-04.jpg",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-05.jpg",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-06.jpg",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-gelato-07.jpg"
+    ],
+    "imageAlts": {
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-mockup-01.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-mockup-02.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-white-01.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-mockup-03.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-black-01.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-military-green-01.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style.",
+      "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-mockup-04.jpg": "Sudowoodo striking a dynamic pose with a cheeky grin on a Gildan premium tee, showcasing retro fan-art style."
+    },
+    "tags": [
+      "sudowoodo",
+      "pokemon art",
+      "fan gear",
+      "anime t-shirt",
+      "gift for friends",
+      "quirky apparel",
+      "funny shirt",
+      "pokemon merch",
+      "nerdy fashion",
+      "graphic tee",
+      "collectible wear",
+      "humorous gift",
+      "pocket monster"
+    ],
+    "featured": false,
+    "gelatoProductId": "8c3285d8-f5c4-4967-9fbf-7ae7f5b03886",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "sudowoodo t-shirt",
+      "pokemon fan art",
+      "funny pokemon gift",
+      "anime apparel",
+      "graphic tees"
+    ],
+    "longTailKeywords": [
+      "sudowoodo graphic t-shirt for fans",
+      "pokemon themed funny t-shirts for adults",
+      "buy sudowoodo fan art clothing online",
+      "retro anime shirts featuring pokemon characters",
+      "unique gifts for pokemon lovers clothing",
+      "premium quality pokemon tees in various sizes",
+      "humorous graphic tees for casual wearers",
+      "collectible pokemon merchandise hoodies and shirts",
+      "funny gifts for anime enthusiasts and collectors",
+      "stylish pokemon apparel for everyday use"
+    ],
+    "hashtags": "#sudowoodo #pokemontshirt #fanart #animeapparel #funnyshirts #nerdyfashion #pokemonmerchandise #graphictee #cosplaywear #animefans #giftsforfriends #quirkywear #collectibleshirt #pocketmonsters #retrostyle #memeclothing #limitededitiontee #artworktshirt #fashionstatement #casualwear #geekstyle #fandomfashion #creativefashion #jokesonyou #coolgraphicskinnytees #poisonivytreehuggerclub #highqualityprints#funnymemesapparel#trendyoutfits#expressyourself#artistsoninstagram",
+    "instagramCaption": "\"Sudowoodo: The undercover tree you never saw coming! 😄🌳 Rock this tee and bring some humor to your look. Grab yours now! 🛒✨#pokemonfanart #funnytshirts#jokewear",
+    "pinterestCaption": "\"Embrace the whimsy of Sudowoodo with this quirky fan art t-shirt. Featuring dynamic designs on premium fabric, it's the perfect choice for any Pokémon lover looking to add some fun to their wardrobe! Check it out today.",
+    "seoTitle": "Sudowoodo T-Shirt | Quirky Pokémon Gift | Fan Art Apparel",
+    "variants": [
+      {
+        "uid": "c208dd5c-987d-402a-97a4-6eff0b46a4fa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f209c686-26d9-49b5-9e2e-2cf248a52a29",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ba88cb6f-6057-4058-9113-0217b218e960",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "06684c05-396c-487c-b507-bacfde3b3d6b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45490efb-eec6-4ae6-abda-bf73aafc8c82",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "e90a86d0-0054-4af4-acef-3ef22258468b",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a3c4ec82-9201-4791-971f-7e28a7e6b562",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ed1ad7cd-80ef-434b-870a-f251c8db70e7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "398e2e99-cf6d-43f1-b78d-97ec26f8c47a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "5ec9a62e-5acb-4d95-92b8-0536d75360be",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7a1ae1c5-7ad6-4a84-84dc-19388cd83ab0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "23939b78-78ac-4816-aeff-9fad1789c32f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "23afd07d-41bf-4a94-900a-54bb33b1a264",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f7dab17f-2c81-4fde-aead-3c9864d91d06",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "bfc9afee-4915-448e-8091-51d414a53200",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-black-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-military-green-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-p-white-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4094f6ac-d697-4ad5-860b-f6e7de20096e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=39d856613626001044b06319e9db0edb9bfcae55966164c273022d8e7fd747fc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/98720c12-5b2b-41a2-a634-419efc492e88/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3176e3aa44fa5da2980cb6161f651dd5b603aee3cd908d01722518fa22aa9ad6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ced7ccb3-fbef-4471-8561-9362f4e45b1e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0c34dd185e067b6db7a2a18a354f99652c52f0695a49b7b3ba65deb1ef555628",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/55d0b7c9-7b4f-4585-9c6e-e5c30be80c8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=029a3915ad82dcac6d4041e6647a1b8094dea46022f7dbae560da5ed4c6d4fba",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2eecc259-edc1-4858-a6ca-9c48acfb12e3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5ac4a358b6f00631bf6da7ed81bb8339f1b3a4db73592cb5cd5c928bc95d6159",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0bf51aeb-57d6-48b8-90bf-c963f1ef4c6c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4aaad434cef472e7cb84d3ad914b42eceb6b3f85cac1560d7d2fec30db2f9102",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/31299754-cd0d-469a-82d1-9e8cbe323518/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T212640Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=51afd88b9f77773653c6884bcaf8d46ac6177eed16902ce106bf0436b16cd576"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/sud.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-22T21:37:27.033Z",
+    "updatedAt": "2026-11-22T21:37:27.033Z"
   }
 ]
