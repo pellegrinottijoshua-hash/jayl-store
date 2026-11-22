@@ -26009,7 +26009,7 @@ export const adminProducts = [
       "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144424_d2319b9f-b4b8-4930-bf54-acb4ec42c4ed.png": "back"
     },
     "heroImage": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144024_23ad862c-92ee-4727-b608-b511cb3b39d3.png",
-    "detailImage": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-02.png",
+    "detailImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/chansey-t-shirt/chansey-t-shirt-gelato-02.png",
     "images": [
       "/images/chansey-t-shirt/chansey-t-shirt-gelato-01.jpg",
       "/images/chansey-t-shirt/chansey-t-shirt-gelato-02.png",
@@ -26251,7 +26251,9 @@ export const adminProducts = [
     "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/cha.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T21:43:03.745Z",
-    "updatedAt": "2026-11-22T21:43:03.745Z"
+    "updatedAt": "2026-11-22T23:46:30.508Z",
+    "relatedProducts": [],
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/chansey-t-shirt/design-front.png"
   },
   {
     "id": "farfetch-d-t-shirt",
