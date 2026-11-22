@@ -25672,7 +25672,7 @@ export const adminProducts = [
     "id": "sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Sudowoodo T-Shirt – Pokémon Fan Art Tee, Funny Pokémon Gift",
+    "name": "Sudowoodo T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
@@ -25945,7 +25945,8 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T21:37:27.033Z",
-    "updatedAt": "2026-11-22T21:37:27.033Z"
+    "updatedAt": "2026-11-22T21:52:27.203Z",
+    "relatedProducts": []
   },
   {
     "id": "chansey-t-shirt",
