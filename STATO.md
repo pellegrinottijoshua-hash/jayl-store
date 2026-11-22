@@ -14,7 +14,7 @@ Aggiornato: 2026-11-22 da Troy (split dei domini: zacktheduck.com online). Diagn
 - **Video front drop 11 (22/11):** 4 video da 7 s (Farfetch'd «front row», Chansey «sticker book», Sudowoodo «not a tree», trio «slot»), musica scritta in codice (`~/jayl-motion/kit/musica-front11.mjs`, codice in `src/drop11front/`). Consegnati in `jayl streetwear/drop 11/video front/` con i WAV a parte. Le 3 maglie non sono ancora sullo store.
 
 ## Prossimi 3 passi
-1. **Joshua, entro il 29/11:** rinnovare il token GitHub `jayl-store-admin` e incollarlo in Vercel → `GITHUB_TOKEN`, poi redeploy (senza, l'admin non salva).
+1. **Token GitHub rinnovato il 22/11** (Vercel `GITHUB_TOKEN`, redeploy fatto). Variabili «Needs Attention» = segreti non marcati Secret: da sistemare solo quando si ruotano (Stripe per prime).
 2. **Joshua:** sconto Black Friday −20% (27/11–1/12); Search Console e dominio Meta per zacktheduck.com. Da provare: Apple Pay su iPhone (domini Stripe registrati il 22/11). (Fondo delle R1–R4 portato a #111111 il 16/11: niente più riquadro in home.)
 3. **Natale:** prime 20–50 vendite: ads piccole verso le schede, regalo «per l'amico mai impressionato», scadenza 12/12, mail, Zack anche su Etsy.
 
