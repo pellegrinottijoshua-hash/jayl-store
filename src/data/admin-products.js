@@ -26558,7 +26558,7 @@ export const adminProducts = [
     "id": "pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print",
     "section": "objects",
     "collection": "cool Pokèmon",
-    "name": "Pichu T-Shirt – Pokémon Fan Art Gildan Tee, Small Chest Print",
+    "name": "Pichu T-Shirt",
     "subtitle": "cool Pokèmon",
     "price": 2500,
     "currency": "eur",
@@ -26828,6 +26828,7 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T23:26:28.206Z",
-    "updatedAt": "2026-11-22T23:26:28.206Z"
+    "updatedAt": "2026-11-22T23:56:28.192Z",
+    "relatedProducts": []
   }
 ]
