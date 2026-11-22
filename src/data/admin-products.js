@@ -26546,5 +26546,281 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T21:50:49.412Z",
     "updatedAt": "2026-11-22T21:50:49.412Z"
+  },
+  {
+    "id": "pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Pichu T-Shirt – Pokémon Fan Art Gildan Tee, Small Chest Print",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "Bold and vibrant, this Pichu design brings the electrifying charm of your favorite Pokémon right to your wardrobe. Displaying playful mischief with its adorable expression, the small chest print captures the essence of Pichu’s energy perfectly. Made from a premium Gildan tee and boasting top-tier direct-to-garment printing, this shirt combines comfort with style, ensuring you look fresh while repping your love for these pocket monsters. It makes a unique gift that any Pokémon aficionado will appreciate, sparking joy in every wear.",
+    "altText": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160245_b13d6383-2a4e-4776-bcb4-15333049f164.png",
+    "heroShots": [
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160245_b13d6383-2a4e-4776-bcb4-15333049f164.png",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160536_bbed493c-060e-4537-a3c0-e46418694a7e.png"
+    ],
+    "imageSides": {
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_155851_4bbb67b1-98f3-4a07-8f20-6d7aef4767e7.png": "front",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160049_2ee22a24-af2c-435d-90c4-8aeb360e2523.png": "front",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160032_b2ea966a-a382-49e3-a492-ed022daeed6d.png": "front",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160239_f9edc06c-29fe-482c-a378-e0802c1ba4ef.png": "front",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160245_b13d6383-2a4e-4776-bcb4-15333049f164.png": "front",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160528_637ad195-dcd2-4e0b-a717-518b1d5c1722.png": "back",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160631_4678b478-113f-45b6-a213-7e45d7084f12.png": "back",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160738_fe062087-b56c-4d46-80cd-e6877e4aaf72.png": "back"
+    },
+    "heroImage": "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160239_f9edc06c-29fe-482c-a378-e0802c1ba4ef.png",
+    "detailImage": "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20261103_160032_b2ea966a-a382-49e3-a492-ed022daeed6d.png",
+    "images": [
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-gelato-01.jpg",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-gelato-02.jpg",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-gelato-03.jpg",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-gelato-04.jpg",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-gelato-05.jpg",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-gelato-06.jpg"
+    ],
+    "imageAlts": {
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-mockup-01.jpg": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee.",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-daisy-01.jpg": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee.",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-white-01.jpg": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee.",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-mockup-02.jpg": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee.",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-black-01.jpg": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee.",
+      "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-mockup-03.jpg": "Playful Pichu striking a mischievous pose in bold colors on a small chest print of a premium Gildan tee."
+    },
+    "tags": [
+      "pichu",
+      "pokemon shirt",
+      "fan art",
+      "gildan tee",
+      "streetwear",
+      "graphic tee",
+      "unique gifts",
+      "anime apparel",
+      "cool pajamas",
+      "collectible shirts",
+      "fan merchandise",
+      "geek culture",
+      "cartoon fashion"
+    ],
+    "featured": false,
+    "gelatoProductId": "15b87cc3-ec2e-4861-9fae-1688823ed667",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "pichu shirt",
+      "pokemon tee",
+      "fan art t-shirt",
+      "gildan shirt",
+      "streetwear top"
+    ],
+    "longTailKeywords": [
+      "pichu graphic t-shirt for adults",
+      "cute pokemon fan art clothing",
+      "premium gildan pokemon shirts online",
+      "unique gifts for pokemon lovers",
+      "stylish t-shirts for anime fans",
+      "collectible pokemon apparel for sale",
+      "anime-influenced streetwear designs",
+      "trendy tees for geeks and collectors",
+      "fun graphic tees to wear every day",
+      ".funny pichu designs on clothing"
+    ],
+    "hashtags": "#pichu #pokemon #fanart #gildantee #streetwear #graphictee #animeapparel #coolshirts #nerdstyle #pokemergear #uniquewardrobe #collectorsitem #vintagefashion #outfitinspiration #edgyfashion #casualwear #teespringstyle #trendyoutfits #ultimategiftguide #animefanspotlight #tshirtcollection #kawaiiapparel #remixculture #aestheticfashion #popculturegoods #geekchicoutfit #originaldesigns #vibrantprints",
+    "instagramCaption": "\"Feeling zapped by cuteness?⚡ Rock this Pichu tee and keep it real in the world of Pokémon hype! It's time to swag out with some serious fan art. Shop the link in bio! ✨🛒#pichufanart#pokemongifts#streetwear\"",
+    "pinterestCaption": "\"Showcase your love for Pokémon with our vibrant Pichu T-shirt. This premium Gildan piece features an eye-catching design that embodies fun and playfulness, perfect for those who cherish nostalgic anime moments. Explore our collection today!\"",
+    "seoTitle": "Pichu T-Shirt | Cute Pokemon Fan Art | Streetwear Style",
+    "variants": [
+      {
+        "uid": "ef499131-ba8c-44b1-b3ee-c1f6d8f3adcc",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3d2308ea-6cdf-43c3-ab98-b73f03d01f13",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2635ed40-1bac-4b63-9b6d-86315dcde356",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "75207c2e-1047-4f43-9c6b-62d7f96aadb9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "336d18ad-45ea-47c2-b8f5-51df9504285f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1c4d04bb-b613-4764-94b5-df7edaaa0700",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "18abfa7b-525d-46c6-beae-053ff36f1577",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9ba88827-53e6-4523-8b02-550db882a586",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "8a51b6e5-9f84-4cd6-81b3-2da3b25161a2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "aa3a464c-2773-4b7b-9b78-11e6f4e51c83",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "f3dba7bd-483d-4a23-84ad-8d31e7b9c81e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "621068ea-c47c-414c-8d83-34666890b0aa",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3d283169-ceb8-4d1b-afa6-16c620c03ce0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2e71968b-cccb-48f8-b167-8ebfa28f2e93",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_daisy_gpr_4-0_inlbl_gildan_64000",
+        "color": "Daisy",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9f93b06e-2f69-474f-b5c0-ba62f50ccaf0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-black-01.jpg"
+      },
+      {
+        "id": "daisy",
+        "label": "Daisy",
+        "hex": "#888888",
+        "image": "/images/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/pichu-t-shirt-pok-mon-fan-art-gildan-tee-smal-daisy-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8e081bbb-10a5-4318-9852-c3cb38d05054/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T232331Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb71bc92d58dc18b3750331b07a1fd1d738a3513064ea9d810c5c14d54e0d454",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7934eec5-39cf-41b5-9173-126a53107239/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T232331Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a66eeb3de3518efbca831340a64dd13c013690e8e84ab722dca4e2f88f920b3c",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9bbea9b9-1e3e-41d0-b7e6-e6c9763b5782/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T232331Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=618d34b3eba57f46b84df77125de800760e1bcc9d5a2c5954cd94f5b40f81538",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/345af4fc-7deb-4a21-9ef2-d35c933f3b51/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T232331Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2bd33a81601f2738d43e128d75df544fc674449e3b79b9cc3a6aa81573d7eec0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/622ba10d-c5e2-41c6-a61b-b2569acb5c66/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T232331Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=697360a7b01ff3621bed7b6c345c0d81af0d235991018d94c8e988c29d86eb08",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1d260b67-ab54-41cd-8e09-a1d84dcbdf55/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T232331Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=da79035177956fc173dcd41ecb249174594d95dcff3be5dc1bcc5287f136ee45"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/hf_20260816_192424_e087582e-1357-4f43-bd0c-7693d3d410da-copia.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-22T23:26:28.206Z",
+    "updatedAt": "2026-11-22T23:26:28.206Z"
   }
 ]
