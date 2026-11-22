@@ -26251,5 +26251,299 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T21:43:03.745Z",
     "updatedAt": "2026-11-22T21:43:03.745Z"
+  },
+  {
+    "id": "farfetch-d-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Farfetch'd T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "A gentle ripple of nostalgia echoes from the delicate strokes of this Farfetch'd artwork, showcasing the charming duck Pokémon in playful repose. Adorned on a Gildan premium tee, the direct-to-garment printing captures every subtle hue and detail, making it a vivid piece for any fan's collection. Its understated yet vibrant design speaks volumes without saying a word, reflecting Farfetch'd's quirky personality while effortlessly fitting into your wardrobe. Gift this to someone who appreciates the whimsy of Pokémon culture or add it to your personal archive of cherished art.",
+    "altText": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      }
+    ],
+    "image": "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-01.jpg",
+    "imageSides": {
+      "/images/farfetch-d-t-shirt/hf_20261102_133701_750f6691-6169-41f2-bc28-9dcd8c32a6b8.png": "front",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3a46ead2-0986-4cd6-bbaa-184bf744813e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=822df8d15c00c2de0b27b61359b36ecbb669ba977ae50b0f78a54f15eff782a8": "front"
+    },
+    "heroImage": null,
+    "detailImage": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b1024152-1abb-4745-944d-be5e1ff7e901/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c8cbd0211428c1fa1ab90afd8af67382983d66f1756bd1f1d7c4fa5853c7edfd",
+    "images": [
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-01.jpg",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-02.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-03.jpg",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-04.jpg",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-05.jpg",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-06.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-07.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-08.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-09.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-10.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-11.png",
+      "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-12.png"
+    ],
+    "imageAlts": {
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-01.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-military-green-01.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-black-01.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-02.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-03.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-04.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-white-01.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-05.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-06.jpg": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-07.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-08.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-09.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-10.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-11.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-12.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-13.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee.",
+      "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-14.png": "Farfetch'd poised confidently with its leek, rendered in colorful retro 90s anime style on a small chest print on a premium JAYL tee."
+    },
+    "tags": [
+      "farfetch'd",
+      "pokemon",
+      "fan art",
+      "art tee",
+      "duck pokemon",
+      "gift idea",
+      "anime apparel",
+      "vintage style",
+      "pokemon merch",
+      "graphic t-shirt",
+      "collectible shirt",
+      "print on demand",
+      "minimalist design"
+    ],
+    "featured": false,
+    "gelatoProductId": "f3fb65a7-d6fc-498f-8d01-59de2c6fdafd",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "farfetch'd t-shirt",
+      "pokemon apparel",
+      "fan art shirt",
+      "duck pokemon gift",
+      "anime t-shirt"
+    ],
+    "longTailKeywords": [
+      "farfetch'd graphic tee online",
+      "buy pokemon fan art t-shirt",
+      "unique duck pokemon apparel gift",
+      "Gildan premium print shirt",
+      "retro pokemon fan merchandise",
+      "stylish farfetch'd clothing option",
+      "collectible art-inspired t-shirt",
+      "best gifts for pokemon fans",
+      "limited edition pokemon art print shirt",
+      "affordable anime-themed apparel"
+    ],
+    "hashtags": "#farfetchd #pokemon #fanart #arttee #duckpokemon #giftidea #animeapparel #vintagestyle #pokemonmerch #graphictee #collectibleshirt #printondemand #minimalistdesign #animefashion #pokemontshirt #uniquegifts #pocketmonsters #geekstyle #nerrdwear #boutiqueclothing #artistseries #culturallyinspiredartwork #wildlifeartwearableart #fandomwearableart #retrovintageclothing ##popculturefashion ##whimsicalwearables ##cosplayliveaction ##characterbasedfashion",
+    "instagramCaption": "\"Taking things slow like Farfetch’d with its trusty leek. 🍃 Who else vibes with that laid-back energy? Time to add some charm to your closet! 🦆✨#duckpokemon#pokemonfanart#japhighstreet\"",
+    "pinterestCaption": "\"Explore our Farfetch'd T-Shirt, a minimalist homage to one of Pokémon's quirkiest characters. The retro-inspired design brings together nostalgia and style, making it an essential addition for collectors and enthusiasts alike. Browse now for unique fan gifts!\"",
+    "seoTitle": "Farfetch'd T-Shirt | Duck Pokémon Gift | Minimalist Art Tee",
+    "variants": [
+      {
+        "uid": "a9847014-e48b-413c-81b5-5f0d4d8edf16",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "decc3bed-eda7-4b16-80d2-a57f671be771",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9833a091-fc56-4be1-8758-eaa10f17a1f7",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "7f41c3c4-b92a-426c-9289-240c6d82e12d",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "2b86f9f8-bcef-46bd-80c5-ba1151a348dd",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "63cfdd36-a95a-4f54-af5c-49693c2f0005",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ea9895c9-a443-4f72-88e9-a693dcba0a79",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "ce793c4e-8bbf-4ada-b14a-66d30857ba76",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "1780cc4d-401b-4272-8573-904e7dcaef9e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3df1f4cd-6952-4e82-9ff4-72d9fc9479e8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "06727a75-952c-4270-bfed-ab0bf0a715c8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9c347c2e-95d7-4a7a-8fc0-64dc480be527",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d10c6594-16c1-4980-b36e-e542b91a554a",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_military-green_gpr_4-0_inlbl_gildan_64000",
+        "color": "Military Green",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "a7920537-4bac-4fac-84fe-9b9b12a07d29",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "6361c45e-b57d-4ad7-ae99-a6a4b6763d40",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-black-01.jpg"
+      },
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-white-01.jpg"
+      },
+      {
+        "id": "military-green",
+        "label": "Military Green",
+        "hex": "#888888",
+        "image": "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-military-green-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/76df843e-5dbe-4f7d-b781-3b75e1ad3a99/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=28efde9fffda8f6a000a52592cef1060877f4dea6134047aa6a9bd61d89b7e20",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/308d5695-2007-4450-be26-32acf8e78b66/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c971bdfc6833c569824d3d71c2ca8291e4f513ba9817bc4cc04f909e19483d12",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d16a4193-e7b0-4aca-a4dc-6de11e111105/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f284c83ce12e740e89faafa4a45e7b713e02fcb128d266db7d7bc56be418f976",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3a46ead2-0986-4cd6-bbaa-184bf744813e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=822df8d15c00c2de0b27b61359b36ecbb669ba977ae50b0f78a54f15eff782a8",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/03b21134-aeb6-46ab-9a68-820724a4531c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1f7dda120e7842147ad345386ee5fbeda9d75d3c91a5972e618a9b65a6d034c2",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/76bdc7be-0560-4915-9d06-8bb077311f65/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=97fcf3a4821a1d061726d4ad57584b3dd547e4614b2ff02235a70404048161d4",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/33538df2-ce2c-4645-ba97-06583d1fce98/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fd84b04b84ea5b35aada2b83b60d2eaa27ef647df6c43295f16c43d8e633bf3b",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/91154181-c33d-4037-abd3-5280299e8f49/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5ae11fc1a1a7e0eee36dca367cff2581ff0dadf3df30390a9596c724626189a6",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d8cf486d-07b4-480d-8ece-e299052370e0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5cf42d614443a52bf04ffbff5846b5ea62e57bbed33708f2e16fb68f0f690ddc",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/723b03dc-7088-4346-8473-5e527ca42efd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b4d3ab6f2443f9e3f3945e3728c55966219709aaf2445726ebd0eef185ee5990",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/47e4bbb1-0e42-419e-aee6-5e8838fea82f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=622fdf16c0dd44c9a555c32f3540ef166d0fd659e96d13a43d1e017e4b9adb93",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9037dcd5-8e89-44e0-9af9-b48998262006/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=881a19cacd3ffc394bc6f20ea69292fc7b791040ff1a0207acf3dd8d15809875",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5ccd906e-6ce5-4498-ab63-6f7e2ffacb04/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bd29da2507d93bac33ab7948bb1e3a46807937b72bafc6464e2e656ed7f4a304",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a569a270-dbb8-4b08-a418-87b6f575cb56/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=adfd992dde8aab0cdfc09b19d3918c6fd279d4979650005e2ada5d954214f4f0",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6336cc36-ffd0-4f84-b577-f5e7735c8c3e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7bbc1afa8248be9b37554675f7d64e526bfb81d538c7dfac94cf0208c7ebf2b3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b1024152-1abb-4745-944d-be5e1ff7e901/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c8cbd0211428c1fa1ab90afd8af67382983d66f1756bd1f1d7c4fa5853c7edfd",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbde018e-5ed0-4a53-9259-7024ca2cdf95/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=57e973509cee2b7d4e4d4783b36aca2594778fa7df8951524fd8f566385a14aa"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/farfetch-d-t-shirt/far.png",
+    "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/farfetch-d-t-shirt/design-front.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-22T21:50:49.412Z",
+    "updatedAt": "2026-11-22T21:50:49.412Z"
   }
 ]
