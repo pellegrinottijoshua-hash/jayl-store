@@ -12,9 +12,48 @@
 export const ZACK = 'zack'
 export const JAYL = 'jayl'
 
+// ── Due domini, un solo progetto Vercel ─────────────────────────────────
+// zacktheduck.com = solo Zack (home "/"), jayl.store = solo JAYL (home "/").
+// I salti tra i due li fa vercel.json (redirect per host) e, per la
+// navigazione dentro l'app, i link assoluti qui sotto. Altrove (localhost,
+// anteprime *.vercel.app) resta il sito unico di prima: Zack su "/", JAYL
+// su /jayl, cosi' si prova tutto da un indirizzo solo.
+export const ZACK_ORIGIN = 'https://zacktheduck.com'
+export const JAYL_ORIGIN = 'https://jayl.store'
+
+const HOST = typeof window !== 'undefined' ? window.location.hostname : ''
+/** 'zack' | 'jayl' | null (null = sito unico, dev e anteprime) */
+export const SITE = /(^|\.)zacktheduck\.com$/.test(HOST) ? 'zack'
+  : /(^|\.)jayl\.store$/.test(HOST) ? 'jayl'
+  // In locale si prova un dominio con VITE_SITE=zack|jayl npm run dev.
+  : (import.meta.env?.DEV && ['zack', 'jayl'].includes(import.meta.env.VITE_SITE)) ? import.meta.env.VITE_SITE
+  : null
+
 export const ZACK_SECTION    = 'zack'
 export const ZACK_COLLECTION = 'Zack the Duck'
-export const JAYL_HOME       = '/jayl'
+// La home dei due mondi, vista da dove si e'. Link assoluto = altro dominio
+// (react-router lo apre come pagina nuova).
+export const JAYL_HOME = SITE === 'zack' ? `${JAYL_ORIGIN}/` : SITE === 'jayl' ? '/' : '/jayl'
+export const ZACK_HOME = SITE === 'jayl' ? `${ZACK_ORIGIN}/` : '/'
+export const isExternal = (href) => /^https?:\/\//.test(href)
+
+/**
+ * Se `pathname` appartiene all'altro dominio, l'URL assoluto dove portarlo;
+ * altrimenti null. Le pagine neutre (checkout, legali…) restano dove sono.
+ */
+export function crossSiteUrl(pathname, search, findProduct) {
+  if (!SITE || pathname.startsWith('/admin')) return null
+  let w = null
+  if (pathname === '/') return null
+  if (pathname === '/zack' || pathname.startsWith('/zack/') || pathname.startsWith('/collection/zack')) w = ZACK
+  else if (pathname.startsWith('/product/')) {
+    const p = findProduct?.(decodeURIComponent(pathname.split('/')[2] || ''))
+    if (p) w = isZackProduct(p) ? ZACK : JAYL
+  } else if (!NEUTRAL.test(pathname)) w = JAYL
+  if (!w || w === SITE) return null
+  const path = pathname === '/jayl' || pathname === '/zack' ? '/' : pathname
+  return (w === ZACK ? ZACK_ORIGIN : JAYL_ORIGIN) + path + (search || '')
+}
 
 // Palette Zack: nero, panna, oro. Colori fissi e non i token del sito: il
 // tema panna/nero di JAYL non deve toccare il mondo di Zack.
@@ -40,6 +79,8 @@ const recall = () => { try { return sessionStorage.getItem(KEY) } catch { return
  * Ricorda l'ultimo mondo "vero" per le pagine neutre.
  */
 export function worldFor(pathname, findProduct) {
+  // Sui domini veri il mondo e' il dominio: niente da indovinare.
+  if (SITE) return SITE
   let w = null
   if (pathname === '/' || pathname.startsWith('/zack')) w = ZACK
   else if (pathname.startsWith('/product/')) {

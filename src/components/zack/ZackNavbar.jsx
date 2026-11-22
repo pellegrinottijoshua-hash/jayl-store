@@ -6,7 +6,7 @@ import { useCartStore } from '@/store/cartStore'
 import { InstagramIcon, TikTokIcon, YouTubeIcon } from '@/components/layout/Navbar'
 import JaylMark from '@/components/JaylMark'
 import ZackEyes from '@/components/zack/ZackEyes'
-import { ZACK_SOCIAL, JAYL_HOME, Z } from '@/lib/world'
+import { ZACK_SOCIAL, JAYL_HOME, Z, isExternal } from '@/lib/world'
 import { cn } from '@/lib/utils'
 
 
@@ -69,7 +69,7 @@ export function ZackSocials({ size = 15, className, lit }) {
 
 /**
  * La porta verso il negozio JAYL. Gli occhi di Zack si chiudono (un battito
- * lungo), si apre /jayl. Niente Pokémon qui: solo il segno JAYL.
+ * lungo), si apre il negozio JAYL (jayl.store). Niente Pokémon qui: solo il segno JAYL.
  */
 export function JaylDoor({ className, children, onEnter }) {
   const navigate = useNavigate()
@@ -77,9 +77,12 @@ export function JaylDoor({ className, children, onEnter }) {
   const go = (e) => {
     e.preventDefault()
     onEnter?.()
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return navigate(JAYL_HOME)
+    // Su zacktheduck.com la porta e' jayl.store: pagina nuova, la tendina
+    // resta chiusa finche' il browser cambia sito.
+    const open = () => isExternal(JAYL_HOME) ? window.location.assign(JAYL_HOME) : navigate(JAYL_HOME)
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return open()
     setClosing(true)
-    setTimeout(() => { navigate(JAYL_HOME); setTimeout(() => setClosing(false), 120) }, 520)
+    setTimeout(() => { open(); if (!isExternal(JAYL_HOME)) setTimeout(() => setClosing(false), 120) }, 520)
   }
   return (
     <>

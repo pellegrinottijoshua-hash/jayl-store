@@ -7,7 +7,7 @@ import ZackNavbar from '@/components/zack/ZackNavbar'
 import ZackFooter from '@/components/zack/ZackFooter'
 import ZackHomePage from '@/pages/ZackHomePage'
 import { getProductById } from '@/data/products'
-import { worldFor, ZACK } from '@/lib/world'
+import { worldFor, ZACK, SITE, crossSiteUrl } from '@/lib/world'
 // Eager: the pages on the browse-to-buy path. Anything a first-time visitor is
 // likely to hit before deciding, so no chunk waterfall where it hurts.
 import HomePage from '@/pages/HomePage'
@@ -93,8 +93,12 @@ function ProductPageFresh() {
 }
 
 export default function App() {
-  const { pathname } = useLocation()
+  const { pathname, search } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
+  // Pagina dell'altro dominio (link vecchi, navigazione interna): ci si va.
+  // Di solito ci pensa gia' vercel.json prima che l'app parta.
+  const away = crossSiteUrl(pathname, search, getProductById)
+  useEffect(() => { if (away) window.location.replace(away) }, [away])
   // Zack e' la facciata ("/"); il negozio JAYL sta su /jayl. Vedi src/lib/world.js.
   const isZack = !isAdmin && worldFor(pathname, getProductById) === ZACK
 
@@ -123,9 +127,9 @@ export default function App() {
         {/* ── Public site ──────────────────────────────── */}
         <Route path="*" element={
           <main>
-            <Routes>
-              <Route path="/"                               element={<ZackHomePage />} />
-              <Route path="/jayl"                           element={<HomePage />} />
+            {away ? null : <Routes>
+              <Route path="/"                               element={SITE === 'jayl' ? <HomePage /> : <ZackHomePage />} />
+              <Route path="/jayl"                           element={SITE === 'jayl' ? <Navigate to="/" replace /> : <HomePage />} />
               <Route path="/zack"                           element={<Navigate to="/" replace />} />
               <Route path="/art"                            element={<ArtPage />} />
               <Route path="/objects"                        element={<ObjectsPage />} />
@@ -146,7 +150,7 @@ export default function App() {
               {/* Legacy shop URLs → redirect */}
               <Route path="/shop" element={<Navigate to="/art" replace />} />
               <Route path="*"     element={<NotFound />} />
-            </Routes>
+            </Routes>}
           </main>
         } />
       </Routes>

@@ -15,7 +15,7 @@ import { resolveSwatchHex } from '@/lib/apparelColors'
 import { shownColors, imagesForShownColors } from '@/lib/shownColors'
 import { sizeGuideFor, bySize } from '@/data/sizeGuides'
 import { sidesFor, mainSide } from '@/lib/printSides'
-import { isZackProduct } from '@/lib/world'
+import { isZackProduct, JAYL_HOME } from '@/lib/world'
 import { plainMockup } from '@/data/mockupLibrary'
 import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
@@ -543,7 +543,7 @@ export default function ProductPage() {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home',       item: 'https://jayl.store' },
+          { '@type': 'ListItem', position: 1, name: 'Home',       item: isZackProduct(product) ? 'https://zacktheduck.com' : 'https://jayl.store' },
           { '@type': 'ListItem', position: 2, name: product.section === 'art' ? 'Art' : 'Objects', item: `https://jayl.store/${product.section === 'art' ? 'art' : 'objects'}` },
           ...(product.collection ? [{ '@type': 'ListItem', position: 3, name: product.collection, item: `https://jayl.store/collection/${encodeURIComponent(product.collection)}` }] : []),
           { '@type': 'ListItem', position: product.collection ? 4 : 3, name: product.name, item: productUrl },
@@ -1025,7 +1025,7 @@ export default function ProductPage() {
         <p className="text-fg/60 text-sm mb-8 max-w-sm">
           Join the waitlist — we'll let you know when it enters a drop.
         </p>
-        <Link to="/jayl" className="text-cream underline text-sm">See the current drop</Link>
+        <Link to={JAYL_HOME} className="text-cream underline text-sm">See the current drop</Link>
       </div>
     )
   }

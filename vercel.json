@@ -20,6 +20,140 @@
       "schedule": "0 16 * * *"
     }
   ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.zacktheduck.com"
+        }
+      ],
+      "destination": "https://zacktheduck.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/admin/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/admin/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/admin",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/admin",
+      "permanent": false
+    },
+    {
+      "source": "/jayl",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/",
+      "permanent": true
+    },
+    {
+      "source": "/(art|objects|artist|shop)",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/$1",
+      "permanent": true
+    },
+    {
+      "source": "/ambassador/:id",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/ambassador/:id",
+      "permanent": true
+    },
+    {
+      "source": "/product/:id((?!zack-).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/product/:id",
+      "permanent": true
+    },
+    {
+      "source": "/collection/:slug((?!zack).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "zacktheduck.com"
+        }
+      ],
+      "destination": "https://jayl.store/collection/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/zack",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?jayl\\.store"
+        }
+      ],
+      "destination": "https://zacktheduck.com/",
+      "permanent": true
+    },
+    {
+      "source": "/product/:id(zack-.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?jayl\\.store"
+        }
+      ],
+      "destination": "https://zacktheduck.com/product/:id",
+      "permanent": true
+    },
+    {
+      "source": "/collection/:slug(zack.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?jayl\\.store"
+        }
+      ],
+      "destination": "https://zacktheduck.com/collection/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/jayl",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?jayl\\.store"
+        }
+      ],
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/generate-listing",
@@ -118,6 +252,21 @@
         }
       ],
       "destination": "/api/orders?handler=prerender&path=/collection/:slug"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|Pinterest|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Applebot|redditbot|Googlebot|Google-InspectionTool|bingbot|Embedly|SkypeUriPreview|vkShare|W3C_Validator|Bytespider).*"
+        },
+        {
+          "type": "host",
+          "value": "(?:www\\.)?jayl\\.store"
+        }
+      ],
+      "destination": "/api/orders?handler=prerender&path=/"
     },
     {
       "source": "/(.*)",

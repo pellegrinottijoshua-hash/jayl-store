@@ -7,6 +7,7 @@ function getAllowedOrigins() {
   if (process.env.VERCEL_URL) list.add(`https://${process.env.VERCEL_URL}`)
   list.add('https://jayl.store')
   list.add('https://www.jayl.store')
+  list.add('https://zacktheduck.com')
   // Local dev
   if (process.env.NODE_ENV !== 'production') {
     list.add('http://localhost:3000')

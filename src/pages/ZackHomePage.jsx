@@ -11,7 +11,7 @@ import EtsyRating from '@/components/EtsyRating'
 import ZackEyes from '@/components/zack/ZackEyes'
 import { cn } from '@/lib/utils'
 
-// La facciata di jayl.store: Zack the Duck.
+// La home di zacktheduck.com: Zack the Duck.
 // «Zack si veste»: gli occhi sono la testa, il capo sotto e' il corpo (il
 // manichino su fondo nero). Sotto solo una riga: «T-SHIRT €25». Si tocca il
 // capo e Zack fa l'occhiolino (dal lato del tocco), poi si apre la scheda,
@@ -508,7 +508,7 @@ export default function ZackHomePage() {
     title: 'Zack the Duck — Official Merch',
     description: 'Zack the Duck: the deadpan duck. Tee, hoodie and crewneck with his eyes on the front. Free worldwide shipping.',
     image: '/zack/og-zack.jpg',
-    url: 'https://jayl.store/',
+    url: 'https://zacktheduck.com/',
   })
 
   return (

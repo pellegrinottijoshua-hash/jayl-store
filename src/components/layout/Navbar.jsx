@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 import { SOCIAL_LINKS } from '@/data/social-links'
 import { SOCIAL_CHANNELS } from '../../../api/_lib/social-links.js'
 import JaylMark from '@/components/JaylMark'
-import { JAYL_HOME } from '@/lib/world'
+import { JAYL_HOME, ZACK_HOME } from '@/lib/world'
 import ZackMark from '@/components/zack/ZackMark'
 
 // Il logo V2 segue lo sfondo: sulla panna resta nero, sul nero respira
@@ -136,9 +136,9 @@ const NAV_ITEMS = [
   // HIDDEN - re-enable for Art launch
   // { id: 'art',    label: 'art',    to: '/art' },
   { id: 'objects',label: 'objects',to: '/objects' },
-  // Zack the Duck: la sua home e' "/" (src/lib/world.js). Stesso carattere
+  // Zack the Duck: la sua home (zacktheduck.com, src/lib/world.js). Stesso carattere
   // delle altre voci, col suo segno davanti.
-  { id: 'zack',   label: 'zack',   to: '/' },
+  { id: 'zack',   label: 'zack',   to: ZACK_HOME },
   { id: 'artist', label: null,     to: '/artist' },  // uses FallingS render
 ]
 
@@ -475,7 +475,7 @@ export default function Navbar() {
             // HIDDEN - re-enable for Art launch
             // { id: 'art',    label: 'art',     to: '/art' },
             { id: 'objects',label: 'objects',  to: '/objects' },
-            { id: 'zack',   label: 'zack',     to: '/' },
+            { id: 'zack',   label: 'zack',     to: ZACK_HOME },
             { id: 'artist', label: null,       to: '/artist' },
           ].map(({ id, label, to }) => (
             <Link

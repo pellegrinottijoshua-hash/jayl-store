@@ -11,6 +11,7 @@
 
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
+import { JAYL_HOME } from '@/lib/world'
 
 export default function JaylLogo({
   color     = 'currentColor',
@@ -51,7 +52,7 @@ export default function JaylLogo({
 
   if (asLink) {
     return (
-      <Link to="/jayl" aria-label="JAYL — Home" className="inline-flex items-center">
+      <Link to={JAYL_HOME} aria-label="JAYL — Home" className="inline-flex items-center">
         {logoEl}
       </Link>
     )

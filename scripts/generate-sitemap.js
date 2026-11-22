@@ -42,6 +42,11 @@ function collectionSlug(name) {
 }
 
 const SITE_URL = 'https://jayl.store'
+// Zack the Duck ha un dominio suo: le sue pagine vanno in sitemap-zack.xml
+// con gli URL di zacktheduck.com (stesso deploy, robots.txt le elenca tutte e due).
+const ZACK_URL = 'https://zacktheduck.com'
+const isZack = (p) => p?.section === 'zack'
+const zackUrls = [`  <url>\n    <loc>${ZACK_URL}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>`]
 
 const STATIC_PAGES = [
   { path: '/',          priority: '1.0',  changefreq: 'weekly'  },
@@ -79,7 +84,11 @@ for (const p of STATIC_PAGES) {
 // same visible-only list (see collectionSlugs), so a collection with no visible
 // products drops out of the sitemap along with its products.
 const visible = new Set([...(drop.current?.productIds || []), ...(drop.released || [])])
-const sitemapProducts = adminProducts.filter((p) => visible.has(p.id))
+const sitemapProducts = adminProducts.filter((p) => visible.has(p.id) && !isZack(p))
+const zackProducts = adminProducts.filter((p) => visible.has(p.id) && isZack(p))
+for (const p of zackProducts) {
+  zackUrls.push(`  <url>\n    <loc>${esc(`${ZACK_URL}/product/${p.id}`)}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>`)
+}
 
 for (const product of sitemapProducts) {
   if (!product.id) continue
@@ -110,6 +119,14 @@ for (const slug of collectionSlugs) {
     <priority>0.7</priority>
   </url>`)
 }
+
+const wrap = (list) => `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${list.join('\n')}
+</urlset>
+`
+writeFileSync(resolve(__dirname, '../public/sitemap-zack.xml'), wrap(zackUrls), 'utf-8')
+console.log(`[sitemap] Generated ${zackUrls.length} URLs → public/sitemap-zack.xml`)
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

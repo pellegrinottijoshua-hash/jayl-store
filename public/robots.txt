@@ -6,3 +6,4 @@ Disallow: /admin
 Disallow: /admin/
 
 Sitemap: https://jayl.store/sitemap.xml
+Sitemap: https://zacktheduck.com/sitemap-zack.xml

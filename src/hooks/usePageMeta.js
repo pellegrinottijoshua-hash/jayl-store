@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
+import { SITE } from '@/lib/world'
 
-const SITE_NAME  = 'JAYL'
+// Su zacktheduck.com il sito si chiama Zack the Duck (src/lib/world.js).
+const SITE_NAME  = SITE === 'zack' ? 'Zack the Duck' : 'JAYL'
 const BASE_TITLE = 'JAYL — Premium Art & Wearable Art'
 const BASE_DESC  = 'Premium print-on-demand art and streetwear. AI-reinterpreted art movements, contemporary subjects.'
 const OG_BASE    = 'https://jayl.store/api/og'
@@ -76,7 +78,9 @@ export function usePageMeta({ title, description, image, subtitle, url, type = '
     const resolvedDesc  = description || BASE_DESC
     const resolvedImg   = resolveOgImage(image, title, subtitle)
     const resolvedUrl   = url         || window.location.href
-    const fullTitle     = title ? `${title} — ${SITE_NAME}` : BASE_TITLE
+    const fullTitle     = !title ? BASE_TITLE
+      : title.includes(SITE_NAME) ? title
+      : `${title} — ${SITE_NAME}`
 
     document.title = fullTitle
 

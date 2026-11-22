@@ -639,6 +639,12 @@ ${items}
 // + Product JSON-LD (price/availability → Pinterest Rich Pins). Real users are
 // untouched — they keep hitting the static SPA on the CDN.
 const SITE_URL       = 'https://jayl.store'
+// Zack the Duck vive su un dominio suo (src/lib/world.js): le sue schede e la
+// sua collezione si annunciano coi link di zacktheduck.com.
+const ZACK_URL       = 'https://zacktheduck.com'
+const isZack         = (p) => p?.section === 'zack'
+const siteOf         = (p) => isZack(p) ? ZACK_URL : SITE_URL
+const brandOf        = (p) => isZack(p) ? 'Zack the Duck' : 'JAYL'
 const PRERENDER_DESC = 'Premium print-on-demand art and wearable art by JAYL.'
 const absUrl   = (u) => !u ? '' : (/^https?:\/\//i.test(u) ? u : `${SITE_URL}${u.startsWith('/') ? '' : '/'}${u}`)
 // Must mirror CollectionPage.collectionSlug EXACTLY (no diacritics normalization)
@@ -708,7 +714,7 @@ function handlePrerender(req, res) {
     if (p) {
       const name        = p.seoTitle || p.name
       const description = (p.seoDescription || p.description || PRERENDER_DESC).replace(/\s+/g, ' ').trim().slice(0, 280)
-      const url         = `${SITE_URL}/product/${p.id}`
+      const url         = `${siteOf(p)}/product/${p.id}`
       const images      = [absUrl(p.image), ...(p.images || []).map(absUrl)].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 6)
       const jsonLd = {
         '@context': 'https://schema.org',
@@ -716,7 +722,7 @@ function handlePrerender(req, res) {
         name,
         image:       images,
         description,
-        brand:      { '@type': 'Brand', name: 'JAYL' },
+        brand:      { '@type': 'Brand', name: brandOf(p) },
         offers: {
           '@type':        'Offer',
           // Il prezzo che il checkout addebita davvero (drop o archivio), come
@@ -728,7 +734,7 @@ function handlePrerender(req, res) {
           url,
         },
       }
-      html = prerenderHtml({ title: `${name} — JAYL`, description, image: ogImageFor(p), url, jsonLd, ogType: 'product', h1: name })
+      html = prerenderHtml({ title: `${name} — ${brandOf(p)}`, description, image: ogImageFor(p), url, jsonLd, ogType: 'product', h1: name })
     }
   } else if (path.startsWith('/collection/')) {
     const raw   = decodeURIComponent(path.slice(12)).replace(/\/+$/, '')
@@ -742,16 +748,24 @@ function handlePrerender(req, res) {
     if (inCol.length) {
       const name = inCol[0].collection || slug
       html = prerenderHtml({
-        title:       `${name} — JAYL`,
-        description: `Shop the ${name} collection at JAYL — ${inCol.length} pieces of premium print-on-demand wearable art.`.slice(0, 280),
+        title:       `${name} — ${brandOf(inCol[0])}`,
+        description: `Shop the ${name} collection at ${brandOf(inCol[0])} — ${inCol.length} pieces of premium print-on-demand wearable art.`.slice(0, 280),
         image:       ogImageFor(inCol[0]),
         // Always the canonical slug, so a legacy URL points crawlers at the real one
-        url:         `${SITE_URL}/collection/${slug}`,
+        url:         `${siteOf(inCol[0])}/collection/${slug}`,
         h1:          name,
       })
     }
   }
 
+  if (!html && req.query.site === 'zack') {
+    html = prerenderHtml({
+      title:       'Zack the Duck — Official Merch',
+      description: 'The deadpan duck, on a black tee, hoodie and crewneck. Free worldwide shipping.',
+      image:       `${ZACK_URL}/zack/og-zack.jpg`,
+      url:         ZACK_URL + path,
+    })
+  }
   if (!html) {
     html = prerenderHtml({
       title:       'JAYL — Premium Art & Wearable Art',
