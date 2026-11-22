@@ -26300,12 +26300,12 @@ export const adminProducts = [
         "price": 2500
       }
     ],
-    "image": "/images/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-pok-mon-gift/farfetch-d-t-shirt-pok-mon-fan-art-tee-duck-p-mockup-01.jpg",
+    "image": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbde018e-5ed0-4a53-9259-7024ca2cdf95/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=57e973509cee2b7d4e4d4783b36aca2594778fa7df8951524fd8f566385a14aa",
     "imageSides": {
       "/images/farfetch-d-t-shirt/hf_20261102_133701_750f6691-6169-41f2-bc28-9dcd8c32a6b8.png": "front",
       "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3a46ead2-0986-4cd6-bbaa-184bf744813e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=822df8d15c00c2de0b27b61359b36ecbb669ba977ae50b0f78a54f15eff782a8": "front"
     },
-    "heroImage": null,
+    "heroImage": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/farfetch-d-t-shirt/hf_20261102_135434_5642fff8-0fae-4baf-93fb-87e5122399f5.png",
     "detailImage": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b1024152-1abb-4745-944d-be5e1ff7e901/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c8cbd0211428c1fa1ab90afd8af67382983d66f1756bd1f1d7c4fa5853c7edfd",
     "images": [
       "/images/farfetch-d-t-shirt/farfetch-d-t-shirt-gelato-01.jpg",
@@ -26547,7 +26547,12 @@ export const adminProducts = [
     "altPrintFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/farfetch-d-t-shirt/design-front.png",
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T21:50:49.412Z",
-    "updatedAt": "2026-11-22T21:50:49.412Z"
+    "updatedAt": "2026-11-22T23:48:17.868Z",
+    "relatedProducts": [],
+    "heroShots": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fbde018e-5ed0-4a53-9259-7024ca2cdf95/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=57e973509cee2b7d4e4d4783b36aca2594778fa7df8951524fd8f566385a14aa",
+      "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/images/farfetch-d-t-shirt/hf_20261102_135444_3570ec00-366b-431f-9bec-1bb4f70eefaf.png"
+    ]
   },
   {
     "id": "pichu-t-shirt-pok-mon-fan-art-gildan-tee-small-chest-print",
