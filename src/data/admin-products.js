@@ -25946,5 +25946,310 @@ export const adminProducts = [
     "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
     "createdAt": "2026-11-22T21:37:27.033Z",
     "updatedAt": "2026-11-22T21:37:27.033Z"
+  },
+  {
+    "id": "chansey-t-shirt",
+    "section": "objects",
+    "collection": "cool Pokèmon",
+    "name": "Chansey T-Shirt",
+    "subtitle": "cool Pokèmon",
+    "price": 2500,
+    "currency": "eur",
+    "description": "If you’re shopping for a devoted Pokémon enthusiast with a soft spot for the adorable Chansey, this t-shirt is a fantastic choice. Chansey embodies comfort and nurturing, radiating positivity as the healer of the Pokémon world. Made from Gildan premium cotton, this tee showcases vibrant fan art with crisp DTG print quality that brings the character’s joyful essence to life. It’s an excellent gift for birthdays or special occasions, reminding your loved ones that kindness and care are just as powerful in battle.",
+    "altText": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+    "details": [
+      "Gildan 64000 Softstyle — premium ring-spun cotton tee",
+      "Fabrication: Solid colors 100% ring-spun cotton; Sport Grey 90% cotton / 10% polyester; Heather colors 35% cotton / 65% polyester; Graphite Heather 65% cotton / 35% polyester",
+      "Lightweight 4.5 oz/yd² (153 g/m²) with a soft, modern semi-fitted cut",
+      "Side-seamed construction, twin-needle stitching, tear-away label",
+      "DTG print — made to order, fulfilled via Gelato",
+      "Machine wash cold inside-out, tumble dry low"
+    ],
+    "sizes": [
+      {
+        "id": "2XL",
+        "label": "2XL",
+        "price": 2500
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "price": 2500
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "price": 2500
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "price": 2500
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "price": 2500
+      }
+    ],
+    "image": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144120_be732914-eaac-4db6-873b-dde909723a5d.png",
+    "heroShots": [
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144120_be732914-eaac-4db6-873b-dde909723a5d.png",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144050_7a5e6d0b-b7e2-4aca-852b-cf7b01715a70.png"
+    ],
+    "imageSides": {
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-03.png": "front",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-08.png": "front",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-11.png": "front",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-13.png": "front",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144003_0491a0b7-6158-4d59-ae1a-a78491e4dc61.png": "back",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144024_23ad862c-92ee-4727-b608-b511cb3b39d3.png": "back",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144408_3b430792-3859-488d-a50c-0afa5108ad2b.png": "back",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144424_d2319b9f-b4b8-4930-bf54-acb4ec42c4ed.png": "back"
+    },
+    "heroImage": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/hf_20261102_144024_23ad862c-92ee-4727-b608-b511cb3b39d3.png",
+    "detailImage": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-02.png",
+    "images": [
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-01.jpg",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-02.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-03.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-04.jpg",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-05.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-06.jpg",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-07.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-08.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-09.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-10.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-11.jpg",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-12.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-13.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-14.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-15.png",
+      "/images/chansey-t-shirt/chansey-t-shirt-gelato-16.png"
+    ],
+    "imageAlts": {
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-01.jpg": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-02.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-03.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-azalea-01.jpg": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-04.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-black-01.jpg": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-05.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-06.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-07.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-08.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-white-01.jpg": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-09.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-10.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-11.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-12.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee.",
+      "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-mockup-13.png": "Joyful Chansey standing with a playful smile, illustrated in retro 90s anime style on a small chest print of a JAYL premium tee."
+    },
+    "tags": [
+      "chansey",
+      "pokemon",
+      "fanart",
+      "tshirt",
+      "gift",
+      "apparel",
+      "cute",
+      "pink",
+      "anime",
+      "pokedex",
+      "graphictee",
+      "pokemonmerch",
+      "gamer"
+    ],
+    "featured": false,
+    "gelatoProductId": "3f9fe4bf-a24e-4b80-8919-8b176feb9c80",
+    "movement": "cool Pokèmon",
+    "adminManaged": true,
+    "primaryKeywords": [
+      "chansey shirt",
+      "pokemon tee",
+      "fan art t-shirt",
+      "cute apparel",
+      "pink pokemon"
+    ],
+    "longTailKeywords": [
+      "chansey t-shirt for fans",
+      "cute pink pokemon gifts",
+      "pokemon fan art apparel online",
+      "unique pokemon merchandise ideas",
+      "best gifts for pokemon lovers",
+      "joyful chansey graphic tee purchase",
+      "premium pokemon shirts for gifting",
+      "colorful chansey printed t-shirts",
+      "retro anime fan art clothing USA",
+      "stylish pokémon themed apparel"
+    ],
+    "hashtags": "#chansey #pokemon #fanart #tshirt #gift #apparel #cute #pink #anime #pokedex #graphictee #pokemonmerch #gamer #animeart #pokemongift #vintageanime #arttees #retrogaming #shoppingonline #geekfashion #instagood #sweettee #pocketmonsters #cartoonfashion #kawaiiartwork #trendyshirts #illustratedteeshirt #customtees #lovedonesgifting",
+    "instagramCaption": "#Chansey vibes! This tee brings the joy and healing energy of your favorite pink Pokémon right to your wardrobe. Grab yours and wear your love loud! 🐣💖#PokemonArt#AuthenticStyle#GiftIdeas",
+    "pinterestCaption": "Shop our adorable Chansey T-Shirt that elevates any casual outfit while channeling the nurturing spirit of your favorite Pokémon. Perfect for anyone who loves cute fan art and unique apparel, this shirt is sure to turn heads at your next gathering.",
+    "seoTitle": "Chansey T-Shirt | Cute Pink Pokémon Gift | Pokémon Fan Art",
+    "variants": [
+      {
+        "uid": "77671e0a-a352-470f-8277-17ee604a8c65",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "9587fea2-815c-4b9b-a1ae-7635ff194d92",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "55243391-eb4e-495b-90e8-ba6b997237c3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "50e7a81a-01e4-4259-9b79-0d6b5ed6e017",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "262b43cb-95e1-40d6-89b9-9ad16ee51e8e",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "59dc36b6-f0c4-4324-8198-116e72c3e1f0",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4f2b3218-45b8-4cd4-adeb-9bbd03a4cff9",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "3b49ddc0-b2ec-4640-be71-ad1c1f943d1f",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "S",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "27516337-2f41-4b80-b96a-dbedb9dd88d8",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "45b16ae7-dc10-4f51-bcb4-5476e13da033",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_white_gpr_4-0_inlbl_gildan_64000",
+        "color": "White",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "93dabf93-7c8b-4a5b-9d96-7489083185c2",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "M",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "4e8377a4-9767-432e-96c9-1810a172c123",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_azalea_gpr_4-0_inlbl_gildan_64000",
+        "color": "Azalea",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "028e3363-0619-4330-beb2-91cd2a3f4af3",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "L",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "26f6bf5f-c353-415f-9396-eff585e14158",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "2XL",
+        "price": null,
+        "currency": null
+      },
+      {
+        "uid": "d171f486-5cad-4f0f-9e50-4b4ca600f0ef",
+        "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
+        "color": "Black",
+        "size": "XL",
+        "price": null,
+        "currency": null
+      }
+    ],
+    "colors": [
+      {
+        "id": "white",
+        "label": "White",
+        "hex": "#888888",
+        "image": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-white-01.jpg"
+      },
+      {
+        "id": "black",
+        "label": "Black",
+        "hex": "#888888",
+        "image": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-black-01.jpg"
+      },
+      {
+        "id": "azalea",
+        "label": "Azalea",
+        "hex": "#888888",
+        "image": "/images/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-azalea-01.jpg"
+      }
+    ],
+    "gelatoCdnImages": [
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c04bec8b-1237-4850-8ce5-baf80fbd3a16/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f4599d374ec723040178c7f567921f75357c0f3e57aeddebe867d254369f7a6f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/32069fbf-2787-407e-b530-cae149496081/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7e59bf731a34d7e866ea306ab407ce6d23dd29fbd608a7e80a4e27c2660abe5f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a3013d81-44ab-4c65-996e-b46e99973c5b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=390d3326b14617202aafbdd7cfae22f723f053c7dff8323f4c14d3c4a11390b7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/91ce4e81-cf08-4568-9f9d-80592db226cd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0c619c3d11c74bcad6ea325434624ab18c1f6b99a7822e9d82a42eb5b4b3bc47",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dd97b7d2-a02a-43f0-bb1e-0a2f745f1155/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=231a18245d44bc5d9af83c1497a544e09c9ee58d0b87890ce40306fc711d0c9a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/849b18b8-444a-4dd9-b941-fe352c73ed8c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c509c955d979a6fb91d14f877a08480c20d846c9e32db6811dce3d189b39f24a",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/985e1d2b-2ea5-42b0-9506-4384cdb809fc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=54b9ebaf67c7606297527cee9375a1ffa55e331e6021656b098a0b37c7562c1f",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c16b292b-19d3-43ec-90ee-86390e527b92/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=844a394f717ec524d475f337de649cfc2d0b7672828abc8d5c26bcbc762f0ec5",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6f195fdf-f28f-4ddf-a31c-b479fc45bc46/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fd2e0e004bf3481c7e673d6977da8a6b2cc81763e92928cc3b7ef84ce4e614e3",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c6f21d31-89e4-4cf9-9809-35654c723fd9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a9dbb1cea8f283cbcd71aeea0137ef0b3e77be0ae62e88bba410fd2848676d23",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eab4fd0d-ee3f-4368-a32b-efb62ce47c6e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9b05a268bc5e43d619350da6478d7e5e391de88a74dff51c4aedc87f6163e984",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cb68400e-8253-429f-a97a-7cff97acc109/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=14d0c72a6a4fb57590d4be037eac348a55bba86949005475412522d25900bbd1",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e02ba53e-e04c-42bd-a398-305ef91dcbc3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=185a84eb4bb04e82b3edadae08437421415c3097d0222a4caaca33874c1e76f7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b32c1b65-eb71-4d78-8173-a1a27fa6cdd3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bf2c6cf805bd6241272e41d976fc69dc52d3332f77f0476e67695b3b42abd8cd",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3236e329-8cd2-4b0f-a1b7-263e0144981f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d4bdc256ac8786e68822e434cc0206ede50860e6888cd8360cb5c8b99e4ca6a7",
+      "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/364e36ef-46f3-4e82-85f1-49578491d038/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261122%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261122T214017Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80b111ff64ffa0a033636b669d82d50a4e813ec3d3f3f7a7783b28aceeaf212b"
+    ],
+    "printFileUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/chansey-t-shirt-pok-mon-fan-art-tee-cute-pink-pok-mon-gift/cha.png",
+    "neckLabelUrl": "https://raw.githubusercontent.com/pellegrinottijoshua-hash/jayl-store/main/public/designs/jayl-neck-label.png",
+    "createdAt": "2026-11-22T21:43:03.745Z",
+    "updatedAt": "2026-11-22T21:43:03.745Z"
   }
 ]
