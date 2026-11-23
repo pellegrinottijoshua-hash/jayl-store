@@ -179,7 +179,40 @@ export const drop = {
       "endsAt": "2026-11-10T16:00:00Z"
     }
   ],
-  "scheduled": [],
+  "scheduled": [
+    {
+      "id": "drop-12",
+      "number": 12,
+      "title": "CLASSIC",
+      "auto": true,
+      "productIds": [
+        "sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift",
+        "chansey-t-shirt",
+        "farfetch-d-t-shirt"
+      ],
+      "startsAt": "2026-11-17T16:00:00Z",
+      "endsAt": "2026-11-26T16:00:00Z",
+      "cap": 20,
+      "caps": {},
+      "dropPrice": 2000,
+      "bundlePrice": 4999,
+      "heroImages": {
+        "sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift": "/images/sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift/hf_20261102_145836_9a7b00e6-ed50-4de3-b8a4-6deb4b86ac92.png",
+        "chansey-t-shirt": "/images/chansey-t-shirt/hf_20261102_143031_32624d87-cb66-4da4-88de-e1813bfc4eeb.png",
+        "farfetch-d-t-shirt": "/images/farfetch-d-t-shirt/hf_20261102_133956_9d650c9f-0698-48b5-9ab4-e429c08eda5c.png"
+      },
+      "defaults": {
+        "farfetch-d-t-shirt": {
+          "color": "white"
+        },
+        "sudowoodo-t-shirt-pok-mon-fan-art-tee-funny-pok-mon-gift": {
+          "color": "military-green"
+        }
+      },
+      "defaultSide": "front",
+      "heroVideos": {}
+    }
+  ],
   "next": null,
   "released": [
     "cool-mewtwo-back-t-shirt",
