@@ -130,8 +130,8 @@ export default function OrderConfirmationPage() {
             {[
               {
                 step: '01',
-                title: 'Order sent to Gelato',
-                desc: 'Your order is sent to the nearest Gelato print partner.',
+                title: 'Off to the print shop',
+                desc: 'Your order goes to the print shop nearest you.',
               },
               {
                 step: '02',

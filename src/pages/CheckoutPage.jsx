@@ -8,7 +8,6 @@ import { trackGA4, cartToGaItems, toMajor, trackTikTok, cartToTtContents, trackU
 import { cn } from '@/lib/utils'
 import { originalImage } from '@/lib/optimizedImage'
 import { getDrop, basePriceFor, bundleDiscount } from '../../api/_lib/drop.js'
-import JaylMark from '@/components/JaylMark'
 import { useCurrencyStore, SYMBOL } from '@/store/currencyStore'
 import { amountOnly } from '@/lib/money'
 import { SITE, SHOP_HOME } from '@/lib/world'
@@ -874,7 +873,7 @@ function CheckoutForm() {
             </div>
 
             <div className="mt-6 pt-5 border-t border-border space-y-2">
-              {['Secure payment via Stripe', 'Fulfilled by Gelato worldwide', '100-year archival inks'].map((t) => (
+              {['Secure payment via Stripe', 'Shipped from the print shop nearest you', '100-year archival inks'].map((t) => (
                 <div key={t} className="flex items-center gap-2 text-xs text-text-muted">
                   <div className="w-1 h-1 bg-success rounded-full" />
                   {t}
@@ -912,9 +911,6 @@ export default function CheckoutPage() {
           >
             <ArrowLeft size={12} />
             Continue Shopping
-          </Link>
-          <Link to="/" aria-label="JAYL — Home">
-            <JaylMark size={30} className="block text-cream opacity-90" />
           </Link>
           <div className="flex items-center gap-1.5 text-xs text-text-muted">
             <Lock size={12} />

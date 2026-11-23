@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useId, useImperativeHandle, useRef } from 'react'
 import { VIEWBOX, MARKUP, D, IDLE_CYCLE } from './zackEyesData'
+import { createHat } from './zackHat'
 
 // Gli occhi di Zack: lo stesso motore di motion-lab/home-occhi, portato in
 // React. Le pupille seguono mouse e dito su tutta la pagina; da fermo gira
@@ -72,8 +73,12 @@ const lidY = (i, x, a, b) => {
   return a + (b - a) * (lx - 242) / 258
 }
 
-function startEngine(svg, prefix, onReact) {
+function startEngine(svg, prefix, onReact, { hat: withHat = false } = {}) {
   const $ = (id) => svg.querySelector(`#${prefix}${id}`)
+  // Il cappello di Natale (zackHat.js): si appoggia alle palpebre.
+  const hat = withHat ? createHat({ g: $('hat'), body: $('hatBody'), band: $('hatBand'), pom: $('hatPom') }) : null
+  const REST_X = toVec('originale')[3]
+  const tops = [0, 0]
 
   const shapeEls = [[], []], rifEls = []
   for (let i = 0; i < 2; i++) {
@@ -264,6 +269,9 @@ function startEngine(svg, prefix, onReact) {
     const bl = holdExpr ? 0 : blinkAmt(now), w = winkAmt(now), CL = 288
     for (let i = 0; i < 2; i++) {
       const o = i * 6
+      // Il cappello poggia sulla palpebra senza battiti di ciglia: se no a
+      // ogni battito salterebbe in aria.
+      tops[i] = lidY(i, EYE[i].cx, cur[o], cur[o + 1])
       // Palpebra di sopra (a, c) e di sotto (la, lc), inclinate come lidY.
       let a = cur[o] + (CL - cur[o]) * bl, c = cur[o + 1] + (CL - cur[o + 1]) * bl
       let la = Math.min(cur[o + 2], OPEN_BOT), lc = la, pupOp = 1
@@ -286,6 +294,7 @@ function startEngine(svg, prefix, onReact) {
     const t = Math.max(0, cur[cur.length - 1])
     tear.setAttribute('transform', `translate(296 ${f2(316 + (1 - t) * -8)}) scale(${t.toFixed(3)}) translate(-296 -316)`)
     stepHead(now, dt)
+    hat?.update(tops, cur[3] - REST_X, dt)
     raf = requestAnimationFrame(frame)
   }
 
@@ -359,7 +368,7 @@ function startEngine(svg, prefix, onReact) {
   }
 }
 
-const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact }, ref) {
+const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact, hat = false }, ref) {
   const svgRef = useRef(null)
   const engine = useRef(null)
   const reactCb = useRef(onReact)
@@ -370,9 +379,9 @@ const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact }, ref
   const markup = useRef(MARKUP.replaceAll('zk-', prefix))
 
   useEffect(() => {
-    engine.current = startEngine(svgRef.current, prefix, (e) => reactCb.current?.(e))
+    engine.current = startEngine(svgRef.current, prefix, (e) => reactCb.current?.(e), { hat })
     return () => engine.current?.stop()
-  }, [prefix])
+  }, [prefix, hat])
 
   useImperativeHandle(ref, () => ({
     lookAt: (x, y) => engine.current?.look(x, y),
@@ -401,7 +410,7 @@ const ZackEyes = forwardRef(function ZackEyes({ className, style, onReact }, ref
       role="img"
       aria-label="Zack the Duck"
       className={className}
-      style={{ touchAction: 'manipulation', userSelect: 'none', WebkitTapHighlightColor: 'transparent', ...style }}
+      style={{ touchAction: 'manipulation', userSelect: 'none', WebkitTapHighlightColor: 'transparent', ...(hat && { overflow: 'visible' }), ...style }}
       dangerouslySetInnerHTML={{ __html: markup.current }}
     />
   )

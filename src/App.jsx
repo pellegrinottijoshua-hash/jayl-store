@@ -15,7 +15,6 @@ import ArtPage from '@/pages/ArtPage'
 import ObjectsPage from '@/pages/ObjectsPage'
 import ProductPage from '@/pages/ProductPage'
 import CollectionPage from '@/pages/CollectionPage'
-import EmailCapturePopup from '@/components/EmailCapturePopup'
 import CookieBanner from '@/components/CookieBanner'
 import { useThemeStore } from '@/store/themeStore'
 
@@ -116,7 +115,7 @@ export default function App() {
       <ScrollToTop />
       {!isAdmin && (isZack ? <ZackNavbar /> : <Navbar />)}
       {!isAdmin && <CartDrawer />}
-      {!isAdmin && <EmailCapturePopup zack={isZack} />}
+      {/* Popup email spento (23/11, scelta di Joshua). Il componente resta. */}
 
       <Suspense fallback={null}>
       <Routes>

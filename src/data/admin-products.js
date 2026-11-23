@@ -25164,7 +25164,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_64000",
         "color": "Black",
         "size": "S",
-        "price": 2500,
+        "price": 2000,
         "currency": "eur"
       },
       {
@@ -25172,7 +25172,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_64000",
         "color": "Black",
         "size": "M",
-        "price": 2500,
+        "price": 2000,
         "currency": "eur"
       },
       {
@@ -25180,7 +25180,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_64000",
         "color": "Black",
         "size": "L",
-        "price": 2500,
+        "price": 2000,
         "currency": "eur"
       },
       {
@@ -25188,7 +25188,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_64000",
         "color": "Black",
         "size": "XL",
-        "price": 2500,
+        "price": 2000,
         "currency": "eur"
       }
     ],
@@ -25211,8 +25211,9 @@ export const adminProducts = [
     "name": "Zack the Duck Tee",
     "shortName": "Tee",
     "seoTitle": "Zack the Duck Tee | Deadpan Duck Streetwear | JAYL",
-    "price": 2500,
-    "archivePrice": 2500,
+    "price": 2000,
+    "archivePrice": 2000,
+    "compareAtPrice": 2500,
     "description": "Zack doesn't smile. He doesn't need to. His eyes and beak, printed big on the chest of a soft black tee, ZACK THE DUCK inside the collar. No words, no logo soup. Just the look.",
     "altText": "Zack the Duck Tee in black with Zack's cream eyes and beak printed on the front",
     "details": [
@@ -25228,22 +25229,22 @@ export const adminProducts = [
       {
         "id": "S",
         "label": "S",
-        "price": 2500
+        "price": 2000
       },
       {
         "id": "M",
         "label": "M",
-        "price": 2500
+        "price": 2000
       },
       {
         "id": "L",
         "label": "L",
-        "price": 2500
+        "price": 2000
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 2500
+        "price": 2000
       }
     ],
     "image": "/images/zack-the-duck-tee/hf_20261115_225325_e6c9da19-e794-465b-814f-98b6e7febd02.jpg",
@@ -25318,7 +25319,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_18500",
         "color": "Black",
         "size": "S",
-        "price": 4900,
+        "price": 3900,
         "currency": "eur"
       },
       {
@@ -25326,7 +25327,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_18500",
         "color": "Black",
         "size": "M",
-        "price": 4900,
+        "price": 3900,
         "currency": "eur"
       },
       {
@@ -25334,7 +25335,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_18500",
         "color": "Black",
         "size": "L",
-        "price": 4900,
+        "price": 3900,
         "currency": "eur"
       },
       {
@@ -25342,7 +25343,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_18500",
         "color": "Black",
         "size": "XL",
-        "price": 4900,
+        "price": 3900,
         "currency": "eur"
       },
       {
@@ -25350,7 +25351,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_18500",
         "color": "Black",
         "size": "2XL",
-        "price": 4900,
+        "price": 3900,
         "currency": "eur"
       },
       {
@@ -25358,7 +25359,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic_gsi_3xl_gco_black_gpr_4-0_inlbl_gildan_18500",
         "color": "Black",
         "size": "3XL",
-        "price": 4900,
+        "price": 3900,
         "currency": "eur"
       }
     ],
@@ -25379,8 +25380,9 @@ export const adminProducts = [
     "name": "Zack the Duck Hoodie",
     "shortName": "Hoodie",
     "seoTitle": "Zack the Duck Hoodie | Deadpan Duck Streetwear | JAYL",
-    "price": 4900,
-    "archivePrice": 4900,
+    "price": 3900,
+    "archivePrice": 3900,
+    "compareAtPrice": 4900,
     "description": "The hood up, the eyes on. A black pullover hoodie with Zack staring out from the chest. Warm, heavy, mildly judgmental.",
     "altText": "Zack the Duck Hoodie in black with Zack's cream eyes and beak printed on the front",
     "details": [
@@ -25396,32 +25398,32 @@ export const adminProducts = [
       {
         "id": "S",
         "label": "S",
-        "price": 4900
+        "price": 3900
       },
       {
         "id": "M",
         "label": "M",
-        "price": 4900
+        "price": 3900
       },
       {
         "id": "L",
         "label": "L",
-        "price": 4900
+        "price": 3900
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 4900
+        "price": 3900
       },
       {
         "id": "2XL",
         "label": "2XL",
-        "price": 4900
+        "price": 3900
       },
       {
         "id": "3XL",
         "label": "3XL",
-        "price": 4900
+        "price": 3900
       }
     ],
     "image": "/images/zack-the-duck-hoodie/hf_20261115_231639_741580da-6553-4ffa-9442-3b5770b6258f.jpg",
@@ -25512,7 +25514,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_s_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "S",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25520,7 +25522,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_m_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "M",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25528,7 +25530,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_l_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "L",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25536,7 +25538,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_xl_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "XL",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25544,7 +25546,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_2xl_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "2XL",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25552,7 +25554,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_3xl_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "3XL",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25560,7 +25562,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_4xl_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "4XL",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       },
       {
@@ -25568,7 +25570,7 @@ export const adminProducts = [
         "gelatoVariantId": "apparel_product_gca_sweatshirt_gsc_crewneck_gcu_unisex_gqa_classic_gsi_5xl_gco_black_gpr_4-0_inlbl_gildan_18000",
         "color": "Black",
         "size": "5XL",
-        "price": 3900,
+        "price": 3200,
         "currency": "eur"
       }
     ],
@@ -25589,8 +25591,9 @@ export const adminProducts = [
     "name": "Zack the Duck Crewneck",
     "shortName": "Crewneck",
     "seoTitle": "Zack the Duck Crewneck | Deadpan Duck Streetwear | JAYL",
-    "price": 3900,
-    "archivePrice": 3900,
+    "price": 3200,
+    "archivePrice": 3200,
+    "compareAtPrice": 3900,
     "description": "A long-sleeve black crewneck sweatshirt with one job: carrying Zack's unimpressed stare wherever you go.",
     "altText": "Zack the Duck Crewneck in black with Zack's cream eyes and beak printed on the front",
     "details": [
@@ -25606,42 +25609,42 @@ export const adminProducts = [
       {
         "id": "S",
         "label": "S",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "M",
         "label": "M",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "L",
         "label": "L",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "XL",
         "label": "XL",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "2XL",
         "label": "2XL",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "3XL",
         "label": "3XL",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "4XL",
         "label": "4XL",
-        "price": 3900
+        "price": 3200
       },
       {
         "id": "5XL",
         "label": "5XL",
-        "price": 3900
+        "price": 3200
       }
     ],
     "image": "/images/zack-the-duck-crewneck/hf_20261115_234255_59768112-9605-4940-9b0c-f2865b989940.jpg",

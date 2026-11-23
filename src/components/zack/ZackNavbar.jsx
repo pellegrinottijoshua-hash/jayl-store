@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, useNavigate } from 'react-router-dom'
-import { ShoppingBag, Menu, X } from 'lucide-react'
+import { ShoppingBag, Menu, X, Music2 } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
 import { InstagramIcon, TikTokIcon, YouTubeIcon } from '@/components/layout/Navbar'
 import JaylMark from '@/components/JaylMark'
 import ZackEyes from '@/components/zack/ZackEyes'
 import { ZACK_SOCIAL, JAYL_HOME, Z, isExternal } from '@/lib/world'
 import { cn } from '@/lib/utils'
+import { toggleSong, useSongPlaying } from '@/lib/zackSong'
 
 
 const ICONS = { instagram: InstagramIcon, youtube: YouTubeIcon, tiktok: TikTokIcon }
@@ -97,21 +98,6 @@ export function JaylDoor({ className, children, onEnter }) {
   )
 }
 
-// Natale: la riga d'oro «Order by 12 Dec» sotto Free shipping, fino alla fine
-// del 12/12 (ora di Roma), poi sparisce da sola. Finche' c'e', l'header e' piu'
-// alto di XMAS_PX: le pagine lo leggono da --zk-xmas (home, schede, collezione).
-const XMAS_END = Date.parse('2026-12-13T00:00:00+01:00')
-const XMAS_PX = 18
-function useXmasBar() {
-  const on = Date.now() < XMAS_END
-  useLayoutEffect(() => {
-    const root = document.documentElement
-    root.style.setProperty('--zk-xmas', on ? `${XMAS_PX}px` : '0px')
-    return () => root.style.removeProperty('--zk-xmas')
-  }, [on])
-  return on
-}
-
 // Chi si accende d'oro, uno alla volta: la scritta, poi Instagram, YouTube e
 // TikTok, ognuno 3-4 s (a caso) dopo il precedente, poi si ricomincia.
 const GOLD_TURNS = ['logo', 'instagram', 'youtube', 'tiktok']
@@ -133,7 +119,7 @@ function useGoldTurn() {
 export default function ZackNavbar() {
   const { items, toggleCart } = useCartStore()
   const lit = useGoldTurn()
-  const xmas = useXmasBar()
+  const song = useSongPlaying()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const count = items.reduce((s, i) => s + i.quantity, 0)
@@ -164,13 +150,6 @@ export default function ZackNavbar() {
             Free worldwide shipping
           </p>
         </div>
-        {xmas && (
-          <div className="w-full flex items-center justify-center" style={{ height: XMAS_PX, background: Z.gold }}>
-            <p className="font-sans font-bold text-[8.5px] uppercase select-none pl-[0.3em]" style={{ letterSpacing: '0.3em', color: Z.black }}>
-              Order by 12 Dec for Christmas
-            </p>
-          </div>
-        )}
 
         <div className={cn('h-14 grid grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-8 transition-colors duration-300',
           scrolled && 'backdrop-blur-md')}
@@ -191,8 +170,14 @@ export default function ZackNavbar() {
               style={{ aspectRatio: '876 / 438' }} />
           </Link>
 
-          {/* Destra: carrello */}
-          <div className="flex justify-end">
+          {/* Destra: la sigla di Zack, poi il carrello */}
+          <div className="flex justify-end items-center gap-4">
+            <button type="button" onClick={toggleSong} aria-pressed={song}
+              aria-label={song ? 'Stop the Zack the Duck theme song' : 'Play the Zack the Duck theme song'}
+              className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
+              style={{ color: song ? Z.black : Z.gold, background: song ? Z.gold : 'transparent', border: '1px solid rgba(196,163,90,0.5)' }}>
+              {song ? <span className="zk-eq" aria-hidden><span /><span /><span /></span> : <Music2 size={13} strokeWidth={1.8} />}
+            </button>
             <button onClick={toggleCart} className="relative transition-opacity hover:opacity-70" style={{ color: Z.cream }}
               aria-label={`Cart — ${count} item${count !== 1 ? 's' : ''}`}>
               <ShoppingBag size={19} strokeWidth={1.5} />

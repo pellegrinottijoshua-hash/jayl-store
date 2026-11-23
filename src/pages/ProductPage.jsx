@@ -21,6 +21,8 @@ import { useDropStatus } from '@/hooks/useDropStatus'
 import { dropWindowState, BEFORE, LIVE, CLOSED } from '@/components/drop/dropWindowState'
 import { getDrop, productState, capFor, basePriceFor, DROP } from '../../api/_lib/drop.js'
 import Money from '@/components/Money'
+import WasPrice from '@/components/WasPrice'
+import { isOnSale } from '@/lib/sale'
 import HeroVideo from '@/components/HeroVideo'
 import { galleryBaseFor } from '@/lib/productMedia'
 import { finishedColorFor, lowStockFor } from '@/lib/scarcity'
@@ -327,6 +329,9 @@ function ColorLook({ look, className = '' }) {
 }
 
 // Il cartello sul colore finito questa settimana (src/lib/scarcity.js).
+// Etichetta accanto al prezzo barrato (prezzi di Natale, fino al 25/12).
+const SALE_LABEL = 'Christmas price'
+
 function OfferBadge({ text }) {
   return (
     <span className="inline-flex items-center gap-1.5 border px-2 py-0.5 text-[10px] font-normal uppercase tracking-[0.2em]"
@@ -1116,7 +1121,7 @@ export default function ProductPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           MOBILE LAYOUT  (hidden on md+)
       ══════════════════════════════════════════════════════════════════════ */}
-      <div className="md:hidden pt-[calc(88px_+_var(--zk-xmas,0px))]">
+      <div className="md:hidden pt-[88px]">
 
         {/* ── Swipe Gallery ─────────────────────────────────────────────── */}
         <div
@@ -1216,8 +1221,9 @@ export default function ProductPage() {
           )}
 
           <p className={cn('text-xl font-semibold flex items-center gap-3', t.price)}>
+            <WasPrice was={product.compareAtPrice} now={totalPrice} />
             <Money cents={totalPrice} />
-            {offerLeft && <OfferBadge text={offerLeft} />}
+            {offerLeft ? <OfferBadge text={offerLeft} /> : isOnSale(product.compareAtPrice, totalPrice) && <OfferBadge text={SALE_LABEL} />}
           </p>
 
           <TrustBox variant="micro" className="mt-2" theme={isLight ? 'light' : 'dark'} />
@@ -1435,8 +1441,8 @@ export default function ProductPage() {
           <Accordion title="Shipping & Fulfillment" light={isLight}>
             <div className="space-y-3">
               <p>
-                Fulfilled by <span className={isLight ? 'text-ink' : 'text-text-primary'}>Gelato</span> —
-                the world's largest print-on-demand network with 130+ local print partners worldwide.
+                Printed on demand in a print shop near you — 130+ partners worldwide, so it
+                never crosses the planet to reach you.
               </p>
               <p>
                 Orders are printed and shipped from the facility nearest to you, minimising transit
@@ -1516,7 +1522,7 @@ export default function ProductPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           DESKTOP LAYOUT  (hidden on mobile)
       ══════════════════════════════════════════════════════════════════════ */}
-      <div className="hidden md:block pt-[calc(6rem_+_var(--zk-xmas,0px))]">
+      <div className="hidden md:block pt-24">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
           <button
@@ -1642,8 +1648,9 @@ export default function ProductPage() {
               )}
 
               <p className={cn('text-2xl font-semibold flex items-center gap-3', t.price)}>
+                <WasPrice was={product.compareAtPrice} now={totalPrice} />
                 <Money cents={totalPrice} />
-                {offerLeft && <OfferBadge text={offerLeft} />}
+                {offerLeft ? <OfferBadge text={offerLeft} /> : isOnSale(product.compareAtPrice, totalPrice) && <OfferBadge text={SALE_LABEL} />}
                 {selectedFrame && selectedFrame !== 'none' && (
                   <span className={cn('text-sm font-normal ml-2', t.priceSub)}>(incl. frame)</span>
                 )}
@@ -1839,7 +1846,7 @@ export default function ProductPage() {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   </svg>
                   <span className={isLight ? 'text-ink-secondary' : 'text-text-secondary'}>
-                    <strong>30-day guarantee</strong> · Premium Gelato print quality
+                    <strong>30-day guarantee</strong> · Premium print quality
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
@@ -1883,8 +1890,8 @@ export default function ProductPage() {
                 <Accordion title="Shipping & Fulfillment" light={isLight}>
                   <div className="space-y-3">
                     <p>
-                      Fulfilled by <span className={isLight ? 'text-ink' : 'text-text-primary'}>Gelato</span> —
-                      the world's largest print-on-demand network with 130+ local print partners worldwide.
+                      Printed on demand in a print shop near you — 130+ partners worldwide, so it
+                      never crosses the planet to reach you.
                     </p>
                     <p>
                       Orders are printed and shipped from the facility nearest to you, minimising

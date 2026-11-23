@@ -1,14 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { Volume2, VolumeX, RotateCcw, Music2 } from 'lucide-react'
+import { Volume2, VolumeX, RotateCcw } from 'lucide-react'
 import { products } from '@/data/products'
 import { isZackProduct, Z } from '@/lib/world'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useThemeStore } from '@/store/themeStore'
 import Money from '@/components/Money'
+import { stopSong } from '@/lib/zackSong'
+import WasPrice from '@/components/WasPrice'
+import { isOnSale } from '@/lib/sale'
 import EtsyRating from '@/components/EtsyRating'
 import ZackEyes from '@/components/zack/ZackEyes'
+import { hatToday } from '@/components/zack/zackHat'
 import { cn } from '@/lib/utils'
 
 // La home di zacktheduck.com: Zack the Duck.
@@ -30,7 +34,6 @@ const zackProducts = products.filter(isZackProduct).sort((a, b) => rank(a) - ran
 const N = zackProducts.length
 
 const VIDEO = { src: '/zack/video/zack-spotted.mp4', poster: '/zack/video/zack-spotted.jpg' }
-const THEME_SONG = '/zack/audio/sigla.mp3'
 // Il cast, nell'ordine deciso: Zack, gabbiano, gatto, piccione, tartaruga, falena, formica.
 const CAST = [
   ['zack', 'Zack'], ['gabbiano', 'The seagull'], ['gatto', 'The cat'], ['piccione', 'The pigeon'],
@@ -78,6 +81,7 @@ function useDesktop() {
 
 function DressUp() {
   const eyesRef = useRef(null)
+  const [hat] = useState(hatToday)
   const bodyRef = useRef(null)
   const stageRef = useRef(null)
   const navigate = useNavigate()
@@ -223,12 +227,16 @@ function DressUp() {
   )
 
   return (
-    <section id="shop" className="pt-[calc(88px_+_var(--zk-xmas,0px))] lg:pt-[calc(84px_+_var(--zk-xmas,0px))] pb-4 scroll-mt-24">
+    <section id="shop" className="pt-[88px] lg:pt-[84px] pb-4 scroll-mt-24">
       <div ref={stageRef} className="flex flex-col items-center">
         {/* La testa */}
         {/* Su desktop testa e corpo scalano con l'altezza della finestra: la
             riga «T-SHIRT €25» deve stare nel primo schermo anche su un portatile. */}
-        <ZackEyes ref={eyesRef} className="relative z-10 w-[90vw] max-w-[480px] lg:max-w-[min(480px,58vh)] h-auto block cursor-pointer" />
+        {/* A Natale (zackHat.js) sopra gli occhi serve posto per il cappello:
+            ~0,6 volte la larghezza degli occhi. */}
+        <ZackEyes ref={eyesRef} hat={hat}
+          className={cn('relative z-10 w-[90vw] max-w-[480px] lg:max-w-[min(480px,58vh)] h-auto block cursor-pointer',
+            hat && 'mt-[min(54vw,288px)] lg:mt-[min(288px,34.8vh)]')} />
 
         {/* Il corpo: il capo che Zack indossa. */}
         <div ref={bodyRef} className="relative w-[80vw] max-w-[360px] lg:w-[min(320px,36vh)] -mt-[1vw] lg:-mt-2"
@@ -325,16 +333,28 @@ function DressUp() {
           )}
         </div>
 
-        {/* Una riga sola: nome e prezzo. */}
+        {/* Nome e prezzo; sotto, l'etichetta dei prezzi di Natale. */}
         <AnimatePresence mode="wait" initial={false}>
-          <motion.p key={p.id}
+          <motion.div key={p.id}
             initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.18 }}
+            transition={{ duration: 0.18 }}>
+          <p
             className="mt-4 flex items-baseline justify-center gap-4 font-sans font-extrabold uppercase text-base lg:text-lg"
             style={{ color: Z.cream, letterSpacing: '0.16em' }}>
             <span>{lineName(p)}</span>
-            <Money cents={p.price} className="font-semibold" />
-          </motion.p>
+            <span className="flex items-baseline gap-2.5">
+              <WasPrice was={p.compareAtPrice} now={p.price} className="text-sm lg:text-base" />
+              <Money cents={p.price} className="font-semibold" />
+            </span>
+          </p>
+          {isOnSale(p.compareAtPrice, p.price) && (
+            <p className="mt-2 flex items-center justify-center gap-1.5 font-sans text-[10px] uppercase"
+              style={{ color: Z.gold, letterSpacing: '0.2em' }}>
+              <span aria-hidden className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: Z.gold }} />
+              Christmas price
+            </p>
+          )}
+          </motion.div>
         </AnimatePresence>
       </div>
     </section>
@@ -397,47 +417,70 @@ function CastColumn({ items, down, sound, setSound }) {
   )
 }
 
+// Mobile: il cast in fila, che si scorre all'infinito nei due sensi. La lista
+// e' ripetuta tre volte e si parte dalla copia di mezzo; quando si arriva
+// vicino a un bordo si salta di una copia intera, senza che si veda.
+function CastRow({ sound, setSound }) {
+  const ref = useRef(null)
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    // Larghezza di una copia: dal primo della prima al primo della seconda.
+    const span = () => el.children[CAST.length].offsetLeft - el.children[0].offsetLeft
+    el.scrollLeft = span()
+    let t
+    const onScroll = () => {
+      clearTimeout(t)
+      // Si salta a scorrimento fermo, cosi' lo snap e l'inerzia non si rompono.
+      t = setTimeout(() => {
+        const w = span()
+        if (el.scrollLeft < w * 0.5) el.scrollLeft += w
+        else if (el.scrollLeft > w * 1.5) el.scrollLeft -= w
+      }, 120)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => { clearTimeout(t); el.removeEventListener('scroll', onScroll) }
+  }, [])
+  return (
+    <div ref={ref} className="lg:hidden mt-5 flex gap-3 overflow-x-auto snap-x snap-mandatory px-5 scroll-px-5 zk-noscrollbar" aria-label="The cast">
+      {[0, 1, 2].map((copy) => CAST.map(([id, name]) => {
+        const key = `${id}#m${copy}`
+        return (
+          <div key={key} className="shrink-0 w-[36vw] max-w-[180px] snap-start">
+            <CastCard id={id} name={name} hidden={copy !== 1} sound={sound === key}
+              onSound={() => setSound((s) => (s === key ? null : key))} />
+          </div>
+        )
+      }))}
+    </div>
+  )
+}
+
 function Spotted() {
   const ref = useRef(null)
-  const songRef = useRef(null)
   // Chi ha la voce: 'main' (il video del brand), una presentazione, o nessuno.
   const [sound, setSound] = useState(null)
-  const [song, setSong] = useState(false)
 
   useEffect(() => {
     const v = ref.current
     if (!v) return
     v.muted = sound !== 'main'
     if (sound === 'main') v.play().catch(() => {})
-    // Una cosa alla volta: se parla un video, la sigla si ferma.
-    if (sound) { songRef.current?.pause(); setSong(false) }
+    // Una cosa alla volta: se parla un video, la sigla (nell'header) si ferma.
+    if (sound) stopSong()
   }, [sound])
+  // E se parte la sigla, i video tacciono.
   useEffect(() => {
-    const a = songRef.current
-    return () => a?.pause()
+    const off = () => setSound(null)
+    window.addEventListener('zk-song-start', off)
+    return () => window.removeEventListener('zk-song-start', off)
   }, [])
-
-  const toggleSong = () => {
-    const a = songRef.current
-    if (!a) return
-    if (song) { a.pause(); setSong(false); return }
-    setSound(null)
-    a.play().then(() => setSong(true)).catch(() => setSong(false))
-  }
 
   return (
     // A tutto schermo sul telefono (9:16), alto quasi quanto la finestra su desktop.
     <section className="pt-14 pb-24">
-      <div className="flex items-center justify-center gap-3 mb-6">
+      <div className="flex items-center justify-center mb-6">
         <p className={label} style={{ letterSpacing: '0.42em', color: Z.gold }}>Spotted.</p>
-        {/* La sigla di Zack. */}
-        <button type="button" onClick={toggleSong} aria-pressed={song}
-          aria-label={song ? 'Stop the Zack the Duck theme song' : 'Play the Zack the Duck theme song'}
-          className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-          style={{ color: song ? Z.black : Z.gold, background: song ? Z.gold : 'transparent', border: '1px solid rgba(196,163,90,0.5)' }}>
-          {song ? <span className="zk-eq" aria-hidden><span /><span /><span /></span> : <Music2 size={14} strokeWidth={1.8} />}
-        </button>
-        <audio ref={songRef} src={THEME_SONG} preload="none" onEnded={() => setSong(false)} />
       </div>
 
       <div className="flex justify-center items-stretch gap-6 xl:gap-8">
@@ -464,14 +507,8 @@ function Spotted() {
         <CastColumn items={CAST.slice(4)} down sound={sound} setSound={setSound} />
       </div>
 
-      {/* Mobile: il cast in fila sotto il video. */}
-      <div className="lg:hidden mt-5 flex gap-3 overflow-x-auto snap-x snap-mandatory px-5 scroll-px-5 zk-noscrollbar" aria-label="The cast">
-        {CAST.map(([id, name]) => (
-          <div key={id} className="shrink-0 w-[36vw] max-w-[180px] snap-start">
-            <CastCard id={id} name={name} sound={sound === id} onSound={() => setSound((s) => (s === id ? null : id))} />
-          </div>
-        ))}
-      </div>
+      {/* Mobile: il cast in fila sotto il video, all'infinito. */}
+      <CastRow sound={sound} setSound={setSound} />
     </section>
   )
 }

@@ -120,7 +120,7 @@ export default function ContactPage() {
         </a>
         . We aim to respond within 48 hours.
       </p>
-      <p className="text-ink-muted text-sm">All orders are fulfilled by Gelato worldwide.</p>
+      <p className="text-ink-muted text-sm">Every order is printed and shipped from the print shop nearest you.</p>
       <ContactForm />
     </LegalPage>
   )
